@@ -26,6 +26,30 @@ def definewith0(unitid,printing=True):
         return unitid[:-1] + '0'
     else:
         return unitid
+    
+def definewith1(unitid,printing=True):
+    if unitid.endswith('0'):
+        return unitid[:-1] + '1'
+    else:
+        return unitid
+
+def causalityExtractor(causality):
+    if(causality==""):
+        return([])
+    else:
+        result=causality.split("compiled")[1]
+        result=result.replace('"',"")
+        result=result.replace("\\","")
+        result=result.replace("[","")
+        result=result.replace("]","")
+        result=result.replace(":","")
+        result=result.replace("}","")
+        result=result.split(",")
+        for x in result:
+            if "u" in x:
+                result.remove(x)
+        return(result)
+
 
 def TransformationReverseUnit(card, cards, passive_skills, passive_skill_set_relations,printing=True):
     for passiveskillpiece in passive_skills:
@@ -627,6 +651,8 @@ def passivename(unit,passive_skills,printing=True):
     return(listtostr(searchbyid(str(int(float(unit[21]))), 0, passive_skills, 1)))
 
 def floattoint(number,printing=True):
+    if(type(number)==str):
+        number=float(number)
     if number%1==0:
         return(int(number))
     else:
@@ -982,7 +1008,46 @@ def getrarity(unit,printing=True):
         
     
     return("ERROR IN GETRARITY UNIT MAX LEVEL IS",unit[13])
-    
+
+def swapToUnitWith0(unit,cards):
+    unitId=definewith0(unit[0])
+    for card in cards:
+        if card[0]==unitId:
+            return(card)
+
+def swapToUnitWith1(unit,cards):
+    unitId=definewith1(unit[0])
+    for card in cards:
+        if card[0]==unitId:
+            return(card)
+
+def map(function, mylist):
+    temp=[]
+    if(mylist!=None):
+        for element in mylist:
+            temp.append(function(element))
+    return(temp)
+
+
+def getpassiveid(unit,cards, optimal_awakening_growths,passive_skill_set_relations, eza=False, printing=False):
+    unitPassiveId=unit[21]
+    if(eza):
+        unitEZA=swapToUnitWith1(unit,cards)
+        unitEZAGrowthId=unitEZA[16][0:-2]
+        unitEZAPassiveId=searchbyid(code=unitEZAGrowthId,codecolumn=1,database=optimal_awakening_growths,column=5)
+        #unitEZAPassiveId=map(floattoint,unitEZAPassiveId)
+        for element in unitEZAPassiveId:
+            if element!= unitPassiveId:
+                unitEZAPassiveId=element
+        
+        unitEZAPassiveList=searchbyid(code=unitEZAPassiveId[0:-2],codecolumn=1,database=passive_skill_set_relations,column=2)
+        return(unitEZAPassiveList)
+    else:
+        unitPassiveId=unitPassiveId[0:-2]
+        unitPassiveList=searchbyid(code=unitPassiveId,codecolumn=1,database=passive_skill_set_relations,column=2)
+        return(unitPassiveList)
+
+
 
 #retrieves full character name(e.g. "E.TEQ LR Nightmarish Impact Legendary Super Saiyan Broly 4016881")
 def getfullname(unit,leader_skills,printing=True):
