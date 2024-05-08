@@ -14,9 +14,12 @@ link_skill_lvs=storedatabase(directory,"link_skill_lvs.csv")
 skill_causalities=storedatabase(directory,"skill_causalities.csv")
 passive_skill_set_relations=storedatabase(directory,"passive_skill_set_relations.csv")
 optimal_awakening_growths=storedatabase(directory,"optimal_awakening_growths.csv")
-#unitid=input("What is the unit id?")
-unitid="1019591"
+
+unitid="4019601"
 eza=True
+DEVEXCEPTIONS=False
+
+
 if unitid[-1]=="1":
     unitid=unitid[0:-1]+"0"
 for unit in cards:
@@ -37,13 +40,10 @@ for passiveskill in passive_skills:
         if passiveskill[11]!="100":
             print(passiveskill[11],"% chance of",end=" ")
 
-        if passiveskill[4]=="0":
-            print("状態異常にならない/does not become abnormal")
-        elif passiveskill[4]=="1":
+        if passiveskill[4]=="1":
             print("ATK +",passiveskill[13],end=" ")
         elif passiveskill[4]=="2":
             print("DEF +",passiveskill[13],end=" ")
-            
         elif passiveskill[4]=="3":
             if passiveskill[13]==passiveskill[14]:
                 print("ATK & DEF +",passiveskill[13],end=" ")
@@ -80,7 +80,18 @@ for passiveskill in passive_skills:
         elif passiveskill[4]=="50":
             print("Immune to negative effects",end=" ")
         elif passiveskill[4]=="51":
-            print("change type ki sphere to type ki sphere",end=" ")
+            type1=KiOrbType(passiveskill[13])
+            if(type1=="UNKNOWN"):
+                print("UNKNOWN TYPE",end=" ")
+                if(DEVEXCEPTIONS==True):
+                    raise Exception("Unknown type")
+                
+            type2=KiOrbType(passiveskill[14])
+            if(type2=="UNKNOWN"):
+                print("UNKNOWN TYPE",end=" ")
+                if(DEVEXCEPTIONS==True):
+                    raise Exception("Unknown type")
+            print("change" ,type1, "ki sphere to", type2 ,"ki sphere",end=" ")
         elif passiveskill[4]=="52":
             print("survive K.O attacks",end=" ")
         elif passiveskill[4]=="53":
@@ -95,16 +106,61 @@ for passiveskill in passive_skills:
             else:
                 print("ATK +",passiveskill[13], "and DEF +",passiveskill[14],"per ki sphere",end=" ")
         elif passiveskill[4]=="64":
-            print("ATK per (specific) type ki sphere",end=" ")
+            print("ATK +",passiveskill[14]," per", end=" ")
+            if(passiveskill[13]=="2"):
+                print("INT",end=" ")
+            elif(passiveskill[13]=="4"):
+                print("PHY", end="")
+            else:
+                print("UNKNOWN TYPE",passiveskill[13],end=" ")
+                if(DEVEXCEPTIONS==True):
+                    raise Exception("Unknown type")
+            print(" type ki sphere",end=" ")
         elif passiveskill[4]=="65":
             print("ATK & DEF +70%; plus an additional ATK +15% and DEF +10% per TEQ Ki Sphere obtained(TEQ #17)",end=" ")
         elif passiveskill[4]=="66":
             print("ATK and DEF up equal amount per (specific) type ki sphere",end=" ")
         elif passiveskill[4]=="67":
-            print("changes ki sphere of a certain type to rainbow",end=" ")
+            print("Randomly changes ki sphere of a certain type",end=" ")
+            if(passiveskill[13]=="15"):
+                type1="PHY"
+            elif(passiveskill[13]=="23"):
+                type1="STR"
+            elif(passiveskill[13]=="27"):
+                type1="INT"
+            elif(passiveskill[13]=="29"):
+                type1="TEQ"
+            elif(passiveskill[13]=="30"):
+                type1="INT"
+            else:
+                type1=("Unknown ki sphere type")
+
+            if(passiveskill[14]=="4"):
+                type2="INT"
+            elif(passiveskill[14]=="16"):
+                type2="PHY"
+            elif(passiveskill[14]=="32"):
+                type2="rainbow"
+            else:
+                type2=("unknown ki sphere type")
+            
+            print("(",type1,"excluded) to",type2,"ki spheres", end=" ")
+            
         elif passiveskill[4]=="68":
-            print("(randomly changes ki spheres from a random type to 1 type) or (unique effects per ki sphere condition e.g. recover hp ")
-            print("reduces damage recieved by", passiveskill[15], "per ki sphere obtained", end=" ")
+            if(passiveskill[13]=="32"):
+                #buffs per rainbow ki sphere
+                if(passiveskill[14]=="1"):
+                    print("ATK +",passiveskill[15]," per rainbow ki sphere obtained",end=" ")
+                elif(passiveskill[14]=="4"):
+                    print("Chance of performing a critical hit +",passiveskill[15]," per rainbow ki sphere obtained",end=" ")
+                else:
+                    print("UNKNOWN BUFF")
+                    if(DEVEXCEPTIONS==True):
+                        raise Exception("Unknown buff")
+            else:
+                print("UNKNOWN huh?",passiveskill[13],end=" ")
+                if(DEVEXCEPTIONS==True):
+                    raise Exception("UNKNOWN huh?")
         elif passiveskill[4]=="69":
             print("Changes all ki spheres to a certain type",end=" ")
         elif passiveskill[4]=="71":
@@ -147,40 +203,48 @@ for passiveskill in passive_skills:
             elif(passiveskill[15]=="1"):
                 print("DEF+",end=" ")
             elif(passiveskill[15]=="2"):
-                print("KI+ ",end=" ")
+                print("Chance to perform a critical hit + ",end=" ")
             elif(passiveskill[15]=="3"):
                 print("DR+",end=" ")
-            print(passiveskill[13],"up to",passiveskill[14])
+            elif(passiveskill[15]=="4"):
+                print("Reduces damage recieved for 1 turn by", end=" ")
+            elif(passiveskill[15]=="5"):
+                print("Ki+",end="  ")
+            else:
+                print("UNKNOWN STAT INCREASE",end=" ")
+                if(DEVEXCEPTIONS==True):
+                    raise Exception("Unknown stat increase")
+            print(passiveskill[13],"up to",passiveskill[14],end=" ")
         elif passiveskill[4]=="101":
-            print("Forsees enemy super attack")
+            print("Forsees enemy super attack",end=" ")
         elif passiveskill[4]=="103":
-            print("Transforms")
+            print("Transforms",end=" ")
         elif passiveskill[4]=="109":
-            print("revive")
+            print("revive",end=" ")
         elif passiveskill[4]=="110":
-            print("nullification with condition e.g. gogeta has to ultra super first, str gohan has to dodge first")
+            print("nullification with condition e.g. gogeta has to ultra super first, str gohan has to dodge first",end=" ")
             if(passiveskill[13]=="2"):
-                print("Unarmed Super Attacks directed at this character")
+                print("Unarmed Super Attacks directed at this character",end=" ")
         elif(passiveskill[4]=="114"):
-            print("HELD BY STANDBY UUB, POSSIBLY DAMAGE REDUCTION PER KI SPHERE")
+            print("HELD BY STANDBY UUB, POSSIBLY DAMAGE REDUCTION PER KI SPHERE",end=" ")
         elif passiveskill[4]=="119":
-            print("Nullifies")
+            print("Nullifies",end=" ")
             if(passiveskill[13]=="0"):
-                print("Unarmed Super Attacks directed at this character")
+                print("Unarmed Super Attacks directed at this character",end=" ")
         else:
             print("UNKNOWN EFFECT",passiveskill[4],end=" ")
+            if(DEVEXCEPTIONS==True):
+                    raise Exception("Unknown effect")
             
 
-        if (passiveskill[10]=="1" or passiveskill[9]!="1") :
+        if (passiveskill[9]!="99" and (passiveskill[10]=="1" or passiveskill[9]!="1")) :
             print("for",passiveskill[9], "turns", end=" ")
 
 
         if passiveskill[3]=="1":
             print("At the start of turn",end=" ")
-        elif passiveskill[3]=="2":
-            print("a")
         elif passiveskill[3]=="3":
-            print("when attacking an extreme type enemy",end=" ")
+            print("when attacking",end=" ")
         elif passiveskill[3]=="4":
             print("When performing a super attack",end=" ")
         elif passiveskill[3]=="5":
@@ -190,52 +254,98 @@ for passiveskill in passive_skills:
         elif passiveskill[3]=="7":
             print("When attack recieved",end=" ")
         elif passiveskill[3]=="9":
-            print("deliver the final blow for the effect on the next attack",end=" ")
+            print("at the end of the turn",end=" ")
         elif passiveskill[3]=="11":
-            print("High chance to launch up to 2 additional attacks/stats when ki is something or more",end=" ")
+            print("after all units select their ki spheres",end=" ")
         elif passiveskill[3]=="14":
             print("Which each final blow delivered",end=" ")
         elif passiveskill[3]=="15":
             print("With X amount of ki spheres",end=" ")
         else:
             print("UNKNOWN TRIGGER",end=" ")
+            if(DEVEXCEPTIONS==True):
+                    raise Exception("Unknown trigger")
+
+        
 
         if(causalityExtractor(passiveskill[12])!=[]):
-            causalityCondition=causalityExtractor(passiveskill[12])
-            for row in skill_causalities:
-                if row[0] in causalityCondition:
-                    CausalityRow=row
+            if("|" in passiveskill[12]):
+                causalityCondition=logicalCausalityExtractor(passiveskill[12])
+                causalityCondition=CausalityLogicalExtractor(causalityCondition,card_categories,skill_causalities)
+                print(causalityCondition,end=" ")
 
-                    if(CausalityRow[1]=="1"):
-                        print("When HP is", CausalityRow[2], "or more", end=" ")
-                    elif(CausalityRow[1]=="2"):
-                        print("When HP is ", CausalityRow[2], "or less", end=" ")
-                    elif(CausalityRow[1]=="3"):
-                        print("When ki is", int(CausalityRow[2])//33, "or more",end=" ")
-                    elif(CausalityRow[1]=="24"):
-                        print("When attack recieved",end=" ")
-                    elif(CausalityRow[1]=="30"):
-                        print("When guard is activated",end=" ")
-                    elif(CausalityRow[1]=="34"):
-                        print("When there are no", searchbyid(CausalityRow[3],codecolumn=0,database=card_categories,column=1)[0], "category enemies", end=" ")
-                    elif(CausalityRow[1]=="42"):
-                        print("With",CausalityRow[3], "or more ")
-                        if(CausalityRow[2]=="63"):
-                            print("STR ki spheres obtained",end=" ")
-                        elif(CausalityRow[2]=="31"):
-                            print("INT ki spheres obtained",end=" ")
+            else:
+                causalityCondition=causalityExtractor(passiveskill[12])
+                for row in skill_causalities:
+                    if row[0] in causalityCondition:
+                        CausalityRow=row
+
+                        if(CausalityRow[1]=="1"):
+                            print("When HP is", CausalityRow[2], "or more", end=" ")
+                        elif(CausalityRow[1]=="2"):
+                            print("When HP is ", CausalityRow[2], "or less", end=" ")
+                        elif(CausalityRow[1]=="3"):
+                            if(qualifyAsLR(card=mainunit)):
+                                print("When ki is", int(CausalityRow[2])//33, "or more",end=" ")
+                            else:
+                                print("When ki is", int(CausalityRow[2])//25, "or more",end=" ")
+                        elif(CausalityRow[1]=="5"):
+                            print("Starting from the", int(CausalityRow[2])+1, "turn from the start of battle", end=" ")
+                        elif(CausalityRow[1]=="19"):
+                            if(CausalityRow[2]=="0"):
+                                print("As the 1st attacker in the turn",end=" ")
+                            elif(CausalityRow[2]=="1"):
+                                print("As the 2nd attacker in the turn",end=" ")
+                            elif(CausalityRow[2]=="2"):
+                                print("As the 3rd attacker in the turn",end=" ")
+                            else:
+                                print("UNKNOWN ATTACK POSITION",end=" ")
+                                if(DEVEXCEPTIONS==True):
+                                    raise Exception("Unknown attack position")
+
+                        elif(CausalityRow[1]=="24"):
+                            print("When attack recieved",end=" ")
+                        elif(CausalityRow[1]=="30"):
+                            print("When guard is activated",end=" ")
+                        elif(CausalityRow[1]=="34"):
+                            if(CausalityRow[2]=="0"):
+                                target="allies on the team"
+                            elif(CausalityRow[2]=="1"):
+                                target="enemies"
+                            elif(CausalityRow[2]=="2"):
+                                target="allies on the same turn"
+
+                            categoryType=searchbyid(CausalityRow[3],codecolumn=0,database=card_categories,column=1)[0]
+
+                            if(CausalityRow[4]=="0"):
+                                print("When there are no", categoryType, "category", target, end=" ")
+                            else:
+                                print("When there are",CausalityRow[4],"or more", categoryType, "category", target, end=" ")
+
+                        elif(CausalityRow[1]=="42"):
+                            print("With",CausalityRow[3], "or more ")
+                            if(CausalityRow[2]=="63"):
+                                print("INT ki spheres obtained",end=" ")
+                            elif(CausalityRow[2]=="31"):
+                                print("INT ki spheres obtained",end=" ")
+                            else:
+                                print("UNKNOWN KI SPHERE TYPE",end=" ")
+                                if(DEVEXCEPTIONS==True):
+                                    raise Exception("Unknown ki sphere type")
+                        elif(CausalityRow[1]=="40"):
+                            print("With each super attack performed within the turn",end=" ")
+                        elif(CausalityRow[1]=="46"):
+                            print("Where there is an extreme class enemy", end=" ")
+                        elif(CausalityRow[1]=="48"):
+                            print("When the enemy is hit by the characters ultra super attack",end=" ")
+                        elif(CausalityRow[1]=="49"):
+                            print("LR UUB, Nullifies Unarmed Super Attacks directed at the character")
+                        elif(CausalityRow[1]=="51"):
+                            print("Held by LR UUB, Reduces damage received by 10% per Type Ki Sphere obtained and guards all attacks with 3 or more Type Ki Spheres obtained for 1 turn from the character's entry turn")
                         else:
-                            print("UNKNOWN KI SPHERE TYPE",end=" ")
-                    elif(CausalityRow[1]=="46"):
-                        print("Where there is an extreme class enemy", end=" ")
-                    elif(CausalityRow[1]=="48"):
-                        print("When the enemy is hit by the characters ultra super attack",end=" ")
-                    elif(CausalityRow[1]=="49"):
-                        print("LR UUB, Nullifies Unarmed Super Attacks directed at the character")
-                    elif(CausalityRow[1]=="51"):
-                        print("Held by LR UUB, Reduces damage received by 10% per Type Ki Sphere obtained and guards all attacks with 3 or more Type Ki Spheres obtained for 1 turn from the character's entry turn")
-                    else:
-                        print("UNKNOWN CAUSALITY CONDITION",CausalityRow,end=" ")
+                            print("UNKNOWN CAUSALITY CONDITION",end=" ")
+                            if(DEVEXCEPTIONS==True):
+                                raise Exception("Unknown causality condition")
             
         if(passiveskill[8]=="0"):
             print("RAW STATS INCREASE",end=" ")
@@ -249,7 +359,9 @@ for passiveskill in passive_skills:
         elif(passiveskill[8]=="3"):
             print("IDK",end=" ")
         else:
-            print("UNKNOWN STAT INCREASE",end=" ")
+            print("UNKNOWN STAT INCREASE type",end=" ")
+            if(DEVEXCEPTIONS==True):
+                    raise Exception("Unknown stat increase type")
         
         print(";")
         print("")

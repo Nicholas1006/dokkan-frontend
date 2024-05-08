@@ -5,6 +5,21 @@ import os
 from PIL import Image
 import time
 
+def KiOrbType(kiOrbNumber):
+    if(kiOrbNumber=="0"):
+        output="AGL"
+    elif(kiOrbNumber=="1"):
+        output="TEQ"
+    elif(kiOrbNumber=="2"):
+        output="INT"
+    elif(kiOrbNumber=="3"):
+        output="STR"
+    elif(kiOrbNumber=="4"):
+        output="PHY"
+    else:
+        output="UNKNOWN"
+    return(output)
+
 def filterIncompletePngs(directory, thresholdInBytes,printing=True):
     if(directory[-1]!="/"):
         directory+="/"
@@ -49,6 +64,85 @@ def causalityExtractor(causality):
             if "u" in x:
                 result.remove(x)
         return(result)
+
+def logicalCausalityExtractor(causality):
+    if(causality==""):
+        return([])
+    else:
+        result=causality.split('","compiled')[0]
+        result=result.split('source":"')[1]
+        return(result)
+    
+def CausalityLogicalExtractor(causality,card_categories,skill_causalities,printing=True,DEVEXCEPTIONS=False):
+    temp=causality.split('|')
+    result=""
+    for x in temp:
+        result+=(causalityLogicFinder(x,card_categories,skill_causalities,printing=True,DEVEXCEPTIONS=DEVEXCEPTIONS))
+        result+=(" or ")
+    result=result[:-4]
+    return(result)
+
+def causalityLogicFinder(causalityCondition,card_categories,skill_causalities,printing=True,DEVEXCEPTIONS=False):
+    output=""
+    for row in skill_causalities:
+        if row[0] == causalityCondition:
+            CausalityRow=row
+
+            if(CausalityRow[1]=="1"):
+                output+=("When HP is")
+                output+=(CausalityRow[2])
+                output+=( "or more")
+            elif(CausalityRow[1]=="2"):
+                output+=("When HP is ")
+                output+=(CausalityRow[2])
+                output+=("or less")
+            elif(CausalityRow[1]=="3"):
+                output+=("When ki is")
+                output+=str(int(CausalityRow[2])//33)
+                output+=("or more")
+            elif(CausalityRow[1]=="19"):
+                if(CausalityRow[2]=="0"):
+                    output+=("As the 1st attacker in the turn")
+                elif(CausalityRow[2]=="1"):
+                    output+=("As the 2nd attacker in the turn")
+                elif(CausalityRow[2]=="2"):
+                    output+=("As the 3rd attacker in the turn")
+                else:
+                    print("UNKNOWN ATTACK POSITION")
+                    if(DEVEXCEPTIONS==True):
+                        raise Exception("Unknown attack position")
+
+            elif(CausalityRow[1]=="24"):
+                output+=("When attack recieved")
+            elif(CausalityRow[1]=="30"):
+                output+=("When guard is activated")
+            elif(CausalityRow[1]=="34"):
+                output+=("When there are no")
+                output+=(searchbyid(CausalityRow[3],codecolumn=0,database=card_categories,column=1)[0])
+                output+=( "category enemies")
+            elif(CausalityRow[1]=="42"):
+                output+=("With",CausalityRow[3], "or more ")
+                if(CausalityRow[2]=="63"):
+                    output+=("STR ki spheres obtained")
+                elif(CausalityRow[2]=="31"):
+                    output+=("INT ki spheres obtained")
+                else:
+                    output+=("UNKNOWN KI SPHERE TYPE")
+                    if(DEVEXCEPTIONS==True):
+                        raise Exception("Unknown ki sphere type")
+            elif(CausalityRow[1]=="46"):
+                output+=("Where there is an extreme class enemy")
+            elif(CausalityRow[1]=="48"):
+                output+=("When the enemy is hit by the characters ultra super attack")
+            elif(CausalityRow[1]=="49"):
+                output+=("LR UUB, Nullifies Unarmed Super Attacks directed at the character")
+            elif(CausalityRow[1]=="51"):
+                print("Held by LR UUB, Reduces damage received by 10% per Type Ki Sphere obtained and guards all attacks with 3 or more Type Ki Spheres obtained for 1 turn from the character's entry turn")
+            else:
+                output+=("UNKNOWN CAUSALITY CONDITION")
+                if(DEVEXCEPTIONS==True):
+                    raise Exception("Unknown causality condition")
+    return(output)
 
 
 def TransformationReverseUnit(card, cards, passive_skills, passive_skill_set_relations,printing=True):
@@ -1034,6 +1128,8 @@ def getpassiveid(unit,cards, optimal_awakening_growths,passive_skill_set_relatio
     if(eza):
         unitEZA=swapToUnitWith1(unit,cards)
         unitEZAGrowthId=unitEZA[16][0:-2]
+        if(unitEZAGrowthId==""):
+            return(getpassiveid(unit,cards, optimal_awakening_growths,passive_skill_set_relations, eza=False, printing=printing))
         unitEZAPassiveId=searchbyid(code=unitEZAGrowthId,codecolumn=1,database=optimal_awakening_growths,column=5)
         #unitEZAPassiveId=map(floattoint,unitEZAPassiveId)
         for element in unitEZAPassiveId:
