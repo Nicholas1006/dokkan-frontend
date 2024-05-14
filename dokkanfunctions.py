@@ -5,7 +5,7 @@ import os
 from PIL import Image
 import time
 
-def KiOrbType(kiOrbNumber):
+def KiOrbType(kiOrbNumber, devExceptions=False):
     if(kiOrbNumber=="0"):
         output="AGL"
     elif(kiOrbNumber=="1"):
@@ -18,6 +18,8 @@ def KiOrbType(kiOrbNumber):
         output="PHY"
     else:
         output="UNKNOWN"
+        if(devExceptions==True):
+            raise Exception("Unknown ki orb type")
     return(output)
 
 def filterIncompletePngs(directory, thresholdInBytes,printing=True):
@@ -71,35 +73,77 @@ def logicalCausalityExtractor(causality):
     else:
         result=causality.split('","compiled')[0]
         result=result.split('source":"')[1]
+        result=result.replace("\\u0026","&")
         return(result)
     
-def CausalityLogicalExtractor(causality,card_categories,skill_causalities,printing=True,DEVEXCEPTIONS=False):
-    temp=causality.split('|')
-    result=""
-    for x in temp:
-        result+=(causalityLogicFinder(x,card_categories,skill_causalities,printing=True,DEVEXCEPTIONS=DEVEXCEPTIONS))
-        result+=(" or ")
-    result=result[:-4]
+def CausalityLogicalExtractor(unit,causality,card_categories,skill_causalities,cards,card_unique_info_set_relations,printing=True,DEVEXCEPTIONS=False):
+    result=causality.replace("|"," or ").replace("&"," and ")
+    currentCausality=""
+    for x in result:
+        if(x.isnumeric()):
+            currentCausality+=x
+        else:
+            if(currentCausality!=""):
+                newCausality=causalityLogicFinder(unit,currentCausality,card_categories,skill_causalities,cards,card_unique_info_set_relations,printing=True,DEVEXCEPTIONS=DEVEXCEPTIONS)
+                result=result.replace(currentCausality,newCausality)
+            currentCausality=""
+
+    if(currentCausality!=""):
+        newCausality=causalityLogicFinder(unit,currentCausality,card_categories,skill_causalities,cards,card_unique_info_set_relations,printing=True,DEVEXCEPTIONS=DEVEXCEPTIONS)
+        result=result.replace(currentCausality,newCausality)
     return(result)
 
-def causalityLogicFinder(causalityCondition,card_categories,skill_causalities,printing=True,DEVEXCEPTIONS=False):
+def smallestCommonSubstring(string1,string2):
+    longestString=""
+    for letter1 in range(0,len(string1)):
+        for letter2 in range(0,len(string2)):
+            templetter1=letter1
+            templetter2=letter2
+            currentString=""
+            while (templetter1<len(string1) and templetter2<len(string2)):
+                if(string1[templetter1]==string2[templetter2]):
+                    currentString+=string1[templetter1]
+                    templetter1+=1
+                    templetter2+=1
+                else:
+                    templetter1=len(string1)+1
+                    templetter2=len(string2)+2
+            if len(currentString)>len(longestString):
+                longestString=currentString
+    return(longestString)
+
+
+
+
+def CategoryExtractor(CategoryId,card_categories):
+    for category in card_categories:
+        if category[0]==CategoryId:
+            return(category[1])
+
+def causalityLogicFinder(unit,causalityCondition,card_categories,skill_causalities,cards,card_unique_info_set_relations,printing=True,DEVEXCEPTIONS=False):
     output=""
     for row in skill_causalities:
         if row[0] == causalityCondition:
             CausalityRow=row
 
             if(CausalityRow[1]=="1"):
-                output+=("When HP is")
+                output+=("When HP is ")
                 output+=(CausalityRow[2])
-                output+=( "or more")
+                output+=( "% or more")
             elif(CausalityRow[1]=="2"):
                 output+=("When HP is ")
                 output+=(CausalityRow[2])
-                output+=("or less")
+                output+=("% or less")
             elif(CausalityRow[1]=="3"):
-                output+=("When ki is")
-                output+=str(int(CausalityRow[2])//33)
-                output+=("or more")
+                #WIP
+                rarity=getrarity(unit)
+                output+=("When ki is ")
+                
+                Ca2=int(CausalityRow[2])
+                unit31=int(unit[31])
+                output+=str((Ca2*unit31)//99)
+                
+                output+=(" or more")
             elif(CausalityRow[1]=="19"):
                 if(CausalityRow[2]=="0"):
                     output+=("As the 1st attacker in the turn")
@@ -113,23 +157,86 @@ def causalityLogicFinder(causalityCondition,card_categories,skill_causalities,pr
                         raise Exception("Unknown attack position")
 
             elif(CausalityRow[1]=="24"):
-                output+=("When attack recieved")
+                output+=("When attack recieved ")
             elif(CausalityRow[1]=="30"):
-                output+=("When guard is activated")
+                output+=("When guard is activated ")
             elif(CausalityRow[1]=="34"):
-                output+=("When there are no")
-                output+=(searchbyid(CausalityRow[3],codecolumn=0,database=card_categories,column=1)[0])
-                output+=( "category enemies")
+                if(CausalityRow[2]=="0"):
+                    target="allies on the team "
+                elif(CausalityRow[2]=="1"):
+                    target="enemies "
+                elif(CausalityRow[2]=="2"):
+                    target="allies on the same turn "
+
+                categoryType=searchbyid(CausalityRow[3],codecolumn=0,database=card_categories,column=1)[0]
+
+                if(CausalityRow[4]=="0"):
+                    output+=("When there are no ")
+                    output+=(categoryType)
+                    output+=(" category ")
+                    output+=(target)
+                else:
+                    output+=("When there are ")
+                    output+=(CausalityRow[4])
+                    output+=(" or more ")
+                    output+=(categoryType)
+                    output+=(" category ")
+                    output+=(target)
+            elif(CausalityRow[1]=="40"):
+                output+=("With each super attack performed within the turn")
+            elif(CausalityRow[1]=="41"):
+                if(CausalityRow[2]=="0"):
+                    output+=("When there is an ally on the team whose name includes ")
+                elif(CausalityRow[2]=="1"):
+                    output+=("When there is an ally attacking on the same turn whose name includes ")
+                elif(CausalityRow[2]=="2"):
+                    output+=("When there is an enemy whose name includes ")
+                else:
+                    output+=("UNKNOWN NAME TYPE")
+                    if(DEVEXCEPTIONS==True):
+                        raise Exception("Unknown name type")
+                if(True):
+                    card_unique_info_id=searchbyid(code=CausalityRow[3],codecolumn=2,database=card_unique_info_set_relations,column=1)
+                    possible_names=[]
+                    for id in card_unique_info_id:
+                        possible_names.append(searchbyid(code=id,codecolumn=3,database=cards,column=1))
+                    likelyName=possible_names[0][0]
+                    for name in possible_names[1:]:
+                        likelyName=smallestCommonSubstring(likelyName,name[0]) 
+                    output+=likelyName
+
+                else:
+                    if(CausalityRow[3]=="12"):
+                        output+=("Trunks (Kid and GT excluded)")
+                    elif(CausalityRow[3]=="13"):
+                        output+=('"Goku"')
+                    elif(CausalityRow[3]=="36"):
+                        output+=('"Trunks (Kid)"')
+                    elif(CausalityRow[3]=="58"):
+                        output+=('"Bulma"')
+                    else:
+                        output+=("UNKNOWN NAME")
+                        if(DEVEXCEPTIONS==True):
+                            raise Exception("Unknown name")
+                    
+                if(CausalityRow[2]!="2"):
+                    output+=(" On the team")
             elif(CausalityRow[1]=="42"):
-                output+=("With",CausalityRow[3], "or more ")
+                output+=("With ")
+                output+=(CausalityRow[3])
+                output+=(" or more ")
                 if(CausalityRow[2]=="63"):
-                    output+=("STR ki spheres obtained")
+                    output+=("INT ki spheres obtained")
                 elif(CausalityRow[2]=="31"):
                     output+=("INT ki spheres obtained")
                 else:
                     output+=("UNKNOWN KI SPHERE TYPE")
                     if(DEVEXCEPTIONS==True):
                         raise Exception("Unknown ki sphere type")
+            elif(CausalityRow[1]=="44"):
+                output+=("Starting from the turn in which the charactrer performs the ")
+                output+=(ordinalise(CausalityRow[3]))
+                output+=(" attack in battle")
             elif(CausalityRow[1]=="46"):
                 output+=("Where there is an extreme class enemy")
             elif(CausalityRow[1]=="48"):
@@ -144,6 +251,22 @@ def causalityLogicFinder(causalityCondition,card_categories,skill_causalities,pr
                     raise Exception("Unknown causality condition")
     return(output)
 
+def extractAllyTyping(typingID,DEVEXCEPTIONS=False):
+    if(typingID=="0"):
+        typing="AGL"
+    elif(typingID=="1"):
+        typing="TEQ"
+    elif(typingID=="2"):
+        typing="INT"
+    elif(typingID=="3"):
+        typing="STR"
+    elif(typingID=="4"):
+        typing="PHY"
+    else:
+        typing="UNKNOWN TYPE"
+        if(DEVEXCEPTIONS==True):
+            raise Exception("Unknown type")
+    return(typing)
 
 def TransformationReverseUnit(card, cards, passive_skills, passive_skill_set_relations,printing=True):
     for passiveskillpiece in passive_skills:
@@ -156,7 +279,6 @@ def TransformationReverseUnit(card, cards, passive_skills, passive_skill_set_rel
                         if unit[21][0:-2]==passiverelation[1]:
                             return(unit)
     
-
 def activeSkillTransformationReverseUnit(card,active_skills, card_active_skills, cards,printing=True):
     for possibleactive in active_skills:
         if(possibleactive[6]==card[0]):
@@ -238,7 +360,7 @@ def qualifyEZA(card,optimal_awakening_growths,printing=True):
         return(False)
 
 def qualifyUsable(card,printing=True):
-    if (card[53]!="2030-12-31 23:59:59") and (card[53]!="2038-01-01 00:00:00") and (card[0][0]!="5") and (card[0][0]!="9") and (card[0][-1]=="0") and (card[22]!=""):
+    if ((card[21]=="" and card[23]=="")==False) and (card[53]!="2030-12-31 23:59:59") and (card[53]!="2038-01-01 00:00:00") and (card[0][0]!="5") and (card[0][0]!="9") and (card[0][-1]=="0") and (card[22]!=""):
         return(True)
     else:
         return(False)
@@ -758,21 +880,29 @@ def checkeza(optimal_awakening_growths,unit,printing=True):
             return(True)
     return(False)
     
+def returnRow(ID, IDRow, database, printing=True):
+    output=[]
+    for row in database:
+        if ID==row[IDRow]:
+            output.append(row)
+    return(output)
 
 #this function takes in a piece of data
 #checks within the destincation_csv along the search_column
-#once it finds one that matches it will return that row's entry on the destincation_column
-def searchbycolumn(source_entry, destination_csv, search_column, destination_column,printing=True):
+#once it finds one that matches it will return that row's entry on the destination_column
+def searchbycolumn(source_entry, destination_csv, search_column, printing=True):
     temp=[]
-    for x in destination_csv:
-        if source_entry==x[search_column]:
-            temp.append(x[destination_column])
+    for row in destination_csv:
+        if (source_entry==row[search_column]):
+            temp.append(row)
+    return(temp)
+                
 
 def searchbyid(code, codecolumn, database, column,printing=True):
     temp=[]
-    for x in database:
-        if code==x[codecolumn]:
-            temp.append(x[column])
+    for row in database:
+        if code==row[codecolumn]:
+            temp.append(row[column])
     if temp==[]:
         return(None)
     else:
@@ -1108,12 +1238,14 @@ def swapToUnitWith0(unit,cards):
     for card in cards:
         if card[0]==unitId:
             return(card)
+    return(None)
 
 def swapToUnitWith1(unit,cards):
     unitId=definewith1(unit[0])
     for card in cards:
         if card[0]==unitId:
             return(card)
+    return(None)
 
 def map(function, mylist):
     temp=[]
@@ -1126,7 +1258,10 @@ def map(function, mylist):
 def getpassiveid(unit,cards, optimal_awakening_growths,passive_skill_set_relations, eza=False, printing=False):
     unitPassiveId=unit[21]
     if(eza):
-        unitEZA=swapToUnitWith1(unit,cards)
+        if(swapToUnitWith1(unit,cards)!=None):
+            unitEZA=swapToUnitWith1(unit,cards)
+        else:
+            return(getpassiveid(unit,cards, optimal_awakening_growths,passive_skill_set_relations, eza=False, printing=printing))
         unitEZAGrowthId=unitEZA[16][0:-2]
         if(unitEZAGrowthId==""):
             return(getpassiveid(unit,cards, optimal_awakening_growths,passive_skill_set_relations, eza=False, printing=printing))
@@ -1199,7 +1334,18 @@ def getalllinks(unit,link_skills,slinks,showabilities,printing=True):
         temp1+="\n"
     return(temp1)
     
-    
+def ordinalise(number,printing=True):
+    if(type(number)==str):
+        number=int(number)
+    if number==1:
+        return("1st")
+    elif number==2:
+        return("2nd")
+    elif number==3:
+        return("3rd")
+    else:
+        return(str(number)+"th")
+
 #easier way to include all (non-stat) details of a unit
 def getfullabilities(unit,leader_skills,passive_skill_sets,card_active_skills,active_skill_sets,card_card_categories,card_categories,link_skills,slinks,printing=True):
     #create empty string
