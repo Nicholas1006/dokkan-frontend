@@ -18,8 +18,8 @@ optimal_awakening_growths=storedatabase(directory,"optimal_awakening_growths.csv
 sub_target_types=storedatabase(directory,"sub_target_types.csv")
 card_unique_info_set_relations=storedatabase(directory,"card_unique_info_set_relations.csv")
 
-unitid="1010161"
-eza=True
+unitid="1023191"
+eza=False
 DEVEXCEPTIONS=False
 GLOBALCHECK=False
 
@@ -41,15 +41,18 @@ if GLOBALCHECK:
 else:
     cardsToCheck=[mainunit]
 
+
 missingPassiveCount=0
 missingUnitCount=0
 
+unitCount=0
 #passive skill set id is mainunit[21]
 #passive=(passivename(mainunit,passive_skills))
 #passiveIdList=getpassiveid(mainunit,cards,optimal_awakening_growths,passive_skill_set_relations,eza)
 #print(passive)
 
 for unit in cardsToCheck:
+    unitCount+=1
     passiveIdList=getpassiveid(unit,cards,optimal_awakening_growths,passive_skill_set_relations,eza)
     if (passiveIdList!=None and qualifyUsable(unit)):
         for passiveskill in passive_skills[1:]:
@@ -135,13 +138,8 @@ for unit in cardsToCheck:
                 elif passiveskill[4]=="13":
                     print("Reduces damage recieved by", 100-int(passiveskill[13]),"%", end=" ")
                 elif passiveskill[4]=="16":
-                    if(passiveskill[13]=="1"):
-                        print("Certain type allies ATK +",end=" ")
-                    else:
-                        print("UNKNOWN TYPE",passiveskill[13],end=" ")
-                        if(DEVEXCEPTIONS==True):
-                            raise Exception("Unknown type")
-                    print(passiveskill[14])
+                    typing=extractAllyTyping(passiveskill[13],DEVEXCEPTIONS=DEVEXCEPTIONS)
+                    print(typing,"type allies ATK",BuffPrefix,passiveskill[14],BuffSuffix,end=" ")
                 elif passiveskill[4]=="17":
                     typing=extractAllyTyping(passiveskill[13],DEVEXCEPTIONS=DEVEXCEPTIONS)
                     print(typing,"type allies DEF",BuffPrefix,passiveskill[14],BuffSuffix,end=" ")
@@ -164,17 +162,8 @@ for unit in cardsToCheck:
                 elif passiveskill[4]=="50":
                     print("Immune to negative effects",end=" ")
                 elif passiveskill[4]=="51":
-                    type1=KiOrbType(passiveskill[13])
-                    if(type1=="UNKNOWN"):
-                        print("UNKNOWN TYPE",end=" ")
-                        if(DEVEXCEPTIONS==True):
-                            raise Exception("Unknown type")
-                        
-                    type2=KiOrbType(passiveskill[14])
-                    if(type2=="UNKNOWN"):
-                        print("UNKNOWN TYPE",end=" ")
-                        if(DEVEXCEPTIONS==True):
-                            raise Exception("Unknown type")
+                    type1=KiOrbType(passiveskill[13],DEVEXCEPTIONS=DEVEXCEPTIONS)
+                    type2=KiOrbType(passiveskill[14],DEVEXCEPTIONS=DEVEXCEPTIONS)
                     print("change" ,type1, "ki sphere to", type2 ,"ki sphere",end=" ")
                 elif passiveskill[4]=="52":
                     print("survive K.O attacks",end=" ")
@@ -191,15 +180,8 @@ for unit in cardsToCheck:
                         print("ATK +",passiveskill[13], "and DEF +",passiveskill[14],"per ki sphere",end=" ")
                 elif passiveskill[4]=="64":
                     print("ATK +",passiveskill[14]," per", end=" ")
-                    if(passiveskill[13]=="2"):
-                        print("INT",end=" ")
-                    elif(passiveskill[13]=="4"):
-                        print("PHY", end="")
-                    else:
-                        print("UNKNOWN TYPE",passiveskill[13],end=" ")
-                        if(DEVEXCEPTIONS==True):
-                            raise Exception("Unknown type")
-                    print(" type ki sphere",end=" ")
+                    typing=KiOrbType(passiveskill[13],DEVEXCEPTIONS=DEVEXCEPTIONS)
+                    print(typing,"ki sphere obtained",end=" ")
                 elif passiveskill[4]=="65":
                     print("ATK & DEF +70%; plus an additional ATK +15% and DEF +10% per TEQ Ki Sphere obtained(TEQ #17)",end=" ")
                 elif passiveskill[4]=="66":
@@ -237,7 +219,9 @@ for unit in cardsToCheck:
                     print("(",type1,"excluded) to",type2,"ki spheres", end=" ")
                     
                 elif passiveskill[4]=="68":
-                    if(passiveskill[13]=="32"):
+                    if(passiveskill[13]=="4"):
+                        print("HP",BuffPrefix,passiveskill[15],BuffSuffix,"per",KiOrbType(passiveskill[14]) ,"ki sphere obtained",end=" ")
+                    elif(passiveskill[13]=="32"):
                         #buffs per rainbow ki sphere
                         if(passiveskill[14]=="1"):
                             print("ATK",BuffPrefix,passiveskill[15],BuffSuffix," per rainbow ki sphere obtained",end=" ")
@@ -254,6 +238,13 @@ for unit in cardsToCheck:
                             print("DEF",BuffPrefix,passiveskill[15],BuffSuffix," per ki sphere obtained",end=" ")
                         elif(passiveskill[14]=="4"):
                             print("Chance of performing a critical hit",BuffPrefix,passiveskill[15],BuffSuffix," per ki sphere obtained",end=" ")
+                        else:
+                            print("UNKNOWN BUFF")
+                            if(DEVEXCEPTIONS==True):
+                                raise Exception("Unknown buff")
+                    elif(passiveskill[13]=="448"):
+                        if(passiveskill[14]=="2"):
+                            print("Recovers",BuffPrefix,passiveskill[15],BuffSuffix,"HP per sweet treat obtained",end=" ")
                         else:
                             print("UNKNOWN BUFF")
                             if(DEVEXCEPTIONS==True):
@@ -283,9 +274,9 @@ for unit in cardsToCheck:
                 elif passiveskill[4]=="81":
                     print("Launches an additional attack with a",passiveskill[15],"% chance of becoming a super attack",end=" ")
                 elif passiveskill[4]=="82":
-                    print("Held by 50% supports",end=" ")
+                    print(extractClassType(classTypeNumber=passiveskill[13],DEVEXCEPTIONS=DEVEXCEPTIONS),"Type & DEF",BuffPrefix,passiveskill[14],BuffSuffix,end=" ")
                 elif passiveskill[4]=="83":
-                    print("Held by 50% supports",end=" ")
+                    print(extractClassType(classTypeNumber=passiveskill[13],DEVEXCEPTIONS=DEVEXCEPTIONS),"Type Ki",BuffPrefix,passiveskill[14],BuffSuffix,end=" ")
                 elif passiveskill[4]=="90":
                     print(passiveskill[13],"% chance to crit",end=" ")
                 elif passiveskill[4]=="91":
@@ -331,7 +322,10 @@ for unit in cardsToCheck:
                 elif passiveskill[4]=="101":
                     print("Forsees enemy super attack",end=" ")
                 elif passiveskill[4]=="103":
-                    print("Transforms",end=" ")
+                    name=searchbyid(code=passiveskill[13],codecolumn=0,database=cards,column=1,printing=False)[0]
+                    print("Transforms into",name,end=" ")
+                    if(passiveskill[14]!="0"):
+                        print("Starting from the",ordinalise(int(passiveskill[14])+1),"turn from the start of battle",end=" ")
                 elif passiveskill[4]=="109":
                     print("revive",end=" ")
                 elif passiveskill[4]=="110":
