@@ -4,7 +4,7 @@ from dokkanfunctions import *
 from numpy import source
 
 
-stringToFind = "524288"
+stringToFind = '1025730'
 
 includeAsElementOf=True
 

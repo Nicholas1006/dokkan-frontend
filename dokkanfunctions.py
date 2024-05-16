@@ -1,11 +1,601 @@
 import csv
+from xml import dom
 from colorama import Fore, Style
-from numpy import extract
+from numpy import extract, short
 import requests
 import os
 from PIL import Image
 import time
 import math
+
+def shortenPassiveDictionary(oldPassiveDictionary):
+    passiveDictionary=oldPassiveDictionary.copy()
+    if "Revive" in passiveDictionary:
+        if passiveDictionary["Revive"]["Activated"]==False:
+            passiveDictionary.pop("Revive")
+    if "Trigger Other Line" in passiveDictionary:
+        if passiveDictionary["Trigger Other Line"]["Activated"]==False:
+            passiveDictionary.pop("Trigger Other Line")
+    if "Standby" in passiveDictionary:
+        if "Change form" in passiveDictionary["Standby"]:
+            if passiveDictionary["Standby"]["Change form"]["Activated"]==False:
+                passiveDictionary["Standby"].pop("Change form")
+        if "Damage enemy" in passiveDictionary["Standby"]:
+            if passiveDictionary["Standby"]["Damage enemy"]["Activated"]==False:
+                passiveDictionary["Standby"].pop("Damage enemy")
+        if passiveDictionary["Standby"]["Activated"]==False:
+            passiveDictionary.pop("Standby")
+    if "Forsee Super Attack" in passiveDictionary:
+        if passiveDictionary["Forsee Super Attack"]==False:
+            passiveDictionary.pop("Forsee Super Attack")
+    if "Guaranteed hit" in passiveDictionary:
+        if passiveDictionary["Guaranteed hit"]==False:
+            passiveDictionary.pop("Guaranteed hit")
+    if "Dodge chance" in passiveDictionary:
+        if passiveDictionary["Dodge chance"]==0:
+            passiveDictionary.pop("Dodge chance")
+    if "Effective against all" in passiveDictionary:
+        if passiveDictionary["Effective against all"]==False:
+            passiveDictionary.pop("Effective against all")
+    if "Transformation" in passiveDictionary:
+        if passiveDictionary["Transformation"]["Activated"]==False:
+            passiveDictionary.pop("Transformation")
+    if "Slot" in passiveDictionary:
+        if passiveDictionary["Slot"]==None:
+            passiveDictionary.pop("Slot")
+    if "Additional attack" in passiveDictionary:
+        if passiveDictionary["Additional attack"]["Activated"]==False:
+            passiveDictionary.pop("Additional attack")
+    if "Timing" in passiveDictionary:
+        if passiveDictionary["Timing"]==None:
+            passiveDictionary.pop("Timing")
+    if "Building Stat" in passiveDictionary:
+        if passiveDictionary["Building Stat"]["Cause"]==None:
+            passiveDictionary.pop("Building Stat")
+    if "ATK" in passiveDictionary:
+        if passiveDictionary["ATK"]==0:
+            passiveDictionary.pop("ATK")
+    if "DEF" in passiveDictionary:
+        if passiveDictionary["DEF"]==0:
+            passiveDictionary.pop("DEF")
+    if "Heals" in passiveDictionary:
+        if passiveDictionary["Heals"]==0:
+            passiveDictionary.pop("Heals")
+    if "Ki" in passiveDictionary:
+        if passiveDictionary["Ki"]==0:
+            passiveDictionary.pop("Ki")
+    if "Status" in passiveDictionary:
+        if passiveDictionary["Status"]==[]:
+            passiveDictionary.pop("Status")
+    if "DR" in passiveDictionary:
+        if passiveDictionary["DR"]==0:
+            passiveDictionary.pop("DR")
+    if "Guard" in passiveDictionary:
+        if passiveDictionary["Guard"]==False:
+            passiveDictionary.pop("Guard")
+    if "Crit Chance" in passiveDictionary:
+        if passiveDictionary["Crit Chance"]==0:
+            passiveDictionary.pop("Crit Chance")
+    if "Ki change" in passiveDictionary:
+        if (passiveDictionary["Ki change"]["From"]==None and passiveDictionary["Ki change"]["To"]==None):
+            passiveDictionary.pop("Ki change")
+    if "Target" in passiveDictionary:
+        if "Category" in passiveDictionary["Target"]:
+            if passiveDictionary["Target"]["Category"]==None:
+                passiveDictionary["Target"].pop("Category")
+        if "Class" in passiveDictionary["Target"]:
+            if passiveDictionary["Target"]["Class"]==[]:
+                passiveDictionary["Target"].pop("Class")
+        if "Type" in passiveDictionary["Target"]:
+            if passiveDictionary["Target"]["Type"]==[]:
+                passiveDictionary["Target"].pop("Type")
+        if "Target" in passiveDictionary["Target"]:
+            if passiveDictionary["Target"]["Target"]=="Self":
+                passiveDictionary["Target"].pop("Target")
+        if passiveDictionary["Target"]=={}:
+            passiveDictionary.pop("Target")
+    if "Chance" in passiveDictionary:
+        if passiveDictionary["Chance"]=="100":
+            passiveDictionary.pop("Chance")
+    if "Length" in passiveDictionary:
+        if passiveDictionary["Length"]==None:
+            passiveDictionary.pop("Length")
+    if "First turn to activate" in passiveDictionary:
+        if passiveDictionary["First turn to activate"]==0:
+            passiveDictionary.pop("First turn to activate")
+    if "Condition" in passiveDictionary:
+        if passiveDictionary["Condition"]==None:
+            passiveDictionary.pop("Condition")
+    if "Once only" in passiveDictionary:
+        if passiveDictionary["Once only"]==False:
+            passiveDictionary.pop("Once only")
+    if "Counter" in passiveDictionary:
+        if "Activated" in passiveDictionary["Counter"]:
+            if "DR from normals" in passiveDictionary["Counter"]:
+                if passiveDictionary["Counter"]["DR from normals"]==None:
+                    passiveDictionary["Counter"].pop("DR from normals")
+            if passiveDictionary["Counter"]["Activated"]==False:
+                passiveDictionary.pop("Counter")
+    if "Nullification" in passiveDictionary:
+        if passiveDictionary["Nullification"]["Activated"]==False:
+            passiveDictionary.pop("Nullification")
+    if "Domain expansion" in passiveDictionary:
+        if passiveDictionary["Domain expansion"]["Activated"]==False:
+            passiveDictionary.pop("Domain expansion")
+        
+
+    return(passiveDictionary)
+
+def extractPassiveLine(passive_skills, passive_skill_set_relations,dokkan_fields,dokkan_field_passive_skill_relations,battle_params,unit,skill_causalities,card_unique_info_set_relations,cards,passiveskill,sub_target_types,card_categories,printing=False,DEVEXCEPTIONS=False):
+    effects={
+        "ID": passiveskill[0],
+        "Domain expansion": {
+            "Activated": False,
+            "ID": None,
+            "Name": None
+        },
+        "Revive":{
+            "Activated": False,
+            "HP recovered": None
+        },
+        "Nullification": {
+            "Activated": False,
+            "Absorbed": 0
+        },
+        "Trigger Other Line":{
+            "Activated": False,
+            "Line": None
+        },
+        "Counter": {
+            "Activated": False,
+            "Multiplier": None,
+            "DR from normals": None
+        },
+        "Standby": {
+            "Activated": False,
+            "Change form": {
+                "Activated": False,
+                "Unit": None
+            },
+            "Damage enemy": {
+                "Activated": False,
+                "Multiplier": None
+            }
+        },
+        "Forsee Super Attack": False,
+        "Guaranteed hit": False,
+        "Dodge chance": 0,
+        "Effective against all": False,
+        "Transformation": {
+            "Activated": False,
+            "Unit": None,
+            "Giant/Rage": False,
+            "Min Turns": None,
+            "Max Turns": None,
+            "Reverse chance": None
+        },
+        "Slot": None,
+        "Additional attack":{
+            "Activated": False,
+            "Chance of super": None
+        },
+        "Timing": None,
+        "Building Stat":{
+            "Min": 0,
+            "Max": 0,
+            "Cause": None
+        },
+        "ATK": 0,
+        "DEF": 0,
+        "Heals": 0,
+        "Ki": 0,
+        "Status": [],
+        "DR": 0,
+        "Guard": False,
+        "Crit Chance": 0,
+        "Crit Chance": 0,
+        "Ki change": {
+            "From": None,
+            "To": None
+        },
+        "Target": {
+            "Category": None,
+            "Target": None,
+            "Class": [],
+            "Type": []
+        },
+        "Buff": {
+            "Type": None,
+            "+ or -": None
+        },
+        "Chance": None,
+        "Length": None,
+        #first turn counts as turn 0
+        "First turn to activate": 0,
+        "Condition": None,
+        "Once only": False
+    }
+    if(passiveskill[8]=="0"):
+        effects["Buff"]["Type"]="Raw stats"
+        effects["Buff"]["+ or -"]="+"
+
+    elif(passiveskill[8]=="1"):
+        effects["Buff"]["Type"]="Raw stats"
+        effects["Buff"]["+ or -"]="-"
+
+    elif(passiveskill[8]=="2"):
+        effects["Buff"]["Type"]="Percentage"
+        effects["Buff"]["+ or -"]="+"
+
+    elif(passiveskill[8]=="3"):
+        effects["Buff"]["Type"]="Percentage"
+        effects["Buff"]["+ or -"]="-"
+    else:
+        effects["Buff"]["Type"]="Unknown"
+        effects["Buff"]["+ or -"]="Unknown"
+        if(DEVEXCEPTIONS==True):
+                raise Exception("Unknown stat increase type")
+    
+
+    effects["Chance"]=passiveskill[11]
+
+    if(passiveskill[6]!="0"):
+        TargetRow=searchbycolumn(source_entry=passiveskill[6],destination_csv=sub_target_types,search_column=1)[0]
+        TargetCategory=CategoryExtractor(TargetRow[3],card_categories=card_categories)
+        effects["Target"]["Category"]=TargetCategory
+
+
+    if(passiveskill[5]=="1"):
+        effects["Target"]["Target"]="Self"
+    elif(passiveskill[5]=="2"):
+        effects["Target"]["Target"]="Allies"
+    elif(passiveskill[5]=="3"):
+        effects["Target"]["Target"]="Enemy"
+    elif(passiveskill[5]=="4"):
+        effects["Target"]["Target"]="Enemies"
+    elif(passiveskill[5]=="5"):
+        effects["Target"]["Target"]="Allies"
+        #For some reason int dfe future gohan has this on his ki support, even though this couldve been under 2
+    elif(passiveskill[5]=="12"):
+        effects["Target"]["Class"]="Super"
+        effects["Target"]["Target"]="Allies"
+    elif(passiveskill[5]=="13"):
+        effects["Target"]["Class"]="Extreme"
+        effects["Target"]["Target"]="Allies"
+    elif(passiveskill[5]=="14"):
+        effects["Target"]["Class"]="Super"
+        effects["Target"]["Target"]="Enemies"
+    elif(passiveskill[5]=="15"):
+        effects["Target"]["Class"]="Extreme"
+        effects["Target"]["Target"]="Enemies"
+    elif(passiveskill[5]=="16"):
+        effects["Target"]["Target"]="Allies(self excluded)"
+    else:
+        effects["Target"]["Target"]=("UNKNOWN TARGET")
+        if(DEVEXCEPTIONS==True):
+            raise Exception("UNKNOWN TARGET")
+
+    
+    if(passiveskill[4]=="0"):
+        effects["Domain expansion"]["Activated"]=True
+        domainID=searchbyid(code=passiveskill[0],codecolumn=2,database=dokkan_field_passive_skill_relations,column=1)[0]
+        effects["Domain expansion"]["ID"]=domainID
+        domainName=searchbyid(code=domainID,codecolumn=1,database=dokkan_fields,column=2)[0]
+        effects["Domain expansion"]["Name"]=domainName
+
+    elif passiveskill[4]=="1":
+        effects["ATK"]+=int(passiveskill[13])
+    elif passiveskill[4]=="2":
+        effects["DEF"]+=int(passiveskill[13])
+    elif passiveskill[4]=="3":
+        effects["ATK"]+=int(passiveskill[13])
+        effects["DEF"]+=int(passiveskill[14])
+    elif passiveskill[4]=="4":
+        effects["Heals"]+=int(passiveskill[13])
+    elif passiveskill[4]=="5":
+        effects["Ki"]+=int(passiveskill[13])
+    elif passiveskill[4]=="9":
+        effects["Status"].append("Stun")
+    elif passiveskill[4]=="13":
+        effects["DR"]+=100-int(passiveskill[13])
+    elif passiveskill[4]=="16":
+        typing=extractAllyTyping(passiveskill[13],DEVEXCEPTIONS=DEVEXCEPTIONS)
+        effects["ATK"]+=int(passiveskill[14])
+        effects["Target"]["Type"]=typing
+    elif passiveskill[4]=="17":
+        typing=extractAllyTyping(passiveskill[13],DEVEXCEPTIONS=DEVEXCEPTIONS)
+        effects["DEF"]+=int(passiveskill[14])
+        effects["Target"]["Type"]=typing
+    elif passiveskill[4]=="18":
+        typing=extractAllyTyping(passiveskill[13],DEVEXCEPTIONS=DEVEXCEPTIONS)
+        effects["ATK"]+=int(passiveskill[14])
+        effects["DEF"]+=int(passiveskill[14])
+        effects["Target"]["Type"]=typing
+    elif passiveskill[4]=="20":
+        typing=extractAllyTyping(passiveskill[13],DEVEXCEPTIONS=DEVEXCEPTIONS)
+        effects["Ki"]+=int(passiveskill[14])
+        effects["Target"]["Type"]=typing
+    elif passiveskill[4]=="24":
+        effects["Status"].append("Disable guard")
+    elif passiveskill[4]=="28":
+        effects["Heals"]+=int(passiveskill[13])
+    elif passiveskill[4]=="38":
+        if(DEVEXCEPTIONS==True):
+            raise Exception("Unknown effect")
+    elif passiveskill[4]=="47":
+        if(DEVEXCEPTIONS==True):
+            raise Exception("Unknown effect")
+    elif passiveskill[4]=="48":
+        effects["Status"].append("Seal")
+    elif passiveskill[4]=="50":
+        effects["Status"].append("Immune to negative effects")
+    elif passiveskill[4]=="51":
+        type1=KiOrbType(passiveskill[13],DEVEXCEPTIONS=DEVEXCEPTIONS)
+        type2=KiOrbType(passiveskill[14],DEVEXCEPTIONS=DEVEXCEPTIONS)
+        effects["Ki change"]["From"]=type1
+        effects["Ki change"]["To"]=type2
+    elif passiveskill[4]=="52":
+        effects["Status"].append("Survive K.O attacks")
+    elif passiveskill[4]=="53":
+        effects["Status"].append("DEF reduced to 0")
+    elif passiveskill[4]=="59":
+        effects["Building Stat"]["Cause"]={"Cause":"Ki sphere obtained", "Type":"any"}
+        effects["ATK"]+=int(passiveskill[13])
+    elif passiveskill[4]=="60":
+        effects["Building Stat"]["Cause"]={"Cause":"Ki sphere obtained", "Type":"any"}
+        effects["DEF"]+=int(passiveskill[13])
+    elif passiveskill[4]=="61":
+        effects["Building Stat"]["Cause"]={"Cause":"Ki sphere obtained", "Type":"any"}
+        effects["ATK"]+=int(passiveskill[13])
+        effects["DEF"]+=int(passiveskill[13])
+    elif passiveskill[4]=="64":
+        typing=KiOrbType(passiveskill[13],DEVEXCEPTIONS=DEVEXCEPTIONS)
+        effects["Building Stat"]["Cause"]={"Cause":"Ki sphere obtained", "Type":typing}
+        effects["ATK"]+=int(passiveskill[14])
+    elif passiveskill[4]=="65":
+        typing=KiOrbType(passiveskill[13],DEVEXCEPTIONS=DEVEXCEPTIONS)
+        effects["Building Stat"]["Cause"]={"Cause":"Ki sphere obtained", "Type":typing}
+        effects["DEF"]+=int(passiveskill[14])
+    elif passiveskill[4]=="66":
+        typing=KiOrbType(passiveskill[13],DEVEXCEPTIONS=DEVEXCEPTIONS)
+        effects["Building Stat"]["Cause"]={"Cause":"Ki sphere obtained", "Type":typing}
+        effects["ATK"]+=int(passiveskill[14])
+        effects["DEF"]+=int(passiveskill[14])
+    elif passiveskill[4]=="67":
+        type1=binaryOrbType(passiveskill[13])
+        type2=binaryOrbType(passiveskill[14])
+        effects["Ki change"]["From"]=type1
+        effects["Ki change"]["To"]=type2
+        
+    elif passiveskill[4]=="68":
+        if(passiveskill[13]=="4"):
+            effects["Heals"]+=int(passiveskill[15])
+            effects["Building Stat"]["Cause"]={"Cause":"Ki sphere obtained", "Type":KiOrbType(passiveskill[14])}
+        else:
+            #buffs per ki sphere
+            effects["Building Stat"]["Cause"]={"Cause":"Ki sphere obtained", "Type":binaryOrbType(passiveskill[13])}
+            if(passiveskill[14]=="1"):
+                effects["ATK"]+=int(passiveskill[15])
+            elif(passiveskill[14]=="2"):
+                effects["Heals"]+=int(passiveskill[15])
+            elif(passiveskill[14]=="3"):
+                effects["DEF"]+=int(passiveskill[15])
+            elif(passiveskill[14]=="4"):
+                effects["Crit Chance"]+=int(passiveskill[15])
+            elif(passiveskill[14]=="5"):
+                effects["Dodge chance"]+=int(passiveskill[15])
+            elif(passiveskill[14]=="6"):
+                effects["DR"]+=int(passiveskill[15])
+            else:
+                if(DEVEXCEPTIONS==True):
+                    raise Exception("Unknown buff")
+    elif passiveskill[4]=="69":
+        effects["Ki change"]["From"]=["AGL","TEQ","INT","STR","PHY","Rainbow"]
+        effects["Ki change"]["To"]=KiOrbType(passiveskill[13])
+    elif passiveskill[4]=="71":
+        if(int(passiveskill[13])>int(passiveskill[14])):
+            #The less HP remaining the greater the stats boost
+            effects["ATK"]+=int(passiveskill[13])
+            effects["Building Stat"]["Cause"]={"Cause":"HP", "Type":"Less HP remaining"}
+            effects["Building Stat"]["Max"]+=int(passiveskill[13])
+            effects["Building Stat"]["Min"]+=int(passiveskill[14])
+        else:
+            #The more HP remaining the greater the stats boost
+            effects["ATK"]+=int(passiveskill[14])
+            effects["Building Stat"]["Cause"]={"Cause":"HP", "Type":"More HP remaining"}
+            effects["Building Stat"]["Max"]+=int(passiveskill[14])
+            effects["Building Stat"]["Min"]+=int(passiveskill[13])
+    elif passiveskill[4]=="72":
+        if(int(passiveskill[13])>int(passiveskill[14])):
+            #The less HP remaining the greater the stats boost
+            effects["DEF"]+=int(passiveskill[13])
+            effects["Building Stat"]["Cause"]={"Cause":"HP", "Type":"Less HP remaining"}
+            effects["Building Stat"]["Max"]+=int(passiveskill[13])
+            effects["Building Stat"]["Min"]+=int(passiveskill[14])
+        else:
+            #The more HP remaining the greater the stats boost
+            effects["DEF"]+=int(passiveskill[14])
+            effects["Building Stat"]["Cause"]={"Cause":"HP", "Type":"More HP remaining"}
+            effects["Building Stat"]["Max"]+=int(passiveskill[14])
+            effects["Building Stat"]["Min"]+=int(passiveskill[13])
+    elif passiveskill[4]=="73":
+        if(int(passiveskill[13])>int(passiveskill[14])):
+            #The less HP remaining the greater the stats boost
+            effects["ATK"]+=int(passiveskill[13])
+            effects["DEF"]+=int(passiveskill[13])
+            effects["Building Stat"]["Cause"]={"Cause":"HP", "Type":"Less HP remaining"}
+            effects["Building Stat"]["Max"]+=int(passiveskill[13])
+            effects["Building Stat"]["Min"]+=int(passiveskill[14])
+        else:
+            #The more HP remaining the greater the stats boost
+            effects["ATK"]+=int(passiveskill[14])
+            effects["DEF"]+=int(passiveskill[14])
+            effects["Building Stat"]["Cause"]={"Cause":"HP", "Type":"More HP remaining"}
+            effects["Building Stat"]["Max"]+=int(passiveskill[14])
+            effects["Building Stat"]["Min"]+=int(passiveskill[13])
+    elif passiveskill[4]=="76":
+        effects["Effective against all"]=True
+    elif passiveskill[4]=="78":
+        effects["Guard"]=True
+    elif passiveskill[4]=="79":
+        effects["Transformation"]["Activated"]=True
+        effects["Transformation"]["Unit"]=passiveskill[13]
+        effects["Transformation"]["Giant/Rage"]=True
+        params=searchbycolumn(source_entry=passiveskill[14],destination_csv=battle_params,search_column=1)
+        for param in params:
+            if(param[2]=="0"):
+                effects["Transformation"]["Min Turns"]=param[3]
+            elif(param[2]=="1"):
+                effects["Transformation"]["Max Turns"]=param[3]
+            elif(param[2]=="2"):
+                effects["Transformation"]["Reverse chance"]=param[3]
+        
+    elif passiveskill[4]=="80":
+        if(DEVEXCEPTIONS==True):
+            raise Exception("Counter without dodge")
+    elif passiveskill[4]=="81":
+        effects["Additional attack"]["Activated"]=True
+        effects["Additional attack"]["Chance of super"]=passiveskill[15]
+    elif passiveskill[4]=="82":
+        effects["ATK"]+=int(passiveskill[14])
+        effects["DEF"]+=int(passiveskill[14])
+        effects["Target"]["Type"]=extractClassType(passiveskill[13],DEVEXCEPTIONS=DEVEXCEPTIONS)[1]
+        effects["Target"]["Class"]=extractClassType(passiveskill[13],DEVEXCEPTIONS=DEVEXCEPTIONS)[0]
+    elif passiveskill[4]=="83":
+        effects["Ki"]+=int(passiveskill[14])
+        effects["Target"]["Type"]=extractClassType(passiveskill[13],DEVEXCEPTIONS=DEVEXCEPTIONS)[1]
+        effects["Target"]["Class"]=extractClassType(passiveskill[13],DEVEXCEPTIONS=DEVEXCEPTIONS)[0]
+    elif passiveskill[4]=="90":
+        effects["Crit Chance"]+=int(passiveskill[13])
+    elif passiveskill[4]=="91":
+        effects["Dodge chance"]+=int(passiveskill[13])
+    elif passiveskill[4]=="92":
+        effects["Guaranteed hit"]=True
+    elif passiveskill[4]=="95":
+        if(DEVEXCEPTIONS==True):
+            raise Exception("Dodge and counter")
+    elif passiveskill[4]=="96":
+        kiSphereType=binaryOrbType(passiveskill[13])
+        effects["Ki"]+=int(passiveskill[14])
+        effects["Building Stat"]["Cause"]={"Cause":"Ki sphere obtained", "Type":kiSphereType}
+
+        
+    elif passiveskill[4]=="97":
+        if(passiveskill[14]=="1"):
+            effects["Nullification"]["Activated"]=True
+            effects["Nullification"]["Absorbed"]=int(passiveskill[13])
+        else:
+            if(DEVEXCEPTIONS==True):
+                raise Exception("Unknown effect")
+    elif passiveskill[4]=="98":
+        if(passiveskill[15]=="0"):
+            effects["ATK"]+=int(passiveskill[13])
+        elif(passiveskill[15]=="1"):
+            effects["DEF"]+=int(passiveskill[13])
+        elif(passiveskill[15]=="2"):
+            effects["Crit Chance"]+=int(passiveskill[13])
+        elif(passiveskill[15]=="3"):
+            effects["Dodge chance"]+=int(passiveskill[13])
+        elif(passiveskill[15]=="4"):
+            #CONFUSED
+            effects["DR"]+=int(passiveskill[13])
+        elif(passiveskill[15]=="5"):
+            effects["Ki"]+=int(passiveskill[13])
+        else:
+            if(DEVEXCEPTIONS==True):
+                raise Exception("Unknown stat increase")
+        effects["Building Stat"]["Cause"]={"Cause":"Look Elsewhere"}
+        effects["Building Stat"]["Max"]+=int(passiveskill[14])
+    elif passiveskill[4]=="101":
+        effects["Forsee Super Attack"]=True
+    elif passiveskill[4]=="103":
+        effects["Transformation"]["Activated"]=True
+        effects["Transformation"]["Unit"]=passiveskill[13]
+
+        effects["First turn to activate"]+=(int(passiveskill[14]))
+    elif passiveskill[4]=="109":
+        effects["Revive"]["Activated"]=True
+        effects["Revive"]["HP recovered"]=int(passiveskill[13])
+    elif passiveskill[4]=="110":
+        effects["Trigger Other Line"]["Activated"]=True
+        effects["Trigger Other Line"]["Line"]=passiveskill[14]
+    elif passiveskill[4]=="111":
+        effects["Status"].append("Disable action")
+    elif(passiveskill[4]=="114"):
+        effects["Status"].append("Unable to attack")
+    elif(passiveskill[4]=="115"):
+        effects["Standby"]["Activated"]=True
+        print("Standby finish effect?")
+    elif(passiveskill[4]=="117"):
+        effects["Standby"]["Activated"]=True
+        effects["Standby"]["Change form"]["Activated"]=True
+        revertUnit=str(int(unit[22][:-2]))+"0"
+        effects["Standby"]["Change form"]["Unit"]=revertUnit
+    elif passiveskill[4]=="119":
+        effects["Nullification"]["Activated"]=True
+    elif(passiveskill[4]=="120"):
+        effects["Counter"]={"Activated":True, "Multiplier":passiveskill[14]}
+        if(passiveskill[13]!="0"):
+            effects["Counter"]["DR from normals"]=passiveskill[13]
+        
+    else:
+        if(DEVEXCEPTIONS==True):
+                raise Exception("Unknown effect")
+        
+
+    
+
+    
+    
+    
+    effects["Length"]=passiveskill[9]
+
+
+
+    if passiveskill[3]=="1":
+        effects["Timing"]="Start of turn"
+    elif passiveskill[3]=="3":
+        effects["Timing"]="Attacking"
+    elif passiveskill[3]=="4":
+        effects["Timing"]="On Super"
+    elif passiveskill[3]=="5":
+        effects["Timing"]="Attacking the enemy"
+    elif passiveskill[3]=="6":
+        effects["Timing"]="Being hit"
+    elif passiveskill[3]=="7":
+        effects["Timing"]="Hit recieved"
+    elif passiveskill[3]=="9":
+        effects["Timing"]="End of turn"
+    elif passiveskill[3]=="11":
+        effects["Timing"]="after all ki collected"
+    elif passiveskill[3]=="12":
+        effects["Timing"]="Activating standby"
+    elif passiveskill[3]=="14":
+        effects["Timing"]="When final blow delivered"
+    elif passiveskill[3]=="15":
+        effects["Timing"]="When ki spheres collected"
+    else:
+        print("UNKNOWN TRIGGER",end=" ")
+        if(DEVEXCEPTIONS==True):
+                raise Exception("Unknown trigger")
+
+    
+
+    if(causalityExtractor(passiveskill[12])!=[]):
+        causalityCondition=logicalCausalityExtractor(passiveskill[12])
+        causalityCondition=CausalityLogicalExtractor(unit,dokkan_fields,causalityCondition,card_categories,skill_causalities,cards,card_unique_info_set_relations,DEVEXCEPTIONS=DEVEXCEPTIONS)
+        effects["Condition"]=causalityCondition
+
+        
+                    
+
+    if(passiveskill[10]=="1"):
+        effects["Once only"]=True
+        
+    
+    
+    return(effects)
+
 
 def KiOrbType(kiOrbNumber, DEVEXCEPTIONS=False):
     if(kiOrbNumber=="0"):
@@ -27,23 +617,30 @@ def KiOrbType(kiOrbNumber, DEVEXCEPTIONS=False):
     return(output)
 
 def extractClassType(classTypeNumber, DEVEXCEPTIONS=False):
-    classTypeNumber=int(math.log(int(classTypeNumber),2))
-    if(classTypeNumber in [0,1,2,3,4]):
-        outputclass=""
-        outputType=extractAllyTyping(str(classTypeNumber),DEVEXCEPTIONS)
-    elif(classTypeNumber in [12,13,14,15,16]):
-        outputclass="Super"
-        outputType=extractAllyTyping(str(classTypeNumber-12),DEVEXCEPTIONS)
-    elif(classTypeNumber in [17,18,19,20,21]):
-        outputclass="Extreme"
-        outputType=extractAllyTyping(str(classTypeNumber-17),DEVEXCEPTIONS)
-    else:
-        outputclass="UNKNOWN"
-        outputType="UNKNOWN"
-        if(DEVEXCEPTIONS==True):
-            raise Exception("Unknown class type")
-    output=(str(outputclass)+" "+str(outputType))
-    return(output)
+    outputClass=[]
+    outputType=[]
+    classTypeNumber=int(classTypeNumber)
+    binaryclassTypeNumber=bin(int(classTypeNumber))[2:]
+    binaryclassTypeNumber=binaryclassTypeNumber.zfill(32)
+    if binaryclassTypeNumber[27]=="1" or binaryclassTypeNumber[15]=="1" or binaryclassTypeNumber[10]=="1":
+        outputType.append("PHY")
+    if binaryclassTypeNumber[28]=="1" or binaryclassTypeNumber[16]=="1" or binaryclassTypeNumber[11]=="1":
+        outputType.append("STR")
+    if binaryclassTypeNumber[29]=="1" or binaryclassTypeNumber[17]=="1" or binaryclassTypeNumber[12]=="1":
+        outputType.append("INT")
+    if binaryclassTypeNumber[30]=="1" or binaryclassTypeNumber[18]=="1" or binaryclassTypeNumber[13]=="1":
+        outputType.append("TEQ")
+    if binaryclassTypeNumber[31]=="1" or binaryclassTypeNumber[19]=="1" or binaryclassTypeNumber[14]=="1":
+        outputType.append("AGL")
+    
+    if "1" in binaryclassTypeNumber[15:20]:
+        outputClass.append("Super")
+    if "1" in binaryclassTypeNumber[10:15]:
+        outputClass.append("Extreme")
+
+    return(outputClass,outputType)
+
+
 
 def extractAllyTyping(typingID,DEVEXCEPTIONS=False):
     if(typingID=="0"):
@@ -116,7 +713,7 @@ def logicalCausalityExtractor(causality):
         result=result.replace("\\u0026","&")
         return(result)
     
-def CausalityLogicalExtractor(unit,causality,card_categories,skill_causalities,cards,card_unique_info_set_relations,printing=True,DEVEXCEPTIONS=False):
+def CausalityLogicalExtractor(unit,dokkan_fields,causality,card_categories,skill_causalities,cards,card_unique_info_set_relations,printing=True,DEVEXCEPTIONS=False):
     result=causality.replace("|"," or ").replace("&"," and ")
     currentCausality=""
     for x in result:
@@ -124,45 +721,51 @@ def CausalityLogicalExtractor(unit,causality,card_categories,skill_causalities,c
             currentCausality+=x
         else:
             if(currentCausality!=""):
-                newCausality=causalityLogicFinder(unit,currentCausality,card_categories,skill_causalities,cards,card_unique_info_set_relations,printing=True,DEVEXCEPTIONS=DEVEXCEPTIONS)
+                newCausality=causalityLogicFinder(unit,dokkan_fields,currentCausality,card_categories,skill_causalities,cards,card_unique_info_set_relations,printing=True,DEVEXCEPTIONS=DEVEXCEPTIONS)
                 result=result.replace(currentCausality,newCausality)
             currentCausality=""
 
     if(currentCausality!=""):
-        newCausality=causalityLogicFinder(unit,currentCausality,card_categories,skill_causalities,cards,card_unique_info_set_relations,printing=True,DEVEXCEPTIONS=DEVEXCEPTIONS)
+        newCausality=causalityLogicFinder(unit,dokkan_fields,currentCausality,card_categories,skill_causalities,cards,card_unique_info_set_relations,printing=True,DEVEXCEPTIONS=DEVEXCEPTIONS)
         result=result.replace(currentCausality,newCausality)
     return(result)
 
 def smallestCommonSubstring(string1,string2):
-    longestString=""
-    for letter1 in range(0,len(string1)):
-        for letter2 in range(0,len(string2)):
-            templetter1=letter1
-            templetter2=letter2
-            currentString=""
-            while (templetter1<len(string1) and templetter2<len(string2)):
-                if(string1[templetter1]==string2[templetter2]):
-                    currentString+=string1[templetter1]
-                    templetter1+=1
-                    templetter2+=1
-                else:
-                    templetter1=len(string1)+1
-                    templetter2=len(string2)+2
-            if len(currentString)>len(longestString):
-                longestString=currentString
-    return(longestString)
+    if(string1==string2):
+        return(string1)
+    else:
+        longestString=""
+        for letter1 in range(0,len(string1)):
+            if(len(string1)-letter1>len(longestString)):
+                for letter2 in range(0,len(string2)):
+                    if(len(string2)-letter2>len(longestString)):
+                        templetter1=letter1
+                        templetter2=letter2
+                        currentString=""
+                        while (templetter1<len(string1) and templetter2<len(string2)):
+                            if(string1[templetter1]==string2[templetter2]):
+                                currentString+=string1[templetter1]
+                                templetter1+=1
+                                templetter2+=1
+                            else:
+                                templetter1=len(string1)+1
+                                templetter2=len(string2)+2
+                        if len(currentString)>len(longestString):
+                            longestString=currentString
+        return(longestString)
 
 def CategoryExtractor(CategoryId,card_categories):
     for category in card_categories:
         if category[0]==CategoryId:
             return(category[1])
 
-def causalityLogicFinder(unit,causalityCondition,card_categories,skill_causalities,cards,card_unique_info_set_relations,printing=True,DEVEXCEPTIONS=False):
+def causalityLogicFinder(unit,dokkan_fields,causalityCondition,card_categories,skill_causalities,cards,card_unique_info_set_relations,printing=True,DEVEXCEPTIONS=False):
     output=""
     for row in skill_causalities:
         if row[0] == causalityCondition:
             CausalityRow=row
             if(CausalityRow[1]=="0"):
+                #WIP
                 output+=("")
             elif(CausalityRow[1]=="1"):
                 output+=("When HP is ")
@@ -173,8 +776,6 @@ def causalityLogicFinder(unit,causalityCondition,card_categories,skill_causaliti
                 output+=(CausalityRow[2])
                 output+=("% or less")
             elif(CausalityRow[1]=="3"):
-                #WIP
-                rarity=getrarity(unit)
                 output+=("When ki is ")
                 
                 Ca2=int(CausalityRow[2])
@@ -182,14 +783,41 @@ def causalityLogicFinder(unit,causalityCondition,card_categories,skill_causaliti
                 output+=str((Ca2*unit31)//99)
                 
                 output+=(" or more")
+            elif(CausalityRow[1]=="4"):
+                output+=("When ki is ")
+                
+                Ca2=int(CausalityRow[2])
+                unit31=int(unit[31])
+                output+=str((Ca2*unit31)//99)
+                
+                output+=(" or less")
+            elif(CausalityRow[1]=="5"):
+                output+=("Starting from the ")
+                output+=(ordinalise(int(CausalityRow[2])+1))
+                output+=(" turn from the start of battle")
             elif(CausalityRow[1]=="8"):
-                print("When ATK is higher than enemy's",end=" ")
+                output+=("When ATK is higher than enemy's")
             elif(CausalityRow[1]=="14"):
-                print("As the 1st attacker in the turn",end=" ")
+
+                output=output
+                #aged out condition
+                #WIP
             elif(CausalityRow[1]=="15"):
-                print("When facing 3 or more enemies",end=" ")
+                output+=("When facing ")
+                output+=(CausalityRow[2])
+                output+=(" or more enemies")
             elif(CausalityRow[1]=="16"):
-                print("When faccing only 1 enemy",end=" ")
+                output+=("When facing less than ")
+                output+=(CausalityRow[2])
+                output+=(" enemies")
+            elif(CausalityRow[1]=="17"):
+                output+=("When enemy's health is ")
+                output+=(CausalityRow[2])
+                output+=("% or more")
+            elif(CausalityRow[1]=="18"):
+                output+=("When enemy's health is ")
+                output+=(CausalityRow[2])
+                output+=("% or less")
             elif(CausalityRow[1]=="19"):
                 if(CausalityRow[2]=="0"):
                     output+=("As the 1st attacker in the turn")
@@ -240,15 +868,15 @@ def causalityLogicFinder(unit,causalityCondition,card_categories,skill_causaliti
                     output+=(" category ")
                     output+=(target)    
             elif(CausalityRow[1]=="38"):
-                print("WHen the target enemy is", end=" ")
-                if(CausalityRow[2]=="16"):
-                    print('in "ATK Down" status, in "DEF Down" status or stunned', end=" ")
-                else:
-                    print("UNKNOWN ENEMY STATUS")
-                    if(DEVEXCEPTIONS==True):
-                        raise Exception("Unknown enemy status")
+                Status=binaryStatus(CausalityRow[2])
+                output+=("When the target enemy is ")
+                output+=Status
+            elif(CausalityRow[1]=="39"):
+                output+=("When the target enemy is ")
+                output+=(CausalityRow[2])
+                output+=(" or more categories")
             elif(CausalityRow[1]=="40"):
-                output+=("With each super attack performed within the turn")
+                output+=("A super is being performed")
             elif(CausalityRow[1]=="41"):
                 if(CausalityRow[2]=="0"):
                     output+=("When there is an ally on the team whose name includes ")
@@ -279,85 +907,135 @@ def causalityLogicFinder(unit,causalityCondition,card_categories,skill_causaliti
                 output+=(CausalityRow[3])
                 output+=(" or more ")
                 kiSphereType=binaryOrbType((CausalityRow[2]))
-                output+=(kiSphereType)
+                for orbType in kiSphereType:
+                    output+=(orbType)
+                    output+=(" or ")
+                output=output[:-4]
                 output+=(" Ki Spheres obtained")
             elif(CausalityRow[1]=="43"):
                 output+=("After evading an attack")
             elif(CausalityRow[1]=="44"):
+                #WIP
                 output+=("Starting from the turn in which the charactrer performs the ")
                 output+=(ordinalise(CausalityRow[3]))
                 output+=(" attack in battle")
+            elif(CausalityRow[1]=="45"):
+                categoryType=searchbyid(CausalityRow[3],codecolumn=0,database=card_categories,column=1)[0]
+
+                card_unique_info_id=searchbyid(code=CausalityRow[4],codecolumn=2,database=card_unique_info_set_relations,column=1)
+                possible_names=[]
+                for id in card_unique_info_id:
+                    if(searchbyid(code=id,codecolumn=3,database=cards,column=1)!=None):
+                        possible_names.append(searchbyid(code=id,codecolumn=3,database=cards,column=1))
+                likelyName=possible_names[0][0]
+                for name in possible_names[1:]:
+                    likelyName=smallestCommonSubstring(likelyName,name[0]) 
+
+                if(CausalityRow[2]=="0"):
+                    output+=("When there is a ")
+                    output+=(categoryType)
+                    output+=(" Category ally whose name includes ")
+                    output+=likelyName
+                    output+=(" on the team")
+                elif(CausalityRow[2]=="1"):
+                    output+=("When there is a ")
+                    output+=(categoryType)
+                    output+=(" Category enemy whose name includes ")
+                    output+=likelyName
+                elif(CausalityRow[2]=="2"):
+                    output+=("When there is a ")
+                    output+=(categoryType)
+                    output+=(" Category ally whose name includes ")
+                    output+=likelyName
+                    output+=(" attacking in the same turn")
+                else:
+                    output+=("UNKNOWN NAME TYPE")
+                    if(DEVEXCEPTIONS==True):
+                        raise Exception("Unknown name type")
+
             elif(CausalityRow[1]=="46"):
                 output+=("Where there is an extreme class enemy")
+            elif(CausalityRow[1]=="47"):
+                output+=("When this character or an ally attacking in the same turn is KO'd")
             elif(CausalityRow[1]=="48"):
                 output+=("When the enemy is hit by the characters ultra super attack")
             elif(CausalityRow[1]=="49"):
-                output+=("LR UUB, Nullifies Unarmed Super Attacks directed at the character")
+                if(CausalityRow[2]=="1"):
+                    output+=("When the character is attacked by a ki blast super attack")
+                elif(CausalityRow[2]=="2"):
+                    output+=("When the character is attacked by an unarmed super attack")
+                else:
+                    output+=("UNKNOWN SUPER ATTACK TYPE")
+                    if(DEVEXCEPTIONS==True):
+                        raise Exception("Unknown super attack type")
             elif(CausalityRow[1]=="51"):
-                output+=("Held by LR UUB, Reduces damage received by 10% per Type Ki Sphere obtained and guards all attacks with 3 or more Type Ki Spheres obtained for 1 turn from the character's entry turn")
+                #WIP
+                output+=("For ")
+                output+=(CausalityRow[2])
+                output+=(" turns from this characters entry turn")
+            elif(CausalityRow[1]=="53"):
+                output+=("After this characters finish effect is activated")
+            elif(CausalityRow[1]=="54"):
+                output+=("Starting from the turn in which the character's or an ally's Revival skill is activated")
             elif(CausalityRow[1]=="55"):
                 output+=("Starting from the ")
                 output+=ordinalise((str(int(CausalityRow[2])+1)))
                 output+=(" turn from this character's entry turn")
+            elif(CausalityRow[1]=="56"):
+                output+=("When normal attack recieved")
+            elif(CausalityRow[1]=="57"):
+                output+=("While the Domain ")
+                output+=searchbyid(code=CausalityRow[2],codecolumn=1,database=dokkan_fields,column=2)[0]
+                output+=(" is active")
+            elif(CausalityRow[1]=="58"):
+                output+=("No Domain is active")
+            elif(CausalityRow[1]=="61"):
+                output+=("At the end of the turn in which attack was recieved")
             else:
                 output+=("UNKNOWN CAUSALITY CONDITION")
                 if(DEVEXCEPTIONS==True):
                     raise Exception("Unknown causality condition")
     return(output)
 
-def binaryOrbType(kiOrbType):
+def binaryStatus(Statusid):
     output=""
+    binaryId=bin(int(Statusid))[2:]
+    binaryId=binaryId.zfill(11)
+    if(binaryId[6]=="1"):
+        output+='in "ATK down" status or '
+    if(binaryId[5]=="1"):
+        output+='in "DEF down" status or '
+    if(binaryId[2]=="1"):
+        output+="stunned or "
+    if(binaryId[0]=="1"):
+        output+="sealed or "
+    
+    output=output[:-4]
+    return(output)
+
+
+
+def binaryOrbType(kiOrbType):
+    output=[]
     AllTypes=True
     AllOrbs=True
     kiOrbType=int(kiOrbType)
-    binarykiOrbList=[0,0,0,0,0,0]
-    if(kiOrbType>=32):
-        output+="Rainbow or"
-        binarykiOrbList[5]=1
-        kiOrbType-=32
-    else:
-        AllOrbs=False
-    if(kiOrbType>=16):
-        output+="PHY or"
-        binarykiOrbList[4]=1
-        kiOrbType-=16
-    else:
-        AllTypes=False
-        AllOrbs=False
-    if(kiOrbType>=8):
-        output+="STR or"
-        binarykiOrbList[3]=1
-        kiOrbType-=8
-    else:
-        AllTypes=False
-        AllOrbs=False
-    if(kiOrbType>=4):
-        output+="INT or"
-        binarykiOrbList[2]=1
-        kiOrbType-=4
-    else:
-        AllTypes=False
-        AllOrbs=False
-    if(kiOrbType>=2):
-        output+="TEQ or"
-        binarykiOrbList[1]=1
-        kiOrbType-=2
-    else:
-        AllTypes=False
-        AllOrbs=False
-    if(kiOrbType>=1):
-        output+="AGL or"
-        binarykiOrbList[0]=1
-        kiOrbType-=1
-    else:
-        AllTypes=False
-        AllOrbs=False
-    if(AllTypes):
-        output="type"
-    elif(AllOrbs):
-        output=""
-    else:
-        output=output[:-3]
+    binarykiOrb=bin(int(kiOrbType))[2:]
+    binarykiOrb=binarykiOrb.zfill(10)
+    if(binarykiOrb[0:4])=="0111":
+        output.append("Sweet treats")
+    if(binarykiOrb[4]=="1"):
+        output.append("Rainbow")
+    if(binarykiOrb[5]=="1"):
+        output.append("PHY")
+    if(binarykiOrb[6]=="1"):
+        output.append("STR")
+    if(binarykiOrb[7]=="1"):
+        output.append("INT")
+    if(binarykiOrb[8]=="1"):
+        output.append("TEQ")
+    if(binarykiOrb[9]=="1"):
+        output.append("AGL")
     return(output)
     
 
