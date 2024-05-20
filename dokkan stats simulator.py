@@ -1,3 +1,4 @@
+import glob
 from dokkanfunctions import *
 from numpy import source
 
@@ -25,7 +26,7 @@ unitid="1020311"
 eza=True
 DEVEXCEPTIONS=False
 GLOBALCHECK=False
-
+CUTJSON=False
 
 
 
@@ -55,10 +56,12 @@ passivecount=0
 #passiveIdList=getpassiveid(mainunit,cards,optimal_awakening_growths,passive_skill_set_relations,eza)
 #print(passive)
 longestPassive=["a"]
-MegaPassiveJson={}
+if(GLOBALCHECK):
+    MegaPassiveJson={}
 
 
 for unit in cardsToCheck:
+    unitCount+=1
     unitDictionary={}
     unitDictionary["ID"]=unit[0]
     unitDictionary["Typing"]=getUnitTyping(unit)
@@ -70,21 +73,32 @@ for unit in cardsToCheck:
     unitDictionary["Max ATK"]=swapToUnitWith1(unit,cards)[9]
     unitDictionary["Max DEF"]=swapToUnitWith1(unit,cards)[11]
     unitDictionary["Categories"]=getallcategories(unit[0],card_card_categories,card_categories,printing=True)
+    unitDictionary["Links"]=getalllinks(unit,link_skills)
     unitDictionary["Passive"]={}
-    unitCount+=1
     passiveIdList=getpassiveid(unit,cards,optimal_awakening_growths,passive_skill_set_relations,eza)
     if (passiveIdList!=None and qualifyUsable(unit)):
         for passiveskill in passive_skills[1:]:
             if (passiveskill[0] in passiveIdList):
                 output=(extractPassiveLine(passive_skills, passive_skill_set_relations,dokkan_fields,dokkan_field_passive_skill_relations,battle_params,unit,skill_causalities,card_unique_info_set_relations,cards,passiveskill,sub_target_types,card_categories,printing=False,DEVEXCEPTIONS=DEVEXCEPTIONS))
                 #output=shortenPassiveDictionary(output)
-                #output=shortenPassiveDictionary(output)
+                if(CUTJSON):
+                    output=shortenPassiveDictionary(output)
                 passivecount+=1
                 unitDictionary["Passive"][passiveskill[0]]=output
                 jsonName=unit[0]
-    turnintoJson(unitDictionary, jsonName,directoryName="jsonsCompressed")
-    turnintoJson(unitDictionary, jsonName,directoryName="jsons")
+                if(GLOBALCHECK):
+                    MegaPassiveJson[unit[0]]=unitDictionary
+
+    unitDictionary["Active Skill"]={}
+    unitDictionary["Super Attack"]={}
+    unitDictionary["Leader Skill"]={}
+
+    if(CUTJSON):
+        turnintoJson(unitDictionary, jsonName,directoryName="jsonsCompressed")
+    else:
+        turnintoJson(unitDictionary, jsonName,directoryName="jsons")
     print("Unit count:",unitCount, "Passive count:",passivecount)
     
 print("All done")
-#turnintoJson(MegaPassiveJson, "MegaPassiveJson",directoryName="jsonsCompressed")
+if(GLOBALCHECK):
+    turnintoJson(MegaPassiveJson, "MegaPassiveJson",directoryName="jsonsCompressed")

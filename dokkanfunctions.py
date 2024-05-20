@@ -2120,25 +2120,23 @@ def getfullname(unit,leader_skills,printing=True):
     
 def getallcategories(unitid,card_card_categories,card_categories,printing=True):
     temp1=searchedbyid(unitid, 1, card_card_categories, 2)
-    temp2=[]
+    categoryList=[]
     if temp1!=None:
         for x in temp1:
-            temp2.append(searchedbyid(x,0,card_categories,1))
-    return(temp2)
+            categoryList.append(searchedbyid(x,0,card_categories,1)[0])
+    return(categoryList)
 
-def getalllinks(unit,link_skills,slinks,showabilities,printing=True):
-    temp1=""
+def getalllinks(unit,link_skills,printing=True):
+    linksList=[]
     for x in range(23,30):
-        temp1+=listtostr(searchedbyid(unit[x],0,link_skills,1))
-        if showabilities==True:
-            for link in slinks:
-                if link[0]==listtostr(searchedbyid(unit[x],0,link_skills,1)):
-                    temp1+=(": lvl1 = ")
-                    temp1+=(link[1][0])
-                    temp1+=(" : lvl10 = ")
-                    temp1+=(link[1][9])
-        temp1+="\n"
-    return(temp1)
+       code=unit[x]
+       code=float(code)
+       code=int(code)
+       code=str(code)
+       temp1=searchbyid(code,0,link_skills,1)
+       linksList.append(temp1[0])
+
+    return(linksList)
     
 def ordinalise(number,printing=True):
     if(type(number)==str):
