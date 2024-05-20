@@ -13,9 +13,9 @@ def shortenPassiveDictionary(oldPassiveDictionary):
     if "Revive" in passiveDictionary:
         if passiveDictionary["Revive"]["Activated"]==False:
             passiveDictionary.pop("Revive")
-    if "Trigger Other Line" in passiveDictionary:
-        if passiveDictionary["Trigger Other Line"]["Activated"]==False:
-            passiveDictionary.pop("Trigger Other Line")
+    if "Toggle Other Line" in passiveDictionary:
+        if passiveDictionary["Toggle Other Line"]["Activated"]==False:
+            passiveDictionary.pop("Toggle Other Line")
     if "Standby" in passiveDictionary:
         if "Change form" in passiveDictionary["Standby"]:
             if passiveDictionary["Standby"]["Change form"]["Activated"]==False:
@@ -142,7 +142,7 @@ def extractPassiveLine(passive_skills, passive_skill_set_relations,dokkan_fields
             "Activated": False,
             "Absorbed": 0
         },
-        "Trigger Other Line":{
+        "Toggle Other Line":{
             "Activated": False,
             "Line": None
         },
@@ -517,8 +517,8 @@ def extractPassiveLine(passive_skills, passive_skill_set_relations,dokkan_fields
         effects["Revive"]["Activated"]=True
         effects["Revive"]["HP recovered"]=int(passiveskill[13])
     elif passiveskill[4]=="110":
-        effects["Trigger Other Line"]["Activated"]=True
-        effects["Trigger Other Line"]["Line"]=passiveskill[14]
+        effects["Toggle Other Line"]["Activated"]=True
+        effects["Toggle Other Line"]["Line"]=passiveskill[14]
     elif passiveskill[4]=="111":
         effects["Status"].append("Disable action")
     elif(passiveskill[4]=="114"):
@@ -915,10 +915,22 @@ def causalityLogicFinder(unit,dokkan_fields,causalityCondition,card_categories,s
             elif(CausalityRow[1]=="43"):
                 output+=("After evading an attack")
             elif(CausalityRow[1]=="44"):
-                #WIP
-                output+=("Starting from the turn in which the charactrer performs the ")
-                output+=(ordinalise(CausalityRow[3]))
-                output+=(" attack in battle")
+                if(CausalityRow[2]=="0"):
+                    output+=("Starting from the turn in which the character performs their ")
+                    output+=(ordinalise(CausalityRow[3]))
+                    output+=(" super attack in battle")
+                elif(CausalityRow[2])=="2":
+                    output+=("Starting from the turn in which the character performs their ")
+                    output+=(ordinalise(CausalityRow[3]))
+                    output+=(" attack in battle")
+                elif(CausalityRow[2]=="3"):
+                    output+=("Starting from the turn in which the character recieves their ")
+                    output+=(ordinalise(CausalityRow[3]))
+                    output+=(" attack in battle")
+                else:
+                    output+=("UNKNOWN NAME TYPE")
+                    if(DEVEXCEPTIONS==True):
+                        raise Exception("Unknown name type")
             elif(CausalityRow[1]=="45"):
                 categoryType=searchbyid(CausalityRow[3],codecolumn=0,database=card_categories,column=1)[0]
 

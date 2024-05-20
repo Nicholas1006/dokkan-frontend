@@ -21,10 +21,10 @@ battle_params=storedatabase(directory,"battle_params.csv")
 dokkan_fields=storedatabase(directory,"dokkan_fields.csv")
 dokkan_field_passive_skill_relations=storedatabase(directory,"dokkan_field_passive_skill_relations.csv")
 
-unitid="4026911"
-eza=False
-DEVEXCEPTIONS=True
-GLOBALCHECK=False
+unitid="1020091"
+eza=True
+DEVEXCEPTIONS=False
+GLOBALCHECK=True
 
 
 
@@ -54,6 +54,8 @@ passivecount=0
 #passive=(passivename(mainunit,passive_skills))
 #passiveIdList=getpassiveid(mainunit,cards,optimal_awakening_growths,passive_skill_set_relations,eza)
 #print(passive)
+longestPassive=["a"]
+
 for unit in cardsToCheck:
     unitPassive=[]
     
@@ -69,4 +71,8 @@ for unit in cardsToCheck:
                     output=shortenPassiveDictionary(output)
                     passivecount+=1
                     unitPassive.append(output)
+    if(len(unitPassive)>len(longestPassive)):
+        longestPassive=unitPassive
+        ComplexUnit=unit
     print("Unit count:",unitCount, "Passive count:",passivecount)
+print("All done")

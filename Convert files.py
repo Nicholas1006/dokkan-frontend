@@ -14,7 +14,7 @@ directory="data/"
 cards=storedatabase(directory,"cards.csv")
 
 print("scraping units")
-scrapeallunitassetsv2(cards,thumb=True,full=True,printing=False)
+scrapeallunitassetsv2(cards,thumb=True,circle=True,full=True,printing=True)
 print("units scraped")        
 
 misc_assets_urls=storedatabase(directory,"misc_assets_urls.csv")
