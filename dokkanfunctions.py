@@ -7,6 +7,16 @@ import os
 from PIL import Image
 import time
 import math
+import json
+
+def turnintoJson(data,filename, directoryName="" ):
+    if filename.endswith(".json")==False:
+        filename+=".json"
+    if(directoryName!=""):
+        if(directoryName[-1]!="/"):
+            directoryName+="/"
+    with open(directoryName+filename, 'w') as f:
+        json.dump(data, f, indent=4)
 
 def shortenPassiveDictionary(oldPassiveDictionary):
     passiveDictionary=oldPassiveDictionary.copy()

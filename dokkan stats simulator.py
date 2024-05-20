@@ -21,10 +21,10 @@ battle_params=storedatabase(directory,"battle_params.csv")
 dokkan_fields=storedatabase(directory,"dokkan_fields.csv")
 dokkan_field_passive_skill_relations=storedatabase(directory,"dokkan_field_passive_skill_relations.csv")
 
-unitid="1020091"
+unitid="1020311"
 eza=True
 DEVEXCEPTIONS=False
-GLOBALCHECK=True
+GLOBALCHECK=False
 
 
 
@@ -55,10 +55,12 @@ passivecount=0
 #passiveIdList=getpassiveid(mainunit,cards,optimal_awakening_growths,passive_skill_set_relations,eza)
 #print(passive)
 longestPassive=["a"]
+MegaPassiveJson={}
+
 
 for unit in cardsToCheck:
     unitPassive=[]
-    
+    unitPassiveDictionary={}
     unitCount+=1
     passiveIdList=getpassiveid(unit,cards,optimal_awakening_growths,passive_skill_set_relations,eza)
     if (passiveIdList!=None and qualifyUsable(unit)):
@@ -66,13 +68,19 @@ for unit in cardsToCheck:
             if (passiveskill[0] in passiveIdList):
                 
                 if(True):
+                    
                     output=(extractPassiveLine(passive_skills, passive_skill_set_relations,dokkan_fields,dokkan_field_passive_skill_relations,battle_params,unit,skill_causalities,card_unique_info_set_relations,cards,passiveskill,sub_target_types,card_categories,printing=False,DEVEXCEPTIONS=DEVEXCEPTIONS))
-                    output=shortenPassiveDictionary(output)
-                    output=shortenPassiveDictionary(output)
+                    #output=shortenPassiveDictionary(output)
+                    #output=shortenPassiveDictionary(output)
                     passivecount+=1
+                    unitPassiveDictionary[passiveskill[0]]=output
                     unitPassive.append(output)
+                    jsonName=unit[0]
+                    turnintoJson(unitPassiveDictionary, jsonName,directoryName="jsons")
+                    MegaPassiveJson[jsonName]=unitPassiveDictionary
     if(len(unitPassive)>len(longestPassive)):
         longestPassive=unitPassive
         ComplexUnit=unit
     print("Unit count:",unitCount, "Passive count:",passivecount)
 print("All done")
+turnintoJson(MegaPassiveJson, "MegaPassiveJson",directoryName="jsons")
