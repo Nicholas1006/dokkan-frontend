@@ -1035,8 +1035,6 @@ def binaryStatus(Statusid):
     output=output[:-4]
     return(output)
 
-
-
 def binaryOrbType(kiOrbType):
     output=[]
     AllTypes=True
@@ -1060,9 +1058,6 @@ def binaryOrbType(kiOrbType):
         output.append("AGL")
     return(output)
     
-
-
-
 def TransformationReverseUnit(card, cards, passive_skills, passive_skill_set_relations,printing=True):
     for passiveskillpiece in passive_skills:
         if passiveskillpiece[13]==card[0]:
@@ -1462,6 +1457,31 @@ def createLRWallpapers(cards,directory,printing=True):
             
     if(printing): print("All LR wallpapers created")
 
+def getUnitTyping(unit,printing=True,DEVEXCEPTIONS=False):
+    if unit[12][-1]=="0":
+        typing="AGL"
+    elif unit[12][-1]=="1":
+        typing="TEQ"
+    elif unit[12][-1]=="2":
+        typing="INT"
+    elif unit[12][-1]=="3":
+        typing="STR"
+    elif unit[12][-1]=="4":
+        typing="PHY"
+    else:
+        typing="UNKNOWN"
+        if(DEVEXCEPTIONS==True):
+            raise Exception("Unknown typing")
+
+def getUnitClass(unit,printing=True,DEVEXCEPTIONS=False):
+    if(len(unit[12])==1):
+        return(None)
+    elif unit[12][0]=="1":
+        return("Super")
+    elif unit[12][0]=="2":
+        return("Extreme")
+    
+
 def createFinalAsset(card,printing=True):
     if (card[53]!="2030-12-31 23:59:59") and (card[0][0]!="9") and (card[0][-1]=="0") and (card[22]!=""):
         unitid=card[0]
@@ -1643,6 +1663,9 @@ def screpeassetlineant(fileID, fileType,printing=True):
         else:
             if(fileType!="sticker_mask"):
                 if(printing): print(filesource," NOT FOUND ", )
+
+
+
 
 def scrapeFullUnit(fileID,thumb=True,full=True,bg=True,character=True,circle=True,cutin=True,effect=True,piece=True,sticker_mask=True,sp_cutin_1=True,printing=True):
     assetsNeeded=[]

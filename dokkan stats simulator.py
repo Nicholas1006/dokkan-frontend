@@ -59,28 +59,32 @@ MegaPassiveJson={}
 
 
 for unit in cardsToCheck:
-    unitPassive=[]
-    unitPassiveDictionary={}
+    unitDictionary={}
+    unitDictionary["ID"]=unit[0]
+    unitDictionary["Typing"]=getUnitTyping(unit)
+    unitDictionary["Class"]=getUnitClass(unit)
+    unitDictionary["Name"]=unit[1]
+    unitDictionary["Rarity"]=getrarity(unit)
+    unitDictionary["Max Level"]=unit[13]
+    unitDictionary["Max HP"]=swapToUnitWith1(unit,cards)[7]
+    unitDictionary["Max ATK"]=swapToUnitWith1(unit,cards)[9]
+    unitDictionary["Max DEF"]=swapToUnitWith1(unit,cards)[11]
+    unitDictionary["Categories"]=getallcategories(unit[0],card_card_categories,card_categories,printing=True)
+    unitDictionary["Passive"]={}
     unitCount+=1
     passiveIdList=getpassiveid(unit,cards,optimal_awakening_growths,passive_skill_set_relations,eza)
     if (passiveIdList!=None and qualifyUsable(unit)):
         for passiveskill in passive_skills[1:]:
             if (passiveskill[0] in passiveIdList):
-                
-                if(True):
-                    
-                    output=(extractPassiveLine(passive_skills, passive_skill_set_relations,dokkan_fields,dokkan_field_passive_skill_relations,battle_params,unit,skill_causalities,card_unique_info_set_relations,cards,passiveskill,sub_target_types,card_categories,printing=False,DEVEXCEPTIONS=DEVEXCEPTIONS))
-                    #output=shortenPassiveDictionary(output)
-                    #output=shortenPassiveDictionary(output)
-                    passivecount+=1
-                    unitPassiveDictionary[passiveskill[0]]=output
-                    unitPassive.append(output)
-                    jsonName=unit[0]
-                    turnintoJson(unitPassiveDictionary, jsonName,directoryName="jsons")
-                    MegaPassiveJson[jsonName]=unitPassiveDictionary
-    if(len(unitPassive)>len(longestPassive)):
-        longestPassive=unitPassive
-        ComplexUnit=unit
+                output=(extractPassiveLine(passive_skills, passive_skill_set_relations,dokkan_fields,dokkan_field_passive_skill_relations,battle_params,unit,skill_causalities,card_unique_info_set_relations,cards,passiveskill,sub_target_types,card_categories,printing=False,DEVEXCEPTIONS=DEVEXCEPTIONS))
+                #output=shortenPassiveDictionary(output)
+                #output=shortenPassiveDictionary(output)
+                passivecount+=1
+                unitDictionary["Passive"][passiveskill[0]]=output
+                jsonName=unit[0]
+    turnintoJson(unitDictionary, jsonName,directoryName="jsonsCompressed")
+    turnintoJson(unitDictionary, jsonName,directoryName="jsons")
     print("Unit count:",unitCount, "Passive count:",passivecount)
+    
 print("All done")
-turnintoJson(MegaPassiveJson, "MegaPassiveJson",directoryName="jsons")
+#turnintoJson(MegaPassiveJson, "MegaPassiveJson",directoryName="jsonsCompressed")
