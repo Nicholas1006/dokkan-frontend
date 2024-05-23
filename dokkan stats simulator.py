@@ -1,7 +1,7 @@
 import glob
 from dokkanfunctions import *
 from numpy import source
-
+time1=time.time()
 directory="data/"
 cards=storedatabase(directory,"cards.csv")
 leader_skills=storedatabase(directory,"leader_skills.csv")
@@ -21,12 +21,18 @@ card_unique_info_set_relations=storedatabase(directory,"card_unique_info_set_rel
 battle_params=storedatabase(directory,"battle_params.csv")
 dokkan_fields=storedatabase(directory,"dokkan_fields.csv")
 dokkan_field_passive_skill_relations=storedatabase(directory,"dokkan_field_passive_skill_relations.csv")
+potential_squares=storedatabase(directory,"potential_squares.csv")
+potential_events=storedatabase(directory,"potential_events.csv")
+potential_square_relations=storedatabase(directory,"potential_square_relations.csv")
 
-unitid="1020311"
+unitid="1011331"
 eza=True
-DEVEXCEPTIONS=False
-GLOBALCHECK=False
-CUTJSON=False
+DEVEXCEPTIONS=True
+GLOBALCHECK=True
+CUTJSON=True
+MAKEJSON=True
+CALCPASSIVE=True
+CALCLEADER=True
 
 
 
@@ -43,7 +49,7 @@ if GLOBALCHECK:
         if qualifyUsable(unit):
             cardsToCheck.append(unit)
 else:
-    cardsToCheck=[mainunit]
+    cardsToCheck.append(mainunit)
 
 
 missingPassiveCount=0
@@ -58,7 +64,7 @@ passivecount=0
 longestPassive=["a"]
 if(GLOBALCHECK):
     MegaPassiveJson={}
-
+HiPoBoards={}
 
 for unit in cardsToCheck:
     unitCount+=1
@@ -75,30 +81,58 @@ for unit in cardsToCheck:
     unitDictionary["Categories"]=getallcategories(unit[0],card_card_categories,card_categories,printing=True)
     unitDictionary["Links"]=getalllinks(unit,link_skills)
     unitDictionary["Passive"]={}
-    passiveIdList=getpassiveid(unit,cards,optimal_awakening_growths,passive_skill_set_relations,eza)
-    if (passiveIdList!=None and qualifyUsable(unit)):
-        for passiveskill in passive_skills[1:]:
-            if (passiveskill[0] in passiveIdList):
-                output=(extractPassiveLine(passive_skills, passive_skill_set_relations,dokkan_fields,dokkan_field_passive_skill_relations,battle_params,unit,skill_causalities,card_unique_info_set_relations,cards,passiveskill,sub_target_types,card_categories,printing=False,DEVEXCEPTIONS=DEVEXCEPTIONS))
-                #output=shortenPassiveDictionary(output)
-                if(CUTJSON):
-                    output=shortenPassiveDictionary(output)
-                passivecount+=1
-                unitDictionary["Passive"][passiveskill[0]]=output
-                jsonName=unit[0]
-                if(GLOBALCHECK):
-                    MegaPassiveJson[unit[0]]=unitDictionary
+    if(CALCPASSIVE):
+        passiveIdList=getpassiveid(unit,cards,optimal_awakening_growths,passive_skill_set_relations,eza)
+        if (passiveIdList!=None and qualifyUsable(unit)):
+            for passiveskill in passive_skills[1:]:
+                if (passiveskill[0] in passiveIdList):
+                    output=(extractPassiveLine(passive_skills, passive_skill_set_relations,dokkan_fields,dokkan_field_passive_skill_relations,battle_params,unit,skill_causalities,card_unique_info_set_relations,cards,passiveskill,sub_target_types,card_categories,printing=False,DEVEXCEPTIONS=DEVEXCEPTIONS))
+                    #output=shortenPassiveDictionary(output)
+                    if(CUTJSON):
+                        output=shortenPassiveDictionary(output)
+                    passivecount+=1
+                    unitDictionary["Passive"][passiveskill[0]]=output
+                    
+                    
+
+    
+
+    
+    if(CALCLEADER):
+        leader_skill_line=searchbycolumn(code=unit[22][:-2],database=leader_skills,column=1,printing=False)
+        unitDictionary["Leader Skill"]={}
+        for line in leader_skill_line:
+            ParsedLeaderSkill=parseLeaderSkill(unit,dokkan_fields,skill_causalities,cards,card_unique_info_set_relations,line,leader_skills,card_categories,sub_target_types,DEVEXCEPTIONS)
+            if (ParsedLeaderSkill!=None):
+                unitDictionary["Leader Skill"][line[0]] = ParsedLeaderSkill
+    #unit[22] is leader skill set id
+    
+
+
+    unitDictionary["Hidden Potential"]={}
+    unit1=swapToUnitWith1(unit,cards)
+    if(unit1[52][:-2]not in HiPoBoards):
+        HiPoBoards[unit1[52][:-2]]=ParseHiddenPotential(unit1[52][:-2],potential_squares,potential_square_relations,potential_events,DEVEXCEPTIONS)
+
+    #unitDictionary["Hidden Potential"]=ParseHiddenPotential(unit1[52][:-2],potential_squares,potential_square_relations,potential_events,DEVEXCEPTIONS)
+    unitDictionary["Hidden Potential"]=HiPoBoards[unit1[52][:-2]]
+    #unit[52] is the potential board id
 
     unitDictionary["Active Skill"]={}
     unitDictionary["Super Attack"]={}
-    unitDictionary["Leader Skill"]={}
+    unitDictionary["Standby Skill"]={}
 
-    if(CUTJSON):
-        turnintoJson(unitDictionary, jsonName,directoryName="jsonsCompressed")
-    else:
-        turnintoJson(unitDictionary, jsonName,directoryName="jsons")
+    jsonName=unit[0]
+    
+    if(MAKEJSON):
+        if(GLOBALCHECK):
+            MegaPassiveJson[unit[0]]=unitDictionary
+        if(CUTJSON):
+            turnintoJson(unitDictionary, jsonName,directoryName="jsonsCompressed")
+        else:
+            turnintoJson(unitDictionary, jsonName,directoryName="jsons")
     print("Unit count:",unitCount, "Passive count:",passivecount)
     
-print("All done")
-if(GLOBALCHECK):
+print("All done in ",time.time()-time1," seconds")
+if(GLOBALCHECK and MAKEJSON):
     turnintoJson(MegaPassiveJson, "MegaPassiveJson",directoryName="jsonsCompressed")

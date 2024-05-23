@@ -1,3 +1,4 @@
+from calendar import c
 import csv
 from xml import dom
 from colorama import Fore, Style
@@ -8,6 +9,260 @@ from PIL import Image
 import time
 import math
 import json
+
+def sub_target_types_extractor(sub_target_type_set_id,sub_target_types,card_categories,DEVELOPEREXCEPTIONS=False):
+    temp=searchbycolumn(code=sub_target_type_set_id,database=sub_target_types,column=1)
+    output={}
+    output["Category"]=[]
+    output["Excluded Category"]=[]
+    for line in temp:   
+        if(line[2]=="1"):
+            output["Category"].append(CategoryExtractor(line[3],card_categories))
+        elif(line[2]=="2"):
+            output["Excluded Category"].append(CategoryExtractor(line[3],card_categories))
+        elif(line[2]=="3"):
+            output["Amount of times to turn giant"]=1
+        else:
+            output["Category"].append("UNKNOWN")
+            if(DEVELOPEREXCEPTIONS==True):
+                raise Exception("Unknown sub target type")
+    return (output)
+
+class hiPoNode:
+    def __init__(self,code,parentNode):
+        self.code=code
+        self.parentNode=parentNode
+        self.childrenID=[]
+        self.BuffType=None
+        self.BuffAmount=0
+        if(parentNode==None):
+            self.Path=-1
+        else:
+            self.Path=parentNode.Path
+
+class hiPoBoard:
+    def __init__(self,headNode):
+        self.head=headNode
+        self.connections=[]
+        self.nodes=[]
+
+def createHiPoBoard(headID,potential_squares,potential_square_relations):
+    headNode=hiPoNode(headID,None)
+    headNode.Path=[]
+    headNode.Path.append(headID)
+    headNode.BuffType=None
+    headNode.BuffAmount=0
+    headNode.childrenID=searchbycolumn(code=headID,column=1,database=potential_squares)
+    headNode.childrenID=sortultralist(ultralist=headNode.childrenID,slot=0)
+    return(headNode)
+
+
+def ParseHiddenPotential(Potential_board_id,potential_squares,potential_square_relations,potential_events,DEVEXCEPTIONS=False):
+    #WIP
+
+    nodesSearched={}
+    
+    nodesSearching={}
+    allNodes=searchbycolumn(code=Potential_board_id,column=1,database=potential_squares)
+    pathNodes=[]
+    for node in allNodes:
+        if(node[4]=="1"):
+            pathNodes.append(node[0])
+        if("" in searchbyid(code=node[0],codecolumn=1,database=potential_square_relations,column=2)):
+            nodesSearched[node[0]]=0
+    furthestNodesFound=nodesSearched.copy()
+    newNodes=True
+    
+    while(newNodes==True):
+        newNodes=False
+        for node in furthestNodesFound:
+            connections=searchbyid(code=node,codecolumn=1,database=potential_square_relations,column=2)
+            for connection in connections:
+                if(connection!=""):
+                    if(connection[:-2] not in pathNodes):
+                        if(connection[:-2] not in nodesSearched and connection[:-2] not in nodesSearching):
+                            nodesSearching[connection[:-2]]=nodesSearched[node]
+                            newNodes=True
+                    else:
+                        if(connection[:-2] not in nodesSearched and connection[:-2] not in nodesSearching):
+                            path=searchbyid(code=connection[:-2],codecolumn=0,database=potential_squares,column=5)
+                            nodesSearching[connection[:-2]]=1+int(path[0][:-2])
+                            newNodes=True
+        nodesSearched.update(nodesSearching)
+        furthestNodesFound=nodesSearching.copy()
+        nodesSearching={}
+                
+
+
+
+
+
+
+
+    output={}
+    output[0]={"HP":0,"ATK":0,"DEF":0}
+    output[1]={"HP":0,"ATK":0,"DEF":0}
+    output[2]={"HP":0,"ATK":0,"DEF":0}
+    output[3]={"HP":0,"ATK":0,"DEF":0}
+    output[4]={"HP":0,"ATK":0,"DEF":0}
+    for node in nodesSearched:
+        eventid=searchbyid(code=node,codecolumn=0,database=potential_squares,column=2)[0]
+        event=searchbycolumn(code=eventid,database=potential_events,column=0)[0]
+        if(event[1]=="PotentialEvent::Hp"):
+            output[nodesSearched[node]]["HP"]+=int(event[3])
+        elif(event[1]=="PotentialEvent::Atk"):
+            output[nodesSearched[node]]["ATK"]+=int(event[3])
+        elif(event[1]=="PotentialEvent::Defense"):
+            output[nodesSearched[node]]["DEF"]+=int(event[3])
+
+
+   
+    return(output)
+
+        
+def parseLeaderSkill(unit,dokkan_fields,skill_causalities,cards,card_unique_info_set_relations,leader_skill_line,leader_skills,card_categories,sub_target_types,DEVEXCEPTIONS=False):
+    output={}
+
+    output["Buff"]={}
+    if(leader_skill_line[8]=="0"):
+        output["Buff"]["Type"]="Raw stats"
+        output["Buff"]["+ or -"]="+"
+
+    elif(leader_skill_line[8]=="1"):
+        output["Buff"]["Type"]="Raw stats"
+        output["Buff"]["+ or -"]="-"
+
+    elif(leader_skill_line[8]=="2"):
+        output["Buff"]["Type"]="Percentage"
+        output["Buff"]["+ or -"]="+"
+
+    elif(leader_skill_line[8]=="3"):
+        output["Buff"]["Type"]="Percentage"
+        output["Buff"]["+ or -"]="-"
+    else:
+        output["Buff"]["Type"]="Unknown"
+        output["Buff"]["+ or -"]="Unknown"
+        if(DEVEXCEPTIONS==True):
+                raise Exception("Unknown stat increase type")
+    
+    output["Target"]={}
+    efficiacy_values=leader_skill_line[7].replace("[","").replace("]","").split(",")
+    output["Target"]=(sub_target_types_extractor(leader_skill_line[4],sub_target_types,card_categories,DEVEXCEPTIONS))
+    if(leader_skill_line[3]=="4"):
+        output["Target"]["Allies or enemies"]="Enemies"
+    elif(leader_skill_line[3]=="2"):
+        output["Target"]["Allies or enemies"]="Allies"
+    if leader_skill_line[6]=="0":
+        return(None)
+    elif(leader_skill_line[6]=="1"):
+        output["ATK"]=int(efficiacy_values[0])
+    elif(leader_skill_line[6]=="2"):
+        #Enemy ["DEF", ??, ??] 
+        output["DEF"]=int(efficiacy_values[0])
+    elif(leader_skill_line[6]=="3"):
+        #Category ["HP and ATK", "DEF", ""] 
+        output["HP"]=int(efficiacy_values[0])
+        output["ATK"]=int(efficiacy_values[0])
+        output["DEF"]=int(efficiacy_values[1])
+    elif(leader_skill_line[6]=="5"):
+        #Category ["Ki", "", ""] 
+        output["Ki"]=int(efficiacy_values[0])
+    elif(leader_skill_line[6]=="13"):
+        #All types damage reduction
+        output["DR"]=100-int(efficiacy_values[0])
+    elif(leader_skill_line[6]=="16"):
+        #Single type [Typing, "ATK", ""] 
+        output["Target"]["Typing"]=typefinder(efficiacy_values[0],printing=True)
+        output["ATK"]=int(efficiacy_values[1])
+    elif(leader_skill_line[6]=="17"):
+        #Single type [Typing, "DEF", ""] 
+        output["Target"]["Typing"]=typefinder(efficiacy_values[0],printing=True)
+        output["DEF"]=int(efficiacy_values[1])
+    elif(leader_skill_line[6]=="18"):
+        #Single type [Typing, "ATK and DEF", ""] 
+        output["Target"]["Typing"]=typefinder(efficiacy_values[0],printing=True)
+        output["ATK"]=int(efficiacy_values[1])
+        output["DEF"]=int(efficiacy_values[2])
+    elif(leader_skill_line[6]=="19"):
+        #Single type [Type, "HP", ""] 
+        output["Target"]["Typing"]=typefinder(efficiacy_values[0],printing=True)
+        output["HP"]=int(efficiacy_values[1])
+    elif(leader_skill_line[6]=="20"):
+        #Single Type (Type, "Ki", "") 
+        output["Target"]["Typing"]=typefinder(efficiacy_values[0],printing=True)
+        output["Ki"]=int(efficiacy_values[1])
+    elif(leader_skill_line[6]=="44"):
+        #Single Type (Type, HP, ATK) 
+        output["Target"]["Typing"]=typefinder(efficiacy_values[0],printing=True)
+        output["HP"]=int(efficiacy_values[1])
+        output["ATK"]=int(efficiacy_values[2])
+    elif(leader_skill_line[6]=="50"):
+        #Immune to negative effects
+        output["Status"]=["Immune to negative effects"]
+    elif(leader_skill_line[6]=="58"):
+        #Heal per ki of own type
+        output["Building Stat"]= {"Cause":"Ki sphere obtained", "Type":"Own type"}
+        output["Heals"]=int(efficiacy_values[0])
+    elif(leader_skill_line[6]=="59"):
+        #ATK per ki sphere obtained
+        output["Building Stat"]= {"Cause":"Ki sphere obtained", "Type":"Any"}
+        output["ATK"]=int(efficiacy_values[0])
+    elif(leader_skill_line[6]=="61"):
+        #ATK and DEF per ki sphere obtained
+        output["Building Stat"]= {"Cause":"Ki sphere obtained", "Type":"Any"}
+        output["ATK"]=int(efficiacy_values[0])
+        output["DEF"]=int(efficiacy_values[1])
+    elif(leader_skill_line[6]=="64"):
+        #ATK per ki sphere obtained of a type
+        output["Building Stat"]= {"Cause":"Ki sphere obtained", "Type":KiOrbType(efficiacy_values[0],DEVEXCEPTIONS=DEVEXCEPTIONS)}
+        output["ATK"]=int(efficiacy_values[1])
+        output["Target"]["Typing"]=typefinder(efficiacy_values[0],printing=True)
+    elif(leader_skill_line[6]=="71"):
+        #HP based ["Min ATK", "MAX ATK", ???] 
+        output["Building Stat"]={"Cause":"HP", "Type":"More HP remaining"}
+        output["ATK"]=int(efficiacy_values[1])
+        output["Building Stat"]["Min"]=int(efficiacy_values[0])
+        output["Building Stat"]["Max"]=int(efficiacy_values[1])
+    elif(leader_skill_line[6]=="82"):
+        #Typing [Typing, "HP and ATK and DEF", ""] 
+        output["Target"]["Class"]=extractClassType(efficiacy_values[0],DEVEXCEPTIONS=DEVEXCEPTIONS)[0]
+        output["Target"]["Typing"]=extractClassType(efficiacy_values[0],DEVEXCEPTIONS=DEVEXCEPTIONS)[1]
+        output["HP"]=int(efficiacy_values[1])
+        output["ATK"]=int(efficiacy_values[1])
+        output["DEF"]=int(efficiacy_values[1])
+    elif(leader_skill_line[6]=="83"):
+        #Typing ki
+        output["Ki"]=int(efficiacy_values[1])
+    elif(leader_skill_line[6]=="84"):
+        #Typing HP ATK and DEF
+        output["HP"]=int(efficiacy_values[1])
+        output["ATK"]=int(efficiacy_values[1])
+        output["DEF"]=int(efficiacy_values[1])
+    elif(leader_skill_line[6]=="93"):
+        #All types or specific type HP
+        output["Target"]["Class"]=extractClassType(efficiacy_values[0],DEVEXCEPTIONS=DEVEXCEPTIONS)[0]
+        output["Target"]["Typing"]=extractClassType(efficiacy_values[0],DEVEXCEPTIONS=DEVEXCEPTIONS)[1]
+        output["HP"]=int(efficiacy_values[1])
+    elif(leader_skill_line[6]=="102"):
+        output["Times to turn giant"]=int(efficiacy_values[1])
+    elif(leader_skill_line[6]=="104"):
+        #Category ["HP", "ATK","DEF"] 
+        output["HP"]=int(efficiacy_values[0])
+        output["ATK"]=int(efficiacy_values[1])
+        output["DEF"]=int(efficiacy_values[2])
+    else:
+        output["Ki"]="UNKNOWN"
+        output["HP"]="UNKNOWN"
+        output["ATK"]="UNKNOWN"
+        output["DEF"]="UNKNOWN"
+        if(DEVEXCEPTIONS==True):
+            raise Exception("Unknown leader skill")
+        
+    if(leader_skill_line[5]!=""):
+        causalityCondition=logicalCausalityExtractor(leader_skill_line[5])
+        causalityCondition=CausalityLogicalExtractor(unit,dokkan_fields,causalityCondition,card_categories,skill_causalities,cards,card_unique_info_set_relations,DEVEXCEPTIONS=DEVEXCEPTIONS)
+        output["Condition"]=causalityCondition
+    return(output)
 
 def turnintoJson(data,filename, directoryName="" ):
     if filename.endswith(".json")==False:
@@ -250,7 +505,7 @@ def extractPassiveLine(passive_skills, passive_skill_set_relations,dokkan_fields
     effects["Chance"]=passiveskill[11]
 
     if(passiveskill[6]!="0"):
-        TargetRow=searchbycolumn(source_entry=passiveskill[6],destination_csv=sub_target_types,search_column=1)[0]
+        TargetRow=searchbycolumn(code=passiveskill[6],database=sub_target_types,column=1)[0]
         TargetCategory=CategoryExtractor(TargetRow[3],card_categories=card_categories)
         effects["Target"]["Category"]=TargetCategory
 
@@ -451,7 +706,7 @@ def extractPassiveLine(passive_skills, passive_skill_set_relations,dokkan_fields
         effects["Transformation"]["Activated"]=True
         effects["Transformation"]["Unit"]=passiveskill[13]
         effects["Transformation"]["Giant/Rage"]=True
-        params=searchbycolumn(source_entry=passiveskill[14],destination_csv=battle_params,search_column=1)
+        params=searchbycolumn(code=passiveskill[14],database=battle_params,column=1)
         for param in params:
             if(param[2]=="0"):
                 effects["Transformation"]["Min Turns"]=param[3]
@@ -643,6 +898,11 @@ def extractClassType(classTypeNumber, DEVEXCEPTIONS=False):
     if binaryclassTypeNumber[31]=="1" or binaryclassTypeNumber[19]=="1" or binaryclassTypeNumber[14]=="1":
         outputType.append("AGL")
     
+    if binaryclassTypeNumber[25]=="1":
+        outputClass.append("Extreme")
+    if binaryclassTypeNumber[26]=="1":
+        outputClass.append("Super")
+
     if "1" in binaryclassTypeNumber[15:20]:
         outputClass.append("Super")
     if "1" in binaryclassTypeNumber[10:15]:
@@ -877,6 +1137,17 @@ def causalityLogicFinder(unit,dokkan_fields,causalityCondition,card_categories,s
                     output+=(categoryType)
                     output+=(" category ")
                     output+=(target)    
+            elif(CausalityRow[1]=="35"):
+                output+=("When the team includes")
+                if(extractClassType(CausalityRow[2],DEVEXCEPTIONS=DEVEXCEPTIONS)==(["Super"],["PHY","STR","INT","TEQ","AGL"])):
+                    output+=(" all five Super types")
+                elif(extractClassType(CausalityRow[2],DEVEXCEPTIONS=DEVEXCEPTIONS)==(["Extreme"],["PHY","STR","INT","TEQ","AGL"])):
+                    output+=(" all five Extreme types")
+                else:
+                    print("UNKNOWN TYPE")
+                    if(DEVEXCEPTIONS==True):
+                        raise Exception("Unknown type")
+                
             elif(CausalityRow[1]=="38"):
                 Status=binaryStatus(CausalityRow[2])
                 output+=("When the target enemy is ")
@@ -925,7 +1196,7 @@ def causalityLogicFinder(unit,dokkan_fields,causalityCondition,card_categories,s
             elif(CausalityRow[1]=="43"):
                 output+=("After evading an attack")
             elif(CausalityRow[1]=="44"):
-                if(CausalityRow[2]=="0"):
+                if(CausalityRow[2]=="0" or CausalityRow[2]=="1"):
                     output+=("Starting from the turn in which the character performs their ")
                     output+=(ordinalise(CausalityRow[3]))
                     output+=(" super attack in battle")
@@ -935,6 +1206,14 @@ def causalityLogicFinder(unit,dokkan_fields,causalityCondition,card_categories,s
                     output+=(" attack in battle")
                 elif(CausalityRow[2]=="3"):
                     output+=("Starting from the turn in which the character recieves their ")
+                    output+=(ordinalise(CausalityRow[3]))
+                    output+=(" attack in battle")
+                elif(CausalityRow[2]=="4"):
+                    output+=("Starting from the turn in which the character's guard is activated for the ")
+                    output+=(ordinalise(CausalityRow[3]))
+                    output+=(" time in battle")
+                elif(CausalityRow[2]=="5"):
+                    output+=("Starting from the turn in which the character evades the ")
                     output+=(ordinalise(CausalityRow[3]))
                     output+=(" attack in battle")
                 else:
@@ -1706,24 +1985,32 @@ def returnRow(ID, IDRow, database, printing=True):
     return(output)
 
 #this function takes in a piece of data
-#checks within the destincation_csv along the search_column
+#checks within the destincation_csv along the column
 #once it finds one that matches it will return that row's entry on the destination_column
-def searchbycolumn(source_entry, destination_csv, search_column, printing=True):
-    temp=[]
-    for row in destination_csv:
-        if (source_entry==row[search_column]):
-            temp.append(row)
-    return(temp)
+#def searchbycolumn(code, database, column, printing=True):
+#    temp=[]
+#    for row in database:
+#        if (code==row[column]):
+#            temp.append(row)
+#    return(temp)
                 
-def searchbyid(code, codecolumn, database, column,printing=True):
-    temp=[]
-    for row in database:
-        if code==row[codecolumn]:
-            temp.append(row[column])
-    if temp==[]:
-        return(None)
-    else:
-        return(temp)
+def searchbycolumn(code, database, column, printing=True):
+    return [row for row in database if code == row[column]]
+
+    
+#def searchbyid(code, codecolumn, database, column,printing=True):
+#    temp=[]
+#    for row in database:
+#        if code==row[codecolumn]:
+#            temp.append(row[column])
+#    if temp==[]:
+#        return(None)
+#    else:
+#        return(temp)
+def searchbyid(code, codecolumn, database, column, printing=True):
+    result = [row[column] for row in database if code == row[codecolumn]]
+    return result if result else None
+
     
 def combinelinks(linklist,lvl,link_skills,link_skill_lvs,link_skill_efficacies,printing=True):
     ATK=0
@@ -1818,17 +2105,9 @@ def search(OGwordlist,searched,printing=True):
         if(printing): print(1+wordlist.index(y),y)
     return(search(wordlist,input("Which one do you want to use?: ")))
         
-def listlist(mylist,printing=True):
-    temp=""
-    for x in mylist:
-        temp+=(str(mylist.index(x)+1))
-        temp+=(".")
-        temp+=(x)
-        temp+=("\n")
-    return(temp)
 #ultralist is a list consisting of other lists
 #slot is the list value that is used across all lists to sort the individual lists
-def sortultralist(ultralist,slot,reverse,printing=True):
+def sortultralist(ultralist,slot,reverse=False,printing=True):
     tempultralist=((sorted(ultralist, key=lambda x:x[slot])))
     if reverse:
         tempultralist.reverse()
@@ -2129,12 +2408,13 @@ def getallcategories(unitid,card_card_categories,card_categories,printing=True):
 def getalllinks(unit,link_skills,printing=True):
     linksList=[]
     for x in range(23,30):
-       code=unit[x]
-       code=float(code)
-       code=int(code)
-       code=str(code)
-       temp1=searchbyid(code,0,link_skills,1)
-       linksList.append(temp1[0])
+       if(unit[x]!=""):
+        code=unit[x]
+        code=float(code)
+        code=int(code)
+        code=str(code)
+        temp1=searchbyid(code,0,link_skills,1)
+        linksList.append(temp1[0])
 
     return(linksList)
     
