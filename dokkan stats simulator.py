@@ -24,15 +24,19 @@ dokkan_field_passive_skill_relations=storedatabase(directory,"dokkan_field_passi
 potential_squares=storedatabase(directory,"potential_squares.csv")
 potential_events=storedatabase(directory,"potential_events.csv")
 potential_square_relations=storedatabase(directory,"potential_square_relations.csv")
+card_specials=storedatabase(directory,"card_specials.csv")
+special_sets=storedatabase(directory,"special_sets.csv")
+specials=storedatabase(directory,"specials.csv")
 
-unitid="1011331"
+unitid="1027221"
 eza=True
 DEVEXCEPTIONS=True
 GLOBALCHECK=True
 CUTJSON=True
 MAKEJSON=True
-CALCPASSIVE=True
-CALCLEADER=True
+CALCPASSIVE=False
+CALCLEADER=False
+CALCHIPO=False
 
 
 
@@ -111,15 +115,16 @@ for unit in cardsToCheck:
 
     unitDictionary["Hidden Potential"]={}
     unit1=swapToUnitWith1(unit,cards)
-    if(unit1[52][:-2]not in HiPoBoards):
-        HiPoBoards[unit1[52][:-2]]=ParseHiddenPotential(unit1[52][:-2],potential_squares,potential_square_relations,potential_events,DEVEXCEPTIONS)
+    if(CALCHIPO):
+        if(unit1[52][:-2]not in HiPoBoards):
+            HiPoBoards[unit1[52][:-2]]=parseHiddenPotential(unit1[52][:-2],potential_squares,potential_square_relations,potential_events,DEVEXCEPTIONS)
 
-    #unitDictionary["Hidden Potential"]=ParseHiddenPotential(unit1[52][:-2],potential_squares,potential_square_relations,potential_events,DEVEXCEPTIONS)
-    unitDictionary["Hidden Potential"]=HiPoBoards[unit1[52][:-2]]
-    #unit[52] is the potential board id
+        #unitDictionary["Hidden Potential"]=ParseHiddenPotential(unit1[52][:-2],potential_squares,potential_square_relations,potential_events,DEVEXCEPTIONS)
+        unitDictionary["Hidden Potential"]=HiPoBoards[unit1[52][:-2]]
+        #unit[52] is the potential board id
 
     unitDictionary["Active Skill"]={}
-    unitDictionary["Super Attack"]={}
+    unitDictionary["Super Attack"]=parseSuperAttack(unit,card_specials,special_sets,specials,DEVEXCEPTIONS)
     unitDictionary["Standby Skill"]={}
 
     jsonName=unit[0]

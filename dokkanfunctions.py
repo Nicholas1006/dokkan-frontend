@@ -56,8 +56,116 @@ def createHiPoBoard(headID,potential_squares,potential_square_relations):
     headNode.childrenID=sortultralist(ultralist=headNode.childrenID,slot=0)
     return(headNode)
 
+def filterUltraList(ultraList,slot,filter):
+    #filter must be a List
+    output=[]
+    for line in ultraList:
+        if(line[slot] in filter):
+            output.append(line)
+    return(output)
 
-def ParseHiddenPotential(Potential_board_id,potential_squares,potential_square_relations,potential_events,DEVEXCEPTIONS=False):
+def removeDuplicatesUltraList(ultraList,slot):
+    output=[]
+    for line in ultraList:
+        if(line[slot] not in output):
+            output.append(line)
+    return(output)
+
+def parseSuperAttack(unit,card_specials,special_sets,specials,DEVEXCEPTIONS=False):
+    output={}
+    card_specials=searchbycolumn(code=unit[0],column=1,database=card_specials)
+    card_specials=removeDuplicatesUltraList(ultraList=card_specials,slot=0)
+    for card_special in card_specials:
+        superSet=searchbycolumn(code=card_special[2],column=0,database=special_sets)
+        superID=superSet[0][0]
+        superName=superSet[0][1]
+        superDescription=superSet[0][2]
+        superMinKi=card_special[6]
+        superPriority=card_special[3]
+        superStyle=card_special[4]
+        superCausality=superSet[0][3]
+        superAimTarget=superSet[0][4]
+        superIsInactive=superSet[0][7]
+        card_specials=searchbycolumn(code=superID,column=1,database=specials)
+        for special in card_specials:
+            specialsEffect=parseSpecials(special,DEVEXCEPTIONS)    
+
+def parseSpecials(specialRow,DEVEXCEPTIONS=False):
+    output={}
+    output["Type"]=specialRow[2][9:]
+    output["Chance"]=specialRow[7]
+    output["Duration"]=specialRow[6]
+    output["Buff"]={}
+    if(specialRow[5]=="0"):
+        output["Buff"]["Type"]="Raw stats"
+        output["Buff"]["+ or -"]="+"
+
+    elif(specialRow[5]=="1"):
+        output["Buff"]["Type"]="Raw stats"
+        output["Buff"]["+ or -"]="-"
+
+    elif(specialRow[5]=="2"):
+        output["Buff"]["Type"]="Percentage"
+        output["Buff"]["+ or -"]="+"
+
+    elif(specialRow[5]=="3"):
+        output["Buff"]["Type"]="Percentage"
+        output["Buff"]["+ or -"]="-"
+    else:
+        output["Buff"]["Type"]="Unknown"
+        output["Buff"]["+ or -"]="Unknown"
+        if(DEVEXCEPTIONS==True):
+                raise Exception("Unknown stat increase type")
+
+    if(specialRow[4]=="1"):
+        output["Target"]="Self"
+    elif(specialRow[4]=="2"):
+        output["Target"]="Allies"
+    elif(specialRow[4]=="3"):
+        output["Target"]="Enemy"
+    elif(specialRow[4]=="4"):
+        output["Target"]="All Enemies"
+    elif(specialRow[4]=="12"):
+        output["Target"]="Super class Allies"
+    elif(specialRow[4]=="13"):
+        output["Target"]="Extreme class Allies"
+    elif(specialRow[4]=="16"):
+        output["Target"]="Allies (self excluded)"
+    else:
+        output["Target"]="UNKNOWN"
+        if(DEVEXCEPTIONS==True):
+            raise Exception("Unknown target type")
+
+    if(specialRow[3]=="1"):
+        output["ATK"]=specialRow[9]
+    elif(specialRow[3]=="2"):
+        output["DEF"]=specialRow[9]
+    elif(specialRow[3]=="3"):
+        output["ATK"]=specialRow[9]
+        output["DEF"]=specialRow[10]
+    elif(specialRow[3]=="9"):
+        output["Status"]="Stun"
+    elif(specialRow[3]=="24"):
+        output["Status"]="Disabled guard"
+    elif(specialRow[3]=="48"):
+        output["Status"]="Seals"
+    elif(specialRow[3]=="76"):
+        output["Status"]="Effective against all"
+    elif(specialRow[3]=="84"):
+        output["Heals"]=specialRow[9]
+    elif(specialRow[3]=="90"):
+        output["Crit Chance"]=specialRow[9]
+    elif(specialRow[3]=="111"):
+        output["Status"]="Disabled action"
+    else:
+        output["Status"]="UNKNOWN"
+        if(DEVEXCEPTIONS==True):
+            raise Exception("Unknown special attack effect")
+    return(output)
+        
+
+
+def parseHiddenPotential(Potential_board_id,potential_squares,potential_square_relations,potential_events,DEVEXCEPTIONS=False):
     #WIP
 
     nodesSearched={}

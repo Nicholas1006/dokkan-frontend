@@ -4,7 +4,7 @@ from dokkanfunctions import *
 from numpy import source
 
 
-stringToFind = '22300106'
+stringToFind = 'Instant Transmission Meteor Crush'
 
 includeAsElementOf=True
 
