@@ -1,6 +1,6 @@
 {
     "ID": "1019590",
-    "Typing": null,
+    "Typing": "TEQ",
     "Class": "Extreme",
     "Name": "Majin Buu (Good)/Majin Buu (Pure Evil)",
     "Rarity": "ur",
@@ -35,28 +35,40 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "2105": {
-            "ID": "2105",
+        "4143": {
+            "ID": "4143",
             "Timing": "Start of turn",
-            "Ki": 1,
+            "Ki": 3,
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1002105": {
-            "ID": "1002105",
+        "1004143": {
+            "ID": "1004143",
             "Timing": "Start of turn",
-            "ATK": 100,
+            "ATK": 150,
+            "DEF": 150,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "2002105": {
-            "ID": "2002105",
+        "2004143": {
+            "ID": "2004143",
+            "Timing": "On Super",
+            "ATK": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When ki is 12 or more"
+        },
+        "3004143": {
+            "ID": "3004143",
             "Timing": "Being hit",
             "DR": 40,
             "Buff": {
@@ -65,11 +77,47 @@
             },
             "Length": "1"
         },
-        "3002105": {
-            "ID": "3002105",
+        "4004143": {
+            "ID": "4004143",
+            "Timing": "Being hit",
+            "DR": 30,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there are 2 or more Majin Power category allies on the same turn "
+        },
+        "5004143": {
+            "ID": "5004143",
+            "Timing": "Start of turn",
+            "ATK": 50,
+            "DEF": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "6004143": {
+            "ID": "6004143",
+            "Toggle Other Line": {
+                "Activated": true,
+                "Line": "5004143"
+            },
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there are 1 or more Majin Power category enemies "
+        },
+        "7004143": {
+            "ID": "7004143",
             "Transformation": {
                 "Activated": true,
-                "Unit": "4019600",
+                "Unit": "4019601",
                 "Giant/Rage": false,
                 "Min Turns": null,
                 "Max Turns": null,
@@ -84,24 +132,116 @@
             "First turn to activate": 2
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "8496": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Majin Power"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "HP": 170,
+            "ATK": 170,
+            "DEF": 170
+        },
+        "8497": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Majin Power"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 4
+        },
+        "8498": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Artificial Life Forms"
+                ],
+                "Excluded Category": [
+                    "Majin Power"
+                ],
+                "Allies or enemies": "Allies"
+            },
+            "HP": 170,
+            "ATK": 170,
+            "DEF": 130
+        },
+        "8499": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Artificial Life Forms"
+                ],
+                "Excluded Category": [
+                    "Majin Power"
+                ],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 1300,
+            "ATK": 2100,
+            "DEF": 1700
+        }
+    },
     "Super Attack": {
-        "2396": {
-            "superID": "2396",
-            "superName": "Kamehameha",
-            "superDescription": "Greatly raises ATK for 1 turn and \ncauses immense damage to enemy",
+        "5552": {
+            "superID": "5552",
+            "superName": "Kamehameha (Extreme)",
+            "superDescription": "Greatly raises ATK and raises DEF for 1 turn \nand causes immense damage to enemy",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 505,
-            "2396": {
+            "Multiplier": 630,
+            "5552": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -111,6 +251,17 @@
                 },
                 "Target": "Self",
                 "ATK": "50"
+            },
+            "1005552": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "30"
             }
         }
     },

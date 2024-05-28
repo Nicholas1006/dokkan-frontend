@@ -1,6 +1,6 @@
 {
     "ID": "1013340",
-    "Typing": null,
+    "Typing": "AGL",
     "Class": "Extreme",
     "Name": "Cooler (Final Form)",
     "Rarity": "ur",
@@ -28,8 +28,43 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "1252": {
-            "ID": "1252",
+        "3909": {
+            "ID": "3909",
+            "Timing": "Start of turn",
+            "Ki": 2,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1003909": {
+            "ID": "1003909",
+            "Timing": "Start of turn",
+            "ATK": 100,
+            "DEF": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2003909": {
+            "ID": "2003909",
+            "Timing": "Start of turn",
+            "Ki": 1,
+            "Target": {
+                "Target": "Allies",
+                "Type": "AGL"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "3003909": {
+            "ID": "3003909",
             "Timing": "Start of turn",
             "ATK": 40,
             "DEF": 40,
@@ -43,11 +78,11 @@
             },
             "Length": "1"
         },
-        "1001252": {
-            "ID": "1001252",
+        "4003909": {
+            "ID": "4003909",
             "Additional attack": {
                 "Activated": true,
-                "Chance of super": "0"
+                "Chance of super": "15"
             },
             "Timing": "after all ki collected",
             "Buff": {
@@ -56,8 +91,26 @@
             },
             "Length": "1"
         },
-        "2001252": {
-            "ID": "2001252",
+        "5003909": {
+            "ID": "5003909",
+            "Timing": "Attacking the enemy",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 100,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "ATK": 20,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99"
+        },
+        "6003909": {
+            "ID": "6003909",
+            "Dodge chance": 5,
             "Timing": "Attacking the enemy",
             "Building Stat": {
                 "Min": 0,
@@ -66,32 +119,96 @@
                     "Cause": "Look Elsewhere"
                 }
             },
-            "ATK": 5,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "99"
+        },
+        "7003909": {
+            "ID": "7003909",
+            "Timing": "Start of turn",
+            "ATK": 50,
+            "DEF": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there are 2 or more Terrifying Conquerors category allies on the same turn "
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "6026": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "-"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Enemies",
+                "Typing": "STR"
+            },
+            "ATK": 40,
+            "DEF": 40
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 1200,
+            "ATK": 1200,
+            "DEF": 1200
+        },
+        "1": {
+            "HP": 180,
+            "ATK": 180,
+            "DEF": 180
+        },
+        "2": {
+            "HP": 186,
+            "ATK": 420,
+            "DEF": 186
+        },
+        "3": {
+            "HP": 414,
+            "ATK": 180,
+            "DEF": 414
+        },
+        "4": {
+            "HP": 780,
+            "ATK": 1020,
+            "DEF": 1260
+        }
+    },
     "Super Attack": {
-        "1421": {
-            "superID": "1421",
-            "superName": "Supernova",
-            "superDescription": "Causes supreme damage to enemy and \ngreatly lowers DEF",
+        "5005": {
+            "superID": "5005",
+            "superName": "Supernova (Extreme)",
+            "superDescription": "Raises DEF for 1 turn, \ncauses supreme damage to enemy \nand greatly lowers DEF",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "1421": {
+            "Multiplier": 530,
+            "5005": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "30"
+            },
+            "1005005": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",

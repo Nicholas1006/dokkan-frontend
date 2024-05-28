@@ -1,6 +1,6 @@
 {
     "ID": "1014500",
-    "Typing": null,
+    "Typing": "INT",
     "Class": "Super",
     "Name": "Goku",
     "Rarity": "lr",
@@ -26,8 +26,19 @@
         "Legendary Power"
     ],
     "Passive": {
-        "1222": {
-            "ID": "1222",
+        "2175": {
+            "ID": "2175",
+            "Timing": "Start of turn",
+            "ATK": 59,
+            "DEF": 59,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1002175": {
+            "ID": "1002175",
             "Timing": "Start of turn",
             "Ki": 2,
             "Target": {
@@ -42,8 +53,8 @@
             },
             "Length": "1"
         },
-        "1001222": {
-            "ID": "1001222",
+        "2002175": {
+            "ID": "2002175",
             "Timing": "Start of turn",
             "ATK": 30,
             "DEF": 30,
@@ -57,8 +68,8 @@
             },
             "Length": "1"
         },
-        "2001222": {
-            "ID": "2001222",
+        "3002175": {
+            "ID": "3002175",
             "Dodge chance": 30,
             "Timing": "Start of turn",
             "Buff": {
@@ -67,8 +78,8 @@
             },
             "Length": "1"
         },
-        "3001222": {
-            "ID": "3001222",
+        "4002175": {
+            "ID": "4002175",
             "Timing": "Start of turn",
             "ATK": 20,
             "DEF": 20,
@@ -81,19 +92,103 @@
                 "+ or -": "+"
             },
             "Length": "1",
-            "Condition": "When HP is 50% or less"
+            "Condition": "When HP is 59% or less"
+        },
+        "5002175": {
+            "ID": "5002175",
+            "Timing": "Start of turn",
+            "Ki": 3,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there is an ally attacking on the same turn whose name includes "
+        },
+        "6002175": {
+            "ID": "6002175",
+            "Timing": "Start of turn",
+            "Crit Chance": 59,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there is an ally attacking on the same turn whose name includes "
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "5916": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "PHY",
+                    "STR",
+                    "INT",
+                    "TEQ",
+                    "AGL"
+                ]
+            },
+            "HP": 100,
+            "ATK": 100,
+            "DEF": 100
+        },
+        "5917": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 1700,
+            "ATK": 1700,
+            "DEF": 1700
+        }
+    },
     "Super Attack": {
-        "1292": {
-            "superID": "1292",
-            "superName": "Power Pole",
-            "superDescription": "Causes colossal damage \nwith a rare chance to stun the enemy",
+        "2563": {
+            "superID": "2563",
+            "superName": "Power Pole (Extreme)",
+            "superDescription": "Causes colossal damage with \na medium chance of stunning the enemy",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -106,9 +201,9 @@
                 "Amount": "30"
             },
             "Multiplier": 395,
-            "1292": {
+            "2563": {
                 "Type": "ExtraEfficacySpecial",
-                "Chance": "20",
+                "Chance": "30",
                 "Duration": "2",
                 "Buff": {
                     "Type": "Raw stats",
@@ -118,14 +213,14 @@
                 "Status": "Stun"
             }
         },
-        "1293": {
-            "superID": "1293",
-            "superName": "Courageous Adventure",
-            "superDescription": "Causes mega-colossal damage and raises \nSuper Class allies' ATK by 30% for 1 turn",
+        "2564": {
+            "superID": "2564",
+            "superName": "Courageous Adventure (Extreme)",
+            "superDescription": "Causes mega-colossal damage to enemy \nand raises Super Class allies' ATK & DEF \nby 30% for 1 turn",
             "superMinKi": "18",
             "superPriority": "0",
             "superStyle": "Hyper",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -138,7 +233,7 @@
                 "Amount": "30"
             },
             "Multiplier": 510,
-            "1293": {
+            "2564": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -147,7 +242,8 @@
                     "+ or -": "+"
                 },
                 "Target": "Super class Allies",
-                "ATK": "30"
+                "ATK": "30",
+                "DEF": "30"
             }
         }
     },

@@ -9,17 +9,20 @@ from PIL import Image
 import time
 import math
 import json
+from globals import *
 
-def sub_target_types_extractor(sub_target_type_set_id,sub_target_types,card_categories,DEVELOPEREXCEPTIONS=False):
+def sub_target_types_extractor(sub_target_type_set_id,DEVELOPEREXCEPTIONS=False):
+    global sub_target_types
+    global card_categories
     temp=searchbycolumn(code=sub_target_type_set_id,database=sub_target_types,column=1)
     output={}
     output["Category"]=[]
     output["Excluded Category"]=[]
     for line in temp:   
         if(line[2]=="1"):
-            output["Category"].append(CategoryExtractor(line[3],card_categories))
+            output["Category"].append(CategoryExtractor(line[3]))
         elif(line[2]=="2"):
-            output["Excluded Category"].append(CategoryExtractor(line[3],card_categories))
+            output["Excluded Category"].append(CategoryExtractor(line[3]))
         elif(line[2]=="3"):
             output["Amount of times to turn giant"]=1
         else:
@@ -27,34 +30,6 @@ def sub_target_types_extractor(sub_target_type_set_id,sub_target_types,card_cate
             if(DEVELOPEREXCEPTIONS==True):
                 raise Exception("Unknown sub target type")
     return (output)
-
-class hiPoNode:
-    def __init__(self,code,parentNode):
-        self.code=code
-        self.parentNode=parentNode
-        self.childrenID=[]
-        self.BuffType=None
-        self.BuffAmount=0
-        if(parentNode==None):
-            self.Path=-1
-        else:
-            self.Path=parentNode.Path
-
-class hiPoBoard:
-    def __init__(self,headNode):
-        self.head=headNode
-        self.connections=[]
-        self.nodes=[]
-
-def createHiPoBoard(headID,potential_squares,potential_square_relations):
-    headNode=hiPoNode(headID,None)
-    headNode.Path=[]
-    headNode.Path.append(headID)
-    headNode.BuffType=None
-    headNode.BuffAmount=0
-    headNode.childrenID=searchbycolumn(code=headID,column=1,database=potential_squares)
-    headNode.childrenID=sortultralist(ultralist=headNode.childrenID,slot=0)
-    return(headNode)
 
 def filterUltraList(ultraList,slot,filter):
     #filter must be a List
@@ -71,7 +46,9 @@ def removeDuplicatesUltraList(ultraList,slot):
             output.append(line)
     return(output)
 
-def superAttackMultiplierExtractor(superAttackID,special_sets,special_bonuses,super_attack_lvl,DEVEXCEPTIONS=False):
+def superAttackMultiplierExtractor(superAttackID,super_attack_lvl,DEVEXCEPTIONS=False):
+    global special_sets
+    global special_bonuses
     specialRow=searchbycolumn(code=superAttackID,database=special_sets,column=0)
     growth_rate=int(specialRow[0][6])
     increase_rate=int(specialRow[0][5])
@@ -83,10 +60,18 @@ def superAttackMultiplierExtractor(superAttackID,special_sets,special_bonuses,su
     #tell it to use special_bonuses
     #WIP
 
-
-def parseSuperAttack(unit,card_specials,special_sets,special_bonuses,specials,optimal_awakening_growths,skill_causalities,card_unique_info_set_relations,cards,card_categories,eza=False,DEVEXCEPTIONS=False):
+def parseSuperAttack(unit,eza=False,DEVEXCEPTIONS=False):
+    global card_specials
+    global special_sets
+    global special_bonuses
+    global specials
+    global optimal_awakening_growths
+    global skill_causalities
+    global card_unique_info_set_relations
+    global cards
+    global card_categories
     output={}
-    ableToEZA=qualifyEZA(unit,optimal_awakening_growths)
+    ableToEZA=qualifyEZA(unit)
 
     card_specialss=searchbycolumn(code=unit[0],column=1,database=card_specials)
     card_specialss=removeDuplicatesUltraList(ultraList=card_specialss,slot=0)
@@ -105,19 +90,19 @@ def parseSuperAttack(unit,card_specials,special_sets,special_bonuses,specials,op
         superAttackDictionary["superIsInactive"]=superSet[0][7]
         if(superAttackDictionary["superStyle"]=="Condition"):
             causalityCondition=logicalCausalityExtractor(card_special[15])
-            causalityCondition=CausalityLogicalExtractor(unit,skill_causalities,causalityCondition,card_unique_info_set_relations=card_unique_info_set_relations,cards=cards,card_categories=card_categories,DEVEXCEPTIONS=DEVEXCEPTIONS)
+            causalityCondition=CausalityLogicalExtractor(unit,causalityCondition,DEVEXCEPTIONS=DEVEXCEPTIONS)
             superAttackDictionary["superCondition"]=causalityCondition
         superAttackDictionary["SpecialBonus"]={}
         superAttackDictionary["SpecialBonus"]["ID"]=card_special[9]
         if(ableToEZA and eza and int(unit[14])<int(superAttackDictionary["superMinLVL"])):
-            superAttackDictionary["Multiplier"]=superAttackMultiplierExtractor(superAttackID=superAttackDictionary["superID"],special_sets=special_sets,special_bonuses=special_bonuses,super_attack_lvl=int(unit[14])+5,DEVEXCEPTIONS=DEVEXCEPTIONS)
+            superAttackDictionary["Multiplier"]=superAttackMultiplierExtractor(superAttackID=superAttackDictionary["superID"],super_attack_lvl=int(unit[14])+5,DEVEXCEPTIONS=DEVEXCEPTIONS)
             card_supers=searchbycolumn(code=superAttackDictionary["superID"],column=1,database=specials)
             for special in card_supers:
                 specialsEffect=parseSpecials(special,DEVEXCEPTIONS)    
                 superAttackDictionary[special[0]]=specialsEffect
             output[card_special[2]]=superAttackDictionary
         elif(ableToEZA and not (eza) and not (int(unit[14])<int(superAttackDictionary["superMinLVL"]))):
-            superAttackDictionary["Multiplier"]=superAttackMultiplierExtractor(superAttackID=superAttackDictionary["superID"],special_sets=special_sets,super_attack_lvl=int(unit[14]),special_bonuses=special_bonuses,DEVEXCEPTIONS=DEVEXCEPTIONS)
+            superAttackDictionary["Multiplier"]=superAttackMultiplierExtractor(superAttackID=superAttackDictionary["superID"],super_attack_lvl=int(unit[14]),DEVEXCEPTIONS=DEVEXCEPTIONS)
             card_supers=searchbycolumn(code=superAttackDictionary["superID"],column=1,database=specials)
             for special in card_supers:
                 specialsEffect=parseSpecials(special,DEVEXCEPTIONS)    
@@ -131,7 +116,7 @@ def parseSuperAttack(unit,card_specials,special_sets,special_bonuses,specials,op
             output[card_special[2]]=superAttackDictionary
 
         if(superAttackDictionary["SpecialBonus"]["ID"]!="0"):
-            superAttackDictionary["Multiplier"]=superAttackMultiplierExtractor(superAttackID=superAttackDictionary["superID"],special_sets=special_sets,super_attack_lvl=int(unit[14]),special_bonuses=special_bonuses,DEVEXCEPTIONS=DEVEXCEPTIONS)
+            superAttackDictionary["Multiplier"]=superAttackMultiplierExtractor(superAttackID=superAttackDictionary["superID"],super_attack_lvl=int(unit[14]),DEVEXCEPTIONS=DEVEXCEPTIONS)
             special_bonus=searchbycolumn(code=superAttackDictionary["SpecialBonus"]["ID"],column=0,database=special_bonuses)
             special_bonus=special_bonus[0]
             superAttackDictionary["SpecialBonus"]["Type"]=special_bonus[1]
@@ -231,20 +216,27 @@ def parseSpecials(specialRow,DEVEXCEPTIONS=False):
             raise Exception("Unknown special attack effect")
     return(output)
         
-
-
-def parseHiddenPotential(Potential_board_id,potential_squares,potential_square_relations,potential_events,DEVEXCEPTIONS=False):
+def parseHiddenPotential(Potential_board_id,DEVEXCEPTIONS=False):
+    startTime=time.time()
+    global potential_squares
+    global potential_square_relations
+    global potential_events
     #WIP
 
     nodesSearched={}
     
     nodesSearching={}
     allNodes=searchbycolumn(code=Potential_board_id,column=1,database=potential_squares)
+    allNodeIDs=[node[0] for node in allNodes]
+    relevantRelations=[]
+    for connection in potential_square_relations:
+        if(connection[1] in allNodeIDs):
+            relevantRelations.append(connection)
     pathNodes=[]
     for node in allNodes:
         if(node[4]=="1"):
             pathNodes.append(node[0])
-        if("" in searchbyid(code=node[0],codecolumn=1,database=potential_square_relations,column=2)):
+        if("" in searchbyid(code=node[0],codecolumn=1,database=relevantRelations,column=2)):
             nodesSearched[node[0]]=0
     furthestNodesFound=nodesSearched.copy()
     newNodes=True
@@ -252,7 +244,7 @@ def parseHiddenPotential(Potential_board_id,potential_squares,potential_square_r
     while(newNodes==True):
         newNodes=False
         for node in furthestNodesFound:
-            connections=searchbyid(code=node,codecolumn=1,database=potential_square_relations,column=2)
+            connections=searchbyid(code=node,codecolumn=1,database=relevantRelations,column=2)
             for connection in connections:
                 if(connection!=""):
                     if(connection[:-2] not in pathNodes):
@@ -292,10 +284,18 @@ def parseHiddenPotential(Potential_board_id,potential_squares,potential_square_r
             output[nodesSearched[node]]["DEF"]+=int(event[3])
 
 
-   
+    finishTime=time.time()
+    print(finishTime-startTime)
     return(output)
 
-def parseLeaderSkill(unit,dokkan_fields,skill_causalities,cards,card_unique_info_set_relations,leader_skill_line,leader_skills,card_categories,sub_target_types,DEVEXCEPTIONS=False):
+def parseLeaderSkill(unit,leader_skill_line,DEVEXCEPTIONS=False):
+    global dokkan_fields
+    global skill_causalities
+    global card_unique_info_set_relations
+    global cards
+    global card_categories
+    global sub_target_types
+    global leader_skills
     output={}
 
     output["Buff"]={}
@@ -322,7 +322,7 @@ def parseLeaderSkill(unit,dokkan_fields,skill_causalities,cards,card_unique_info
     
     output["Target"]={}
     efficiacy_values=leader_skill_line[7].replace("[","").replace("]","").split(",")
-    output["Target"]=(sub_target_types_extractor(leader_skill_line[4],sub_target_types,card_categories,DEVEXCEPTIONS))
+    output["Target"]=(sub_target_types_extractor(leader_skill_line[4],DEVEXCEPTIONS))
     if(leader_skill_line[3]=="4"):
         output["Target"]["Allies or enemies"]="Enemies"
     elif(leader_skill_line[3]=="2"):
@@ -435,7 +435,7 @@ def parseLeaderSkill(unit,dokkan_fields,skill_causalities,cards,card_unique_info
         
     if(leader_skill_line[5]!=""):
         causalityCondition=logicalCausalityExtractor(leader_skill_line[5])
-        causalityCondition=CausalityLogicalExtractor(unit,dokkan_fields,causalityCondition,card_categories,skill_causalities,cards,card_unique_info_set_relations,DEVEXCEPTIONS=DEVEXCEPTIONS)
+        causalityCondition=CausalityLogicalExtractor(unit,causalityCondition,DEVEXCEPTIONS=DEVEXCEPTIONS)
         output["Condition"]=causalityCondition
     return(output)
 
@@ -566,7 +566,17 @@ def shortenPassiveDictionary(oldPassiveDictionary):
 
     return(passiveDictionary)
 
-def extractPassiveLine(passive_skills, passive_skill_set_relations,dokkan_fields,dokkan_field_passive_skill_relations,battle_params,unit,skill_causalities,card_unique_info_set_relations,cards,passiveskill,sub_target_types,card_categories,printing=False,DEVEXCEPTIONS=False):
+def extractPassiveLine(unit,passiveskill,printing=False,DEVEXCEPTIONS=False):
+    global passive_skills
+    global passive_skill_set_relations
+    global dokkan_fields
+    global dokkan_field_passive_skill_relations
+    global battle_params
+    global skill_causalities
+    global card_unique_info_set_relations
+    global cards
+    global sub_target_types
+    global card_categories
     effects={
         "ID": passiveskill[0],
         "Domain expansion": {
@@ -681,7 +691,7 @@ def extractPassiveLine(passive_skills, passive_skill_set_relations,dokkan_fields
 
     if(passiveskill[6]!="0"):
         TargetRow=searchbycolumn(code=passiveskill[6],database=sub_target_types,column=1)[0]
-        TargetCategory=CategoryExtractor(TargetRow[3],card_categories=card_categories)
+        TargetCategory=CategoryExtractor(TargetRow[3])
         effects["Target"]["Category"]=TargetCategory
 
 
@@ -1023,7 +1033,7 @@ def extractPassiveLine(passive_skills, passive_skill_set_relations,dokkan_fields
 
     if(causalityExtractor(passiveskill[12])!=[]):
         causalityCondition=logicalCausalityExtractor(passiveskill[12])
-        causalityCondition=CausalityLogicalExtractor(unit=unit,dokkan_fields=dokkan_fields,causality=causalityCondition,card_categories=card_categories,skill_causalities=skill_causalities,cards=cards,card_unique_info_set_relations=card_unique_info_set_relations,DEVEXCEPTIONS=DEVEXCEPTIONS)
+        causalityCondition=CausalityLogicalExtractor(unit=unit,causality=causalityCondition,DEVEXCEPTIONS=DEVEXCEPTIONS)
         effects["Condition"]=causalityCondition
 
         
@@ -1035,7 +1045,6 @@ def extractPassiveLine(passive_skills, passive_skill_set_relations,dokkan_fields
     
     
     return(effects)
-
 
 def KiOrbType(kiOrbNumber, DEVEXCEPTIONS=False):
     if(kiOrbNumber=="0"):
@@ -1084,8 +1093,6 @@ def extractClassType(classTypeNumber, DEVEXCEPTIONS=False):
         outputClass.append("Extreme")
 
     return(outputClass,outputType)
-
-
 
 def extractAllyTyping(typingID,DEVEXCEPTIONS=False):
     if(typingID=="0"):
@@ -1158,7 +1165,13 @@ def logicalCausalityExtractor(causality):
         result=result.replace("\\u0026","&")
         return(result)
     
-def CausalityLogicalExtractor(unit,skill_causalities,causality,dokkan_fields=None,card_categories=None,cards=None,card_unique_info_set_relations=None,printing=True,DEVEXCEPTIONS=False):
+def CausalityLogicalExtractor(unit,causality,printing=True,DEVEXCEPTIONS=False):
+    global skill_causalities
+    global dokkan_fields
+    global card_categories
+    global cards
+    global card_unique_info_set_relations
+
     result=causality.replace("|"," or ").replace("&"," and ")
     currentCausality=""
     for x in result:
@@ -1166,12 +1179,12 @@ def CausalityLogicalExtractor(unit,skill_causalities,causality,dokkan_fields=Non
             currentCausality+=x
         else:
             if(currentCausality!=""):
-                newCausality=causalityLogicFinder(unit,dokkan_fields,currentCausality,card_categories,skill_causalities,cards,card_unique_info_set_relations,printing=True,DEVEXCEPTIONS=DEVEXCEPTIONS)
+                newCausality=causalityLogicFinder(unit,currentCausality,printing=True,DEVEXCEPTIONS=DEVEXCEPTIONS)
                 result=result.replace(currentCausality,newCausality)
             currentCausality=""
 
     if(currentCausality!=""):
-        newCausality=causalityLogicFinder(unit=unit,causalityCondition=currentCausality,card_categories=card_categories,skill_causalities=skill_causalities,cards=cards,card_unique_info_set_relations=card_unique_info_set_relations,dokkan_fields=dokkan_fields,printing=True,DEVEXCEPTIONS=DEVEXCEPTIONS)
+        newCausality=causalityLogicFinder(unit=unit,causalityCondition=currentCausality,printing=True,DEVEXCEPTIONS=DEVEXCEPTIONS)
         result=result.replace(currentCausality,newCausality)
     return(result)
 
@@ -1193,12 +1206,18 @@ def longestCommonSubstring(listOfStrings):
 
     return(longestString)
 
-def CategoryExtractor(CategoryId,card_categories):
+def CategoryExtractor(CategoryId):
+    global card_categories
     for category in card_categories:
         if category[0]==CategoryId:
             return(category[1])
 
-def causalityLogicFinder(unit,dokkan_fields,causalityCondition,card_categories,skill_causalities,cards,card_unique_info_set_relations,printing=True,DEVEXCEPTIONS=False):
+def causalityLogicFinder(unit,causalityCondition,printing=True,DEVEXCEPTIONS=False):
+    global dokkan_fields
+    global card_categories
+    global skill_causalities
+    global cards
+    global card_unique_info_set_relations
     output=""
     for row in skill_causalities:
         if row[0] == causalityCondition:
@@ -1236,11 +1255,10 @@ def causalityLogicFinder(unit,dokkan_fields,causalityCondition,card_categories,s
                 output+=(" turn from the start of battle")
             elif(CausalityRow[1]=="8"):
                 output+=("When ATK is higher than enemy's")
+            elif(CausalityRow[1]=="9"):
+                output+=("When ATK is lower than enemy's")
             elif(CausalityRow[1]=="14"):
-
-                output=output
-                #aged out condition
-                #WIP
+                output+=("As the first to attack")
             elif(CausalityRow[1]=="15"):
                 output+=("When facing ")
                 output+=(CausalityRow[2])
@@ -1342,12 +1360,10 @@ def causalityLogicFinder(unit,dokkan_fields,causalityCondition,card_categories,s
                 card_unique_info_id=searchbyid(code=CausalityRow[3],codecolumn=2,database=card_unique_info_set_relations,column=1)
                 possible_names=[]
                 for id in card_unique_info_id:
-                    if(searchbyid(code=id,codecolumn=3,database=cards,column=1)!=None):
-                        possible_names.append(searchbyid(code=id,codecolumn=3,database=cards,column=1))
-                temp=[]
-                for name in possible_names[1:]:
-                    temp.append(name[0])
-                likelyName=longestCommonSubstring(temp) 
+                    name=searchbyid(code=id,codecolumn=3,database=cards,column=1)
+                    if (name!=None):
+                        possible_names.append(name)
+                likelyName=longestCommonSubstring(possible_names) 
                 output+=likelyName
 
                     
@@ -1395,11 +1411,10 @@ def causalityLogicFinder(unit,dokkan_fields,causalityCondition,card_categories,s
                 card_unique_info_id=searchbyid(code=CausalityRow[4],codecolumn=2,database=card_unique_info_set_relations,column=1)
                 possible_names=[]
                 for id in card_unique_info_id:
-                    if(searchbyid(code=id,codecolumn=3,database=cards,column=1)!=None):
-                        possible_names.append(searchbyid(code=id,codecolumn=3,database=cards,column=1))
-                likelyName=possible_names[0][0]
-                for name in possible_names[1:]:
-                    likelyName=longestCommonSubstring(likelyName,name[0]) 
+                    name=searchbyid(code=id,codecolumn=3,database=cards,column=1)
+                    if (name!=None):
+                        possible_names.append(name)
+                likelyName=longestCommonSubstring(possible_names) 
 
                 if(CausalityRow[2]=="0"):
                     output+=("When there is a ")
@@ -1508,7 +1523,10 @@ def binaryOrbType(kiOrbType):
         output.append("AGL")
     return(output)
     
-def TransformationReverseUnit(card, cards, passive_skills, passive_skill_set_relations,printing=True):
+def TransformationReverseUnit(card,printing=True):
+    global cards
+    global passive_skills
+    global passive_skill_set_relations
     for passiveskillpiece in passive_skills:
         if passiveskillpiece[13]==card[0]:
             #is a transformation
@@ -1519,7 +1537,10 @@ def TransformationReverseUnit(card, cards, passive_skills, passive_skill_set_rel
                         if unit[21][0:-2]==passiverelation[1]:
                             return(unit)
     
-def activeSkillTransformationReverseUnit(card,active_skills, card_active_skills, cards,printing=True):
+def activeSkillTransformationReverseUnit(card,printing=True):
+    global active_skills
+    global card_active_skills
+    global cards
     for possibleactive in active_skills:
         if(possibleactive[6]==card[0]):
             #unit comes from an active skill
@@ -1530,7 +1551,10 @@ def activeSkillTransformationReverseUnit(card,active_skills, card_active_skills,
                         if unit[0]==possibleactivelink[1]:
                             return(unit)
 
-def activeSkillTransformationUnit(card,active_skills, card_active_skills, cards,printing=True):
+def activeSkillTransformationUnit(card,printing=True):
+    global active_skills
+    global card_active_skills 
+    global cards
     for possibleactivelink in card_active_skills:
         if possibleactivelink[1]==card[0]:
             #they have an active
@@ -1542,7 +1566,9 @@ def activeSkillTransformationUnit(card,active_skills, card_active_skills, cards,
                         if unit[0]==possibleactive[6]:
                             return(unit)
 
-def dokkanreverseunit(card,card_awakening_routes, cards,printing=True):
+def dokkanreverseunit(card,printing=True):
+    global card_awakening_routes
+    global cards
     for awakenable_unit in card_awakening_routes:
         if awakenable_unit[1]=="CardAwakeningRoute::Dokkan":
             if(card[0])==(awakenable_unit[3]):
@@ -1557,31 +1583,43 @@ def qualifyAsDFETUR(card,printing=True):
     else:
         return(False)
     
-def qualifyAsDFE(card, card_awakening_routes, cards, active_skills, card_active_skills,passive_skills,passive_skill_set_relations,printing=True):
-    if(qualifyAsDFELR(card, card_awakening_routes, cards,active_skills,card_active_skills,passive_skills,passive_skill_set_relations) or qualifyAsDFETUR(card)):
+def qualifyAsDFE(card,printing=True):
+    global card_awakening_routes
+    global cards
+    global active_skills
+    global card_active_skills
+    global passive_skills
+    global passive_skill_set_relations
+    if(qualifyAsDFELR(card) or qualifyAsDFETUR(card)):
         return(True)
     else:
         return(False)            
 
-def qualifyAsDFELR(card, card_awakening_routes, cards,active_skills,card_active_skills,passive_skills,passive_skill_set_relations,printing=True):
+def qualifyAsDFELR(card,printing=True):
+    global card_awakening_routes
+    global cards
+    global active_skills
+    global card_active_skills
+    global passive_skills
+    global passive_skill_set_relations
     assumeFalse=False
-    reversed=dokkanreverseunit(card,card_awakening_routes, cards)
+    reversed=dokkanreverseunit(card,)
     if(reversed==None):
         assumeFalse=(False)
     elif(reversed[4]=="58"):
         return(True)
         
-    reversed=activeSkillTransformationReverseUnit(card,active_skills, card_active_skills, cards)
+    reversed=activeSkillTransformationReverseUnit(card)
     if(reversed==None):
         assumeFalse=(False)
     else:
-        return(qualifyAsDFELR(reversed, card_awakening_routes, cards,active_skills,card_active_skills,passive_skills,passive_skill_set_relations))
+        return(qualifyAsDFELR(reversed))
     
-    reversed=TransformationReverseUnit(card, cards, passive_skills, passive_skill_set_relations)
+    reversed=TransformationReverseUnit(card)
     if(reversed==None):
         assumeFalse=(False)
     else:
-        return(qualifyAsDFELR(reversed, card_awakening_routes, cards,active_skills,card_active_skills,passive_skills,passive_skill_set_relations))
+        return(qualifyAsDFELR(reversed))
     
     if assumeFalse==False:
         return(False)
@@ -1592,9 +1630,10 @@ def qualifyAsLR(card,printing=True):
     else:
         return(False)
     
-def qualifyEZA(card,optimal_awakening_growths,printing=True):
+def qualifyEZA(card,printing=True):
+    global optimal_awakening_growths
     directory="data/"
-    if qualifyUsable(card) and (checkeza(optimal_awakening_growths,card)):
+    if qualifyUsable(card) and (checkeza(card)):
         return(True)
     else:
         return(False)
@@ -1612,7 +1651,7 @@ def createEZAWallpapers(cards, directory,printing=True):
     optimal_awakening_growths=storedatabase(directory,"optimal_awakening_growths.csv")
     total=0
     for card in cards:
-        if (card[53]!="2030-12-31 23:59:59") and (card[0][0]!="9") and (card[0][-1]=="0") and (card[22]!="") and ((("final_"+card[0]+".png") not in acquiredlist)) and (checkeza(optimal_awakening_growths,card)):
+        if (card[53]!="2030-12-31 23:59:59") and (card[0][0]!="9") and (card[0][-1]=="0") and (card[22]!="") and ((("final_"+card[0]+".png") not in acquiredlist)) and (checkeza(card)):
             unitid=card[0]
             if unitid[-1]=="1":
                 unitid=str(int(unitid)-1)
@@ -1706,13 +1745,18 @@ def createEZAWallpapers(cards, directory,printing=True):
             #print("Created final asset for",total,getfullname(card,leader_skills))
     if(printing): print("All EZA assets created")
 
-def createDFEWallpapers(cards, directory, card_awakening_routes, active_skills, card_active_skills, passive_skills,passive_skill_set_relations,printing=True):
+def createDFEWallpapers(cards, directory,printing=True):
+    global card_awakening_routes
+    global active_skills
+    global card_active_skills
+    global passive_skills
+    global passive_skill_set_relations
     if(printing): print("Creating DFE wallpapers")
     acquiredlist = os.listdir(r'./assets/DFE wallpapers')
     leader_skills=storedatabase(directory,"leader_skills.csv")
     total=0
     for card in cards:
-        if qualifyAsDFE(card, card_awakening_routes, cards, active_skills, card_active_skills,passive_skills,passive_skill_set_relations) and (((definewith0(card[0])+".png") not in acquiredlist)):
+        if qualifyAsDFE(card) and (((definewith0(card[0])+".png") not in acquiredlist)):
             unitid=card[0]
             if unitid[-1]=="1":
                 unitid=str(int(unitid)-1)
@@ -1922,6 +1966,7 @@ def getUnitTyping(unit,printing=True,DEVEXCEPTIONS=False):
         typing="UNKNOWN"
         if(DEVEXCEPTIONS==True):
             raise Exception("Unknown typing")
+    return(typing)
 
 def getUnitClass(unit,printing=True,DEVEXCEPTIONS=False):
     if(len(unit[12])==1):
@@ -1931,7 +1976,6 @@ def getUnitClass(unit,printing=True,DEVEXCEPTIONS=False):
     elif unit[12][0]=="2":
         return("Extreme")
     
-
 def createFinalAsset(card,printing=True):
     if (card[53]!="2030-12-31 23:59:59") and (card[0][0]!="9") and (card[0][-1]=="0") and (card[22]!=""):
         unitid=card[0]
@@ -2114,9 +2158,6 @@ def screpeassetlineant(fileID, fileType,printing=True):
             if(fileType!="sticker_mask"):
                 if(printing): print(filesource," NOT FOUND ", )
 
-
-
-
 def scrapeFullUnit(fileID,thumb=True,full=True,bg=True,character=True,circle=True,cutin=True,effect=True,piece=True,sticker_mask=True,sp_cutin_1=True,printing=True):
     assetsNeeded=[]
     if thumb: assetsNeeded.append("thumb")
@@ -2131,7 +2172,8 @@ def scrapeFullUnit(fileID,thumb=True,full=True,bg=True,character=True,circle=Tru
     for fileType in assetsNeeded:
         screpeassetlineant(fileID, fileType,printing)
     
-def passivename(unit,passive_skills,printing=True):
+def passivename(unit,printing=True):
+    global passive_skills
     return(listtostr(searchbyid(str(int(float(unit[21]))), 0, passive_skills, 1)))
 
 def floattoint(number,printing=True):
@@ -2142,7 +2184,8 @@ def floattoint(number,printing=True):
     else:
         return(number)
 
-def checkeza(optimal_awakening_growths,unit,printing=True):
+def checkeza(unit,printing=True):
+    global optimal_awakening_growths
     for eza in optimal_awakening_growths[1:]:
         if str(int(float(unit[22]))) in str(int(float(eza[6]))):
             return(True)
@@ -2182,8 +2225,10 @@ def searchbyid(code, codecolumn, database, column, printing=True):
     result = [row[column] for row in database if code == row[codecolumn]]
     return result if result else None
 
-    
-def combinelinks(linklist,lvl,link_skills,link_skill_lvs,link_skill_efficacies,printing=True):
+def combinelinks(linklist,lvl,printing=True):
+    global link_skills
+    global link_skill_lvs
+    global link_skill_efficacies
     ATK=0
     DEF=0
     KI=0
@@ -2283,17 +2328,6 @@ def sortultralist(ultralist,slot,reverse=False,printing=True):
     if reverse:
         tempultralist.reverse()
     return(tempultralist)
-
-#used in sort function, inputs 2 strings and
-#returns 0 if first word is first alphabetically
-#returns 1 if second word is first alphabetically
-#returns 0 if words are the same
-def sortwords(word0,word1,printing=True):
-    mylist=[word0,word1]
-    mylist.sort()
-    if mylist[0]==word0:
-        return(0)
-    else: return(1)
     
 #sorts through a list consisting of words and returns the sorted list
 def wordsort(mylist,printing=True):
@@ -2342,101 +2376,6 @@ def removedupes(unit,searchedoptions,printing=True):
 #used to select which of the given options will be used in calculations
 def choosechoice(choice,searchedoptions,printing=True):
     return(searchedoptions[choice-1])
-
-#used to get stats based on the hidden potential id of the character
-def hipostats(hipoid,percentage,statwanted,printing=True):
-    #all 55%
-    if int(percentage)==55:
-        #special
-        if int(hipoid)>200:
-            HP=1600
-            ATK=1600
-            DEF=1600
-        #rank S
-        elif str(hipoid)[-2]=="3":
-            HP=2800
-            ATK=2800
-            DEF=2800
-        
-        #rank A
-        elif str(hipoid)[-2]=="2":
-            HP=2000
-            ATK=2000
-            DEF=2000
-        
-        #rank B
-        elif str(hipoid)[-2]=="1":
-            HP=1200
-            ATK=1200
-            DEF=1200
-        
-        
-    
-    #all 100%
-    if int(percentage)==100:
-        #rank S
-        if str(hipoid)[-2]=="3":
-            HP=7000
-            ATK=7000
-            DEF=7000
-            typeextra=560
-        
-        #Rank A
-        elif str(hipoid)[-2]=="2":
-            HP=5000
-            ATK=5000
-            DEF=5000
-            typeextra=400
-        
-        #Rank B
-        elif str(hipoid)[-2]=="1":
-            HP=3000
-            ATK=3000
-            DEF=3000
-            typeextra=240
-        
-        #Deal with individual typings
-        
-        #SPECIAL B
-        if int(hipoid)>200:
-            HP=4000
-            ATK=4000
-            DEF=4000
-        
-        #SPECIAL A
-        elif int(hipoid)>100:
-            HP=5000
-            ATK=5000
-            DEF=5000
-        #AGL
-        elif str(hipoid)[-1]=="0":
-            HP-=typeextra
-            DEF+=typeextra
-        
-        #TEQ
-        elif str(hipoid)[-1]=="1":
-            HP-=typeextra
-            ATK+=typeextra
-            
-        #INT
-        
-        #STR
-        elif str(hipoid)[-1]=="3":
-            DEF-=typeextra
-            ATK+=typeextra
-        
-        #PHY
-        elif str(hipoid)[-1]=="4":
-            HP+=typeextra
-            DEF-=typeextra
-    if statwanted=="HP":
-        return(HP)
-    elif statwanted=="ATK":
-        return(ATK)
-    elif statwanted=="DEF":
-        return(DEF)
-    else:
-        return("NO STAT WANTED!!!!!!!!!!!!!")
     
 #used to cross reference id's within diferent databases, unit column variable is used to see where the desired value is
 def searchedbyid(code, codecolumn, database, column,printing=True):
@@ -2499,30 +2438,53 @@ def getrarity(unit,printing=True):
     
     return("ERROR IN GETRARITY UNIT MAX LEVEL IS",unit[13])
 
-def swapToUnitWith0(unit,cards):
+def getUnitStats(unit,level,DEVEXCEPTIONS=False):
+    global card_growths
+    hp_init=int(unit[6])
+    hp_max=int(unit[7])
+    atk_init=int(unit[8])
+    atk_max=int(unit[9])
+    def_init=int(unit[10])
+    def_max=int(unit[11])
+    level_max=int(unit[13])
+    growthInfo=searchbycolumn(code=unit[15],column=1,database=card_growths)
+    coef=float(searchbyid(code=str(level),codecolumn=2,database=growthInfo,column=3)[0])
+    stats={}
+    stats["HP"]=math.floor((0.5 * (level - 1) * (hp_max - hp_init)) / (level_max - 1) + 0.5 * coef * (hp_max - hp_init) + hp_init)
+    stats["ATK"]=math.floor((0.5 * (level - 1) * (atk_max - atk_init)) / (level_max - 1) + 0.5 * coef * (atk_max - atk_init) + atk_init)
+    stats["DEF"]=math.floor((0.5 * (level - 1) * (def_max - def_init)) / (level_max - 1) + 0.5 * coef * (def_max - def_init) + def_init)
+    return(stats)
+    
+
+def swapToUnitWith0(unit):
+    global cards
     unitId=definewith0(unit[0])
     for card in cards:
         if card[0]==unitId:
             return(card)
     return(None)
 
-def swapToUnitWith1(unit,cards):
+def swapToUnitWith1(unit):
+    global cards
     unitId=definewith1(unit[0])
     for card in cards:
         if card[0]==unitId:
             return(card)
     return(None)
 
-def getpassiveid(unit,cards, optimal_awakening_growths,passive_skill_set_relations, eza=False, printing=False):
+def getpassiveid(unit,eza=False, printing=False):
+    global cards
+    global optimal_awakening_growths
+    global passive_skill_set_relations
     unitPassiveId=unit[21]
     if(eza):
-        if(swapToUnitWith1(unit,cards)!=None):
-            unitEZA=swapToUnitWith1(unit,cards)
+        if(swapToUnitWith1(unit)!=None):
+            unitEZA=swapToUnitWith1(unit)
         else:
-            return(getpassiveid(unit,cards, optimal_awakening_growths,passive_skill_set_relations, eza=False, printing=printing))
+            return(getpassiveid(unit,eza=False, printing=printing))
         unitEZAGrowthId=unitEZA[16][0:-2]
         if(unitEZAGrowthId==""):
-            return(getpassiveid(unit,cards, optimal_awakening_growths,passive_skill_set_relations, eza=False, printing=printing))
+            return(getpassiveid(unit,eza=False, printing=printing))
         unitEZAPassiveId=searchbyid(code=unitEZAGrowthId,codecolumn=1,database=optimal_awakening_growths,column=5)
         #unitEZAPassiveId=map(floattoint,unitEZAPassiveId)
         for element in unitEZAPassiveId:
@@ -2537,7 +2499,8 @@ def getpassiveid(unit,cards, optimal_awakening_growths,passive_skill_set_relatio
         return(unitPassiveList)
 
 #retrieves full character name(e.g. "E.TEQ LR Nightmarish Impact Legendary Super Saiyan Broly 4016881")
-def getfullname(unit,leader_skills,printing=True):
+def getfullname(unit,printing=True):
+    global leader_skills
     #create empty variable
     temp=""
     
@@ -2568,7 +2531,9 @@ def getfullname(unit,leader_skills,printing=True):
     #return variable
     return(temp)
     
-def getallcategories(unitid,card_card_categories,card_categories,printing=True):
+def getallcategories(unitid,printing=True):
+    global card_card_categories
+    global card_categories
     temp1=searchedbyid(unitid, 1, card_card_categories, 2)
     categoryList=[]
     if temp1!=None:
@@ -2576,7 +2541,8 @@ def getallcategories(unitid,card_card_categories,card_categories,printing=True):
             categoryList.append(searchedbyid(x,0,card_categories,1)[0])
     return(categoryList)
 
-def getalllinks(unit,link_skills,printing=True):
+def getalllinks(unit,printing=True):
+    global link_skills
     linksList=[]
     for x in range(23,30):
        if(unit[x]!=""):
@@ -2601,198 +2567,8 @@ def ordinalise(number,printing=True):
     else:
         return(str(number)+"th")
 
-#easier way to include all (non-stat) details of a unit
-def getfullabilities(unit,leader_skills,passive_skill_sets,card_active_skills,active_skill_sets,card_card_categories,card_categories,link_skills,slinks,printing=True):
-    #create empty string
-    temp=""
-    temp+=(getfullname(unit,leader_skills))
-    
-    #new line
-    temp+=("\n")
-    
-    #print leader skill
-    temp+=("Leader skill:")
-    temp+=listtostr(searchedbyid(unit[22],0,leader_skills,2))    
-    #new line
-    
-    temp+=("\n")
-    #print links
-    temp+=("+--------------------------------------------------+")
-    temp+=("\n")
-    temp+=("Links:")
-    temp+=("\n")
-    temp+=getalllinks(unit,link_skills,slinks,True)
-    temp+=("\n")
-    #print categories
-    temp+=("Categories:")
-    temp+=("\n")
-    temp+=(getallcategories(unit[0],card_card_categories,card_categories))
-    
-    temp+=("+--------------------------------------------------+")
-    
-    temp+=("\n")
-    #print passive skill
-    temp+=("Passive skill:")
-    temp+=listtostr((searchedbyid(unit[21],0,passive_skill_sets,1)))
-    temp+=("\n")
-    temp+=listtostr((searchedbyid(unit[21],0,passive_skill_sets,2)))
-    temp+=("\n")
-    
-    temp+=("+--------------------------------------------------+")
-    #print unit active skill if they have one
-    if searchedbyid(unit[0],1,card_active_skills,2)!=None:
-        temp+=("\n")
-        temp+=("Active skill: ")
-        
-        #print active skill name
-        temp+=listtostr((searchedbyid(listtostr(searchedbyid(unit[0],1,card_active_skills,2)),0,active_skill_sets,1)))
-        temp+=("\n")
-        
-        #print active skill condition
-        temp+=listtostr((searchedbyid(listtostr(searchedbyid(unit[0],1,card_active_skills,2)),0,active_skill_sets,3)))
-        temp+=("\n")
-        
-        #print active skill effect
-        temp+=listtostr((searchedbyid(listtostr(searchedbyid(unit[0],1,card_active_skills,2)),0,active_skill_sets,2)))
-        temp+=("\n")
-    if(printing): print(Style.RESET_ALL,end="")
-    return(temp)
-
-def getstatsnohipo(unit,printing=True):
-    
-    temp=""
-    #template
-    temp+=("Stats   |Base    |Max  lvl")
-    temp+=("\n")
-    
-    #HP
-    temp+=("HP      |")
-    #base 
-    temp+=(unit[6].ljust(8))
-    temp+=("|")
-    #Max lvl
-    temp+=(unit[7].ljust(8))
-    temp+=("\n")
-    
-    #ATK
-    temp+=("ATK     |")
-    #base 
-    temp+=(unit[8].ljust(8))
-    temp+=("|")
-    #Max lvl
-    temp+=(unit[9].ljust(8))
-    temp+=("\n")
-    
-    #DEF
-    temp+=("DEF     |")
-    #base 
-    temp+=(unit[10].ljust(8))
-    temp+=("|")
-    #Max lvl
-    temp+=(unit[11].ljust(8))
-    temp+=("\n")
-    
-    return(temp)
-
 def ezastat(minlvl,maxlvl,printing=True):
     minlvl=int(minlvl)
     maxlvl=int(maxlvl)
     return(round(((maxlvl-minlvl)*0.4839)+maxlvl))
 
-def getstatswithhipo(unit,eza,printing=True):
-    temp=""
-    
-    temp+="Stats   |"
-    #only add base if EZA'd
-    if eza==False:
-        temp+="Base    |"
-    
-    #template
-    temp+=("Max  lvl|Max  55%|Max 100%")
-    temp+=("\n")
-    #HP
-    temp+=("HP      |")
-    #for non eza'd unit
-    if eza==False:
-        #base 
-        temp+=(unit[6].ljust(8))
-        temp+=("|")
-        #Max lvl
-        temp+=(unit[7].ljust(8))
-        temp+=("|")
-        #Max 55%
-        temp+=(str(int(unit[7])+hipostats(unit[52],55,"HP")).ljust(8))
-        temp+=("|")
-        #Max 100%
-        temp+=(str(int(unit[7])+hipostats(unit[52],100,"HP")).ljust(8))
-        temp+=("\n")
-
-    #for unit post'EZA
-    elif eza==True:
-        #Max lvl
-        temp+=(str(ezastat(unit[6],unit[7])).ljust(8))
-        temp+=("|")
-        #Max 55%
-        temp+=(str(int(ezastat(unit[6],unit[7]))+hipostats(unit[52],55,"HP")).ljust(8))
-        temp+=("|")
-        #Max 100%
-        temp+=(str(int(ezastat(unit[6],unit[7]))+hipostats(unit[52],100,"HP")).ljust(8))
-        temp+=("\n")
-
-    #ATK
-    temp+=("ATK     |")
-    
-    if eza==False:
-        #base 
-        temp+=(unit[8].ljust(8))
-        temp+=("|")
-        
-        #Max lvl
-        temp+=(unit[9].ljust(8))
-        temp+=("|")
-    
-        #Max 55%
-        temp+=(str(int(unit[9])+hipostats(unit[52],55,"ATK")).ljust(8))
-        temp+=("|")
-        #Max 100%
-        temp+=(str(int(unit[9])+hipostats(unit[52],100,"ATK")).ljust(8))
-        temp+=("\n")
-        
-    elif eza==True:
-        #Max lvl
-        temp+=(str(ezastat(unit[8],unit[9])).ljust(8))
-        temp+=("|")
-        #Max 55%
-        temp+=(str(int(ezastat(unit[8],unit[9]))+hipostats(unit[52],55,"ATK")).ljust(8))
-        temp+=("|")
-        #Max 100%
-        temp+=(str(int(ezastat(unit[8],unit[9]))+hipostats(unit[52],100,"ATK")).ljust(8))
-        temp+=("\n")
-
-    #DEF
-    temp+=("DEF     |")
-    if eza==False:
-        #base 
-        temp+=(unit[10].ljust(8))
-        temp+=("|")
-        #Max lvl
-        temp+=(unit[11].ljust(8))
-        temp+=("|")
-        #Max 55%
-        temp+=(str(int(unit[11])+hipostats(unit[52],55,"DEF")).ljust(8))
-        temp+=("|")
-        #Max 100%
-        temp+=(str(int(unit[11])+hipostats(unit[52],100,"DEF")).ljust(8))
-        
-    elif eza==True:
-        #Max lvl
-        temp+=(str(ezastat(unit[10],unit[11])).ljust(8))
-        temp+=("|")
-        #Max 55%
-        temp+=(str(int(ezastat(unit[10],unit[11]))+hipostats(unit[52],55,"DEF")).ljust(8))
-        temp+=("|")
-        #Max 100%
-        temp+=(str(int(ezastat(unit[10],unit[11]))+hipostats(unit[52],100,"DEF")).ljust(8))
-        temp+=("\n")
-    
-    return(temp)

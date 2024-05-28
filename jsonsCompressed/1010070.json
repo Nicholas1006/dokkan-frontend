@@ -1,6 +1,6 @@
 {
     "ID": "1010070",
-    "Typing": null,
+    "Typing": "INT",
     "Class": "Super",
     "Name": "Super Saiyan 2 Gohan (Youth)",
     "Rarity": "lr",
@@ -37,8 +37,47 @@
         "Legendary Power"
     ],
     "Passive": {
-        "816": {
-            "ID": "816",
+        "2454": {
+            "ID": "2454",
+            "Timing": "Start of turn",
+            "DEF": 58,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1002454": {
+            "ID": "1002454",
+            "Timing": "On Super",
+            "DEF": 58,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When ki is 12 or more"
+        },
+        "2002454": {
+            "ID": "2002454",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 0,
+                "Cause": {
+                    "Cause": "Ki sphere obtained",
+                    "Type": "any"
+                }
+            },
+            "ATK": 18,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "3002454": {
+            "ID": "3002454",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -61,57 +100,76 @@
                 "+ or -": "+"
             },
             "Length": "1"
-        },
-        "1000816": {
-            "ID": "1000816",
-            "Timing": "Start of turn",
-            "Building Stat": {
-                "Min": 0,
-                "Max": 0,
-                "Cause": {
-                    "Cause": "Ki sphere obtained",
-                    "Type": "any"
-                }
-            },
-            "ATK": 18,
+        }
+    },
+    "Leader Skill": {
+        "3981": {
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "INT"
+                ]
+            },
+            "HP": 90,
+            "ATK": 90,
+            "DEF": 90
+        },
+        "3982": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
         }
     },
-    "Hidden Potential": {},
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 1700,
+            "ATK": 1700,
+            "DEF": 1700
+        }
+    },
     "Super Attack": {
-        "618": {
-            "superID": "618",
-            "superName": "Father-Son Kamehameha",
-            "superDescription": "Causes mega-colossal damage to enemy",
+        "3150": {
+            "superID": "3150",
+            "superName": "Father-Son Kamehameha (Extreme)",
+            "superDescription": "Raises DEF for 1 turn and \ncauses mega-colossal damage to enemy",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
-            "superCausality": "",
-            "superAimTarget": "0",
-            "superIsInactive": "0",
-            "SpecialBonus": {
-                "ID": "5",
-                "Type": "SA multiplier increase",
-                "Description": "Super Attack power will be increased even more!",
-                "Chance": "100",
-                "Duration": "1",
-                "Amount": "30"
-            },
-            "Multiplier": 540
-        },
-        "619": {
-            "superID": "619",
-            "superName": "Father-Son Kamehameha",
-            "superDescription": "Causes mega-colossal damage to enemy \nand greatly raises ATK for 1 turn",
-            "superMinKi": "18",
-            "superPriority": "0",
-            "superStyle": "Hyper",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -124,7 +182,7 @@
                 "Amount": "30"
             },
             "Multiplier": 540,
-            "619": {
+            "3150": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -133,7 +191,40 @@
                     "+ or -": "+"
                 },
                 "Target": "Self",
-                "ATK": "50"
+                "DEF": "30"
+            }
+        },
+        "3151": {
+            "superID": "3151",
+            "superName": "Father-Son Kamehameha (Extreme)",
+            "superDescription": "Greatly raises ATK and \nraises DEF for 1 turn and \ncauses mega-colossal damage to enemy",
+            "superMinKi": "18",
+            "superPriority": "0",
+            "superStyle": "Hyper",
+            "superMinLVL": "24",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "5",
+                "Type": "SA multiplier increase",
+                "Description": "Super Attack power will be increased even more!",
+                "Chance": "100",
+                "Duration": "1",
+                "Amount": "30"
+            },
+            "Multiplier": 540,
+            "3151": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "50",
+                "DEF": "30"
             }
         }
     },

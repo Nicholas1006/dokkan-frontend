@@ -1,6 +1,6 @@
 {
     "ID": "1010730",
-    "Typing": null,
+    "Typing": "INT",
     "Class": "Super",
     "Name": "Super Saiyan God Goku",
     "Rarity": "ur",
@@ -35,37 +35,174 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "884": {
-            "ID": "884",
+        "3401": {
+            "ID": "3401",
             "Timing": "Start of turn",
-            "ATK": 80,
-            "DEF": 80,
+            "ATK": 180,
+            "DEF": 180,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1003401": {
+            "ID": "1003401",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "0"
+            },
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When HP is 50% or more"
+        },
+        "2003401": {
+            "ID": "2003401",
+            "Timing": "Attacking the enemy",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 100,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "ATK": 20,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99"
+        },
+        "3003401": {
+            "ID": "3003401",
+            "Timing": "Attacking the enemy",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 100,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "DEF": 20,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99"
+        },
+        "4003401": {
+            "ID": "4003401",
+            "Effective against all": true,
+            "Timing": "Start of turn",
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
-            "Condition": "When HP is 30% or more"
+            "Condition": "Starting from the turn in which the character performs their 3rd attack in battle"
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "4301": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 2
+        },
+        "4302": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Typing": "INT"
+            },
+            "ATK": 50,
+            "DEF": 50
+        },
+        "4303": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Typing": "STR"
+            },
+            "ATK": 50,
+            "DEF": 50
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 1700,
+            "ATK": 1700,
+            "DEF": 1700
+        }
+    },
     "Super Attack": {
-        "680": {
-            "superID": "680",
-            "superName": "Limitbreaker Kamehameha",
-            "superDescription": "Causes supreme damage to enemy \nand lowers DEF",
+        "4583": {
+            "superID": "4583",
+            "superName": "Limitbreaker Kamehameha (Extreme)",
+            "superDescription": "Greatly raises DEF for 1 turn, \ncauses supreme damage to enemy \nand lowers DEF",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "680": {
+            "Multiplier": 530,
+            "4583": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "50"
+            },
+            "1004583": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",

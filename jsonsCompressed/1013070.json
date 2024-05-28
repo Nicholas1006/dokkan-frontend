@@ -1,6 +1,6 @@
 {
     "ID": "1013070",
-    "Typing": null,
+    "Typing": "TEQ",
     "Class": "Extreme",
     "Name": "Guldo",
     "Rarity": "ur",
@@ -25,8 +25,31 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "1111": {
-            "ID": "1111",
+        "2554": {
+            "ID": "2554",
+            "Timing": "Start of turn",
+            "ATK": 80,
+            "DEF": 80,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1002554": {
+            "ID": "1002554",
+            "Timing": "On Super",
+            "ATK": 40,
+            "DEF": 40,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When ki is 12 or more"
+        },
+        "2002554": {
+            "ID": "2002554",
             "Timing": "Attacking the enemy",
             "ATK": 20,
             "DEF": 20,
@@ -38,18 +61,151 @@
                 "+ or -": "-"
             },
             "Length": "2"
+        },
+        "3002554": {
+            "ID": "3002554",
+            "Timing": "Attacking the enemy",
+            "Status": [
+                "Seal"
+            ],
+            "Target": {
+                "Target": "Enemy"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "2"
+        },
+        "4002554": {
+            "ID": "4002554",
+            "Timing": "Start of turn",
+            "ATK": 10,
+            "DEF": 10,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there are 1 or more Ginyu Force category allies on the team "
+        },
+        "5002554": {
+            "ID": "5002554",
+            "Timing": "Start of turn",
+            "ATK": 10,
+            "DEF": 10,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there are 2 or more Ginyu Force category allies on the team "
+        },
+        "6002554": {
+            "ID": "6002554",
+            "Timing": "Start of turn",
+            "ATK": 10,
+            "DEF": 10,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there are 3 or more Ginyu Force category allies on the team "
+        },
+        "7002554": {
+            "ID": "7002554",
+            "Timing": "Start of turn",
+            "ATK": 10,
+            "DEF": 10,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there are 4 or more Ginyu Force category allies on the team "
+        },
+        "8002554": {
+            "ID": "8002554",
+            "Timing": "Start of turn",
+            "ATK": 10,
+            "DEF": 10,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there are 5 or more Ginyu Force category allies on the team "
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "5436": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "TEQ"
+                ]
+            },
+            "HP": 30,
+            "ATK": 30,
+            "DEF": 30
+        },
+        "5437": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 2
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 1600,
+            "ATK": 1600,
+            "DEF": 1600
+        },
+        "1": {
+            "HP": 240,
+            "ATK": 240,
+            "DEF": 240
+        },
+        "2": {
+            "HP": 248,
+            "ATK": 560,
+            "DEF": 248
+        },
+        "3": {
+            "HP": 552,
+            "ATK": 240,
+            "DEF": 552
+        },
+        "4": {
+            "HP": 1360,
+            "ATK": 1360,
+            "DEF": 1360
+        }
+    },
     "Super Attack": {
-        "1046": {
-            "superID": "1046",
-            "superName": "Psycho Javelin",
-            "superDescription": "Causes supreme damage with \na medium chance to stun the enemy",
+        "3299": {
+            "superID": "3299",
+            "superName": "Psycho Javelin (Extreme)",
+            "superDescription": "Greatly raises DEF for 1 turn and \ncauses supreme damage with \na high chance of stunning the enemy",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -62,9 +218,20 @@
                 "Amount": "3"
             },
             "Multiplier": 430,
-            "1046": {
+            "3299": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "50"
+            },
+            "1003299": {
                 "Type": "ExtraEfficacySpecial",
-                "Chance": "30",
+                "Chance": "50",
                 "Duration": "2",
                 "Buff": {
                     "Type": "Raw stats",

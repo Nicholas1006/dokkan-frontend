@@ -1,6 +1,6 @@
 {
     "ID": "1013030",
-    "Typing": null,
+    "Typing": "STR",
     "Class": "Extreme",
     "Name": "Jeice",
     "Rarity": "ur",
@@ -25,15 +25,58 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "1107": {
-            "ID": "1107",
+        "2585": {
+            "ID": "2585",
             "Timing": "Start of turn",
-            "Ki": 2,
+            "ATK": 90,
+            "DEF": 90,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1002585": {
+            "ID": "1002585",
+            "Timing": "Attacking the enemy",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 60,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "ATK": 20,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99"
+        },
+        "2002585": {
+            "ID": "2002585",
+            "Timing": "Attacking the enemy",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 60,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "DEF": 20,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99"
+        },
+        "3002585": {
+            "ID": "3002585",
+            "Timing": "Start of turn",
+            "Ki": 3,
             "Target": {
                 "Target": "Allies",
-                "Class": [
-                    "Extreme"
-                ]
+                "Class": "Extreme"
             },
             "Buff": {
                 "Type": "Raw stats",
@@ -41,10 +84,10 @@
             },
             "Length": "1"
         },
-        "1001107": {
-            "ID": "1001107",
+        "4002585": {
+            "ID": "4002585",
             "Timing": "Start of turn",
-            "ATK": 20,
+            "ATK": 30,
             "Target": {
                 "Target": "Allies",
                 "Class": "Extreme"
@@ -55,8 +98,8 @@
             },
             "Length": "1"
         },
-        "2001107": {
-            "ID": "2001107",
+        "5002585": {
+            "ID": "5002585",
             "Forsee Super Attack": true,
             "Timing": "Start of turn",
             "Target": {
@@ -67,18 +110,91 @@
                 "+ or -": "+"
             },
             "Length": "1"
+        },
+        "6002585": {
+            "ID": "6002585",
+            "Timing": "Start of turn",
+            "DEF": 40,
+            "Target": {
+                "Category": "Ginyu Force",
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there are 2 or more Ginyu Force category allies on the team "
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "5416": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "STR"
+                ]
+            },
+            "HP": 30,
+            "ATK": 30,
+            "DEF": 30
+        },
+        "5417": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 2
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 1600,
+            "ATK": 1600,
+            "DEF": 1600
+        },
+        "1": {
+            "HP": 240,
+            "ATK": 240,
+            "DEF": 240
+        },
+        "2": {
+            "HP": 248,
+            "ATK": 560,
+            "DEF": 248
+        },
+        "3": {
+            "HP": 552,
+            "ATK": 240,
+            "DEF": 552
+        },
+        "4": {
+            "HP": 1360,
+            "ATK": 1360,
+            "DEF": 1360
+        }
+    },
     "Super Attack": {
-        "1042": {
-            "superID": "1042",
-            "superName": "Crusher Ball",
-            "superDescription": "Causes supreme damage to enemy and \nraises allies' ATK by 20% for 1 turn",
+        "3321": {
+            "superID": "3321",
+            "superName": "Crusher Ball (Extreme)",
+            "superDescription": "Raises DEF for 1 turn and \ncauses supreme damage to enemy; \nraises allies' ATK & DEF by 20% for 1 turn",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -91,7 +207,18 @@
                 "Amount": "20"
             },
             "Multiplier": 410,
-            "1042": {
+            "3321": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "30"
+            },
+            "1003321": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -100,7 +227,8 @@
                     "+ or -": "+"
                 },
                 "Target": "Allies",
-                "ATK": "20"
+                "ATK": "20",
+                "DEF": "20"
             }
         }
     },

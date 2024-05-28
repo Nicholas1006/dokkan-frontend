@@ -1,6 +1,6 @@
 {
     "ID": "1014990",
-    "Typing": null,
+    "Typing": "INT",
     "Class": "Extreme",
     "Name": "Vegeta",
     "Rarity": "ur",
@@ -27,15 +27,13 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "1923": {
-            "ID": "1923",
+        "4010": {
+            "ID": "4010",
             "Timing": "Start of turn",
             "Ki": 3,
             "Target": {
                 "Target": "Allies",
-                "Type": [
-                    "INT"
-                ]
+                "Type": "INT"
             },
             "Buff": {
                 "Type": "Raw stats",
@@ -43,8 +41,23 @@
             },
             "Length": "1"
         },
-        "1001923": {
-            "ID": "1001923",
+        "1004010": {
+            "ID": "1004010",
+            "Timing": "Start of turn",
+            "ATK": 10,
+            "DEF": 10,
+            "Target": {
+                "Target": "Allies",
+                "Type": "INT"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2004010": {
+            "ID": "2004010",
             "Timing": "Start of turn",
             "ATK": 50,
             "DEF": 50,
@@ -63,8 +76,8 @@
             },
             "Length": "1"
         },
-        "2001923": {
-            "ID": "2001923",
+        "3004010": {
+            "ID": "3004010",
             "Timing": "Start of turn",
             "Ki change": {
                 "From": [
@@ -83,8 +96,62 @@
             },
             "Length": "1"
         },
-        "3001923": {
-            "ID": "3001923",
+        "4004010": {
+            "ID": "4004010",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 0,
+                "Cause": {
+                    "Cause": "Ki sphere obtained",
+                    "Type": "PHY"
+                }
+            },
+            "Heals": 10,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "5004010": {
+            "ID": "5004010",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 0,
+                "Cause": {
+                    "Cause": "Ki sphere obtained",
+                    "Type": "TEQ"
+                }
+            },
+            "Heals": 20,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "6004010": {
+            "ID": "6004010",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 0,
+                "Cause": {
+                    "Cause": "Ki sphere obtained",
+                    "Type": "STR"
+                }
+            },
+            "Heals": 20,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "7004010": {
+            "ID": "7004010",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -94,33 +161,127 @@
                     "Type": "any"
                 }
             },
-            "ATK": 20,
-            "DEF": 20,
+            "ATK": 50,
+            "DEF": 50,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
+        },
+        "8004010": {
+            "ID": "8004010",
+            "Timing": "Start of turn",
+            "Ki change": {
+                "From": [
+                    "AGL",
+                    "TEQ",
+                    "INT",
+                    "STR",
+                    "PHY",
+                    "Rainbow"
+                ],
+                "To": "INT"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When HP is 50% or less and Where there is an extreme class enemy",
+            "Once only": true
+        },
+        "9004010": {
+            "ID": "9004010",
+            "Timing": "Start of turn",
+            "Guard": true,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "4",
+            "Condition": "Where there is an extreme class enemy",
+            "Once only": true
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "7676": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [
+                    "Extreme"
+                ],
+                "Typing": [
+                    "INT"
+                ]
+            },
+            "HP": 120,
+            "ATK": 120,
+            "DEF": 120
+        },
+        "7677": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 4
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 1700,
+            "ATK": 1700,
+            "DEF": 1700
+        }
+    },
     "Super Attack": {
-        "2088": {
-            "superID": "2088",
-            "superName": "Galick Eraser",
-            "superDescription": "Raises ATK and \ncauses supreme damage with \na medium chance of stunning the enemy",
+        "5219": {
+            "superID": "5219",
+            "superName": "Galick Eraser (Extreme)",
+            "superDescription": "Greatly raises ATK and \ncauses supreme damage with \na high chance of stunning the enemy",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 400,
-            "2088": {
+            "Multiplier": 480,
+            "5219": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "99",
@@ -129,11 +290,11 @@
                     "+ or -": "+"
                 },
                 "Target": "Self",
-                "ATK": "30"
+                "ATK": "50"
             },
-            "1002088": {
+            "1005219": {
                 "Type": "ExtraEfficacySpecial",
-                "Chance": "30",
+                "Chance": "50",
                 "Duration": "2",
                 "Buff": {
                     "Type": "Raw stats",

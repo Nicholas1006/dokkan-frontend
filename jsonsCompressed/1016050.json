@@ -1,6 +1,6 @@
 {
     "ID": "1016050",
-    "Typing": null,
+    "Typing": "STR",
     "Class": "Super",
     "Name": "Super Saiyan God Vegeta",
     "Rarity": "ur",
@@ -31,8 +31,8 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "1396": {
-            "ID": "1396",
+        "2757": {
+            "ID": "2757",
             "Timing": "Start of turn",
             "Ki": 3,
             "Buff": {
@@ -41,19 +41,19 @@
             },
             "Length": "1"
         },
-        "1001396": {
-            "ID": "1001396",
+        "1002757": {
+            "ID": "1002757",
             "Timing": "Start of turn",
-            "ATK": 100,
-            "DEF": 100,
+            "ATK": 150,
+            "DEF": 150,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "2001396": {
-            "ID": "2001396",
+        "2002757": {
+            "ID": "2002757",
             "Timing": "Start of turn",
             "Guard": true,
             "Buff": {
@@ -63,8 +63,34 @@
             "Chance": "50",
             "Length": "1"
         },
-        "3001396": {
-            "ID": "3001396",
+        "3002757": {
+            "ID": "3002757",
+            "Timing": "Hit recieved",
+            "ATK": 77,
+            "DEF": 77,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "3",
+            "Condition": "When attack recieved "
+        },
+        "4002757": {
+            "ID": "4002757",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "100"
+            },
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Chance": "30",
+            "Length": "1"
+        },
+        "5002757": {
+            "ID": "5002757",
             "Timing": "Attacking the enemy",
             "Status": [
                 "Stun"
@@ -76,29 +102,89 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Chance": "50",
+            "Chance": "70",
             "Length": "1",
-            "Condition": "When there are 1 or more Movie Bosses category enemies "
+            "Condition": "When there are 1 or more Movie Bosses category enemies  or When there are 1 or more Pure Saiyans category enemies "
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "6561": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [
+                    "Super"
+                ],
+                "Typing": [
+                    "STR"
+                ]
+            },
+            "HP": 100,
+            "ATK": 100,
+            "DEF": 100
+        },
+        "6562": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 1700,
+            "ATK": 2100,
+            "DEF": 1300
+        }
+    },
     "Super Attack": {
-        "1570": {
-            "superID": "1570",
-            "superName": "Big Bang Attack",
-            "superDescription": "Greatly raises ATK and \ncauses supreme damage to enemy",
+        "3654": {
+            "superID": "3654",
+            "superName": "Big Bang Attack (Extreme)",
+            "superDescription": "Greatly raises ATK, \ncauses supreme damage to enemy \nand greatly lowers DEF",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 380,
-            "1570": {
+            "Multiplier": 480,
+            "3654": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "99",
@@ -108,6 +194,17 @@
                 },
                 "Target": "Self",
                 "ATK": "50"
+            },
+            "1003654": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "3",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "-"
+                },
+                "Target": "Enemy",
+                "DEF": "50"
             }
         }
     },

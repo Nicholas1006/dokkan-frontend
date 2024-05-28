@@ -1,6 +1,6 @@
 {
     "ID": "1013300",
-    "Typing": null,
+    "Typing": "PHY",
     "Class": "Extreme",
     "Name": "Buu (Super)",
     "Rarity": "ur",
@@ -28,8 +28,86 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "1205": {
-            "ID": "1205",
+        "3874": {
+            "ID": "3874",
+            "Timing": "Start of turn",
+            "Ki": 2,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1003874": {
+            "ID": "1003874",
+            "Timing": "Start of turn",
+            "ATK": 150,
+            "DEF": 150,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2003874": {
+            "ID": "2003874",
+            "Timing": "Hit recieved",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 75,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "ATK": 15,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Condition": "When attack recieved "
+        },
+        "3003874": {
+            "ID": "3003874",
+            "Timing": "Hit recieved",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 75,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "DEF": 15,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Condition": "When attack recieved "
+        },
+        "4003874": {
+            "ID": "4003874",
+            "Timing": "Start of turn",
+            "Ki change": {
+                "From": [
+                    "STR",
+                    "INT",
+                    "TEQ",
+                    "AGL"
+                ],
+                "To": [
+                    "Rainbow"
+                ]
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Condition": "Starting from the turn in which the character recieves their 5th attack in battle"
+        },
+        "5003874": {
+            "ID": "5003874",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -47,8 +125,8 @@
             },
             "Length": "1"
         },
-        "1001205": {
-            "ID": "1001205",
+        "6003874": {
+            "ID": "6003874",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -65,7 +143,7 @@
                     ]
                 }
             },
-            "Heals": 5000,
+            "Heals": 10000,
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -73,24 +151,93 @@
             "Length": "1"
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "5821": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "PHY"
+                ]
+            },
+            "HP": 70,
+            "ATK": 70,
+            "DEF": 70
+        },
+        "5822": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 2
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 1200,
+            "ATK": 1200,
+            "DEF": 1200
+        },
+        "1": {
+            "HP": 180,
+            "ATK": 180,
+            "DEF": 180
+        },
+        "2": {
+            "HP": 186,
+            "ATK": 420,
+            "DEF": 186
+        },
+        "3": {
+            "HP": 414,
+            "ATK": 180,
+            "DEF": 414
+        },
+        "4": {
+            "HP": 1260,
+            "ATK": 1020,
+            "DEF": 780
+        }
+    },
     "Super Attack": {
-        "1273": {
-            "superID": "1273",
-            "superName": "Assault Rain",
-            "superDescription": "Causes supreme damage to enemy and \nlowers ATK",
+        "4896": {
+            "superID": "4896",
+            "superName": "Assault Rain (Extreme)",
+            "superDescription": "Raises DEF for 1 turn, \ncauses supreme damage to enemy \nand lowers ATK",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "1273": {
+            "Multiplier": 530,
+            "4896": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "30"
+            },
+            "1004896": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",

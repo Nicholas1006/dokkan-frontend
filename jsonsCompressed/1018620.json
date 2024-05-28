@@ -1,6 +1,6 @@
 {
     "ID": "1018620",
-    "Typing": null,
+    "Typing": "STR",
     "Class": "Super",
     "Name": "Gogeta",
     "Rarity": "lr",
@@ -31,56 +31,81 @@
         "Legendary Power"
     ],
     "Passive": {
-        "2025": {
-            "ID": "2025",
+        "3372": {
+            "ID": "3372",
             "Timing": "Start of turn",
-            "ATK": 70,
-            "DEF": 70,
+            "ATK": 140,
+            "DEF": 140,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1002025": {
-            "ID": "1002025",
+        "1003372": {
+            "ID": "1003372",
             "Timing": "Attacking",
-            "Ki": 3,
+            "Ki": 4,
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "2002025": {
-            "ID": "2002025",
+        "2003372": {
+            "ID": "2003372",
+            "Timing": "On Super",
+            "DEF": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "3003372": {
+            "ID": "3003372",
             "Additional attack": {
                 "Activated": true,
-                "Chance of super": "30"
+                "Chance of super": "70"
             },
             "Timing": "Attacking",
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": "As the 1st attacker in the turn or As the 2nd attacker in the turn"
         },
-        "3002025": {
-            "ID": "3002025",
-            "Dodge chance": 50,
+        "4003372": {
+            "ID": "4003372",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "100"
+            },
+            "Timing": "Attacking",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "As the 3rd attacker in the turn"
+        },
+        "5003372": {
+            "ID": "5003372",
+            "Dodge chance": 70,
             "Timing": "Attacking",
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
-            "Condition": ""
+            "Condition": "As the 3rd attacker in the turn"
         },
-        "4002025": {
-            "ID": "4002025",
+        "6003372": {
+            "ID": "6003372",
             "Transformation": {
                 "Activated": true,
-                "Unit": "4017970",
+                "Unit": "4017971",
                 "Giant/Rage": false,
                 "Min Turns": null,
                 "Max Turns": null,
@@ -95,16 +120,108 @@
             "First turn to activate": 3
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "8121": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Final Trump Card"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "HP": 150,
+            "ATK": 150,
+            "DEF": 150
+        },
+        "8122": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Final Trump Card"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        },
+        "8123": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Fusion"
+                ],
+                "Excluded Category": [
+                    "Final Trump Card"
+                ],
+                "Allies or enemies": "Allies"
+            },
+            "HP": 150,
+            "ATK": 150,
+            "DEF": 150
+        },
+        "8124": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Fusion"
+                ],
+                "Excluded Category": [
+                    "Final Trump Card"
+                ],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 1700,
+            "ATK": 2100,
+            "DEF": 1300
+        }
+    },
     "Super Attack": {
-        "2212": {
-            "superID": "2212",
-            "superName": "Meteor Attack",
-            "superDescription": "Raises ATK and causes \ncolossal damage to enemy",
+        "4512": {
+            "superID": "4512",
+            "superName": "Meteor Attack (Extreme)",
+            "superDescription": "Raises ATK, raises DEF for 1 turn and \ncauses colossal damage to enemy",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -117,7 +234,7 @@
                 "Amount": "30"
             },
             "Multiplier": 365,
-            "2212": {
+            "4512": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "99",
@@ -127,16 +244,27 @@
                 },
                 "Target": "Self",
                 "ATK": "30"
+            },
+            "1004512": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "30"
             }
         },
-        "2213": {
-            "superID": "2213",
-            "superName": "Kamehameha",
-            "superDescription": "Raises ATK and causes \nmega-colossal damage to enemy",
+        "4513": {
+            "superID": "4513",
+            "superName": "Kamehameha (Extreme)",
+            "superDescription": "Raises ATK, greatly raises DEF for 1 turn and \ncauses mega-colossal damage to enemy",
             "superMinKi": "18",
             "superPriority": "0",
             "superStyle": "Hyper",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -149,7 +277,7 @@
                 "Amount": "30"
             },
             "Multiplier": 510,
-            "2213": {
+            "4513": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "99",
@@ -159,6 +287,17 @@
                 },
                 "Target": "Self",
                 "ATK": "30"
+            },
+            "1004513": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "50"
             }
         }
     },

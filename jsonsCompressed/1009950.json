@@ -1,6 +1,6 @@
 {
     "ID": "1009950",
-    "Typing": null,
+    "Typing": "STR",
     "Class": "Super",
     "Name": "Super Saiyan Goku (GT)",
     "Rarity": "ur",
@@ -31,37 +31,207 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "897": {
-            "ID": "897",
-            "Timing": "after all ki collected",
-            "ATK": 9000,
-            "DEF": 9000,
+        "3478": {
+            "ID": "3478",
+            "Timing": "Start of turn",
+            "ATK": 150,
+            "DEF": 150,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1003478": {
+            "ID": "1003478",
+            "Timing": "Start of turn",
+            "ATK": 100,
+            "DEF": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "5",
+            "Once only": true
+        },
+        "2003478": {
+            "ID": "2003478",
+            "Timing": "On Super",
+            "ATK": 50,
+            "DEF": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When ki is 12 or more"
+        },
+        "3003478": {
+            "ID": "3003478",
+            "Dodge chance": 30,
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "4003478": {
+            "ID": "4003478",
+            "Timing": "Start of turn",
+            "Ki": 3,
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1",
-            "Condition": "When ki is 7 or more"
+            "Condition": "When there are 2 or more Space-Traveling Warriors category allies on the same turn "
+        },
+        "5003478": {
+            "ID": "5003478",
+            "Dodge chance": 30,
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there are 2 or more Space-Traveling Warriors category allies on the same turn "
+        },
+        "6003478": {
+            "ID": "6003478",
+            "Timing": "Hit recieved",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 80,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "ATK": 20,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Condition": "After evading an attack"
+        },
+        "7003478": {
+            "ID": "7003478",
+            "Timing": "Hit recieved",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 40,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "Crit Chance": 10,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Condition": "After evading an attack"
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "4386": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Typing": "STR"
+            },
+            "ATK": 50,
+            "DEF": 50
+        },
+        "4387": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Typing": "TEQ"
+            },
+            "ATK": 50,
+            "DEF": 50
+        },
+        "4388": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 2
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 1200,
+            "ATK": 1200,
+            "DEF": 1200
+        },
+        "1": {
+            "HP": 180,
+            "ATK": 180,
+            "DEF": 180
+        },
+        "2": {
+            "HP": 186,
+            "ATK": 420,
+            "DEF": 186
+        },
+        "3": {
+            "HP": 414,
+            "ATK": 180,
+            "DEF": 414
+        },
+        "4": {
+            "HP": 1020,
+            "ATK": 1260,
+            "DEF": 780
+        }
+    },
     "Super Attack": {
-        "699": {
-            "superID": "699",
-            "superName": "Kamehameha",
-            "superDescription": "Causes supreme damage; \nallies' ATK +25% for 1 turn",
+        "4699": {
+            "superID": "4699",
+            "superName": "Kamehameha (Extreme)",
+            "superDescription": "Raises DEF for 1 turn and \ncauses supreme damage to enemy; \nraises allies' ATK by 30% for 1 turn",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 405,
-            "699": {
+            "Multiplier": 500,
+            "4699": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "30"
+            },
+            "1004699": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -70,7 +240,7 @@
                     "+ or -": "+"
                 },
                 "Target": "Allies",
-                "ATK": "25"
+                "ATK": "30"
             }
         }
     },

@@ -1,6 +1,6 @@
 {
     "ID": "1005800",
-    "Typing": null,
+    "Typing": "INT",
     "Class": "Extreme",
     "Name": "Hell Fighter #17",
     "Rarity": "ur",
@@ -23,49 +23,158 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "847": {
-            "ID": "847",
+        "2675": {
+            "ID": "2675",
             "Timing": "Start of turn",
-            "ATK": 90,
+            "ATK": 120,
+            "DEF": 120,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1002675": {
+            "ID": "1002675",
+            "Timing": "On Super",
+            "DEF": 120,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
-            "Condition": "When facing less than 2 enemies"
+            "Condition": "When ki is 12 or more"
         },
-        "1000847": {
-            "ID": "1000847",
+        "2002675": {
+            "ID": "2002675",
             "Timing": "Start of turn",
             "Ki": 2,
+            "Target": {
+                "Target": "Allies"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
+            "Length": "1"
+        },
+        "3002675": {
+            "ID": "3002675",
+            "Timing": "Start of turn",
+            "ATK": 25,
+            "DEF": 25,
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "4002675": {
+            "ID": "4002675",
+            "Timing": "Start of turn",
+            "ATK": 170,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
             "Length": "1",
-            "Condition": "When facing less than 2 enemies"
+            "Condition": "When there is an ally attacking on the same turn whose name includes "
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "4136": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "PHY",
+                    "INT"
+                ]
+            },
+            "HP": 30,
+            "ATK": 30,
+            "DEF": 30
+        },
+        "4137": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 1700,
+            "ATK": 1700,
+            "DEF": 1700
+        }
+    },
     "Super Attack": {
-        "651": {
-            "superID": "651",
-            "superName": "Hell Breaker",
-            "superDescription": "Causes supreme damage \nwith a rare chance to stun the enemy",
+        "3498": {
+            "superID": "3498",
+            "superName": "Hell Breaker (Extreme)",
+            "superDescription": "Raises ATK & DEF for 1 turn and \ncauses supreme damage with \na medium chance of stunning the enemy",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "651": {
+            "Multiplier": 530,
+            "3498": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "30",
+                "DEF": "30"
+            },
+            "1003498": {
                 "Type": "ExtraEfficacySpecial",
-                "Chance": "20",
+                "Chance": "30",
                 "Duration": "2",
                 "Buff": {
                     "Type": "Raw stats",

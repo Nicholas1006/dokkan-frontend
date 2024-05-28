@@ -1,6 +1,6 @@
 {
     "ID": "1019220",
-    "Typing": null,
+    "Typing": "PHY",
     "Class": "Super",
     "Name": "Shugesh",
     "Rarity": "ur",
@@ -25,19 +25,19 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "2056": {
-            "ID": "2056",
+        "2793": {
+            "ID": "2793",
             "Timing": "Start of turn",
-            "ATK": 90,
-            "DEF": 90,
+            "ATK": 150,
+            "DEF": 150,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1002056": {
-            "ID": "1002056",
+        "1002793": {
+            "ID": "1002793",
             "Timing": "On Super",
             "Crit Chance": 100,
             "Buff": {
@@ -45,10 +45,10 @@
                 "+ or -": "+"
             },
             "Length": "1",
-            "Condition": ""
+            "Condition": "When the target enemy is stunned"
         },
-        "2002056": {
-            "ID": "2002056",
+        "2002793": {
+            "ID": "2002793",
             "Timing": "On Super",
             "Status": [
                 "Stun"
@@ -61,19 +61,111 @@
                 "+ or -": "+"
             },
             "Length": "1",
-            "Condition": ""
+            "Condition": "When the target enemy is sealed"
+        },
+        "3002793": {
+            "ID": "3002793",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "50"
+            },
+            "Timing": "On Super",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When the target enemy is in \"ATK down\" status or When the target enemy is in \"DEF down\" status"
+        },
+        "4002793": {
+            "ID": "4002793",
+            "Timing": "Start of turn",
+            "ATK": 50,
+            "DEF": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there are 2 or more Team Bardock category allies on the same turn "
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "8261": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Low-Class Warrior"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "PHY",
+                    "STR",
+                    "INT",
+                    "TEQ",
+                    "AGL"
+                ]
+            },
+            "HP": 50,
+            "ATK": 50,
+            "DEF": 50
+        },
+        "8262": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Low-Class Warrior"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 2
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 1600,
+            "ATK": 1600,
+            "DEF": 1600
+        },
+        "1": {
+            "HP": 240,
+            "ATK": 240,
+            "DEF": 240
+        },
+        "2": {
+            "HP": 248,
+            "ATK": 560,
+            "DEF": 248
+        },
+        "3": {
+            "HP": 552,
+            "ATK": 240,
+            "DEF": 552
+        },
+        "4": {
+            "HP": 1360,
+            "ATK": 1360,
+            "DEF": 1360
+        }
+    },
     "Super Attack": {
-        "2309": {
-            "superID": "2309",
-            "superName": "Wild Bomber",
-            "superDescription": "Raises DEF and causes \nsupreme damage to enemy",
+        "3751": {
+            "superID": "3751",
+            "superName": "Wild Bomber (Extreme)",
+            "superDescription": "Raises DEF, \ngreatly raises ATK for 1 turn and \ncauses supreme damage to enemy",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -86,7 +178,7 @@
                 "Amount": "20"
             },
             "Multiplier": 430,
-            "2309": {
+            "3751": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "99",
@@ -96,6 +188,17 @@
                 },
                 "Target": "Self",
                 "DEF": "30"
+            },
+            "1003751": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "50"
             }
         }
     },

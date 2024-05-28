@@ -1,6 +1,6 @@
 {
     "ID": "1010980",
-    "Typing": null,
+    "Typing": "INT",
     "Class": "Extreme",
     "Name": "Dabura",
     "Rarity": "ur",
@@ -24,8 +24,61 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "963": {
-            "ID": "963",
+        "3023": {
+            "ID": "3023",
+            "Timing": "On Super",
+            "ATK": 120,
+            "DEF": 120,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When ki is 12 or more"
+        },
+        "1003023": {
+            "ID": "1003023",
+            "Timing": "When ki spheres collected",
+            "ATK": 30,
+            "DEF": 30,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "With 3 or more Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres obtained"
+        },
+        "2003023": {
+            "ID": "2003023",
+            "Timing": "Attacking the enemy",
+            "Status": [
+                "Stun"
+            ],
+            "Target": {
+                "Target": "Enemy"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Chance": "70",
+            "Length": "1",
+            "Condition": "With 3 or more Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres obtained"
+        },
+        "3003023": {
+            "ID": "3003023",
+            "Timing": "When ki spheres collected",
+            "ATK": 50,
+            "DEF": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "With 5 or more Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres obtained"
+        },
+        "4003023": {
+            "ID": "4003023",
             "Timing": "Start of turn",
             "Ki": 2,
             "Target": {
@@ -38,8 +91,8 @@
             },
             "Length": "1"
         },
-        "1000963": {
-            "ID": "1000963",
+        "5003023": {
+            "ID": "5003023",
             "Timing": "Start of turn",
             "ATK": 30,
             "DEF": 30,
@@ -51,20 +104,93 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Chance": "70",
             "Length": "1"
+        },
+        "6003023": {
+            "ID": "6003023",
+            "Timing": "When ki spheres collected",
+            "ATK": 10,
+            "DEF": 10,
+            "Target": {
+                "Target": "Allies",
+                "Type": "INT"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "With 3 or more INT Ki Spheres obtained"
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "4676": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "INT"
+                ]
+            },
+            "HP": 70,
+            "ATK": 70,
+            "DEF": 70
+        },
+        "4677": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 1200,
+            "ATK": 1200,
+            "DEF": 1200
+        },
+        "1": {
+            "HP": 180,
+            "ATK": 180,
+            "DEF": 180
+        },
+        "2": {
+            "HP": 186,
+            "ATK": 420,
+            "DEF": 186
+        },
+        "3": {
+            "HP": 414,
+            "ATK": 180,
+            "DEF": 414
+        },
+        "4": {
+            "HP": 1020,
+            "ATK": 1020,
+            "DEF": 1020
+        }
+    },
     "Super Attack": {
-        "778": {
-            "superID": "778",
-            "superName": "Evil Impulse",
-            "superDescription": "Causes supreme damage to enemy",
+        "4177": {
+            "superID": "4177",
+            "superName": "Evil Impulse (Extreme)",
+            "superDescription": "Raises DEF for 1 turn and \ncauses supreme damage to enemy",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -76,7 +202,18 @@
                 "Duration": "0",
                 "Amount": "3"
             },
-            "Multiplier": 430
+            "Multiplier": 430,
+            "4177": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "30"
+            }
         }
     },
     "Active Skill": {},

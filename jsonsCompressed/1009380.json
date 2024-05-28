@@ -1,6 +1,6 @@
 {
     "ID": "1009380",
-    "Typing": null,
+    "Typing": "STR",
     "Class": "Extreme",
     "Name": "Frieza (1st Form)",
     "Rarity": "lr",
@@ -30,37 +30,112 @@
         "Legendary Power"
     ],
     "Passive": {
-        "757": {
-            "ID": "757",
+        "2280": {
+            "ID": "2280",
             "Timing": "Start of turn",
-            "ATK": 13000,
+            "ATK": 50,
+            "DEF": 50,
             "Buff": {
-                "Type": "Raw stats",
+                "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1000757": {
-            "ID": "1000757",
-            "Timing": "Start of turn",
-            "DEF": 5000,
+        "1002280": {
+            "ID": "1002280",
+            "Timing": "Attacking",
+            "Ki": 3,
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": "As the 1st attacker in the turn or As the 3rd attacker in the turn"
+        },
+        "2002280": {
+            "ID": "2002280",
+            "Timing": "On Super",
+            "DEF": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "As the 1st attacker in the turn or As the 3rd attacker in the turn"
+        },
+        "3002280": {
+            "ID": "3002280",
+            "Timing": "On Super",
+            "ATK": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When ki is 18 or more"
+        },
+        "4002280": {
+            "ID": "4002280",
+            "Timing": "Attacking",
+            "Ki": 3,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When the target enemy is 32 or more categories"
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "3686": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "ATK": 7000
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 1700,
+            "ATK": 2100,
+            "DEF": 1300
+        }
+    },
     "Super Attack": {
-        "548": {
-            "superID": "548",
-            "superName": "Death Ball",
-            "superDescription": "Causes colossal damage to enemy",
+        "2795": {
+            "superID": "2795",
+            "superName": "Death Ball (Extreme)",
+            "superDescription": "Greatly raises ATK & DEF for 1 turn \nand causes colossal damage to enemy",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -72,16 +147,28 @@
                 "Duration": "1",
                 "Amount": "30"
             },
-            "Multiplier": 395
+            "Multiplier": 395,
+            "2795": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "50",
+                "DEF": "50"
+            }
         },
-        "549": {
-            "superID": "549",
-            "superName": "Imperial Conquest",
-            "superDescription": "Causes mega-colossal damage to enemy \nand lowers ATK & DEF",
+        "2796": {
+            "superID": "2796",
+            "superName": "Imperial Conquest (Extreme)",
+            "superDescription": "Causes mega-colossal damage to enemy \nand greatly lowers ATK & DEF",
             "superMinKi": "18",
             "superPriority": "0",
             "superStyle": "Hyper",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -94,7 +181,7 @@
                 "Amount": "30"
             },
             "Multiplier": 540,
-            "549": {
+            "2796": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",
@@ -103,8 +190,8 @@
                     "+ or -": "-"
                 },
                 "Target": "Enemy",
-                "ATK": "20",
-                "DEF": "20"
+                "ATK": "30",
+                "DEF": "30"
             }
         }
     },

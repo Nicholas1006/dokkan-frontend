@@ -1,6 +1,6 @@
 {
     "ID": "1009890",
-    "Typing": null,
+    "Typing": "AGL",
     "Class": "Super",
     "Name": "Super Saiyan 2 Vegeta",
     "Rarity": "ur",
@@ -34,8 +34,8 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "805": {
-            "ID": "805",
+        "1600": {
+            "ID": "1600",
             "Timing": "Start of turn",
             "ATK": 90,
             "DEF": 90,
@@ -43,27 +43,138 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1",
-            "Condition": "When HP is 80% or less"
+            "Length": "1"
+        },
+        "1001600": {
+            "ID": "1001600",
+            "Timing": "Hit recieved",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 60,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "DEF": 15,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Condition": "When attack recieved "
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "3941": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        },
+        "3942": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Typing": "AGL"
+            },
+            "HP": 30,
+            "ATK": 30
+        },
+        "3943": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Typing": "TEQ"
+            },
+            "HP": 30,
+            "ATK": 30
+        },
+        "3944": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Typing": "PHY"
+            },
+            "HP": 30,
+            "ATK": 30
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 1300,
+            "ATK": 1700,
+            "DEF": 2100
+        }
+    },
     "Super Attack": {
-        "610": {
-            "superID": "610",
-            "superName": "Final Impact",
-            "superDescription": "Causes supreme damage to enemy",
+        "1896": {
+            "superID": "1896",
+            "superName": "Final Impact (Extreme)",
+            "superDescription": "Causes supreme damage to enemy and \nraises ATK & DEF by 30% for 6 turns",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430
+            "Multiplier": 500,
+            "1896": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "6",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "30",
+                "DEF": "30"
+            }
         }
     },
     "Active Skill": {},

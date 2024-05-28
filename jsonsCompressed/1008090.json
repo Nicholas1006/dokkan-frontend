@@ -1,6 +1,6 @@
 {
     "ID": "1008090",
-    "Typing": null,
+    "Typing": "INT",
     "Class": "Extreme",
     "Name": "Majin Buu (Ultimate Gohan)",
     "Rarity": "ur",
@@ -29,33 +29,27 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "650": {
-            "ID": "650",
+        "1538": {
+            "ID": "1538",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
                 "Max": 0,
                 "Cause": {
                     "Cause": "Ki sphere obtained",
-                    "Type": [
-                        "Rainbow",
-                        "PHY",
-                        "STR",
-                        "INT",
-                        "TEQ",
-                        "AGL"
-                    ]
+                    "Type": "any"
                 }
             },
-            "ATK": 12,
+            "ATK": 17,
+            "DEF": 17,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1000650": {
-            "ID": "1000650",
+        "1001538": {
+            "ID": "1001538",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -72,40 +66,93 @@
                     ]
                 }
             },
-            "Heals": 3000,
+            "Heals": 10000,
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1"
+        },
+        "2001538": {
+            "ID": "2001538",
+            "Timing": "End of turn",
+            "Heals": 15,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When this character delivers the final blow"
         }
     },
-    "Hidden Potential": {},
-    "Super Attack": {
-        "424": {
-            "superID": "424",
-            "superName": "Super Kamehameha",
-            "superDescription": "Causes immense damage to enemy",
-            "superMinKi": "12",
-            "superPriority": "0",
-            "superStyle": "Normal",
-            "superMinLVL": "0",
-            "superCausality": "",
-            "superAimTarget": "0",
-            "superIsInactive": "0",
-            "SpecialBonus": {
-                "ID": "0"
+    "Leader Skill": {
+        "3151": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
             },
-            "Multiplier": 505
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "INT"
+                ]
+            },
+            "HP": 70,
+            "ATK": 70,
+            "DEF": 70
         },
-        "425": {
-            "superID": "425",
-            "superName": "Vice Shout",
-            "superDescription": "Causes immense damage to enemy \nand lowers ATK & DEF",
+        "3152": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 1700,
+            "ATK": 1700,
+            "DEF": 1700
+        }
+    },
+    "Super Attack": {
+        "1798": {
+            "superID": "1798",
+            "superName": "Vice Shout (Extreme)",
+            "superDescription": "Causes immense damage to enemy and \ngreatly lowers ATK & DEF",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "5",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -118,7 +165,7 @@
                 "Amount": "60"
             },
             "Multiplier": 505,
-            "425": {
+            "1798": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",
@@ -127,8 +174,8 @@
                     "+ or -": "-"
                 },
                 "Target": "Enemy",
-                "ATK": "20",
-                "DEF": "20"
+                "ATK": "30",
+                "DEF": "30"
             }
         }
     },

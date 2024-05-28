@@ -1,6 +1,6 @@
 {
     "ID": "1017740",
-    "Typing": null,
+    "Typing": "TEQ",
     "Class": "Super",
     "Name": "Super Saiyan Goku/Super Saiyan Gohan (Youth)",
     "Rarity": "ur",
@@ -33,8 +33,8 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "1659": {
-            "ID": "1659",
+        "1662": {
+            "ID": "1662",
             "Timing": "Start of turn",
             "ATK": 50,
             "DEF": 50,
@@ -44,11 +44,25 @@
             },
             "Length": "1"
         },
-        "1001659": {
-            "ID": "1001659",
+        "1001662": {
+            "ID": "1001662",
             "Timing": "Start of turn",
-            "ATK": 20,
-            "DEF": 20,
+            "Ki": 2,
+            "Target": {
+                "Category": "Goku's Family",
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2001662": {
+            "ID": "2001662",
+            "Timing": "Start of turn",
+            "ATK": 30,
+            "DEF": 30,
             "Target": {
                 "Category": "Goku's Family",
                 "Target": "Allies"
@@ -60,16 +74,82 @@
             "Length": "1"
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "7491": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Goku's Family"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "PHY",
+                    "STR",
+                    "INT",
+                    "TEQ",
+                    "AGL"
+                ]
+            },
+            "HP": 50,
+            "ATK": 50,
+            "DEF": 50
+        },
+        "7492": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Goku's Family"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 2
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 1600,
+            "ATK": 1600,
+            "DEF": 1600
+        },
+        "1": {
+            "HP": 240,
+            "ATK": 240,
+            "DEF": 240
+        },
+        "2": {
+            "HP": 248,
+            "ATK": 560,
+            "DEF": 248
+        },
+        "3": {
+            "HP": 552,
+            "ATK": 240,
+            "DEF": 552
+        },
+        "4": {
+            "HP": 1360,
+            "ATK": 1360,
+            "DEF": 1360
+        }
+    },
     "Super Attack": {
-        "2007": {
-            "superID": "2007",
-            "superName": "Kamehameha",
-            "superDescription": "Raises DEF and \ncauses supreme damage to enemy",
+        "2009": {
+            "superID": "2009",
+            "superName": "Kamehameha (Extreme)",
+            "superDescription": "Raises DEF, causes supreme damage \nto enemy and lowers ATK",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -82,7 +162,7 @@
                 "Amount": "20"
             },
             "Multiplier": 430,
-            "2007": {
+            "2009": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "99",
@@ -92,6 +172,17 @@
                 },
                 "Target": "Self",
                 "DEF": "30"
+            },
+            "1002009": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "3",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "-"
+                },
+                "Target": "Enemy",
+                "ATK": "20"
             }
         }
     },

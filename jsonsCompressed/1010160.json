@@ -1,6 +1,6 @@
 {
     "ID": "1010160",
-    "Typing": null,
+    "Typing": "AGL",
     "Class": "Extreme",
     "Name": "Majin Vegeta",
     "Rarity": "lr",
@@ -33,28 +33,187 @@
         "Legendary Power"
     ],
     "Passive": {
-        "843": {
-            "ID": "843",
+        "2481": {
+            "ID": "2481",
+            "Timing": "Start of turn",
+            "DEF": 150,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1002481": {
+            "ID": "1002481",
             "Timing": "On Super",
-            "ATK": 150,
+            "ATK": 180,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": "When ki is 12 or more"
+        },
+        "2002481": {
+            "ID": "2002481",
+            "Timing": "Start of turn",
+            "Ki": 2,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there is an ally on the team whose name includes "
+        },
+        "3002481": {
+            "ID": "3002481",
+            "Timing": "Being hit",
+            "DR": 20,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there is an ally on the team whose name includes "
+        },
+        "4002481": {
+            "ID": "4002481",
+            "Timing": "Start of turn",
+            "Ki": 2,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there is an ally on the team whose name includes "
+        },
+        "5002481": {
+            "ID": "5002481",
+            "Timing": "Start of turn",
+            "ATK": 20,
+            "DEF": 20,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there is an ally on the team whose name includes "
+        },
+        "6002481": {
+            "ID": "6002481",
+            "Timing": "Start of turn",
+            "Ki": 2,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there is an enemy whose name includes  or When there is an ally attacking on the same turn whose name includes "
+        },
+        "7002481": {
+            "ID": "7002481",
+            "Timing": "Start of turn",
+            "Crit Chance": 20,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there is an enemy whose name includes  or When there is an ally attacking on the same turn whose name includes "
+        },
+        "8002481": {
+            "ID": "8002481",
+            "Timing": "Start of turn",
+            "Ki": 12,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When HP is 30% or less",
+            "Once only": true
+        },
+        "9002481": {
+            "ID": "9002481",
+            "Timing": "Start of turn",
+            "Crit Chance": 100,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When HP is 30% or less",
+            "Once only": true
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "4116": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "AGL"
+                ]
+            },
+            "HP": 90,
+            "ATK": 90,
+            "DEF": 90
+        },
+        "4117": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 1300,
+            "ATK": 1700,
+            "DEF": 2100
+        }
+    },
     "Super Attack": {
-        "643": {
-            "superID": "643",
-            "superName": "Final Impact",
-            "superDescription": "Causes mega-colossal damage \nwith a rare chance of stunning the enemy",
+        "3206": {
+            "superID": "3206",
+            "superName": "Final Impact (Extreme)",
+            "superDescription": "Raises ATK for 1 turn and \ncauses mega-colossal damage with \na medium chance of stunning the enemy",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -67,9 +226,20 @@
                 "Amount": "30"
             },
             "Multiplier": 540,
-            "643": {
+            "3206": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "30"
+            },
+            "1003206": {
                 "Type": "ExtraEfficacySpecial",
-                "Chance": "20",
+                "Chance": "30",
                 "Duration": "2",
                 "Buff": {
                     "Type": "Raw stats",
@@ -79,14 +249,14 @@
                 "Status": "Stun"
             }
         },
-        "644": {
-            "superID": "644",
-            "superName": "Final Explosion",
-            "superDescription": "Causes colossal damage to all enemies \nwith a rare chance of stunning them",
+        "3207": {
+            "superID": "3207",
+            "superName": "Final Explosion (Extreme)",
+            "superDescription": "Raises ATK for 1 turn and \ncauses colossal damage to all enemies \nwith a medium chance of stunning them",
             "superMinKi": "18",
             "superPriority": "0",
             "superStyle": "Hyper",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "1",
             "superIsInactive": "0",
@@ -99,9 +269,20 @@
                 "Amount": "30"
             },
             "Multiplier": 395,
-            "644": {
+            "3207": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "30"
+            },
+            "1003207": {
                 "Type": "ExtraEfficacySpecial",
-                "Chance": "20",
+                "Chance": "30",
                 "Duration": "2",
                 "Buff": {
                     "Type": "Raw stats",

@@ -1,6 +1,6 @@
 {
     "ID": "1017590",
-    "Typing": null,
+    "Typing": "INT",
     "Class": "Super",
     "Name": "Android #16",
     "Rarity": "ur",
@@ -26,41 +26,91 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "1676": {
-            "ID": "1676",
+        "4074": {
+            "ID": "4074",
             "Timing": "Start of turn",
-            "ATK": 100,
-            "DEF": 100,
+            "Ki": 2,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1004074": {
+            "ID": "1004074",
+            "Timing": "Start of turn",
+            "ATK": 160,
+            "DEF": 160,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1001676": {
-            "ID": "1001676",
+        "2004074": {
+            "ID": "2004074",
             "Timing": "Start of turn",
             "Guard": true,
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Chance": "50",
             "Length": "1"
         },
-        "2001676": {
-            "ID": "2001676",
-            "Timing": "Start of turn",
-            "DEF": 100,
+        "3004074": {
+            "ID": "3004074",
+            "Timing": "On Super",
+            "ATK": 80,
+            "DEF": 80,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "4004074": {
+            "ID": "4004074",
+            "Timing": "Hit recieved",
+            "Crit Chance": 50,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
-            "Condition": "When there is an enemy whose name includes  Gohan (Youth)"
+            "Condition": "When attack recieved "
         },
-        "3001676": {
-            "ID": "3001676",
+        "5004074": {
+            "ID": "5004074",
+            "Timing": "Hit recieved",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 48,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "DR": 16,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Condition": "When guard is activated "
+        },
+        "6004074": {
+            "ID": "6004074",
+            "Timing": "Start of turn",
+            "ATK": 80,
+            "DEF": 160,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there is an ally attacking on the same turn whose name includes "
+        },
+        "7004074": {
+            "ID": "7004074",
             "Timing": "Start of turn",
             "Ki": 3,
             "Target": {
@@ -71,12 +121,13 @@
                 "+ or -": "+"
             },
             "Length": "1",
-            "Condition": "When there is an enemy whose name includes  Gohan (Youth)"
+            "Condition": "When there is an ally attacking on the same turn whose name includes "
         },
-        "4001676": {
-            "ID": "4001676",
+        "8004074": {
+            "ID": "8004074",
             "Timing": "Start of turn",
-            "ATK": 50,
+            "ATK": 58,
+            "DEF": 58,
             "Target": {
                 "Target": "Allies"
             },
@@ -85,27 +136,104 @@
                 "+ or -": "+"
             },
             "Length": "1",
-            "Condition": "When there is an enemy whose name includes  Gohan (Youth)"
+            "Condition": "When there is an ally attacking on the same turn whose name includes "
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "7361": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Androids/Cell Saga"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "PHY",
+                    "STR",
+                    "INT",
+                    "TEQ",
+                    "AGL"
+                ]
+            },
+            "HP": 120,
+            "ATK": 120,
+            "DEF": 120
+        },
+        "7362": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Androids/Cell Saga"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 1700,
+            "ATK": 1700,
+            "DEF": 1700
+        }
+    },
     "Super Attack": {
-        "1863": {
-            "superID": "1863",
-            "superName": "Rocket Punch",
-            "superDescription": "Causes supreme damage to enemy \nand massively lowers DEF",
+        "5364": {
+            "superID": "5364",
+            "superName": "Rocket Punch (Extreme)",
+            "superDescription": "Greatly raises DEF for 1 turn, \ncauses supreme damage to enemy \nand massively lowers DEF",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "1863": {
+            "Multiplier": 530,
+            "5364": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "50"
+            },
+            "1005364": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",

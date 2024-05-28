@@ -1,6 +1,6 @@
 {
     "ID": "1013770",
-    "Typing": null,
+    "Typing": "STR",
     "Class": "Super",
     "Name": "Beerus & Whis",
     "Rarity": "lr",
@@ -26,39 +26,177 @@
         "Legendary Power"
     ],
     "Passive": {
-        "1151": {
-            "ID": "1151",
+        "3384": {
+            "ID": "3384",
             "Timing": "Start of turn",
-            "ATK": 80,
+            "Ki": 7,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1003384": {
+            "ID": "1003384",
+            "Timing": "Start of turn",
+            "ATK": 150,
+            "DEF": 150,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1001151": {
-            "ID": "1001151",
+        "2003384": {
+            "ID": "2003384",
+            "Timing": "Start of turn",
+            "Crit Chance": 30,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "3003384": {
+            "ID": "3003384",
             "Timing": "Hit recieved",
-            "ATK": 60,
-            "DEF": 60,
+            "ATK": 70,
+            "DEF": 70,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "5",
+            "Length": "7",
             "Condition": "When attack recieved "
+        },
+        "4003384": {
+            "ID": "4003384",
+            "Dodge chance": 50,
+            "Timing": "Hit recieved",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "7",
+            "Condition": "When attack recieved "
+        },
+        "5003384": {
+            "ID": "5003384",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "100"
+            },
+            "Timing": "On Super",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When HP is 70% or less"
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "5611": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [
+                    "Super"
+                ],
+                "Typing": [
+                    "STR"
+                ]
+            },
+            "HP": 100,
+            "ATK": 100,
+            "DEF": 100
+        },
+        "5612": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 4
+        },
+        "5613": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [
+                    "Extreme"
+                ],
+                "Typing": [
+                    "STR"
+                ]
+            },
+            "HP": 70,
+            "ATK": 70,
+            "DEF": 70
+        },
+        "5614": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 2
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 1700,
+            "ATK": 2100,
+            "DEF": 1300
+        }
+    },
     "Super Attack": {
-        "1222": {
-            "superID": "1222",
-            "superName": "Power Flick",
-            "superDescription": "Causes colossal damage to enemy and \nrecovers 7% HP",
+        "4527": {
+            "superID": "4527",
+            "superName": "Power Flick (Extreme)",
+            "superDescription": "Raises ATK & DEF for 1 turn, \ncauses colossal damage to enemy \nand recovers 10% HP",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -71,7 +209,7 @@
                 "Amount": "30"
             },
             "Multiplier": 395,
-            "1222": {
+            "4527": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -80,17 +218,29 @@
                     "+ or -": "+"
                 },
                 "Target": "Self",
-                "Heals": "7"
+                "ATK": "30",
+                "DEF": "30"
+            },
+            "1004527": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "Heals": "10"
             }
         },
-        "1223": {
-            "superID": "1223",
-            "superName": "God of Destruction's Edict",
-            "superDescription": "Causes mega-colossal damage to enemy \nand recovers 12% HP",
+        "4528": {
+            "superID": "4528",
+            "superName": "God of Destruction's Edict (Extreme)",
+            "superDescription": "Greatly raises ATK & DEF for 1 turn, \ncauses mega-colossal damage to enemy \nand recovers 15% HP",
             "superMinKi": "18",
             "superPriority": "0",
             "superStyle": "Hyper",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -103,7 +253,7 @@
                 "Amount": "30"
             },
             "Multiplier": 540,
-            "1223": {
+            "4528": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -112,7 +262,19 @@
                     "+ or -": "+"
                 },
                 "Target": "Self",
-                "Heals": "12"
+                "ATK": "50",
+                "DEF": "50"
+            },
+            "1004528": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "Heals": "15"
             }
         }
     },

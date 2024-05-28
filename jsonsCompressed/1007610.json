@@ -1,6 +1,6 @@
 {
     "ID": "1007610",
-    "Typing": null,
+    "Typing": "TEQ",
     "Class": "Super",
     "Name": "Super Saiyan 2 Goku",
     "Rarity": "ur",
@@ -32,13 +32,12 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "631": {
-            "ID": "631",
+        "2004": {
+            "ID": "2004",
             "Timing": "Start of turn",
             "Ki": 3,
             "Target": {
-                "Target": "Allies",
-                "Type": "TEQ"
+                "Target": "Allies"
             },
             "Buff": {
                 "Type": "Raw stats",
@@ -46,38 +45,128 @@
             },
             "Length": "1"
         },
-        "1000631": {
-            "ID": "1000631",
-            "Timing": "Start of turn",
-            "Ki": 3,
-            "Target": {
-                "Target": "Allies",
-                "Type": "STR"
-            },
+        "1002004": {
+            "ID": "1002004",
+            "Timing": "On Super",
+            "ATK": 77,
+            "DEF": 77,
             "Buff": {
-                "Type": "Raw stats",
+                "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": "When ki is 12 or more"
+        },
+        "2002004": {
+            "ID": "2002004",
+            "Timing": "Start of turn",
+            "ATK": 30,
+            "DEF": 30,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there are 2 or more Super Saiyan 2 category allies on the same turn "
+        },
+        "3002004": {
+            "ID": "3002004",
+            "Timing": "Start of turn",
+            "ATK": 30,
+            "DEF": 30,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there are 3 or more Super Saiyan 2 category allies on the same turn "
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "3056": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Typing": "TEQ"
+            },
+            "HP": 50,
+            "ATK": 50
+        },
+        "3057": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Typing": "STR"
+            },
+            "HP": 50,
+            "ATK": 50
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 1300,
+            "ATK": 2100,
+            "DEF": 1700
+        }
+    },
     "Super Attack": {
-        "409": {
-            "superID": "409",
-            "superName": "Super Kamehameha",
-            "superDescription": "Causes immense damage to enemy",
+        "2195": {
+            "superID": "2195",
+            "superName": "Super Kamehameha (Extreme)",
+            "superDescription": "Raises ATK & DEF for 1 turn and \ncauses immense damage to enemy",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 505
+            "Multiplier": 630,
+            "2195": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "30",
+                "DEF": "30"
+            }
         }
     },
     "Active Skill": {},

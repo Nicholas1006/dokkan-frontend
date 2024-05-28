@@ -1,6 +1,6 @@
 {
     "ID": "1014490",
-    "Typing": null,
+    "Typing": "STR",
     "Class": "Super",
     "Name": "Goku (GT)",
     "Rarity": "ur",
@@ -32,11 +32,22 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "1214": {
-            "ID": "1214",
+        "3563": {
+            "ID": "3563",
+            "Timing": "Start of turn",
+            "ATK": 100,
+            "DEF": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1003563": {
+            "ID": "1003563",
             "Timing": "On Super",
-            "ATK": 120,
-            "DEF": 30,
+            "ATK": 180,
+            "DEF": 80,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -44,8 +55,29 @@
             "Length": "1",
             "Condition": "When ki is 12 or more"
         },
-        "1001214": {
-            "ID": "1001214",
+        "2003563": {
+            "ID": "2003563",
+            "Timing": "Start of turn",
+            "Crit Chance": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "3003563": {
+            "ID": "3003563",
+            "Timing": "Start of turn",
+            "Guard": true,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "3",
+            "Once only": true
+        },
+        "4003563": {
+            "ID": "4003563",
             "Timing": "Start of turn",
             "Ki": 3,
             "Buff": {
@@ -54,26 +86,132 @@
             },
             "Length": "1",
             "Condition": "When facing less than 2 enemies"
+        },
+        "5003563": {
+            "ID": "5003563",
+            "Guaranteed hit": true,
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When facing less than 2 enemies"
+        },
+        "6003563": {
+            "ID": "6003563",
+            "Timing": "Start of turn",
+            "Crit Chance": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When facing less than 2 enemies and When there are 1 or more GT Bosses category enemies "
+        },
+        "7003563": {
+            "ID": "7003563",
+            "Timing": "Start of turn",
+            "ATK": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Chance": "50",
+            "Length": "1",
+            "Condition": "When facing less than 2 enemies and When there are 1 or more GT Bosses category enemies "
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "5866": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [
+                    "Super"
+                ],
+                "Typing": [
+                    "STR"
+                ]
+            },
+            "HP": 90,
+            "ATK": 90,
+            "DEF": 90
+        },
+        "5867": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 2
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 1700,
+            "ATK": 2100,
+            "DEF": 1300
+        }
+    },
     "Super Attack": {
-        "1282": {
-            "superID": "1282",
-            "superName": "Dragon Fist",
-            "superDescription": "Causes immense damage to enemy and \ngreatly lowers DEF",
+        "4828": {
+            "superID": "4828",
+            "superName": "Dragon Fist (Extreme)",
+            "superDescription": "Raises ATK & DEF for 1 turn, \ncauses immense damage to enemy \nand greatly lowers DEF",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 505,
-            "1282": {
+            "Multiplier": 630,
+            "4828": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "30",
+                "DEF": "30"
+            },
+            "1004828": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",

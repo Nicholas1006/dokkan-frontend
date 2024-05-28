@@ -1,6 +1,6 @@
 {
     "ID": "1006790",
-    "Typing": null,
+    "Typing": "AGL",
     "Class": "Super",
     "Name": "Super Vegito",
     "Rarity": "ur",
@@ -27,8 +27,34 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "596": {
-            "ID": "596",
+        "1973": {
+            "ID": "1973",
+            "Timing": "Hit recieved",
+            "ATK": 40,
+            "DEF": 40,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When attack recieved "
+        },
+        "1001973": {
+            "ID": "1001973",
+            "Forsee Super Attack": true,
+            "Timing": "Start of turn",
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When HP is 40% or less"
+        },
+        "2001973": {
+            "ID": "2001973",
             "Counter": {
                 "Activated": true,
                 "Multiplier": "300",
@@ -42,11 +68,11 @@
             "Length": "1",
             "Condition": "When normal attack recieved"
         },
-        "1000596": {
-            "ID": "1000596",
+        "3001973": {
+            "ID": "3001973",
             "Toggle Other Line": {
                 "Activated": true,
-                "Line": "596"
+                "Line": "2001973"
             },
             "Timing": "Hit recieved",
             "Buff": {
@@ -56,24 +82,82 @@
             "Length": "1"
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "2891": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "AGL"
+                ]
+            },
+            "HP": 70,
+            "ATK": 70,
+            "DEF": 70
+        },
+        "2892": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 1300,
+            "ATK": 1700,
+            "DEF": 2100
+        }
+    },
     "Super Attack": {
-        "382": {
-            "superID": "382",
-            "superName": "Spirit Sword",
-            "superDescription": "Causes immense damage, \nallies' ATK +30% for 1 turn",
+        "2150": {
+            "superID": "2150",
+            "superName": "Spirit Sword (Extreme)",
+            "superDescription": "Causes immense damage to enemy and \nraises allies' ATK by 35% for 1 turn",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 475,
-            "382": {
+            "Multiplier": 595,
+            "2150": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -82,7 +166,7 @@
                     "+ or -": "+"
                 },
                 "Target": "Allies",
-                "ATK": "30"
+                "ATK": "35"
             }
         }
     },

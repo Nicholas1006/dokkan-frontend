@@ -1,6 +1,6 @@
 {
     "ID": "1019170",
-    "Typing": null,
+    "Typing": "AGL",
     "Class": "Super",
     "Name": "Borgos",
     "Rarity": "ur",
@@ -25,31 +25,31 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "2048": {
-            "ID": "2048",
+        "2791": {
+            "ID": "2791",
             "Timing": "Start of turn",
-            "ATK": 90,
-            "DEF": 90,
+            "ATK": 150,
+            "DEF": 150,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1002048": {
-            "ID": "1002048",
+        "1002791": {
+            "ID": "1002791",
             "Timing": "Start of turn",
-            "ATK": 30,
-            "DEF": 30,
+            "ATK": 100,
+            "DEF": 100,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
-            "Condition": ""
+            "Condition": "When facing less than 2 enemies"
         },
-        "2002048": {
-            "ID": "2002048",
+        "2002791": {
+            "ID": "2002791",
             "Additional attack": {
                 "Activated": true,
                 "Chance of super": "100"
@@ -60,19 +60,96 @@
                 "+ or -": "+"
             },
             "Length": "1",
-            "Condition": ""
+            "Condition": "When facing 2 or more enemies"
+        },
+        "3002791": {
+            "ID": "3002791",
+            "Timing": "Start of turn",
+            "Crit Chance": 50,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there are 2 or more Team Bardock category allies on the same turn "
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "8221": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Low-Class Warrior"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "PHY",
+                    "STR",
+                    "INT",
+                    "TEQ",
+                    "AGL"
+                ]
+            },
+            "HP": 50,
+            "ATK": 50,
+            "DEF": 50
+        },
+        "8222": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Low-Class Warrior"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 2
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 1600,
+            "ATK": 1600,
+            "DEF": 1600
+        },
+        "1": {
+            "HP": 240,
+            "ATK": 240,
+            "DEF": 240
+        },
+        "2": {
+            "HP": 248,
+            "ATK": 560,
+            "DEF": 248
+        },
+        "3": {
+            "HP": 552,
+            "ATK": 240,
+            "DEF": 552
+        },
+        "4": {
+            "HP": 1360,
+            "ATK": 1360,
+            "DEF": 1360
+        }
+    },
     "Super Attack": {
-        "2301": {
-            "superID": "2301",
-            "superName": "Angry Cannon",
-            "superDescription": "Causes supreme damage with \na medium chance of stunning the enemy",
+        "3750": {
+            "superID": "3750",
+            "superName": "Angry Cannon (Extreme)",
+            "superDescription": "Greatly raises ATK & DEF for 1 turn \nand causes supreme damage with \na high chance of stunning the enemy",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -85,9 +162,21 @@
                 "Amount": "20"
             },
             "Multiplier": 430,
-            "2301": {
+            "3750": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "50",
+                "DEF": "50"
+            },
+            "1003750": {
                 "Type": "ExtraEfficacySpecial",
-                "Chance": "30",
+                "Chance": "50",
                 "Duration": "2",
                 "Buff": {
                     "Type": "Raw stats",

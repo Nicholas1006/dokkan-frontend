@@ -1,6 +1,6 @@
 {
     "ID": "1009510",
-    "Typing": null,
+    "Typing": "STR",
     "Class": "Extreme",
     "Name": "Zamasu",
     "Rarity": "ur",
@@ -29,8 +29,45 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "732": {
-            "ID": "732",
+        "2645": {
+            "ID": "2645",
+            "Timing": "Start of turn",
+            "ATK": 60,
+            "DEF": 60,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1002645": {
+            "ID": "1002645",
+            "Timing": "On Super",
+            "ATK": 60,
+            "DEF": 60,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When ki is 12 or more"
+        },
+        "2002645": {
+            "ID": "2002645",
+            "Timing": "Attacking the enemy",
+            "ATK": 30,
+            "Target": {
+                "Target": "Enemy"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "-"
+            },
+            "Length": "1",
+            "Condition": "When ki is 12 or more"
+        },
+        "3002645": {
+            "ID": "3002645",
             "Timing": "Start of turn",
             "Heals": 10,
             "Buff": {
@@ -38,38 +75,124 @@
                 "+ or -": "+"
             },
             "Length": "1",
-            "Condition": "When HP is 80% or less"
+            "Condition": "When HP is 90% or less"
         },
-        "1000732": {
-            "ID": "1000732",
+        "4002645": {
+            "ID": "4002645",
             "Timing": "Start of turn",
+            "ATK": 60,
+            "DEF": 60,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When HP is 90% or less"
+        },
+        "5002645": {
+            "ID": "5002645",
+            "Timing": "On Super",
             "ATK": 60,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
-            "Condition": "When HP is 80% or less"
+            "Condition": "When the target enemy is in \"ATK down\" status or in \"DEF down\" status or stunned or sealed"
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "3551": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "PHY",
+                    "STR",
+                    "INT",
+                    "TEQ",
+                    "AGL"
+                ]
+            },
+            "HP": 30,
+            "ATK": 30,
+            "DEF": 30
+        },
+        "3552": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 2
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 1700,
+            "ATK": 2100,
+            "DEF": 1300
+        }
+    },
     "Super Attack": {
-        "502": {
-            "superID": "502",
-            "superName": "Fierce God Slicer",
-            "superDescription": "Causes supreme damage to enemy \nand greatly lowers DEF",
+        "3461": {
+            "superID": "3461",
+            "superName": "Fierce God Slicer (Extreme)",
+            "superDescription": "Raises ATK & DEF for 1 turn, \ncauses supreme damage to enemy \nand greatly lowers DEF",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "502": {
+            "Multiplier": 530,
+            "3461": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "30",
+                "DEF": "30"
+            },
+            "1003461": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",

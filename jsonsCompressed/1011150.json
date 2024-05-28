@@ -1,6 +1,6 @@
 {
     "ID": "1011150",
-    "Typing": null,
+    "Typing": "AGL",
     "Class": "Super",
     "Name": "Bardock",
     "Rarity": "ur",
@@ -29,10 +29,57 @@
         "Family Ties"
     ],
     "Passive": {
-        "899": {
-            "ID": "899",
+        "3333": {
+            "ID": "3333",
             "Timing": "Start of turn",
-            "Ki": 2,
+            "ATK": 130,
+            "DEF": 130,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1003333": {
+            "ID": "1003333",
+            "Timing": "Attacking the enemy",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 80,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "ATK": 40,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Condition": "A super is being performed"
+        },
+        "2003333": {
+            "ID": "2003333",
+            "Timing": "Attacking the enemy",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 80,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "DEF": 40,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Condition": "A super is being performed"
+        },
+        "3003333": {
+            "ID": "3003333",
+            "Timing": "Start of turn",
+            "Ki": 3,
             "Target": {
                 "Target": "Allies",
                 "Type": [
@@ -46,24 +93,10 @@
             },
             "Length": "1"
         },
-        "1000899": {
-            "ID": "1000899",
+        "4003333": {
+            "ID": "4003333",
             "Timing": "Start of turn",
-            "ATK": 30,
-            "Target": {
-                "Target": "Allies",
-                "Type": "AGL"
-            },
-            "Buff": {
-                "Type": "Percentage",
-                "+ or -": "+"
-            },
-            "Length": "1"
-        },
-        "2000899": {
-            "ID": "2000899",
-            "Timing": "Start of turn",
-            "ATK": 30,
+            "ATK": 50,
             "Target": {
                 "Target": "Allies",
                 "Type": "STR"
@@ -73,26 +106,110 @@
                 "+ or -": "+"
             },
             "Length": "1"
+        },
+        "5003333": {
+            "ID": "5003333",
+            "Effective against all": true,
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When HP is 70% or less"
+        },
+        "6003333": {
+            "ID": "6003333",
+            "Timing": "Start of turn",
+            "ATK": 50,
+            "Target": {
+                "Target": "Allies",
+                "Type": "AGL"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "4396": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "STR",
+                    "AGL"
+                ]
+            },
+            "HP": 30,
+            "ATK": 30,
+            "DEF": 30
+        },
+        "4397": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 1300,
+            "ATK": 1700,
+            "DEF": 2100
+        }
+    },
     "Super Attack": {
-        "695": {
-            "superID": "695",
-            "superName": "Final Spirit Cannon",
-            "superDescription": "Greatly raises ATK for 1 turn \nand causes supreme damage to enemy",
+        "4404": {
+            "superID": "4404",
+            "superName": "Final Spirit Cannon (Extreme)",
+            "superDescription": "Greatly raises ATK & DEF for 1 turn and \ncauses supreme damage to enemy",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "695": {
+            "Multiplier": 530,
+            "4404": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -101,7 +218,8 @@
                     "+ or -": "+"
                 },
                 "Target": "Self",
-                "ATK": "50"
+                "ATK": "50",
+                "DEF": "50"
             }
         }
     },

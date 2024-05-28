@@ -1,6 +1,6 @@
 {
     "ID": "1007100",
-    "Typing": null,
+    "Typing": "INT",
     "Class": "Extreme",
     "Name": "Hit",
     "Rarity": "ur",
@@ -29,34 +29,29 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "950": {
-            "ID": "950",
+        "4058": {
+            "ID": "4058",
             "Timing": "Start of turn",
-            "ATK": 80,
+            "Ki": 2,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1004058": {
+            "ID": "1004058",
+            "Timing": "Start of turn",
+            "ATK": 160,
+            "DEF": 160,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1000950": {
-            "ID": "1000950",
-            "Timing": "Attacking the enemy",
-            "Status": [
-                "Stun"
-            ],
-            "Target": {
-                "Target": "Enemy"
-            },
-            "Buff": {
-                "Type": "Raw stats",
-                "+ or -": "+"
-            },
-            "Chance": "50",
-            "Length": "1"
-        },
-        "2000950": {
-            "ID": "2000950",
+        "2004058": {
+            "ID": "2004058",
             "Timing": "On Super",
             "Status": [
                 "Disable guard"
@@ -69,28 +64,172 @@
                 "+ or -": "-"
             },
             "Length": "1"
+        },
+        "3004058": {
+            "ID": "3004058",
+            "Timing": "On Super",
+            "ATK": 160,
+            "DEF": 160,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "4004058": {
+            "ID": "4004058",
+            "Timing": "On Super",
+            "ATK": 60,
+            "DEF": 60,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When ki is 12 or more"
+        },
+        "5004058": {
+            "ID": "5004058",
+            "Timing": "On Super",
+            "Crit Chance": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When ki is 12 or more"
+        },
+        "6004058": {
+            "ID": "6004058",
+            "Timing": "Attacking the enemy",
+            "Status": [
+                "Stun"
+            ],
+            "Target": {
+                "Target": "Enemy"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Chance": "70",
+            "Length": "1"
+        },
+        "7004058": {
+            "ID": "7004058",
+            "Dodge chance": 50,
+            "Timing": "Being hit",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When the enemy is hit by the characters ultra super attack"
+        },
+        "8004058": {
+            "ID": "8004058",
+            "Timing": "Attacking the enemy",
+            "Status": [
+                "Disable action"
+            ],
+            "Target": {
+                "Target": "Enemy"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "Starting from the turn in which the character performs their 2nd attack in battle"
+        },
+        "9004058": {
+            "ID": "9004058",
+            "Toggle Other Line": {
+                "Activated": true,
+                "Line": "7004058"
+            },
+            "Timing": "Hit recieved",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "4581": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "-"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Enemies"
+            },
+            "HP": 30,
+            "ATK": 30,
+            "DEF": 30
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 1700,
+            "ATK": 1700,
+            "DEF": 1700
+        }
+    },
     "Super Attack": {
-        "757": {
-            "superID": "757",
-            "superName": "Time Skip",
-            "superDescription": "Causes supreme damage with \na chance of stunning the enemy",
+        "5311": {
+            "superID": "5311",
+            "superName": "Time Skip (Extreme)",
+            "superDescription": "Greatly raises ATK & DEF for 1 turn and \ncauses supreme damage with \na high chance of stunning the enemy",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "757": {
+            "Multiplier": 530,
+            "5311": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "50",
+                "DEF": "50"
+            },
+            "1005311": {
                 "Type": "ExtraEfficacySpecial",
-                "Chance": "25",
+                "Chance": "50",
                 "Duration": "2",
                 "Buff": {
                     "Type": "Raw stats",

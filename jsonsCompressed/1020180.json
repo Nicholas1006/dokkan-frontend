@@ -1,6 +1,6 @@
 {
     "ID": "1020180",
-    "Typing": null,
+    "Typing": "AGL",
     "Class": "Super",
     "Name": "Kakunsa",
     "Rarity": "ur",
@@ -27,22 +27,22 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "2154": {
-            "ID": "2154",
+        "2160": {
+            "ID": "2160",
             "Timing": "Start of turn",
-            "ATK": 60,
-            "DEF": 60,
+            "ATK": 80,
+            "DEF": 80,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1002154": {
-            "ID": "1002154",
+        "1002160": {
+            "ID": "1002160",
             "Timing": "Start of turn",
-            "ATK": 10,
-            "DEF": 10,
+            "ATK": 22,
+            "DEF": 22,
             "Target": {
                 "Category": "Special Pose",
                 "Target": "Allies"
@@ -53,10 +53,10 @@
             },
             "Length": "1"
         },
-        "2002154": {
-            "ID": "2002154",
+        "2002160": {
+            "ID": "2002160",
             "Timing": "Start of turn",
-            "Ki": 1,
+            "Ki": 2,
             "Target": {
                 "Category": "Special Pose",
                 "Target": "Allies"
@@ -67,8 +67,8 @@
             },
             "Length": "1"
         },
-        "3002154": {
-            "ID": "3002154",
+        "3002160": {
+            "ID": "3002160",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -77,33 +77,116 @@
                     "Cause": "Look Elsewhere"
                 }
             },
-            "DEF": 10,
+            "DEF": 22,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "99",
-            "Condition": " or "
+            "Condition": "When there is an ally attacking on the same turn whose name includes  or When there is an ally attacking on the same turn whose name includes "
+        },
+        "4002160": {
+            "ID": "4002160",
+            "Timing": "Attacking the enemy",
+            "Status": [
+                "Stun"
+            ],
+            "Target": {
+                "Target": "Enemy"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Chance": "50",
+            "Length": "1",
+            "Condition": "When there is an ally attacking on the same turn whose name includes  or When there is an ally attacking on the same turn whose name includes "
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "8661": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Special Pose"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        },
+        "8662": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Special Pose"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "PHY",
+                    "STR",
+                    "INT",
+                    "TEQ",
+                    "AGL"
+                ]
+            },
+            "HP": 50,
+            "ATK": 50,
+            "DEF": 50
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 1200,
+            "ATK": 1200,
+            "DEF": 1200
+        },
+        "1": {
+            "HP": 180,
+            "ATK": 180,
+            "DEF": 180
+        },
+        "2": {
+            "HP": 186,
+            "ATK": 420,
+            "DEF": 186
+        },
+        "3": {
+            "HP": 414,
+            "ATK": 180,
+            "DEF": 414
+        },
+        "4": {
+            "HP": 780,
+            "ATK": 1020,
+            "DEF": 1260
+        }
+    },
     "Super Attack": {
-        "2488": {
-            "superID": "2488",
-            "superName": "Wild Claw",
-            "superDescription": "Raises ATK and \ncauses supreme damage to enemy",
+        "2493": {
+            "superID": "2493",
+            "superName": "Wild Claw (Extreme)",
+            "superDescription": "Raises ATK, causes supreme damage \nto enemy and lowers ATK",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 400,
-            "2488": {
+            "Multiplier": 500,
+            "2493": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "99",
@@ -113,6 +196,17 @@
                 },
                 "Target": "Self",
                 "ATK": "30"
+            },
+            "1002493": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "3",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "-"
+                },
+                "Target": "Enemy",
+                "ATK": "20"
             }
         }
     },

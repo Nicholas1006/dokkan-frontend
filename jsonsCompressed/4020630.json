@@ -1,6 +1,6 @@
 {
     "ID": "4020630",
-    "Typing": null,
+    "Typing": "INT",
     "Class": "Super",
     "Name": "Goku",
     "Rarity": "ur",
@@ -35,9 +35,235 @@
         "Supreme Power",
         "Shattering the Limit"
     ],
-    "Passive": {},
-    "Hidden Potential": {},
+    "Passive": {
+        "2220": {
+            "ID": "2220",
+            "Timing": "Start of turn",
+            "Ki change": {
+                "From": "INT",
+                "To": "RAINBOW"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Once only": true
+        },
+        "1002220": {
+            "ID": "1002220",
+            "Timing": "Start of turn",
+            "ATK": 120,
+            "DEF": 120,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2002220": {
+            "ID": "2002220",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 0,
+                "Cause": {
+                    "Cause": "Ki sphere obtained",
+                    "Type": [
+                        "Rainbow"
+                    ]
+                }
+            },
+            "ATK": 30,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "3002220": {
+            "ID": "3002220",
+            "Effective against all": true,
+            "Timing": "When ki spheres collected",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "With 1 or more Rainbow Ki Spheres obtained"
+        },
+        "4002220": {
+            "ID": "4002220",
+            "Timing": "Start of turn",
+            "Crit Chance": 30,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there are 7 or more Majin Buu Saga category allies on the team "
+        }
+    },
+    "Leader Skill": {
+        "8896": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Final Trump Card"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "PHY",
+                    "STR",
+                    "INT",
+                    "TEQ",
+                    "AGL"
+                ]
+            },
+            "HP": 50,
+            "ATK": 50,
+            "DEF": 50
+        },
+        "8897": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Final Trump Card"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 2
+        },
+        "8898": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [
+                    "Final Trump Card"
+                ],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "INT"
+                ]
+            },
+            "HP": 30,
+            "ATK": 30,
+            "DEF": 30
+        },
+        "8899": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [
+                    "Final Trump Card"
+                ],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 2
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 1200,
+            "ATK": 1200,
+            "DEF": 1200
+        },
+        "1": {
+            "HP": 180,
+            "ATK": 180,
+            "DEF": 180
+        },
+        "2": {
+            "HP": 186,
+            "ATK": 420,
+            "DEF": 186
+        },
+        "3": {
+            "HP": 414,
+            "ATK": 180,
+            "DEF": 414
+        },
+        "4": {
+            "HP": 1020,
+            "ATK": 1020,
+            "DEF": 1020
+        }
+    },
+    "Super Attack": {
+        "2685": {
+            "superID": "2685",
+            "superName": "Spirit Bomb (Extreme)",
+            "superDescription": "Causes supreme damage to enemy and raises \nSuper Class allies' ATK by 25% for 1 turn",
+            "superMinKi": "12",
+            "superPriority": "0",
+            "superStyle": "Normal",
+            "superMinLVL": "14",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "0"
+            },
+            "Multiplier": 505,
+            "2685": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Super class Allies",
+                "ATK": "25"
+            }
+        },
+        "2686": {
+            "superID": "2686",
+            "superName": "Super Spirit Bomb (Extreme)",
+            "superDescription": "Causes immense damage to enemy \nand raises Super Class allies' \nATK & DEF by 25% for 1 turn",
+            "superMinKi": "12",
+            "superPriority": "10",
+            "superStyle": "Condition",
+            "superMinLVL": "14",
+            "superCausality": "Activated when there is \na \"Majin Buu Saga\" Category ally \nwhose name includes \"Hercule\" \nattacking in the same turn",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "superCondition": "When there is a Majin Buu Saga Category ally whose name includes  attacking in the same turn",
+            "SpecialBonus": {
+                "ID": "0"
+            },
+            "Multiplier": 605,
+            "2686": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Super class Allies",
+                "ATK": "25",
+                "DEF": "25"
+            }
+        }
+    },
     "Active Skill": {},
-    "Super Attack": null,
+    "Ki Multiplier": {},
     "Standby Skill": {}
 }

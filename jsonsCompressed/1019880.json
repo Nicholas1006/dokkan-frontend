@@ -1,6 +1,6 @@
 {
     "ID": "1019880",
-    "Typing": null,
+    "Typing": "INT",
     "Class": "Super",
     "Name": "Ultimate Gohan",
     "Rarity": "ur",
@@ -32,8 +32,8 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "2117": {
-            "ID": "2117",
+        "2855": {
+            "ID": "2855",
             "Timing": "Start of turn",
             "ATK": 58,
             "DEF": 58,
@@ -43,8 +43,8 @@
             },
             "Length": "1"
         },
-        "1002117": {
-            "ID": "1002117",
+        "1002855": {
+            "ID": "1002855",
             "Timing": "Start of turn",
             "ATK": 58,
             "DEF": 58,
@@ -53,10 +53,10 @@
                 "+ or -": "+"
             },
             "Length": "1",
-            "Condition": ""
+            "Condition": "When there are 2 or more Goku's Family category allies on the same turn "
         },
-        "2002117": {
-            "ID": "2002117",
+        "2002855": {
+            "ID": "2002855",
             "Additional attack": {
                 "Activated": true,
                 "Chance of super": "100"
@@ -66,12 +66,48 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Chance": "50",
+            "Chance": "70",
             "Length": "1",
-            "Condition": ""
+            "Condition": "When there are 2 or more Goku's Family category allies on the same turn "
         },
-        "3002117": {
-            "ID": "3002117",
+        "3002855": {
+            "ID": "3002855",
+            "Timing": "Attacking the enemy",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 58,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "ATK": 20,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Condition": "A super is being performed"
+        },
+        "4002855": {
+            "ID": "4002855",
+            "Timing": "Attacking the enemy",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 58,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "DEF": 20,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Condition": "A super is being performed"
+        },
+        "5002855": {
+            "ID": "5002855",
             "Timing": "Start of turn",
             "Ki": 1,
             "Target": {
@@ -84,11 +120,11 @@
             },
             "Length": "1"
         },
-        "4002117": {
-            "ID": "4002117",
+        "6002855": {
+            "ID": "6002855",
             "Timing": "Start of turn",
-            "ATK": 10,
-            "DEF": 10,
+            "ATK": 20,
+            "DEF": 20,
             "Target": {
                 "Category": "Goku's Family",
                 "Target": "Allies"
@@ -100,24 +136,90 @@
             "Length": "1"
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "8476": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Hybrid Saiyans"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        },
+        "8477": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Hybrid Saiyans"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "PHY",
+                    "STR",
+                    "INT",
+                    "TEQ",
+                    "AGL"
+                ]
+            },
+            "HP": 50,
+            "ATK": 50,
+            "DEF": 50
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 1200,
+            "ATK": 1200,
+            "DEF": 1200
+        },
+        "1": {
+            "HP": 180,
+            "ATK": 180,
+            "DEF": 180
+        },
+        "2": {
+            "HP": 186,
+            "ATK": 420,
+            "DEF": 186
+        },
+        "3": {
+            "HP": 414,
+            "ATK": 180,
+            "DEF": 414
+        },
+        "4": {
+            "HP": 1020,
+            "ATK": 1020,
+            "DEF": 1020
+        }
+    },
     "Super Attack": {
-        "2407": {
-            "superID": "2407",
-            "superName": "Burst Rush",
-            "superDescription": "Raises ATK and \ncauses supreme damage to enemy",
+        "3866": {
+            "superID": "3866",
+            "superName": "Burst Rush (Extreme)",
+            "superDescription": "Raises ATK, causes supreme damage \nto enemy and lowers DEF",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 400,
-            "2407": {
+            "Multiplier": 500,
+            "3866": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "99",
@@ -127,6 +229,17 @@
                 },
                 "Target": "Self",
                 "ATK": "30"
+            },
+            "1003866": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "3",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "-"
+                },
+                "Target": "Enemy",
+                "DEF": "40"
             }
         }
     },

@@ -1,6 +1,6 @@
 {
     "ID": "1007740",
-    "Typing": null,
+    "Typing": "TEQ",
     "Class": "Super",
     "Name": "Super Saiyan 3 Gotenks (Teen)",
     "Rarity": "ur",
@@ -30,8 +30,19 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "904": {
-            "ID": "904",
+        "2638": {
+            "ID": "2638",
+            "Timing": "Start of turn",
+            "ATK": 100,
+            "DEF": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1002638": {
+            "ID": "1002638",
             "Timing": "On Super",
             "ATK": 100,
             "Buff": {
@@ -40,26 +51,149 @@
             },
             "Length": "1",
             "Condition": "When ki is 12 or more"
+        },
+        "2002638": {
+            "ID": "2002638",
+            "Timing": "Attacking the enemy",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 3,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "Ki": 1,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Condition": "A super is being performed"
+        },
+        "3002638": {
+            "ID": "3002638",
+            "Timing": "Attacking the enemy",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 30,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "ATK": 10,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Condition": "A super is being performed"
+        },
+        "4002638": {
+            "ID": "4002638",
+            "Timing": "Attacking the enemy",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 30,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "DEF": 10,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Condition": "A super is being performed"
+        },
+        "5002638": {
+            "ID": "5002638",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "100"
+            },
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Chance": "50",
+            "Length": "5",
+            "Once only": true
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "4421": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Typing": "TEQ"
+            },
+            "ATK": 70,
+            "DEF": 70
+        },
+        "4422": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 2
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 1300,
+            "ATK": 2100,
+            "DEF": 1700
+        }
+    },
     "Super Attack": {
-        "706": {
-            "superID": "706",
-            "superName": "Burning Kamehameha",
-            "superDescription": "Causes supreme damage to enemy \nand raises ATK for 6 turns",
+        "3454": {
+            "superID": "3454",
+            "superName": "Burning Kamehameha (Extreme)",
+            "superDescription": "Causes supreme damage to enemy and \nraises ATK & DEF for 6 turns",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 380,
-            "706": {
+            "Multiplier": 480,
+            "3454": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "6",
@@ -68,7 +202,8 @@
                     "+ or -": "+"
                 },
                 "Target": "Self",
-                "ATK": "50"
+                "ATK": "50",
+                "DEF": "50"
             }
         }
     },

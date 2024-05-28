@@ -1,6 +1,6 @@
 {
     "ID": "1005740",
-    "Typing": null,
+    "Typing": "TEQ",
     "Class": "Super",
     "Name": "Super Saiyan 3 Vegeta",
     "Rarity": "ur",
@@ -28,34 +28,107 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "544": {
-            "ID": "544",
+        "1345": {
+            "ID": "1345",
             "Timing": "Start of turn",
-            "ATK": 70,
+            "ATK": 90,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
+        },
+        "1001345": {
+            "ID": "1001345",
+            "Timing": "Attacking",
+            "Ki": 2,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When ki is 10 or more"
+        },
+        "2001345": {
+            "ID": "2001345",
+            "Timing": "Attacking",
+            "DEF": 120,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When ki is 10 or more"
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "2681": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 1300,
+            "ATK": 2100,
+            "DEF": 1700
+        }
+    },
     "Super Attack": {
-        "254": {
-            "superID": "254",
-            "superName": "Final Flash",
-            "superDescription": "Causes supreme damage to enemy",
+        "1526": {
+            "superID": "1526",
+            "superName": "Final Flash (Extreme)",
+            "superDescription": "Causes supreme damage to enemy and \nlowers ATK",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430
+            "Multiplier": 530,
+            "1526": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "3",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "-"
+                },
+                "Target": "Enemy",
+                "ATK": "20"
+            }
         }
     },
     "Active Skill": {},

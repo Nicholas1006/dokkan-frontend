@@ -1,6 +1,6 @@
 {
     "ID": "1009630",
-    "Typing": null,
+    "Typing": "PHY",
     "Class": "Extreme",
     "Name": "Captain Ginyu (Ginyu Force)",
     "Rarity": "lr",
@@ -27,8 +27,89 @@
         "Legendary Power"
     ],
     "Passive": {
-        "808": {
-            "ID": "808",
+        "2798": {
+            "ID": "2798",
+            "Timing": "Start of turn",
+            "Ki": 2,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1002798": {
+            "ID": "1002798",
+            "Timing": "Start of turn",
+            "ATK": 77,
+            "DEF": 77,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2002798": {
+            "ID": "2002798",
+            "Timing": "Start of turn",
+            "ATK": 10,
+            "DEF": 10,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there are 1 or more Ginyu Force category allies on the team "
+        },
+        "3002798": {
+            "ID": "3002798",
+            "Timing": "Start of turn",
+            "ATK": 10,
+            "DEF": 10,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there are 2 or more Ginyu Force category allies on the team "
+        },
+        "4002798": {
+            "ID": "4002798",
+            "Timing": "Start of turn",
+            "ATK": 10,
+            "DEF": 10,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there are 3 or more Ginyu Force category allies on the team "
+        },
+        "5002798": {
+            "ID": "5002798",
+            "Timing": "Start of turn",
+            "ATK": 10,
+            "DEF": 10,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there are 4 or more Ginyu Force category allies on the team "
+        },
+        "6002798": {
+            "ID": "6002798",
+            "Timing": "Start of turn",
+            "ATK": 10,
+            "DEF": 10,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there are 5 or more Ginyu Force category allies on the team "
+        },
+        "7002798": {
+            "ID": "7002798",
             "Timing": "Start of turn",
             "Ki": 3,
             "Target": {
@@ -40,30 +121,102 @@
             },
             "Length": "1"
         },
-        "1000808": {
-            "ID": "1000808",
+        "8002798": {
+            "ID": "8002798",
             "Timing": "Start of turn",
-            "ATK": 7777,
+            "ATK": 30,
+            "DEF": 30,
             "Target": {
                 "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "9002798": {
+            "ID": "9002798",
+            "Timing": "Start of turn",
+            "Ki change": {
+                "From": [
+                    "STR",
+                    "INT",
+                    "TEQ",
+                    "AGL"
+                ],
+                "To": [
+                    "Rainbow"
+                ]
             },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": "When there are 2 or more Ginyu Force category allies on the team "
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "3916": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "PHY",
+                    "STR",
+                    "INT",
+                    "TEQ",
+                    "AGL"
+                ]
+            },
+            "HP": 77,
+            "ATK": 77,
+            "DEF": 77
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 2100,
+            "ATK": 1700,
+            "DEF": 1300
+        }
+    },
     "Super Attack": {
-        "605": {
-            "superID": "605",
-            "superName": "Milky Cannon",
-            "superDescription": "Causes colossal damage to enemy",
+        "3754": {
+            "superID": "3754",
+            "superName": "Milky Cannon (Extreme)",
+            "superDescription": "Raises ATK & DEF for 1 turn and \ncauses colossal damage to enemy",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -75,16 +228,28 @@
                 "Duration": "1",
                 "Amount": "30"
             },
-            "Multiplier": 395
+            "Multiplier": 395,
+            "3754": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "30",
+                "DEF": "30"
+            }
         },
-        "606": {
-            "superID": "606",
-            "superName": "Special Fighting Assault",
-            "superDescription": "Causes mega-colossal damage; \nallies' DEF +30% for 1 turn",
+        "3755": {
+            "superID": "3755",
+            "superName": "Special Fighting Assault (Extreme)",
+            "superDescription": "Raises ATK & DEF for 1 turn and \ncauses mega-colossal damage to enemy; \nraises allies' ATK & DEF by 30% for 1 turn",
             "superMinKi": "18",
             "superPriority": "0",
             "superStyle": "Hyper",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -96,8 +261,20 @@
                 "Duration": "1",
                 "Amount": "30"
             },
-            "Multiplier": 540,
-            "606": {
+            "Multiplier": 510,
+            "3755": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "30",
+                "DEF": "30"
+            },
+            "1003755": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -106,6 +283,7 @@
                     "+ or -": "+"
                 },
                 "Target": "Allies",
+                "ATK": "30",
                 "DEF": "30"
             }
         }

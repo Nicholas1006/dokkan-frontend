@@ -1,6 +1,6 @@
 {
     "ID": "1007140",
-    "Typing": null,
+    "Typing": "INT",
     "Class": "Super",
     "Name": "Super Saiyan Bardock",
     "Rarity": "ur",
@@ -32,8 +32,41 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "794": {
-            "ID": "794",
+        "3872": {
+            "ID": "3872",
+            "Timing": "Start of turn",
+            "Ki": 2,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1003872": {
+            "ID": "1003872",
+            "Timing": "Start of turn",
+            "ATK": 130,
+            "DEF": 130,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2003872": {
+            "ID": "2003872",
+            "Timing": "On Super",
+            "ATK": 100,
+            "DEF": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When ki is 12 or more"
+        },
+        "3003872": {
+            "ID": "3003872",
             "Timing": "Start of turn",
             "Ki": 3,
             "Buff": {
@@ -43,36 +76,143 @@
             "Length": "1",
             "Condition": "When facing less than 2 enemies"
         },
-        "1000794": {
-            "ID": "1000794",
+        "4003872": {
+            "ID": "4003872",
             "Timing": "Start of turn",
-            "ATK": 7000,
+            "ATK": 70,
+            "DEF": 70,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When facing less than 2 enemies"
+        },
+        "5003872": {
+            "ID": "5003872",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "50"
+            },
+            "Timing": "Start of turn",
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": "When facing less than 2 enemies"
+        },
+        "6003872": {
+            "ID": "6003872",
+            "Dodge chance": 50,
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there are 1 or more Wicked Bloodline category enemies "
+        },
+        "7003872": {
+            "ID": "7003872",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "50"
+            },
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there are 1 or more Wicked Bloodline category enemies "
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "3871": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3,
+            "Condition": "When HP is 99% or less"
+        },
+        "3872": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "HP": 10,
+            "ATK": 10,
+            "DEF": 10,
+            "Condition": "When HP is 99% or less"
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 1200,
+            "ATK": 1200,
+            "DEF": 1200
+        },
+        "1": {
+            "HP": 180,
+            "ATK": 180,
+            "DEF": 180
+        },
+        "2": {
+            "HP": 186,
+            "ATK": 420,
+            "DEF": 186
+        },
+        "3": {
+            "HP": 414,
+            "ATK": 180,
+            "DEF": 414
+        },
+        "4": {
+            "HP": 1020,
+            "ATK": 1020,
+            "DEF": 1020
+        }
+    },
     "Super Attack": {
-        "344": {
-            "superID": "344",
-            "superName": "Spirit of Saiyans",
-            "superDescription": "Causes supreme damage to enemy \nand seals Super Attack",
+        "4895": {
+            "superID": "4895",
+            "superName": "Spirit of Saiyans (Extreme)",
+            "superDescription": "Greatly raises ATK for 1 turn, \ncauses supreme damage to enemy \nand seals Super Attack",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "344": {
+            "Multiplier": 530,
+            "4895": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "50"
+            },
+            "1004895": {
                 "Type": "ExtraEfficacySpecial",
                 "Chance": "100",
                 "Duration": "2",

@@ -1,6 +1,6 @@
 {
     "ID": "1015790",
-    "Typing": null,
+    "Typing": "STR",
     "Class": "Extreme",
     "Name": "Frost (Full Power)",
     "Rarity": "ur",
@@ -25,8 +25,8 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "1362": {
-            "ID": "1362",
+        "3915": {
+            "ID": "3915",
             "Timing": "Start of turn",
             "Ki": 3,
             "Buff": {
@@ -36,11 +36,47 @@
             "Length": "6",
             "Once only": true
         },
-        "1001362": {
-            "ID": "1001362",
+        "1003915": {
+            "ID": "1003915",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "50"
+            },
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "6",
+            "Once only": true
+        },
+        "2003915": {
+            "ID": "2003915",
+            "Timing": "Start of turn",
+            "Crit Chance": 50,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "6",
+            "Once only": true
+        },
+        "3003915": {
+            "ID": "3003915",
+            "Timing": "Start of turn",
+            "ATK": 160,
+            "DEF": 160,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "4003915": {
+            "ID": "4003915",
             "Timing": "On Super",
-            "ATK": 120,
-            "DEF": 60,
+            "ATK": 180,
+            "DEF": 120,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -48,8 +84,8 @@
             "Length": "1",
             "Condition": "When ki is 12 or more"
         },
-        "2001362": {
-            "ID": "2001362",
+        "5003915": {
+            "ID": "5003915",
             "Timing": "Attacking the enemy",
             "Status": [
                 "Stun"
@@ -61,29 +97,87 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Chance": "30",
+            "Chance": "50",
             "Length": "1",
             "Condition": "When ki is 12 or more"
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "6406": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "STR"
+                ]
+            },
+            "HP": 90,
+            "ATK": 90,
+            "DEF": 90
+        },
+        "6407": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 2
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 1700,
+            "ATK": 2100,
+            "DEF": 1300
+        }
+    },
     "Super Attack": {
-        "1546": {
-            "superID": "1546",
-            "superName": "Dirty Burst",
-            "superDescription": "Greatly raises ATK for 1 turn and \ncauses supreme damage to enemy",
+        "5013": {
+            "superID": "5013",
+            "superName": "Dirty Burst (Extreme)",
+            "superDescription": "Greatly raises ATK & DEF for 1 turn, \ncauses supreme damage to enemy \nand lowers ATK",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "1546": {
+            "Multiplier": 530,
+            "5013": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -92,7 +186,19 @@
                     "+ or -": "+"
                 },
                 "Target": "Self",
-                "ATK": "50"
+                "ATK": "50",
+                "DEF": "50"
+            },
+            "1005013": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "3",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "-"
+                },
+                "Target": "Enemy",
+                "ATK": "20"
             }
         }
     },

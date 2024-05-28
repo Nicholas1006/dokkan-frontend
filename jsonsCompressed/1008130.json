@@ -1,6 +1,6 @@
 {
     "ID": "1008130",
-    "Typing": null,
+    "Typing": "TEQ",
     "Class": "Extreme",
     "Name": "Majin Buu (South Supreme Kai)",
     "Rarity": "ur",
@@ -31,47 +31,139 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "653": {
-            "ID": "653",
+        "2189": {
+            "ID": "2189",
             "Timing": "Start of turn",
-            "Ki": 2,
+            "Ki": 3,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1002189": {
+            "ID": "1002189",
+            "Timing": "Start of turn",
+            "ATK": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2002189": {
+            "ID": "2002189",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 10,
+                "Max": 100,
+                "Cause": {
+                    "Cause": "HP",
+                    "Type": "More HP remaining"
+                }
+            },
+            "ATK": 100,
+            "DEF": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "3002189": {
+            "ID": "3002189",
+            "Timing": "Start of turn",
+            "DR": 20,
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1",
-            "Condition": "When HP is 99% or less"
+            "Condition": "When HP is 80% or more"
         },
-        "1000653": {
-            "ID": "1000653",
-            "Timing": "Start of turn",
-            "ATK": 70,
+        "4002189": {
+            "ID": "4002189",
+            "Timing": "End of turn",
+            "Heals": 5,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
-            "Condition": "When HP is 99% or less"
+            "Condition": "At the end of the turn in which attack was recieved"
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "3166": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Typing": "TEQ"
+            },
+            "ATK": 60,
+            "DEF": 60
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 1300,
+            "ATK": 2100,
+            "DEF": 1700
+        }
+    },
     "Super Attack": {
-        "430": {
-            "superID": "430",
-            "superName": "Mighty Powerful God Shockwave",
-            "superDescription": "Causes supreme damage to enemy \nand greatly lowers DEF",
+        "2653": {
+            "superID": "2653",
+            "superName": "Mighty Powerful God Shockwave (Extreme)",
+            "superDescription": "Raises DEF for 1 turn, \ncauses supreme damage to enemy \nand greatly lowers DEF",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "430": {
+            "Multiplier": 530,
+            "2653": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "30"
+            },
+            "1002653": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",

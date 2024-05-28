@@ -1,6 +1,6 @@
 {
     "ID": "1012130",
-    "Typing": null,
+    "Typing": "AGL",
     "Class": "Super",
     "Name": "Tien & Chiaotzu",
     "Rarity": "lr",
@@ -27,51 +27,184 @@
         "Legendary Power"
     ],
     "Passive": {
-        "1032": {
-            "ID": "1032",
-            "Timing": "On Super",
-            "ATK": 10000,
+        "3866": {
+            "ID": "3866",
+            "Timing": "Start of turn",
+            "Ki": 2,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1003866": {
+            "ID": "1003866",
+            "Timing": "Attacking the enemy",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 5,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "Ki": 1,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "99"
+        },
+        "2003866": {
+            "ID": "2003866",
+            "Timing": "Start of turn",
+            "Ki": 3,
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1",
-            "Condition": "When ki is 8 or more"
+            "Condition": "When there are 2 or more Bond of Friendship category allies on the same turn "
         },
-        "1001032": {
-            "ID": "1001032",
-            "Timing": "On Super",
-            "DEF": 10000,
+        "3003866": {
+            "ID": "3003866",
+            "Timing": "Start of turn",
+            "Crit Chance": 30,
             "Buff": {
-                "Type": "Raw stats",
+                "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
-            "Condition": "When ki is 11 or more"
+            "Condition": "When there are 2 or more Bond of Friendship category allies on the same turn "
         },
-        "2001032": {
-            "ID": "2001032",
+        "4003866": {
+            "ID": "4003866",
             "Timing": "On Super",
-            "ATK": 10000,
-            "DEF": 10000,
+            "ATK": 50,
+            "DEF": 50,
             "Buff": {
-                "Type": "Raw stats",
+                "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": "When ki is 14 or more"
+        },
+        "5003866": {
+            "ID": "5003866",
+            "Timing": "On Super",
+            "ATK": 100,
+            "DEF": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When ki is 16 or more"
+        },
+        "6003866": {
+            "ID": "6003866",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "50"
+            },
+            "Timing": "On Super",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When ki is 18 or more"
+        },
+        "7003866": {
+            "ID": "7003866",
+            "Timing": "On Super",
+            "Crit Chance": 20,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When ki is 20 or more"
+        },
+        "8003866": {
+            "ID": "8003866",
+            "Timing": "Attacking the enemy",
+            "Status": [
+                "Seal"
+            ],
+            "Target": {
+                "Target": "Enemy"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When ki is 20 or more"
+        },
+        "9003866": {
+            "ID": "9003866",
+            "Timing": "Start of turn",
+            "ATK": 100,
+            "DEF": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "5041": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "HP": 100,
+            "ATK": 100,
+            "DEF": 100
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 1300,
+            "ATK": 1700,
+            "DEF": 2100
+        }
+    },
     "Super Attack": {
-        "944": {
-            "superID": "944",
-            "superName": "Double Dodon Ray",
-            "superDescription": "Causes colossal damage with \na rare chance of stunning the enemy",
+        "4891": {
+            "superID": "4891",
+            "superName": "Double Dodon Ray (Extreme)",
+            "superDescription": "Raises DEF for 1 turn and \ncauses colossal damage with \na medium chance of stunning the enemy",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -84,9 +217,20 @@
                 "Amount": "30"
             },
             "Multiplier": 395,
-            "944": {
+            "4891": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "30"
+            },
+            "1004891": {
                 "Type": "ExtraEfficacySpecial",
-                "Chance": "20",
+                "Chance": "30",
                 "Duration": "2",
                 "Buff": {
                     "Type": "Raw stats",
@@ -96,14 +240,14 @@
                 "Status": "Stun"
             }
         },
-        "945": {
-            "superID": "945",
-            "superName": "Strike of Bond",
-            "superDescription": "Causes mega-colossal damage \nwith a chance of stunning the enemy",
+        "4892": {
+            "superID": "4892",
+            "superName": "Strike of Bond (Extreme)",
+            "superDescription": "Raises DEF for 1 turn and \ncauses mega-colossal damage with \na high chance of stunning the enemy",
             "superMinKi": "18",
             "superPriority": "0",
             "superStyle": "Hyper",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -116,9 +260,20 @@
                 "Amount": "30"
             },
             "Multiplier": 540,
-            "945": {
+            "4892": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "30"
+            },
+            "1004892": {
                 "Type": "ExtraEfficacySpecial",
-                "Chance": "25",
+                "Chance": "50",
                 "Duration": "2",
                 "Buff": {
                     "Type": "Raw stats",

@@ -1,6 +1,6 @@
 {
     "ID": "1017720",
-    "Typing": null,
+    "Typing": "INT",
     "Class": "Super",
     "Name": "Super Saiyan Goku",
     "Rarity": "ur",
@@ -30,18 +30,82 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "1566": {
-            "ID": "1566",
+        "2516": {
+            "ID": "2516",
             "Timing": "Start of turn",
             "ATK": 59,
+            "DEF": 59,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1001566": {
-            "ID": "1001566",
+        "1002516": {
+            "ID": "1002516",
+            "Timing": "On Super",
+            "ATK": 59,
+            "DEF": 59,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When ki is 12 or more"
+        },
+        "2002516": {
+            "ID": "2002516",
+            "Timing": "Attacking the enemy",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 59,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "ATK": 20,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "3002516": {
+            "ID": "3002516",
+            "Timing": "Attacking the enemy",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 59,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "DEF": 20,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "4002516": {
+            "ID": "4002516",
+            "Timing": "Attacking the enemy",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 21,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "Crit Chance": 7,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "5002516": {
+            "ID": "5002516",
             "Dodge chance": 50,
             "Timing": "Attacking",
             "Buff": {
@@ -51,8 +115,8 @@
             "Length": "1",
             "Condition": "As the 1st attacker in the turn"
         },
-        "2001566": {
-            "ID": "2001566",
+        "6002516": {
+            "ID": "6002516",
             "Counter": {
                 "Activated": true,
                 "Multiplier": "200",
@@ -64,41 +128,13 @@
                 "+ or -": "+"
             },
             "Length": "1",
-            "Condition": "When normal attack recieved and As the 2nd attacker in the turn"
+            "Condition": "When normal attack recieved and (As the 2nd attacker in the turn or As the 3rd attacker in the turn)"
         },
-        "3001566": {
-            "ID": "3001566",
+        "7002516": {
+            "ID": "7002516",
             "Toggle Other Line": {
                 "Activated": true,
-                "Line": "2001566"
-            },
-            "Timing": "Hit recieved",
-            "Buff": {
-                "Type": "Raw stats",
-                "+ or -": "+"
-            },
-            "Length": "1"
-        },
-        "4001566": {
-            "ID": "4001566",
-            "Counter": {
-                "Activated": true,
-                "Multiplier": "200",
-                "DR from normals": "59"
-            },
-            "Timing": "Being hit",
-            "Buff": {
-                "Type": "Raw stats",
-                "+ or -": "+"
-            },
-            "Length": "1",
-            "Condition": "When normal attack recieved and As the 3rd attacker in the turn"
-        },
-        "5001566": {
-            "ID": "5001566",
-            "Toggle Other Line": {
-                "Activated": true,
-                "Line": "4001566"
+                "Line": "6002516"
             },
             "Timing": "Hit recieved",
             "Buff": {
@@ -108,24 +144,94 @@
             "Length": "1"
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "7296": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "INT"
+                ]
+            },
+            "HP": 50,
+            "ATK": 50,
+            "DEF": 50
+        },
+        "7297": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 2
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 1200,
+            "ATK": 1200,
+            "DEF": 1200
+        },
+        "1": {
+            "HP": 180,
+            "ATK": 180,
+            "DEF": 180
+        },
+        "2": {
+            "HP": 186,
+            "ATK": 420,
+            "DEF": 186
+        },
+        "3": {
+            "HP": 414,
+            "ATK": 180,
+            "DEF": 414
+        },
+        "4": {
+            "HP": 1020,
+            "ATK": 1020,
+            "DEF": 1020
+        }
+    },
     "Super Attack": {
-        "1844": {
-            "superID": "1844",
-            "superName": "Instant Transmission Kamehameha",
-            "superDescription": "Causes supreme damage with \na medium chance of stunning the enemy",
+        "3257": {
+            "superID": "3257",
+            "superName": "Instant Transmission Kamehameha (Extreme)",
+            "superDescription": "Raises ATK & DEF for 1 turn and \ncauses supreme damage with \na medium chance of stunning the enemy",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "1844": {
+            "Multiplier": 530,
+            "3257": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "30",
+                "DEF": "30"
+            },
+            "1003257": {
                 "Type": "ExtraEfficacySpecial",
                 "Chance": "30",
                 "Duration": "2",

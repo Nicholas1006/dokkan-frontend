@@ -1,6 +1,6 @@
 {
     "ID": "1009230",
-    "Typing": null,
+    "Typing": "INT",
     "Class": "Super",
     "Name": "Piccolo",
     "Rarity": "lr",
@@ -28,10 +28,48 @@
         "Legendary Power"
     ],
     "Passive": {
-        "709": {
-            "ID": "709",
+        "3225": {
+            "ID": "3225",
             "Timing": "Start of turn",
-            "DEF": 5000,
+            "Ki": 3,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1003225": {
+            "ID": "1003225",
+            "Timing": "Start of turn",
+            "DEF": 200,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2003225": {
+            "ID": "2003225",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 10,
+                "Max": 200,
+                "Cause": {
+                    "Cause": "HP",
+                    "Type": "More HP remaining"
+                }
+            },
+            "ATK": 200,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "3003225": {
+            "ID": "3003225",
+            "Timing": "Start of turn",
+            "Ki": 1,
             "Target": {
                 "Target": "Allies"
             },
@@ -41,27 +79,173 @@
             },
             "Length": "1"
         },
-        "1000709": {
-            "ID": "1000709",
+        "4003225": {
+            "ID": "4003225",
             "Timing": "Start of turn",
-            "DEF": 10000,
+            "DEF": 20,
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "5003225": {
+            "ID": "5003225",
+            "Timing": "Start of turn",
+            "Ki": 2,
+            "Target": {
+                "Target": "Allies"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": "When there is an ally on the team whose name includes "
+        },
+        "6003225": {
+            "ID": "6003225",
+            "Timing": "Start of turn",
+            "DEF": 20,
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there is an ally on the team whose name includes "
+        },
+        "7003225": {
+            "ID": "7003225",
+            "Timing": "Start of turn",
+            "DEF": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there is an ally attacking on the same turn whose name includes "
+        },
+        "8003225": {
+            "ID": "8003225",
+            "Timing": "after all ki collected",
+            "Guard": true,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "As the 1st attacker in the turn and When there is an ally attacking on the same turn whose name includes "
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "3621": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Typing": "AGL"
+            },
+            "HP": 150
+        },
+        "3622": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Typing": "TEQ"
+            },
+            "HP": 150
+        },
+        "3623": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Typing": "INT"
+            },
+            "HP": 150
+        },
+        "3624": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Typing": "STR"
+            },
+            "HP": 150
+        },
+        "3625": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Typing": "PHY"
+            },
+            "HP": 150
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 1700,
+            "ATK": 1700,
+            "DEF": 1700
+        }
+    },
     "Super Attack": {
-        "478": {
-            "superID": "478",
-            "superName": "Hellzone Grenade",
-            "superDescription": "Causes colossal damage to enemy",
+        "4395": {
+            "superID": "4395",
+            "superName": "Hellzone Grenade (Extreme)",
+            "superDescription": "Causes colossal damage to enemy \nand greatly lowers ATK",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -73,16 +257,27 @@
                 "Duration": "1",
                 "Amount": "30"
             },
-            "Multiplier": 395
+            "Multiplier": 395,
+            "4395": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "3",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "-"
+                },
+                "Target": "Enemy",
+                "ATK": "30"
+            }
         },
-        "479": {
-            "superID": "479",
-            "superName": "Don't Underestimate Earth!",
-            "superDescription": "Causes mega-colossal damage to enemy",
+        "4396": {
+            "superID": "4396",
+            "superName": "Don't Underestimate Earth! (Extreme)",
+            "superDescription": "Causes mega-colossal damage to enemy; \nraises allies' ATK by 30% for 1 turn",
             "superMinKi": "18",
             "superPriority": "0",
             "superStyle": "Hyper",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -94,7 +289,18 @@
                 "Duration": "1",
                 "Amount": "30"
             },
-            "Multiplier": 540
+            "Multiplier": 510,
+            "4396": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Allies",
+                "ATK": "30"
+            }
         }
     },
     "Active Skill": {},

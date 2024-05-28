@@ -1,6 +1,6 @@
 {
     "ID": "1018700",
-    "Typing": null,
+    "Typing": "AGL",
     "Class": "Extreme",
     "Name": "Yamu & Spopovich",
     "Rarity": "ur",
@@ -28,19 +28,19 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "2002": {
-            "ID": "2002",
+        "2415": {
+            "ID": "2415",
             "Timing": "Start of turn",
-            "ATK": 70,
-            "DEF": 70,
+            "ATK": 90,
+            "DEF": 90,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1002002": {
-            "ID": "1002002",
+        "1002415": {
+            "ID": "1002415",
             "Timing": "Attacking the enemy",
             "Building Stat": {
                 "Min": 0,
@@ -55,10 +55,10 @@
                 "+ or -": "+"
             },
             "Length": "99",
-            "Condition": ""
+            "Condition": "A super is being performed"
         },
-        "2002002": {
-            "ID": "2002002",
+        "2002415": {
+            "ID": "2002415",
             "Timing": "Attacking the enemy",
             "Building Stat": {
                 "Min": 0,
@@ -73,14 +73,14 @@
                 "+ or -": "+"
             },
             "Length": "99",
-            "Condition": ""
+            "Condition": "A super is being performed"
         },
-        "3002002": {
-            "ID": "3002002",
+        "3002415": {
+            "ID": "3002415",
             "Timing": "Hit recieved",
             "Building Stat": {
                 "Min": 0,
-                "Max": 140,
+                "Max": 160,
                 "Cause": {
                     "Cause": "Look Elsewhere"
                 }
@@ -91,27 +91,109 @@
                 "+ or -": "+"
             },
             "Length": "99",
-            "Condition": ""
+            "Condition": "When attack recieved "
+        },
+        "4002415": {
+            "ID": "4002415",
+            "Timing": "On Super",
+            "Status": [
+                "Disable guard"
+            ],
+            "Target": {
+                "Target": "Enemy"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When the target enemy is 32 or more categories"
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "8016": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "World Tournament"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "PHY",
+                    "STR",
+                    "INT",
+                    "TEQ",
+                    "AGL"
+                ]
+            },
+            "HP": 50,
+            "ATK": 50,
+            "DEF": 50
+        },
+        "8017": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "World Tournament"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 1200,
+            "ATK": 1200,
+            "DEF": 1200
+        },
+        "1": {
+            "HP": 180,
+            "ATK": 180,
+            "DEF": 180
+        },
+        "2": {
+            "HP": 186,
+            "ATK": 420,
+            "DEF": 186
+        },
+        "3": {
+            "HP": 414,
+            "ATK": 180,
+            "DEF": 414
+        },
+        "4": {
+            "HP": 780,
+            "ATK": 1020,
+            "DEF": 1260
+        }
+    },
     "Super Attack": {
-        "2187": {
-            "superID": "2187",
-            "superName": "Energy Drain",
-            "superDescription": "Causes supreme damage to enemy \nand recovers 7% HP",
+        "3027": {
+            "superID": "3027",
+            "superName": "Energy Drain (Extreme)",
+            "superDescription": "Causes supreme damage to enemy \nand lowers ATK & DEF; recovers 7% HP",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "2187": {
+            "Multiplier": 530,
+            "3027": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -121,6 +203,18 @@
                 },
                 "Target": "Self",
                 "Heals": "7"
+            },
+            "1003027": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "3",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "-"
+                },
+                "Target": "Enemy",
+                "ATK": "20",
+                "DEF": "20"
             }
         }
     },

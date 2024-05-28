@@ -1,6 +1,6 @@
 {
     "ID": "1013390",
-    "Typing": null,
+    "Typing": "PHY",
     "Class": "Super",
     "Name": "Great Saiyaman 1 & 2",
     "Rarity": "lr",
@@ -27,8 +27,19 @@
         "Legendary Power"
     ],
     "Passive": {
-        "1247": {
-            "ID": "1247",
+        "2458": {
+            "ID": "2458",
+            "Timing": "Start of turn",
+            "ATK": 70,
+            "DEF": 70,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1002458": {
+            "ID": "1002458",
             "Timing": "Start of turn",
             "Ki": 4,
             "Target": {
@@ -43,8 +54,8 @@
             },
             "Length": "1"
         },
-        "1001247": {
-            "ID": "1001247",
+        "2002458": {
+            "ID": "2002458",
             "Timing": "Start of turn",
             "DEF": 50,
             "Target": {
@@ -57,8 +68,33 @@
             },
             "Length": "1"
         },
-        "2001247": {
-            "ID": "2001247",
+        "3002458": {
+            "ID": "3002458",
+            "Timing": "Attacking",
+            "ATK": 58,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When the target enemy is 64 or more categories"
+        },
+        "4002458": {
+            "ID": "4002458",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "30"
+            },
+            "Timing": "Attacking",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When the target enemy is 64 or more categories"
+        },
+        "5002458": {
+            "ID": "5002458",
             "Timing": "Start of turn",
             "DEF": 70,
             "Target": {
@@ -72,16 +108,69 @@
             "Length": "1"
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "6001": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [
+                    "Super"
+                ],
+                "Typing": [
+                    "PHY",
+                    "STR",
+                    "INT",
+                    "TEQ",
+                    "AGL"
+                ]
+            },
+            "HP": 100,
+            "ATK": 100,
+            "DEF": 100,
+            "Condition": "When the team includes all five Super types"
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 2100,
+            "ATK": 1700,
+            "DEF": 1300
+        }
+    },
     "Super Attack": {
-        "1408": {
-            "superID": "1408",
-            "superName": "Twin Justice Rush",
-            "superDescription": "Causes colossal damage to enemy \nand seals Super Attack",
+        "3158": {
+            "superID": "3158",
+            "superName": "Twin Justice Rush (Extreme)",
+            "superDescription": "Raises ATK & DEF for 1 turn, \ncauses colossal damage to enemy \nand seals Super Attack",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -94,7 +183,19 @@
                 "Amount": "30"
             },
             "Multiplier": 395,
-            "1408": {
+            "3158": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "30",
+                "DEF": "30"
+            },
+            "1003158": {
                 "Type": "ExtraEfficacySpecial",
                 "Chance": "100",
                 "Duration": "2",
@@ -106,14 +207,14 @@
                 "Status": "Seals"
             }
         },
-        "1409": {
-            "superID": "1409",
-            "superName": "Burning Justice",
-            "superDescription": "Causes mega-colossal damage to enemy \nand raises Super Class allies' ATK by 30% \nfor 2 turns",
+        "3159": {
+            "superID": "3159",
+            "superName": "Burning Justice (Extreme)",
+            "superDescription": "Raises ATK & DEF for 1 turn, \ncauses mega-colossal damage to enemy and \nraises Super Class allies' ATK by 30% for 2 turns",
             "superMinKi": "18",
             "superPriority": "0",
             "superStyle": "Hyper",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -126,7 +227,19 @@
                 "Amount": "30"
             },
             "Multiplier": 510,
-            "1409": {
+            "3159": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "30",
+                "DEF": "30"
+            },
+            "1003159": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "2",

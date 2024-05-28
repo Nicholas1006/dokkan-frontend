@@ -1,6 +1,6 @@
 {
     "ID": "1016760",
-    "Typing": null,
+    "Typing": "AGL",
     "Class": "Extreme",
     "Name": "Darkness Towa",
     "Rarity": "ur",
@@ -28,15 +28,62 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "1558": {
-            "ID": "1558",
+        "2643": {
+            "ID": "2643",
+            "Timing": "Start of turn",
+            "ATK": 100,
+            "DEF": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1002643": {
+            "ID": "1002643",
+            "Timing": "Start of turn",
+            "ATK": 100,
+            "DEF": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "Where there is an extreme class enemy"
+        },
+        "2002643": {
+            "ID": "2002643",
+            "Timing": "Start of turn",
+            "DEF": 80,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "Where there is an extreme class enemy"
+        },
+        "3002643": {
+            "ID": "3002643",
+            "Timing": "Start of turn",
+            "ATK": 40,
+            "DEF": 40,
+            "Target": {
+                "Target": "Allies",
+                "Class": "Extreme"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "4002643": {
+            "ID": "4002643",
             "Timing": "Start of turn",
             "Ki": 3,
             "Target": {
                 "Target": "Allies",
-                "Class": [
-                    "Extreme"
-                ]
+                "Class": "Extreme"
             },
             "Buff": {
                 "Type": "Raw stats",
@@ -44,40 +91,8 @@
             },
             "Length": "1"
         },
-        "1001558": {
-            "ID": "1001558",
-            "Timing": "Start of turn",
-            "ATK": 30,
-            "DEF": 30,
-            "Target": {
-                "Target": "Allies",
-                "Class": "Extreme"
-            },
-            "Buff": {
-                "Type": "Percentage",
-                "+ or -": "+"
-            },
-            "Length": "1"
-        },
-        "2001558": {
-            "ID": "2001558",
-            "Timing": "Start of turn",
-            "ATK": 50,
-            "DEF": 50,
-            "Target": {
-                "Target": "Allies",
-                "Class": "Extreme"
-            },
-            "Buff": {
-                "Type": "Percentage",
-                "+ or -": "+"
-            },
-            "Length": "1",
-            "Condition": "When HP is 30% or less",
-            "Once only": true
-        },
-        "3001558": {
-            "ID": "3001558",
+        "5002643": {
+            "ID": "5002643",
             "Timing": "Start of turn",
             "Heals": 100,
             "Buff": {
@@ -87,26 +102,101 @@
             "Length": "1",
             "Condition": "When HP is 30% or less",
             "Once only": true
+        },
+        "6002643": {
+            "ID": "6002643",
+            "Timing": "Start of turn",
+            "ATK": 60,
+            "DEF": 60,
+            "Target": {
+                "Target": "Allies",
+                "Class": "Extreme"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When HP is 30% or less",
+            "Once only": true
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "7251": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "AGL"
+                ]
+            },
+            "HP": 80,
+            "ATK": 80,
+            "DEF": 80
+        },
+        "7252": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 1300,
+            "ATK": 1700,
+            "DEF": 2100
+        }
+    },
     "Super Attack": {
-        "1820": {
-            "superID": "1820",
-            "superName": "Minus Energy Zone",
-            "superDescription": "Causes supreme damage to enemy \nand lowers ATK",
+        "3459": {
+            "superID": "3459",
+            "superName": "Minus Energy Zone (Extreme)",
+            "superDescription": "Causes supreme damage to enemy and \ngreatly lowers ATK & DEF",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "1820": {
+            "Multiplier": 530,
+            "3459": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",
@@ -115,7 +205,8 @@
                     "+ or -": "-"
                 },
                 "Target": "Enemy",
-                "ATK": "20"
+                "ATK": "30",
+                "DEF": "30"
             }
         }
     },

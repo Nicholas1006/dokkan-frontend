@@ -1,6 +1,6 @@
 {
     "ID": "1011060",
-    "Typing": null,
+    "Typing": "PHY",
     "Class": "Super",
     "Name": "Super Saiyan 3 Gotenks",
     "Rarity": "ur",
@@ -38,20 +38,22 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "901": {
-            "ID": "901",
+        "2397": {
+            "ID": "2397",
             "Timing": "Start of turn",
-            "ATK": 120,
+            "ATK": 150,
+            "DEF": 150,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "99"
+            "Length": "1"
         },
-        "1000901": {
-            "ID": "1000901",
+        "1002397": {
+            "ID": "1002397",
             "Timing": "Start of turn",
-            "ATK": 60,
+            "ATK": 70,
+            "DEF": 30,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -59,36 +61,128 @@
             "Length": "7",
             "Once only": true
         },
-        "2000901": {
-            "ID": "2000901",
+        "2002397": {
+            "ID": "2002397",
+            "Dodge chance": 30,
             "Timing": "Start of turn",
-            "DEF": 30,
             "Buff": {
                 "Type": "Percentage",
-                "+ or -": "-"
+                "+ or -": "+"
             },
             "Length": "7",
             "Once only": true
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "4406": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [
+                    "Super"
+                ],
+                "Typing": [
+                    "PHY"
+                ]
+            },
+            "HP": 120,
+            "ATK": 120,
+            "DEF": 120
+        },
+        "4407": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        },
+        "4408": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [
+                    "Extreme"
+                ],
+                "Typing": [
+                    "PHY"
+                ]
+            },
+            "HP": 50,
+            "ATK": 50,
+            "DEF": 50
+        },
+        "4409": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 1
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 2100,
+            "ATK": 1700,
+            "DEF": 1300
+        }
+    },
     "Super Attack": {
-        "701": {
-            "superID": "701",
-            "superName": "Galactic Donut",
-            "superDescription": "Causes immense damage to enemy \nand greatly lowers DEF",
+        "2985": {
+            "superID": "2985",
+            "superName": "Galactic Donut (Extreme)",
+            "superDescription": "Causes immense damage to enemy \nand massively lowers DEF",
             "superMinKi": "9",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 505,
-            "701": {
+            "Multiplier": 630,
+            "2985": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",
@@ -97,25 +191,25 @@
                     "+ or -": "-"
                 },
                 "Target": "Enemy",
-                "DEF": "50"
+                "DEF": "80"
             }
         },
-        "702": {
-            "superID": "702",
-            "superName": "Charging Ultra Buu Buu Volleyball",
-            "superDescription": "Massively raises ATK for 1 turn \nand causes immense damage to enemy",
+        "2986": {
+            "superID": "2986",
+            "superName": "Charging Ultra Buu Buu Volleyball (Extreme)",
+            "superDescription": "Massively raises ATK for 1 turn, \ncauses immense damage to enemy \nand attacks effective against all Types",
             "superMinKi": "11",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 505,
-            "702": {
+            "Multiplier": 630,
+            "2986": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -125,24 +219,35 @@
                 },
                 "Target": "Self",
                 "ATK": "100"
+            },
+            "1002986": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Raw stats",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "Status": "Effective against all"
             }
         },
-        "703": {
-            "superID": "703",
-            "superName": "Life-Risking Blow",
-            "superDescription": "Causes immense damage to enemy \nand raises ATK for 1 turn",
+        "2987": {
+            "superID": "2987",
+            "superName": "Life-Risking Blow (Extreme)",
+            "superDescription": "Greatly raises ATK for 1 turn and \ncauses immense damage to enemy",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 505,
-            "703": {
+            "Multiplier": 630,
+            "2987": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -151,7 +256,7 @@
                     "+ or -": "+"
                 },
                 "Target": "Self",
-                "ATK": "30"
+                "ATK": "50"
             }
         }
     },

@@ -1,6 +1,6 @@
 {
     "ID": "1020190",
-    "Typing": null,
+    "Typing": "INT",
     "Class": "Super",
     "Name": "Rozie",
     "Rarity": "ur",
@@ -26,22 +26,22 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "2156": {
-            "ID": "2156",
+        "2162": {
+            "ID": "2162",
             "Timing": "Start of turn",
-            "ATK": 60,
-            "DEF": 60,
+            "ATK": 80,
+            "DEF": 80,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1002156": {
-            "ID": "1002156",
+        "1002162": {
+            "ID": "1002162",
             "Timing": "Start of turn",
-            "ATK": 10,
-            "DEF": 10,
+            "ATK": 22,
+            "DEF": 22,
             "Target": {
                 "Category": "Special Pose",
                 "Target": "Allies"
@@ -52,10 +52,10 @@
             },
             "Length": "1"
         },
-        "2002156": {
-            "ID": "2002156",
+        "2002162": {
+            "ID": "2002162",
             "Timing": "Start of turn",
-            "Ki": 1,
+            "Ki": 2,
             "Target": {
                 "Category": "Special Pose",
                 "Target": "Allies"
@@ -66,8 +66,8 @@
             },
             "Length": "1"
         },
-        "3002156": {
-            "ID": "3002156",
+        "3002162": {
+            "ID": "3002162",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -76,33 +76,115 @@
                     "Cause": "Look Elsewhere"
                 }
             },
-            "ATK": 10,
+            "ATK": 22,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "99",
-            "Condition": " or "
+            "Condition": "When there is an ally attacking on the same turn whose name includes  or When there is an ally attacking on the same turn whose name includes "
+        },
+        "4002162": {
+            "ID": "4002162",
+            "Timing": "Attacking the enemy",
+            "Status": [
+                "Seal"
+            ],
+            "Target": {
+                "Target": "Enemy"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there is an ally attacking on the same turn whose name includes  or When there is an ally attacking on the same turn whose name includes "
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "8671": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Special Pose"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        },
+        "8672": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Special Pose"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "PHY",
+                    "STR",
+                    "INT",
+                    "TEQ",
+                    "AGL"
+                ]
+            },
+            "HP": 50,
+            "ATK": 50,
+            "DEF": 50
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 1200,
+            "ATK": 1200,
+            "DEF": 1200
+        },
+        "1": {
+            "HP": 180,
+            "ATK": 180,
+            "DEF": 180
+        },
+        "2": {
+            "HP": 186,
+            "ATK": 420,
+            "DEF": 186
+        },
+        "3": {
+            "HP": 414,
+            "ATK": 180,
+            "DEF": 414
+        },
+        "4": {
+            "HP": 1020,
+            "ATK": 1020,
+            "DEF": 1020
+        }
+    },
     "Super Attack": {
-        "2490": {
-            "superID": "2490",
-            "superName": "Yacchaina Fist",
-            "superDescription": "Raises DEF and \ncauses supreme damage to enemy",
+        "2494": {
+            "superID": "2494",
+            "superName": "Yacchaina Fist (Extreme)",
+            "superDescription": "Raises DEF, causes supreme damage \nto enemy and lowers DEF",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "2490": {
+            "Multiplier": 530,
+            "2494": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "99",
@@ -112,6 +194,17 @@
                 },
                 "Target": "Self",
                 "DEF": "30"
+            },
+            "1002494": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "3",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "-"
+                },
+                "Target": "Enemy",
+                "DEF": "40"
             }
         }
     },

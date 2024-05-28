@@ -9,13 +9,13 @@ active_skills=storedatabase(directory,"active_skills.csv")
 card_active_skills=storedatabase(directory,"card_active_skills.csv")
 passive_skills=storedatabase(directory,"passive_skills.csv")
 passive_skill_set_relations=storedatabase(directory,"passive_skill_set_relations.csv")
-createDFEWallpapers(cards, directory, card_awakening_routes, active_skills, card_active_skills, passive_skills,passive_skill_set_relations)
+createDFEWallpapers(cards, directory)
 
 print("Creating DFE mosaic")
 acquiredlist2 = os.listdir(r'./assets/final_assets')
 acquiredlist=[]
 for card in cards:
-    if qualifyAsDFE(card, card_awakening_routes, cards, active_skills, card_active_skills,passive_skills,passive_skill_set_relations):
+    if qualifyAsDFE(card):
         acquiredlist.append(card[0]+".png")
 amount=len(acquiredlist)
 screenx=1280

@@ -1,6 +1,6 @@
 {
     "ID": "1018300",
-    "Typing": null,
+    "Typing": "TEQ",
     "Class": "Extreme",
     "Name": "Golden Cooler",
     "Rarity": "ur",
@@ -26,19 +26,62 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "1951": {
-            "ID": "1951",
+        "3054": {
+            "ID": "3054",
             "Timing": "Start of turn",
-            "ATK": 100,
-            "DEF": 100,
+            "ATK": 130,
+            "DEF": 130,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1001951": {
-            "ID": "1001951",
+        "1003054": {
+            "ID": "1003054",
+            "Timing": "On Super",
+            "DEF": 30,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When ki is 12 or more"
+        },
+        "2003054": {
+            "ID": "2003054",
+            "Timing": "Attacking the enemy",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 30,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "DR": 10,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "A super is being performed"
+        },
+        "3003054": {
+            "ID": "3003054",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "50"
+            },
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there are 4 or more Dragon Ball Heroes category allies on the team "
+        },
+        "4003054": {
+            "ID": "4003054",
             "Timing": "Start of turn",
             "Ki": 2,
             "Target": {
@@ -50,8 +93,8 @@
             },
             "Length": "1"
         },
-        "2001951": {
-            "ID": "2001951",
+        "5003054": {
+            "ID": "5003054",
             "Timing": "Start of turn",
             "ATK": 20,
             "DEF": 20,
@@ -64,51 +107,100 @@
             },
             "Length": "1"
         },
-        "3001951": {
-            "ID": "3001951",
+        "6003054": {
+            "ID": "6003054",
             "Timing": "Start of turn",
-            "ATK": 30,
-            "DEF": 30,
+            "ATK": 20,
+            "DEF": 20,
+            "Target": {
+                "Category": "Dragon Ball Heroes",
+                "Target": "Allies"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1",
-            "Condition": "When there are 4 or more Dragon Ball Heroes category allies on the team "
-        },
-        "4001951": {
-            "ID": "4001951",
-            "Additional attack": {
-                "Activated": true,
-                "Chance of super": "30"
+            "Length": "1"
+        }
+    },
+    "Leader Skill": {
+        "7796": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
             },
-            "Timing": "On Super",
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [
+                    "Extreme"
+                ],
+                "Typing": [
+                    "TEQ"
+                ]
+            },
+            "HP": 100,
+            "ATK": 100,
+            "DEF": 100
+        },
+        "7797": {
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1",
-            "Condition": "When there are 4 or more Dragon Ball Heroes category allies on the team "
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
         }
     },
-    "Hidden Potential": {},
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 1300,
+            "ATK": 2100,
+            "DEF": 1700
+        }
+    },
     "Super Attack": {
-        "2108": {
-            "superID": "2108",
-            "superName": "Golden Supernova",
-            "superDescription": "Raises ATK and \ncauses immense damage to enemy",
+        "4240": {
+            "superID": "4240",
+            "superName": "Golden Supernova (Extreme)",
+            "superDescription": "Raises ATK, raises DEF for 1 turn and \ncauses immense damage to enemy",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 475,
-            "2108": {
+            "Multiplier": 600,
+            "4240": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "99",
@@ -118,6 +210,17 @@
                 },
                 "Target": "Self",
                 "ATK": "30"
+            },
+            "1004240": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "30"
             }
         }
     },

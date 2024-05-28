@@ -1,6 +1,6 @@
 {
     "ID": "1015030",
-    "Typing": null,
+    "Typing": "INT",
     "Class": "Extreme",
     "Name": "Super Saiyan Vegeta",
     "Rarity": "lr",
@@ -27,33 +27,61 @@
         "Legendary Power"
     ],
     "Passive": {
-        "1315": {
-            "ID": "1315",
+        "2837": {
+            "ID": "2837",
             "Timing": "Start of turn",
-            "ATK": 15000,
-            "DEF": 20000,
+            "ATK": 50,
+            "DEF": 70,
             "Buff": {
-                "Type": "Raw stats",
+                "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1001315": {
-            "ID": "1001315",
-            "Timing": "Hit recieved",
-            "ATK": 15000,
+        "1002837": {
+            "ID": "1002837",
+            "Timing": "Start of turn",
+            "DEF": 70,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When HP is 50% or more"
+        },
+        "2002837": {
+            "ID": "2002837",
+            "Timing": "Attacking the enemy",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 5,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "Ki": 1,
             "Buff": {
                 "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "99"
+        },
+        "3002837": {
+            "ID": "3002837",
+            "Timing": "Hit recieved",
+            "ATK": 50,
+            "Buff": {
+                "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "4",
             "Condition": "When attack recieved "
         },
-        "2001315": {
-            "ID": "2001315",
+        "4002837": {
+            "ID": "4002837",
             "Additional attack": {
                 "Activated": true,
-                "Chance of super": "0"
+                "Chance of super": "15"
             },
             "Timing": "Hit recieved",
             "Buff": {
@@ -64,16 +92,82 @@
             "Condition": "When attack recieved "
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "6206": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Pure Saiyans"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "PHY",
+                    "STR",
+                    "INT",
+                    "TEQ",
+                    "AGL"
+                ]
+            },
+            "HP": 70,
+            "ATK": 70,
+            "DEF": 70
+        },
+        "6207": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Pure Saiyans"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 1700,
+            "ATK": 1700,
+            "DEF": 1700
+        }
+    },
     "Super Attack": {
-        "1499": {
-            "superID": "1499",
-            "superName": "Photon Bomber",
-            "superDescription": "Causes colossal damage to enemy",
+        "3858": {
+            "superID": "3858",
+            "superName": "Photon Bomber (Extreme)",
+            "superDescription": "Raises ATK & DEF for 1 turn and \ncauses colossal damage to enemy",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -85,16 +179,28 @@
                 "Duration": "1",
                 "Amount": "30"
             },
-            "Multiplier": 395
+            "Multiplier": 395,
+            "3858": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "30",
+                "DEF": "30"
+            }
         },
-        "1500": {
-            "superID": "1500",
-            "superName": "Big Bang Attack",
-            "superDescription": "Greatly raises ATK for 1 turn and \ncauses mega-colossal damage to enemy",
+        "3859": {
+            "superID": "3859",
+            "superName": "Big Bang Attack (Extreme)",
+            "superDescription": "Greatly raises ATK & DEF for 1 turn and \ncauses mega-colossal damage to enemy",
             "superMinKi": "18",
             "superPriority": "0",
             "superStyle": "Hyper",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -107,7 +213,7 @@
                 "Amount": "30"
             },
             "Multiplier": 540,
-            "1500": {
+            "3859": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -116,7 +222,8 @@
                     "+ or -": "+"
                 },
                 "Target": "Self",
-                "ATK": "50"
+                "ATK": "50",
+                "DEF": "50"
             }
         }
     },

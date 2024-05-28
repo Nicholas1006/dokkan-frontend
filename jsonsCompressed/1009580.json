@@ -1,6 +1,6 @@
 {
     "ID": "1009580",
-    "Typing": null,
+    "Typing": "INT",
     "Class": "Super",
     "Name": "Super Saiyan Trunks (Future)",
     "Rarity": "ur",
@@ -35,8 +35,8 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "759": {
-            "ID": "759",
+        "2089": {
+            "ID": "2089",
             "Timing": "Start of turn",
             "Ki change": {
                 "From": "STR",
@@ -48,35 +48,123 @@
             },
             "Length": "1"
         },
-        "1000759": {
-            "ID": "1000759",
+        "1002089": {
+            "ID": "1002089",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
                 "Max": 0,
                 "Cause": {
                     "Cause": "Ki sphere obtained",
-                    "Type": "INT"
+                    "Type": "any"
                 }
             },
-            "ATK": 15,
+            "ATK": 20,
+            "DEF": 20,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
+        },
+        "2002089": {
+            "ID": "2002089",
+            "Timing": "Start of turn",
+            "Ki change": {
+                "From": [
+                    "PHY",
+                    "TEQ",
+                    "AGL"
+                ],
+                "To": [
+                    "Rainbow"
+                ]
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there are 1 or more Realm of Gods category enemies "
+        },
+        "3002089": {
+            "ID": "3002089",
+            "Effective against all": true,
+            "Timing": "When ki spheres collected",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "With 7 or more Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres obtained"
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "3696": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Class": [
+                    "Super"
+                ],
+                "Typing": []
+            },
+            "HP": 70,
+            "ATK": 70,
+            "DEF": 70
+        },
+        "3697": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": []
+            },
+            "Ki": 1
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 1700,
+            "ATK": 1700,
+            "DEF": 1700
+        }
+    },
     "Super Attack": {
-        "551": {
-            "superID": "551",
-            "superName": "Final Hope Slash",
-            "superDescription": "Causes immense damage to enemy \nand greatly lowers DEF",
+        "2379": {
+            "superID": "2379",
+            "superName": "Final Hope Slash (Extreme)",
+            "superDescription": "Causes immense damage to enemy and \ngreatly lowers DEF; raises Super Class allies' \nATK by 30% for 1 turn",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -88,8 +176,8 @@
                 "Duration": "1",
                 "Amount": "30"
             },
-            "Multiplier": 505,
-            "551": {
+            "Multiplier": 475,
+            "2379": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",
@@ -99,6 +187,17 @@
                 },
                 "Target": "Enemy",
                 "DEF": "50"
+            },
+            "1002379": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Super class Allies",
+                "ATK": "30"
             }
         }
     },

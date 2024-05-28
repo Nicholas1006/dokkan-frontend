@@ -1,6 +1,6 @@
 {
     "ID": "1009900",
-    "Typing": null,
+    "Typing": "STR",
     "Class": "Extreme",
     "Name": "Majin Buu (Pure Evil)",
     "Rarity": "ur",
@@ -28,39 +28,160 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "801": {
-            "ID": "801",
+        "1601": {
+            "ID": "1601",
             "Timing": "Start of turn",
-            "ATK": 18000,
+            "ATK": 90,
+            "DEF": 90,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1001601": {
+            "ID": "1001601",
+            "Timing": "Start of turn",
+            "ATK": 20,
+            "DEF": 20,
+            "Target": {
+                "Target": "Enemies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "-"
+            },
+            "Length": "1"
+        },
+        "2001601": {
+            "ID": "2001601",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "100"
+            },
+            "Timing": "On Super",
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1",
-            "Condition": "When HP is 99% or less"
+            "Condition": "When there are 1 or more Majin Buu Saga category enemies "
+        },
+        "3001601": {
+            "ID": "3001601",
+            "Dodge chance": 50,
+            "Timing": "Attacking",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there are 1 or more Majin Buu Saga category enemies "
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "3921": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        },
+        "3922": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Typing": "TEQ"
+            },
+            "HP": 30,
+            "ATK": 30
+        },
+        "3923": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Typing": "INT"
+            },
+            "HP": 30,
+            "ATK": 30
+        },
+        "3924": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Typing": "STR"
+            },
+            "HP": 30,
+            "ATK": 30
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 1700,
+            "ATK": 2100,
+            "DEF": 1300
+        }
+    },
     "Super Attack": {
-        "607": {
-            "superID": "607",
-            "superName": "Super Kamehameha",
-            "superDescription": "Causes supreme damage \nand raises ATK for 3 turns",
+        "1897": {
+            "superID": "1897",
+            "superName": "Super Kamehameha (Extreme)",
+            "superDescription": "Causes supreme damage to enemy and \nraises ATK for 6 turns",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 380,
-            "607": {
+            "Multiplier": 480,
+            "1897": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
-                "Duration": "3",
+                "Duration": "6",
                 "Buff": {
                     "Type": "Percentage",
                     "+ or -": "+"

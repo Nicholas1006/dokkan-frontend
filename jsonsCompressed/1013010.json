@@ -1,6 +1,6 @@
 {
     "ID": "1013010",
-    "Typing": null,
+    "Typing": "PHY",
     "Class": "Extreme",
     "Name": "Recoome",
     "Rarity": "ur",
@@ -25,45 +25,134 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "1105": {
-            "ID": "1105",
+        "2552": {
+            "ID": "2552",
             "Timing": "Start of turn",
-            "DEF": 80,
+            "ATK": 120,
+            "DEF": 120,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1001105": {
-            "ID": "1001105",
+        "1002552": {
+            "ID": "1002552",
             "Timing": "Hit recieved",
             "Building Stat": {
                 "Min": 0,
-                "Max": 70,
+                "Max": 120,
                 "Cause": {
                     "Cause": "Look Elsewhere"
                 }
             },
-            "ATK": 14,
+            "ATK": 30,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "99",
             "Condition": "When attack recieved "
+        },
+        "2002552": {
+            "ID": "2002552",
+            "Timing": "Hit recieved",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 120,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "DEF": 30,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Condition": "When attack recieved "
+        },
+        "3002552": {
+            "ID": "3002552",
+            "Timing": "Start of turn",
+            "Guard": true,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Chance": "50",
+            "Length": "1",
+            "Condition": "When there are 2 or more Ginyu Force category allies on the team "
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "5406": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "PHY"
+                ]
+            },
+            "HP": 30,
+            "ATK": 30,
+            "DEF": 30
+        },
+        "5407": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 2
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 1600,
+            "ATK": 1600,
+            "DEF": 1600
+        },
+        "1": {
+            "HP": 240,
+            "ATK": 240,
+            "DEF": 240
+        },
+        "2": {
+            "HP": 248,
+            "ATK": 560,
+            "DEF": 248
+        },
+        "3": {
+            "HP": 552,
+            "ATK": 240,
+            "DEF": 552
+        },
+        "4": {
+            "HP": 1360,
+            "ATK": 1360,
+            "DEF": 1360
+        }
+    },
     "Super Attack": {
-        "1040": {
-            "superID": "1040",
-            "superName": "Recoome Eraser Gun",
-            "superDescription": "Causes supreme damage to enemy and \ngreatly lowers DEF",
+        "3298": {
+            "superID": "3298",
+            "superName": "Recoome Eraser Gun (Extreme)",
+            "superDescription": "Greatly raises ATK for 1 turn, \ncauses supreme damage to enemy \nand greatly lowers DEF",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -76,7 +165,18 @@
                 "Amount": "20"
             },
             "Multiplier": 430,
-            "1040": {
+            "3298": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "50"
+            },
+            "1003298": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",

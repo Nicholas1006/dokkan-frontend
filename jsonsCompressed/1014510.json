@@ -1,6 +1,6 @@
 {
     "ID": "1014510",
-    "Typing": null,
+    "Typing": "AGL",
     "Class": "Extreme",
     "Name": "Broly (Wrathful)",
     "Rarity": "ur",
@@ -27,23 +27,40 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "1402": {
-            "ID": "1402",
+        "1405": {
+            "ID": "1405",
             "Timing": "Start of turn",
-            "ATK": 60,
-            "DEF": 60,
+            "Building Stat": {
+                "Min": 0,
+                "Max": 12,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "Ki": 1,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "99"
+        },
+        "1001405": {
+            "ID": "1001405",
+            "Timing": "Start of turn",
+            "ATK": 70,
+            "DEF": 70,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1001402": {
-            "ID": "1001402",
+        "2001405": {
+            "ID": "2001405",
             "Timing": "Attacking the enemy",
             "Building Stat": {
                 "Min": 0,
-                "Max": 60,
+                "Max": 80,
                 "Cause": {
                     "Cause": "Look Elsewhere"
                 }
@@ -55,12 +72,12 @@
             },
             "Length": "99"
         },
-        "2001402": {
-            "ID": "2001402",
+        "3001405": {
+            "ID": "3001405",
             "Timing": "Hit recieved",
             "Building Stat": {
                 "Min": 0,
-                "Max": 60,
+                "Max": 80,
                 "Cause": {
                     "Cause": "Look Elsewhere"
                 }
@@ -74,24 +91,84 @@
             "Condition": "When attack recieved "
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "6581": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [
+                    "Extreme"
+                ],
+                "Typing": [
+                    "AGL"
+                ]
+            },
+            "HP": 100,
+            "ATK": 100,
+            "DEF": 100
+        },
+        "6582": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 1300,
+            "ATK": 1700,
+            "DEF": 2100
+        }
+    },
     "Super Attack": {
-        "1575": {
-            "superID": "1575",
-            "superName": "Anger Shout",
-            "superDescription": "Raises ATK for 3 turns and \ncauses supreme damage to enemy",
+        "1595": {
+            "superID": "1595",
+            "superName": "Anger Shout (Extreme)",
+            "superDescription": "Raises ATK & DEF for 3 turns and \ncauses supreme damage to enemy",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "1575": {
+            "Multiplier": 530,
+            "1595": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",
@@ -100,7 +177,8 @@
                     "+ or -": "+"
                 },
                 "Target": "Self",
-                "ATK": "30"
+                "ATK": "30",
+                "DEF": "30"
             }
         }
     },

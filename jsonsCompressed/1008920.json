@@ -1,6 +1,6 @@
 {
     "ID": "1008920",
-    "Typing": null,
+    "Typing": "STR",
     "Class": "Super",
     "Name": "Super Saiyan Goku",
     "Rarity": "ur",
@@ -32,8 +32,8 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "719": {
-            "ID": "719",
+        "1171": {
+            "ID": "1171",
             "Timing": "Start of turn",
             "Ki": 3,
             "Buff": {
@@ -43,35 +43,95 @@
             "Length": "1",
             "Condition": "When HP is 30% or more"
         },
-        "1000719": {
-            "ID": "1000719",
+        "1001171": {
+            "ID": "1001171",
             "Timing": "Start of turn",
-            "ATK": 5000,
+            "ATK": 80,
+            "DEF": 80,
             "Buff": {
-                "Type": "Raw stats",
+                "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": "When HP is 30% or more"
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "3486": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "STR",
+                    "INT",
+                    "AGL"
+                ]
+            },
+            "HP": 30,
+            "ATK": 30,
+            "DEF": 30
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 1700,
+            "ATK": 2100,
+            "DEF": 1300
+        }
+    },
     "Super Attack": {
-        "206": {
-            "superID": "206",
-            "superName": "Family Kamehameha",
-            "superDescription": "Causes supreme damage to enemy",
+        "1244": {
+            "superID": "1244",
+            "superName": "Family Kamehameha (Extreme)",
+            "superDescription": "Causes supreme damage to enemy and \nraises allies' ATK by 25% for 1 turn",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430
+            "Multiplier": 505,
+            "1244": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Allies",
+                "ATK": "25"
+            }
         }
     },
     "Active Skill": {},

@@ -1,6 +1,6 @@
 {
     "ID": "1016030",
-    "Typing": null,
+    "Typing": "TEQ",
     "Class": "Super",
     "Name": "Super Saiyan God Goku",
     "Rarity": "ur",
@@ -32,8 +32,8 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "1394": {
-            "ID": "1394",
+        "2756": {
+            "ID": "2756",
             "Timing": "Start of turn",
             "Ki": 3,
             "Buff": {
@@ -42,19 +42,19 @@
             },
             "Length": "1"
         },
-        "1001394": {
-            "ID": "1001394",
+        "1002756": {
+            "ID": "1002756",
             "Timing": "Start of turn",
-            "ATK": 100,
-            "DEF": 100,
+            "ATK": 150,
+            "DEF": 150,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "2001394": {
-            "ID": "2001394",
+        "2002756": {
+            "ID": "2002756",
             "Timing": "Start of turn",
             "Ki change": {
                 "From": [
@@ -74,28 +74,39 @@
             },
             "Length": "1"
         },
-        "3001394": {
-            "ID": "3001394",
+        "3002756": {
+            "ID": "3002756",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
                 "Max": 0,
                 "Cause": {
                     "Cause": "Ki sphere obtained",
-                    "Type": [
-                        "Rainbow"
-                    ]
+                    "Type": "any"
                 }
             },
             "ATK": 7,
+            "DEF": 7,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "4001394": {
-            "ID": "4001394",
+        "4002756": {
+            "ID": "4002756",
+            "Timing": "When ki spheres collected",
+            "ATK": 77,
+            "DEF": 77,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "With 2 or more Rainbow Ki Spheres obtained"
+        },
+        "5002756": {
+            "ID": "5002756",
             "Timing": "Being hit",
             "DR": 77,
             "Buff": {
@@ -103,27 +114,98 @@
                 "+ or -": "+"
             },
             "Length": "1",
-            "Condition": "When there are 1 or more Movie Bosses category enemies "
+            "Condition": "When there are 1 or more Movie Bosses category enemies  or When there are 1 or more Pure Saiyans category enemies "
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "6551": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [
+                    "Super"
+                ],
+                "Typing": [
+                    "TEQ"
+                ]
+            },
+            "HP": 100,
+            "ATK": 100,
+            "DEF": 100
+        },
+        "6552": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 1300,
+            "ATK": 2100,
+            "DEF": 1700
+        }
+    },
     "Super Attack": {
-        "1568": {
-            "superID": "1568",
-            "superName": "God Bind",
-            "superDescription": "Causes supreme damage to enemy \nand seals Super Attack",
+        "3653": {
+            "superID": "3653",
+            "superName": "God Bind (Extreme)",
+            "superDescription": "Raises DEF for 1 turn, \ncauses supreme damage to enemy \nand seals Super Attack",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "1568": {
+            "Multiplier": 530,
+            "3653": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "30"
+            },
+            "1003653": {
                 "Type": "ExtraEfficacySpecial",
                 "Chance": "100",
                 "Duration": "2",

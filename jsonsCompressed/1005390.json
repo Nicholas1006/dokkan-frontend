@@ -1,6 +1,6 @@
 {
     "ID": "1005390",
-    "Typing": null,
+    "Typing": "INT",
     "Class": "Super",
     "Name": "Super Saiyan Gohan (Youth)",
     "Rarity": "ur",
@@ -33,46 +33,137 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "495": {
-            "ID": "495",
+        "1927": {
+            "ID": "1927",
             "Timing": "Start of turn",
             "Ki": 4,
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1",
-            "Condition": "When HP is 50% or more"
+            "Length": "1"
         },
-        "1000495": {
-            "ID": "1000495",
+        "1001927": {
+            "ID": "1001927",
             "Timing": "Start of turn",
-            "ATK": 2500,
+            "ATK": 70,
+            "DEF": 70,
             "Buff": {
-                "Type": "Raw stats",
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2001927": {
+            "ID": "2001927",
+            "Timing": "Start of turn",
+            "ATK": 70,
+            "Buff": {
+                "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
-            "Condition": "When HP is 50% or more"
+            "Condition": "When there is an ally attacking on the same turn whose name includes "
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "2461": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Typing": "AGL"
+            },
+            "HP": 25,
+            "ATK": 25
+        },
+        "2462": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Typing": "INT"
+            },
+            "HP": 25,
+            "ATK": 25
+        },
+        "2463": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Typing": "PHY"
+            },
+            "HP": 25,
+            "ATK": 25
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 1700,
+            "ATK": 1700,
+            "DEF": 1700
+        }
+    },
     "Super Attack": {
-        "124": {
-            "superID": "124",
-            "superName": "Super Kamehameha",
-            "superDescription": "Causes supreme damage to enemy",
+        "2092": {
+            "superID": "2092",
+            "superName": "Super Kamehameha (Extreme)",
+            "superDescription": "Greatly raises DEF for 1 turn and \ncauses supreme damage to enemy",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430
+            "Multiplier": 530,
+            "2092": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "50"
+            }
         }
     },
     "Active Skill": {},

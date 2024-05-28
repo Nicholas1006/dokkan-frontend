@@ -1,6 +1,6 @@
 {
     "ID": "1009590",
-    "Typing": null,
+    "Typing": "INT",
     "Class": "Super",
     "Name": "Super Saiyan God SS Vegeta",
     "Rarity": "ur",
@@ -34,8 +34,8 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "767": {
-            "ID": "767",
+        "2071": {
+            "ID": "2071",
             "Timing": "Start of turn",
             "ATK": 20,
             "DEF": 20,
@@ -49,10 +49,42 @@
             },
             "Length": "1"
         },
-        "1000767": {
-            "ID": "1000767",
+        "1002071": {
+            "ID": "1002071",
+            "Timing": "Attacking the enemy",
+            "Status": [
+                "Stun"
+            ],
+            "Target": {
+                "Target": "Enemy"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Chance": "50",
+            "Length": "1",
+            "Condition": "When the target enemy is 64 or more categories"
+        },
+        "2002071": {
+            "ID": "2002071",
             "Timing": "Start of turn",
-            "ATK": 100,
+            "ATK": 120,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "3002071": {
+            "ID": "3002071",
+            "Timing": "Start of turn",
+            "DEF": 50,
+            "Target": {
+                "Category": "Realm of Gods",
+                "Target": "Allies",
+                "Class": "Super"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -60,24 +92,70 @@
             "Length": "1"
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "3736": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "INT"
+                ]
+            },
+            "HP": 100,
+            "ATK": 100,
+            "DEF": 100
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 1700,
+            "ATK": 1700,
+            "DEF": 1700
+        }
+    },
     "Super Attack": {
-        "566": {
-            "superID": "566",
-            "superName": "Pride of Our Warrior Race",
-            "superDescription": "Causes immense damage \nand raises ATK for 3 turns",
+        "2359": {
+            "superID": "2359",
+            "superName": "Pride of Our Warrior Race (Extreme)",
+            "superDescription": "Causes immense damage to enemy and \nraises ATK & DEF by 50% for 3 turns",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 455,
-            "566": {
+            "Multiplier": 580,
+            "2359": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",
@@ -86,7 +164,8 @@
                     "+ or -": "+"
                 },
                 "Target": "Self",
-                "ATK": "50"
+                "ATK": "50",
+                "DEF": "50"
             }
         }
     },

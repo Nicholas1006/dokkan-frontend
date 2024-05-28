@@ -1,6 +1,6 @@
 {
     "ID": "1008850",
-    "Typing": null,
+    "Typing": "PHY",
     "Class": "Extreme",
     "Name": "Goku Black",
     "Rarity": "ur",
@@ -30,33 +30,87 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "699": {
-            "ID": "699",
+        "1504": {
+            "ID": "1504",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
                 "Max": 0,
                 "Cause": {
                     "Cause": "Ki sphere obtained",
-                    "Type": [
-                        "Rainbow",
-                        "PHY",
-                        "STR",
-                        "INT",
-                        "TEQ",
-                        "AGL"
-                    ]
+                    "Type": "any"
                 }
             },
-            "ATK": 3000,
+            "ATK": 15,
+            "DEF": 15,
             "Buff": {
-                "Type": "Raw stats",
+                "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1000699": {
-            "ID": "1000699",
+        "1001504": {
+            "ID": "1001504",
+            "Timing": "Hit recieved",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 5,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "Ki": 1,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Condition": "When attack recieved "
+        },
+        "2001504": {
+            "ID": "2001504",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 0,
+                "Cause": {
+                    "Cause": "Ki sphere obtained",
+                    "Type": "any"
+                }
+            },
+            "ATK": 5,
+            "DEF": 5,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there are 1 or more Goku's Family category enemies "
+        },
+        "3001504": {
+            "ID": "3001504",
+            "Timing": "Start of turn",
+            "Ki change": {
+                "From": [
+                    "PHY",
+                    "STR",
+                    "INT",
+                    "TEQ",
+                    "AGL"
+                ],
+                "To": [
+                    "Rainbow"
+                ]
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there are 1 or more Goku's Family category enemies "
+        },
+        "4001504": {
+            "ID": "4001504",
             "Timing": "Start of turn",
             "Ki": 3,
             "Target": {
@@ -72,40 +126,70 @@
             "Length": "1"
         }
     },
-    "Hidden Potential": {},
-    "Super Attack": {
-        "468": {
-            "superID": "468",
-            "superName": "Black Kamehameha",
-            "superDescription": "Causes immense damage to enemy",
-            "superMinKi": "12",
-            "superPriority": "0",
-            "superStyle": "Normal",
-            "superMinLVL": "0",
-            "superCausality": "",
-            "superAimTarget": "0",
-            "superIsInactive": "0",
-            "SpecialBonus": {
-                "ID": "0"
+    "Leader Skill": {
+        "3391": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
             },
-            "Multiplier": 505
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "PHY"
+                ]
+            },
+            "HP": 100,
+            "ATK": 100,
+            "DEF": 100
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
         },
-        "469": {
-            "superID": "469",
-            "superName": "Black Power Ball",
-            "superDescription": "Causes immense damage to enemy \nand lowers ATK & DEF",
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 2100,
+            "ATK": 1700,
+            "DEF": 1300
+        }
+    },
+    "Super Attack": {
+        "1766": {
+            "superID": "1766",
+            "superName": "Black Power Ball (Extreme)",
+            "superDescription": "Causes immense damage to enemy and \ngreatly lowers ATK & DEF",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "10",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 505,
-            "469": {
+            "Multiplier": 630,
+            "1766": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",
@@ -114,8 +198,8 @@
                     "+ or -": "-"
                 },
                 "Target": "Enemy",
-                "ATK": "20",
-                "DEF": "20"
+                "ATK": "30",
+                "DEF": "30"
             }
         }
     },

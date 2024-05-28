@@ -1,6 +1,6 @@
 {
     "ID": "1015910",
-    "Typing": null,
+    "Typing": "STR",
     "Class": "Super",
     "Name": "Pan (GT) (Honey)",
     "Rarity": "lr",
@@ -29,8 +29,8 @@
         "Legendary Power"
     ],
     "Passive": {
-        "1418": {
-            "ID": "1418",
+        "2442": {
+            "ID": "2442",
             "Timing": "Attacking the enemy",
             "Heals": 33,
             "Buff": {
@@ -39,28 +39,94 @@
             },
             "Length": "1"
         },
-        "1001418": {
-            "ID": "1001418",
+        "1002442": {
+            "ID": "1002442",
+            "Timing": "Start of turn",
+            "Ki": 3,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Chance": "50",
+            "Length": "1"
+        },
+        "2002442": {
+            "ID": "2002442",
+            "Timing": "Start of turn",
+            "Ki": 3,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Chance": "50",
+            "Length": "1",
+            "Condition": "Starting from the 1st turn from this character's entry turn"
+        },
+        "3002442": {
+            "ID": "3002442",
             "Timing": "Being hit",
             "DR": 55,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Chance": "50",
             "Length": "1"
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "6676": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Building Stat": {
+                "Cause": "Ki sphere obtained",
+                "Type": "Own type"
+            },
+            "Heals": 1000
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 1200,
+            "ATK": 1200,
+            "DEF": 1200
+        },
+        "1": {
+            "HP": 180,
+            "ATK": 180,
+            "DEF": 180
+        },
+        "2": {
+            "HP": 186,
+            "ATK": 420,
+            "DEF": 186
+        },
+        "3": {
+            "HP": 414,
+            "ATK": 180,
+            "DEF": 414
+        },
+        "4": {
+            "HP": 1020,
+            "ATK": 1260,
+            "DEF": 780
+        }
+    },
     "Super Attack": {
-        "1607": {
-            "superID": "1607",
-            "superName": "Maiden Burst",
-            "superDescription": "Causes colossal damage with \na chance of stunning the enemy",
+        "3069": {
+            "superID": "3069",
+            "superName": "Maiden Burst (Extreme)",
+            "superDescription": "Causes colossal damage with \na medium chance of stunning the enemy",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -73,9 +139,9 @@
                 "Amount": "3"
             },
             "Multiplier": 395,
-            "1607": {
+            "3069": {
                 "Type": "ExtraEfficacySpecial",
-                "Chance": "25",
+                "Chance": "30",
                 "Duration": "2",
                 "Buff": {
                     "Type": "Raw stats",
@@ -85,14 +151,14 @@
                 "Status": "Stun"
             }
         },
-        "1608": {
-            "superID": "1608",
-            "superName": "Maiden Blast",
-            "superDescription": "Causes colossal damage with \na medium chance of stunning the enemy",
+        "3070": {
+            "superID": "3070",
+            "superName": "Maiden Blast (Extreme)",
+            "superDescription": "Greatly raises ATK for 1 turn and \ncauses colossal damage with \na medium chance of stunning the enemy",
             "superMinKi": "18",
             "superPriority": "0",
             "superStyle": "Hyper",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -105,7 +171,18 @@
                 "Amount": "3"
             },
             "Multiplier": 395,
-            "1608": {
+            "3070": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "50"
+            },
+            "1003070": {
                 "Type": "ExtraEfficacySpecial",
                 "Chance": "30",
                 "Duration": "2",

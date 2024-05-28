@@ -1,6 +1,6 @@
 {
     "ID": "1008940",
-    "Typing": null,
+    "Typing": "STR",
     "Class": "Super",
     "Name": "Super Saiyan Goten (Kid)",
     "Rarity": "ur",
@@ -34,8 +34,8 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "721": {
-            "ID": "721",
+        "1173": {
+            "ID": "1173",
             "Timing": "Start of turn",
             "Ki change": {
                 "From": "PHY",
@@ -48,10 +48,11 @@
             "Length": "1",
             "Condition": ""
         },
-        "1000721": {
-            "ID": "1000721",
+        "1001173": {
+            "ID": "1001173",
             "Timing": "Start of turn",
-            "ATK": 30,
+            "ATK": 70,
+            "DEF": 70,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -60,23 +61,78 @@
             "Condition": ""
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "3496": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Building Stat": {
+                "Cause": "Ki sphere obtained",
+                "Type": "Any"
+            },
+            "ATK": 7
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 1700,
+            "ATK": 2100,
+            "DEF": 1300
+        }
+    },
     "Super Attack": {
-        "208": {
-            "superID": "208",
-            "superName": "Family Kamehameha",
-            "superDescription": "Causes supreme damage to enemy",
+        "1246": {
+            "superID": "1246",
+            "superName": "Family Kamehameha (Extreme)",
+            "superDescription": "Causes supreme damage to enemy and \nraises DEF by 30% for 3 turns",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430
+            "Multiplier": 530,
+            "1246": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "3",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "30"
+            }
         }
     },
     "Active Skill": {},

@@ -1,6 +1,6 @@
 {
     "ID": "1024690",
-    "Typing": null,
+    "Typing": "TEQ",
     "Class": "Super",
     "Name": "Shen",
     "Rarity": "ur",
@@ -23,9 +23,222 @@
         "Guidance of the Dragon Balls",
         "Shattering the Limit"
     ],
-    "Passive": {},
-    "Hidden Potential": {},
+    "Passive": {
+        "4092": {
+            "ID": "4092",
+            "Timing": "Start of turn",
+            "ATK": 150,
+            "DEF": 150,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1004092": {
+            "ID": "1004092",
+            "Timing": "Attacking the enemy",
+            "Status": [
+                "Seal"
+            ],
+            "Target": {
+                "Target": "Enemy"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2004092": {
+            "ID": "2004092",
+            "Dodge chance": 50,
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "3004092": {
+            "ID": "3004092",
+            "Dodge chance": 10,
+            "Timing": "Hit recieved",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 20,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "After evading an attack"
+        },
+        "4004092": {
+            "ID": "4004092",
+            "Dodge chance": 20,
+            "Timing": "after all ki collected",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "As the 1st attacker in the turn"
+        },
+        "5004092": {
+            "ID": "5004092",
+            "Timing": "after all ki collected",
+            "ATK": 150,
+            "DEF": 150,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "As the 1st attacker in the turn"
+        },
+        "6004092": {
+            "ID": "6004092",
+            "Timing": "On Super",
+            "ATK": 150,
+            "DEF": 150,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "As the 2nd attacker in the turn or As the 3rd attacker in the turn"
+        },
+        "7004092": {
+            "ID": "7004092",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "70"
+            },
+            "Timing": "Hit recieved",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "After evading an attack"
+        },
+        "8004092": {
+            "ID": "8004092",
+            "Timing": "Hit recieved",
+            "ATK": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "3",
+            "Condition": "After evading an attack"
+        }
+    },
+    "Leader Skill": {
+        "10246900": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        },
+        "10246901": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "TEQ"
+                ]
+            },
+            "HP": 70,
+            "ATK": 70,
+            "DEF": 70
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 1200,
+            "ATK": 1200,
+            "DEF": 1200
+        },
+        "1": {
+            "HP": 180,
+            "ATK": 180,
+            "DEF": 180
+        },
+        "2": {
+            "HP": 186,
+            "ATK": 420,
+            "DEF": 186
+        },
+        "3": {
+            "HP": 414,
+            "ATK": 180,
+            "DEF": 414
+        },
+        "4": {
+            "HP": 780,
+            "ATK": 1260,
+            "DEF": 1020
+        }
+    },
+    "Super Attack": {
+        "3902": {
+            "superID": "3902",
+            "superName": "Dragon Barrage Strike",
+            "superDescription": "Greatly raises ATK & DEF for 1 turn \nand causes supreme damage with \na high chance of stunning the enemy",
+            "superMinKi": "12",
+            "superPriority": "0",
+            "superStyle": "Normal",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "0"
+            },
+            "3902": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "50",
+                "DEF": "50"
+            },
+            "1003902": {
+                "Type": "ExtraEfficacySpecial",
+                "Chance": "50",
+                "Duration": "2",
+                "Buff": {
+                    "Type": "Raw stats",
+                    "+ or -": "+"
+                },
+                "Target": "Enemy",
+                "Status": "Stun"
+            }
+        }
+    },
     "Active Skill": {},
-    "Super Attack": null,
+    "Ki Multiplier": {},
     "Standby Skill": {}
 }

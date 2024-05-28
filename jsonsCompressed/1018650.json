@@ -1,6 +1,6 @@
 {
     "ID": "1018650",
-    "Typing": null,
+    "Typing": "TEQ",
     "Class": "Super",
     "Name": "Vegito",
     "Rarity": "lr",
@@ -34,56 +34,81 @@
         "Legendary Power"
     ],
     "Passive": {
-        "2020": {
-            "ID": "2020",
+        "3374": {
+            "ID": "3374",
             "Timing": "Start of turn",
-            "ATK": 70,
-            "DEF": 70,
+            "ATK": 140,
+            "DEF": 140,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1002020": {
-            "ID": "1002020",
+        "1003374": {
+            "ID": "1003374",
             "Timing": "Attacking",
-            "Ki": 3,
+            "Ki": 4,
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "2002020": {
-            "ID": "2002020",
+        "2003374": {
+            "ID": "2003374",
+            "Timing": "On Super",
+            "DEF": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "3003374": {
+            "ID": "3003374",
             "Additional attack": {
                 "Activated": true,
-                "Chance of super": "30"
+                "Chance of super": "70"
             },
             "Timing": "Attacking",
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": "As the 1st attacker in the turn or As the 2nd attacker in the turn"
         },
-        "3002020": {
-            "ID": "3002020",
-            "Dodge chance": 50,
+        "4003374": {
+            "ID": "4003374",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "100"
+            },
+            "Timing": "Attacking",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "As the 3rd attacker in the turn"
+        },
+        "5003374": {
+            "ID": "5003374",
+            "Dodge chance": 70,
             "Timing": "Attacking",
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
-            "Condition": ""
+            "Condition": "As the 3rd attacker in the turn"
         },
-        "4002020": {
-            "ID": "4002020",
+        "6003374": {
+            "ID": "6003374",
             "Transformation": {
                 "Activated": true,
-                "Unit": "4017980",
+                "Unit": "4017981",
                 "Giant/Rage": false,
                 "Min Turns": null,
                 "Max Turns": null,
@@ -98,16 +123,108 @@
             "First turn to activate": 3
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "8106": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Final Trump Card"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "HP": 150,
+            "ATK": 150,
+            "DEF": 150
+        },
+        "8107": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Final Trump Card"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        },
+        "8108": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Potara"
+                ],
+                "Excluded Category": [
+                    "Final Trump Card"
+                ],
+                "Allies or enemies": "Allies"
+            },
+            "HP": 150,
+            "ATK": 150,
+            "DEF": 150
+        },
+        "8109": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Potara"
+                ],
+                "Excluded Category": [
+                    "Final Trump Card"
+                ],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 1300,
+            "ATK": 2100,
+            "DEF": 1700
+        }
+    },
     "Super Attack": {
-        "2206": {
-            "superID": "2206",
-            "superName": "Vegito Combo",
-            "superDescription": "Raises ATK and causes \ncolossal damage to enemy",
+        "4516": {
+            "superID": "4516",
+            "superName": "Vegito Combo (Extreme)",
+            "superDescription": "Raises ATK, raises DEF for 1 turn and \ncauses colossal damage to enemy",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -120,7 +237,7 @@
                 "Amount": "30"
             },
             "Multiplier": 365,
-            "2206": {
+            "4516": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "99",
@@ -130,16 +247,27 @@
                 },
                 "Target": "Self",
                 "ATK": "30"
+            },
+            "1004516": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "30"
             }
         },
-        "2207": {
-            "superID": "2207",
-            "superName": "Big Bang Attack",
-            "superDescription": "Raises ATK and causes \nmega-colossal damage to enemy",
+        "4517": {
+            "superID": "4517",
+            "superName": "Big Bang Attack (Extreme)",
+            "superDescription": "Raises ATK, greatly raises DEF for 1 turn and \ncauses mega-colossal damage to enemy",
             "superMinKi": "18",
             "superPriority": "0",
             "superStyle": "Hyper",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -152,7 +280,7 @@
                 "Amount": "30"
             },
             "Multiplier": 510,
-            "2207": {
+            "4517": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "99",
@@ -162,6 +290,17 @@
                 },
                 "Target": "Self",
                 "ATK": "30"
+            },
+            "1004517": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "50"
             }
         }
     },

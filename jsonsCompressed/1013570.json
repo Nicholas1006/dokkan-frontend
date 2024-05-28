@@ -1,6 +1,6 @@
 {
     "ID": "1013570",
-    "Typing": null,
+    "Typing": "AGL",
     "Class": "Extreme",
     "Name": "Turles",
     "Rarity": "ur",
@@ -27,8 +27,19 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "1133": {
-            "ID": "1133",
+        "2814": {
+            "ID": "2814",
+            "Timing": "Start of turn",
+            "ATK": 160,
+            "DEF": 160,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1002814": {
+            "ID": "1002814",
             "Timing": "Start of turn",
             "Ki": 3,
             "Target": {
@@ -40,8 +51,8 @@
             },
             "Length": "1"
         },
-        "1001133": {
-            "ID": "1001133",
+        "2002814": {
+            "ID": "2002814",
             "Timing": "Start of turn",
             "ATK": 40,
             "Target": {
@@ -53,10 +64,24 @@
             },
             "Length": "1"
         },
-        "2001133": {
-            "ID": "2001133",
+        "3002814": {
+            "ID": "3002814",
             "Timing": "Start of turn",
-            "ATK": 15,
+            "DEF": 40,
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "Where there is an extreme class enemy"
+        },
+        "4002814": {
+            "ID": "4002814",
+            "Timing": "Start of turn",
+            "ATK": 20,
             "Target": {
                 "Target": "Enemies",
                 "Class": "Super"
@@ -67,11 +92,11 @@
             },
             "Length": "1"
         },
-        "3001133": {
-            "ID": "3001133",
+        "5002814": {
+            "ID": "5002814",
             "Transformation": {
                 "Activated": true,
-                "Unit": "4013580",
+                "Unit": "4013581",
                 "Giant/Rage": false,
                 "Min Turns": null,
                 "Max Turns": null,
@@ -82,29 +107,141 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Chance": "25",
+            "Chance": "30",
             "Length": "1",
             "Condition": "When HP is 80% or less"
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "5536": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [
+                    "Movie Bosses"
+                ],
+                "Allies or enemies": "Allies",
+                "Class": [
+                    "Extreme"
+                ],
+                "Typing": []
+            },
+            "HP": 50,
+            "ATK": 50,
+            "DEF": 50
+        },
+        "5537": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [
+                    "Movie Bosses"
+                ],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        },
+        "5538": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Movie Bosses"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        },
+        "5539": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Movie Bosses"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "PHY",
+                    "STR",
+                    "INT",
+                    "TEQ",
+                    "AGL"
+                ]
+            },
+            "HP": 150,
+            "ATK": 150,
+            "DEF": 150
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 1300,
+            "ATK": 1700,
+            "DEF": 2100
+        }
+    },
     "Super Attack": {
-        "1205": {
-            "superID": "1205",
-            "superName": "Meteor Burst",
-            "superDescription": "Causes immense damage \nwith a medium chance to stun the enemy",
+        "3821": {
+            "superID": "3821",
+            "superName": "Meteor Burst (Extreme)",
+            "superDescription": "Raises ATK & DEF for 1 turn and \ncauses immense damage with \na medium chance of stunning the enemy",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 505,
-            "1205": {
+            "Multiplier": 630,
+            "3821": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "30",
+                "DEF": "30"
+            },
+            "1003821": {
                 "Type": "ExtraEfficacySpecial",
                 "Chance": "30",
                 "Duration": "2",

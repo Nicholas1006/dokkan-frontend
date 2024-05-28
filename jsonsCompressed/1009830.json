@@ -1,6 +1,6 @@
 {
     "ID": "1009830",
-    "Typing": null,
+    "Typing": "AGL",
     "Class": "Super",
     "Name": "Super Saiyan 4 Vegeta",
     "Rarity": "ur",
@@ -32,8 +32,30 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "781": {
-            "ID": "781",
+        "2435": {
+            "ID": "2435",
+            "Timing": "Start of turn",
+            "ATK": 150,
+            "DEF": 120,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1002435": {
+            "ID": "1002435",
+            "Timing": "On Super",
+            "ATK": 40,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When ki is 12 or more"
+        },
+        "2002435": {
+            "ID": "2002435",
             "Nullification": {
                 "Activated": true,
                 "Absorbed": 0
@@ -47,8 +69,8 @@
             "Length": "1",
             "Condition": "A super is being performed"
         },
-        "1000781": {
-            "ID": "1000781",
+        "3002435": {
+            "ID": "3002435",
             "Counter": {
                 "Activated": true,
                 "Multiplier": "300"
@@ -62,11 +84,11 @@
             "Length": "1",
             "Condition": "A super is being performed"
         },
-        "2000781": {
-            "ID": "2000781",
+        "4002435": {
+            "ID": "4002435",
             "Toggle Other Line": {
                 "Activated": true,
-                "Line": "781"
+                "Line": "2002435"
             },
             "Timing": "Hit recieved",
             "Buff": {
@@ -75,49 +97,141 @@
             },
             "Length": "1"
         },
-        "3000781": {
-            "ID": "3000781",
+        "5002435": {
+            "ID": "5002435",
             "Toggle Other Line": {
                 "Activated": true,
-                "Line": "1000781"
+                "Line": "3002435"
             },
             "Timing": "Hit recieved",
             "Buff": {
                 "Type": "Raw stats",
-                "+ or -": "+"
-            },
-            "Length": "1"
-        },
-        "4000781": {
-            "ID": "4000781",
-            "Timing": "Start of turn",
-            "ATK": 120,
-            "DEF": 120,
-            "Buff": {
-                "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "3806": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [
+                    "Super"
+                ],
+                "Typing": [
+                    "AGL"
+                ]
+            },
+            "HP": 120,
+            "ATK": 120,
+            "DEF": 120
+        },
+        "3807": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        },
+        "3808": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [
+                    "Extreme"
+                ],
+                "Typing": [
+                    "AGL"
+                ]
+            },
+            "HP": 50,
+            "ATK": 50,
+            "DEF": 50
+        },
+        "3809": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 1
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 1300,
+            "ATK": 1700,
+            "DEF": 2100
+        }
+    },
     "Super Attack": {
-        "586": {
-            "superID": "586",
-            "superName": "Final Shine Attack",
-            "superDescription": "Causes immense damage to enemy \nand greatly lowers DEF",
+        "3065": {
+            "superID": "3065",
+            "superName": "Final Shine Attack (Extreme)",
+            "superDescription": "Greatly raises DEF for 1 turn, causes \nimmense damage to enemy and greatly \nlowers DEF; raises ATK by 30% for 6 turns",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 505,
-            "586": {
+            "Multiplier": 600,
+            "3065": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "50"
+            },
+            "1003065": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",
@@ -127,6 +241,17 @@
                 },
                 "Target": "Enemy",
                 "DEF": "50"
+            },
+            "2003065": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "6",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "30"
             }
         }
     },

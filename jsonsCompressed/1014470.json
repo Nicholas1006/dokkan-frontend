@@ -1,6 +1,6 @@
 {
     "ID": "1014470",
-    "Typing": null,
+    "Typing": "INT",
     "Class": "Extreme",
     "Name": "Metal Cooler Army",
     "Rarity": "lr",
@@ -30,30 +30,51 @@
         "Legendary Power"
     ],
     "Passive": {
-        "1219": {
-            "ID": "1219",
+        "2875": {
+            "ID": "2875",
             "Timing": "Start of turn",
-            "Building Stat": {
-                "Min": 10,
-                "Max": 90,
-                "Cause": {
-                    "Cause": "HP",
-                    "Type": "More HP remaining"
-                }
-            },
-            "ATK": 90,
-            "DEF": 90,
+            "Heals": 8,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1001219": {
-            "ID": "1001219",
+        "1002875": {
+            "ID": "1002875",
+            "Timing": "Start of turn",
+            "ATK": 100,
+            "DEF": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2002875": {
+            "ID": "2002875",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 10,
+                "Max": 100,
+                "Cause": {
+                    "Cause": "HP",
+                    "Type": "More HP remaining"
+                }
+            },
+            "ATK": 100,
+            "DEF": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "3002875": {
+            "ID": "3002875",
             "Additional attack": {
                 "Activated": true,
-                "Chance of super": "10"
+                "Chance of super": "30"
             },
             "Timing": "after all ki collected",
             "Buff": {
@@ -61,18 +82,102 @@
                 "+ or -": "+"
             },
             "Length": "1"
+        },
+        "4002875": {
+            "ID": "4002875",
+            "Timing": "Start of turn",
+            "DEF": 30,
+            "Target": {
+                "Category": "Artificial Life Forms",
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "5002875": {
+            "ID": "5002875",
+            "Timing": "Start of turn",
+            "Ki": 3,
+            "Target": {
+                "Category": "Artificial Life Forms",
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "5896": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Class": [
+                    "Extreme"
+                ],
+                "Typing": []
+            },
+            "HP": 70,
+            "ATK": 70,
+            "DEF": 70
+        },
+        "5897": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": []
+            },
+            "Ki": 3
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 1700,
+            "ATK": 1700,
+            "DEF": 1700
+        }
+    },
     "Super Attack": {
-        "1290": {
-            "superID": "1290",
-            "superName": "Supernova",
-            "superDescription": "Causes colossal damage to enemy and \ngreatly lowers DEF",
+        "3911": {
+            "superID": "3911",
+            "superName": "Supernova (Extreme)",
+            "superDescription": "Raises ATK & DEF for 1 turn, \ncauses colossal damage to enemy \nand greatly lowers DEF",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -85,7 +190,19 @@
                 "Amount": "30"
             },
             "Multiplier": 395,
-            "1290": {
+            "3911": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "30",
+                "DEF": "30"
+            },
+            "1003911": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",
@@ -97,14 +214,14 @@
                 "DEF": "50"
             }
         },
-        "1291": {
-            "superID": "1291",
-            "superName": "Machinery Rain",
-            "superDescription": "Causes mega-colossal damage to enemy \nand raises Extreme Class allies' \nATK by 30% for 1 turn",
+        "3912": {
+            "superID": "3912",
+            "superName": "Machinery Rain (Extreme)",
+            "superDescription": "Raises DEF for 1 turn, \ncauses mega-colossal damage to enemy \nand raises Extreme Class allies' \nATK by 30% for 2 turns",
             "superMinKi": "18",
             "superPriority": "0",
             "superStyle": "Hyper",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -117,10 +234,21 @@
                 "Amount": "30"
             },
             "Multiplier": 510,
-            "1291": {
+            "3912": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "30"
+            },
+            "1003912": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "2",
                 "Buff": {
                     "Type": "Percentage",
                     "+ or -": "+"

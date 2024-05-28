@@ -1,6 +1,6 @@
 {
     "ID": "1022000",
-    "Typing": null,
+    "Typing": "STR",
     "Class": "Extreme",
     "Name": "Meta-Rilldo",
     "Rarity": "ur",
@@ -22,9 +22,218 @@
         "Fear and Faith",
         "Fierce Battle"
     ],
-    "Passive": {},
-    "Hidden Potential": {},
+    "Passive": {
+        "2424": {
+            "ID": "2424",
+            "Timing": "Start of turn",
+            "DEF": 120,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1002424": {
+            "ID": "1002424",
+            "Timing": "On Super",
+            "ATK": 120,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When ki is 12 or more"
+        },
+        "2002424": {
+            "ID": "2002424",
+            "Timing": "Start of turn",
+            "Ki": 2,
+            "Target": {
+                "Category": "GT Bosses",
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "3002424": {
+            "ID": "3002424",
+            "Timing": "Start of turn",
+            "DEF": 40,
+            "Target": {
+                "Category": "GT Bosses",
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "4002424": {
+            "ID": "4002424",
+            "Timing": "Start of turn",
+            "ATK": 60,
+            "DEF": 60,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there are 1 or more GT Heroes category enemies "
+        },
+        "5002424": {
+            "ID": "5002424",
+            "Effective against all": true,
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there are 1 or more GT Heroes category enemies "
+        },
+        "6002424": {
+            "ID": "6002424",
+            "Timing": "Attacking the enemy",
+            "Status": [
+                "Stun"
+            ],
+            "Target": {
+                "Target": "Enemy"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Chance": "50",
+            "Length": "2",
+            "Condition": "When there are 1 or more GT Heroes category enemies "
+        },
+        "7002424": {
+            "ID": "7002424",
+            "Timing": "End of turn",
+            "Heals": 5,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "At the end of the turn in which attack was recieved"
+        }
+    },
+    "Leader Skill": {
+        "9866": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "STR"
+                ]
+            },
+            "HP": 90,
+            "ATK": 90,
+            "DEF": 90
+        },
+        "9867": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 1700,
+            "ATK": 2100,
+            "DEF": 1300
+        }
+    },
+    "Super Attack": {
+        "3060": {
+            "superID": "3060",
+            "superName": "Deadly Metal Needles",
+            "superDescription": "Greatly raises DEF for 1 turn, \nraises ATK, causes supreme damage \nto enemy and lowers ATK",
+            "superMinKi": "12",
+            "superPriority": "0",
+            "superStyle": "Normal",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "0"
+            },
+            "3060": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "99",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "30"
+            },
+            "1003060": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "50"
+            },
+            "2003060": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "3",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "-"
+                },
+                "Target": "Enemy",
+                "ATK": "20"
+            }
+        }
+    },
     "Active Skill": {},
-    "Super Attack": null,
+    "Ki Multiplier": {},
     "Standby Skill": {}
 }

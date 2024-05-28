@@ -1,6 +1,6 @@
 {
     "ID": "1013210",
-    "Typing": null,
+    "Typing": "PHY",
     "Class": "Super",
     "Name": "Goku",
     "Rarity": "ur",
@@ -30,8 +30,19 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "1085": {
-            "ID": "1085",
+        "2571": {
+            "ID": "2571",
+            "Timing": "Start of turn",
+            "ATK": 120,
+            "DEF": 120,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1002571": {
+            "ID": "1002571",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 20,
@@ -49,8 +60,42 @@
             },
             "Length": "1"
         },
-        "1001085": {
-            "ID": "1001085",
+        "2002571": {
+            "ID": "2002571",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 60,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "ATK": 20,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99"
+        },
+        "3002571": {
+            "ID": "3002571",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 60,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "DEF": 20,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99"
+        },
+        "4002571": {
+            "ID": "4002571",
             "Timing": "Start of turn",
             "Heals": 100,
             "Buff": {
@@ -58,28 +103,84 @@
                 "+ or -": "+"
             },
             "Length": "1",
-            "Condition": "When HP is 10% or less",
+            "Condition": "When HP is 30% or less",
             "Once only": true
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "5326": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "HP": 40,
+            "ATK": 40,
+            "DEF": 40,
+            "Condition": "When HP is 30% or more"
+        },
+        "5327": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3,
+            "Condition": "When HP is 30% or more"
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 1200,
+            "ATK": 1200,
+            "DEF": 1200
+        },
+        "1": {
+            "HP": 180,
+            "ATK": 180,
+            "DEF": 180
+        },
+        "2": {
+            "HP": 186,
+            "ATK": 420,
+            "DEF": 186
+        },
+        "3": {
+            "HP": 414,
+            "ATK": 180,
+            "DEF": 414
+        },
+        "4": {
+            "HP": 1260,
+            "ATK": 1020,
+            "DEF": 780
+        }
+    },
     "Super Attack": {
-        "1015": {
-            "superID": "1015",
-            "superName": "Kamehameha Barrage",
-            "superDescription": "Causes supreme damage to enemy \nand raises DEF by 30% for 3 turns",
+        "3332": {
+            "superID": "3332",
+            "superName": "Kamehameha Barrage (Extreme)",
+            "superDescription": "Causes supreme damage to enemy and \nraises ATK & DEF by 30% for 3 turns",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "1015": {
+            "Multiplier": 500,
+            "3332": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",
@@ -88,6 +189,7 @@
                     "+ or -": "+"
                 },
                 "Target": "Self",
+                "ATK": "30",
                 "DEF": "30"
             }
         }

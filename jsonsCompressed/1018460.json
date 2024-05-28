@@ -1,6 +1,6 @@
 {
     "ID": "1018460",
-    "Typing": null,
+    "Typing": "PHY",
     "Class": "Extreme",
     "Name": "Super Saiyan Cumber (Giant Ape Cumber)",
     "Rarity": "ur",
@@ -27,8 +27,8 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "1947": {
-            "ID": "1947",
+        "3059": {
+            "ID": "3059",
             "Timing": "Start of turn",
             "Ki": 2,
             "Buff": {
@@ -37,19 +37,30 @@
             },
             "Length": "1"
         },
-        "1001947": {
-            "ID": "1001947",
+        "1003059": {
+            "ID": "1003059",
             "Timing": "Start of turn",
-            "ATK": 150,
-            "DEF": 150,
+            "ATK": 200,
+            "DEF": 200,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "2001947": {
-            "ID": "2001947",
+        "2003059": {
+            "ID": "2003059",
+            "Timing": "Hit recieved",
+            "DEF": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When attack recieved "
+        },
+        "3003059": {
+            "ID": "3003059",
             "Timing": "Hit recieved",
             "Status": [
                 "Stun"
@@ -59,18 +70,40 @@
                 "Class": "Super"
             },
             "Buff": {
-                "Type": "Raw stats",
+                "Type": "Percentage",
                 "+ or -": "+"
             },
             "Chance": "50",
             "Length": "1",
             "Condition": "When attack recieved "
         },
-        "3001947": {
-            "ID": "3001947",
+        "4003059": {
+            "ID": "4003059",
+            "Timing": "On Super",
+            "ATK": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When the target enemy is stunned"
+        },
+        "5003059": {
+            "ID": "5003059",
+            "Timing": "On Super",
+            "Crit Chance": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When the target enemy is stunned"
+        },
+        "6003059": {
+            "ID": "6003059",
             "Transformation": {
                 "Activated": true,
-                "Unit": "4019020",
+                "Unit": "4019021",
                 "Giant/Rage": true,
                 "Min Turns": "2",
                 "Max Turns": "3",
@@ -81,29 +114,97 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Chance": "50",
             "Length": "1",
-            "Condition": "When HP is 50% or less"
+            "Condition": "When HP is 50% or less",
+            "Once only": true
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "7786": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Class": [
+                    "Extreme"
+                ],
+                "Typing": []
+            },
+            "HP": 80,
+            "ATK": 80,
+            "DEF": 80
+        },
+        "7787": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": []
+            },
+            "Ki": 3
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 2100,
+            "ATK": 1700,
+            "DEF": 1300
+        }
+    },
     "Super Attack": {
-        "2105": {
-            "superID": "2105",
-            "superName": "Savage Tyrant",
-            "superDescription": "Causes immense damage to enemy \nand greatly lowers ATK & DEF",
+        "4245": {
+            "superID": "4245",
+            "superName": "Savage Tyrant (Extreme)",
+            "superDescription": "Greatly raises ATK & DEF for 1 turn, \ncauses immense damage to enemy \nand greatly lowers ATK & DEF",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 505,
-            "2105": {
+            "Multiplier": 630,
+            "4245": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "50",
+                "DEF": "50"
+            },
+            "1004245": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",

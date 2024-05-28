@@ -1,6 +1,6 @@
 {
     "ID": "1013050",
-    "Typing": null,
+    "Typing": "AGL",
     "Class": "Extreme",
     "Name": "Burter",
     "Rarity": "ur",
@@ -26,8 +26,19 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "1109": {
-            "ID": "1109",
+        "2565": {
+            "ID": "2565",
+            "Timing": "Start of turn",
+            "ATK": 100,
+            "DEF": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1002565": {
+            "ID": "1002565",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -37,15 +48,16 @@
                     "Type": "any"
                 }
             },
-            "ATK": 10,
+            "ATK": 20,
+            "DEF": 20,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1001109": {
-            "ID": "1001109",
+        "2002565": {
+            "ID": "2002565",
             "Dodge chance": 50,
             "Timing": "Attacking",
             "Buff": {
@@ -54,18 +66,102 @@
             },
             "Length": "1",
             "Condition": "As the 1st attacker in the turn"
+        },
+        "3002565": {
+            "ID": "3002565",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "100"
+            },
+            "Timing": "Attacking",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Chance": "30",
+            "Length": "1",
+            "Condition": "As the 2nd attacker in the turn or As the 3rd attacker in the turn"
+        },
+        "4002565": {
+            "ID": "4002565",
+            "Dodge chance": 20,
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there are 2 or more Ginyu Force category allies on the team "
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "5426": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "AGL"
+                ]
+            },
+            "HP": 30,
+            "ATK": 30,
+            "DEF": 30
+        },
+        "5427": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 2
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 1600,
+            "ATK": 1600,
+            "DEF": 1600
+        },
+        "1": {
+            "HP": 240,
+            "ATK": 240,
+            "DEF": 240
+        },
+        "2": {
+            "HP": 248,
+            "ATK": 560,
+            "DEF": 248
+        },
+        "3": {
+            "HP": 552,
+            "ATK": 240,
+            "DEF": 552
+        },
+        "4": {
+            "HP": 1360,
+            "ATK": 1360,
+            "DEF": 1360
+        }
+    },
     "Super Attack": {
-        "1044": {
-            "superID": "1044",
-            "superName": "Blue Impulse",
-            "superDescription": "Raises DEF and causes supreme damage to enemy",
+        "3322": {
+            "superID": "3322",
+            "superName": "Blue Impulse (Extreme)",
+            "superDescription": "Raises DEF, raises ATK for 1 turn and \ncauses supreme damage to enemy",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -78,7 +174,7 @@
                 "Amount": "3"
             },
             "Multiplier": 430,
-            "1044": {
+            "3322": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "99",
@@ -88,6 +184,17 @@
                 },
                 "Target": "Self",
                 "DEF": "30"
+            },
+            "1003322": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "30"
             }
         }
     },

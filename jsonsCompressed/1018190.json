@@ -1,6 +1,6 @@
 {
     "ID": "1018190",
-    "Typing": null,
+    "Typing": "STR",
     "Class": "Extreme",
     "Name": "Cooler",
     "Rarity": "ur",
@@ -28,19 +28,33 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "1930": {
-            "ID": "1930",
+        "2970": {
+            "ID": "2970",
             "Timing": "Start of turn",
-            "ATK": 100,
-            "DEF": 100,
+            "ATK": 130,
+            "DEF": 130,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1001930": {
-            "ID": "1001930",
+        "1002970": {
+            "ID": "1002970",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "30"
+            },
+            "Timing": "On Super",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When the target enemy is in \"ATK down\" status or When the target enemy is in \"DEF down\" status"
+        },
+        "2002970": {
+            "ID": "2002970",
             "Timing": "Start of turn",
             "Ki": 2,
             "Target": {
@@ -54,11 +68,11 @@
             "Length": "1",
             "Condition": "When facing less than 2 enemies"
         },
-        "2001930": {
-            "ID": "2001930",
+        "3002970": {
+            "ID": "3002970",
             "Timing": "Start of turn",
-            "ATK": 30,
-            "DEF": 30,
+            "ATK": 50,
+            "DEF": 50,
             "Target": {
                 "Category": "Transformation Boost",
                 "Target": "Allies"
@@ -70,8 +84,8 @@
             "Length": "1",
             "Condition": "When facing less than 2 enemies"
         },
-        "3001930": {
-            "ID": "3001930",
+        "4002970": {
+            "ID": "4002970",
             "Timing": "Start of turn",
             "Ki": 2,
             "Target": {
@@ -85,8 +99,8 @@
             "Length": "1",
             "Condition": "When facing 2 or more enemies"
         },
-        "4001930": {
-            "ID": "4001930",
+        "5002970": {
+            "ID": "5002970",
             "Timing": "Start of turn",
             "ATK": 50,
             "DEF": 50,
@@ -102,24 +116,127 @@
             "Condition": "When facing 2 or more enemies"
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "7691": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Terrifying Conquerors"
+                ],
+                "Excluded Category": [
+                    "Transformation Boost"
+                ],
+                "Allies or enemies": "Allies"
+            },
+            "HP": 130,
+            "ATK": 170,
+            "DEF": 170
+        },
+        "7692": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Terrifying Conquerors"
+                ],
+                "Excluded Category": [
+                    "Transformation Boost"
+                ],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        },
+        "7693": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Transformation Boost"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "HP": 130,
+            "ATK": 170,
+            "DEF": 170
+        },
+        "7694": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Transformation Boost"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 1700,
+            "ATK": 2100,
+            "DEF": 1300
+        }
+    },
     "Super Attack": {
-        "2079": {
-            "superID": "2079",
-            "superName": "Destructive Ray",
-            "superDescription": "Causes immense damage to enemy \nand lowers ATK & DEF",
+        "4108": {
+            "superID": "4108",
+            "superName": "Destructive Ray (Extreme)",
+            "superDescription": "Raises DEF, causes immense damage \nto enemy and lowers ATK & DEF",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 505,
-            "2079": {
+            "Multiplier": 630,
+            "4108": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "99",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "30"
+            },
+            "1004108": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",

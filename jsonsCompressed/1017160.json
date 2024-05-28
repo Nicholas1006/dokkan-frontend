@@ -1,6 +1,6 @@
 {
     "ID": "1017160",
-    "Typing": null,
+    "Typing": "PHY",
     "Class": "Extreme",
     "Name": "Frieza (2nd Form)",
     "Rarity": "ur",
@@ -30,21 +30,21 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "1528": {
-            "ID": "1528",
+        "1530": {
+            "ID": "1530",
             "Timing": "Start of turn",
-            "ATK": 50,
-            "DEF": 50,
+            "ATK": 60,
+            "DEF": 60,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1001528": {
-            "ID": "1001528",
+        "1001530": {
+            "ID": "1001530",
             "Timing": "Start of turn",
-            "Ki": 4,
+            "Ki": 6,
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -52,29 +52,98 @@
             "Length": "1",
             "Condition": "When facing 2 or more enemies"
         },
-        "2001528": {
-            "ID": "2001528",
+        "2001530": {
+            "ID": "2001530",
             "Timing": "Start of turn",
-            "ATK": 30,
-            "DEF": 30,
+            "ATK": 40,
+            "DEF": 40,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": "When facing 2 or more enemies"
+        },
+        "3001530": {
+            "ID": "3001530",
+            "Timing": "On Super",
+            "ATK": 60,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When the target enemy is in \"DEF down\" status"
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "7126": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "PHY"
+                ]
+            },
+            "HP": 30,
+            "ATK": 30,
+            "DEF": 30
+        },
+        "7127": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 2
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 1600,
+            "ATK": 1600,
+            "DEF": 1600
+        },
+        "1": {
+            "HP": 240,
+            "ATK": 240,
+            "DEF": 240
+        },
+        "2": {
+            "HP": 248,
+            "ATK": 560,
+            "DEF": 248
+        },
+        "3": {
+            "HP": 552,
+            "ATK": 240,
+            "DEF": 552
+        },
+        "4": {
+            "HP": 1360,
+            "ATK": 1360,
+            "DEF": 1360
+        }
+    },
     "Super Attack": {
-        "1788": {
-            "superID": "1788",
-            "superName": "Death Storm",
-            "superDescription": "Causes mass damage to all enemies",
+        "1789": {
+            "superID": "1789",
+            "superName": "Death Storm (Extreme)",
+            "superDescription": "Greatly raises ATK for 1 turn and \ncauses mass damage to all enemies",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "1",
             "superIsInactive": "0",
@@ -86,7 +155,18 @@
                 "Duration": "1",
                 "Amount": "20"
             },
-            "Multiplier": 355
+            "Multiplier": 355,
+            "1789": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "50"
+            }
         }
     },
     "Active Skill": {},

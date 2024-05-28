@@ -1,6 +1,6 @@
 {
     "ID": "1007390",
-    "Typing": null,
+    "Typing": "TEQ",
     "Class": "Extreme",
     "Name": "Golden Frieza",
     "Rarity": "ur",
@@ -35,10 +35,20 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "665": {
-            "ID": "665",
+        "1492": {
+            "ID": "1492",
             "Timing": "Start of turn",
-            "DR": 70,
+            "ATK": 80,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1001492": {
+            "ID": "1001492",
+            "Timing": "Start of turn",
+            "DR": 80,
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -46,36 +56,93 @@
             "Length": "1",
             "Condition": "When HP is 50% or more"
         },
-        "1000665": {
-            "ID": "1000665",
+        "2001492": {
+            "ID": "2001492",
             "Timing": "Start of turn",
-            "ATK": 70,
+            "DR": 50,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When HP is 50% or less"
+        },
+        "3001492": {
+            "ID": "3001492",
+            "Timing": "Start of turn",
+            "ATK": 50,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
-            "Condition": "When HP is 50% or more"
+            "Condition": "When HP is 50% or less"
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "3221": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "TEQ"
+                ]
+            },
+            "HP": 100,
+            "ATK": 100,
+            "DEF": 100
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 1300,
+            "ATK": 2100,
+            "DEF": 1700
+        }
+    },
     "Super Attack": {
-        "440": {
-            "superID": "440",
-            "superName": "Earth Breaker",
-            "superDescription": "Causes immense damage to enemy \nand greatly lowers DEF",
+        "1732": {
+            "superID": "1732",
+            "superName": "Earth Breaker (Extreme)",
+            "superDescription": "Causes immense damage to enemy and \nmassively lowers DEF",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 505,
-            "440": {
+            "Multiplier": 630,
+            "1732": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",
@@ -84,7 +151,7 @@
                     "+ or -": "-"
                 },
                 "Target": "Enemy",
-                "DEF": "50"
+                "DEF": "80"
             }
         }
     },

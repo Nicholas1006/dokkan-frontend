@@ -1,6 +1,6 @@
 {
     "ID": "1007470",
-    "Typing": null,
+    "Typing": "TEQ",
     "Class": "Super",
     "Name": "Super Saiyan Goku",
     "Rarity": "lr",
@@ -29,39 +29,127 @@
         "Legendary Power"
     ],
     "Passive": {
-        "601": {
-            "ID": "601",
+        "2163": {
+            "ID": "2163",
             "Timing": "Start of turn",
-            "ATK": 10000,
+            "ATK": 59,
+            "DEF": 59,
             "Buff": {
-                "Type": "Raw stats",
+                "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1",
-            "Condition": "When facing less than 2 enemies"
+            "Length": "1"
         },
-        "1000601": {
-            "ID": "1000601",
-            "Timing": "Start of turn",
-            "DEF": 3000,
+        "1002163": {
+            "ID": "1002163",
+            "Timing": "Attacking",
+            "Ki": 3,
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1",
-            "Condition": "When facing less than 2 enemies"
+            "Condition": "As the 1st attacker in the turn"
+        },
+        "2002163": {
+            "ID": "2002163",
+            "Timing": "Attacking",
+            "DEF": 59,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "As the 1st attacker in the turn"
+        },
+        "3002163": {
+            "ID": "3002163",
+            "Timing": "Attacking",
+            "Ki": 3,
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When the target enemy is 64 or more categories"
+        },
+        "4002163": {
+            "ID": "4002163",
+            "Timing": "On Super",
+            "ATK": 59,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When ki is 18 or more"
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "2916": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "ATK": 3000
+        },
+        "2917": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 1300,
+            "ATK": 2100,
+            "DEF": 1700
+        }
+    },
     "Super Attack": {
-        "384": {
-            "superID": "384",
-            "superName": "Super Kamehameha",
-            "superDescription": "Causes colossal damage to enemy",
+        "2502": {
+            "superID": "2502",
+            "superName": "Super Kamehameha (Extreme)",
+            "superDescription": "Greatly raises ATK & DEF for 1 turn \nand causes colossal damage to enemy",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -73,16 +161,28 @@
                 "Duration": "1",
                 "Amount": "30"
             },
-            "Multiplier": 395
+            "Multiplier": 395,
+            "2502": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "50",
+                "DEF": "50"
+            }
         },
-        "385": {
-            "superID": "385",
-            "superName": "Super Spirit Bomb",
-            "superDescription": "Causes mega-colossal damage to enemy, \nallies' ATK +30% for 1 turn",
+        "2503": {
+            "superID": "2503",
+            "superName": "Super Spirit Bomb (Extreme)",
+            "superDescription": "Causes mega-colossal damage to enemy; \nraises allies' ATK by 30% and chance of \nperforming a critical hit by 10% for 1 turn",
             "superMinKi": "18",
             "superPriority": "0",
             "superStyle": "Hyper",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -95,7 +195,7 @@
                 "Amount": "30"
             },
             "Multiplier": 510,
-            "385": {
+            "2503": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -105,6 +205,17 @@
                 },
                 "Target": "Allies",
                 "ATK": "30"
+            },
+            "1002503": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Allies",
+                "Crit Chance": "10"
             }
         }
     },

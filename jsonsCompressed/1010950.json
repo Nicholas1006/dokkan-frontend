@@ -1,6 +1,6 @@
 {
     "ID": "1010950",
-    "Typing": null,
+    "Typing": "STR",
     "Class": "Super",
     "Name": "Master Roshi (Max Power)",
     "Rarity": "ur",
@@ -28,8 +28,56 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "961": {
-            "ID": "961",
+        "3025": {
+            "ID": "3025",
+            "Timing": "On Super",
+            "ATK": 120,
+            "DEF": 120,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When ki is 12 or more"
+        },
+        "1003025": {
+            "ID": "1003025",
+            "Timing": "When ki spheres collected",
+            "ATK": 30,
+            "DEF": 30,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "With 3 or more Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres obtained"
+        },
+        "2003025": {
+            "ID": "2003025",
+            "Timing": "When ki spheres collected",
+            "Guard": true,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Chance": "30",
+            "Length": "1",
+            "Condition": "With 3 or more Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres obtained"
+        },
+        "3003025": {
+            "ID": "3003025",
+            "Timing": "When ki spheres collected",
+            "ATK": 50,
+            "DEF": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "With 5 or more Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres obtained"
+        },
+        "4003025": {
+            "ID": "4003025",
             "Timing": "Start of turn",
             "Ki": 2,
             "Target": {
@@ -42,8 +90,8 @@
             },
             "Length": "1"
         },
-        "1000961": {
-            "ID": "1000961",
+        "5003025": {
+            "ID": "5003025",
             "Timing": "Start of turn",
             "ATK": 30,
             "DEF": 30,
@@ -55,20 +103,93 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Chance": "70",
             "Length": "1"
+        },
+        "6003025": {
+            "ID": "6003025",
+            "Timing": "When ki spheres collected",
+            "ATK": 10,
+            "DEF": 10,
+            "Target": {
+                "Target": "Allies",
+                "Type": "STR"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "With 3 or more STR Ki Spheres obtained"
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "4666": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "STR"
+                ]
+            },
+            "HP": 70,
+            "ATK": 70,
+            "DEF": 70
+        },
+        "4667": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 1200,
+            "ATK": 1200,
+            "DEF": 1200
+        },
+        "1": {
+            "HP": 180,
+            "ATK": 180,
+            "DEF": 180
+        },
+        "2": {
+            "HP": 186,
+            "ATK": 420,
+            "DEF": 186
+        },
+        "3": {
+            "HP": 414,
+            "ATK": 180,
+            "DEF": 414
+        },
+        "4": {
+            "HP": 1020,
+            "ATK": 1260,
+            "DEF": 780
+        }
+    },
     "Super Attack": {
-        "776": {
-            "superID": "776",
-            "superName": "Kamehameha",
-            "superDescription": "Causes supreme damage to enemy",
+        "4178": {
+            "superID": "4178",
+            "superName": "Kamehameha (Extreme)",
+            "superDescription": "Raises DEF for 1 turn and \ncauses supreme damage to enemy",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -80,7 +201,18 @@
                 "Duration": "1",
                 "Amount": "30"
             },
-            "Multiplier": 430
+            "Multiplier": 430,
+            "4178": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "30"
+            }
         }
     },
     "Active Skill": {},

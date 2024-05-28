@@ -1,6 +1,6 @@
 {
     "ID": "1017060",
-    "Typing": null,
+    "Typing": "INT",
     "Class": "Super",
     "Name": "Mai (Future)",
     "Rarity": "ur",
@@ -30,8 +30,28 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "1515": {
-            "ID": "1515",
+        "3559": {
+            "ID": "3559",
+            "Timing": "Start of turn",
+            "DEF": 120,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1003559": {
+            "ID": "1003559",
+            "Timing": "On Super",
+            "ATK": 80,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2003559": {
+            "ID": "2003559",
             "Timing": "Start of turn",
             "Ki": 2,
             "Target": {
@@ -44,8 +64,8 @@
             },
             "Length": "1"
         },
-        "1001515": {
-            "ID": "1001515",
+        "3003559": {
+            "ID": "3003559",
             "Timing": "Start of turn",
             "ATK": 40,
             "DEF": 40,
@@ -59,8 +79,39 @@
             },
             "Length": "1"
         },
-        "2001515": {
-            "ID": "2001515",
+        "4003559": {
+            "ID": "4003559",
+            "Timing": "Start of turn",
+            "Ki": 1,
+            "Target": {
+                "Category": "Time Travelers",
+                "Target": "Allies",
+                "Class": "Super"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "5003559": {
+            "ID": "5003559",
+            "Timing": "Start of turn",
+            "ATK": 10,
+            "DEF": 10,
+            "Target": {
+                "Category": "Time Travelers",
+                "Target": "Allies",
+                "Class": "Super"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "6003559": {
+            "ID": "6003559",
             "Timing": "Attacking the enemy",
             "Status": [
                 "Stun"
@@ -74,26 +125,186 @@
             },
             "Chance": "50",
             "Length": "1"
+        },
+        "7003559": {
+            "ID": "7003559",
+            "Dodge chance": 70,
+            "Timing": "Being hit",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When the enemy is hit by the characters ultra super attack"
+        },
+        "8003559": {
+            "ID": "8003559",
+            "Timing": "On Super",
+            "DEF": 80,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there are 1 or more Future Saga category enemies "
+        },
+        "9003559": {
+            "ID": "9003559",
+            "Forsee Super Attack": true,
+            "Timing": "Start of turn",
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there are 1 or more Future Saga category enemies  and When HP is 70% or less"
+        },
+        "10003559": {
+            "ID": "10003559",
+            "Toggle Other Line": {
+                "Activated": true,
+                "Line": "7003559"
+            },
+            "Timing": "Hit recieved",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "7061": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [
+                    "Time Travelers"
+                ],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        },
+        "7062": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [
+                    "Time Travelers"
+                ],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "INT"
+                ]
+            },
+            "HP": 70,
+            "ATK": 70,
+            "DEF": 70
+        },
+        "7063": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Time Travelers"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        },
+        "7064": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Time Travelers"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "PHY",
+                    "STR",
+                    "INT",
+                    "TEQ",
+                    "AGL"
+                ]
+            },
+            "HP": 120,
+            "ATK": 120,
+            "DEF": 120
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 1700,
+            "ATK": 1700,
+            "DEF": 1700
+        }
+    },
     "Super Attack": {
-        "1747": {
-            "superID": "1747",
-            "superName": "Flash Grenade",
-            "superDescription": "Causes supreme damage with \na high chance of stunning the enemy",
+        "4824": {
+            "superID": "4824",
+            "superName": "Flash Grenade (Extreme)",
+            "superDescription": "Raises DEF for 1 turn and \ncauses supreme damage with \na high chance of stunning the enemy",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "1747": {
+            "Multiplier": 530,
+            "4824": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "30"
+            },
+            "1004824": {
                 "Type": "ExtraEfficacySpecial",
                 "Chance": "50",
                 "Duration": "2",

@@ -1,6 +1,6 @@
 {
     "ID": "1011430",
-    "Typing": null,
+    "Typing": "TEQ",
     "Class": "Super",
     "Name": "Bulma (Youth)",
     "Rarity": "ur",
@@ -26,8 +26,40 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "937": {
-            "ID": "937",
+        "3471": {
+            "ID": "3471",
+            "Timing": "Start of turn",
+            "ATK": 177,
+            "DEF": 177,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1003471": {
+            "ID": "1003471",
+            "Timing": "Start of turn",
+            "Ki change": {
+                "From": [
+                    "PHY",
+                    "STR",
+                    "INT",
+                    "TEQ",
+                    "AGL"
+                ],
+                "To": [
+                    "Rainbow"
+                ]
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2003471": {
+            "ID": "2003471",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -39,17 +71,37 @@
                     ]
                 }
             },
-            "Heals": 7777,
+            "Heals": 17777,
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1000937": {
-            "ID": "1000937",
+        "3003471": {
+            "ID": "3003471",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 0,
+                "Cause": {
+                    "Cause": "Ki sphere obtained",
+                    "Type": [
+                        "Rainbow"
+                    ]
+                }
+            },
+            "ATK": 77,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "4003471": {
+            "ID": "4003471",
             "Timing": "Being hit",
-            "DR": 50,
+            "DR": 77,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -58,16 +110,74 @@
             "Length": "1"
         }
     },
-    "Hidden Potential": {},
+    "Leader Skill": {
+        "4606": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "TEQ"
+                ]
+            },
+            "HP": 30,
+            "ATK": 30,
+            "DEF": 30
+        },
+        "4607": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 2
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 1600,
+            "ATK": 1600,
+            "DEF": 1600
+        },
+        "1": {
+            "HP": 240,
+            "ATK": 240,
+            "DEF": 240
+        },
+        "2": {
+            "HP": 248,
+            "ATK": 560,
+            "DEF": 248
+        },
+        "3": {
+            "HP": 552,
+            "ATK": 240,
+            "DEF": 552
+        },
+        "4": {
+            "HP": 1360,
+            "ATK": 1360,
+            "DEF": 1360
+        }
+    },
     "Super Attack": {
-        "762": {
-            "superID": "762",
-            "superName": "Rocket Launcher",
-            "superDescription": "Causes supreme damage to enemy",
+        "4666": {
+            "superID": "4666",
+            "superName": "Rocket Launcher (Extreme)",
+            "superDescription": "Raises DEF for 1 turn and \ncauses supreme damage with \na high chance of stunning the enemy",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -79,7 +189,29 @@
                 "Duration": "0",
                 "Amount": "3"
             },
-            "Multiplier": 430
+            "Multiplier": 430,
+            "4666": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "30"
+            },
+            "1004666": {
+                "Type": "ExtraEfficacySpecial",
+                "Chance": "50",
+                "Duration": "2",
+                "Buff": {
+                    "Type": "Raw stats",
+                    "+ or -": "+"
+                },
+                "Target": "Enemy",
+                "Status": "Stun"
+            }
         }
     },
     "Active Skill": {},

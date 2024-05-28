@@ -1,6 +1,6 @@
 {
     "ID": "1007460",
-    "Typing": null,
+    "Typing": "PHY",
     "Class": "Extreme",
     "Name": "Legendary Super Saiyan Broly",
     "Rarity": "ur",
@@ -29,8 +29,31 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "598": {
-            "ID": "598",
+        "1568": {
+            "ID": "1568",
+            "Timing": "Attacking",
+            "Ki": 4,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When ki is 8 or more"
+        },
+        "1001568": {
+            "ID": "1001568",
+            "Timing": "Attacking",
+            "ATK": 80,
+            "DEF": 80,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When ki is 8 or more"
+        },
+        "2001568": {
+            "ID": "2001568",
             "Additional attack": {
                 "Activated": true,
                 "Chance of super": "100"
@@ -40,38 +63,113 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1",
-            "Condition": "When ki is 8 or more"
+            "Length": "1"
         },
-        "1000598": {
-            "ID": "1000598",
-            "Timing": "On Super",
-            "ATK": 7000,
+        "3001568": {
+            "ID": "3001568",
+            "Timing": "Attacking the enemy",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 40,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "Crit Chance": 2,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99"
+        }
+    },
+    "Leader Skill": {
+        "2901": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "PHY"
+                ]
+            },
+            "HP": 70,
+            "ATK": 70,
+            "DEF": 70
+        },
+        "2902": {
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1",
-            "Condition": "When ki is 8 or more"
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
         }
     },
-    "Hidden Potential": {},
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690
+        },
+        "4": {
+            "HP": 2100,
+            "ATK": 1700,
+            "DEF": 1300
+        }
+    },
     "Super Attack": {
-        "212": {
-            "superID": "212",
-            "superName": "Omega Blaster",
-            "superDescription": "Causes supreme damage to enemy",
+        "1861": {
+            "superID": "1861",
+            "superName": "Omega Blaster (Extreme)",
+            "superDescription": "Raises ATK & DEF and \ncauses supreme damage to enemy",
             "superMinKi": "12",
             "superPriority": "0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430
+            "Multiplier": 510,
+            "1861": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "99",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "20",
+                "DEF": "20"
+            }
         }
     },
     "Active Skill": {},

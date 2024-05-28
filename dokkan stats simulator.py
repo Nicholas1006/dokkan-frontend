@@ -5,7 +5,6 @@ time1=time.time()
 directory="data/"
 cards=storedatabase(directory,"cards.csv")
 leader_skills=storedatabase(directory,"leader_skills.csv")
-passive_skill_sets=storedatabase(directory,"passive_skill_sets.csv")
 passive_skills=storedatabase(directory,"passive_skills.csv")
 card_active_skills=storedatabase(directory,"card_active_skills.csv")
 active_skill_sets=storedatabase(directory,"active_skill_sets.csv")
@@ -29,15 +28,16 @@ special_sets=storedatabase(directory,"special_sets.csv")
 specials=storedatabase(directory,"specials.csv")
 special_bonuses=storedatabase(directory,"special_bonuses.csv")
 
-unitid="1027431"
-eza=False
+
+unitid="1000010"
+eza=True
 DEVEXCEPTIONS=True
-GLOBALCHECK=False
+GLOBALCHECK=True
 CUTJSON=True
 MAKEJSON=True
 CALCPASSIVE=True
-CALCLEADER=False
-CALCHIPO=False
+CALCLEADER=True
+CALCHIPO=True
 
 
 
@@ -80,18 +80,18 @@ for unit in cardsToCheck:
     unitDictionary["Name"]=unit[1]
     unitDictionary["Rarity"]=getrarity(unit)
     unitDictionary["Max Level"]=unit[13]
-    unitDictionary["Max HP"]=swapToUnitWith1(unit,cards)[7]
-    unitDictionary["Max ATK"]=swapToUnitWith1(unit,cards)[9]
-    unitDictionary["Max DEF"]=swapToUnitWith1(unit,cards)[11]
-    unitDictionary["Categories"]=getallcategories(unit[0],card_card_categories,card_categories,printing=True)
-    unitDictionary["Links"]=getalllinks(unit,link_skills)
+    unitDictionary["Max HP"]=swapToUnitWith1(unit)[7]
+    unitDictionary["Max ATK"]=swapToUnitWith1(unit)[9]
+    unitDictionary["Max DEF"]=swapToUnitWith1(unit)[11]
+    unitDictionary["Categories"]=getallcategories(unit[0],printing=True)
+    unitDictionary["Links"]=getalllinks(unit)
     unitDictionary["Passive"]={}
     if(CALCPASSIVE):
-        passiveIdList=getpassiveid(unit,cards,optimal_awakening_growths,passive_skill_set_relations,eza)
+        passiveIdList=getpassiveid(unit,eza)
         if (passiveIdList!=None and qualifyUsable(unit)):
             for passiveskill in passive_skills[1:]:
                 if (passiveskill[0] in passiveIdList):
-                    output=(extractPassiveLine(passive_skills, passive_skill_set_relations,dokkan_fields,dokkan_field_passive_skill_relations,battle_params,unit,skill_causalities,card_unique_info_set_relations,cards,passiveskill,sub_target_types,card_categories,printing=False,DEVEXCEPTIONS=DEVEXCEPTIONS))
+                    output=(extractPassiveLine(unit,passiveskill,printing=False,DEVEXCEPTIONS=DEVEXCEPTIONS))
                     #output=shortenPassiveDictionary(output)
                     if(CUTJSON):
                         output=shortenPassiveDictionary(output)
@@ -107,7 +107,7 @@ for unit in cardsToCheck:
         leader_skill_line=searchbycolumn(code=unit[22][:-2],database=leader_skills,column=1,printing=False)
         unitDictionary["Leader Skill"]={}
         for line in leader_skill_line:
-            ParsedLeaderSkill=parseLeaderSkill(unit,dokkan_fields,skill_causalities,cards,card_unique_info_set_relations,line,leader_skills,card_categories,sub_target_types,DEVEXCEPTIONS)
+            ParsedLeaderSkill=parseLeaderSkill(unit,line,DEVEXCEPTIONS)
             if (ParsedLeaderSkill!=None):
                 unitDictionary["Leader Skill"][line[0]] = ParsedLeaderSkill
     #unit[22] is leader skill set id
@@ -115,16 +115,15 @@ for unit in cardsToCheck:
 
 
     unitDictionary["Hidden Potential"]={}
-    unit1=swapToUnitWith1(unit,cards)
+    unit1=swapToUnitWith1(unit)
     if(CALCHIPO):
         if(unit1[52][:-2]not in HiPoBoards):
-            HiPoBoards[unit1[52][:-2]]=parseHiddenPotential(unit1[52][:-2],potential_squares,potential_square_relations,potential_events,DEVEXCEPTIONS)
+            HiPoBoards[unit1[52][:-2]]=parseHiddenPotential(unit1[52][:-2],DEVEXCEPTIONS)
 
-        #unitDictionary["Hidden Potential"]=ParseHiddenPotential(unit1[52][:-2],potential_squares,potential_square_relations,potential_events,DEVEXCEPTIONS)
         unitDictionary["Hidden Potential"]=HiPoBoards[unit1[52][:-2]]
         #unit[52] is the potential board id
 
-    unitDictionary["Super Attack"]=parseSuperAttack(unit,card_specials,special_sets,special_bonuses,specials,optimal_awakening_growths,skill_causalities,card_unique_info_set_relations,cards,card_categories,eza,DEVEXCEPTIONS)
+    unitDictionary["Super Attack"]=parseSuperAttack(unit,eza,DEVEXCEPTIONS)
 
     unitDictionary["Active Skill"]={}
     unitDictionary["Ki Multiplier"]={}
