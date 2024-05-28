@@ -27,9 +27,137 @@
         "Courage",
         "Shattering the Limit"
     ],
-    "Passive": {},
+    "Passive": {
+        "1901": {
+            "ID": "1901",
+            "Timing": "Start of turn",
+            "ATK": 70,
+            "DEF": 70,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1001901": {
+            "ID": "1001901",
+            "Timing": "Attacking the enemy",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 70,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "ATK": 7,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99"
+        },
+        "2001901": {
+            "ID": "2001901",
+            "Timing": "Attacking the enemy",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 49,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "Crit Chance": 7,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99"
+        },
+        "3001901": {
+            "ID": "3001901",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "0"
+            },
+            "Timing": "When ki spheres collected",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "With 3 or more Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres obtained"
+        },
+        "4001901": {
+            "ID": "4001901",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "0"
+            },
+            "Timing": "When ki spheres collected",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "With 5 or more Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres obtained"
+        },
+        "5001901": {
+            "ID": "5001901",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 0,
+                "Cause": {
+                    "Cause": "Ki sphere obtained",
+                    "Type": [
+                        "Sweet treats"
+                    ]
+                }
+            },
+            "Heals": 2,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        }
+    },
     "Hidden Potential": {},
+    "Super Attack": {
+        "2062": {
+            "superID": "2062",
+            "superName": "Victory Cannon",
+            "superDescription": "Raises DEF and \ncauses supreme damage to enemy",
+            "superMinKi": "12",
+            "superPriority": "0",
+            "superStyle": "Normal",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "4",
+                "Type": "Ki requirement decrease",
+                "Description": "Launches Super Attack when Ki is 9 or more!",
+                "Chance": "0",
+                "Duration": "0",
+                "Amount": "3"
+            },
+            "Multiplier": 430,
+            "2062": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "99",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "30"
+            }
+        }
+    },
     "Active Skill": {},
-    "Super Attack": null,
+    "Ki Multiplier": {},
     "Standby Skill": {}
 }

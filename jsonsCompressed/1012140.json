@@ -25,9 +25,85 @@
         "Thirst for Conquest",
         "Revival"
     ],
-    "Passive": {},
+    "Passive": {
+        "1011": {
+            "ID": "1011",
+            "Timing": "Start of turn",
+            "ATK": 50,
+            "DEF": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1001011": {
+            "ID": "1001011",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 1,
+                "Max": 40,
+                "Cause": {
+                    "Cause": "HP",
+                    "Type": "More HP remaining"
+                }
+            },
+            "ATK": 40,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2001011": {
+            "ID": "2001011",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 1,
+                "Max": 40,
+                "Cause": {
+                    "Cause": "HP",
+                    "Type": "Less HP remaining"
+                }
+            },
+            "DEF": 40,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        }
+    },
     "Hidden Potential": {},
+    "Super Attack": {
+        "841": {
+            "superID": "841",
+            "superName": "Grand Smasher",
+            "superDescription": "Causes supreme damage to enemy \nand lowers DEF",
+            "superMinKi": "12",
+            "superPriority": "0",
+            "superStyle": "Normal",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "0"
+            },
+            "841": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "3",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "-"
+                },
+                "Target": "Enemy",
+                "DEF": "40"
+            }
+        }
+    },
     "Active Skill": {},
-    "Super Attack": null,
+    "Ki Multiplier": {},
     "Standby Skill": {}
 }

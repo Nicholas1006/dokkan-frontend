@@ -27,14 +27,15 @@ potential_square_relations=storedatabase(directory,"potential_square_relations.c
 card_specials=storedatabase(directory,"card_specials.csv")
 special_sets=storedatabase(directory,"special_sets.csv")
 specials=storedatabase(directory,"specials.csv")
+special_bonuses=storedatabase(directory,"special_bonuses.csv")
 
-unitid="1027221"
-eza=True
+unitid="1027431"
+eza=False
 DEVEXCEPTIONS=True
-GLOBALCHECK=True
+GLOBALCHECK=False
 CUTJSON=True
 MAKEJSON=True
-CALCPASSIVE=False
+CALCPASSIVE=True
 CALCLEADER=False
 CALCHIPO=False
 
@@ -123,8 +124,10 @@ for unit in cardsToCheck:
         unitDictionary["Hidden Potential"]=HiPoBoards[unit1[52][:-2]]
         #unit[52] is the potential board id
 
+    unitDictionary["Super Attack"]=parseSuperAttack(unit,card_specials,special_sets,special_bonuses,specials,optimal_awakening_growths,skill_causalities,card_unique_info_set_relations,cards,card_categories,eza,DEVEXCEPTIONS)
+
     unitDictionary["Active Skill"]={}
-    unitDictionary["Super Attack"]=parseSuperAttack(unit,card_specials,special_sets,specials,DEVEXCEPTIONS)
+    unitDictionary["Ki Multiplier"]={}
     unitDictionary["Standby Skill"]={}
 
     jsonName=unit[0]

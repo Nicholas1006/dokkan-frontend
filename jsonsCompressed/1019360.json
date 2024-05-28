@@ -23,9 +23,114 @@
         "Solid Support",
         "Fierce Battle"
     ],
-    "Passive": {},
+    "Passive": {
+        "2070": {
+            "ID": "2070",
+            "Timing": "Start of turn",
+            "ATK": 100,
+            "DEF": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1002070": {
+            "ID": "1002070",
+            "Dodge chance": 70,
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2002070": {
+            "ID": "2002070",
+            "Timing": "Hit recieved",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 10000,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "DEF": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": ""
+        },
+        "3002070": {
+            "ID": "3002070",
+            "Timing": "Start of turn",
+            "ATK": 50,
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": ""
+        },
+        "4002070": {
+            "ID": "4002070",
+            "Timing": "End of turn",
+            "Heals": 10,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": ""
+        }
+    },
     "Hidden Potential": {},
+    "Super Attack": {
+        "2357": {
+            "superID": "2357",
+            "superName": "Angelic Induction",
+            "superDescription": "Causes supreme damage to enemy, \nlowers ATK & DEF and \nseals Super Attack",
+            "superMinKi": "12",
+            "superPriority": "0",
+            "superStyle": "Normal",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "0"
+            },
+            "2357": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "3",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "-"
+                },
+                "Target": "Enemy",
+                "ATK": "20",
+                "DEF": "20"
+            },
+            "1002357": {
+                "Type": "ExtraEfficacySpecial",
+                "Chance": "100",
+                "Duration": "2",
+                "Buff": {
+                    "Type": "Raw stats",
+                    "+ or -": "+"
+                },
+                "Target": "Enemy",
+                "Status": "Seals"
+            }
+        }
+    },
     "Active Skill": {},
-    "Super Attack": null,
+    "Ki Multiplier": {},
     "Standby Skill": {}
 }

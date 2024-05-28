@@ -28,9 +28,77 @@
         "Big Bad Bosses",
         "Shocking Speed"
     ],
-    "Passive": {},
+    "Passive": {
+        "1536": {
+            "ID": "1536",
+            "Timing": "Start of turn",
+            "ATK": 70,
+            "DEF": 70,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1001536": {
+            "ID": "1001536",
+            "Timing": "Start of turn",
+            "ATK": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When facing less than 2 enemies"
+        },
+        "2001536": {
+            "ID": "2001536",
+            "Timing": "Attacking the enemy",
+            "Status": [
+                "Stun"
+            ],
+            "Target": {
+                "Target": "Enemy"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Chance": "30",
+            "Length": "1",
+            "Condition": "When facing less than 2 enemies"
+        }
+    },
     "Hidden Potential": {},
+    "Super Attack": {
+        "1785": {
+            "superID": "1785",
+            "superName": "This Time You Might Die",
+            "superDescription": "Causes supreme damage to enemy with \na medium chance of sealing Super Attack",
+            "superMinKi": "12",
+            "superPriority": "0",
+            "superStyle": "Normal",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "0"
+            },
+            "1785": {
+                "Type": "ExtraEfficacySpecial",
+                "Chance": "30",
+                "Duration": "2",
+                "Buff": {
+                    "Type": "Raw stats",
+                    "+ or -": "+"
+                },
+                "Target": "Enemy",
+                "Status": "Seals"
+            }
+        }
+    },
     "Active Skill": {},
-    "Super Attack": null,
+    "Ki Multiplier": {},
     "Standby Skill": {}
 }

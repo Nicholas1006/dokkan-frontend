@@ -30,9 +30,66 @@
         "Limit-Breaking Form",
         "Fierce Battle"
     ],
-    "Passive": {},
+    "Passive": {
+        "1050": {
+            "ID": "1050",
+            "Timing": "On Super",
+            "ATK": 100,
+            "DEF": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When ki is 12 or more"
+        },
+        "1001050": {
+            "ID": "1001050",
+            "Timing": "Start of turn",
+            "ATK": 40,
+            "Target": {
+                "Target": "Allies",
+                "Class": "Super"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When HP is 70% or less"
+        }
+    },
     "Hidden Potential": {},
+    "Super Attack": {
+        "970": {
+            "superID": "970",
+            "superName": "Rebellion Edge",
+            "superDescription": "Causes immense damage to enemy; \nmedium chance to seal Super Attack",
+            "superMinKi": "12",
+            "superPriority": "0",
+            "superStyle": "Normal",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "0"
+            },
+            "Multiplier": 505,
+            "970": {
+                "Type": "ExtraEfficacySpecial",
+                "Chance": "30",
+                "Duration": "2",
+                "Buff": {
+                    "Type": "Raw stats",
+                    "+ or -": "+"
+                },
+                "Target": "Enemy",
+                "Status": "Seals"
+            }
+        }
+    },
     "Active Skill": {},
-    "Super Attack": null,
+    "Ki Multiplier": {},
     "Standby Skill": {}
 }

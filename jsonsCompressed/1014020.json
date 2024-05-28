@@ -29,9 +29,120 @@
         "Shattering the Limit",
         "Legendary Power"
     ],
-    "Passive": {},
+    "Passive": {
+        "1178": {
+            "ID": "1178",
+            "Timing": "Start of turn",
+            "ATK": 70,
+            "DEF": 70,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1001178": {
+            "ID": "1001178",
+            "Timing": "On Super",
+            "ATK": 30,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When ki is 18 or more"
+        },
+        "2001178": {
+            "ID": "2001178",
+            "Timing": "Start of turn",
+            "Ki": 4,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When facing less than 2 enemies"
+        },
+        "3001178": {
+            "ID": "3001178",
+            "Timing": "Start of turn",
+            "DEF": 60,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When facing 2 or more enemies"
+        }
+    },
     "Hidden Potential": {},
+    "Super Attack": {
+        "1251": {
+            "superID": "1251",
+            "superName": "Final Spirit Cannon",
+            "superDescription": "Greatly raises ATK for 1 turn and \ncauses colossal damage to enemy",
+            "superMinKi": "12",
+            "superPriority": "0",
+            "superStyle": "Normal",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "5",
+                "Type": "SA multiplier increase",
+                "Description": "Super Attack power will be increased even more!",
+                "Chance": "100",
+                "Duration": "1",
+                "Amount": "30"
+            },
+            "Multiplier": 395,
+            "1251": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "50"
+            }
+        },
+        "1252": {
+            "superID": "1252",
+            "superName": "Spirit of Saiyans",
+            "superDescription": "Causes mega-colossal damage to enemy and \nseals Super Attack",
+            "superMinKi": "18",
+            "superPriority": "0",
+            "superStyle": "Hyper",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "5",
+                "Type": "SA multiplier increase",
+                "Description": "Super Attack power will be increased even more!",
+                "Chance": "100",
+                "Duration": "1",
+                "Amount": "30"
+            },
+            "Multiplier": 540,
+            "1252": {
+                "Type": "ExtraEfficacySpecial",
+                "Chance": "100",
+                "Duration": "2",
+                "Buff": {
+                    "Type": "Raw stats",
+                    "+ or -": "+"
+                },
+                "Target": "Enemy",
+                "Status": "Seals"
+            }
+        }
+    },
     "Active Skill": {},
-    "Super Attack": null,
+    "Ki Multiplier": {},
     "Standby Skill": {}
 }

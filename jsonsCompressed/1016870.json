@@ -32,9 +32,131 @@
         "Fierce Battle",
         "Legendary Power"
     ],
-    "Passive": {},
+    "Passive": {
+        "1496": {
+            "ID": "1496",
+            "Timing": "On Super",
+            "ATK": 90,
+            "DEF": 90,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When ki is 12 or more"
+        },
+        "1001496": {
+            "ID": "1001496",
+            "Timing": "On Super",
+            "ATK": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When ki is 18 or more"
+        },
+        "2001496": {
+            "ID": "2001496",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "100"
+            },
+            "Timing": "On Super",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When facing 2 or more enemies"
+        },
+        "3001496": {
+            "ID": "3001496",
+            "Transformation": {
+                "Activated": true,
+                "Unit": "4016880",
+                "Giant/Rage": false,
+                "Min Turns": null,
+                "Max Turns": null,
+                "Reverse chance": null
+            },
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "First turn to activate": 3
+        }
+    },
     "Hidden Potential": {},
+    "Super Attack": {
+        "1723": {
+            "superID": "1723",
+            "superName": "Bloody Smash",
+            "superDescription": "Causes colossal damage to enemy \nand lowers DEF",
+            "superMinKi": "12",
+            "superPriority": "0",
+            "superStyle": "Normal",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "5",
+                "Type": "SA multiplier increase",
+                "Description": "Super Attack power will be increased even more!",
+                "Chance": "100",
+                "Duration": "1",
+                "Amount": "30"
+            },
+            "1723": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "3",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "-"
+                },
+                "Target": "Enemy",
+                "DEF": "40"
+            },
+            "Multiplier": 395
+        },
+        "1724": {
+            "superID": "1724",
+            "superName": "Eraser Cannon",
+            "superDescription": "Causes mega-colossal damage to enemy \nand greatly lowers DEF",
+            "superMinKi": "18",
+            "superPriority": "0",
+            "superStyle": "Hyper",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "5",
+                "Type": "SA multiplier increase",
+                "Description": "Super Attack power will be increased even more!",
+                "Chance": "100",
+                "Duration": "1",
+                "Amount": "30"
+            },
+            "1724": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "3",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "-"
+                },
+                "Target": "Enemy",
+                "DEF": "50"
+            },
+            "Multiplier": 540
+        }
+    },
     "Active Skill": {},
-    "Super Attack": null,
+    "Ki Multiplier": {},
     "Standby Skill": {}
 }

@@ -29,9 +29,72 @@
         "Prepared for Battle",
         "Over 9000"
     ],
-    "Passive": {},
+    "Passive": {
+        "1101": {
+            "ID": "1101",
+            "Timing": "On Super",
+            "ATK": 70,
+            "DEF": 70,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When ki is 12 or more"
+        },
+        "1001101": {
+            "ID": "1001101",
+            "Timing": "Start of turn",
+            "Ki": 5,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When HP is 50% or less"
+        },
+        "2001101": {
+            "ID": "2001101",
+            "Timing": "Start of turn",
+            "DEF": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When HP is 50% or less"
+        }
+    },
     "Hidden Potential": {},
+    "Super Attack": {
+        "1033": {
+            "superID": "1033",
+            "superName": "Galick Gun",
+            "superDescription": "Raises DEF and causes supreme damage to enemy",
+            "superMinKi": "12",
+            "superPriority": "0",
+            "superStyle": "Normal",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "0"
+            },
+            "1033": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "99",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "30"
+            }
+        }
+    },
     "Active Skill": {},
-    "Super Attack": null,
+    "Ki Multiplier": {},
     "Standby Skill": {}
 }

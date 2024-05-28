@@ -29,9 +29,138 @@
         "Fierce Battle",
         "Legendary Power"
     ],
-    "Passive": {},
+    "Passive": {
+        "2169": {
+            "ID": "2169",
+            "Timing": "Start of turn",
+            "ATK": 200,
+            "DEF": 200,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1002169": {
+            "ID": "1002169",
+            "Timing": "Hit recieved",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 5,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "Ki": 1,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Condition": ""
+        },
+        "2002169": {
+            "ID": "2002169",
+            "Effective against all": true,
+            "Timing": "On Super",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": " or "
+        },
+        "3002169": {
+            "ID": "3002169",
+            "Timing": "On Super",
+            "Crit Chance": 100,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": ""
+        }
+    },
     "Hidden Potential": {},
+    "Super Attack": {
+        "2458": {
+            "superID": "2458",
+            "superName": "Heatwave Magnetron",
+            "superDescription": "Causes colossal damage to enemy \nand greatly lowers DEF",
+            "superMinKi": "12",
+            "superPriority": "0",
+            "superStyle": "Normal",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "5",
+                "Type": "SA multiplier increase",
+                "Description": "Super Attack power will be increased even more!",
+                "Chance": "100",
+                "Duration": "1",
+                "Amount": "30"
+            },
+            "2458": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "3",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "-"
+                },
+                "Target": "Enemy",
+                "DEF": "50"
+            },
+            "Multiplier": 395
+        },
+        "2459": {
+            "superID": "2459",
+            "superName": "Omega Heat Magnetron",
+            "superDescription": "Causes mega-colossal damage \nand massively lowers DEF with \na medium chance of stunning the enemy",
+            "superMinKi": "18",
+            "superPriority": "0",
+            "superStyle": "Hyper",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "5",
+                "Type": "SA multiplier increase",
+                "Description": "Super Attack power will be increased even more!",
+                "Chance": "100",
+                "Duration": "1",
+                "Amount": "30"
+            },
+            "2459": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "3",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "-"
+                },
+                "Target": "Enemy",
+                "DEF": "80"
+            },
+            "1002459": {
+                "Type": "ExtraEfficacySpecial",
+                "Chance": "30",
+                "Duration": "2",
+                "Buff": {
+                    "Type": "Raw stats",
+                    "+ or -": "+"
+                },
+                "Target": "Enemy",
+                "Status": "Stun"
+            },
+            "Multiplier": 540
+        }
+    },
     "Active Skill": {},
-    "Super Attack": null,
+    "Ki Multiplier": {},
     "Standby Skill": {}
 }

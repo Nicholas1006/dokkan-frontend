@@ -29,9 +29,142 @@
         "Shocking Speed",
         "GT"
     ],
-    "Passive": {},
+    "Passive": {
+        "1422": {
+            "ID": "1422",
+            "Timing": "Start of turn",
+            "ATK": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1001422": {
+            "ID": "1001422",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 50,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "DEF": 20,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99"
+        },
+        "2001422": {
+            "ID": "2001422",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 0,
+                "Cause": {
+                    "Cause": "Ki sphere obtained",
+                    "Type": [
+                        "Rainbow",
+                        "AGL"
+                    ]
+                }
+            },
+            "Ki": 1,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "3001422": {
+            "ID": "3001422",
+            "Nullification": {
+                "Activated": true,
+                "Absorbed": 0
+            },
+            "Timing": "Being hit",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Chance": "30",
+            "Length": "1",
+            "Condition": "A super is being performed"
+        },
+        "4001422": {
+            "ID": "4001422",
+            "Counter": {
+                "Activated": true,
+                "Multiplier": "300"
+            },
+            "Timing": "Being hit",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Chance": "30",
+            "Length": "1",
+            "Condition": "A super is being performed"
+        },
+        "5001422": {
+            "ID": "5001422",
+            "Toggle Other Line": {
+                "Activated": true,
+                "Line": "3001422"
+            },
+            "Timing": "Hit recieved",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "6001422": {
+            "ID": "6001422",
+            "Toggle Other Line": {
+                "Activated": true,
+                "Line": "4001422"
+            },
+            "Timing": "Hit recieved",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        }
+    },
     "Hidden Potential": {},
+    "Super Attack": {
+        "1613": {
+            "superID": "1613",
+            "superName": "Meteor Smash",
+            "superDescription": "Massively raises DEF for 1 turn and \ncauses supreme damage to enemy",
+            "superMinKi": "12",
+            "superPriority": "0",
+            "superStyle": "Normal",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "0"
+            },
+            "1613": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "100"
+            }
+        }
+    },
     "Active Skill": {},
-    "Super Attack": null,
+    "Ki Multiplier": {},
     "Standby Skill": {}
 }

@@ -71,24 +71,92 @@ def removeDuplicatesUltraList(ultraList,slot):
             output.append(line)
     return(output)
 
-def parseSuperAttack(unit,card_specials,special_sets,specials,DEVEXCEPTIONS=False):
+def superAttackMultiplierExtractor(superAttackID,special_sets,special_bonuses,super_attack_lvl,DEVEXCEPTIONS=False):
+    specialRow=searchbycolumn(code=superAttackID,database=special_sets,column=0)
+    growth_rate=int(specialRow[0][6])
+    increase_rate=int(specialRow[0][5])
+    multiplier=(100)+(increase_rate)+(growth_rate*(super_attack_lvl-1))
+    special_bonus=searchbycolumn(code=specialRow[0][6],database=special_bonuses,column=0)
+
+    return(multiplier)
+    
+    #tell it to use special_bonuses
+    #WIP
+
+
+def parseSuperAttack(unit,card_specials,special_sets,special_bonuses,specials,optimal_awakening_growths,skill_causalities,card_unique_info_set_relations,cards,card_categories,eza=False,DEVEXCEPTIONS=False):
     output={}
-    card_specials=searchbycolumn(code=unit[0],column=1,database=card_specials)
-    card_specials=removeDuplicatesUltraList(ultraList=card_specials,slot=0)
-    for card_special in card_specials:
+    ableToEZA=qualifyEZA(unit,optimal_awakening_growths)
+
+    card_specialss=searchbycolumn(code=unit[0],column=1,database=card_specials)
+    card_specialss=removeDuplicatesUltraList(ultraList=card_specialss,slot=0)
+    for card_special in card_specialss:
+        superAttackDictionary={}
         superSet=searchbycolumn(code=card_special[2],column=0,database=special_sets)
-        superID=superSet[0][0]
-        superName=superSet[0][1]
-        superDescription=superSet[0][2]
-        superMinKi=card_special[6]
-        superPriority=card_special[3]
-        superStyle=card_special[4]
-        superCausality=superSet[0][3]
-        superAimTarget=superSet[0][4]
-        superIsInactive=superSet[0][7]
-        card_specials=searchbycolumn(code=superID,column=1,database=specials)
-        for special in card_specials:
-            specialsEffect=parseSpecials(special,DEVEXCEPTIONS)    
+        superAttackDictionary["superID"]=superSet[0][0]
+        superAttackDictionary["superName"]=superSet[0][1]
+        superAttackDictionary["superDescription"]=superSet[0][2]
+        superAttackDictionary["superMinKi"]=card_special[6]
+        superAttackDictionary["superPriority"]=card_special[3]
+        superAttackDictionary["superStyle"]=card_special[4]
+        superAttackDictionary["superMinLVL"]=card_special[5]
+        superAttackDictionary["superCausality"]=superSet[0][3]
+        superAttackDictionary["superAimTarget"]=superSet[0][4]
+        superAttackDictionary["superIsInactive"]=superSet[0][7]
+        if(superAttackDictionary["superStyle"]=="Condition"):
+            causalityCondition=logicalCausalityExtractor(card_special[15])
+            causalityCondition=CausalityLogicalExtractor(unit,skill_causalities,causalityCondition,card_unique_info_set_relations=card_unique_info_set_relations,cards=cards,card_categories=card_categories,DEVEXCEPTIONS=DEVEXCEPTIONS)
+            superAttackDictionary["superCondition"]=causalityCondition
+        superAttackDictionary["SpecialBonus"]={}
+        superAttackDictionary["SpecialBonus"]["ID"]=card_special[9]
+        if(ableToEZA and eza and int(unit[14])<int(superAttackDictionary["superMinLVL"])):
+            superAttackDictionary["Multiplier"]=superAttackMultiplierExtractor(superAttackID=superAttackDictionary["superID"],special_sets=special_sets,special_bonuses=special_bonuses,super_attack_lvl=int(unit[14])+5,DEVEXCEPTIONS=DEVEXCEPTIONS)
+            card_supers=searchbycolumn(code=superAttackDictionary["superID"],column=1,database=specials)
+            for special in card_supers:
+                specialsEffect=parseSpecials(special,DEVEXCEPTIONS)    
+                superAttackDictionary[special[0]]=specialsEffect
+            output[card_special[2]]=superAttackDictionary
+        elif(ableToEZA and not (eza) and not (int(unit[14])<int(superAttackDictionary["superMinLVL"]))):
+            superAttackDictionary["Multiplier"]=superAttackMultiplierExtractor(superAttackID=superAttackDictionary["superID"],special_sets=special_sets,super_attack_lvl=int(unit[14]),special_bonuses=special_bonuses,DEVEXCEPTIONS=DEVEXCEPTIONS)
+            card_supers=searchbycolumn(code=superAttackDictionary["superID"],column=1,database=specials)
+            for special in card_supers:
+                specialsEffect=parseSpecials(special,DEVEXCEPTIONS)    
+                superAttackDictionary[special[0]]=specialsEffect
+            output[card_special[2]]=superAttackDictionary
+        elif(not ableToEZA):
+            card_supers=searchbycolumn(code=superAttackDictionary["superID"],column=1,database=specials)
+            for special in card_supers:
+                specialsEffect=parseSpecials(special,DEVEXCEPTIONS)    
+                superAttackDictionary[special[0]]=specialsEffect
+            output[card_special[2]]=superAttackDictionary
+
+        if(superAttackDictionary["SpecialBonus"]["ID"]!="0"):
+            superAttackDictionary["Multiplier"]=superAttackMultiplierExtractor(superAttackID=superAttackDictionary["superID"],special_sets=special_sets,super_attack_lvl=int(unit[14]),special_bonuses=special_bonuses,DEVEXCEPTIONS=DEVEXCEPTIONS)
+            special_bonus=searchbycolumn(code=superAttackDictionary["SpecialBonus"]["ID"],column=0,database=special_bonuses)
+            special_bonus=special_bonus[0]
+            superAttackDictionary["SpecialBonus"]["Type"]=special_bonus[1]
+            superAttackDictionary["SpecialBonus"]["Description"]=special_bonus[2]
+            superAttackDictionary["SpecialBonus"]["Chance"]=special_bonus[7]
+            superAttackDictionary["SpecialBonus"]["Duration"]=special_bonus[6]
+            if(special_bonus[3]=="1"):
+                superAttackDictionary["SpecialBonus"]["Type"]="SA multiplier increase"
+                superAttackDictionary["SpecialBonus"]["Amount"]=special_bonus[9]
+                
+            elif(special_bonus[3]=="2"):
+                superAttackDictionary["SpecialBonus"]["Type"]="Super attack Defense increase"
+                superAttackDictionary["SpecialBonus"]["Amount"]=special_bonus[9]
+                if(special_bonus[3]=="3"):
+                    superAttackDictionary["SpecialBonus"]["Amount"]*=-1
+            elif(special_bonus[3]=="3"):
+                superAttackDictionary["SpecialBonus"]["Type"]="Super attack Attack and Defense increase"
+                superAttackDictionary["SpecialBonus"]["Amount"]=special_bonus[9]
+                if(special_bonus[3]=="3"):
+                    superAttackDictionary["SpecialBonus"]["Amount"]*=-1
+            elif(special_bonus[3]=="63"):
+                superAttackDictionary["SpecialBonus"]["Type"]="Ki requirement decrease"
+                superAttackDictionary["SpecialBonus"]["Amount"]=special_bonus[9]
+            
+    return(output)
 
 def parseSpecials(specialRow,DEVEXCEPTIONS=False):
     output={}
@@ -227,7 +295,6 @@ def parseHiddenPotential(Potential_board_id,potential_squares,potential_square_r
    
     return(output)
 
-        
 def parseLeaderSkill(unit,dokkan_fields,skill_causalities,cards,card_unique_info_set_relations,leader_skill_line,leader_skills,card_categories,sub_target_types,DEVEXCEPTIONS=False):
     output={}
 
@@ -956,7 +1023,7 @@ def extractPassiveLine(passive_skills, passive_skill_set_relations,dokkan_fields
 
     if(causalityExtractor(passiveskill[12])!=[]):
         causalityCondition=logicalCausalityExtractor(passiveskill[12])
-        causalityCondition=CausalityLogicalExtractor(unit,dokkan_fields,causalityCondition,card_categories,skill_causalities,cards,card_unique_info_set_relations,DEVEXCEPTIONS=DEVEXCEPTIONS)
+        causalityCondition=CausalityLogicalExtractor(unit=unit,dokkan_fields=dokkan_fields,causality=causalityCondition,card_categories=card_categories,skill_causalities=skill_causalities,cards=cards,card_unique_info_set_relations=card_unique_info_set_relations,DEVEXCEPTIONS=DEVEXCEPTIONS)
         effects["Condition"]=causalityCondition
 
         
@@ -1091,7 +1158,7 @@ def logicalCausalityExtractor(causality):
         result=result.replace("\\u0026","&")
         return(result)
     
-def CausalityLogicalExtractor(unit,dokkan_fields,causality,card_categories,skill_causalities,cards,card_unique_info_set_relations,printing=True,DEVEXCEPTIONS=False):
+def CausalityLogicalExtractor(unit,skill_causalities,causality,dokkan_fields=None,card_categories=None,cards=None,card_unique_info_set_relations=None,printing=True,DEVEXCEPTIONS=False):
     result=causality.replace("|"," or ").replace("&"," and ")
     currentCausality=""
     for x in result:
@@ -1104,33 +1171,27 @@ def CausalityLogicalExtractor(unit,dokkan_fields,causality,card_categories,skill
             currentCausality=""
 
     if(currentCausality!=""):
-        newCausality=causalityLogicFinder(unit,dokkan_fields,currentCausality,card_categories,skill_causalities,cards,card_unique_info_set_relations,printing=True,DEVEXCEPTIONS=DEVEXCEPTIONS)
+        newCausality=causalityLogicFinder(unit=unit,causalityCondition=currentCausality,card_categories=card_categories,skill_causalities=skill_causalities,cards=cards,card_unique_info_set_relations=card_unique_info_set_relations,dokkan_fields=dokkan_fields,printing=True,DEVEXCEPTIONS=DEVEXCEPTIONS)
         result=result.replace(currentCausality,newCausality)
     return(result)
 
-def smallestCommonSubstring(string1,string2):
-    if(string1==string2):
-        return(string1)
-    else:
-        longestString=""
-        for letter1 in range(0,len(string1)):
-            if(len(string1)-letter1>len(longestString)):
-                for letter2 in range(0,len(string2)):
-                    if(len(string2)-letter2>len(longestString)):
-                        templetter1=letter1
-                        templetter2=letter2
-                        currentString=""
-                        while (templetter1<len(string1) and templetter2<len(string2)):
-                            if(string1[templetter1]==string2[templetter2]):
-                                currentString+=string1[templetter1]
-                                templetter1+=1
-                                templetter2+=1
-                            else:
-                                templetter1=len(string1)+1
-                                templetter2=len(string2)+2
-                        if len(currentString)>len(longestString):
-                            longestString=currentString
-        return(longestString)
+def longestCommonSubstring(listOfStrings):
+    listOfStrings.sort(key=len)
+    baseString=listOfStrings[0]
+    longestString=""
+    for startingChar in range(0,len(baseString)+1):
+        for endingChar in range(startingChar,len(baseString)+1):
+            validString=True
+            for string in listOfStrings:
+                if(baseString[startingChar:endingChar] not in string):
+                    validString=False
+                    break
+        if(validString==True):
+            if(len(baseString[startingChar:endingChar])>len(longestString)):
+                longestString=baseString[startingChar:endingChar]
+
+
+    return(longestString)
 
 def CategoryExtractor(CategoryId,card_categories):
     for category in card_categories:
@@ -1270,9 +1331,9 @@ def causalityLogicFinder(unit,dokkan_fields,causalityCondition,card_categories,s
                 if(CausalityRow[2]=="0"):
                     output+=("When there is an ally on the team whose name includes ")
                 elif(CausalityRow[2]=="1"):
-                    output+=("When there is an ally attacking on the same turn whose name includes ")
-                elif(CausalityRow[2]=="2"):
                     output+=("When there is an enemy whose name includes ")
+                elif(CausalityRow[2]=="2"):
+                    output+=("When there is an ally attacking on the same turn whose name includes ")#ally attacking in the same turn for unit supers
                 else:
                     output+=("UNKNOWN NAME TYPE")
                     if(DEVEXCEPTIONS==True):
@@ -1283,14 +1344,14 @@ def causalityLogicFinder(unit,dokkan_fields,causalityCondition,card_categories,s
                 for id in card_unique_info_id:
                     if(searchbyid(code=id,codecolumn=3,database=cards,column=1)!=None):
                         possible_names.append(searchbyid(code=id,codecolumn=3,database=cards,column=1))
-                likelyName=possible_names[0][0]
+                temp=[]
                 for name in possible_names[1:]:
-                    likelyName=smallestCommonSubstring(likelyName,name[0]) 
+                    temp.append(name[0])
+                likelyName=longestCommonSubstring(temp) 
                 output+=likelyName
 
                     
-                if(CausalityRow[2]!="2"):
-                    output+=(" On the team")
+
             elif(CausalityRow[1]=="42"):
                 output+=("With ")
                 output+=(CausalityRow[3])
@@ -1338,7 +1399,7 @@ def causalityLogicFinder(unit,dokkan_fields,causalityCondition,card_categories,s
                         possible_names.append(searchbyid(code=id,codecolumn=3,database=cards,column=1))
                 likelyName=possible_names[0][0]
                 for name in possible_names[1:]:
-                    likelyName=smallestCommonSubstring(likelyName,name[0]) 
+                    likelyName=longestCommonSubstring(likelyName,name[0]) 
 
                 if(CausalityRow[2]=="0"):
                     output+=("When there is a ")
@@ -1373,6 +1434,8 @@ def causalityLogicFinder(unit,dokkan_fields,causalityCondition,card_categories,s
                     output+=("When the character is attacked by a ki blast super attack")
                 elif(CausalityRow[2]=="2"):
                     output+=("When the character is attacked by an unarmed super attack")
+                elif(CausalityRow[2]=="4"):
+                    output+=("When the character is attacked by a physical super attack")
                 else:
                     output+=("UNKNOWN SUPER ATTACK TYPE")
                     if(DEVEXCEPTIONS==True):
@@ -2080,7 +2143,7 @@ def floattoint(number,printing=True):
         return(number)
 
 def checkeza(optimal_awakening_growths,unit,printing=True):
-    for eza in optimal_awakening_growths:
+    for eza in optimal_awakening_growths[1:]:
         if str(int(float(unit[22]))) in str(int(float(eza[6]))):
             return(True)
     return(False)

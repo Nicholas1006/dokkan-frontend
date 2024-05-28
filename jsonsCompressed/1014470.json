@@ -29,9 +29,108 @@
         "Fear and Faith",
         "Legendary Power"
     ],
-    "Passive": {},
+    "Passive": {
+        "1219": {
+            "ID": "1219",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 10,
+                "Max": 90,
+                "Cause": {
+                    "Cause": "HP",
+                    "Type": "More HP remaining"
+                }
+            },
+            "ATK": 90,
+            "DEF": 90,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1001219": {
+            "ID": "1001219",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "10"
+            },
+            "Timing": "after all ki collected",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        }
+    },
     "Hidden Potential": {},
+    "Super Attack": {
+        "1290": {
+            "superID": "1290",
+            "superName": "Supernova",
+            "superDescription": "Causes colossal damage to enemy and \ngreatly lowers DEF",
+            "superMinKi": "12",
+            "superPriority": "0",
+            "superStyle": "Normal",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "5",
+                "Type": "SA multiplier increase",
+                "Description": "Super Attack power will be increased even more!",
+                "Chance": "100",
+                "Duration": "1",
+                "Amount": "30"
+            },
+            "Multiplier": 395,
+            "1290": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "3",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "-"
+                },
+                "Target": "Enemy",
+                "DEF": "50"
+            }
+        },
+        "1291": {
+            "superID": "1291",
+            "superName": "Machinery Rain",
+            "superDescription": "Causes mega-colossal damage to enemy \nand raises Extreme Class allies' \nATK by 30% for 1 turn",
+            "superMinKi": "18",
+            "superPriority": "0",
+            "superStyle": "Hyper",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "5",
+                "Type": "SA multiplier increase",
+                "Description": "Super Attack power will be increased even more!",
+                "Chance": "100",
+                "Duration": "1",
+                "Amount": "30"
+            },
+            "Multiplier": 510,
+            "1291": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Extreme class Allies",
+                "ATK": "30"
+            }
+        }
+    },
     "Active Skill": {},
-    "Super Attack": null,
+    "Ki Multiplier": {},
     "Standby Skill": {}
 }

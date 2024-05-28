@@ -26,9 +26,101 @@
         "Shattering the Limit",
         "Legendary Power"
     ],
-    "Passive": {},
+    "Passive": {
+        "1315": {
+            "ID": "1315",
+            "Timing": "Start of turn",
+            "ATK": 15000,
+            "DEF": 20000,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1001315": {
+            "ID": "1001315",
+            "Timing": "Hit recieved",
+            "ATK": 15000,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "4",
+            "Condition": "When attack recieved "
+        },
+        "2001315": {
+            "ID": "2001315",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "0"
+            },
+            "Timing": "Hit recieved",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "4",
+            "Condition": "When attack recieved "
+        }
+    },
     "Hidden Potential": {},
+    "Super Attack": {
+        "1499": {
+            "superID": "1499",
+            "superName": "Photon Bomber",
+            "superDescription": "Causes colossal damage to enemy",
+            "superMinKi": "12",
+            "superPriority": "0",
+            "superStyle": "Normal",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "5",
+                "Type": "SA multiplier increase",
+                "Description": "Super Attack power will be increased even more!",
+                "Chance": "100",
+                "Duration": "1",
+                "Amount": "30"
+            },
+            "Multiplier": 395
+        },
+        "1500": {
+            "superID": "1500",
+            "superName": "Big Bang Attack",
+            "superDescription": "Greatly raises ATK for 1 turn and \ncauses mega-colossal damage to enemy",
+            "superMinKi": "18",
+            "superPriority": "0",
+            "superStyle": "Hyper",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "5",
+                "Type": "SA multiplier increase",
+                "Description": "Super Attack power will be increased even more!",
+                "Chance": "100",
+                "Duration": "1",
+                "Amount": "30"
+            },
+            "Multiplier": 540,
+            "1500": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "50"
+            }
+        }
+    },
     "Active Skill": {},
-    "Super Attack": null,
+    "Ki Multiplier": {},
     "Standby Skill": {}
 }

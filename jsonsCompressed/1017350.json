@@ -28,9 +28,128 @@
         "Shattering the Limit",
         "Legendary Power"
     ],
-    "Passive": {},
+    "Passive": {
+        "1593": {
+            "ID": "1593",
+            "Timing": "Start of turn",
+            "ATK": 20000,
+            "DEF": 20000,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1001593": {
+            "ID": "1001593",
+            "Timing": "Attacking the enemy",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 6,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "Ki": 1,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Condition": "A super is being performed"
+        },
+        "2001593": {
+            "ID": "2001593",
+            "Timing": "On Super",
+            "ATK": 20000,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When ki is 18 or more"
+        },
+        "3001593": {
+            "ID": "3001593",
+            "Timing": "On Super",
+            "Crit Chance": 100,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When the target enemy is in \"ATK down\" status  and  When ki is 18 or more"
+        }
+    },
     "Hidden Potential": {},
+    "Super Attack": {
+        "1855": {
+            "superID": "1855",
+            "superName": "Life Absorption",
+            "superDescription": "Causes colossal damage to enemy and \nrecovers 15% HP",
+            "superMinKi": "12",
+            "superPriority": "0",
+            "superStyle": "Normal",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "5",
+                "Type": "SA multiplier increase",
+                "Description": "Super Attack power will be increased even more!",
+                "Chance": "100",
+                "Duration": "1",
+                "Amount": "30"
+            },
+            "Multiplier": 395,
+            "1855": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "Heals": "15"
+            }
+        },
+        "1856": {
+            "superID": "1856",
+            "superName": "Zetsumei Bullet",
+            "superDescription": "Causes mega-colossal damage to enemy \nand lowers ATK & DEF",
+            "superMinKi": "18",
+            "superPriority": "0",
+            "superStyle": "Hyper",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "5",
+                "Type": "SA multiplier increase",
+                "Description": "Super Attack power will be increased even more!",
+                "Chance": "100",
+                "Duration": "1",
+                "Amount": "30"
+            },
+            "Multiplier": 540,
+            "1856": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "3",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "-"
+                },
+                "Target": "Enemy",
+                "ATK": "20",
+                "DEF": "20"
+            }
+        }
+    },
     "Active Skill": {},
-    "Super Attack": null,
+    "Ki Multiplier": {},
     "Standby Skill": {}
 }

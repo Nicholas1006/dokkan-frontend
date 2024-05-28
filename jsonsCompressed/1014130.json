@@ -37,9 +37,124 @@
         "GT",
         "Fierce Battle"
     ],
-    "Passive": {},
+    "Passive": {
+        "1208": {
+            "ID": "1208",
+            "Timing": "Start of turn",
+            "ATK": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1001208": {
+            "ID": "1001208",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 10,
+                "Max": 70,
+                "Cause": {
+                    "Cause": "HP",
+                    "Type": "More HP remaining"
+                }
+            },
+            "ATK": 70,
+            "DEF": 70,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2001208": {
+            "ID": "2001208",
+            "Nullification": {
+                "Activated": true,
+                "Absorbed": 0
+            },
+            "Timing": "Being hit",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Chance": "30",
+            "Length": "1",
+            "Condition": "A super is being performed"
+        },
+        "3001208": {
+            "ID": "3001208",
+            "Counter": {
+                "Activated": true,
+                "Multiplier": "300"
+            },
+            "Timing": "Being hit",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Chance": "30",
+            "Length": "1",
+            "Condition": "A super is being performed"
+        },
+        "4001208": {
+            "ID": "4001208",
+            "Toggle Other Line": {
+                "Activated": true,
+                "Line": "2001208"
+            },
+            "Timing": "Hit recieved",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "5001208": {
+            "ID": "5001208",
+            "Toggle Other Line": {
+                "Activated": true,
+                "Line": "3001208"
+            },
+            "Timing": "Hit recieved",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        }
+    },
     "Hidden Potential": {},
+    "Super Attack": {
+        "1276": {
+            "superID": "1276",
+            "superName": "Dragon Fist",
+            "superDescription": "Causes immense damage to enemy and \nmassively lowers DEF",
+            "superMinKi": "12",
+            "superPriority": "0",
+            "superStyle": "Normal",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "0"
+            },
+            "Multiplier": 505,
+            "1276": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "3",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "-"
+                },
+                "Target": "Enemy",
+                "DEF": "80"
+            }
+        }
+    },
     "Active Skill": {},
-    "Super Attack": null,
+    "Ki Multiplier": {},
     "Standby Skill": {}
 }

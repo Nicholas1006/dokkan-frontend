@@ -37,9 +37,116 @@
         "Supreme Power",
         "Fierce Battle"
     ],
-    "Passive": {},
+    "Passive": {
+        "1986": {
+            "ID": "1986",
+            "Timing": "Start of turn",
+            "ATK": 100,
+            "DEF": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1001986": {
+            "ID": "1001986",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 10,
+                "Max": 60,
+                "Cause": {
+                    "Cause": "HP",
+                    "Type": "More HP remaining"
+                }
+            },
+            "DEF": 60,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2001986": {
+            "ID": "2001986",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 20,
+                "Max": 60,
+                "Cause": {
+                    "Cause": "HP",
+                    "Type": "Less HP remaining"
+                }
+            },
+            "ATK": 60,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "3001986": {
+            "ID": "3001986",
+            "Timing": "On Super",
+            "ATK": 30,
+            "DEF": 30,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "With 3 or more Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres obtained"
+        },
+        "4001986": {
+            "ID": "4001986",
+            "Transformation": {
+                "Activated": true,
+                "Unit": "4018760",
+                "Giant/Rage": false,
+                "Min Turns": null,
+                "Max Turns": null,
+                "Reverse chance": null
+            },
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "First turn to activate": 2,
+            "Condition": "When facing less than 2 enemies and When enemy's health is 80% or more"
+        }
+    },
     "Hidden Potential": {},
+    "Super Attack": {
+        "2174": {
+            "superID": "2174",
+            "superName": "Super Kamehameha",
+            "superDescription": "Raises ATK for 1 turn and \ncauses immense damage to enemy",
+            "superMinKi": "12",
+            "superPriority": "0",
+            "superStyle": "Normal",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "0"
+            },
+            "2174": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "30"
+            }
+        }
+    },
     "Active Skill": {},
-    "Super Attack": null,
+    "Ki Multiplier": {},
     "Standby Skill": {}
 }

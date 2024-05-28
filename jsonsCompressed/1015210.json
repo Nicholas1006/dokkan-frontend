@@ -28,9 +28,125 @@
         "Tournament of Power",
         "Shattering the Limit"
     ],
-    "Passive": {},
+    "Passive": {
+        "2010": {
+            "ID": "2010",
+            "Timing": "Start of turn",
+            "Ki": 3,
+            "Target": {
+                "Target": "Allies",
+                "Type": [
+                    "STR"
+                ]
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1002010": {
+            "ID": "1002010",
+            "Timing": "Start of turn",
+            "ATK": 50,
+            "DEF": 50,
+            "Target": {
+                "Target": "Allies",
+                "Class": [
+                    "Extreme"
+                ],
+                "Type": [
+                    "STR"
+                ]
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2002010": {
+            "ID": "2002010",
+            "Timing": "Start of turn",
+            "Ki change": {
+                "From": [
+                    "PHY",
+                    "INT",
+                    "TEQ",
+                    "AGL"
+                ],
+                "To": [
+                    "STR"
+                ]
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "3002010": {
+            "ID": "3002010",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 0,
+                "Cause": {
+                    "Cause": "Ki sphere obtained",
+                    "Type": "any"
+                }
+            },
+            "ATK": 20,
+            "DEF": 20,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        }
+    },
     "Hidden Potential": {},
+    "Super Attack": {
+        "2201": {
+            "superID": "2201",
+            "superName": "Time Skip",
+            "superDescription": "Raises DEF and causes supreme damage \nwith a medium chance of stunning the enemy",
+            "superMinKi": "12",
+            "superPriority": "0",
+            "superStyle": "Normal",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "0"
+            },
+            "Multiplier": 430,
+            "2201": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "99",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "30"
+            },
+            "1002201": {
+                "Type": "ExtraEfficacySpecial",
+                "Chance": "30",
+                "Duration": "2",
+                "Buff": {
+                    "Type": "Raw stats",
+                    "+ or -": "+"
+                },
+                "Target": "Enemy",
+                "Status": "Stun"
+            }
+        }
+    },
     "Active Skill": {},
-    "Super Attack": null,
+    "Ki Multiplier": {},
     "Standby Skill": {}
 }

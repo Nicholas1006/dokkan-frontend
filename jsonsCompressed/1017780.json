@@ -34,9 +34,145 @@
         "Shattering the Limit",
         "Legendary Power"
     ],
-    "Passive": {},
+    "Passive": {
+        "2076": {
+            "ID": "2076",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 0,
+                "Cause": {
+                    "Cause": "Ki sphere obtained",
+                    "Type": [
+                        "TEQ"
+                    ]
+                }
+            },
+            "ATK": 6000,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1002076": {
+            "ID": "1002076",
+            "Timing": "When ki spheres collected",
+            "DR": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "With 5 or more Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres obtained"
+        },
+        "2002076": {
+            "ID": "2002076",
+            "Timing": "Start of turn",
+            "Ki change": {
+                "From": [
+                    "PHY",
+                    "STR",
+                    "INT",
+                    "AGL"
+                ],
+                "To": [
+                    "TEQ"
+                ]
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "3002076": {
+            "ID": "3002076",
+            "Transformation": {
+                "Activated": true,
+                "Unit": "4017790",
+                "Giant/Rage": false,
+                "Min Turns": null,
+                "Max Turns": null,
+                "Reverse chance": null
+            },
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "Starting from the 7th turn from the start of battle or When there are 1 or more DB Saga category enemies  or When there are 1 or more World Tournament category enemies  or When there are 1 or more Dragon Ball Seekers category enemies "
+        }
+    },
     "Hidden Potential": {},
+    "Super Attack": {
+        "2327": {
+            "superID": "2327",
+            "superName": "Magekisen",
+            "superDescription": "Raises DEF for 1 turn and \ncauses colossal damage to enemy",
+            "superMinKi": "12",
+            "superPriority": "0",
+            "superStyle": "Normal",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "5",
+                "Type": "SA multiplier increase",
+                "Description": "Super Attack power will be increased even more!",
+                "Chance": "100",
+                "Duration": "1",
+                "Amount": "30"
+            },
+            "2327": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "30"
+            },
+            "Multiplier": 395
+        },
+        "2328": {
+            "superID": "2328",
+            "superName": "Makosen",
+            "superDescription": "Greatly raises DEF for 1 turn and \ncauses mega-colossal damage to enemy",
+            "superMinKi": "18",
+            "superPriority": "0",
+            "superStyle": "Hyper",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "5",
+                "Type": "SA multiplier increase",
+                "Description": "Super Attack power will be increased even more!",
+                "Chance": "100",
+                "Duration": "1",
+                "Amount": "30"
+            },
+            "2328": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "50"
+            },
+            "Multiplier": 540
+        }
+    },
     "Active Skill": {},
-    "Super Attack": null,
+    "Ki Multiplier": {},
     "Standby Skill": {}
 }

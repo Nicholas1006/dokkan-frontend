@@ -26,9 +26,85 @@
         "Fused Fighter",
         "Fierce Battle"
     ],
-    "Passive": {},
+    "Passive": {
+        "1021": {
+            "ID": "1021",
+            "Counter": {
+                "Activated": true,
+                "Multiplier": "300",
+                "DR from normals": "50"
+            },
+            "Timing": "Being hit",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When normal attack recieved"
+        },
+        "1001021": {
+            "ID": "1001021",
+            "Toggle Other Line": {
+                "Activated": true,
+                "Line": "1021"
+            },
+            "Timing": "Hit recieved",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2001021": {
+            "ID": "2001021",
+            "Timing": "Hit recieved",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 100,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "ATK": 10,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Condition": "When attack recieved "
+        }
+    },
     "Hidden Potential": {},
+    "Super Attack": {
+        "927": {
+            "superID": "927",
+            "superName": "Spirit Sword Slash",
+            "superDescription": "Causes immense damage to enemy; \nraises allies' ATK by 30% for 1 turn",
+            "superMinKi": "12",
+            "superPriority": "0",
+            "superStyle": "Normal",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "0"
+            },
+            "Multiplier": 475,
+            "927": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Allies",
+                "ATK": "30"
+            }
+        }
+    },
     "Active Skill": {},
-    "Super Attack": null,
+    "Ki Multiplier": {},
     "Standby Skill": {}
 }

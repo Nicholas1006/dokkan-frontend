@@ -33,9 +33,98 @@
         "Shattering the Limit",
         "Legendary Power"
     ],
-    "Passive": {},
+    "Passive": {
+        "1056": {
+            "ID": "1056",
+            "Timing": "Start of turn",
+            "DEF": 120,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1001056": {
+            "ID": "1001056",
+            "Timing": "On Super",
+            "ATK": 180,
+            "DEF": -70,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When ki is 18 or more"
+        }
+    },
     "Hidden Potential": {},
+    "Super Attack": {
+        "979": {
+            "superID": "979",
+            "superName": "Instant Transmission Kamehameha",
+            "superDescription": "Causes colossal damage \nwith a rare chance of stunning the enemy",
+            "superMinKi": "12",
+            "superPriority": "0",
+            "superStyle": "Normal",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "5",
+                "Type": "SA multiplier increase",
+                "Description": "Super Attack power will be increased even more!",
+                "Chance": "100",
+                "Duration": "1",
+                "Amount": "30"
+            },
+            "Multiplier": 395,
+            "979": {
+                "Type": "ExtraEfficacySpecial",
+                "Chance": "20",
+                "Duration": "2",
+                "Buff": {
+                    "Type": "Raw stats",
+                    "+ or -": "+"
+                },
+                "Target": "Enemy",
+                "Status": "Stun"
+            }
+        },
+        "980": {
+            "superID": "980",
+            "superName": "Dragon Fist",
+            "superDescription": "Causes mega-colossal damage to enemy \nand greatly lowers DEF",
+            "superMinKi": "18",
+            "superPriority": "0",
+            "superStyle": "Hyper",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "5",
+                "Type": "SA multiplier increase",
+                "Description": "Super Attack power will be increased even more!",
+                "Chance": "100",
+                "Duration": "1",
+                "Amount": "30"
+            },
+            "Multiplier": 540,
+            "980": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "3",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "-"
+                },
+                "Target": "Enemy",
+                "DEF": "50"
+            }
+        }
+    },
     "Active Skill": {},
-    "Super Attack": null,
+    "Ki Multiplier": {},
     "Standby Skill": {}
 }

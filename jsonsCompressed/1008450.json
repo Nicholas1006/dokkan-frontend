@@ -29,9 +29,101 @@
         "The Incredible Adventure",
         "Guidance of the Dragon Balls"
     ],
-    "Passive": {},
+    "Passive": {
+        "2677": {
+            "ID": "2677",
+            "Timing": "Start of turn",
+            "ATK": 100,
+            "DEF": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1002677": {
+            "ID": "1002677",
+            "Timing": "Start of turn",
+            "ATK": 100,
+            "DEF": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there are 1 or more Turtle School category enemies "
+        },
+        "2002677": {
+            "ID": "2002677",
+            "Timing": "On Super",
+            "ATK": 200,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "Starting from the 3rd turn from this character's entry turn and When ki is 12 or more",
+            "Once only": true
+        },
+        "3002677": {
+            "ID": "3002677",
+            "Timing": "Attacking the enemy",
+            "Status": [
+                "Stun"
+            ],
+            "Target": {
+                "Target": "Enemy"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "2",
+            "Condition": "Starting from the 3rd turn from this character's entry turn and When ki is 12 or more",
+            "Once only": true
+        }
+    },
     "Hidden Potential": {},
+    "Super Attack": {
+        "3507": {
+            "superID": "3507",
+            "superName": "Super Explosive Wave",
+            "superDescription": "Raises DEF for 1 turn and \ncauses supreme damage with \na high chance of stunning the enemy",
+            "superMinKi": "12",
+            "superPriority": "0",
+            "superStyle": "Normal",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "0"
+            },
+            "3507": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "30"
+            },
+            "1003507": {
+                "Type": "ExtraEfficacySpecial",
+                "Chance": "50",
+                "Duration": "2",
+                "Buff": {
+                    "Type": "Raw stats",
+                    "+ or -": "+"
+                },
+                "Target": "Enemy",
+                "Status": "Stun"
+            }
+        }
+    },
     "Active Skill": {},
-    "Super Attack": null,
+    "Ki Multiplier": {},
     "Standby Skill": {}
 }

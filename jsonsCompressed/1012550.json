@@ -26,9 +26,97 @@
         "Scientist",
         "Thirst for Conquest"
     ],
-    "Passive": {},
+    "Passive": {
+        "1025": {
+            "ID": "1025",
+            "Timing": "Start of turn",
+            "Ki": 2,
+            "Target": {
+                "Target": "Allies",
+                "Class": [
+                    "Extreme"
+                ]
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1001025": {
+            "ID": "1001025",
+            "Timing": "Start of turn",
+            "ATK": 25,
+            "DEF": 25,
+            "Target": {
+                "Target": "Allies",
+                "Class": "Extreme"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2001025": {
+            "ID": "2001025",
+            "Timing": "Start of turn",
+            "ATK": 50,
+            "Target": {
+                "Target": "Allies",
+                "Class": "Extreme"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When HP is 30% or less",
+            "Once only": true
+        },
+        "3001025": {
+            "ID": "3001025",
+            "Timing": "Start of turn",
+            "Heals": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When HP is 30% or less",
+            "Once only": true
+        }
+    },
     "Hidden Potential": {},
+    "Super Attack": {
+        "934": {
+            "superID": "934",
+            "superName": "Minus Energy Zone",
+            "superDescription": "Causes supreme damage to enemy and lowers ATK",
+            "superMinKi": "12",
+            "superPriority": "0",
+            "superStyle": "Normal",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "0"
+            },
+            "934": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "3",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "-"
+                },
+                "Target": "Enemy",
+                "ATK": "20"
+            }
+        }
+    },
     "Active Skill": {},
-    "Super Attack": null,
+    "Ki Multiplier": {},
     "Standby Skill": {}
 }

@@ -29,9 +29,70 @@
         "Prepared for Battle",
         "Shattering the Limit"
     ],
-    "Passive": {},
+    "Passive": {
+        "1085": {
+            "ID": "1085",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 20,
+                "Max": 120,
+                "Cause": {
+                    "Cause": "HP",
+                    "Type": "Less HP remaining"
+                }
+            },
+            "ATK": 120,
+            "DEF": 120,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1001085": {
+            "ID": "1001085",
+            "Timing": "Start of turn",
+            "Heals": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When HP is 10% or less",
+            "Once only": true
+        }
+    },
     "Hidden Potential": {},
+    "Super Attack": {
+        "1015": {
+            "superID": "1015",
+            "superName": "Kamehameha Barrage",
+            "superDescription": "Causes supreme damage to enemy \nand raises DEF by 30% for 3 turns",
+            "superMinKi": "12",
+            "superPriority": "0",
+            "superStyle": "Normal",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "0"
+            },
+            "Multiplier": 430,
+            "1015": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "3",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "30"
+            }
+        }
+    },
     "Active Skill": {},
-    "Super Attack": null,
+    "Ki Multiplier": {},
     "Standby Skill": {}
 }

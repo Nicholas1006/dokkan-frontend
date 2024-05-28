@@ -29,9 +29,100 @@
         "Shocking Speed",
         "Fierce Battle"
     ],
-    "Passive": {},
+    "Passive": {
+        "1537": {
+            "ID": "1537",
+            "Timing": "Start of turn",
+            "ATK": 80,
+            "DEF": 80,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1001537": {
+            "ID": "1001537",
+            "Timing": "Start of turn",
+            "ATK": 70,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When facing less than 2 enemies"
+        },
+        "2001537": {
+            "ID": "2001537",
+            "Timing": "Attacking the enemy",
+            "Status": [
+                "Stun"
+            ],
+            "Target": {
+                "Target": "Enemy"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Chance": "50",
+            "Length": "1",
+            "Condition": "When facing less than 2 enemies"
+        },
+        "3001537": {
+            "ID": "3001537",
+            "Timing": "Start of turn",
+            "Ki": 5,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When facing 2 or more enemies"
+        },
+        "4001537": {
+            "ID": "4001537",
+            "Timing": "Start of turn",
+            "ATK": 50,
+            "DEF": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When facing 2 or more enemies"
+        }
+    },
     "Hidden Potential": {},
+    "Super Attack": {
+        "1786": {
+            "superID": "1786",
+            "superName": "This Planet is Finished!",
+            "superDescription": "Causes supreme damage to all enemies with \na medium chance of sealing Super Attack",
+            "superMinKi": "12",
+            "superPriority": "0",
+            "superStyle": "Normal",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "1",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "0"
+            },
+            "1786": {
+                "Type": "ExtraEfficacySpecial",
+                "Chance": "30",
+                "Duration": "2",
+                "Buff": {
+                    "Type": "Raw stats",
+                    "+ or -": "+"
+                },
+                "Target": "Enemy",
+                "Status": "Seals"
+            }
+        }
+    },
     "Active Skill": {},
-    "Super Attack": null,
+    "Ki Multiplier": {},
     "Standby Skill": {}
 }

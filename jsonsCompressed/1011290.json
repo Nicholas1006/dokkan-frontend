@@ -29,9 +29,120 @@
         "Fused Fighter",
         "GT"
     ],
-    "Passive": {},
+    "Passive": {
+        "952": {
+            "ID": "952",
+            "Timing": "Start of turn",
+            "ATK": 15,
+            "DEF": 15,
+            "Target": {
+                "Target": "Enemies",
+                "Class": "Extreme"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "-"
+            },
+            "Length": "1"
+        },
+        "1000952": {
+            "ID": "1000952",
+            "Timing": "Start of turn",
+            "ATK": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2000952": {
+            "ID": "2000952",
+            "Nullification": {
+                "Activated": true,
+                "Absorbed": 0
+            },
+            "Timing": "Being hit",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Chance": "70",
+            "Length": "1",
+            "Condition": "A super is being performed"
+        },
+        "3000952": {
+            "ID": "3000952",
+            "Counter": {
+                "Activated": true,
+                "Multiplier": "200"
+            },
+            "Timing": "Being hit",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Chance": "70",
+            "Length": "1",
+            "Condition": "A super is being performed"
+        },
+        "4000952": {
+            "ID": "4000952",
+            "Toggle Other Line": {
+                "Activated": true,
+                "Line": "2000952"
+            },
+            "Timing": "Hit recieved",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "5000952": {
+            "ID": "5000952",
+            "Toggle Other Line": {
+                "Activated": true,
+                "Line": "3000952"
+            },
+            "Timing": "Hit recieved",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        }
+    },
     "Hidden Potential": {},
+    "Super Attack": {
+        "764": {
+            "superID": "764",
+            "superName": "Big Bang Kamehameha",
+            "superDescription": "Raises ATK & DEF for 1 turn \nand causes immense damage to enemy",
+            "superMinKi": "12",
+            "superPriority": "0",
+            "superStyle": "Normal",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "0"
+            },
+            "764": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "30",
+                "DEF": "30"
+            }
+        }
+    },
     "Active Skill": {},
-    "Super Attack": null,
+    "Ki Multiplier": {},
     "Standby Skill": {}
 }

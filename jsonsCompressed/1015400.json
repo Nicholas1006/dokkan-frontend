@@ -22,9 +22,73 @@
         "Connoisseur",
         "Infighter"
     ],
-    "Passive": {},
+    "Passive": {
+        "9001": {
+            "ID": "9001",
+            "Timing": "Hit recieved",
+            "ATK": 55,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "3",
+            "Condition": "When attack recieved "
+        },
+        "1009001": {
+            "ID": "1009001",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 1,
+                "Max": 55,
+                "Cause": {
+                    "Cause": "HP",
+                    "Type": "Less HP remaining"
+                }
+            },
+            "ATK": 55,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        }
+    },
     "Hidden Potential": {},
+    "Super Attack": {
+        "9003": {
+            "superID": "9003",
+            "superName": "God of Destruction's Lie",
+            "superDescription": "Causes supreme damage to enemy \nwhile sacrificing 10% HP",
+            "superMinKi": "12",
+            "superPriority": "0",
+            "superStyle": "Normal",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "5",
+                "Type": "SA multiplier increase",
+                "Description": "Super Attack power will be increased even more!",
+                "Chance": "100",
+                "Duration": "1",
+                "Amount": "30"
+            },
+            "9003": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "-"
+                },
+                "Target": "Self",
+                "Heals": "10"
+            },
+            "Multiplier": 430
+        }
+    },
     "Active Skill": {},
-    "Super Attack": null,
+    "Ki Multiplier": {},
     "Standby Skill": {}
 }

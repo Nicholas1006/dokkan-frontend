@@ -26,9 +26,97 @@
         "Hatred of Saiyans",
         "Nightmare"
     ],
-    "Passive": {},
+    "Passive": {
+        "2678": {
+            "ID": "2678",
+            "Timing": "Start of turn",
+            "ATK": 100,
+            "DEF": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1002678": {
+            "ID": "1002678",
+            "Timing": "End of turn",
+            "Heals": 20,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "At the end of the turn in which attack was recieved"
+        },
+        "2002678": {
+            "ID": "2002678",
+            "Timing": "Start of turn",
+            "ATK": 100,
+            "DEF": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there are 1 or more Pure Saiyans category enemies  or When there are 1 or more Hybrid Saiyans category enemies "
+        },
+        "3002678": {
+            "ID": "3002678",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "70"
+            },
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there are 1 or more Pure Saiyans category enemies  or When there are 1 or more Hybrid Saiyans category enemies "
+        }
+    },
     "Hidden Potential": {},
+    "Super Attack": {
+        "3508": {
+            "superID": "3508",
+            "superName": "Revenge Blast",
+            "superDescription": "Raises DEF for 1 turn, \ncauses supreme damage to enemy \nand lowers ATK",
+            "superMinKi": "12",
+            "superPriority": "0",
+            "superStyle": "Normal",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "0"
+            },
+            "3508": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "30"
+            },
+            "1003508": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "3",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "-"
+                },
+                "Target": "Enemy",
+                "ATK": "20"
+            }
+        }
+    },
     "Active Skill": {},
-    "Super Attack": null,
+    "Ki Multiplier": {},
     "Standby Skill": {}
 }

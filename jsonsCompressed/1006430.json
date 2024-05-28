@@ -25,9 +25,108 @@
         "Over 9000",
         "Shocking Speed"
     ],
-    "Passive": {},
+    "Passive": {
+        "3039": {
+            "ID": "3039",
+            "Timing": "Start of turn",
+            "ATK": 100,
+            "DEF": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1003039": {
+            "ID": "1003039",
+            "Timing": "Being hit",
+            "DEF": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When facing less than 2 enemies"
+        },
+        "2003039": {
+            "ID": "2003039",
+            "Timing": "Hit recieved",
+            "ATK": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "4",
+            "Condition": "When attack recieved "
+        },
+        "3003039": {
+            "ID": "3003039",
+            "Timing": "Hit recieved",
+            "Crit Chance": 100,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "4",
+            "Condition": "When attack recieved "
+        },
+        "4003039": {
+            "ID": "4003039",
+            "Dodge chance": 50,
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there are 1 or more Realm of Gods category enemies "
+        },
+        "5003039": {
+            "ID": "5003039",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "70"
+            },
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When there are 1 or more Realm of Gods category enemies "
+        }
+    },
     "Hidden Potential": {},
+    "Super Attack": {
+        "4198": {
+            "superID": "4198",
+            "superName": "God of Destruction's Discipline",
+            "superDescription": "Greatly raises ATK & DEF for 1 turn \nand causes supreme damage to enemy",
+            "superMinKi": "12",
+            "superPriority": "0",
+            "superStyle": "Normal",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "0"
+            },
+            "4198": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "50",
+                "DEF": "50"
+            }
+        }
+    },
     "Active Skill": {},
-    "Super Attack": null,
+    "Ki Multiplier": {},
     "Standby Skill": {}
 }

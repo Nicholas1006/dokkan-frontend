@@ -23,9 +23,106 @@
         "Prepared for Battle",
         "Shattering the Limit"
     ],
-    "Passive": {},
+    "Passive": {
+        "1961": {
+            "ID": "1961",
+            "Timing": "Start of turn",
+            "Ki": 2,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1001961": {
+            "ID": "1001961",
+            "Timing": "Start of turn",
+            "ATK": 50,
+            "DEF": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2001961": {
+            "ID": "2001961",
+            "Timing": "On Super",
+            "ATK": 20,
+            "DEF": 20,
+            "Target": {
+                "Target": "Allies",
+                "Class": "Extreme"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "3001961": {
+            "ID": "3001961",
+            "Timing": "Hit recieved",
+            "ATK": 20,
+            "DEF": 20,
+            "Target": {
+                "Target": "Enemies",
+                "Class": "Super"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "-"
+            },
+            "Length": "1",
+            "Condition": "When attack recieved "
+        },
+        "4001961": {
+            "ID": "4001961",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "100"
+            },
+            "Timing": "Hit recieved",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "As the 1st attacker in the turn and When attack recieved "
+        }
+    },
     "Hidden Potential": {},
+    "Super Attack": {
+        "2118": {
+            "superID": "2118",
+            "superName": "D\u00c3\u00a9sastre Eraser",
+            "superDescription": "Raises ATK & DEF and \ncauses supreme damage to enemy",
+            "superMinKi": "12",
+            "superPriority": "0",
+            "superStyle": "Normal",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "0"
+            },
+            "Multiplier": 410,
+            "2118": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "99",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "20",
+                "DEF": "20"
+            }
+        }
+    },
     "Active Skill": {},
-    "Super Attack": null,
+    "Ki Multiplier": {},
     "Standby Skill": {}
 }

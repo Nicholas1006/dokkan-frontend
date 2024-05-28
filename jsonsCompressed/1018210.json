@@ -26,9 +26,103 @@
         "Hero of Justice",
         "Courage"
     ],
-    "Passive": {},
+    "Passive": {
+        "1900": {
+            "ID": "1900",
+            "Timing": "Start of turn",
+            "ATK": 50,
+            "DEF": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1001900": {
+            "ID": "1001900",
+            "Timing": "Attacking the enemy",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 50,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "ATK": 5,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99"
+        },
+        "2001900": {
+            "ID": "2001900",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "0"
+            },
+            "Timing": "When ki spheres collected",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "With 3 or more Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres obtained"
+        },
+        "3001900": {
+            "ID": "3001900",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "0"
+            },
+            "Timing": "When ki spheres collected",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "With 5 or more Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres obtained"
+        },
+        "4001900": {
+            "ID": "4001900",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 0,
+                "Cause": {
+                    "Cause": "Ki sphere obtained",
+                    "Type": [
+                        "Sweet treats"
+                    ]
+                }
+            },
+            "Heals": 2,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        }
+    },
     "Hidden Potential": {},
+    "Super Attack": {
+        "2061": {
+            "superID": "2061",
+            "superName": "Victory Cannon",
+            "superDescription": "Causes supreme damage to enemy",
+            "superMinKi": "12",
+            "superPriority": "0",
+            "superStyle": "Normal",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "0"
+            }
+        }
+    },
     "Active Skill": {},
-    "Super Attack": null,
+    "Ki Multiplier": {},
     "Standby Skill": {}
 }

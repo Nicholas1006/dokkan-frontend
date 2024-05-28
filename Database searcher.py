@@ -4,11 +4,11 @@ from dokkanfunctions import *
 from numpy import source
 
 
-stringToFind = 'Instant Transmission Meteor Crush'
+stringToFind = '2244'
 
-includeAsElementOf=True
+includeAsElementOf=False
 
-CSVtoExclude = []
+CSVtoExclude = ["z_battle_first_rewards.csv","potential_square_relations.csv","potential_squares.csv","potential_events.csv","mission_rewards.csv"]
 
 try:
     inttoFind = int(stringToFind)

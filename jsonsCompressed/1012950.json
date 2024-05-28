@@ -30,9 +30,67 @@
         "Dismal Future",
         "Prepared for Battle"
     ],
-    "Passive": {},
+    "Passive": {
+        "1078": {
+            "ID": "1078",
+            "Timing": "Being hit",
+            "DR": 30,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1001078": {
+            "ID": "1001078",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 20,
+                "Max": 100,
+                "Cause": {
+                    "Cause": "HP",
+                    "Type": "Less HP remaining"
+                }
+            },
+            "ATK": 100,
+            "DEF": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        }
+    },
     "Hidden Potential": {},
+    "Super Attack": {
+        "1003": {
+            "superID": "1003",
+            "superName": "Burning Attack",
+            "superDescription": "Causes supreme damage to enemy \nand raises DEF by 30% for 3 turns",
+            "superMinKi": "12",
+            "superPriority": "0",
+            "superStyle": "Normal",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "0"
+            },
+            "1003": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "3",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "30"
+            }
+        }
+    },
     "Active Skill": {},
-    "Super Attack": null,
+    "Ki Multiplier": {},
     "Standby Skill": {}
 }

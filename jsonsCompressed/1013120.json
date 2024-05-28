@@ -31,9 +31,87 @@
         "Transform",
         "Shattering the Limit"
     ],
-    "Passive": {},
+    "Passive": {
+        "1140": {
+            "ID": "1140",
+            "Timing": "Start of turn",
+            "ATK": 20,
+            "DEF": 20,
+            "Target": {
+                "Target": "Enemies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "-"
+            },
+            "Length": "1"
+        },
+        "1001140": {
+            "ID": "1001140",
+            "Timing": "Attacking the enemy",
+            "Status": [
+                "Stun"
+            ],
+            "Target": {
+                "Target": "Enemy"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Chance": "30",
+            "Length": "1"
+        },
+        "2001140": {
+            "ID": "2001140",
+            "Transformation": {
+                "Activated": true,
+                "Unit": "4013120",
+                "Giant/Rage": true,
+                "Min Turns": "2",
+                "Max Turns": "3",
+                "Reverse chance": "50"
+            },
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "-"
+            },
+            "Chance": "10",
+            "Length": "1"
+        }
+    },
     "Hidden Potential": {},
+    "Super Attack": {
+        "1211": {
+            "superID": "1211",
+            "superName": "Super Explosive Wave",
+            "superDescription": "Causes supreme damage to enemy and \ngreatly lowers DEF",
+            "superMinKi": "12",
+            "superPriority": "0",
+            "superStyle": "Normal",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "0"
+            },
+            "Multiplier": 430,
+            "1211": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "3",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "-"
+                },
+                "Target": "Enemy",
+                "DEF": "50"
+            }
+        }
+    },
     "Active Skill": {},
-    "Super Attack": null,
+    "Ki Multiplier": {},
     "Standby Skill": {}
 }

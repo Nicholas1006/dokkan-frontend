@@ -28,9 +28,79 @@
         "Solid Support",
         "Fierce Battle"
     ],
-    "Passive": {},
+    "Passive": {
+        "1059": {
+            "ID": "1059",
+            "Timing": "Being hit",
+            "DR": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1001059": {
+            "ID": "1001059",
+            "Timing": "Start of turn",
+            "ATK": 150,
+            "DEF": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When HP is 50% or less"
+        },
+        "2001059": {
+            "ID": "2001059",
+            "Transformation": {
+                "Activated": true,
+                "Unit": "4012420",
+                "Giant/Rage": true,
+                "Min Turns": "2",
+                "Max Turns": "3",
+                "Reverse chance": "80"
+            },
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When HP is 50% or less"
+        }
+    },
     "Hidden Potential": {},
+    "Super Attack": {
+        "982": {
+            "superID": "982",
+            "superName": "Brave Sword Attack",
+            "superDescription": "Causes immense damage to enemy \nand lowers ATK",
+            "superMinKi": "12",
+            "superPriority": "0",
+            "superStyle": "Normal",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "0"
+            },
+            "Multiplier": 505,
+            "982": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "3",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "-"
+                },
+                "Target": "Enemy",
+                "ATK": "20"
+            }
+        }
+    },
     "Active Skill": {},
-    "Super Attack": null,
+    "Ki Multiplier": {},
     "Standby Skill": {}
 }

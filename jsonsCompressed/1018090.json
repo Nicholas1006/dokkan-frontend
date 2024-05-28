@@ -27,9 +27,100 @@
         "Messenger from the Future",
         "Prepared for Battle"
     ],
-    "Passive": {},
+    "Passive": {
+        "1966": {
+            "ID": "1966",
+            "Timing": "Start of turn",
+            "ATK": 80,
+            "DEF": 80,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1001966": {
+            "ID": "1001966",
+            "Timing": "On Super",
+            "ATK": 80,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": "When ki is 12 or more"
+        },
+        "2001966": {
+            "ID": "2001966",
+            "Timing": "On Super",
+            "DEF": 60,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "-"
+            },
+            "Length": "1",
+            "Condition": "When ki is 12 or more"
+        },
+        "3001966": {
+            "ID": "3001966",
+            "Timing": "Hit recieved",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 25,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "Crit Chance": 5,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Condition": "When attack recieved "
+        }
+    },
     "Hidden Potential": {},
+    "Super Attack": {
+        "2138": {
+            "superID": "2138",
+            "superName": "Flash Blade",
+            "superDescription": "Greatly raises ATK for 1 turn and \ncauses supreme damage to enemy \nwhile sacrificing 7% HP",
+            "superMinKi": "12",
+            "superPriority": "0",
+            "superStyle": "Normal",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "0"
+            },
+            "2138": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "-"
+                },
+                "Target": "Self",
+                "Heals": "7"
+            },
+            "1002138": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "50"
+            }
+        }
+    },
     "Active Skill": {},
-    "Super Attack": null,
+    "Ki Multiplier": {},
     "Standby Skill": {}
 }
