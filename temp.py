@@ -1,5 +1,5 @@
 from dokkanfunctions import *
-directory="data/"
+directory="dataGB/"
 cards=storedatabase(directory,"cards.csv")
 
 unitid="1026331"

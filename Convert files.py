@@ -10,10 +10,10 @@ from PIL import Image
 from dokkanfunctions import *
 
 
-directory="data/"
+directory="dataJP/"
 cards=storedatabase(directory,"cards.csv")
 
-print("scraping units")
+print("scraping global units")
 scrapeallunitassetsv2(cards,thumb=True,circle=True,full=True,printing=True)
 print("units scraped")        
 

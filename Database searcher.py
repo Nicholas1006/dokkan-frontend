@@ -4,11 +4,11 @@ from dokkanfunctions import *
 from numpy import source
 
 
-stringToFind = '2244'
+stringToFind = '14234'
 
 includeAsElementOf=False
 
-CSVtoExclude = ["z_battle_first_rewards.csv","potential_square_relations.csv","potential_squares.csv","potential_events.csv","mission_rewards.csv"]
+CSVtoExclude = []
 
 try:
     inttoFind = int(stringToFind)
@@ -21,7 +21,7 @@ except ValueError:
     floattoFind = None
 
 
-directory = "data/"
+directory = "dataGB/"
 for filename in os.listdir(directory):
     if (filename.endswith(".csv") and filename not in CSVtoExclude):
         data = storedatabase(directory, filename)

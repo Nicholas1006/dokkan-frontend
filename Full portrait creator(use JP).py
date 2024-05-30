@@ -7,7 +7,7 @@ from dokkanfunctions import *
 import pandas as pd
 from progress.bar import Bar
 
-directory="data/"
+directory="dataGB/"
 cards=storedatabase(directory,"cards.csv")
 transferredicon=[]
 transferreddata=[]

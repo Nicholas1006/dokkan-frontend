@@ -1,8 +1,7 @@
-import glob
+from globals import *
 from dokkanfunctions import *
 from numpy import source
-time1=time.time()
-directory="data/"
+directory="dataJP/"
 cards=storedatabase(directory,"cards.csv")
 leader_skills=storedatabase(directory,"leader_skills.csv")
 passive_skills=storedatabase(directory,"passive_skills.csv")
@@ -29,17 +28,30 @@ specials=storedatabase(directory,"specials.csv")
 special_bonuses=storedatabase(directory,"special_bonuses.csv")
 
 
-unitid="1000010"
+unitid="1024550"
 eza=True
 DEVEXCEPTIONS=True
 GLOBALCHECK=True
-CUTJSON=True
 MAKEJSON=True
+CUTJSON=True
+
 CALCPASSIVE=True
 CALCLEADER=True
 CALCHIPO=True
+CALCACTIVE=True
+CALCSUPERATTACK=True
+CALCLEVELS=True
+CALCBASIC=True
 
-
+passiveTime=0.0
+leaderTime=0.0
+hipoTime=0.0
+activeTime=0.0
+superTime=0.0
+levelTime=0.0
+basicTime=0.0
+jsonTime=0.0
+megaJsonTime=0.0
 
 if unitid[-1]=="1":
     unitid=unitid[0:-1]+"0"
@@ -74,72 +86,95 @@ HiPoBoards={}
 for unit in cardsToCheck:
     unitCount+=1
     unitDictionary={}
-    unitDictionary["ID"]=unit[0]
-    unitDictionary["Typing"]=getUnitTyping(unit)
-    unitDictionary["Class"]=getUnitClass(unit)
-    unitDictionary["Name"]=unit[1]
-    unitDictionary["Rarity"]=getrarity(unit)
-    unitDictionary["Max Level"]=unit[13]
-    unitDictionary["Max HP"]=swapToUnitWith1(unit)[7]
-    unitDictionary["Max ATK"]=swapToUnitWith1(unit)[9]
-    unitDictionary["Max DEF"]=swapToUnitWith1(unit)[11]
-    unitDictionary["Categories"]=getallcategories(unit[0],printing=True)
-    unitDictionary["Links"]=getalllinks(unit)
+    unit1=swapToUnitWith1(unit)
+    unitGB=switchUnitToGlobal(unit)
+    if(CALCBASIC):
+        basicStart=time.time()
+        unitDictionary["ID"]=unit[0]
+        unitDictionary["Typing"]=getUnitTyping(unit)
+        unitDictionary["Class"]=getUnitClass(unit)
+        if(unitGB!=None):
+            unitDictionary["Name"]=unitGB[1]
+        else:
+            unitDictionary["Name"]=unit[1]
+        unitDictionary["Rarity"]=getrarity(unit)
+        unitDictionary["Max Level"]=unit[13]
+        unitDictionary["Max HP"]=unit1[7]
+        unitDictionary["Max ATK"]=unit1[9]
+        unitDictionary["Max DEF"]=unit1[11]
+        unitDictionary["Categories"]=getallcategories(unit[0],printing=True)
+        unitDictionary["Links"]=getalllinks(unit)
+        basicTime+=time.time()-basicStart
+    
+
+
     unitDictionary["Passive"]={}
     if(CALCPASSIVE):
-        passiveIdList=getpassiveid(unit,eza)
-        if (passiveIdList!=None and qualifyUsable(unit)):
-            for passiveskill in passive_skills[1:]:
-                if (passiveskill[0] in passiveIdList):
-                    output=(extractPassiveLine(unit,passiveskill,printing=False,DEVEXCEPTIONS=DEVEXCEPTIONS))
-                    #output=shortenPassiveDictionary(output)
-                    if(CUTJSON):
-                        output=shortenPassiveDictionary(output)
-                    passivecount+=1
-                    unitDictionary["Passive"][passiveskill[0]]=output
-                    
-                    
+        passiveStart=time.time()
+        unitDictionary["Passive"]=parsePassiveSkill(unit,eza,DEVEXCEPTIONS)
+        passiveTime+=time.time()-passiveStart
 
+    unitDictionary["Stats at levels"]={}
+    if(CALCLEVELS):
+        levelStart=time.time()
+        unitDictionary["Stats at levels"]=getStatsAtAllLevels(unit1)
+        levelTime+=time.time()-levelStart
     
-
-    
+    unitDictionary["Leader Skill"]={}
     if(CALCLEADER):
-        leader_skill_line=searchbycolumn(code=unit[22][:-2],database=leader_skills,column=1,printing=False)
-        unitDictionary["Leader Skill"]={}
-        for line in leader_skill_line:
-            ParsedLeaderSkill=parseLeaderSkill(unit,line,DEVEXCEPTIONS)
-            if (ParsedLeaderSkill!=None):
-                unitDictionary["Leader Skill"][line[0]] = ParsedLeaderSkill
-    #unit[22] is leader skill set id
-    
-
+        leaderStart=time.time()
+        unitDictionary["Leader Skill"]=parseLeaderSkill(unit,unit[22][:-2],DEVEXCEPTIONS)
+        leaderTime+=time.time()-leaderStart
 
     unitDictionary["Hidden Potential"]={}
-    unit1=swapToUnitWith1(unit)
     if(CALCHIPO):
+        hipoStart=time.time()
         if(unit1[52][:-2]not in HiPoBoards):
             HiPoBoards[unit1[52][:-2]]=parseHiddenPotential(unit1[52][:-2],DEVEXCEPTIONS)
-
         unitDictionary["Hidden Potential"]=HiPoBoards[unit1[52][:-2]]
-        #unit[52] is the potential board id
+        hipoTime+=time.time()-hipoStart
 
-    unitDictionary["Super Attack"]=parseSuperAttack(unit,eza,DEVEXCEPTIONS)
+    unitDictionary["Super Attack"]={}
+    if(CALCSUPERATTACK):
+        superStart=time.time()
+        unitDictionary["Super Attack"]=parseSuperAttack(unit,eza,DEVEXCEPTIONS)
+        superTime+=time.time()-superStart
 
     unitDictionary["Active Skill"]={}
+    if(CALCACTIVE):    
+        activeStart=time.time()
+        unitDictionary["Active Skill"]=parseActiveSkill(unit,eza,DEVEXCEPTIONS)
+        activeTime+=time.time()-activeStart
     unitDictionary["Ki Multiplier"]={}
     unitDictionary["Standby Skill"]={}
 
     jsonName=unit[0]
     
     if(MAKEJSON):
+        jsonStart=time.time()
         if(GLOBALCHECK):
             MegaPassiveJson[unit[0]]=unitDictionary
         if(CUTJSON):
             turnintoJson(unitDictionary, jsonName,directoryName="jsonsCompressed")
         else:
             turnintoJson(unitDictionary, jsonName,directoryName="jsons")
-    print("Unit count:",unitCount, "Passive count:",passivecount)
+        jsonTime+=time.time()-jsonStart
+    print("Unit count:",unitCount)
     
-print("All done in ",time.time()-time1," seconds")
+
 if(GLOBALCHECK and MAKEJSON):
+    megaJsonStart=time.time()
     turnintoJson(MegaPassiveJson, "MegaPassiveJson",directoryName="jsonsCompressed")
+    megaJsonTime+=time.time()-megaJsonStart
+
+
+print("Passive time:",passiveTime)
+print("Leader time:",leaderTime)
+print("HiPo time:",hipoTime)
+print("Active time:",activeTime)
+print("Super time:",superTime)
+print("Level time:",levelTime)
+print("Basic time:",basicTime)
+print("Json time:",jsonTime)
+print("MegaJson time:",megaJsonTime)
+print("Total time:",passiveTime+leaderTime+hipoTime+activeTime+superTime+levelTime+basicTime+jsonTime+megaJsonTime)
