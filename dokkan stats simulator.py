@@ -2,36 +2,12 @@ from globals import *
 from dokkanfunctions import *
 from numpy import source
 directory="dataJP/"
-cards=storedatabase(directory,"cards.csv")
-leader_skills=storedatabase(directory,"leader_skills.csv")
-passive_skills=storedatabase(directory,"passive_skills.csv")
-card_active_skills=storedatabase(directory,"card_active_skills.csv")
-active_skill_sets=storedatabase(directory,"active_skill_sets.csv")
-card_categories=storedatabase(directory,"card_categories.csv")
-card_card_categories=storedatabase(directory,"card_card_categories.csv")
-link_skills=storedatabase(directory,"link_skills.csv")
-link_skill_lvs=storedatabase(directory,"link_skill_lvs.csv")
-skill_causalities=storedatabase(directory,"skill_causalities.csv")
-passive_skill_set_relations=storedatabase(directory,"passive_skill_set_relations.csv")
-optimal_awakening_growths=storedatabase(directory,"optimal_awakening_growths.csv")
-sub_target_types=storedatabase(directory,"sub_target_types.csv")
-card_unique_info_set_relations=storedatabase(directory,"card_unique_info_set_relations.csv")
-battle_params=storedatabase(directory,"battle_params.csv")
-dokkan_fields=storedatabase(directory,"dokkan_fields.csv")
-dokkan_field_passive_skill_relations=storedatabase(directory,"dokkan_field_passive_skill_relations.csv")
-potential_squares=storedatabase(directory,"potential_squares.csv")
-potential_events=storedatabase(directory,"potential_events.csv")
-potential_square_relations=storedatabase(directory,"potential_square_relations.csv")
-card_specials=storedatabase(directory,"card_specials.csv")
-special_sets=storedatabase(directory,"special_sets.csv")
-specials=storedatabase(directory,"specials.csv")
-special_bonuses=storedatabase(directory,"special_bonuses.csv")
+cardsJP=storedatabase(directory,"cards.csv")
 
 
-unitid="1024550"
 eza=True
-DEVEXCEPTIONS=True
-GLOBALCHECK=True
+DEVEXCEPTIONS=False
+GLOBALCHECK=False
 MAKEJSON=True
 CUTJSON=True
 
@@ -42,6 +18,8 @@ CALCACTIVE=True
 CALCSUPERATTACK=True
 CALCLEVELS=True
 CALCBASIC=True
+CALCMULTIPLIER=True
+CALCSTANDBY=True
 
 passiveTime=0.0
 leaderTime=0.0
@@ -52,21 +30,23 @@ levelTime=0.0
 basicTime=0.0
 jsonTime=0.0
 megaJsonTime=0.0
+standbyTime=0.0
+multiplierTime=0.0
 
-if unitid[-1]=="1":
-    unitid=unitid[0:-1]+"0"
-for unit in cards:
-    if unit[0]==unitid:
-        mainunit=unit
+cardIDsToCheck=["4027631"]
+#cardIDsToCheck=["4026911","4025741","4028381","4026401","4027631","4027301","4025781","4026541"]
 
 cardsToCheck=[]
 
 if GLOBALCHECK:
-    for unit in cards:
+    for unit in cardsJP:
         if qualifyUsable(unit):
             cardsToCheck.append(unit)
 else:
-    cardsToCheck.append(mainunit)
+    for ID in cardIDsToCheck:
+        for unit in cardsJP:
+            if unit[0]==ID:
+                cardsToCheck.append(unit)
 
 
 missingPassiveCount=0
@@ -79,8 +59,7 @@ passivecount=0
 #passiveIdList=getpassiveid(mainunit,cards,optimal_awakening_growths,passive_skill_set_relations,eza)
 #print(passive)
 longestPassive=["a"]
-if(GLOBALCHECK):
-    MegaPassiveJson={}
+MegaPassiveJson={}
 HiPoBoards={}
 
 for unit in cardsToCheck:
@@ -145,11 +124,35 @@ for unit in cardsToCheck:
         activeStart=time.time()
         unitDictionary["Active Skill"]=parseActiveSkill(unit,eza,DEVEXCEPTIONS)
         activeTime+=time.time()-activeStart
+
+
+
+
+
+
     unitDictionary["Ki Multiplier"]={}
+    if(CALCMULTIPLIER):
+        multiplierStart=time.time()
+        unitDictionary["Ki Multiplier"]=getKiMultipliers(unit)
+        multiplierTime+=time.time()-multiplierStart
+    
+
     unitDictionary["Standby Skill"]={}
+    if(CALCSTANDBY):
+        standbyStart=time.time()
+        unitDictionary["Standby Skill"]=parseStandby(unit,DEVEXCEPTIONS)
+        standbyTime+=time.time()-standbyStart
+
+
+
 
     jsonName=unit[0]
+
     
+    MegaPassiveJson[unit[0]]=unitDictionary
+
+
+
     if(MAKEJSON):
         jsonStart=time.time()
         if(GLOBALCHECK):
@@ -168,13 +171,16 @@ if(GLOBALCHECK and MAKEJSON):
     megaJsonTime+=time.time()-megaJsonStart
 
 
-print("Passive time:",passiveTime)
-print("Leader time:",leaderTime)
-print("HiPo time:",hipoTime)
-print("Active time:",activeTime)
-print("Super time:",superTime)
-print("Level time:",levelTime)
-print("Basic time:",basicTime)
-print("Json time:",jsonTime)
-print("MegaJson time:",megaJsonTime)
-print("Total time:",passiveTime+leaderTime+hipoTime+activeTime+superTime+levelTime+basicTime+jsonTime+megaJsonTime)
+
+print("Basic time:",round(basicTime,2))
+print("Leader time:",round(leaderTime,2))
+print("Passive time:",round(passiveTime,2))
+print("Super time:",round(superTime,2))
+print("Level time:",round(levelTime,2))
+print("HiPo time:",round(hipoTime,2))
+print("Multiplier time:",round(multiplierTime,2))
+print("Active time:",round(activeTime,2))
+print("Standby time:",round(standbyTime,2))
+print("Json time:",round(jsonTime,2))
+print("MegaJson time:",round(megaJsonTime,2))
+print("Total time:",round(passiveTime+leaderTime+hipoTime+activeTime+superTime+levelTime+basicTime+jsonTime+megaJsonTime+multiplierTime+standbyTime,2))

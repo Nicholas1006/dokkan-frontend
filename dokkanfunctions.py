@@ -57,8 +57,6 @@ def superAttackMultiplierExtractor(superAttackID,super_attack_lvl,DEVEXCEPTIONS=
 
     return(multiplier)
     
-    #tell it to use special_bonuses
-    #WIP
 
 def parseSuperAttack(unit,eza=False,DEVEXCEPTIONS=False):
     global card_specialsJP
@@ -223,7 +221,6 @@ def parseHiddenPotential(Potential_board_id,DEVEXCEPTIONS=False):
     global potential_squaresJP
     global potential_square_relationsJP
     global potential_eventsJP
-    #WIP
 
     nodesSearched={}
     
@@ -284,10 +281,6 @@ def parseHiddenPotential(Potential_board_id,DEVEXCEPTIONS=False):
             output[nodesSearched[node]]["ATK"]+=int(event[3])
         elif(event[1]=="PotentialEvent::Defense"):
             output[nodesSearched[node]]["DEF"]+=int(event[3])
-
-
-    finishTime=time.time()
-    print(finishTime-startTime)
     return(output)
 
 def parseLeaderSkill(unit,leader_skill_id,DEVEXCEPTIONS=False):
@@ -459,6 +452,173 @@ def turnintoJson(data,filename, directoryName="" ):
             directoryName+="/"
     with open(directoryName+filename, 'w') as f:
         json.dump(data, f, indent=4)
+
+def JPExclusiveCheck(unitid):
+    global cardsGB
+    globalVersion=searchbycolumn(code=unitid,column=0,database=cardsGB)
+    if(globalVersion==[]):
+        return(True)
+    else:
+        return(False)
+
+def parseStandby(unit,DEVEXCEPTIONS=False):
+    #WIP
+    global card_finish_skill_set_relationsJP
+    global card_standby_skill_set_relationsJP
+    global finish_skillsJP
+    global finish_specialsJP
+    global card_finish_skill_set_relationsJP
+
+    output={}
+    standby_skill_set_id=searchbyid(code=unit[0],codecolumn=1,database=card_standby_skill_set_relationsJP,column=2)
+    if(standby_skill_set_id!=None):
+        standby_skill_set_id=standby_skill_set_id[0]
+        output["Standby or Finish"]="Standby"
+        if(JPExclusiveCheck(unit[0])):
+            global standby_skill_setsJP
+            standby_skill_setsRow=searchbycolumn(code=standby_skill_set_id,database=standby_skill_setsJP,column=0)[0]
+        else:
+            global standby_skill_setsGB
+            standby_skill_setsRow=searchbycolumn(code=standby_skill_set_id,database=standby_skill_setsGB,column=0)[0]
+        output["ID"]=standby_skill_set_id
+        output["Exec limit"]=standby_skill_setsRow[4]
+        compiled_causality_conditions=standby_skill_setsRow[5]
+        standby_skills_rows=searchbycolumn(code=standby_skill_set_id,database=standby_skillsJP,column=1)
+        for standby_skill_row in standby_skills_rows:
+            efficiacy_value=standby_skill_row[8].replace("[","").replace("]","").replace("{","").replace("}","").replace(" ","").replace('"',"").split(",")
+            if(standby_skill_row[6]=="103"):
+                output["Exchanges to"]=efficiacy_value[0]
+            elif(standby_skill_row[6]=="115"):
+                output["Standby Exclusivity"]=efficiacy_value[0][5:]
+            elif(standby_skill_row[6]=="116"):
+                output["Charge type"]={}
+                output["Charge type"]["type"]=efficiacy_value[0][5:]
+                output["Charge type"]["gauge_value"]=efficiacy_value[1][12:]
+                output["Charge type"]["count_multiplier"]=efficiacy_value[2][17:]
+                output["Charge type"]["max_effect_value"]=efficiacy_value[3][17:]
+            else:
+                if(DEVEXCEPTIONS):
+                    raise Exception("Unknown standby skill")
+
+
+
+
+
+    finish_skill_set_ids=searchbyid(code=unit[0],codecolumn=1,database=card_finish_skill_set_relationsJP,column=2)
+    if(finish_skill_set_ids!=None):
+        for finish_skill_set_id in finish_skill_set_ids:
+            output[finish_skill_set_id]={}
+            output[finish_skill_set_id]["Standby or Finish"]="Finish"
+            if(JPExclusiveCheck(unit[0])):
+                global finish_skill_setsJP
+                finish_skill_setsRow=searchbycolumn(code=finish_skill_set_id,database=finish_skill_setsJP,column=0)[0]
+            else:
+                global finish_skill_setsGB
+                finish_skill_setsRow=searchbycolumn(code=finish_skill_set_id,database=finish_skill_setsGB,column=0)[0]
+            output[finish_skill_set_id]["ID"]=finish_skill_set_id
+            output[finish_skill_set_id]["Name"]=finish_skill_setsRow[1]
+            output[finish_skill_set_id]["Description"]=finish_skill_setsRow[2]
+            if(finish_skill_setsRow[6]=="0"):
+                output[finish_skill_set_id]["Timing"]="On activation"
+            elif(finish_skill_setsRow[6]=="17"):
+                output[finish_skill_set_id]["Timing"]="On Revive"
+            elif(finish_skill_setsRow[6]=="6"):
+                output[finish_skill_set_id]["Timing"]="On Counter"
+            else:
+                output[finish_skill_set_id]["Timing"]="UNKNOWN"
+                if(DEVEXCEPTIONS):
+                    raise Exception("Unknown timing")
+                
+            compiled_causality_conditions=finish_skill_setsRow[8]
+            condition=standbylogicalCausalityExtractor(compiled_causality_conditions)
+            output[finish_skill_set_id]["Condition"]=condition
+
+            finish_special_id=finish_skill_setsRow[9]
+            finish_special_multiplier=searchbyid(code=finish_special_id,codecolumn=0,database=finish_specialsJP,column=1)
+            if(finish_special_multiplier!=None):
+                finish_special_multiplier=finish_special_multiplier[0]
+                output[finish_skill_set_id]["Multiplier"]=int(finish_special_multiplier)
+
+            finish_skills_rows=searchbycolumn(code=finish_skill_set_id,database=finish_skillsJP,column=1)
+            for finish_skill_row in finish_skills_rows:
+                efficiacy_value=finish_skill_row[8].replace("[","").replace("]","").replace("{","").replace("}","").replace(" ","").replace('"',"").split(",")
+                if(finish_skill_row[6]=="4"):
+                    output[finish_skill_set_id]["Heals"]=int(efficiacy_value[0])
+                elif(finish_skill_row[6]=="5"):
+                    output[finish_skill_set_id]["Ki"]=int(efficiacy_value[0])
+                elif(finish_skill_row[6]=="90"):
+                    output[finish_skill_set_id]["Crit Chance"]=int(efficiacy_value[0])
+                elif(finish_skill_row[6]=="103"):
+                    output[finish_skill_set_id]["Exchanges to"]=efficiacy_value[0]
+                elif(finish_skill_row[6]=="110"):
+                    output[finish_skill_set_id]["CONFUSION"]=True
+                elif(finish_skill_row[6]=="115"):
+                    output[finish_skill_set_id]["Standby Exclusivity"]=efficiacy_value[0][5:]
+                elif(finish_skill_row[6]=="116"):
+                    output[finish_skill_set_id]["CONFUSION"]=True
+                elif(finish_skill_row[6]=="117"):
+                    output[finish_skill_set_id]["CONFUSION"]=True
+                elif(finish_skill_row[6]=="118"):
+                    output[finish_skill_set_id]["Multipler per charge"]=int(efficiacy_value[0])
+                    output[finish_skill_set_id]["Max multiplier"]=int(efficiacy_value[1])
+                elif(finish_skill_row[6]=="119"):
+                    output[finish_skill_set_id]["CONFUSION"]=True
+                elif(finish_skill_row[6]=="120"):
+                    output[finish_skill_set_id]["CONFUSION"]=True
+
+                    
+                else:
+                    if(DEVEXCEPTIONS):
+                        raise Exception("Unknown finish skill")
+
+        
+        
+
+
+    return(output)
+
+def unicode_fixer(input):
+    if isinstance(input, str):
+        return input.encode('utf-8').decode('unicode-escape')
+    elif isinstance(input, list):
+        return [unicode_fixer(item) for item in input]
+    elif isinstance(input, dict):
+        return {key: unicode_fixer(value) for key, value in input.items()}
+    else:
+        return input
+
+
+
+
+def standbylogicalCausalityExtractor(compiled_causality_conditions):
+    causality=unicode_fixer(compiled_causality_conditions)
+    causality=causality.replace(' ',"")
+    causality=causality.replace('["&",["',"")
+    causality=causality.replace('type",55,[1]],["',"Charge generated")
+    causality=causality.replace('",["type",52],["int",',"")
+    causality=causality.replace(']]]',"")
+    causality=causality.replace('["type",40]',"When a super attack is aimed at this character")
+    causality=causality.replace('["type",0]',"When this character revives")
+    
+
+    return(causality)
+
+
+
+def getKiMultipliers(unit):
+    maxMultiplier=float(unit[34])
+    multipliers={}
+    if(getrarity(unit)=="lr"):
+        eball_mod_max=float(unit[34])
+        eball_mod_mid=float(unit[32])
+        for kiAmount in range(0,25):
+            multipliers[int(kiAmount)]=((eball_mod_max-eball_mod_mid)/12)*(kiAmount-12)+eball_mod_mid
+    else:
+        eball_mod_max=float(unit[34])
+        max_ki=12.0
+        for kiAmount in range(0,13):
+            multipliers[int(kiAmount)]=(eball_mod_max/2)+(eball_mod_max/2)*(kiAmount/max_ki)
+    return(multipliers)
 
 def getStatsAtAllLevels(unit):
     output={}
@@ -1187,7 +1347,7 @@ def logicalCausalityExtractor(causality):
             result=result.split('source":"')[1]
         else:
             result=result.split('source": "')[1]
-        result=result.replace("\\u0026","&")
+        result=unicode_fixer(result)
         return(result)
     
 def CausalityLogicalExtractor(unit,causality,printing=True,DEVEXCEPTIONS=False):
