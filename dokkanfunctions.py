@@ -1357,6 +1357,7 @@ def CausalityLogicalExtractor(unit,causality,printing=True,DEVEXCEPTIONS=False):
     global cardsJP
     global card_unique_info_set_relationsJP
 
+    output={}
     result=causality.replace("|"," or ").replace("&"," and ")
     currentCausality=""
     for x in result:

@@ -1,13 +1,14 @@
 from globals import *
 from dokkanfunctions import *
 from numpy import source
+from progress.bar import Bar
 directory="dataJP/"
 cardsJP=storedatabase(directory,"cards.csv")
 
 
 eza=True
 DEVEXCEPTIONS=False
-GLOBALCHECK=False
+GLOBALCHECK=True
 MAKEJSON=True
 CUTJSON=True
 
@@ -61,6 +62,9 @@ passivecount=0
 longestPassive=["a"]
 MegaPassiveJson={}
 HiPoBoards={}
+
+if GLOBALCHECK:
+    bar = Bar('Parsing units', max=len(cardsToCheck))
 
 for unit in cardsToCheck:
     unitCount+=1
@@ -162,7 +166,8 @@ for unit in cardsToCheck:
         else:
             turnintoJson(unitDictionary, jsonName,directoryName="jsons")
         jsonTime+=time.time()-jsonStart
-    print("Unit count:",unitCount)
+    if(GLOBALCHECK):
+        bar.next()
     
 
 if(GLOBALCHECK and MAKEJSON):
@@ -171,7 +176,7 @@ if(GLOBALCHECK and MAKEJSON):
     megaJsonTime+=time.time()-megaJsonStart
 
 
-
+bar.finish()
 print("Basic time:",round(basicTime,2))
 print("Leader time:",round(leaderTime,2))
 print("Passive time:",round(passiveTime,2))
