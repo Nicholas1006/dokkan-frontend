@@ -1360,12 +1360,13 @@ def CausalityLogicalExtractor(unit,causality,printing=True,DEVEXCEPTIONS=False):
     output={}
     result=causality.replace("|"," or ").replace("&"," and ")
     currentCausality=""
-    for x in result:
+    for x in causality:
         if(x.isnumeric()):
             currentCausality+=x
         else:
             if(currentCausality!=""):
                 newCausality=causalityLogicFinder(unit,currentCausality,printing=True,DEVEXCEPTIONS=DEVEXCEPTIONS)
+                output[currentCausality]=newCausality
                 result=result.replace(currentCausality,newCausality)
             currentCausality=""
 
@@ -1400,153 +1401,253 @@ def CategoryExtractor(CategoryId):
             return(category[1])
 
 def causalityLogicFinder(unit,causalityCondition,printing=True,DEVEXCEPTIONS=False):
+    #WIP TO MAKE IT RETURN IN A DICTIONARY
     global dokkan_fieldsJP
     global card_categoriesGB
     global skill_causalitiesJP
     global cardsJP
     global cardsGB
     global card_unique_info_set_relationsJP
-    output=""
+    output={"Button":"",
+            "Slider":
+                {"Name":None,
+                 "Logic":None}}
     for row in skill_causalitiesJP:
         if row[0] == causalityCondition:
             CausalityRow=row
             if(CausalityRow[1]=="0"):
                 #WIP
-                output+=("")
+                pass
             elif(CausalityRow[1]=="1"):
-                output+=("When HP is ")
-                output+=(CausalityRow[2])
-                output+=( "% or more")
+                text="Is HP "
+                text+=CausalityRow[2]
+                text+=" % or more?"
+                output["Button"]["Name"]=text
+                output["Slider"]["Name"]="What percentage of HP is remaining"
+                output["Slider"]["Logic"]=">="
+                output["Slider"]["Logic"]+=CausalityRow[2]
+                output["Slider"]["Min"]=0
+                output["Slider"]["Max"]=100
+
             elif(CausalityRow[1]=="2"):
-                output+=("When HP is ")
-                output+=(CausalityRow[2])
-                output+=("% or less")
+                text="Is HP  "
+                text+=CausalityRow[2]
+                text+=" % or less?"
+                output["Button"]["Name"]=text
+                output["Slider"]["Name"]="What percentage of HP is remaining"
+                output["Slider"]["Logic"]="<="
+                output["Slider"]["Logic"]+=CausalityRow[2]
+                output["Slider"]["Min"]=0
+                output["Slider"]["Max"]=100
             elif(CausalityRow[1]=="3"):
-                output+=("When ki is ")
-                
                 Ca2=int(CausalityRow[2])
                 unit31=int(unit[31])
-                output+=str((Ca2*unit31)//99)
-                
-                output+=(" or more")
+                kiAmount=(Ca2*unit31)//99
+
+                text="Is ki "
+                text+=kiAmount
+                text+=" or more"
+                output["Button"]["Name"]=text
+
+                output["Slider"]["Name"]="How much ki is there"
+                output["Slider"]["Logic"]=">="
+                output["Slider"]["Logic"]+=str(kiAmount)
+                output["Slider"]["Min"]=0
+                output["Slider"]["Max"]=24
             elif(CausalityRow[1]=="4"):
-                output+=("When ki is ")
-                
                 Ca2=int(CausalityRow[2])
                 unit31=int(unit[31])
-                output+=str((Ca2*unit31)//99)
-                
-                output+=(" or less")
+                kiAmount=(Ca2*unit31)//99
+
+                text="Is ki "
+                text+=kiAmount
+                text+=" or less"
+                output["Button"]["Name"]=text
+
+                output["Slider"]["Name"]="How much ki is there"
+                output["Slider"]["Logic"]="<="
+                output["Slider"]["Logic"]+=str(kiAmount)
+                output["Slider"]["Min"]=0
+                output["Slider"]["Max"]=24
             elif(CausalityRow[1]=="5"):
-                output+=("Starting from the ")
-                output+=(ordinalise(int(CausalityRow[2])+1))
-                output+=(" turn from the start of battle")
+                output["Button"]["Name"]="Is the turn count "
+                output["Button"]["Name"]+=str(int(CausalityRow[2])+1)
+                output["Button"]["Name"]+=" or more?"
+
+                output["Slider"]["Name"]="What turn is it?"
+                output["Slider"]["Logic"]=">="
+                output["Slider"]["Logic"]+=str(int(CausalityRow[2])+1)
+                output["Slider"]["Min"]=1
             elif(CausalityRow[1]=="8"):
-                output+=("When ATK is higher than enemy's")
+                output["Button"]["Name"]="Is attack higher than enemy's?"
             elif(CausalityRow[1]=="9"):
-                output+=("When ATK is lower than enemy's")
+                output["Button"]["Name"]="Is attack lower than enemy's?"
             elif(CausalityRow[1]=="14"):
-                output+=("As the first to attack")
+                output["Button"]["Name"]="Is the first to attack?"
             elif(CausalityRow[1]=="15"):
-                output+=("When facing ")
-                output+=(CausalityRow[2])
-                output+=(" or more enemies")
+                output["Button"]["Name"]="Is there "
+                output["Button"]["Name"]+=CausalityRow[2]
+                output["Button"]["Name"]+=" or more enemies?"
+                
+                output["Slider"]["Name"]="How many enemies are there?"
+                output["Slider"]["Logic"]=">="
+                output["Slider"]["Logic"]+=CausalityRow[2]
+                output["Slider"]["Min"]=1
+                output["Slider"]["Max"]=7
             elif(CausalityRow[1]=="16"):
-                output+=("When facing less than ")
-                output+=(CausalityRow[2])
-                output+=(" enemies")
+                output["Button"]["Name"]="Is there less than "
+                output["Button"]["Name"]+=CausalityRow[2]
+                output["Button"]["Name"]+=" enemies?"
+                
+                output["Slider"]["Name"]="How many enemies are there?"
+                output["Slider"]["Logic"]="<"
+                output["Slider"]["Logic"]+=CausalityRow[2]
+                output["Slider"]["Min"]=1
+                output["Slider"]["Max"]=7
             elif(CausalityRow[1]=="17"):
-                output+=("When enemy's health is ")
-                output+=(CausalityRow[2])
-                output+=("% or more")
+                output["Button"]["Name"]="Is the enemy's health "
+                output["Button"]["Name"]+=CausalityRow[2]
+                output["Button"]["Name"]+=" % or more?"
+
+                output["Slider"]["Name"]="What percentage of HP does the enemy have?"
+                output["Slider"]["Logic"]=">="
+                output["Slider"]["Logic"]+=CausalityRow[2]
+                output["Slider"]["Max"]=100
             elif(CausalityRow[1]=="18"):
-                output+=("When enemy's health is ")
-                output+=(CausalityRow[2])
-                output+=("% or less")
+                output["Button"]["Name"]="Is the enemy's health "
+                output["Button"]["Name"]+=CausalityRow[2]
+                output["Button"]["Name"]+=" % or less?"
+
+                output["Slider"]["Name"]="What percentage of HP does the enemy have?"
+                output["Slider"]["Logic"]="<="
+                output["Slider"]["Logic"]+=CausalityRow[2]
+                output["Slider"]["Max"]=100
             elif(CausalityRow[1]=="19"):
-                if(CausalityRow[2]=="0"):
-                    output+=("As the 1st attacker in the turn")
-                elif(CausalityRow[2]=="1"):
-                    output+=("As the 2nd attacker in the turn")
-                elif(CausalityRow[2]=="2"):
-                    output+=("As the 3rd attacker in the turn")
-                else:
-                    print("UNKNOWN ATTACK POSITION")
-                    if(DEVEXCEPTIONS==True):
-                        raise Exception("Unknown attack position")
+                output["Button"]["Name"]="Is this the "
+                output["Button"]["name"]+=ordinalise(int(CausalityRow[2])+1)
+                output["Button"]["Name"]+=" attacker in the turn?"
+
+                output["Slider"]["Name"]="What position is this character attacking in?"
+                output["Slider"]["Logic"]="=="
+                output["Slider"]["Logic"]+=int(str(CausalityRow[2])+1)#
+                output["Slider"]["Min"]=1
+                output["Slider"]["Max"]=3
 
             elif(CausalityRow[1]=="24"):
-                output+=("When attack recieved ")
+                output["Button"]["Name"]="Has attack been recieved?"
             elif(CausalityRow[1]=="25"):
-                output+=("When this character delivers the final blow")
+                output["Button"]["Name"]="Has this character delivered the final blow?"
 
             elif(CausalityRow[1]=="30"):
-                output+=("When guard is activated ")
+                output["Button"]["Name"]="Has guard been activated?"
             elif(CausalityRow[1]=="31"):
-                output+=("When 3 attacks in a row")
+                output["Button"]["Name"]="Has 3 attacks in a row?"
             elif(CausalityRow[1]=="33"):
-                output+=("When HP is between ")
-                output+=(CausalityRow[2])
-                output+=("% and ")
-                output+=(CausalityRow[3])
-                output+=("%")
+                output["Button"]["Name"]="Is HP between "
+                output["Button"]["Name"]+=CausalityRow[2]
+                output["Button"]["Name"]+=" % and "
+                output["Button"]["Name"]+=CausalityRow[3]
+                output["Button"]["Name"]+=" %?"
+
+                output["Slider"]["Name"]="What percentage of HP is remaining?"
+                output["Slider"]["Logic"]=">="
+                output["Slider"]["Logic"]+=CausalityRow[2]
+                output["Slider"]["Logic"]+=" and <="
+                output["Slider"]["Logic"]+=CausalityRow[3]
+                output["Slider"]["Min"]=0
+                output["Slider"]["Max"]=100
             elif(CausalityRow[1]=="34"):
                 global card_categoriesGB
                 if(CausalityRow[2]=="0"):
                     target="allies on the team "
+                    output["Slider"]["Max"]=7
                 elif(CausalityRow[2]=="1"):
                     target="enemies "
+                    output["Slider"]["Max"]=7
                 elif(CausalityRow[2]=="2"):
                     target="allies on the same turn "
-
+                    output["Slider"]["Max"]=3
                 categoryType=searchbyid(CausalityRow[3],codecolumn=0,database=card_categoriesGB,column=1)[0]
 
+                output["Button"]["Name"]="Are there "
+
+
                 if(CausalityRow[4]=="0"):
-                    output+=("When there are no ")
-                    output+=(categoryType)
-                    output+=(" category ")
-                    output+=(target)
+                    output["Button"]["Name"]="Are there no "
+                    output["Button"]["Name"]+=categoryType
+                    output["Button"]["Name"]+=" category "
+                    output["Button"]["Name"]+=target
+
+                    output["Slider"]["Name"]="How many "
+                    output["Slider"]["Name"]+=categoryType
+                    output["Slider"]["Name"]+=" category "
+                    output["Slider"]["Name"]+=target
+                    output["Slider"]["Logic"]="=="
+                    output["Slider"]["Logic"]+=0
+                    output["Slider"]["Min"]=0
                 else:
-                    output+=("When there are ")
-                    output+=(CausalityRow[4])
-                    output+=(" or more ")
-                    output+=(categoryType)
-                    output+=(" category ")
-                    output+=(target)    
+                    output["Button"]["Name"]="Are there "
+                    output["Button"]["Name"]+=CausalityRow[4]
+                    output["Button"]["Name"]+=" or more "
+                    output["Button"]["Name"]+=categoryType
+                    output["Button"]["Name"]+=" category "
+                    output["Button"]["Name"]+=target
+
+                    output["Slider"]["Name"]="How many "
+                    output["Slider"]["Name"]+=categoryType
+                    output["Slider"]["Name"]+=" category "
+                    output["Slider"]["Name"]+=target
+                    output["Slider"]["Logic"]=">="
+                    output["Slider"]["Logic"]+=CausalityRow[4]
+                    output["Slider"]["Min"]=0
             elif(CausalityRow[1]=="35"):
-                output+=("When the team includes")
+                output["Button"]["Name"]="Does the team include "
                 if(extractClassType(CausalityRow[2],DEVEXCEPTIONS=DEVEXCEPTIONS)==(["Super"],["PHY","STR","INT","TEQ","AGL"])):
-                    output+=(" all five Super types")
+                    output["Button"]["Name"]+="all five Super types"
                 elif(extractClassType(CausalityRow[2],DEVEXCEPTIONS=DEVEXCEPTIONS)==(["Extreme"],["PHY","STR","INT","TEQ","AGL"])):
-                    output+=(" all five Extreme types")
+                    output["Button"]["Name"]+="all five Extreme types"
                 else:
                     print("UNKNOWN TYPE")
                     if(DEVEXCEPTIONS==True):
                         raise Exception("Unknown type")
             elif(CausalityRow[1]=="37"):
-                output+=("When HP is ")
-                output+=(CausalityRow[2])
-                output+=("% or less starting from the ")
-                output+=(ordinalise(int(CausalityRow[3])+1))
-                output+=(" turn from the start of battle")
+                output["Button"]["Name"]="Is HP "
+                output["Button"]["Name"]+=CausalityRow[2]
+                output["Button"]["Name"]+=" % or less starting from the "
+                output["Button"]["Name"]+=ordinalise(int(CausalityRow[3])+1)
+                output["Button"]["Name"]+=" turn from the start of battle"
+
+                output["Slider"]["Name"]="What percentage of HP is remaining?"
+                output["Slider"]["Logic"]=">="
+                output["Slider"]["Logic"]+=CausalityRow[2]
+                output["Slider"]["Min"]=0
+                output["Slider"]["Max"]=100
+                #WIP figure out how to include the turn count
+                #output+=("When HP is ")
+                #output+=(CausalityRow[2])
+                #output+=("% or less starting from the ")
+                #output+=(ordinalise(int(CausalityRow[3])+1))
+                #output+=(" turn from the start of battle")
 
             elif(CausalityRow[1]=="38"):
                 Status=binaryStatus(CausalityRow[2])
-                output+=("When the target enemy is ")
-                output+=Status
+                output["Button"]["Name"]="Is the target enemy "
+                output["Button"]["Name"]+=Status
+                output["Button"]["Name"]+="?"
             elif(CausalityRow[1]=="39"):
+                #WIP I forgor what this means
                 output+=("When the target enemy is ")
                 output+=(CausalityRow[2])
                 output+=(" or more categories")
             elif(CausalityRow[1]=="40"):
-                output+=("A super is being performed")
+                output["Button"]["Name"]="Is a super being performed?"
             elif(CausalityRow[1]=="41"):
                 if(CausalityRow[2]=="0"):
-                    output+=("When there is an ally on the team whose name includes ")
+                    output["Button"]["Name"]="Is there is an ally on the team whose name includes "
                 elif(CausalityRow[2]=="1"):
-                    output+=("When there is an enemy whose name includes ")
+                    output["Button"]["Name"]="Is there is an enemy whose name includes "
                 elif(CausalityRow[2]=="2"):
-                    output+=("When there is an ally attacking on the same turn whose name includes ")#ally attacking in the same turn for unit supers
+                    output["Button"]["Name"]="Is there is an ally attacking in the same turn whose name includes "
                 else:
                     output+=("UNKNOWN NAME TYPE")
                     if(DEVEXCEPTIONS==True):
@@ -1559,27 +1660,34 @@ def causalityLogicFinder(unit,causalityCondition,printing=True,DEVEXCEPTIONS=Fal
                         if(qualifyUsable(card=unit)):
                             possible_names.append(unit[1])
                 likelyName=longestCommonSubstring(possible_names) 
-                output+=likelyName
+                output["Button"]["Name"]+=likelyName
 
                     
 
             elif(CausalityRow[1]=="42"):
-                output+=("With ")
-                output+=(CausalityRow[3])
-                output+=(" or more ")
+                output["Button"]["Name"]="Has "
+                output["Button"]["Name"]+=CausalityRow[3]
+                output["Button"]["Name"]+=" or more "
                 kiSphereType=binaryOrbType(CausalityRow[2],DEVEXCEPTIONS)
                 for orbType in kiSphereType:
-                    output+=(orbType)
-                    output+=(" or ")
-                output=output[:-4]
-                output+=(" Ki Spheres obtained")
+                    output["Button"]["Name"]+=orbType
+                    output["Button"]["Name"]+=" or "
+                output["Button"]["Name"]=output["Button"]["Name"][:-4]
+                output["Button"]["Name"]+=" Ki Spheres been obtained?"
             elif(CausalityRow[1]=="43"):
-                output+=("After evading an attack")
+                output["Button"]["Name"]="Has this unit evaded an attack? "
             elif(CausalityRow[1]=="44"):
                 if(CausalityRow[2]=="0" or CausalityRow[2]=="1"):
-                    output+=("Starting from the turn in which the character performs their ")
-                    output+=(ordinalise(CausalityRow[3]))
-                    output+=(" super attack in battle")
+                    output["Button"]["Name"]="Has this character performed their "
+                    output["Button"]["Name"]+=(ordinalise(CausalityRow[3]))
+                    output["Button"]["Name"]+=(" super attack in battle")
+
+
+
+
+
+
+                    #WIP CONTINUE FROM HERE
                 elif(CausalityRow[2])=="2":
                     output+=("Starting from the turn in which the character performs their ")
                     output+=(ordinalise(CausalityRow[3]))
@@ -1995,7 +2103,10 @@ def parseActiveSkill(unit,eza=False,DEVEXCEPTIONS=False):
             output["Name"]=active_lineGB[1]
             output["Description"]=active_lineGB[2]
         causalityCondition=logicalCausalityExtractor(active_lineJP[6])
+        output["Condition"]={}
+        output["Condition"]["Logic"]=causalityCondition
         causalityCondition=CausalityLogicalExtractor(unit,causalityCondition,DEVEXCEPTIONS=DEVEXCEPTIONS)
+        output["Condition"].update(causalityCondition)
         output["Condition"]=causalityCondition
         output["Uses"]=int(active_lineJP[5])
         

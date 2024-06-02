@@ -8,19 +8,19 @@ cardsJP=storedatabase(directory,"cards.csv")
 
 eza=True
 DEVEXCEPTIONS=False
-GLOBALCHECK=True
+GLOBALCHECK=False
 MAKEJSON=True
 CUTJSON=True
 
-CALCPASSIVE=True
-CALCLEADER=True
-CALCHIPO=True
+CALCPASSIVE=False
+CALCLEADER=False
+CALCHIPO=False
 CALCACTIVE=True
-CALCSUPERATTACK=True
-CALCLEVELS=True
-CALCBASIC=True
-CALCMULTIPLIER=True
-CALCSTANDBY=True
+CALCSUPERATTACK=False
+CALCLEVELS=False
+CALCBASIC=False
+CALCMULTIPLIER=False
+CALCSTANDBY=False
 
 passiveTime=0.0
 leaderTime=0.0
@@ -34,7 +34,7 @@ megaJsonTime=0.0
 standbyTime=0.0
 multiplierTime=0.0
 
-cardIDsToCheck=["4027631"]
+cardIDsToCheck=["1017631"]
 #cardIDsToCheck=["4026911","4025741","4028381","4026401","4027631","4027301","4025781","4026541"]
 
 cardsToCheck=[]
