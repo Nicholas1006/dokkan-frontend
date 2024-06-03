@@ -36,8 +36,8 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "377": {
-            "ID": "377",
+        "1194": {
+            "ID": "1194",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -47,10 +47,30 @@
                     "Type": "any"
                 }
             },
-            "ATK": 12,
-            "DEF": 12,
+            "ATK": 15,
+            "DEF": 15,
             "Buff": {
                 "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1001194": {
+            "ID": "1001194",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 0,
+                "Cause": {
+                    "Cause": "Ki sphere obtained",
+                    "Type": [
+                        "Rainbow"
+                    ]
+                }
+            },
+            "Ki": 1,
+            "Buff": {
+                "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1"
@@ -714,21 +734,32 @@
         }
     },
     "Super Attack": {
-        "221": {
-            "superID": "221",
-            "superName": "\u00e5\u00a4\u00aa\u00e9\u0099\u00bd\u00e7\u00b3\u00bb\u00e7\u00a0\u00b4\u00e5\u00a3\u008a\u00e3\u0081\u008b\u00e3\u0082\u0081\u00e3\u0081\u00af\u00e3\u0082\u0081\u00e6\u00b3\u00a2",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
-            "superMinKi": "1",
+        "1271": {
+            "superID": "1271",
+            "superName": "\u00e5\u00a4\u00aa\u00e9\u0099\u00bd\u00e7\u00b3\u00bb\u00e7\u00a0\u00b4\u00e5\u00a3\u008a\u00e3\u0081\u008b\u00e3\u0082\u0081\u00e3\u0081\u00af\u00e3\u0082\u0081\u00e6\u00b3\u00a2(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081HP\u00e3\u0082\u009210%\u00e5\u009b\u009e\u00e5\u00be\u00a9",
+            "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430
+            "Multiplier": 630,
+            "1271": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "Heals": "10"
+            }
         }
     },
     "Active Skill": null,

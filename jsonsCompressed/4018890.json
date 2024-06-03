@@ -25,8 +25,21 @@
     ],
     "Links": [],
     "Passive": {
-        "2043": {
-            "ID": "2043",
+        "3857": {
+            "ID": "3857",
+            "Timing": "Start of turn",
+            "Ki": 6,
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1003857": {
+            "ID": "1003857",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -43,7 +56,7 @@
                     ]
                 }
             },
-            "Ki": 1,
+            "Ki": 2,
             "Target": {
                 "Target": "Allies"
             },
@@ -53,8 +66,8 @@
             },
             "Length": "1"
         },
-        "1002043": {
-            "ID": "1002043",
+        "2003857": {
+            "ID": "2003857",
             "Effective against all": true,
             "Timing": "On Super",
             "Target": {
@@ -916,14 +929,14 @@
         }
     },
     "Super Attack": {
-        "2246": {
-            "superID": "2246",
-            "superName": "\u00e6\u0082\u00b2\u00e6\u0086\u00a4\u00e3\u0081\u00ae\u00e5\u00a4\u00a7\u00e9\u008e\u008c",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e7\u00a0\u00b4\u00e5\u00a3\u008a\u00e7\u009a\u0084\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "4872": {
+            "superID": "4872",
+            "superName": "\u00e6\u0082\u00b2\u00e6\u0086\u00a4\u00e3\u0081\u00ae\u00e5\u00a4\u00a7\u00e9\u008e\u008c(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "\u00e4\u00b8\u0080\u00e6\u0099\u0082\u00e7\u009a\u0084\u00e3\u0081\u00abATK\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e7\u00a0\u00b4\u00e5\u00a3\u008a\u00e7\u009a\u0084\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -935,16 +948,27 @@
                 "Duration": "1",
                 "Amount": "30"
             },
-            "Multiplier": 390
+            "Multiplier": 390,
+            "4872": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "50"
+            }
         },
-        "2247": {
-            "superID": "2247",
-            "superName": "\u00e6\u0086\u00a4\u00e6\u0080\u0092\u00e3\u0081\u00ae\u00e8\u0091\u00ac\u00e9\u0080\u0081\u00e6\u009b\u00b2",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e7\u00a0\u00b4\u00e5\u00a3\u008a\u00e7\u009a\u0084\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "4873": {
+            "superID": "4873",
+            "superName": "\u00e6\u0086\u00a4\u00e6\u0080\u0092\u00e3\u0081\u00ae\u00e8\u0091\u00ac\u00e9\u0080\u0081\u00e6\u009b\u00b2(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "\u00e4\u00b8\u0080\u00e6\u0099\u0082\u00e7\u009a\u0084\u00e3\u0081\u00abATK\u00e3\u0081\u008c\u00e8\u00b6\u0085\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e7\u00a0\u00b4\u00e5\u00a3\u008a\u00e7\u009a\u0084\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
             "superMinKi": "18",
             "superPriority": "0.0",
             "superStyle": "Hyper",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -956,7 +980,18 @@
                 "Duration": "1",
                 "Amount": "30"
             },
-            "Multiplier": 390
+            "Multiplier": 390,
+            "4873": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "100"
+            }
         }
     },
     "Active Skill": null,

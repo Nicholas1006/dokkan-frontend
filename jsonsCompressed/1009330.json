@@ -33,11 +33,22 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "726": {
-            "ID": "726",
+        "2011": {
+            "ID": "2011",
+            "Timing": "Start of turn",
+            "ATK": 40,
+            "DEF": 40,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1002011": {
+            "ID": "1002011",
             "Additional attack": {
                 "Activated": true,
-                "Chance of super": "10"
+                "Chance of super": "30"
             },
             "Timing": "after all ki collected",
             "Buff": {
@@ -46,12 +57,12 @@
             },
             "Length": "1"
         },
-        "1000726": {
-            "ID": "1000726",
+        "2002011": {
+            "ID": "2002011",
             "Counter": {
                 "Activated": true,
                 "Multiplier": "300",
-                "DR from normals": "30"
+                "DR from normals": "40"
             },
             "Timing": "Being hit",
             "Buff": {
@@ -74,11 +85,11 @@
                 }
             }
         },
-        "2000726": {
-            "ID": "2000726",
+        "3002011": {
+            "ID": "3002011",
             "Toggle Other Line": {
                 "Activated": true,
-                "Line": "1000726"
+                "Line": "2002011"
             },
             "Timing": "Hit recieved",
             "Buff": {
@@ -748,21 +759,33 @@
         }
     },
     "Super Attack": {
-        "496": {
-            "superID": "496",
-            "superName": "\u00e3\u0083\u0095\u00e3\u0082\u00a1\u00e3\u0082\u00a4\u00e3\u0083\u008a\u00e3\u0083\u00ab\u00e3\u0081\u008b\u00e3\u0082\u0081\u00e3\u0081\u00af\u00e3\u0082\u0081\u00e6\u00b3\u00a2",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "2234": {
+            "superID": "2234",
+            "superName": "\u00e3\u0083\u0095\u00e3\u0082\u00a1\u00e3\u0082\u00a4\u00e3\u0083\u008a\u00e3\u0083\u00ab\u00e3\u0081\u008b\u00e3\u0082\u0081\u00e3\u0081\u00af\u00e3\u0082\u0081\u00e6\u00b3\u00a2(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 505
+            "Multiplier": 630,
+            "2234": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "50",
+                "DEF": "50"
+            }
         }
     },
     "Active Skill": null,

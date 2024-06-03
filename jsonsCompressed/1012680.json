@@ -30,19 +30,20 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "1048": {
-            "ID": "1048",
+        "3398": {
+            "ID": "3398",
             "Timing": "On Super",
-            "ATK": 120,
+            "ATK": 150,
+            "DEF": 150,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "47",
+                "Logic": "2216",
                 "Causalities": {
-                    "47": {
+                    "2216": {
                         "Button": {
                             "Name": "Is ki 12 or more"
                         },
@@ -51,6 +52,129 @@
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 24
+                        }
+                    }
+                }
+            }
+        },
+        "1003398": {
+            "ID": "1003398",
+            "Timing": "Attacking the enemy",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 150,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "ATK": 30,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99"
+        },
+        "2003398": {
+            "ID": "2003398",
+            "Timing": "Start of turn",
+            "Ki": 1,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2217",
+                "Causalities": {
+                    "2217": {
+                        "Button": {
+                            "Name": "Are there 2 or more Bond of Master and Disciple category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Bond of Master and Disciple category allies on the same turn ",
+                            "Logic": ">=2",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "3003398": {
+            "ID": "3003398",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "50"
+            },
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2217",
+                "Causalities": {
+                    "2217": {
+                        "Button": {
+                            "Name": "Are there 2 or more Bond of Master and Disciple category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Bond of Master and Disciple category allies on the same turn ",
+                            "Logic": ">=2",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "4003398": {
+            "ID": "4003398",
+            "Effective against all": true,
+            "Timing": "On Super",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2218 or 2219 or 2220 or 2221",
+                "Causalities": {
+                    "2218": {
+                        "Button": {
+                            "Name": "Is the target enemy in \"ATK down\" status?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    },
+                    "2219": {
+                        "Button": {
+                            "Name": "Is the target enemy in \"DEF down\" status?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    },
+                    "2220": {
+                        "Button": {
+                            "Name": "Is the target enemy stunned?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    },
+                    "2221": {
+                        "Button": {
+                            "Name": "Is the target enemy sealed?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
                         }
                     }
                 }
@@ -706,22 +830,22 @@
         }
     },
     "Super Attack": {
-        "966": {
-            "superID": "966",
-            "superName": "\u00e7\u00a0\u00b4\u00e5\u00a3\u008a\u00e7\u00a5\u009e\u00e3\u0081\u00ae\u00e8\u00a3\u0081\u00e3\u0081\u008d",
-            "superDescription": "\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u00816\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3DEF30%\u00e4\u00b8\u008a\u00e6\u0098\u0087",
+        "4580": {
+            "superID": "4580",
+            "superName": "\u00e7\u00a0\u00b4\u00e5\u00a3\u008a\u00e7\u00a5\u009e\u00e3\u0081\u00ae\u00e8\u00a3\u0081\u00e3\u0081\u008d(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u00816\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3DEF50%\u00e4\u00b8\u008a\u00e6\u0098\u0087",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "966": {
+            "Multiplier": 530,
+            "4580": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "6",
@@ -730,7 +854,7 @@
                     "+ or -": "+"
                 },
                 "Target": "Self",
-                "DEF": "30"
+                "DEF": "50"
             }
         }
     },

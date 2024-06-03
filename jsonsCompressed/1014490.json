@@ -32,20 +32,31 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "1214": {
-            "ID": "1214",
+        "3563": {
+            "ID": "3563",
+            "Timing": "Start of turn",
+            "ATK": 100,
+            "DEF": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1003563": {
+            "ID": "1003563",
             "Timing": "On Super",
-            "ATK": 120,
-            "DEF": 30,
+            "ATK": 180,
+            "DEF": 80,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "47",
+                "Logic": "2610",
                 "Causalities": {
-                    "47": {
+                    "2610": {
                         "Button": {
                             "Name": "Is ki 12 or more"
                         },
@@ -59,8 +70,29 @@
                 }
             }
         },
-        "1001214": {
-            "ID": "1001214",
+        "2003563": {
+            "ID": "2003563",
+            "Timing": "Start of turn",
+            "Crit Chance": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "3003563": {
+            "ID": "3003563",
+            "Timing": "Start of turn",
+            "Guard": true,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "3",
+            "Once only": true
+        },
+        "4003563": {
+            "ID": "4003563",
             "Timing": "Start of turn",
             "Ki": 3,
             "Buff": {
@@ -69,9 +101,9 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "9",
+                "Logic": "2611",
                 "Causalities": {
-                    "9": {
+                    "2611": {
                         "Button": {
                             "Name": "Is there less than 2 enemies?"
                         },
@@ -80,6 +112,107 @@
                             "Logic": "<2",
                             "Min": 1,
                             "Max": 7
+                        }
+                    }
+                }
+            }
+        },
+        "5003563": {
+            "ID": "5003563",
+            "Guaranteed hit": true,
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2611",
+                "Causalities": {
+                    "2611": {
+                        "Button": {
+                            "Name": "Is there less than 2 enemies?"
+                        },
+                        "Slider": {
+                            "Name": "How many enemies are there?",
+                            "Logic": "<2",
+                            "Min": 1,
+                            "Max": 7
+                        }
+                    }
+                }
+            }
+        },
+        "6003563": {
+            "ID": "6003563",
+            "Timing": "Start of turn",
+            "Crit Chance": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2611 and 2612",
+                "Causalities": {
+                    "2611": {
+                        "Button": {
+                            "Name": "Is there less than 2 enemies?"
+                        },
+                        "Slider": {
+                            "Name": "How many enemies are there?",
+                            "Logic": "<2",
+                            "Min": 1,
+                            "Max": 7
+                        }
+                    },
+                    "2612": {
+                        "Button": {
+                            "Name": "Are there 1 or more GT Bosses category enemies "
+                        },
+                        "Slider": {
+                            "Name": "How many GT Bosses category enemies ",
+                            "Logic": ">=1",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "7003563": {
+            "ID": "7003563",
+            "Timing": "Start of turn",
+            "ATK": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Chance": "50",
+            "Length": "1",
+            "Condition": {
+                "Logic": "2611 and 2612",
+                "Causalities": {
+                    "2611": {
+                        "Button": {
+                            "Name": "Is there less than 2 enemies?"
+                        },
+                        "Slider": {
+                            "Name": "How many enemies are there?",
+                            "Logic": "<2",
+                            "Min": 1,
+                            "Max": 7
+                        }
+                    },
+                    "2612": {
+                        "Button": {
+                            "Name": "Are there 1 or more GT Bosses category enemies "
+                        },
+                        "Slider": {
+                            "Name": "How many GT Bosses category enemies ",
+                            "Logic": ">=1",
+                            "Max": 7,
+                            "Min": 0
                         }
                     }
                 }
@@ -750,22 +883,34 @@
         }
     },
     "Super Attack": {
-        "1282": {
-            "superID": "1282",
-            "superName": "\u00e9\u00be\u008d\u00e6\u008b\u00b3",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nDEF\u00e3\u0082\u0092\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e3\u0081\u00ab\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
+        "4828": {
+            "superID": "4828",
+            "superName": "\u00e9\u00be\u008d\u00e6\u008b\u00b3(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nDEF\u00e3\u0082\u0092\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e3\u0081\u00ab\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 505,
-            "1282": {
+            "Multiplier": 630,
+            "4828": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "30",
+                "DEF": "30"
+            },
+            "1004828": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",

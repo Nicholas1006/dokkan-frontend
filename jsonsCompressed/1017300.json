@@ -28,8 +28,29 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "1547": {
-            "ID": "1547",
+        "3052": {
+            "ID": "3052",
+            "Timing": "Start of turn",
+            "Ki": 1,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1003052": {
+            "ID": "1003052",
+            "Timing": "Start of turn",
+            "ATK": 100,
+            "DEF": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2003052": {
+            "ID": "2003052",
             "Timing": "On Super",
             "ATK": 100,
             "DEF": 100,
@@ -39,9 +60,9 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "46",
+                "Logic": "1899",
                 "Causalities": {
-                    "46": {
+                    "1899": {
                         "Button": {
                             "Name": "Is ki 12 or more"
                         },
@@ -55,8 +76,8 @@
                 }
             }
         },
-        "1001547": {
-            "ID": "1001547",
+        "3003052": {
+            "ID": "3003052",
             "Timing": "Start of turn",
             "Ki": 1,
             "Target": {
@@ -69,10 +90,11 @@
             },
             "Length": "1"
         },
-        "2001547": {
-            "ID": "2001547",
+        "4003052": {
+            "ID": "4003052",
             "Timing": "Start of turn",
             "ATK": 20,
+            "DEF": 20,
             "Target": {
                 "Category": "Artificial Life Forms",
                 "Target": "Allies"
@@ -83,8 +105,8 @@
             },
             "Length": "1"
         },
-        "3001547": {
-            "ID": "3001547",
+        "5003052": {
+            "ID": "5003052",
             "Timing": "Start of turn",
             "Ki": 1,
             "Target": {
@@ -97,10 +119,11 @@
             },
             "Length": "1"
         },
-        "4001547": {
-            "ID": "4001547",
+        "6003052": {
+            "ID": "6003052",
             "Timing": "Start of turn",
             "ATK": 20,
+            "DEF": 20,
             "Target": {
                 "Category": "Time Travelers",
                 "Target": "Allies"
@@ -111,11 +134,21 @@
             },
             "Length": "1"
         },
-        "5001547": {
-            "ID": "5001547",
+        "7003052": {
+            "ID": "7003052",
+            "Dodge chance": 50,
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "8003052": {
+            "ID": "8003052",
             "Transformation": {
                 "Activated": true,
-                "Unit": "4017310",
+                "Unit": "4017311",
                 "Giant/Rage": false,
                 "Min Turns": null,
                 "Max Turns": null,
@@ -789,22 +822,33 @@
         }
     },
     "Super Attack": {
-        "1806": {
-            "superID": "1806",
-            "superName": "\u00e6\u00bc\u0094\u00e8\u0088\u009e\u00e3\u0083\u00bb\u00e7\u00a0\u00b4\u00e7\u00a9\u00ba",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nDEF\u00e3\u0082\u0092\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
+        "4238": {
+            "superID": "4238",
+            "superName": "\u00e6\u00bc\u0094\u00e8\u0088\u009e\u00e3\u0083\u00bb\u00e7\u00a0\u00b4\u00e7\u00a9\u00ba(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nDEF\u00e3\u0082\u0092\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 505,
-            "1806": {
+            "Multiplier": 630,
+            "4238": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "30"
+            },
+            "1004238": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",

@@ -28,19 +28,137 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "1323": {
-            "ID": "1323",
+        "2968": {
+            "ID": "2968",
             "Timing": "Start of turn",
-            "ATK": 100,
-            "DEF": 100,
+            "ATK": 200,
+            "DEF": 200,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1001323": {
-            "ID": "1001323",
+        "1002968": {
+            "ID": "1002968",
+            "Timing": "Start of turn",
+            "Ki change": {
+                "From": [
+                    "PHY",
+                    "INT",
+                    "TEQ",
+                    "AGL"
+                ],
+                "To": [
+                    "STR"
+                ]
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2002968": {
+            "ID": "2002968",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 0,
+                "Cause": {
+                    "Cause": "Ki sphere obtained",
+                    "Type": "any"
+                }
+            },
+            "ATK": 20,
+            "DEF": 20,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "3002968": {
+            "ID": "3002968",
+            "Timing": "Start of turn",
+            "Ki": 2,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1724",
+                "Causalities": {
+                    "1724": {
+                        "Button": {
+                            "Name": "Is there less than 2 enemies?"
+                        },
+                        "Slider": {
+                            "Name": "How many enemies are there?",
+                            "Logic": "<2",
+                            "Min": 1,
+                            "Max": 7
+                        }
+                    }
+                }
+            }
+        },
+        "4002968": {
+            "ID": "4002968",
+            "Timing": "Start of turn",
+            "ATK": 50,
+            "DEF": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1724",
+                "Causalities": {
+                    "1724": {
+                        "Button": {
+                            "Name": "Is there less than 2 enemies?"
+                        },
+                        "Slider": {
+                            "Name": "How many enemies are there?",
+                            "Logic": "<2",
+                            "Min": 1,
+                            "Max": 7
+                        }
+                    }
+                }
+            }
+        },
+        "5002968": {
+            "ID": "5002968",
+            "Timing": "Start of turn",
+            "Crit Chance": 20,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1724",
+                "Causalities": {
+                    "1724": {
+                        "Button": {
+                            "Name": "Is there less than 2 enemies?"
+                        },
+                        "Slider": {
+                            "Name": "How many enemies are there?",
+                            "Logic": "<2",
+                            "Min": 1,
+                            "Max": 7
+                        }
+                    }
+                }
+            }
+        },
+        "6002968": {
+            "ID": "6002968",
             "Timing": "Start of turn",
             "Ki": 6,
             "Buff": {
@@ -49,9 +167,9 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "22",
+                "Logic": "1725",
                 "Causalities": {
-                    "22": {
+                    "1725": {
                         "Button": {
                             "Name": "Is there 2 or more enemies?"
                         },
@@ -65,20 +183,19 @@
                 }
             }
         },
-        "2001323": {
-            "ID": "2001323",
+        "7002968": {
+            "ID": "7002968",
             "Timing": "Start of turn",
-            "ATK": 30,
-            "DEF": 30,
+            "Crit Chance": 100,
             "Buff": {
-                "Type": "Percentage",
+                "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "22",
+                "Logic": "1725",
                 "Causalities": {
-                    "22": {
+                    "1725": {
                         "Button": {
                             "Name": "Is there 2 or more enemies?"
                         },
@@ -90,7 +207,8 @@
                         }
                     }
                 }
-            }
+            },
+            "Once only": true
         }
     },
     "Stats at levels": {
@@ -742,24 +860,35 @@
         }
     },
     "Super Attack": {
-        "1486": {
-            "superID": "1486",
-            "superName": "\u00e9\u00ad\u0094\u00e5\u0085\u0089\u00e9\u0096\u0083\u00e7\u00a9\u00ba",
-            "superDescription": "\u00e6\u0095\u00b5\u00e5\u0085\u00a8\u00e4\u00bd\u0093\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n\u00e3\u0081\u00a8\u00e3\u0081\u008d\u00e3\u0081\u00a9\u00e3\u0081\u008d\u00e6\u00b0\u0097\u00e7\u00b5\u00b6\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
+        "4083": {
+            "superID": "4083",
+            "superName": "\u00e9\u00ad\u0094\u00e5\u0085\u0089\u00e9\u0096\u0083\u00e7\u00a9\u00ba(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e6\u0095\u00b5\u00e5\u0085\u00a8\u00e4\u00bd\u0093\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n\u00e4\u00b8\u00ad\u00e7\u00a2\u00ba\u00e7\u008e\u0087\u00e3\u0081\u00a7\u00e6\u00b0\u0097\u00e7\u00b5\u00b6\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "1",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "1486": {
+            "Multiplier": 530,
+            "4083": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "30"
+            },
+            "1004083": {
                 "Type": "ExtraEfficacySpecial",
-                "Chance": "25",
+                "Chance": "30",
                 "Duration": "2",
                 "Buff": {
                     "Type": "Raw stats",

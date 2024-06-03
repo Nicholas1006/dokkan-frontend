@@ -24,30 +24,30 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "1230": {
-            "ID": "1230",
+        "2629": {
+            "ID": "2629",
             "Timing": "Start of turn",
-            "ATK": 80,
-            "DEF": 80,
+            "ATK": 100,
+            "DEF": 100,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1001230": {
-            "ID": "1001230",
+        "1002629": {
+            "ID": "1002629",
             "Timing": "Start of turn",
-            "DEF": 30,
+            "DEF": 40,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "93",
+                "Logic": "1095",
                 "Causalities": {
-                    "93": {
+                    "1095": {
                         "Button": {
                             "Name": "Are there 1 or more Androids category allies on the team "
                         },
@@ -61,19 +61,19 @@
                 }
             }
         },
-        "2001230": {
-            "ID": "2001230",
+        "2002629": {
+            "ID": "2002629",
             "Timing": "Start of turn",
-            "DEF": 30,
+            "DEF": 40,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "94",
+                "Logic": "1096",
                 "Causalities": {
-                    "94": {
+                    "1096": {
                         "Button": {
                             "Name": "Are there 2 or more Androids category allies on the team "
                         },
@@ -87,19 +87,19 @@
                 }
             }
         },
-        "3001230": {
-            "ID": "3001230",
+        "3002629": {
+            "ID": "3002629",
             "Timing": "Start of turn",
-            "DEF": 30,
+            "DEF": 40,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "95",
+                "Logic": "1097",
                 "Causalities": {
-                    "95": {
+                    "1097": {
                         "Button": {
                             "Name": "Are there 3 or more Androids category allies on the team "
                         },
@@ -113,8 +113,34 @@
                 }
             }
         },
-        "4001230": {
-            "ID": "4001230",
+        "4002629": {
+            "ID": "4002629",
+            "Timing": "Start of turn",
+            "DEF": 40,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1098",
+                "Causalities": {
+                    "1098": {
+                        "Button": {
+                            "Name": "Are there 4 or more Androids category allies on the team "
+                        },
+                        "Slider": {
+                            "Name": "How many Androids category allies on the team ",
+                            "Logic": ">=4",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "5002629": {
+            "ID": "5002629",
             "Timing": "Start of turn",
             "Guard": true,
             "Buff": {
@@ -123,6 +149,37 @@
             },
             "Chance": "50",
             "Length": "1"
+        },
+        "6002629": {
+            "ID": "6002629",
+            "Timing": "Being hit",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 80,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "ATK": 16,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Condition": {
+                "Logic": "1099",
+                "Causalities": {
+                    "1099": {
+                        "Button": {
+                            "Name": "Has guard been activated?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
         }
     },
     "Stats at levels": {
@@ -789,22 +846,22 @@
         }
     },
     "Super Attack": {
-        "1389": {
-            "superID": "1389",
-            "superName": "\u00e3\u0083\u0098\u00e3\u0083\u00ab\u00e3\u0082\u00ba\u00e3\u0083\u0095\u00e3\u0083\u00a9\u00e3\u0083\u0083\u00e3\u0082\u00b7\u00e3\u0083\u00a5",
-            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3DEF\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "3426": {
+            "superID": "3426",
+            "superName": "\u00e3\u0083\u0098\u00e3\u0083\u00ab\u00e3\u0082\u00ba\u00e3\u0083\u0095\u00e3\u0083\u00a9\u00e3\u0083\u0083\u00e3\u0082\u00b7\u00e3\u0083\u00a5(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "1389": {
+            "Multiplier": 530,
+            "3426": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -813,6 +870,7 @@
                     "+ or -": "+"
                 },
                 "Target": "Self",
+                "ATK": "50",
                 "DEF": "50"
             }
         }

@@ -29,21 +29,67 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "2986": {
-            "ID": "2986",
-            "Timing": "Attacking the enemy",
-            "Heals": 15,
+        "2999": {
+            "ID": "2999",
+            "Timing": "Start of turn",
+            "Ki change": {
+                "From": "INT",
+                "To": "RAINBOW"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1768",
+                "Causalities": {
+                    "1768": {
+                        "Button": {
+                            "Name": "Is this the 1st attacker in the turn?"
+                        },
+                        "Slider": {
+                            "Name": "What position is this character attacking in?",
+                            "Logic": "==1",
+                            "Min": 1,
+                            "Max": 3
+                        }
+                    }
+                }
+            }
+        },
+        "1002999": {
+            "ID": "1002999",
+            "Timing": "Start of turn",
+            "ATK": 40,
+            "DEF": 40,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "1761",
+                "Causalities": {
+                    "1761": {
+                        "Button": {
+                            "Name": "Are there 1 or more Wicked Bloodline category allies on the team "
+                        },
+                        "Slider": {
+                            "Name": "How many Wicked Bloodline category allies on the team ",
+                            "Logic": ">=1",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
         },
-        "1002986": {
-            "ID": "1002986",
+        "2002999": {
+            "ID": "2002999",
             "Timing": "Start of turn",
-            "ATK": 20,
-            "DEF": 20,
+            "ATK": 40,
+            "DEF": 40,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -66,11 +112,11 @@
                 }
             }
         },
-        "2002986": {
-            "ID": "2002986",
+        "3002999": {
+            "ID": "3002999",
             "Timing": "Start of turn",
-            "ATK": 20,
-            "DEF": 20,
+            "ATK": 40,
+            "DEF": 40,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -93,11 +139,11 @@
                 }
             }
         },
-        "3002986": {
-            "ID": "3002986",
+        "4002999": {
+            "ID": "4002999",
             "Timing": "Start of turn",
-            "ATK": 20,
-            "DEF": 20,
+            "ATK": 40,
+            "DEF": 40,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -120,11 +166,11 @@
                 }
             }
         },
-        "4002986": {
-            "ID": "4002986",
+        "5002999": {
+            "ID": "5002999",
             "Timing": "Start of turn",
-            "ATK": 20,
-            "DEF": 20,
+            "ATK": 40,
+            "DEF": 40,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -147,28 +193,76 @@
                 }
             }
         },
-        "5002986": {
-            "ID": "5002986",
+        "6002999": {
+            "ID": "6002999",
+            "Timing": "Attacking the enemy",
+            "Heals": 15,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "7002999": {
+            "ID": "7002999",
             "Timing": "Start of turn",
-            "ATK": 20,
-            "DEF": 20,
+            "Building Stat": {
+                "Min": 0,
+                "Max": 0,
+                "Cause": {
+                    "Cause": "Ki sphere obtained",
+                    "Type": "any"
+                }
+            },
+            "DEF": 25,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1761",
+                "Logic": "1769",
                 "Causalities": {
-                    "1761": {
+                    "1769": {
                         "Button": {
-                            "Name": "Are there 1 or more Wicked Bloodline category allies on the team "
+                            "Name": "Is there is an ally attacking in the same turn whose name includes Metal Cooler?"
                         },
                         "Slider": {
-                            "Name": "How many Wicked Bloodline category allies on the team ",
-                            "Logic": ">=1",
-                            "Max": 7,
-                            "Min": 0
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "8002999": {
+            "ID": "8002999",
+            "Timing": "Attacking the enemy",
+            "Heals": 5,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1769 and 1770",
+                "Causalities": {
+                    "1769": {
+                        "Button": {
+                            "Name": "Is there is an ally attacking in the same turn whose name includes Metal Cooler?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    },
+                    "1770": {
+                        "Button": {
+                            "Name": "Has 3 or more Rainbow Ki Spheres been obtained?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
                         }
                     }
                 }
@@ -834,22 +928,22 @@
         }
     },
     "Super Attack": {
-        "4130": {
-            "superID": "4130",
-            "superName": "\u00e3\u0082\u00b9\u00e3\u0083\u00bc\u00e3\u0083\u0091\u00e3\u0083\u00bc\u00e3\u0083\u008e\u00e3\u0083\u00b4\u00e3\u0082\u00a1",
-            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "4132": {
+            "superID": "4132",
+            "superName": "\u00e3\u0082\u00b9\u00e3\u0083\u00bc\u00e3\u0083\u0091\u00e3\u0083\u00bc\u00e3\u0083\u008e\u00e3\u0083\u00b4\u00e3\u0082\u00a1(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3DEF\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "4130": {
+            "Multiplier": 530,
+            "4132": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -858,7 +952,7 @@
                     "+ or -": "+"
                 },
                 "Target": "Self",
-                "DEF": "30"
+                "DEF": "50"
             }
         }
     },

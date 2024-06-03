@@ -28,8 +28,43 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "1252": {
-            "ID": "1252",
+        "3909": {
+            "ID": "3909",
+            "Timing": "Start of turn",
+            "Ki": 2,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1003909": {
+            "ID": "1003909",
+            "Timing": "Start of turn",
+            "ATK": 100,
+            "DEF": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2003909": {
+            "ID": "2003909",
+            "Timing": "Start of turn",
+            "Ki": 1,
+            "Target": {
+                "Target": "Allies",
+                "Type": "AGL"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "3003909": {
+            "ID": "3003909",
             "Timing": "Start of turn",
             "ATK": 40,
             "DEF": 40,
@@ -43,11 +78,11 @@
             },
             "Length": "1"
         },
-        "1001252": {
-            "ID": "1001252",
+        "4003909": {
+            "ID": "4003909",
             "Additional attack": {
                 "Activated": true,
-                "Chance of super": "0"
+                "Chance of super": "15"
             },
             "Timing": "after all ki collected",
             "Buff": {
@@ -56,8 +91,26 @@
             },
             "Length": "1"
         },
-        "2001252": {
-            "ID": "2001252",
+        "5003909": {
+            "ID": "5003909",
+            "Timing": "Attacking the enemy",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 100,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "ATK": 20,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99"
+        },
+        "6003909": {
+            "ID": "6003909",
+            "Dodge chance": 5,
             "Timing": "Attacking the enemy",
             "Building Stat": {
                 "Min": 0,
@@ -66,12 +119,38 @@
                     "Cause": "Look Elsewhere"
                 }
             },
-            "ATK": 5,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "99"
+        },
+        "7003909": {
+            "ID": "7003909",
+            "Timing": "Start of turn",
+            "ATK": 50,
+            "DEF": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2826",
+                "Causalities": {
+                    "2826": {
+                        "Button": {
+                            "Name": "Are there 2 or more Terrifying Conquerors category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Terrifying Conquerors category allies on the same turn ",
+                            "Logic": ">=2",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
         }
     },
     "Stats at levels": {
@@ -720,22 +799,33 @@
         }
     },
     "Super Attack": {
-        "1421": {
-            "superID": "1421",
-            "superName": "\u00e3\u0082\u00b9\u00e3\u0083\u00bc\u00e3\u0083\u0091\u00e3\u0083\u00bc\u00e3\u0083\u008e\u00e3\u0083\u00b4\u00e3\u0082\u00a1",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nDEF\u00e3\u0082\u0092\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e3\u0081\u00ab\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
+        "5005": {
+            "superID": "5005",
+            "superName": "\u00e3\u0082\u00b9\u00e3\u0083\u00bc\u00e3\u0083\u0091\u00e3\u0083\u00bc\u00e3\u0083\u008e\u00e3\u0083\u00b4\u00e3\u0082\u00a1(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nDEF\u00e3\u0082\u0092\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e3\u0081\u00ab\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "1421": {
+            "Multiplier": 530,
+            "5005": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "30"
+            },
+            "1005005": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",

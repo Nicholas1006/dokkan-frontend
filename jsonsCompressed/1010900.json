@@ -28,19 +28,8 @@
         "Legendary Power"
     ],
     "Passive": {
-        "917": {
-            "ID": "917",
-            "Timing": "Start of turn",
-            "ATK": 20000,
-            "Buff": {
-                "Type": "Raw stats",
-                "+ or -": "+"
-            },
-            "Chance": "70",
-            "Length": "1"
-        },
-        "1000917": {
-            "ID": "1000917",
+        "2240": {
+            "ID": "2240",
             "Timing": "Start of turn",
             "Ki": 7,
             "Buff": {
@@ -49,6 +38,76 @@
             },
             "Chance": "70",
             "Length": "1"
+        },
+        "1002240": {
+            "ID": "1002240",
+            "Timing": "Start of turn",
+            "ATK": 77,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Chance": "70",
+            "Length": "1"
+        },
+        "2002240": {
+            "ID": "2002240",
+            "Timing": "Start of turn",
+            "Ki": 3,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "3",
+            "Once only": true
+        },
+        "3002240": {
+            "ID": "3002240",
+            "Timing": "Start of turn",
+            "DEF": 77,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "3",
+            "Once only": true
+        },
+        "4002240": {
+            "ID": "4002240",
+            "Dodge chance": 50,
+            "Timing": "Hit recieved",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "3",
+            "Condition": {
+                "Logic": "24",
+                "Causalities": {
+                    "24": {
+                        "Button": {
+                            "Name": "Has attack been recieved?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "5002240": {
+            "ID": "5002240",
+            "Timing": "Attacking the enemy",
+            "ATK": 22,
+            "Target": {
+                "Target": "Enemy"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "-"
+            },
+            "Length": "3"
         }
     },
     "Stats at levels": {
@@ -858,14 +917,14 @@
         }
     },
     "Super Attack": {
-        "720": {
-            "superID": "720",
-            "superName": "\u00e3\u0083\u0097\u00e3\u0083\u00ac\u00e3\u0082\u00bc\u00e3\u0083\u00b3\u00e3\u0083\u0088\u00e3\u0083\u009c\u00e3\u0083\u00a0",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e6\u00a5\u00b5\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\u00e3\u0081\u00be\u00e3\u0082\u008c\u00e3\u0081\u00ab\u00e6\u00b0\u0097\u00e7\u00b5\u00b6\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
+        "2697": {
+            "superID": "2697",
+            "superName": "\u00e3\u0083\u0097\u00e3\u0083\u00ac\u00e3\u0082\u00bc\u00e3\u0083\u00b3\u00e3\u0083\u0088\u00e3\u0083\u009c\u00e3\u0083\u00a0(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e6\u00a5\u00b5\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n\u00e4\u00b8\u00ad\u00e7\u00a2\u00ba\u00e7\u008e\u0087\u00e3\u0081\u00a7\u00e6\u00b0\u0097\u00e7\u00b5\u00b6\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -878,9 +937,9 @@
                 "Amount": "30"
             },
             "Multiplier": 395,
-            "720": {
+            "2697": {
                 "Type": "ExtraEfficacySpecial",
-                "Chance": "20",
+                "Chance": "30",
                 "Duration": "2",
                 "Buff": {
                     "Type": "Raw stats",
@@ -890,14 +949,14 @@
                 "Status": "Stun"
             }
         },
-        "721": {
-            "superID": "721",
-            "superName": "\u00e3\u0082\u00b5\u00e3\u0082\u00bf\u00e3\u0083\u00b3\u00e3\u0083\u009f\u00e3\u0083\u00a9\u00e3\u0082\u00af\u00e3\u0083\u00ab\u00e3\u0082\u00b9\u00e3\u0083\u009a\u00e3\u0082\u00b7\u00e3\u0083\u00a3\u00e3\u0083\u00ab\n\u00e3\u0082\u00a6\u00e3\u0083\u00ab\u00e3\u0083\u0088\u00e3\u0083\u00a9\u00e3\u0082\u00b9\u00e3\u0083\u00bc\u00e3\u0083\u0091\u00e3\u0083\u00bc\u00e3\u0083\u00a1\u00e3\u0082\u00ac\u00e3\u0083\u0088\u00e3\u0083\u00b3\u00e3\u0083\u0091\u00e3\u0083\u00b3\u00e3\u0083\u0081",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e6\u00a5\u00b5\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n3\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3DEF\u00e3\u0081\u008c50%\u00e4\u00b8\u008a\u00e6\u0098\u0087",
+        "2698": {
+            "superID": "2698",
+            "superName": "\u00e3\u0082\u00b5\u00e3\u0082\u00bf\u00e3\u0083\u00b3\u00e3\u0083\u009f\u00e3\u0083\u00a9\u00e3\u0082\u00af\u00e3\u0083\u00ab\u00e3\u0082\u00b9\u00e3\u0083\u009a\u00e3\u0082\u00b7\u00e3\u0083\u00a3\u00e3\u0083\u00ab\n\u00e3\u0082\u00a6\u00e3\u0083\u00ab\u00e3\u0083\u0088\u00e3\u0083\u00a9\u00e3\u0082\u00b9\u00e3\u0083\u00bc\u00e3\u0083\u0091\u00e3\u0083\u00bc\u00e3\u0083\u00a1\u00e3\u0082\u00ac\u00e3\u0083\u0088\u00e3\u0083\u00b3\u00e3\u0083\u0091\u00e3\u0083\u00b3\u00e3\u0083\u0081(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e6\u00a5\u00b5\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n3\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c50%\u00e4\u00b8\u008a\u00e6\u0098\u0087",
             "superMinKi": "18",
             "superPriority": "0.0",
             "superStyle": "Hyper",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -909,8 +968,8 @@
                 "Duration": "1",
                 "Amount": "30"
             },
-            "Multiplier": 540,
-            "721": {
+            "Multiplier": 490,
+            "2698": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",
@@ -919,6 +978,7 @@
                     "+ or -": "+"
                 },
                 "Target": "Self",
+                "ATK": "50",
                 "DEF": "50"
             }
         }

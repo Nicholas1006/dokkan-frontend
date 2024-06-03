@@ -27,18 +27,18 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "1119": {
-            "ID": "1119",
+        "2147": {
+            "ID": "2147",
             "Timing": "Start of turn",
-            "ATK": 120,
+            "ATK": 160,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1001119": {
-            "ID": "1001119",
+        "1002147": {
+            "ID": "1002147",
             "Additional attack": {
                 "Activated": true,
                 "Chance of super": "70"
@@ -49,6 +49,51 @@
                 "+ or -": "+"
             },
             "Length": "1"
+        },
+        "2002147": {
+            "ID": "2002147",
+            "Timing": "Start of turn",
+            "DR": 60,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "6",
+            "Once only": true
+        },
+        "3002147": {
+            "ID": "3002147",
+            "Timing": "When ki spheres collected",
+            "DR": 60,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "663 and 664",
+                "Causalities": {
+                    "663": {
+                        "Button": {
+                            "Name": "Is the turn count 7 or more?"
+                        },
+                        "Slider": {
+                            "Name": "What turn is it?",
+                            "Logic": ">=7",
+                            "Min": 1
+                        }
+                    },
+                    "664": {
+                        "Button": {
+                            "Name": "Has 6 or more PHY Ki Spheres been obtained?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
         }
     },
     "Stats at levels": {
@@ -713,22 +758,22 @@
         }
     },
     "Super Attack": {
-        "1058": {
-            "superID": "1058",
-            "superName": "\u00e3\u0082\u00ae\u00e3\u0082\u00ac\u00e3\u0083\u00b3\u00e3\u0083\u0086\u00e3\u0082\u00a3\u00e3\u0083\u0083\u00e3\u0082\u00af\u00e3\u0082\u00a4\u00e3\u0083\u00b3\u00e3\u0083\u0091\u00e3\u0082\u00af\u00e3\u0083\u0088",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nDEF\u00e3\u0082\u0092\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
+        "2485": {
+            "superID": "2485",
+            "superName": "\u00e3\u0082\u00ae\u00e3\u0082\u00ac\u00e3\u0083\u00b3\u00e3\u0083\u0086\u00e3\u0082\u00a3\u00e3\u0083\u0083\u00e3\u0082\u00af\u00e3\u0082\u00a4\u00e3\u0083\u00b3\u00e3\u0083\u0091\u00e3\u0082\u00af\u00e3\u0083\u0088(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nDEF\u00e3\u0082\u0092\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e3\u0081\u00ab\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 505,
-            "1058": {
+            "Multiplier": 630,
+            "2485": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",
@@ -737,7 +782,7 @@
                     "+ or -": "-"
                 },
                 "Target": "Enemy",
-                "DEF": "40"
+                "DEF": "50"
             }
         }
     },

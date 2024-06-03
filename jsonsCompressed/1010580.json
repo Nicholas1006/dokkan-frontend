@@ -29,26 +29,99 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "867": {
-            "ID": "867",
+        "2724": {
+            "ID": "2724",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
                 "Max": 0,
                 "Cause": {
                     "Cause": "Ki sphere obtained",
-                    "Type": "INT"
+                    "Type": "any"
                 }
             },
-            "ATK": 20,
+            "ATK": 30,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1000867": {
-            "ID": "1000867",
+        "1002724": {
+            "ID": "1002724",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 0,
+                "Cause": {
+                    "Cause": "Ki sphere obtained",
+                    "Type": "any"
+                }
+            },
+            "DEF": 20,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2002724": {
+            "ID": "2002724",
+            "Dodge chance": 10,
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 30,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99"
+        },
+        "3002724": {
+            "ID": "3002724",
+            "Timing": "Start of turn",
+            "ATK": 120,
+            "DEF": 120,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "4002724": {
+            "ID": "4002724",
+            "Timing": "Start of turn",
+            "Ki change": {
+                "From": "TEQ",
+                "To": "INT"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1277",
+                "Causalities": {
+                    "1277": {
+                        "Button": {
+                            "Name": "Is there is an ally attacking in the same turn whose name includes Goku?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "5002724": {
+            "ID": "5002724",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -732,22 +805,22 @@
         }
     },
     "Super Attack": {
-        "667": {
-            "superID": "667",
-            "superName": "\u00e3\u0083\u0093\u00e3\u0083\u0083\u00e3\u0082\u00b0\u00e3\u0083\u00bb\u00e3\u0083\u0090\u00e3\u0083\u00b3\u00e3\u0083\u00bb\u00e3\u0082\u00a2\u00e3\u0082\u00bf\u00e3\u0083\u0083\u00e3\u0082\u00af",
-            "superDescription": "\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u00813\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087",
+        "3602": {
+            "superID": "3602",
+            "superName": "\u00e3\u0083\u0093\u00e3\u0083\u0083\u00e3\u0082\u00b0\u00e3\u0083\u00bb\u00e3\u0083\u0090\u00e3\u0083\u00b3\u00e3\u0083\u00bb\u00e3\u0082\u00a2\u00e3\u0082\u00bf\u00e3\u0083\u0083\u00e3\u0082\u00af(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n3\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 380,
-            "667": {
+            "Multiplier": 480,
+            "3602": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",
@@ -756,7 +829,8 @@
                     "+ or -": "+"
                 },
                 "Target": "Self",
-                "ATK": "50"
+                "ATK": "50",
+                "DEF": "50"
             }
         }
     },

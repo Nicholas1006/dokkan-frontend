@@ -1133,6 +1133,54 @@
         "Standby or Finish": "Standby",
         "ID": "15",
         "Exec limit": "1",
+        "Condition": {
+            "Logic": "(((not 12662636872) and 12662636873 and 12662636874) or ((not 12662636875) and 12662636876))",
+            "Causality": {
+                "12662636872": {
+                    "Button": {
+                        "Name": "Has this characters finish effect been activated?"
+                    },
+                    "Slider": {}
+                },
+                "12662636873": {
+                    "Button": {
+                        "Name": "Is the turn count 3 or more?"
+                    },
+                    "Slider": {
+                        "Name": "What turn is it?",
+                        "Logic": ">=3",
+                        "Min": 1
+                    }
+                },
+                "12662636874": {
+                    "Button": {
+                        "Name": "Is HP 70 % or less?"
+                    },
+                    "Slider": {
+                        "Name": "What percentage of HP is remaining",
+                        "Logic": "<=70",
+                        "Min": 0,
+                        "Max": 100
+                    }
+                },
+                "12662636875": {
+                    "Button": {
+                        "Name": "Has this characters finish effect been activated?"
+                    },
+                    "Slider": {}
+                },
+                "12662636876": {
+                    "Button": {
+                        "Name": "Is the turn count 6 or more?"
+                    },
+                    "Slider": {
+                        "Name": "What turn is it?",
+                        "Logic": ">=6",
+                        "Min": 1
+                    }
+                }
+            }
+        },
         "Standby Exclusivity": "special_counter",
         "Exchanges to": "4027630"
     }

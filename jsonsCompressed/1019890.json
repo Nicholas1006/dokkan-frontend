@@ -34,19 +34,19 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "2115": {
-            "ID": "2115",
+        "2857": {
+            "ID": "2857",
             "Timing": "Start of turn",
-            "ATK": 70,
-            "DEF": 70,
+            "ATK": 150,
+            "DEF": 150,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1002115": {
-            "ID": "1002115",
+        "1002857": {
+            "ID": "1002857",
             "Timing": "Start of turn",
             "Ki": 1,
             "Target": {
@@ -59,8 +59,8 @@
             },
             "Length": "1"
         },
-        "2002115": {
-            "ID": "2002115",
+        "2002857": {
+            "ID": "2002857",
             "Timing": "Start of turn",
             "ATK": 30,
             "DEF": 30,
@@ -74,8 +74,42 @@
             },
             "Length": "1"
         },
-        "3002115": {
-            "ID": "3002115",
+        "3002857": {
+            "ID": "3002857",
+            "Timing": "Start of turn",
+            "ATK": 50,
+            "DEF": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1454 or 1434",
+                "Causalities": {
+                    "1454": {
+                        "Button": {
+                            "Name": "Is there is an ally on the team whose name includes Goku (Angel)?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    },
+                    "1434": {
+                        "Button": {
+                            "Name": "Is there is an ally on the team whose name includes Trunks (Kid)?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "4002857": {
+            "ID": "4002857",
             "Timing": "Start of turn",
             "Ki": 5,
             "Buff": {
@@ -84,9 +118,9 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "619 or 620",
+                "Logic": "1455 or 1435",
                 "Causalities": {
-                    "619": {
+                    "1455": {
                         "Button": {
                             "Name": "Is there is an ally attacking in the same turn whose name includes Goku (Angel)?"
                         },
@@ -95,7 +129,7 @@
                             "Logic": null
                         }
                     },
-                    "620": {
+                    "1435": {
                         "Button": {
                             "Name": "Is there is an ally attacking in the same turn whose name includes Trunks (Kid)?"
                         },
@@ -107,8 +141,8 @@
                 }
             }
         },
-        "4002115": {
-            "ID": "4002115",
+        "5002857": {
+            "ID": "5002857",
             "Timing": "Start of turn",
             "ATK": 10,
             "DEF": 10,
@@ -121,9 +155,9 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "619 or 620",
+                "Logic": "1455 or 1435",
                 "Causalities": {
-                    "619": {
+                    "1455": {
                         "Button": {
                             "Name": "Is there is an ally attacking in the same turn whose name includes Goku (Angel)?"
                         },
@@ -132,7 +166,43 @@
                             "Logic": null
                         }
                     },
-                    "620": {
+                    "1435": {
+                        "Button": {
+                            "Name": "Is there is an ally attacking in the same turn whose name includes Trunks (Kid)?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "6002857": {
+            "ID": "6002857",
+            "Timing": "Start of turn",
+            "Crit Chance": 10,
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1455 or 1435",
+                "Causalities": {
+                    "1455": {
+                        "Button": {
+                            "Name": "Is there is an ally attacking in the same turn whose name includes Goku (Angel)?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    },
+                    "1435": {
                         "Button": {
                             "Name": "Is there is an ally attacking in the same turn whose name includes Trunks (Kid)?"
                         },
@@ -808,22 +878,33 @@
         }
     },
     "Super Attack": {
-        "2405": {
-            "superID": "2405",
-            "superName": "\u00e3\u0083\u0095\u00e3\u0083\u00a5\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0083\u00a7\u00e3\u0083\u00b3",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nATK\u00e3\u0082\u0092\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
+        "3867": {
+            "superID": "3867",
+            "superName": "\u00e3\u0083\u0095\u00e3\u0083\u00a5\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0083\u00a7\u00e3\u0083\u00b3(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3DEF\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nATK\u00e3\u0082\u0092\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "2405": {
+            "Multiplier": 530,
+            "3867": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "50"
+            },
+            "1003867": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",

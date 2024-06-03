@@ -30,11 +30,11 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "2876": {
-            "ID": "2876",
+        "2878": {
+            "ID": "2878",
             "Timing": "On Super",
-            "ATK": 60,
-            "DEF": 60,
+            "ATK": 100,
+            "DEF": 100,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -57,11 +57,11 @@
                 }
             }
         },
-        "1002876": {
-            "ID": "1002876",
+        "1002878": {
+            "ID": "1002878",
             "Timing": "On Super",
-            "ATK": 60,
-            "DEF": 60,
+            "ATK": 100,
+            "DEF": 100,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -79,6 +79,110 @@
                             "Logic": ">=9",
                             "Min": 0,
                             "Max": 24
+                        }
+                    }
+                }
+            }
+        },
+        "2002878": {
+            "ID": "2002878",
+            "Timing": "On Super",
+            "ATK": 50,
+            "DEF": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1495",
+                "Causalities": {
+                    "1495": {
+                        "Button": {
+                            "Name": "Is ki 12 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=12",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    }
+                }
+            }
+        },
+        "3002878": {
+            "ID": "3002878",
+            "Timing": "On Super",
+            "ATK": 50,
+            "DEF": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1496",
+                "Causalities": {
+                    "1496": {
+                        "Button": {
+                            "Name": "Is the target enemy in \"ATK down\" status?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "4002878": {
+            "ID": "4002878",
+            "Timing": "Start of turn",
+            "DEF": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1497",
+                "Causalities": {
+                    "1497": {
+                        "Button": {
+                            "Name": "Are there 3 or more Wicked Bloodline category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Wicked Bloodline category allies on the same turn ",
+                            "Logic": ">=3",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "5002878": {
+            "ID": "5002878",
+            "Timing": "Start of turn",
+            "Crit Chance": 50,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1498",
+                "Causalities": {
+                    "1498": {
+                        "Button": {
+                            "Name": "Are there 3 or more Resurrected Warriors category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Resurrected Warriors category allies on the same turn ",
+                            "Logic": ">=3",
+                            "Max": 3,
+                            "Min": 0
                         }
                     }
                 }
@@ -779,14 +883,14 @@
         }
     },
     "Super Attack": {
-        "3908": {
-            "superID": "3908",
-            "superName": "\u00e3\u0083\u0087\u00e3\u0082\u00b9\u00e3\u0083\u0096\u00e3\u0083\u00a9\u00e3\u0082\u00b9\u00e3\u0082\u00bf\u00e3\u0083\u00bc",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nATK\u00e3\u0082\u0092\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
+        "3918": {
+            "superID": "3918",
+            "superName": "\u00e3\u0083\u0087\u00e3\u0082\u00b9\u00e3\u0083\u0096\u00e3\u0083\u00a9\u00e3\u0082\u00b9\u00e3\u0082\u00bf\u00e3\u0083\u00bc(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nATK\u00e3\u0082\u0092\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "19",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -799,7 +903,18 @@
                 "Amount": "3"
             },
             "Multiplier": 530,
-            "3908": {
+            "3918": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "30"
+            },
+            "1003918": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",

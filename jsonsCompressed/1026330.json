@@ -28,18 +28,18 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "3221": {
-            "ID": "3221",
+        "3223": {
+            "ID": "3223",
             "Timing": "Start of turn",
-            "DEF": 120,
+            "DEF": 200,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1003221": {
-            "ID": "1003221",
+        "1003223": {
+            "ID": "1003223",
             "Timing": "Start of turn",
             "ATK": 20,
             "DEF": 20,
@@ -50,13 +50,13 @@
                 "Type": "Percentage",
                 "+ or -": "-"
             },
-            "Chance": "30",
+            "Chance": "50",
             "Length": "1"
         },
-        "2003221": {
-            "ID": "2003221",
+        "2003223": {
+            "ID": "2003223",
             "Timing": "On Super",
-            "ATK": 70,
+            "ATK": 150,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -79,10 +79,10 @@
                 }
             }
         },
-        "3003221": {
-            "ID": "3003221",
+        "3003223": {
+            "ID": "3003223",
             "Timing": "Start of turn",
-            "Ki": 2,
+            "Ki": 3,
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -116,11 +116,11 @@
                 }
             }
         },
-        "4003221": {
-            "ID": "4003221",
+        "4003223": {
+            "ID": "4003223",
             "Timing": "Start of turn",
-            "ATK": 30,
-            "DEF": 30,
+            "ATK": 50,
+            "DEF": 50,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -154,8 +154,50 @@
                 }
             }
         },
-        "5003221": {
-            "ID": "5003221",
+        "5003223": {
+            "ID": "5003223",
+            "Timing": "Attacking the enemy",
+            "Status": [
+                "Seal"
+            ],
+            "Target": {
+                "Target": "Enemy"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2072 or 2073",
+                "Causalities": {
+                    "2072": {
+                        "Button": {
+                            "Name": "Are there 1 or more World Tournament category enemies "
+                        },
+                        "Slider": {
+                            "Name": "How many World Tournament category enemies ",
+                            "Logic": ">=1",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    },
+                    "2073": {
+                        "Button": {
+                            "Name": "Are there 2 or more World Tournament category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many World Tournament category allies on the same turn ",
+                            "Logic": ">=2",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "6003223": {
+            "ID": "6003223",
             "Additional attack": {
                 "Activated": true,
                 "Chance of super": "100"
@@ -165,7 +207,7 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Chance": "30",
+            "Chance": "50",
             "Length": "1",
             "Condition": {
                 "Logic": "2074",
@@ -182,11 +224,35 @@
                 }
             }
         },
-        "6003221": {
-            "ID": "6003221",
+        "7003223": {
+            "ID": "7003223",
+            "Timing": "On Super",
+            "Crit Chance": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2076",
+                "Causalities": {
+                    "2076": {
+                        "Button": {
+                            "Name": "Is the target enemy sealed?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "8003223": {
+            "ID": "8003223",
             "Revive": {
                 "Activated": true,
-                "HP recovered": 30
+                "HP recovered": 50
             },
             "Timing": "Start of turn",
             "Buff": {
@@ -875,22 +941,22 @@
         }
     },
     "Super Attack": {
-        "4393": {
-            "superID": "4393",
-            "superName": "\u00e3\u0082\u00b5\u00e3\u0082\u00bf\u00e3\u0083\u00b3\u00e3\u0083\u009f\u00e3\u0083\u00a9\u00e3\u0082\u00af\u00e3\u0083\u00ab\u00e3\u0082\u00b9\u00e3\u0083\u009a\u00e3\u0082\u00b7\u00e3\u0083\u00a3\u00e3\u0083\u00ab\n\u00e3\u0082\u00a6\u00e3\u0083\u00ab\u00e3\u0083\u0088\u00e3\u0083\u00a9\u00e3\u0082\u00b9\u00e3\u0083\u00bc\u00e3\u0083\u0091\u00e3\u0083\u00bc\u00e3\u0083\u00a1\u00e3\u0082\u00ac\u00e3\u0083\u0088\u00e3\u0083\u00b3\u00e3\u0083\u0091\u00e3\u0083\u00b3\u00e3\u0083\u0081",
-            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3DEF\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0080\u0081\n\u00e9\u00ab\u0098\u00e7\u00a2\u00ba\u00e7\u008e\u0087\u00e3\u0081\u00a71\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "4394": {
+            "superID": "4394",
+            "superName": "\u00e3\u0082\u00b5\u00e3\u0082\u00bf\u00e3\u0083\u00b3\u00e3\u0083\u009f\u00e3\u0083\u00a9\u00e3\u0082\u00af\u00e3\u0083\u00ab\u00e3\u0082\u00b9\u00e3\u0083\u009a\u00e3\u0082\u00b7\u00e3\u0083\u00a3\u00e3\u0083\u00ab\n\u00e3\u0082\u00a6\u00e3\u0083\u00ab\u00e3\u0083\u0088\u00e3\u0083\u00a9\u00e3\u0082\u00b9\u00e3\u0083\u00bc\u00e3\u0083\u0091\u00e3\u0083\u00bc\u00e3\u0083\u00a1\u00e3\u0082\u00ac\u00e3\u0083\u0088\u00e3\u0083\u00b3\u00e3\u0083\u0091\u00e3\u0083\u00b3\u00e3\u0083\u0081(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3DEF\u00e3\u0081\u008c\u00e8\u00b6\u0085\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0080\u0081\n\u00e9\u00ab\u0098\u00e7\u00a2\u00ba\u00e7\u008e\u0087\u00e3\u0081\u00a71\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u008c\u00e8\u00b6\u0085\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "4393": {
+            "Multiplier": 530,
+            "4394": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -899,9 +965,9 @@
                     "+ or -": "+"
                 },
                 "Target": "Self",
-                "DEF": "50"
+                "DEF": "100"
             },
-            "1004393": {
+            "1004394": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "50",
                 "Duration": "1",
@@ -910,7 +976,7 @@
                     "+ or -": "+"
                 },
                 "Target": "Self",
-                "ATK": "50"
+                "ATK": "100"
             }
         }
     },

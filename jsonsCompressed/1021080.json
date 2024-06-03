@@ -25,8 +25,8 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "2256": {
-            "ID": "2256",
+        "2891": {
+            "ID": "2891",
             "Timing": "Start of turn",
             "ATK": 120,
             "DEF": 120,
@@ -34,26 +34,10 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1",
-            "Condition": {
-                "Logic": "21",
-                "Causalities": {
-                    "21": {
-                        "Button": {
-                            "Name": "Is HP 50 % or more?"
-                        },
-                        "Slider": {
-                            "Name": "What percentage of HP is remaining",
-                            "Logic": ">=50",
-                            "Min": 0,
-                            "Max": 100
-                        }
-                    }
-                }
-            }
+            "Length": "1"
         },
-        "1002256": {
-            "ID": "1002256",
+        "1002891": {
+            "ID": "1002891",
             "Timing": "Hit recieved",
             "Ki": 6,
             "Buff": {
@@ -76,8 +60,8 @@
                 }
             }
         },
-        "2002256": {
-            "ID": "2002256",
+        "2002891": {
+            "ID": "2002891",
             "Timing": "Hit recieved",
             "Crit Chance": 100,
             "Buff": {
@@ -100,8 +84,8 @@
                 }
             }
         },
-        "3002256": {
-            "ID": "3002256",
+        "3002891": {
+            "ID": "3002891",
             "Timing": "Attacking the enemy",
             "Status": [
                 "Stun"
@@ -129,10 +113,57 @@
                 }
             }
         },
-        "4002256": {
-            "ID": "4002256",
+        "4002891": {
+            "ID": "4002891",
             "Timing": "Start of turn",
             "DR": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "717",
+                "Causalities": {
+                    "717": {
+                        "Button": {
+                            "Name": "Is HP 50 % or less?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining",
+                            "Logic": "<=50",
+                            "Min": 0,
+                            "Max": 100
+                        }
+                    }
+                }
+            }
+        },
+        "5002891": {
+            "ID": "5002891",
+            "Timing": "Start of turn",
+            "ATK": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "7",
+            "Once only": true
+        },
+        "6002891": {
+            "ID": "6002891",
+            "Timing": "Start of turn",
+            "DEF": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "7002891": {
+            "ID": "7002891",
+            "Timing": "Start of turn",
+            "ATK": 50,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -852,22 +883,22 @@
         }
     },
     "Super Attack": {
-        "2734": {
-            "superID": "2734",
-            "superName": "\u00e4\u00b8\u0087\u00e3\u0081\u008c\u00e4\u00b8\u0080\u00e3\u0081\u00ae\u00e4\u00bd\u009c\u00e6\u0088\u00a6",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n\u00e9\u00ab\u0098\u00e7\u00a2\u00ba\u00e7\u008e\u0087\u00e3\u0081\u00a7\u00e6\u00b0\u0097\u00e7\u00b5\u00b6\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
+        "3930": {
+            "superID": "3930",
+            "superName": "\u00e4\u00b8\u0087\u00e3\u0081\u008c\u00e4\u00b8\u0080\u00e3\u0081\u00ae\u00e4\u00bd\u009c\u00e6\u0088\u00a6(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n\u00e9\u00ab\u0098\u00e7\u00a2\u00ba\u00e7\u008e\u0087\u00e3\u0081\u00a7\u00e6\u00b0\u0097\u00e7\u00b5\u00b6\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b\n&1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3\u00e6\u00a5\u00b5\u00e7\u00b3\u00bb\u00e3\u0081\u00ae\u00e4\u00bb\u00b2\u00e9\u0096\u0093ATK\u00e3\u0081\u00a8DEF20%UP",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "2734": {
+            "Multiplier": 510,
+            "3930": {
                 "Type": "ExtraEfficacySpecial",
                 "Chance": "50",
                 "Duration": "2",
@@ -877,6 +908,18 @@
                 },
                 "Target": "Enemy",
                 "Status": "Stun"
+            },
+            "1003930": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Extreme class Allies",
+                "ATK": "20",
+                "DEF": "20"
             }
         }
     },

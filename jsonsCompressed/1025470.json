@@ -26,55 +26,56 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "3008": {
-            "ID": "3008",
+        "3014": {
+            "ID": "3014",
             "Timing": "Start of turn",
-            "ATK": 60,
-            "DEF": 60,
+            "ATK": 140,
+            "DEF": 140,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1003008": {
-            "ID": "1003008",
+        "1003014": {
+            "ID": "1003014",
             "Timing": "Attacking the enemy",
             "Building Stat": {
                 "Min": 0,
-                "Max": 30,
+                "Max": 60,
                 "Cause": {
                     "Cause": "Look Elsewhere"
                 }
             },
-            "ATK": 10,
+            "ATK": 20,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "99"
         },
-        "2003008": {
-            "ID": "2003008",
+        "2003014": {
+            "ID": "2003014",
             "Timing": "Attacking the enemy",
             "Building Stat": {
                 "Min": 0,
-                "Max": 30,
+                "Max": 60,
                 "Cause": {
                     "Cause": "Look Elsewhere"
                 }
             },
-            "DEF": 10,
+            "DEF": 20,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "99"
         },
-        "3003008": {
-            "ID": "3003008",
+        "3003014": {
+            "ID": "3003014",
             "Timing": "Start of turn",
-            "ATK": 15,
+            "ATK": 20,
+            "DEF": 20,
             "Target": {
                 "Target": "Allies"
             },
@@ -83,6 +84,154 @@
                 "+ or -": "+"
             },
             "Length": "1"
+        },
+        "4003014": {
+            "ID": "4003014",
+            "Timing": "Start of turn",
+            "Ki": 1,
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1794",
+                "Causalities": {
+                    "1794": {
+                        "Button": {
+                            "Name": "Is there an extreme class enemy? "
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "5003014": {
+            "ID": "5003014",
+            "Timing": "Start of turn",
+            "ATK": 10,
+            "DEF": 10,
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1794",
+                "Causalities": {
+                    "1794": {
+                        "Button": {
+                            "Name": "Is there an extreme class enemy? "
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "6003014": {
+            "ID": "6003014",
+            "Timing": "Start of turn",
+            "Crit Chance": 50,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1794 and 1796",
+                "Causalities": {
+                    "1794": {
+                        "Button": {
+                            "Name": "Is there an extreme class enemy? "
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    },
+                    "1796": {
+                        "Button": {
+                            "Name": "Is HP 80 % or more?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining",
+                            "Logic": ">=80",
+                            "Min": 0,
+                            "Max": 100
+                        }
+                    }
+                }
+            }
+        },
+        "7003014": {
+            "ID": "7003014",
+            "Timing": "Start of turn",
+            "ATK": 20,
+            "DEF": 20,
+            "Target": {
+                "Target": "Enemies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "-"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1795",
+                "Causalities": {
+                    "1795": {
+                        "Button": {
+                            "Name": "Is there an extreme class enemy? "
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "8003014": {
+            "ID": "8003014",
+            "Timing": "Attacking the enemy",
+            "Status": [
+                "Stun"
+            ],
+            "Target": {
+                "Target": "Enemy"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Chance": "50",
+            "Length": "1",
+            "Condition": {
+                "Logic": "1795",
+                "Causalities": {
+                    "1795": {
+                        "Button": {
+                            "Name": "Is there an extreme class enemy? "
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
         }
     },
     "Stats at levels": {
@@ -748,14 +897,14 @@
         }
     },
     "Super Attack": {
-        "4166": {
-            "superID": "4166",
-            "superName": "\u00e3\u0083\u008f\u00e3\u0082\u00a4\u00e3\u0083\u0091\u00e3\u0083\u00bc\u00e3\u0083\u0088\u00e3\u0083\u00ab\u00e3\u0083\u008d\u00e3\u0083\u00bc\u00e3\u0083\u0089",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nATK\u00e3\u0082\u0092\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
+        "4167": {
+            "superID": "4167",
+            "superName": "\u00e3\u0083\u008f\u00e3\u0082\u00a4\u00e3\u0083\u0091\u00e3\u0083\u00bc\u00e3\u0083\u0088\u00e3\u0083\u00ab\u00e3\u0083\u008d\u00e3\u0083\u00bc\u00e3\u0083\u0089(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nATK\u00e3\u0081\u00a8DEF\u00e3\u0082\u0092\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "19",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -768,7 +917,7 @@
                 "Amount": "20"
             },
             "Multiplier": 530,
-            "4166": {
+            "4167": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",
@@ -777,7 +926,8 @@
                     "+ or -": "-"
                 },
                 "Target": "Enemy",
-                "ATK": "20"
+                "ATK": "20",
+                "DEF": "20"
             }
         }
     },

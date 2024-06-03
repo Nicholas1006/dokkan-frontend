@@ -26,19 +26,59 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "1914": {
-            "ID": "1914",
+        "2622": {
+            "ID": "2622",
             "Timing": "Start of turn",
-            "ATK": 70,
-            "DEF": 70,
+            "ATK": 100,
+            "DEF": 100,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1001914": {
-            "ID": "1001914",
+        "1002622": {
+            "ID": "1002622",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 0,
+                "Cause": {
+                    "Cause": "Ki sphere obtained",
+                    "Type": [
+                        "Rainbow"
+                    ]
+                }
+            },
+            "ATK": 18,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2002622": {
+            "ID": "2002622",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 0,
+                "Cause": {
+                    "Cause": "Ki sphere obtained",
+                    "Type": [
+                        "Rainbow"
+                    ]
+                }
+            },
+            "DEF": 18,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "3002622": {
+            "ID": "3002622",
             "Timing": "Start of turn",
             "ATK": 70,
             "DEF": 70,
@@ -48,9 +88,9 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "357",
+                "Logic": "1077",
                 "Causalities": {
-                    "357": {
+                    "1077": {
                         "Button": {
                             "Name": "Is there is an ally attacking in the same turn whose name includes Android #17 (Future)?"
                         },
@@ -62,8 +102,8 @@
                 }
             }
         },
-        "2001914": {
-            "ID": "2001914",
+        "4002622": {
+            "ID": "4002622",
             "Dodge chance": 30,
             "Timing": "Start of turn",
             "Buff": {
@@ -72,9 +112,9 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "357",
+                "Logic": "1077",
                 "Causalities": {
-                    "357": {
+                    "1077": {
                         "Button": {
                             "Name": "Is there is an ally attacking in the same turn whose name includes Android #17 (Future)?"
                         },
@@ -86,8 +126,8 @@
                 }
             }
         },
-        "3001914": {
-            "ID": "3001914",
+        "5002622": {
+            "ID": "5002622",
             "Additional attack": {
                 "Activated": true,
                 "Chance of super": "100"
@@ -99,14 +139,25 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "344",
+                "Logic": "1078 or 1079",
                 "Causalities": {
-                    "344": {
+                    "1078": {
                         "Button": {
                             "Name": "Are there 1 or more Hybrid Saiyans category enemies "
                         },
                         "Slider": {
                             "Name": "How many Hybrid Saiyans category enemies ",
+                            "Logic": ">=1",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    },
+                    "1079": {
+                        "Button": {
+                            "Name": "Are there 1 or more Earthlings category enemies "
+                        },
+                        "Slider": {
+                            "Name": "How many Earthlings category enemies ",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
@@ -779,22 +830,22 @@
         }
     },
     "Super Attack": {
-        "2060": {
-            "superID": "2060",
-            "superName": "\u00e3\u0082\u00a8\u00e3\u0083\u008d\u00e3\u0083\u00ab\u00e3\u0082\u00ae\u00e3\u0083\u00bc\u00e3\u0082\u00a6\u00e3\u0082\u00a7\u00e3\u0082\u00a4\u00e3\u0083\u0096",
-            "superDescription": "ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "3394": {
+            "superID": "3394",
+            "superName": "\u00e3\u0082\u00a8\u00e3\u0083\u008d\u00e3\u0083\u00ab\u00e3\u0082\u00ae\u00e3\u0083\u00bc\u00e3\u0082\u00a6\u00e3\u0082\u00a7\u00e3\u0082\u00a4\u00e3\u0083\u0096(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "ATK\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 410,
-            "2060": {
+            "Multiplier": 480,
+            "3394": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "99",
@@ -803,7 +854,7 @@
                     "+ or -": "+"
                 },
                 "Target": "Self",
-                "ATK": "20",
+                "ATK": "50",
                 "DEF": "20"
             }
         }

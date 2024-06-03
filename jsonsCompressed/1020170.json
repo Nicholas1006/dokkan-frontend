@@ -27,31 +27,31 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "2166": {
-            "ID": "2166",
+        "3397": {
+            "ID": "3397",
             "Timing": "Start of turn",
-            "ATK": 80,
-            "DEF": 80,
+            "ATK": 110,
+            "DEF": 110,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1002166": {
-            "ID": "1002166",
+        "1003397": {
+            "ID": "1003397",
             "Timing": "Start of turn",
-            "ATK": 40,
-            "DEF": 40,
+            "ATK": 110,
+            "DEF": 110,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "678",
+                "Logic": "2206",
                 "Causalities": {
-                    "678": {
+                    "2206": {
                         "Button": {
                             "Name": "Are there 2 or more Universe 11 category allies on the same turn "
                         },
@@ -65,10 +65,68 @@
                 }
             }
         },
-        "2002166": {
-            "ID": "2002166",
+        "2003397": {
+            "ID": "2003397",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "50"
+            },
             "Timing": "Start of turn",
-            "Ki": 1,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2206",
+                "Causalities": {
+                    "2206": {
+                        "Button": {
+                            "Name": "Are there 2 or more Universe 11 category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Universe 11 category allies on the same turn ",
+                            "Logic": ">=2",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "3003397": {
+            "ID": "3003397",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "50"
+            },
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2207",
+                "Causalities": {
+                    "2207": {
+                        "Button": {
+                            "Name": "Are there 3 or more Universe 11 category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Universe 11 category allies on the same turn ",
+                            "Logic": ">=3",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "4003397": {
+            "ID": "4003397",
+            "Timing": "Start of turn",
+            "Ki": 2,
             "Target": {
                 "Category": "Universe 11",
                 "Target": "Allies"
@@ -79,11 +137,11 @@
             },
             "Length": "1"
         },
-        "3002166": {
-            "ID": "3002166",
+        "5003397": {
+            "ID": "5003397",
             "Timing": "Start of turn",
-            "ATK": 30,
-            "DEF": 30,
+            "ATK": 50,
+            "DEF": 50,
             "Target": {
                 "Category": "Universe 11",
                 "Target": "Allies"
@@ -93,6 +151,251 @@
                 "+ or -": "+"
             },
             "Length": "1"
+        },
+        "6003397": {
+            "ID": "6003397",
+            "Timing": "On Super",
+            "ATK": 11,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2208 and 2215",
+                "Causalities": {
+                    "2208": {
+                        "Button": {
+                            "Name": "Is there an extreme class enemy? "
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    },
+                    "2215": {
+                        "Button": {
+                            "Name": "Is ki 12 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=12",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    }
+                }
+            }
+        },
+        "7003397": {
+            "ID": "7003397",
+            "Timing": "On Super",
+            "ATK": 11,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2209 and 2215",
+                "Causalities": {
+                    "2209": {
+                        "Button": {
+                            "Name": "Is there an extreme class enemy? "
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    },
+                    "2215": {
+                        "Button": {
+                            "Name": "Is ki 12 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=12",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    }
+                }
+            }
+        },
+        "8003397": {
+            "ID": "8003397",
+            "Timing": "On Super",
+            "ATK": 11,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2210 and 2215",
+                "Causalities": {
+                    "2210": {
+                        "Button": {
+                            "Name": "Is there an extreme class enemy? "
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    },
+                    "2215": {
+                        "Button": {
+                            "Name": "Is ki 12 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=12",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    }
+                }
+            }
+        },
+        "9003397": {
+            "ID": "9003397",
+            "Timing": "On Super",
+            "ATK": 11,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2211 and 2215",
+                "Causalities": {
+                    "2211": {
+                        "Button": {
+                            "Name": "Is there an extreme class enemy? "
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    },
+                    "2215": {
+                        "Button": {
+                            "Name": "Is ki 12 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=12",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    }
+                }
+            }
+        },
+        "10003397": {
+            "ID": "10003397",
+            "Timing": "On Super",
+            "ATK": 11,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2212 and 2215",
+                "Causalities": {
+                    "2212": {
+                        "Button": {
+                            "Name": "Is there an extreme class enemy? "
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    },
+                    "2215": {
+                        "Button": {
+                            "Name": "Is ki 12 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=12",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    }
+                }
+            }
+        },
+        "11003397": {
+            "ID": "11003397",
+            "Timing": "On Super",
+            "ATK": 11,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2213 and 2215",
+                "Causalities": {
+                    "2213": {
+                        "Button": {
+                            "Name": "Is there an extreme class enemy? "
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    },
+                    "2215": {
+                        "Button": {
+                            "Name": "Is ki 12 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=12",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    }
+                }
+            }
+        },
+        "12003397": {
+            "ID": "12003397",
+            "Timing": "On Super",
+            "ATK": 11,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2214 and 2215",
+                "Causalities": {
+                    "2214": {
+                        "Button": {
+                            "Name": "Is there an extreme class enemy? "
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    },
+                    "2215": {
+                        "Button": {
+                            "Name": "Is ki 12 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=12",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    }
+                }
+            }
         }
     },
     "Stats at levels": {
@@ -755,22 +1058,22 @@
         }
     },
     "Super Attack": {
-        "2508": {
-            "superID": "2508",
-            "superName": "\u00e3\u0083\u00a6\u00e3\u0083\u008a\u00e3\u0082\u00a4\u00e3\u0083\u0086\u00e3\u0083\u0083\u00e3\u0083\u0089\u00e3\u0082\u00b8\u00e3\u0083\u00a3\u00e3\u0082\u00b9\u00e3\u0083\u0086\u00e3\u0082\u00a3\u00e3\u0082\u00b9\u00e3\u0082\u00b9\u00e3\u0083\u0088\u00e3\u0083\u00aa\u00e3\u0083\u00bc\u00e3\u0083\u00a0",
-            "superDescription": "DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "4579": {
+            "superID": "4579",
+            "superName": "\u00e3\u0083\u00a6\u00e3\u0083\u008a\u00e3\u0082\u00a4\u00e3\u0083\u0086\u00e3\u0083\u0083\u00e3\u0083\u0089\u00e3\u0082\u00b8\u00e3\u0083\u00a3\u00e3\u0082\u00b9\u00e3\u0083\u0086\u00e3\u0082\u00a3\u00e3\u0082\u00b9\u00e3\u0082\u00b9\u00e3\u0083\u0088\u00e3\u0083\u00aa\u00e3\u0083\u00bc\u00e3\u0083\u00a0(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0080\u00811\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "2508": {
+            "Multiplier": 530,
+            "4579": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "99",
@@ -780,6 +1083,17 @@
                 },
                 "Target": "Self",
                 "DEF": "30"
+            },
+            "1004579": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "30"
             }
         }
     },

@@ -25,30 +25,30 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "2686": {
-            "ID": "2686",
+        "2692": {
+            "ID": "2692",
             "Timing": "Start of turn",
-            "ATK": 120,
-            "DEF": 120,
+            "ATK": 180,
+            "DEF": 180,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1002686": {
-            "ID": "1002686",
+        "1002692": {
+            "ID": "1002692",
             "Timing": "On Super",
-            "ATK": 60,
+            "ATK": 80,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1224 and 1225",
+                "Logic": "1227 and 1228",
                 "Causalities": {
-                    "1224": {
+                    "1227": {
                         "Button": {
                             "Name": "Is ki 12 or more"
                         },
@@ -59,7 +59,7 @@
                             "Max": 24
                         }
                     },
-                    "1225": {
+                    "1228": {
                         "Button": {
                             "Name": "Is HP 80 % or less?"
                         },
@@ -73,8 +73,8 @@
                 }
             }
         },
-        "2002686": {
-            "ID": "2002686",
+        "2002692": {
+            "ID": "2002692",
             "Additional attack": {
                 "Activated": true,
                 "Chance of super": "30"
@@ -86,9 +86,9 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1224 and 1225",
+                "Logic": "1227 and 1228",
                 "Causalities": {
-                    "1224": {
+                    "1227": {
                         "Button": {
                             "Name": "Is ki 12 or more"
                         },
@@ -99,7 +99,7 @@
                             "Max": 24
                         }
                     },
-                    "1225": {
+                    "1228": {
                         "Button": {
                             "Name": "Is HP 80 % or less?"
                         },
@@ -113,8 +113,8 @@
                 }
             }
         },
-        "3002686": {
-            "ID": "3002686",
+        "3002692": {
+            "ID": "3002692",
             "Timing": "Start of turn",
             "Ki": 6,
             "Buff": {
@@ -123,9 +123,9 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1225",
+                "Logic": "1228",
                 "Causalities": {
-                    "1225": {
+                    "1228": {
                         "Button": {
                             "Name": "Is HP 80 % or less?"
                         },
@@ -140,19 +140,46 @@
             },
             "Once only": true
         },
-        "4002686": {
-            "ID": "4002686",
+        "4002692": {
+            "ID": "4002692",
             "Timing": "Start of turn",
-            "ATK": 60,
+            "ATK": 80,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1225",
+                "Logic": "1228",
                 "Causalities": {
-                    "1225": {
+                    "1228": {
+                        "Button": {
+                            "Name": "Is HP 80 % or less?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining",
+                            "Logic": "<=80",
+                            "Min": 0,
+                            "Max": 100
+                        }
+                    }
+                }
+            },
+            "Once only": true
+        },
+        "5002692": {
+            "ID": "5002692",
+            "Timing": "Start of turn",
+            "Crit Chance": 50,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1228",
+                "Causalities": {
+                    "1228": {
                         "Button": {
                             "Name": "Is HP 80 % or less?"
                         },
@@ -817,22 +844,33 @@
         }
     },
     "Super Attack": {
-        "3539": {
-            "superID": "3539",
-            "superName": "\u00e3\u0081\u00a9\u00e3\u0081\u00a9\u00e3\u0081\u00af\u00e3\u0082\u0081\u00e6\u00b3\u00a2",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nATK\u00e3\u0082\u0092\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
+        "3542": {
+            "superID": "3542",
+            "superName": "\u00e3\u0081\u00a9\u00e3\u0081\u00a9\u00e3\u0081\u00af\u00e3\u0082\u0081\u00e6\u00b3\u00a2(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nATK\u00e3\u0082\u0092\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "3539": {
+            "Multiplier": 530,
+            "3542": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "50"
+            },
+            "1003542": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",

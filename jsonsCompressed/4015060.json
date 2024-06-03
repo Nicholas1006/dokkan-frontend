@@ -31,26 +31,145 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "1298": {
-            "ID": "1298",
+        "3348": {
+            "ID": "3348",
             "Timing": "Start of turn",
-            "Heals": 10,
+            "Heals": 12,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1001298": {
-            "ID": "1001298",
+        "1003348": {
+            "ID": "1003348",
             "Timing": "Start of turn",
-            "ATK": 120,
+            "Ki": 2,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2003348": {
+            "ID": "2003348",
+            "Timing": "Start of turn",
+            "ATK": 180,
+            "DEF": 180,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "3003348": {
+            "ID": "3003348",
+            "Timing": "On Super",
+            "ATK": 80,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "4003348": {
+            "ID": "4003348",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 10,
+                "Max": 120,
+                "Cause": {
+                    "Cause": "HP",
+                    "Type": "More HP remaining"
+                }
+            },
             "DEF": 120,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
+        },
+        "5003348": {
+            "ID": "5003348",
+            "Timing": "Start of turn",
+            "Guard": true,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Chance": "50",
+            "Length": "1",
+            "Condition": {
+                "Logic": "2180",
+                "Causalities": {
+                    "2180": {
+                        "Button": {
+                            "Name": "Is it on or after the first 6 turns from this characters entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since the characters entry turn?",
+                            "Logic": ">=6"
+                        }
+                    }
+                }
+            }
+        },
+        "6003348": {
+            "ID": "6003348",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "50"
+            },
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2119",
+                "Causalities": {
+                    "2119": {
+                        "Button": {
+                            "Name": "Is it within the first 6 turns from this characters entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since the characters entry turn?",
+                            "Logic": "<=6",
+                            "Min": 0,
+                            "Max": 6
+                        }
+                    }
+                }
+            }
+        },
+        "7003348": {
+            "ID": "7003348",
+            "Timing": "Start of turn",
+            "Guard": true,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Chance": "70",
+            "Length": "1",
+            "Condition": {
+                "Logic": "2119",
+                "Causalities": {
+                    "2119": {
+                        "Button": {
+                            "Name": "Is it within the first 6 turns from this characters entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since the characters entry turn?",
+                            "Logic": "<=6",
+                            "Min": 0,
+                            "Max": 6
+                        }
+                    }
+                }
+            }
         }
     },
     "Stats at levels": {
@@ -752,25 +871,25 @@
         }
     },
     "Super Attack": {
-        "1455": {
-            "superID": "1455",
-            "superName": "\u00e3\u0082\u00b9\u00e3\u0083\u00bc\u00e3\u0083\u0091\u00e3\u0083\u00bc\u00e3\u0082\u00b4\u00e3\u0083\u00bc\u00e3\u0082\u00b9\u00e3\u0083\u0088\u00e3\u0082\u00ab\u00e3\u0083\u009f\u00e3\u0082\u00ab\u00e3\u0082\u00bc\u00e3\u0082\u00a2\u00e3\u0082\u00bf\u00e3\u0083\u0083\u00e3\u0082\u00af",
-            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "4452": {
+            "superID": "4452",
+            "superName": "\u00e3\u0082\u00b9\u00e3\u0083\u00bc\u00e3\u0083\u0091\u00e3\u0083\u00bc\u00e3\u0082\u00b4\u00e3\u0083\u00bc\u00e3\u0082\u00b9\u00e3\u0083\u0088\u00e3\u0082\u00ab\u00e3\u0083\u009f\u00e3\u0082\u00ab\u00e3\u0082\u00bc\u00e3\u0082\u00a2\u00e3\u0082\u00bf\u00e3\u0083\u0083\u00e3\u0082\u00af(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "3\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 505,
-            "1455": {
+            "Multiplier": 630,
+            "4452": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
-                "Duration": "1",
+                "Duration": "3",
                 "Buff": {
                     "Type": "Percentage",
                     "+ or -": "+"

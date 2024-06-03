@@ -25,30 +25,41 @@
         "Legendary Power"
     ],
     "Passive": {
-        "1564": {
-            "ID": "1564",
+        "3508": {
+            "ID": "3508",
             "Timing": "Start of turn",
-            "ATK": 66,
-            "DEF": 66,
+            "Ki": 2,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1003508": {
+            "ID": "1003508",
+            "Timing": "Start of turn",
+            "ATK": 120,
+            "DEF": 120,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1001564": {
-            "ID": "1001564",
+        "2003508": {
+            "ID": "2003508",
             "Timing": "Start of turn",
-            "ATK": 20,
+            "ATK": 30,
+            "DEF": 30,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "120",
+                "Logic": "2491",
                 "Causalities": {
-                    "120": {
+                    "2491": {
                         "Button": {
                             "Name": "Are there 1 or more Wicked Bloodline category allies on the team "
                         },
@@ -62,19 +73,20 @@
                 }
             }
         },
-        "2001564": {
-            "ID": "2001564",
+        "3003508": {
+            "ID": "3003508",
             "Timing": "Start of turn",
-            "ATK": 20,
+            "ATK": 30,
+            "DEF": 30,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "121",
+                "Logic": "2492",
                 "Causalities": {
-                    "121": {
+                    "2492": {
                         "Button": {
                             "Name": "Are there 2 or more Wicked Bloodline category allies on the team "
                         },
@@ -88,19 +100,20 @@
                 }
             }
         },
-        "3001564": {
-            "ID": "3001564",
+        "4003508": {
+            "ID": "4003508",
             "Timing": "Start of turn",
-            "ATK": 20,
+            "ATK": 30,
+            "DEF": 30,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "122",
+                "Logic": "2493",
                 "Causalities": {
-                    "122": {
+                    "2493": {
                         "Button": {
                             "Name": "Are there 3 or more Wicked Bloodline category allies on the team "
                         },
@@ -114,8 +127,104 @@
                 }
             }
         },
-        "4001564": {
-            "ID": "4001564",
+        "5003508": {
+            "ID": "5003508",
+            "Timing": "On Super",
+            "DEF": 30,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "6003508": {
+            "ID": "6003508",
+            "Timing": "Start of turn",
+            "Ki": 1,
+            "Target": {
+                "Category": "Wicked Bloodline",
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "7003508": {
+            "ID": "7003508",
+            "Timing": "Start of turn",
+            "ATK": 30,
+            "Target": {
+                "Category": "Wicked Bloodline",
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "8003508": {
+            "ID": "8003508",
+            "Timing": "Start of turn",
+            "Ki": 1,
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2494",
+                "Causalities": {
+                    "2494": {
+                        "Button": {
+                            "Name": "Are there 3 or more Wicked Bloodline category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Wicked Bloodline category allies on the same turn ",
+                            "Logic": ">=3",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "9003508": {
+            "ID": "9003508",
+            "Timing": "Start of turn",
+            "DEF": 50,
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2494",
+                "Causalities": {
+                    "2494": {
+                        "Button": {
+                            "Name": "Are there 3 or more Wicked Bloodline category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Wicked Bloodline category allies on the same turn ",
+                            "Logic": ">=3",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "10003508": {
+            "ID": "10003508",
             "Timing": "Start of turn",
             "Ki": 9,
             "Buff": {
@@ -124,9 +233,38 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "212",
+                "Logic": "2495",
                 "Causalities": {
-                    "212": {
+                    "2495": {
+                        "Button": {
+                            "Name": "Are there 1 or more Super Saiyans category enemies "
+                        },
+                        "Slider": {
+                            "Name": "How many Super Saiyans category enemies ",
+                            "Logic": ">=1",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "11003508": {
+            "ID": "11003508",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "100"
+            },
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2495",
+                "Causalities": {
+                    "2495": {
                         "Button": {
                             "Name": "Are there 1 or more Super Saiyans category enemies "
                         },
@@ -954,14 +1092,14 @@
         }
     },
     "Super Attack": {
-        "1803": {
-            "superID": "1803",
-            "superName": "\u00e3\u0083\u0095\u00e3\u0083\u00ab\u00e3\u0083\u0091\u00e3\u0083\u00af\u00e3\u0083\u00bc\u00e3\u0083\u0087\u00e3\u0082\u00b9\u00e3\u0083\u0093\u00e3\u0083\u00bc\u00e3\u0083\u00a0",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e6\u00a5\u00b5\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nATK\u00e3\u0082\u0092\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
+        "4766": {
+            "superID": "4766",
+            "superName": "\u00e3\u0083\u0095\u00e3\u0083\u00ab\u00e3\u0083\u0091\u00e3\u0083\u00af\u00e3\u0083\u00bc\u00e3\u0083\u0087\u00e3\u0082\u00b9\u00e3\u0083\u0093\u00e3\u0083\u00bc\u00e3\u0083\u00a0(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e6\u00a5\u00b5\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nATK\u00e3\u0082\u0092\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -974,7 +1112,19 @@
                 "Amount": "30"
             },
             "Multiplier": 395,
-            "1803": {
+            "4766": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "30",
+                "DEF": "30"
+            },
+            "1004766": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",
@@ -986,14 +1136,14 @@
                 "ATK": "20"
             }
         },
-        "1804": {
-            "superID": "1804",
-            "superName": "\u00e6\u009c\u0080\u00e5\u0087\u00b6\u00e4\u00b8\u0080\u00e6\u0097\u008f\u00e3\u0081\u00ae\u00e5\u008a\u009b",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e6\u00a5\u00b5\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n2\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3\u00e6\u00a5\u00b5\u00e7\u00b3\u00bb\u00e3\u0081\u00ae\u00e4\u00bb\u00b2\u00e9\u0096\u0093ATK30%UP",
+        "4767": {
+            "superID": "4767",
+            "superName": "\u00e6\u009c\u0080\u00e5\u0087\u00b6\u00e4\u00b8\u0080\u00e6\u0097\u008f\u00e3\u0081\u00ae\u00e5\u008a\u009b(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e6\u00a5\u00b5\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n2\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3\u00e6\u00a5\u00b5\u00e7\u00b3\u00bb\u00e3\u0081\u00ae\u00e4\u00bb\u00b2\u00e9\u0096\u0093ATK35%UP",
             "superMinKi": "18",
             "superPriority": "0.0",
             "superStyle": "Hyper",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -1005,8 +1155,19 @@
                 "Duration": "1",
                 "Amount": "30"
             },
-            "Multiplier": 510,
-            "1804": {
+            "Multiplier": 505,
+            "4767": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "30"
+            },
+            "1004767": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "2",
@@ -1015,7 +1176,7 @@
                     "+ or -": "+"
                 },
                 "Target": "Extreme class Allies",
-                "ATK": "30"
+                "ATK": "35"
             }
         }
     },

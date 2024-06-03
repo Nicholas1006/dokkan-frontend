@@ -37,18 +37,77 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "1272": {
-            "ID": "1272",
+        "2509": {
+            "ID": "2509",
             "Timing": "Start of turn",
-            "ATK": 120,
+            "ATK": 150,
+            "DEF": 150,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1001272": {
-            "ID": "1001272",
+        "1002509": {
+            "ID": "1002509",
+            "Timing": "Attacking",
+            "Ki": 3,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "941",
+                "Causalities": {
+                    "941": {
+                        "Button": {
+                            "Name": "Is this unit attacking an extreme class enemy?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "2002509": {
+            "ID": "2002509",
+            "Timing": "Attacking",
+            "ATK": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "941",
+                "Causalities": {
+                    "941": {
+                        "Button": {
+                            "Name": "Is this unit attacking an extreme class enemy?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "3002509": {
+            "ID": "3002509",
+            "Timing": "Being hit",
+            "DR": 25,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "4002509": {
+            "ID": "4002509",
             "Timing": "Start of turn",
             "Ki": 12,
             "Buff": {
@@ -58,8 +117,8 @@
             "Length": "1",
             "Once only": true
         },
-        "2001272": {
-            "ID": "2001272",
+        "5002509": {
+            "ID": "5002509",
             "Timing": "Start of turn",
             "Crit Chance": 100,
             "Buff": {
@@ -68,16 +127,6 @@
             },
             "Length": "1",
             "Once only": true
-        },
-        "3001272": {
-            "ID": "3001272",
-            "Timing": "Being hit",
-            "DR": 25,
-            "Buff": {
-                "Type": "Percentage",
-                "+ or -": "+"
-            },
-            "Length": "1"
         }
     },
     "Stats at levels": {
@@ -740,22 +789,34 @@
         }
     },
     "Super Attack": {
-        "1427": {
-            "superID": "1427",
-            "superName": "\u00e6\u0081\u00a8\u00e3\u0081\u00bf\u00e3\u0081\u00a3\u00e3\u0081\u0093\u00e3\u0081\u00aa\u00e3\u0081\u0097\u00e3\u0081\u00ae\u00e4\u00b8\u0080\u00e7\u0099\u00ba",
-            "superDescription": "\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n\u00e8\u00b6\u0085\u00e9\u00ab\u0098\u00e7\u00a2\u00ba\u00e7\u008e\u0087\u00e3\u0081\u00a7\u00e6\u00b0\u0097\u00e7\u00b5\u00b6\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
+        "3254": {
+            "superID": "3254",
+            "superName": "\u00e6\u0081\u00a8\u00e3\u0081\u00bf\u00e3\u0081\u00a3\u00e3\u0081\u0093\u00e3\u0081\u00aa\u00e3\u0081\u0097\u00e3\u0081\u00ae\u00e4\u00b8\u0080\u00e7\u0099\u00ba(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n\u00e8\u00b6\u0085\u00e9\u00ab\u0098\u00e7\u00a2\u00ba\u00e7\u008e\u0087\u00e3\u0081\u00a7\u00e6\u00b0\u0097\u00e7\u00b5\u00b6\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 505,
-            "1427": {
+            "Multiplier": 630,
+            "3254": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "30",
+                "DEF": "30"
+            },
+            "1003254": {
                 "Type": "ExtraEfficacySpecial",
                 "Chance": "70",
                 "Duration": "2",

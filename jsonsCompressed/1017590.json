@@ -26,32 +26,108 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "1676": {
-            "ID": "1676",
+        "4074": {
+            "ID": "4074",
             "Timing": "Start of turn",
-            "ATK": 100,
-            "DEF": 100,
+            "Ki": 2,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1004074": {
+            "ID": "1004074",
+            "Timing": "Start of turn",
+            "ATK": 160,
+            "DEF": 160,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1001676": {
-            "ID": "1001676",
+        "2004074": {
+            "ID": "2004074",
             "Timing": "Start of turn",
             "Guard": true,
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Chance": "50",
             "Length": "1"
         },
-        "2001676": {
-            "ID": "2001676",
+        "3004074": {
+            "ID": "3004074",
+            "Timing": "On Super",
+            "ATK": 80,
+            "DEF": 80,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "4004074": {
+            "ID": "4004074",
+            "Timing": "Hit recieved",
+            "Crit Chance": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "24",
+                "Causalities": {
+                    "24": {
+                        "Button": {
+                            "Name": "Has attack been recieved?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "5004074": {
+            "ID": "5004074",
+            "Timing": "Hit recieved",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 48,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "DR": 16,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Condition": {
+                "Logic": "3079",
+                "Causalities": {
+                    "3079": {
+                        "Button": {
+                            "Name": "Has guard been activated?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "6004074": {
+            "ID": "6004074",
             "Timing": "Start of turn",
-            "DEF": 100,
+            "ATK": 80,
+            "DEF": 160,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -72,8 +148,8 @@
                 }
             }
         },
-        "3001676": {
-            "ID": "3001676",
+        "7004074": {
+            "ID": "7004074",
             "Timing": "Start of turn",
             "Ki": 3,
             "Target": {
@@ -99,10 +175,11 @@
                 }
             }
         },
-        "4001676": {
-            "ID": "4001676",
+        "8004074": {
+            "ID": "8004074",
             "Timing": "Start of turn",
-            "ATK": 50,
+            "ATK": 58,
+            "DEF": 58,
             "Target": {
                 "Target": "Allies"
             },
@@ -790,22 +867,33 @@
         }
     },
     "Super Attack": {
-        "1863": {
-            "superID": "1863",
-            "superName": "\u00e3\u0083\u00ad\u00e3\u0082\u00b1\u00e3\u0083\u0083\u00e3\u0083\u0088\u00e3\u0083\u0091\u00e3\u0083\u00b3\u00e3\u0083\u0081",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nDEF\u00e3\u0082\u0092\u00e8\u00b6\u0085\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e3\u0081\u00ab\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
+        "5364": {
+            "superID": "5364",
+            "superName": "\u00e3\u0083\u00ad\u00e3\u0082\u00b1\u00e3\u0083\u0083\u00e3\u0083\u0088\u00e3\u0083\u0091\u00e3\u0083\u00b3\u00e3\u0083\u0081(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3DEF\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nDEF\u00e3\u0082\u0092\u00e8\u00b6\u0085\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e3\u0081\u00ab\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "1863": {
+            "Multiplier": 530,
+            "5364": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "50"
+            },
+            "1005364": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",

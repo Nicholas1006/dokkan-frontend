@@ -28,19 +28,19 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "1290": {
-            "ID": "1290",
+        "3386": {
+            "ID": "3386",
             "Timing": "Start of turn",
-            "ATK": 50,
-            "DEF": 50,
+            "ATK": 150,
+            "DEF": 150,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1001290": {
-            "ID": "1001290",
+        "1003386": {
+            "ID": "1003386",
             "Timing": "Start of turn",
             "ATK": 5,
             "DEF": 5,
@@ -51,8 +51,8 @@
             "Length": "1",
             "Once only": true
         },
-        "2001290": {
-            "ID": "2001290",
+        "2003386": {
+            "ID": "2003386",
             "Timing": "Start of turn",
             "ATK": 5,
             "DEF": 5,
@@ -63,8 +63,8 @@
             "Length": "2",
             "Once only": true
         },
-        "3001290": {
-            "ID": "3001290",
+        "3003386": {
+            "ID": "3003386",
             "Timing": "Start of turn",
             "ATK": 5,
             "DEF": 5,
@@ -75,8 +75,8 @@
             "Length": "3",
             "Once only": true
         },
-        "4001290": {
-            "ID": "4001290",
+        "4003386": {
+            "ID": "4003386",
             "Timing": "Start of turn",
             "ATK": 5,
             "DEF": 5,
@@ -87,77 +87,86 @@
             "Length": "4",
             "Once only": true
         },
-        "5001290": {
-            "ID": "5001290",
+        "5003386": {
+            "ID": "5003386",
+            "Dodge chance": 50,
             "Timing": "Start of turn",
-            "ATK": 5,
-            "DEF": 5,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "5",
-            "Once only": true
+            "Length": "1",
+            "Condition": {
+                "Logic": "2202",
+                "Causalities": {
+                    "2202": {
+                        "Button": {
+                            "Name": "Is the turn count 5 or more?"
+                        },
+                        "Slider": {
+                            "Name": "What turn is it?",
+                            "Logic": ">=5",
+                            "Min": 1
+                        }
+                    }
+                }
+            }
         },
-        "6001290": {
-            "ID": "6001290",
-            "Timing": "Start of turn",
-            "ATK": 5,
-            "DEF": 5,
+        "6003386": {
+            "ID": "6003386",
+            "Timing": "On Super",
+            "ATK": 50,
+            "DEF": 50,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "6",
-            "Once only": true
+            "Length": "1",
+            "Condition": {
+                "Logic": "2195",
+                "Causalities": {
+                    "2195": {
+                        "Button": {
+                            "Name": "Is ki 9 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=9",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    }
+                }
+            }
         },
-        "7001290": {
-            "ID": "7001290",
+        "7003386": {
+            "ID": "7003386",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "100"
+            },
             "Timing": "Start of turn",
-            "ATK": 5,
-            "DEF": 5,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "7",
-            "Once only": true
-        },
-        "8001290": {
-            "ID": "8001290",
-            "Timing": "Start of turn",
-            "ATK": 5,
-            "DEF": 5,
-            "Buff": {
-                "Type": "Percentage",
-                "+ or -": "+"
-            },
-            "Length": "8",
-            "Once only": true
-        },
-        "9001290": {
-            "ID": "9001290",
-            "Timing": "Start of turn",
-            "ATK": 5,
-            "DEF": 5,
-            "Buff": {
-                "Type": "Percentage",
-                "+ or -": "+"
-            },
-            "Length": "9",
-            "Once only": true
-        },
-        "10001290": {
-            "ID": "10001290",
-            "Timing": "Start of turn",
-            "ATK": 5,
-            "DEF": 5,
-            "Buff": {
-                "Type": "Percentage",
-                "+ or -": "+"
-            },
-            "Length": "10",
-            "Once only": true
+            "Length": "1",
+            "Condition": {
+                "Logic": "2196",
+                "Causalities": {
+                    "2196": {
+                        "Button": {
+                            "Name": "Are there 2 or more Youth category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Youth category allies on the same turn ",
+                            "Logic": ">=2",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
         }
     },
     "Stats at levels": {
@@ -822,26 +831,49 @@
         }
     },
     "Super Attack": {
-        "1449": {
-            "superID": "1449",
-            "superName": "\u00e8\u0087\u00aa\u00e7\u0084\u00b6\u00e4\u00bf\u009d\u00e8\u00ad\u00b7\u00e5\u00ae\u0098\u00e3\u0081\u00ae\u00e3\u0081\u008a\u00e6\u0089\u008b\u00e4\u00bc\u009d\u00e3\u0081\u0084",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "4529": {
+            "superID": "4529",
+            "superName": "\u00e8\u0087\u00aa\u00e7\u0084\u00b6\u00e4\u00bf\u009d\u00e8\u00ad\u00b7\u00e5\u00ae\u0098\u00e3\u0081\u00ae\u00e3\u0081\u008a\u00e6\u0089\u008b\u00e4\u00bc\u009d\u00e3\u0081\u0084(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3\u00e8\u0087\u00aa\u00e8\u00ba\u00ab\u00e3\u0082\u0092\u00e9\u0099\u00a4\u00e3\u0081\u008f\u00e4\u00bb\u00b2\u00e9\u0096\u0093ATK30%UP",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
-                "ID": "10",
+                "ID": "16",
                 "Type": "SA multiplier increase",
-                "Description": "\u00e5\u00bf\u0085\u00e6\u00ae\u00ba\u00e6\u008a\u0080\u00e3\u0081\u008c30%\u00e3\u0081\u00ae\u00e7\u00a2\u00ba\u00e7\u008e\u0087\u00e3\u0081\u00a7\u00e5\u00a4\u0089\u00e5\u008c\u0096\u00e3\u0081\u0097\u00e3\u0081\u00a6\n\u00e5\u00a8\u0081\u00e5\u008a\u009b\u00e3\u0081\u008c\u00e6\u009b\u00b4\u00e3\u0081\u00ab\u00e3\u0082\u00a2\u00e3\u0083\u0083\u00e3\u0083\u0097!!&\u00e5\u00bf\u0085\u00e6\u00ae\u00ba\u00e6\u008a\u0080Lv.10\u00e3\u0080\u009c\n\u00e6\u00b0\u0097\u00e5\u008a\u009b\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00bf\u00e3\u0083\u00bc9\u00e4\u00bb\u00a5\u00e4\u00b8\u008a\u00e3\u0081\u00a7\u00e5\u00bf\u0085\u00e6\u00ae\u00ba\u00e6\u008a\u0080\u00e3\u0081\u008c\u00e7\u0099\u00ba\u00e5\u008b\u0095!!",
-                "Chance": "30",
+                "Description": "\u00e5\u00bf\u0085\u00e6\u00ae\u00ba\u00e6\u008a\u0080\u00e3\u0081\u008c50%\u00e3\u0081\u00ae\u00e7\u00a2\u00ba\u00e7\u008e\u0087\u00e3\u0081\u00a7\u00e5\u00a4\u0089\u00e5\u008c\u0096\u00e3\u0081\u0097\u00e3\u0081\u00a6\n\u00e5\u00a8\u0081\u00e5\u008a\u009b\u00e3\u0081\u008c\u00e6\u009b\u00b4\u00e3\u0081\u00ab\u00e5\u00a4\u00a7\u00e3\u0082\u00a2\u00e3\u0083\u0083\u00e3\u0083\u0097!!&\u00e5\u00bf\u0085\u00e6\u00ae\u00ba\u00e6\u008a\u0080Lv.10\u00e3\u0080\u009c\n\u00e6\u00b0\u0097\u00e5\u008a\u009b\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00bf\u00e3\u0083\u00bc9\u00e4\u00bb\u00a5\u00e4\u00b8\u008a\u00e3\u0081\u00a7\u00e5\u00bf\u0085\u00e6\u00ae\u00ba\u00e6\u008a\u0080\u00e3\u0081\u008c\u00e7\u0099\u00ba\u00e5\u008b\u0095!!",
+                "Chance": "50",
                 "Duration": "1",
-                "Amount": "20"
+                "Amount": "30"
             },
-            "Multiplier": 430
+            "Multiplier": 430,
+            "4529": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "50",
+                "DEF": "50"
+            },
+            "1004529": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Allies (self excluded)",
+                "ATK": "30"
+            }
         }
     },
     "Active Skill": null,

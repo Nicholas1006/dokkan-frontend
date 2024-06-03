@@ -40,19 +40,118 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "1941": {
-            "ID": "1941",
+        "3363": {
+            "ID": "3363",
             "Timing": "Start of turn",
-            "ATK": 59,
-            "DEF": 59,
+            "ATK": 159,
+            "DEF": 159,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1001941": {
-            "ID": "1001941",
+        "1003363": {
+            "ID": "1003363",
+            "Timing": "Start of turn",
+            "Guard": true,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "(2145 and 2146) or (2145 and 2147)",
+                "Causalities": {
+                    "2145": {
+                        "Button": {
+                            "Name": "Is it within the first 5 turns from this characters entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since the characters entry turn?",
+                            "Logic": "<=5",
+                            "Min": 0,
+                            "Max": 5
+                        }
+                    },
+                    "2146": {
+                        "Button": {
+                            "Name": "Are there 1 or more Universe Survival Saga category enemies "
+                        },
+                        "Slider": {
+                            "Name": "How many Universe Survival Saga category enemies ",
+                            "Logic": ">=1",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    },
+                    "2147": {
+                        "Button": {
+                            "Name": "Are there 2 or more Universe Survival Saga category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Universe Survival Saga category allies on the same turn ",
+                            "Logic": ">=2",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "2003363": {
+            "ID": "2003363",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "50"
+            },
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "(2145 and 2146) or (2145 and 2147)",
+                "Causalities": {
+                    "2145": {
+                        "Button": {
+                            "Name": "Is it within the first 5 turns from this characters entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since the characters entry turn?",
+                            "Logic": "<=5",
+                            "Min": 0,
+                            "Max": 5
+                        }
+                    },
+                    "2146": {
+                        "Button": {
+                            "Name": "Are there 1 or more Universe Survival Saga category enemies "
+                        },
+                        "Slider": {
+                            "Name": "How many Universe Survival Saga category enemies ",
+                            "Logic": ">=1",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    },
+                    "2147": {
+                        "Button": {
+                            "Name": "Are there 2 or more Universe Survival Saga category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Universe Survival Saga category allies on the same turn ",
+                            "Logic": ">=2",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "3003363": {
+            "ID": "3003363",
             "Timing": "Hit recieved",
             "Building Stat": {
                 "Min": 0,
@@ -68,9 +167,9 @@
             },
             "Length": "99",
             "Condition": {
-                "Logic": "24",
+                "Logic": "2150",
                 "Causalities": {
-                    "24": {
+                    "2150": {
                         "Button": {
                             "Name": "Has attack been recieved?"
                         },
@@ -82,8 +181,8 @@
                 }
             }
         },
-        "2001941": {
-            "ID": "2001941",
+        "4003363": {
+            "ID": "4003363",
             "Timing": "Hit recieved",
             "Building Stat": {
                 "Min": 0,
@@ -99,9 +198,9 @@
             },
             "Length": "99",
             "Condition": {
-                "Logic": "24",
+                "Logic": "2150",
                 "Causalities": {
-                    "24": {
+                    "2150": {
                         "Button": {
                             "Name": "Has attack been recieved?"
                         },
@@ -113,8 +212,8 @@
                 }
             }
         },
-        "3001941": {
-            "ID": "3001941",
+        "5003363": {
+            "ID": "5003363",
             "Timing": "On Super",
             "ATK": 59,
             "Buff": {
@@ -123,20 +222,9 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "403 and 405",
+                "Logic": "2148",
                 "Causalities": {
-                    "403": {
-                        "Button": {
-                            "Name": "Is HP 59 % or less?"
-                        },
-                        "Slider": {
-                            "Name": "What percentage of HP is remaining",
-                            "Logic": "<=59",
-                            "Min": 0,
-                            "Max": 100
-                        }
-                    },
-                    "405": {
+                    "2148": {
                         "Button": {
                             "Name": "Is ki 12 or more"
                         },
@@ -148,22 +236,32 @@
                         }
                     }
                 }
-            },
-            "Once only": true
+            }
         },
-        "4001941": {
-            "ID": "4001941",
-            "Effective against all": true,
+        "6003363": {
+            "ID": "6003363",
             "Timing": "On Super",
+            "ATK": 59,
             "Buff": {
-                "Type": "Raw stats",
+                "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "403 and 405",
+                "Logic": "2148 and 2149",
                 "Causalities": {
-                    "403": {
+                    "2148": {
+                        "Button": {
+                            "Name": "Is ki 12 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=12",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    },
+                    "2149": {
                         "Button": {
                             "Name": "Is HP 59 % or less?"
                         },
@@ -173,8 +271,24 @@
                             "Min": 0,
                             "Max": 100
                         }
-                    },
-                    "405": {
+                    }
+                }
+            },
+            "Once only": true
+        },
+        "7003363": {
+            "ID": "7003363",
+            "Effective against all": true,
+            "Timing": "On Super",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2148 and 2149",
+                "Causalities": {
+                    "2148": {
                         "Button": {
                             "Name": "Is ki 12 or more"
                         },
@@ -183,6 +297,17 @@
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 24
+                        }
+                    },
+                    "2149": {
+                        "Button": {
+                            "Name": "Is HP 59 % or less?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining",
+                            "Logic": "<=59",
+                            "Min": 0,
+                            "Max": 100
                         }
                     }
                 }
@@ -886,22 +1011,22 @@
         }
     },
     "Super Attack": {
-        "2125": {
-            "superID": "2125",
-            "superName": "10\u00e5\u0080\u008d\u00e7\u0095\u008c\u00e7\u008e\u008b\u00e6\u008b\u00b3 \u00e3\u0082\u00b4\u00e3\u0083\u0083\u00e3\u0083\u0089\u00e3\u0081\u008b\u00e3\u0082\u0081\u00e3\u0081\u00af\u00e3\u0082\u0081\u00e6\u00b3\u00a2",
-            "superDescription": "ATK\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "4415": {
+            "superID": "4415",
+            "superName": "10\u00e5\u0080\u008d\u00e7\u0095\u008c\u00e7\u008e\u008b\u00e6\u008b\u00b3 \u00e3\u0082\u00b4\u00e3\u0083\u0083\u00e3\u0083\u0089\u00e3\u0081\u008b\u00e3\u0082\u0081\u00e3\u0081\u00af\u00e3\u0082\u0081\u00e6\u00b3\u00a2(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "ATK\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0080\u0081\n1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 455,
-            "2125": {
+            "Multiplier": 580,
+            "4415": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "99",
@@ -911,6 +1036,17 @@
                 },
                 "Target": "Self",
                 "ATK": "50"
+            },
+            "1004415": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "30"
             }
         }
     },

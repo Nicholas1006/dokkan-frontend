@@ -28,10 +28,48 @@
         "Legendary Power"
     ],
     "Passive": {
-        "709": {
-            "ID": "709",
+        "3225": {
+            "ID": "3225",
             "Timing": "Start of turn",
-            "DEF": 5000,
+            "Ki": 3,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1003225": {
+            "ID": "1003225",
+            "Timing": "Start of turn",
+            "DEF": 200,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2003225": {
+            "ID": "2003225",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 10,
+                "Max": 200,
+                "Cause": {
+                    "Cause": "HP",
+                    "Type": "More HP remaining"
+                }
+            },
+            "ATK": 200,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "3003225": {
+            "ID": "3003225",
+            "Timing": "Start of turn",
+            "Ki": 1,
             "Target": {
                 "Target": "Allies"
             },
@@ -41,15 +79,131 @@
             },
             "Length": "1"
         },
-        "1000709": {
-            "ID": "1000709",
+        "4003225": {
+            "ID": "4003225",
             "Timing": "Start of turn",
-            "DEF": 10000,
+            "DEF": 20,
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "5003225": {
+            "ID": "5003225",
+            "Timing": "Start of turn",
+            "Ki": 2,
+            "Target": {
+                "Target": "Allies"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "2077",
+                "Causalities": {
+                    "2077": {
+                        "Button": {
+                            "Name": "Is there is an ally on the team whose name includes Gohan (Kid)?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "6003225": {
+            "ID": "6003225",
+            "Timing": "Start of turn",
+            "DEF": 20,
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2077",
+                "Causalities": {
+                    "2077": {
+                        "Button": {
+                            "Name": "Is there is an ally on the team whose name includes Gohan (Kid)?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "7003225": {
+            "ID": "7003225",
+            "Timing": "Start of turn",
+            "DEF": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2078",
+                "Causalities": {
+                    "2078": {
+                        "Button": {
+                            "Name": "Is there is an ally attacking in the same turn whose name includes Gohan (Kid)?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "8003225": {
+            "ID": "8003225",
+            "Timing": "after all ki collected",
+            "Guard": true,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2079 and 2078",
+                "Causalities": {
+                    "2079": {
+                        "Button": {
+                            "Name": "Is this the 1st attacker in the turn?"
+                        },
+                        "Slider": {
+                            "Name": "What position is this character attacking in?",
+                            "Logic": "==1",
+                            "Min": 1,
+                            "Max": 3
+                        }
+                    },
+                    "2078": {
+                        "Button": {
+                            "Name": "Is there is an ally attacking in the same turn whose name includes Gohan (Kid)?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
         }
     },
     "Stats at levels": {
@@ -899,14 +1053,14 @@
         }
     },
     "Super Attack": {
-        "478": {
-            "superID": "478",
-            "superName": "\u00e9\u00ad\u0094\u00e7\u00a9\u00ba\u00e5\u008c\u0085\u00e5\u009b\u00b2\u00e5\u00bc\u00be",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e6\u00a5\u00b5\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "4395": {
+            "superID": "4395",
+            "superName": "\u00e9\u00ad\u0094\u00e7\u00a9\u00ba\u00e5\u008c\u0085\u00e5\u009b\u00b2\u00e5\u00bc\u00be(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e6\u00a5\u00b5\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nATK\u00e3\u0082\u0092\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -918,16 +1072,27 @@
                 "Duration": "1",
                 "Amount": "30"
             },
-            "Multiplier": 395
+            "Multiplier": 395,
+            "4395": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "3",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "-"
+                },
+                "Target": "Enemy",
+                "ATK": "30"
+            }
         },
-        "479": {
-            "superID": "479",
-            "superName": "\u00e5\u009c\u00b0\u00e7\u0090\u0083\u00e3\u0082\u0092\u00e3\u0081\u00aa\u00e3\u0082\u0081\u00e3\u0082\u008b\u00e3\u0081\u00aa\u00e3\u0082\u0088\u00e2\u0080\u00a6\u00ef\u00bc\u0081",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e6\u00a5\u00b5\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "4396": {
+            "superID": "4396",
+            "superName": "\u00e5\u009c\u00b0\u00e7\u0090\u0083\u00e3\u0082\u0092\u00e3\u0081\u00aa\u00e3\u0082\u0081\u00e3\u0082\u008b\u00e3\u0081\u00aa\u00e3\u0082\u0088\u00e2\u0080\u00a6\u00ef\u00bc\u0081(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e6\u00a5\u00b5\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b\n&1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3\u00e4\u00bb\u00b2\u00e9\u0096\u0093ATK30%UP",
             "superMinKi": "18",
             "superPriority": "0.0",
             "superStyle": "Hyper",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -939,7 +1104,18 @@
                 "Duration": "1",
                 "Amount": "30"
             },
-            "Multiplier": 540
+            "Multiplier": 510,
+            "4396": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Allies",
+                "ATK": "30"
+            }
         }
     },
     "Active Skill": null,

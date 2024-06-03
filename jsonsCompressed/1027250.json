@@ -31,8 +31,8 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "3520": {
-            "ID": "3520",
+        "3522": {
+            "ID": "3522",
             "Timing": "Start of turn",
             "Ki": 2,
             "Buff": {
@@ -41,64 +41,81 @@
             },
             "Length": "1"
         },
-        "1003520": {
-            "ID": "1003520",
+        "1003522": {
+            "ID": "1003522",
             "Timing": "Start of turn",
-            "ATK": 80,
-            "DEF": 80,
+            "ATK": 100,
+            "DEF": 100,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "2003520": {
-            "ID": "2003520",
+        "2003522": {
+            "ID": "2003522",
             "Timing": "Attacking the enemy",
             "Building Stat": {
                 "Min": 0,
-                "Max": 80,
+                "Max": 100,
                 "Cause": {
                     "Cause": "Look Elsewhere"
                 }
             },
-            "ATK": 20,
+            "ATK": 25,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "99"
         },
-        "3003520": {
-            "ID": "3003520",
+        "3003522": {
+            "ID": "3003522",
             "Timing": "Attacking the enemy",
             "Building Stat": {
                 "Min": 0,
-                "Max": 80,
+                "Max": 100,
                 "Cause": {
                     "Cause": "Look Elsewhere"
                 }
             },
-            "DEF": 20,
+            "DEF": 25,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "99"
         },
-        "4003520": {
-            "ID": "4003520",
+        "4003522": {
+            "ID": "4003522",
+            "Timing": "Attacking the enemy",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 20,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "Crit Chance": 5,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99"
+        },
+        "5003522": {
+            "ID": "5003522",
             "Timing": "Start of turn",
-            "Crit Chance": 30,
+            "Crit Chance": 50,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2527 or 2528",
+                "Logic": "2533 or 2534",
                 "Causalities": {
-                    "2527": {
+                    "2533": {
                         "Button": {
                             "Name": "Are there 1 or more Future Saga category enemies "
                         },
@@ -109,7 +126,7 @@
                             "Min": 0
                         }
                     },
-                    "2528": {
+                    "2534": {
                         "Button": {
                             "Name": "Are there 1 or more Time Travelers category enemies "
                         },
@@ -123,20 +140,20 @@
                 }
             }
         },
-        "5003520": {
-            "ID": "5003520",
+        "6003522": {
+            "ID": "6003522",
             "Timing": "On Super",
-            "ATK": 40,
-            "DEF": 40,
+            "ATK": 50,
+            "DEF": 50,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2524 and 2525",
+                "Logic": "2535 and 2537",
                 "Causalities": {
-                    "2524": {
+                    "2535": {
                         "Button": {
                             "Name": "Are there 2 or more Future Saga category allies on the same turn "
                         },
@@ -147,7 +164,45 @@
                             "Min": 0
                         }
                     },
-                    "2525": {
+                    "2537": {
+                        "Button": {
+                            "Name": "Is ki 12 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=12",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    }
+                }
+            }
+        },
+        "7003522": {
+            "ID": "7003522",
+            "Timing": "On Super",
+            "ATK": 50,
+            "DEF": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2536 and 2537",
+                "Causalities": {
+                    "2536": {
+                        "Button": {
+                            "Name": "Are there 3 or more Future Saga category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Future Saga category allies on the same turn ",
+                            "Logic": ">=3",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    },
+                    "2537": {
                         "Button": {
                             "Name": "Is ki 12 or more"
                         },
@@ -825,22 +880,22 @@
         }
     },
     "Super Attack": {
-        "4773": {
-            "superID": "4773",
-            "superName": "\u00e3\u0083\u0090\u00e3\u0083\u00bc\u00e3\u0083\u008b\u00e3\u0083\u00b3\u00e3\u0082\u00b0\u00e3\u0082\u00a2\u00e3\u0082\u00bf\u00e3\u0083\u0083\u00e3\u0082\u00af",
-            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "4774": {
+            "superID": "4774",
+            "superName": "\u00e3\u0083\u0090\u00e3\u0083\u00bc\u00e3\u0083\u008b\u00e3\u0083\u00b3\u00e3\u0082\u00b0\u00e3\u0082\u00a2\u00e3\u0082\u00bf\u00e3\u0083\u0083\u00e3\u0082\u00af(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0080\u0081DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "4773": {
+            "Multiplier": 530,
+            "4774": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -849,7 +904,17 @@
                     "+ or -": "+"
                 },
                 "Target": "Self",
-                "ATK": "30",
+                "ATK": "50"
+            },
+            "1004774": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
                 "DEF": "30"
             }
         }

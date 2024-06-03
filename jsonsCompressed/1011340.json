@@ -28,26 +28,50 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "1438": {
-            "ID": "1438",
+        "1440": {
+            "ID": "1440",
             "Timing": "Start of turn",
-            "ATK": 40,
-            "DEF": 40,
+            "ATK": 60,
+            "DEF": 60,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1001438": {
-            "ID": "1001438",
+        "1001440": {
+            "ID": "1001440",
             "Timing": "Hit recieved",
-            "ATK": 40,
+            "Ki": 2,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "5",
+            "Condition": {
+                "Logic": "24",
+                "Causalities": {
+                    "24": {
+                        "Button": {
+                            "Name": "Has attack been recieved?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "2001440": {
+            "ID": "2001440",
+            "Timing": "Hit recieved",
+            "ATK": 50,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "4",
+            "Length": "5",
             "Condition": {
                 "Logic": "24",
                 "Causalities": {
@@ -726,14 +750,14 @@
         }
     },
     "Super Attack": {
-        "1636": {
-            "superID": "1636",
-            "superName": "\u00e3\u0083\u0093\u00e3\u0082\u00af\u00e3\u0083\u0088\u00e3\u0083\u00aa\u00e3\u0083\u00bc\u00e3\u0083\u00a9\u00e3\u0083\u0083\u00e3\u0082\u00b7\u00e3\u0083\u00a5",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "1637": {
+            "superID": "1637",
+            "superName": "\u00e3\u0083\u0093\u00e3\u0082\u00af\u00e3\u0083\u0088\u00e3\u0083\u00aa\u00e3\u0083\u00bc\u00e3\u0083\u00a9\u00e3\u0083\u0083\u00e3\u0082\u00b7\u00e3\u0083\u00a5(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -745,7 +769,18 @@
                 "Duration": "0",
                 "Amount": "3"
             },
-            "Multiplier": 430
+            "Multiplier": 430,
+            "1637": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "30"
+            }
         }
     },
     "Active Skill": null,

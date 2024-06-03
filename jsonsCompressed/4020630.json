@@ -36,19 +36,33 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "2231": {
-            "ID": "2231",
+        "2220": {
+            "ID": "2220",
             "Timing": "Start of turn",
-            "ATK": 80,
-            "DEF": 80,
+            "Ki change": {
+                "From": "INT",
+                "To": "RAINBOW"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Once only": true
+        },
+        "1002220": {
+            "ID": "1002220",
+            "Timing": "Start of turn",
+            "ATK": 120,
+            "DEF": 120,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1002231": {
-            "ID": "1002231",
+        "2002220": {
+            "ID": "2002220",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -60,15 +74,15 @@
                     ]
                 }
             },
-            "ATK": 20,
+            "ATK": 30,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "2002231": {
-            "ID": "2002231",
+        "3002220": {
+            "ID": "3002220",
             "Effective against all": true,
             "Timing": "When ki spheres collected",
             "Buff": {
@@ -86,6 +100,32 @@
                         "Slider": {
                             "Name": null,
                             "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "4002220": {
+            "ID": "4002220",
+            "Timing": "Start of turn",
+            "Crit Chance": 30,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "706",
+                "Causalities": {
+                    "706": {
+                        "Button": {
+                            "Name": "Are there 7 or more Majin Buu Saga category allies on the team "
+                        },
+                        "Slider": {
+                            "Name": "How many Majin Buu Saga category allies on the team ",
+                            "Logic": ">=7",
+                            "Max": 7,
+                            "Min": 0
                         }
                     }
                 }
@@ -789,22 +829,22 @@
         }
     },
     "Super Attack": {
-        "2657": {
-            "superID": "2657",
-            "superName": "\u00e5\u0085\u0083\u00e6\u00b0\u0097\u00e7\u008e\u0089",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3\u00e8\u00b6\u0085\u00e7\u00b3\u00bb\u00e3\u0081\u00ae\u00e4\u00bb\u00b2\u00e9\u0096\u0093ATK20%UP",
+        "2685": {
+            "superID": "2685",
+            "superName": "\u00e5\u0085\u0083\u00e6\u00b0\u0097\u00e7\u008e\u0089(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3\u00e8\u00b6\u0085\u00e7\u00b3\u00bb\u00e3\u0081\u00ae\u00e4\u00bb\u00b2\u00e9\u0096\u0093ATK25%UP",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 410,
-            "2657": {
+            "Multiplier": 505,
+            "2685": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -813,17 +853,17 @@
                     "+ or -": "+"
                 },
                 "Target": "Super class Allies",
-                "ATK": "20"
+                "ATK": "25"
             }
         },
-        "2658": {
-            "superID": "2658",
-            "superName": "\u00e8\u00b6\u0085\u00e5\u0085\u0083\u00e6\u00b0\u0097\u00e7\u008e\u0089",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3\u00e8\u00b6\u0085\u00e7\u00b3\u00bb\u00e3\u0081\u00ae\u00e4\u00bb\u00b2\u00e9\u0096\u0093ATK\u00e3\u0081\u00a8DEF20%UP",
+        "2686": {
+            "superID": "2686",
+            "superName": "\u00e8\u00b6\u0085\u00e5\u0085\u0083\u00e6\u00b0\u0097\u00e7\u008e\u0089(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3\u00e8\u00b6\u0085\u00e7\u00b3\u00bb\u00e3\u0081\u00ae\u00e4\u00bb\u00b2\u00e9\u0096\u0093ATK\u00e3\u0081\u00a8DEF25%UP",
             "superMinKi": "12",
             "superPriority": "10.0",
             "superStyle": "Condition",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "\u00e3\u0080\u008c\u00e9\u00ad\u0094\u00e4\u00ba\u00ba\u00e3\u0083\u0096\u00e3\u0082\u00a6\u00e7\u00b7\u00a8\u00e3\u0080\u008d\u00e3\u0082\u00ab\u00e3\u0083\u0086\u00e3\u0082\u00b4\u00e3\u0083\u00aa\u00e3\u0081\u00ae\n\u00e5\u0090\u008d\u00e7\u00a7\u00b0\u00e3\u0081\u00ab\u00e3\u0080\u008c\u00e3\u0083\u009f\u00e3\u0082\u00b9\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00bb\u00e3\u0082\u00b5\u00e3\u0082\u00bf\u00e3\u0083\u00b3\u00e3\u0080\u008d\u00e3\u0082\u0092\u00e5\u0090\u00ab\u00e3\u0082\u0080\u00e3\u0082\u00ad\u00e3\u0083\u00a3\u00e3\u0083\u00a9\u00e3\u0081\u008c\n\u00e6\u0094\u00bb\u00e6\u0092\u0083\u00e5\u008f\u0082\u00e5\u008a\u00a0\u00e4\u00b8\u00ad\u00e3\u0081\u00ae\u00e5\u0091\u00b3\u00e6\u0096\u00b9\u00e3\u0081\u00ab\u00e3\u0081\u0084\u00e3\u0082\u008b\u00e3\u0081\u00a8\u00e3\u0081\u008d\u00e7\u0099\u00ba\u00e5\u008b\u0095",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -844,8 +884,8 @@
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 485,
-            "2658": {
+            "Multiplier": 605,
+            "2686": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -854,8 +894,8 @@
                     "+ or -": "+"
                 },
                 "Target": "Super class Allies",
-                "ATK": "20",
-                "DEF": "20"
+                "ATK": "25",
+                "DEF": "25"
             }
         }
     },

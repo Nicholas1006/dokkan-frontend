@@ -26,8 +26,19 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "1959": {
-            "ID": "1959",
+        "3058": {
+            "ID": "3058",
+            "Timing": "Start of turn",
+            "ATK": 120,
+            "DEF": 120,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1003058": {
+            "ID": "1003058",
             "Timing": "Start of turn",
             "Ki": 3,
             "Target": {
@@ -39,11 +50,11 @@
             },
             "Length": "1"
         },
-        "1001959": {
-            "ID": "1001959",
+        "2003058": {
+            "ID": "2003058",
             "Timing": "Start of turn",
-            "ATK": 30,
-            "DEF": 30,
+            "ATK": 40,
+            "DEF": 40,
             "Target": {
                 "Target": "Allies"
             },
@@ -53,8 +64,8 @@
             },
             "Length": "1"
         },
-        "2001959": {
-            "ID": "2001959",
+        "3003058": {
+            "ID": "3003058",
             "Timing": "Start of turn",
             "Crit Chance": 12,
             "Target": {
@@ -66,8 +77,8 @@
             },
             "Length": "1"
         },
-        "3001959": {
-            "ID": "3001959",
+        "4003058": {
+            "ID": "4003058",
             "Timing": "Start of turn",
             "ATK": 12,
             "Target": {
@@ -80,8 +91,8 @@
             "Chance": "70",
             "Length": "1"
         },
-        "4001959": {
-            "ID": "4001959",
+        "5003058": {
+            "ID": "5003058",
             "Timing": "Start of turn",
             "DEF": 12,
             "Target": {
@@ -92,17 +103,27 @@
                 "+ or -": "+"
             },
             "Chance": "70",
+            "Length": "1"
+        },
+        "6003058": {
+            "ID": "6003058",
+            "Timing": "End of turn",
+            "Heals": 12,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
             "Length": "1",
             "Condition": {
-                "Logic": "2538",
+                "Logic": "2739",
                 "Causalities": {
-                    "2538": {
+                    "2739": {
                         "Button": {
-                            "Name": "Is it on or after the first 0 turns from this characters entry turn?"
+                            "Name": "Did the character recieve an attack on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many turns is it since the characters entry turn?",
-                            "Logic": ">=0"
+                            "Name": null,
+                            "Logic": null
                         }
                     }
                 }
@@ -808,22 +829,22 @@
         }
     },
     "Super Attack": {
-        "2116": {
-            "superID": "2116",
-            "superName": "\u00e6\u0099\u0082\u00e3\u0081\u00ae\u00e5\u00af\u00a9\u00e5\u0088\u00a4",
-            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3DEF\u00e3\u0081\u008c\u00e8\u00b6\u0085\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e5\u00bf\u0085\u00e6\u00ae\u00ba\u00e6\u008a\u0080\u00e3\u0082\u0092\u00e5\u00b0\u0081\u00e3\u0081\u0098\u00e3\u0082\u008b",
+        "4244": {
+            "superID": "4244",
+            "superName": "\u00e6\u0099\u0082\u00e3\u0081\u00ae\u00e5\u00af\u00a9\u00e5\u0088\u00a4(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e8\u00b6\u0085\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e5\u00bf\u0085\u00e6\u00ae\u00ba\u00e6\u008a\u0080\u00e3\u0082\u0092\u00e5\u00b0\u0081\u00e3\u0081\u0098\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "2116": {
+            "Multiplier": 530,
+            "4244": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -832,9 +853,10 @@
                     "+ or -": "+"
                 },
                 "Target": "Self",
+                "ATK": "100",
                 "DEF": "100"
             },
-            "1002116": {
+            "1004244": {
                 "Type": "ExtraEfficacySpecial",
                 "Chance": "100",
                 "Duration": "2",

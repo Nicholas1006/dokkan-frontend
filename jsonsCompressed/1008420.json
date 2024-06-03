@@ -25,8 +25,68 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "604": {
-            "ID": "604",
+        "2720": {
+            "ID": "2720",
+            "Timing": "Start of turn",
+            "ATK": 150,
+            "DEF": 150,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1002720": {
+            "ID": "1002720",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 0,
+                "Cause": {
+                    "Cause": "Ki sphere obtained",
+                    "Type": "any"
+                }
+            },
+            "DEF": 15,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2002720": {
+            "ID": "2002720",
+            "Dodge chance": 5,
+            "Timing": "Hit recieved",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 30,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Condition": {
+                "Logic": "1275",
+                "Causalities": {
+                    "1275": {
+                        "Button": {
+                            "Name": "Has attack been recieved?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "3002720": {
+            "ID": "3002720",
             "Timing": "Start of turn",
             "ATK": 30,
             "DEF": 30,
@@ -35,6 +95,19 @@
             },
             "Buff": {
                 "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "4002720": {
+            "ID": "4002720",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "50"
+            },
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1"
@@ -742,22 +815,22 @@
         }
     },
     "Super Attack": {
-        "387": {
-            "superID": "387",
-            "superName": "\u00e3\u0083\u0093\u00e3\u0083\u0083\u00e3\u0082\u00b0\u00e3\u0083\u00bb\u00e3\u0083\u0090\u00e3\u0083\u00b3\u00e3\u0083\u00bb\u00e3\u0082\u00a2\u00e3\u0082\u00bf\u00e3\u0083\u0083\u00e3\u0082\u00af",
-            "superDescription": "\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8&1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3\u00e4\u00bb\u00b2\u00e9\u0096\u0093ATK25%UP",
+        "3598": {
+            "superID": "3598",
+            "superName": "\u00e3\u0083\u0093\u00e3\u0083\u0083\u00e3\u0082\u00b0\u00e3\u0083\u00bb\u00e3\u0083\u0090\u00e3\u0083\u00b3\u00e3\u0083\u00bb\u00e3\u0082\u00a2\u00e3\u0082\u00bf\u00e3\u0083\u0083\u00e3\u0082\u00af(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3\u00e4\u00bb\u00b2\u00e9\u0096\u0093ATK\u00e3\u0081\u00a8DEF30%UP",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 405,
-            "387": {
+            "Multiplier": 500,
+            "3598": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -766,7 +839,8 @@
                     "+ or -": "+"
                 },
                 "Target": "Allies",
-                "ATK": "25"
+                "ATK": "30",
+                "DEF": "30"
             }
         }
     },

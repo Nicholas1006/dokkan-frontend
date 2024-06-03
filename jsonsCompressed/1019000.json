@@ -25,8 +25,8 @@
         "Legendary Power"
     ],
     "Passive": {
-        "2046": {
-            "ID": "2046",
+        "4005": {
+            "ID": "4005",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -36,50 +36,17 @@
                     "Type": "any"
                 }
             },
-            "ATK": 15,
-            "DEF": 15,
+            "ATK": 30,
+            "DEF": 30,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1002046": {
-            "ID": "1002046",
-            "Timing": "When ki spheres collected",
-            "Building Stat": {
-                "Min": 0,
-                "Max": 0,
-                "Cause": {
-                    "Cause": "Ki sphere obtained",
-                    "Type": "any"
-                }
-            },
-            "ATK": 5,
-            "DEF": 5,
-            "Buff": {
-                "Type": "Percentage",
-                "+ or -": "+"
-            },
-            "Length": "1",
-            "Condition": {
-                "Logic": "499",
-                "Causalities": {
-                    "499": {
-                        "Button": {
-                            "Name": "Has 2 or more PHY Ki Spheres been obtained?"
-                        },
-                        "Slider": {
-                            "Name": null,
-                            "Logic": null
-                        }
-                    }
-                }
-            }
-        },
-        "2002046": {
-            "ID": "2002046",
-            "Timing": "When ki spheres collected",
+        "1004005": {
+            "ID": "1004005",
+            "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
                 "Max": 0,
@@ -100,13 +67,75 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
+            "Length": "1"
+        },
+        "2004005": {
+            "ID": "2004005",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 0,
+                "Cause": {
+                    "Cause": "Ki sphere obtained",
+                    "Type": [
+                        "PHY"
+                    ]
+                }
+            },
+            "ATK": 10,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "3004005": {
+            "ID": "3004005",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 0,
+                "Cause": {
+                    "Cause": "Ki sphere obtained",
+                    "Type": [
+                        "PHY"
+                    ]
+                }
+            },
+            "DEF": 10,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "4004005": {
+            "ID": "4004005",
+            "Timing": "When ki spheres collected",
+            "Ki": 2,
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
             "Length": "1",
             "Condition": {
-                "Logic": "499",
+                "Logic": "2756 or 2761",
                 "Causalities": {
-                    "499": {
+                    "2756": {
                         "Button": {
-                            "Name": "Has 2 or more PHY Ki Spheres been obtained?"
+                            "Name": "Has 1 or more AGL Ki Spheres been obtained?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    },
+                    "2761": {
+                        "Button": {
+                            "Name": "Has 1 or more STR Ki Spheres been obtained?"
                         },
                         "Slider": {
                             "Name": null,
@@ -116,8 +145,8 @@
                 }
             }
         },
-        "3002046": {
-            "ID": "3002046",
+        "5004005": {
+            "ID": "5004005",
             "Timing": "When ki spheres collected",
             "ATK": 39,
             "Target": {
@@ -129,11 +158,20 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "500",
+                "Logic": "2756 or 2761",
                 "Causalities": {
-                    "500": {
+                    "2756": {
                         "Button": {
-                            "Name": "Has 2 or more STR or AGL Ki Spheres been obtained?"
+                            "Name": "Has 1 or more AGL Ki Spheres been obtained?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    },
+                    "2761": {
+                        "Button": {
+                            "Name": "Has 1 or more STR Ki Spheres been obtained?"
                         },
                         "Slider": {
                             "Name": null,
@@ -143,8 +181,44 @@
                 }
             }
         },
-        "4002046": {
-            "ID": "4002046",
+        "6004005": {
+            "ID": "6004005",
+            "Timing": "When ki spheres collected",
+            "Ki": 2,
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "792 or 3049",
+                "Causalities": {
+                    "792": {
+                        "Button": {
+                            "Name": "Has 1 or more TEQ Ki Spheres been obtained?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    },
+                    "3049": {
+                        "Button": {
+                            "Name": "Has 1 or more INT Ki Spheres been obtained?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "7004005": {
+            "ID": "7004005",
             "Timing": "When ki spheres collected",
             "DEF": 39,
             "Target": {
@@ -156,11 +230,20 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "501",
+                "Logic": "792 or 3049",
                 "Causalities": {
-                    "501": {
+                    "792": {
                         "Button": {
-                            "Name": "Has 2 or more INT or TEQ Ki Spheres been obtained?"
+                            "Name": "Has 1 or more TEQ Ki Spheres been obtained?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    },
+                    "3049": {
+                        "Button": {
+                            "Name": "Has 1 or more INT Ki Spheres been obtained?"
                         },
                         "Slider": {
                             "Name": null,
@@ -170,8 +253,188 @@
                 }
             }
         },
-        "5002046": {
-            "ID": "5002046",
+        "8004005": {
+            "ID": "8004005",
+            "Timing": "When ki spheres collected",
+            "Ki": 2,
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "665",
+                "Causalities": {
+                    "665": {
+                        "Button": {
+                            "Name": "Has 1 or more Rainbow Ki Spheres been obtained?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "9004005": {
+            "ID": "9004005",
+            "Timing": "When ki spheres collected",
+            "ATK": 15,
+            "DEF": 15,
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "665",
+                "Causalities": {
+                    "665": {
+                        "Button": {
+                            "Name": "Has 1 or more Rainbow Ki Spheres been obtained?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "10004005": {
+            "ID": "10004005",
+            "Timing": "On Super",
+            "ATK": 39,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "46",
+                "Causalities": {
+                    "46": {
+                        "Button": {
+                            "Name": "Is ki 12 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=12",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    }
+                }
+            }
+        },
+        "11004005": {
+            "ID": "11004005",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "100"
+            },
+            "Timing": "On Super",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "612",
+                "Causalities": {
+                    "612": {
+                        "Button": {
+                            "Name": "Is ki 24 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=24",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    }
+                }
+            }
+        },
+        "12004005": {
+            "ID": "12004005",
+            "Timing": "On Super",
+            "DR": 10,
+            "Target": {
+                "Category": "Movie Bosses",
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "612",
+                "Causalities": {
+                    "612": {
+                        "Button": {
+                            "Name": "Is ki 24 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=24",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    }
+                }
+            }
+        },
+        "13004005": {
+            "ID": "13004005",
+            "Timing": "On Super",
+            "DR": 10,
+            "Target": {
+                "Category": "Super Bosses",
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "612",
+                "Causalities": {
+                    "612": {
+                        "Button": {
+                            "Name": "Is ki 24 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=24",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    }
+                }
+            }
+        },
+        "14004005": {
+            "ID": "14004005",
+            "Dodge chance": 50,
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "15004005": {
+            "ID": "15004005",
             "Dodge chance": 100,
             "Timing": "When ki spheres collected",
             "Buff": {
@@ -193,6 +456,80 @@
                     }
                 }
             }
+        },
+        "16004005": {
+            "ID": "16004005",
+            "Timing": "Start of turn",
+            "Ki change": {
+                "From": [
+                    "STR",
+                    "INT",
+                    "TEQ",
+                    "AGL"
+                ],
+                "To": [
+                    "PHY"
+                ]
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "73",
+                "Causalities": {
+                    "73": {
+                        "Button": {
+                            "Name": "Is HP 60 % or less?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining",
+                            "Logic": "<=60",
+                            "Min": 0,
+                            "Max": 100
+                        }
+                    }
+                }
+            }
+        },
+        "17004005": {
+            "ID": "17004005",
+            "Timing": "Start of turn",
+            "Ki change": {
+                "From": [
+                    "AGL",
+                    "TEQ",
+                    "INT",
+                    "STR",
+                    "PHY",
+                    "Rainbow",
+                    "Sweet treats"
+                ],
+                "To": "PHY"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1185",
+                "Causalities": {
+                    "1185": {
+                        "Button": {
+                            "Name": "Is HP 39 % or less?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining",
+                            "Logic": "<=39",
+                            "Min": 0,
+                            "Max": 100
+                        }
+                    }
+                }
+            },
+            "Once only": true
         }
     },
     "Stats at levels": {
@@ -1044,14 +1381,14 @@
         }
     },
     "Super Attack": {
-        "2250": {
-            "superID": "2250",
-            "superName": "\u00e3\u0082\u00b5\u00e3\u0083\u0097\u00e3\u0083\u00a9\u00e3\u0082\u00a4\u00e3\u0082\u00ba\u00e3\u0082\u00a2\u00e3\u0082\u00bf\u00e3\u0083\u0083\u00e3\u0082\u00af",
-            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3DEF\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e6\u00a5\u00b5\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nATK\u00e3\u0082\u0092\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
+        "5197": {
+            "superID": "5197",
+            "superName": "\u00e3\u0082\u00b5\u00e3\u0083\u0097\u00e3\u0083\u00a9\u00e3\u0082\u00a4\u00e3\u0082\u00ba\u00e3\u0082\u00a2\u00e3\u0082\u00bf\u00e3\u0083\u0083\u00e3\u0082\u00af(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e6\u00a5\u00b5\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nATK\u00e3\u0082\u0092\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -1064,7 +1401,7 @@
                 "Amount": "30"
             },
             "Multiplier": 395,
-            "2250": {
+            "5197": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -1073,9 +1410,10 @@
                     "+ or -": "+"
                 },
                 "Target": "Self",
+                "ATK": "50",
                 "DEF": "50"
             },
-            "1002250": {
+            "1005197": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",
@@ -1084,17 +1422,17 @@
                     "+ or -": "-"
                 },
                 "Target": "Enemy",
-                "ATK": "20"
+                "ATK": "30"
             }
         },
-        "2251": {
-            "superID": "2251",
-            "superName": "\u00e3\u0082\u00b5\u00e3\u0083\u0090\u00e3\u0082\u00a4\u00e3\u0083\u0090\u00e3\u0083\u00ab\u00e3\u0082\u00a2\u00e3\u0082\u00bf\u00e3\u0083\u0083\u00e3\u0082\u00af",
-            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e6\u00a5\u00b5\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "5198": {
+            "superID": "5198",
+            "superName": "\u00e3\u0082\u00b5\u00e3\u0083\u0090\u00e3\u0082\u00a4\u00e3\u0083\u0090\u00e3\u0083\u00ab\u00e3\u0082\u00a2\u00e3\u0082\u00bf\u00e3\u0083\u0083\u00e3\u0082\u00af(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e8\u00b6\u0085\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e6\u00a5\u00b5\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
             "superMinKi": "18",
             "superPriority": "0.0",
             "superStyle": "Hyper",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -1107,7 +1445,7 @@
                 "Amount": "30"
             },
             "Multiplier": 540,
-            "2251": {
+            "5198": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -1116,8 +1454,8 @@
                     "+ or -": "+"
                 },
                 "Target": "Self",
-                "ATK": "50",
-                "DEF": "50"
+                "ATK": "100",
+                "DEF": "100"
             }
         }
     },

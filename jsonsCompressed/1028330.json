@@ -28,8 +28,8 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "4020": {
-            "ID": "4020",
+        "4022": {
+            "ID": "4022",
             "Timing": "Start of turn",
             "ATK": 99,
             "DEF": 99,
@@ -39,8 +39,27 @@
             },
             "Length": "1"
         },
-        "1004020": {
-            "ID": "1004020",
+        "1004022": {
+            "ID": "1004022",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 0,
+                "Cause": {
+                    "Cause": "Ki sphere obtained",
+                    "Type": "any"
+                }
+            },
+            "ATK": 19,
+            "DEF": 19,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2004022": {
+            "ID": "2004022",
             "Timing": "On Super",
             "Building Stat": {
                 "Min": 0,
@@ -85,12 +104,36 @@
                 }
             }
         },
-        "2004020": {
-            "ID": "2004020",
+        "3004022": {
+            "ID": "3004022",
+            "Effective against all": true,
             "Timing": "When ki spheres collected",
-            "Crit Chance": 99,
             "Buff": {
                 "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "302",
+                "Causalities": {
+                    "302": {
+                        "Button": {
+                            "Name": "Has 5 or more Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres been obtained?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "4004022": {
+            "ID": "4004022",
+            "Timing": "When ki spheres collected",
+            "Crit Chance": 100,
+            "Buff": {
+                "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
@@ -759,22 +802,22 @@
         }
     },
     "Super Attack": {
-        "5233": {
-            "superID": "5233",
-            "superName": "\u00e3\u0081\u008b\u00e3\u0082\u0081\u00e3\u0081\u00af\u00e3\u0082\u0081\u00e6\u00b3\u00a2",
-            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n\u00e5\u009b\u009e\u00e9\u0081\u00bf\u00e3\u0081\u00ae\u00e7\u0099\u00ba\u00e7\u0094\u009f\u00e7\u00a2\u00ba\u00e7\u008e\u00879%UP",
+        "5234": {
+            "superID": "5234",
+            "superName": "\u00e3\u0081\u008b\u00e3\u0082\u0081\u00e3\u0081\u00af\u00e3\u0082\u0081\u00e6\u00b3\u00a2(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n\u00e5\u009b\u009e\u00e9\u0081\u00bf\u00e3\u0081\u00ae\u00e7\u0099\u00ba\u00e7\u0094\u009f\u00e7\u00a2\u00ba\u00e7\u008e\u008719%UP",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "5233": {
+            "Multiplier": 530,
+            "5234": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -783,10 +826,10 @@
                     "+ or -": "+"
                 },
                 "Target": "Self",
-                "ATK": "30",
-                "DEF": "30"
+                "ATK": "50",
+                "DEF": "50"
             },
-            "1005233": {
+            "1005234": {
                 "Type": "ExtraEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -795,7 +838,7 @@
                     "+ or -": "+"
                 },
                 "Target": "Self",
-                "Dodge chance": "9"
+                "Dodge chance": "19"
             }
         }
     },

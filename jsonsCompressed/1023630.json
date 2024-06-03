@@ -30,22 +30,22 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "2858": {
-            "ID": "2858",
+        "2860": {
+            "ID": "2860",
             "Timing": "Start of turn",
-            "ATK": 100,
-            "DEF": 100,
+            "ATK": 150,
+            "DEF": 150,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1002858": {
-            "ID": "1002858",
+        "1002860": {
+            "ID": "1002860",
             "Timing": "Start of turn",
-            "ATK": 20,
-            "DEF": 20,
+            "ATK": 40,
+            "DEF": 40,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -68,11 +68,11 @@
                 }
             }
         },
-        "2002858": {
-            "ID": "2002858",
+        "2002860": {
+            "ID": "2002860",
             "Timing": "Start of turn",
-            "ATK": 20,
-            "DEF": 20,
+            "ATK": 40,
+            "DEF": 40,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -95,8 +95,8 @@
                 }
             }
         },
-        "3002858": {
-            "ID": "3002858",
+        "3002860": {
+            "ID": "3002860",
             "Timing": "Start of turn",
             "Ki": 1,
             "Target": {
@@ -108,11 +108,11 @@
             },
             "Length": "1"
         },
-        "4002858": {
-            "ID": "4002858",
+        "4002860": {
+            "ID": "4002860",
             "Timing": "Start of turn",
-            "ATK": 15,
-            "DEF": 15,
+            "ATK": 20,
+            "DEF": 20,
             "Target": {
                 "Target": "Allies"
             },
@@ -121,6 +121,133 @@
                 "+ or -": "+"
             },
             "Length": "1"
+        },
+        "5002860": {
+            "ID": "5002860",
+            "Timing": "Start of turn",
+            "Ki": 1,
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1459",
+                "Causalities": {
+                    "1459": {
+                        "Button": {
+                            "Name": "Are there 2 or more Saviors category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Saviors category allies on the same turn ",
+                            "Logic": ">=2",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "6002860": {
+            "ID": "6002860",
+            "Timing": "Start of turn",
+            "Ki": 1,
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1460",
+                "Causalities": {
+                    "1460": {
+                        "Button": {
+                            "Name": "Are there 3 or more Saviors category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Saviors category allies on the same turn ",
+                            "Logic": ">=3",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "7002860": {
+            "ID": "7002860",
+            "Forsee Super Attack": true,
+            "Timing": "Start of turn",
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Chance": "50",
+            "Length": "1",
+            "Condition": {
+                "Logic": "1460 and 1461",
+                "Causalities": {
+                    "1460": {
+                        "Button": {
+                            "Name": "Are there 3 or more Saviors category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Saviors category allies on the same turn ",
+                            "Logic": ">=3",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    },
+                    "1461": {
+                        "Button": {
+                            "Name": "Is there an extreme class enemy? "
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "8002860": {
+            "ID": "8002860",
+            "Timing": "Start of turn",
+            "ATK": 10,
+            "DEF": 10,
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1460",
+                "Causalities": {
+                    "1460": {
+                        "Button": {
+                            "Name": "Are there 3 or more Saviors category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Saviors category allies on the same turn ",
+                            "Logic": ">=3",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
         }
     },
     "Stats at levels": {
@@ -785,14 +912,14 @@
         }
     },
     "Super Attack": {
-        "3835": {
-            "superID": "3835",
-            "superName": "\u00e3\u0082\u00b7\u00e3\u0083\u00a3\u00e3\u0082\u00a4\u00e3\u0083\u008b\u00e3\u0083\u00b3\u00e3\u0082\u00b0\u00e3\u0082\u00b9\u00e3\u0083\u00a9\u00e3\u0083\u0083\u00e3\u0082\u00b7\u00e3\u0083\u00a5",
-            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "3869": {
+            "superID": "3869",
+            "superName": "\u00e3\u0082\u00b7\u00e3\u0083\u00a3\u00e3\u0082\u00a4\u00e3\u0083\u008b\u00e3\u0083\u00b3\u00e3\u0082\u00b0\u00e3\u0082\u00b9\u00e3\u0083\u00a9\u00e3\u0083\u0083\u00e3\u0082\u00b7\u00e3\u0083\u00a5(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "19",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -805,7 +932,7 @@
                 "Amount": "3"
             },
             "Multiplier": 530,
-            "3835": {
+            "3869": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -814,6 +941,7 @@
                     "+ or -": "+"
                 },
                 "Target": "Self",
+                "ATK": "30",
                 "DEF": "30"
             }
         }

@@ -27,37 +27,37 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "2913": {
-            "ID": "2913",
+        "2918": {
+            "ID": "2918",
             "Timing": "Start of turn",
-            "ATK": 80,
-            "DEF": 80,
+            "ATK": 150,
+            "DEF": 100,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1002913": {
-            "ID": "1002913",
+        "1002918": {
+            "ID": "1002918",
             "Timing": "Attacking the enemy",
             "Building Stat": {
                 "Min": 0,
-                "Max": 30,
+                "Max": 50,
                 "Cause": {
                     "Cause": "Look Elsewhere"
                 }
             },
-            "DEF": 10,
+            "DEF": 20,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "99",
             "Condition": {
-                "Logic": "1577",
+                "Logic": "1597",
                 "Causalities": {
-                    "1577": {
+                    "1597": {
                         "Button": {
                             "Name": "Is a super being performed?"
                         },
@@ -69,10 +69,10 @@
                 }
             }
         },
-        "2002913": {
-            "ID": "2002913",
+        "2002918": {
+            "ID": "2002918",
             "Timing": "Start of turn",
-            "Ki": 2,
+            "Ki": 3,
             "Target": {
                 "Category": "Terrifying Conquerors",
                 "Target": "Allies"
@@ -83,8 +83,8 @@
             },
             "Length": "1"
         },
-        "3002913": {
-            "ID": "3002913",
+        "3002918": {
+            "ID": "3002918",
             "Timing": "Start of turn",
             "ATK": 30,
             "DEF": 30,
@@ -97,6 +97,37 @@
                 "+ or -": "+"
             },
             "Length": "1"
+        },
+        "4002918": {
+            "ID": "4002918",
+            "Timing": "Hit recieved",
+            "Crit Chance": 7,
+            "Target": {
+                "Category": "Terrifying Conquerors",
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "3",
+            "Condition": {
+                "Logic": "1598",
+                "Causalities": {
+                    "1598": {
+                        "Button": {
+                            "Name": "Has this character recieved their 5th attack in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character recieved?",
+                            "Logic": ">=5",
+                            "Min": 0,
+                            "Max": 5
+                        }
+                    }
+                }
+            },
+            "Once only": true
         }
     },
     "Stats at levels": {
@@ -796,22 +827,22 @@
         }
     },
     "Super Attack": {
-        "3982": {
-            "superID": "3982",
-            "superName": "\u00e3\u0083\u0087\u00e3\u0082\u00b9\u00e3\u0083\u0095\u00e3\u0083\u00a9\u00e3\u0083\u0083\u00e3\u0082\u00b7\u00e3\u0083\u00a3\u00e3\u0083\u00bc",
-            "superDescription": "DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nATK\u00e3\u0082\u0092\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
+        "3986": {
+            "superID": "3986",
+            "superName": "\u00e3\u0083\u0087\u00e3\u0082\u00b9\u00e3\u0083\u0095\u00e3\u0083\u00a9\u00e3\u0083\u0083\u00e3\u0082\u00b7\u00e3\u0083\u00a3\u00e3\u0083\u00bc(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nATK\u00e3\u0082\u0092\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e3\u0081\u00ab\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "3982": {
+            "Multiplier": 530,
+            "3986": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "99",
@@ -822,7 +853,7 @@
                 "Target": "Self",
                 "DEF": "30"
             },
-            "1003982": {
+            "1003986": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",
@@ -831,7 +862,7 @@
                     "+ or -": "-"
                 },
                 "Target": "Enemy",
-                "ATK": "20"
+                "ATK": "30"
             }
         }
     },

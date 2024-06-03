@@ -29,8 +29,19 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "448": {
-            "ID": "448",
+        "1926": {
+            "ID": "1926",
+            "Timing": "Start of turn",
+            "ATK": 77,
+            "DEF": 77,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1001926": {
+            "ID": "1001926",
             "Timing": "Start of turn",
             "Ki": 7,
             "Buff": {
@@ -39,15 +50,42 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "27",
+                "Logic": "366",
                 "Causalities": {
-                    "27": {
+                    "366": {
                         "Button": {
-                            "Name": "Is HP 50 % or less?"
+                            "Name": "Is HP 77 % or less?"
                         },
                         "Slider": {
                             "Name": "What percentage of HP is remaining",
-                            "Logic": "<=50",
+                            "Logic": "<=77",
+                            "Min": 0,
+                            "Max": 100
+                        }
+                    }
+                }
+            }
+        },
+        "2001926": {
+            "ID": "2001926",
+            "Timing": "Start of turn",
+            "ATK": 77,
+            "DEF": 77,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "366",
+                "Causalities": {
+                    "366": {
+                        "Button": {
+                            "Name": "Is HP 77 % or less?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining",
+                            "Logic": "<=77",
                             "Min": 0,
                             "Max": 100
                         }
@@ -730,24 +768,24 @@
         }
     },
     "Super Attack": {
-        "268": {
-            "superID": "268",
-            "superName": "\u00e7\u009e\u00ac\u00e9\u0096\u0093\u00e7\u00a7\u00bb\u00e5\u008b\u0095\u00e3\u0081\u008b\u00e3\u0082\u0081\u00e3\u0081\u00af\u00e3\u0082\u0081\u00e6\u00b3\u00a2",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0081\u00be\u00e3\u0082\u008c\u00e3\u0081\u00ab\u00e6\u00b0\u0097\u00e7\u00b5\u00b6\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
+        "2091": {
+            "superID": "2091",
+            "superName": "\u00e7\u009e\u00ac\u00e9\u0096\u0093\u00e7\u00a7\u00bb\u00e5\u008b\u0095\u00e3\u0081\u008b\u00e3\u0082\u0081\u00e3\u0081\u00af\u00e3\u0082\u0081\u00e6\u00b3\u00a2(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n\u00e4\u00b8\u00ad\u00e7\u00a2\u00ba\u00e7\u008e\u0087\u00e3\u0081\u00a7\u00e6\u00b0\u0097\u00e7\u00b5\u00b6\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 355,
-            "268": {
+            "Multiplier": 530,
+            "2091": {
                 "Type": "ExtraEfficacySpecial",
-                "Chance": "20",
+                "Chance": "30",
                 "Duration": "2",
                 "Buff": {
                     "Type": "Raw stats",

@@ -26,8 +26,40 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "937": {
-            "ID": "937",
+        "3471": {
+            "ID": "3471",
+            "Timing": "Start of turn",
+            "ATK": 177,
+            "DEF": 177,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1003471": {
+            "ID": "1003471",
+            "Timing": "Start of turn",
+            "Ki change": {
+                "From": [
+                    "PHY",
+                    "STR",
+                    "INT",
+                    "TEQ",
+                    "AGL"
+                ],
+                "To": [
+                    "Rainbow"
+                ]
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2003471": {
+            "ID": "2003471",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -39,17 +71,37 @@
                     ]
                 }
             },
-            "Heals": 7777,
+            "Heals": 17777,
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1000937": {
-            "ID": "1000937",
+        "3003471": {
+            "ID": "3003471",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 0,
+                "Cause": {
+                    "Cause": "Ki sphere obtained",
+                    "Type": [
+                        "Rainbow"
+                    ]
+                }
+            },
+            "ATK": 77,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "4003471": {
+            "ID": "4003471",
             "Timing": "Being hit",
-            "DR": 50,
+            "DR": 77,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -720,14 +772,14 @@
         }
     },
     "Super Attack": {
-        "762": {
-            "superID": "762",
-            "superName": "\u00e3\u0083\u00ad\u00e3\u0082\u00b1\u00e3\u0083\u0083\u00e3\u0083\u0088\u00e3\u0083\u00a9\u00e3\u0083\u00b3\u00e3\u0083\u0081\u00e3\u0083\u00a3\u00e3\u0083\u00bc",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "4666": {
+            "superID": "4666",
+            "superName": "\u00e3\u0083\u00ad\u00e3\u0082\u00b1\u00e3\u0083\u0083\u00e3\u0083\u0088\u00e3\u0083\u00a9\u00e3\u0083\u00b3\u00e3\u0083\u0081\u00e3\u0083\u00a3\u00e3\u0083\u00bc(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n\u00e9\u00ab\u0098\u00e7\u00a2\u00ba\u00e7\u008e\u0087\u00e3\u0081\u00a7\u00e6\u00b0\u0097\u00e7\u00b5\u00b6\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -739,7 +791,29 @@
                 "Duration": "0",
                 "Amount": "3"
             },
-            "Multiplier": 430
+            "Multiplier": 430,
+            "4666": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "30"
+            },
+            "1004666": {
+                "Type": "ExtraEfficacySpecial",
+                "Chance": "50",
+                "Duration": "2",
+                "Buff": {
+                    "Type": "Raw stats",
+                    "+ or -": "+"
+                },
+                "Target": "Enemy",
+                "Status": "Stun"
+            }
         }
     },
     "Active Skill": null,

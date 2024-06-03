@@ -28,8 +28,44 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "1410": {
-            "ID": "1410",
+        "2962": {
+            "ID": "2962",
+            "Timing": "Start of turn",
+            "DEF": 88,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1002962": {
+            "ID": "1002962",
+            "Timing": "On Super",
+            "DEF": 88,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1699",
+                "Causalities": {
+                    "1699": {
+                        "Button": {
+                            "Name": "Is ki 12 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=12",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    }
+                }
+            }
+        },
+        "2002962": {
+            "ID": "2002962",
             "Timing": "Start of turn",
             "Ki": 3,
             "Target": {
@@ -41,8 +77,8 @@
             },
             "Length": "1"
         },
-        "1001410": {
-            "ID": "1001410",
+        "3002962": {
+            "ID": "3002962",
             "Timing": "Start of turn",
             "ATK": 40,
             "Target": {
@@ -54,19 +90,20 @@
             },
             "Length": "1"
         },
-        "2001410": {
-            "ID": "2001410",
-            "Dodge chance": 30,
+        "4002962": {
+            "ID": "4002962",
             "Timing": "Start of turn",
+            "ATK": 20,
+            "DEF": 20,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "76",
+                "Logic": "1704",
                 "Causalities": {
-                    "76": {
+                    "1704": {
                         "Button": {
                             "Name": "Are there 1 or more Peppy Gals category allies on the team "
                         },
@@ -80,19 +117,20 @@
                 }
             }
         },
-        "3001410": {
-            "ID": "3001410",
-            "Dodge chance": 30,
+        "5002962": {
+            "ID": "5002962",
             "Timing": "Start of turn",
+            "ATK": 20,
+            "DEF": 20,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "77",
+                "Logic": "1705",
                 "Causalities": {
-                    "77": {
+                    "1705": {
                         "Button": {
                             "Name": "Are there 2 or more Peppy Gals category allies on the team "
                         },
@@ -101,6 +139,141 @@
                             "Logic": ">=2",
                             "Max": 7,
                             "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "6002962": {
+            "ID": "6002962",
+            "Dodge chance": 35,
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1704",
+                "Causalities": {
+                    "1704": {
+                        "Button": {
+                            "Name": "Are there 1 or more Peppy Gals category allies on the team "
+                        },
+                        "Slider": {
+                            "Name": "How many Peppy Gals category allies on the team ",
+                            "Logic": ">=1",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "7002962": {
+            "ID": "7002962",
+            "Dodge chance": 35,
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1705",
+                "Causalities": {
+                    "1705": {
+                        "Button": {
+                            "Name": "Are there 2 or more Peppy Gals category allies on the team "
+                        },
+                        "Slider": {
+                            "Name": "How many Peppy Gals category allies on the team ",
+                            "Logic": ">=2",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "8002962": {
+            "ID": "8002962",
+            "Timing": "Start of turn",
+            "Ki": 3,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1706",
+                "Causalities": {
+                    "1706": {
+                        "Button": {
+                            "Name": "Is there is an ally on the team whose name includes Vegeta?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "9002962": {
+            "ID": "9002962",
+            "Timing": "Start of turn",
+            "Crit Chance": 18,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1706",
+                "Causalities": {
+                    "1706": {
+                        "Button": {
+                            "Name": "Is there is an ally on the team whose name includes Vegeta?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "10002962": {
+            "ID": "10002962",
+            "Timing": "On Super",
+            "ATK": 88,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1699 and 1707",
+                "Causalities": {
+                    "1699": {
+                        "Button": {
+                            "Name": "Is ki 12 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=12",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    },
+                    "1707": {
+                        "Button": {
+                            "Name": "Is there is an ally attacking in the same turn whose name includes Vegeta?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
                         }
                     }
                 }
@@ -770,22 +943,22 @@
         }
     },
     "Super Attack": {
-        "1602": {
-            "superID": "1602",
-            "superName": "\u00e3\u0083\u0091\u00e3\u0083\u0091\u00e3\u0081\u00ae\u00e3\u0083\u0095\u00e3\u0082\u00a1\u00e3\u0082\u00a4\u00e3\u0083\u008a\u00e3\u0083\u00ab\u00e3\u0083\u0095\u00e3\u0083\u00a9\u00e3\u0083\u0083\u00e3\u0082\u00b7\u00e3\u0083\u00a5",
-            "superDescription": "ATK\u00e3\u0081\u008c\u00e8\u00b6\u0085\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "4070": {
+            "superID": "4070",
+            "superName": "\u00e3\u0083\u0091\u00e3\u0083\u0091\u00e3\u0081\u00ae\u00e3\u0083\u0095\u00e3\u0082\u00a1\u00e3\u0082\u00a4\u00e3\u0083\u008a\u00e3\u0083\u00ab\u00e3\u0083\u0095\u00e3\u0083\u00a9\u00e3\u0083\u0083\u00e3\u0082\u00b7\u00e3\u0083\u00a5(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "ATK\u00e3\u0081\u008c\u00e8\u00b6\u0085\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nATK\u00e3\u0081\u00a8DEF\u00e3\u0082\u0092\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 330,
-            "1602": {
+            "Multiplier": 430,
+            "4070": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "99",
@@ -795,6 +968,18 @@
                 },
                 "Target": "Self",
                 "ATK": "100"
+            },
+            "1004070": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "3",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "-"
+                },
+                "Target": "Enemy",
+                "ATK": "20",
+                "DEF": "20"
             }
         }
     },

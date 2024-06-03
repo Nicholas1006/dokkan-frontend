@@ -33,20 +33,20 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "2113": {
-            "ID": "2113",
+        "2853": {
+            "ID": "2853",
             "Timing": "Start of turn",
-            "DEF": 70,
+            "DEF": 159,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1002113": {
-            "ID": "1002113",
+        "1002853": {
+            "ID": "1002853",
             "Timing": "Start of turn",
-            "ATK": 120,
+            "ATK": 159,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -54,19 +54,35 @@
             "Length": "7",
             "Once only": true
         },
-        "2002113": {
-            "ID": "2002113",
-            "Dodge chance": 50,
+        "2002853": {
+            "ID": "2002853",
+            "Timing": "On Super",
+            "Status": [
+                "Disable guard"
+            ],
+            "Target": {
+                "Target": "Enemy"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "-"
+            },
+            "Length": "7",
+            "Once only": true
+        },
+        "3002853": {
+            "ID": "3002853",
             "Timing": "Start of turn",
+            "ATK": 59,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "618",
+                "Logic": "1428",
                 "Causalities": {
-                    "618": {
+                    "1428": {
                         "Button": {
                             "Name": "Is the turn count 8 or more?"
                         },
@@ -79,8 +95,73 @@
                 }
             }
         },
-        "3002113": {
-            "ID": "3002113",
+        "4002853": {
+            "ID": "4002853",
+            "Dodge chance": 50,
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1428",
+                "Causalities": {
+                    "1428": {
+                        "Button": {
+                            "Name": "Is the turn count 8 or more?"
+                        },
+                        "Slider": {
+                            "Name": "What turn is it?",
+                            "Logic": ">=8",
+                            "Min": 1
+                        }
+                    }
+                }
+            }
+        },
+        "5002853": {
+            "ID": "5002853",
+            "Timing": "Hit recieved",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 59,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "DEF": 20,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Condition": {
+                "Logic": "1431 and 1430",
+                "Causalities": {
+                    "1431": {
+                        "Button": {
+                            "Name": "Has this unit evaded an attack? "
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    },
+                    "1430": {
+                        "Button": {
+                            "Name": "Is there is an ally on the team whose name includes Goten (Kid)?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "6002853": {
+            "ID": "6002853",
             "Timing": "Start of turn",
             "ATK": 59,
             "DEF": 59,
@@ -90,9 +171,9 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "617",
+                "Logic": "1429",
                 "Causalities": {
-                    "617": {
+                    "1429": {
                         "Button": {
                             "Name": "Is there is an ally attacking in the same turn whose name includes Goten (Kid)?"
                         },
@@ -104,8 +185,32 @@
                 }
             }
         },
-        "4002113": {
-            "ID": "4002113",
+        "7002853": {
+            "ID": "7002853",
+            "Timing": "Start of turn",
+            "Ki": 2,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1429",
+                "Causalities": {
+                    "1429": {
+                        "Button": {
+                            "Name": "Is there is an ally attacking in the same turn whose name includes Goten (Kid)?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "8002853": {
+            "ID": "8002853",
             "Timing": "Start of turn",
             "Ki": 1,
             "Target": {
@@ -118,11 +223,11 @@
             },
             "Length": "1"
         },
-        "5002113": {
-            "ID": "5002113",
+        "9002853": {
+            "ID": "9002853",
             "Timing": "Start of turn",
-            "ATK": 20,
-            "DEF": 20,
+            "ATK": 30,
+            "DEF": 30,
             "Target": {
                 "Category": "Goku's Family",
                 "Target": "Allies"
@@ -797,22 +902,34 @@
         }
     },
     "Super Attack": {
-        "2403": {
-            "superID": "2403",
-            "superName": "\u00e7\u009e\u00ac\u00e9\u0096\u0093\u00e7\u00a7\u00bb\u00e5\u008b\u0095\u00e3\u0081\u008b\u00e3\u0082\u0081\u00e3\u0081\u00af\u00e3\u0082\u0081\u00e6\u00b3\u00a2",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n\u00e4\u00b8\u00ad\u00e7\u00a2\u00ba\u00e7\u008e\u0087\u00e3\u0081\u00a7\u00e6\u00b0\u0097\u00e7\u00b5\u00b6\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
+        "3865": {
+            "superID": "3865",
+            "superName": "\u00e7\u009e\u00ac\u00e9\u0096\u0093\u00e7\u00a7\u00bb\u00e5\u008b\u0095\u00e3\u0081\u008b\u00e3\u0082\u0081\u00e3\u0081\u00af\u00e3\u0082\u0081\u00e6\u00b3\u00a2(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n\u00e4\u00b8\u00ad\u00e7\u00a2\u00ba\u00e7\u008e\u0087\u00e3\u0081\u00a7\u00e6\u00b0\u0097\u00e7\u00b5\u00b6\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "2403": {
+            "Multiplier": 530,
+            "3865": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "30",
+                "DEF": "30"
+            },
+            "1003865": {
                 "Type": "ExtraEfficacySpecial",
                 "Chance": "30",
                 "Duration": "2",

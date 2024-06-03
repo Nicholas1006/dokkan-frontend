@@ -29,22 +29,33 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "2981": {
-            "ID": "2981",
+        "2989": {
+            "ID": "2989",
             "Timing": "Start of turn",
-            "ATK": 100,
-            "DEF": 100,
+            "ATK": 150,
+            "DEF": 150,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1002981": {
-            "ID": "1002981",
+        "1002989": {
+            "ID": "1002989",
+            "Timing": "On Super",
+            "ATK": 50,
+            "DEF": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2002989": {
+            "ID": "2002989",
             "Timing": "Start of turn",
-            "ATK": 25,
-            "DEF": 25,
+            "ATK": 30,
+            "DEF": 30,
             "Target": {
                 "Category": "Wicked Bloodline",
                 "Target": "Allies"
@@ -55,8 +66,8 @@
             },
             "Length": "1"
         },
-        "2002981": {
-            "ID": "2002981",
+        "3002989": {
+            "ID": "3002989",
             "Timing": "Start of turn",
             "Crit Chance": 10,
             "Target": {
@@ -68,6 +79,33 @@
                 "+ or -": "+"
             },
             "Length": "1"
+        },
+        "4002989": {
+            "ID": "4002989",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "50"
+            },
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1767",
+                "Causalities": {
+                    "1767": {
+                        "Button": {
+                            "Name": "Is there is an ally attacking in the same turn whose name includes Metal Cooler?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
         }
     },
     "Stats at levels": {
@@ -733,22 +771,22 @@
         }
     },
     "Super Attack": {
-        "4125": {
-            "superID": "4125",
-            "superName": "\u00e3\u0082\u00b9\u00e3\u0083\u00bc\u00e3\u0083\u0091\u00e3\u0083\u00bc\u00e3\u0083\u008e\u00e3\u0083\u00b4\u00e3\u0082\u00a1",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3\u00e6\u00a5\u00b5\u00e7\u00b3\u00bb\u00e3\u0081\u00ae\u00e4\u00bb\u00b2\u00e9\u0096\u0093ATK25%UP",
+        "4131": {
+            "superID": "4131",
+            "superName": "\u00e3\u0082\u00b9\u00e3\u0083\u00bc\u00e3\u0083\u0091\u00e3\u0083\u00bc\u00e3\u0083\u008e\u00e3\u0083\u00b4\u00e3\u0082\u00a1(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3\u00e6\u00a5\u00b5\u00e7\u00b3\u00bb\u00e3\u0081\u00ae\u00e4\u00bb\u00b2\u00e9\u0096\u0093ATK\u00e3\u0081\u00a8DEF30%UP",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 405,
-            "4125": {
+            "Multiplier": 500,
+            "4131": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -757,7 +795,8 @@
                     "+ or -": "+"
                 },
                 "Target": "Extreme class Allies",
-                "ATK": "25"
+                "ATK": "30",
+                "DEF": "30"
             }
         }
     },

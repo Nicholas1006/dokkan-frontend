@@ -29,11 +29,11 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "1160": {
-            "ID": "1160",
+        "2172": {
+            "ID": "2172",
             "Timing": "Start of turn",
-            "ATK": 35,
-            "DEF": 35,
+            "ATK": 40,
+            "DEF": 40,
             "Target": {
                 "Target": "Allies"
             },
@@ -43,10 +43,10 @@
             },
             "Length": "1"
         },
-        "1001160": {
-            "ID": "1001160",
+        "1002172": {
+            "ID": "1002172",
             "Timing": "Start of turn",
-            "DEF": 50,
+            "DEF": 70,
             "Target": {
                 "Target": "Enemies"
             },
@@ -55,6 +55,56 @@
                 "+ or -": "-"
             },
             "Length": "1"
+        },
+        "2002172": {
+            "ID": "2002172",
+            "Timing": "Start of turn",
+            "ATK": 70,
+            "DEF": 70,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "3002172": {
+            "ID": "3002172",
+            "Timing": "Start of turn",
+            "Ki": 1,
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "4002172": {
+            "ID": "4002172",
+            "Timing": "Start of turn",
+            "DR": 40,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "74",
+                "Causalities": {
+                    "74": {
+                        "Button": {
+                            "Name": "Is HP 70 % or less?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining",
+                            "Logic": "<=70",
+                            "Min": 0,
+                            "Max": 100
+                        }
+                    }
+                }
+            }
         }
     },
     "Stats at levels": {
@@ -716,22 +766,22 @@
         }
     },
     "Super Attack": {
-        "1231": {
-            "superID": "1231",
-            "superName": "\u00e7\u00a0\u00b4\u00e5\u00a3\u008a\u00e7\u008e\u0089",
-            "superDescription": "\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8&1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3\u00e4\u00bb\u00b2\u00e9\u0096\u0093ATK25%UP",
+        "2518": {
+            "superID": "2518",
+            "superName": "\u00e7\u00a0\u00b4\u00e5\u00a3\u008a\u00e7\u008e\u0089(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8&1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3\u00e4\u00bb\u00b2\u00e9\u0096\u0093ATK30%UP",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 405,
-            "1231": {
+            "Multiplier": 500,
+            "2518": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -740,7 +790,7 @@
                     "+ or -": "+"
                 },
                 "Target": "Allies",
-                "ATK": "25"
+                "ATK": "30"
             }
         }
     },

@@ -27,8 +27,8 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "1947": {
-            "ID": "1947",
+        "3059": {
+            "ID": "3059",
             "Timing": "Start of turn",
             "Ki": 2,
             "Buff": {
@@ -37,37 +37,30 @@
             },
             "Length": "1"
         },
-        "1001947": {
-            "ID": "1001947",
+        "1003059": {
+            "ID": "1003059",
             "Timing": "Start of turn",
-            "ATK": 150,
-            "DEF": 150,
+            "ATK": 200,
+            "DEF": 200,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "2001947": {
-            "ID": "2001947",
+        "2003059": {
+            "ID": "2003059",
             "Timing": "Hit recieved",
-            "Status": [
-                "Stun"
-            ],
-            "Target": {
-                "Target": "Enemies",
-                "Class": "Super"
-            },
+            "DEF": 50,
             "Buff": {
-                "Type": "Raw stats",
+                "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Chance": "50",
             "Length": "1",
             "Condition": {
-                "Logic": "419",
+                "Logic": "24",
                 "Causalities": {
-                    "419": {
+                    "24": {
                         "Button": {
                             "Name": "Has attack been recieved?"
                         },
@@ -79,11 +72,90 @@
                 }
             }
         },
-        "3001947": {
-            "ID": "3001947",
+        "3003059": {
+            "ID": "3003059",
+            "Timing": "Hit recieved",
+            "Status": [
+                "Stun"
+            ],
+            "Target": {
+                "Target": "Enemies",
+                "Class": "Super"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Chance": "50",
+            "Length": "1",
+            "Condition": {
+                "Logic": "24",
+                "Causalities": {
+                    "24": {
+                        "Button": {
+                            "Name": "Has attack been recieved?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "4003059": {
+            "ID": "4003059",
+            "Timing": "On Super",
+            "ATK": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1911",
+                "Causalities": {
+                    "1911": {
+                        "Button": {
+                            "Name": "Is the target enemy stunned?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "5003059": {
+            "ID": "5003059",
+            "Timing": "On Super",
+            "Crit Chance": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1911",
+                "Causalities": {
+                    "1911": {
+                        "Button": {
+                            "Name": "Is the target enemy stunned?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "6003059": {
+            "ID": "6003059",
             "Transformation": {
                 "Activated": true,
-                "Unit": "4019020",
+                "Unit": "4019021",
                 "Giant/Rage": true,
                 "Min Turns": "2",
                 "Max Turns": "3",
@@ -94,12 +166,11 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Chance": "50",
             "Length": "1",
             "Condition": {
-                "Logic": "27",
+                "Logic": "1912",
                 "Causalities": {
-                    "27": {
+                    "1912": {
                         "Button": {
                             "Name": "Is HP 50 % or less?"
                         },
@@ -111,7 +182,8 @@
                         }
                     }
                 }
-            }
+            },
+            "Once only": true
         }
     },
     "Stats at levels": {
@@ -774,22 +846,34 @@
         }
     },
     "Super Attack": {
-        "2105": {
-            "superID": "2105",
-            "superName": "\u00e3\u0082\u00b5\u00e3\u0083\u00b4\u00e3\u0082\u00a7\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u00bf\u00e3\u0082\u00a4\u00e3\u0083\u00a9\u00e3\u0083\u00b3\u00e3\u0083\u0088",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nATK\u00e3\u0081\u00a8DEF\u00e3\u0082\u0092\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e3\u0081\u00ab\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
+        "4245": {
+            "superID": "4245",
+            "superName": "\u00e3\u0082\u00b5\u00e3\u0083\u00b4\u00e3\u0082\u00a7\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u00bf\u00e3\u0082\u00a4\u00e3\u0083\u00a9\u00e3\u0083\u00b3\u00e3\u0083\u0088(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nATK\u00e3\u0081\u00a8DEF\u00e3\u0082\u0092\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e3\u0081\u00ab\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 505,
-            "2105": {
+            "Multiplier": 630,
+            "4245": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "50",
+                "DEF": "50"
+            },
+            "1004245": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",

@@ -28,20 +28,41 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "458": {
-            "ID": "458",
-            "Effective against all": true,
+        "1408": {
+            "ID": "1408",
             "Timing": "Start of turn",
+            "ATK": 77,
+            "DEF": 77,
             "Buff": {
-                "Type": "Raw stats",
+                "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1000458": {
-            "ID": "1000458",
+        "1001408": {
+            "ID": "1001408",
             "Timing": "Start of turn",
-            "ATK": 7000,
+            "Building Stat": {
+                "Min": 0,
+                "Max": 0,
+                "Cause": {
+                    "Cause": "Ki sphere obtained",
+                    "Type": [
+                        "Rainbow"
+                    ]
+                }
+            },
+            "ATK": 7,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2001408": {
+            "ID": "2001408",
+            "Effective against all": true,
+            "Timing": "Start of turn",
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -705,21 +726,33 @@
         }
     },
     "Super Attack": {
-        "271": {
-            "superID": "271",
-            "superName": "\u00e3\u0082\u00bd\u00e3\u0082\u00a6\u00e3\u0083\u00ab\u00e3\u0083\u0091\u00e3\u0083\u008b\u00e3\u0083\u0083\u00e3\u0082\u00b7\u00e3\u0083\u00a3\u00e3\u0083\u00bc",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "1598": {
+            "superID": "1598",
+            "superName": "\u00e3\u0082\u00bd\u00e3\u0082\u00a6\u00e3\u0083\u00ab\u00e3\u0083\u0091\u00e3\u0083\u008b\u00e3\u0083\u0083\u00e3\u0082\u00b7\u00e3\u0083\u00a3\u00e3\u0083\u00bc(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nATK\u00e3\u0081\u00a8DEF\u00e3\u0082\u0092\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 505
+            "Multiplier": 630,
+            "1598": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "3",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "-"
+                },
+                "Target": "Enemy",
+                "ATK": "20",
+                "DEF": "20"
+            }
         }
     },
     "Active Skill": null,

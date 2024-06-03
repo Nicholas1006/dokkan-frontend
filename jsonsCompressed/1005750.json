@@ -29,32 +29,82 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "754": {
-            "ID": "754",
+        "2476": {
+            "ID": "2476",
             "Timing": "Start of turn",
-            "ATK": 7000,
-            "DEF": 7000,
+            "ATK": 120,
+            "DEF": 120,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1002476": {
+            "ID": "1002476",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 10,
+                "Max": 80,
+                "Cause": {
+                    "Cause": "HP",
+                    "Type": "More HP remaining"
+                }
+            },
+            "ATK": 80,
+            "DEF": 80,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2002476": {
+            "ID": "2002476",
+            "Effective against all": true,
+            "Timing": "Start of turn",
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "57",
+                "Logic": "50",
                 "Causalities": {
-                    "57": {
+                    "50": {
                         "Button": {
-                            "Name": "Is HP 30 % or more?"
+                            "Name": "Is HP 80 % or more?"
                         },
                         "Slider": {
                             "Name": "What percentage of HP is remaining",
-                            "Logic": ">=30",
+                            "Logic": ">=80",
                             "Min": 0,
                             "Max": 100
                         }
                     }
                 }
             }
+        },
+        "3002476": {
+            "ID": "3002476",
+            "Timing": "Start of turn",
+            "Ki change": {
+                "From": [
+                    "PHY",
+                    "STR",
+                    "INT",
+                    "TEQ",
+                    "AGL"
+                ],
+                "To": [
+                    "Rainbow"
+                ]
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
         }
     },
     "Stats at levels": {
@@ -701,22 +751,34 @@
         }
     },
     "Super Attack": {
-        "545": {
-            "superID": "545",
-            "superName": "\u00e9\u00ad\u0094\u00e4\u00ba\u00ba\u00e3\u0083\u0093\u00e3\u0083\u00bc\u00e3\u0083\u00a0",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081ATK\u00e3\u0082\u0092\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
+        "3188": {
+            "superID": "3188",
+            "superName": "\u00e9\u00ad\u0094\u00e4\u00ba\u00ba\u00e3\u0083\u0093\u00e3\u0083\u00bc\u00e3\u0083\u00a0(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nATK\u00e3\u0082\u0092\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "545": {
+            "Multiplier": 530,
+            "3188": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "30",
+                "DEF": "30"
+            },
+            "1003188": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",

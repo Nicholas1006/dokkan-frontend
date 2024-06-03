@@ -25,8 +25,8 @@
         "Legendary Power"
     ],
     "Passive": {
-        "3340": {
-            "ID": "3340",
+        "3342": {
+            "ID": "3342",
             "Timing": "Start of turn",
             "Status": [
                 "Unable to attack"
@@ -37,8 +37,8 @@
             },
             "Length": "1"
         },
-        "1003340": {
-            "ID": "1003340",
+        "1003342": {
+            "ID": "1003342",
             "Timing": "Start of turn",
             "Ki": 3,
             "Buff": {
@@ -47,20 +47,20 @@
             },
             "Length": "1"
         },
-        "2003340": {
-            "ID": "2003340",
+        "2003342": {
+            "ID": "2003342",
             "Timing": "Start of turn",
-            "DEF": 120,
+            "DEF": 150,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "3003340": {
-            "ID": "3003340",
+        "3003342": {
+            "ID": "3003342",
             "Timing": "Being hit",
-            "DEF": 80,
+            "DEF": 100,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -83,10 +83,36 @@
                 }
             }
         },
-        "4003340": {
-            "ID": "4003340",
+        "4003342": {
+            "ID": "4003342",
+            "Timing": "End of turn",
+            "Heals": 10,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2094",
+                "Causalities": {
+                    "2094": {
+                        "Button": {
+                            "Name": "Is ki 18 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=18",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    }
+                }
+            }
+        },
+        "5003342": {
+            "ID": "5003342",
             "Timing": "Being hit",
-            "DR": 30,
+            "DR": 40,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -109,18 +135,18 @@
                 }
             }
         },
-        "5003340": {
-            "ID": "5003340",
+        "6003342": {
+            "ID": "6003342",
             "Timing": "On Super",
-            "ATK": 150,
+            "ATK": 300,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "6003340": {
-            "ID": "6003340",
+        "7003342": {
+            "ID": "7003342",
             "Toggle Other Line": {
                 "Activated": true,
                 "Line": "4"
@@ -132,8 +158,8 @@
             },
             "Length": "1"
         },
-        "7003340": {
-            "ID": "7003340",
+        "8003342": {
+            "ID": "8003342",
             "Toggle Other Line": {
                 "Activated": true,
                 "Line": "8"
@@ -145,8 +171,8 @@
             },
             "Length": "1"
         },
-        "8003340": {
-            "ID": "8003340",
+        "9003342": {
+            "ID": "9003342",
             "Standby": {
                 "Activated": true,
                 "Change form": {
@@ -988,24 +1014,7 @@
             "DEF": 1700
         }
     },
-    "Super Attack": {
-        "4447": {
-            "superID": "4447",
-            "superName": "\u00e3\u0081\u00aa\u00e3\u0081\u0097",
-            "superDescription": "-",
-            "superMinKi": "12",
-            "superPriority": "0.0",
-            "superStyle": "Normal",
-            "superMinLVL": "0",
-            "superCausality": "",
-            "superAimTarget": "0",
-            "superIsInactive": "1",
-            "SpecialBonus": {
-                "ID": "0"
-            },
-            "Multiplier": 100
-        }
-    },
+    "Super Attack": {},
     "Active Skill": null,
     "Ki Multiplier": {
         "0": 90.0,

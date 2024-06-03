@@ -22,15 +22,53 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "691": {
-            "ID": "691",
+        "2681": {
+            "ID": "2681",
             "Timing": "Start of turn",
-            "ATK": 80,
+            "ATK": 260,
+            "DEF": 260,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
+        },
+        "1002681": {
+            "ID": "1002681",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "70"
+            },
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2002681": {
+            "ID": "2002681",
+            "Timing": "On Super",
+            "ATK": 59,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1216",
+                "Causalities": {
+                    "1216": {
+                        "Button": {
+                            "Name": "Is the target enemy stunned?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
         }
     },
     "Stats at levels": {
@@ -679,24 +717,24 @@
         }
     },
     "Super Attack": {
-        "416": {
-            "superID": "416",
-            "superName": "\u00e3\u0082\u00ae\u00e3\u0082\u00ac\u00e3\u0083\u00b3\u00e3\u0083\u0086\u00e3\u0082\u00a3\u00e3\u0083\u0083\u00e3\u0082\u00af\u00e5\u0085\u0083\u00e6\u00b0\u0097\u00e7\u008e\u0089",
-            "superDescription": "\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\u00e3\u0081\u00be\u00e3\u0082\u008c\u00e3\u0081\u00ab\u00e6\u00b0\u0097\u00e7\u00b5\u00b6\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
+        "3521": {
+            "superID": "3521",
+            "superName": "\u00e3\u0082\u00ae\u00e3\u0082\u00ac\u00e3\u0083\u00b3\u00e3\u0083\u0086\u00e3\u0082\u00a3\u00e3\u0083\u0083\u00e3\u0082\u00af\u00e5\u0085\u0083\u00e6\u00b0\u0097\u00e7\u008e\u0089(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n\u00e9\u00ab\u0098\u00e7\u00a2\u00ba\u00e7\u008e\u0087\u00e3\u0081\u00a7\u00e6\u00b0\u0097\u00e7\u00b5\u00b6\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "416": {
+            "Multiplier": 530,
+            "3521": {
                 "Type": "ExtraEfficacySpecial",
-                "Chance": "20",
+                "Chance": "50",
                 "Duration": "2",
                 "Buff": {
                     "Type": "Raw stats",

@@ -39,22 +39,22 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "1156": {
-            "ID": "1156",
+        "2803": {
+            "ID": "2803",
             "Timing": "Start of turn",
-            "ATK": 130,
-            "DEF": 130,
+            "ATK": 150,
+            "DEF": 150,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1001156": {
-            "ID": "1001156",
+        "1002803": {
+            "ID": "1002803",
             "Additional attack": {
                 "Activated": true,
-                "Chance of super": "0"
+                "Chance of super": "15"
             },
             "Timing": "Start of turn",
             "Buff": {
@@ -63,8 +63,8 @@
             },
             "Length": "1"
         },
-        "2001156": {
-            "ID": "2001156",
+        "2002803": {
+            "ID": "2002803",
             "Timing": "Attacking the enemy",
             "Building Stat": {
                 "Min": 0,
@@ -79,6 +79,32 @@
                 "+ or -": "+"
             },
             "Length": "99"
+        },
+        "3002803": {
+            "ID": "3002803",
+            "Timing": "On Super",
+            "DEF": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1378",
+                "Causalities": {
+                    "1378": {
+                        "Button": {
+                            "Name": "Is ki 12 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=12",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    }
+                }
+            }
         }
     },
     "Stats at levels": {
@@ -758,22 +784,34 @@
         }
     },
     "Super Attack": {
-        "1227": {
-            "superID": "1227",
-            "superName": "\u00e3\u0083\u0095\u00e3\u0082\u00a1\u00e3\u0082\u00a4\u00e3\u0083\u008a\u00e3\u0083\u00ab\u00e3\u0083\u0095\u00e3\u0083\u00a9\u00e3\u0083\u0083\u00e3\u0082\u00b7\u00e3\u0083\u00a5",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nDEF\u00e3\u0082\u0092\u00e8\u00b6\u0085\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e3\u0081\u00ab\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
+        "3782": {
+            "superID": "3782",
+            "superName": "\u00e3\u0083\u0095\u00e3\u0082\u00a1\u00e3\u0082\u00a4\u00e3\u0083\u008a\u00e3\u0083\u00ab\u00e3\u0083\u0095\u00e3\u0083\u00a9\u00e3\u0083\u0083\u00e3\u0082\u00b7\u00e3\u0083\u00a5(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nDEF\u00e3\u0082\u0092\u00e8\u00b6\u0085\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e3\u0081\u00ab\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 505,
-            "1227": {
+            "Multiplier": 630,
+            "3782": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "30",
+                "DEF": "30"
+            },
+            "1003782": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",

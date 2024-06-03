@@ -29,8 +29,57 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "1138": {
-            "ID": "1138",
+        "3496": {
+            "ID": "3496",
+            "Timing": "Start of turn",
+            "Ki change": {
+                "From": "INT",
+                "To": "PHY"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1003496": {
+            "ID": "1003496",
+            "Timing": "Start of turn",
+            "Ki": 2,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2003496": {
+            "ID": "2003496",
+            "Timing": "Start of turn",
+            "ATK": 130,
+            "DEF": 130,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "3003496": {
+            "ID": "3003496",
+            "Timing": "Start of turn",
+            "ATK": 30,
+            "DEF": 30,
+            "Target": {
+                "Category": "Power of Wishes",
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "4003496": {
+            "ID": "4003496",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -40,13 +89,109 @@
                     "Type": "any"
                 }
             },
-            "ATK": 10,
-            "DEF": 10,
+            "ATK": 25,
+            "DEF": 25,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
+        },
+        "5003496": {
+            "ID": "5003496",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 0,
+                "Cause": {
+                    "Cause": "Ki sphere obtained",
+                    "Type": [
+                        "Rainbow",
+                        "PHY",
+                        "STR",
+                        "INT",
+                        "TEQ",
+                        "AGL"
+                    ]
+                }
+            },
+            "Crit Chance": 5,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "6003496": {
+            "ID": "6003496",
+            "Timing": "Start of turn",
+            "Ki change": {
+                "From": [
+                    "STR",
+                    "TEQ",
+                    "AGL"
+                ],
+                "To": [
+                    "PHY"
+                ]
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "3",
+            "Condition": {
+                "Logic": "2443",
+                "Causalities": {
+                    "2443": {
+                        "Button": {
+                            "Name": "Is HP 59 % or less?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining",
+                            "Logic": "<=59",
+                            "Min": 0,
+                            "Max": 100
+                        }
+                    }
+                }
+            },
+            "Once only": true
+        },
+        "7003496": {
+            "ID": "7003496",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 0,
+                "Cause": {
+                    "Cause": "Ki sphere obtained",
+                    "Type": "any"
+                }
+            },
+            "ATK": 25,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "3",
+            "Condition": {
+                "Logic": "2443",
+                "Causalities": {
+                    "2443": {
+                        "Button": {
+                            "Name": "Is HP 59 % or less?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining",
+                            "Logic": "<=59",
+                            "Min": 0,
+                            "Max": 100
+                        }
+                    }
+                }
+            },
+            "Once only": true
         }
     },
     "Stats at levels": {
@@ -695,22 +840,22 @@
         }
     },
     "Super Attack": {
-        "1209": {
-            "superID": "1209",
-            "superName": "\u00e5\u0085\u0083\u00e6\u00b0\u0097\u00e7\u008e\u0089",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nDEF\u00e3\u0082\u0092\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e3\u0081\u00ab\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
+        "4726": {
+            "superID": "4726",
+            "superName": "\u00e5\u0085\u0083\u00e6\u00b0\u0097\u00e7\u008e\u0089(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nDEF\u00e3\u0082\u0092\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e3\u0081\u00ab\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b\n&1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3\u00e4\u00bb\u00b2\u00e9\u0096\u0093DEF30%UP",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "1209": {
+            "Multiplier": 530,
+            "4726": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",
@@ -720,6 +865,17 @@
                 },
                 "Target": "Enemy",
                 "DEF": "50"
+            },
+            "1004726": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Allies",
+                "DEF": "30"
             }
         }
     },

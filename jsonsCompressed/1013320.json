@@ -33,37 +33,118 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "1206": {
-            "ID": "1206",
+        "3331": {
+            "ID": "3331",
             "Timing": "Start of turn",
-            "ATK": 80,
-            "DEF": 80,
+            "Ki": 2,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1003331": {
+            "ID": "1003331",
+            "Timing": "Start of turn",
+            "ATK": 180,
+            "DEF": 180,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1001206": {
-            "ID": "1001206",
+        "2003331": {
+            "ID": "2003331",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "30"
+            },
             "Timing": "Start of turn",
-            "ATK": 80,
-            "DEF": 40,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "3003331": {
+            "ID": "3003331",
+            "Timing": "Start of turn",
+            "ATK": 180,
+            "DEF": 180,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "22",
+                "Logic": "2083",
                 "Causalities": {
-                    "22": {
+                    "2083": {
                         "Button": {
                             "Name": "Is there 2 or more enemies?"
                         },
                         "Slider": {
                             "Name": "How many enemies are there?",
                             "Logic": ">=2",
+                            "Min": 1,
+                            "Max": 7
+                        }
+                    }
+                }
+            }
+        },
+        "4003331": {
+            "ID": "4003331",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "50"
+            },
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2083",
+                "Causalities": {
+                    "2083": {
+                        "Button": {
+                            "Name": "Is there 2 or more enemies?"
+                        },
+                        "Slider": {
+                            "Name": "How many enemies are there?",
+                            "Logic": ">=2",
+                            "Min": 1,
+                            "Max": 7
+                        }
+                    }
+                }
+            }
+        },
+        "5003331": {
+            "ID": "5003331",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "100"
+            },
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2084",
+                "Causalities": {
+                    "2084": {
+                        "Button": {
+                            "Name": "Is there 3 or more enemies?"
+                        },
+                        "Slider": {
+                            "Name": "How many enemies are there?",
+                            "Logic": ">=3",
                             "Min": 1,
                             "Max": 7
                         }
@@ -731,21 +812,33 @@
         }
     },
     "Super Attack": {
-        "1274": {
-            "superID": "1274",
-            "superName": "\u00e3\u0081\u008b\u00e3\u0082\u0081\u00e3\u0081\u00af\u00e3\u0082\u0081\u00e6\u00b3\u00a2",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "4412": {
+            "superID": "4412",
+            "superName": "\u00e3\u0081\u008b\u00e3\u0082\u0081\u00e3\u0081\u00af\u00e3\u0082\u0081\u00e6\u00b3\u00a2(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430
+            "Multiplier": 510,
+            "4412": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "99",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "20",
+                "DEF": "20"
+            }
         }
     },
     "Active Skill": null,

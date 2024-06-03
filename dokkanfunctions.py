@@ -506,6 +506,7 @@ def logic_reducer(expression):
 
 def standbyConditionLogicalCausalityExtractor(causalityCondition,seed=10000):
     output={}
+    causalityCondition=causalityCondition.replace(" ","")
     causalityCondition=split_into_lists(causalityCondition[1:-1],",")
     logic=listListToLogic(causalityCondition,seed=seed)
     return(logic)
@@ -624,6 +625,17 @@ def parseStandby(unit,DEVEXCEPTIONS=False):
             elif(standby_skill_row[6]=="116"):
                 output["Charge type"]={}
                 output["Charge type"]["type"]=efficiacy_value[0][5:]
+                if(output["Charge type"]["type"]=="energy_ball" and len(efficiacy_value)>4):
+                    if(efficiacy_value[4][:-1]=='ball_type_multiplier:'):
+                        charge_per_orb=efficiacy_value[-5:]
+                        output["Charge type"]["charge_per_orb"]={}
+                        output["Charge type"]["charge_per_orb"]["AGL"]=int(efficiacy_value[4][-1])
+                        output["Charge type"]["charge_per_orb"]["TEQ"]=int(charge_per_orb[0])
+                        output["Charge type"]["charge_per_orb"]["INT"]=int(charge_per_orb[1])
+                        output["Charge type"]["charge_per_orb"]["STR"]=int(charge_per_orb[2])
+                        output["Charge type"]["charge_per_orb"]["PHY"]=int(charge_per_orb[3])
+                        output["Charge type"]["charge_per_orb"]["Rainbow"]=int(charge_per_orb[4])
+
                 output["Charge type"]["gauge_value"]=efficiacy_value[1][12:]
                 output["Charge type"]["count_multiplier"]=efficiacy_value[2][17:]
                 output["Charge type"]["max_effect_value"]=efficiacy_value[3][17:]
@@ -655,6 +667,8 @@ def parseStandby(unit,DEVEXCEPTIONS=False):
                 output[finish_skill_set_id]["Timing"]="On Revive"
             elif(finish_skill_setsRow[6]=="6"):
                 output[finish_skill_set_id]["Timing"]="On Counter"
+            elif(finish_skill_setsRow[6]=="7"):
+                output[finish_skill_set_id]["Timing"]="On super attack Counter(Held by str dragon fist)"
             else:
                 output[finish_skill_set_id]["Timing"]="UNKNOWN"
                 if(DEVEXCEPTIONS):
@@ -677,12 +691,16 @@ def parseStandby(unit,DEVEXCEPTIONS=False):
                     output[finish_skill_set_id]["Heals"]=int(efficiacy_value[0])
                 elif(finish_skill_row[6]=="5"):
                     output[finish_skill_set_id]["Ki"]=int(efficiacy_value[0])
+                elif(finish_skill_row[6]=="9"):
+                    output[finish_skill_set_id]["Effect"]="Stun"
                 elif(finish_skill_row[6]=="90"):
                     output[finish_skill_set_id]["Crit Chance"]=int(efficiacy_value[0])
                 elif(finish_skill_row[6]=="103"):
                     output[finish_skill_set_id]["Exchanges to"]=efficiacy_value[0]
                 elif(finish_skill_row[6]=="110"):
-                    output[finish_skill_set_id]["CONFUSION"]=True
+                    output[finish_skill_set_id]["Toggle Other Line"]={}
+                    output[finish_skill_set_id]["Toggle Other Line"]["Activated"]=True
+                    output[finish_skill_set_id]["Toggle Other Line"]["Line"]=efficiacy_value[2]
                 elif(finish_skill_row[6]=="115"):
                     output[finish_skill_set_id]["Standby Exclusivity"]=efficiacy_value[0][5:]
                 elif(finish_skill_row[6]=="116"):
@@ -693,9 +711,10 @@ def parseStandby(unit,DEVEXCEPTIONS=False):
                     output[finish_skill_set_id]["Multipler per charge"]=int(efficiacy_value[0])
                     output[finish_skill_set_id]["Max multiplier"]=int(efficiacy_value[1])
                 elif(finish_skill_row[6]=="119"):
-                    output[finish_skill_set_id]["CONFUSION"]=True
+                    output[finish_skill_set_id]["Nullification"]={}
+                    output[finish_skill_set_id]["Nullification"]["Activated"]=True
                 elif(finish_skill_row[6]=="120"):
-                    output[finish_skill_set_id]["CONFUSION"]=True
+                    output[finish_skill_set_id]["Counter"]={"Activated":True, "Multiplier":efficiacy_value[1]}
 
                     
                 else:

@@ -26,19 +26,105 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "1951": {
-            "ID": "1951",
+        "3054": {
+            "ID": "3054",
             "Timing": "Start of turn",
-            "ATK": 100,
-            "DEF": 100,
+            "ATK": 130,
+            "DEF": 130,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1001951": {
-            "ID": "1001951",
+        "1003054": {
+            "ID": "1003054",
+            "Timing": "On Super",
+            "DEF": 30,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1901",
+                "Causalities": {
+                    "1901": {
+                        "Button": {
+                            "Name": "Is ki 12 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=12",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    }
+                }
+            }
+        },
+        "2003054": {
+            "ID": "2003054",
+            "Timing": "Attacking the enemy",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 30,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "DR": 10,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1902",
+                "Causalities": {
+                    "1902": {
+                        "Button": {
+                            "Name": "Is a super being performed?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "3003054": {
+            "ID": "3003054",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "50"
+            },
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1903",
+                "Causalities": {
+                    "1903": {
+                        "Button": {
+                            "Name": "Are there 4 or more Dragon Ball Heroes category allies on the team "
+                        },
+                        "Slider": {
+                            "Name": "How many Dragon Ball Heroes category allies on the team ",
+                            "Logic": ">=4",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "4003054": {
+            "ID": "4003054",
             "Timing": "Start of turn",
             "Ki": 2,
             "Target": {
@@ -50,8 +136,8 @@
             },
             "Length": "1"
         },
-        "2001951": {
-            "ID": "2001951",
+        "5003054": {
+            "ID": "5003054",
             "Timing": "Start of turn",
             "ATK": 20,
             "DEF": 20,
@@ -64,61 +150,20 @@
             },
             "Length": "1"
         },
-        "3001951": {
-            "ID": "3001951",
+        "6003054": {
+            "ID": "6003054",
             "Timing": "Start of turn",
-            "ATK": 30,
-            "DEF": 30,
+            "ATK": 20,
+            "DEF": 20,
+            "Target": {
+                "Category": "Dragon Ball Heroes",
+                "Target": "Allies"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1",
-            "Condition": {
-                "Logic": "410",
-                "Causalities": {
-                    "410": {
-                        "Button": {
-                            "Name": "Are there 4 or more Dragon Ball Heroes category allies on the team "
-                        },
-                        "Slider": {
-                            "Name": "How many Dragon Ball Heroes category allies on the team ",
-                            "Logic": ">=4",
-                            "Max": 7,
-                            "Min": 0
-                        }
-                    }
-                }
-            }
-        },
-        "4001951": {
-            "ID": "4001951",
-            "Additional attack": {
-                "Activated": true,
-                "Chance of super": "30"
-            },
-            "Timing": "On Super",
-            "Buff": {
-                "Type": "Raw stats",
-                "+ or -": "+"
-            },
-            "Length": "1",
-            "Condition": {
-                "Logic": "410",
-                "Causalities": {
-                    "410": {
-                        "Button": {
-                            "Name": "Are there 4 or more Dragon Ball Heroes category allies on the team "
-                        },
-                        "Slider": {
-                            "Name": "How many Dragon Ball Heroes category allies on the team ",
-                            "Logic": ">=4",
-                            "Max": 7,
-                            "Min": 0
-                        }
-                    }
-                }
-            }
+            "Length": "1"
         }
     },
     "Stats at levels": {
@@ -785,22 +830,22 @@
         }
     },
     "Super Attack": {
-        "2108": {
-            "superID": "2108",
-            "superName": "\u00e3\u0082\u00b4\u00e3\u0083\u00bc\u00e3\u0083\u00ab\u00e3\u0083\u0087\u00e3\u0083\u00b3\u00e3\u0082\u00b9\u00e3\u0083\u00bc\u00e3\u0083\u0091\u00e3\u0083\u00bc\u00e3\u0083\u008e\u00e3\u0083\u00b4\u00e3\u0082\u00a1",
-            "superDescription": "ATK\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "4240": {
+            "superID": "4240",
+            "superName": "\u00e3\u0082\u00b4\u00e3\u0083\u00bc\u00e3\u0083\u00ab\u00e3\u0083\u0087\u00e3\u0083\u00b3\u00e3\u0082\u00b9\u00e3\u0083\u00bc\u00e3\u0083\u0091\u00e3\u0083\u00bc\u00e3\u0083\u008e\u00e3\u0083\u00b4\u00e3\u0082\u00a1(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "ATK\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u00811\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 475,
-            "2108": {
+            "Multiplier": 600,
+            "4240": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "99",
@@ -810,6 +855,17 @@
                 },
                 "Target": "Self",
                 "ATK": "30"
+            },
+            "1004240": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "30"
             }
         }
     },

@@ -25,8 +25,19 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "1113": {
-            "ID": "1113",
+        "2567": {
+            "ID": "2567",
+            "Timing": "Start of turn",
+            "ATK": 170,
+            "DEF": 170,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1002567": {
+            "ID": "1002567",
             "Timing": "Start of turn",
             "Ki": 3,
             "Buff": {
@@ -51,11 +62,11 @@
                 }
             }
         },
-        "1001113": {
-            "ID": "1001113",
+        "2002567": {
+            "ID": "2002567",
             "Timing": "Start of turn",
-            "ATK": 70,
-            "DEF": 70,
+            "ATK": 100,
+            "DEF": 100,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -78,8 +89,34 @@
                 }
             }
         },
-        "2001113": {
-            "ID": "2001113",
+        "3002567": {
+            "ID": "3002567",
+            "Timing": "Start of turn",
+            "ATK": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "22",
+                "Causalities": {
+                    "22": {
+                        "Button": {
+                            "Name": "Is there 2 or more enemies?"
+                        },
+                        "Slider": {
+                            "Name": "How many enemies are there?",
+                            "Logic": ">=2",
+                            "Min": 1,
+                            "Max": 7
+                        }
+                    }
+                }
+            }
+        },
+        "4002567": {
+            "ID": "4002567",
             "Timing": "Start of turn",
             "DR": 50,
             "Buff": {
@@ -99,6 +136,63 @@
                             "Logic": ">=2",
                             "Min": 1,
                             "Max": 7
+                        }
+                    }
+                }
+            }
+        },
+        "5002567": {
+            "ID": "5002567",
+            "Timing": "Start of turn",
+            "ATK": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "983",
+                "Causalities": {
+                    "983": {
+                        "Button": {
+                            "Name": "Are there 2 or more Ginyu Force category allies on the team "
+                        },
+                        "Slider": {
+                            "Name": "How many Ginyu Force category allies on the team ",
+                            "Logic": ">=2",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "6002567": {
+            "ID": "6002567",
+            "Timing": "On Super",
+            "Status": [
+                "Disable guard"
+            ],
+            "Target": {
+                "Target": "Enemy"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "983",
+                "Causalities": {
+                    "983": {
+                        "Button": {
+                            "Name": "Are there 2 or more Ginyu Force category allies on the team "
+                        },
+                        "Slider": {
+                            "Name": "How many Ginyu Force category allies on the team ",
+                            "Logic": ">=2",
+                            "Max": 7,
+                            "Min": 0
                         }
                     }
                 }
@@ -767,14 +861,14 @@
         }
     },
     "Super Attack": {
-        "1048": {
-            "superID": "1048",
-            "superName": "\u00e3\u0083\u009f\u00e3\u0083\u00ab\u00e3\u0082\u00ad\u00e3\u0083\u00bc\u00e3\u0082\u00ad\u00e3\u0083\u00a3\u00e3\u0083\u008e\u00e3\u0083\u00b3",
-            "superDescription": "ATK\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "3323": {
+            "superID": "3323",
+            "superName": "\u00e3\u0083\u009f\u00e3\u0083\u00ab\u00e3\u0082\u00ad\u00e3\u0083\u00bc\u00e3\u0082\u00ad\u00e3\u0083\u00a3\u00e3\u0083\u008e\u00e3\u0083\u00b3(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "ATK\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u00811\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n\u00e5\u00bf\u0085\u00e6\u00ae\u00ba\u00e6\u008a\u0080\u00e3\u0082\u0092\u00e5\u00b0\u0081\u00e3\u0081\u0098\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -787,7 +881,7 @@
                 "Amount": "20"
             },
             "Multiplier": 400,
-            "1048": {
+            "3323": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "99",
@@ -797,6 +891,28 @@
                 },
                 "Target": "Self",
                 "ATK": "30"
+            },
+            "1003323": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "30"
+            },
+            "2003323": {
+                "Type": "ExtraEfficacySpecial",
+                "Chance": "100",
+                "Duration": "2",
+                "Buff": {
+                    "Type": "Raw stats",
+                    "+ or -": "+"
+                },
+                "Target": "Enemy",
+                "Status": "Seals"
             }
         }
     },

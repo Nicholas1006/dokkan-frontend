@@ -38,37 +38,87 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "1208": {
-            "ID": "1208",
+        "2912": {
+            "ID": "2912",
             "Timing": "Start of turn",
-            "ATK": 100,
+            "ATK": 159,
+            "DEF": 159,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1001208": {
-            "ID": "1001208",
+        "1002912": {
+            "ID": "1002912",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 10,
-                "Max": 70,
+                "Max": 100,
                 "Cause": {
                     "Cause": "HP",
                     "Type": "More HP remaining"
                 }
             },
-            "ATK": 70,
-            "DEF": 70,
+            "ATK": 100,
+            "DEF": 100,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "2001208": {
-            "ID": "2001208",
+        "2002912": {
+            "ID": "2002912",
+            "Timing": "Start of turn",
+            "Ki": 3,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1574",
+                "Causalities": {
+                    "1574": {
+                        "Button": {
+                            "Name": "Is there an extreme class enemy? "
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "3002912": {
+            "ID": "3002912",
+            "Timing": "Start of turn",
+            "ATK": 59,
+            "DEF": 59,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1574",
+                "Causalities": {
+                    "1574": {
+                        "Button": {
+                            "Name": "Is there an extreme class enemy? "
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "4002912": {
+            "ID": "4002912",
             "Nullification": {
                 "Activated": true,
                 "Absorbed": 0
@@ -95,8 +145,8 @@
                 }
             }
         },
-        "3001208": {
-            "ID": "3001208",
+        "5002912": {
+            "ID": "5002912",
             "Counter": {
                 "Activated": true,
                 "Multiplier": "300"
@@ -123,11 +173,11 @@
                 }
             }
         },
-        "4001208": {
-            "ID": "4001208",
+        "6002912": {
+            "ID": "6002912",
             "Toggle Other Line": {
                 "Activated": true,
-                "Line": "2001208"
+                "Line": "4002912"
             },
             "Timing": "Hit recieved",
             "Buff": {
@@ -136,11 +186,11 @@
             },
             "Length": "1"
         },
-        "5001208": {
-            "ID": "5001208",
+        "7002912": {
+            "ID": "7002912",
             "Toggle Other Line": {
                 "Activated": true,
-                "Line": "3001208"
+                "Line": "5002912"
             },
             "Timing": "Hit recieved",
             "Buff": {
@@ -148,6 +198,46 @@
                 "+ or -": "+"
             },
             "Length": "1"
+        },
+        "8002912": {
+            "ID": "8002912",
+            "Forsee Super Attack": true,
+            "Timing": "Start of turn",
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1575 and 1576",
+                "Causalities": {
+                    "1575": {
+                        "Button": {
+                            "Name": "Is HP 59 % or less?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining",
+                            "Logic": "<=59",
+                            "Min": 0,
+                            "Max": 100
+                        }
+                    },
+                    "1576": {
+                        "Button": {
+                            "Name": "Are there 2 or more Full Power category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Full Power category allies on the same turn ",
+                            "Logic": ">=2",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
         }
     },
     "Stats at levels": {
@@ -849,22 +939,34 @@
         }
     },
     "Super Attack": {
-        "1276": {
-            "superID": "1276",
-            "superName": "\u00e9\u00be\u008d\u00e6\u008b\u00b3",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nDEF\u00e3\u0082\u0092\u00e8\u00b6\u0085\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e3\u0081\u00ab\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
+        "3976": {
+            "superID": "3976",
+            "superName": "\u00e9\u00be\u008d\u00e6\u008b\u00b3(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nDEF\u00e3\u0082\u0092\u00e8\u00b6\u0085\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e3\u0081\u00ab\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 505,
-            "1276": {
+            "Multiplier": 630,
+            "3976": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "30",
+                "DEF": "30"
+            },
+            "1003976": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",

@@ -26,18 +26,19 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "2052": {
-            "ID": "2052",
+        "2789": {
+            "ID": "2789",
             "Timing": "Start of turn",
-            "DEF": 90,
+            "ATK": 150,
+            "DEF": 150,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1002052": {
-            "ID": "1002052",
+        "1002789": {
+            "ID": "1002789",
             "Dodge chance": 50,
             "Timing": "Start of turn",
             "Buff": {
@@ -46,8 +47,8 @@
             },
             "Length": "1"
         },
-        "2002052": {
-            "ID": "2002052",
+        "2002789": {
+            "ID": "2002789",
             "Timing": "Start of turn",
             "Ki change": {
                 "From": [
@@ -67,11 +68,67 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "529",
+                "Logic": "1338",
                 "Causalities": {
-                    "529": {
+                    "1338": {
                         "Button": {
                             "Name": "Is there is an ally on the team whose name includes Bardock?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "3002789": {
+            "ID": "3002789",
+            "Timing": "Hit recieved",
+            "Ki": 3,
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1339",
+                "Causalities": {
+                    "1339": {
+                        "Button": {
+                            "Name": "Has this unit evaded an attack? "
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "4002789": {
+            "ID": "4002789",
+            "Timing": "Hit recieved",
+            "ATK": 30,
+            "DEF": 30,
+            "Target": {
+                "Category": "Team Bardock",
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1339",
+                "Causalities": {
+                    "1339": {
+                        "Button": {
+                            "Name": "Has this unit evaded an attack? "
                         },
                         "Slider": {
                             "Name": null,
@@ -745,14 +802,14 @@
         }
     },
     "Super Attack": {
-        "2305": {
-            "superID": "2305",
-            "superName": "\u00e3\u0082\u00a8\u00e3\u0083\u008a\u00e3\u0082\u00b8\u00e3\u0083\u00bc\u00e3\u0083\u0090\u00e3\u0083\u00ac\u00e3\u0083\u0083\u00e3\u0083\u0088",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nATK\u00e3\u0081\u00a8DEF\u00e3\u0082\u0092\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
+        "3749": {
+            "superID": "3749",
+            "superName": "\u00e3\u0082\u00a8\u00e3\u0083\u008a\u00e3\u0082\u00b8\u00e3\u0083\u00bc\u00e3\u0083\u0090\u00e3\u0083\u00ac\u00e3\u0083\u0083\u00e3\u0083\u0088(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3DEF\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nATK\u00e3\u0081\u00a8DEF\u00e3\u0082\u0092\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -765,7 +822,18 @@
                 "Amount": "3"
             },
             "Multiplier": 430,
-            "2305": {
+            "3749": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "50"
+            },
+            "1003749": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",

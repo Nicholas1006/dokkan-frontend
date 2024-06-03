@@ -23,8 +23,8 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "2236": {
-            "ID": "2236",
+        "3878": {
+            "ID": "3878",
             "Timing": "Start of turn",
             "Ki": 3,
             "Buff": {
@@ -33,42 +33,33 @@
             },
             "Length": "1"
         },
-        "1002236": {
-            "ID": "1002236",
+        "1003878": {
+            "ID": "1003878",
             "Timing": "Start of turn",
-            "ATK": 120,
-            "DEF": 120,
+            "ATK": 150,
+            "DEF": 150,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "2002236": {
-            "ID": "2002236",
+        "2003878": {
+            "ID": "2003878",
             "Timing": "On Super",
-            "ATK": 60,
-            "DEF": 60,
+            "ATK": 100,
+            "DEF": 100,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "421 or 422",
+                "Logic": "2733",
                 "Causalities": {
-                    "421": {
+                    "2733": {
                         "Button": {
-                            "Name": "Is the target enemy in \"ATK down\" status?"
-                        },
-                        "Slider": {
-                            "Name": null,
-                            "Logic": null
-                        }
-                    },
-                    "422": {
-                        "Button": {
-                            "Name": "Is the target enemy in \"DEF down\" status?"
+                            "Name": "Is the target enemy in \"ATK down\" status or in \"DEF down\" status?"
                         },
                         "Slider": {
                             "Name": null,
@@ -78,8 +69,8 @@
                 }
             }
         },
-        "3002236": {
-            "ID": "3002236",
+        "3003878": {
+            "ID": "3003878",
             "Additional attack": {
                 "Activated": true,
                 "Chance of super": "100"
@@ -91,20 +82,11 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "421 or 422",
+                "Logic": "2733",
                 "Causalities": {
-                    "421": {
+                    "2733": {
                         "Button": {
-                            "Name": "Is the target enemy in \"ATK down\" status?"
-                        },
-                        "Slider": {
-                            "Name": null,
-                            "Logic": null
-                        }
-                    },
-                    "422": {
-                        "Button": {
-                            "Name": "Is the target enemy in \"DEF down\" status?"
+                            "Name": "Is the target enemy in \"ATK down\" status or in \"DEF down\" status?"
                         },
                         "Slider": {
                             "Name": null,
@@ -114,8 +96,8 @@
                 }
             }
         },
-        "4002236": {
-            "ID": "4002236",
+        "4003878": {
+            "ID": "4003878",
             "Effective against all": true,
             "Timing": "On Super",
             "Buff": {
@@ -124,9 +106,9 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "92",
+                "Logic": "2734",
                 "Causalities": {
-                    "92": {
+                    "2734": {
                         "Button": {
                             "Name": "Is the target enemy sealed?"
                         },
@@ -138,8 +120,8 @@
                 }
             }
         },
-        "5002236": {
-            "ID": "5002236",
+        "5003878": {
+            "ID": "5003878",
             "Timing": "Attacking the enemy",
             "Status": [
                 "Stun"
@@ -151,12 +133,40 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
+            "Chance": "70",
+            "Length": "1",
+            "Condition": {
+                "Logic": "2734",
+                "Causalities": {
+                    "2734": {
+                        "Button": {
+                            "Name": "Is the target enemy sealed?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "6003878": {
+            "ID": "6003878",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "100"
+            },
+            "Timing": "On Super",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
             "Chance": "50",
             "Length": "1",
             "Condition": {
-                "Logic": "92",
+                "Logic": "2734",
                 "Causalities": {
-                    "92": {
+                    "2734": {
                         "Button": {
                             "Name": "Is the target enemy sealed?"
                         },
@@ -832,22 +842,22 @@
         }
     },
     "Super Attack": {
-        "2533": {
-            "superID": "2533",
-            "superName": "\u00e6\u0097\u008b\u00e9\u00a2\u00a8\u00e5\u009b\u009e\u00e8\u00bb\u00a2\u00e5\u0088\u0083",
-            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n\u00e5\u00bf\u0085\u00e6\u00ae\u00ba\u00e6\u008a\u0080\u00e3\u0082\u0092\u00e5\u00b0\u0081\u00e3\u0081\u0098\u00e3\u0082\u008b",
+        "4907": {
+            "superID": "4907",
+            "superName": "\u00e6\u0097\u008b\u00e9\u00a2\u00a8\u00e5\u009b\u009e\u00e8\u00bb\u00a2\u00e5\u0088\u0083(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0080\u0081DEF\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n\u00e5\u00bf\u0085\u00e6\u00ae\u00ba\u00e6\u008a\u0080\u00e3\u0082\u0092\u00e5\u00b0\u0081\u00e3\u0081\u0098\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "2533": {
+            "Multiplier": 530,
+            "4907": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -856,9 +866,10 @@
                     "+ or -": "+"
                 },
                 "Target": "Self",
-                "DEF": "30"
+                "ATK": "30",
+                "DEF": "50"
             },
-            "1002533": {
+            "1004907": {
                 "Type": "ExtraEfficacySpecial",
                 "Chance": "100",
                 "Duration": "2",

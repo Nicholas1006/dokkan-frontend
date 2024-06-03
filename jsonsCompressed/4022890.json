@@ -28,10 +28,10 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "2533": {
-            "ID": "2533",
+        "2537": {
+            "ID": "2537",
             "Timing": "Start of turn",
-            "Heals": 20,
+            "Heals": 30,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -39,22 +39,22 @@
             "Length": "1",
             "Once only": true
         },
-        "1002533": {
-            "ID": "1002533",
+        "1002537": {
+            "ID": "1002537",
             "Timing": "Start of turn",
-            "ATK": 100,
-            "DEF": 100,
+            "ATK": 120,
+            "DEF": 120,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "2002533": {
-            "ID": "2002533",
+        "2002537": {
+            "ID": "2002537",
             "Timing": "On Super",
-            "ATK": 50,
-            "DEF": 50,
+            "ATK": 80,
+            "DEF": 80,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -72,6 +72,63 @@
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 24
+                        }
+                    }
+                }
+            }
+        },
+        "3002537": {
+            "ID": "3002537",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "30"
+            },
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "960",
+                "Causalities": {
+                    "960": {
+                        "Button": {
+                            "Name": "Are there 2 or more Planet Namek Saga category allies on the team "
+                        },
+                        "Slider": {
+                            "Name": "How many Planet Namek Saga category allies on the team ",
+                            "Logic": ">=2",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "4002537": {
+            "ID": "4002537",
+            "Timing": "Being hit",
+            "Status": [
+                "Survive K.O attacks"
+            ],
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1025",
+                "Causalities": {
+                    "1025": {
+                        "Button": {
+                            "Name": "Is HP 30 % or more?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining",
+                            "Logic": ">=30",
+                            "Min": 0,
+                            "Max": 100
                         }
                     }
                 }
@@ -741,22 +798,22 @@
         }
     },
     "Super Attack": {
-        "3289": {
-            "superID": "3289",
-            "superName": "\u00e3\u0083\u0095\u00e3\u0082\u00a1\u00e3\u0082\u00a4\u00e3\u0083\u008a\u00e3\u0083\u00ab\u00e3\u0083\u0090\u00e3\u0083\u00bc\u00e3\u0082\u00b9\u00e3\u0083\u0088\u00e3\u0082\u00ad\u00e3\u0083\u00a3\u00e3\u0083\u008e\u00e3\u0083\u00b3",
-            "superDescription": "ATK\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "3291": {
+            "superID": "3291",
+            "superName": "\u00e3\u0083\u0095\u00e3\u0082\u00a1\u00e3\u0082\u00a4\u00e3\u0083\u008a\u00e3\u0083\u00ab\u00e3\u0083\u0090\u00e3\u0083\u00bc\u00e3\u0082\u00b9\u00e3\u0083\u0088\u00e3\u0082\u00ad\u00e3\u0083\u00a3\u00e3\u0083\u008e\u00e3\u0083\u00b3(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 400,
-            "3289": {
+            "Multiplier": 510,
+            "3291": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "99",
@@ -765,7 +822,8 @@
                     "+ or -": "+"
                 },
                 "Target": "Self",
-                "ATK": "30"
+                "ATK": "20",
+                "DEF": "20"
             }
         }
     },

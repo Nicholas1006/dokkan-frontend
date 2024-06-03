@@ -33,31 +33,31 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "3567": {
-            "ID": "3567",
+        "3569": {
+            "ID": "3569",
             "Timing": "Start of turn",
-            "ATK": 100,
-            "DEF": 100,
+            "ATK": 150,
+            "DEF": 150,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1003567": {
-            "ID": "1003567",
+        "1003569": {
+            "ID": "1003569",
             "Timing": "On Super",
-            "ATK": 50,
-            "DEF": 50,
+            "ATK": 120,
+            "DEF": 120,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2630",
+                "Logic": "2632",
                 "Causalities": {
-                    "2630": {
+                    "2632": {
                         "Button": {
                             "Name": "Is ki 9 or more"
                         },
@@ -71,11 +71,11 @@
                 }
             }
         },
-        "2003567": {
-            "ID": "2003567",
+        "2003569": {
+            "ID": "2003569",
             "Timing": "Start of turn",
-            "ATK": 50,
-            "DEF": 50,
+            "ATK": 60,
+            "DEF": 60,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -83,10 +83,24 @@
             "Length": "7",
             "Once only": true
         },
-        "3003567": {
-            "ID": "3003567",
+        "3003569": {
+            "ID": "3003569",
             "Timing": "Start of turn",
-            "DEF": 20,
+            "Ki": 2,
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "7",
+            "Once only": true
+        },
+        "4003569": {
+            "ID": "4003569",
+            "Timing": "Start of turn",
+            "DEF": 30,
             "Target": {
                 "Target": "Allies"
             },
@@ -97,25 +111,52 @@
             "Length": "7",
             "Once only": true
         },
-        "4003567": {
-            "ID": "4003567",
+        "5003569": {
+            "ID": "5003569",
             "Timing": "Start of turn",
-            "DEF": 100,
+            "DEF": 150,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2631",
+                "Logic": "2633",
                 "Causalities": {
-                    "2631": {
+                    "2633": {
                         "Button": {
                             "Name": "Is it on or after the first 7 turns from this characters entry turn?"
                         },
                         "Slider": {
                             "Name": "How many turns is it since the characters entry turn?",
                             "Logic": ">=7"
+                        }
+                    }
+                }
+            }
+        },
+        "6003569": {
+            "ID": "6003569",
+            "Timing": "Start of turn",
+            "Guard": true,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Chance": "50",
+            "Length": "1",
+            "Condition": {
+                "Logic": "2634",
+                "Causalities": {
+                    "2634": {
+                        "Button": {
+                            "Name": "Are there 5 or more Entrusted Will category allies on the team "
+                        },
+                        "Slider": {
+                            "Name": "How many Entrusted Will category allies on the team ",
+                            "Logic": ">=5",
+                            "Max": 7,
+                            "Min": 0
                         }
                     }
                 }
@@ -820,14 +861,14 @@
         }
     },
     "Super Attack": {
-        "4836": {
-            "superID": "4836",
-            "superName": "\u00e3\u0083\u0090\u00e3\u0083\u00bc\u00e3\u0083\u008b\u00e3\u0083\u00b3\u00e3\u0082\u00b0\u00e3\u0082\u00a2\u00e3\u0082\u00bf\u00e3\u0083\u0083\u00e3\u0082\u00af",
-            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "4837": {
+            "superID": "4837",
+            "superName": "\u00e3\u0083\u0090\u00e3\u0083\u00bc\u00e3\u0083\u008b\u00e3\u0083\u00b3\u00e3\u0082\u00b0\u00e3\u0082\u00a2\u00e3\u0082\u00bf\u00e3\u0083\u0083\u00e3\u0082\u00af(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n\u00e4\u00b8\u00ad\u00e7\u00a2\u00ba\u00e7\u008e\u0087\u00e3\u0081\u00a7\u00e4\u00bc\u009a\u00e5\u00bf\u0083\u00e3\u0081\u008c\u00e7\u0099\u00ba\u00e5\u008b\u0095",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -840,7 +881,7 @@
                 "Amount": "3"
             },
             "Multiplier": 430,
-            "4836": {
+            "4837": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -850,6 +891,17 @@
                 },
                 "Target": "Self",
                 "ATK": "30"
+            },
+            "1004837": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "Crit Chance": "30"
             }
         }
     },

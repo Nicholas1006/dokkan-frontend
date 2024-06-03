@@ -23,40 +23,40 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "2685": {
-            "ID": "2685",
+        "2690": {
+            "ID": "2690",
             "Timing": "Start of turn",
-            "Ki": 2,
+            "ATK": 150,
+            "DEF": 150,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1002690": {
+            "ID": "1002690",
+            "Timing": "Start of turn",
+            "Ki": 3,
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1002685": {
-            "ID": "1002685",
-            "Timing": "Start of turn",
-            "ATK": 100,
-            "DEF": 100,
-            "Buff": {
-                "Type": "Percentage",
-                "+ or -": "+"
-            },
-            "Length": "1"
-        },
-        "2002685": {
-            "ID": "2002685",
+        "2002690": {
+            "ID": "2002690",
             "Timing": "On Super",
-            "ATK": 80,
+            "ATK": 120,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1224",
+                "Logic": "1227",
                 "Causalities": {
-                    "1224": {
+                    "1227": {
                         "Button": {
                             "Name": "Is ki 12 or more"
                         },
@@ -69,6 +69,19 @@
                     }
                 }
             }
+        },
+        "3002690": {
+            "ID": "3002690",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "30"
+            },
+            "Timing": "Attacking",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
         }
     },
     "Stats at levels": {
@@ -733,14 +746,14 @@
         }
     },
     "Super Attack": {
-        "3538": {
-            "superID": "3538",
-            "superName": "\u00e3\u0082\u00ae\u00e3\u0083\u00a3\u00e3\u0083\u00aa\u00e3\u0083\u0083\u00e3\u0082\u00af\u00e7\u00a0\u00b2",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nDEF\u00e3\u0082\u0092\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
+        "3541": {
+            "superID": "3541",
+            "superName": "\u00e3\u0082\u00ae\u00e3\u0083\u00a3\u00e3\u0083\u00aa\u00e3\u0083\u0083\u00e3\u0082\u00af\u00e7\u00a0\u00b2(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nDEF\u00e3\u0082\u0092\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -753,7 +766,18 @@
                 "Amount": "20"
             },
             "Multiplier": 430,
-            "3538": {
+            "3541": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "30"
+            },
+            "1003541": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",

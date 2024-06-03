@@ -25,8 +25,45 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "992": {
-            "ID": "992",
+        "3868": {
+            "ID": "3868",
+            "Timing": "Start of turn",
+            "ATK": 100,
+            "DEF": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1003868": {
+            "ID": "1003868",
+            "Timing": "On Super",
+            "ATK": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2718",
+                "Causalities": {
+                    "2718": {
+                        "Button": {
+                            "Name": "Is ki 12 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=12",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    }
+                }
+            }
+        },
+        "2003868": {
+            "ID": "2003868",
             "Timing": "Start of turn",
             "Ki": 2,
             "Target": {
@@ -38,8 +75,8 @@
             },
             "Length": "1"
         },
-        "1000992": {
-            "ID": "1000992",
+        "3003868": {
+            "ID": "3003868",
             "Timing": "Start of turn",
             "ATK": 25,
             "DEF": 25,
@@ -51,6 +88,124 @@
                 "+ or -": "+"
             },
             "Length": "1"
+        },
+        "4003868": {
+            "ID": "4003868",
+            "Timing": "Start of turn",
+            "Ki": 1,
+            "Target": {
+                "Category": "Earth-Bred Fighters",
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "5003868": {
+            "ID": "5003868",
+            "Timing": "Start of turn",
+            "ATK": 10,
+            "DEF": 10,
+            "Target": {
+                "Category": "Earth-Bred Fighters",
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "6003868": {
+            "ID": "6003868",
+            "Timing": "Start of turn",
+            "Ki": 1,
+            "Target": {
+                "Category": "Earth-Bred Fighters",
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "7003868": {
+            "ID": "7003868",
+            "Timing": "Start of turn",
+            "ATK": 10,
+            "DEF": 10,
+            "Target": {
+                "Category": "Earth-Bred Fighters",
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "8003868": {
+            "ID": "8003868",
+            "Dodge chance": 30,
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "9003868": {
+            "ID": "9003868",
+            "Dodge chance": 30,
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "10003868": {
+            "ID": "10003868",
+            "Toggle Other Line": {
+                "Activated": true,
+                "Line": "9003868"
+            },
+            "Timing": "On Super",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "11003868": {
+            "ID": "11003868",
+            "Timing": "Start of turn",
+            "Heals": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2719",
+                "Causalities": {
+                    "2719": {
+                        "Button": {
+                            "Name": "Is HP 30 % or less?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining",
+                            "Logic": "<=30",
+                            "Min": 0,
+                            "Max": 100
+                        }
+                    }
+                }
+            },
+            "Once only": true
         }
     },
     "Stats at levels": {
@@ -722,22 +877,22 @@
         }
     },
     "Super Attack": {
-        "811": {
-            "superID": "811",
-            "superName": "\u00e9\u00be\u008d\u00e7\u00a5\u009e\u00e5\u0085\u0089\u00e5\u00bc\u00be",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nDEF\u00e3\u0082\u0092\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e3\u0081\u00ab\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
+        "4893": {
+            "superID": "4893",
+            "superName": "\u00e9\u00be\u008d\u00e7\u00a5\u009e\u00e5\u0085\u0089\u00e5\u00bc\u00be(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nATK\u00e3\u0082\u0092\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0080\u0081DEF\u00e3\u0082\u0092\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e3\u0081\u00ab\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "811": {
+            "Multiplier": 530,
+            "4893": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",
@@ -746,6 +901,7 @@
                     "+ or -": "-"
                 },
                 "Target": "Enemy",
+                "ATK": "20",
                 "DEF": "50"
             }
         }

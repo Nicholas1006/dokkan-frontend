@@ -32,25 +32,24 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "1076": {
-            "ID": "1076",
+        "2908": {
+            "ID": "2908",
             "Timing": "Start of turn",
-            "ATK": 120,
+            "ATK": 150,
+            "DEF": 150,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1001076": {
-            "ID": "1001076",
+        "1002908": {
+            "ID": "1002908",
             "Timing": "Start of turn",
             "Ki": 3,
             "Target": {
                 "Target": "Allies",
-                "Class": [
-                    "Extreme"
-                ]
+                "Class": "Extreme"
             },
             "Buff": {
                 "Type": "Raw stats",
@@ -58,8 +57,8 @@
             },
             "Length": "1"
         },
-        "2001076": {
-            "ID": "2001076",
+        "2002908": {
+            "ID": "2002908",
             "Timing": "Start of turn",
             "DEF": 50,
             "Target": {
@@ -72,11 +71,26 @@
             },
             "Length": "1"
         },
-        "3001076": {
-            "ID": "3001076",
+        "3002908": {
+            "ID": "3002908",
             "Timing": "Start of turn",
-            "ATK": 20,
-            "DEF": 20,
+            "ATK": 50,
+            "Target": {
+                "Category": "Realm of Gods",
+                "Target": "Allies",
+                "Class": "Extreme"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "4002908": {
+            "ID": "4002908",
+            "Timing": "Start of turn",
+            "ATK": 30,
+            "DEF": 30,
             "Target": {
                 "Target": "Enemies",
                 "Class": "Super"
@@ -86,6 +100,55 @@
                 "+ or -": "-"
             },
             "Length": "1"
+        },
+        "5002908": {
+            "ID": "5002908",
+            "Timing": "When final blow delivered",
+            "ATK": 50,
+            "DEF": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Condition": {
+                "Logic": "1564",
+                "Causalities": {
+                    "1564": {
+                        "Button": {
+                            "Name": "Has this character delivered the final blow?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "6002908": {
+            "ID": "6002908",
+            "Effective against all": true,
+            "Timing": "When final blow delivered",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Condition": {
+                "Logic": "1564",
+                "Causalities": {
+                    "1564": {
+                        "Button": {
+                            "Name": "Has this character delivered the final blow?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
         }
     },
     "Stats at levels": {
@@ -777,22 +840,33 @@
         }
     },
     "Super Attack": {
-        "1001": {
-            "superID": "1001",
-            "superName": "\u00e6\u00b7\u00b7\u00e6\u00b2\u008c\u00e3\u0081\u00ae\u00e5\u0086\u0086\u00e8\u0088\u009e\u00e6\u009b\u00b2",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b\n&1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3\u00e6\u00a5\u00b5\u00e7\u00b3\u00bb\u00e3\u0081\u00ae\u00e4\u00bb\u00b2\u00e9\u0096\u0093ATK30%UP",
+        "3972": {
+            "superID": "3972",
+            "superName": "\u00e6\u00b7\u00b7\u00e6\u00b2\u008c\u00e3\u0081\u00ae\u00e5\u0086\u0086\u00e8\u0088\u009e\u00e6\u009b\u00b2(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3DEF\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b\n&1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3\u00e6\u00a5\u00b5\u00e7\u00b3\u00bb\u00e3\u0081\u00ae\u00e4\u00bb\u00b2\u00e9\u0096\u0093ATK30%UP",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 475,
-            "1001": {
+            "Multiplier": 600,
+            "3972": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "50"
+            },
+            "1003972": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",

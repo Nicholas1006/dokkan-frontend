@@ -31,19 +31,56 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "1905": {
-            "ID": "1905",
+        "3578": {
+            "ID": "3578",
             "Timing": "Start of turn",
-            "ATK": 100,
-            "DEF": 100,
+            "Ki": 1,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1003578": {
+            "ID": "1003578",
+            "Timing": "Start of turn",
+            "ATK": 150,
+            "DEF": 150,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1001905": {
-            "ID": "1001905",
+        "2003578": {
+            "ID": "2003578",
+            "Timing": "On Super",
+            "ATK": 50,
+            "DEF": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2652",
+                "Causalities": {
+                    "2652": {
+                        "Button": {
+                            "Name": "Is ki 12 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=12",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    }
+                }
+            }
+        },
+        "3003578": {
+            "ID": "3003578",
             "Timing": "Being hit",
             "DR": 58,
             "Buff": {
@@ -52,15 +89,15 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "308",
+                "Logic": "2653",
                 "Causalities": {
-                    "308": {
+                    "2653": {
                         "Button": {
-                            "Name": "Is HP 58 % or less?"
+                            "Name": "Is HP 70 % or less?"
                         },
                         "Slider": {
                             "Name": "What percentage of HP is remaining",
-                            "Logic": "<=58",
+                            "Logic": "<=70",
                             "Min": 0,
                             "Max": 100
                         }
@@ -68,10 +105,10 @@
                 }
             }
         },
-        "2001905": {
-            "ID": "2001905",
+        "4003578": {
+            "ID": "4003578",
             "Timing": "Start of turn",
-            "Ki": 1,
+            "Ki": 2,
             "Target": {
                 "Category": "Bond of Master and Disciple",
                 "Target": "Allies"
@@ -82,11 +119,11 @@
             },
             "Length": "1"
         },
-        "3001905": {
-            "ID": "3001905",
+        "5003578": {
+            "ID": "5003578",
             "Timing": "Start of turn",
-            "ATK": 30,
-            "DEF": 30,
+            "ATK": 50,
+            "DEF": 50,
             "Target": {
                 "Category": "Bond of Master and Disciple",
                 "Target": "Allies"
@@ -97,11 +134,36 @@
             },
             "Length": "1"
         },
-        "4001905": {
-            "ID": "4001905",
+        "6003578": {
+            "ID": "6003578",
+            "Timing": "Start of turn",
+            "Guard": true,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Chance": "50",
+            "Length": "1",
+            "Condition": {
+                "Logic": "2654",
+                "Causalities": {
+                    "2654": {
+                        "Button": {
+                            "Name": "Is there is an ally attacking in the same turn whose name includes Trunks?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "7003578": {
+            "ID": "7003578",
             "Transformation": {
                 "Activated": true,
-                "Unit": "4018130",
+                "Unit": "4018131",
                 "Giant/Rage": false,
                 "Min Turns": null,
                 "Max Turns": null,
@@ -115,9 +177,9 @@
             "Length": "1",
             "First turn to activate": 3,
             "Condition": {
-                "Logic": "309 and 359",
+                "Logic": "2656 and 2657",
                 "Causalities": {
-                    "309": {
+                    "2656": {
                         "Button": {
                             "Name": "Is HP 58 % or more?"
                         },
@@ -128,7 +190,7 @@
                             "Max": 100
                         }
                     },
-                    "359": {
+                    "2657": {
                         "Button": {
                             "Name": "Is there is an ally on the team whose name includes Trunks?"
                         },
@@ -837,22 +899,22 @@
         }
     },
     "Super Attack": {
-        "2052": {
-            "superID": "2052",
-            "superName": "\u00e7\u0088\u0086\u00e8\u00a3\u0082\u00e7\u00a0\u00b2\u00e7\u0081\u00ab\u00e5\u00bc\u00be",
-            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3DEF\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "4849": {
+            "superID": "4849",
+            "superName": "\u00e7\u0088\u0086\u00e8\u00a3\u0082\u00e7\u00a0\u00b2\u00e7\u0081\u00ab\u00e5\u00bc\u00be(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 505,
-            "2052": {
+            "Multiplier": 630,
+            "4849": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -861,6 +923,7 @@
                     "+ or -": "+"
                 },
                 "Target": "Self",
+                "ATK": "50",
                 "DEF": "50"
             }
         }

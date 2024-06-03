@@ -32,8 +32,8 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "863": {
-            "ID": "863",
+        "2257": {
+            "ID": "2257",
             "Timing": "Start of turn",
             "ATK": 100,
             "Buff": {
@@ -42,10 +42,11 @@
             },
             "Length": "1"
         },
-        "1000863": {
-            "ID": "1000863",
+        "1002257": {
+            "ID": "1002257",
             "Timing": "Start of turn",
             "ATK": 70,
+            "DEF": 70,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -61,6 +62,67 @@
                         "Slider": {
                             "Name": "What percentage of HP is remaining",
                             "Logic": ">=30",
+                            "Min": 0,
+                            "Max": 100
+                        }
+                    }
+                }
+            }
+        },
+        "2002257": {
+            "ID": "2002257",
+            "Timing": "Start of turn",
+            "Ki": 1,
+            "Target": {
+                "Category": "Majin Power",
+                "Target": "Allies",
+                "Class": "Extreme"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "21",
+                "Causalities": {
+                    "21": {
+                        "Button": {
+                            "Name": "Is HP 50 % or more?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining",
+                            "Logic": ">=50",
+                            "Min": 0,
+                            "Max": 100
+                        }
+                    }
+                }
+            }
+        },
+        "3002257": {
+            "ID": "3002257",
+            "Timing": "Start of turn",
+            "Ki": 1,
+            "Target": {
+                "Target": "Allies",
+                "Class": "Extreme"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "252",
+                "Causalities": {
+                    "252": {
+                        "Button": {
+                            "Name": "Is HP 70 % or more?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining",
+                            "Logic": ">=70",
                             "Min": 0,
                             "Max": 100
                         }
@@ -765,22 +827,34 @@
         }
     },
     "Super Attack": {
-        "663": {
-            "superID": "663",
-            "superName": "\u00e8\u00b6\u0085\u00e3\u0083\u0090\u00e3\u0083\u008b\u00e3\u0082\u00b7\u00e3\u0083\u00b3\u00e3\u0082\u00b0\u00e3\u0083\u009c\u00e3\u0083\u00bc\u00e3\u0083\u00ab",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081HP12%\u00e5\u009b\u009e\u00e5\u00be\u00a9",
+        "2747": {
+            "superID": "2747",
+            "superName": "\u00e8\u00b6\u0085\u00e3\u0083\u0090\u00e3\u0083\u008b\u00e3\u0082\u00b7\u00e3\u0083\u00b3\u00e3\u0082\u00b0\u00e3\u0083\u009c\u00e3\u0083\u00bc\u00e3\u0083\u00ab(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081HP12%\u00e5\u009b\u009e\u00e5\u00be\u00a9",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 505,
-            "663": {
+            "Multiplier": 630,
+            "2747": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "30",
+                "DEF": "30"
+            },
+            "1002747": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",

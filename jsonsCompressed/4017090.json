@@ -36,19 +36,33 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "1508": {
-            "ID": "1508",
+        "3557": {
+            "ID": "3557",
             "Timing": "Start of turn",
-            "ATK": 120,
-            "DEF": 120,
+            "ATK": 150,
+            "DEF": 150,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1001508": {
-            "ID": "1001508",
+        "1003557": {
+            "ID": "1003557",
+            "Timing": "Start of turn",
+            "Ki": 2,
+            "Target": {
+                "Target": "Allies",
+                "Class": "Super"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2003557": {
+            "ID": "2003557",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -64,39 +78,96 @@
             },
             "Length": "99"
         },
-        "2001508": {
-            "ID": "2001508",
+        "3003557": {
+            "ID": "3003557",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
-                "Max": 80,
+                "Max": 100,
                 "Cause": {
                     "Cause": "Look Elsewhere"
                 }
             },
-            "ATK": 10,
+            "ATK": 25,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "99"
         },
-        "3001508": {
-            "ID": "3001508",
+        "4003557": {
+            "ID": "4003557",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
-                "Max": 80,
+                "Max": 100,
                 "Cause": {
                     "Cause": "Look Elsewhere"
                 }
             },
-            "DEF": 10,
+            "DEF": 25,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "99"
+        },
+        "5003557": {
+            "ID": "5003557",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "70"
+            },
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "6003557": {
+            "ID": "6003557",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "50"
+            },
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2619",
+                "Causalities": {
+                    "2619": {
+                        "Button": {
+                            "Name": "Is it on or after the first 3 turns from this characters entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since the characters entry turn?",
+                            "Logic": ">=3"
+                        }
+                    }
+                }
+            }
+        },
+        "7003557": {
+            "ID": "7003557",
+            "Timing": "Attacking the enemy",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 100,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "Crit Chance": 30,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
         }
     },
     "Stats at levels": {
@@ -795,22 +866,22 @@
         }
     },
     "Super Attack": {
-        "1741": {
-            "superID": "1741",
-            "superName": "\u00e3\u0082\u00ae\u00e3\u0083\u00a3\u00e3\u0083\u00aa\u00e3\u0083\u0083\u00e3\u0082\u00af\u00e7\u00a0\u00b2",
-            "superDescription": "ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "4822": {
+            "superID": "4822",
+            "superName": "\u00e3\u0082\u00ae\u00e3\u0083\u00a3\u00e3\u0083\u00aa\u00e3\u0083\u0083\u00e3\u0082\u00af\u00e7\u00a0\u00b2(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 485,
-            "1741": {
+            "Multiplier": 580,
+            "4822": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "99",
@@ -819,8 +890,8 @@
                     "+ or -": "+"
                 },
                 "Target": "Self",
-                "ATK": "20",
-                "DEF": "20"
+                "ATK": "50",
+                "DEF": "50"
             }
         }
     },

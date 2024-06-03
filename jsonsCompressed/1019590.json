@@ -35,28 +35,55 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "2105": {
-            "ID": "2105",
+        "4143": {
+            "ID": "4143",
             "Timing": "Start of turn",
-            "Ki": 1,
+            "Ki": 3,
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1002105": {
-            "ID": "1002105",
+        "1004143": {
+            "ID": "1004143",
             "Timing": "Start of turn",
-            "ATK": 100,
+            "ATK": 150,
+            "DEF": 150,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "2002105": {
-            "ID": "2002105",
+        "2004143": {
+            "ID": "2004143",
+            "Timing": "On Super",
+            "ATK": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "46",
+                "Causalities": {
+                    "46": {
+                        "Button": {
+                            "Name": "Is ki 12 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=12",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    }
+                }
+            }
+        },
+        "3004143": {
+            "ID": "3004143",
             "Timing": "Being hit",
             "DR": 40,
             "Buff": {
@@ -65,11 +92,77 @@
             },
             "Length": "1"
         },
-        "3002105": {
-            "ID": "3002105",
+        "4004143": {
+            "ID": "4004143",
+            "Timing": "Being hit",
+            "DR": 30,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1606",
+                "Causalities": {
+                    "1606": {
+                        "Button": {
+                            "Name": "Are there 2 or more Majin Power category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Majin Power category allies on the same turn ",
+                            "Logic": ">=2",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "5004143": {
+            "ID": "5004143",
+            "Timing": "Start of turn",
+            "ATK": 50,
+            "DEF": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "6004143": {
+            "ID": "6004143",
+            "Toggle Other Line": {
+                "Activated": true,
+                "Line": "5004143"
+            },
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "3149",
+                "Causalities": {
+                    "3149": {
+                        "Button": {
+                            "Name": "Are there 1 or more Majin Power category enemies "
+                        },
+                        "Slider": {
+                            "Name": "How many Majin Power category enemies ",
+                            "Logic": ">=1",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "7004143": {
+            "ID": "7004143",
             "Transformation": {
                 "Activated": true,
-                "Unit": "4019600",
+                "Unit": "4019601",
                 "Giant/Rage": false,
                 "Min Turns": null,
                 "Max Turns": null,
@@ -780,22 +873,22 @@
         }
     },
     "Super Attack": {
-        "2396": {
-            "superID": "2396",
-            "superName": "\u00e3\u0081\u008b\u00e3\u0082\u0081\u00e3\u0081\u00af\u00e3\u0082\u0081\u00e6\u00b3\u00a2",
-            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "5552": {
+            "superID": "5552",
+            "superName": "\u00e3\u0081\u008b\u00e3\u0082\u0081\u00e3\u0081\u00af\u00e3\u0082\u0081\u00e6\u00b3\u00a2(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0080\u0081DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 505,
-            "2396": {
+            "Multiplier": 630,
+            "5552": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -805,6 +898,17 @@
                 },
                 "Target": "Self",
                 "ATK": "50"
+            },
+            "1005552": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "30"
             }
         }
     },

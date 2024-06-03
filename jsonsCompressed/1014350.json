@@ -29,30 +29,162 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "1212": {
-            "ID": "1212",
+        "3565": {
+            "ID": "3565",
             "Timing": "Start of turn",
-            "ATK": 80,
-            "DEF": 80,
+            "Ki": 2,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1003565": {
+            "ID": "1003565",
+            "Timing": "Start of turn",
+            "ATK": 150,
+            "DEF": 150,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1001212": {
-            "ID": "1001212",
+        "2003565": {
+            "ID": "2003565",
             "Timing": "On Super",
             "ATK": 100,
+            "DEF": 100,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "91",
+                "Logic": "(2613 or 2614 or 2615) and 2616",
                 "Causalities": {
-                    "91": {
+                    "2613": {
+                        "Button": {
+                            "Name": "Are there 3 or more Revenge category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Revenge category allies on the same turn ",
+                            "Logic": ">=3",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    },
+                    "2614": {
+                        "Button": {
+                            "Name": "Are there 3 or more GT Bosses category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many GT Bosses category allies on the same turn ",
+                            "Logic": ">=3",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    },
+                    "2615": {
+                        "Button": {
+                            "Name": "Are there 3 or more Sworn Enemies category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Sworn Enemies category allies on the same turn ",
+                            "Logic": ">=3",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    },
+                    "2616": {
+                        "Button": {
+                            "Name": "Is ki 12 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=12",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    }
+                }
+            }
+        },
+        "3003565": {
+            "ID": "3003565",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "100"
+            },
+            "Timing": "On Super",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "(2613 or 2614 or 2615) and 2616",
+                "Causalities": {
+                    "2613": {
+                        "Button": {
+                            "Name": "Are there 3 or more Revenge category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Revenge category allies on the same turn ",
+                            "Logic": ">=3",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    },
+                    "2614": {
+                        "Button": {
+                            "Name": "Are there 3 or more GT Bosses category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many GT Bosses category allies on the same turn ",
+                            "Logic": ">=3",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    },
+                    "2615": {
+                        "Button": {
+                            "Name": "Are there 3 or more Sworn Enemies category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Sworn Enemies category allies on the same turn ",
+                            "Logic": ">=3",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    },
+                    "2616": {
+                        "Button": {
+                            "Name": "Is ki 12 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=12",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    }
+                }
+            }
+        },
+        "4003565": {
+            "ID": "4003565",
+            "Timing": "On Super",
+            "ATK": 150,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2618",
+                "Causalities": {
+                    "2618": {
                         "Button": {
                             "Name": "Is the target enemy stunned?"
                         },
@@ -64,8 +196,8 @@
                 }
             }
         },
-        "2001212": {
-            "ID": "2001212",
+        "5003565": {
+            "ID": "5003565",
             "Effective against all": true,
             "Timing": "On Super",
             "Buff": {
@@ -74,9 +206,9 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "91",
+                "Logic": "2618",
                 "Causalities": {
-                    "91": {
+                    "2618": {
                         "Button": {
                             "Name": "Is the target enemy stunned?"
                         },
@@ -753,22 +885,34 @@
         }
     },
     "Super Attack": {
-        "1280": {
-            "superID": "1280",
-            "superName": "\u00e3\u0083\u0098\u00e3\u0083\u00ab\u00e3\u0082\u00ba\u00e3\u0083\u0090\u00e3\u0082\u00b9\u00e3\u0082\u00bf\u00e3\u0083\u00bc",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e5\u00bf\u0085\u00e6\u00ae\u00ba\u00e6\u008a\u0080\u00e3\u0082\u0092\u00e5\u00b0\u0081\u00e3\u0081\u0098\u00e3\u0082\u008b",
+        "4830": {
+            "superID": "4830",
+            "superName": "\u00e3\u0083\u0098\u00e3\u0083\u00ab\u00e3\u0082\u00ba\u00e3\u0083\u0090\u00e3\u0082\u00b9\u00e3\u0082\u00bf\u00e3\u0083\u00bc(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n\u00e5\u00bf\u0085\u00e6\u00ae\u00ba\u00e6\u008a\u0080\u00e3\u0082\u0092\u00e5\u00b0\u0081\u00e3\u0081\u0098\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "1280": {
+            "Multiplier": 530,
+            "4830": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "30",
+                "DEF": "30"
+            },
+            "1004830": {
                 "Type": "ExtraEfficacySpecial",
                 "Chance": "100",
                 "Duration": "2",

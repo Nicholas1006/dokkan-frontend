@@ -1200,6 +1200,26 @@
         "Standby or Finish": "Standby",
         "ID": "11",
         "Exec limit": "1",
+        "Condition": {
+            "Logic": "((not 12662636870) and 12662636871)",
+            "Causality": {
+                "12662636870": {
+                    "Button": {
+                        "Name": "Has this characters finish effect been activated?"
+                    },
+                    "Slider": {}
+                },
+                "12662636871": {
+                    "Button": {
+                        "Name": "Is it on or after the first 4 turns from this characters entry turn?"
+                    },
+                    "Slider": {
+                        "Name": "How many turns is it since the characters entry turn?",
+                        "Logic": ">=4"
+                    }
+                }
+            }
+        },
         "Standby Exclusivity": "charge",
         "Charge type": {
             "type": "attack",

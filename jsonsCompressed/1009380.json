@@ -30,25 +30,140 @@
         "Legendary Power"
     ],
     "Passive": {
-        "757": {
-            "ID": "757",
+        "2280": {
+            "ID": "2280",
             "Timing": "Start of turn",
-            "ATK": 13000,
+            "ATK": 50,
+            "DEF": 50,
             "Buff": {
-                "Type": "Raw stats",
+                "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1000757": {
-            "ID": "1000757",
-            "Timing": "Start of turn",
-            "DEF": 5000,
+        "1002280": {
+            "ID": "1002280",
+            "Timing": "Attacking",
+            "Ki": 3,
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "737 or 738",
+                "Causalities": {
+                    "737": {
+                        "Button": {
+                            "Name": "Is this the 1st attacker in the turn?"
+                        },
+                        "Slider": {
+                            "Name": "What position is this character attacking in?",
+                            "Logic": "==1",
+                            "Min": 1,
+                            "Max": 3
+                        }
+                    },
+                    "738": {
+                        "Button": {
+                            "Name": "Is this the 3rd attacker in the turn?"
+                        },
+                        "Slider": {
+                            "Name": "What position is this character attacking in?",
+                            "Logic": "==3",
+                            "Min": 1,
+                            "Max": 3
+                        }
+                    }
+                }
+            }
+        },
+        "2002280": {
+            "ID": "2002280",
+            "Timing": "On Super",
+            "DEF": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "737 or 738",
+                "Causalities": {
+                    "737": {
+                        "Button": {
+                            "Name": "Is this the 1st attacker in the turn?"
+                        },
+                        "Slider": {
+                            "Name": "What position is this character attacking in?",
+                            "Logic": "==1",
+                            "Min": 1,
+                            "Max": 3
+                        }
+                    },
+                    "738": {
+                        "Button": {
+                            "Name": "Is this the 3rd attacker in the turn?"
+                        },
+                        "Slider": {
+                            "Name": "What position is this character attacking in?",
+                            "Logic": "==3",
+                            "Min": 1,
+                            "Max": 3
+                        }
+                    }
+                }
+            }
+        },
+        "3002280": {
+            "ID": "3002280",
+            "Timing": "On Super",
+            "ATK": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "739",
+                "Causalities": {
+                    "739": {
+                        "Button": {
+                            "Name": "Is ki 18 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=18",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    }
+                }
+            }
+        },
+        "4002280": {
+            "ID": "4002280",
+            "Timing": "Attacking",
+            "Ki": 3,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "740",
+                "Causalities": {
+                    "740": {
+                        "Button": {
+                            "Name": "Is this unit attacking a super class enemy?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
         }
     },
     "Stats at levels": {
@@ -845,14 +960,14 @@
         }
     },
     "Super Attack": {
-        "548": {
-            "superID": "548",
-            "superName": "\u00e3\u0083\u0087\u00e3\u0082\u00b9\u00e3\u0083\u009c\u00e3\u0083\u00bc\u00e3\u0083\u00ab",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e6\u00a5\u00b5\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "2795": {
+            "superID": "2795",
+            "superName": "\u00e3\u0083\u0087\u00e3\u0082\u00b9\u00e3\u0083\u009c\u00e3\u0083\u00bc\u00e3\u0083\u00ab(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e6\u00a5\u00b5\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -864,16 +979,28 @@
                 "Duration": "1",
                 "Amount": "30"
             },
-            "Multiplier": 395
+            "Multiplier": 395,
+            "2795": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "50",
+                "DEF": "50"
+            }
         },
-        "549": {
-            "superID": "549",
-            "superName": "\u00e5\u00b8\u009d\u00e7\u008e\u008b\u00e3\u0081\u00ae\u00e5\u00be\u0081\u00e5\u009c\u00a7",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e6\u00a5\u00b5\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nATK\u00e3\u0081\u00a8DEF\u00e3\u0082\u0092\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
+        "2796": {
+            "superID": "2796",
+            "superName": "\u00e5\u00b8\u009d\u00e7\u008e\u008b\u00e3\u0081\u00ae\u00e5\u00be\u0081\u00e5\u009c\u00a7(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e6\u00a5\u00b5\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nATK\u00e3\u0081\u00a8DEF\u00e3\u0082\u0092\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "18",
             "superPriority": "0.0",
             "superStyle": "Hyper",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -886,7 +1013,7 @@
                 "Amount": "30"
             },
             "Multiplier": 540,
-            "549": {
+            "2796": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",
@@ -895,8 +1022,8 @@
                     "+ or -": "-"
                 },
                 "Target": "Enemy",
-                "ATK": "20",
-                "DEF": "20"
+                "ATK": "30",
+                "DEF": "30"
             }
         }
     },

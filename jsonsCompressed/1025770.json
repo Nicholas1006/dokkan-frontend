@@ -1392,6 +1392,67 @@
         "Standby or Finish": "Standby",
         "ID": "5",
         "Exec limit": "1",
+        "Condition": {
+            "Logic": "(((not 12662636855) and (not 12662636856) and 12662636857) or ((not 12662636858) and (not 12662636859) and 12662636860 and 12662636861))",
+            "Causality": {
+                "12662636855": {
+                    "Button": {
+                        "Name": "Has this characters finish effect been activated?"
+                    },
+                    "Slider": {}
+                },
+                "12662636856": {
+                    "Button": {
+                        "Name": "Has the character or an ally's revival skill been activated?"
+                    },
+                    "Slider": {}
+                },
+                "12662636857": {
+                    "Button": {
+                        "Name": "Is HP 50 % or less?"
+                    },
+                    "Slider": {
+                        "Name": "What percentage of HP is remaining",
+                        "Logic": "<=50",
+                        "Min": 0,
+                        "Max": 100
+                    }
+                },
+                "12662636858": {
+                    "Button": {
+                        "Name": "Has this characters finish effect been activated?"
+                    },
+                    "Slider": {}
+                },
+                "12662636859": {
+                    "Button": {
+                        "Name": "Has the character or an ally's revival skill been activated?"
+                    },
+                    "Slider": {}
+                },
+                "12662636860": {
+                    "Button": {
+                        "Name": "Is the turn count 4 or more?"
+                    },
+                    "Slider": {
+                        "Name": "What turn is it?",
+                        "Logic": ">=4",
+                        "Min": 1
+                    }
+                },
+                "12662636861": {
+                    "Button": {
+                        "Name": "Has this character recieved their 4th attack in battle?"
+                    },
+                    "Slider": {
+                        "Name": "How many attacks has this character recieved?",
+                        "Logic": ">=4",
+                        "Min": 0,
+                        "Max": 4
+                    }
+                }
+            }
+        },
         "Standby Exclusivity": "revival",
         "Exchanges to": "4025780"
     }

@@ -28,12 +28,12 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "2242": {
-            "ID": "2242",
+        "2244": {
+            "ID": "2244",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
-                "Max": 3,
+                "Max": 4,
                 "Cause": {
                     "Cause": "Look Elsewhere"
                 }
@@ -45,44 +45,44 @@
             },
             "Length": "99"
         },
-        "1002242": {
-            "ID": "1002242",
+        "1002244": {
+            "ID": "1002244",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
-                "Max": 60,
+                "Max": 120,
                 "Cause": {
                     "Cause": "Look Elsewhere"
                 }
             },
-            "ATK": 20,
+            "ATK": 30,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "99"
         },
-        "2002242": {
-            "ID": "2002242",
+        "2002244": {
+            "ID": "2002244",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
-                "Max": 60,
+                "Max": 120,
                 "Cause": {
                     "Cause": "Look Elsewhere"
                 }
             },
-            "DEF": 20,
+            "DEF": 30,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "99"
         },
-        "3002242": {
-            "ID": "3002242",
+        "3002244": {
+            "ID": "3002244",
             "Timing": "Hit recieved",
-            "ATK": 70,
+            "ATK": 100,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -94,6 +94,41 @@
                     "24": {
                         "Button": {
                             "Name": "Has attack been recieved?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "4002244": {
+            "ID": "4002244",
+            "Timing": "Start of turn",
+            "Guard": true,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "577 or 438",
+                "Causalities": {
+                    "577": {
+                        "Button": {
+                            "Name": "Are there 1 or more World Tournament category enemies "
+                        },
+                        "Slider": {
+                            "Name": "How many World Tournament category enemies ",
+                            "Logic": ">=1",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    },
+                    "438": {
+                        "Button": {
+                            "Name": "Is there is an enemy whose name includes Goku?"
                         },
                         "Slider": {
                             "Name": null,
@@ -767,22 +802,22 @@
         }
     },
     "Super Attack": {
-        "2700": {
-            "superID": "2700",
-            "superName": "\u00e6\u00b0\u0097\u00e5\u0090\u0088\u00e7\u00a0\u00b2",
-            "superDescription": "ATK\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n\u00e3\u0081\u00be\u00e3\u0082\u008c\u00e3\u0081\u00ab\u00e6\u00b0\u0097\u00e7\u00b5\u00b6\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
+        "2701": {
+            "superID": "2701",
+            "superName": "\u00e6\u00b0\u0097\u00e5\u0090\u0088\u00e7\u00a0\u00b2(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "ATK\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n\u00e4\u00b8\u00ad\u00e7\u00a2\u00ba\u00e7\u008e\u0087\u00e3\u0081\u00a7\u00e6\u00b0\u0097\u00e7\u00b5\u00b6\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 400,
-            "2700": {
+            "Multiplier": 500,
+            "2701": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "99",
@@ -793,9 +828,9 @@
                 "Target": "Self",
                 "ATK": "30"
             },
-            "1002700": {
+            "1002701": {
                 "Type": "ExtraEfficacySpecial",
-                "Chance": "20",
+                "Chance": "30",
                 "Duration": "2",
                 "Buff": {
                     "Type": "Raw stats",

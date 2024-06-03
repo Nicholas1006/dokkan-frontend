@@ -31,46 +31,159 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "1299": {
-            "ID": "1299",
+        "3349": {
+            "ID": "3349",
             "Timing": "Start of turn",
-            "Heals": 8,
+            "Heals": 10,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1001299": {
-            "ID": "1001299",
+        "1003349": {
+            "ID": "1003349",
             "Timing": "Start of turn",
-            "ATK": 120,
-            "DEF": 100,
+            "Ki": 1,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2003349": {
+            "ID": "2003349",
+            "Timing": "Start of turn",
+            "ATK": 180,
+            "DEF": 140,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "2001299": {
-            "ID": "2001299",
+        "3003349": {
+            "ID": "3003349",
             "Timing": "On Super",
-            "ATK": 30,
+            "ATK": 80,
+            "DEF": 80,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "4003349": {
+            "ID": "4003349",
+            "Timing": "On Super",
+            "ATK": 80,
+            "DEF": 80,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "105",
+                "Logic": "2110 or 2111",
                 "Causalities": {
-                    "105": {
+                    "2110": {
                         "Button": {
                             "Name": "Is the target enemy in \"ATK down\" status?"
                         },
                         "Slider": {
                             "Name": null,
                             "Logic": null
+                        }
+                    },
+                    "2111": {
+                        "Button": {
+                            "Name": "Is the target enemy in \"DEF down\" status?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "5003349": {
+            "ID": "5003349",
+            "Timing": "Start of turn",
+            "Ki": 1,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2119",
+                "Causalities": {
+                    "2119": {
+                        "Button": {
+                            "Name": "Is it within the first 6 turns from this characters entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since the characters entry turn?",
+                            "Logic": "<=6",
+                            "Min": 0,
+                            "Max": 6
+                        }
+                    }
+                }
+            }
+        },
+        "6003349": {
+            "ID": "6003349",
+            "Timing": "Start of turn",
+            "DEF": 80,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2119",
+                "Causalities": {
+                    "2119": {
+                        "Button": {
+                            "Name": "Is it within the first 6 turns from this characters entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since the characters entry turn?",
+                            "Logic": "<=6",
+                            "Min": 0,
+                            "Max": 6
+                        }
+                    }
+                }
+            }
+        },
+        "7003349": {
+            "ID": "7003349",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "100"
+            },
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Chance": "70",
+            "Length": "1",
+            "Condition": {
+                "Logic": "2119",
+                "Causalities": {
+                    "2119": {
+                        "Button": {
+                            "Name": "Is it within the first 6 turns from this characters entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since the characters entry turn?",
+                            "Logic": "<=6",
+                            "Min": 0,
+                            "Max": 6
                         }
                     }
                 }
@@ -776,22 +889,22 @@
         }
     },
     "Super Attack": {
-        "1456": {
-            "superID": "1456",
-            "superName": "\u00e3\u0081\u008b\u00e3\u0082\u0081\u00e3\u0081\u00af\u00e3\u0082\u0081\u00e6\u00b3\u00a2",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n\u00e5\u00bf\u0085\u00e6\u00ae\u00ba\u00e6\u008a\u0080\u00e3\u0082\u0092\u00e5\u00b0\u0081\u00e3\u0081\u0098\u00e3\u0082\u008b",
+        "4453": {
+            "superID": "4453",
+            "superName": "\u00e3\u0081\u008b\u00e3\u0082\u0081\u00e3\u0081\u00af\u00e3\u0082\u0081\u00e6\u00b3\u00a2(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n\u00e5\u00bf\u0085\u00e6\u00ae\u00ba\u00e6\u008a\u0080\u00e3\u0082\u0092\u00e5\u00b0\u0081\u00e3\u0081\u0098\u00e3\u0080\u0081ATK\u00e3\u0081\u00a8DEF\u00e3\u0082\u0092\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 505,
-            "1456": {
+            "Multiplier": 630,
+            "4453": {
                 "Type": "ExtraEfficacySpecial",
                 "Chance": "100",
                 "Duration": "2",
@@ -801,6 +914,18 @@
                 },
                 "Target": "Enemy",
                 "Status": "Seals"
+            },
+            "1004453": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "3",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "-"
+                },
+                "Target": "Enemy",
+                "ATK": "20",
+                "DEF": "20"
             }
         }
     },

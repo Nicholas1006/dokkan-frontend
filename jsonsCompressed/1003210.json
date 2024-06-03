@@ -33,16 +33,290 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "438": {
-            "ID": "438",
+        "4070": {
+            "ID": "4070",
             "Timing": "Start of turn",
-            "ATK": 100,
+            "Ki": 2,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1004070": {
+            "ID": "1004070",
+            "Timing": "Start of turn",
+            "ATK": 200,
+            "DEF": 200,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "7",
+            "Length": "1"
+        },
+        "2004070": {
+            "ID": "2004070",
+            "Timing": "Start of turn",
+            "Crit Chance": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2266",
+                "Causalities": {
+                    "2266": {
+                        "Button": {
+                            "Name": "Is it within the first 1 turns from this characters entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since the characters entry turn?",
+                            "Logic": "<=1",
+                            "Min": 0,
+                            "Max": 1
+                        }
+                    }
+                }
+            }
+        },
+        "3004070": {
+            "ID": "3004070",
+            "Timing": "Start of turn",
+            "Crit Chance": 20,
+            "Target": {
+                "Target": "Allies",
+                "Class": "Super"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "3",
             "Once only": true
+        },
+        "4004070": {
+            "ID": "4004070",
+            "Timing": "Start of turn",
+            "Crit Chance": 10,
+            "Target": {
+                "Target": "Allies",
+                "Class": "Extreme"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "3",
+            "Once only": true
+        },
+        "5004070": {
+            "ID": "5004070",
+            "Timing": "Start of turn",
+            "ATK": 150,
+            "DEF": 150,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "5",
+            "Once only": true
+        },
+        "6004070": {
+            "ID": "6004070",
+            "Timing": "On Super",
+            "ATK": 150,
+            "DEF": 150,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1651 and 46",
+                "Causalities": {
+                    "1651": {
+                        "Button": {
+                            "Name": "Is it within the first 7 turns from this characters entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since the characters entry turn?",
+                            "Logic": "<=7",
+                            "Min": 0,
+                            "Max": 7
+                        }
+                    },
+                    "46": {
+                        "Button": {
+                            "Name": "Is ki 12 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=12",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    }
+                }
+            }
+        },
+        "7004070": {
+            "ID": "7004070",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "100"
+            },
+            "Timing": "On Super",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Chance": "50",
+            "Length": "1",
+            "Condition": {
+                "Logic": "1651 and 46",
+                "Causalities": {
+                    "1651": {
+                        "Button": {
+                            "Name": "Is it within the first 7 turns from this characters entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since the characters entry turn?",
+                            "Logic": "<=7",
+                            "Min": 0,
+                            "Max": 7
+                        }
+                    },
+                    "46": {
+                        "Button": {
+                            "Name": "Is ki 12 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=12",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    }
+                }
+            }
+        },
+        "8004070": {
+            "ID": "8004070",
+            "Timing": "On Super",
+            "ATK": 100,
+            "DEF": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2631 and 46",
+                "Causalities": {
+                    "2631": {
+                        "Button": {
+                            "Name": "Is it on or after the first 7 turns from this characters entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since the characters entry turn?",
+                            "Logic": ">=7"
+                        }
+                    },
+                    "46": {
+                        "Button": {
+                            "Name": "Is ki 12 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=12",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    }
+                }
+            }
+        },
+        "9004070": {
+            "ID": "9004070",
+            "Dodge chance": 30,
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "10004070": {
+            "ID": "10004070",
+            "Dodge chance": 30,
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "11004070": {
+            "ID": "11004070",
+            "Toggle Other Line": {
+                "Activated": true,
+                "Line": "10004070"
+            },
+            "Timing": "On Super",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "12004070": {
+            "ID": "12004070",
+            "Timing": "Hit recieved",
+            "DEF": 150,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "3",
+            "Condition": {
+                "Logic": "365",
+                "Causalities": {
+                    "365": {
+                        "Button": {
+                            "Name": "Has this unit evaded an attack? "
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "13004070": {
+            "ID": "13004070",
+            "Timing": "Hit recieved",
+            "Crit Chance": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "3",
+            "Condition": {
+                "Logic": "365",
+                "Causalities": {
+                    "365": {
+                        "Button": {
+                            "Name": "Has this unit evaded an attack? "
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
         }
     },
     "Stats at levels": {
@@ -703,22 +977,22 @@
         }
     },
     "Super Attack": {
-        "258": {
-            "superID": "258",
-            "superName": "\u00e9\u00be\u008d\u00e6\u008b\u00b3",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8&DEF\u00e3\u0082\u0092\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
+        "933": {
+            "superID": "933",
+            "superName": "\u00e9\u00be\u008d\u00e6\u008b\u00b3(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nDEF\u00e3\u0082\u0092\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e3\u0081\u00ab\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "258": {
+            "Multiplier": 630,
+            "933": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",
@@ -727,7 +1001,7 @@
                     "+ or -": "-"
                 },
                 "Target": "Enemy",
-                "DEF": "40"
+                "DEF": "50"
             }
         }
     },

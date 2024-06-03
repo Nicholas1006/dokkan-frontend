@@ -28,19 +28,19 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "2002": {
-            "ID": "2002",
+        "2415": {
+            "ID": "2415",
             "Timing": "Start of turn",
-            "ATK": 70,
-            "DEF": 70,
+            "ATK": 90,
+            "DEF": 90,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1002002": {
-            "ID": "1002002",
+        "1002415": {
+            "ID": "1002415",
             "Timing": "Attacking the enemy",
             "Building Stat": {
                 "Min": 0,
@@ -70,8 +70,8 @@
                 }
             }
         },
-        "2002002": {
-            "ID": "2002002",
+        "2002415": {
+            "ID": "2002415",
             "Timing": "Attacking the enemy",
             "Building Stat": {
                 "Min": 0,
@@ -101,12 +101,12 @@
                 }
             }
         },
-        "3002002": {
-            "ID": "3002002",
+        "3002415": {
+            "ID": "3002415",
             "Timing": "Hit recieved",
             "Building Stat": {
                 "Min": 0,
-                "Max": 140,
+                "Max": 160,
                 "Cause": {
                     "Cause": "Look Elsewhere"
                 }
@@ -123,6 +123,35 @@
                     "24": {
                         "Button": {
                             "Name": "Has attack been recieved?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "4002415": {
+            "ID": "4002415",
+            "Timing": "On Super",
+            "Status": [
+                "Disable guard"
+            ],
+            "Target": {
+                "Target": "Enemy"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "611",
+                "Causalities": {
+                    "611": {
+                        "Button": {
+                            "Name": "Is this unit attacking a super class enemy?"
                         },
                         "Slider": {
                             "Name": null,
@@ -796,22 +825,22 @@
         }
     },
     "Super Attack": {
-        "2187": {
-            "superID": "2187",
-            "superName": "\u00e3\u0082\u00a8\u00e3\u0083\u008d\u00e3\u0083\u00ab\u00e3\u0082\u00ae\u00e3\u0083\u00bc\u00e3\u0083\u0089\u00e3\u0083\u00ac\u00e3\u0082\u00a4\u00e3\u0083\u00b3",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nHP\u00e3\u0082\u00927%\u00e5\u009b\u009e\u00e5\u00be\u00a9\u00e3\u0081\u0099\u00e3\u0082\u008b",
+        "3027": {
+            "superID": "3027",
+            "superName": "\u00e3\u0082\u00a8\u00e3\u0083\u008d\u00e3\u0083\u00ab\u00e3\u0082\u00ae\u00e3\u0083\u00bc\u00e3\u0083\u0089\u00e3\u0083\u00ac\u00e3\u0082\u00a4\u00e3\u0083\u00b3(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nATK\u00e3\u0081\u00a8DEF\u00e3\u0082\u0092\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b\n&HP\u00e3\u0082\u00927%\u00e5\u009b\u009e\u00e5\u00be\u00a9\u00e3\u0081\u0099\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "2187": {
+            "Multiplier": 530,
+            "3027": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -821,6 +850,18 @@
                 },
                 "Target": "Self",
                 "Heals": "7"
+            },
+            "1003027": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "3",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "-"
+                },
+                "Target": "Enemy",
+                "ATK": "20",
+                "DEF": "20"
             }
         }
     },

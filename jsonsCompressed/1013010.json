@@ -25,42 +25,101 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "1105": {
-            "ID": "1105",
+        "2552": {
+            "ID": "2552",
             "Timing": "Start of turn",
-            "DEF": 80,
+            "ATK": 120,
+            "DEF": 120,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1001105": {
-            "ID": "1001105",
+        "1002552": {
+            "ID": "1002552",
             "Timing": "Hit recieved",
             "Building Stat": {
                 "Min": 0,
-                "Max": 70,
+                "Max": 120,
                 "Cause": {
                     "Cause": "Look Elsewhere"
                 }
             },
-            "ATK": 14,
+            "ATK": 30,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "99",
             "Condition": {
-                "Logic": "24",
+                "Logic": "981",
                 "Causalities": {
-                    "24": {
+                    "981": {
                         "Button": {
                             "Name": "Has attack been recieved?"
                         },
                         "Slider": {
                             "Name": null,
                             "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "2002552": {
+            "ID": "2002552",
+            "Timing": "Hit recieved",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 120,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "DEF": 30,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Condition": {
+                "Logic": "981",
+                "Causalities": {
+                    "981": {
+                        "Button": {
+                            "Name": "Has attack been recieved?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "3002552": {
+            "ID": "3002552",
+            "Timing": "Start of turn",
+            "Guard": true,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Chance": "50",
+            "Length": "1",
+            "Condition": {
+                "Logic": "983",
+                "Causalities": {
+                    "983": {
+                        "Button": {
+                            "Name": "Are there 2 or more Ginyu Force category allies on the team "
+                        },
+                        "Slider": {
+                            "Name": "How many Ginyu Force category allies on the team ",
+                            "Logic": ">=2",
+                            "Max": 7,
+                            "Min": 0
                         }
                     }
                 }
@@ -729,14 +788,14 @@
         }
     },
     "Super Attack": {
-        "1040": {
-            "superID": "1040",
-            "superName": "\u00e3\u0083\u00aa\u00e3\u0082\u00af\u00e3\u0083\u00bc\u00e3\u0083\u00a0\u00e3\u0082\u00a4\u00e3\u0083\u00ac\u00e3\u0082\u00a4\u00e3\u0082\u00b6\u00e3\u0083\u00bc\u00e3\u0082\u00ac\u00e3\u0083\u00b3",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nDEF\u00e3\u0082\u0092\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e3\u0081\u00ab\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
+        "3298": {
+            "superID": "3298",
+            "superName": "\u00e3\u0083\u00aa\u00e3\u0082\u00af\u00e3\u0083\u00bc\u00e3\u0083\u00a0\u00e3\u0082\u00a4\u00e3\u0083\u00ac\u00e3\u0082\u00a4\u00e3\u0082\u00b6\u00e3\u0083\u00bc\u00e3\u0082\u00ac\u00e3\u0083\u00b3(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nDEF\u00e3\u0082\u0092\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e3\u0081\u00ab\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -749,7 +808,18 @@
                 "Amount": "20"
             },
             "Multiplier": 430,
-            "1040": {
+            "3298": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "50"
+            },
+            "1003298": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",

@@ -32,30 +32,41 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "1312": {
-            "ID": "1312",
-            "Timing": "Start of turn",
-            "ATK": 70,
-            "DEF": 70,
-            "Buff": {
-                "Type": "Percentage",
-                "+ or -": "+"
-            },
-            "Length": "1"
-        },
-        "1001312": {
-            "ID": "1001312",
+        "3911": {
+            "ID": "3911",
             "Timing": "Start of turn",
             "Ki": 3,
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
+            "Length": "1"
+        },
+        "1003911": {
+            "ID": "1003911",
+            "Timing": "Start of turn",
+            "ATK": 150,
+            "DEF": 150,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2003911": {
+            "ID": "2003911",
+            "Timing": "Start of turn",
+            "ATK": 100,
+            "DEF": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
             "Length": "1",
             "Condition": {
-                "Logic": "21",
+                "Logic": "2827",
                 "Causalities": {
-                    "21": {
+                    "2827": {
                         "Button": {
                             "Name": "Is HP 50 % or more?"
                         },
@@ -69,28 +80,103 @@
                 }
             }
         },
-        "2001312": {
-            "ID": "2001312",
-            "Timing": "Start of turn",
-            "ATK": 30,
-            "DEF": 30,
+        "3003911": {
+            "ID": "3003911",
+            "Timing": "Attacking the enemy",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 58,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "ATK": 20,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1",
+            "Length": "99",
             "Condition": {
-                "Logic": "21",
+                "Logic": "2828",
                 "Causalities": {
-                    "21": {
+                    "2828": {
                         "Button": {
-                            "Name": "Is HP 50 % or more?"
+                            "Name": "Is a super being performed?"
                         },
                         "Slider": {
-                            "Name": "What percentage of HP is remaining",
-                            "Logic": ">=50",
-                            "Min": 0,
-                            "Max": 100
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "4003911": {
+            "ID": "4003911",
+            "Timing": "Attacking the enemy",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 58,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "DEF": 20,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Condition": {
+                "Logic": "2828",
+                "Causalities": {
+                    "2828": {
+                        "Button": {
+                            "Name": "Is a super being performed?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "5003911": {
+            "ID": "5003911",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "50"
+            },
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2829 or 2830",
+                "Causalities": {
+                    "2829": {
+                        "Button": {
+                            "Name": "Are there 1 or more Majin Buu Saga category enemies "
+                        },
+                        "Slider": {
+                            "Name": "How many Majin Buu Saga category enemies ",
+                            "Logic": ">=1",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    },
+                    "2830": {
+                        "Button": {
+                            "Name": "Are there 2 or more Majin Buu Saga category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Majin Buu Saga category allies on the same turn ",
+                            "Logic": ">=2",
+                            "Max": 3,
+                            "Min": 0
                         }
                     }
                 }
@@ -756,22 +842,33 @@
         }
     },
     "Super Attack": {
-        "1476": {
-            "superID": "1476",
-            "superName": "\u00e7\u0088\u0086\u00e5\u008a\u009b\u00e9\u00ad\u0094\u00e9\u0096\u0083",
-            "superDescription": "\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\u00e4\u00b8\u00ad\u00e7\u00a2\u00ba\u00e7\u008e\u0087\u00e3\u0081\u00a7\u00e6\u00b0\u0097\u00e7\u00b5\u00b6\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
+        "5006": {
+            "superID": "5006",
+            "superName": "\u00e7\u0088\u0086\u00e5\u008a\u009b\u00e9\u00ad\u0094\u00e9\u0096\u0083(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n\u00e4\u00b8\u00ad\u00e7\u00a2\u00ba\u00e7\u008e\u0087\u00e3\u0081\u00a7\u00e6\u00b0\u0097\u00e7\u00b5\u00b6\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "1476": {
+            "Multiplier": 530,
+            "5006": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "30"
+            },
+            "1005006": {
                 "Type": "ExtraEfficacySpecial",
                 "Chance": "30",
                 "Duration": "2",

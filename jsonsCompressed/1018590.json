@@ -23,91 +23,240 @@
         "Legendary Power"
     ],
     "Passive": {
-        "2118": {
-            "ID": "2118",
+        "4147": {
+            "ID": "4147",
             "Timing": "Start of turn",
-            "Ki": 3,
+            "Ki": 8,
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1002118": {
-            "ID": "1002118",
+        "1004147": {
+            "ID": "1004147",
             "Timing": "Start of turn",
+            "ATK": 188,
+            "DEF": 188,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2004147": {
+            "ID": "2004147",
+            "Timing": "On Super",
             "ATK": 88,
             "DEF": 88,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "47",
+                "Causalities": {
+                    "47": {
+                        "Button": {
+                            "Name": "Is ki 12 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=12",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    }
+                }
+            }
         },
-        "2002118": {
-            "ID": "2002118",
-            "Timing": "Attacking",
-            "Ki": 3,
+        "3004147": {
+            "ID": "3004147",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "100"
+            },
+            "Timing": "On Super",
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "632",
+                "Logic": "3156 and 2830",
                 "Causalities": {
-                    "632": {
+                    "3156": {
                         "Button": {
-                            "Name": "Is the target enemy in \"ATK down\" status or in \"DEF down\" status?"
+                            "Name": "Is ki 22 or more"
                         },
                         "Slider": {
-                            "Name": null,
-                            "Logic": null
+                            "Name": "How much ki is there",
+                            "Logic": ">=22",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    },
+                    "2830": {
+                        "Button": {
+                            "Name": "Are there 2 or more Majin Buu Saga category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Majin Buu Saga category allies on the same turn ",
+                            "Logic": ">=2",
+                            "Max": 3,
+                            "Min": 0
                         }
                     }
                 }
             }
         },
-        "3002118": {
-            "ID": "3002118",
-            "Timing": "On Super",
-            "ATK": 40,
-            "DEF": 40,
+        "4004147": {
+            "ID": "4004147",
+            "Dodge chance": 20,
+            "Timing": "Start of turn",
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "632",
+                "Logic": "3150",
                 "Causalities": {
-                    "632": {
+                    "3150": {
                         "Button": {
-                            "Name": "Is the target enemy in \"ATK down\" status or in \"DEF down\" status?"
+                            "Name": "Are there 1 or more Majin Buu Saga category allies on the same turn "
                         },
                         "Slider": {
-                            "Name": null,
-                            "Logic": null
+                            "Name": "How many Majin Buu Saga category allies on the same turn ",
+                            "Logic": ">=1",
+                            "Max": 3,
+                            "Min": 0
                         }
                     }
                 }
             }
         },
-        "4002118": {
-            "ID": "4002118",
+        "5004147": {
+            "ID": "5004147",
+            "Dodge chance": 20,
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "3151",
+                "Causalities": {
+                    "3151": {
+                        "Button": {
+                            "Name": "Are there 2 or more Majin Buu Saga category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Majin Buu Saga category allies on the same turn ",
+                            "Logic": ">=2",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "6004147": {
+            "ID": "6004147",
+            "Dodge chance": 20,
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "3114",
+                "Causalities": {
+                    "3114": {
+                        "Button": {
+                            "Name": "Are there 3 or more Majin Buu Saga category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Majin Buu Saga category allies on the same turn ",
+                            "Logic": ">=3",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "7004147": {
+            "ID": "7004147",
+            "Dodge chance": 10,
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "3114",
+                "Causalities": {
+                    "3114": {
+                        "Button": {
+                            "Name": "Are there 3 or more Majin Buu Saga category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Majin Buu Saga category allies on the same turn ",
+                            "Logic": ">=3",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "8004147": {
+            "ID": "8004147",
             "Timing": "Attacking",
-            "Ki": 3,
+            "Ki": 6,
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "633",
+                "Logic": "421 or 422 or 535 or 420",
                 "Causalities": {
-                    "633": {
+                    "421": {
                         "Button": {
-                            "Name": "Is the target enemy stunned or sealed?"
+                            "Name": "Is the target enemy in \"ATK down\" status?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    },
+                    "422": {
+                        "Button": {
+                            "Name": "Is the target enemy in \"DEF down\" status?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    },
+                    "535": {
+                        "Button": {
+                            "Name": "Is the target enemy stunned?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    },
+                    "420": {
+                        "Button": {
+                            "Name": "Is the target enemy sealed?"
                         },
                         "Slider": {
                             "Name": null,
@@ -117,21 +266,49 @@
                 }
             }
         },
-        "5002118": {
-            "ID": "5002118",
+        "9004147": {
+            "ID": "9004147",
             "Timing": "On Super",
-            "Crit Chance": 50,
+            "ATK": 66,
+            "DEF": 66,
             "Buff": {
-                "Type": "Raw stats",
+                "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "633",
+                "Logic": "421 or 422 or 535 or 420",
                 "Causalities": {
-                    "633": {
+                    "421": {
                         "Button": {
-                            "Name": "Is the target enemy stunned or sealed?"
+                            "Name": "Is the target enemy in \"ATK down\" status?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    },
+                    "422": {
+                        "Button": {
+                            "Name": "Is the target enemy in \"DEF down\" status?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    },
+                    "535": {
+                        "Button": {
+                            "Name": "Is the target enemy stunned?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    },
+                    "420": {
+                        "Button": {
+                            "Name": "Is the target enemy sealed?"
                         },
                         "Slider": {
                             "Name": null,
@@ -141,8 +318,59 @@
                 }
             }
         },
-        "6002118": {
-            "ID": "6002118",
+        "10004147": {
+            "ID": "10004147",
+            "Timing": "On Super",
+            "Crit Chance": 70,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "421 or 422 or 535 or 420",
+                "Causalities": {
+                    "421": {
+                        "Button": {
+                            "Name": "Is the target enemy in \"ATK down\" status?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    },
+                    "422": {
+                        "Button": {
+                            "Name": "Is the target enemy in \"DEF down\" status?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    },
+                    "535": {
+                        "Button": {
+                            "Name": "Is the target enemy stunned?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    },
+                    "420": {
+                        "Button": {
+                            "Name": "Is the target enemy sealed?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "11004147": {
+            "ID": "11004147",
             "Timing": "Start of turn",
             "Ki": 3,
             "Target": {
@@ -155,14 +383,30 @@
             },
             "Length": "1"
         },
-        "7002118": {
-            "ID": "7002118",
+        "12004147": {
+            "ID": "12004147",
             "Timing": "Start of turn",
             "ATK": 30,
             "DEF": 30,
             "Target": {
                 "Category": "Majin Power",
                 "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "13004147": {
+            "ID": "13004147",
+            "Timing": "Start of turn",
+            "ATK": 10,
+            "DEF": 10,
+            "Target": {
+                "Category": "Majin Power",
+                "Target": "Allies",
+                "Class": "Extreme"
             },
             "Buff": {
                 "Type": "Percentage",
@@ -984,14 +1228,14 @@
         }
     },
     "Super Attack": {
-        "2156": {
-            "superID": "2156",
-            "superName": "\u00e3\u0082\u00a8\u00e3\u0083\u0093\u00e3\u0083\u00ab\u00e3\u0082\u00b9\u00e3\u0083\u0097\u00e3\u0083\u00a9\u00e3\u0083\u0083\u00e3\u0082\u00b7\u00e3\u0083\u00a5",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e6\u00a5\u00b5\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\u00e5\u00bf\u0085\u00e6\u00ae\u00ba\u00e6\u008a\u0080\u00e3\u0082\u0092\u00e5\u00b0\u0081\u00e3\u0081\u0098\u00e3\u0082\u008b",
+        "5615": {
+            "superID": "5615",
+            "superName": "\u00e3\u0082\u00a8\u00e3\u0083\u0093\u00e3\u0083\u00ab\u00e3\u0082\u00b9\u00e3\u0083\u0097\u00e3\u0083\u00a9\u00e3\u0083\u0083\u00e3\u0082\u00b7\u00e3\u0083\u00a5(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3DEF\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e6\u00a5\u00b5\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nATK\u00e3\u0082\u0092\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0080\u0081\u00e5\u00bf\u0085\u00e6\u00ae\u00ba\u00e6\u008a\u0080\u00e3\u0082\u0092\u00e5\u00b0\u0081\u00e3\u0081\u0098\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -1004,7 +1248,29 @@
                 "Amount": "30"
             },
             "Multiplier": 395,
-            "2156": {
+            "5615": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "50"
+            },
+            "1005615": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "3",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "-"
+                },
+                "Target": "Enemy",
+                "ATK": "20"
+            },
+            "2005615": {
                 "Type": "ExtraEfficacySpecial",
                 "Chance": "100",
                 "Duration": "2",
@@ -1016,14 +1282,14 @@
                 "Status": "Seals"
             }
         },
-        "2157": {
-            "superID": "2157",
-            "superName": "\u00e3\u0083\u0090\u00e3\u0083\u0093\u00e3\u0083\u0087\u00e3\u0082\u00a3\u00e3\u0081\u00ae\u00e6\u0081\u0090\u00e3\u0082\u008d\u00e3\u0081\u0097\u00e3\u0081\u0084\u00e9\u00ad\u0094\u00e8\u00a1\u0093",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e6\u00a5\u00b5\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n\u00e9\u00ab\u0098\u00e7\u00a2\u00ba\u00e7\u008e\u0087\u00e3\u0081\u00a7\u00e6\u00b0\u0097\u00e7\u00b5\u00b6\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
+        "5616": {
+            "superID": "5616",
+            "superName": "\u00e3\u0083\u0090\u00e3\u0083\u0093\u00e3\u0083\u0087\u00e3\u0082\u00a3\u00e3\u0081\u00ae\u00e6\u0081\u0090\u00e3\u0082\u008d\u00e3\u0081\u0097\u00e3\u0081\u0084\u00e9\u00ad\u0094\u00e8\u00a1\u0093(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e6\u00a5\u00b5\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nDEF\u00e3\u0082\u0092\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0080\u0081\u00e9\u00ab\u0098\u00e7\u00a2\u00ba\u00e7\u008e\u0087\u00e3\u0081\u00a7\u00e6\u00b0\u0097\u00e7\u00b5\u00b6\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "18",
             "superPriority": "0.0",
             "superStyle": "Hyper",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -1036,10 +1302,33 @@
                 "Amount": "30"
             },
             "Multiplier": 540,
-            "2157": {
+            "5616": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "50",
+                "DEF": "50"
+            },
+            "1005616": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "3",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "-"
+                },
+                "Target": "Enemy",
+                "DEF": "40"
+            },
+            "2005616": {
                 "Type": "ExtraEfficacySpecial",
                 "Chance": "50",
-                "Duration": "2",
+                "Duration": "1",
                 "Buff": {
                     "Type": "Raw stats",
                     "+ or -": "+"

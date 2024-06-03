@@ -33,11 +33,24 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "750": {
-            "ID": "750",
+        "1464": {
+            "ID": "1464",
             "Timing": "Start of turn",
-            "ATK": 25,
-            "DEF": 25,
+            "Ki": 2,
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1001464": {
+            "ID": "1001464",
+            "Timing": "Start of turn",
+            "ATK": 30,
+            "DEF": 30,
             "Target": {
                 "Target": "Allies"
             },
@@ -46,6 +59,33 @@
                 "+ or -": "+"
             },
             "Length": "1"
+        },
+        "2001464": {
+            "ID": "2001464",
+            "Timing": "Start of turn",
+            "ATK": 70,
+            "DEF": 70,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "155",
+                "Causalities": {
+                    "155": {
+                        "Button": {
+                            "Name": "Are there 2 or more Vegeta's Family category allies on the team "
+                        },
+                        "Slider": {
+                            "Name": "How many Vegeta's Family category allies on the team ",
+                            "Logic": ">=2",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
         }
     },
     "Stats at levels": {
@@ -695,22 +735,22 @@
         }
     },
     "Super Attack": {
-        "541": {
-            "superID": "541",
-            "superName": "\u00e8\u00a6\u00aa\u00e5\u00ad\u0090\u00e3\u0082\u00ae\u00e3\u0083\u00a3\u00e3\u0083\u00aa\u00e3\u0083\u0083\u00e3\u0082\u00af\u00e7\u00a0\u00b2",
-            "superDescription": "\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8&1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3\u00e4\u00bb\u00b2\u00e9\u0096\u0093ATK20%UP",
+        "1688": {
+            "superID": "1688",
+            "superName": "\u00e8\u00a6\u00aa\u00e5\u00ad\u0090\u00e3\u0082\u00ae\u00e3\u0083\u00a3\u00e3\u0083\u00aa\u00e3\u0083\u0083\u00e3\u0082\u00af\u00e7\u00a0\u00b2(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8&1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3\u00e4\u00bb\u00b2\u00e9\u0096\u0093ATK30%UP",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 410,
-            "541": {
+            "Multiplier": 500,
+            "1688": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -719,7 +759,7 @@
                     "+ or -": "+"
                 },
                 "Target": "Allies",
-                "ATK": "20"
+                "ATK": "30"
             }
         }
     },

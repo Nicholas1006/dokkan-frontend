@@ -32,8 +32,95 @@
         "The Wall Standing Tall"
     ],
     "Passive": {
-        "409": {
-            "ID": "409",
+        "4157": {
+            "ID": "4157",
+            "Timing": "Start of turn",
+            "ATK": 150,
+            "DEF": 150,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1004157": {
+            "ID": "1004157",
+            "Timing": "Start of turn",
+            "Crit Chance": 20,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2004157": {
+            "ID": "2004157",
+            "Timing": "Start of turn",
+            "DR": 20,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "3004157": {
+            "ID": "3004157",
+            "Timing": "On Super",
+            "ATK": 250,
+            "DEF": 250,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "48",
+                "Causalities": {
+                    "48": {
+                        "Button": {
+                            "Name": "Is ki 2 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=2",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    }
+                }
+            }
+        },
+        "4004157": {
+            "ID": "4004157",
+            "Timing": "Start of turn",
+            "Ki": 2,
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "252",
+                "Causalities": {
+                    "252": {
+                        "Button": {
+                            "Name": "Is HP 70 % or more?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining",
+                            "Logic": ">=70",
+                            "Min": 0,
+                            "Max": 100
+                        }
+                    }
+                }
+            }
+        },
+        "5004157": {
+            "ID": "5004157",
             "Timing": "Start of turn",
             "ATK": 50,
             "DEF": 50,
@@ -46,17 +133,381 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "50",
+                "Logic": "252",
                 "Causalities": {
-                    "50": {
+                    "252": {
                         "Button": {
-                            "Name": "Is HP 80 % or more?"
+                            "Name": "Is HP 70 % or more?"
                         },
                         "Slider": {
                             "Name": "What percentage of HP is remaining",
-                            "Logic": ">=80",
+                            "Logic": ">=70",
                             "Min": 0,
                             "Max": 100
+                        }
+                    }
+                }
+            }
+        },
+        "6004157": {
+            "ID": "6004157",
+            "Timing": "Start of turn",
+            "Ki": 1,
+            "Target": {
+                "Target": "Allies",
+                "Class": "Super"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "252",
+                "Causalities": {
+                    "252": {
+                        "Button": {
+                            "Name": "Is HP 70 % or more?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining",
+                            "Logic": ">=70",
+                            "Min": 0,
+                            "Max": 100
+                        }
+                    }
+                }
+            }
+        },
+        "7004157": {
+            "ID": "7004157",
+            "Timing": "Start of turn",
+            "Ki": 2,
+            "Target": {
+                "Target": "Allies",
+                "Class": "Extreme"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "252",
+                "Causalities": {
+                    "252": {
+                        "Button": {
+                            "Name": "Is HP 70 % or more?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining",
+                            "Logic": ">=70",
+                            "Min": 0,
+                            "Max": 100
+                        }
+                    }
+                }
+            }
+        },
+        "8004157": {
+            "ID": "8004157",
+            "Timing": "Start of turn",
+            "ATK": 10,
+            "DEF": 10,
+            "Target": {
+                "Target": "Allies",
+                "Class": "Super"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "252",
+                "Causalities": {
+                    "252": {
+                        "Button": {
+                            "Name": "Is HP 70 % or more?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining",
+                            "Logic": ">=70",
+                            "Min": 0,
+                            "Max": 100
+                        }
+                    }
+                }
+            }
+        },
+        "9004157": {
+            "ID": "9004157",
+            "Timing": "Start of turn",
+            "ATK": 20,
+            "DEF": 20,
+            "Target": {
+                "Target": "Allies",
+                "Class": "Extreme"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "252",
+                "Causalities": {
+                    "252": {
+                        "Button": {
+                            "Name": "Is HP 70 % or more?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining",
+                            "Logic": ">=70",
+                            "Min": 0,
+                            "Max": 100
+                        }
+                    }
+                }
+            }
+        },
+        "10004157": {
+            "ID": "10004157",
+            "Timing": "Start of turn",
+            "Ki": 1,
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "3170",
+                "Causalities": {
+                    "3170": {
+                        "Button": {
+                            "Name": "Is HP 69 % or less?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining",
+                            "Logic": "<=69",
+                            "Min": 0,
+                            "Max": 100
+                        }
+                    }
+                }
+            }
+        },
+        "11004157": {
+            "ID": "11004157",
+            "Timing": "Start of turn",
+            "ATK": 30,
+            "DEF": 30,
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "3170",
+                "Causalities": {
+                    "3170": {
+                        "Button": {
+                            "Name": "Is HP 69 % or less?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining",
+                            "Logic": "<=69",
+                            "Min": 0,
+                            "Max": 100
+                        }
+                    }
+                }
+            }
+        },
+        "12004157": {
+            "ID": "12004157",
+            "Timing": "Start of turn",
+            "Ki": 1,
+            "Target": {
+                "Target": "Allies",
+                "Class": "Super"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "3170",
+                "Causalities": {
+                    "3170": {
+                        "Button": {
+                            "Name": "Is HP 69 % or less?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining",
+                            "Logic": "<=69",
+                            "Min": 0,
+                            "Max": 100
+                        }
+                    }
+                }
+            }
+        },
+        "13004157": {
+            "ID": "13004157",
+            "Timing": "Start of turn",
+            "Ki": 1,
+            "Target": {
+                "Target": "Allies",
+                "Class": "Extreme"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "3170",
+                "Causalities": {
+                    "3170": {
+                        "Button": {
+                            "Name": "Is HP 69 % or less?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining",
+                            "Logic": "<=69",
+                            "Min": 0,
+                            "Max": 100
+                        }
+                    }
+                }
+            }
+        },
+        "14004157": {
+            "ID": "14004157",
+            "Timing": "Start of turn",
+            "ATK": 20,
+            "DEF": 20,
+            "Target": {
+                "Target": "Allies",
+                "Class": "Extreme"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "3170",
+                "Causalities": {
+                    "3170": {
+                        "Button": {
+                            "Name": "Is HP 69 % or less?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining",
+                            "Logic": "<=69",
+                            "Min": 0,
+                            "Max": 100
+                        }
+                    }
+                }
+            }
+        },
+        "15004157": {
+            "ID": "15004157",
+            "Timing": "Hit recieved",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 40,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "Crit Chance": 20,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Condition": {
+                "Logic": "2403",
+                "Causalities": {
+                    "2403": {
+                        "Button": {
+                            "Name": "Has this character recieved their 2nd attack in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character recieved?",
+                            "Logic": ">=2",
+                            "Min": 0,
+                            "Max": 2
+                        }
+                    }
+                }
+            }
+        },
+        "16004157": {
+            "ID": "16004157",
+            "Timing": "Hit recieved",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 40,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "DR": 20,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Condition": {
+                "Logic": "2403",
+                "Causalities": {
+                    "2403": {
+                        "Button": {
+                            "Name": "Has this character recieved their 2nd attack in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character recieved?",
+                            "Logic": ">=2",
+                            "Min": 0,
+                            "Max": 2
+                        }
+                    }
+                }
+            }
+        },
+        "17004157": {
+            "ID": "17004157",
+            "Timing": "End of turn",
+            "Heals": 10,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2403",
+                "Causalities": {
+                    "2403": {
+                        "Button": {
+                            "Name": "Has this character recieved their 2nd attack in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character recieved?",
+                            "Logic": ">=2",
+                            "Min": 0,
+                            "Max": 2
                         }
                     }
                 }
@@ -713,22 +1164,22 @@
         }
     },
     "Super Attack": {
-        "241": {
-            "superID": "241",
-            "superName": "\u00e3\u0083\u0097\u00e3\u0083\u00a9\u00e3\u0083\u008d\u00e3\u0083\u0083\u00e3\u0083\u0088\u00e3\u0083\u0090\u00e3\u0083\u00bc\u00e3\u0082\u00b9\u00e3\u0083\u0088",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8&DEF\u00e3\u0082\u0092\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
-            "superMinKi": "1",
+        "1474": {
+            "superID": "1474",
+            "superName": "\u00e3\u0083\u0097\u00e3\u0083\u00a9\u00e3\u0083\u008d\u00e3\u0083\u0083\u00e3\u0083\u0088\u00e3\u0083\u0090\u00e3\u0083\u00bc\u00e3\u0082\u00b9\u00e3\u0083\u0088(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nDEF\u00e3\u0082\u0092\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
+            "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "241": {
+            "Multiplier": 630,
+            "1474": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",

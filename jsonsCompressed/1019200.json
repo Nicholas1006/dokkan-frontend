@@ -25,10 +25,21 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "2050": {
-            "ID": "2050",
+        "2795": {
+            "ID": "2795",
             "Timing": "Start of turn",
-            "Ki": 2,
+            "ATK": 150,
+            "DEF": 150,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1002795": {
+            "ID": "1002795",
+            "Timing": "Start of turn",
+            "Ki": 3,
             "Target": {
                 "Target": "Allies"
             },
@@ -38,8 +49,8 @@
             },
             "Length": "1"
         },
-        "1002050": {
-            "ID": "1002050",
+        "2002795": {
+            "ID": "2002795",
             "Timing": "Start of turn",
             "ATK": 30,
             "DEF": 30,
@@ -52,42 +63,56 @@
             },
             "Length": "1"
         },
-        "2002050": {
-            "ID": "2002050",
+        "3002795": {
+            "ID": "3002795",
             "Timing": "Start of turn",
-            "Heals": 10,
+            "Heals": 15,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "527 and 537",
+                "Logic": "1349 and 1350",
                 "Causalities": {
-                    "527": {
+                    "1349": {
                         "Button": {
-                            "Name": "Are there 5 or more Low-Class Warrior category allies on the team "
+                            "Name": "Are there 3 or more Low-Class Warrior category allies on the team "
                         },
                         "Slider": {
                             "Name": "How many Low-Class Warrior category allies on the team ",
-                            "Logic": ">=5",
+                            "Logic": ">=3",
                             "Max": 7,
                             "Min": 0
                         }
                     },
-                    "537": {
+                    "1350": {
                         "Button": {
-                            "Name": "Is HP 70 % or less?"
+                            "Name": "Is HP 85 % or less?"
                         },
                         "Slider": {
                             "Name": "What percentage of HP is remaining",
-                            "Logic": "<=70",
+                            "Logic": "<=85",
                             "Min": 0,
                             "Max": 100
                         }
                     }
                 }
             }
+        },
+        "4002795": {
+            "ID": "4002795",
+            "Timing": "Start of turn",
+            "Crit Chance": 10,
+            "Target": {
+                "Category": "Team Bardock",
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
         }
     },
     "Stats at levels": {
@@ -753,14 +778,14 @@
         }
     },
     "Super Attack": {
-        "2303": {
-            "superID": "2303",
-            "superName": "\u00e3\u0083\u0095\u00e3\u0083\u00ac\u00e3\u0082\u00a4\u00e3\u0083\u00a0\u00e3\u0083\u0090\u00e3\u0083\u00ac\u00e3\u0083\u0083\u00e3\u0083\u0088",
-            "superDescription": "ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "3752": {
+            "superID": "3752",
+            "superName": "\u00e3\u0083\u0095\u00e3\u0083\u00ac\u00e3\u0082\u00a4\u00e3\u0083\u00a0\u00e3\u0083\u0090\u00e3\u0083\u00ac\u00e3\u0083\u0083\u00e3\u0083\u0088(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nDEF\u00e3\u0082\u0092\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -773,7 +798,7 @@
                 "Amount": "3"
             },
             "Multiplier": 410,
-            "2303": {
+            "3752": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "99",
@@ -784,6 +809,17 @@
                 "Target": "Self",
                 "ATK": "20",
                 "DEF": "20"
+            },
+            "1003752": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "3",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "-"
+                },
+                "Target": "Enemy",
+                "DEF": "50"
             }
         }
     },

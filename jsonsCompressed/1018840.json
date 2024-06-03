@@ -28,19 +28,46 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "2072": {
-            "ID": "2072",
+        "4106": {
+            "ID": "4106",
             "Timing": "Start of turn",
-            "ATK": 58,
-            "DEF": 58,
+            "ATK": 158,
+            "DEF": 158,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1002072": {
-            "ID": "1002072",
+        "1004106": {
+            "ID": "1004106",
+            "Timing": "On Super",
+            "ATK": 58,
+            "DEF": 58,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "47",
+                "Causalities": {
+                    "47": {
+                        "Button": {
+                            "Name": "Is ki 12 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=12",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    }
+                }
+            }
+        },
+        "2004106": {
+            "ID": "2004106",
             "Timing": "Start of turn",
             "DR": 58,
             "Buff": {
@@ -49,10 +76,10 @@
             },
             "Length": "1"
         },
-        "2002072": {
-            "ID": "2002072",
+        "3004106": {
+            "ID": "3004106",
             "Timing": "Start of turn",
-            "Ki": 2,
+            "Ki": 3,
             "Target": {
                 "Target": "Allies",
                 "Class": "Super"
@@ -63,8 +90,8 @@
             },
             "Length": "1"
         },
-        "3002072": {
-            "ID": "3002072",
+        "4004106": {
+            "ID": "4004106",
             "Timing": "Start of turn",
             "ATK": 30,
             "DEF": 30,
@@ -77,6 +104,58 @@
                 "+ or -": "+"
             },
             "Length": "1"
+        },
+        "5004106": {
+            "ID": "5004106",
+            "Timing": "Start of turn",
+            "ATK": 58,
+            "DEF": 58,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2089",
+                "Causalities": {
+                    "2089": {
+                        "Button": {
+                            "Name": "Is there an extreme class enemy? "
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "6004106": {
+            "ID": "6004106",
+            "Timing": "Attacking the enemy",
+            "ATK": 20,
+            "Target": {
+                "Target": "Enemy"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "-"
+            },
+            "Length": "2",
+            "Condition": {
+                "Logic": "2089",
+                "Causalities": {
+                    "2089": {
+                        "Button": {
+                            "Name": "Is there an extreme class enemy? "
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
         }
     },
     "Stats at levels": {
@@ -739,22 +818,34 @@
         }
     },
     "Super Attack": {
-        "2323": {
-            "superID": "2323",
-            "superName": "\u00e8\u00a1\u009d\u00e6\u0092\u0083\u00e6\u00b3\u00a2",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n\u00e4\u00b8\u00ad\u00e7\u00a2\u00ba\u00e7\u008e\u0087\u00e3\u0081\u00a7\u00e6\u00b0\u0097\u00e7\u00b5\u00b6\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
+        "5463": {
+            "superID": "5463",
+            "superName": "\u00e8\u00a1\u009d\u00e6\u0092\u0083\u00e6\u00b3\u00a2(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0080\u0081DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n\u00e4\u00b8\u00ad\u00e7\u00a2\u00ba\u00e7\u008e\u0087\u00e3\u0081\u00a7\u00e6\u00b0\u0097\u00e7\u00b5\u00b6\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "2323": {
+            "Multiplier": 530,
+            "5463": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "50",
+                "DEF": "30"
+            },
+            "1005463": {
                 "Type": "ExtraEfficacySpecial",
                 "Chance": "30",
                 "Duration": "2",

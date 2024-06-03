@@ -26,21 +26,21 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "2031": {
-            "ID": "2031",
+        "4023": {
+            "ID": "4023",
             "Timing": "Start of turn",
-            "ATK": 100,
-            "DEF": 100,
+            "ATK": 122,
+            "DEF": 122,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1002031": {
-            "ID": "1002031",
+        "1004023": {
+            "ID": "1004023",
             "Timing": "Start of turn",
-            "Ki": 3,
+            "Ki": 4,
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -61,11 +61,11 @@
                 }
             }
         },
-        "2002031": {
-            "ID": "2002031",
+        "2004023": {
+            "ID": "2004023",
             "Timing": "Start of turn",
-            "ATK": 100,
-            "DEF": 100,
+            "ATK": 122,
+            "DEF": 122,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -86,10 +86,73 @@
                 }
             }
         },
-        "3002031": {
-            "ID": "3002031",
+        "3004023": {
+            "ID": "3004023",
             "Timing": "Start of turn",
-            "ATK": 100,
+            "Heals": 22,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "486 and 27",
+                "Causalities": {
+                    "486": {
+                        "Button": {
+                            "Name": "Is there is an ally on the team whose name includes Goku?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    },
+                    "27": {
+                        "Button": {
+                            "Name": "Is HP 50 % or less?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining",
+                            "Logic": "<=50",
+                            "Min": 0,
+                            "Max": 100
+                        }
+                    }
+                }
+            },
+            "Once only": true
+        },
+        "4004023": {
+            "ID": "4004023",
+            "Timing": "On Super",
+            "ATK": 122,
+            "DEF": 122,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1540",
+                "Causalities": {
+                    "1540": {
+                        "Button": {
+                            "Name": "Are there 2 or more Bond of Parent and Child category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Bond of Parent and Child category allies on the same turn ",
+                            "Logic": ">=2",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "5004023": {
+            "ID": "5004023",
+            "Timing": "Start of turn",
+            "ATK": 122,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -112,10 +175,10 @@
                 }
             }
         },
-        "4002031": {
-            "ID": "4002031",
+        "6004023": {
+            "ID": "6004023",
             "Timing": "Start of turn",
-            "Ki": 3,
+            "Ki": 4,
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -136,10 +199,10 @@
                 }
             }
         },
-        "5002031": {
-            "ID": "5002031",
+        "7004023": {
+            "ID": "7004023",
             "Timing": "Start of turn",
-            "ATK": 100,
+            "ATK": 122,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -160,8 +223,8 @@
                 }
             }
         },
-        "6002031": {
-            "ID": "6002031",
+        "8004023": {
+            "ID": "8004023",
             "Timing": "Start of turn",
             "Crit Chance": 100,
             "Buff": {
@@ -882,22 +945,22 @@
         }
     },
     "Super Attack": {
-        "2219": {
-            "superID": "2219",
-            "superName": "\u00e3\u0083\u0095\u00e3\u0082\u00a1\u00e3\u0082\u00a4\u00e3\u0083\u008a\u00e3\u0083\u00ab\u00e3\u0082\u00b9\u00e3\u0083\u0094\u00e3\u0083\u00aa\u00e3\u0083\u0083\u00e3\u0083\u0084\u00e3\u0082\u00ad\u00e3\u0083\u00a3\u00e3\u0083\u008e\u00e3\u0083\u00b3",
-            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "5235": {
+            "superID": "5235",
+            "superName": "\u00e3\u0083\u0095\u00e3\u0082\u00a1\u00e3\u0082\u00a4\u00e3\u0083\u008a\u00e3\u0083\u00ab\u00e3\u0082\u00b9\u00e3\u0083\u0094\u00e3\u0083\u00aa\u00e3\u0083\u0083\u00e3\u0083\u0084\u00e3\u0082\u00ad\u00e3\u0083\u00a3\u00e3\u0083\u008e\u00e3\u0083\u00b3(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e8\u00b6\u0085\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n2\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3\u00e8\u0087\u00aa\u00e8\u00ba\u00ab\u00e3\u0082\u0092\u00e9\u0099\u00a4\u00e3\u0081\u008f\u00e4\u00bb\u00b2\u00e9\u0096\u0093ATK\u00e3\u0081\u00a8DEF22%UP",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "2219": {
+            "Multiplier": 530,
+            "5235": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -906,8 +969,20 @@
                     "+ or -": "+"
                 },
                 "Target": "Self",
-                "ATK": "50",
-                "DEF": "50"
+                "ATK": "100",
+                "DEF": "100"
+            },
+            "1005235": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "2",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Allies (self excluded)",
+                "ATK": "22",
+                "DEF": "22"
             }
         }
     },

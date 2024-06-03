@@ -1301,9 +1301,39 @@
         "Standby or Finish": "Standby",
         "ID": "9",
         "Exec limit": "1",
+        "Condition": {
+            "Logic": "((not 12662636868) and 12662636869)",
+            "Causality": {
+                "12662636868": {
+                    "Button": {
+                        "Name": "Has this characters finish effect been activated?"
+                    },
+                    "Slider": {}
+                },
+                "12662636869": {
+                    "Button": {
+                        "Name": "Has this character recieved their 5th attack in battle?"
+                    },
+                    "Slider": {
+                        "Name": "How many attacks has this character recieved?",
+                        "Logic": ">=5",
+                        "Min": 0,
+                        "Max": 5
+                    }
+                }
+            }
+        },
         "Standby Exclusivity": "charge",
         "Charge type": {
             "type": "energy_ball",
+            "charge_per_orb": {
+                "AGL": 1,
+                "TEQ": 1,
+                "INT": 2,
+                "STR": 1,
+                "PHY": 1,
+                "Rainbow": 2
+            },
             "gauge_value": "30",
             "count_multiplier": "1",
             "max_effect_value": "30"

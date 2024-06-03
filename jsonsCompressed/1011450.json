@@ -25,8 +25,8 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "1192": {
-            "ID": "1192",
+        "3543": {
+            "ID": "3543",
             "Timing": "Start of turn",
             "Ki change": {
                 "From": "TEQ",
@@ -38,19 +38,19 @@
             },
             "Length": "1"
         },
-        "1001192": {
-            "ID": "1001192",
+        "1003543": {
+            "ID": "1003543",
             "Timing": "Start of turn",
-            "ATK": 70,
-            "DEF": 70,
+            "ATK": 150,
+            "DEF": 150,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "2001192": {
-            "ID": "2001192",
+        "2003543": {
+            "ID": "2003543",
             "Timing": "Start of turn",
             "Ki change": {
                 "From": "STR",
@@ -62,17 +62,302 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "74",
+                "Logic": "2581",
                 "Causalities": {
-                    "74": {
+                    "2581": {
                         "Button": {
-                            "Name": "Is HP 70 % or less?"
+                            "Name": "Is HP 78 % or less?"
                         },
                         "Slider": {
                             "Name": "What percentage of HP is remaining",
-                            "Logic": "<=70",
+                            "Logic": "<=78",
                             "Min": 0,
                             "Max": 100
+                        }
+                    }
+                }
+            }
+        },
+        "3003543": {
+            "ID": "3003543",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "50"
+            },
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2581",
+                "Causalities": {
+                    "2581": {
+                        "Button": {
+                            "Name": "Is HP 78 % or less?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining",
+                            "Logic": "<=78",
+                            "Min": 0,
+                            "Max": 100
+                        }
+                    }
+                }
+            }
+        },
+        "4003543": {
+            "ID": "4003543",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 0,
+                "Cause": {
+                    "Cause": "Ki sphere obtained",
+                    "Type": [
+                        "PHY"
+                    ]
+                }
+            },
+            "ATK": 30,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "5003543": {
+            "ID": "5003543",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 0,
+                "Cause": {
+                    "Cause": "Ki sphere obtained",
+                    "Type": [
+                        "PHY"
+                    ]
+                }
+            },
+            "DEF": 20,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "6003543": {
+            "ID": "6003543",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 0,
+                "Cause": {
+                    "Cause": "Ki sphere obtained",
+                    "Type": [
+                        "Rainbow",
+                        "STR",
+                        "INT",
+                        "TEQ",
+                        "AGL"
+                    ]
+                }
+            },
+            "ATK": 20,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "7003543": {
+            "ID": "7003543",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 0,
+                "Cause": {
+                    "Cause": "Ki sphere obtained",
+                    "Type": [
+                        "Rainbow",
+                        "STR",
+                        "INT",
+                        "TEQ",
+                        "AGL"
+                    ]
+                }
+            },
+            "DEF": 20,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "8003543": {
+            "ID": "8003543",
+            "Timing": "Start of turn",
+            "Crit Chance": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "9003543": {
+            "ID": "9003543",
+            "Timing": "Start of turn",
+            "Ki": 1,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2582",
+                "Causalities": {
+                    "2582": {
+                        "Button": {
+                            "Name": "Are there 2 or more Future Saga category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Future Saga category allies on the same turn ",
+                            "Logic": ">=2",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "10003543": {
+            "ID": "10003543",
+            "Timing": "Start of turn",
+            "Ki": 1,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2583",
+                "Causalities": {
+                    "2583": {
+                        "Button": {
+                            "Name": "Are there 3 or more Future Saga category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Future Saga category allies on the same turn ",
+                            "Logic": ">=3",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "11003543": {
+            "ID": "11003543",
+            "Timing": "Start of turn",
+            "ATK": 50,
+            "DEF": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2582",
+                "Causalities": {
+                    "2582": {
+                        "Button": {
+                            "Name": "Are there 2 or more Future Saga category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Future Saga category allies on the same turn ",
+                            "Logic": ">=2",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "12003543": {
+            "ID": "12003543",
+            "Timing": "Start of turn",
+            "ATK": 50,
+            "DEF": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2583",
+                "Causalities": {
+                    "2583": {
+                        "Button": {
+                            "Name": "Are there 3 or more Future Saga category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Future Saga category allies on the same turn ",
+                            "Logic": ">=3",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "13003543": {
+            "ID": "13003543",
+            "Timing": "Start of turn",
+            "Crit Chance": 17,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2582",
+                "Causalities": {
+                    "2582": {
+                        "Button": {
+                            "Name": "Are there 2 or more Future Saga category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Future Saga category allies on the same turn ",
+                            "Logic": ">=2",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "14003543": {
+            "ID": "14003543",
+            "Timing": "Start of turn",
+            "Crit Chance": 17,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2583",
+                "Causalities": {
+                    "2583": {
+                        "Button": {
+                            "Name": "Are there 3 or more Future Saga category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Future Saga category allies on the same turn ",
+                            "Logic": ">=3",
+                            "Max": 3,
+                            "Min": 0
                         }
                     }
                 }
@@ -741,22 +1026,33 @@
         }
     },
     "Super Attack": {
-        "1266": {
-            "superID": "1266",
-            "superName": "\u00e3\u0082\u00a2\u00e3\u0082\u00af\u00e3\u0082\u00bb\u00e3\u0083\u00ab\u00e3\u0083\u0080\u00e3\u0083\u00b3\u00e3\u0082\u00b9",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u00813\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087",
+        "4799": {
+            "superID": "4799",
+            "superName": "\u00e3\u0082\u00a2\u00e3\u0082\u00af\u00e3\u0082\u00bb\u00e3\u0083\u00ab\u00e3\u0083\u0080\u00e3\u0083\u00b3\u00e3\u0082\u00b9(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n3\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 380,
-            "1266": {
+            "Multiplier": 480,
+            "4799": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "30"
+            },
+            "1004799": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",

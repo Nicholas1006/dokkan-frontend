@@ -27,18 +27,62 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "1411": {
-            "ID": "1411",
+        "2960": {
+            "ID": "2960",
             "Timing": "Start of turn",
-            "ATK": 100,
+            "ATK": 150,
+            "DEF": 150,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1001411": {
-            "ID": "1001411",
+        "1002960": {
+            "ID": "1002960",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 100,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "ATK": 20,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99"
+        },
+        "2002960": {
+            "ID": "2002960",
+            "Timing": "On Super",
+            "ATK": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1699",
+                "Causalities": {
+                    "1699": {
+                        "Button": {
+                            "Name": "Is ki 12 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=12",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    }
+                }
+            }
+        },
+        "3002960": {
+            "ID": "3002960",
             "Timing": "Start of turn",
             "Ki": 3,
             "Target": {
@@ -51,8 +95,8 @@
             },
             "Length": "1"
         },
-        "2001411": {
-            "ID": "2001411",
+        "4002960": {
+            "ID": "4002960",
             "Timing": "Start of turn",
             "DEF": 120,
             "Target": {
@@ -61,6 +105,44 @@
             },
             "Buff": {
                 "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "5002960": {
+            "ID": "5002960",
+            "Timing": "Start of turn",
+            "Ki": 2,
+            "Target": {
+                "Category": "Peppy Gals",
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "6002960": {
+            "ID": "6002960",
+            "Timing": "Start of turn",
+            "DEF": 50,
+            "Target": {
+                "Category": "Peppy Gals",
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "7002960": {
+            "ID": "7002960",
+            "Timing": "Start of turn",
+            "Crit Chance": 30,
+            "Buff": {
+                "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1"
@@ -729,22 +811,34 @@
         }
     },
     "Super Attack": {
-        "1603": {
-            "superID": "1603",
-            "superName": "\u00e8\u008a\u00ad\u00e8\u0095\u0089\u00e6\u0089\u0087",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e5\u00bf\u0085\u00e6\u00ae\u00ba\u00e6\u008a\u0080\u00e3\u0082\u0092\u00e5\u00b0\u0081\u00e3\u0081\u0098\u00e3\u0082\u008b",
+        "4068": {
+            "superID": "4068",
+            "superName": "\u00e8\u008a\u00ad\u00e8\u0095\u0089\u00e6\u0089\u0087(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n\u00e5\u00bf\u0085\u00e6\u00ae\u00ba\u00e6\u008a\u0080\u00e3\u0082\u0092\u00e5\u00b0\u0081\u00e3\u0081\u0098\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "1603": {
+            "Multiplier": 530,
+            "4068": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "50",
+                "DEF": "50"
+            },
+            "1004068": {
                 "Type": "ExtraEfficacySpecial",
                 "Chance": "100",
                 "Duration": "2",

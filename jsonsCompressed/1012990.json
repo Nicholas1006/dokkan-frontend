@@ -29,8 +29,19 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "1082": {
-            "ID": "1082",
+        "3581": {
+            "ID": "3581",
+            "Timing": "Start of turn",
+            "ATK": 180,
+            "DEF": 180,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1003581": {
+            "ID": "1003581",
             "Timing": "Being hit",
             "DR": 40,
             "Buff": {
@@ -39,24 +50,79 @@
             },
             "Length": "1"
         },
-        "1001082": {
-            "ID": "1001082",
+        "2003581": {
+            "ID": "2003581",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 10,
-                "Max": 60,
+                "Max": 120,
                 "Cause": {
                     "Cause": "HP",
                     "Type": "More HP remaining"
                 }
             },
-            "ATK": 60,
-            "DEF": 60,
+            "ATK": 120,
+            "DEF": 120,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
+        },
+        "3003581": {
+            "ID": "3003581",
+            "Timing": "Start of turn",
+            "DR": 20,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2660",
+                "Causalities": {
+                    "2660": {
+                        "Button": {
+                            "Name": "Are there 3 or more Realm of Gods category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Realm of Gods category allies on the same turn ",
+                            "Logic": ">=3",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "4003581": {
+            "ID": "4003581",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "70"
+            },
+            "Timing": "Hit recieved",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Condition": {
+                "Logic": "2661",
+                "Causalities": {
+                    "2661": {
+                        "Button": {
+                            "Name": "Has this character recieved their 6th attack in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character recieved?",
+                            "Logic": ">=6",
+                            "Min": 0,
+                            "Max": 6
+                        }
+                    }
+                }
+            }
         }
     },
     "Stats at levels": {
@@ -708,22 +774,34 @@
         }
     },
     "Super Attack": {
-        "1007": {
-            "superID": "1007",
-            "superName": "\u00e7\u00a5\u009e\u00e8\u00a3\u0082\u00e6\u0096\u00ac",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081HP\u00e3\u0082\u00927%\u00e5\u009b\u009e\u00e5\u00be\u00a9",
+        "4848": {
+            "superID": "4848",
+            "superName": "\u00e7\u00a5\u009e\u00e8\u00a3\u0082\u00e6\u0096\u00ac(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nHP\u00e3\u0082\u00927%\u00e5\u009b\u009e\u00e5\u00be\u00a9",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "1007": {
+            "Multiplier": 530,
+            "4848": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "30",
+                "DEF": "30"
+            },
+            "1004848": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",

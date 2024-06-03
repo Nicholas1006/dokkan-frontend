@@ -25,31 +25,31 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "3074": {
-            "ID": "3074",
+        "3956": {
+            "ID": "3956",
             "Timing": "Start of turn",
-            "ATK": 100,
-            "DEF": 100,
+            "ATK": 160,
+            "DEF": 160,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1003074": {
-            "ID": "1003074",
+        "1003956": {
+            "ID": "1003956",
             "Timing": "On Super",
-            "ATK": 50,
-            "DEF": 50,
+            "ATK": 80,
+            "DEF": 80,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1941",
+                "Logic": "2990",
                 "Causalities": {
-                    "1941": {
+                    "2990": {
                         "Button": {
                             "Name": "Is ki 12 or more"
                         },
@@ -63,8 +63,8 @@
                 }
             }
         },
-        "2003074": {
-            "ID": "2003074",
+        "2003956": {
+            "ID": "2003956",
             "Dodge chance": 30,
             "Timing": "Start of turn",
             "Buff": {
@@ -73,47 +73,99 @@
             },
             "Length": "1"
         },
-        "3003074": {
-            "ID": "3003074",
-            "Timing": "On Super",
-            "ATK": 50,
+        "3003956": {
+            "ID": "3003956",
+            "Timing": "Start of turn",
+            "Ki": 2,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2991",
+                "Causalities": {
+                    "2991": {
+                        "Button": {
+                            "Name": "Are there 3 or more Dragon Ball Heroes category allies on the team "
+                        },
+                        "Slider": {
+                            "Name": "How many Dragon Ball Heroes category allies on the team ",
+                            "Logic": ">=3",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "4003956": {
+            "ID": "4003956",
+            "Dodge chance": 20,
+            "Timing": "Start of turn",
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1942",
+                "Logic": "2991",
                 "Causalities": {
-                    "1942": {
+                    "2991": {
                         "Button": {
-                            "Name": "Is the enemy's health 75 % or less?"
+                            "Name": "Are there 3 or more Dragon Ball Heroes category allies on the team "
+                        },
+                        "Slider": {
+                            "Name": "How many Dragon Ball Heroes category allies on the team ",
+                            "Logic": ">=3",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "5003956": {
+            "ID": "5003956",
+            "Timing": "On Super",
+            "ATK": 80,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2995",
+                "Causalities": {
+                    "2995": {
+                        "Button": {
+                            "Name": "Is the enemy's health 80 % or less?"
                         },
                         "Slider": {
                             "Name": "What percentage of HP does the enemy have?",
-                            "Logic": "<=75",
+                            "Logic": "<=80",
                             "Max": 100
                         }
                     }
                 }
             }
         },
-        "4003074": {
-            "ID": "4003074",
+        "6003956": {
+            "ID": "6003956",
             "Additional attack": {
                 "Activated": true,
-                "Chance of super": "50"
+                "Chance of super": "70"
             },
             "Timing": "On Super",
             "Buff": {
-                "Type": "Percentage",
+                "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1943",
+                "Logic": "2993",
                 "Causalities": {
-                    "1943": {
+                    "2993": {
                         "Button": {
                             "Name": "Is the enemy's health 50 % or less?"
                         },
@@ -126,28 +178,28 @@
                 }
             }
         },
-        "5003074": {
-            "ID": "5003074",
+        "7003956": {
+            "ID": "7003956",
             "Timing": "Attacking the enemy",
             "Building Stat": {
                 "Min": 0,
-                "Max": 30,
+                "Max": 50,
                 "Cause": {
                     "Cause": "Look Elsewhere"
                 }
             },
-            "Crit Chance": 6,
+            "Crit Chance": 10,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "99",
             "Condition": {
-                "Logic": "1944",
+                "Logic": "2996",
                 "Causalities": {
-                    "1944": {
+                    "2996": {
                         "Button": {
-                            "Name": "Is the target enemy in \"ATK down\" status or in \"DEF down\" status or sealed?"
+                            "Name": "Is the target enemy in \"ATK down\" status or in \"DEF down\" status or stunned or sealed?"
                         },
                         "Slider": {
                             "Name": null,
@@ -821,22 +873,22 @@
         }
     },
     "Super Attack": {
-        "4220": {
-            "superID": "4220",
-            "superName": "\u00e3\u0082\u00b0\u00e3\u0083\u00a9\u00e3\u0082\u00b9\u00e3\u0083\u0090\u00e3\u0083\u00ac\u00e3\u0083\u0083\u00e3\u0083\u0088",
-            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n\u00e9\u00ab\u0098\u00e7\u00a2\u00ba\u00e7\u008e\u0087\u00e3\u0081\u00a7ATK\u00e3\u0081\u00a8DEF\u00e3\u0082\u0092\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0080\u0081\n\u00e9\u00ab\u0098\u00e7\u00a2\u00ba\u00e7\u008e\u0087\u00e3\u0081\u00a7\u00e5\u00bf\u0085\u00e6\u00ae\u00ba\u00e6\u008a\u0080\u00e3\u0082\u0092\u00e5\u00b0\u0081\u00e3\u0081\u0098\u00e3\u0082\u008b",
+        "5049": {
+            "superID": "5049",
+            "superName": "\u00e3\u0082\u00b0\u00e3\u0083\u00a9\u00e3\u0082\u00b9\u00e3\u0083\u0090\u00e3\u0083\u00ac\u00e3\u0083\u0083\u00e3\u0083\u0088(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nATK\u00e3\u0081\u00a8DEF\u00e3\u0082\u0092\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0080\u0081\n\u00e5\u00bf\u0085\u00e6\u00ae\u00ba\u00e6\u008a\u0080\u00e3\u0082\u0092\u00e5\u00b0\u0081\u00e3\u0081\u0098\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "4220": {
+            "Multiplier": 530,
+            "5049": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -848,9 +900,9 @@
                 "ATK": "30",
                 "DEF": "30"
             },
-            "1004220": {
+            "1005049": {
                 "Type": "NormalEfficacySpecial",
-                "Chance": "50",
+                "Chance": "100",
                 "Duration": "3",
                 "Buff": {
                     "Type": "Percentage",
@@ -860,9 +912,9 @@
                 "ATK": "20",
                 "DEF": "20"
             },
-            "2004220": {
+            "2005049": {
                 "Type": "ExtraEfficacySpecial",
-                "Chance": "50",
+                "Chance": "100",
                 "Duration": "2",
                 "Buff": {
                     "Type": "Raw stats",

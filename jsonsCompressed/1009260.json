@@ -27,8 +27,73 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "693": {
-            "ID": "693",
+        "2680": {
+            "ID": "2680",
+            "Timing": "Start of turn",
+            "ATK": 150,
+            "DEF": 150,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1002680": {
+            "ID": "1002680",
+            "Timing": "Start of turn",
+            "ATK": 30,
+            "DEF": 30,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1213",
+                "Causalities": {
+                    "1213": {
+                        "Button": {
+                            "Name": "Are there 2 or more Fusion category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Fusion category allies on the same turn ",
+                            "Logic": ">=2",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "2002680": {
+            "ID": "2002680",
+            "Timing": "Start of turn",
+            "ATK": 30,
+            "DEF": 30,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1214",
+                "Causalities": {
+                    "1214": {
+                        "Button": {
+                            "Name": "Are there 3 or more Fusion category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Fusion category allies on the same turn ",
+                            "Logic": ">=3",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "3002680": {
+            "ID": "3002680",
             "Timing": "Start of turn",
             "Ki": 3,
             "Target": {
@@ -40,9 +105,9 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "57",
+                "Logic": "1215",
                 "Causalities": {
-                    "57": {
+                    "1215": {
                         "Button": {
                             "Name": "Is HP 30 % or more?"
                         },
@@ -55,6 +120,28 @@
                     }
                 }
             }
+        },
+        "4002680": {
+            "ID": "4002680",
+            "Effective against all": true,
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Chance": "50",
+            "Length": "1"
+        },
+        "5002680": {
+            "ID": "5002680",
+            "Timing": "Start of turn",
+            "Guard": true,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Chance": "50",
+            "Length": "1"
         }
     },
     "Stats at levels": {
@@ -715,21 +802,33 @@
         }
     },
     "Super Attack": {
-        "421": {
-            "superID": "421",
-            "superName": "\u00e3\u0082\u00ae\u00e3\u0083\u00a3\u00e3\u0083\u00aa\u00e3\u0083\u0083\u00e3\u0082\u00af\u00e7\u00a0\u00b2",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "3520": {
+            "superID": "3520",
+            "superName": "\u00e3\u0082\u00ae\u00e3\u0083\u00a3\u00e3\u0083\u00aa\u00e3\u0083\u0083\u00e3\u0082\u00af\u00e7\u00a0\u00b2(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430
+            "Multiplier": 530,
+            "3520": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "30",
+                "DEF": "30"
+            }
         }
     },
     "Active Skill": null,

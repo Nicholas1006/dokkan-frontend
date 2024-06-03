@@ -27,8 +27,19 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "1133": {
-            "ID": "1133",
+        "2814": {
+            "ID": "2814",
+            "Timing": "Start of turn",
+            "ATK": 160,
+            "DEF": 160,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1002814": {
+            "ID": "1002814",
             "Timing": "Start of turn",
             "Ki": 3,
             "Target": {
@@ -40,8 +51,8 @@
             },
             "Length": "1"
         },
-        "1001133": {
-            "ID": "1001133",
+        "2002814": {
+            "ID": "2002814",
             "Timing": "Start of turn",
             "ATK": 40,
             "Target": {
@@ -53,10 +64,37 @@
             },
             "Length": "1"
         },
-        "2001133": {
-            "ID": "2001133",
+        "3002814": {
+            "ID": "3002814",
             "Timing": "Start of turn",
-            "ATK": 15,
+            "DEF": 40,
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1403",
+                "Causalities": {
+                    "1403": {
+                        "Button": {
+                            "Name": "Is there an extreme class enemy? "
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "4002814": {
+            "ID": "4002814",
+            "Timing": "Start of turn",
+            "ATK": 20,
             "Target": {
                 "Target": "Enemies",
                 "Class": "Super"
@@ -67,11 +105,11 @@
             },
             "Length": "1"
         },
-        "3001133": {
-            "ID": "3001133",
+        "5002814": {
+            "ID": "5002814",
             "Transformation": {
                 "Activated": true,
-                "Unit": "4013580",
+                "Unit": "4013581",
                 "Giant/Rage": false,
                 "Min Turns": null,
                 "Max Turns": null,
@@ -82,7 +120,7 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Chance": "25",
+            "Chance": "30",
             "Length": "1",
             "Condition": {
                 "Logic": "42",
@@ -799,22 +837,34 @@
         }
     },
     "Super Attack": {
-        "1205": {
-            "superID": "1205",
-            "superName": "\u00e3\u0083\u00a1\u00e3\u0083\u0086\u00e3\u0082\u00aa\u00e3\u0083\u0090\u00e3\u0083\u00bc\u00e3\u0082\u00b9\u00e3\u0083\u0088",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n\u00e4\u00b8\u00ad\u00e7\u00a2\u00ba\u00e7\u008e\u0087\u00e3\u0081\u00a7\u00e6\u00b0\u0097\u00e7\u00b5\u00b6\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
+        "3821": {
+            "superID": "3821",
+            "superName": "\u00e3\u0083\u00a1\u00e3\u0083\u0086\u00e3\u0082\u00aa\u00e3\u0083\u0090\u00e3\u0083\u00bc\u00e3\u0082\u00b9\u00e3\u0083\u0088(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n\u00e4\u00b8\u00ad\u00e7\u00a2\u00ba\u00e7\u008e\u0087\u00e3\u0081\u00a7\u00e6\u00b0\u0097\u00e7\u00b5\u00b6\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 505,
-            "1205": {
+            "Multiplier": 630,
+            "3821": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "30",
+                "DEF": "30"
+            },
+            "1003821": {
                 "Type": "ExtraEfficacySpecial",
                 "Chance": "30",
                 "Duration": "2",

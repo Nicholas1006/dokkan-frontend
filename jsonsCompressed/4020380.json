@@ -30,32 +30,91 @@
         "Legendary Power"
     ],
     "Passive": {
-        "2183": {
-            "ID": "2183",
+        "4038": {
+            "ID": "4038",
             "Timing": "Start of turn",
-            "Heals": 10,
+            "Heals": 20,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1002183": {
-            "ID": "1002183",
-            "Timing": "Start of turn",
-            "ATK": 150,
-            "DEF": 150,
-            "Buff": {
-                "Type": "Percentage",
-                "+ or -": "+"
-            },
-            "Length": "1"
-        },
-        "2002183": {
-            "ID": "2002183",
+        "1004038": {
+            "ID": "1004038",
             "Additional attack": {
                 "Activated": true,
-                "Chance of super": "30"
+                "Chance of super": "100"
+            },
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1444",
+                "Causalities": {
+                    "1444": {
+                        "Button": {
+                            "Name": "Is it within the first 3 turns from this characters entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since the characters entry turn?",
+                            "Logic": "<=3",
+                            "Min": 0,
+                            "Max": 3
+                        }
+                    }
+                }
+            }
+        },
+        "2004038": {
+            "ID": "2004038",
+            "Timing": "Start of turn",
+            "Ki": 5,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "3004038": {
+            "ID": "3004038",
+            "Timing": "Start of turn",
+            "ATK": 250,
+            "DEF": 250,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "4004038": {
+            "ID": "4004038",
+            "Dodge chance": 50,
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "5004038": {
+            "ID": "5004038",
+            "Timing": "Start of turn",
+            "Guard": true,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "6004038": {
+            "ID": "6004038",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "100"
             },
             "Timing": "Start of turn",
             "Buff": {
@@ -64,8 +123,8 @@
             },
             "Length": "1"
         },
-        "3002183": {
-            "ID": "3002183",
+        "7004038": {
+            "ID": "7004038",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -82,26 +141,119 @@
                     ]
                 }
             },
-            "Ki": 1,
+            "Ki": 2,
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "4002183": {
-            "ID": "4002183",
+        "8004038": {
+            "ID": "8004038",
             "Timing": "Start of turn",
-            "Ki": 5,
+            "ATK": 50,
+            "DEF": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1379",
+                "Causalities": {
+                    "1379": {
+                        "Button": {
+                            "Name": "Is it within the first 5 turns from this characters entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since the characters entry turn?",
+                            "Logic": "<=5",
+                            "Min": 0,
+                            "Max": 5
+                        }
+                    }
+                }
+            }
+        },
+        "9004038": {
+            "ID": "9004038",
+            "Timing": "Attacking the enemy",
+            "Status": [
+                "Disable action"
+            ],
+            "Target": {
+                "Target": "Enemy"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "5",
+            "Length": "1",
+            "Condition": {
+                "Logic": "75 and 10 and 2266",
+                "Causalities": {
+                    "75": {
+                        "Button": {
+                            "Name": "Is ki 18 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=18",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    },
+                    "10": {
+                        "Button": {
+                            "Name": "Is it on or after the first 0 turns from this characters entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since the characters entry turn?",
+                            "Logic": ">=0"
+                        }
+                    },
+                    "2266": {
+                        "Button": {
+                            "Name": "Is it within the first 1 turns from this characters entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since the characters entry turn?",
+                            "Logic": "<=1",
+                            "Min": 0,
+                            "Max": 1
+                        }
+                    }
+                }
+            },
             "Once only": true
         },
-        "5002183": {
-            "ID": "5002183",
+        "10004038": {
+            "ID": "10004038",
+            "Timing": "Start of turn",
+            "ATK": 100,
+            "DEF": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "579",
+                "Causalities": {
+                    "579": {
+                        "Button": {
+                            "Name": "Is it on or after the first 5 turns from this characters entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since the characters entry turn?",
+                            "Logic": ">=5"
+                        }
+                    }
+                }
+            }
+        },
+        "11004038": {
+            "ID": "11004038",
             "Timing": "Attacking the enemy",
             "Status": [
                 "Seal"
@@ -114,6 +266,279 @@
                 "+ or -": "+"
             },
             "Length": "5",
+            "Once only": true
+        },
+        "12004038": {
+            "ID": "12004038",
+            "Timing": "End of turn",
+            "ATK": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Condition": {
+                "Logic": "21",
+                "Causalities": {
+                    "21": {
+                        "Button": {
+                            "Name": "Is HP 50 % or more?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining",
+                            "Logic": ">=50",
+                            "Min": 0,
+                            "Max": 100
+                        }
+                    }
+                }
+            }
+        },
+        "13004038": {
+            "ID": "13004038",
+            "Timing": "End of turn",
+            "Heals": 10,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "27",
+                "Causalities": {
+                    "27": {
+                        "Button": {
+                            "Name": "Is HP 50 % or less?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining",
+                            "Logic": "<=50",
+                            "Min": 0,
+                            "Max": 100
+                        }
+                    }
+                }
+            }
+        },
+        "14004038": {
+            "ID": "14004038",
+            "Toggle Other Line": {
+                "Activated": true,
+                "Line": "12004038"
+            },
+            "Timing": "Attacking the enemy",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "15004038": {
+            "ID": "15004038",
+            "Timing": "Attacking the enemy",
+            "Status": [
+                "Disable action"
+            ],
+            "Target": {
+                "Target": "Enemy"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "75 and 11 and 2265",
+                "Causalities": {
+                    "75": {
+                        "Button": {
+                            "Name": "Is ki 18 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=18",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    },
+                    "11": {
+                        "Button": {
+                            "Name": "Is it on or after the first 1 turns from this characters entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since the characters entry turn?",
+                            "Logic": ">=1"
+                        }
+                    },
+                    "2265": {
+                        "Button": {
+                            "Name": "Is it within the first 2 turns from this characters entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since the characters entry turn?",
+                            "Logic": "<=2",
+                            "Min": 0,
+                            "Max": 2
+                        }
+                    }
+                }
+            },
+            "Once only": true
+        },
+        "16004038": {
+            "ID": "16004038",
+            "Timing": "Attacking the enemy",
+            "Status": [
+                "Disable action"
+            ],
+            "Target": {
+                "Target": "Enemy"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "75 and 296 and 1444",
+                "Causalities": {
+                    "75": {
+                        "Button": {
+                            "Name": "Is ki 18 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=18",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    },
+                    "296": {
+                        "Button": {
+                            "Name": "Is it on or after the first 2 turns from this characters entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since the characters entry turn?",
+                            "Logic": ">=2"
+                        }
+                    },
+                    "1444": {
+                        "Button": {
+                            "Name": "Is it within the first 3 turns from this characters entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since the characters entry turn?",
+                            "Logic": "<=3",
+                            "Min": 0,
+                            "Max": 3
+                        }
+                    }
+                }
+            },
+            "Once only": true
+        },
+        "17004038": {
+            "ID": "17004038",
+            "Timing": "Attacking the enemy",
+            "Status": [
+                "Disable action"
+            ],
+            "Target": {
+                "Target": "Enemy"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "75 and 626 and 1380",
+                "Causalities": {
+                    "75": {
+                        "Button": {
+                            "Name": "Is ki 18 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=18",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    },
+                    "626": {
+                        "Button": {
+                            "Name": "Is it on or after the first 3 turns from this characters entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since the characters entry turn?",
+                            "Logic": ">=3"
+                        }
+                    },
+                    "1380": {
+                        "Button": {
+                            "Name": "Is it within the first 4 turns from this characters entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since the characters entry turn?",
+                            "Logic": "<=4",
+                            "Min": 0,
+                            "Max": 4
+                        }
+                    }
+                }
+            },
+            "Once only": true
+        },
+        "18004038": {
+            "ID": "18004038",
+            "Timing": "Attacking the enemy",
+            "Status": [
+                "Disable action"
+            ],
+            "Target": {
+                "Target": "Enemy"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "75 and 2375 and 1379",
+                "Causalities": {
+                    "75": {
+                        "Button": {
+                            "Name": "Is ki 18 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=18",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    },
+                    "2375": {
+                        "Button": {
+                            "Name": "Is it on or after the first 4 turns from this characters entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since the characters entry turn?",
+                            "Logic": ">=4"
+                        }
+                    },
+                    "1379": {
+                        "Button": {
+                            "Name": "Is it within the first 5 turns from this characters entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since the characters entry turn?",
+                            "Logic": "<=5",
+                            "Min": 0,
+                            "Max": 5
+                        }
+                    }
+                }
+            },
             "Once only": true
         }
     },
@@ -963,14 +1388,14 @@
         }
     },
     "Super Attack": {
-        "2551": {
-            "superID": "2551",
-            "superName": "\u00e7\u00a0\u00b4\u00e5\u00a3\u008a\u00e5\u0085\u0089\u00e5\u00bc\u00be",
-            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e6\u00a5\u00b5\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "5270": {
+            "superID": "5270",
+            "superName": "\u00e7\u00a0\u00b4\u00e5\u00a3\u008a\u00e5\u0085\u0089\u00e5\u00bc\u00be(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "4\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e6\u00a5\u00b5\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -983,26 +1408,27 @@
                 "Amount": "30"
             },
             "Multiplier": 395,
-            "2551": {
+            "5270": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
-                "Duration": "1",
+                "Duration": "4",
                 "Buff": {
                     "Type": "Percentage",
                     "+ or -": "+"
                 },
                 "Target": "Self",
-                "ATK": "30"
+                "ATK": "30",
+                "DEF": "30"
             }
         },
-        "2552": {
-            "superID": "2552",
-            "superName": "\u00e3\u0082\u00a2\u00e3\u0083\u00ab\u00e3\u0083\u0086\u00e3\u0082\u00a3\u00e3\u0083\u00a1\u00e3\u0083\u0083\u00e3\u0083\u0088\u00e3\u0082\u00ad\u00e3\u0083\u00a3\u00e3\u0083\u008e\u00e3\u0083\u00b3",
-            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e6\u00a5\u00b5\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "5271": {
+            "superID": "5271",
+            "superName": "\u00e3\u0082\u00a2\u00e3\u0083\u00ab\u00e3\u0083\u0086\u00e3\u0082\u00a3\u00e3\u0083\u00a1\u00e3\u0083\u0083\u00e3\u0083\u0088\u00e3\u0082\u00ad\u00e3\u0083\u00a3\u00e3\u0083\u008e\u00e3\u0083\u00b3(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "4\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e6\u00a5\u00b5\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n\u00e5\u00bf\u0085\u00e6\u00ae\u00ba\u00e6\u008a\u0080\u00e3\u0082\u0092\u00e5\u00b0\u0081\u00e3\u0081\u0098\u00e3\u0082\u008b",
             "superMinKi": "18",
             "superPriority": "0.0",
             "superStyle": "Hyper",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -1015,16 +1441,28 @@
                 "Amount": "30"
             },
             "Multiplier": 540,
-            "2552": {
+            "5271": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
-                "Duration": "1",
+                "Duration": "4",
                 "Buff": {
                     "Type": "Percentage",
                     "+ or -": "+"
                 },
                 "Target": "Self",
-                "ATK": "30"
+                "ATK": "30",
+                "DEF": "30"
+            },
+            "1005271": {
+                "Type": "ExtraEfficacySpecial",
+                "Chance": "100",
+                "Duration": "2",
+                "Buff": {
+                    "Type": "Raw stats",
+                    "+ or -": "+"
+                },
+                "Target": "Enemy",
+                "Status": "Seals"
             }
         }
     },

@@ -26,32 +26,30 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "1556": {
-            "ID": "1556",
+        "2640": {
+            "ID": "2640",
             "Timing": "Start of turn",
-            "DEF": 80,
+            "ATK": 120,
+            "DEF": 120,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1001556": {
-            "ID": "1001556",
+        "1002640": {
+            "ID": "1002640",
             "Timing": "Start of turn",
-            "DEF": 40,
-            "Target": {
-                "Target": "Allies"
-            },
+            "ATK": 100,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "208",
+                "Logic": "1120",
                 "Causalities": {
-                    "208": {
+                    "1120": {
                         "Button": {
                             "Name": "Is HP 80 % or more?"
                         },
@@ -65,8 +63,92 @@
                 }
             }
         },
-        "2001556": {
-            "ID": "2001556",
+        "2002640": {
+            "ID": "2002640",
+            "Timing": "Start of turn",
+            "DEF": 50,
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1120",
+                "Causalities": {
+                    "1120": {
+                        "Button": {
+                            "Name": "Is HP 80 % or more?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining",
+                            "Logic": ">=80",
+                            "Min": 0,
+                            "Max": 100
+                        }
+                    }
+                }
+            }
+        },
+        "3002640": {
+            "ID": "3002640",
+            "Timing": "Start of turn",
+            "DEF": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1121",
+                "Causalities": {
+                    "1121": {
+                        "Button": {
+                            "Name": "Is HP 80 % or less?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining",
+                            "Logic": "<=80",
+                            "Min": 0,
+                            "Max": 100
+                        }
+                    }
+                }
+            }
+        },
+        "4002640": {
+            "ID": "4002640",
+            "Timing": "Start of turn",
+            "ATK": 50,
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1121",
+                "Causalities": {
+                    "1121": {
+                        "Button": {
+                            "Name": "Is HP 80 % or less?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining",
+                            "Logic": "<=80",
+                            "Min": 0,
+                            "Max": 100
+                        }
+                    }
+                }
+            }
+        },
+        "5002640": {
+            "ID": "5002640",
             "Timing": "Start of turn",
             "Ki": 3,
             "Target": {
@@ -78,9 +160,9 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "42",
+                "Logic": "1121",
                 "Causalities": {
-                    "42": {
+                    "1121": {
                         "Button": {
                             "Name": "Is HP 80 % or less?"
                         },
@@ -94,48 +176,19 @@
                 }
             }
         },
-        "3001556": {
-            "ID": "3001556",
+        "6002640": {
+            "ID": "6002640",
             "Timing": "Start of turn",
-            "ATK": 40,
-            "Target": {
-                "Target": "Allies"
-            },
+            "Heals": 8,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "42",
+                "Logic": "1121",
                 "Causalities": {
-                    "42": {
-                        "Button": {
-                            "Name": "Is HP 80 % or less?"
-                        },
-                        "Slider": {
-                            "Name": "What percentage of HP is remaining",
-                            "Logic": "<=80",
-                            "Min": 0,
-                            "Max": 100
-                        }
-                    }
-                }
-            }
-        },
-        "4001556": {
-            "ID": "4001556",
-            "Timing": "Start of turn",
-            "Heals": 5,
-            "Buff": {
-                "Type": "Percentage",
-                "+ or -": "+"
-            },
-            "Length": "1",
-            "Condition": {
-                "Logic": "42",
-                "Causalities": {
-                    "42": {
+                    "1121": {
                         "Button": {
                             "Name": "Is HP 80 % or less?"
                         },
@@ -812,22 +865,33 @@
         }
     },
     "Super Attack": {
-        "1818": {
-            "superID": "1818",
-            "superName": "\u00e3\u0083\u0093\u00e3\u0083\u00aa\u00e3\u0083\u0093\u00e3\u0083\u00aa\u00e3\u0081\u00ae\u00e9\u00ad\u0094\u00e8\u00a1\u0093",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n\u00e9\u00ab\u0098\u00e7\u00a2\u00ba\u00e7\u008e\u0087\u00e3\u0081\u00a7\u00e6\u00b0\u0097\u00e7\u00b5\u00b6\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
+        "3456": {
+            "superID": "3456",
+            "superName": "\u00e3\u0083\u0093\u00e3\u0083\u00aa\u00e3\u0083\u0093\u00e3\u0083\u00aa\u00e3\u0081\u00ae\u00e9\u00ad\u0094\u00e8\u00a1\u0093(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3DEF\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n\u00e9\u00ab\u0098\u00e7\u00a2\u00ba\u00e7\u008e\u0087\u00e3\u0081\u00a7\u00e6\u00b0\u0097\u00e7\u00b5\u00b6\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "1818": {
+            "Multiplier": 530,
+            "3456": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "50"
+            },
+            "1003456": {
                 "Type": "ExtraEfficacySpecial",
                 "Chance": "50",
                 "Duration": "2",

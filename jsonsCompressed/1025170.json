@@ -29,11 +29,40 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "2983": {
-            "ID": "2983",
+        "2993": {
+            "ID": "2993",
             "Timing": "Start of turn",
-            "ATK": 20,
-            "DEF": 20,
+            "Ki change": {
+                "From": "AGL",
+                "To": "RAINBOW"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1768",
+                "Causalities": {
+                    "1768": {
+                        "Button": {
+                            "Name": "Is this the 1st attacker in the turn?"
+                        },
+                        "Slider": {
+                            "Name": "What position is this character attacking in?",
+                            "Logic": "==1",
+                            "Min": 1,
+                            "Max": 3
+                        }
+                    }
+                }
+            }
+        },
+        "1002993": {
+            "ID": "1002993",
+            "Timing": "Start of turn",
+            "ATK": 40,
+            "DEF": 40,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -56,11 +85,11 @@
                 }
             }
         },
-        "1002983": {
-            "ID": "1002983",
+        "2002993": {
+            "ID": "2002993",
             "Timing": "Start of turn",
-            "ATK": 20,
-            "DEF": 20,
+            "ATK": 40,
+            "DEF": 40,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -83,11 +112,11 @@
                 }
             }
         },
-        "2002983": {
-            "ID": "2002983",
+        "3002993": {
+            "ID": "3002993",
             "Timing": "Start of turn",
-            "ATK": 20,
-            "DEF": 20,
+            "ATK": 40,
+            "DEF": 40,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -110,11 +139,11 @@
                 }
             }
         },
-        "3002983": {
-            "ID": "3002983",
+        "4002993": {
+            "ID": "4002993",
             "Timing": "Start of turn",
-            "ATK": 20,
-            "DEF": 20,
+            "ATK": 40,
+            "DEF": 40,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -137,11 +166,11 @@
                 }
             }
         },
-        "4002983": {
-            "ID": "4002983",
+        "5002993": {
+            "ID": "5002993",
             "Timing": "Start of turn",
-            "ATK": 20,
-            "DEF": 20,
+            "ATK": 40,
+            "DEF": 40,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -164,11 +193,11 @@
                 }
             }
         },
-        "5002983": {
-            "ID": "5002983",
+        "6002993": {
+            "ID": "6002993",
             "Timing": "Attacking the enemy",
-            "ATK": 20,
-            "DEF": 20,
+            "ATK": 25,
+            "DEF": 25,
             "Target": {
                 "Target": "Enemy"
             },
@@ -177,6 +206,76 @@
                 "+ or -": "-"
             },
             "Length": "2"
+        },
+        "7002993": {
+            "ID": "7002993",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 0,
+                "Cause": {
+                    "Cause": "Ki sphere obtained",
+                    "Type": "any"
+                }
+            },
+            "ATK": 25,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1769",
+                "Causalities": {
+                    "1769": {
+                        "Button": {
+                            "Name": "Is there is an ally attacking in the same turn whose name includes Metal Cooler?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "8002993": {
+            "ID": "8002993",
+            "Timing": "Attacking the enemy",
+            "Status": [
+                "Seal"
+            ],
+            "Target": {
+                "Target": "Enemy"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "2",
+            "Condition": {
+                "Logic": "1769 and 1770",
+                "Causalities": {
+                    "1769": {
+                        "Button": {
+                            "Name": "Is there is an ally attacking in the same turn whose name includes Metal Cooler?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    },
+                    "1770": {
+                        "Button": {
+                            "Name": "Has 3 or more Rainbow Ki Spheres been obtained?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
         }
     },
     "Stats at levels": {
@@ -838,22 +937,22 @@
         }
     },
     "Super Attack": {
-        "4127": {
-            "superID": "4127",
-            "superName": "\u00e3\u0082\u00b9\u00e3\u0083\u00bc\u00e3\u0083\u0091\u00e3\u0083\u00bc\u00e3\u0083\u008e\u00e3\u0083\u00b4\u00e3\u0082\u00a1",
-            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "4132": {
+            "superID": "4132",
+            "superName": "\u00e3\u0082\u00b9\u00e3\u0083\u00bc\u00e3\u0083\u0091\u00e3\u0083\u00bc\u00e3\u0083\u008e\u00e3\u0083\u00b4\u00e3\u0082\u00a1(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3DEF\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "4127": {
+            "Multiplier": 530,
+            "4132": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -862,7 +961,7 @@
                     "+ or -": "+"
                 },
                 "Target": "Self",
-                "DEF": "30"
+                "DEF": "50"
             }
         }
     },

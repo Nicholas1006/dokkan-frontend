@@ -31,22 +31,85 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "1296": {
-            "ID": "1296",
+        "3347": {
+            "ID": "3347",
             "Timing": "Start of turn",
-            "ATK": 80,
-            "DEF": 80,
+            "Ki": 1,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1003347": {
+            "ID": "1003347",
+            "Timing": "Start of turn",
+            "ATK": 120,
+            "DEF": 120,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1001296": {
-            "ID": "1001296",
+        "2003347": {
+            "ID": "2003347",
+            "Timing": "On Super",
+            "ATK": 60,
+            "DEF": 60,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "3003347": {
+            "ID": "3003347",
+            "Timing": "Hit recieved",
+            "DEF": 60,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2109",
+                "Causalities": {
+                    "2109": {
+                        "Button": {
+                            "Name": "Has attack been recieved?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "4003347": {
+            "ID": "4003347",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 10,
+                "Max": 120,
+                "Cause": {
+                    "Cause": "HP",
+                    "Type": "More HP remaining"
+                }
+            },
+            "DEF": 120,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "5003347": {
+            "ID": "5003347",
             "Transformation": {
                 "Activated": true,
-                "Unit": "4015060",
+                "Unit": "4015061",
                 "Giant/Rage": false,
                 "Min Turns": null,
                 "Max Turns": null,
@@ -60,9 +123,9 @@
             "Length": "1",
             "First turn to activate": 4,
             "Condition": {
-                "Logic": "106",
+                "Logic": "2131",
                 "Causalities": {
-                    "106": {
+                    "2131": {
                         "Button": {
                             "Name": "Is HP between 80 % and 100 %?"
                         },
@@ -76,11 +139,11 @@
                 }
             }
         },
-        "2001296": {
-            "ID": "2001296",
+        "6003347": {
+            "ID": "6003347",
             "Transformation": {
                 "Activated": true,
-                "Unit": "4015070",
+                "Unit": "4015071",
                 "Giant/Rage": false,
                 "Min Turns": null,
                 "Max Turns": null,
@@ -94,9 +157,9 @@
             "Length": "1",
             "First turn to activate": 4,
             "Condition": {
-                "Logic": "107",
+                "Logic": "2132",
                 "Causalities": {
-                    "107": {
+                    "2132": {
                         "Button": {
                             "Name": "Is HP between 50 % and 80 %?"
                         },
@@ -110,11 +173,11 @@
                 }
             }
         },
-        "3001296": {
-            "ID": "3001296",
+        "7003347": {
+            "ID": "7003347",
             "Transformation": {
                 "Activated": true,
-                "Unit": "4015080",
+                "Unit": "4015081",
                 "Giant/Rage": false,
                 "Min Turns": null,
                 "Max Turns": null,
@@ -128,9 +191,9 @@
             "Length": "1",
             "First turn to activate": 4,
             "Condition": {
-                "Logic": "108",
+                "Logic": "2133",
                 "Causalities": {
-                    "108": {
+                    "2133": {
                         "Button": {
                             "Name": "Is HP between 0 % and 50 %?"
                         },
@@ -844,22 +907,33 @@
         }
     },
     "Super Attack": {
-        "1454": {
-            "superID": "1454",
-            "superName": "\u00e3\u0083\u009f\u00e3\u0082\u00b9\u00e3\u0083\u0086\u00e3\u0082\u00a3\u00e3\u0083\u0083\u00e3\u0082\u00af\u00e3\u0083\u009c\u00e3\u0083\u00bc\u00e3\u0083\u00ab\u00e3\u0082\u00a2\u00e3\u0082\u00bf\u00e3\u0083\u0083\u00e3\u0082\u00af",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nATK\u00e3\u0081\u00a8DEF\u00e3\u0082\u0092\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
+        "4451": {
+            "superID": "4451",
+            "superName": "\u00e3\u0083\u009f\u00e3\u0082\u00b9\u00e3\u0083\u0086\u00e3\u0082\u00a3\u00e3\u0083\u0083\u00e3\u0082\u00af\u00e3\u0083\u009c\u00e3\u0083\u00bc\u00e3\u0083\u00ab\u00e3\u0082\u00a2\u00e3\u0082\u00bf\u00e3\u0083\u0083\u00e3\u0082\u00af(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nATK\u00e3\u0081\u00a8DEF\u00e3\u0082\u0092\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 505,
-            "1454": {
+            "Multiplier": 630,
+            "4451": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "50"
+            },
+            "1004451": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",
@@ -868,8 +942,8 @@
                     "+ or -": "-"
                 },
                 "Target": "Enemy",
-                "ATK": "20",
-                "DEF": "20"
+                "ATK": "30",
+                "DEF": "30"
             }
         }
     },

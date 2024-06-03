@@ -29,19 +29,91 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "1569": {
-            "ID": "1569",
+        "3978": {
+            "ID": "3978",
             "Timing": "Start of turn",
-            "ATK": 70,
-            "DEF": 70,
+            "ATK": 140,
+            "DEF": 140,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1001569": {
-            "ID": "1001569",
+        "1003978": {
+            "ID": "1003978",
+            "Dodge chance": 30,
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2003978": {
+            "ID": "2003978",
+            "Dodge chance": 40,
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "447 or 1693",
+                "Causalities": {
+                    "447": {
+                        "Button": {
+                            "Name": "Are there 3 or more Super Saiyans category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Super Saiyans category allies on the same turn ",
+                            "Logic": ">=3",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    },
+                    "1693": {
+                        "Button": {
+                            "Name": "Are there 3 or more Movie Heroes category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Movie Heroes category allies on the same turn ",
+                            "Logic": ">=3",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "3003978": {
+            "ID": "3003978",
+            "Timing": "Hit recieved",
+            "ATK": 80,
+            "DEF": 80,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "5",
+            "Condition": {
+                "Logic": "365",
+                "Causalities": {
+                    "365": {
+                        "Button": {
+                            "Name": "Has this unit evaded an attack? "
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "4003978": {
+            "ID": "4003978",
             "Timing": "Start of turn",
             "Ki": 2,
             "Target": {
@@ -54,10 +126,11 @@
             },
             "Length": "1"
         },
-        "2001569": {
-            "ID": "2001569",
+        "5003978": {
+            "ID": "5003978",
             "Timing": "Start of turn",
             "ATK": 30,
+            "DEF": 30,
             "Target": {
                 "Target": "Allies",
                 "Class": "Super"
@@ -67,6 +140,63 @@
                 "+ or -": "+"
             },
             "Length": "1"
+        },
+        "6003978": {
+            "ID": "6003978",
+            "Timing": "Start of turn",
+            "Ki": 1,
+            "Target": {
+                "Target": "Allies",
+                "Class": "Super"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1807",
+                "Causalities": {
+                    "1807": {
+                        "Button": {
+                            "Name": "Is there an extreme class enemy? "
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "7003978": {
+            "ID": "7003978",
+            "Timing": "Start of turn",
+            "ATK": 10,
+            "DEF": 10,
+            "Target": {
+                "Target": "Allies",
+                "Class": "Super"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1807",
+                "Causalities": {
+                    "1807": {
+                        "Button": {
+                            "Name": "Is there an extreme class enemy? "
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
         }
     },
     "Stats at levels": {
@@ -728,22 +858,34 @@
         }
     },
     "Super Attack": {
-        "1846": {
-            "superID": "1846",
-            "superName": "\u00e9\u00ad\u0094\u00e9\u0096\u0083\u00e5\u0085\u0089",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n\u00e4\u00b8\u00ad\u00e7\u00a2\u00ba\u00e7\u008e\u0087\u00e3\u0081\u00a7\u00e6\u00b0\u0097\u00e7\u00b5\u00b6\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
+        "5122": {
+            "superID": "5122",
+            "superName": "\u00e9\u00ad\u0094\u00e9\u0096\u0083\u00e5\u0085\u0089(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n\u00e4\u00b8\u00ad\u00e7\u00a2\u00ba\u00e7\u008e\u0087\u00e3\u0081\u00a7\u00e6\u00b0\u0097\u00e7\u00b5\u00b6\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "1846": {
+            "Multiplier": 510,
+            "5122": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "99",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "20",
+                "DEF": "20"
+            },
+            "1005122": {
                 "Type": "ExtraEfficacySpecial",
                 "Chance": "30",
                 "Duration": "2",

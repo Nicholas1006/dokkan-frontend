@@ -36,19 +36,45 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "1453": {
-            "ID": "1453",
+        "3858": {
+            "ID": "3858",
             "Timing": "Start of turn",
-            "ATK": 80,
-            "DEF": 80,
+            "ATK": 110,
+            "DEF": 110,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1001453": {
-            "ID": "1001453",
+        "1003858": {
+            "ID": "1003858",
+            "Timing": "On Super",
+            "DEF": 30,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2697",
+                "Causalities": {
+                    "2697": {
+                        "Button": {
+                            "Name": "Is ki 12 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=12",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    }
+                }
+            }
+        },
+        "2003858": {
+            "ID": "2003858",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -58,18 +84,59 @@
                     "Type": "any"
                 }
             },
-            "ATK": 6,
+            "ATK": 15,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "2001453": {
-            "ID": "2001453",
+        "3003858": {
+            "ID": "3003858",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "100"
+            },
+            "Timing": "When ki spheres collected",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2698",
+                "Causalities": {
+                    "2698": {
+                        "Button": {
+                            "Name": "Has 7 or more Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres been obtained?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "4003858": {
+            "ID": "4003858",
+            "Timing": "Start of turn",
+            "Ki change": {
+                "From": "STR",
+                "To": "PHY"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Chance": "70",
+            "Length": "1"
+        },
+        "5003858": {
+            "ID": "5003858",
             "Transformation": {
                 "Activated": true,
-                "Unit": "4016520",
+                "Unit": "4016521",
                 "Giant/Rage": false,
                 "Min Turns": null,
                 "Max Turns": null,
@@ -781,22 +848,22 @@
         }
     },
     "Super Attack": {
-        "1676": {
-            "superID": "1676",
-            "superName": "\u00e3\u0083\u0093\u00e3\u0083\u0083\u00e3\u0082\u00b0\u00e3\u0083\u00bb\u00e3\u0083\u0090\u00e3\u0083\u00b3\u00e3\u0083\u00bb\u00e3\u0082\u00a2\u00e3\u0082\u00bf\u00e3\u0083\u0083\u00e3\u0082\u00af",
-            "superDescription": "DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "4874": {
+            "superID": "4874",
+            "superName": "\u00e3\u0083\u0093\u00e3\u0083\u0083\u00e3\u0082\u00b0\u00e3\u0083\u00bb\u00e3\u0083\u0090\u00e3\u0083\u00b3\u00e3\u0083\u00bb\u00e3\u0082\u00a2\u00e3\u0082\u00bf\u00e3\u0083\u0083\u00e3\u0082\u00af(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "DEF\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 505,
-            "1676": {
+            "Multiplier": 630,
+            "4874": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "99",
@@ -805,7 +872,7 @@
                     "+ or -": "+"
                 },
                 "Target": "Self",
-                "DEF": "30"
+                "DEF": "50"
             }
         }
     },

@@ -29,20 +29,32 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "2915": {
-            "ID": "2915",
+        "2920": {
+            "ID": "2920",
             "Timing": "Start of turn",
-            "ATK": 80,
-            "DEF": 80,
+            "ATK": 150,
+            "DEF": 150,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1002915": {
-            "ID": "1002915",
-            "Dodge chance": 30,
+        "1002920": {
+            "ID": "1002920",
+            "Timing": "Start of turn",
+            "ATK": 30,
+            "DEF": 30,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "5",
+            "Once only": true
+        },
+        "2002920": {
+            "ID": "2002920",
+            "Dodge chance": 50,
             "Timing": "Start of turn",
             "Buff": {
                 "Type": "Percentage",
@@ -50,8 +62,8 @@
             },
             "Length": "1"
         },
-        "2002915": {
-            "ID": "2002915",
+        "3002920": {
+            "ID": "3002920",
             "Dodge chance": 20,
             "Timing": "Start of turn",
             "Buff": {
@@ -59,6 +71,64 @@
                 "+ or -": "+"
             },
             "Length": "5",
+            "Once only": true
+        },
+        "4002920": {
+            "ID": "4002920",
+            "Timing": "Hit recieved",
+            "ATK": 50,
+            "DEF": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Condition": {
+                "Logic": "1599",
+                "Causalities": {
+                    "1599": {
+                        "Button": {
+                            "Name": "Has this character evaded 3rd times in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many times has this character evaded attacks?",
+                            "Logic": ">=3",
+                            "Min": 0,
+                            "Max": 3
+                        }
+                    }
+                }
+            }
+        },
+        "5002920": {
+            "ID": "5002920",
+            "Timing": "Hit recieved",
+            "ATK": 25,
+            "DEF": 25,
+            "Target": {
+                "Target": "Enemy"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "-"
+            },
+            "Length": "3",
+            "Condition": {
+                "Logic": "1600",
+                "Causalities": {
+                    "1600": {
+                        "Button": {
+                            "Name": "Has this character evaded 6th times in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many times has this character evaded attacks?",
+                            "Logic": ">=6",
+                            "Min": 0,
+                            "Max": 6
+                        }
+                    }
+                }
+            },
             "Once only": true
         }
     },
@@ -759,22 +829,33 @@
         }
     },
     "Super Attack": {
-        "3984": {
-            "superID": "3984",
-            "superName": "\u00e9\u00ad\u0094\u00e9\u0096\u0083\u00e5\u0085\u0089",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n\u00e5\u00bf\u0085\u00e6\u00ae\u00ba\u00e6\u008a\u0080\u00e3\u0082\u0092\u00e5\u00b0\u0081\u00e3\u0081\u0098\u00e3\u0082\u008b",
+        "3987": {
+            "superID": "3987",
+            "superName": "\u00e9\u00ad\u0094\u00e9\u0096\u0083\u00e5\u0085\u0089(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n\u00e5\u00bf\u0085\u00e6\u00ae\u00ba\u00e6\u008a\u0080\u00e3\u0082\u0092\u00e5\u00b0\u0081\u00e3\u0081\u0098\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "3984": {
+            "Multiplier": 530,
+            "3987": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "30"
+            },
+            "1003987": {
                 "Type": "ExtraEfficacySpecial",
                 "Chance": "100",
                 "Duration": "2",

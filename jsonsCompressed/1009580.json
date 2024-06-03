@@ -35,8 +35,8 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "759": {
-            "ID": "759",
+        "2089": {
+            "ID": "2089",
             "Timing": "Start of turn",
             "Ki change": {
                 "From": "STR",
@@ -48,23 +48,83 @@
             },
             "Length": "1"
         },
-        "1000759": {
-            "ID": "1000759",
+        "1002089": {
+            "ID": "1002089",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
                 "Max": 0,
                 "Cause": {
                     "Cause": "Ki sphere obtained",
-                    "Type": "INT"
+                    "Type": "any"
                 }
             },
-            "ATK": 15,
+            "ATK": 20,
+            "DEF": 20,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
+        },
+        "2002089": {
+            "ID": "2002089",
+            "Timing": "Start of turn",
+            "Ki change": {
+                "From": [
+                    "PHY",
+                    "TEQ",
+                    "AGL"
+                ],
+                "To": [
+                    "Rainbow"
+                ]
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "595",
+                "Causalities": {
+                    "595": {
+                        "Button": {
+                            "Name": "Are there 1 or more Realm of Gods category enemies "
+                        },
+                        "Slider": {
+                            "Name": "How many Realm of Gods category enemies ",
+                            "Logic": ">=1",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "3002089": {
+            "ID": "3002089",
+            "Effective against all": true,
+            "Timing": "When ki spheres collected",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "596",
+                "Causalities": {
+                    "596": {
+                        "Button": {
+                            "Name": "Has 7 or more Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres been obtained?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
         }
     },
     "Stats at levels": {
@@ -727,14 +787,14 @@
         }
     },
     "Super Attack": {
-        "551": {
-            "superID": "551",
-            "superName": "\u00e3\u0083\u0095\u00e3\u0082\u00a1\u00e3\u0082\u00a4\u00e3\u0083\u008a\u00e3\u0083\u00ab\u00e3\u0083\u009b\u00e3\u0083\u00bc\u00e3\u0083\u0097\u00e3\u0082\u00b9\u00e3\u0083\u00a9\u00e3\u0083\u0083\u00e3\u0082\u00b7\u00e3\u0083\u00a5",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nDEF\u00e3\u0082\u0092\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e3\u0081\u00ab\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
+        "2379": {
+            "superID": "2379",
+            "superName": "\u00e3\u0083\u0095\u00e3\u0082\u00a1\u00e3\u0082\u00a4\u00e3\u0083\u008a\u00e3\u0083\u00ab\u00e3\u0083\u009b\u00e3\u0083\u00bc\u00e3\u0083\u0097\u00e3\u0082\u00b9\u00e3\u0083\u00a9\u00e3\u0083\u0083\u00e3\u0082\u00b7\u00e3\u0083\u00a5(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nDEF\u00e3\u0082\u0092\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e3\u0081\u00ab\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b\n&1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3\u00e8\u00b6\u0085\u00e7\u00b3\u00bb\u00e3\u0081\u00ae\u00e4\u00bb\u00b2\u00e9\u0096\u0093ATK30%UP",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -746,8 +806,8 @@
                 "Duration": "1",
                 "Amount": "30"
             },
-            "Multiplier": 505,
-            "551": {
+            "Multiplier": 475,
+            "2379": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",
@@ -757,6 +817,17 @@
                 },
                 "Target": "Enemy",
                 "DEF": "50"
+            },
+            "1002379": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Super class Allies",
+                "ATK": "30"
             }
         }
     },

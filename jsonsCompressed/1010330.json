@@ -26,8 +26,8 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "838": {
-            "ID": "838",
+        "2557": {
+            "ID": "2557",
             "Timing": "Start of turn",
             "Ki": 4,
             "Buff": {
@@ -36,8 +36,180 @@
             },
             "Length": "1"
         },
-        "1000838": {
-            "ID": "1000838",
+        "1002557": {
+            "ID": "1002557",
+            "Timing": "Start of turn",
+            "ATK": 100,
+            "DEF": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2002557": {
+            "ID": "2002557",
+            "Timing": "On Super",
+            "ATK": 50,
+            "DEF": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "989",
+                "Causalities": {
+                    "989": {
+                        "Button": {
+                            "Name": "Is ki 12 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=12",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    }
+                }
+            }
+        },
+        "3002557": {
+            "ID": "3002557",
+            "Dodge chance": 30,
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "4002557": {
+            "ID": "4002557",
+            "Timing": "Hit recieved",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 50,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "ATK": 10,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Condition": {
+                "Logic": "991",
+                "Causalities": {
+                    "991": {
+                        "Button": {
+                            "Name": "Has this unit evaded an attack? "
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "5002557": {
+            "ID": "5002557",
+            "Timing": "Hit recieved",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 50,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "DEF": 10,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Condition": {
+                "Logic": "991",
+                "Causalities": {
+                    "991": {
+                        "Button": {
+                            "Name": "Has this unit evaded an attack? "
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "6002557": {
+            "ID": "6002557",
+            "Timing": "Hit recieved",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 50,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "ATK": 10,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Condition": {
+                "Logic": "992",
+                "Causalities": {
+                    "992": {
+                        "Button": {
+                            "Name": "Has attack been recieved?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "7002557": {
+            "ID": "7002557",
+            "Timing": "Hit recieved",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 50,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "DEF": 10,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Condition": {
+                "Logic": "992",
+                "Causalities": {
+                    "992": {
+                        "Button": {
+                            "Name": "Has attack been recieved?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "8002557": {
+            "ID": "8002557",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -49,9 +221,9 @@
                     ]
                 }
             },
-            "Heals": 8888,
+            "Heals": 5,
             "Buff": {
-                "Type": "Raw stats",
+                "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
@@ -720,31 +892,31 @@
         }
     },
     "Super Attack": {
-        "638": {
-            "superID": "638",
-            "superName": "\u00e3\u0083\u00ad\u00e3\u0082\u00b1\u00e3\u0083\u0083\u00e3\u0083\u0088\u00e3\u0083\u00a9\u00e3\u0083\u00b3\u00e3\u0083\u0081\u00e3\u0083\u00a3\u00e3\u0083\u00bc",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081HP8888\u00e5\u009b\u009e\u00e5\u00be\u00a9",
+        "3316": {
+            "superID": "3316",
+            "superName": "\u00e3\u0083\u00ad\u00e3\u0082\u00b1\u00e3\u0083\u0083\u00e3\u0083\u0088\u00e3\u0083\u00a9\u00e3\u0083\u00b3\u00e3\u0083\u0081\u00e3\u0083\u00a3\u00e3\u0083\u00bc(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081HP5%\u00e5\u009b\u009e\u00e5\u00be\u00a9",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "638": {
+            "Multiplier": 530,
+            "3316": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
                 "Buff": {
-                    "Type": "Raw stats",
+                    "Type": "Percentage",
                     "+ or -": "+"
                 },
                 "Target": "Self",
-                "Heals": "8888"
+                "Heals": "5"
             }
         }
     },

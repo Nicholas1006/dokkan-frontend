@@ -29,30 +29,30 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "1967": {
-            "ID": "1967",
+        "3967": {
+            "ID": "3967",
             "Timing": "Start of turn",
-            "ATK": 100,
-            "DEF": 100,
+            "ATK": 150,
+            "DEF": 150,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1001967": {
-            "ID": "1001967",
+        "1003967": {
+            "ID": "1003967",
             "Timing": "On Super",
-            "ATK": 100,
+            "ATK": 150,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "433",
+                "Logic": "46",
                 "Causalities": {
-                    "433": {
+                    "46": {
                         "Button": {
                             "Name": "Is ki 12 or more"
                         },
@@ -66,8 +66,8 @@
                 }
             }
         },
-        "2001967": {
-            "ID": "2001967",
+        "2003967": {
+            "ID": "2003967",
             "Timing": "On Super",
             "DEF": 50,
             "Buff": {
@@ -76,9 +76,9 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "433",
+                "Logic": "46",
                 "Causalities": {
-                    "433": {
+                    "46": {
                         "Button": {
                             "Name": "Is ki 12 or more"
                         },
@@ -92,32 +92,138 @@
                 }
             }
         },
-        "3001967": {
-            "ID": "3001967",
-            "Timing": "Hit recieved",
+        "3003967": {
+            "ID": "3003967",
+            "Timing": "On Super",
+            "ATK": 50,
+            "DEF": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1692 and 46",
+                "Causalities": {
+                    "1692": {
+                        "Button": {
+                            "Name": "Are there 2 or more Movie Heroes category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Movie Heroes category allies on the same turn ",
+                            "Logic": ">=2",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    },
+                    "46": {
+                        "Button": {
+                            "Name": "Is ki 12 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=12",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    }
+                }
+            }
+        },
+        "4003967": {
+            "ID": "4003967",
+            "Timing": "Attacking the enemy",
             "Building Stat": {
                 "Min": 0,
-                "Max": 35,
+                "Max": 150,
                 "Cause": {
                     "Cause": "Look Elsewhere"
                 }
             },
-            "Crit Chance": 7,
+            "DEF": 50,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "99",
             "Condition": {
-                "Logic": "434",
+                "Logic": "141",
                 "Causalities": {
-                    "434": {
+                    "141": {
+                        "Button": {
+                            "Name": "Is a super being performed?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "5003967": {
+            "ID": "5003967",
+            "Timing": "Hit recieved",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 50,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "Crit Chance": 10,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Condition": {
+                "Logic": "24",
+                "Causalities": {
+                    "24": {
                         "Button": {
                             "Name": "Has attack been recieved?"
                         },
                         "Slider": {
                             "Name": null,
                             "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "6003967": {
+            "ID": "6003967",
+            "Timing": "Start of turn",
+            "Guard": true,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "139 or 3016",
+                "Causalities": {
+                    "139": {
+                        "Button": {
+                            "Name": "Are there 1 or more Androids category enemies "
+                        },
+                        "Slider": {
+                            "Name": "How many Androids category enemies ",
+                            "Logic": ">=1",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    },
+                    "3016": {
+                        "Button": {
+                            "Name": "Are there 1 or more Target: Goku category enemies "
+                        },
+                        "Slider": {
+                            "Name": "How many Target: Goku category enemies ",
+                            "Logic": ">=1",
+                            "Max": 7,
+                            "Min": 0
                         }
                     }
                 }
@@ -773,22 +879,33 @@
         }
     },
     "Super Attack": {
-        "2139": {
-            "superID": "2139",
-            "superName": "\u00e3\u0083\u0095\u00e3\u0083\u00a9\u00e3\u0083\u0083\u00e3\u0082\u00b7\u00e3\u0083\u00a5\u00e3\u0083\u0096\u00e3\u0083\u00ac\u00e3\u0083\u00bc\u00e3\u0083\u0089",
-            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u008c\u00e8\u00b6\u0085\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nHP\u00e3\u0081\u00ae5%\u00e5\u0088\u0086\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e5\u008f\u0097\u00e3\u0081\u0091\u00e3\u0082\u008b",
+        "5116": {
+            "superID": "5116",
+            "superName": "\u00e3\u0083\u0095\u00e3\u0083\u00a9\u00e3\u0083\u0083\u00e3\u0082\u00b7\u00e3\u0083\u00a5\u00e3\u0083\u0096\u00e3\u0083\u00ac\u00e3\u0083\u00bc\u00e3\u0083\u0089(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "3\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u008c\u00e8\u00b6\u0085\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nHP\u00e3\u0081\u00ae3%\u00e5\u0088\u0086\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e5\u008f\u0097\u00e3\u0081\u0091\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "2139": {
+            "Multiplier": 530,
+            "5116": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "3",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "100"
+            },
+            "1005116": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -797,18 +914,7 @@
                     "+ or -": "-"
                 },
                 "Target": "Self",
-                "Heals": "5"
-            },
-            "1002139": {
-                "Type": "NormalEfficacySpecial",
-                "Chance": "100",
-                "Duration": "1",
-                "Buff": {
-                    "Type": "Percentage",
-                    "+ or -": "+"
-                },
-                "Target": "Self",
-                "ATK": "100"
+                "Heals": "3"
             }
         }
     },

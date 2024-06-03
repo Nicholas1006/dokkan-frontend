@@ -1394,7 +1394,7 @@
         "ID": "3",
         "Exec limit": "1",
         "Condition": {
-            "Logic": "(((not 12662636850) and 12662636851) or 12662636852)",
+            "Logic": "(((not 12662636850) and 12662636851) or ((not 12662636852) and 12662636853 and 12662636854))",
             "Causality": {
                 "12662636850": {
                     "Button": {
@@ -1415,9 +1415,30 @@
                 },
                 "12662636852": {
                     "Button": {
-                        "Name": "UNKNOWN CAUSALITY CONDITION"
+                        "Name": "Has this characters finish effect been activated?"
                     },
                     "Slider": {}
+                },
+                "12662636853": {
+                    "Button": {
+                        "Name": "Is the turn count 4 or more?"
+                    },
+                    "Slider": {
+                        "Name": "What turn is it?",
+                        "Logic": ">=4",
+                        "Min": 1
+                    }
+                },
+                "12662636854": {
+                    "Button": {
+                        "Name": "Has this character performed their 4th attack in battle?"
+                    },
+                    "Slider": {
+                        "Name": "How many attacks has this character performed?",
+                        "Logic": ">=4",
+                        "Min": 0,
+                        "Max": 4
+                    }
                 }
             }
         },

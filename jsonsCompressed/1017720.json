@@ -30,18 +30,97 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "1566": {
-            "ID": "1566",
+        "2516": {
+            "ID": "2516",
             "Timing": "Start of turn",
             "ATK": 59,
+            "DEF": 59,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1001566": {
-            "ID": "1001566",
+        "1002516": {
+            "ID": "1002516",
+            "Timing": "On Super",
+            "ATK": 59,
+            "DEF": 59,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "942",
+                "Causalities": {
+                    "942": {
+                        "Button": {
+                            "Name": "Is ki 12 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=12",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    }
+                }
+            }
+        },
+        "2002516": {
+            "ID": "2002516",
+            "Timing": "Attacking the enemy",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 59,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "ATK": 20,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "3002516": {
+            "ID": "3002516",
+            "Timing": "Attacking the enemy",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 59,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "DEF": 20,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "4002516": {
+            "ID": "4002516",
+            "Timing": "Attacking the enemy",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 21,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "Crit Chance": 7,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "5002516": {
+            "ID": "5002516",
             "Dodge chance": 50,
             "Timing": "Attacking",
             "Buff": {
@@ -50,9 +129,9 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "25",
+                "Logic": "945",
                 "Causalities": {
-                    "25": {
+                    "945": {
                         "Button": {
                             "Name": "Is this the 1st attacker in the turn?"
                         },
@@ -66,8 +145,8 @@
                 }
             }
         },
-        "2001566": {
-            "ID": "2001566",
+        "6002516": {
+            "ID": "6002516",
             "Counter": {
                 "Activated": true,
                 "Multiplier": "200",
@@ -80,7 +159,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2324 and 26",
+                "Logic": "2324 and (943 or 944)",
                 "Causalities": {
                     "2324": {
                         "Button": {
@@ -91,7 +170,7 @@
                             "Logic": null
                         }
                     },
-                    "26": {
+                    "943": {
                         "Button": {
                             "Name": "Is this the 2nd attacker in the turn?"
                         },
@@ -101,49 +180,8 @@
                             "Min": 1,
                             "Max": 3
                         }
-                    }
-                }
-            }
-        },
-        "3001566": {
-            "ID": "3001566",
-            "Toggle Other Line": {
-                "Activated": true,
-                "Line": "2001566"
-            },
-            "Timing": "Hit recieved",
-            "Buff": {
-                "Type": "Raw stats",
-                "+ or -": "+"
-            },
-            "Length": "1"
-        },
-        "4001566": {
-            "ID": "4001566",
-            "Counter": {
-                "Activated": true,
-                "Multiplier": "200",
-                "DR from normals": "59"
-            },
-            "Timing": "Being hit",
-            "Buff": {
-                "Type": "Raw stats",
-                "+ or -": "+"
-            },
-            "Length": "1",
-            "Condition": {
-                "Logic": "2324 and 33",
-                "Causalities": {
-                    "2324": {
-                        "Button": {
-                            "Name": "Has the character recieved a normal attack?"
-                        },
-                        "Slider": {
-                            "Name": null,
-                            "Logic": null
-                        }
                     },
-                    "33": {
+                    "944": {
                         "Button": {
                             "Name": "Is this the 3rd attacker in the turn?"
                         },
@@ -157,11 +195,11 @@
                 }
             }
         },
-        "5001566": {
-            "ID": "5001566",
+        "7002516": {
+            "ID": "7002516",
             "Toggle Other Line": {
                 "Activated": true,
-                "Line": "4001566"
+                "Line": "6002516"
             },
             "Timing": "Hit recieved",
             "Buff": {
@@ -833,22 +871,34 @@
         }
     },
     "Super Attack": {
-        "1844": {
-            "superID": "1844",
-            "superName": "\u00e7\u009e\u00ac\u00e9\u0096\u0093\u00e7\u00a7\u00bb\u00e5\u008b\u0095\u00e3\u0081\u008b\u00e3\u0082\u0081\u00e3\u0081\u00af\u00e3\u0082\u0081\u00e6\u00b3\u00a2",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n\u00e4\u00b8\u00ad\u00e7\u00a2\u00ba\u00e7\u008e\u0087\u00e3\u0081\u00a7\u00e6\u00b0\u0097\u00e7\u00b5\u00b6\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
+        "3257": {
+            "superID": "3257",
+            "superName": "\u00e7\u009e\u00ac\u00e9\u0096\u0093\u00e7\u00a7\u00bb\u00e5\u008b\u0095\u00e3\u0081\u008b\u00e3\u0082\u0081\u00e3\u0081\u00af\u00e3\u0082\u0081\u00e6\u00b3\u00a2(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n\u00e4\u00b8\u00ad\u00e7\u00a2\u00ba\u00e7\u008e\u0087\u00e3\u0081\u00a7\u00e6\u00b0\u0097\u00e7\u00b5\u00b6\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "1844": {
+            "Multiplier": 530,
+            "3257": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "30",
+                "DEF": "30"
+            },
+            "1003257": {
                 "Type": "ExtraEfficacySpecial",
                 "Chance": "30",
                 "Duration": "2",

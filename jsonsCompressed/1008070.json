@@ -27,38 +27,213 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "910": {
-            "ID": "910",
+        "2396": {
+            "ID": "2396",
             "Timing": "Start of turn",
-            "ATK": 50,
+            "ATK": 100,
+            "DEF": 100,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1000910": {
-            "ID": "1000910",
-            "Timing": "Start of turn",
-            "ATK": 50,
-            "DEF": 50,
+        "1002396": {
+            "ID": "1002396",
+            "Timing": "On Super",
+            "ATK": 100,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "21",
+                "Logic": "810",
                 "Causalities": {
-                    "21": {
+                    "810": {
                         "Button": {
-                            "Name": "Is HP 50 % or more?"
+                            "Name": "Is ki 12 or more"
                         },
                         "Slider": {
-                            "Name": "What percentage of HP is remaining",
-                            "Logic": ">=50",
+                            "Name": "How much ki is there",
+                            "Logic": ">=12",
                             "Min": 0,
-                            "Max": 100
+                            "Max": 24
+                        }
+                    }
+                }
+            }
+        },
+        "2002396": {
+            "ID": "2002396",
+            "Timing": "Start of turn",
+            "Ki": 3,
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "821 or 823 or 824",
+                "Causalities": {
+                    "821": {
+                        "Button": {
+                            "Name": "Is there is an ally on the team whose name includes Krillin?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    },
+                    "823": {
+                        "Button": {
+                            "Name": "Is there is an ally on the team whose name includes Trunks (Kid)?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    },
+                    "824": {
+                        "Button": {
+                            "Name": "Is there is an ally on the team whose name includes Goten (Kid)?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "3002396": {
+            "ID": "3002396",
+            "Timing": "Start of turn",
+            "ATK": 30,
+            "DEF": 30,
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "821 or 823 or 824",
+                "Causalities": {
+                    "821": {
+                        "Button": {
+                            "Name": "Is there is an ally on the team whose name includes Krillin?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    },
+                    "823": {
+                        "Button": {
+                            "Name": "Is there is an ally on the team whose name includes Trunks (Kid)?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    },
+                    "824": {
+                        "Button": {
+                            "Name": "Is there is an ally on the team whose name includes Goten (Kid)?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "4002396": {
+            "ID": "4002396",
+            "Timing": "Start of turn",
+            "Crit Chance": 18,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "821 or 823 or 824",
+                "Causalities": {
+                    "821": {
+                        "Button": {
+                            "Name": "Is there is an ally on the team whose name includes Krillin?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    },
+                    "823": {
+                        "Button": {
+                            "Name": "Is there is an ally on the team whose name includes Trunks (Kid)?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    },
+                    "824": {
+                        "Button": {
+                            "Name": "Is there is an ally on the team whose name includes Goten (Kid)?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "5002396": {
+            "ID": "5002396",
+            "Timing": "Start of turn",
+            "DR": 18,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "821 or 823 or 824",
+                "Causalities": {
+                    "821": {
+                        "Button": {
+                            "Name": "Is there is an ally on the team whose name includes Krillin?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    },
+                    "823": {
+                        "Button": {
+                            "Name": "Is there is an ally on the team whose name includes Trunks (Kid)?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    },
+                    "824": {
+                        "Button": {
+                            "Name": "Is there is an ally on the team whose name includes Goten (Kid)?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
                         }
                     }
                 }
@@ -728,22 +903,22 @@
         }
     },
     "Super Attack": {
-        "714": {
-            "superID": "714",
-            "superName": "\u00e3\u0083\u0091\u00e3\u0083\u00af\u00e3\u0083\u00bc\u00e3\u0083\u0096\u00e3\u0083\u00aa\u00e3\u0083\u0083\u00e3\u0083\u0084",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n6\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087",
+        "2984": {
+            "superID": "2984",
+            "superName": "\u00e3\u0083\u0091\u00e3\u0083\u00af\u00e3\u0083\u00bc\u00e3\u0083\u0096\u00e3\u0083\u00aa\u00e3\u0083\u0083\u00e3\u0083\u0084(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n6\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 380,
-            "714": {
+            "Multiplier": 480,
+            "2984": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "6",
@@ -752,7 +927,8 @@
                     "+ or -": "+"
                 },
                 "Target": "Self",
-                "ATK": "50"
+                "ATK": "50",
+                "DEF": "50"
             }
         }
     },

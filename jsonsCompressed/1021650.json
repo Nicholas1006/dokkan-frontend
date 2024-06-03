@@ -30,30 +30,75 @@
         "Legendary Power"
     ],
     "Passive": {
-        "2447": {
-            "ID": "2447",
+        "3507": {
+            "ID": "3507",
             "Timing": "Start of turn",
-            "ATK": 80,
-            "DEF": 80,
+            "ATK": 100,
+            "DEF": 100,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1002447": {
-            "ID": "1002447",
+        "1003507": {
+            "ID": "1003507",
+            "Timing": "On Super",
+            "ATK": 50,
+            "DEF": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2482 and 2484 or 2483 and 2484",
+                "Causalities": {
+                    "2482": {
+                        "Button": {
+                            "Name": "Is there is an ally on the team whose name includes Bulma?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    },
+                    "2484": {
+                        "Button": {
+                            "Name": "Is ki 12 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=12",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    },
+                    "2483": {
+                        "Button": {
+                            "Name": "Is there is an ally attacking in the same turn whose name includes ?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "2003507": {
+            "ID": "2003507",
             "Timing": "Start of turn",
-            "Ki": 1,
+            "Ki": 2,
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "879",
+                "Logic": "2485",
                 "Causalities": {
-                    "879": {
+                    "2485": {
                         "Button": {
                             "Name": "Are there 2 or more Vegeta's Family category allies on the same turn "
                         },
@@ -67,19 +112,45 @@
                 }
             }
         },
-        "2002447": {
-            "ID": "2002447",
-            "Dodge chance": 15,
+        "3003507": {
+            "ID": "3003507",
             "Timing": "Start of turn",
+            "Ki": 2,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2486",
+                "Causalities": {
+                    "2486": {
+                        "Button": {
+                            "Name": "Are there 3 or more Vegeta's Family category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Vegeta's Family category allies on the same turn ",
+                            "Logic": ">=3",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "4003507": {
+            "ID": "4003507",
+            "Timing": "Start of turn",
+            "Crit Chance": 25,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "879",
+                "Logic": "2485",
                 "Causalities": {
-                    "879": {
+                    "2485": {
                         "Button": {
                             "Name": "Are there 2 or more Vegeta's Family category allies on the same turn "
                         },
@@ -93,19 +164,19 @@
                 }
             }
         },
-        "3002447": {
-            "ID": "3002447",
+        "5003507": {
+            "ID": "5003507",
             "Timing": "Start of turn",
-            "Ki": 1,
+            "Crit Chance": 25,
             "Buff": {
-                "Type": "Raw stats",
+                "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "880",
+                "Logic": "2486",
                 "Causalities": {
-                    "880": {
+                    "2486": {
                         "Button": {
                             "Name": "Are there 3 or more Vegeta's Family category allies on the same turn "
                         },
@@ -119,9 +190,9 @@
                 }
             }
         },
-        "4002447": {
-            "ID": "4002447",
-            "Dodge chance": 15,
+        "6003507": {
+            "ID": "6003507",
+            "Dodge chance": 25,
             "Timing": "Start of turn",
             "Buff": {
                 "Type": "Percentage",
@@ -129,9 +200,35 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "880",
+                "Logic": "2485",
                 "Causalities": {
-                    "880": {
+                    "2485": {
+                        "Button": {
+                            "Name": "Are there 2 or more Vegeta's Family category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Vegeta's Family category allies on the same turn ",
+                            "Logic": ">=2",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "7003507": {
+            "ID": "7003507",
+            "Dodge chance": 25,
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2486",
+                "Causalities": {
+                    "2486": {
                         "Button": {
                             "Name": "Are there 3 or more Vegeta's Family category allies on the same turn "
                         },
@@ -145,8 +242,8 @@
                 }
             }
         },
-        "5002447": {
-            "ID": "5002447",
+        "8003507": {
+            "ID": "8003507",
             "Timing": "Attacking",
             "Ki": 3,
             "Target": {
@@ -158,9 +255,9 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "674",
+                "Logic": "2487",
                 "Causalities": {
-                    "674": {
+                    "2487": {
                         "Button": {
                             "Name": "Is this the 1st attacker in the turn?"
                         },
@@ -174,19 +271,19 @@
                 }
             }
         },
-        "6002447": {
-            "ID": "6002447",
+        "9003507": {
+            "ID": "9003507",
             "Timing": "Attacking",
-            "DEF": 60,
+            "DEF": 100,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "674",
+                "Logic": "2487",
                 "Causalities": {
-                    "674": {
+                    "2487": {
                         "Button": {
                             "Name": "Is this the 1st attacker in the turn?"
                         },
@@ -200,8 +297,8 @@
                 }
             }
         },
-        "7002447": {
-            "ID": "7002447",
+        "10003507": {
+            "ID": "10003507",
             "Timing": "Attacking",
             "Ki": 3,
             "Target": {
@@ -214,9 +311,9 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "26",
+                "Logic": "2488",
                 "Causalities": {
-                    "26": {
+                    "2488": {
                         "Button": {
                             "Name": "Is this the 2nd attacker in the turn?"
                         },
@@ -230,20 +327,20 @@
                 }
             }
         },
-        "8002447": {
-            "ID": "8002447",
+        "11003507": {
+            "ID": "11003507",
             "Timing": "Attacking",
-            "ATK": 30,
-            "DEF": 30,
+            "ATK": 50,
+            "DEF": 50,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "26",
+                "Logic": "2488",
                 "Causalities": {
-                    "26": {
+                    "2488": {
                         "Button": {
                             "Name": "Is this the 2nd attacker in the turn?"
                         },
@@ -257,8 +354,8 @@
                 }
             }
         },
-        "9002447": {
-            "ID": "9002447",
+        "12003507": {
+            "ID": "12003507",
             "Timing": "Attacking",
             "Ki": 3,
             "Buff": {
@@ -267,9 +364,9 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "33",
+                "Logic": "2489",
                 "Causalities": {
-                    "33": {
+                    "2489": {
                         "Button": {
                             "Name": "Is this the 3rd attacker in the turn?"
                         },
@@ -283,19 +380,19 @@
                 }
             }
         },
-        "10002447": {
-            "ID": "10002447",
+        "13003507": {
+            "ID": "13003507",
             "Timing": "Attacking",
-            "ATK": 60,
+            "ATK": 100,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "33",
+                "Logic": "2489",
                 "Causalities": {
-                    "33": {
+                    "2489": {
                         "Button": {
                             "Name": "Is this the 3rd attacker in the turn?"
                         },
@@ -1123,14 +1220,14 @@
         }
     },
     "Super Attack": {
-        "3010": {
-            "superID": "3010",
-            "superName": "\u00e3\u0083\u0090\u00e3\u0083\u00bc\u00e3\u0083\u008b\u00e3\u0083\u00b3\u00e3\u0082\u00b0\u00e3\u0083\u00a9\u00e3\u0083\u0083\u00e3\u0082\u00b7\u00e3\u0083\u00a5",
-            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e6\u00a5\u00b5\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "4764": {
+            "superID": "4764",
+            "superName": "\u00e3\u0083\u0090\u00e3\u0083\u00bc\u00e3\u0083\u008b\u00e3\u0083\u00b3\u00e3\u0082\u00b0\u00e3\u0083\u00a9\u00e3\u0083\u0083\u00e3\u0082\u00b7\u00e3\u0083\u00a5(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e6\u00a5\u00b5\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -1143,7 +1240,7 @@
                 "Amount": "30"
             },
             "Multiplier": 395,
-            "3010": {
+            "4764": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -1152,18 +1249,18 @@
                     "+ or -": "+"
                 },
                 "Target": "Self",
-                "ATK": "30",
-                "DEF": "30"
+                "ATK": "50",
+                "DEF": "50"
             }
         },
-        "3011": {
-            "superID": "3011",
-            "superName": "\u00e3\u0083\u0090\u00e3\u0083\u00bc\u00e3\u0083\u008b\u00e3\u0083\u00b3\u00e3\u0082\u00b0\u00e3\u0082\u00a2\u00e3\u0082\u00bf\u00e3\u0083\u0083\u00e3\u0082\u00af",
-            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e6\u00a5\u00b5\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "4765": {
+            "superID": "4765",
+            "superName": "\u00e3\u0083\u0090\u00e3\u0083\u00bc\u00e3\u0083\u008b\u00e3\u0083\u00b3\u00e3\u0082\u00b0\u00e3\u0082\u00a2\u00e3\u0082\u00bf\u00e3\u0083\u0083\u00e3\u0082\u00af(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e6\u00a5\u00b5\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
             "superMinKi": "18",
             "superPriority": "0.0",
             "superStyle": "Hyper",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -1176,7 +1273,7 @@
                 "Amount": "30"
             },
             "Multiplier": 540,
-            "3011": {
+            "4765": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -1185,8 +1282,8 @@
                     "+ or -": "+"
                 },
                 "Target": "Self",
-                "ATK": "30",
-                "DEF": "30"
+                "ATK": "50",
+                "DEF": "50"
             }
         }
     },

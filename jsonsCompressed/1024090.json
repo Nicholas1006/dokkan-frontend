@@ -29,8 +29,8 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "2953": {
-            "ID": "2953",
+        "2955": {
+            "ID": "2955",
             "Timing": "Start of turn",
             "Ki": 3,
             "Buff": {
@@ -39,22 +39,48 @@
             },
             "Length": "1"
         },
-        "1002953": {
-            "ID": "1002953",
+        "1002955": {
+            "ID": "1002955",
             "Timing": "Start of turn",
-            "ATK": 60,
-            "DEF": 60,
+            "ATK": 100,
+            "DEF": 150,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "2002953": {
-            "ID": "2002953",
+        "2002955": {
+            "ID": "2002955",
             "Timing": "Start of turn",
-            "ATK": 10,
-            "DEF": 10,
+            "DEF": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1683",
+                "Causalities": {
+                    "1683": {
+                        "Button": {
+                            "Name": "Are there 2 or more Goku's Family category allies on the team "
+                        },
+                        "Slider": {
+                            "Name": "How many Goku's Family category allies on the team ",
+                            "Logic": ">=2",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "3002955": {
+            "ID": "3002955",
+            "Timing": "Start of turn",
+            "ATK": 20,
+            "DEF": 20,
             "Target": {
                 "Target": "Allies"
             },
@@ -80,11 +106,35 @@
                 }
             }
         },
-        "3002953": {
-            "ID": "3002953",
+        "4002955": {
+            "ID": "4002955",
             "Timing": "Start of turn",
-            "ATK": 10,
-            "DEF": 10,
+            "ATK": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1684",
+                "Causalities": {
+                    "1684": {
+                        "Button": {
+                            "Name": "Is there is an ally attacking in the same turn whose name includes Goku (Youth)?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "5002955": {
+            "ID": "5002955",
+            "Timing": "Start of turn",
+            "ATK": 20,
+            "DEF": 20,
             "Target": {
                 "Target": "Allies"
             },
@@ -99,6 +149,57 @@
                     "1684": {
                         "Button": {
                             "Name": "Is there is an ally attacking in the same turn whose name includes Goku (Youth)?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "6002955": {
+            "ID": "6002955",
+            "Timing": "Start of turn",
+            "Guard": true,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Chance": "50",
+            "Length": "1",
+            "Condition": {
+                "Logic": "1686",
+                "Causalities": {
+                    "1686": {
+                        "Button": {
+                            "Name": "Is HP 58 % or less?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining",
+                            "Logic": "<=58",
+                            "Min": 0,
+                            "Max": 100
+                        }
+                    }
+                }
+            }
+        },
+        "7002955": {
+            "ID": "7002955",
+            "Effective against all": true,
+            "Timing": "On Super",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1685",
+                "Causalities": {
+                    "1685": {
+                        "Button": {
+                            "Name": "Is the target enemy stunned or sealed?"
                         },
                         "Slider": {
                             "Name": null,
@@ -771,14 +872,14 @@
         }
     },
     "Super Attack": {
-        "4025": {
-            "superID": "4025",
-            "superName": "\u00e4\u00ba\u0080\u00e4\u00bb\u0099\u00e6\u00b5\u0081\u00e9\u00a2\u00a8\u00e6\u009e\u0097\u00e7\u0081\u00ab\u00e5\u00b1\u00b1",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nATK\u00e3\u0082\u0092\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
+        "4066": {
+            "superID": "4066",
+            "superName": "\u00e4\u00ba\u0080\u00e4\u00bb\u0099\u00e6\u00b5\u0081\u00e9\u00a2\u00a8\u00e6\u009e\u0097\u00e7\u0081\u00ab\u00e5\u00b1\u00b1(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nATK\u00e3\u0082\u0092\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "19",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -791,7 +892,19 @@
                 "Amount": "20"
             },
             "Multiplier": 530,
-            "4025": {
+            "4066": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "30",
+                "DEF": "30"
+            },
+            "1004066": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",

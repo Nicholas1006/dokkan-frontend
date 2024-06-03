@@ -31,8 +31,8 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "2925": {
-            "ID": "2925",
+        "2934": {
+            "ID": "2934",
             "Timing": "Start of turn",
             "ATK": 59,
             "DEF": 59,
@@ -42,8 +42,8 @@
             },
             "Length": "1"
         },
-        "1002925": {
-            "ID": "1002925",
+        "1002934": {
+            "ID": "1002934",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -53,15 +53,65 @@
                     "Type": "any"
                 }
             },
-            "ATK": 10,
+            "ATK": 14,
+            "DEF": 14,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "2002925": {
-            "ID": "2002925",
+        "2002934": {
+            "ID": "2002934",
+            "Timing": "When ki spheres collected",
+            "ATK": 59,
+            "DEF": 59,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1640",
+                "Causalities": {
+                    "1640": {
+                        "Button": {
+                            "Name": "Has 3 or more Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres been obtained?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "3002934": {
+            "ID": "3002934",
+            "Timing": "When ki spheres collected",
+            "Crit Chance": 50,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1642",
+                "Causalities": {
+                    "1642": {
+                        "Button": {
+                            "Name": "Has 5 or more Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres been obtained?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "4002934": {
+            "ID": "4002934",
             "Timing": "On Super",
             "ATK": 59,
             "DEF": 59,
@@ -71,9 +121,9 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1635 and 1651",
+                "Logic": "1641 and 1651",
                 "Causalities": {
-                    "1635": {
+                    "1641": {
                         "Button": {
                             "Name": "Is ki 12 or more"
                         },
@@ -93,6 +143,43 @@
                             "Logic": "<=7",
                             "Min": 0,
                             "Max": 7
+                        }
+                    }
+                }
+            }
+        },
+        "5002934": {
+            "ID": "5002934",
+            "Timing": "Start of turn",
+            "Ki change": {
+                "From": [
+                    "PHY",
+                    "STR",
+                    "INT",
+                    "TEQ",
+                    "AGL"
+                ],
+                "To": [
+                    "Rainbow"
+                ]
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1643",
+                "Causalities": {
+                    "1643": {
+                        "Button": {
+                            "Name": "Are there 1 or more GT Bosses category enemies "
+                        },
+                        "Slider": {
+                            "Name": "How many GT Bosses category enemies ",
+                            "Logic": ">=1",
+                            "Max": 7,
+                            "Min": 0
                         }
                     }
                 }
@@ -758,22 +845,22 @@
         }
     },
     "Super Attack": {
-        "3993": {
-            "superID": "3993",
-            "superName": "\u00e3\u0081\u008b\u00e3\u0082\u0081\u00e3\u0081\u00af\u00e3\u0082\u0081\u00e6\u00b3\u00a2",
-            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "4011": {
+            "superID": "4011",
+            "superName": "\u00e3\u0081\u008b\u00e3\u0082\u0081\u00e3\u0081\u00af\u00e3\u0082\u0081\u00e6\u00b3\u00a2(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "3993": {
+            "Multiplier": 530,
+            "4011": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -782,7 +869,7 @@
                     "+ or -": "+"
                 },
                 "Target": "Self",
-                "ATK": "30"
+                "ATK": "50"
             }
         }
     },

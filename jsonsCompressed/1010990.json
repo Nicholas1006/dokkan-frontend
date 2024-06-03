@@ -28,8 +28,109 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "964": {
-            "ID": "964",
+        "3019": {
+            "ID": "3019",
+            "Timing": "On Super",
+            "ATK": 120,
+            "DEF": 120,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1810",
+                "Causalities": {
+                    "1810": {
+                        "Button": {
+                            "Name": "Is ki 12 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=12",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    }
+                }
+            }
+        },
+        "1003019": {
+            "ID": "1003019",
+            "Timing": "When ki spheres collected",
+            "ATK": 30,
+            "DEF": 30,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1811",
+                "Causalities": {
+                    "1811": {
+                        "Button": {
+                            "Name": "Has 3 or more Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres been obtained?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "2003019": {
+            "ID": "2003019",
+            "Dodge chance": 30,
+            "Timing": "When ki spheres collected",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1811",
+                "Causalities": {
+                    "1811": {
+                        "Button": {
+                            "Name": "Has 3 or more Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres been obtained?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "3003019": {
+            "ID": "3003019",
+            "Timing": "When ki spheres collected",
+            "ATK": 50,
+            "DEF": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1812",
+                "Causalities": {
+                    "1812": {
+                        "Button": {
+                            "Name": "Has 5 or more Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres been obtained?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "4003019": {
+            "ID": "4003019",
             "Timing": "Start of turn",
             "Ki": 2,
             "Target": {
@@ -42,8 +143,8 @@
             },
             "Length": "1"
         },
-        "1000964": {
-            "ID": "1000964",
+        "5003019": {
+            "ID": "5003019",
             "Timing": "Start of turn",
             "ATK": 30,
             "DEF": 30,
@@ -55,8 +156,36 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Chance": "70",
             "Length": "1"
+        },
+        "6003019": {
+            "ID": "6003019",
+            "Timing": "When ki spheres collected",
+            "ATK": 10,
+            "DEF": 10,
+            "Target": {
+                "Target": "Allies",
+                "Type": "AGL"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1813",
+                "Causalities": {
+                    "1813": {
+                        "Button": {
+                            "Name": "Has 3 or more AGL Ki Spheres been obtained?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
         }
     },
     "Stats at levels": {
@@ -721,14 +850,14 @@
         }
     },
     "Super Attack": {
-        "779": {
-            "superID": "779",
-            "superName": "\u00e3\u0082\u00b8\u00e3\u0083\u00a3\u00e3\u0082\u00b9\u00e3\u0083\u0086\u00e3\u0082\u00a3\u00e3\u0082\u00b9\u00e3\u0083\u00a9\u00e3\u0083\u0083\u00e3\u0082\u00b7\u00e3\u0083\u00a5",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "4175": {
+            "superID": "4175",
+            "superName": "\u00e3\u0082\u00b8\u00e3\u0083\u00a3\u00e3\u0082\u00b9\u00e3\u0083\u0086\u00e3\u0082\u00a3\u00e3\u0082\u00b9\u00e3\u0083\u00a9\u00e3\u0083\u0083\u00e3\u0082\u00b7\u00e3\u0083\u00a5(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -740,7 +869,18 @@
                 "Duration": "1",
                 "Amount": "30"
             },
-            "Multiplier": 430
+            "Multiplier": 430,
+            "4175": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "30"
+            }
         }
     },
     "Active Skill": null,

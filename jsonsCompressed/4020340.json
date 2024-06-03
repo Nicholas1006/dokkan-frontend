@@ -37,29 +37,53 @@
         "Legendary Power"
     ],
     "Passive": {
-        "2373": {
-            "ID": "2373",
+        "4060": {
+            "ID": "4060",
             "Timing": "Start of turn",
-            "ATK": 150,
-            "DEF": 150,
+            "ATK": 200,
+            "DEF": 200,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1002373": {
-            "ID": "1002373",
-            "Timing": "Being hit",
-            "DR": 10,
+        "1004060": {
+            "ID": "1004060",
+            "Timing": "Start of turn",
+            "Ki": 7,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Once only": true
+        },
+        "2004060": {
+            "ID": "2004060",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "77"
+            },
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "3004060": {
+            "ID": "3004060",
+            "Timing": "Start of turn",
+            "DR": 50,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "2002373": {
-            "ID": "2002373",
+        "4004060": {
+            "ID": "4004060",
             "Timing": "Hit recieved",
             "Building Stat": {
                 "Min": 0,
@@ -75,7 +99,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "24",
+                "Logic": "24 or 365",
                 "Causalities": {
                     "24": {
                         "Button": {
@@ -85,46 +109,127 @@
                             "Name": null,
                             "Logic": null
                         }
+                    },
+                    "365": {
+                        "Button": {
+                            "Name": "Has this unit evaded an attack? "
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
                     }
                 }
             }
         },
-        "3002373": {
-            "ID": "3002373",
+        "5004060": {
+            "ID": "5004060",
             "Timing": "Attacking the enemy",
             "Building Stat": {
                 "Min": 0,
-                "Max": 5,
+                "Max": 10,
                 "Cause": {
                     "Cause": "Look Elsewhere"
                 }
             },
-            "Ki": 1,
+            "Ki": 3,
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "99"
         },
-        "4002373": {
-            "ID": "4002373",
-            "Additional attack": {
-                "Activated": true,
-                "Chance of super": "100"
+        "6004060": {
+            "ID": "6004060",
+            "Timing": "Attacking the enemy",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 120,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
             },
-            "Timing": "Start of turn",
+            "ATK": 30,
             "Buff": {
-                "Type": "Raw stats",
+                "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Chance": "30",
-            "Length": "1"
+            "Length": "99"
         },
-        "5002373": {
-            "ID": "5002373",
+        "7004060": {
+            "ID": "7004060",
+            "Timing": "Attacking the enemy",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 120,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "DEF": 30,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99"
+        },
+        "8004060": {
+            "ID": "8004060",
+            "Timing": "On Super",
+            "ATK": 77,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "612",
+                "Causalities": {
+                    "612": {
+                        "Button": {
+                            "Name": "Is ki 24 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=24",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    }
+                }
+            }
+        },
+        "9004060": {
+            "ID": "9004060",
+            "Timing": "On Super",
+            "Crit Chance": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "612",
+                "Causalities": {
+                    "612": {
+                        "Button": {
+                            "Name": "Is ki 24 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=24",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    }
+                }
+            }
+        },
+        "10004060": {
+            "ID": "10004060",
             "Revive": {
                 "Activated": true,
-                "HP recovered": 70
+                "HP recovered": 77
             },
             "Timing": "Start of turn",
             "Target": {
@@ -136,32 +241,106 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "731 and 809",
+                "Logic": "681",
                 "Causalities": {
-                    "731": {
+                    "681": {
                         "Button": {
-                            "Name": "Is HP 50 % or less?"
-                        },
-                        "Slider": {
-                            "Name": "What percentage of HP is remaining",
-                            "Logic": "<=50",
-                            "Min": 0,
-                            "Max": 100
-                        }
-                    },
-                    "809": {
-                        "Button": {
-                            "Name": "Has this character recieved their 7th attack in battle?"
+                            "Name": "Has this character recieved their 5th attack in battle?"
                         },
                         "Slider": {
                             "Name": "How many attacks has this character recieved?",
-                            "Logic": ">=7",
+                            "Logic": ">=5",
                             "Min": 0,
-                            "Max": 7
+                            "Max": 5
                         }
                     }
                 }
             }
+        },
+        "11004060": {
+            "ID": "11004060",
+            "Timing": "Start of turn",
+            "Ki": 7,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2129",
+                "Causalities": {
+                    "2129": {
+                        "Button": {
+                            "Name": "Has the character or an ally's revival skill been activated?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "12004060": {
+            "ID": "12004060",
+            "Timing": "Start of turn",
+            "ATK": 77,
+            "DEF": 77,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2129",
+                "Causalities": {
+                    "2129": {
+                        "Button": {
+                            "Name": "Has the character or an ally's revival skill been activated?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "13004060": {
+            "ID": "13004060",
+            "Timing": "Start of turn",
+            "Guard": true,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1019",
+                "Causalities": {
+                    "1019": {
+                        "Button": {
+                            "Name": "Has this character or an ally attacking in the same turn been KO'd? "
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            },
+            "Once only": true
+        },
+        "14004060": {
+            "ID": "14004060",
+            "Timing": "Start of turn",
+            "Guard": true,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Once only": true
         }
     },
     "Stats at levels": {

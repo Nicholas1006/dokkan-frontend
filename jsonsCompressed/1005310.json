@@ -23,10 +23,21 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "881": {
-            "ID": "881",
+        "3400": {
+            "ID": "3400",
             "Timing": "Start of turn",
-            "Ki": 2,
+            "ATK": 120,
+            "DEF": 120,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1003400": {
+            "ID": "1003400",
+            "Timing": "Start of turn",
+            "Ki": 3,
             "Target": {
                 "Target": "Allies"
             },
@@ -36,11 +47,11 @@
             },
             "Length": "1"
         },
-        "1000881": {
-            "ID": "1000881",
+        "2003400": {
+            "ID": "2003400",
             "Timing": "Start of turn",
-            "ATK": 20,
-            "DEF": 20,
+            "ATK": 30,
+            "DEF": 30,
             "Target": {
                 "Target": "Allies"
             },
@@ -49,6 +60,170 @@
                 "+ or -": "+"
             },
             "Length": "1"
+        },
+        "3003400": {
+            "ID": "3003400",
+            "Timing": "Start of turn",
+            "ATK": 10,
+            "DEF": 10,
+            "Target": {
+                "Category": "Realm of Gods",
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "4003400": {
+            "ID": "4003400",
+            "Timing": "Start of turn",
+            "Crit Chance": 10,
+            "Target": {
+                "Category": "Realm of Gods",
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "5003400": {
+            "ID": "5003400",
+            "Timing": "Start of turn",
+            "ATK": 10,
+            "DEF": 10,
+            "Target": {
+                "Category": "Bond of Master and Disciple",
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "6003400": {
+            "ID": "6003400",
+            "Timing": "Start of turn",
+            "Crit Chance": 10,
+            "Target": {
+                "Category": "Bond of Master and Disciple",
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "7003400": {
+            "ID": "7003400",
+            "Timing": "Start of turn",
+            "ATK": 60,
+            "DEF": 60,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2226",
+                "Causalities": {
+                    "2226": {
+                        "Button": {
+                            "Name": "Are there 2 or more Realm of Gods category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Realm of Gods category allies on the same turn ",
+                            "Logic": ">=2",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "8003400": {
+            "ID": "8003400",
+            "Timing": "Start of turn",
+            "ATK": 60,
+            "DEF": 60,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2227",
+                "Causalities": {
+                    "2227": {
+                        "Button": {
+                            "Name": "Are there 3 or more Realm of Gods category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Realm of Gods category allies on the same turn ",
+                            "Logic": ">=3",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "9003400": {
+            "ID": "9003400",
+            "Dodge chance": 25,
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2228",
+                "Causalities": {
+                    "2228": {
+                        "Button": {
+                            "Name": "Are there 2 or more Bond of Master and Disciple category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Bond of Master and Disciple category allies on the same turn ",
+                            "Logic": ">=2",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "10003400": {
+            "ID": "10003400",
+            "Dodge chance": 25,
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2229",
+                "Causalities": {
+                    "2229": {
+                        "Button": {
+                            "Name": "Are there 3 or more Bond of Master and Disciple category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Bond of Master and Disciple category allies on the same turn ",
+                            "Logic": ">=3",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
         }
     },
     "Stats at levels": {
@@ -715,22 +890,33 @@
         }
     },
     "Super Attack": {
-        "100": {
-            "superID": "100",
-            "superName": "\u00e7\u00a0\u00b4\u00e5\u00a3\u008a\u00e3\u0081\u00ae\u00e5\u00ba\u008f\u00e6\u009b\u00b2",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8&ATK\u00e3\u0082\u0092\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
+        "4582": {
+            "superID": "4582",
+            "superName": "\u00e7\u00a0\u00b4\u00e5\u00a3\u008a\u00e3\u0081\u00ae\u00e5\u00ba\u008f\u00e6\u009b\u00b2(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\n&ATK\u00e3\u0082\u0092\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "100": {
+            "Multiplier": 530,
+            "4582": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "30"
+            },
+            "1004582": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",

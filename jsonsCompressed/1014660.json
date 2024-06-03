@@ -28,8 +28,19 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "1226": {
-            "ID": "1226",
+        "2631": {
+            "ID": "2631",
+            "Timing": "Start of turn",
+            "ATK": 120,
+            "DEF": 120,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1002631": {
+            "ID": "1002631",
             "Timing": "Start of turn",
             "Ki": 3,
             "Buff": {
@@ -38,22 +49,76 @@
             },
             "Length": "1"
         },
-        "1001226": {
-            "ID": "1001226",
-            "Timing": "Start of turn",
-            "ATK": 90,
-            "DEF": 90,
+        "2002631": {
+            "ID": "2002631",
+            "Timing": "On Super",
+            "ATK": 21,
+            "DEF": 21,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "1100",
+                "Causalities": {
+                    "1100": {
+                        "Button": {
+                            "Name": "Is ki 12 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=12",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    }
+                }
+            }
         },
-        "2001226": {
-            "ID": "2001226",
+        "3002631": {
+            "ID": "3002631",
+            "Timing": "On Super",
+            "ATK": 21,
+            "DEF": 21,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1100 and 1101",
+                "Causalities": {
+                    "1100": {
+                        "Button": {
+                            "Name": "Is ki 12 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=12",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    },
+                    "1101": {
+                        "Button": {
+                            "Name": "Is HP 80 % or more?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining",
+                            "Logic": ">=80",
+                            "Min": 0,
+                            "Max": 100
+                        }
+                    }
+                }
+            }
+        },
+        "4002631": {
+            "ID": "4002631",
             "Timing": "Attacking the enemy",
-            "ATK": 20,
-            "DEF": 20,
+            "ATK": 21,
+            "DEF": 21,
             "Target": {
                 "Target": "Enemy"
             },
@@ -63,11 +128,11 @@
             },
             "Length": "2"
         },
-        "3001226": {
-            "ID": "3001226",
+        "5002631": {
+            "ID": "5002631",
             "Transformation": {
                 "Activated": true,
-                "Unit": "4014750",
+                "Unit": "4014751",
                 "Giant/Rage": false,
                 "Min Turns": null,
                 "Max Turns": null,
@@ -78,19 +143,19 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Chance": "30",
+            "Chance": "40",
             "Length": "1",
             "First turn to activate": 3,
             "Condition": {
-                "Logic": "21",
+                "Logic": "1102",
                 "Causalities": {
-                    "21": {
+                    "1102": {
                         "Button": {
-                            "Name": "Is HP 50 % or more?"
+                            "Name": "Is HP 40 % or more?"
                         },
                         "Slider": {
                             "Name": "What percentage of HP is remaining",
-                            "Logic": ">=50",
+                            "Logic": ">=40",
                             "Min": 0,
                             "Max": 100
                         }
@@ -762,22 +827,22 @@
         }
     },
     "Super Attack": {
-        "1386": {
-            "superID": "1386",
-            "superName": "\u00e3\u0083\u0095\u00e3\u0082\u00a9\u00e3\u0083\u0088\u00e3\u0083\u00b3\u00e3\u0082\u00a6\u00e3\u0082\u00a7\u00e3\u0082\u00a4\u00e3\u0083\u0096",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081HP\u00e3\u0082\u009210%\u00e5\u009b\u009e\u00e5\u00be\u00a9",
+        "3427": {
+            "superID": "3427",
+            "superName": "\u00e3\u0083\u0095\u00e3\u0082\u00a9\u00e3\u0083\u0088\u00e3\u0083\u00b3\u00e3\u0082\u00a6\u00e3\u0082\u00a7\u00e3\u0082\u00a4\u00e3\u0083\u0096(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081HP\u00e3\u0082\u009212%\u00e5\u009b\u009e\u00e5\u00be\u00a9",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 505,
-            "1386": {
+            "Multiplier": 630,
+            "3427": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -786,7 +851,7 @@
                     "+ or -": "+"
                 },
                 "Target": "Self",
-                "Heals": "10"
+                "Heals": "12"
             }
         }
     },

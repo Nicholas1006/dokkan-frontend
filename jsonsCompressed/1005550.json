@@ -26,19 +26,47 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "449": {
-            "ID": "449",
+        "1983": {
+            "ID": "1983",
             "Timing": "Start of turn",
             "Ki": 3,
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1",
+            "Length": "1"
+        },
+        "1001983": {
+            "ID": "1001983",
+            "Timing": "Start of turn",
+            "ATK": 70,
+            "DEF": 70,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2001983": {
+            "ID": "2001983",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 120,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "ATK": 30,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
             "Condition": {
-                "Logic": "42",
+                "Logic": "458",
                 "Causalities": {
-                    "42": {
+                    "458": {
                         "Button": {
                             "Name": "Is HP 80 % or less?"
                         },
@@ -52,19 +80,26 @@
                 }
             }
         },
-        "1000449": {
-            "ID": "1000449",
+        "3001983": {
+            "ID": "3001983",
             "Timing": "Start of turn",
-            "ATK": 2500,
+            "Building Stat": {
+                "Min": 0,
+                "Max": 35,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "Crit Chance": 7,
             "Buff": {
-                "Type": "Raw stats",
+                "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1",
+            "Length": "99",
             "Condition": {
-                "Logic": "42",
+                "Logic": "458",
                 "Causalities": {
-                    "42": {
+                    "458": {
                         "Button": {
                             "Name": "Is HP 80 % or less?"
                         },
@@ -753,21 +788,32 @@
         }
     },
     "Super Attack": {
-        "223": {
-            "superID": "223",
-            "superName": "\u00e3\u0083\u0095\u00e3\u0082\u00a1\u00e3\u0082\u00a4\u00e3\u0083\u008a\u00e3\u0083\u00ab\u00e3\u0083\u0095\u00e3\u0083\u00a9\u00e3\u0083\u0083\u00e3\u0082\u00b7\u00e3\u0083\u00a5",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "2188": {
+            "superID": "2188",
+            "superName": "\u00e3\u0083\u0095\u00e3\u0082\u00a1\u00e3\u0082\u00a4\u00e3\u0083\u008a\u00e3\u0083\u00ab\u00e3\u0083\u0095\u00e3\u0083\u00a9\u00e3\u0083\u0083\u00e3\u0082\u00b7\u00e3\u0083\u00a5(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 355
+            "Multiplier": 530,
+            "2188": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "99",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "30"
+            }
         }
     },
     "Active Skill": null,

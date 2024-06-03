@@ -29,19 +29,45 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "2029": {
-            "ID": "2029",
+        "3582": {
+            "ID": "3582",
             "Timing": "Start of turn",
-            "ATK": 100,
-            "DEF": 100,
+            "ATK": 150,
+            "DEF": 150,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1002029": {
-            "ID": "1002029",
+        "1003582": {
+            "ID": "1003582",
+            "Timing": "Start of turn",
+            "DR": 30,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2667",
+                "Causalities": {
+                    "2667": {
+                        "Button": {
+                            "Name": "Are there 3 or more Future Saga category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Future Saga category allies on the same turn ",
+                            "Logic": ">=3",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "2003582": {
+            "ID": "2003582",
             "Timing": "Start of turn",
             "Ki": 3,
             "Buff": {
@@ -50,9 +76,9 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "482",
+                "Logic": "2668",
                 "Causalities": {
-                    "482": {
+                    "2668": {
                         "Button": {
                             "Name": "Is there is an ally on the team whose name includes u?"
                         },
@@ -64,8 +90,33 @@
                 }
             }
         },
-        "2002029": {
-            "ID": "2002029",
+        "3003582": {
+            "ID": "3003582",
+            "Timing": "Start of turn",
+            "ATK": 150,
+            "DEF": 150,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2668",
+                "Causalities": {
+                    "2668": {
+                        "Button": {
+                            "Name": "Is there is an ally on the team whose name includes u?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "4003582": {
+            "ID": "4003582",
             "Timing": "Start of turn",
             "ATK": 100,
             "DEF": 100,
@@ -75,33 +126,9 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "482",
+                "Logic": "2669",
                 "Causalities": {
-                    "482": {
-                        "Button": {
-                            "Name": "Is there is an ally on the team whose name includes u?"
-                        },
-                        "Slider": {
-                            "Name": null,
-                            "Logic": null
-                        }
-                    }
-                }
-            }
-        },
-        "3002029": {
-            "ID": "3002029",
-            "Timing": "Start of turn",
-            "ATK": 100,
-            "Buff": {
-                "Type": "Percentage",
-                "+ or -": "+"
-            },
-            "Length": "1",
-            "Condition": {
-                "Logic": "495",
-                "Causalities": {
-                    "495": {
+                    "2669": {
                         "Button": {
                             "Name": "Are there 1 or more Future Saga category enemies "
                         },
@@ -115,8 +142,8 @@
                 }
             }
         },
-        "4002029": {
-            "ID": "4002029",
+        "5003582": {
+            "ID": "5003582",
             "Timing": "Start of turn",
             "Ki": 3,
             "Buff": {
@@ -125,9 +152,9 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "484 or 485",
+                "Logic": "2670 or 2671",
                 "Causalities": {
-                    "484": {
+                    "2670": {
                         "Button": {
                             "Name": "Is there is an enemy whose name includes Zamasu?"
                         },
@@ -136,7 +163,7 @@
                             "Logic": null
                         }
                     },
-                    "485": {
+                    "2671": {
                         "Button": {
                             "Name": "Is there is an enemy whose name includes Goku Black?"
                         },
@@ -148,19 +175,19 @@
                 }
             }
         },
-        "5002029": {
-            "ID": "5002029",
+        "6003582": {
+            "ID": "6003582",
             "Timing": "Start of turn",
-            "ATK": 100,
+            "ATK": 150,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "484 or 485",
+                "Logic": "2670 or 2671",
                 "Causalities": {
-                    "484": {
+                    "2670": {
                         "Button": {
                             "Name": "Is there is an enemy whose name includes Zamasu?"
                         },
@@ -169,7 +196,7 @@
                             "Logic": null
                         }
                     },
-                    "485": {
+                    "2671": {
                         "Button": {
                             "Name": "Is there is an enemy whose name includes Goku Black?"
                         },
@@ -181,19 +208,19 @@
                 }
             }
         },
-        "6002029": {
-            "ID": "6002029",
+        "7003582": {
+            "ID": "7003582",
             "Timing": "Start of turn",
             "Crit Chance": 100,
             "Buff": {
-                "Type": "Percentage",
+                "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "484 or 485",
+                "Logic": "2670 or 2671",
                 "Causalities": {
-                    "484": {
+                    "2670": {
                         "Button": {
                             "Name": "Is there is an enemy whose name includes Zamasu?"
                         },
@@ -202,7 +229,7 @@
                             "Logic": null
                         }
                     },
-                    "485": {
+                    "2671": {
                         "Button": {
                             "Name": "Is there is an enemy whose name includes Goku Black?"
                         },
@@ -912,22 +939,22 @@
         }
     },
     "Super Attack": {
-        "2217": {
-            "superID": "2217",
-            "superName": "\u00e3\u0082\u00b7\u00e3\u0083\u00a3\u00e3\u0082\u00a4\u00e3\u0083\u008b\u00e3\u0083\u00b3\u00e3\u0082\u00b0\u00e3\u0082\u00af\u00e3\u0083\u00ad\u00e3\u0082\u00b9",
-            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "4860": {
+            "superID": "4860",
+            "superName": "\u00e3\u0082\u00b7\u00e3\u0083\u00a3\u00e3\u0082\u00a4\u00e3\u0083\u008b\u00e3\u0083\u00b3\u00e3\u0082\u00b0\u00e3\u0082\u00af\u00e3\u0083\u00ad\u00e3\u0082\u00b9(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nATK\u00e3\u0081\u00a8DEF\u00e3\u0082\u0092\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "2217": {
+            "Multiplier": 530,
+            "4860": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -938,6 +965,18 @@
                 "Target": "Self",
                 "ATK": "50",
                 "DEF": "50"
+            },
+            "1004860": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "3",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "-"
+                },
+                "Target": "Enemy",
+                "ATK": "20",
+                "DEF": "20"
             }
         }
     },

@@ -26,8 +26,19 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "1109": {
-            "ID": "1109",
+        "2565": {
+            "ID": "2565",
+            "Timing": "Start of turn",
+            "ATK": 100,
+            "DEF": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1002565": {
+            "ID": "1002565",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -37,15 +48,16 @@
                     "Type": "any"
                 }
             },
-            "ATK": 10,
+            "ATK": 20,
+            "DEF": 20,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1001109": {
-            "ID": "1001109",
+        "2002565": {
+            "ID": "2002565",
             "Dodge chance": 50,
             "Timing": "Attacking",
             "Buff": {
@@ -54,9 +66,9 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "25",
+                "Logic": "1002",
                 "Causalities": {
-                    "25": {
+                    "1002": {
                         "Button": {
                             "Name": "Is this the 1st attacker in the turn?"
                         },
@@ -65,6 +77,73 @@
                             "Logic": "==1",
                             "Min": 1,
                             "Max": 3
+                        }
+                    }
+                }
+            }
+        },
+        "3002565": {
+            "ID": "3002565",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "100"
+            },
+            "Timing": "Attacking",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Chance": "30",
+            "Length": "1",
+            "Condition": {
+                "Logic": "1003 or 1004",
+                "Causalities": {
+                    "1003": {
+                        "Button": {
+                            "Name": "Is this the 2nd attacker in the turn?"
+                        },
+                        "Slider": {
+                            "Name": "What position is this character attacking in?",
+                            "Logic": "==2",
+                            "Min": 1,
+                            "Max": 3
+                        }
+                    },
+                    "1004": {
+                        "Button": {
+                            "Name": "Is this the 3rd attacker in the turn?"
+                        },
+                        "Slider": {
+                            "Name": "What position is this character attacking in?",
+                            "Logic": "==3",
+                            "Min": 1,
+                            "Max": 3
+                        }
+                    }
+                }
+            }
+        },
+        "4002565": {
+            "ID": "4002565",
+            "Dodge chance": 20,
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "983",
+                "Causalities": {
+                    "983": {
+                        "Button": {
+                            "Name": "Are there 2 or more Ginyu Force category allies on the team "
+                        },
+                        "Slider": {
+                            "Name": "How many Ginyu Force category allies on the team ",
+                            "Logic": ">=2",
+                            "Max": 7,
+                            "Min": 0
                         }
                     }
                 }
@@ -733,14 +812,14 @@
         }
     },
     "Super Attack": {
-        "1044": {
-            "superID": "1044",
-            "superName": "\u00e3\u0083\u0096\u00e3\u0083\u00ab\u00e3\u0083\u00bc\u00e3\u0082\u00a4\u00e3\u0083\u00b3\u00e3\u0083\u0091\u00e3\u0083\u00ab\u00e3\u0082\u00b9",
-            "superDescription": "DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "3322": {
+            "superID": "3322",
+            "superName": "\u00e3\u0083\u0096\u00e3\u0083\u00ab\u00e3\u0083\u00bc\u00e3\u0082\u00a4\u00e3\u0083\u00b3\u00e3\u0083\u0091\u00e3\u0083\u00ab\u00e3\u0082\u00b9(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -753,7 +832,7 @@
                 "Amount": "3"
             },
             "Multiplier": 430,
-            "1044": {
+            "3322": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "99",
@@ -763,6 +842,17 @@
                 },
                 "Target": "Self",
                 "DEF": "30"
+            },
+            "1003322": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "30"
             }
         }
     },

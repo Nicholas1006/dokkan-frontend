@@ -28,23 +28,23 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "1901": {
-            "ID": "1901",
+        "2437": {
+            "ID": "2437",
             "Timing": "Start of turn",
-            "ATK": 70,
-            "DEF": 70,
+            "ATK": 90,
+            "DEF": 90,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1001901": {
-            "ID": "1001901",
+        "1002437": {
+            "ID": "1002437",
             "Timing": "Attacking the enemy",
             "Building Stat": {
                 "Min": 0,
-                "Max": 70,
+                "Max": 77,
                 "Cause": {
                     "Cause": "Look Elsewhere"
                 }
@@ -56,8 +56,8 @@
             },
             "Length": "99"
         },
-        "2001901": {
-            "ID": "2001901",
+        "2002437": {
+            "ID": "2002437",
             "Timing": "Attacking the enemy",
             "Building Stat": {
                 "Min": 0,
@@ -73,8 +73,8 @@
             },
             "Length": "99"
         },
-        "3001901": {
-            "ID": "3001901",
+        "3002437": {
+            "ID": "3002437",
             "Additional attack": {
                 "Activated": true,
                 "Chance of super": "0"
@@ -100,8 +100,8 @@
                 }
             }
         },
-        "4001901": {
-            "ID": "4001901",
+        "4002437": {
+            "ID": "4002437",
             "Additional attack": {
                 "Activated": true,
                 "Chance of super": "0"
@@ -127,8 +127,8 @@
                 }
             }
         },
-        "5001901": {
-            "ID": "5001901",
+        "5002437": {
+            "ID": "5002437",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -147,6 +147,30 @@
                 "+ or -": "+"
             },
             "Length": "1"
+        },
+        "6002437": {
+            "ID": "6002437",
+            "Timing": "When ki spheres collected",
+            "Crit Chance": 100,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "596",
+                "Causalities": {
+                    "596": {
+                        "Button": {
+                            "Name": "Has 7 or more Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres been obtained?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
         }
     },
     "Stats at levels": {
@@ -812,14 +836,14 @@
         }
     },
     "Super Attack": {
-        "2062": {
-            "superID": "2062",
-            "superName": "\u00e3\u0083\u0093\u00e3\u0082\u00af\u00e3\u0083\u0088\u00e3\u0083\u00aa\u00e3\u0083\u00bc\u00e3\u0082\u00ad\u00e3\u0083\u00a3\u00e3\u0083\u008e\u00e3\u0083\u00b3",
-            "superDescription": "DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "3066": {
+            "superID": "3066",
+            "superName": "\u00e3\u0083\u0093\u00e3\u0082\u00af\u00e3\u0083\u0088\u00e3\u0083\u00aa\u00e3\u0083\u00bc\u00e3\u0082\u00ad\u00e3\u0083\u00a3\u00e3\u0083\u008e\u00e3\u0083\u00b3(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nDEF\u00e3\u0082\u0092\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -832,7 +856,7 @@
                 "Amount": "3"
             },
             "Multiplier": 430,
-            "2062": {
+            "3066": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "99",
@@ -842,6 +866,17 @@
                 },
                 "Target": "Self",
                 "DEF": "30"
+            },
+            "1003066": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "3",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "-"
+                },
+                "Target": "Enemy",
+                "DEF": "40"
             }
         }
     },

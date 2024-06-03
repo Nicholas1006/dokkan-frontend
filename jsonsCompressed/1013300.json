@@ -28,8 +28,127 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "1205": {
-            "ID": "1205",
+        "3874": {
+            "ID": "3874",
+            "Timing": "Start of turn",
+            "Ki": 2,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1003874": {
+            "ID": "1003874",
+            "Timing": "Start of turn",
+            "ATK": 150,
+            "DEF": 150,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2003874": {
+            "ID": "2003874",
+            "Timing": "Hit recieved",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 75,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "ATK": 15,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Condition": {
+                "Logic": "24",
+                "Causalities": {
+                    "24": {
+                        "Button": {
+                            "Name": "Has attack been recieved?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "3003874": {
+            "ID": "3003874",
+            "Timing": "Hit recieved",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 75,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "DEF": 15,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Condition": {
+                "Logic": "24",
+                "Causalities": {
+                    "24": {
+                        "Button": {
+                            "Name": "Has attack been recieved?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "4003874": {
+            "ID": "4003874",
+            "Timing": "Start of turn",
+            "Ki change": {
+                "From": [
+                    "STR",
+                    "INT",
+                    "TEQ",
+                    "AGL"
+                ],
+                "To": [
+                    "Rainbow"
+                ]
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Condition": {
+                "Logic": "2724",
+                "Causalities": {
+                    "2724": {
+                        "Button": {
+                            "Name": "Has this character recieved their 5th attack in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character recieved?",
+                            "Logic": ">=5",
+                            "Min": 0,
+                            "Max": 5
+                        }
+                    }
+                }
+            }
+        },
+        "5003874": {
+            "ID": "5003874",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -47,8 +166,8 @@
             },
             "Length": "1"
         },
-        "1001205": {
-            "ID": "1001205",
+        "6003874": {
+            "ID": "6003874",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -65,7 +184,7 @@
                     ]
                 }
             },
-            "Heals": 5000,
+            "Heals": 10000,
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -735,22 +854,33 @@
         }
     },
     "Super Attack": {
-        "1273": {
-            "superID": "1273",
-            "superName": "\u00e3\u0082\u00a2\u00e3\u0082\u00b5\u00e3\u0083\u00ab\u00e3\u0083\u0088\u00e3\u0083\u00ac\u00e3\u0082\u00a4\u00e3\u0083\u00b3",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081ATK\u00e3\u0082\u0092\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
+        "4896": {
+            "superID": "4896",
+            "superName": "\u00e3\u0082\u00a2\u00e3\u0082\u00b5\u00e3\u0083\u00ab\u00e3\u0083\u0088\u00e3\u0083\u00ac\u00e3\u0082\u00a4\u00e3\u0083\u00b3(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nATK\u00e3\u0082\u0092\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "1273": {
+            "Multiplier": 530,
+            "4896": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "30"
+            },
+            "1004896": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",

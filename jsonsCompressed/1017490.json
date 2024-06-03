@@ -31,19 +31,85 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "1595": {
-            "ID": "1595",
+        "3454": {
+            "ID": "3454",
             "Timing": "Start of turn",
-            "ATK": 100,
-            "DEF": 100,
+            "Ki": 2,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1003454": {
+            "ID": "1003454",
+            "Timing": "Start of turn",
+            "ATK": 140,
+            "DEF": 140,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1001595": {
-            "ID": "1001595",
+        "2003454": {
+            "ID": "2003454",
+            "Timing": "On Super",
+            "ATK": 40,
+            "DEF": 40,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2338",
+                "Causalities": {
+                    "2338": {
+                        "Button": {
+                            "Name": "Is ki 12 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=12",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    }
+                }
+            }
+        },
+        "3003454": {
+            "ID": "3003454",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "30"
+            },
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2339",
+                "Causalities": {
+                    "2339": {
+                        "Button": {
+                            "Name": "Is HP 77 % or more?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining",
+                            "Logic": ">=77",
+                            "Min": 0,
+                            "Max": 100
+                        }
+                    }
+                }
+            }
+        },
+        "4003454": {
+            "ID": "4003454",
             "Timing": "Start of turn",
             "Heals": 7,
             "Buff": {
@@ -52,9 +118,9 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "97",
+                "Logic": "2340",
                 "Causalities": {
-                    "97": {
+                    "2340": {
                         "Button": {
                             "Name": "Is HP 77 % or less?"
                         },
@@ -68,8 +134,34 @@
                 }
             }
         },
-        "2001595": {
-            "ID": "2001595",
+        "5003454": {
+            "ID": "5003454",
+            "Timing": "Start of turn",
+            "Heals": 7,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2341",
+                "Causalities": {
+                    "2341": {
+                        "Button": {
+                            "Name": "Is HP 40 % or less?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining",
+                            "Logic": "<=40",
+                            "Min": 0,
+                            "Max": 100
+                        }
+                    }
+                }
+            }
+        },
+        "6003454": {
+            "ID": "6003454",
             "Forsee Super Attack": true,
             "Timing": "Start of turn",
             "Target": {
@@ -780,22 +872,22 @@
         }
     },
     "Super Attack": {
-        "1848": {
-            "superID": "1848",
-            "superName": "\u00e8\u00b6\u0085\u00e9\u00ad\u0094\u00e6\u0092\u0083\u00e9\u0096\u0083",
-            "superDescription": "DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "4660": {
+            "superID": "4660",
+            "superName": "\u00e8\u00b6\u0085\u00e9\u00ad\u0094\u00e6\u0092\u0083\u00e9\u0096\u0083(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n\u00e4\u00b8\u00ad\u00e7\u00a2\u00ba\u00e7\u008e\u0087\u00e3\u0081\u00a7\u00e6\u00b0\u0097\u00e7\u00b5\u00b6\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 505,
-            "1848": {
+            "Multiplier": 630,
+            "4660": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "99",
@@ -805,6 +897,17 @@
                 },
                 "Target": "Self",
                 "DEF": "30"
+            },
+            "1004660": {
+                "Type": "ExtraEfficacySpecial",
+                "Chance": "30",
+                "Duration": "2",
+                "Buff": {
+                    "Type": "Raw stats",
+                    "+ or -": "+"
+                },
+                "Target": "Enemy",
+                "Status": "Stun"
             }
         }
     },

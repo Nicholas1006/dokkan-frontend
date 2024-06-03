@@ -28,22 +28,39 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "3467": {
-            "ID": "3467",
+        "3469": {
+            "ID": "3469",
             "Timing": "Start of turn",
-            "ATK": 90,
-            "DEF": 90,
+            "ATK": 150,
+            "DEF": 150,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1003467": {
-            "ID": "1003467",
+        "1003469": {
+            "ID": "1003469",
             "Timing": "Start of turn",
-            "ATK": 25,
-            "DEF": 25,
+            "Ki": 1,
+            "Target": {
+                "Target": "Allies",
+                "Type": [
+                    "INT",
+                    "TEQ"
+                ]
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2003469": {
+            "ID": "2003469",
+            "Timing": "Start of turn",
+            "ATK": 30,
+            "DEF": 30,
             "Target": {
                 "Target": "Allies",
                 "Type": "TEQ"
@@ -54,11 +71,11 @@
             },
             "Length": "1"
         },
-        "2003467": {
-            "ID": "2003467",
+        "3003469": {
+            "ID": "3003469",
             "Timing": "Start of turn",
-            "ATK": 25,
-            "DEF": 25,
+            "ATK": 30,
+            "DEF": 30,
             "Target": {
                 "Target": "Allies",
                 "Type": "INT"
@@ -69,15 +86,15 @@
             },
             "Length": "1"
         },
-        "3003467": {
-            "ID": "3003467",
+        "4003469": {
+            "ID": "4003469",
             "Timing": "Start of turn",
             "Guard": true,
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Chance": "30",
+            "Chance": "50",
             "Length": "1",
             "Condition": {
                 "Logic": "2378",
@@ -96,17 +113,145 @@
                 }
             }
         },
-        "4003467": {
-            "ID": "4003467",
+        "5003469": {
+            "ID": "5003469",
+            "Timing": "Start of turn",
+            "Ki": 1,
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2378",
+                "Causalities": {
+                    "2378": {
+                        "Button": {
+                            "Name": "Are there 2 or more World Tournament category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many World Tournament category allies on the same turn ",
+                            "Logic": ">=2",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "6003469": {
+            "ID": "6003469",
+            "Timing": "Start of turn",
+            "ATK": 15,
+            "DEF": 15,
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2378",
+                "Causalities": {
+                    "2378": {
+                        "Button": {
+                            "Name": "Are there 2 or more World Tournament category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many World Tournament category allies on the same turn ",
+                            "Logic": ">=2",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "7003469": {
+            "ID": "7003469",
+            "Timing": "Start of turn",
+            "DEF": 150,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2379",
+                "Causalities": {
+                    "2379": {
+                        "Button": {
+                            "Name": "Are there 1 or more Turtle School category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Turtle School category allies on the same turn ",
+                            "Logic": ">=1",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "8003469": {
+            "ID": "8003469",
+            "Timing": "Start of turn",
+            "Guard": true,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2379",
+                "Causalities": {
+                    "2379": {
+                        "Button": {
+                            "Name": "Are there 1 or more Turtle School category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Turtle School category allies on the same turn ",
+                            "Logic": ">=1",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "9003469": {
+            "ID": "9003469",
             "Timing": "Attacking the enemy",
             "Building Stat": {
                 "Min": 0,
-                "Max": 60,
+                "Max": 90,
                 "Cause": {
                     "Cause": "Look Elsewhere"
                 }
             },
-            "ATK": 15,
+            "ATK": 30,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99"
+        },
+        "10003469": {
+            "ID": "10003469",
+            "Timing": "Attacking the enemy",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 30,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "Crit Chance": 10,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -777,14 +922,14 @@
         }
     },
     "Super Attack": {
-        "4656": {
-            "superID": "4656",
-            "superName": "\u00e8\u0090\u00ac\u00e5\u009c\u008b\u00e9\u00a9\u009a\u00e5\u00a4\u00a9\u00e6\u008e\u008c",
-            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n\u00e5\u00bf\u0085\u00e6\u00ae\u00ba\u00e6\u008a\u0080\u00e3\u0082\u0092\u00e5\u00b0\u0081\u00e3\u0081\u0098\u00e3\u0082\u008b",
+        "4657": {
+            "superID": "4657",
+            "superName": "\u00e8\u0090\u00ac\u00e5\u009c\u008b\u00e9\u00a9\u009a\u00e5\u00a4\u00a9\u00e6\u008e\u008c(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n\u00e5\u00bf\u0085\u00e6\u00ae\u00ba\u00e6\u008a\u0080\u00e3\u0082\u0092\u00e5\u00b0\u0081\u00e3\u0081\u0098\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "19",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -797,7 +942,7 @@
                 "Amount": "20"
             },
             "Multiplier": 530,
-            "4656": {
+            "4657": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -806,10 +951,10 @@
                     "+ or -": "+"
                 },
                 "Target": "Self",
-                "ATK": "30",
-                "DEF": "30"
+                "ATK": "50",
+                "DEF": "50"
             },
-            "1004656": {
+            "1004657": {
                 "Type": "ExtraEfficacySpecial",
                 "Chance": "100",
                 "Duration": "2",

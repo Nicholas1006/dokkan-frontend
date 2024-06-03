@@ -28,15 +28,13 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "2081": {
-            "ID": "2081",
+        "4018": {
+            "ID": "4018",
             "Timing": "Start of turn",
             "Ki": 3,
             "Target": {
                 "Target": "Allies",
-                "Type": [
-                    "PHY"
-                ]
+                "Type": "PHY"
             },
             "Buff": {
                 "Type": "Raw stats",
@@ -44,8 +42,23 @@
             },
             "Length": "1"
         },
-        "1002081": {
-            "ID": "1002081",
+        "1004018": {
+            "ID": "1004018",
+            "Timing": "Start of turn",
+            "ATK": 10,
+            "DEF": 10,
+            "Target": {
+                "Target": "Allies",
+                "Type": "PHY"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "2004018": {
+            "ID": "2004018",
             "Timing": "Start of turn",
             "ATK": 50,
             "DEF": 50,
@@ -64,8 +77,8 @@
             },
             "Length": "1"
         },
-        "2002081": {
-            "ID": "2002081",
+        "3004018": {
+            "ID": "3004018",
             "Timing": "Start of turn",
             "Ki change": {
                 "From": [
@@ -84,8 +97,68 @@
             },
             "Length": "1"
         },
-        "3002081": {
-            "ID": "3002081",
+        "4004018": {
+            "ID": "4004018",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 0,
+                "Cause": {
+                    "Cause": "Ki sphere obtained",
+                    "Type": [
+                        "PHY"
+                    ]
+                }
+            },
+            "Crit Chance": 10,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "5004018": {
+            "ID": "5004018",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 0,
+                "Cause": {
+                    "Cause": "Ki sphere obtained",
+                    "Type": [
+                        "PHY"
+                    ]
+                }
+            },
+            "ATK": 20,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "6004018": {
+            "ID": "6004018",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 0,
+                "Cause": {
+                    "Cause": "Ki sphere obtained",
+                    "Type": [
+                        "PHY"
+                    ]
+                }
+            },
+            "DEF": 20,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "7004018": {
+            "ID": "7004018",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -95,13 +168,85 @@
                     "Type": "any"
                 }
             },
-            "ATK": 20,
-            "DEF": 20,
+            "ATK": 50,
+            "DEF": 50,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
+        },
+        "8004018": {
+            "ID": "8004018",
+            "Timing": "Start of turn",
+            "Ki change": {
+                "From": [
+                    "AGL",
+                    "TEQ",
+                    "INT",
+                    "STR",
+                    "PHY",
+                    "Rainbow",
+                    "Sweet treats"
+                ],
+                "To": "PHY"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "528 and 3050",
+                "Causalities": {
+                    "528": {
+                        "Button": {
+                            "Name": "Is HP 50 % or less?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining",
+                            "Logic": "<=50",
+                            "Min": 0,
+                            "Max": 100
+                        }
+                    },
+                    "3050": {
+                        "Button": {
+                            "Name": "Is there an extreme class enemy? "
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            },
+            "Once only": true
+        },
+        "9004018": {
+            "ID": "9004018",
+            "Timing": "Start of turn",
+            "Guard": true,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "4",
+            "Condition": {
+                "Logic": "3056",
+                "Causalities": {
+                    "3056": {
+                        "Button": {
+                            "Name": "Is there an extreme class enemy? "
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            },
+            "Once only": true
         }
     },
     "Stats at levels": {
@@ -768,22 +913,22 @@
         }
     },
     "Super Attack": {
-        "2363": {
-            "superID": "2363",
-            "superName": "\u00e3\u0083\u0090\u00e3\u0082\u00a4\u00e3\u0082\u00b9\u00e3\u0082\u00b7\u00e3\u0083\u00a3\u00e3\u0082\u00a6\u00e3\u0083\u0088",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081HP\u00e3\u0081\u00ae18%\u00e5\u009b\u009e\u00e5\u00be\u00a9",
+        "5227": {
+            "superID": "5227",
+            "superName": "\u00e3\u0083\u0090\u00e3\u0082\u00a4\u00e3\u0082\u00b9\u00e3\u0082\u00b7\u00e3\u0083\u00a3\u00e3\u0082\u00a6\u00e3\u0083\u0088(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081HP\u00e3\u0081\u00ae20%\u00e5\u009b\u009e\u00e5\u00be\u00a9",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "2363": {
+            "Multiplier": 530,
+            "5227": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -792,7 +937,19 @@
                     "+ or -": "+"
                 },
                 "Target": "Self",
-                "Heals": "18"
+                "ATK": "30",
+                "DEF": "30"
+            },
+            "1005227": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "Heals": "20"
             }
         }
     },

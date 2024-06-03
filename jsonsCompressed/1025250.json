@@ -26,8 +26,8 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "3001": {
-            "ID": "3001",
+        "3473": {
+            "ID": "3473",
             "Timing": "Start of turn",
             "ATK": 150,
             "DEF": 150,
@@ -37,20 +37,20 @@
             },
             "Length": "1"
         },
-        "1003001": {
-            "ID": "1003001",
+        "1003473": {
+            "ID": "1003473",
             "Timing": "On Super",
-            "ATK": 100,
-            "DEF": 100,
+            "ATK": 120,
+            "DEF": 120,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1776",
+                "Logic": "2385",
                 "Causalities": {
-                    "1776": {
+                    "2385": {
                         "Button": {
                             "Name": "Is ki 12 or more"
                         },
@@ -64,8 +64,8 @@
                 }
             }
         },
-        "2003001": {
-            "ID": "2003001",
+        "2003473": {
+            "ID": "2003473",
             "Timing": "Start of turn",
             "Ki": 1,
             "Target": {
@@ -78,8 +78,8 @@
             },
             "Length": "1"
         },
-        "3003001": {
-            "ID": "3003001",
+        "3003473": {
+            "ID": "3003473",
             "Timing": "Start of turn",
             "ATK": 20,
             "DEF": 20,
@@ -93,19 +93,19 @@
             },
             "Length": "1"
         },
-        "4003001": {
-            "ID": "4003001",
+        "4003473": {
+            "ID": "4003473",
             "Timing": "Start of turn",
-            "DEF": 100,
+            "DEF": 150,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1777",
+                "Logic": "2386",
                 "Causalities": {
-                    "1777": {
+                    "2386": {
                         "Button": {
                             "Name": "Are there 1 or more Peppy Gals category allies on the team "
                         },
@@ -119,11 +119,11 @@
                 }
             }
         },
-        "5003001": {
-            "ID": "5003001",
+        "5003473": {
+            "ID": "5003473",
             "Additional attack": {
                 "Activated": true,
-                "Chance of super": "50"
+                "Chance of super": "70"
             },
             "Timing": "Start of turn",
             "Buff": {
@@ -132,9 +132,9 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1777 and 1778",
+                "Logic": "2386 and 2387",
                 "Causalities": {
-                    "1777": {
+                    "2386": {
                         "Button": {
                             "Name": "Are there 1 or more Peppy Gals category allies on the team "
                         },
@@ -145,7 +145,7 @@
                             "Min": 0
                         }
                     },
-                    "1778": {
+                    "2387": {
                         "Button": {
                             "Name": "Is the turn count 5 or more?"
                         },
@@ -158,10 +158,10 @@
                 }
             }
         },
-        "6003001": {
-            "ID": "6003001",
+        "6003473": {
+            "ID": "6003473",
             "Timing": "Start of turn",
-            "Ki": 1,
+            "Ki": 2,
             "Target": {
                 "Target": "Allies",
                 "Class": "Super"
@@ -172,9 +172,9 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1777 and 1778",
+                "Logic": "2386 and 2387",
                 "Causalities": {
-                    "1777": {
+                    "2386": {
                         "Button": {
                             "Name": "Are there 1 or more Peppy Gals category allies on the team "
                         },
@@ -185,7 +185,7 @@
                             "Min": 0
                         }
                     },
-                    "1778": {
+                    "2387": {
                         "Button": {
                             "Name": "Is the turn count 5 or more?"
                         },
@@ -198,11 +198,11 @@
                 }
             }
         },
-        "7003001": {
-            "ID": "7003001",
+        "7003473": {
+            "ID": "7003473",
             "Timing": "Start of turn",
-            "ATK": 20,
-            "DEF": 20,
+            "ATK": 30,
+            "DEF": 30,
             "Target": {
                 "Target": "Allies",
                 "Class": "Super"
@@ -213,9 +213,9 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1777 and 1778",
+                "Logic": "2386 and 2387",
                 "Causalities": {
-                    "1777": {
+                    "2386": {
                         "Button": {
                             "Name": "Are there 1 or more Peppy Gals category allies on the team "
                         },
@@ -226,7 +226,7 @@
                             "Min": 0
                         }
                     },
-                    "1778": {
+                    "2387": {
                         "Button": {
                             "Name": "Is the turn count 5 or more?"
                         },
@@ -234,6 +234,32 @@
                             "Name": "What turn is it?",
                             "Logic": ">=5",
                             "Min": 1
+                        }
+                    }
+                }
+            }
+        },
+        "8003473": {
+            "ID": "8003473",
+            "Timing": "Start of turn",
+            "Guard": true,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2388",
+                "Causalities": {
+                    "2388": {
+                        "Button": {
+                            "Name": "Are there 1 or more Peppy Gals category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Peppy Gals category allies on the same turn ",
+                            "Logic": ">=1",
+                            "Max": 3,
+                            "Min": 0
                         }
                     }
                 }
@@ -903,22 +929,22 @@
         }
     },
     "Super Attack": {
-        "4159": {
-            "superID": "4159",
-            "superName": "\u00e7\u008b\u00bc\u00e7\u0089\u0099\u00e9\u00a2\u00a8\u00e9\u00a2\u00a8\u00e6\u008b\u00b3",
-            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "4667": {
+            "superID": "4667",
+            "superName": "\u00e7\u008b\u00bc\u00e7\u0089\u0099\u00e9\u00a2\u00a8\u00e9\u00a2\u00a8\u00e6\u008b\u00b3(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "4159": {
+            "Multiplier": 530,
+            "4667": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -927,7 +953,7 @@
                     "+ or -": "+"
                 },
                 "Target": "Self",
-                "ATK": "30"
+                "ATK": "50"
             }
         }
     },

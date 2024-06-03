@@ -32,8 +32,35 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "2140": {
-            "ID": "2140",
+        "2618": {
+            "ID": "2618",
+            "Timing": "On Super",
+            "ATK": 120,
+            "DEF": 120,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1073",
+                "Causalities": {
+                    "1073": {
+                        "Button": {
+                            "Name": "Is ki 12 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=12",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    }
+                }
+            }
+        },
+        "1002618": {
+            "ID": "1002618",
             "Timing": "Start of turn",
             "Ki": 2,
             "Target": {
@@ -46,8 +73,8 @@
             },
             "Length": "1"
         },
-        "1002140": {
-            "ID": "1002140",
+        "2002618": {
+            "ID": "2002618",
             "Timing": "Start of turn",
             "ATK": 30,
             "DEF": 30,
@@ -61,19 +88,19 @@
             },
             "Length": "1"
         },
-        "2002140": {
-            "ID": "2002140",
+        "3002618": {
+            "ID": "3002618",
             "Timing": "Start of turn",
-            "DEF": 50,
+            "DEF": 70,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "656",
+                "Logic": "1074",
                 "Causalities": {
-                    "656": {
+                    "1074": {
                         "Button": {
                             "Name": "Is there is an ally on the team whose name includes Caulifla?"
                         },
@@ -85,8 +112,8 @@
                 }
             }
         },
-        "3002140": {
-            "ID": "3002140",
+        "4002618": {
+            "ID": "4002618",
             "Timing": "Start of turn",
             "Ki": 1,
             "Target": {
@@ -98,9 +125,9 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "657",
+                "Logic": "1075",
                 "Causalities": {
-                    "657": {
+                    "1075": {
                         "Button": {
                             "Name": "Is there is an ally attacking in the same turn whose name includes Caulifla?"
                         },
@@ -112,11 +139,11 @@
                 }
             }
         },
-        "4002140": {
-            "ID": "4002140",
+        "5002618": {
+            "ID": "5002618",
             "Timing": "Start of turn",
-            "ATK": 10,
-            "DEF": 10,
+            "ATK": 16,
+            "DEF": 16,
             "Target": {
                 "Target": "Allies"
             },
@@ -126,9 +153,36 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "657",
+                "Logic": "1075",
                 "Causalities": {
-                    "657": {
+                    "1075": {
+                        "Button": {
+                            "Name": "Is there is an ally attacking in the same turn whose name includes Caulifla?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "6002618": {
+            "ID": "6002618",
+            "Timing": "Start of turn",
+            "Crit Chance": 16,
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1075",
+                "Causalities": {
+                    "1075": {
                         "Button": {
                             "Name": "Is there is an ally attacking in the same turn whose name includes Caulifla?"
                         },
@@ -803,22 +857,33 @@
         }
     },
     "Super Attack": {
-        "2472": {
-            "superID": "2472",
-            "superName": "\u00e3\u0083\u00ac\u00e3\u0082\u00b8\u00e3\u0082\u00b9\u00e3\u0083\u0088\u00e3\u0083\u0096\u00e3\u0083\u00a9\u00e3\u0082\u00b9\u00e3\u0083\u0088",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nDEF\u00e3\u0082\u0092\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
+        "3391": {
+            "superID": "3391",
+            "superName": "\u00e3\u0083\u00ac\u00e3\u0082\u00b8\u00e3\u0082\u00b9\u00e3\u0083\u0088\u00e3\u0083\u0096\u00e3\u0083\u00a9\u00e3\u0082\u00b9\u00e3\u0083\u0088(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nDEF\u00e3\u0082\u0092\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "2472": {
+            "Multiplier": 530,
+            "3391": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "30"
+            },
+            "1003391": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",

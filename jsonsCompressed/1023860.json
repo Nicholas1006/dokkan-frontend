@@ -28,23 +28,23 @@
         "Legendary Power"
     ],
     "Passive": {
-        "2773": {
-            "ID": "2773",
+        "2780": {
+            "ID": "2780",
             "Timing": "Start of turn",
-            "ATK": 70,
-            "DEF": 70,
+            "ATK": 100,
+            "DEF": 100,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1002773": {
-            "ID": "1002773",
+        "1002780": {
+            "ID": "1002780",
             "Timing": "Attacking the enemy",
             "Building Stat": {
                 "Min": 0,
-                "Max": 50,
+                "Max": 70,
                 "Cause": {
                     "Cause": "Look Elsewhere"
                 }
@@ -56,8 +56,8 @@
             },
             "Length": "99"
         },
-        "2002773": {
-            "ID": "2002773",
+        "2002780": {
+            "ID": "2002780",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -69,15 +69,45 @@
                     ]
                 }
             },
-            "Ki": 1,
+            "Ki": 2,
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "3002773": {
-            "ID": "3002773",
+        "3002780": {
+            "ID": "3002780",
+            "Timing": "Start of turn",
+            "ATK": 20,
+            "DEF": 20,
+            "Target": {
+                "Category": "GT Heroes",
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "4002780": {
+            "ID": "4002780",
+            "Timing": "Start of turn",
+            "ATK": 20,
+            "DEF": 20,
+            "Target": {
+                "Category": "World Tournament",
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "5002780": {
+            "ID": "5002780",
             "Additional attack": {
                 "Activated": true,
                 "Chance of super": "30"
@@ -103,35 +133,73 @@
                 }
             }
         },
-        "4002773": {
-            "ID": "4002773",
+        "6002780": {
+            "ID": "6002780",
             "Timing": "Start of turn",
-            "ATK": 10,
-            "DEF": 10,
+            "Ki": 1,
             "Target": {
                 "Category": "GT Heroes",
                 "Target": "Allies"
             },
             "Buff": {
-                "Type": "Percentage",
+                "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "5002773": {
-            "ID": "5002773",
+        "7002780": {
+            "ID": "7002780",
             "Timing": "Start of turn",
-            "ATK": 10,
-            "DEF": 10,
+            "Ki": 1,
             "Target": {
                 "Category": "World Tournament",
                 "Target": "Allies"
             },
             "Buff": {
-                "Type": "Percentage",
+                "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1"
+        },
+        "8002780": {
+            "ID": "8002780",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "30"
+            },
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "635 or 142",
+                "Causalities": {
+                    "635": {
+                        "Button": {
+                            "Name": "Are there 1 or more Goku's Family category enemies "
+                        },
+                        "Slider": {
+                            "Name": "How many Goku's Family category enemies ",
+                            "Logic": ">=1",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    },
+                    "142": {
+                        "Button": {
+                            "Name": "Are there 1 or more Vegeta's Family category enemies "
+                        },
+                        "Slider": {
+                            "Name": "How many Vegeta's Family category enemies ",
+                            "Logic": ">=1",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
         }
     },
     "Stats at levels": {
@@ -982,14 +1050,14 @@
         }
     },
     "Super Attack": {
-        "3686": {
-            "superID": "3686",
-            "superName": "\u00e3\u0083\u00a9\u00e3\u0082\u00a4\u00e3\u0083\u0090\u00e3\u0083\u00ab\u00e5\u0090\u008c\u00e5\u00a3\u00ab\u00e3\u0081\u00ae\u00e5\u0085\u00b1\u00e9\u0097\u0098",
-            "superDescription": "ATK\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e6\u00a5\u00b5\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "3747": {
+            "superID": "3747",
+            "superName": "\u00e3\u0083\u00a9\u00e3\u0082\u00a4\u00e3\u0083\u0090\u00e3\u0083\u00ab\u00e5\u0090\u008c\u00e5\u00a3\u00ab\u00e3\u0081\u00ae\u00e5\u0085\u00b1\u00e9\u0097\u0098(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "ATK\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e6\u00a5\u00b5\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nDEF\u00e3\u0082\u0092\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -1002,7 +1070,7 @@
                 "Amount": "30"
             },
             "Multiplier": 365,
-            "3686": {
+            "3747": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "99",
@@ -1012,16 +1080,27 @@
                 },
                 "Target": "Self",
                 "ATK": "30"
+            },
+            "1003747": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "3",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "-"
+                },
+                "Target": "Enemy",
+                "DEF": "40"
             }
         },
-        "3687": {
-            "superID": "3687",
-            "superName": "\u00e5\u008b\u0087\u00e6\u00b0\u0097\u00e3\u0081\u00a8\u00e8\u00aa\u0087\u00e3\u0082\u008a\u00e3\u0081\u00ae\u00e3\u0083\u0080\u00e3\u0083\u0096\u00e3\u0083\u00ab\u00e3\u0082\u00a2\u00e3\u0082\u00bf\u00e3\u0083\u0083\u00e3\u0082\u00af",
-            "superDescription": "ATK\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e6\u00a5\u00b5\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "3748": {
+            "superID": "3748",
+            "superName": "\u00e5\u008b\u0087\u00e6\u00b0\u0097\u00e3\u0081\u00a8\u00e8\u00aa\u0087\u00e3\u0082\u008a\u00e3\u0081\u00ae\u00e3\u0083\u0080\u00e3\u0083\u0096\u00e3\u0083\u00ab\u00e3\u0082\u00a2\u00e3\u0082\u00bf\u00e3\u0083\u0083\u00e3\u0082\u00af(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "ATK\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e6\u00a5\u00b5\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nATK\u00e3\u0082\u0092\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "18",
             "superPriority": "0.0",
             "superStyle": "Hyper",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -1034,7 +1113,7 @@
                 "Amount": "30"
             },
             "Multiplier": 510,
-            "3687": {
+            "3748": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "99",
@@ -1044,6 +1123,17 @@
                 },
                 "Target": "Self",
                 "ATK": "30"
+            },
+            "1003748": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "3",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "-"
+                },
+                "Target": "Enemy",
+                "ATK": "20"
             }
         }
     },

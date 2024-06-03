@@ -24,29 +24,29 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "1961": {
-            "ID": "1961",
+        "3046": {
+            "ID": "3046",
             "Timing": "Start of turn",
-            "Ki": 2,
+            "Ki": 3,
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1001961": {
-            "ID": "1001961",
+        "1003046": {
+            "ID": "1003046",
             "Timing": "Start of turn",
-            "ATK": 50,
-            "DEF": 50,
+            "ATK": 150,
+            "DEF": 150,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "2001961": {
-            "ID": "2001961",
+        "2003046": {
+            "ID": "2003046",
             "Timing": "On Super",
             "ATK": 20,
             "DEF": 20,
@@ -60,24 +60,19 @@
             },
             "Length": "1"
         },
-        "3001961": {
-            "ID": "3001961",
+        "3003046": {
+            "ID": "3003046",
             "Timing": "Hit recieved",
-            "ATK": 20,
-            "DEF": 20,
-            "Target": {
-                "Target": "Enemies",
-                "Class": "Super"
-            },
+            "DEF": 50,
             "Buff": {
                 "Type": "Percentage",
-                "+ or -": "-"
+                "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "419",
+                "Logic": "1872",
                 "Causalities": {
-                    "419": {
+                    "1872": {
                         "Button": {
                             "Name": "Has attack been recieved?"
                         },
@@ -89,8 +84,37 @@
                 }
             }
         },
-        "4001961": {
-            "ID": "4001961",
+        "4003046": {
+            "ID": "4003046",
+            "Timing": "Hit recieved",
+            "ATK": 30,
+            "DEF": 30,
+            "Target": {
+                "Target": "Enemies",
+                "Class": "Super"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "-"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1872",
+                "Causalities": {
+                    "1872": {
+                        "Button": {
+                            "Name": "Has attack been recieved?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "5003046": {
+            "ID": "5003046",
             "Additional attack": {
                 "Activated": true,
                 "Chance of super": "100"
@@ -102,9 +126,9 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "418 and 419",
+                "Logic": "1871 and 1872",
                 "Causalities": {
-                    "418": {
+                    "1871": {
                         "Button": {
                             "Name": "Is this the 1st attacker in the turn?"
                         },
@@ -115,7 +139,7 @@
                             "Max": 3
                         }
                     },
-                    "419": {
+                    "1872": {
                         "Button": {
                             "Name": "Has attack been recieved?"
                         },
@@ -791,22 +815,22 @@
         }
     },
     "Super Attack": {
-        "2118": {
-            "superID": "2118",
-            "superName": "\u00e3\u0083\u0087\u00e3\u0082\u00b6\u00e3\u0082\u00b9\u00e3\u0083\u0088\u00e3\u0083\u00ab\u00e3\u0082\u00a4\u00e3\u0083\u00ac\u00e3\u0082\u00a4\u00e3\u0082\u00b6\u00e3\u0083\u00bc",
-            "superDescription": "ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "4223": {
+            "superID": "4223",
+            "superName": "\u00e3\u0083\u0087\u00e3\u0082\u00b6\u00e3\u0082\u00b9\u00e3\u0083\u0088\u00e3\u0083\u00ab\u00e3\u0082\u00a4\u00e3\u0083\u00ac\u00e3\u0082\u00a4\u00e3\u0082\u00b6\u00e3\u0083\u00bc(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nDEF\u00e3\u0082\u0092\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 410,
-            "2118": {
+            "Multiplier": 510,
+            "4223": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "99",
@@ -817,6 +841,17 @@
                 "Target": "Self",
                 "ATK": "20",
                 "DEF": "20"
+            },
+            "1004223": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "3",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "-"
+                },
+                "Target": "Enemy",
+                "DEF": "40"
             }
         }
     },

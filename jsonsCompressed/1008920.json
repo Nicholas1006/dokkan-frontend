@@ -32,8 +32,8 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "719": {
-            "ID": "719",
+        "1171": {
+            "ID": "1171",
             "Timing": "Start of turn",
             "Ki": 3,
             "Buff": {
@@ -58,12 +58,13 @@
                 }
             }
         },
-        "1000719": {
-            "ID": "1000719",
+        "1001171": {
+            "ID": "1001171",
             "Timing": "Start of turn",
-            "ATK": 5000,
+            "ATK": 80,
+            "DEF": 80,
             "Buff": {
-                "Type": "Raw stats",
+                "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
@@ -737,21 +738,32 @@
         }
     },
     "Super Attack": {
-        "206": {
-            "superID": "206",
-            "superName": "\u00e8\u00a6\u00aa\u00e5\u00ad\u0090\u00e4\u00b8\u0089\u00e5\u00a4\u00a7\u00e3\u0081\u008b\u00e3\u0082\u0081\u00e3\u0081\u00af\u00e3\u0082\u0081\u00e6\u00b3\u00a2",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "1244": {
+            "superID": "1244",
+            "superName": "\u00e8\u00a6\u00aa\u00e5\u00ad\u0090\u00e4\u00b8\u0089\u00e5\u00a4\u00a7\u00e3\u0081\u008b\u00e3\u0082\u0081\u00e3\u0081\u00af\u00e3\u0082\u0081\u00e6\u00b3\u00a2(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8&1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3\u00e4\u00bb\u00b2\u00e9\u0096\u0093ATK25%UP",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430
+            "Multiplier": 505,
+            "1244": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Allies",
+                "ATK": "25"
+            }
         }
     },
     "Active Skill": null,

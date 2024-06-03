@@ -25,55 +25,135 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "1043": {
-            "ID": "1043",
+        "3402": {
+            "ID": "3402",
             "Timing": "Start of turn",
-            "ATK": 100,
-            "DEF": 100,
+            "Ki": 1,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1003402": {
+            "ID": "1003402",
+            "Timing": "Start of turn",
+            "ATK": 122,
+            "DEF": 122,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1001043": {
-            "ID": "1001043",
-            "Transformation": {
-                "Activated": true,
-                "Unit": "4012650",
-                "Giant/Rage": true,
-                "Min Turns": "1",
-                "Max Turns": "1",
-                "Reverse chance": "100"
-            },
+        "2003402": {
+            "ID": "2003402",
             "Timing": "Start of turn",
+            "DEF": 122,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "15",
+                "Logic": "2232",
                 "Causalities": {
-                    "15": {
+                    "2232": {
                         "Button": {
-                            "Name": "Is HP 30 % or less?"
+                            "Name": "Are there 2 or more Vegeta's Family category allies on the same turn "
                         },
                         "Slider": {
-                            "Name": "What percentage of HP is remaining",
-                            "Logic": "<=30",
-                            "Min": 0,
-                            "Max": 100
+                            "Name": "How many Vegeta's Family category allies on the same turn ",
+                            "Logic": ">=2",
+                            "Max": 3,
+                            "Min": 0
                         }
                     }
                 }
             }
         },
-        "2001043": {
-            "ID": "2001043",
+        "3003402": {
+            "ID": "3003402",
+            "Timing": "Start of turn",
+            "Ki": 1,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2232",
+                "Causalities": {
+                    "2232": {
+                        "Button": {
+                            "Name": "Are there 2 or more Vegeta's Family category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Vegeta's Family category allies on the same turn ",
+                            "Logic": ">=2",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "4003402": {
+            "ID": "4003402",
+            "Timing": "Start of turn",
+            "Crit Chance": 50,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2232",
+                "Causalities": {
+                    "2232": {
+                        "Button": {
+                            "Name": "Are there 2 or more Vegeta's Family category allies on the same turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Vegeta's Family category allies on the same turn ",
+                            "Logic": ">=2",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    }
+                }
+            }
+        },
+        "5003402": {
+            "ID": "5003402",
+            "Timing": "Hit recieved",
+            "DEF": 80,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "4",
+            "Condition": {
+                "Logic": "2233",
+                "Causalities": {
+                    "2233": {
+                        "Button": {
+                            "Name": "Has attack been recieved?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "6003402": {
+            "ID": "6003402",
             "Counter": {
                 "Activated": true,
-                "Multiplier": "300"
+                "Multiplier": "300",
+                "DR from normals": "40"
             },
             "Timing": "Being hit",
             "Buff": {
@@ -96,11 +176,11 @@
                 }
             }
         },
-        "3001043": {
-            "ID": "3001043",
+        "7003402": {
+            "ID": "7003402",
             "Toggle Other Line": {
                 "Activated": true,
-                "Line": "2001043"
+                "Line": "6003402"
             },
             "Timing": "Hit recieved",
             "Buff": {
@@ -108,6 +188,39 @@
                 "+ or -": "+"
             },
             "Length": "1"
+        },
+        "8003402": {
+            "ID": "8003402",
+            "Transformation": {
+                "Activated": true,
+                "Unit": "4012651",
+                "Giant/Rage": true,
+                "Min Turns": "1",
+                "Max Turns": "1",
+                "Reverse chance": "100"
+            },
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2234",
+                "Causalities": {
+                    "2234": {
+                        "Button": {
+                            "Name": "Is HP 40 % or less?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining",
+                            "Logic": "<=40",
+                            "Min": 0,
+                            "Max": 100
+                        }
+                    }
+                }
+            }
         }
     },
     "Stats at levels": {
@@ -770,22 +883,22 @@
         }
     },
     "Super Attack": {
-        "959": {
-            "superID": "959",
-            "superName": "\u00e6\u0080\u0092\u00e3\u0082\u008a\u00e3\u0081\u00ae\u00e3\u0082\u00ae\u00e3\u0083\u00a3\u00e3\u0083\u00aa\u00e3\u0083\u0083\u00e3\u0082\u00af\u00e7\u00a0\u00b2",
-            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "4584": {
+            "superID": "4584",
+            "superName": "\u00e6\u0080\u0092\u00e3\u0082\u008a\u00e3\u0081\u00ae\u00e3\u0082\u00ae\u00e3\u0083\u00a3\u00e3\u0083\u00aa\u00e3\u0083\u0083\u00e3\u0082\u00af\u00e7\u00a0\u00b2(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\n\u00e5\u00bf\u0085\u00e6\u00ae\u00ba\u00e6\u008a\u0080\u00e3\u0082\u0092\u00e5\u00b0\u0081\u00e3\u0081\u0098\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 430,
-            "959": {
+            "Multiplier": 530,
+            "4584": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -795,6 +908,17 @@
                 },
                 "Target": "Self",
                 "ATK": "50"
+            },
+            "1004584": {
+                "Type": "ExtraEfficacySpecial",
+                "Chance": "100",
+                "Duration": "2",
+                "Buff": {
+                    "Type": "Raw stats",
+                    "+ or -": "+"
+                },
+                "Target": "Enemy",
+                "Status": "Seals"
             }
         }
     },

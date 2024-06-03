@@ -36,19 +36,68 @@
         "Fierce Battle"
     ],
     "Passive": {
-        "1280": {
-            "ID": "1280",
+        "2500": {
+            "ID": "2500",
             "Timing": "Start of turn",
-            "ATK": 110,
-            "DEF": 20,
+            "ATK": 140,
+            "DEF": 140,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1001280": {
-            "ID": "1001280",
+        "1002500": {
+            "ID": "1002500",
+            "Timing": "Attacking",
+            "ATK": 40,
+            "DEF": 10,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "934",
+                "Causalities": {
+                    "934": {
+                        "Button": {
+                            "Name": "Is this unit attacking a super class enemy?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "2002500": {
+            "ID": "2002500",
+            "Timing": "Attacking",
+            "Ki": 3,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "934",
+                "Causalities": {
+                    "934": {
+                        "Button": {
+                            "Name": "Is this unit attacking a super class enemy?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "3002500": {
+            "ID": "3002500",
             "Timing": "Start of turn",
             "Heals": 14,
             "Buff": {
@@ -57,11 +106,11 @@
             },
             "Length": "1"
         },
-        "2001280": {
-            "ID": "2001280",
+        "4002500": {
+            "ID": "4002500",
             "Transformation": {
                 "Activated": true,
-                "Unit": "4014860",
+                "Unit": "4014861",
                 "Giant/Rage": false,
                 "Min Turns": null,
                 "Max Turns": null,
@@ -736,22 +785,22 @@
         }
     },
     "Super Attack": {
-        "1432": {
-            "superID": "1432",
-            "superName": "\u00e4\u00bb\u008a\u00e5\u00ba\u00a6\u00e3\u0081\u00af\u00e6\u00ad\u00bb\u00e3\u0081\u00ac\u00e3\u0081\u008b\u00e3\u0082\u0082\u00e3\u0081\u00ad",
-            "superDescription": "ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "3234": {
+            "superID": "3234",
+            "superName": "\u00e4\u00bb\u008a\u00e5\u00ba\u00a6\u00e3\u0081\u00af\u00e6\u00ad\u00bb\u00e3\u0081\u00ac\u00e3\u0081\u008b\u00e3\u0082\u0082\u00e3\u0081\u00ad(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e8\u00b6\u0085\u00e7\u00b5\u00b6\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nDEF\u00e3\u0082\u0092\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
             "SpecialBonus": {
                 "ID": "0"
             },
-            "Multiplier": 485,
-            "1432": {
+            "Multiplier": 610,
+            "3234": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "99",
@@ -762,6 +811,17 @@
                 "Target": "Self",
                 "ATK": "20",
                 "DEF": "20"
+            },
+            "1003234": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "3",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "-"
+                },
+                "Target": "Enemy",
+                "DEF": "40"
             }
         }
     },

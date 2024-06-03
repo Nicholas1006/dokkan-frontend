@@ -30,30 +30,47 @@
         "Legendary Power"
     ],
     "Passive": {
-        "1178": {
-            "ID": "1178",
+        "2572": {
+            "ID": "2572",
             "Timing": "Start of turn",
-            "ATK": 70,
-            "DEF": 70,
+            "ATK": 100,
+            "DEF": 100,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1001178": {
-            "ID": "1001178",
+        "1002572": {
+            "ID": "1002572",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 59,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "ATK": 20,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99"
+        },
+        "2002572": {
+            "ID": "2002572",
             "Timing": "On Super",
-            "ATK": 30,
+            "ATK": 40,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "75",
+                "Logic": "1009",
                 "Causalities": {
-                    "75": {
+                    "1009": {
                         "Button": {
                             "Name": "Is ki 18 or more"
                         },
@@ -67,19 +84,19 @@
                 }
             }
         },
-        "2001178": {
-            "ID": "2001178",
+        "3002572": {
+            "ID": "3002572",
             "Timing": "Start of turn",
-            "Ki": 4,
+            "Ki": 6,
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "9",
+                "Logic": "1010",
                 "Causalities": {
-                    "9": {
+                    "1010": {
                         "Button": {
                             "Name": "Is there less than 2 enemies?"
                         },
@@ -93,19 +110,19 @@
                 }
             }
         },
-        "3001178": {
-            "ID": "3001178",
+        "4002572": {
+            "ID": "4002572",
             "Timing": "Start of turn",
-            "DEF": 60,
+            "Ki": 4,
             "Buff": {
-                "Type": "Percentage",
+                "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "22",
+                "Logic": "1011",
                 "Causalities": {
-                    "22": {
+                    "1011": {
                         "Button": {
                             "Name": "Is there 2 or more enemies?"
                         },
@@ -118,6 +135,106 @@
                     }
                 }
             }
+        },
+        "5002572": {
+            "ID": "5002572",
+            "Timing": "Start of turn",
+            "DEF": 70,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1011",
+                "Causalities": {
+                    "1011": {
+                        "Button": {
+                            "Name": "Is there 2 or more enemies?"
+                        },
+                        "Slider": {
+                            "Name": "How many enemies are there?",
+                            "Logic": ">=2",
+                            "Min": 1,
+                            "Max": 7
+                        }
+                    }
+                }
+            }
+        },
+        "6002572": {
+            "ID": "6002572",
+            "Timing": "Start of turn",
+            "Crit Chance": 100,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1012",
+                "Causalities": {
+                    "1012": {
+                        "Button": {
+                            "Name": "Is there is an enemy whose name includes Frieza?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "7002572": {
+            "ID": "7002572",
+            "Timing": "Start of turn",
+            "Ki": 12,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1012",
+                "Causalities": {
+                    "1012": {
+                        "Button": {
+                            "Name": "Is there is an enemy whose name includes Frieza?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            },
+            "Once only": true
+        },
+        "8002572": {
+            "ID": "8002572",
+            "Timing": "Start of turn",
+            "ATK": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1012",
+                "Causalities": {
+                    "1012": {
+                        "Button": {
+                            "Name": "Is there is an enemy whose name includes Frieza?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            },
+            "Once only": true
         }
     },
     "Stats at levels": {
@@ -966,14 +1083,14 @@
         }
     },
     "Super Attack": {
-        "1251": {
-            "superID": "1251",
-            "superName": "\u00e3\u0083\u0095\u00e3\u0082\u00a1\u00e3\u0082\u00a4\u00e3\u0083\u008a\u00e3\u0083\u00ab\u00e3\u0082\u00b9\u00e3\u0083\u0094\u00e3\u0083\u00aa\u00e3\u0083\u0083\u00e3\u0083\u0084\u00e3\u0082\u00ad\u00e3\u0083\u00a3\u00e3\u0083\u008e\u00e3\u0083\u00b3",
-            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e6\u00a5\u00b5\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "3334": {
+            "superID": "3334",
+            "superName": "\u00e3\u0083\u0095\u00e3\u0082\u00a1\u00e3\u0082\u00a4\u00e3\u0083\u008a\u00e3\u0083\u00ab\u00e3\u0082\u00b9\u00e3\u0083\u0094\u00e3\u0083\u00aa\u00e3\u0083\u0083\u00e3\u0083\u0084\u00e3\u0082\u00ad\u00e3\u0083\u00a3\u00e3\u0083\u008e\u00e3\u0083\u00b3(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e6\u00a5\u00b5\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nDEF\u00e3\u0082\u0092\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -986,7 +1103,7 @@
                 "Amount": "30"
             },
             "Multiplier": 395,
-            "1251": {
+            "3334": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "1",
@@ -995,17 +1112,29 @@
                     "+ or -": "+"
                 },
                 "Target": "Self",
-                "ATK": "50"
+                "ATK": "50",
+                "DEF": "50"
+            },
+            "1003334": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "3",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "-"
+                },
+                "Target": "Enemy",
+                "DEF": "50"
             }
         },
-        "1252": {
-            "superID": "1252",
-            "superName": "\u00e3\u0082\u00b9\u00e3\u0083\u0094\u00e3\u0083\u00aa\u00e3\u0083\u0083\u00e3\u0083\u0088\u00e3\u0083\u00bb\u00e3\u0082\u00aa\u00e3\u0083\u0096\u00e3\u0083\u00bb\u00e3\u0082\u00b5\u00e3\u0082\u00a4\u00e3\u0083\u00a4\u00e3\u0083\u00b3",
-            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e6\u00a5\u00b5\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\u00e5\u00bf\u0085\u00e6\u00ae\u00ba\u00e6\u008a\u0080\u00e3\u0082\u0092\u00e5\u00b0\u0081\u00e3\u0081\u0098\u00e3\u0082\u008b",
+        "3337": {
+            "superID": "3337",
+            "superName": "\u00e3\u0082\u00b9\u00e3\u0083\u0094\u00e3\u0083\u00aa\u00e3\u0083\u0083\u00e3\u0083\u0088\u00e3\u0083\u00bb\u00e3\u0082\u00aa\u00e3\u0083\u0096\u00e3\u0083\u00bb\u00e3\u0082\u00b5\u00e3\u0082\u00a4\u00e3\u0083\u00a4\u00e3\u0083\u00b3(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e6\u00a5\u00b5\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\u00e5\u00bf\u0085\u00e6\u00ae\u00ba\u00e6\u008a\u0080\u00e3\u0082\u0092\u00e5\u00b0\u0081\u00e3\u0081\u0098\u00e3\u0082\u008b",
             "superMinKi": "18",
             "superPriority": "0.0",
             "superStyle": "Hyper",
-            "superMinLVL": "0",
+            "superMinLVL": "24",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -1018,7 +1147,18 @@
                 "Amount": "30"
             },
             "Multiplier": 540,
-            "1252": {
+            "3337": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "DEF": "30"
+            },
+            "1003337": {
                 "Type": "ExtraEfficacySpecial",
                 "Chance": "100",
                 "Duration": "2",

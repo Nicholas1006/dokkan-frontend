@@ -30,21 +30,21 @@
         "Shattering the Limit"
     ],
     "Passive": {
-        "1528": {
-            "ID": "1528",
+        "1530": {
+            "ID": "1530",
             "Timing": "Start of turn",
-            "ATK": 50,
-            "DEF": 50,
+            "ATK": 60,
+            "DEF": 60,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1"
         },
-        "1001528": {
-            "ID": "1001528",
+        "1001530": {
+            "ID": "1001530",
             "Timing": "Start of turn",
-            "Ki": 4,
+            "Ki": 6,
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -67,11 +67,11 @@
                 }
             }
         },
-        "2001528": {
-            "ID": "2001528",
+        "2001530": {
+            "ID": "2001530",
             "Timing": "Start of turn",
-            "ATK": 30,
-            "DEF": 30,
+            "ATK": 40,
+            "DEF": 40,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -89,6 +89,30 @@
                             "Logic": ">=2",
                             "Min": 1,
                             "Max": 7
+                        }
+                    }
+                }
+            }
+        },
+        "3001530": {
+            "ID": "3001530",
+            "Timing": "On Super",
+            "ATK": 60,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "206",
+                "Causalities": {
+                    "206": {
+                        "Button": {
+                            "Name": "Is the target enemy in \"DEF down\" status?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
                         }
                     }
                 }
@@ -757,14 +781,14 @@
         }
     },
     "Super Attack": {
-        "1788": {
-            "superID": "1788",
-            "superName": "\u00e3\u0083\u0087\u00e3\u0082\u00b9\u00e3\u0082\u00b9\u00e3\u0083\u0088\u00e3\u0083\u00bc\u00e3\u0083\u00a0",
-            "superDescription": "\u00e6\u0095\u00b5\u00e5\u0085\u00a8\u00e4\u00bd\u0093\u00e3\u0081\u00ab\u00e5\u00a4\u00a7\u00e8\u00a6\u008f\u00e6\u00a8\u00a1\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
+        "1789": {
+            "superID": "1789",
+            "superName": "\u00e3\u0083\u0087\u00e3\u0082\u00b9\u00e3\u0082\u00b9\u00e3\u0083\u0088\u00e3\u0083\u00bc\u00e3\u0083\u00a0(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
+            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u008c\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e6\u0095\u00b5\u00e5\u0085\u00a8\u00e4\u00bd\u0093\u00e3\u0081\u00ab\u00e5\u00a4\u00a7\u00e8\u00a6\u008f\u00e6\u00a8\u00a1\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "0",
+            "superMinLVL": "14",
             "superCausality": "",
             "superAimTarget": "1",
             "superIsInactive": "0",
@@ -776,7 +800,18 @@
                 "Duration": "1",
                 "Amount": "20"
             },
-            "Multiplier": 355
+            "Multiplier": 355,
+            "1789": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "50"
+            }
         }
     },
     "Active Skill": {
