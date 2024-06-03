@@ -1393,6 +1393,34 @@
         "Standby or Finish": "Standby",
         "ID": "3",
         "Exec limit": "1",
+        "Condition": {
+            "Logic": "(((not 12662636850) and 12662636851) or 12662636852)",
+            "Causality": {
+                "12662636850": {
+                    "Button": {
+                        "Name": "Has this characters finish effect been activated?"
+                    },
+                    "Slider": {}
+                },
+                "12662636851": {
+                    "Button": {
+                        "Name": "Is HP 50 % or less?"
+                    },
+                    "Slider": {
+                        "Name": "What percentage of HP is remaining",
+                        "Logic": "<=50",
+                        "Min": 0,
+                        "Max": 100
+                    }
+                },
+                "12662636852": {
+                    "Button": {
+                        "Name": "UNKNOWN CAUSALITY CONDITION"
+                    },
+                    "Slider": {}
+                }
+            }
+        },
         "Standby Exclusivity": "charge",
         "Charge type": {
             "type": "energy_ball",
