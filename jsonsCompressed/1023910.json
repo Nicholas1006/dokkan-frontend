@@ -24,521 +24,95 @@
         "Super Strike"
     ],
     "Passive": {
-        "2718": {
-            "ID": "2718",
-            "Domain expansion": {
-                "Activated": false,
-                "ID": null,
-                "Name": null
-            },
-            "Revive": {
-                "Activated": false,
-                "HP recovered": null
-            },
-            "Nullification": {
-                "Activated": false,
-                "Absorbed": 0
-            },
-            "Toggle Other Line": {
-                "Activated": false,
-                "Line": null
-            },
-            "Counter": {
-                "Activated": false,
-                "Multiplier": null,
-                "DR from normals": null
-            },
-            "Standby": {
-                "Activated": false,
-                "Change form": {
-                    "Activated": false,
-                    "Unit": null
-                },
-                "Damage enemy": {
-                    "Activated": false,
-                    "Multiplier": null
-                }
-            },
-            "Forsee Super Attack": false,
-            "Guaranteed hit": false,
-            "Dodge chance": 0,
-            "Effective against all": false,
-            "Transformation": {
-                "Activated": false,
-                "Unit": null,
-                "Giant/Rage": false,
-                "Min Turns": null,
-                "Max Turns": null,
-                "Reverse chance": null
-            },
-            "Slot": null,
-            "Additional attack": {
-                "Activated": false,
-                "Chance of super": null
-            },
+        "2716": {
+            "ID": "2716",
             "Timing": "Start of turn",
-            "Building Stat": {
-                "Min": 0,
-                "Max": 0,
-                "Cause": null
-            },
-            "ATK": 100,
-            "DEF": 100,
-            "Heals": 0,
-            "Ki": 0,
-            "Status": [],
-            "DR": 0,
-            "Guard": false,
-            "Crit Chance": 0,
-            "Ki change": {
-                "From": null,
-                "To": null
-            },
-            "Target": {
-                "Category": null,
-                "Target": "Self",
-                "Class": [],
-                "Type": []
-            },
+            "ATK": 80,
+            "DEF": 80,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "1",
-            "First turn to activate": 0,
-            "Condition": null,
-            "Once only": false
+            "Length": "1"
         },
-        "1002718": {
-            "ID": "1002718",
-            "Domain expansion": {
-                "Activated": false,
-                "ID": null,
-                "Name": null
-            },
-            "Revive": {
-                "Activated": false,
-                "HP recovered": null
-            },
-            "Nullification": {
-                "Activated": false,
-                "Absorbed": 0
-            },
-            "Toggle Other Line": {
-                "Activated": false,
-                "Line": null
-            },
-            "Counter": {
-                "Activated": false,
-                "Multiplier": null,
-                "DR from normals": null
-            },
-            "Standby": {
-                "Activated": false,
-                "Change form": {
-                    "Activated": false,
-                    "Unit": null
-                },
-                "Damage enemy": {
-                    "Activated": false,
-                    "Multiplier": null
-                }
-            },
-            "Forsee Super Attack": false,
-            "Guaranteed hit": false,
-            "Dodge chance": 0,
-            "Effective against all": false,
-            "Transformation": {
-                "Activated": false,
-                "Unit": null,
-                "Giant/Rage": false,
-                "Min Turns": null,
-                "Max Turns": null,
-                "Reverse chance": null
-            },
-            "Slot": null,
-            "Additional attack": {
-                "Activated": false,
-                "Chance of super": null
-            },
+        "1002716": {
+            "ID": "1002716",
             "Timing": "On Super",
-            "Building Stat": {
-                "Min": 0,
-                "Max": 0,
-                "Cause": null
+            "ATK": 30,
+            "DEF": 30,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
             },
-            "ATK": 50,
+            "Length": "1",
+            "Condition": {
+                "Logic": "1270",
+                "Causalities": {
+                    "1270": {
+                        "Button": {
+                            "Name": "Is ki 12 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=12",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    }
+                }
+            }
+        },
+        "2002716": {
+            "ID": "2002716",
+            "Timing": "Start of turn",
             "DEF": 50,
-            "Heals": 0,
-            "Ki": 0,
-            "Status": [],
-            "DR": 0,
-            "Guard": false,
-            "Crit Chance": 0,
-            "Ki change": {
-                "From": null,
-                "To": null
-            },
-            "Target": {
-                "Category": null,
-                "Target": "Self",
-                "Class": [],
-                "Type": []
-            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Chance": "100",
             "Length": "1",
-            "First turn to activate": 0,
-            "Condition": "When ki is 12 or more",
-            "Once only": false
-        },
-        "2002718": {
-            "ID": "2002718",
-            "Domain expansion": {
-                "Activated": false,
-                "ID": null,
-                "Name": null
-            },
-            "Revive": {
-                "Activated": false,
-                "HP recovered": null
-            },
-            "Nullification": {
-                "Activated": false,
-                "Absorbed": 0
-            },
-            "Toggle Other Line": {
-                "Activated": false,
-                "Line": null
-            },
-            "Counter": {
-                "Activated": false,
-                "Multiplier": null,
-                "DR from normals": null
-            },
-            "Standby": {
-                "Activated": false,
-                "Change form": {
-                    "Activated": false,
-                    "Unit": null
-                },
-                "Damage enemy": {
-                    "Activated": false,
-                    "Multiplier": null
+            "Condition": {
+                "Logic": "1271",
+                "Causalities": {
+                    "1271": {
+                        "Button": {
+                            "Name": "Is there less than 2 enemies?"
+                        },
+                        "Slider": {
+                            "Name": "How many enemies are there?",
+                            "Logic": "<2",
+                            "Min": 1,
+                            "Max": 7
+                        }
+                    }
                 }
-            },
-            "Forsee Super Attack": false,
-            "Guaranteed hit": false,
-            "Dodge chance": 0,
-            "Effective against all": false,
-            "Transformation": {
-                "Activated": false,
-                "Unit": null,
-                "Giant/Rage": false,
-                "Min Turns": null,
-                "Max Turns": null,
-                "Reverse chance": null
-            },
-            "Slot": null,
-            "Additional attack": {
-                "Activated": false,
-                "Chance of super": null
-            },
-            "Timing": "Start of turn",
-            "Building Stat": {
-                "Min": 0,
-                "Max": 0,
-                "Cause": null
-            },
-            "ATK": 0,
-            "DEF": 50,
-            "Heals": 0,
-            "Ki": 0,
-            "Status": [],
-            "DR": 0,
-            "Guard": false,
-            "Crit Chance": 0,
-            "Ki change": {
-                "From": null,
-                "To": null
-            },
-            "Target": {
-                "Category": null,
-                "Target": "Self",
-                "Class": [],
-                "Type": []
-            },
-            "Buff": {
-                "Type": "Percentage",
-                "+ or -": "+"
-            },
-            "Chance": "100",
-            "Length": "1",
-            "First turn to activate": 0,
-            "Condition": "When facing less than 2 enemies",
-            "Once only": false
+            }
         },
-        "3002718": {
-            "ID": "3002718",
-            "Domain expansion": {
-                "Activated": false,
-                "ID": null,
-                "Name": null
-            },
-            "Revive": {
-                "Activated": false,
-                "HP recovered": null
-            },
-            "Nullification": {
-                "Activated": false,
-                "Absorbed": 0
-            },
-            "Toggle Other Line": {
-                "Activated": false,
-                "Line": null
-            },
-            "Counter": {
-                "Activated": false,
-                "Multiplier": null,
-                "DR from normals": null
-            },
-            "Standby": {
-                "Activated": false,
-                "Change form": {
-                    "Activated": false,
-                    "Unit": null
-                },
-                "Damage enemy": {
-                    "Activated": false,
-                    "Multiplier": null
-                }
-            },
-            "Forsee Super Attack": false,
-            "Guaranteed hit": false,
-            "Dodge chance": 30,
-            "Effective against all": false,
-            "Transformation": {
-                "Activated": false,
-                "Unit": null,
-                "Giant/Rage": false,
-                "Min Turns": null,
-                "Max Turns": null,
-                "Reverse chance": null
-            },
-            "Slot": null,
-            "Additional attack": {
-                "Activated": false,
-                "Chance of super": null
-            },
+        "3002716": {
+            "ID": "3002716",
             "Timing": "Start of turn",
-            "Building Stat": {
-                "Min": 0,
-                "Max": 0,
-                "Cause": null
-            },
-            "ATK": 0,
-            "DEF": 0,
-            "Heals": 0,
-            "Ki": 0,
-            "Status": [],
-            "DR": 0,
-            "Guard": false,
-            "Crit Chance": 0,
-            "Ki change": {
-                "From": null,
-                "To": null
-            },
-            "Target": {
-                "Category": null,
-                "Target": "Self",
-                "Class": [],
-                "Type": []
-            },
-            "Buff": {
-                "Type": "Percentage",
-                "+ or -": "+"
-            },
-            "Chance": "100",
-            "Length": "1",
-            "First turn to activate": 0,
-            "Condition": "When facing less than 2 enemies",
-            "Once only": false
-        },
-        "4002718": {
-            "ID": "4002718",
-            "Domain expansion": {
-                "Activated": false,
-                "ID": null,
-                "Name": null
-            },
-            "Revive": {
-                "Activated": false,
-                "HP recovered": null
-            },
-            "Nullification": {
-                "Activated": false,
-                "Absorbed": 0
-            },
-            "Toggle Other Line": {
-                "Activated": false,
-                "Line": null
-            },
-            "Counter": {
-                "Activated": false,
-                "Multiplier": null,
-                "DR from normals": null
-            },
-            "Standby": {
-                "Activated": false,
-                "Change form": {
-                    "Activated": false,
-                    "Unit": null
-                },
-                "Damage enemy": {
-                    "Activated": false,
-                    "Multiplier": null
-                }
-            },
-            "Forsee Super Attack": false,
-            "Guaranteed hit": false,
-            "Dodge chance": 0,
-            "Effective against all": false,
-            "Transformation": {
-                "Activated": false,
-                "Unit": null,
-                "Giant/Rage": false,
-                "Min Turns": null,
-                "Max Turns": null,
-                "Reverse chance": null
-            },
-            "Slot": null,
-            "Additional attack": {
-                "Activated": false,
-                "Chance of super": null
-            },
-            "Timing": "Start of turn",
-            "Building Stat": {
-                "Min": 0,
-                "Max": 0,
-                "Cause": null
-            },
             "ATK": 50,
-            "DEF": 0,
-            "Heals": 0,
-            "Ki": 0,
-            "Status": [],
-            "DR": 0,
-            "Guard": false,
-            "Crit Chance": 0,
-            "Ki change": {
-                "From": null,
-                "To": null
-            },
-            "Target": {
-                "Category": null,
-                "Target": "Self",
-                "Class": [],
-                "Type": []
-            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Chance": "100",
             "Length": "1",
-            "First turn to activate": 0,
-            "Condition": "When facing 2 or more enemies",
-            "Once only": false
-        },
-        "5002718": {
-            "ID": "5002718",
-            "Domain expansion": {
-                "Activated": false,
-                "ID": null,
-                "Name": null
-            },
-            "Revive": {
-                "Activated": false,
-                "HP recovered": null
-            },
-            "Nullification": {
-                "Activated": false,
-                "Absorbed": 0
-            },
-            "Toggle Other Line": {
-                "Activated": false,
-                "Line": null
-            },
-            "Counter": {
-                "Activated": false,
-                "Multiplier": null,
-                "DR from normals": null
-            },
-            "Standby": {
-                "Activated": false,
-                "Change form": {
-                    "Activated": false,
-                    "Unit": null
-                },
-                "Damage enemy": {
-                    "Activated": false,
-                    "Multiplier": null
+            "Condition": {
+                "Logic": "1272",
+                "Causalities": {
+                    "1272": {
+                        "Button": {
+                            "Name": "Is there 2 or more enemies?"
+                        },
+                        "Slider": {
+                            "Name": "How many enemies are there?",
+                            "Logic": ">=2",
+                            "Min": 1,
+                            "Max": 7
+                        }
+                    }
                 }
-            },
-            "Forsee Super Attack": false,
-            "Guaranteed hit": false,
-            "Dodge chance": 0,
-            "Effective against all": false,
-            "Transformation": {
-                "Activated": false,
-                "Unit": null,
-                "Giant/Rage": false,
-                "Min Turns": null,
-                "Max Turns": null,
-                "Reverse chance": null
-            },
-            "Slot": null,
-            "Additional attack": {
-                "Activated": true,
-                "Chance of super": "30"
-            },
-            "Timing": "On Super",
-            "Building Stat": {
-                "Min": 0,
-                "Max": 0,
-                "Cause": null
-            },
-            "ATK": 0,
-            "DEF": 0,
-            "Heals": 0,
-            "Ki": 0,
-            "Status": [],
-            "DR": 0,
-            "Guard": false,
-            "Crit Chance": 0,
-            "Ki change": {
-                "From": null,
-                "To": null
-            },
-            "Target": {
-                "Category": null,
-                "Target": "Self",
-                "Class": [],
-                "Type": []
-            },
-            "Buff": {
-                "Type": "Raw stats",
-                "+ or -": "+"
-            },
-            "Chance": "100",
-            "Length": "1",
-            "First turn to activate": 0,
-            "Condition": "When facing 2 or more enemies",
-            "Once only": false
+            }
         }
     },
     "Stats at levels": {
@@ -1204,14 +778,14 @@
         }
     },
     "Super Attack": {
-        "3592": {
-            "superID": "3592",
-            "superName": "\u00e3\u0083\u0095\u00e3\u0082\u00a1\u00e3\u0082\u00a4\u00e3\u0083\u008a\u00e3\u0083\u00ab\u00e3\u0082\u00ad\u00e3\u0083\u00a3\u00e3\u0083\u008e\u00e3\u0083\u00b3(\u00e6\u00a5\u00b5\u00e9\u0099\u0090)",
-            "superDescription": "1\u00e3\u0082\u00bf\u00e3\u0083\u00bc\u00e3\u0083\u00b3ATK\u00e3\u0081\u00a8DEF\u00e3\u0081\u008c\u00e4\u00b8\u008a\u00e6\u0098\u0087\u00e3\u0081\u0097\u00e3\u0080\u0081\n\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nDEF\u00e3\u0082\u0092\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
+        "3591": {
+            "superID": "3591",
+            "superName": "\u00e3\u0083\u0095\u00e3\u0082\u00a1\u00e3\u0082\u00a4\u00e3\u0083\u008a\u00e3\u0083\u00ab\u00e3\u0082\u00ad\u00e3\u0083\u00a3\u00e3\u0083\u008e\u00e3\u0083\u00b3",
+            "superDescription": "\u00e7\u009b\u00b8\u00e6\u0089\u008b\u00e3\u0081\u00ab\u00e8\u00b6\u0085\u00e7\u0089\u00b9\u00e5\u00a4\u00a7\u00e3\u0083\u0080\u00e3\u0083\u00a1\u00e3\u0083\u00bc\u00e3\u0082\u00b8\u00e3\u0082\u0092\u00e4\u00b8\u008e\u00e3\u0081\u0088\u00e3\u0080\u0081\nDEF\u00e3\u0082\u0092\u00e5\u00a4\u00a7\u00e5\u00b9\u0085\u00e4\u00bd\u008e\u00e4\u00b8\u008b\u00e3\u0081\u0095\u00e3\u0081\u009b\u00e3\u0082\u008b",
             "superMinKi": "12",
             "superPriority": "0.0",
             "superStyle": "Normal",
-            "superMinLVL": "19",
+            "superMinLVL": "0",
             "superCausality": "",
             "superAimTarget": "0",
             "superIsInactive": "0",
@@ -1224,19 +798,7 @@
                 "Amount": "20"
             },
             "Multiplier": 530,
-            "3592": {
-                "Type": "NormalEfficacySpecial",
-                "Chance": "100",
-                "Duration": "1",
-                "Buff": {
-                    "Type": "Percentage",
-                    "+ or -": "+"
-                },
-                "Target": "Self",
-                "ATK": "30",
-                "DEF": "30"
-            },
-            "1003592": {
+            "3591": {
                 "Type": "NormalEfficacySpecial",
                 "Chance": "100",
                 "Duration": "3",

@@ -1,3 +1,4 @@
+
 from globals import *
 from dokkanfunctions import *
 from numpy import source
@@ -5,22 +6,21 @@ from progress.bar import Bar
 directory="dataJP/"
 cardsJP=storedatabase(directory,"cards.csv")
 
-
-eza=True
+eza=False
 DEVEXCEPTIONS=False
-GLOBALCHECK=False
+GLOBALCHECK=True
 MAKEJSON=True
 CUTJSON=True
 
-CALCPASSIVE=False
-CALCLEADER=False
-CALCHIPO=False
+CALCPASSIVE=True
+CALCLEADER=True
+CALCHIPO=True
 CALCACTIVE=True
-CALCSUPERATTACK=False
-CALCLEVELS=False
-CALCBASIC=False
-CALCMULTIPLIER=False
-CALCSTANDBY=False
+CALCSUPERATTACK=True
+CALCLEVELS=True
+CALCBASIC=True
+CALCMULTIPLIER=True
+CALCSTANDBY=True
 
 passiveTime=0.0
 leaderTime=0.0
@@ -34,7 +34,7 @@ megaJsonTime=0.0
 standbyTime=0.0
 multiplierTime=0.0
 
-cardIDsToCheck=["1017631"]
+cardIDsToCheck=["1017630"]
 #cardIDsToCheck=["4026911","4025741","4028381","4026401","4027631","4027301","4025781","4026541"]
 
 cardsToCheck=[]
@@ -94,7 +94,11 @@ for unit in cardsToCheck:
     unitDictionary["Passive"]={}
     if(CALCPASSIVE):
         passiveStart=time.time()
-        unitDictionary["Passive"]=parsePassiveSkill(unit,eza,DEVEXCEPTIONS)
+        parsedPassive=parsePassiveSkill(unit,eza,DEVEXCEPTIONS)
+        if(CUTJSON):
+            for passiveLine in parsedPassive:
+                parsedPassive[passiveLine]=shortenPassiveDictionary(parsedPassive[passiveLine])
+        unitDictionary["Passive"]=parsedPassive
         passiveTime+=time.time()-passiveStart
 
     unitDictionary["Stats at levels"]={}
@@ -171,12 +175,13 @@ for unit in cardsToCheck:
     
 
 if(GLOBALCHECK and MAKEJSON):
+    print("Making MegaJson")
     megaJsonStart=time.time()
     turnintoJson(MegaPassiveJson, "MegaPassiveJson",directoryName="jsonsCompressed")
     megaJsonTime+=time.time()-megaJsonStart
 
-
-bar.finish()
+if(GLOBALCHECK):
+    bar.finish()
 print("Basic time:",round(basicTime,2))
 print("Leader time:",round(leaderTime,2))
 print("Passive time:",round(passiveTime,2))
