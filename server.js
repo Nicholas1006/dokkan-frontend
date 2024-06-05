@@ -13,6 +13,8 @@ app.use(express.static(websitePath));
 // Define a route that handles requests with sub-URLs
 app.get('/:subURL', (req, res) => {
     const subURL = req.params.subURL;
+    app.use(express.static(subURL));
+    
     console.log(`Received request for sub-URL: ${subURL}`);
     // Render the template HTML file with subURL parameter
     res.sendFile(path.join(__dirname, 'Website', 'template.html'), { subURL });

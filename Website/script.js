@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
       // Display placeholder image or error message
     };
     image.src = 'dbManagement/assets/final_assets/' + subURL + '.png';
-    //image.src = "dbManagement/assets/final_assets/1020760.png"
+    //image.src = "dbManagement/assets/final_assets/1023620.png"
 
     const textContainer = document.getElementById('text-container');
     const text = document.createElement('p');
@@ -74,10 +74,6 @@ document.addEventListener('DOMContentLoaded', function() {
     return 'Calculated Result';
   }
 
-  // Example: Fetch data based on sub-URL
-  //const subURL = 'example';
-  //const urlParams = new URLSearchParams(window.location.search);
-  //const subURL = urlParams.get('subURL'); // Assuming subURL is passed as a query parameter
-  
+  // Get sub-URL from the global variable set by the server
   fetchData(subURL);
 });
