@@ -523,7 +523,7 @@ def listListToLogic(listList,previouslyUsed=[],seed=10000):
         for logic in listList[1:]:
             calculatedLogic=listListToLogic(logic,previouslyUsed,seed)
             output["Logic"]+=calculatedLogic["Logic"]
-            output["Logic"]+=" and "
+            output["Logic"]+=" And "
             output["Causality"].update(calculatedLogic["Causality"])
         output["Logic"]=output["Logic"][:-5]
         output["Logic"]+=")"
@@ -532,7 +532,7 @@ def listListToLogic(listList,previouslyUsed=[],seed=10000):
         for logic in listList[1:]:
             calculatedLogic=listListToLogic(logic,previouslyUsed,seed)
             output["Logic"]+=calculatedLogic["Logic"]
-            output["Logic"]+=" or "
+            output["Logic"]+=" Or "
             output["Causality"].update(calculatedLogic["Causality"])
         output["Logic"]=output["Logic"][:-4]
         output["Logic"]+=")"
