@@ -30,5 +30,6 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Get sub-URL from the global variable set by the server
+  subURL = window.suburl;
   fetchData(subURL);
 });
