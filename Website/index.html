@@ -1,58 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Questionnaire</title>
-    <script>
-        async function loadContent() {
-            const suburl = window.location.pathname.substring(1);
-            const response = await fetch(`/${suburl}`);
-            const data = await response.json();
-
-            if (data.error) {
-                document.getElementById('content').innerHTML = `<p>${data.error}</p>`;
-                return;
-            }
-
-            const jsonData = JSON.parse(data.json_data);
-            const questions = jsonData.questions;
-            const contentDiv = document.getElementById('content');
-
-            questions.forEach((question, index) => {
-                const questionElem = document.createElement('div');
-                questionElem.innerHTML = `<p>${question.question}</p><input type="text" id="answer${index}" />`;
-                contentDiv.appendChild(questionElem);
-            });
-
-            const imgElem = document.createElement('img');
-            imgElem.src = data.final_asset_image;
-            contentDiv.appendChild(imgElem);
-
-            const button = document.createElement('button');
-            button.innerText = 'Submit';
-            button.onclick = () => calculateResults(questions);
-            contentDiv.appendChild(button);
-        }
-
-        function calculateResults(questions) {
-            let results = {};
-            questions.forEach((question, index) => {
-                const answer = document.getElementById(`answer${index}`).value;
-                // Process answer as needed
-                results[question.id] = answer;
-            });
-
-            // Display or process results
-            console.log(results);
-            document.getElementById('results').innerText = JSON.stringify(results);
-        }
-
-        window.onload = loadContent;
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Questionnaire Website</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="content"></div>
-    <div id="results"></div>
+  <div id="result-container">
+    <h2>Result:</h2>
+    <p id="result">0</p>
+  </div>
+  <div id="image-container"></div>
+  <script src="script.js"></script>
 </body>
 </html>
