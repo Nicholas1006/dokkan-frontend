@@ -8,7 +8,7 @@ cardsJP=storedatabase(directory,"cards.csv")
 
 eza=True
 DEVEXCEPTIONS=True
-GLOBALCHECK=True
+GLOBALPARSE=True
 MAKEJSON=True
 CUTJSON=True
 
@@ -34,12 +34,12 @@ megaJsonTime=0.0
 standbyTime=0.0
 multiplierTime=0.0
 
-cardIDsToCheck=["1028370"]
+cardIDsToCheck=["1028020"]
 #cardIDsToCheck=["4026911","4025741","4028381","4026401","4027631","4027301","4025781","4026541"]
 
 cardsToCheck=[]
 
-if GLOBALCHECK:
+if GLOBALPARSE:
     for unit in cardsJP:
         if qualifyUsable(unit):
             cardsToCheck.append(unit)
@@ -63,7 +63,7 @@ longestPassive=["a"]
 MegaPassiveJson={}
 HiPoBoards={}
 
-if GLOBALCHECK:
+if GLOBALPARSE:
     bar = Bar('Parsing units', max=len(cardsToCheck))
 
 for unit in cardsToCheck:
@@ -79,7 +79,16 @@ for unit in cardsToCheck:
         if(unitGB!=None):
             unitDictionary["Name"]=unitGB[1]
         else:
-            unitDictionary["Name"]=unit[1]
+            card_unique_info_id=unit[3]
+            temp=searchbyid(code=card_unique_info_id,codecolumn=3,database=cardsGB,column=1)
+            if(temp!=None):
+                likelyName=longestCommonSubstring(temp)
+                if(likelyName!=""):
+                    unitDictionary["Name"]=likelyName
+                else:
+                    unitDictionary["Name"]=unit[1]
+            else:
+                unitDictionary["Name"]=unit[1]
         unitDictionary["Rarity"]=getrarity(unit)
         unitDictionary["Max Level"]=unit[13]
         unitDictionary["Max HP"]=unit1[7]
@@ -163,24 +172,24 @@ for unit in cardsToCheck:
 
     if(MAKEJSON):
         jsonStart=time.time()
-        if(GLOBALCHECK):
+        if(GLOBALPARSE):
             MegaPassiveJson[unit[0]]=unitDictionary
         if(CUTJSON):
             turnintoJson(unitDictionary, jsonName,directoryName="jsonsCompressed")
         else:
             turnintoJson(unitDictionary, jsonName,directoryName="jsons")
         jsonTime+=time.time()-jsonStart
-    if(GLOBALCHECK):
+    if(GLOBALPARSE):
         bar.next()
     
 
-if(GLOBALCHECK and MAKEJSON):
+if(GLOBALPARSE and MAKEJSON):
     print("Making MegaJson")
     megaJsonStart=time.time()
     turnintoJson(MegaPassiveJson, "MegaPassiveJson",directoryName="jsonsCompressed")
     megaJsonTime+=time.time()-megaJsonStart
 
-if(GLOBALCHECK):
+if(GLOBALPARSE):
     bar.finish()
 print("Basic time:",round(basicTime,2))
 print("Leader time:",round(leaderTime,2))

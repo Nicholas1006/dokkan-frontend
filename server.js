@@ -5,6 +5,7 @@ const app = express();
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'Website')));
 // Serve static files from the 'asset' directory
 const dbManagementPath = path.join(__dirname, 'dbManagement');
 app.use('/dbManagement', express.static(dbManagementPath)); // specify '/dbManagement' as the base URL for asset files
