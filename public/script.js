@@ -1,5 +1,22 @@
 document.addEventListener('DOMContentLoaded', function() {
-
+  function TypingToColor(typing){
+    console.log(typing)
+    console.log(typing.upperCase());
+    switch(typing.upperCase()){
+      case "AGL":
+        return "#00FF00";
+      case "STR":
+        return "#FF0000";
+      case "PHY":
+        return "#FFA500";
+      case "INT":
+        return "#0000FF";
+      case "TEQ":
+        return "#FFFF00";
+      default:
+        return "#FFFFFF";
+    }
+  }
   const toggleButton1  = document.getElementById('toggle-button1');
   toggleButton1.addEventListener('click', function() {
     toggleButton1.classList.toggle('active');
@@ -93,6 +110,8 @@ document.addEventListener('DOMContentLoaded', function() {
       .catch(error => console.error('Error fetching JSON:', error));
     
     const imageContainer = document.getElementById('image-container');
+    imageContainer.style.backgroundColor = TypingToColor(data.Typing);
+    imageContainer.style.backgroundColor = "#00FFFF";
     const cardImage = new Image();
     cardImage.onload = function() {
       imageContainer.appendChild(cardImage);
