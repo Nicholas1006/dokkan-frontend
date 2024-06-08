@@ -2,10 +2,26 @@ document.addEventListener('DOMContentLoaded', function() {
   // Function to fetch JSON data and image based on sub-URL
   function fetchData(subURL) {
     fetch('dbManagement/jsonsCompressed/' + subURL + '.json')
-      .then(response => response.json())
+      .then(response =>{
+        if(!response.ok){
+          throw new Error('Network response was not ok' + response.statusText);
+        }
+        return response.json();
+      })
       .then(data => {
-        // Call function to generate questions based on JSON data
-        generateQuestions(data.questions);
+        const typingText = data.Typing || "Typing data not found";
+        const typingContainer = document.getElementById('typing-container');
+        typingContainer.innerHTML = '';
+        const typing = document.createElement('p');
+        typing.textContent = typingText;
+        typingContainer.appendChild(typing);
+
+        const nameText = data.Name || "Name not found";
+        const nameContainer = document.getElementById('name-container');
+        nameContainer.innerHTML = '';
+        const name = document.createElement('p');
+        name.textContent = nameText;
+        nameContainer.appendChild(name);
       })
       .catch(error => console.error('Error fetching JSON:', error));
     

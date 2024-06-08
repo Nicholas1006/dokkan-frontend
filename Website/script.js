@@ -1,14 +1,20 @@
 document.addEventListener('DOMContentLoaded', function() {
   // Function to fetch JSON data and image based on sub-URL
-  function fetchData(subURL) {
+  function fetchData() {
     fetch('dbManagement/jsonsCompressed/' + subURL + '.json')
       .then(response => response.json())
       .then(data => {
         // Call function to generate questions based on JSON data
-        generateQuestions(data.questions);
+        const typingContainer = document.getElementById('typing-container');
+        const typing = document.createElement('p');
+        typing.textContent = "This is a text";
+        typingContainer.appendChild(typing);
+        typingContainer.innerHTML = unitType;
       })
       .catch(error => console.error('Error fetching JSON:', error));
     
+    
+
     const imageContainer = document.getElementById('image-container');
     const image = new Image();
     image.onload = function() {
@@ -30,5 +36,5 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Get sub-URL from the global variable set by the server
-  fetchData(subURL);
+  fetchData();
 });
