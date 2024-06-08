@@ -292,6 +292,12 @@ def parseLeaderSkill(unit,leader_skill_id,DEVEXCEPTIONS=False):
     global sub_target_typesJP
     global leader_skillsJP
     output={}
+    if(JPExclusiveCheck(unit[0])):
+        leader_skill_name=searchbyid(code=unit[22][:-2],codecolumn=0,database=leader_skill_setsJP,column=1,)
+        output["Name"]=leader_skill_name[0]
+    else:
+        leader_skill_name=searchbyid(code=unit[22][:-2],codecolumn=0,database=leader_skill_setsGB,column=1,)
+        output["Name"]=leader_skill_name[0]
     leader_skill_lines=searchbycolumn(code=unit[22][:-2],database=leader_skillsJP,column=1,printing=False)
     for leader_skill_line in leader_skill_lines:
         output[leader_skill_line[0]]={}
