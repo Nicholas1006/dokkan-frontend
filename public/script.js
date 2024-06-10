@@ -115,10 +115,8 @@ document.addEventListener('DOMContentLoaded', function() {
       linksContainer.appendChild(linkButton);
       
       linksContainer.appendChild(linkSlider);
-      console.log(linkSlider)      
 
       linkButton.onclick = function(){
-        
         if(linkButton.classList.contains('active')){
           linkButton.style.background="#FF5C35"
           linkButton.classList.remove('active');
@@ -136,13 +134,73 @@ document.addEventListener('DOMContentLoaded', function() {
       });
       row+=1;
     };
+
+    
+    let allLinksSlider = document.createElement('input');
+    allLinksSlider.type = "range";
+    allLinksSlider.min = 1;
+    allLinksSlider.max = 10;
+    allLinksSlider.value = 10;
+    allLinksSlider.style.width = "100px";
+    allLinksSlider.style.height = "20px";
+    allLinksSlider.style.border = "1px solid black";
+    allLinksSlider.style.margin = "0px";
+    allLinksSlider.style.cursor = "pointer";
+    allLinksSlider.style.gridRow= row*2 +1;
+    allLinksSlider.addEventListener('input', function(){
+      let linksContainer = document.querySelector('#links-container');
+      let linkSliders = linksContainer.querySelectorAll('input[type=range]');
+      linkSliders.forEach((slider, index) => {
+        slider.value = allLinksSlider.value;
+        let linkName = linksContainer.querySelectorAll('button')[index].textContent.split(' Level')[0];
+        linksContainer.querySelectorAll('button')[index].innerHTML = linkName + " <br>Level: " + allLinksSlider.value;
+      });
+      updateLinkBuffs(json);
+    });
+    linksContainer.appendChild(allLinksSlider);
+
+    let allLinksButton = document.createElement('button');
+    allLinksButton.innerHTML = "All Links";
+    allLinksButton.style.width = "100px";
+    allLinksButton.style.height = "60px";
+    allLinksButton.style.border = "none";
+    allLinksButton.style.margin = "0px";
+    allLinksButton.style.cursor = "pointer";
+    allLinksButton.style.background="#00FF00"
+    allLinksButton.style.gridRow= row*2+2;
+    allLinksButton.classList.add('active');
+    allLinksButton.onclick = function(){
+      if(allLinksButton.classList.contains('active')){
+        allLinksButton.style.background="#FF5C35"
+        allLinksButton.classList.remove('active');
+        let linkButtons = linksContainer.querySelectorAll('button');
+        linkButtons.forEach((button, index) => {
+          button.classList.remove('active');
+          button.style.background="#FF5C35"
+        });
+      }
+      else{
+        allLinksButton.classList.add('active');
+        allLinksButton.style.background="#00FF00"
+        let linkButtons = linksContainer.querySelectorAll('button');
+        linkButtons.forEach((button, index) => {
+          button.classList.add('active');
+          button.style.background="#00FF00"
+        });
+      }
+      updateLinkBuffs(json);
+    }
+    linksContainer.appendChild(allLinksButton);
+    linksContainer.appendChild(allLinksButton);
+    linksContainer.appendChild(allLinksButton);
+    linksContainer.appendChild(allLinksButton);
+
+
     //create an paragraph so that none of the sliders are .lastchild
     let linkBuffs = document.createElement('p');
     linkBuffs.innerHTML = "Link Buffs: ";
     linksContainer.appendChild(linkBuffs);
-    
-
-    updateLinkBuffs(json)
+    //updateLinkBuffs(json)
   });
 
 
@@ -164,10 +222,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Iterate over each link slider and button
     linkSliders.forEach((slider, index) => {
+      if(linkButtons[index].textContent.split(' Level')[0]=="All Links") return;
       if(!linkButtons[index].classList.contains('active')) return;
       let linkName = linkButtons[index].textContent.split(' Level')[0];
       
       let linkLevel = parseInt(slider.value);
+      console.log(json.Links)
+      console.log(linkButtons[index].textContent)
       let linkData = json.Links[linkName][linkLevel];
 
       // Add the link buffs to the total link buffs
@@ -183,6 +244,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Create a paragraph element to display the total link buffs
     let linkBuffs = document.createElement('p');
+    linkBuffs.style.height = "100px";
     linkBuffs.innerHTML = "Link Buffs: ";
     if (totalATKBuff) linkBuffs.innerHTML += "<br>ATK: " + totalATKBuff + "% ";
     if (totalDEFBuff) linkBuffs.innerHTML += "<br>DEF: " + totalDEFBuff + "% ";
@@ -232,7 +294,6 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     } else {
       transformationContainer.style.display = "none";
-      console.log("No transformations found");
     }
   }
   );
