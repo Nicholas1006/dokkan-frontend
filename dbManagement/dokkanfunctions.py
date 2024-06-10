@@ -228,7 +228,6 @@ def parseSpecials(specialRow,DEVEXCEPTIONS=False):
     return(output)
         
 def parseHiddenPotential(Potential_board_id,DEVEXCEPTIONS=False):
-    startTime=time.time()
     global potential_squaresJP
     global potential_square_relationsJP
     global potential_eventsJP
@@ -2742,111 +2741,111 @@ def parseActiveSkill(unit,eza=False,DEVEXCEPTIONS=False):
                 output["Attack"]["Target"]="Enemy"
             elif(ultimate_row[4]=="1"):
                 output["Attack"]["Target"]="All enemies"
-
+        output["Effects"]={}
         effects_line=searchbycolumn(code=active_id,database=active_skillsJP,column=1)
         for line in effects_line:
-            output[line[0]]={}
-            output[line[0]]["Duration"]=active_lineJP[4]
-            output[line[0]]["Effect"]={}
+            output["Effects"][line[0]]={}
+            output["Effects"][line[0]]["Duration"]=active_lineJP[4]
+            output["Effects"][line[0]]["Effect"]={}
             
             
             if(line[4]=="0"):
-                output[line[0]]["Effect"]["Type"]="Raw stats"
-                output[line[0]]["Effect"]["+ or -"]="+"
+                output["Effects"][line[0]]["Effect"]["Type"]="Raw stats"
+                output["Effects"][line[0]]["Effect"]["+ or -"]="+"
 
             elif(line[4]=="1"):
-                output[line[0]]["Effect"]["Type"]="Raw stats"
-                output[line[0]]["Effect"]["+ or -"]="-"
+                output["Effects"][line[0]]["Effect"]["Type"]="Raw stats"
+                output["Effects"][line[0]]["Effect"]["+ or -"]="-"
 
             elif(line[4]=="2"):
-                output[line[0]]["Effect"]["Type"]="Percentage"
-                output[line[0]]["Effect"]["+ or -"]="+"
+                output["Effects"][line[0]]["Effect"]["Type"]="Percentage"
+                output["Effects"][line[0]]["Effect"]["+ or -"]="+"
 
             elif(line[4]=="3"):
-                output[line[0]]["Effect"]["Type"]="Percentage"
-                output[line[0]]["Effect"]["+ or -"]="-"
+                output["Effects"][line[0]]["Effect"]["Type"]="Percentage"
+                output["Effects"][line[0]]["Effect"]["+ or -"]="-"
             else:
-                output[line[0]]["Effect"]["Type"]="Unknown"
-                output[line[0]]["Effect"]["+ or -"]="Unknown"
+                output["Effects"][line[0]]["Effect"]["Type"]="Unknown"
+                output["Effects"][line[0]]["Effect"]["+ or -"]="Unknown"
                 if(DEVEXCEPTIONS==True):
                         raise Exception("Unknown stat increase type")
 
             if(line[2]=="1"):
-                output[line[0]]["Target"]="Self"
+                output["Effects"][line[0]]["Target"]="Self"
             elif(line[2]=="2"):
-                output[line[0]]["Target"]="All allies"
+                output["Effects"][line[0]]["Target"]="All allies"
             elif(line[2]=="3"):
-                output[line[0]]["Target"]="Enemy"
+                output["Effects"][line[0]]["Target"]="Enemy"
             elif(line[2]=="4"):
-                output[line[0]]["Target"]="All enemies"
+                output["Effects"][line[0]]["Target"]="All enemies"
             elif(line[2]=="13"):
-                output[line[0]]["Target"]="Extreme class allies"
+                output["Effects"][line[0]]["Target"]="Extreme class allies"
             elif(line[2]=="16"):
-                output[line[0]]["Target"]="All allies other than this character on every turn"
+                output["Effects"][line[0]]["Target"]="All allies other than this character on every turn"
             else:
                 print("Unknown target")
                 if(DEVEXCEPTIONS):
                     raise Exception("Unknown Target")
 
             if(line[5]=="1"):
-                output[line[0]]["Effect"]["Buff"]="ATK Buff"
-                output[line[0]]["Effect"]["Amount"]=int(line[6])
+                output["Effects"][line[0]]["Effect"]["Buff"]="ATK Buff"
+                output["Effects"][line[0]]["Effect"]["Amount"]=int(line[6])
             elif(line[5]=="2"):
-                output[line[0]]["Effect"]["Buff"]="DEF Buff"
-                output[line[0]]["Effect"]["Amount"]=int(line[6])
+                output["Effects"][line[0]]["Effect"]["Buff"]="DEF Buff"
+                output["Effects"][line[0]]["Effect"]["Amount"]=int(line[6])
             elif(line[5]=="4"):
-                output[line[0]]["Effect"]["Buff"]="Heals"
-                output[line[0]]["Effect"]["Amount"]=int(line[6])
+                output["Effects"][line[0]]["Effect"]["Buff"]="Heals"
+                output["Effects"][line[0]]["Effect"]["Amount"]=int(line[6])
             elif(line[5]=="5"):
-                output[line[0]]["Effect"]["Buff"]="Ki Buff"
-                output[line[0]]["Effect"]["Amount"]=int(line[6])
+                output["Effects"][line[0]]["Effect"]["Buff"]="Ki Buff"
+                output["Effects"][line[0]]["Effect"]["Amount"]=int(line[6])
             elif(line[5]=="9"):
-                output[line[0]]["Effect"]["Buff"]="Stun"
+                output["Effects"][line[0]]["Effect"]["Buff"]="Stun"
             elif(line[5]=="22"):
-                output[line[0]]["Effect"]["Buff"]="Remove negative effects"
+                output["Effects"][line[0]]["Effect"]["Buff"]="Remove negative effects"
             elif(line[5]=="48"):
-                output[line[0]]["Effect"]["Buff"]="Seal"
+                output["Effects"][line[0]]["Effect"]["Buff"]="Seal"
             elif(line[5]=="51"):
-                output[line[0]]["Effect"]["Buff"]="Changes orbs"
-                output[line[0]]["Effect"]["From"]=KiOrbType(line[6],DEVEXCEPTIONS)
-                output[line[0]]["Effect"]["To"]=KiOrbType(line[7],DEVEXCEPTIONS)
+                output["Effects"][line[0]]["Effect"]["Buff"]="Changes orbs"
+                output["Effects"][line[0]]["Effect"]["From"]=KiOrbType(line[6],DEVEXCEPTIONS)
+                output["Effects"][line[0]]["Effect"]["To"]=KiOrbType(line[7],DEVEXCEPTIONS)
             elif(line[5]=="76"):
-                output[line[0]]["Effect"]["Buff"]="Effective against all"
+                output["Effects"][line[0]]["Effect"]["Buff"]="Effective against all"
             elif(line[5]=="78"):
-                output[line[0]]["Effect"]["Buff"]="Guard"
+                output["Effects"][line[0]]["Effect"]["Buff"]="Guard"
             elif(line[5]=="79"):
-                output[line[0]]["Effect"]["Buff"]="Giant form/Rage"
-                output[line[0]]["Effect"]["Unit"]=line[6]
+                output["Effects"][line[0]]["Effect"]["Buff"]="Giant form/Rage"
+                output["Effects"][line[0]]["Effect"]["Unit"]=line[6]
                 battle_params=searchbycolumn(code=line[7],column=1,database=battle_paramsJP)
                 for param in battle_params:
                     if(param[2]=="0"):
-                        output[line[0]]["Effect"]["Min turns"]=int(param[3])
+                        output["Effects"][line[0]]["Effect"]["Min turns"]=int(param[3])
                     elif(param[2]=="1"):
-                        output[line[0]]["Effect"]["Max turns"]=int(param[3])
+                        output["Effects"][line[0]]["Effect"]["Max turns"]=int(param[3])
                     elif(param[2]=="2"):
-                        output[line[0]]["Effect"]["Reverse chance"]=int(param[3])
+                        output["Effects"][line[0]]["Effect"]["Reverse chance"]=int(param[3])
             elif(line[5]=="90"):
-                output[line[0]]["Effect"]["Buff"]="Crit chance"
-                output[line[0]]["Effect"]["Amount"]=int(line[6])
+                output["Effects"][line[0]]["Effect"]["Buff"]="Crit chance"
+                output["Effects"][line[0]]["Effect"]["Amount"]=int(line[6])
             elif(line[5]=="91"):
-                output[line[0]]["Effect"]["Buff"]="Dodge chance"
-                output[line[0]]["Effect"]["Amount"]=int(line[6])
+                output["Effects"][line[0]]["Effect"]["Buff"]="Dodge chance"
+                output["Effects"][line[0]]["Effect"]["Amount"]=int(line[6])
             elif(line[5]=="92"):
-                output[line[0]]["Effect"]["Buff"]="Guaranteed to hit"
+                output["Effects"][line[0]]["Effect"]["Buff"]="Guaranteed to hit"
             elif(line[5]=="103"):
-                output[line[0]]["Effect"]["Buff"]="Transforms"
-                output[line[0]]["Effect"]["Unit"]=line[6]
+                output["Effects"][line[0]]["Effect"]["Buff"]="Transforms"
+                output["Effects"][line[0]]["Effect"]["Unit"]=line[6]
             elif(line[5]=="105"):
-                output[line[0]]["Effect"]["Buff"]="Changes orbs"
-                output[line[0]]["Effect"]["From"]=["AGL","TEQ","INT","STR","PHY","Rainbow","Sweet treats"]
-                output[line[0]]["Effect"]["To"]=binaryOrbType(line[6],DEVEXCEPTIONS)
+                output["Effects"][line[0]]["Effect"]["Buff"]="Changes orbs"
+                output["Effects"][line[0]]["Effect"]["From"]=["AGL","TEQ","INT","STR","PHY","Rainbow","Sweet treats"]
+                output["Effects"][line[0]]["Effect"]["To"]=binaryOrbType(line[6],DEVEXCEPTIONS)
             elif(line[5]=="107"):
-                output[line[0]]["Effect"]["Buff"]="Delays enemy attack"
-                output[line[0]]["Effect"]["Amount"]=int(line[6])
+                output["Effects"][line[0]]["Effect"]["Buff"]="Delays enemy attack"
+                output["Effects"][line[0]]["Effect"]["Amount"]=int(line[6])
             elif(line[5]=="111"):
-                output[line[0]]["Effect"]["Buff"]="Disable action"
+                output["Effects"][line[0]]["Effect"]["Buff"]="Disable action"
             elif(line[5]=="123"):
-                output[line[0]]["Effect"]["Buff"]="Redirect attacks to me"
+                output["Effects"][line[0]]["Effect"]["Buff"]="Redirect attacks to me"
             else:
                 if(DEVEXCEPTIONS):
                     print("UNKNOWN ACTIVE EFFECT")

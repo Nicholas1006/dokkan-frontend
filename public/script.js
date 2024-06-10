@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', function() {
   // Get the sub-URL from the window object
   if(window.suburl[6] == "1"){
     assetSubURL = window.suburl.slice(0, -1)+0;
-    console.log(assetSubURL);
   }
   else{
     assetSubURL = window.suburl;
@@ -17,10 +16,43 @@ document.addEventListener('DOMContentLoaded', function() {
   const starButton=document.getElementById('star-button');
   const toggleButtons = Array.from(document.querySelectorAll('.toggle-btn1, .toggle-btn2, .toggle-btn3, .toggle-btn4'));
 
+  let transformationContainer=document.getElementById('transformation-container');
+  jsonPromise.then(json => {
+    let transformations =json["Transformations"];
+    if( Array.isArray(transformations) && transformations.length){
+      for (const transformationID of transformations){
+        let unitID = transformationID;
+        if(unitID[6]=="1"){
+          unitID = unitID.slice(0, -1)+0;
+        }
+        //creates a button that links to the suburl of the unit with the background set to the unitID within the assets/final_assets folder
+        let transformationButton = document.createElement('button');
+        transformationButton.style.backgroundImage = "url('dbManagement/assets/final_assets/"+unitID+".png')";
+        transformationButton.style.backgroundSize = "100% 100%";
+        transformationButton.style.backgroundRepeat = "no-repeat";
+        transformationButton.style.backgroundPosition = "center";
+        transformationButton.style.width = "109px";
+        transformationButton.style.height = "100px";
+        transformationButton.style.border = "none";
+        transformationButton.style.margin = "5px";
+        transformationButton.style.cursor = "pointer";
+        transformationContainer.appendChild(transformationButton);
+        transformationButton.onclick = function(){
+          window.location.href = "/"+unitID;
+        }
+      }
+    } else {
+      transformationContainer.style.display = "none";
+      console.log("No transformations found");
+    }
+  }
+  );
+
+
+
   let levelSlider=document.getElementById('level-slider');
   let levelInput=document.getElementById('level-input');
   jsonPromise.then(json => {
-    console.log(json["Max Level"]);
     levelSlider.max = json["Max Level"];
     levelInput.max=json["Max Level"];
     levelInput.value=json["Max Level"];
@@ -107,7 +139,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Function to update the image container with a new image
   function updateImageContainer(imageContainerId, subURL, typing){
     const imageContainer = document.getElementById(imageContainerId);
-    imageContainer.style.backgroundColor = "#00FFFF";
+    imageContainer.style.backgroundColor = webFunctions.colorToBackground(webFunctions.typingToColor(typing));
     const cardImage = new Image();
     cardImage.onload = function() {
       imageContainer.appendChild(cardImage);
@@ -129,6 +161,14 @@ document.addEventListener('DOMContentLoaded', function() {
       })
     //everything under this can see the data from the json
     .then(data => {
+      if((data["Rarity"] == "lr" || data["Rarity"] == "ur") && subURL[6]=="0"){
+        let redirectURL = window.location.protocol + "//" + window.location.host;
+        redirectURL = redirectURL + "/" + subURL.slice(0, -1)+ "1";
+        window.location.href = redirectURL;
+      }
+
+      //change the background of the slider to the typing color
+      document.getElementById('level-slider').style.backgroundColor = webFunctions.LightenColor(webFunctions.typingToColor(data.Typing), 30);
       document.title=data["Leader Skill"]["Name"];
       document.title+=data.Name;
 
@@ -158,7 +198,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let ATK = parseInt(json["Stats at levels"][levelSlider.value]["ATK"]);
     let DEF = parseInt(json["Stats at levels"][levelSlider.value]["DEF"]);
     let HP = parseInt((json["Stats at levels"][levelSlider.value]["HP"]));
-    if(starButton.classList.contains('active' || 'rainbow')){
+    if(starButton.classList.contains('active') || starButton.classList.contains('rainbow')){
       ATK += parseInt(json["Hidden Potential"]["0"]["ATK"])
       DEF += parseInt(json["Hidden Potential"]["0"]["DEF"])
       HP += parseInt(json["Hidden Potential"]["0"]["HP"])
@@ -176,9 +216,9 @@ document.addEventListener('DOMContentLoaded', function() {
     DEFstat.textContent = "DEF: " + DEF;
     HPstat.textContent = "HP: " + HP;
 
+    statsContainer.appendChild(HPstat);
     statsContainer.appendChild(ATKstat);
     statsContainer.appendChild(DEFstat);
-    statsContainer.appendChild(HPstat);
   }
 
   
@@ -188,11 +228,9 @@ document.addEventListener('DOMContentLoaded', function() {
   
   jsonPromise.then(json => {
     AdjustBaseStats(json);
-    console.log(json["Rarity"]);
     if(json["Rarity"] != "lr" && json["Rarity"] != "ur"){
       const buttonContainer = document.getElementById('hipo-button-container');
       buttonContainer.style.display = "none";
-      console.log(buttonContainer.style.display)
     }
     
   });

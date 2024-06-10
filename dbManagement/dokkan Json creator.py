@@ -32,7 +32,7 @@ jsonTime=0.0
 standbyTime=0.0
 multiplierTime=0.0
 
-cardIDsToCheck=["1003800","1003801"]
+cardIDsToCheck=["1015051"]
 #cardIDsToCheck=["4026911","4025741","4028381","4026401","4027631","4027301","4025781","4026541"]
 
 cardsToCheck=[]
@@ -95,7 +95,7 @@ for unit in cardsToCheck:
         unitDictionary["Links"]=getalllinks(unit)
         basicTime+=time.time()-basicStart
     
-
+    unitDictionary["Transformations"]=[]
 
     unitDictionary["Passive"]={}
     if(CALCPASSIVE):
@@ -138,7 +138,14 @@ for unit in cardsToCheck:
         unitDictionary["Active Skill"]=parseActiveSkill(unit,eza,DEVEXCEPTIONS)
         activeTime+=time.time()-activeStart
 
-
+    if(unitDictionary["Passive"]!=None):
+        for passiveLine in unitDictionary["Passive"]:
+            if "Transformation" in unitDictionary["Passive"][passiveLine]:
+                unitDictionary["Transformations"].append(unitDictionary["Passive"][passiveLine]["Transformation"]["Unit"])
+    if(unitDictionary["Active Skill"]!=None):
+        for activeLine in unitDictionary["Active Skill"]["Effects"]:
+            if "Unit" in unitDictionary["Active Skill"]["Effects"][activeLine]["Effect"]:
+                unitDictionary["Transformations"].append(unitDictionary["Active Skill"]["Effects"][activeLine]["Effect"]["Unit"])
 
 
 
