@@ -61,6 +61,7 @@ def superAttackMultiplierExtractor(superAttackID,super_attack_lvl,DEVEXCEPTIONS=
 def parseSuperAttack(unit,eza=False,DEVEXCEPTIONS=False):
     global card_specialsJP
     global special_setsJP
+    global special_setsGB
     global special_bonusesJP
     global specialsJP
     global optimal_awakening_growthsJP
@@ -75,10 +76,20 @@ def parseSuperAttack(unit,eza=False,DEVEXCEPTIONS=False):
     card_specialss=removeDuplicatesUltraList(ultraList=card_specialss,slot=0)
     for card_special in card_specialss:
         superAttackDictionary={}
+        if(JPExclusiveCheck(unit[0])==False):
+            superSetGB=searchbycolumn(code=card_special[2],column=0,database=special_setsGB)
+        else:
+            superSetGB=[]
         superSet=searchbycolumn(code=card_special[2],column=0,database=special_setsJP)
         superAttackDictionary["superID"]=superSet[0][0]
-        superAttackDictionary["superName"]=superSet[0][1]
-        superAttackDictionary["superDescription"]=superSet[0][2]
+        if(superSetGB==[]):
+            superAttackDictionary["superName"]=superSet[0][1]
+            superAttackDictionary["superDescription"]=superSet[0][2]
+        else:
+            superAttackDictionary["superName"]=superSetGB[0][1]
+            superAttackDictionary["superDescription"]=superSetGB[0][2]
+
+        
         superAttackDictionary["superMinKi"]=card_special[6]
         superAttackDictionary["superPriority"]=card_special[3]
         superAttackDictionary["superStyle"]=card_special[4]
@@ -466,6 +477,55 @@ def JPExclusiveCheck(unitid):
         return(True)
     else:
         return(False)
+    
+def checkEza(unitid):
+    global cardsGB
+    global cardsJP
+    global optimal_awakening_growthsGB
+    global optimal_awakening_growthsJP
+    globalVersion=searchbycolumn(code=unitid,column=0,database=cardsGB)
+    japanVersion=searchbycolumn(code=unitid,column=0,database=cardsJP)
+    if(globalVersion==[]):
+        globalExists=False
+        globalEza=False
+    else:
+        globalExists=True
+        if(globalVersion[16]==""):
+            globalEza=False
+        else:
+            awakeningID=globalVersion[16]
+            ezaRow=searchbycolumn(code=awakeningID,column=0,database=optimal_awakening_growthsJP)
+            if(ezaRow==[]):
+                globalEza=False
+            else:
+                globalEza=True
+
+    if(japanVersion==[]):
+        japanExists=False
+        japanEza=False
+    else:
+        japanExists=True
+        if(japanVersion[16]==""):
+            japanEza=False
+        else:
+            awakeningID=japanVersion[16]
+            ezaRow=searchbycolumn(code=awakeningID,column=0,database=optimal_awakening_growthsGB)
+            if(ezaRow==[]):
+                japanEza=False
+            else:
+                japanEza=True
+    
+    if(globalEza and japanEza):
+        return("Both")
+    elif(globalEza):
+        return("Global")
+    elif(japanEza):
+        return("Japan")
+    else:
+        return("None")
+
+
+
 
 def logic_reducer(expression):
     def apply_operator(operators, values):
@@ -2519,7 +2579,7 @@ def switchUnitToGlobal(unitJP):
     return(unitGB)
 
 def qualifyUsable(card,printing=True):
-    if ((card[21]=="" and card[23]=="")==False) and (card[53]!="2030-12-31 23:59:59") and(card[53]!='2030-01-01 00:00:00')and (card[53]!="2038-01-01 00:00:00") and (card[0][0]!="5") and (card[0][0]!="9") and (card[0][-1]=="0") and (card[22]!=""):
+    if ((card[21]=="" and card[23]=="")==False) and card[0]!="id" and (card[53]!="2030-12-31 23:59:59") and(card[53]!='2030-01-01 00:00:00')and (card[53]!="2038-01-01 00:00:00") and (card[0][0]!="5") and (card[0][0]!="9") and (card[22]!=""):
         return(True)
     else:
         return(False)
@@ -3504,12 +3564,16 @@ def getUnitStats(unit,level,DEVEXCEPTIONS=False):
     def_max=int(unit[11])
     level_max=int(unit[13])
     growthInfo=searchbycolumn(code=unit[15],column=1,database=card_growthsJP)
-    coef=float(searchbyid(code=str(level),codecolumn=2,database=growthInfo,column=3)[0])
-    stats={}
-    stats["HP"]=math.floor((0.5 * (level - 1) * (hp_max - hp_init)) / (level_max - 1) + 0.5 * coef * (hp_max - hp_init) + hp_init)
-    stats["ATK"]=math.floor((0.5 * (level - 1) * (atk_max - atk_init)) / (level_max - 1) + 0.5 * coef * (atk_max - atk_init) + atk_init)
-    stats["DEF"]=math.floor((0.5 * (level - 1) * (def_max - def_init)) / (level_max - 1) + 0.5 * coef * (def_max - def_init) + def_init)
-    return(stats)
+    temp=searchbyid(code=str(level),codecolumn=2,database=growthInfo,column=3)
+    if(temp!=None):
+        coef=float(searchbyid(code=str(level),codecolumn=2,database=growthInfo,column=3)[0])
+        stats={}
+        stats["HP"]=math.floor((0.5 * (level - 1) * (hp_max - hp_init)) / (level_max - 1) + 0.5 * coef * (hp_max - hp_init) + hp_init)
+        stats["ATK"]=math.floor((0.5 * (level - 1) * (atk_max - atk_init)) / (level_max - 1) + 0.5 * coef * (atk_max - atk_init) + atk_init)
+        stats["DEF"]=math.floor((0.5 * (level - 1) * (def_max - def_init)) / (level_max - 1) + 0.5 * coef * (def_max - def_init) + def_init)
+        return(stats)
+    else:
+        return(None)
     
 
 def swapToUnitWith0(unit):

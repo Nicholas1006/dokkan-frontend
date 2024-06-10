@@ -1,6 +1,6 @@
 // Function to fetch JSON data based on sub-URL
 export function getJson(subURL) {
-    return fetch('dbManagement/jsonsCompressed/' + subURL + '.json')
+    return fetch('dbManagement/jsons/' + subURL + '.json')
       .then(response => {
           if (!response.ok) {
               throw new Error('Network response was not ok' + response.statusText);
@@ -12,3 +12,4 @@ export function getJson(subURL) {
           throw error; // Re-throw the error to propagate it to the caller
       });
   }
+

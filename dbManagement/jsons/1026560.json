@@ -1,13 +1,13 @@
 {
     "ID": "1026560",
-    "Typing": null,
+    "Typing": "INT",
     "Class": "Extreme",
     "Name": "Piccolo Jr. (Giant Form)",
     "Rarity": "ur",
     "Max Level": "100",
-    "Max HP": "11850",
-    "Max ATK": "10820",
-    "Max DEF": "8425",
+    "Max HP": "10648",
+    "Max ATK": "10027",
+    "Max DEF": "7580",
     "Categories": [
         "Gifted Warriors",
         "Terrifying Conquerors",
@@ -32,9 +32,1276 @@
         "Transform",
         "Fierce Battle"
     ],
-    "Passive": {},
-    "Active Skill": {},
-    "Super Attack": {},
-    "Standby Skill": {},
-    "Hidden Potential": {}
+    "Passive": {
+        "3449": {
+            "ID": "3449",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "100"
+            },
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Chance": "50",
+            "Length": "1",
+            "Condition": {
+                "Logic": "2354",
+                "Causalities": {
+                    "2354": {
+                        "Button": {
+                            "Name": "Is it within the first 1 turns from this characters entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since the characters entry turn?",
+                            "Logic": "<=1",
+                            "Min": 0,
+                            "Max": 1
+                        }
+                    }
+                }
+            }
+        },
+        "1003449": {
+            "ID": "1003449",
+            "Timing": "Start of turn",
+            "Ki": 2,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "5",
+            "Once only": true
+        },
+        "2003449": {
+            "ID": "2003449",
+            "Timing": "Start of turn",
+            "ATK": 101,
+            "DEF": 101,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "5",
+            "Once only": true
+        },
+        "3003449": {
+            "ID": "3003449",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "100"
+            },
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Chance": "30",
+            "Length": "1"
+        },
+        "4003449": {
+            "ID": "4003449",
+            "Timing": "Start of turn",
+            "Ki": 3,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "5003449": {
+            "ID": "5003449",
+            "Timing": "Start of turn",
+            "ATK": 150,
+            "DEF": 150,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "6003449": {
+            "ID": "6003449",
+            "Timing": "Attacking the enemy",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 100,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "ATK": 20,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Condition": {
+                "Logic": "2362",
+                "Causalities": {
+                    "2362": {
+                        "Button": {
+                            "Name": "Is a super being performed?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "7003449": {
+            "ID": "7003449",
+            "Timing": "Attacking the enemy",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 100,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "DEF": 20,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Condition": {
+                "Logic": "2362",
+                "Causalities": {
+                    "2362": {
+                        "Button": {
+                            "Name": "Is a super being performed?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "8003449": {
+            "ID": "8003449",
+            "Effective against all": true,
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2356",
+                "Causalities": {
+                    "2356": {
+                        "Button": {
+                            "Name": "Is there less than 2 enemies?"
+                        },
+                        "Slider": {
+                            "Name": "How many enemies are there?",
+                            "Logic": "<2",
+                            "Min": 1,
+                            "Max": 7
+                        }
+                    }
+                }
+            }
+        },
+        "9003449": {
+            "ID": "9003449",
+            "Timing": "after all ki collected",
+            "ATK": 100,
+            "DEF": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2357",
+                "Causalities": {
+                    "2357": {
+                        "Button": {
+                            "Name": "Is this the 1st attacker in the turn?"
+                        },
+                        "Slider": {
+                            "Name": "What position is this character attacking in?",
+                            "Logic": "==1",
+                            "Min": 1,
+                            "Max": 3
+                        }
+                    }
+                }
+            }
+        },
+        "10003449": {
+            "ID": "10003449",
+            "Timing": "after all ki collected",
+            "ATK": 30,
+            "DEF": 30,
+            "Target": {
+                "Target": "Enemies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "-"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2357",
+                "Causalities": {
+                    "2357": {
+                        "Button": {
+                            "Name": "Is this the 1st attacker in the turn?"
+                        },
+                        "Slider": {
+                            "Name": "What position is this character attacking in?",
+                            "Logic": "==1",
+                            "Min": 1,
+                            "Max": 3
+                        }
+                    }
+                }
+            }
+        },
+        "11003449": {
+            "ID": "11003449",
+            "Timing": "Hit recieved",
+            "ATK": 60,
+            "DEF": 60,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2357 and 24",
+                "Causalities": {
+                    "2357": {
+                        "Button": {
+                            "Name": "Is this the 1st attacker in the turn?"
+                        },
+                        "Slider": {
+                            "Name": "What position is this character attacking in?",
+                            "Logic": "==1",
+                            "Min": 1,
+                            "Max": 3
+                        }
+                    },
+                    "24": {
+                        "Button": {
+                            "Name": "Has attack been recieved?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "12003449": {
+            "ID": "12003449",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "100"
+            },
+            "Timing": "after all ki collected",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Chance": "50",
+            "Length": "1",
+            "Condition": {
+                "Logic": "2358 or 2359",
+                "Causalities": {
+                    "2358": {
+                        "Button": {
+                            "Name": "Is this the 2nd attacker in the turn?"
+                        },
+                        "Slider": {
+                            "Name": "What position is this character attacking in?",
+                            "Logic": "==2",
+                            "Min": 1,
+                            "Max": 3
+                        }
+                    },
+                    "2359": {
+                        "Button": {
+                            "Name": "Is this the 3rd attacker in the turn?"
+                        },
+                        "Slider": {
+                            "Name": "What position is this character attacking in?",
+                            "Logic": "==3",
+                            "Min": 1,
+                            "Max": 3
+                        }
+                    }
+                }
+            }
+        },
+        "13003449": {
+            "ID": "13003449",
+            "Timing": "On Super",
+            "ATK": 100,
+            "DEF": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2355 and 2358 or 2355 and 2359",
+                "Causalities": {
+                    "2355": {
+                        "Button": {
+                            "Name": "Is ki 12 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=12",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    },
+                    "2358": {
+                        "Button": {
+                            "Name": "Is this the 2nd attacker in the turn?"
+                        },
+                        "Slider": {
+                            "Name": "What position is this character attacking in?",
+                            "Logic": "==2",
+                            "Min": 1,
+                            "Max": 3
+                        }
+                    },
+                    "2359": {
+                        "Button": {
+                            "Name": "Is this the 3rd attacker in the turn?"
+                        },
+                        "Slider": {
+                            "Name": "What position is this character attacking in?",
+                            "Logic": "==3",
+                            "Min": 1,
+                            "Max": 3
+                        }
+                    }
+                }
+            }
+        },
+        "14003449": {
+            "ID": "14003449",
+            "Transformation": {
+                "Activated": true,
+                "Unit": "4026560",
+                "Giant/Rage": true,
+                "Min Turns": "2",
+                "Max Turns": "3",
+                "Reverse chance": "50"
+            },
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2360 and 2361",
+                "Causalities": {
+                    "2360": {
+                        "Button": {
+                            "Name": "Is the turn count 4 or more?"
+                        },
+                        "Slider": {
+                            "Name": "What turn is it?",
+                            "Logic": ">=4",
+                            "Min": 1
+                        }
+                    },
+                    "2361": {
+                        "Button": {
+                            "Name": "Is HP 60 % or less?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining",
+                            "Logic": "<=60",
+                            "Min": 0,
+                            "Max": 100
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "Stats at levels": {
+        "1": {
+            "HP": 3194,
+            "ATK": 3008,
+            "DEF": 2274
+        },
+        "2": {
+            "HP": 3268,
+            "ATK": 3078,
+            "DEF": 2327
+        },
+        "3": {
+            "HP": 3343,
+            "ATK": 3149,
+            "DEF": 2380
+        },
+        "4": {
+            "HP": 3418,
+            "ATK": 3219,
+            "DEF": 2433
+        },
+        "5": {
+            "HP": 3493,
+            "ATK": 3290,
+            "DEF": 2487
+        },
+        "6": {
+            "HP": 3572,
+            "ATK": 3364,
+            "DEF": 2543
+        },
+        "7": {
+            "HP": 3647,
+            "ATK": 3434,
+            "DEF": 2596
+        },
+        "8": {
+            "HP": 3722,
+            "ATK": 3505,
+            "DEF": 2649
+        },
+        "9": {
+            "HP": 3797,
+            "ATK": 3575,
+            "DEF": 2703
+        },
+        "10": {
+            "HP": 3871,
+            "ATK": 3646,
+            "DEF": 2756
+        },
+        "11": {
+            "HP": 3946,
+            "ATK": 3716,
+            "DEF": 2809
+        },
+        "12": {
+            "HP": 4021,
+            "ATK": 3787,
+            "DEF": 2863
+        },
+        "13": {
+            "HP": 4096,
+            "ATK": 3858,
+            "DEF": 2916
+        },
+        "14": {
+            "HP": 4171,
+            "ATK": 3928,
+            "DEF": 2969
+        },
+        "15": {
+            "HP": 4246,
+            "ATK": 3999,
+            "DEF": 3023
+        },
+        "16": {
+            "HP": 4325,
+            "ATK": 4073,
+            "DEF": 3079
+        },
+        "17": {
+            "HP": 4400,
+            "ATK": 4143,
+            "DEF": 3132
+        },
+        "18": {
+            "HP": 4475,
+            "ATK": 4214,
+            "DEF": 3185
+        },
+        "19": {
+            "HP": 4549,
+            "ATK": 4284,
+            "DEF": 3239
+        },
+        "20": {
+            "HP": 4624,
+            "ATK": 4355,
+            "DEF": 3292
+        },
+        "21": {
+            "HP": 4699,
+            "ATK": 4425,
+            "DEF": 3345
+        },
+        "22": {
+            "HP": 4774,
+            "ATK": 4496,
+            "DEF": 3399
+        },
+        "23": {
+            "HP": 4849,
+            "ATK": 4566,
+            "DEF": 3452
+        },
+        "24": {
+            "HP": 4924,
+            "ATK": 4637,
+            "DEF": 3505
+        },
+        "25": {
+            "HP": 4999,
+            "ATK": 4708,
+            "DEF": 3559
+        },
+        "26": {
+            "HP": 5078,
+            "ATK": 4782,
+            "DEF": 3615
+        },
+        "27": {
+            "HP": 5153,
+            "ATK": 4852,
+            "DEF": 3668
+        },
+        "28": {
+            "HP": 5227,
+            "ATK": 4923,
+            "DEF": 3721
+        },
+        "29": {
+            "HP": 5302,
+            "ATK": 4993,
+            "DEF": 3775
+        },
+        "30": {
+            "HP": 5377,
+            "ATK": 5064,
+            "DEF": 3828
+        },
+        "31": {
+            "HP": 5452,
+            "ATK": 5134,
+            "DEF": 3881
+        },
+        "32": {
+            "HP": 5527,
+            "ATK": 5205,
+            "DEF": 3935
+        },
+        "33": {
+            "HP": 5602,
+            "ATK": 5275,
+            "DEF": 3988
+        },
+        "34": {
+            "HP": 5677,
+            "ATK": 5346,
+            "DEF": 4041
+        },
+        "35": {
+            "HP": 5752,
+            "ATK": 5417,
+            "DEF": 4095
+        },
+        "36": {
+            "HP": 5830,
+            "ATK": 5491,
+            "DEF": 4151
+        },
+        "37": {
+            "HP": 5905,
+            "ATK": 5561,
+            "DEF": 4204
+        },
+        "38": {
+            "HP": 5980,
+            "ATK": 5632,
+            "DEF": 4257
+        },
+        "39": {
+            "HP": 6055,
+            "ATK": 5702,
+            "DEF": 4311
+        },
+        "40": {
+            "HP": 6130,
+            "ATK": 5773,
+            "DEF": 4364
+        },
+        "41": {
+            "HP": 6205,
+            "ATK": 5843,
+            "DEF": 4417
+        },
+        "42": {
+            "HP": 6280,
+            "ATK": 5914,
+            "DEF": 4471
+        },
+        "43": {
+            "HP": 6355,
+            "ATK": 5984,
+            "DEF": 4524
+        },
+        "44": {
+            "HP": 6430,
+            "ATK": 6055,
+            "DEF": 4577
+        },
+        "45": {
+            "HP": 6505,
+            "ATK": 6125,
+            "DEF": 4631
+        },
+        "46": {
+            "HP": 6583,
+            "ATK": 6200,
+            "DEF": 4687
+        },
+        "47": {
+            "HP": 6658,
+            "ATK": 6270,
+            "DEF": 4740
+        },
+        "48": {
+            "HP": 6733,
+            "ATK": 6341,
+            "DEF": 4793
+        },
+        "49": {
+            "HP": 6808,
+            "ATK": 6411,
+            "DEF": 4847
+        },
+        "50": {
+            "HP": 6883,
+            "ATK": 6482,
+            "DEF": 4900
+        },
+        "51": {
+            "HP": 6958,
+            "ATK": 6552,
+            "DEF": 4953
+        },
+        "52": {
+            "HP": 7033,
+            "ATK": 6623,
+            "DEF": 5006
+        },
+        "53": {
+            "HP": 7108,
+            "ATK": 6693,
+            "DEF": 5060
+        },
+        "54": {
+            "HP": 7183,
+            "ATK": 6764,
+            "DEF": 5113
+        },
+        "55": {
+            "HP": 7258,
+            "ATK": 6834,
+            "DEF": 5166
+        },
+        "56": {
+            "HP": 7336,
+            "ATK": 6909,
+            "DEF": 5222
+        },
+        "57": {
+            "HP": 7411,
+            "ATK": 6979,
+            "DEF": 5276
+        },
+        "58": {
+            "HP": 7486,
+            "ATK": 7050,
+            "DEF": 5329
+        },
+        "59": {
+            "HP": 7561,
+            "ATK": 7120,
+            "DEF": 5382
+        },
+        "60": {
+            "HP": 7636,
+            "ATK": 7191,
+            "DEF": 5436
+        },
+        "61": {
+            "HP": 7711,
+            "ATK": 7261,
+            "DEF": 5489
+        },
+        "62": {
+            "HP": 7786,
+            "ATK": 7332,
+            "DEF": 5542
+        },
+        "63": {
+            "HP": 7861,
+            "ATK": 7402,
+            "DEF": 5596
+        },
+        "64": {
+            "HP": 7936,
+            "ATK": 7473,
+            "DEF": 5649
+        },
+        "65": {
+            "HP": 8011,
+            "ATK": 7543,
+            "DEF": 5702
+        },
+        "66": {
+            "HP": 8089,
+            "ATK": 7617,
+            "DEF": 5758
+        },
+        "67": {
+            "HP": 8164,
+            "ATK": 7688,
+            "DEF": 5812
+        },
+        "68": {
+            "HP": 8239,
+            "ATK": 7759,
+            "DEF": 5865
+        },
+        "69": {
+            "HP": 8314,
+            "ATK": 7829,
+            "DEF": 5918
+        },
+        "70": {
+            "HP": 8389,
+            "ATK": 7900,
+            "DEF": 5972
+        },
+        "71": {
+            "HP": 8464,
+            "ATK": 7970,
+            "DEF": 6025
+        },
+        "72": {
+            "HP": 8539,
+            "ATK": 8041,
+            "DEF": 6078
+        },
+        "73": {
+            "HP": 8614,
+            "ATK": 8111,
+            "DEF": 6132
+        },
+        "74": {
+            "HP": 8688,
+            "ATK": 8182,
+            "DEF": 6185
+        },
+        "75": {
+            "HP": 8763,
+            "ATK": 8252,
+            "DEF": 6238
+        },
+        "76": {
+            "HP": 8842,
+            "ATK": 8326,
+            "DEF": 6294
+        },
+        "77": {
+            "HP": 8917,
+            "ATK": 8397,
+            "DEF": 6348
+        },
+        "78": {
+            "HP": 8992,
+            "ATK": 8468,
+            "DEF": 6401
+        },
+        "79": {
+            "HP": 9067,
+            "ATK": 8538,
+            "DEF": 6454
+        },
+        "80": {
+            "HP": 9142,
+            "ATK": 8609,
+            "DEF": 6508
+        },
+        "81": {
+            "HP": 9217,
+            "ATK": 8679,
+            "DEF": 6561
+        },
+        "82": {
+            "HP": 9292,
+            "ATK": 8750,
+            "DEF": 6614
+        },
+        "83": {
+            "HP": 9366,
+            "ATK": 8820,
+            "DEF": 6668
+        },
+        "84": {
+            "HP": 9441,
+            "ATK": 8891,
+            "DEF": 6721
+        },
+        "85": {
+            "HP": 9516,
+            "ATK": 8961,
+            "DEF": 6774
+        },
+        "86": {
+            "HP": 9595,
+            "ATK": 9035,
+            "DEF": 6830
+        },
+        "87": {
+            "HP": 9670,
+            "ATK": 9106,
+            "DEF": 6884
+        },
+        "88": {
+            "HP": 9745,
+            "ATK": 9176,
+            "DEF": 6937
+        },
+        "89": {
+            "HP": 9820,
+            "ATK": 9247,
+            "DEF": 6990
+        },
+        "90": {
+            "HP": 9895,
+            "ATK": 9318,
+            "DEF": 7044
+        },
+        "91": {
+            "HP": 9970,
+            "ATK": 9388,
+            "DEF": 7097
+        },
+        "92": {
+            "HP": 10044,
+            "ATK": 9459,
+            "DEF": 7150
+        },
+        "93": {
+            "HP": 10119,
+            "ATK": 9529,
+            "DEF": 7204
+        },
+        "94": {
+            "HP": 10194,
+            "ATK": 9600,
+            "DEF": 7257
+        },
+        "95": {
+            "HP": 10269,
+            "ATK": 9670,
+            "DEF": 7310
+        },
+        "96": {
+            "HP": 10348,
+            "ATK": 9744,
+            "DEF": 7366
+        },
+        "97": {
+            "HP": 10423,
+            "ATK": 9815,
+            "DEF": 7420
+        },
+        "98": {
+            "HP": 10498,
+            "ATK": 9885,
+            "DEF": 7473
+        },
+        "99": {
+            "HP": 10573,
+            "ATK": 9956,
+            "DEF": 7526
+        },
+        "100": {
+            "HP": 10648,
+            "ATK": 10027,
+            "DEF": 7580
+        }
+    },
+    "Leader Skill": {
+        "Name": "Death Match for World Domination",
+        "10265600": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Gifted Warriors"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        },
+        "10265601": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Gifted Warriors"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": []
+            },
+            "HP": 170,
+            "ATK": 170,
+            "DEF": 170
+        },
+        "10265602": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Terrifying Conquerors"
+                ],
+                "Excluded Category": [
+                    "Gifted Warriors"
+                ],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        },
+        "10265603": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Terrifying Conquerors"
+                ],
+                "Excluded Category": [
+                    "Gifted Warriors"
+                ],
+                "Allies or enemies": "Allies",
+                "Class": []
+            },
+            "HP": 170,
+            "ATK": 170,
+            "DEF": 170
+        },
+        "10265604": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Giant Form"
+                ],
+                "Excluded Category": [
+                    "Gifted Warriors",
+                    "Terrifying Conquerors"
+                ],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        },
+        "10265605": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Giant Form"
+                ],
+                "Excluded Category": [
+                    "Gifted Warriors",
+                    "Terrifying Conquerors"
+                ],
+                "Allies or enemies": "Allies",
+                "Class": []
+            },
+            "HP": 170,
+            "ATK": 170,
+            "DEF": 170
+        },
+        "10265606": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Gifted Warriors",
+                    "Battle of Fate"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": []
+            },
+            "HP": 30,
+            "ATK": 30,
+            "DEF": 30
+        },
+        "10265607": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Gifted Warriors",
+                    "World Tournament"
+                ],
+                "Excluded Category": [
+                    "Battle of Fate"
+                ],
+                "Allies or enemies": "Allies",
+                "Class": []
+            },
+            "HP": 30,
+            "ATK": 30,
+            "DEF": 30
+        },
+        "10265608": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Terrifying Conquerors",
+                    "Battle of Fate"
+                ],
+                "Excluded Category": [
+                    "Gifted Warriors"
+                ],
+                "Allies or enemies": "Allies",
+                "Class": []
+            },
+            "HP": 30,
+            "ATK": 30,
+            "DEF": 30
+        },
+        "10265609": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Terrifying Conquerors",
+                    "World Tournament"
+                ],
+                "Excluded Category": [
+                    "Gifted Warriors",
+                    "Battle of Fate"
+                ],
+                "Allies or enemies": "Allies",
+                "Class": []
+            },
+            "HP": 30,
+            "ATK": 30,
+            "DEF": 30
+        },
+        "10265610": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Giant Form",
+                    "Battle of Fate"
+                ],
+                "Excluded Category": [
+                    "Gifted Warriors",
+                    "Terrifying Conquerors"
+                ],
+                "Allies or enemies": "Allies",
+                "Class": []
+            },
+            "HP": 30,
+            "ATK": 30,
+            "DEF": 30
+        },
+        "10265611": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Giant Form",
+                    "World Tournament"
+                ],
+                "Excluded Category": [
+                    "Gifted Warriors",
+                    "Terrifying Conquerors",
+                    "Battle of Fate"
+                ],
+                "Allies or enemies": "Allies",
+                "Class": []
+            },
+            "HP": 30,
+            "ATK": 30,
+            "DEF": 30
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 0,
+            "ATK": 0,
+            "DEF": 0
+        },
+        "1": {
+            "HP": 0,
+            "ATK": 0,
+            "DEF": 0
+        },
+        "2": {
+            "HP": 0,
+            "ATK": 0,
+            "DEF": 0
+        },
+        "3": {
+            "HP": 0,
+            "ATK": 0,
+            "DEF": 0
+        },
+        "4": {
+            "HP": 0,
+            "ATK": 0,
+            "DEF": 0
+        }
+    },
+    "Super Attack": {
+        "4649": {
+            "superID": "4649",
+            "superName": "Explosive Demon Wave",
+            "superDescription": "Raises ATK & DEF for 1 turn and \ncauses immense damage with \na high chance of stunning the enemy",
+            "superMinKi": "12",
+            "superPriority": "0.0",
+            "superStyle": "Normal",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "0"
+            },
+            "4649": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "30",
+                "DEF": "30"
+            },
+            "1004649": {
+                "Type": "ExtraEfficacySpecial",
+                "Chance": "50",
+                "Duration": "2",
+                "Buff": {
+                    "Type": "Raw stats",
+                    "+ or -": "+"
+                },
+                "Target": "Enemy",
+                "Status": "Stun"
+            }
+        }
+    },
+    "Active Skill": {
+        "Name": "Super Explosive Wave",
+        "Description": "Massively raises ATK temporarily and \ncauses mega-colossal damage to all enemies; \ndisables an action of every enemy once within the turn",
+        "Condition": {
+            "Logic": "2368 and 2369 or 2370",
+            "Causalities": {
+                "2368": {
+                    "Button": {
+                        "Name": "Is the turn count 4 or more?"
+                    },
+                    "Slider": {
+                        "Name": "What turn is it?",
+                        "Logic": ">=4",
+                        "Min": 1
+                    }
+                },
+                "2369": {
+                    "Button": {
+                        "Name": "Is HP 50 % or less?"
+                    },
+                    "Slider": {
+                        "Name": "What percentage of HP is remaining",
+                        "Logic": "<=50",
+                        "Min": 0,
+                        "Max": 100
+                    }
+                },
+                "2370": {
+                    "Button": {
+                        "Name": "Is there 2 or more enemies?"
+                    },
+                    "Slider": {
+                        "Name": "How many enemies are there?",
+                        "Logic": ">=2",
+                        "Min": 1,
+                        "Max": 7
+                    }
+                }
+            }
+        },
+        "Uses": 1,
+        "Attack": {
+            "Multiplier": 540,
+            "Target": "All enemies"
+        },
+        "235": {
+            "Duration": "1",
+            "Effect": {
+                "Type": "Raw stats",
+                "+ or -": "+",
+                "Buff": "Disable action"
+            },
+            "Target": "All enemies"
+        }
+    },
+    "Ki Multiplier": {
+        "0": 75.0,
+        "1": 81.25,
+        "2": 87.5,
+        "3": 93.75,
+        "4": 100.0,
+        "5": 106.25,
+        "6": 112.5,
+        "7": 118.75,
+        "8": 125.0,
+        "9": 131.25,
+        "10": 137.5,
+        "11": 143.75,
+        "12": 150.0
+    },
+    "Standby Skill": {}
 }

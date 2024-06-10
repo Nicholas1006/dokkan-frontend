@@ -1,20 +1,50 @@
 import * as webFunctions from "./websiteFunctions.js";
 document.addEventListener('DOMContentLoaded', function() {
   
-  let subURL;
+  let assetSubURL;
   // Get the sub-URL from the window object
   if(window.suburl[6] == "1"){
-    subURL = window.suburl.slice(0, -1)+0;
-    console.log(subURL);
+    assetSubURL = window.suburl.slice(0, -1)+0;
+    console.log(assetSubURL);
   }
   else{
-    subURL = window.suburl;
+    assetSubURL = window.suburl;
   }
+  let subURL = window.suburl;
 
   const jsonPromise=webFunctions.getJson(subURL);
 
   const starButton=document.getElementById('star-button');
   const toggleButtons = Array.from(document.querySelectorAll('.toggle-btn1, .toggle-btn2, .toggle-btn3, .toggle-btn4'));
+
+  let levelSlider=document.getElementById('level-slider');
+  let levelInput=document.getElementById('level-input');
+  jsonPromise.then(json => {
+    console.log(json["Max Level"]);
+    levelSlider.max = json["Max Level"];
+    levelInput.max=json["Max Level"];
+    levelInput.value=json["Max Level"];
+    levelSlider.value=json["Max Level"];
+  });
+
+  levelSlider.addEventListener('input', function(){
+    levelInput.value=levelSlider.value;
+    jsonPromise.then(json => {
+      AdjustBaseStats(json);
+    });
+  });
+
+  levelInput.addEventListener('input', function(){
+    if(levelInput.value>levelSlider.max){
+      levelInput.value=levelSlider.max;
+    }
+    levelSlider.value=levelInput.value;
+    jsonPromise.then(json => {
+      AdjustBaseStats(json);
+    });
+  });
+  
+
 
   // Function to handle button click event
   function toggleButtonHandler(button, jsonPromise) {
@@ -34,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
         starButton.classList.remove('rainbow');
       }
       jsonPromise.then(json => {
-        AdjustHiPo(json);
+        AdjustBaseStats(json);
       });
     });
   }
@@ -51,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
       starButton.classList.add('active');
     }
     jsonPromise.then(json => {
-      AdjustHiPo(json);
+      AdjustBaseStats(json);
     });
   });
 
@@ -85,12 +115,12 @@ document.addEventListener('DOMContentLoaded', function() {
     cardImage.onerror = function() {
       console.error('Error loading image:', cardImage.src);
     };
-    cardImage.src = 'dbManagement/assets/final_assets/' + subURL + '.png';
+    cardImage.src = 'dbManagement/assets/final_assets/' + assetSubURL + '.png';
   }
 
   // Function to fetch JSON data and image based on sub-URL
   function fetchData(subURL) {
-    fetch('dbManagement/jsonsCompressed/' + subURL + '.json')
+    fetch('dbManagement/jsons/' + subURL + '.json')
     .then(response =>{
         if(!response.ok){
           throw new Error('Network response was not ok' + response.statusText);
@@ -119,15 +149,15 @@ document.addEventListener('DOMContentLoaded', function() {
       .catch(error => console.error('Error fetching JSON:', error));
   }
 
-  function AdjustHiPo(json){
+  function AdjustBaseStats(json){
     const statsContainer = document.getElementById('stats-container');
     statsContainer.innerHTML = '';
     const ATKstat = document.createElement('p');
     const DEFstat = document.createElement('p');
     const HPstat = document.createElement('p');
-    let ATK = parseInt(json["Max ATK"]);
-    let DEF = parseInt(json["Max DEF"]);
-    let HP = parseInt(json["Max HP"]);
+    let ATK = parseInt(json["Stats at levels"][levelSlider.value]["ATK"]);
+    let DEF = parseInt(json["Stats at levels"][levelSlider.value]["DEF"]);
+    let HP = parseInt((json["Stats at levels"][levelSlider.value]["HP"]));
     if(starButton.classList.contains('active' || 'rainbow')){
       ATK += parseInt(json["Hidden Potential"]["0"]["ATK"])
       DEF += parseInt(json["Hidden Potential"]["0"]["DEF"])
@@ -155,9 +185,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
   fetchData(subURL);
+  
   jsonPromise.then(json => {
-    if(json["Rarity"] == "lr" || json["Rarity"] == "or"){
-      AdjustHiPo(json);
+    AdjustBaseStats(json);
+    console.log(json["Rarity"]);
+    if(json["Rarity"] != "lr" && json["Rarity"] != "ur"){
+      const buttonContainer = document.getElementById('hipo-button-container');
+      buttonContainer.style.display = "none";
+      console.log(buttonContainer.style.display)
     }
     
   });

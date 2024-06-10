@@ -1,13 +1,13 @@
 {
     "ID": "1023800",
-    "Typing": null,
+    "Typing": "STR",
     "Class": "Super",
     "Name": "Super Saiyan Trunks (Kid) & Super Saiyan Goten (Kid)",
     "Rarity": "ur",
     "Max Level": "100",
-    "Max HP": "9685",
-    "Max ATK": "8594",
-    "Max DEF": "5195",
+    "Max HP": "8819",
+    "Max ATK": "8100",
+    "Max DEF": "4752",
     "Categories": [
         "Gifted Warriors",
         "Hybrid Saiyans",
@@ -28,9 +28,888 @@
         "Shocking Speed",
         "Fierce Battle"
     ],
-    "Passive": {},
-    "Active Skill": {},
-    "Super Attack": {},
-    "Standby Skill": {},
-    "Hidden Potential": {}
+    "Passive": {
+        "2804": {
+            "ID": "2804",
+            "Timing": "Start of turn",
+            "ATK": 150,
+            "DEF": 150,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1002804": {
+            "ID": "1002804",
+            "Timing": "Attacking",
+            "DEF": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1361",
+                "Causalities": {
+                    "1361": {
+                        "Button": {
+                            "Name": "Is this the 1st attacker in the turn?"
+                        },
+                        "Slider": {
+                            "Name": "What position is this character attacking in?",
+                            "Logic": "==1",
+                            "Min": 1,
+                            "Max": 3
+                        }
+                    }
+                }
+            }
+        },
+        "2002804": {
+            "ID": "2002804",
+            "Dodge chance": 50,
+            "Timing": "Attacking",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1361",
+                "Causalities": {
+                    "1361": {
+                        "Button": {
+                            "Name": "Is this the 1st attacker in the turn?"
+                        },
+                        "Slider": {
+                            "Name": "What position is this character attacking in?",
+                            "Logic": "==1",
+                            "Min": 1,
+                            "Max": 3
+                        }
+                    }
+                }
+            }
+        },
+        "3002804": {
+            "ID": "3002804",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "100"
+            },
+            "Timing": "Attacking",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Chance": "50",
+            "Length": "1",
+            "Condition": {
+                "Logic": "1362 or 1363",
+                "Causalities": {
+                    "1362": {
+                        "Button": {
+                            "Name": "Is this the 2nd attacker in the turn?"
+                        },
+                        "Slider": {
+                            "Name": "What position is this character attacking in?",
+                            "Logic": "==2",
+                            "Min": 1,
+                            "Max": 3
+                        }
+                    },
+                    "1363": {
+                        "Button": {
+                            "Name": "Is this the 3rd attacker in the turn?"
+                        },
+                        "Slider": {
+                            "Name": "What position is this character attacking in?",
+                            "Logic": "==3",
+                            "Min": 1,
+                            "Max": 3
+                        }
+                    }
+                }
+            }
+        },
+        "4002804": {
+            "ID": "4002804",
+            "Timing": "Attacking the enemy",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 50,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "ATK": 10,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99"
+        },
+        "5002804": {
+            "ID": "5002804",
+            "Timing": "Attacking the enemy",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 50,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "DEF": 10,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99"
+        },
+        "6002804": {
+            "ID": "6002804",
+            "Timing": "Hit recieved",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 50,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "ATK": 10,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Condition": {
+                "Logic": "1364",
+                "Causalities": {
+                    "1364": {
+                        "Button": {
+                            "Name": "Has this unit evaded an attack? "
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "7002804": {
+            "ID": "7002804",
+            "Timing": "Hit recieved",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 50,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "DEF": 10,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Condition": {
+                "Logic": "1364",
+                "Causalities": {
+                    "1364": {
+                        "Button": {
+                            "Name": "Has this unit evaded an attack? "
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "8002804": {
+            "ID": "8002804",
+            "Timing": "Start of turn",
+            "Ki": 2,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1365",
+                "Causalities": {
+                    "1365": {
+                        "Button": {
+                            "Name": "Is there is an ally on the team whose name includes Vegeta?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "9002804": {
+            "ID": "9002804",
+            "Timing": "Start of turn",
+            "ATK": 50,
+            "DEF": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1365",
+                "Causalities": {
+                    "1365": {
+                        "Button": {
+                            "Name": "Is there is an ally on the team whose name includes Vegeta?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        },
+        "10002804": {
+            "ID": "10002804",
+            "Timing": "Start of turn",
+            "Crit Chance": 30,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1366",
+                "Causalities": {
+                    "1366": {
+                        "Button": {
+                            "Name": "Is there is an ally attacking in the same turn whose name includes Vegeta?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "Stats at levels": {
+        "1": {
+            "HP": 2646,
+            "ATK": 2430,
+            "DEF": 1426
+        },
+        "2": {
+            "HP": 2708,
+            "ATK": 2486,
+            "DEF": 1459
+        },
+        "3": {
+            "HP": 2770,
+            "ATK": 2543,
+            "DEF": 1492
+        },
+        "4": {
+            "HP": 2832,
+            "ATK": 2600,
+            "DEF": 1526
+        },
+        "5": {
+            "HP": 2894,
+            "ATK": 2657,
+            "DEF": 1559
+        },
+        "6": {
+            "HP": 2959,
+            "ATK": 2717,
+            "DEF": 1594
+        },
+        "7": {
+            "HP": 3021,
+            "ATK": 2774,
+            "DEF": 1628
+        },
+        "8": {
+            "HP": 3083,
+            "ATK": 2831,
+            "DEF": 1661
+        },
+        "9": {
+            "HP": 3145,
+            "ATK": 2888,
+            "DEF": 1695
+        },
+        "10": {
+            "HP": 3207,
+            "ATK": 2945,
+            "DEF": 1728
+        },
+        "11": {
+            "HP": 3269,
+            "ATK": 3002,
+            "DEF": 1761
+        },
+        "12": {
+            "HP": 3331,
+            "ATK": 3059,
+            "DEF": 1795
+        },
+        "13": {
+            "HP": 3393,
+            "ATK": 3116,
+            "DEF": 1828
+        },
+        "14": {
+            "HP": 3455,
+            "ATK": 3173,
+            "DEF": 1862
+        },
+        "15": {
+            "HP": 3517,
+            "ATK": 3230,
+            "DEF": 1895
+        },
+        "16": {
+            "HP": 3582,
+            "ATK": 3290,
+            "DEF": 1930
+        },
+        "17": {
+            "HP": 3644,
+            "ATK": 3347,
+            "DEF": 1964
+        },
+        "18": {
+            "HP": 3706,
+            "ATK": 3404,
+            "DEF": 1997
+        },
+        "19": {
+            "HP": 3768,
+            "ATK": 3461,
+            "DEF": 2031
+        },
+        "20": {
+            "HP": 3830,
+            "ATK": 3518,
+            "DEF": 2064
+        },
+        "21": {
+            "HP": 3893,
+            "ATK": 3575,
+            "DEF": 2097
+        },
+        "22": {
+            "HP": 3955,
+            "ATK": 3632,
+            "DEF": 2131
+        },
+        "23": {
+            "HP": 4017,
+            "ATK": 3689,
+            "DEF": 2164
+        },
+        "24": {
+            "HP": 4079,
+            "ATK": 3746,
+            "DEF": 2198
+        },
+        "25": {
+            "HP": 4141,
+            "ATK": 3803,
+            "DEF": 2231
+        },
+        "26": {
+            "HP": 4206,
+            "ATK": 3863,
+            "DEF": 2266
+        },
+        "27": {
+            "HP": 4268,
+            "ATK": 3920,
+            "DEF": 2300
+        },
+        "28": {
+            "HP": 4330,
+            "ATK": 3977,
+            "DEF": 2333
+        },
+        "29": {
+            "HP": 4392,
+            "ATK": 4034,
+            "DEF": 2366
+        },
+        "30": {
+            "HP": 4454,
+            "ATK": 4091,
+            "DEF": 2400
+        },
+        "31": {
+            "HP": 4516,
+            "ATK": 4148,
+            "DEF": 2433
+        },
+        "32": {
+            "HP": 4578,
+            "ATK": 4205,
+            "DEF": 2467
+        },
+        "33": {
+            "HP": 4640,
+            "ATK": 4262,
+            "DEF": 2500
+        },
+        "34": {
+            "HP": 4702,
+            "ATK": 4319,
+            "DEF": 2534
+        },
+        "35": {
+            "HP": 4764,
+            "ATK": 4376,
+            "DEF": 2567
+        },
+        "36": {
+            "HP": 4829,
+            "ATK": 4435,
+            "DEF": 2602
+        },
+        "37": {
+            "HP": 4891,
+            "ATK": 4492,
+            "DEF": 2636
+        },
+        "38": {
+            "HP": 4953,
+            "ATK": 4549,
+            "DEF": 2669
+        },
+        "39": {
+            "HP": 5015,
+            "ATK": 4606,
+            "DEF": 2702
+        },
+        "40": {
+            "HP": 5077,
+            "ATK": 4663,
+            "DEF": 2736
+        },
+        "41": {
+            "HP": 5140,
+            "ATK": 4720,
+            "DEF": 2769
+        },
+        "42": {
+            "HP": 5202,
+            "ATK": 4777,
+            "DEF": 2803
+        },
+        "43": {
+            "HP": 5264,
+            "ATK": 4834,
+            "DEF": 2836
+        },
+        "44": {
+            "HP": 5326,
+            "ATK": 4891,
+            "DEF": 2870
+        },
+        "45": {
+            "HP": 5388,
+            "ATK": 4948,
+            "DEF": 2903
+        },
+        "46": {
+            "HP": 5453,
+            "ATK": 5008,
+            "DEF": 2938
+        },
+        "47": {
+            "HP": 5515,
+            "ATK": 5065,
+            "DEF": 2972
+        },
+        "48": {
+            "HP": 5577,
+            "ATK": 5122,
+            "DEF": 3005
+        },
+        "49": {
+            "HP": 5639,
+            "ATK": 5179,
+            "DEF": 3038
+        },
+        "50": {
+            "HP": 5701,
+            "ATK": 5236,
+            "DEF": 3072
+        },
+        "51": {
+            "HP": 5763,
+            "ATK": 5293,
+            "DEF": 3105
+        },
+        "52": {
+            "HP": 5825,
+            "ATK": 5350,
+            "DEF": 3139
+        },
+        "53": {
+            "HP": 5887,
+            "ATK": 5407,
+            "DEF": 3172
+        },
+        "54": {
+            "HP": 5949,
+            "ATK": 5464,
+            "DEF": 3205
+        },
+        "55": {
+            "HP": 6011,
+            "ATK": 5521,
+            "DEF": 3239
+        },
+        "56": {
+            "HP": 6076,
+            "ATK": 5581,
+            "DEF": 3274
+        },
+        "57": {
+            "HP": 6138,
+            "ATK": 5638,
+            "DEF": 3307
+        },
+        "58": {
+            "HP": 6200,
+            "ATK": 5695,
+            "DEF": 3341
+        },
+        "59": {
+            "HP": 6262,
+            "ATK": 5752,
+            "DEF": 3374
+        },
+        "60": {
+            "HP": 6324,
+            "ATK": 5809,
+            "DEF": 3408
+        },
+        "61": {
+            "HP": 6387,
+            "ATK": 5866,
+            "DEF": 3441
+        },
+        "62": {
+            "HP": 6449,
+            "ATK": 5923,
+            "DEF": 3475
+        },
+        "63": {
+            "HP": 6511,
+            "ATK": 5980,
+            "DEF": 3508
+        },
+        "64": {
+            "HP": 6573,
+            "ATK": 6037,
+            "DEF": 3541
+        },
+        "65": {
+            "HP": 6635,
+            "ATK": 6094,
+            "DEF": 3575
+        },
+        "66": {
+            "HP": 6700,
+            "ATK": 6153,
+            "DEF": 3610
+        },
+        "67": {
+            "HP": 6762,
+            "ATK": 6210,
+            "DEF": 3643
+        },
+        "68": {
+            "HP": 6824,
+            "ATK": 6267,
+            "DEF": 3677
+        },
+        "69": {
+            "HP": 6886,
+            "ATK": 6324,
+            "DEF": 3710
+        },
+        "70": {
+            "HP": 6948,
+            "ATK": 6381,
+            "DEF": 3744
+        },
+        "71": {
+            "HP": 7010,
+            "ATK": 6438,
+            "DEF": 3777
+        },
+        "72": {
+            "HP": 7072,
+            "ATK": 6495,
+            "DEF": 3811
+        },
+        "73": {
+            "HP": 7134,
+            "ATK": 6552,
+            "DEF": 3844
+        },
+        "74": {
+            "HP": 7196,
+            "ATK": 6609,
+            "DEF": 3877
+        },
+        "75": {
+            "HP": 7258,
+            "ATK": 6666,
+            "DEF": 3911
+        },
+        "76": {
+            "HP": 7323,
+            "ATK": 6726,
+            "DEF": 3946
+        },
+        "77": {
+            "HP": 7385,
+            "ATK": 6783,
+            "DEF": 3979
+        },
+        "78": {
+            "HP": 7447,
+            "ATK": 6840,
+            "DEF": 4013
+        },
+        "79": {
+            "HP": 7509,
+            "ATK": 6897,
+            "DEF": 4046
+        },
+        "80": {
+            "HP": 7571,
+            "ATK": 6954,
+            "DEF": 4080
+        },
+        "81": {
+            "HP": 7634,
+            "ATK": 7011,
+            "DEF": 4113
+        },
+        "82": {
+            "HP": 7696,
+            "ATK": 7068,
+            "DEF": 4146
+        },
+        "83": {
+            "HP": 7758,
+            "ATK": 7125,
+            "DEF": 4180
+        },
+        "84": {
+            "HP": 7820,
+            "ATK": 7182,
+            "DEF": 4213
+        },
+        "85": {
+            "HP": 7882,
+            "ATK": 7239,
+            "DEF": 4247
+        },
+        "86": {
+            "HP": 7947,
+            "ATK": 7299,
+            "DEF": 4282
+        },
+        "87": {
+            "HP": 8009,
+            "ATK": 7356,
+            "DEF": 4315
+        },
+        "88": {
+            "HP": 8071,
+            "ATK": 7413,
+            "DEF": 4349
+        },
+        "89": {
+            "HP": 8133,
+            "ATK": 7470,
+            "DEF": 4382
+        },
+        "90": {
+            "HP": 8195,
+            "ATK": 7527,
+            "DEF": 4416
+        },
+        "91": {
+            "HP": 8257,
+            "ATK": 7584,
+            "DEF": 4449
+        },
+        "92": {
+            "HP": 8319,
+            "ATK": 7641,
+            "DEF": 4482
+        },
+        "93": {
+            "HP": 8381,
+            "ATK": 7698,
+            "DEF": 4516
+        },
+        "94": {
+            "HP": 8443,
+            "ATK": 7755,
+            "DEF": 4549
+        },
+        "95": {
+            "HP": 8505,
+            "ATK": 7812,
+            "DEF": 4583
+        },
+        "96": {
+            "HP": 8570,
+            "ATK": 7872,
+            "DEF": 4618
+        },
+        "97": {
+            "HP": 8632,
+            "ATK": 7929,
+            "DEF": 4651
+        },
+        "98": {
+            "HP": 8694,
+            "ATK": 7986,
+            "DEF": 4685
+        },
+        "99": {
+            "HP": 8756,
+            "ATK": 8043,
+            "DEF": 4718
+        },
+        "100": {
+            "HP": 8819,
+            "ATK": 8100,
+            "DEF": 4752
+        }
+    },
+    "Leader Skill": {
+        "Name": "Friends Joining a Serious Fight",
+        "11589": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Gifted Warriors"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": []
+            },
+            "HP": 130,
+            "ATK": 130,
+            "DEF": 130
+        },
+        "11590": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Gifted Warriors"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 0,
+            "ATK": 0,
+            "DEF": 0
+        },
+        "1": {
+            "HP": 0,
+            "ATK": 0,
+            "DEF": 0
+        },
+        "2": {
+            "HP": 0,
+            "ATK": 0,
+            "DEF": 0
+        },
+        "3": {
+            "HP": 0,
+            "ATK": 0,
+            "DEF": 0
+        },
+        "4": {
+            "HP": 0,
+            "ATK": 0,
+            "DEF": 0
+        }
+    },
+    "Super Attack": {
+        "3735": {
+            "superID": "3735",
+            "superName": "Victory Strike",
+            "superDescription": "Raises ATK & DEF for 1 turn and \ncauses supreme damage to enemy",
+            "superMinKi": "12",
+            "superPriority": "0.0",
+            "superStyle": "Normal",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "0"
+            },
+            "3735": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "1",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "30",
+                "DEF": "30"
+            }
+        }
+    },
+    "Active Skill": null,
+    "Ki Multiplier": {
+        "0": 70.0,
+        "1": 75.83333333333333,
+        "2": 81.66666666666667,
+        "3": 87.5,
+        "4": 93.33333333333333,
+        "5": 99.16666666666667,
+        "6": 105.0,
+        "7": 110.83333333333334,
+        "8": 116.66666666666666,
+        "9": 122.5,
+        "10": 128.33333333333334,
+        "11": 134.16666666666666,
+        "12": 140.0
+    },
+    "Standby Skill": {}
 }

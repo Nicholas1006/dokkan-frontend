@@ -1,13 +1,13 @@
 {
     "ID": "1027680",
-    "Typing": null,
+    "Typing": "PHY",
     "Class": "Extreme",
     "Name": "Android #21 (Transformed, Evil)",
     "Rarity": "ur",
     "Max Level": "100",
-    "Max HP": "10604",
-    "Max ATK": "7976",
-    "Max DEF": "5501",
+    "Max HP": "9649",
+    "Max ATK": "7542",
+    "Max DEF": "5028",
     "Categories": [
         "Power Absorption",
         "Peppy Gals",
@@ -27,9 +27,1162 @@
         "Fierce Battle",
         "Fear and Faith"
     ],
-    "Passive": {},
-    "Active Skill": {},
-    "Super Attack": {},
-    "Standby Skill": {},
-    "Hidden Potential": {}
+    "Passive": {
+        "3963": {
+            "ID": "3963",
+            "Timing": "Start of turn",
+            "ATK": 120,
+            "DEF": 120,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "4",
+            "Once only": true
+        },
+        "1003963": {
+            "ID": "1003963",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "100"
+            },
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Chance": "70",
+            "Length": "1",
+            "Condition": {
+                "Logic": "1380",
+                "Causalities": {
+                    "1380": {
+                        "Button": {
+                            "Name": "Is it within the first 4 turns from this characters entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since the characters entry turn?",
+                            "Logic": "<=4",
+                            "Min": 0,
+                            "Max": 4
+                        }
+                    }
+                }
+            }
+        },
+        "2003963": {
+            "ID": "2003963",
+            "Additional attack": {
+                "Activated": true,
+                "Chance of super": "100"
+            },
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Chance": "50",
+            "Length": "1",
+            "Condition": {
+                "Logic": "2648",
+                "Causalities": {
+                    "2648": {
+                        "Button": {
+                            "Name": "Is it on or after the first 4 turns from this characters entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since the characters entry turn?",
+                            "Logic": ">=4"
+                        }
+                    }
+                }
+            }
+        },
+        "3003963": {
+            "ID": "3003963",
+            "Timing": "Start of turn",
+            "Ki": 3,
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "4003963": {
+            "ID": "4003963",
+            "Timing": "Start of turn",
+            "ATK": 210,
+            "DEF": 210,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "5003963": {
+            "ID": "5003963",
+            "Timing": "On Super",
+            "ATK": 90,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "6003963": {
+            "ID": "6003963",
+            "Timing": "Start of turn",
+            "DR": 21,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "545",
+                "Causalities": {
+                    "545": {
+                        "Button": {
+                            "Name": "Is there less than 2 enemies?"
+                        },
+                        "Slider": {
+                            "Name": "How many enemies are there?",
+                            "Logic": "<2",
+                            "Min": 1,
+                            "Max": 7
+                        }
+                    }
+                }
+            }
+        },
+        "7003963": {
+            "ID": "7003963",
+            "Timing": "Start of turn",
+            "Crit Chance": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "478",
+                "Causalities": {
+                    "478": {
+                        "Button": {
+                            "Name": "Is there 2 or more enemies?"
+                        },
+                        "Slider": {
+                            "Name": "How many enemies are there?",
+                            "Logic": ">=2",
+                            "Min": 1,
+                            "Max": 7
+                        }
+                    }
+                }
+            }
+        },
+        "8003963": {
+            "ID": "8003963",
+            "Timing": "Start of turn",
+            "Crit Chance": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "728",
+                "Causalities": {
+                    "728": {
+                        "Button": {
+                            "Name": "Is HP 60 % or less?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining",
+                            "Logic": "<=60",
+                            "Min": 0,
+                            "Max": 100
+                        }
+                    }
+                }
+            }
+        },
+        "9003963": {
+            "ID": "9003963",
+            "Timing": "On Super",
+            "Crit Chance": 100,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "3015",
+                "Causalities": {
+                    "3015": {
+                        "Button": {
+                            "Name": "Is the enemy's health 30 % or less?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP does the enemy have?",
+                            "Logic": "<=30",
+                            "Max": 100
+                        }
+                    }
+                }
+            }
+        },
+        "10003963": {
+            "ID": "10003963",
+            "Timing": "When final blow delivered",
+            "Heals": 30,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1286 and 3041 and 3042",
+                "Causalities": {
+                    "1286": {
+                        "Button": {
+                            "Name": "Has this character delivered the final blow?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    },
+                    "3041": {
+                        "Button": {
+                            "Name": "Is there 0 or more enemies?"
+                        },
+                        "Slider": {
+                            "Name": "How many enemies are there?",
+                            "Logic": ">=0",
+                            "Min": 1,
+                            "Max": 7
+                        }
+                    },
+                    "3042": {
+                        "Button": {
+                            "Name": "Is there less than 1 enemies?"
+                        },
+                        "Slider": {
+                            "Name": "How many enemies are there?",
+                            "Logic": "<1",
+                            "Min": 1,
+                            "Max": 7
+                        }
+                    }
+                }
+            }
+        },
+        "11003963": {
+            "ID": "11003963",
+            "Timing": "When final blow delivered",
+            "Heals": 30,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1286 and 602 and 9",
+                "Causalities": {
+                    "1286": {
+                        "Button": {
+                            "Name": "Has this character delivered the final blow?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    },
+                    "602": {
+                        "Button": {
+                            "Name": "Is there 1 or more enemies?"
+                        },
+                        "Slider": {
+                            "Name": "How many enemies are there?",
+                            "Logic": ">=1",
+                            "Min": 1,
+                            "Max": 7
+                        }
+                    },
+                    "9": {
+                        "Button": {
+                            "Name": "Is there less than 2 enemies?"
+                        },
+                        "Slider": {
+                            "Name": "How many enemies are there?",
+                            "Logic": "<2",
+                            "Min": 1,
+                            "Max": 7
+                        }
+                    }
+                }
+            }
+        },
+        "12003963": {
+            "ID": "12003963",
+            "Timing": "When final blow delivered",
+            "Heals": 30,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1286 and 22 and 67",
+                "Causalities": {
+                    "1286": {
+                        "Button": {
+                            "Name": "Has this character delivered the final blow?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    },
+                    "22": {
+                        "Button": {
+                            "Name": "Is there 2 or more enemies?"
+                        },
+                        "Slider": {
+                            "Name": "How many enemies are there?",
+                            "Logic": ">=2",
+                            "Min": 1,
+                            "Max": 7
+                        }
+                    },
+                    "67": {
+                        "Button": {
+                            "Name": "Is there less than 3 enemies?"
+                        },
+                        "Slider": {
+                            "Name": "How many enemies are there?",
+                            "Logic": "<3",
+                            "Min": 1,
+                            "Max": 7
+                        }
+                    }
+                }
+            }
+        },
+        "13003963": {
+            "ID": "13003963",
+            "Timing": "When final blow delivered",
+            "Heals": 30,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1286 and 18 and 66",
+                "Causalities": {
+                    "1286": {
+                        "Button": {
+                            "Name": "Has this character delivered the final blow?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    },
+                    "18": {
+                        "Button": {
+                            "Name": "Is there 3 or more enemies?"
+                        },
+                        "Slider": {
+                            "Name": "How many enemies are there?",
+                            "Logic": ">=3",
+                            "Min": 1,
+                            "Max": 7
+                        }
+                    },
+                    "66": {
+                        "Button": {
+                            "Name": "Is there less than 4 enemies?"
+                        },
+                        "Slider": {
+                            "Name": "How many enemies are there?",
+                            "Logic": "<4",
+                            "Min": 1,
+                            "Max": 7
+                        }
+                    }
+                }
+            }
+        },
+        "14003963": {
+            "ID": "14003963",
+            "Timing": "When final blow delivered",
+            "Heals": 30,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1286 and 101 and 3043",
+                "Causalities": {
+                    "1286": {
+                        "Button": {
+                            "Name": "Has this character delivered the final blow?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    },
+                    "101": {
+                        "Button": {
+                            "Name": "Is there 4 or more enemies?"
+                        },
+                        "Slider": {
+                            "Name": "How many enemies are there?",
+                            "Logic": ">=4",
+                            "Min": 1,
+                            "Max": 7
+                        }
+                    },
+                    "3043": {
+                        "Button": {
+                            "Name": "Is there less than 5 enemies?"
+                        },
+                        "Slider": {
+                            "Name": "How many enemies are there?",
+                            "Logic": "<5",
+                            "Min": 1,
+                            "Max": 7
+                        }
+                    }
+                }
+            }
+        },
+        "15003963": {
+            "ID": "15003963",
+            "Timing": "When final blow delivered",
+            "Heals": 30,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1286 and 102 and 3044",
+                "Causalities": {
+                    "1286": {
+                        "Button": {
+                            "Name": "Has this character delivered the final blow?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    },
+                    "102": {
+                        "Button": {
+                            "Name": "Is there 5 or more enemies?"
+                        },
+                        "Slider": {
+                            "Name": "How many enemies are there?",
+                            "Logic": ">=5",
+                            "Min": 1,
+                            "Max": 7
+                        }
+                    },
+                    "3044": {
+                        "Button": {
+                            "Name": "Is there less than 6 enemies?"
+                        },
+                        "Slider": {
+                            "Name": "How many enemies are there?",
+                            "Logic": "<6",
+                            "Min": 1,
+                            "Max": 7
+                        }
+                    }
+                }
+            }
+        },
+        "16003963": {
+            "ID": "16003963",
+            "Timing": "When final blow delivered",
+            "Heals": 30,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1286 and 103 and 3045",
+                "Causalities": {
+                    "1286": {
+                        "Button": {
+                            "Name": "Has this character delivered the final blow?"
+                        },
+                        "Slider": {
+                            "Name": null,
+                            "Logic": null
+                        }
+                    },
+                    "103": {
+                        "Button": {
+                            "Name": "Is there 6 or more enemies?"
+                        },
+                        "Slider": {
+                            "Name": "How many enemies are there?",
+                            "Logic": ">=6",
+                            "Min": 1,
+                            "Max": 7
+                        }
+                    },
+                    "3045": {
+                        "Button": {
+                            "Name": "Is there less than 7 enemies?"
+                        },
+                        "Slider": {
+                            "Name": "How many enemies are there?",
+                            "Logic": "<7",
+                            "Min": 1,
+                            "Max": 7
+                        }
+                    }
+                }
+            }
+        },
+        "17003963": {
+            "ID": "17003963",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 0,
+                "Cause": {
+                    "Cause": "Ki sphere obtained",
+                    "Type": [
+                        "Sweet treats",
+                        "Cookies"
+                    ]
+                }
+            },
+            "Heals": 2,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        }
+    },
+    "Stats at levels": {
+        "1": {
+            "HP": 2895,
+            "ATK": 2263,
+            "DEF": 1508
+        },
+        "2": {
+            "HP": 2962,
+            "ATK": 2316,
+            "DEF": 1543
+        },
+        "3": {
+            "HP": 3030,
+            "ATK": 2369,
+            "DEF": 1578
+        },
+        "4": {
+            "HP": 3098,
+            "ATK": 2422,
+            "DEF": 1614
+        },
+        "5": {
+            "HP": 3166,
+            "ATK": 2475,
+            "DEF": 1649
+        },
+        "6": {
+            "HP": 3237,
+            "ATK": 2530,
+            "DEF": 1686
+        },
+        "7": {
+            "HP": 3305,
+            "ATK": 2583,
+            "DEF": 1722
+        },
+        "8": {
+            "HP": 3373,
+            "ATK": 2637,
+            "DEF": 1757
+        },
+        "9": {
+            "HP": 3441,
+            "ATK": 2690,
+            "DEF": 1792
+        },
+        "10": {
+            "HP": 3509,
+            "ATK": 2743,
+            "DEF": 1828
+        },
+        "11": {
+            "HP": 3577,
+            "ATK": 2796,
+            "DEF": 1863
+        },
+        "12": {
+            "HP": 3645,
+            "ATK": 2849,
+            "DEF": 1898
+        },
+        "13": {
+            "HP": 3712,
+            "ATK": 2902,
+            "DEF": 1934
+        },
+        "14": {
+            "HP": 3780,
+            "ATK": 2955,
+            "DEF": 1969
+        },
+        "15": {
+            "HP": 3848,
+            "ATK": 3008,
+            "DEF": 2005
+        },
+        "16": {
+            "HP": 3919,
+            "ATK": 3064,
+            "DEF": 2042
+        },
+        "17": {
+            "HP": 3987,
+            "ATK": 3117,
+            "DEF": 2077
+        },
+        "18": {
+            "HP": 4055,
+            "ATK": 3170,
+            "DEF": 2112
+        },
+        "19": {
+            "HP": 4123,
+            "ATK": 3223,
+            "DEF": 2148
+        },
+        "20": {
+            "HP": 4191,
+            "ATK": 3276,
+            "DEF": 2183
+        },
+        "21": {
+            "HP": 4259,
+            "ATK": 3329,
+            "DEF": 2219
+        },
+        "22": {
+            "HP": 4327,
+            "ATK": 3382,
+            "DEF": 2254
+        },
+        "23": {
+            "HP": 4395,
+            "ATK": 3435,
+            "DEF": 2289
+        },
+        "24": {
+            "HP": 4463,
+            "ATK": 3488,
+            "DEF": 2325
+        },
+        "25": {
+            "HP": 4530,
+            "ATK": 3541,
+            "DEF": 2360
+        },
+        "26": {
+            "HP": 4602,
+            "ATK": 3597,
+            "DEF": 2397
+        },
+        "27": {
+            "HP": 4670,
+            "ATK": 3650,
+            "DEF": 2433
+        },
+        "28": {
+            "HP": 4737,
+            "ATK": 3703,
+            "DEF": 2468
+        },
+        "29": {
+            "HP": 4805,
+            "ATK": 3756,
+            "DEF": 2503
+        },
+        "30": {
+            "HP": 4873,
+            "ATK": 3809,
+            "DEF": 2539
+        },
+        "31": {
+            "HP": 4941,
+            "ATK": 3862,
+            "DEF": 2574
+        },
+        "32": {
+            "HP": 5009,
+            "ATK": 3915,
+            "DEF": 2609
+        },
+        "33": {
+            "HP": 5077,
+            "ATK": 3968,
+            "DEF": 2645
+        },
+        "34": {
+            "HP": 5145,
+            "ATK": 4021,
+            "DEF": 2680
+        },
+        "35": {
+            "HP": 5213,
+            "ATK": 4074,
+            "DEF": 2716
+        },
+        "36": {
+            "HP": 5284,
+            "ATK": 4130,
+            "DEF": 2753
+        },
+        "37": {
+            "HP": 5352,
+            "ATK": 4183,
+            "DEF": 2788
+        },
+        "38": {
+            "HP": 5420,
+            "ATK": 4236,
+            "DEF": 2824
+        },
+        "39": {
+            "HP": 5487,
+            "ATK": 4289,
+            "DEF": 2859
+        },
+        "40": {
+            "HP": 5555,
+            "ATK": 4342,
+            "DEF": 2894
+        },
+        "41": {
+            "HP": 5623,
+            "ATK": 4395,
+            "DEF": 2930
+        },
+        "42": {
+            "HP": 5691,
+            "ATK": 4448,
+            "DEF": 2965
+        },
+        "43": {
+            "HP": 5759,
+            "ATK": 4501,
+            "DEF": 3000
+        },
+        "44": {
+            "HP": 5827,
+            "ATK": 4554,
+            "DEF": 3036
+        },
+        "45": {
+            "HP": 5895,
+            "ATK": 4608,
+            "DEF": 3071
+        },
+        "46": {
+            "HP": 5966,
+            "ATK": 4663,
+            "DEF": 3108
+        },
+        "47": {
+            "HP": 6034,
+            "ATK": 4716,
+            "DEF": 3144
+        },
+        "48": {
+            "HP": 6102,
+            "ATK": 4769,
+            "DEF": 3179
+        },
+        "49": {
+            "HP": 6170,
+            "ATK": 4822,
+            "DEF": 3214
+        },
+        "50": {
+            "HP": 6238,
+            "ATK": 4875,
+            "DEF": 3250
+        },
+        "51": {
+            "HP": 6305,
+            "ATK": 4929,
+            "DEF": 3285
+        },
+        "52": {
+            "HP": 6373,
+            "ATK": 4982,
+            "DEF": 3321
+        },
+        "53": {
+            "HP": 6441,
+            "ATK": 5035,
+            "DEF": 3356
+        },
+        "54": {
+            "HP": 6509,
+            "ATK": 5088,
+            "DEF": 3391
+        },
+        "55": {
+            "HP": 6577,
+            "ATK": 5141,
+            "DEF": 3427
+        },
+        "56": {
+            "HP": 6648,
+            "ATK": 5196,
+            "DEF": 3464
+        },
+        "57": {
+            "HP": 6716,
+            "ATK": 5250,
+            "DEF": 3499
+        },
+        "58": {
+            "HP": 6784,
+            "ATK": 5303,
+            "DEF": 3535
+        },
+        "59": {
+            "HP": 6852,
+            "ATK": 5356,
+            "DEF": 3570
+        },
+        "60": {
+            "HP": 6920,
+            "ATK": 5409,
+            "DEF": 3605
+        },
+        "61": {
+            "HP": 6988,
+            "ATK": 5462,
+            "DEF": 3641
+        },
+        "62": {
+            "HP": 7056,
+            "ATK": 5515,
+            "DEF": 3676
+        },
+        "63": {
+            "HP": 7123,
+            "ATK": 5568,
+            "DEF": 3711
+        },
+        "64": {
+            "HP": 7191,
+            "ATK": 5621,
+            "DEF": 3747
+        },
+        "65": {
+            "HP": 7259,
+            "ATK": 5674,
+            "DEF": 3782
+        },
+        "66": {
+            "HP": 7330,
+            "ATK": 5730,
+            "DEF": 3819
+        },
+        "67": {
+            "HP": 7398,
+            "ATK": 5783,
+            "DEF": 3855
+        },
+        "68": {
+            "HP": 7466,
+            "ATK": 5836,
+            "DEF": 3890
+        },
+        "69": {
+            "HP": 7534,
+            "ATK": 5889,
+            "DEF": 3926
+        },
+        "70": {
+            "HP": 7602,
+            "ATK": 5942,
+            "DEF": 3961
+        },
+        "71": {
+            "HP": 7670,
+            "ATK": 5995,
+            "DEF": 3996
+        },
+        "72": {
+            "HP": 7738,
+            "ATK": 6048,
+            "DEF": 4032
+        },
+        "73": {
+            "HP": 7806,
+            "ATK": 6101,
+            "DEF": 4067
+        },
+        "74": {
+            "HP": 7873,
+            "ATK": 6154,
+            "DEF": 4102
+        },
+        "75": {
+            "HP": 7941,
+            "ATK": 6207,
+            "DEF": 4138
+        },
+        "76": {
+            "HP": 8013,
+            "ATK": 6263,
+            "DEF": 4175
+        },
+        "77": {
+            "HP": 8080,
+            "ATK": 6316,
+            "DEF": 4210
+        },
+        "78": {
+            "HP": 8148,
+            "ATK": 6369,
+            "DEF": 4246
+        },
+        "79": {
+            "HP": 8216,
+            "ATK": 6422,
+            "DEF": 4281
+        },
+        "80": {
+            "HP": 8284,
+            "ATK": 6475,
+            "DEF": 4316
+        },
+        "81": {
+            "HP": 8352,
+            "ATK": 6528,
+            "DEF": 4352
+        },
+        "82": {
+            "HP": 8420,
+            "ATK": 6581,
+            "DEF": 4387
+        },
+        "83": {
+            "HP": 8488,
+            "ATK": 6634,
+            "DEF": 4423
+        },
+        "84": {
+            "HP": 8556,
+            "ATK": 6687,
+            "DEF": 4458
+        },
+        "85": {
+            "HP": 8624,
+            "ATK": 6740,
+            "DEF": 4493
+        },
+        "86": {
+            "HP": 8695,
+            "ATK": 6796,
+            "DEF": 4530
+        },
+        "87": {
+            "HP": 8763,
+            "ATK": 6849,
+            "DEF": 4566
+        },
+        "88": {
+            "HP": 8831,
+            "ATK": 6902,
+            "DEF": 4601
+        },
+        "89": {
+            "HP": 8898,
+            "ATK": 6955,
+            "DEF": 4637
+        },
+        "90": {
+            "HP": 8966,
+            "ATK": 7008,
+            "DEF": 4672
+        },
+        "91": {
+            "HP": 9034,
+            "ATK": 7061,
+            "DEF": 4707
+        },
+        "92": {
+            "HP": 9102,
+            "ATK": 7114,
+            "DEF": 4743
+        },
+        "93": {
+            "HP": 9170,
+            "ATK": 7167,
+            "DEF": 4778
+        },
+        "94": {
+            "HP": 9238,
+            "ATK": 7221,
+            "DEF": 4813
+        },
+        "95": {
+            "HP": 9306,
+            "ATK": 7274,
+            "DEF": 4849
+        },
+        "96": {
+            "HP": 9377,
+            "ATK": 7329,
+            "DEF": 4886
+        },
+        "97": {
+            "HP": 9445,
+            "ATK": 7382,
+            "DEF": 4921
+        },
+        "98": {
+            "HP": 9513,
+            "ATK": 7435,
+            "DEF": 4957
+        },
+        "99": {
+            "HP": 9581,
+            "ATK": 7488,
+            "DEF": 4992
+        },
+        "100": {
+            "HP": 9649,
+            "ATK": 7542,
+            "DEF": 5028
+        }
+    },
+    "Leader Skill": {
+        "Name": "Growth through Predation",
+        "10276800": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Power Absorption"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        },
+        "10276801": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Power Absorption"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": []
+            },
+            "HP": 130,
+            "ATK": 130,
+            "DEF": 130
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 0,
+            "ATK": 0,
+            "DEF": 0
+        },
+        "1": {
+            "HP": 0,
+            "ATK": 0,
+            "DEF": 0
+        },
+        "2": {
+            "HP": 0,
+            "ATK": 0,
+            "DEF": 0
+        },
+        "3": {
+            "HP": 0,
+            "ATK": 0,
+            "DEF": 0
+        },
+        "4": {
+            "HP": 0,
+            "ATK": 0,
+            "DEF": 0
+        }
+    },
+    "Super Attack": {
+        "5073": {
+            "superID": "5073",
+            "superName": "Absolute Release Ball",
+            "superDescription": "Greatly raises ATK & DEF for 4 turns and \ncauses supreme damage to enemy",
+            "superMinKi": "12",
+            "superPriority": "0.0",
+            "superStyle": "Normal",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "0"
+            },
+            "5073": {
+                "Type": "NormalEfficacySpecial",
+                "Chance": "100",
+                "Duration": "4",
+                "Buff": {
+                    "Type": "Percentage",
+                    "+ or -": "+"
+                },
+                "Target": "Self",
+                "ATK": "50",
+                "DEF": "50"
+            }
+        }
+    },
+    "Active Skill": null,
+    "Ki Multiplier": {
+        "0": 67.5,
+        "1": 73.125,
+        "2": 78.75,
+        "3": 84.375,
+        "4": 90.0,
+        "5": 95.625,
+        "6": 101.25,
+        "7": 106.875,
+        "8": 112.5,
+        "9": 118.125,
+        "10": 123.75,
+        "11": 129.375,
+        "12": 135.0
+    },
+    "Standby Skill": {}
 }

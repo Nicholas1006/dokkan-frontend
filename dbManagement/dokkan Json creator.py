@@ -6,11 +6,10 @@ from progress.bar import Bar
 directory="dataJP/"
 cardsJP=storedatabase(directory,"cards.csv")
 
-eza=True
+eza=False
 DEVEXCEPTIONS=True
-GLOBALPARSE=True
+GLOBALPARSE=False
 MAKEJSON=True
-CUTJSON=True
 
 CALCPASSIVE=True
 CALCLEADER=True
@@ -30,11 +29,10 @@ superTime=0.0
 levelTime=0.0
 basicTime=0.0
 jsonTime=0.0
-megaJsonTime=0.0
 standbyTime=0.0
 multiplierTime=0.0
 
-cardIDsToCheck=["1019100"]
+cardIDsToCheck=["1003800","1003801"]
 #cardIDsToCheck=["4026911","4025741","4028381","4026401","4027631","4027301","4025781","4026541"]
 
 cardsToCheck=[]
@@ -60,7 +58,6 @@ passivecount=0
 #passiveIdList=getpassiveid(mainunit,cards,optimal_awakening_growths,passive_skill_set_relations,eza)
 #print(passive)
 longestPassive=["a"]
-MegaPassiveJson={}
 HiPoBoards={}
 
 if GLOBALPARSE:
@@ -91,9 +88,9 @@ for unit in cardsToCheck:
                 unitDictionary["Name"]=unit[1]
         unitDictionary["Rarity"]=getrarity(unit)
         unitDictionary["Max Level"]=unit[13]
-        unitDictionary["Max HP"]=unit1[7]
-        unitDictionary["Max ATK"]=unit1[9]
-        unitDictionary["Max DEF"]=unit1[11]
+        unitDictionary["Max HP"]=unit[7]
+        unitDictionary["Max ATK"]=unit[9]
+        unitDictionary["Max DEF"]=unit[11]
         unitDictionary["Categories"]=getallcategories(unit[0],printing=True)
         unitDictionary["Links"]=getalllinks(unit)
         basicTime+=time.time()-basicStart
@@ -104,16 +101,15 @@ for unit in cardsToCheck:
     if(CALCPASSIVE):
         passiveStart=time.time()
         parsedPassive=parsePassiveSkill(unit,eza,DEVEXCEPTIONS)
-        if(CUTJSON):
-            for passiveLine in parsedPassive:
-                parsedPassive[passiveLine]=shortenPassiveDictionary(parsedPassive[passiveLine])
+        for passiveLine in parsedPassive:
+            parsedPassive[passiveLine]=shortenPassiveDictionary(parsedPassive[passiveLine])
         unitDictionary["Passive"]=parsedPassive
         passiveTime+=time.time()-passiveStart
 
     unitDictionary["Stats at levels"]={}
     if(CALCLEVELS):
         levelStart=time.time()
-        unitDictionary["Stats at levels"]=getStatsAtAllLevels(unit1)
+        unitDictionary["Stats at levels"]=getStatsAtAllLevels(unit)
         levelTime+=time.time()-levelStart
     
     unitDictionary["Leader Skill"]={}
@@ -125,9 +121,9 @@ for unit in cardsToCheck:
     unitDictionary["Hidden Potential"]={}
     if(CALCHIPO):
         hipoStart=time.time()
-        if(unit1[52][:-2]not in HiPoBoards):
-            HiPoBoards[unit1[52][:-2]]=parseHiddenPotential(unit1[52][:-2],DEVEXCEPTIONS)
-        unitDictionary["Hidden Potential"]=HiPoBoards[unit1[52][:-2]]
+        if(unit[52][:-2]not in HiPoBoards):
+            HiPoBoards[unit[52][:-2]]=parseHiddenPotential(unit[52][:-2],DEVEXCEPTIONS)
+        unitDictionary["Hidden Potential"]=HiPoBoards[unit[52][:-2]]
         hipoTime+=time.time()-hipoStart
 
     unitDictionary["Super Attack"]={}
@@ -166,28 +162,17 @@ for unit in cardsToCheck:
     jsonName=unit[0]
 
     
-    MegaPassiveJson[unit[0]]=unitDictionary
 
 
 
     if(MAKEJSON):
         jsonStart=time.time()
-        if(GLOBALPARSE):
-            MegaPassiveJson[unit[0]]=unitDictionary
-        if(CUTJSON):
-            turnintoJson(unitDictionary, jsonName,directoryName="jsonsCompressed")
-        else:
-            turnintoJson(unitDictionary, jsonName,directoryName="jsons")
+        turnintoJson(unitDictionary, jsonName,directoryName="jsons")
         jsonTime+=time.time()-jsonStart
     if(GLOBALPARSE):
         bar.next()
     
 
-if(GLOBALPARSE and MAKEJSON):
-    print("Making MegaJson")
-    megaJsonStart=time.time()
-    turnintoJson(MegaPassiveJson, "MegaPassiveJson",directoryName="jsonsCompressed")
-    megaJsonTime+=time.time()-megaJsonStart
 
 if(GLOBALPARSE):
     bar.finish()
@@ -201,5 +186,4 @@ print("Multiplier time:",round(multiplierTime,2))
 print("Active time:",round(activeTime,2))
 print("Standby time:",round(standbyTime,2))
 print("Json time:",round(jsonTime,2))
-print("MegaJson time:",round(megaJsonTime,2))
-print("Total time:",round(passiveTime+leaderTime+hipoTime+activeTime+superTime+levelTime+basicTime+jsonTime+megaJsonTime+multiplierTime+standbyTime,2))
+print("Total time:",round(passiveTime+leaderTime+hipoTime+activeTime+superTime+levelTime+basicTime+jsonTime+multiplierTime+standbyTime,2))
