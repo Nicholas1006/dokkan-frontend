@@ -1,17 +1,81 @@
-.toggle-btn {
+.toggle-btn1 {
   width:50px;
   height:50px;
   border: none;
   background: url('dbManagement/assets/misc/potential/closed.png') no-repeat center;
   background-size: cover;
   cursor: pointer;
-  margin-right: 0px;
+  margin: 1px;
+  grid-column: 1 / span 1;
+  grid-row: 1 / span 1;
 }
 
-.toggle-btn.active {
+.toggle-btn1.active {
   background: url('dbManagement/assets/misc/potential/released.png') no-repeat center;
   background-size: cover;
   margin-right: 0px;
+  grid-column: 1 / span 1;
+  grid-row: 1 / span 1;
+}
+
+.toggle-btn2 {
+  width:50px;
+  height:50px;
+  border: none;
+  background: url('dbManagement/assets/misc/potential/closed.png') no-repeat center;
+  background-size: cover;
+  cursor: pointer;
+  margin: 0px;
+  grid-column: 3 / span 1;
+  grid-row: 1 / span 1;
+}
+
+.toggle-btn2.active {
+  background: url('dbManagement/assets/misc/potential/released.png') no-repeat center;
+  background-size: cover;
+  margin-right: 0px;
+  grid-column: 3 / span 1;
+  grid-row: 1 / span 1;
+}
+
+.toggle-btn3 {
+  width:50px;
+  height:50px;
+  border: none;
+  background: url('dbManagement/assets/misc/potential/closed.png') no-repeat center;
+  background-size: cover;
+  cursor: pointer;
+  margin: 0px;
+  grid-column: 1 / span 1;
+  grid-row: 3 / span 1;
+}
+
+.toggle-btn3.active {
+  background: url('dbManagement/assets/misc/potential/released.png') no-repeat center;
+  background-size: cover;
+  margin-right: 0px;
+  grid-column: 1 / span 1;
+  grid-row: 3 / span 1;
+}
+
+.toggle-btn4 {
+  width:50px;
+  height:50px;
+  border: none;
+  background: url('dbManagement/assets/misc/potential/closed.png') no-repeat center;
+  background-size: cover;
+  cursor: pointer;
+  margin: 0px;
+  grid-column: 3 / span 1;
+  grid-row: 3 / span 1;
+}
+
+.toggle-btn4.active {
+  background: url('dbManagement/assets/misc/potential/released.png') no-repeat center;
+  background-size: cover;
+  margin-right: 0px;
+  grid-column: 3 / span 1;
+  grid-row: 3 / span 1;
 }
 
 .HiPoStar {
@@ -24,6 +88,43 @@
   margin-right: 0px;
 
 }
+
+#button-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 0px;
+  width: 148px;
+  height: 162px;
+  position: relative;
+}
+
+#star-button {
+  width: 48px;
+  height: 62px;
+  grid-column: 2 / span 1;
+  grid-row: 2 / span 1;
+  z-index: 2;
+  position: relative;
+  background: url('dbManagement/assets/misc/potential/star_unactive.png') no-repeat center;
+  background-size: cover;
+}
+
+#star-button.active {
+  width: 48px;
+  height: 62px;
+  background: url('dbManagement/assets/misc/potential/star_active.png') no-repeat center;
+  background-size: cover;
+}
+
+#star-button.rainbow {
+  width: 48px;
+  height: 62px;
+  background: url('dbManagement/assets/misc/potential/star_rainbow.png') no-repeat center;
+  background-size: cover;
+}
+
+
 
 /* Reset default margin and padding */
 body, h1, h2, p, div {

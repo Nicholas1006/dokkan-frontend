@@ -13,21 +13,47 @@ document.addEventListener('DOMContentLoaded', function() {
 
   const jsonPromise=webFunctions.getJson(subURL);
 
+  const starButton=document.getElementById('star-button');
+  const toggleButtons = Array.from(document.querySelectorAll('.toggle-btn1, .toggle-btn2, .toggle-btn3, .toggle-btn4'));
+
   // Function to handle button click event
   function toggleButtonHandler(button, jsonPromise) {
     button.addEventListener('click', function() {
       button.classList.toggle('active');
+      //if 55% is not active, make it active
+      if (!starButton.classList.contains('active')) {
+        starButton.classList.toggle('active');
+      }
+      //if every button is active, turn on rainbow star
+      if(toggleButtons.every(button => button.classList.contains('active'))){
+        starButton.classList.remove('active');
+        starButton.classList.add('rainbow')
+      }
+      //if rainbow star is active, turn it off 
+      else{
+        starButton.classList.remove('rainbow');
+      }
       jsonPromise.then(json => {
         AdjustHiPo(json);
       });
     });
   }
-  const toggleButtons = [
-    document.getElementById('toggle-button1'),
-    document.getElementById('toggle-button2'),
-    document.getElementById('toggle-button3'),
-    document.getElementById('toggle-button4')
-  ]
+
+  starButton.addEventListener('click', function() {
+    if(starButton.classList.contains('active')){
+      starButton.classList.remove('active');
+      starButton.classList.add('rainbow')
+      toggleButtons.forEach(button => button.classList.add('active'));   
+    } else if(starButton.classList.contains('rainbow')){
+      starButton.classList.remove('rainbow');
+      toggleButtons.forEach(button => button.classList.remove('active'));
+    } else {
+      starButton.classList.add('active');
+    }
+    jsonPromise.then(json => {
+      AdjustHiPo(json);
+    });
+  });
 
   // Add event listeners to toggle buttons
   toggleButtons.forEach(button => {
@@ -100,12 +126,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const DEFstat = document.createElement('p');
     const HPstat = document.createElement('p');
     let ATK = parseInt(json["Max ATK"]);
-    ATK += parseInt(json["Hidden Potential"]["0"]["ATK"])
     let DEF = parseInt(json["Max DEF"]);
-    DEF += parseInt(json["Hidden Potential"]["0"]["DEF"])
     let HP = parseInt(json["Max HP"]);
-    HP += parseInt(json["Hidden Potential"]["0"]["HP"])
-    
+    if(starButton.classList.contains('active' || 'rainbow')){
+      ATK += parseInt(json["Hidden Potential"]["0"]["ATK"])
+      DEF += parseInt(json["Hidden Potential"]["0"]["DEF"])
+      HP += parseInt(json["Hidden Potential"]["0"]["HP"])
+    }
     
     toggleButtons.forEach((button, index) => {
       if(button.classList.contains('active')){
