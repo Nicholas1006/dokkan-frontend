@@ -6,31 +6,49 @@
     <title>My Website</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <script>
-        // Pass the sub-url to the script.js file
-      var suburl = "<%= suburl %>";
-    </script>
-    <div id="image-container"></div>
-    <div id="hipo-button-container">
-        <button id="star-button" class="HiPoStar">
-        <button id="toggle-button1" class="toggle-btn1"></button>
-        <button id="toggle-button2" class="toggle-btn2"></button>
-        <button id="toggle-button3" class="toggle-btn3"></button>
-        <button id="toggle-button4" class="toggle-btn4"></button>
-    </div>  
-    <div id="text-container"></div>
-    <div id="name-container"></div>
-    <div id="typing-container"></div>
-    <ul id="categories-list"></ul>
-    <div id="level_container">
-        <input type="range" min="1" id="level-slider" name="level-slider">
-        <input type="number" min="1" id="level-input" name="level-input">
-    </div>
-    <div id="stats-container"></div>
+<div id="body-container">
+    <div id="base-stats">
+        <script>
+            // Pass the sub-url to the script.js file
+        var suburl = "<%= suburl %>";
+        </script>
+        <div id="image-container"></div>
+        <div id="hipo-button-container">
+            <button id="star-button" class="HiPoStar">
+            <button id="toggle-button1" class="toggle-btn1"></button>
+            <button id="toggle-button2" class="toggle-btn2"></button>
+            <button id="toggle-button3" class="toggle-btn3"></button>
+            <button id="toggle-button4" class="toggle-btn4"></button>
+        </div>  
+        <div id="text-container"></div>
+        <div id="name-container"></div>
+        <div id="typing-container"></div>
+        <div id="level_container">
+            <input type="range" min="1" id="level-slider" name="level-slider">
+            <input type="number" min="1" id="level-input" name="level-input">
+        </div>
+        <div id="stats-container"></div>
+        
+        <div id="transformation-container"></div>
 
-    <div id="transformation-container"></div>
-    <script type="module" src="script.js"></script>
+        
+        <script type="module" src="script.js"></script>
 
-</body>
+    </div id="base-stats">
+
+
+    <div id="links-and-leads">
+        <div id="leader-container">
+            <input type="button" id="seperate or join leader" name="seperate-or-join-leader">
+            <input type="number" min="0" id="leader-1Input" name="leader1Input">
+            <input type="number" min="0" id="leader-2Input" name="leader2Input">
+            <input type="number" min="0" id="leader-TotalInput" name="leader-TotalInput">
+        </div>
+
+        <div id="links-container">
+
+        </div>
+
+    </div id="links-and-leads">
+</div id="body-container">
 </html>

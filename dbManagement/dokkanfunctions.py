@@ -3370,7 +3370,6 @@ def combinelinks(linklist,lvl,printing=True):
             
                 if linkcode==linkdetails[1]:
 
-                
                     #retrieve all nessessary data from link
                     if linkdetails[3]=="1":
                         ATK+=float(linkdetails[11])
@@ -3659,6 +3658,60 @@ def getallcategories(unitid,printing=True):
         for x in temp1:
             categoryList.append(searchedbyid(x,0,card_categoriesGB,1)[0])
     return(categoryList)
+
+def getalllinkswithbuffs(unit,printing=True,DEVEXCEPTIONS=True):
+    links=getalllinks(unit)
+    output={}
+    for link in links:
+        output[link]=getlinkBuffsAtAllLevel(linkNameOrID=link,printing=printing,DEVEXCEPTIONS=DEVEXCEPTIONS)
+    return(output)
+
+def getlinkBuffsAtAllLevel(linkNameOrID="",printing=True,DEVEXCEPTIONS=True):
+    global link_skillsGB
+    global link_skill_lvsJP
+    output={}
+    if linkNameOrID.isdigit():
+        linkID=linkNameOrID
+    else:
+        linkID=searchbyid(code=linkNameOrID,codecolumn=1,database=link_skillsGB,column=0)
+    linkID=linkID[0]
+    linkLevelIDs=searchbycolumn(code=linkID,column=1,database=link_skill_lvsJP)
+    for levelIDRow in linkLevelIDs:
+        levelID=levelIDRow[0]
+        efficiacy_rows=searchbycolumn(code=levelID,database=link_skill_efficaciesJP,column=1)
+        buffs={"ATK":0,
+               "DEF":0,
+               "ENEMYDEF":0,
+               "HEAL":0,
+               "KI":0,
+               "DREDUCTION":0,
+               "CRIT":0,
+               "EVASION":0}
+        for row in efficiacy_rows:
+            if row[3]=="1":
+                buffs["ATK"]+=float(row[11])
+            elif row[3]=="2":
+                if row[4]=="1":
+                    buffs["DEF"]+=float(row[11])
+                elif row[4]=="4":
+                    buffs["ENEMYDEF"]+=float(row[11])
+            elif row[3]=="3":
+                buffs["ATK"]+=float(row[11])
+                buffs["DEF"]+=float(row[12])
+            elif row[3]=="4":
+                buffs["HEAL"]+=float(row[11])
+            elif row[3]=="5":
+                buffs["KI"]+=float(row[11])
+            elif row[3]=="13":
+                buffs["DREDUCTION"]=+100-float(row[11])
+            elif row[3]=="90":
+                buffs["CRIT"]+=float(row[11])
+            elif row[3]=="91":
+                buffs["EVASION"]+=float(row[11])
+        output[levelIDRow[2]]=buffs
+    return(output)
+
+
 
 def getalllinks(unit,printing=True):
     global link_skillsGB

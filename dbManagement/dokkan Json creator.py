@@ -8,10 +8,11 @@ cardsJP=storedatabase(directory,"cards.csv")
 
 eza=False
 DEVEXCEPTIONS=True
-GLOBALPARSE=False
+GLOBALPARSE=True
 MAKEJSON=True
 
 CALCPASSIVE=True
+CALCLINKS=True
 CALCLEADER=True
 CALCHIPO=True
 CALCACTIVE=True
@@ -30,6 +31,7 @@ levelTime=0.0
 basicTime=0.0
 jsonTime=0.0
 standbyTime=0.0
+linksTime=0.0
 multiplierTime=0.0
 
 cardIDsToCheck=["1015051"]
@@ -92,9 +94,14 @@ for unit in cardsToCheck:
         unitDictionary["Max ATK"]=unit[9]
         unitDictionary["Max DEF"]=unit[11]
         unitDictionary["Categories"]=getallcategories(unit[0],printing=True)
-        unitDictionary["Links"]=getalllinks(unit)
         basicTime+=time.time()-basicStart
     
+
+    if(CALCLINKS):
+        linksStart=time.time()
+        unitDictionary["Links"]=getalllinkswithbuffs(unit)
+        linksTime+=time.time()-linksStart
+
     unitDictionary["Transformations"]=[]
 
     unitDictionary["Passive"]={}
@@ -184,6 +191,7 @@ for unit in cardsToCheck:
 if(GLOBALPARSE):
     bar.finish()
 print("Basic time:",round(basicTime,2))
+print("Links time:",round(linksTime,2))
 print("Leader time:",round(leaderTime,2))
 print("Passive time:",round(passiveTime,2))
 print("Super time:",round(superTime,2))
@@ -193,4 +201,4 @@ print("Multiplier time:",round(multiplierTime,2))
 print("Active time:",round(activeTime,2))
 print("Standby time:",round(standbyTime,2))
 print("Json time:",round(jsonTime,2))
-print("Total time:",round(passiveTime+leaderTime+hipoTime+activeTime+superTime+levelTime+basicTime+jsonTime+multiplierTime+standbyTime,2))
+print("Total time:",round(passiveTime+linksTime+leaderTime+hipoTime+activeTime+superTime+levelTime+basicTime+jsonTime+multiplierTime+standbyTime,2))

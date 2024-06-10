@@ -16,6 +16,195 @@ document.addEventListener('DOMContentLoaded', function() {
   const starButton=document.getElementById('star-button');
   const toggleButtons = Array.from(document.querySelectorAll('.toggle-btn1, .toggle-btn2, .toggle-btn3, .toggle-btn4'));
 
+  const seperateOrJoin=document.getElementById('seperate or join leader');
+  seperateOrJoin.textContent="Joint Leader Skills";
+  seperateOrJoin.style.background = "url('dbManagement/assets/misc/leader_icon.png') repeat left";
+  seperateOrJoin.style.width="110px";
+  seperateOrJoin.style.height="50px";
+  seperateOrJoin.style.gridRow="1";
+  seperateOrJoin.style.gridArea="1/1/2/3";
+  seperateOrJoin.addEventListener('click', function(){
+    if(seperateOrJoin.textContent=="Seperate Leader Skills"){
+      seperateOrJoin.style.width="110px";
+      seperateOrJoin.textContent="Joint Leader Skills";
+      seperateOrJoin.style.background = "url('dbManagement/assets/misc/leader_icon.png') repeat left";
+      leaderAInput.style.display="none";
+      leaderBInput.style.display="none";
+      leaderTotalInput.style.display="block";
+    } else {
+      seperateOrJoin.textContent="Seperate Leader Skills";
+      seperateOrJoin.style.background = "url('dbManagement/assets/misc/sub_leader_icon.png') repeat left";
+      seperateOrJoin.style.width="220px";
+      leaderAInput.style.display="block";
+      leaderBInput.style.display="block";
+      leaderTotalInput.style.display="none";
+    }
+  });
+
+  
+  
+
+
+
+
+  const leaderContainer=document.getElementById('leader-1Input');
+  let leaderAInput=document.getElementById('leader-1Input');
+  leaderAInput.value=200;
+  leaderAInput.style.gridRow=2;
+  leaderAInput.style.width="110px"
+  leaderAInput.style.margin="0px";
+  let leaderBInput=document.getElementById('leader-2Input');
+  leaderBInput.value=200;
+  leaderBInput.style.gridRow=2;
+  leaderBInput.style.width="110px"
+  let leaderTotalInput=document.getElementById('leader-TotalInput');
+  leaderTotalInput.value=400;
+  leaderTotalInput.style.gridRow=2;
+  leaderTotalInput.style.width="110px"
+  leaderAInput.addEventListener('input', function(){
+    leaderTotalInput.value=parseInt(leaderAInput.value)+parseInt(leaderBInput.value);
+  });
+
+  leaderBInput.addEventListener('input', function(){
+    leaderTotalInput.value=parseInt(leaderAInput.value)+parseInt(leaderBInput.value);
+  });
+  
+  leaderTotalInput.addEventListener('input', function(){
+    leaderAInput.value=Math.floor(parseInt(leaderTotalInput.value)/2);
+    if(parseInt(leaderTotalInput.value)%2==0){
+      leaderBInput.value=Math.floor(parseInt(leaderTotalInput.value)/2);
+    } else {
+      leaderBInput.value=Math.floor(parseInt(leaderTotalInput.value)/2)+1;
+    }
+  });
+  leaderAInput.style.display="none";
+  leaderBInput.style.display="none";
+  leaderTotalInput.style.display="block";
+
+
+
+  const linksContainer=document.getElementById('links-container');
+  jsonPromise.then(json => {
+    let links =json["Links"];
+    let row=1;
+    for (const link of Object.keys(links)){
+      let linkName = link;
+      let linkLevel = 10;
+      let linkData = links[linkName][linkLevel];
+      let linkButton = document.createElement('button');
+      linkButton.innerHTML = linkName + " <br>Level: " + linkLevel;
+      linkButton.style.width = "100px";
+      linkButton.style.height = "60px";
+      linkButton.style.border = "none";
+      linkButton.style.margin = "0px";
+      linkButton.style.cursor = "pointer";
+      linkButton.style.background="#00FF00"
+      linkButton.style.gridRow= row*2;
+      linkButton.classList.add('active');
+      let linkSlider = document.createElement('input');
+      linkSlider.type = "range";
+      linkSlider.min = 1;
+      linkSlider.max = 10;
+      linkSlider.value = 10;
+      linkSlider.style.width = "100px";
+      linkSlider.style.height = "20px";
+      linkSlider.style.border = "1px solid black";
+      linkSlider.style.margin = "0px";
+      linkSlider.style.cursor = "pointer";
+      linkSlider.style.gridRow= row*2 +1;
+      linksContainer.appendChild(linkButton);
+      
+      linksContainer.appendChild(linkSlider);
+      console.log(linkSlider)      
+
+      linkButton.onclick = function(){
+        
+        if(linkButton.classList.contains('active')){
+          linkButton.style.background="#FF5C35"
+          linkButton.classList.remove('active');
+        } else {
+          linkButton.classList.add('active');
+          linkButton.style.background="#00FF00"
+        }
+        updateLinkBuffs(json)
+      }
+      linkSlider.addEventListener('input', function(){
+        linkLevel = linkSlider.value;
+        linkButton.innerHTML = linkName + " <br>Level: " + linkLevel;
+        linkData = links[linkName][linkLevel];
+        updateLinkBuffs(json);
+      });
+      row+=1;
+    };
+    //create an paragraph so that none of the sliders are .lastchild
+    let linkBuffs = document.createElement('p');
+    linkBuffs.innerHTML = "Link Buffs: ";
+    linksContainer.appendChild(linkBuffs);
+    
+
+    updateLinkBuffs(json)
+  });
+
+
+  function updateLinkBuffs(json){
+    // Select all link sliders and buttons within a specific parent
+    let linksContainer = document.querySelector('#links-container');
+    let linkSliders = linksContainer.querySelectorAll('input[type=range]');
+    let linkButtons = linksContainer.querySelectorAll('button');
+
+    // Initialize variables to store the total link buffs
+    let totalATKBuff = 0;
+    let totalDEFBuff = 0;
+    let totalEnemyDEFBuff = 0;
+    let totalHealBuff = 0;
+    let totalKIBuff = 0;
+    let totalDamageReductionBuff = 0;
+    let totalCritBuff = 0;
+    let totalEvasionBuff = 0;
+
+    // Iterate over each link slider and button
+    linkSliders.forEach((slider, index) => {
+      if(!linkButtons[index].classList.contains('active')) return;
+      let linkName = linkButtons[index].textContent.split(' Level')[0];
+      
+      let linkLevel = parseInt(slider.value);
+      let linkData = json.Links[linkName][linkLevel];
+
+      // Add the link buffs to the total link buffs
+      totalATKBuff += linkData.ATK || 0;
+      totalDEFBuff += linkData.DEF || 0;
+      totalEnemyDEFBuff += linkData.ENEMYDEF || 0;
+      totalHealBuff += linkData.HEAL || 0;
+      totalKIBuff += linkData.KI || 0;
+      totalDamageReductionBuff += linkData.DREDUCTION || 0;
+      totalCritBuff += linkData.CRIT || 0;
+      totalEvasionBuff += linkData.EVASION || 0;
+    });
+
+    // Create a paragraph element to display the total link buffs
+    let linkBuffs = document.createElement('p');
+    linkBuffs.innerHTML = "Link Buffs: ";
+    if (totalATKBuff) linkBuffs.innerHTML += "<br>ATK: " + totalATKBuff + "% ";
+    if (totalDEFBuff) linkBuffs.innerHTML += "<br>DEF: " + totalDEFBuff + "% ";
+    if (totalEnemyDEFBuff) linkBuffs.innerHTML += "<br>Enemy DEF: " + totalEnemyDEFBuff + "% ";
+    if (totalHealBuff) linkBuffs.innerHTML += "<br>Heal: " + totalHealBuff + "% ";
+    if (totalKIBuff) linkBuffs.innerHTML += "<br>KI: " + totalKIBuff + " ";
+    if (totalDamageReductionBuff) linkBuffs.innerHTML += "<br>Damage Reduction: " + totalDamageReductionBuff + "% ";
+    if (totalCritBuff) linkBuffs.innerHTML += "<br>Crit: " + totalCritBuff + "% ";
+    if (totalEvasionBuff) linkBuffs.innerHTML += "<br>Evasion: " + totalEvasionBuff + "% ";
+    //remove the old paragraph from the links container
+    linksContainer.removeChild(linksContainer.lastChild);
+
+
+
+    // Append the paragraph element to the links container
+    linksContainer.appendChild(linkBuffs);
+  }
+
+  jsonPromise.then(json => {
+    updateLinkBuffs(json);
+  });
+
   let transformationContainer=document.getElementById('transformation-container');
   jsonPromise.then(json => {
     let transformations =json["Transformations"];
@@ -175,13 +364,14 @@ document.addEventListener('DOMContentLoaded', function() {
       updateContainer('typing-container', createParagraph(data.Typing || "Typing data not found"));
       updateContainer('name-container', createParagraph(data.Name || "Name not found"));
 
-      const categoriesList = document.getElementById('categories-list');
+      /*const categoriesList = document.getElementById('categories-list');
       categoriesList.innerHTML = ''; // Clear the categories list before appending items
       data.Categories.forEach(category => {
         const listItem = document.createElement('li');
         listItem.textContent = category;
         categoriesList.appendChild(listItem);
       });
+      */
       updateImageContainer('image-container', subURL, data.Typing);
       updateContainer('text-container', createParagraph("Tgus us a text"));
       document.getElementById('text-container').innerHTML = subURL;
