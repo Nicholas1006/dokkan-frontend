@@ -7,7 +7,7 @@ directory="dataJP/"
 cardsJP=storedatabase(directory,"cards.csv")
 
 DEVEXCEPTIONS=True
-GLOBALPARSE=True
+GLOBALPARSE=False
 MAKEJSON=True
 
 CALCPASSIVE=True
@@ -35,7 +35,7 @@ finishTime=0.0
 linksTime=0.0
 multiplierTime=0.0
 
-cardIDsToCheck=["4026911"]
+cardIDsToCheck=["4025781"]
 #cardIDsToCheck=["4026911","4025741","4028381","4026401","4027631","4027301","4025781","4026541"]
 
 cardsToCheck=[]
@@ -166,8 +166,8 @@ for unit in cardsToCheck:
         if("Exchanges to" in unitDictionary["Standby Skill"]):
             unitDictionary["Transformations"].append(unitDictionary["Standby Skill"]["Exchanges to"])
         if(unitDictionary["Finish Skill"] != {}):
-            for finishRow in unitDictionary["Standby Skill"]:
-                unitDictionary["Transformations"].append(unitDictionary["Standby Skill"][finishRow]["Exchanges to"])
+            for finishRow in unitDictionary["Finish Skill"]:
+                unitDictionary["Transformations"].append(unitDictionary["Finish Skill"][finishRow]["Exchanges to"])
 
 
         if(unitDictionary["Passive"]!=None):
