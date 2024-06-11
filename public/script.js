@@ -86,32 +86,41 @@ document.addEventListener('DOMContentLoaded', function() {
   const linksContainer=document.getElementById('links-container');
   jsonPromise.then(json => {
     let links =json["Links"];
-    let row=1;
+    let linkNumber=0;
     for (const link of Object.keys(links)){
       let linkName = link;
       let linkLevel = 10;
       let linkData = links[linkName][linkLevel];
       let linkButton = document.createElement('button');
       linkButton.innerHTML = linkName + " <br>Level: " + linkLevel;
-      linkButton.style.width = "100px";
       linkButton.style.height = "60px";
       linkButton.style.border = "none";
       linkButton.style.margin = "0px";
       linkButton.style.cursor = "pointer";
       linkButton.style.background="#00FF00"
-      linkButton.style.gridRow= row*2;
+      linkButton.style.gridRow= linkNumber*2;
       linkButton.classList.add('active');
       let linkSlider = document.createElement('input');
       linkSlider.type = "range";
       linkSlider.min = 1;
       linkSlider.max = 10;
       linkSlider.value = 10;
-      linkSlider.style.width = "100px";
       linkSlider.style.height = "20px";
       linkSlider.style.border = "1px solid black";
       linkSlider.style.margin = "0px";
       linkSlider.style.cursor = "pointer";
-      linkSlider.style.gridRow= row*2 +1;
+      if(linkNumber%2==0){
+        linkButton.style.gridRow= linkNumber*2+4;
+        linkSlider.style.gridRow= linkNumber*2+5;
+        linkButton.style.gridColumn=1;
+        linkSlider.style.gridColumn=1;
+      }
+      else{
+        linkButton.style.gridRow= (-1+linkNumber)*2+4;
+        linkSlider.style.gridRow= (-1+linkNumber)*2+5;
+        linkButton.style.gridColumn=3;
+        linkSlider.style.gridColumn=3;
+      }
       linksContainer.appendChild(linkButton);
       
       linksContainer.appendChild(linkSlider);
@@ -132,7 +141,7 @@ document.addEventListener('DOMContentLoaded', function() {
         linkData = links[linkName][linkLevel];
         updateLinkBuffs(json);
       });
-      row+=1;
+      linkNumber+=1;
     };
 
     
@@ -141,12 +150,14 @@ document.addEventListener('DOMContentLoaded', function() {
     allLinksSlider.min = 1;
     allLinksSlider.max = 10;
     allLinksSlider.value = 10;
-    allLinksSlider.style.width = "100px";
     allLinksSlider.style.height = "20px";
     allLinksSlider.style.border = "1px solid black";
     allLinksSlider.style.margin = "0px";
     allLinksSlider.style.cursor = "pointer";
-    allLinksSlider.style.gridRow= row*2 +1;
+    allLinksSlider.style.gridRowStart = "3";
+    allLinksSlider.style.gridRowEnd = "3";
+    allLinksSlider.style.gridColumnStart = "1";
+    allLinksSlider.style.gridColumnEnd = "4";
     allLinksSlider.addEventListener('input', function(){
       let linksContainer = document.querySelector('#links-container');
       let linkSliders = linksContainer.querySelectorAll('input[type=range]');
@@ -161,13 +172,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let allLinksButton = document.createElement('button');
     allLinksButton.innerHTML = "All Links";
-    allLinksButton.style.width = "100px";
     allLinksButton.style.height = "60px";
     allLinksButton.style.border = "none";
     allLinksButton.style.margin = "0px";
     allLinksButton.style.cursor = "pointer";
     allLinksButton.style.background="#00FF00"
-    allLinksButton.style.gridRow= row*2+2;
+    allLinksButton.style.gridRowStart = "2";
+    allLinksButton.style.gridRowEnd = "3";
+    allLinksButton.style.gridColumnStart = "1";
+    allLinksButton.style.gridColumnEnd = "4";
     allLinksButton.classList.add('active');
     allLinksButton.onclick = function(){
       if(allLinksButton.classList.contains('active')){
@@ -190,9 +203,6 @@ document.addEventListener('DOMContentLoaded', function() {
       }
       updateLinkBuffs(json);
     }
-    linksContainer.appendChild(allLinksButton);
-    linksContainer.appendChild(allLinksButton);
-    linksContainer.appendChild(allLinksButton);
     linksContainer.appendChild(allLinksButton);
 
 
@@ -227,8 +237,6 @@ document.addEventListener('DOMContentLoaded', function() {
       let linkName = linkButtons[index].textContent.split(' Level')[0];
       
       let linkLevel = parseInt(slider.value);
-      console.log(json.Links)
-      console.log(linkButtons[index].textContent)
       let linkData = json.Links[linkName][linkLevel];
 
       // Add the link buffs to the total link buffs
@@ -245,6 +253,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Create a paragraph element to display the total link buffs
     let linkBuffs = document.createElement('p');
     linkBuffs.style.height = "100px";
+    linkBuffs.style.width = "200%";
+    linkBuffs.style.gridColumnStart = "1";
+    linkBuffs.style.gridColumnEnd = "30";
+    linkBuffs.style.gridColumn = "1";
     linkBuffs.innerHTML = "Link Buffs: ";
     if (totalATKBuff) linkBuffs.innerHTML += "<br>ATK: " + totalATKBuff + "% ";
     if (totalDEFBuff) linkBuffs.innerHTML += "<br>DEF: " + totalDEFBuff + "% ";
@@ -472,6 +484,35 @@ document.addEventListener('DOMContentLoaded', function() {
     statsContainer.appendChild(DEFstat);
   }
 
+  //create queries based on the passive skill conditions
+  let passiveContainer=document.getElementById('passive-container');
+  jsonPromise.then(json => {
+    let passiveLines=json["Passive"];
+    console.log(passiveLines)
+
+    for (const key of Object.keys(passiveLines)){
+      let line = passiveLines[key];
+      if("Condition" in line){
+        let condition = line["Condition"];
+        let Causalities = condition["Causalities"];
+        for (const slightlySmallerKey of Object.keys(Causalities)){
+          let causality=Causalities[slightlySmallerKey];
+          let sliderText=causality["Slider"]["Name"];
+          let slider = document.createElement('input');
+          slider.type = "range";
+          slider.min = causality["Slider"]["Min"] || 0;
+          slider.max = causality["Slider"]["Max"] || 100;
+          slider.value = 1;
+          slider.style.height = "20px";
+          slider.style.border = "1px solid black";
+          slider.style.margin = "0px";
+          slider.style.cursor = "pointer";
+          passiveContainer.appendChild(slider);
+        }
+      }
+    }
+  }
+  )
   
 
 
