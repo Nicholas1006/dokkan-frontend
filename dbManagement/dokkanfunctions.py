@@ -631,7 +631,6 @@ def split_into_lists(stringToSplit,splitter):
     return components
 
 def parseStandby(unit,DEVEXCEPTIONS=False):
-    #WIP
     global card_finish_skill_set_relationsJP
     global card_standby_skill_set_relationsJP
     global finish_skillsJP
@@ -642,7 +641,6 @@ def parseStandby(unit,DEVEXCEPTIONS=False):
     standby_skill_set_id=searchbyid(code=unit[0],codecolumn=1,database=card_standby_skill_set_relationsJP,column=2)
     if(standby_skill_set_id!=None):
         standby_skill_set_id=standby_skill_set_id[0]
-        output["Standby or Finish"]="Standby"
         if(JPExclusiveCheck(unit[0])):
             global standby_skill_setsJP
             standby_skill_setsRow=searchbycolumn(code=standby_skill_set_id,database=standby_skill_setsJP,column=0)[0]
@@ -682,16 +680,22 @@ def parseStandby(unit,DEVEXCEPTIONS=False):
             else:
                 if(DEVEXCEPTIONS):
                     raise Exception("Unknown standby skill")
+    return(output)
 
 
 
 
-
+def parseFinish(unit,DEVEXCEPTIONS=False):
+    global card_finish_skill_set_relationsJP
+    global card_standby_skill_set_relationsJP
+    global finish_skillsJP
+    global finish_specialsJP
+    global card_finish_skill_set_relationsJP
+    output={}
     finish_skill_set_ids=searchbyid(code=unit[0],codecolumn=1,database=card_finish_skill_set_relationsJP,column=2)
     if(finish_skill_set_ids!=None):
         for finish_skill_set_id in finish_skill_set_ids:
             output[finish_skill_set_id]={}
-            output[finish_skill_set_id]["Standby or Finish"]="Finish"
             if(JPExclusiveCheck(unit[0])):
                 global finish_skill_setsJP
                 finish_skill_setsRow=searchbycolumn(code=finish_skill_set_id,database=finish_skill_setsJP,column=0)[0]
@@ -755,16 +759,17 @@ def parseStandby(unit,DEVEXCEPTIONS=False):
                     output[finish_skill_set_id]["Nullification"]["Activated"]=True
                 elif(finish_skill_row[6]=="120"):
                     output[finish_skill_set_id]["Counter"]={"Activated":True, "Multiplier":efficiacy_value[1]}
-
-                    
                 else:
                     if(DEVEXCEPTIONS):
                         raise Exception("Unknown finish skill")
-
-        
-        
-
-
+            if("Exchanges to" not in output[finish_skill_set_id]):
+                for standbySkillRow in standby_skillsJP:
+                    if(unit[0][:-1] in standbySkillRow[8]):
+                        standbySkillSetId=standbySkillRow[1]
+                        sourceUnitID=searchbyid(code=standbySkillSetId,codecolumn=0,database=card_standby_skill_set_relationsJP,column=1)
+                        if(sourceUnitID!=None):
+                            sourceUnitID=sourceUnitID[0]
+                            output[finish_skill_set_id]["Exchanges to"]=sourceUnitID
     return(output)
 
 def unicode_fixer(input):

@@ -19,6 +19,7 @@ CALCSUPERATTACK=True
 CALCLEVELS=True
 CALCBASIC=True
 CALCMULTIPLIER=True
+CALCFINISH=True
 CALCSTANDBY=True
 
 passiveTime=0.0
@@ -30,10 +31,11 @@ levelTime=0.0
 basicTime=0.0
 jsonTime=0.0
 standbyTime=0.0
+finishTime=0.0
 linksTime=0.0
 multiplierTime=0.0
 
-cardIDsToCheck=["1026901"]
+cardIDsToCheck=["4026911"]
 #cardIDsToCheck=["4026911","4025741","4028381","4026401","4027631","4027301","4025781","4026541"]
 
 cardsToCheck=[]
@@ -152,11 +154,21 @@ for unit in cardsToCheck:
             unitDictionary["Standby Skill"]=parseStandby(unit,DEVEXCEPTIONS)
             standbyTime+=time.time()-standbyStart
 
+        unitDictionary["Finish Skill"]={}
+        if(CALCFINISH):
+            finishStart=time.time()
+            unitDictionary["Finish Skill"]=parseFinish(unit,DEVEXCEPTIONS)
+            finishTime+=time.time()-finishStart
+
         unitDictionary["Transformations"]=[]
         
 
         if("Exchanges to" in unitDictionary["Standby Skill"]):
             unitDictionary["Transformations"].append(unitDictionary["Standby Skill"]["Exchanges to"])
+        if(unitDictionary["Finish Skill"] != {}):
+            for finishRow in unitDictionary["Standby Skill"]:
+                unitDictionary["Transformations"].append(unitDictionary["Standby Skill"][finishRow]["Exchanges to"])
+
 
         if(unitDictionary["Passive"]!=None):
             for passiveLine in unitDictionary["Passive"]:
@@ -213,5 +225,5 @@ print("Multiplier time:",round(multiplierTime,2))
 print("Active time:",round(activeTime,2))
 print("Standby time:",round(standbyTime,2))
 print("Json time:",round(jsonTime,2))
-print("Total time:",round(passiveTime+linksTime+leaderTime+hipoTime+activeTime+superTime+levelTime+basicTime+jsonTime+multiplierTime+standbyTime,2))
-print("Average per unit",round((passiveTime+linksTime+leaderTime+hipoTime+activeTime+superTime+levelTime+basicTime+jsonTime+multiplierTime+standbyTime)/unitCount,5))
+print("Total time:",round(passiveTime+finishTime+linksTime+leaderTime+hipoTime+activeTime+superTime+levelTime+basicTime+jsonTime+multiplierTime+standbyTime,2))
+print("Average per unit",round((passiveTime+finishTime+linksTime+leaderTime+hipoTime+activeTime+superTime+levelTime+basicTime+jsonTime+multiplierTime+standbyTime)/unitCount,5))
