@@ -6,7 +6,6 @@ from progress.bar import Bar
 directory="dataJP/"
 cardsJP=storedatabase(directory,"cards.csv")
 
-eza=False
 DEVEXCEPTIONS=True
 GLOBALPARSE=True
 MAKEJSON=True
@@ -34,7 +33,7 @@ standbyTime=0.0
 linksTime=0.0
 multiplierTime=0.0
 
-cardIDsToCheck=["1015051"]
+cardIDsToCheck=["1013541"]
 #cardIDsToCheck=["4026911","4025741","4028381","4026401","4027631","4027301","4025781","4026541"]
 
 cardsToCheck=[]
@@ -66,125 +65,131 @@ if GLOBALPARSE:
     bar = Bar('Parsing units', max=len(cardsToCheck))
 
 for unit in cardsToCheck:
-    unitCount+=1
-    unitDictionary={}
-    unit1=swapToUnitWith1(unit)
-    unitGB=switchUnitToGlobal(unit)
-    if(CALCBASIC):
-        basicStart=time.time()
-        unitDictionary["ID"]=unit[0]
-        unitDictionary["Typing"]=getUnitTyping(unit)
-        unitDictionary["Class"]=getUnitClass(unit)
-        if(unitGB!=None):
-            unitDictionary["Name"]=unitGB[1]
-        else:
-            card_unique_info_id=unit[3]
-            temp=searchbyid(code=card_unique_info_id,codecolumn=3,database=cardsGB,column=1)
-            if(temp!=None):
-                likelyName=longestCommonSubstring(temp)
-                if(likelyName!=""):
-                    unitDictionary["Name"]=likelyName
+    ezaTrueFalse=[False]
+    if(checkEza(unit[0])==True):
+        ezaTrueFalse=[True,False]
+    if(GLOBALPARSE):
+            bar.next()
+    for eza in ezaTrueFalse:
+        unitCount+=1
+        unitDictionary={}
+        unit1=swapToUnitWith1(unit)
+        unitGB=switchUnitToGlobal(unit)
+        if(CALCBASIC):
+            basicStart=time.time()
+            unitDictionary["ID"]=unit[0]
+            unitDictionary["Typing"]=getUnitTyping(unit)
+            unitDictionary["Class"]=getUnitClass(unit)
+            if(unitGB!=None):
+                unitDictionary["Name"]=unitGB[1]
+            else:
+                card_unique_info_id=unit[3]
+                temp=searchbyid(code=card_unique_info_id,codecolumn=3,database=cardsGB,column=1)
+                if(temp!=None):
+                    likelyName=longestCommonSubstring(temp)
+                    if(likelyName!=""):
+                        unitDictionary["Name"]=likelyName
+                    else:
+                        unitDictionary["Name"]=unit[1]
                 else:
                     unitDictionary["Name"]=unit[1]
+            unitDictionary["Rarity"]=getrarity(unit)
+            unitDictionary["Max Level"]=getMaxLevel(unit,eza)
+            unitDictionary["Categories"]=getallcategories(unit[0],printing=True)
+            basicTime+=time.time()-basicStart
+        
+
+        if(CALCLINKS):
+            linksStart=time.time()
+            unitDictionary["Links"]=getalllinkswithbuffs(unit)
+            linksTime+=time.time()-linksStart
+
+        unitDictionary["Transformations"]=[]
+
+        unitDictionary["Passive"]={}
+        if(CALCPASSIVE):
+            passiveStart=time.time()
+            parsedPassive=parsePassiveSkill(unit,eza,DEVEXCEPTIONS)
+            for passiveLine in parsedPassive:
+                parsedPassive[passiveLine]=shortenPassiveDictionary(parsedPassive[passiveLine])
+            unitDictionary["Passive"]=parsedPassive
+            passiveTime+=time.time()-passiveStart
+
+        unitDictionary["Stats at levels"]={}
+        if(CALCLEVELS):
+            levelStart=time.time()
+            unitDictionary["Stats at levels"]=getStatsAtAllLevels(unit,eza)
+            levelTime+=time.time()-levelStart
+        
+        unitDictionary["Leader Skill"]={}
+        if(CALCLEADER):
+            leaderStart=time.time()
+            unitDictionary["Leader Skill"]=parseLeaderSkill(unit,eza,DEVEXCEPTIONS)
+            leaderTime+=time.time()-leaderStart
+
+        unitDictionary["Hidden Potential"]={}
+        if(CALCHIPO):
+            hipoStart=time.time()
+            if(unit[52][:-2]not in HiPoBoards):
+                HiPoBoards[unit[52][:-2]]=parseHiddenPotential(unit[52][:-2],DEVEXCEPTIONS)
+            unitDictionary["Hidden Potential"]=HiPoBoards[unit[52][:-2]]
+            hipoTime+=time.time()-hipoStart
+
+        unitDictionary["Super Attack"]={}
+        if(CALCSUPERATTACK):
+            superStart=time.time()
+            unitDictionary["Super Attack"]=parseSuperAttack(unit,eza,DEVEXCEPTIONS)
+            superTime+=time.time()-superStart
+
+        unitDictionary["Active Skill"]={}
+        if(CALCACTIVE):    
+            activeStart=time.time()
+            unitDictionary["Active Skill"]=parseActiveSkill(unit,eza,DEVEXCEPTIONS)
+            activeTime+=time.time()-activeStart
+
+        if(unitDictionary["Passive"]!=None):
+            for passiveLine in unitDictionary["Passive"]:
+                if "Transformation" in unitDictionary["Passive"][passiveLine]:
+                    unitDictionary["Transformations"].append(unitDictionary["Passive"][passiveLine]["Transformation"]["Unit"])
+        if(unitDictionary["Active Skill"]!=None):
+            for activeLine in unitDictionary["Active Skill"]["Effects"]:
+                if "Unit" in unitDictionary["Active Skill"]["Effects"][activeLine]["Effect"]:
+                    unitDictionary["Transformations"].append(unitDictionary["Active Skill"]["Effects"][activeLine]["Effect"]["Unit"])
+
+
+
+
+        unitDictionary["Ki Multiplier"]={}
+        if(CALCMULTIPLIER):
+            multiplierStart=time.time()
+            unitDictionary["Ki Multiplier"]=getKiMultipliers(unit)
+            multiplierTime+=time.time()-multiplierStart
+        
+
+        unitDictionary["Standby Skill"]={}
+        if(CALCSTANDBY):
+            standbyStart=time.time()
+            unitDictionary["Standby Skill"]=parseStandby(unit,DEVEXCEPTIONS)
+            standbyTime+=time.time()-standbyStart
+
+
+
+
+        jsonName=unit[0]
+
+        
+
+
+
+        if(MAKEJSON):
+            jsonStart=time.time()
+            if(eza):
+                directoryName="jsonsEZA"
             else:
-                unitDictionary["Name"]=unit[1]
-        unitDictionary["Rarity"]=getrarity(unit)
-        unitDictionary["Max Level"]=unit[13]
-        unitDictionary["Max HP"]=unit[7]
-        unitDictionary["Max ATK"]=unit[9]
-        unitDictionary["Max DEF"]=unit[11]
-        unitDictionary["Categories"]=getallcategories(unit[0],printing=True)
-        basicTime+=time.time()-basicStart
-    
-
-    if(CALCLINKS):
-        linksStart=time.time()
-        unitDictionary["Links"]=getalllinkswithbuffs(unit)
-        linksTime+=time.time()-linksStart
-
-    unitDictionary["Transformations"]=[]
-
-    unitDictionary["Passive"]={}
-    if(CALCPASSIVE):
-        passiveStart=time.time()
-        parsedPassive=parsePassiveSkill(unit,eza,DEVEXCEPTIONS)
-        for passiveLine in parsedPassive:
-            parsedPassive[passiveLine]=shortenPassiveDictionary(parsedPassive[passiveLine])
-        unitDictionary["Passive"]=parsedPassive
-        passiveTime+=time.time()-passiveStart
-
-    unitDictionary["Stats at levels"]={}
-    if(CALCLEVELS):
-        levelStart=time.time()
-        unitDictionary["Stats at levels"]=getStatsAtAllLevels(unit)
-        levelTime+=time.time()-levelStart
-    
-    unitDictionary["Leader Skill"]={}
-    if(CALCLEADER):
-        leaderStart=time.time()
-        unitDictionary["Leader Skill"]=parseLeaderSkill(unit,unit[22][:-2],DEVEXCEPTIONS)
-        leaderTime+=time.time()-leaderStart
-
-    unitDictionary["Hidden Potential"]={}
-    if(CALCHIPO):
-        hipoStart=time.time()
-        if(unit[52][:-2]not in HiPoBoards):
-            HiPoBoards[unit[52][:-2]]=parseHiddenPotential(unit[52][:-2],DEVEXCEPTIONS)
-        unitDictionary["Hidden Potential"]=HiPoBoards[unit[52][:-2]]
-        hipoTime+=time.time()-hipoStart
-
-    unitDictionary["Super Attack"]={}
-    if(CALCSUPERATTACK):
-        superStart=time.time()
-        unitDictionary["Super Attack"]=parseSuperAttack(unit,eza,DEVEXCEPTIONS)
-        superTime+=time.time()-superStart
-
-    unitDictionary["Active Skill"]={}
-    if(CALCACTIVE):    
-        activeStart=time.time()
-        unitDictionary["Active Skill"]=parseActiveSkill(unit,eza,DEVEXCEPTIONS)
-        activeTime+=time.time()-activeStart
-
-    if(unitDictionary["Passive"]!=None):
-        for passiveLine in unitDictionary["Passive"]:
-            if "Transformation" in unitDictionary["Passive"][passiveLine]:
-                unitDictionary["Transformations"].append(unitDictionary["Passive"][passiveLine]["Transformation"]["Unit"])
-    if(unitDictionary["Active Skill"]!=None):
-        for activeLine in unitDictionary["Active Skill"]["Effects"]:
-            if "Unit" in unitDictionary["Active Skill"]["Effects"][activeLine]["Effect"]:
-                unitDictionary["Transformations"].append(unitDictionary["Active Skill"]["Effects"][activeLine]["Effect"]["Unit"])
-
-
-
-
-    unitDictionary["Ki Multiplier"]={}
-    if(CALCMULTIPLIER):
-        multiplierStart=time.time()
-        unitDictionary["Ki Multiplier"]=getKiMultipliers(unit)
-        multiplierTime+=time.time()-multiplierStart
-    
-
-    unitDictionary["Standby Skill"]={}
-    if(CALCSTANDBY):
-        standbyStart=time.time()
-        unitDictionary["Standby Skill"]=parseStandby(unit,DEVEXCEPTIONS)
-        standbyTime+=time.time()-standbyStart
-
-
-
-
-    jsonName=unit[0]
-
-    
-
-
-
-    if(MAKEJSON):
-        jsonStart=time.time()
-        turnintoJson(unitDictionary, jsonName,directoryName="jsons")
-        jsonTime+=time.time()-jsonStart
-    if(GLOBALPARSE):
-        bar.next()
+                directoryName="jsons"
+            turnintoJson(unitDictionary, jsonName,directoryName=directoryName)
+            jsonTime+=time.time()-jsonStart
+        
     
 
 

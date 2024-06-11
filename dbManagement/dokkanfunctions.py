@@ -57,6 +57,17 @@ def superAttackMultiplierExtractor(superAttackID,super_attack_lvl,DEVEXCEPTIONS=
 
     return(multiplier)
     
+def getMaxLevel(unit,eza=False):
+    if(eza):
+        global optimal_awakening_growthsJP
+        cardOptimalAwakeningGrowthID=unit[16][:-2]
+        growthRows=searchbycolumn(code=cardOptimalAwakeningGrowthID,database=optimal_awakening_growthsJP,column=1)
+        maxLevel=int(unit[14])
+        for growthRow in growthRows:
+            maxLevel=max(maxLevel,int(growthRow[3]))
+        return(maxLevel)
+    else:
+        return(int(unit[15]))
 
 def parseSuperAttack(unit,eza=False,DEVEXCEPTIONS=False):
     global card_specialsJP
@@ -75,80 +86,73 @@ def parseSuperAttack(unit,eza=False,DEVEXCEPTIONS=False):
     card_specialss=searchbycolumn(code=unit[0],column=1,database=card_specialsJP)
     card_specialss=removeDuplicatesUltraList(ultraList=card_specialss,slot=0)
     for card_special in card_specialss:
-        superAttackDictionary={}
-        if(JPExclusiveCheck(unit[0])==False):
-            superSetGB=searchbycolumn(code=card_special[2],column=0,database=special_setsGB)
-        else:
-            superSetGB=[]
-        superSet=searchbycolumn(code=card_special[2],column=0,database=special_setsJP)
-        superAttackDictionary["superID"]=superSet[0][0]
-        if(superSetGB==[]):
-            superAttackDictionary["superName"]=superSet[0][1]
-            superAttackDictionary["superDescription"]=superSet[0][2]
-        else:
-            superAttackDictionary["superName"]=superSetGB[0][1]
-            superAttackDictionary["superDescription"]=superSetGB[0][2]
+        if((eza and int(unit[14])<int(card_special[5])) or (eza==False and int(unit[14])>=int(card_special[5]))):
+            superAttackDictionary={}
+            if(JPExclusiveCheck(unit[0])==False):
+                superSetGB=searchbycolumn(code=card_special[2],column=0,database=special_setsGB)
+            else:
+                superSetGB=[]
+            superSet=searchbycolumn(code=card_special[2],column=0,database=special_setsJP)
+            superAttackDictionary["superID"]=superSet[0][0]
+            if(superSetGB==[]):
+                superAttackDictionary["superName"]=superSet[0][1]
+                superAttackDictionary["superDescription"]=superSet[0][2]
+            else:
+                superAttackDictionary["superName"]=superSetGB[0][1]
+                superAttackDictionary["superDescription"]=superSetGB[0][2]
 
-        
-        superAttackDictionary["superMinKi"]=card_special[6]
-        superAttackDictionary["superPriority"]=card_special[3]
-        superAttackDictionary["superStyle"]=card_special[4]
-        superAttackDictionary["superMinLVL"]=card_special[5]
-        superAttackDictionary["superCausality"]=superSet[0][3]
-        superAttackDictionary["superAimTarget"]=superSet[0][4]
-        superAttackDictionary["superIsInactive"]=superSet[0][7]
-        if(superAttackDictionary["superStyle"]=="Condition"):
-            causalityCondition=logicalCausalityExtractor(card_special[15])
-            causalityCondition=CausalityLogicalExtractor(unit,causalityCondition,DEVEXCEPTIONS=DEVEXCEPTIONS)
-            superAttackDictionary["superCondition"]=causalityCondition
-        superAttackDictionary["SpecialBonus"]={}
-        superAttackDictionary["SpecialBonus"]["ID"]=card_special[9]
-        if(ableToEZA and eza and int(unit[14])<int(superAttackDictionary["superMinLVL"])):
-            superAttackDictionary["Multiplier"]=superAttackMultiplierExtractor(superAttackID=superAttackDictionary["superID"],super_attack_lvl=int(unit[14])+5,DEVEXCEPTIONS=DEVEXCEPTIONS)
-            card_supers=searchbycolumn(code=superAttackDictionary["superID"],column=1,database=specialsJP)
-            for special in card_supers:
-                specialsEffect=parseSpecials(special,DEVEXCEPTIONS)    
-                superAttackDictionary[special[0]]=specialsEffect
-            output[card_special[2]]=superAttackDictionary
-        elif(ableToEZA and not (eza) and not (int(unit[14])<int(superAttackDictionary["superMinLVL"]))):
-            superAttackDictionary["Multiplier"]=superAttackMultiplierExtractor(superAttackID=superAttackDictionary["superID"],super_attack_lvl=int(unit[14]),DEVEXCEPTIONS=DEVEXCEPTIONS)
-            card_supers=searchbycolumn(code=superAttackDictionary["superID"],column=1,database=specialsJP)
-            for special in card_supers:
-                specialsEffect=parseSpecials(special,DEVEXCEPTIONS)    
-                superAttackDictionary[special[0]]=specialsEffect
-            output[card_special[2]]=superAttackDictionary
-        elif(not ableToEZA):
+            
+            superAttackDictionary["superMinKi"]=card_special[6]
+            superAttackDictionary["superPriority"]=card_special[3]
+            superAttackDictionary["superStyle"]=card_special[4]
+            superAttackDictionary["superMinLVL"]=card_special[5]
+            superAttackDictionary["superCausality"]=superSet[0][3]
+            superAttackDictionary["superAimTarget"]=superSet[0][4]
+            superAttackDictionary["superIsInactive"]=superSet[0][7]
+            if(superAttackDictionary["superStyle"]=="Condition"):
+                causalityCondition=logicalCausalityExtractor(card_special[15])
+                causalityCondition=CausalityLogicalExtractor(unit,causalityCondition,DEVEXCEPTIONS=DEVEXCEPTIONS)
+                superAttackDictionary["superCondition"]=causalityCondition
+            superAttackDictionary["SpecialBonus"]={}
+            superAttackDictionary["SpecialBonus"]["ID"]=card_special[9]
+            SALevel=int(unit[14])
+            if(eza):
+                cardOptimalAwakeningGrowthID=unit[16][:-2]
+                growthRows=searchbycolumn(code=cardOptimalAwakeningGrowthID,database=optimal_awakening_growthsJP,column=1)
+                for growthRow in growthRows:
+                    SALevel = max(int(growthRow[4]), SALevel)
+            superAttackDictionary["Multiplier"]=superAttackMultiplierExtractor(superAttackID=superAttackDictionary["superID"],super_attack_lvl=SALevel,DEVEXCEPTIONS=DEVEXCEPTIONS)
             card_supers=searchbycolumn(code=superAttackDictionary["superID"],column=1,database=specialsJP)
             for special in card_supers:
                 specialsEffect=parseSpecials(special,DEVEXCEPTIONS)    
                 superAttackDictionary[special[0]]=specialsEffect
             output[card_special[2]]=superAttackDictionary
 
-        if(superAttackDictionary["SpecialBonus"]["ID"]!="0"):
-            superAttackDictionary["Multiplier"]=superAttackMultiplierExtractor(superAttackID=superAttackDictionary["superID"],super_attack_lvl=int(unit[14]),DEVEXCEPTIONS=DEVEXCEPTIONS)
-            special_bonus=searchbycolumn(code=superAttackDictionary["SpecialBonus"]["ID"],column=0,database=special_bonusesJP)
-            special_bonus=special_bonus[0]
-            superAttackDictionary["SpecialBonus"]["Type"]=special_bonus[1]
-            superAttackDictionary["SpecialBonus"]["Description"]=special_bonus[2]
-            superAttackDictionary["SpecialBonus"]["Chance"]=special_bonus[7]
-            superAttackDictionary["SpecialBonus"]["Duration"]=special_bonus[6]
-            if(special_bonus[3]=="1"):
-                superAttackDictionary["SpecialBonus"]["Type"]="SA multiplier increase"
-                superAttackDictionary["SpecialBonus"]["Amount"]=special_bonus[9]
-                
-            elif(special_bonus[3]=="2"):
-                superAttackDictionary["SpecialBonus"]["Type"]="Super attack Defense increase"
-                superAttackDictionary["SpecialBonus"]["Amount"]=special_bonus[9]
-                if(special_bonus[3]=="3"):
-                    superAttackDictionary["SpecialBonus"]["Amount"]*=-1
-            elif(special_bonus[3]=="3"):
-                superAttackDictionary["SpecialBonus"]["Type"]="Super attack Attack and Defense increase"
-                superAttackDictionary["SpecialBonus"]["Amount"]=special_bonus[9]
-                if(special_bonus[3]=="3"):
-                    superAttackDictionary["SpecialBonus"]["Amount"]*=-1
-            elif(special_bonus[3]=="63"):
-                superAttackDictionary["SpecialBonus"]["Type"]="Ki requirement decrease"
-                superAttackDictionary["SpecialBonus"]["Amount"]=special_bonus[9]
+            if(superAttackDictionary["SpecialBonus"]["ID"]!="0"):
+                superAttackDictionary["Multiplier"]=superAttackMultiplierExtractor(superAttackID=superAttackDictionary["superID"],super_attack_lvl=int(unit[14]),DEVEXCEPTIONS=DEVEXCEPTIONS)
+                special_bonus=searchbycolumn(code=superAttackDictionary["SpecialBonus"]["ID"],column=0,database=special_bonusesJP)
+                special_bonus=special_bonus[0]
+                superAttackDictionary["SpecialBonus"]["Type"]=special_bonus[1]
+                superAttackDictionary["SpecialBonus"]["Description"]=special_bonus[2]
+                superAttackDictionary["SpecialBonus"]["Chance"]=special_bonus[7]
+                superAttackDictionary["SpecialBonus"]["Duration"]=special_bonus[6]
+                if(special_bonus[3]=="1"):
+                    superAttackDictionary["SpecialBonus"]["Type"]="SA multiplier increase"
+                    superAttackDictionary["SpecialBonus"]["Amount"]=special_bonus[9]
+                    
+                elif(special_bonus[3]=="2"):
+                    superAttackDictionary["SpecialBonus"]["Type"]="Super attack Defense increase"
+                    superAttackDictionary["SpecialBonus"]["Amount"]=special_bonus[9]
+                    if(special_bonus[3]=="3"):
+                        superAttackDictionary["SpecialBonus"]["Amount"]*=-1
+                elif(special_bonus[3]=="3"):
+                    superAttackDictionary["SpecialBonus"]["Type"]="Super attack Attack and Defense increase"
+                    superAttackDictionary["SpecialBonus"]["Amount"]=special_bonus[9]
+                    if(special_bonus[3]=="3"):
+                        superAttackDictionary["SpecialBonus"]["Amount"]*=-1
+                elif(special_bonus[3]=="63"):
+                    superAttackDictionary["SpecialBonus"]["Type"]="Ki requirement decrease"
+                    superAttackDictionary["SpecialBonus"]["Amount"]=special_bonus[9]
             
     return(output)
 
@@ -293,7 +297,7 @@ def parseHiddenPotential(Potential_board_id,DEVEXCEPTIONS=False):
             output[nodesSearched[node]]["DEF"]+=int(event[3])
     return(output)
 
-def parseLeaderSkill(unit,leader_skill_id,DEVEXCEPTIONS=False):
+def parseLeaderSkill(unit,eza,DEVEXCEPTIONS=False):
     global dokkan_fieldsJP
     global skill_causalitiesJP
     global card_unique_info_set_relationsJP
@@ -301,6 +305,7 @@ def parseLeaderSkill(unit,leader_skill_id,DEVEXCEPTIONS=False):
     global card_categoriesGB
     global sub_target_typesJP
     global leader_skillsJP
+    global optimal_awakening_growthsJP
     output={}
     if(JPExclusiveCheck(unit[0])):
         leader_skill_name=searchbyid(code=unit[22][:-2],codecolumn=0,database=leader_skill_setsJP,column=1,)
@@ -308,7 +313,13 @@ def parseLeaderSkill(unit,leader_skill_id,DEVEXCEPTIONS=False):
     else:
         leader_skill_name=searchbyid(code=unit[22][:-2],codecolumn=0,database=leader_skill_setsGB,column=1,)
         output["Name"]=leader_skill_name[0]
-    leader_skill_lines=searchbycolumn(code=unit[22][:-2],database=leader_skillsJP,column=1,printing=False)
+    leader_skill_set_id=unit[22][:-2]
+    if(eza):
+        optimal_awakening_rows=searchbycolumn(code=unit[16][:-2],column=1,database=optimal_awakening_growthsJP)
+        for optimal_awakening_row in optimal_awakening_rows:
+            if(optimal_awakening_row[6]!=unit[22][:-2]):
+                leader_skill_set_id=optimal_awakening_row[6]
+    leader_skill_lines=searchbycolumn(code=leader_skill_set_id,database=leader_skillsJP,column=1,printing=False)
     for leader_skill_line in leader_skill_lines:
         output[leader_skill_line[0]]={}
         output[leader_skill_line[0]]["Buff"]={}
@@ -478,51 +489,15 @@ def JPExclusiveCheck(unitid):
         return(False)
     
 def checkEza(unitid):
-    global cardsGB
     global cardsJP
-    global optimal_awakening_growthsGB
     global optimal_awakening_growthsJP
-    globalVersion=searchbycolumn(code=unitid,column=0,database=cardsGB)
-    japanVersion=searchbycolumn(code=unitid,column=0,database=cardsJP)
-    if(globalVersion==[]):
-        globalExists=False
-        globalEza=False
+    unit=searchbycolumn(code=unitid,column=0,database=cardsJP)[0]
+    awakeningID=unit[16][:-2]
+    ezaRow=searchbycolumn(code=awakeningID,column=0,database=optimal_awakening_growthsJP)
+    if(ezaRow==[]):
+        return(False)
     else:
-        globalExists=True
-        if(globalVersion[16]==""):
-            globalEza=False
-        else:
-            awakeningID=globalVersion[16]
-            ezaRow=searchbycolumn(code=awakeningID,column=0,database=optimal_awakening_growthsJP)
-            if(ezaRow==[]):
-                globalEza=False
-            else:
-                globalEza=True
-
-    if(japanVersion==[]):
-        japanExists=False
-        japanEza=False
-    else:
-        japanExists=True
-        if(japanVersion[16]==""):
-            japanEza=False
-        else:
-            awakeningID=japanVersion[16]
-            ezaRow=searchbycolumn(code=awakeningID,column=0,database=optimal_awakening_growthsGB)
-            if(ezaRow==[]):
-                japanEza=False
-            else:
-                japanEza=True
-    
-    if(globalEza and japanEza):
-        return("Both")
-    elif(globalEza):
-        return("Global")
-    elif(japanEza):
-        return("Japan")
-    else:
-        return("None")
-
+        return(True)
 
 
 
@@ -835,9 +810,10 @@ def getKiMultipliers(unit):
             multipliers[int(kiAmount)]=(eball_mod_max/2)+(eball_mod_max/2)*(kiAmount/max_ki)
     return(multipliers)
 
-def getStatsAtAllLevels(unit):
+def getStatsAtAllLevels(unit,eza):
     output={}
-    for level in range(1,int(unit[13])+1):
+    maxLevel=getMaxLevel(unit,eza)
+    for level in range(1,maxLevel+1):
         output[level]=getUnitStats(unit,level)
     return(output)
 
