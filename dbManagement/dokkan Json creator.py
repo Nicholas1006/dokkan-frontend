@@ -33,7 +33,7 @@ standbyTime=0.0
 linksTime=0.0
 multiplierTime=0.0
 
-cardIDsToCheck=["1013541"]
+cardIDsToCheck=["1026901"]
 #cardIDsToCheck=["4026911","4025741","4028381","4026401","4027631","4027301","4025781","4026541"]
 
 cardsToCheck=[]
@@ -104,7 +104,6 @@ for unit in cardsToCheck:
             unitDictionary["Links"]=getalllinkswithbuffs(unit)
             linksTime+=time.time()-linksStart
 
-        unitDictionary["Transformations"]=[]
 
         unitDictionary["Passive"]={}
         if(CALCPASSIVE):
@@ -147,6 +146,18 @@ for unit in cardsToCheck:
             unitDictionary["Active Skill"]=parseActiveSkill(unit,eza,DEVEXCEPTIONS)
             activeTime+=time.time()-activeStart
 
+        unitDictionary["Standby Skill"]={}
+        if(CALCSTANDBY):
+            standbyStart=time.time()
+            unitDictionary["Standby Skill"]=parseStandby(unit,DEVEXCEPTIONS)
+            standbyTime+=time.time()-standbyStart
+
+        unitDictionary["Transformations"]=[]
+        
+
+        if("Exchanges to" in unitDictionary["Standby Skill"]):
+            unitDictionary["Transformations"].append(unitDictionary["Standby Skill"]["Exchanges to"])
+
         if(unitDictionary["Passive"]!=None):
             for passiveLine in unitDictionary["Passive"]:
                 if "Transformation" in unitDictionary["Passive"][passiveLine]:
@@ -166,11 +177,7 @@ for unit in cardsToCheck:
             multiplierTime+=time.time()-multiplierStart
         
 
-        unitDictionary["Standby Skill"]={}
-        if(CALCSTANDBY):
-            standbyStart=time.time()
-            unitDictionary["Standby Skill"]=parseStandby(unit,DEVEXCEPTIONS)
-            standbyTime+=time.time()-standbyStart
+        
 
 
 
@@ -207,3 +214,4 @@ print("Active time:",round(activeTime,2))
 print("Standby time:",round(standbyTime,2))
 print("Json time:",round(jsonTime,2))
 print("Total time:",round(passiveTime+linksTime+leaderTime+hipoTime+activeTime+superTime+levelTime+basicTime+jsonTime+multiplierTime+standbyTime,2))
+print("Average per unit",round((passiveTime+linksTime+leaderTime+hipoTime+activeTime+superTime+levelTime+basicTime+jsonTime+multiplierTime+standbyTime)/unitCount,5))
