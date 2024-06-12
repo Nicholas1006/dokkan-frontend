@@ -486,7 +486,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
   //create queries based on the passive skill conditions
   let passiveContainer=document.getElementById('passive-container');
+  let Conditions={};
   jsonPromise.then(json => {
+    let conditionNumber=1;
     let passiveLines=json["Passive"];
     console.log(passiveLines)
 
@@ -499,6 +501,10 @@ document.addEventListener('DOMContentLoaded', function() {
           let causality=Causalities[slightlySmallerKey];
           let sliderText=causality["Slider"]["Name"];
           let slider = document.createElement('input');
+          let sliderLabel = document.createElement('label');
+          sliderLabel.innerHTML = sliderText + ": " + 1;
+          sliderLabel.style.gridRow = conditionNumber*2;
+          sliderLabel.style.gridColumn = 1;
           slider.type = "range";
           slider.min = causality["Slider"]["Min"] || 0;
           slider.max = causality["Slider"]["Max"] || 100;
@@ -507,7 +513,14 @@ document.addEventListener('DOMContentLoaded', function() {
           slider.style.border = "1px solid black";
           slider.style.margin = "0px";
           slider.style.cursor = "pointer";
+          slider.style.gridRow = conditionNumber*2+1;
+          slider.style.gridColumn = 1;
+          slider.addEventListener('input', function(){
+            sliderLabel.innerHTML = sliderText + ": " + slider.value;
+          });
           passiveContainer.appendChild(slider);
+          passiveContainer.appendChild(sliderLabel);
+          conditionNumber+=1;
         }
       }
     }
