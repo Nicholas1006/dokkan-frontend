@@ -98,6 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
       linkButton.style.margin = "0px";
       linkButton.style.cursor = "pointer";
       linkButton.style.background="#00FF00"
+      linkButton.style.hover="background:#FF5C35"
       linkButton.style.gridRow= linkNumber*2;
       linkButton.classList.add('active');
       let linkSlider = document.createElement('input');
@@ -399,12 +400,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
   */
 
+
   jsonPromise.then(json => {
     let conditionNumber=1;
     let passiveLines=json["Passive"];
     for (const key of Object.keys(passiveLines)){
       let line = passiveLines[key];
-      console.log(line);
       if("Condition" in line){
         let condition = line["Condition"];
         let Causalities = condition["Causalities"];
@@ -419,16 +420,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 if(conditions[conditionsKey]["Button"]==causality["Button"]["Name"]){
                   if(conditions[conditionsKey]["Slider"]==null){
                     let Logic=[null,slightlySmallerKey];
-                    //conditions[conditionsKey]["Condition Logic"].push(Logic);
-                    webFunctions.addToArrayNoDuplicates(conditions[conditionsKey]["Condition Logic"], Logic);
+                    conditions[conditionsKey]["Condition Logic"].push(Logic);
                     conditionAdded=true;
                   }
                   else{
                     conditions[conditionsKey]["Min"]=Math.min(causality["Slider"]["Min"],conditions[conditionsKey]["Min"]);
                     conditions[conditionsKey]["Max"]=Math.max(causality["Slider"]["Max"],conditions[conditionsKey]["Max"]);
                     let Logic=[(causality["Slider"]["Logic"]),slightlySmallerKey];
-                    //conditions[conditionsKey]["Condition Logic"].push(Logic);
-                    webFunctions.addToArrayNoDuplicates(conditions[conditionsKey]["Condition Logic"], Logic);
+                    conditions[conditionsKey]["Condition Logic"].push(Logic);
                     conditionAdded=true;
                   }
                   
@@ -439,7 +438,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     conditions[conditionsKey]["Min"]=Math.min(causality["Slider"]["Min"],conditions[conditionsKey]["Min"]);
                     conditions[conditionsKey]["Max"]=Math.max(causality["Slider"]["Max"],conditions[conditionsKey]["Max"]);
                     let Logic=[(causality["Slider"]["Logic"]),slightlySmallerKey];
-                    conditions[conditionsKey]["Condition Logic"]=(Logic);
+                    conditions[conditionsKey]["Condition Logic"].push(Logic);
                     conditions[conditionsKey]["Button or slider"]="slider";
                     conditionAdded=true;
                   }
@@ -452,7 +451,7 @@ document.addEventListener('DOMContentLoaded', function() {
                   conditions[conditionsKey]["Min"]=null;
                   conditions[conditionsKey]["Max"]=null;
                   let Logic=[null,slightlySmallerKey];
-                  conditions[conditionsKey]["Condition Logic"]=(Logic);
+                  conditions[conditionsKey]["Condition Logic"].push(Logic);
                   conditionAdded=true;
                 }
               }
@@ -492,22 +491,41 @@ document.addEventListener('DOMContentLoaded', function() {
 
   
 
-
+  let CausalityList=[];
+  let CausalityLogic={};
   conditionNumber=1;
   for (const key of Object.keys(conditions)){
     let condition=conditions[key];
     if(condition["Button or slider"]=="button"){
       let button = document.createElement('button');
+      CausalityList.push(condition["Condition Logic"][0][1])
+      CausalityLogic[condition["Condition Logic"][0][1]]=false;
       button.innerHTML=condition["Button"];
       button.style.gridRow = conditionNumber*2;
       button.style.gridColumn = 1;
+      button.style.background="#FF5C35"
+      button.addEventListener('click', function(){
+        button.classList.toggle('active');
+        CausalityLogic[condition["Condition Logic"][0][1]]=button.classList.contains('active');
+        webFunctions.updatePassiveBuffs(json,CausalityLogic);
+        if(button.classList.contains('active')){
+          button.style.background="#00FF00"
+        } else {
+          button.style.background="#FF5C35"
+        }
+      });
       passiveContainer.appendChild(button);
+
     }
     else if(condition["Button or slider"]=="slider"){
       let slider = document.createElement('input');
       let sliderLabel = document.createElement('label');
+      for (const logic of condition["Condition Logic"]){
+        CausalityList.push(logic[1]);
+        CausalityLogic[logic[1]]=webFunctions.logicCalculator(logic, condition["Min"]);
+      }
       sliderLabel.innerHTML = condition["Slider"] + ": " + condition["Min"];
-      sliderLabel.style.gridRow = conditionNumber*2+1;
+      sliderLabel.style.gridRow = conditionNumber*2;
       sliderLabel.style.gridColumn = 1;
       slider.type = "range";
       slider.min = condition["Min"];
@@ -517,16 +535,23 @@ document.addEventListener('DOMContentLoaded', function() {
       slider.style.border = "1px solid black";
       slider.style.margin = "0px";
       slider.style.cursor = "pointer";
-      slider.style.gridRow = conditionNumber*2;
+      slider.style.gridRow = conditionNumber*2+1;
       slider.style.gridColumn = 1;
       slider.addEventListener('input', function(){
         sliderLabel.innerHTML = condition["Slider"] + ": " + slider.value;
+        for (const logic of condition["Condition Logic"]){
+          CausalityLogic[logic[1]]=webFunctions.logicCalculator(logic, slider.value);
+        }
+        webFunctions.updatePassiveBuffs(json,CausalityLogic);
       });
       passiveContainer.appendChild(slider);
       passiveContainer.appendChild(sliderLabel);
     }
     conditionNumber+=1;
   }
+  CausalityList=Array.from(new Set(CausalityList));
+  console.log(CausalityList)
+  console.log(CausalityLogic)
   });
 
   

@@ -67,7 +67,7 @@ def getMaxLevel(unit,eza=False):
             maxLevel=max(maxLevel,int(growthRow[3]))
         return(maxLevel)
     else:
-        return(int(unit[15]))
+        return(int(unit[13]))
 
 def parseSuperAttack(unit,eza=False,DEVEXCEPTIONS=False):
     global card_specialsJP
@@ -1016,7 +1016,6 @@ def extractPassiveLine(unit,passiveskill,printing=False,DEVEXCEPTIONS=False):
         "Status": [],
         "DR": 0,
         "Guard": False,
-        "Crit Chance": 0,
         "Crit Chance": 0,
         "Ki change": {
             "From": None,

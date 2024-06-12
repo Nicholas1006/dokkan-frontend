@@ -171,28 +171,71 @@ export function updateLinkBuffs(json){
     linksContainer.appendChild(linkBuffs);
   }
 
-
-
-export function isEqual(val1, val2){
-    if (val1 === val2) return true;
-        if (typeof val1 !== typeof val2) return false;
-        if (val1 instanceof Array && val2 instanceof Array) {
-            return JSON.stringify(val1) === JSON.stringify(val2);
+export function updatePassiveBuffs(json,CausalityLogic){
+    console.log(CausalityLogic)
+    let passiveLines=json.Passive;
+    for(const passiveLine in passiveLines){
+        console.log(passiveLines[passiveLine])
+        if("Condition" in passiveLines[passiveLine]){
+            if(logicReducer(passiveLines[passiveLine]["Condition"]["Logic"],CausalityLogic)){
+                console.log(passiveLines[passiveLine])
+                console.log("Activate this condition")
+            }
         }
-        if (val1 instanceof Object && val2 instanceof Object) {
-            return JSON.stringify(val1) === JSON.stringify(val2);
+        else{
+            console.log("Activate this condition")
         }
-        return false;
-}
-
-export function addToArrayNoDuplicates(array, value){
-    const exists = array.some(item => isEqual(item, value));
-
-    if (!exists) {
-        array.push(value);
     }
-    return array
 }
+
+export function logicReducer(logicString, CausalityLogic){
+    logicString=logicString.replace(" ","");
+    logicString=logicString.toUpperCase();
+    for (const logic in (CausalityLogic)){
+        logicString=logicString.replace(logic,CausalityLogic[logic]);
+    }
+    while(logicString!="true"&&logicString!="false"){
+        console.log(logicString)
+        logicString=logicString.replace("falseORfalse","false");
+        logicString=logicString.replace("falseORtrue","true");
+        logicString=logicString.replace("trueORfalse","true");
+        logicString=logicString.replace("trueORtrue","true");
+
+        logicString=logicString.replace("falseANDfalse","false");
+        logicString=logicString.replace("falseANDtrue","false");
+        logicString=logicString.replace("trueANDfalse","false");
+        logicString=logicString.replace("trueANDtrue","true");
+
+        logicString=logicString.replace("NOTfalse","true");
+        logicString=logicString.replace("NOTtrue","false");
+
+        logicString=logicString.replace("(false)","false");
+        logicString=logicString.replace("(true)","true");
+        logicString="true";
+    }
+}
+
+
+
+export function logicCalculator(logicArray,sliderState){
+    let logic=logicArray[0];
+    logic=logic.substring(0, 2);
+    
+    if(logic=="=="){
+        return(sliderState==(logicArray[0].substring(2)));
+    }
+    if(logic=="<="){
+        return(sliderState<=(logicArray[0].substring(2)));
+    }
+    if(logic==">="){
+        return(sliderState>=(logicArray[0].substring(2)));
+    }
+    else{
+        return(logic);
+    }
+}
+
+
 
 
 export function getBaseDomain() {
