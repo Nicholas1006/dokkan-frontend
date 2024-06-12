@@ -6,7 +6,7 @@ from progress.bar import Bar
 directory="dataJP/"
 cardsJP=storedatabase(directory,"cards.csv")
 
-DEVEXCEPTIONS=True
+DEVEXCEPTIONS=False
 GLOBALPARSE=False
 MAKEJSON=True
 
@@ -35,7 +35,7 @@ finishTime=0.0
 linksTime=0.0
 multiplierTime=0.0
 
-cardIDsToCheck=["4025781"]
+cardIDsToCheck=["1021011"]
 #cardIDsToCheck=["4026911","4025741","4028381","4026401","4027631","4027301","4025781","4026541"]
 
 cardsToCheck=[]
@@ -69,7 +69,7 @@ if GLOBALPARSE:
 for unit in cardsToCheck:
     ezaTrueFalse=[False]
     if(checkEza(unit[0])==True):
-        ezaTrueFalse=[True,False]
+        ezaTrueFalse=[False,True]
     if(GLOBALPARSE):
             bar.next()
     for eza in ezaTrueFalse:

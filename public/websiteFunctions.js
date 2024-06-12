@@ -58,6 +58,143 @@ export function colorToBackground(color){
     }
 }
 
+// Function to update a container with new content
+export function updateContainer(containerId, content){
+    const container = document.getElementById(containerId);
+    container.innerHTML = '';
+    container.appendChild(content);
+  }   
+
+ // Function to update the image container with a new image
+ export function updateImageContainer(imageContainerId, subURL, typing){
+  const imageContainer = document.getElementById(imageContainerId);
+  imageContainer.style.backgroundColor = colorToBackground(typingToColor(typing));
+  const cardImage = new Image();
+  cardImage.onload = function() {
+    imageContainer.appendChild(cardImage);
+  };
+  cardImage.onerror = function() {
+    console.error('Error loading image:', cardImage.src);
+  };
+  cardImage.src = 'dbManagement/assets/final_assets/' + subURL + '.png';
+}
+
+  // Function to create a paragraph element with the given text
+export function createParagraph(text){
+    const paragraph = document.createElement('p');
+    paragraph.textContent = text;
+    return paragraph;
+  }
+
+
+  // Function to handle button click event
+export function toggleButtonHandler(button, jsonPromise) {
+    button.addEventListener('click', function() {
+      button.classList.toggle('active');
+      //if 55% is not active, make it active
+      if (!starButton.classList.contains('active')) {
+        starButton.classList.toggle('active');
+      }
+      //if every button is active, turn on rainbow star
+      if(toggleButtons.every(button => button.classList.contains('active'))){
+        starButton.classList.remove('active');
+        starButton.classList.add('rainbow')
+      }
+      //if rainbow star is active, turn it off 
+      else{
+        starButton.classList.remove('rainbow');
+      }
+      jsonPromise.then(json => {
+        AdjustBaseStats(json);
+      });
+    });
+  }
+
+export function updateLinkBuffs(json){
+    // Select all link sliders and buttons within a specific parent
+    let linksContainer = document.querySelector('#links-container');
+    let linkSliders = linksContainer.querySelectorAll('input[type=range]');
+    let linkButtons = linksContainer.querySelectorAll('button');
+
+    // Initialize variables to store the total link buffs
+    let totalATKBuff = 0;
+    let totalDEFBuff = 0;
+    let totalEnemyDEFBuff = 0;
+    let totalHealBuff = 0;
+    let totalKIBuff = 0;
+    let totalDamageReductionBuff = 0;
+    let totalCritBuff = 0;
+    let totalEvasionBuff = 0;
+
+    // Iterate over each link slider and button
+    linkSliders.forEach((slider, index) => {
+      if(linkButtons[index].textContent.split(' Level')[0]=="All Links") return;
+      if(!linkButtons[index].classList.contains('active')) return;
+      let linkName = linkButtons[index].textContent.split(' Level')[0];
+      
+      let linkLevel = parseInt(slider.value);
+      let linkData = json.Links[linkName][linkLevel];
+
+      // Add the link buffs to the total link buffs
+      totalATKBuff += linkData.ATK || 0;
+      totalDEFBuff += linkData.DEF || 0;
+      totalEnemyDEFBuff += linkData.ENEMYDEF || 0;
+      totalHealBuff += linkData.HEAL || 0;
+      totalKIBuff += linkData.KI || 0;
+      totalDamageReductionBuff += linkData.DREDUCTION || 0;
+      totalCritBuff += linkData.CRIT || 0;
+      totalEvasionBuff += linkData.EVASION || 0;
+    });
+
+    // Create a paragraph element to display the total link buffs
+    let linkBuffs = document.createElement('p');
+    linkBuffs.style.height = "100px";
+    linkBuffs.style.width = "200%";
+    linkBuffs.style.gridColumnStart = "1";
+    linkBuffs.style.gridColumnEnd = "30";
+    linkBuffs.style.gridColumn = "1";
+    linkBuffs.innerHTML = "Link Buffs: ";
+    if (totalATKBuff) linkBuffs.innerHTML += "<br>ATK: " + totalATKBuff + "% ";
+    if (totalDEFBuff) linkBuffs.innerHTML += "<br>DEF: " + totalDEFBuff + "% ";
+    if (totalEnemyDEFBuff) linkBuffs.innerHTML += "<br>Enemy DEF: " + totalEnemyDEFBuff + "% ";
+    if (totalHealBuff) linkBuffs.innerHTML += "<br>Heal: " + totalHealBuff + "% ";
+    if (totalKIBuff) linkBuffs.innerHTML += "<br>KI: " + totalKIBuff + " ";
+    if (totalDamageReductionBuff) linkBuffs.innerHTML += "<br>Damage Reduction: " + totalDamageReductionBuff + "% ";
+    if (totalCritBuff) linkBuffs.innerHTML += "<br>Crit: " + totalCritBuff + "% ";
+    if (totalEvasionBuff) linkBuffs.innerHTML += "<br>Evasion: " + totalEvasionBuff + "% ";
+    //remove the old paragraph from the links container
+    linksContainer.removeChild(linksContainer.lastChild);
+
+
+
+    // Append the paragraph element to the links container
+    linksContainer.appendChild(linkBuffs);
+  }
+
+
+
+export function isEqual(val1, val2){
+    if (val1 === val2) return true;
+        if (typeof val1 !== typeof val2) return false;
+        if (val1 instanceof Array && val2 instanceof Array) {
+            return JSON.stringify(val1) === JSON.stringify(val2);
+        }
+        if (val1 instanceof Object && val2 instanceof Object) {
+            return JSON.stringify(val1) === JSON.stringify(val2);
+        }
+        return false;
+}
+
+export function addToArrayNoDuplicates(array, value){
+    const exists = array.some(item => isEqual(item, value));
+
+    if (!exists) {
+        array.push(value);
+    }
+    return array
+}
+
+
 export function getBaseDomain() {
     let host = window.location.host; // e.g., 'www.example.com', 'staging.example.com'
     let parts = host.split('.');
