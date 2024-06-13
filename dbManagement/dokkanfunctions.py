@@ -1406,7 +1406,8 @@ def extractPassiveLine(unit,passiveskill,printing=False,DEVEXCEPTIONS=False):
     if(causalityExtractor(passiveskill[12])!=[]):
         causalityCondition=logicalCausalityExtractor(passiveskill[12])
         causalityCondition=CausalityLogicalExtractor(unit=unit,causality=causalityCondition,DEVEXCEPTIONS=DEVEXCEPTIONS)
-        effects["Condition"]=causalityCondition
+        if(causalityCondition!=None):
+            effects["Condition"]=causalityCondition
 
         
                     
@@ -1560,13 +1561,22 @@ def CausalityLogicalExtractor(unit,causality,printing=True,DEVEXCEPTIONS=False):
         else:
             if(currentCausality!=""):
                 newCausality=causalityLogicFinder(unit,currentCausality,printing=True,DEVEXCEPTIONS=DEVEXCEPTIONS)
+                if(newCausality=={"Button":{}, "Slider": {"Name": None, "Logic": None}}):
+                    newCausality=None
                 output[currentCausality]=newCausality
             currentCausality=""
 
     if(currentCausality!=""):
         newCausality=causalityLogicFinder(unit=unit,causalityCondition=currentCausality,printing=True,DEVEXCEPTIONS=DEVEXCEPTIONS)
+        if(newCausality=={"Button":{}, "Slider": {"Name": None, "Logic": None}}):
+            newCausality=None
         output[currentCausality]=newCausality
+    for key in output.copy():
+        if(output[key]==None):
+            output.pop(key)
     returnDictionary={"Logic":result,"Causalities":output}
+    if(returnDictionary["Causalities"]=={}):
+        returnDictionary=None
     return(returnDictionary)
 
 def longestCommonSubstring(listOfStrings):
