@@ -173,32 +173,52 @@ export function updateLinkBuffs(json){
 
 
 export function addPassiveLineBuffs(passiveLine, passiveBuffsHolder){
-    //wip add building stats and targetting
+    //wip add building stats and targeting
+    //passiveBuffs["Timing"]["Target"]["Buff type"]["Buff amount"]
     let timing=passiveLine["Timing"];
+    let target="Self"
+    if("Target" in passiveLine){
+        target=passiveLine["Target"]["Target"];
+        if("Class" in passiveLine["Target"]){
+            target=passiveLine["Target"]["Class"]+" "+target;
+        }
+        if("Type" in passiveLine["Target"]){
+            let allTypes=";"
+            for (const type in passiveLine["Target"]["Type"]){
+                allTypes+=type+" and ";
+            }
+            allTypes=allTypes.substring(0,allTypes.length-5);
+            target=allTypes+" "+target;
+        }
+    }
+    if(!(target in passiveBuffsHolder[timing])){
+        passiveBuffsHolder[timing][target]={};
+    }
     let buffType=passiveLine["Buff"]["Type"];
-    if(!(buffType in passiveBuffsHolder[timing])){
-        passiveBuffsHolder[timing][buffType]={};
+    if(!(buffType in passiveBuffsHolder[timing][target])){
+        passiveBuffsHolder[timing][target][buffType]={};
     }
     for (const buffKey in (passiveLine)){
         let buffRecieved=passiveLine[buffKey];
         if(buffKey!="Buff" && buffKey!="Condition" && buffKey!="ID" &&buffKey!="Target" && buffKey!="Building Stat" && buffKey!="Length" && buffKey!="Timing" ){
-            if(!(buffKey in passiveBuffsHolder[timing][buffType])){
-                passiveBuffsHolder[timing][buffType][buffKey]=0;
+            if(!(buffKey in passiveBuffsHolder[timing][target][buffType])){
+                passiveBuffsHolder[timing][target][buffType][buffKey]=0;
             }
             if(passiveLine["Buff"]["+ or -"]=="-"){
-                passiveBuffsHolder[timing][buffType][buffKey]-=buffRecieved;
+                passiveBuffsHolder[timing][target][buffType][buffKey]-=buffRecieved;
             }
             else if (passiveLine["Buff"]["+ or -"]=="+"){
-                passiveBuffsHolder[timing][buffType][buffKey]+=buffRecieved;
+                passiveBuffsHolder[timing][target][buffType][buffKey]+=buffRecieved;
             }
             else{
-                console.log("Error: Buff type not recognized")
+                console.error("Error: Buff type not recognized")
             }
         }   
     }
 }
 
 export function updatePassiveBuffs(json,CausalityLogic){
+    //passiveBuffs["Timing"]["Target"]["Buff type"]["Buff amount"]
     let passiveBuffs={
         "Start of turn":{},
         "Attacking":{},
@@ -235,12 +255,14 @@ export function updatePassiveBuffs(json,CausalityLogic){
             timingContainer.style.width = "200%";
             timingContainer.style.gridColumn = buffNumber;
             timingContainer.innerHTML = timing + " Buffs: ";
-            for(const buffType in passiveBuffs[timing]){
-                timingContainer.innerHTML += "<br>" +"‎ ‎ ‎ ‎ "+ buffType + ": ";
-                for(const buffKey in passiveBuffs[timing][buffType]){
-                    console.log(passiveBuffs[timing][buffType][buffKey])
-                    if((passiveBuffs[timing][buffType][buffKey])!=NaN){
-                        timingContainer.innerHTML += '<br>' + "‎ ‎‎ ‎ ‎ ‎  ‎ ‎ "+buffKey + ": " + passiveBuffs[timing][buffType][buffKey];
+            for(const target in passiveBuffs[timing]){
+                timingContainer.innerHTML += "<br>" + target + ": ";
+                for(const buffType in passiveBuffs[timing][target]){
+                    timingContainer.innerHTML += "<br>" +"‎ ‎ ‎ ‎ "+ buffType + ": ";
+                    for(const buffKey in passiveBuffs[timing][target][buffType]){
+                        if((passiveBuffs[timing][target][buffType][buffKey])!=NaN){
+                            timingContainer.innerHTML += '<br>' + "‎ ‎‎ ‎ ‎ ‎  ‎ ‎ "+buffKey + ": " + passiveBuffs[timing][target][buffType][buffKey];
+                        }
                     }
                 }
             }

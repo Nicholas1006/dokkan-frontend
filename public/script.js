@@ -418,11 +418,13 @@ document.addEventListener('DOMContentLoaded', function() {
               if((conditions[conditionsKey]["Slider"]==causality["Slider"]["Name"])){
                 //if button names match
                 if(conditions[conditionsKey]["Button"]==causality["Button"]["Name"]){
+                  //if the slider name is null
                   if(conditions[conditionsKey]["Slider"]==null){
                     let Logic=[null,slightlySmallerKey];
                     conditions[conditionsKey]["Condition Logic"].push(Logic);
                     conditionAdded=true;
                   }
+                  //if the slider has a name
                   else{
                     conditions[conditionsKey]["Min"]=Math.min(causality["Slider"]["Min"],conditions[conditionsKey]["Min"]);
                     conditions[conditionsKey]["Max"]=Math.max(causality["Slider"]["Max"],conditions[conditionsKey]["Max"]);
@@ -470,6 +472,8 @@ document.addEventListener('DOMContentLoaded', function() {
               conditionObject["Condition Logic"]=[Logic];
               conditions.push(conditionObject);
               conditionAdded=true;
+              console.log("Created")
+              console.log(conditionObject)
             }
             //if the slider has a name
             else{
@@ -483,6 +487,8 @@ document.addEventListener('DOMContentLoaded', function() {
               conditionObject["Condition Logic"]=[Logic];
               conditions.push(conditionObject);
               conditionAdded=true;
+              console.log("Created")
+              console.log(conditionObject)
           }
         }
       }
@@ -550,8 +556,6 @@ document.addEventListener('DOMContentLoaded', function() {
     conditionNumber+=1;
   }
   CausalityList=Array.from(new Set(CausalityList));
-  console.log(CausalityList)
-  console.log(CausalityLogic)
   });
 
   

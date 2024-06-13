@@ -1389,7 +1389,7 @@ def extractPassiveLine(unit,passiveskill,printing=False,DEVEXCEPTIONS=False):
     elif passiveskill[3]=="9":
         effects["Timing"]="End of turn"
     elif passiveskill[3]=="11":
-        effects["Timing"]="after all ki collected"
+        effects["Timing"]="After all ki collected"
     elif passiveskill[3]=="12":
         effects["Timing"]="Activating standby"
     elif passiveskill[3]=="14":
@@ -1856,6 +1856,14 @@ def causalityLineToLogic(causalityLine,DEVEXCEPTIONS=False):
             output["Button"]["Name"]+=" or "
         output["Button"]["Name"]=output["Button"]["Name"][:-4]
         output["Button"]["Name"]+=" Ki Spheres been obtained?"
+        output["Slider"]["Name"]="How many "
+        for orbType in kiSphereType:
+            output["Slider"]["Name"]+=orbType
+            output["Slider"]["Name"]+=" or "
+        output["Slider"]["Name"]=output["Slider"]["Name"][:-4]
+        output["Slider"]["Name"]+=" Ki Spheres have been obtained?"
+        output["Slider"]["Logic"]=">="
+        output["Slider"]["Logic"]+=CausalityRow[3]
     elif(CausalityRow[1]=="43"):
         output["Button"]["Name"]="Has this unit evaded an attack? "
     elif(CausalityRow[1]=="44"):
