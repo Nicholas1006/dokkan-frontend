@@ -384,7 +384,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   //create queries based on the passive skill conditions
-  let passiveContainer=document.getElementById('passive-container');
+  let passiveContainer=document.getElementById('passive-questions-container');
   let conditions=[];
   /*every time we find a causality that includes a condition we will do one of the following
   1. if the slider name is not already in the conditions object, we will add it

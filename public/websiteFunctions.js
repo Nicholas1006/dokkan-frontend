@@ -171,21 +171,87 @@ export function updateLinkBuffs(json){
     linksContainer.appendChild(linkBuffs);
   }
 
+
+export function addPassiveLineBuffs(passiveLine, passiveBuffsHolder){
+    //wip add building stats and targetting
+    let timing=passiveLine["Timing"];
+    let buffType=passiveLine["Buff"]["Type"];
+    if(!(buffType in passiveBuffsHolder[timing])){
+        passiveBuffsHolder[timing][buffType]={};
+    }
+    for (const buffKey in (passiveLine)){
+        let buffRecieved=passiveLine[buffKey];
+        if(buffKey!="Buff" && buffKey!="Condition" && buffKey!="ID" &&buffKey!="Target" && buffKey!="Building Stat" && buffKey!="Length" && buffKey!="Timing" ){
+            if(!(buffKey in passiveBuffsHolder[timing][buffType])){
+                passiveBuffsHolder[timing][buffType][buffKey]=0;
+            }
+            if(passiveLine["Buff"]["+ or -"]=="-"){
+                passiveBuffsHolder[timing][buffType][buffKey]-=buffRecieved;
+            }
+            else if (passiveLine["Buff"]["+ or -"]=="+"){
+                passiveBuffsHolder[timing][buffType][buffKey]+=buffRecieved;
+            }
+            else{
+                console.log("Error: Buff type not recognized")
+            }
+        }   
+    }
+}
+
 export function updatePassiveBuffs(json,CausalityLogic){
-    console.log(CausalityLogic)
+    let passiveBuffs={
+        "Start of turn":{},
+        "Attacking":{},
+        "On Super":{},
+        "Attacking the enemy":{},
+        "Being hit":{},
+        "Hit recieved":{},
+        "End of turn":{},
+        "After all ki collected":{},
+        "Actuvating standby":{},
+        "When final blow delivered":{},
+        "When ki spheres collected":{}
+    }
     let passiveLines=json.Passive;
     for(const passiveLine in passiveLines){
-        console.log(passiveLines[passiveLine])
+        //if there is a condition
         if("Condition" in passiveLines[passiveLine]){
+            //if the condition is met
             if(logicReducer(passiveLines[passiveLine]["Condition"]["Logic"],CausalityLogic)){
-                console.log(passiveLines[passiveLine])
-                console.log("Activate this condition")
+                addPassiveLineBuffs(passiveLines[passiveLine], passiveBuffs);
             }
         }
+        //if there is no condition
         else{
-            console.log("Activate this condition")
+            addPassiveLineBuffs(passiveLines[passiveLine], passiveBuffs);
         }
     }
+    let passiveBuffsContainer = document.getElementById('passive-buffs-container');
+    passiveBuffsContainer.innerHTML = '';
+    let buffNumber=5;
+    for(const timing in passiveBuffs){
+        if(!(isEmptyDictionary(passiveBuffs[timing]))){
+            let timingContainer = document.createElement('div');
+            timingContainer.style.width = "200%";
+            timingContainer.style.gridColumn = buffNumber;
+            timingContainer.innerHTML = timing + " Buffs: ";
+            for(const buffType in passiveBuffs[timing]){
+                timingContainer.innerHTML += "<br>" +"‎ ‎ ‎ ‎ "+ buffType + ": ";
+                for(const buffKey in passiveBuffs[timing][buffType]){
+                    console.log(passiveBuffs[timing][buffType][buffKey])
+                    if((passiveBuffs[timing][buffType][buffKey])!=NaN){
+                        timingContainer.innerHTML += '<br>' + "‎ ‎‎ ‎ ‎ ‎  ‎ ‎ "+buffKey + ": " + passiveBuffs[timing][buffType][buffKey];
+                    }
+                }
+            }
+            passiveBuffsContainer.appendChild(timingContainer);
+            buffNumber++;
+        }
+    }
+}
+
+export function isEmptyDictionary(dictionary){
+    return(Object.keys(dictionary).length==0);
 }
 
 export function logicReducer(logicString, CausalityLogic){
@@ -195,7 +261,6 @@ export function logicReducer(logicString, CausalityLogic){
         logicString=logicString.replace(logic,CausalityLogic[logic]);
     }
     while(logicString!="true"&&logicString!="false"){
-        console.log(logicString)
         logicString=logicString.replace("falseORfalse","false");
         logicString=logicString.replace("falseORtrue","true");
         logicString=logicString.replace("trueORfalse","true");
@@ -211,8 +276,8 @@ export function logicReducer(logicString, CausalityLogic){
 
         logicString=logicString.replace("(false)","false");
         logicString=logicString.replace("(true)","true");
-        logicString="true";
     }
+    return(logicString=="true");
 }
 
 
