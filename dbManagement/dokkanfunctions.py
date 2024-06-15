@@ -1038,6 +1038,12 @@ def extractPassiveLine(unit,passiveskill,printing=False,DEVEXCEPTIONS=False):
         "Condition": None,
         "Once only": False
     }
+    if(causalityExtractor(passiveskill[12])!=[]):
+        causalityCondition=logicalCausalityExtractor(passiveskill[12])
+        causalityCondition=CausalityLogicalExtractor(unit=unit,causality=causalityCondition,DEVEXCEPTIONS=DEVEXCEPTIONS)
+        if(causalityCondition!=None):
+            effects["Condition"]=causalityCondition
+    
     if(passiveskill[8]=="0"):
         effects["Buff"]["Type"]="Raw stats"
         effects["Buff"]["+ or -"]="+"
@@ -1163,25 +1169,61 @@ def extractPassiveLine(unit,passiveskill,printing=False,DEVEXCEPTIONS=False):
         effects["Status"].append("DEF reduced to 0")
     elif passiveskill[4]=="59":
         effects["Building Stat"]["Cause"]={"Cause":"Ki sphere obtained", "Type":"any"}
+        effects["Building Stat"]["Slider"]="How many "
+        for orbType in ["Rainbow","PHY","STR","INT","TEQ","AGL"]:
+            effects["Building Stat"]["Slider"]+=orbType
+            effects["Building Stat"]["Slider"]+=" or "
+        effects["Building Stat"]["Slider"]=effects["Building Stat"]["Slider"][:-4]
+        effects["Building Stat"]["Slider"]+=" Ki Spheres have been obtained?"
         effects["ATK"]+=int(passiveskill[13])
     elif passiveskill[4]=="60":
         effects["Building Stat"]["Cause"]={"Cause":"Ki sphere obtained", "Type":"any"}
+        effects["Building Stat"]["Slider"]="How many "
+        for orbType in ["Rainbow","PHY","STR","INT","TEQ","AGL"]:
+            effects["Building Stat"]["Slider"]+=orbType
+            effects["Building Stat"]["Slider"]+=" or "
+        effects["Building Stat"]["Slider"]=effects["Building Stat"]["Slider"][:-4]
+        effects["Building Stat"]["Slider"]+=" Ki Spheres have been obtained?"
         effects["DEF"]+=int(passiveskill[13])
     elif passiveskill[4]=="61":
         effects["Building Stat"]["Cause"]={"Cause":"Ki sphere obtained", "Type":"any"}
+        effects["Building Stat"]["Slider"]="How many "
+        for orbType in ["Rainbow","PHY","STR","INT","TEQ","AGL"]:
+            effects["Building Stat"]["Slider"]+=orbType
+            effects["Building Stat"]["Slider"]+=" or "
+        effects["Building Stat"]["Slider"]=effects["Building Stat"]["Slider"][:-4]
+        effects["Building Stat"]["Slider"]+=" Ki Spheres have been obtained?"
         effects["ATK"]+=int(passiveskill[13])
         effects["DEF"]+=int(passiveskill[13])
     elif passiveskill[4]=="64":
         typing=KiOrbType(passiveskill[13],DEVEXCEPTIONS=DEVEXCEPTIONS)
         effects["Building Stat"]["Cause"]={"Cause":"Ki sphere obtained", "Type":typing}
+        effects["Building Stat"]["Slider"]="How many "
+        for orbType in typing:
+            effects["Building Stat"]["Slider"]+=orbType
+            effects["Building Stat"]["Slider"]+=" or "
+        effects["Building Stat"]["Slider"]=effects["Building Stat"]["Slider"][:-4]
+        effects["Building Stat"]["Slider"]+=" Ki Spheres have been obtained?"
         effects["ATK"]+=int(passiveskill[14])
     elif passiveskill[4]=="65":
         typing=KiOrbType(passiveskill[13],DEVEXCEPTIONS=DEVEXCEPTIONS)
         effects["Building Stat"]["Cause"]={"Cause":"Ki sphere obtained", "Type":typing}
+        effects["Building Stat"]["Slider"]="How many "
+        for orbType in typing:
+            effects["Building Stat"]["Slider"]+=orbType
+            effects["Building Stat"]["Slider"]+=" or "
+        effects["Building Stat"]["Slider"]=effects["Building Stat"]["Slider"][:-4]
+        effects["Building Stat"]["Slider"]+=" Ki Spheres have been obtained?"
         effects["DEF"]+=int(passiveskill[14])
     elif passiveskill[4]=="66":
         typing=KiOrbType(passiveskill[13],DEVEXCEPTIONS=DEVEXCEPTIONS)
         effects["Building Stat"]["Cause"]={"Cause":"Ki sphere obtained", "Type":typing}
+        effects["Building Stat"]["Slider"]="How many "
+        for orbType in typing:
+            effects["Building Stat"]["Slider"]+=orbType
+            effects["Building Stat"]["Slider"]+=" or "
+        effects["Building Stat"]["Slider"]=effects["Building Stat"]["Slider"][:-4]
+        effects["Building Stat"]["Slider"]+=" Ki Spheres have been obtained?"
         effects["ATK"]+=int(passiveskill[14])
         effects["DEF"]+=int(passiveskill[14])
     elif passiveskill[4]=="67":
@@ -1194,9 +1236,21 @@ def extractPassiveLine(unit,passiveskill,printing=False,DEVEXCEPTIONS=False):
         if(passiveskill[13]=="4"):
             effects["Heals"]+=int(passiveskill[15])
             effects["Building Stat"]["Cause"]={"Cause":"Ki sphere obtained", "Type":KiOrbType(passiveskill[14],DEVEXCEPTIONS)}
+            effects["Building Stat"]["Slider"]="How many "
+            for orbType in KiOrbType(passiveskill[14],DEVEXCEPTIONS):
+                effects["Building Stat"]["Slider"]+=orbType
+                effects["Building Stat"]["Slider"]+=" or "
+            effects["Building Stat"]["Slider"]=effects["Building Stat"]["Slider"][:-4]
+            effects["Building Stat"]["Slider"]+=" Ki Spheres have been obtained?"
         else:
             #buffs per ki sphere
             effects["Building Stat"]["Cause"]={"Cause":"Ki sphere obtained", "Type":binaryOrbType(passiveskill[13],DEVEXCEPTIONS)}
+            effects["Building Stat"]["Slider"]="How many "
+            for orbType in binaryOrbType(passiveskill[13],DEVEXCEPTIONS):
+                effects["Building Stat"]["Slider"]+=orbType
+                effects["Building Stat"]["Slider"]+=" or "
+            effects["Building Stat"]["Slider"]=effects["Building Stat"]["Slider"][:-4]
+            effects["Building Stat"]["Slider"]+=" Ki Spheres have been obtained?"
             if(passiveskill[14]=="1"):
                 effects["ATK"]+=int(passiveskill[15])
             elif(passiveskill[14]=="2"):
@@ -1222,12 +1276,14 @@ def extractPassiveLine(unit,passiveskill,printing=False,DEVEXCEPTIONS=False):
             effects["Building Stat"]["Cause"]={"Cause":"HP", "Type":"Less HP remaining"}
             effects["Building Stat"]["Max"]+=int(passiveskill[13])
             effects["Building Stat"]["Min"]+=int(passiveskill[14])
+            effects["Building Stat"]["Slider"]="What percentage of HP is remaining?"
         else:
             #The more HP remaining the greater the stats boost
             effects["ATK"]+=int(passiveskill[14])
             effects["Building Stat"]["Cause"]={"Cause":"HP", "Type":"More HP remaining"}
             effects["Building Stat"]["Max"]+=int(passiveskill[14])
             effects["Building Stat"]["Min"]+=int(passiveskill[13])
+            effects["Building Stat"]["Slider"]="What percentage of HP is remaining?"
     elif passiveskill[4]=="72":
         if(int(passiveskill[13])>int(passiveskill[14])):
             #The less HP remaining the greater the stats boost
@@ -1235,12 +1291,14 @@ def extractPassiveLine(unit,passiveskill,printing=False,DEVEXCEPTIONS=False):
             effects["Building Stat"]["Cause"]={"Cause":"HP", "Type":"Less HP remaining"}
             effects["Building Stat"]["Max"]+=int(passiveskill[13])
             effects["Building Stat"]["Min"]+=int(passiveskill[14])
+            effects["Building Stat"]["Slider"]="What percentage of HP is remaining?"
         else:
             #The more HP remaining the greater the stats boost
             effects["DEF"]+=int(passiveskill[14])
             effects["Building Stat"]["Cause"]={"Cause":"HP", "Type":"More HP remaining"}
             effects["Building Stat"]["Max"]+=int(passiveskill[14])
             effects["Building Stat"]["Min"]+=int(passiveskill[13])
+            effects["Building Stat"]["Slider"]="What percentage of HP is remaining?"
     elif passiveskill[4]=="73":
         if(int(passiveskill[13])>int(passiveskill[14])):
             #The less HP remaining the greater the stats boost
@@ -1249,6 +1307,7 @@ def extractPassiveLine(unit,passiveskill,printing=False,DEVEXCEPTIONS=False):
             effects["Building Stat"]["Cause"]={"Cause":"HP", "Type":"Less HP remaining"}
             effects["Building Stat"]["Max"]+=int(passiveskill[13])
             effects["Building Stat"]["Min"]+=int(passiveskill[14])
+            effects["Building Stat"]["Slider"]="What percentage of HP is remaining?"
         else:
             #The more HP remaining the greater the stats boost
             effects["ATK"]+=int(passiveskill[14])
@@ -1256,6 +1315,7 @@ def extractPassiveLine(unit,passiveskill,printing=False,DEVEXCEPTIONS=False):
             effects["Building Stat"]["Cause"]={"Cause":"HP", "Type":"More HP remaining"}
             effects["Building Stat"]["Max"]+=int(passiveskill[14])
             effects["Building Stat"]["Min"]+=int(passiveskill[13])
+            effects["Building Stat"]["Slider"]="What percentage of HP is remaining?"
     elif passiveskill[4]=="76":
         effects["Effective against all"]=True
     elif passiveskill[4]=="78":
@@ -1301,6 +1361,12 @@ def extractPassiveLine(unit,passiveskill,printing=False,DEVEXCEPTIONS=False):
         kiSphereType=binaryOrbType(passiveskill[13],DEVEXCEPTIONS)
         effects["Ki"]+=int(passiveskill[14])
         effects["Building Stat"]["Cause"]={"Cause":"Ki sphere obtained", "Type":kiSphereType}
+        effects["Building Stat"]["Slider"]="How many "
+        for orbType in kiSphereType:
+            effects["Building Stat"]["Slider"]+=orbType
+            effects["Building Stat"]["Slider"]+=" or "
+        effects["Building Stat"]["Slider"]=effects["Building Stat"]["Slider"][:-4]
+        effects["Building Stat"]["Slider"]+=" Ki Spheres have been obtained?"
 
         
     elif passiveskill[4]=="97":
@@ -1403,11 +1469,7 @@ def extractPassiveLine(unit,passiveskill,printing=False,DEVEXCEPTIONS=False):
 
     
 
-    if(causalityExtractor(passiveskill[12])!=[]):
-        causalityCondition=logicalCausalityExtractor(passiveskill[12])
-        causalityCondition=CausalityLogicalExtractor(unit=unit,causality=causalityCondition,DEVEXCEPTIONS=DEVEXCEPTIONS)
-        if(causalityCondition!=None):
-            effects["Condition"]=causalityCondition
+    
 
         
                     
@@ -2024,7 +2086,7 @@ def causalityLogicFinder(unit,causalityCondition,printing=True,DEVEXCEPTIONS=Fal
                 output["Button"]["Name"]="Is HP "
                 output["Button"]["Name"]+=CausalityRow[2]
                 output["Button"]["Name"]+=" % or more?"
-                output["Slider"]["Name"]="What percentage of HP is remaining"
+                output["Slider"]["Name"]="What percentage of HP is remaining?"
                 output["Slider"]["Logic"]=">="
                 output["Slider"]["Logic"]+=CausalityRow[2]
                 output["Slider"]["Min"]=0
@@ -3467,7 +3529,7 @@ def wordsort(mylist,printing=True):
 #used to quickly store all data of a database
 def storedatabase(directory,name,printing=True):
     directory+=name
-    file = open(directory, encoding="Latin-1")
+    file = open(directory, encoding="utf-8-sig")
     dbtemp=csv.reader(file)
     name=[]
     for row in dbtemp:

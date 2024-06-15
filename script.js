@@ -1,20 +1,45 @@
 import * as webFunctions from "./websiteFunctions.js";
 document.addEventListener('DOMContentLoaded', function() {
-  
+  const urlParams=new URLSearchParams(window.location.search);
+
+  let subURL = urlParams.get('id');
   let assetSubURL;
   // Get the sub-URL from the window object
-  if(window.suburl[6] == "1"){
-    assetSubURL = window.suburl.slice(0, -1)+0;
+  if(subURL[6] == "1"){
+    assetSubURL = subURL.slice(0, -1)+0;
   }
   else{
-    assetSubURL = window.suburl;
+    assetSubURL = subURL;
   }
-  let subURL = window.suburl;
-
+  console.log(assetSubURL);
   const jsonPromise=webFunctions.getJson(subURL);
 
   const starButton=document.getElementById('star-button');
   const toggleButtons = Array.from(document.querySelectorAll('.toggle-btn1, .toggle-btn2, .toggle-btn3, .toggle-btn4'));
+
+
+  function toggleButtonHandler(button, jsonPromise) {
+    button.addEventListener('click', function() {
+      button.classList.toggle('active');
+      //if 55% is not active, make it active
+      if (!starButton.classList.contains('active')) {
+        starButton.classList.toggle('active');
+      }
+      //if every button is active, turn on rainbow star
+      if(toggleButtons.every(button => button.classList.contains('active'))){
+        starButton.classList.remove('active');
+        starButton.classList.add('rainbow')
+      }
+      //if rainbow star is active, turn it off 
+      else{
+        starButton.classList.remove('rainbow');
+      }
+      jsonPromise.then(json => {
+        console.log("HUH")
+        AdjustBaseStats(json);
+      });
+    });
+  }
 
   const seperateOrJoin=document.getElementById('seperate or join leader');
   seperateOrJoin.textContent="Joint Leader Skills";
@@ -302,7 +327,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Add event listeners to toggle buttons
   toggleButtons.forEach(button => {
-    webFunctions.toggleButtonHandler(button, jsonPromise);
+    toggleButtonHandler(button, jsonPromise);
+    console.log("HUH")
   });
   
    
@@ -406,6 +432,12 @@ document.addEventListener('DOMContentLoaded', function() {
     let passiveLines=json["Passive"];
     for (const key of Object.keys(passiveLines)){
       let line = passiveLines[key];
+      if("Building Stat" in line){
+        let BuildingStat = line["Building Stat"];
+        let conditionAdded=false;
+        
+      }
+
       if("Condition" in line){
         let condition = line["Condition"];
         let Causalities = condition["Causalities"];
@@ -472,8 +504,6 @@ document.addEventListener('DOMContentLoaded', function() {
               conditionObject["Condition Logic"]=[Logic];
               conditions.push(conditionObject);
               conditionAdded=true;
-              console.log("Created")
-              console.log(conditionObject)
             }
             //if the slider has a name
             else{
@@ -487,8 +517,6 @@ document.addEventListener('DOMContentLoaded', function() {
               conditionObject["Condition Logic"]=[Logic];
               conditions.push(conditionObject);
               conditionAdded=true;
-              console.log("Created")
-              console.log(conditionObject)
           }
         }
       }

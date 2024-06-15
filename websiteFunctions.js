@@ -66,7 +66,7 @@ export function updateContainer(containerId, content){
   }   
 
  // Function to update the image container with a new image
- export function updateImageContainer(imageContainerId, subURL, typing){
+ export function updateImageContainer(imageContainerId, assetSubURL, typing){
   const imageContainer = document.getElementById(imageContainerId);
   imageContainer.style.backgroundColor = colorToBackground(typingToColor(typing));
   const cardImage = new Image();
@@ -76,7 +76,7 @@ export function updateContainer(containerId, content){
   cardImage.onerror = function() {
     console.error('Error loading image:', cardImage.src);
   };
-  cardImage.src = 'dbManagement/assets/final_assets/' + subURL + '.png';
+  cardImage.src = 'dbManagement/assets/final_assets/' + assetSubURL + '.png';
 }
 
   // Function to create a paragraph element with the given text
@@ -87,28 +87,6 @@ export function createParagraph(text){
   }
 
 
-  // Function to handle button click event
-export function toggleButtonHandler(button, jsonPromise) {
-    button.addEventListener('click', function() {
-      button.classList.toggle('active');
-      //if 55% is not active, make it active
-      if (!starButton.classList.contains('active')) {
-        starButton.classList.toggle('active');
-      }
-      //if every button is active, turn on rainbow star
-      if(toggleButtons.every(button => button.classList.contains('active'))){
-        starButton.classList.remove('active');
-        starButton.classList.add('rainbow')
-      }
-      //if rainbow star is active, turn it off 
-      else{
-        starButton.classList.remove('rainbow');
-      }
-      jsonPromise.then(json => {
-        AdjustBaseStats(json);
-      });
-    });
-  }
 
 export function updateLinkBuffs(json){
     // Select all link sliders and buttons within a specific parent
@@ -200,7 +178,8 @@ export function addPassiveLineBuffs(passiveLine, passiveBuffsHolder){
     }
     for (const buffKey in (passiveLine)){
         let buffRecieved=passiveLine[buffKey];
-        if(buffKey!="Buff" && buffKey!="Condition" &&buffKey!="Once only" && buffKey!="ID"&&buffKey!="Additional attack" &&buffKey!="Target" && buffKey!="Building Stat" && buffKey!="Length" && buffKey!="Timing" ){
+        const disallowedOptions = ["Buff","Nullification", "Condition", "Toggle Other Line", "Once only", "ID", "Additional attack", "Target", "Building Stat", "Length", "Timing"];
+        if (!disallowedOptions.includes(buffKey)) {
             if(!(buffKey in passiveBuffsHolder[timing][target][buffType])){
                 passiveBuffsHolder[timing][target][buffType][buffKey]=0;
             }
@@ -218,7 +197,6 @@ export function addPassiveLineBuffs(passiveLine, passiveBuffsHolder){
             if(!(buffKey in passiveBuffsHolder[timing][target][buffType])){
                 passiveBuffsHolder[timing][target][buffType][buffKey]=[];
             }
-            console.log(buffRecieved["Chance of super"]=="100")
             if(buffRecieved["Chance of super"]=="100"){
                 passiveBuffsHolder[timing][target][buffType][buffKey].push("Additional Super Attack<br>");
             }
@@ -228,6 +206,18 @@ export function addPassiveLineBuffs(passiveLine, passiveBuffsHolder){
             else{
                 passiveBuffsHolder[timing][target][buffType][buffKey].push("Additional Attack with a "+buffRecieved["Chance of super"]+"% chance of being a Super Attack <br>");
             }
+        }
+        else if(buffKey=="Nullification"){
+            if(buffRecieved["Absorbed"]!="0"){
+                passiveBuffsHolder[timing][target][buffType][buffKey]="Absorbs "+buffRecieved["Absorbed"]+"% of recieved damage<br>";
+            }
+            else{
+                passiveBuffsHolder[timing][target][buffType][buffKey]="Nullifies all recieved damage<br>";
+            }
+        }
+        else if(buffKey=="Building Stat"){
+            //WIP
+            console.log()
         }
     }
 }
