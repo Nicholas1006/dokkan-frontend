@@ -200,7 +200,7 @@ export function addPassiveLineBuffs(passiveLine, passiveBuffsHolder){
     }
     for (const buffKey in (passiveLine)){
         let buffRecieved=passiveLine[buffKey];
-        if(buffKey!="Buff" && buffKey!="Condition" && buffKey!="ID" &&buffKey!="Target" && buffKey!="Building Stat" && buffKey!="Length" && buffKey!="Timing" ){
+        if(buffKey!="Buff" && buffKey!="Condition" &&buffKey!="Once only" && buffKey!="ID"&&buffKey!="Additional attack" &&buffKey!="Target" && buffKey!="Building Stat" && buffKey!="Length" && buffKey!="Timing" ){
             if(!(buffKey in passiveBuffsHolder[timing][target][buffType])){
                 passiveBuffsHolder[timing][target][buffType][buffKey]=0;
             }
@@ -214,6 +214,21 @@ export function addPassiveLineBuffs(passiveLine, passiveBuffsHolder){
                 console.error("Error: Buff type not recognized")
             }
         }   
+        else if(buffKey=="Additional attack"){
+            if(!(buffKey in passiveBuffsHolder[timing][target][buffType])){
+                passiveBuffsHolder[timing][target][buffType][buffKey]=[];
+            }
+            console.log(buffRecieved["Chance of super"]=="100")
+            if(buffRecieved["Chance of super"]=="100"){
+                passiveBuffsHolder[timing][target][buffType][buffKey].push("Additional Super Attack<br>");
+            }
+            else if(buffRecieved["Chance of super"]=="0"){
+                passiveBuffsHolder[timing][target][buffType][buffKey].push("Additional Normal Attack<br>");
+            }
+            else{
+                passiveBuffsHolder[timing][target][buffType][buffKey].push("Additional Attack with a "+buffRecieved["Chance of super"]+"% chance of being a Super Attack <br>");
+            }
+        }
     }
 }
 
@@ -277,27 +292,27 @@ export function isEmptyDictionary(dictionary){
 }
 
 export function logicReducer(logicString, CausalityLogic){
-    logicString=logicString.replace(" ","");
     logicString=logicString.toUpperCase();
     for (const logic in (CausalityLogic)){
-        logicString=logicString.replace(logic,CausalityLogic[logic]);
+        logicString=logicString.replaceAll(logic,CausalityLogic[logic]);
     }
+    logicString=logicString.replaceAll(" ","");
     while(logicString!="true"&&logicString!="false"){
-        logicString=logicString.replace("falseORfalse","false");
-        logicString=logicString.replace("falseORtrue","true");
-        logicString=logicString.replace("trueORfalse","true");
-        logicString=logicString.replace("trueORtrue","true");
+        logicString=logicString.replaceAll("falseORfalse","false");
+        logicString=logicString.replaceAll("falseORtrue","true");
+        logicString=logicString.replaceAll("trueORfalse","true");
+        logicString=logicString.replaceAll("trueORtrue","true");
 
-        logicString=logicString.replace("falseANDfalse","false");
-        logicString=logicString.replace("falseANDtrue","false");
-        logicString=logicString.replace("trueANDfalse","false");
-        logicString=logicString.replace("trueANDtrue","true");
+        logicString=logicString.replaceAll("falseANDfalse","false");
+        logicString=logicString.replaceAll("falseANDtrue","false");
+        logicString=logicString.replaceAll("trueANDfalse","false");
+        logicString=logicString.replaceAll("trueANDtrue","true");
 
-        logicString=logicString.replace("NOTfalse","true");
-        logicString=logicString.replace("NOTtrue","false");
+        logicString=logicString.replaceAll("NOTfalse","true");
+        logicString=logicString.replaceAll("NOTtrue","false");
 
-        logicString=logicString.replace("(false)","false");
-        logicString=logicString.replace("(true)","true");
+        logicString=logicString.replaceAll("(false)","false");
+        logicString=logicString.replaceAll("(true)","true");
     }
     return(logicString=="true");
 }
@@ -307,15 +322,14 @@ export function logicReducer(logicString, CausalityLogic){
 export function logicCalculator(logicArray,sliderState){
     let logic=logicArray[0];
     logic=logic.substring(0, 2);
-    
     if(logic=="=="){
-        return(sliderState==(logicArray[0].substring(2)));
+        return(parseInt(sliderState)==parseInt(logicArray[0].substring(2)));
     }
     if(logic=="<="){
-        return(sliderState<=(logicArray[0].substring(2)));
+        return(parseInt(sliderState)<=parseInt(logicArray[0].substring(2)));
     }
     if(logic==">="){
-        return(sliderState>=(logicArray[0].substring(2)));
+        return(parseInt(sliderState)>=parseInt(logicArray[0].substring(2)));
     }
     else{
         return(logic);

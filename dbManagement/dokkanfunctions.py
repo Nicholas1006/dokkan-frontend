@@ -2267,6 +2267,16 @@ def causalityLogicFinder(unit,causalityCondition,printing=True,DEVEXCEPTIONS=Fal
                     output["Button"]["Name"]+=" or "
                 output["Button"]["Name"]=output["Button"]["Name"][:-4]
                 output["Button"]["Name"]+=" Ki Spheres been obtained?"
+                output["Slider"]["Name"]="How many "
+                for orbType in kiSphereType:
+                    output["Slider"]["Name"]+=orbType
+                    output["Slider"]["Name"]+=" or "
+                output["Slider"]["Name"]=output["Slider"]["Name"][:-4]
+                output["Slider"]["Name"]+=" Ki Spheres have been obtained?"
+                output["Slider"]["Logic"]=">="
+                output["Slider"]["Logic"]+=CausalityRow[3]
+                output["Slider"]["Min"]=0
+                output["Slider"]["Max"]=int(CausalityRow[3])
             elif(CausalityRow[1]=="43"):
                 output["Button"]["Name"]="Has this unit evaded an attack? "
             elif(CausalityRow[1]=="44"):
