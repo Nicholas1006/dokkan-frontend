@@ -268,7 +268,7 @@ document.addEventListener('DOMContentLoaded', function() {
         transformationButton.style.cursor = "pointer";
         transformationContainer.appendChild(transformationButton);
         transformationButton.onclick = function(){
-          window.location.href = "/"+unitID;
+          window.location.href = "/dokkan/?id="+unitID;
         }
       }
     } else {
