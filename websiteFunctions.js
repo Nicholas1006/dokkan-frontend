@@ -286,44 +286,20 @@ export function logicReducer(logicString, CausalityLogic){
     for (const logic in (CausalityLogic)){
         logicString=logicString.replaceAll(logic,CausalityLogic[logic]);
     }
-    logicString=logicString.replaceAll(" ","");
-    while(logicString!="true"&&logicString!="false"){
-        logicString=logicString.replaceAll("falseORfalse","false");
-        logicString=logicString.replaceAll("falseORtrue","true");
-        logicString=logicString.replaceAll("trueORfalse","true");
-        logicString=logicString.replaceAll("trueORtrue","true");
-
-        logicString=logicString.replaceAll("falseANDfalse","false");
-        logicString=logicString.replaceAll("falseANDtrue","false");
-        logicString=logicString.replaceAll("trueANDfalse","false");
-        logicString=logicString.replaceAll("trueANDtrue","true");
-
-        logicString=logicString.replaceAll("NOTfalse","true");
-        logicString=logicString.replaceAll("NOTtrue","false");
-
-        logicString=logicString.replaceAll("(false)","false");
-        logicString=logicString.replaceAll("(true)","true");
-    }
-    return(logicString=="true");
+    logicString=logicString.replaceAll("AND","&&").replaceAll("OR","||").replaceAll("NOT","!");
+    return(eval(logicString));
 }
 
 
 
 export function logicCalculator(logicArray,sliderState){
     let logic=logicArray[0];
-    logic=logic.substring(0, 2);
-    if(logic=="=="){
-        return(parseInt(sliderState)==parseInt(logicArray[0].substring(2)));
-    }
-    if(logic=="<="){
-        return(parseInt(sliderState)<=parseInt(logicArray[0].substring(2)));
-    }
-    if(logic==">="){
-        return(parseInt(sliderState)>=parseInt(logicArray[0].substring(2)));
-    }
-    else{
-        return(logic);
-    }
+    logic=logic.replaceAll("and","&&");
+    logic=logic.replaceAll("or","||");
+    logic=logic.replaceAll("==",sliderState+"==")
+    logic=logic.replaceAll(">=",sliderState+">=")
+    logic=logic.replaceAll("<=",sliderState+"<=")
+    return(eval(logic));
 }
 
 

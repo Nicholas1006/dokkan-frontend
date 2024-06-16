@@ -2,7 +2,7 @@ import * as webFunctions from "./websiteFunctions.js";
 document.addEventListener('DOMContentLoaded', function() {
   const urlParams=new URLSearchParams(window.location.search);
 
-  let subURL = urlParams.get('id');
+  let subURL = urlParams.get('id') || "4018131";
   let assetSubURL;
   // Get the sub-URL from the window object
   if(subURL[6] == "1"){
@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function() {
   else{
     assetSubURL = subURL;
   }
-  console.log(assetSubURL);
   const jsonPromise=webFunctions.getJson(subURL);
 
   const starButton=document.getElementById('star-button');
@@ -35,7 +34,6 @@ document.addEventListener('DOMContentLoaded', function() {
         starButton.classList.remove('rainbow');
       }
       jsonPromise.then(json => {
-        console.log("HUH")
         AdjustBaseStats(json);
       });
     });
@@ -268,7 +266,7 @@ document.addEventListener('DOMContentLoaded', function() {
         transformationButton.style.cursor = "pointer";
         transformationContainer.appendChild(transformationButton);
         transformationButton.onclick = function(){
-          window.location.href = "/dokkan/?id="+unitID;
+          window.location.href = "?id="+unitID;
         }
       }
     } else {
@@ -328,14 +326,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Add event listeners to toggle buttons
   toggleButtons.forEach(button => {
     toggleButtonHandler(button, jsonPromise);
-    console.log("HUH")
   });
-  
-   
-
-
-
-  
 
   // Function to fetch JSON data and image based on sub-URL
   function fetchData(subURL) {
@@ -348,15 +339,20 @@ document.addEventListener('DOMContentLoaded', function() {
       })
     //everything under this can see the data from the json
     .then(data => {
+      webFunctions.updateImageContainer('image-container', assetSubURL, data.Typing);
+      webFunctions.updateContainer('text-container', webFunctions.createParagraph("Tgus us a text"));
+      document.getElementById('text-container').innerHTML = subURL;
       if((data["Rarity"] == "lr" || data["Rarity"] == "ur") && subURL[6]=="0"){
-        let redirectURL = window.location.protocol + "//" + window.location.host;
-        redirectURL = redirectURL + "/" + subURL.slice(0, -1)+ "1";
+        let redirectURL = "?id=";
+        redirectURL = redirectURL + subURL.slice(0, -1)+ "1";
         window.location.href = redirectURL;
       }
 
       //change the background of the slider to the typing color
       document.getElementById('level-slider').style.backgroundColor = webFunctions.LightenColor(webFunctions.typingToColor(data.Typing), 30);
-      document.title=data["Leader Skill"]["Name"];
+      document.title="["
+      document.title+=data["Leader Skill"]["Name"];
+      document.title+="] ";
       document.title+=data.Name;
 
       webFunctions.updateContainer('typing-container', webFunctions.createParagraph(data.Typing || "Typing data not found"));
@@ -370,9 +366,6 @@ document.addEventListener('DOMContentLoaded', function() {
         categoriesList.appendChild(listItem);
       });
       */
-      webFunctions.updateImageContainer('image-container', assetSubURL, data.Typing);
-      webFunctions.updateContainer('text-container', webFunctions.createParagraph("Tgus us a text"));
-      document.getElementById('text-container').innerHTML = subURL;
       })
       .catch(error => console.error('Error fetching JSON:', error));
   }
@@ -435,7 +428,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if("Building Stat" in line){
         let BuildingStat = line["Building Stat"];
         let conditionAdded=false;
-        
+        //WIP
       }
 
       if("Condition" in line){

@@ -1,15 +1,15 @@
+from globals import *
 from calendar import c
 import csv
 from xml import dom
-from colorama import Fore, Style
-from numpy import extract, short
+from colorama import Fore
 import requests
 import os
 from PIL import Image
 import time
 import math
 import json
-from globals import *
+
 
 def sub_target_types_extractor(sub_target_type_set_id,DEVELOPEREXCEPTIONS=False):
     global sub_target_typesJP
@@ -3414,9 +3414,19 @@ def searchbycolumn(code, database, column, printing=True):
 #        return(None)
 #    else:
 #        return(temp)
+
 def searchbyid(code, codecolumn, database, column, printing=True):
     result = [row[column] for row in database if code == row[codecolumn]]
     return result if result else None
+
+def searchbyidsorted(code, codecolumn, database, column, printing=True):
+    pivot=len(database)//2
+    if code==database[pivot][codecolumn]:
+        return(database[pivot][column])
+    elif code>database[pivot][codecolumn]:
+        return(searchbyidsorted(code, codecolumn, database[pivot:], column, printing))
+    else:
+        return(searchbyidsorted(code, codecolumn, database[:pivot], column, printing))
 
 def combinelinks(linklist,lvl,printing=True):
     global link_skillsJP

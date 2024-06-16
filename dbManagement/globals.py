@@ -1,7 +1,7 @@
 import csv
 def storedatabase(directory,name,printing=True):
     directory+=name
-    file = open(directory, encoding="Latin-1")
+    file = open(directory, encoding="utf-8-sig")
     dbtemp=csv.reader(file)
     name=[]
     for row in dbtemp:
