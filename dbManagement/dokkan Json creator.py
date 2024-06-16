@@ -7,7 +7,7 @@ directory="dataJP/"
 cardsJP=storedatabase(directory,"cards.csv")
 
 DEVEXCEPTIONS=False
-GLOBALPARSE=False
+GLOBALPARSE=True
 MAKEJSON=True
 
 CALCPASSIVE=True
