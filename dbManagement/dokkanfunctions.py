@@ -12,8 +12,6 @@ import json
 
 
 def sub_target_types_extractor(sub_target_type_set_id,DEVELOPEREXCEPTIONS=False):
-    global sub_target_typesJP
-    global card_categoriesGB
     temp=searchbycolumn(code=sub_target_type_set_id,database=sub_target_typesJP,column=1)
     output={}
     output["Category"]=[]
@@ -47,8 +45,6 @@ def removeDuplicatesUltraList(ultraList,slot):
     return(output)
 
 def superAttackMultiplierExtractor(superAttackID,super_attack_lvl,DEVEXCEPTIONS=False):
-    global special_setsJP
-    global special_bonusesJP
     specialRow=searchbycolumn(code=superAttackID,database=special_setsJP,column=0)
     growth_rate=int(specialRow[0][6])
     increase_rate=int(specialRow[0][5])
@@ -59,7 +55,6 @@ def superAttackMultiplierExtractor(superAttackID,super_attack_lvl,DEVEXCEPTIONS=
     
 def getMaxLevel(unit,eza=False):
     if(eza):
-        global optimal_awakening_growthsJP
         cardOptimalAwakeningGrowthID=unit[16][:-2]
         growthRows=searchbycolumn(code=cardOptimalAwakeningGrowthID,database=optimal_awakening_growthsJP,column=1)
         maxLevel=int(unit[14])
@@ -70,18 +65,7 @@ def getMaxLevel(unit,eza=False):
         return(int(unit[13]))
 
 def parseSuperAttack(unit,eza=False,DEVEXCEPTIONS=False):
-    global card_specialsJP
-    global special_setsJP
-    global special_setsGB
-    global special_bonusesJP
-    global specialsJP
-    global optimal_awakening_growthsJP
-    global skill_causalitiesJP
-    global card_unique_info_set_relationsJP
-    global cardsJP
-    global card_categoriesGB
     output={}
-    ableToEZA=qualifyEZA(unit)
 
     card_specialss=searchbycolumn(code=unit[0],column=1,database=card_specialsJP)
     card_specialss=removeDuplicatesUltraList(ultraList=card_specialss,slot=0)
@@ -232,10 +216,6 @@ def parseSpecials(specialRow,DEVEXCEPTIONS=False):
     return(output)
         
 def parseHiddenPotential(Potential_board_id,DEVEXCEPTIONS=False):
-    global potential_squaresJP
-    global potential_square_relationsJP
-    global potential_eventsJP
-
     nodesSearched={}
     
     nodesSearching={}
@@ -298,14 +278,6 @@ def parseHiddenPotential(Potential_board_id,DEVEXCEPTIONS=False):
     return(output)
 
 def parseLeaderSkill(unit,eza,DEVEXCEPTIONS=False):
-    global dokkan_fieldsJP
-    global skill_causalitiesJP
-    global card_unique_info_set_relationsJP
-    global cardsJP
-    global card_categoriesGB
-    global sub_target_typesJP
-    global leader_skillsJP
-    global optimal_awakening_growthsJP
     output={}
     if(JPExclusiveCheck(unit[0])):
         leader_skill_name=searchbyid(code=unit[22][:-2],codecolumn=0,database=leader_skill_setsJP,column=1,)
@@ -481,7 +453,6 @@ def turnintoJson(data,filename, directoryName="" ):
         json.dump(data, f, indent=4)
 
 def JPExclusiveCheck(unitid):
-    global cardsGB
     globalVersion=searchbycolumn(code=unitid,column=0,database=cardsGB)
     if(globalVersion==[]):
         return(True)
@@ -489,8 +460,6 @@ def JPExclusiveCheck(unitid):
         return(False)
     
 def checkEza(unitid):
-    global cardsJP
-    global optimal_awakening_growthsJP
     unit=searchbycolumn(code=unitid,column=0,database=cardsJP)[0]
     awakeningID=unit[16][:-2]
     ezaRow=searchbycolumn(code=awakeningID,column=0,database=optimal_awakening_growthsJP)
@@ -631,21 +600,13 @@ def split_into_lists(stringToSplit,splitter):
     return components
 
 def parseStandby(unit,DEVEXCEPTIONS=False):
-    global card_finish_skill_set_relationsJP
-    global card_standby_skill_set_relationsJP
-    global finish_skillsJP
-    global finish_specialsJP
-    global card_finish_skill_set_relationsJP
-
     output={}
     standby_skill_set_id=searchbyid(code=unit[0],codecolumn=1,database=card_standby_skill_set_relationsJP,column=2)
     if(standby_skill_set_id!=None):
         standby_skill_set_id=standby_skill_set_id[0]
         if(JPExclusiveCheck(unit[0])):
-            global standby_skill_setsJP
             standby_skill_setsRow=searchbycolumn(code=standby_skill_set_id,database=standby_skill_setsJP,column=0)[0]
         else:
-            global standby_skill_setsGB
             standby_skill_setsRow=searchbycolumn(code=standby_skill_set_id,database=standby_skill_setsGB,column=0)[0]
         output["ID"]=standby_skill_set_id
         output["Exec limit"]=standby_skill_setsRow[4]
@@ -686,21 +647,14 @@ def parseStandby(unit,DEVEXCEPTIONS=False):
 
 
 def parseFinish(unit,DEVEXCEPTIONS=False):
-    global card_finish_skill_set_relationsJP
-    global card_standby_skill_set_relationsJP
-    global finish_skillsJP
-    global finish_specialsJP
-    global card_finish_skill_set_relationsJP
     output={}
     finish_skill_set_ids=searchbyid(code=unit[0],codecolumn=1,database=card_finish_skill_set_relationsJP,column=2)
     if(finish_skill_set_ids!=None):
         for finish_skill_set_id in finish_skill_set_ids:
             output[finish_skill_set_id]={}
             if(JPExclusiveCheck(unit[0])):
-                global finish_skill_setsJP
                 finish_skill_setsRow=searchbycolumn(code=finish_skill_set_id,database=finish_skill_setsJP,column=0)[0]
             else:
-                global finish_skill_setsGB
                 finish_skill_setsRow=searchbycolumn(code=finish_skill_set_id,database=finish_skill_setsGB,column=0)[0]
             output[finish_skill_set_id]["ID"]=finish_skill_set_id
             output[finish_skill_set_id]["Name"]=finish_skill_setsRow[1]
@@ -941,16 +895,6 @@ def shortenPassiveDictionary(oldPassiveDictionary):
     return(passiveDictionary)
 
 def extractPassiveLine(unit,passiveskill,printing=False,DEVEXCEPTIONS=False):
-    global passive_skillsJP
-    global passive_skill_set_relationsJP
-    global dokkan_fieldsJP
-    global dokkan_field_passive_skill_relationsJP
-    global battle_paramsJP
-    global skill_causalitiesJP
-    global card_unique_info_set_relationsJP
-    global cardsJP
-    global sub_target_typesJP
-    global card_categoriesGB
     effects={
         "ID": passiveskill[0],
         "Domain expansion": {
@@ -1608,12 +1552,6 @@ def logicalCausalityExtractor(causality):
         return(result)
     
 def CausalityLogicalExtractor(unit,causality,printing=True,DEVEXCEPTIONS=False):
-    global skill_causalitiesJP
-    global dokkan_fieldsJP
-    global card_categoriesGB
-    global cardsJP
-    global card_unique_info_set_relationsJP
-
     output={}
     result=causality.replace("|"," or ").replace("&"," and ")
     currentCausality=""
@@ -1661,7 +1599,6 @@ def longestCommonSubstring(listOfStrings):
 
 
 def CategoryExtractor(CategoryId):
-    global card_categoriesGB
     for category in card_categoriesGB:
         if category[0]==CategoryId:
             return(category[1])
@@ -1806,7 +1743,6 @@ def causalityLineToLogic(causalityLine,DEVEXCEPTIONS=False):
         output["Slider"]["Min"]=0
         output["Slider"]["Max"]=100
     elif(CausalityRow[1]=="34"):
-        global card_categoriesGB
         if(CausalityRow[2]=="0"):
             target="allies on the team "
             output["Slider"]["Max"]=7
@@ -2067,12 +2003,6 @@ def causalityLineToLogic(causalityLine,DEVEXCEPTIONS=False):
     return(output)
 
 def causalityLogicFinder(unit,causalityCondition,printing=True,DEVEXCEPTIONS=False):
-    global dokkan_fieldsJP
-    global card_categoriesGB
-    global skill_causalitiesJP
-    global cardsJP
-    global cardsGB
-    global card_unique_info_set_relationsJP
     output={"Button":{},
             "Slider":
                 {"Name":None,
@@ -2217,7 +2147,6 @@ def causalityLogicFinder(unit,causalityCondition,printing=True,DEVEXCEPTIONS=Fal
                 output["Slider"]["Min"]=0
                 output["Slider"]["Max"]=100
             elif(CausalityRow[1]=="34"):
-                global card_categoriesGB
                 if(CausalityRow[2]=="0"):
                     target="allies on the team "
                     output["Slider"]["Max"]=7
@@ -2524,9 +2453,6 @@ def binaryOrbType(kiOrbType,DEVEXCEPTIONS=False):
     return(output)
     
 def TransformationReverseUnit(card,printing=True):
-    global cardsJP
-    global passive_skillsJP
-    global passive_skill_set_relationsJP
     for passiveskillpiece in passive_skillsJP:
         if passiveskillpiece[13]==card[0]:
             #is a transformation
@@ -2538,9 +2464,6 @@ def TransformationReverseUnit(card,printing=True):
                             return(unit)
     
 def activeSkillTransformationReverseUnit(card,printing=True):
-    global active_skillsJP
-    global card_active_skillsJP
-    global cardsJP
     for possibleactive in active_skillsJP:
         if(possibleactive[6]==card[0]):
             #unit comes from an active skill
@@ -2552,9 +2475,6 @@ def activeSkillTransformationReverseUnit(card,printing=True):
                             return(unit)
 
 def activeSkillTransformationUnit(card,printing=True):
-    global active_skillsJP
-    global card_active_skillsJP
-    global cardsJP
     for possibleactivelink in card_active_skillsJP:
         if possibleactivelink[1]==card[0]:
             #they have an active
@@ -2567,8 +2487,6 @@ def activeSkillTransformationUnit(card,printing=True):
                             return(unit)
 
 def dokkanreverseunit(card,printing=True):
-    global card_awakening_routesJP
-    global cardsJP
     for awakenable_unit in card_awakening_routesJP:
         if awakenable_unit[1]=="CardAwakeningRoute::Dokkan":
             if(card[0])==(awakenable_unit[3]):
@@ -2584,24 +2502,12 @@ def qualifyAsDFETUR(card,printing=True):
         return(False)
     
 def qualifyAsDFE(card,printing=True):
-    global card_awakening_routesJP
-    global cardsJP
-    global active_skillsJP
-    global card_active_skillsJP
-    global passive_skillsJP
-    global passive_skill_set_relationsJP
     if(qualifyAsDFELR(card) or qualifyAsDFETUR(card)):
         return(True)
     else:
         return(False)            
 
 def qualifyAsDFELR(card,printing=True):
-    global card_awakening_routesJP
-    global cardsJP
-    global active_skillsJP
-    global card_active_skillsJP
-    global passive_skillsJP
-    global passive_skill_set_relationsJP
     assumeFalse=False
     reversed=dokkanreverseunit(card)
     if(reversed==None):
@@ -2631,7 +2537,6 @@ def qualifyAsLR(card,printing=True):
         return(False)
     
 def qualifyEZA(card,printing=True):
-    global optimal_awakening_growthsJP
     directory="data/"
     if qualifyUsable(card) and (checkeza(card)):
         return(True)
@@ -2639,7 +2544,6 @@ def qualifyEZA(card,printing=True):
         return(False)
 
 def switchUnitToGlobal(unitJP):
-    global cardsGB
     unitGB = searchbycolumn(code=unitJP[0],database=cardsGB,column=0)
     if(unitGB!=[]):
         unitGB=unitGB[0]
@@ -2755,7 +2659,6 @@ def createEZAWallpapers(cards, directory,printing=True):
     if(printing): print("All EZA assets created")
 
 def parsePassiveSkill(unit,eza=False,DEVEXCEPTIONS=False):
-    global passive_skillsJP
     output={}
     passiveIdList=getpassiveid(unit,eza)
     if (passiveIdList!=None and qualifyUsable(unit)):
@@ -2769,12 +2672,6 @@ def parsePassiveSkill(unit,eza=False,DEVEXCEPTIONS=False):
 
 
 def parseActiveSkill(unit,eza=False,DEVEXCEPTIONS=False):
-    global card_active_skillsJP
-    global active_skill_setsJP
-    global ultimate_specialsJP
-    global active_skillsJP
-    global battle_paramsJP
-
     active_id=searchbyid(unit[0],codecolumn=1,database=card_active_skillsJP,column=2)
     if(active_id!=None):
         active_id=active_id[0]
@@ -2934,11 +2831,6 @@ def parseActiveSkill(unit,eza=False,DEVEXCEPTIONS=False):
 
 
 def createDFEWallpapers(cards, directory,printing=True):
-    global card_awakening_routesJP
-    global active_skillsJP
-    global card_active_skillsJP
-    global passive_skillsJP
-    global passive_skill_set_relationsJP
     if(printing): print("Creating DFE wallpapers")
     acquiredlist = os.listdir(r'./assets/DFE wallpapers')
     leader_skills=storedatabase(directory,"leader_skills.csv")
@@ -3366,7 +3258,6 @@ def scrapeFullUnit(fileID,thumb=True,full=True,bg=True,character=True,circle=Tru
         screpeassetlineant(fileID, fileType,printing)
     
 def passivename(unit,printing=True):
-    global passive_skillsJP
     return(listtostr(searchbyid(str(int(float(unit[21]))), 0, passive_skillsJP, 1)))
 
 def floattoint(number,printing=True):
@@ -3378,7 +3269,6 @@ def floattoint(number,printing=True):
         return(number)
 
 def checkeza(unit,printing=True):
-    global optimal_awakening_growthsJP
     for eza in optimal_awakening_growthsJP[1:]:
         if str(int(float(unit[22]))) in str(int(float(eza[6]))):
             return(True)
@@ -3429,9 +3319,6 @@ def searchbyidsorted(code, codecolumn, database, column, printing=True):
         return(searchbyidsorted(code, codecolumn, database[:pivot], column, printing))
 
 def combinelinks(linklist,lvl,printing=True):
-    global link_skillsJP
-    global link_skill_lvsJP
-    global link_skill_efficaciesJP
     ATK=0
     DEF=0
     KI=0
@@ -3633,7 +3520,6 @@ def getrarity(unit,printing=True):
     return("ERROR IN GETRARITY UNIT MAX LEVEL IS",unit[13])
 
 def getUnitStats(unit,level,DEVEXCEPTIONS=False):
-    global card_growthsJP
     hp_init=int(unit[6])
     hp_max=int(unit[7])
     atk_init=int(unit[8])
@@ -3655,7 +3541,6 @@ def getUnitStats(unit,level,DEVEXCEPTIONS=False):
     
 
 def swapToUnitWith0(unit):
-    global cardsJP
     unitId=definewith0(unit[0])
     for card in cardsJP:
         if card[0]==unitId:
@@ -3663,7 +3548,6 @@ def swapToUnitWith0(unit):
     return(None)
 
 def swapToUnitWith1(unit):
-    global cardsJP
     unitId=definewith1(unit[0])
     for card in cardsJP:
         if card[0]==unitId:
@@ -3671,9 +3555,6 @@ def swapToUnitWith1(unit):
     return(None)
 
 def getpassiveid(unit,eza=False, printing=False):
-    global cardsJP
-    global optimal_awakening_growthsJP
-    global passive_skill_set_relationsJP
     unitPassiveId=unit[21]
     if(eza):
         if(swapToUnitWith1(unit)!=None):
@@ -3698,7 +3579,6 @@ def getpassiveid(unit,eza=False, printing=False):
 
 #retrieves full character name(e.g. "E.TEQ LR Nightmarish Impact Legendary Super Saiyan Broly 4016881")
 def getfullname(unit,printing=True):
-    global leader_skillsJP
     #create empty variable
     temp=""
     
@@ -3730,8 +3610,6 @@ def getfullname(unit,printing=True):
     return(temp)
     
 def getallcategories(unitid,printing=True):
-    global card_card_categoriesGB
-    global card_categoriesGB
     temp1=searchedbyid(unitid, 1, card_card_categoriesJP, 2)
     categoryList=[]
     if temp1!=None:
@@ -3747,8 +3625,6 @@ def getalllinkswithbuffs(unit,printing=True,DEVEXCEPTIONS=True):
     return(output)
 
 def getlinkBuffsAtAllLevel(linkNameOrID="",printing=True,DEVEXCEPTIONS=True):
-    global link_skillsGB
-    global link_skill_lvsJP
     output={}
     if linkNameOrID.isdigit():
         linkID=linkNameOrID
@@ -3794,7 +3670,6 @@ def getlinkBuffsAtAllLevel(linkNameOrID="",printing=True,DEVEXCEPTIONS=True):
 
 
 def getalllinks(unit,printing=True):
-    global link_skillsGB
     linksList=[]
     for x in range(23,30):
        if(unit[x]!=""):
