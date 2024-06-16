@@ -126,11 +126,7 @@ export function updateLinkBuffs(json){
 
     // Create a paragraph element to display the total link buffs
     let linkBuffs = document.createElement('p');
-    linkBuffs.style.height = "100px";
-    linkBuffs.style.width = "200%";
-    linkBuffs.style.gridColumnStart = "1";
-    linkBuffs.style.gridColumnEnd = "30";
-    linkBuffs.style.gridColumn = "1";
+    linkBuffs.id = "link-buffs";
     linkBuffs.innerHTML = "Link Buffs: ";
     if (totalATKBuff) linkBuffs.innerHTML += "<br>ATK: " + totalATKBuff + "% ";
     if (totalDEFBuff) linkBuffs.innerHTML += "<br>DEF: " + totalDEFBuff + "% ";

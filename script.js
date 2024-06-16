@@ -39,25 +39,25 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  const seperateOrJoin=document.getElementById('seperate or join leader');
+  const seperateOrJoin=document.getElementById('seperate-or-join-leader');
   seperateOrJoin.textContent="Joint Leader Skills";
-  seperateOrJoin.style.background = "url('dbManagement/assets/misc/leader_icon.png') repeat left";
-  seperateOrJoin.style.width="110px";
-  seperateOrJoin.style.height="50px";
-  seperateOrJoin.style.gridRow="1";
-  seperateOrJoin.style.gridArea="1/1/2/3";
+  seperateOrJoin.classList.add('JointLeader');
   seperateOrJoin.addEventListener('click', function(){
     if(seperateOrJoin.textContent=="Seperate Leader Skills"){
-      seperateOrJoin.style.width="110px";
+      seperateOrJoin.classList.remove('SeperateLeader');
+      seperateOrJoin.classList.add('JointLeader');
+//      seperateOrJoin.style.width="110px";
       seperateOrJoin.textContent="Joint Leader Skills";
-      seperateOrJoin.style.background = "url('dbManagement/assets/misc/leader_icon.png') repeat left";
+      //seperateOrJoin.style.background = "url('dbManagement/assets/misc/leader_icon.png') repeat left";
       leaderAInput.style.display="none";
       leaderBInput.style.display="none";
       leaderTotalInput.style.display="block";
     } else {
+      seperateOrJoin.classList.remove('JointLeader');
+      seperateOrJoin.classList.add('SeperateLeader');
       seperateOrJoin.textContent="Seperate Leader Skills";
-      seperateOrJoin.style.background = "url('dbManagement/assets/misc/sub_leader_icon.png') repeat left";
-      seperateOrJoin.style.width="220px";
+      //seperateOrJoin.style.background = "url('dbManagement/assets/misc/sub_leader_icon.png') repeat left";
+//      seperateOrJoin.style.width="220px";
       leaderAInput.style.display="block";
       leaderBInput.style.display="block";
       leaderTotalInput.style.display="none";
@@ -73,17 +73,10 @@ document.addEventListener('DOMContentLoaded', function() {
   const leaderContainer=document.getElementById('leader-1Input');
   let leaderAInput=document.getElementById('leader-1Input');
   leaderAInput.value=200;
-  leaderAInput.style.gridRow=2;
-  leaderAInput.style.width="110px"
-  leaderAInput.style.margin="0px";
   let leaderBInput=document.getElementById('leader-2Input');
   leaderBInput.value=200;
-  leaderBInput.style.gridRow=2;
-  leaderBInput.style.width="110px"
   let leaderTotalInput=document.getElementById('leader-TotalInput');
   leaderTotalInput.value=400;
-  leaderTotalInput.style.gridRow=2;
-  leaderTotalInput.style.width="110px"
   leaderAInput.addEventListener('input', function(){
     leaderTotalInput.value=parseInt(leaderAInput.value)+parseInt(leaderBInput.value);
   });
@@ -116,12 +109,8 @@ document.addEventListener('DOMContentLoaded', function() {
       let linkData = links[linkName][linkLevel];
       let linkButton = document.createElement('button');
       linkButton.innerHTML = linkName + " <br>Level: " + linkLevel;
-      linkButton.style.height = "60px";
-      linkButton.style.border = "none";
-      linkButton.style.margin = "0px";
-      linkButton.style.cursor = "pointer";
+      linkButton.id="links-button";
       linkButton.style.background="#00FF00"
-      linkButton.style.hover="background:#FF5C35"
       linkButton.style.gridRow= linkNumber*2;
       linkButton.classList.add('active');
       let linkSlider = document.createElement('input');
@@ -129,10 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
       linkSlider.min = 1;
       linkSlider.max = 10;
       linkSlider.value = 10;
-      linkSlider.style.height = "20px";
-      linkSlider.style.border = "1px solid black";
-      linkSlider.style.margin = "0px";
-      linkSlider.style.cursor = "pointer";
+      linkSlider.id="links-slider";
       if(linkNumber%2==0){
         linkButton.style.gridRow= linkNumber*2+4;
         linkSlider.style.gridRow= linkNumber*2+5;
@@ -174,10 +160,7 @@ document.addEventListener('DOMContentLoaded', function() {
     allLinksSlider.min = 1;
     allLinksSlider.max = 10;
     allLinksSlider.value = 10;
-    allLinksSlider.style.height = "20px";
-    allLinksSlider.style.border = "1px solid black";
-    allLinksSlider.style.margin = "0px";
-    allLinksSlider.style.cursor = "pointer";
+    allLinksSlider.id="links-slider";
     allLinksSlider.style.gridRowStart = "3";
     allLinksSlider.style.gridRowEnd = "3";
     allLinksSlider.style.gridColumnStart = "1";
@@ -196,10 +179,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let allLinksButton = document.createElement('button');
     allLinksButton.innerHTML = "All Links";
-    allLinksButton.style.height = "60px";
-    allLinksButton.style.border = "none";
-    allLinksButton.style.margin = "0px";
-    allLinksButton.style.cursor = "pointer";
+    allLinksButton.id="links-button";
     allLinksButton.style.background="#00FF00"
     allLinksButton.style.gridRowStart = "2";
     allLinksButton.style.gridRowEnd = "3";
@@ -256,14 +236,7 @@ document.addEventListener('DOMContentLoaded', function() {
         //creates a button that links to the suburl of the unit with the background set to the unitID within the assets/final_assets folder
         let transformationButton = document.createElement('button');
         transformationButton.style.backgroundImage = "url('dbManagement/assets/final_assets/"+unitID+".png')";
-        transformationButton.style.backgroundSize = "100% 100%";
-        transformationButton.style.backgroundRepeat = "no-repeat";
-        transformationButton.style.backgroundPosition = "center";
-        transformationButton.style.width = "109px";
-        transformationButton.style.height = "100px";
-        transformationButton.style.border = "none";
-        transformationButton.style.margin = "5px";
-        transformationButton.style.cursor = "pointer";
+        transformationButton.id="transformation-button";
         transformationContainer.appendChild(transformationButton);
         transformationButton.onclick = function(){
           window.location.href = "?id="+unitID;
@@ -558,12 +531,9 @@ document.addEventListener('DOMContentLoaded', function() {
       slider.min = condition["Min"];
       slider.max = condition["Max"];
       slider.value = condition["Min"];
-      slider.style.height = "20px";
-      slider.style.border = "1px solid black";
-      slider.style.margin = "0px";
-      slider.style.cursor = "pointer";
+      slider.style.backgroundColor = webFunctions.LightenColor(webFunctions.typingToColor(json.Typing), 30);
+      slider.id="passive-slider";
       slider.style.gridRow = conditionNumber*2+1;
-      slider.style.gridColumn = 1;
       slider.addEventListener('input', function(){
         sliderLabel.innerHTML = condition["Slider"] + ": " + slider.value;
         for (const logic of condition["Condition Logic"]){

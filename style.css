@@ -78,24 +78,6 @@
   grid-row: 3 / span 1;
 }
 
-.seperate-or-join-leader {
-  width: 500px;
-  height: 500px;
-  border: none;
-  background: url('dbManagement/assets/misc/potential/closed.png') no-repeat center;
-  background-size: cover;
-  cursor: pointer;
-  margin-right: 0px;
-}
-
-.seperate-or-join-leader.active {
-  width: 500px;
-  height: 500px;
-  background: url('dbManagement/assets/misc/potential/locked.png') no-repeat center;
-  background-size: cover;
-  margin-right: 0px;
-}
-
 .HiPoStar {
   width: 50px;
   height: 50px;
@@ -117,7 +99,19 @@
   position: relative;
 }
 
+#leader-1Input, #leader-2Input, #leader-TotalInput{
+  grid-row:2;
+  width:102px;
+  margin:0px;
+}
 
+#seperate-or-join-leader.JointLeader{
+  background: url('dbManagement/assets/misc/leader_icon.png') repeat left;
+  width: 110px;
+  height: 50px;
+  grid-row: 1;
+  grid-area: 1/1/2/3;
+}
 
 #links-container {
   display: grid;
@@ -127,6 +121,24 @@
   width: 50px;
   height: 400px;
   position: relative;
+}
+
+#text-container {
+  position: relative;
+}
+
+#seperate-or-join-leader {
+  background-color: #FF5C35;
+  width:10px;
+}
+
+#seperate-or-join-leader.SeperateLeader{
+  background: url('dbManagement/assets/misc/sub_leader_icon.png') repeat left;
+  width: 220px;
+  height: 50px;
+  grid-row: 1;
+  grid-area: 1/1/2/3;
+
 }
 
 #image-container {
@@ -140,7 +152,7 @@
 }
 
 #level-slider {
-  appearance: none; /* removes browser-specific styling */
+  appearance: auto; /* removes browser-specific styling */
   width: 100%; /* width of slider */
   height: 11px; /* height of slider */
   background: #FF5C35 ; /* orange background */
@@ -221,6 +233,15 @@
   position: relative;
 }
 
+#passive-slider{
+  height:20px;
+  border:1px solid black;
+  margin:0px;
+  cursor:pointer;
+  grid-column:1;
+}
+
+
 #links-and-leads {
   grid-column: 2 / span 1;
   grid-row: 1 / span 1;
@@ -229,35 +250,56 @@
   position: relative;
 }
 
+#link-buffs{
+  height:100px;
+  width: 200%;
+  grid-column-start:1;
+  grid-column-end:30;
+  grid-column:1;
+}
+
+#links-button{
+  height:60px;
+  border: 1px solid black;
+  margin:0px;
+  cursor:pointer;
+}
+#links-slider{
+  height:20px;
+  border: 1px solid black;
+  margin: 0px;
+  cursor: pointer;
+}
+
+
+#transformation-button{
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100px;
+  width: 109px;
+  border: none;
+  margin: 5px;
+  cursor: pointer;
+}
+
 /* Reset default margin and padding */
 body, h1, h2, p, div {
     margin: 0;
     padding: 0;
   }
   
-  /* Basic styling for the questions container */
-  #questions-container {
-    margin-bottom: 20px;
-  }
-  
-  /* Styling for individual questions */
-  #questions-container > div {
-    margin-bottom: 10px;
-  }
-  
-  /* Styling for sliders */
-  input[type="range"] {
-    width: 100%;
-  }
-  
-  /* Styling for the result container */
-  #result-container {
-    margin-top: 20px;
-  }
-  
-  /* Styling for the result */
-  #result {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
+/* Basic styling for the questions container */
+#questions-container {
+  margin-bottom: 20px;
+}
+
+/* Styling for individual questions */
+#questions-container > div {
+  margin-bottom: 10px;
+}
+
+/* Styling for sliders */
+input[type="range"] {
+  width: 100%;
+}
