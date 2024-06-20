@@ -198,7 +198,8 @@ for unit in cardsToCheck:
                 unitDictionary["Ki Multiplier"]=getKiMultipliers(unit)
                 multiplierTime+=time.time()-multiplierStart
             
-
+            unitDictionary["Can EZA"]=checkEza(unit[0])
+            unitDictionary["Can SEZA"]=checkSeza(unit[0])
             
 
 
