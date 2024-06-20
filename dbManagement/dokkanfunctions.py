@@ -1657,7 +1657,10 @@ def causalityLineToLogic(causalityLine,DEVEXCEPTIONS=False):
         output["Slider"]["Logic"]=">="
         output["Slider"]["Logic"]+=str(kiAmount)
         output["Slider"]["Min"]=0
-        output["Slider"]["Max"]=24
+        if(unit[5]=="5"):
+            output["Slider"]["Max"]=24
+        else:
+            output["Slider"]["Max"]=12
     elif(CausalityRow[1]=="4"):
         Ca2=int(CausalityRow[2])
         unit31=int(unit[31])
@@ -1671,7 +1674,10 @@ def causalityLineToLogic(causalityLine,DEVEXCEPTIONS=False):
         output["Slider"]["Logic"]="<="
         output["Slider"]["Logic"]+=str(kiAmount)
         output["Slider"]["Min"]=0
-        output["Slider"]["Max"]=24
+        if(unit[5]=="5"):
+            output["Slider"]["Max"]=24
+        else:
+            output["Slider"]["Max"]=12
     elif(CausalityRow[1]=="5"):
         output["Button"]["Name"]="Is the turn count "
         output["Button"]["Name"]+=str(int(CausalityRow[2])+1)
@@ -2061,7 +2067,10 @@ def causalityLogicFinder(unit,causalityCondition,printing=True,DEVEXCEPTIONS=Fal
                 output["Slider"]["Logic"]=">="
                 output["Slider"]["Logic"]+=str(kiAmount)
                 output["Slider"]["Min"]=0
-                output["Slider"]["Max"]=24
+                if(unit[5]=="5"):
+                    output["Slider"]["Max"]=24
+                else:
+                    output["Slider"]["Max"]=12
             elif(CausalityRow[1]=="4"):
                 Ca2=int(CausalityRow[2])
                 unit31=int(unit[31])
@@ -2075,7 +2084,10 @@ def causalityLogicFinder(unit,causalityCondition,printing=True,DEVEXCEPTIONS=Fal
                 output["Slider"]["Logic"]="<="
                 output["Slider"]["Logic"]+=str(kiAmount)
                 output["Slider"]["Min"]=0
-                output["Slider"]["Max"]=24
+                if(unit[5]=="5"):
+                    output["Slider"]["Max"]=24
+                else:
+                    output["Slider"]["Max"]=12
             elif(CausalityRow[1]=="5"):
                 output["Button"]["Name"]="Is the turn count "
                 output["Button"]["Name"]+=str(int(CausalityRow[2])+1)
