@@ -1,6 +1,6 @@
 // Function to fetch JSON data based on sub-URL
-export function getJson(subURL) {
-    return fetch('dbManagement/jsons/' + subURL + '.json')
+export function getJson(prefix,name,suffix) {
+    return fetch(prefix + name + suffix)
       .then(response => {
           if (!response.ok) {
               throw new Error('Network response was not ok' + response.statusText);
@@ -278,9 +278,11 @@ export function isEmptyDictionary(dictionary){
 }
 
 export function logicReducer(logicString, CausalityLogic){
+    //WIP
     logicString=logicString.toUpperCase();
+    logicString=" "+logicString+" ";
     for (const logic in (CausalityLogic)){
-        logicString=logicString.replaceAll(logic,CausalityLogic[logic]);
+        logicString=logicString.replaceAll(" "+logic+" "," "+CausalityLogic[logic]+" ");
     }
     logicString=logicString.replaceAll("AND","&&").replaceAll("OR","||").replaceAll("NOT","!");
     return(eval(logicString));
@@ -293,8 +295,8 @@ export function logicCalculator(logicArray,sliderState){
     logic=logic.replaceAll("and","&&");
     logic=logic.replaceAll("or","||");
     logic=logic.replaceAll("==",sliderState+"==")
-    logic=logic.replaceAll(">=",sliderState+">=")
-    logic=logic.replaceAll("<=",sliderState+"<=")
+    logic=logic.replaceAll(">",sliderState+">")
+    logic=logic.replaceAll("<",sliderState+"<")
     return(eval(logic));
 }
 

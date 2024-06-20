@@ -65,6 +65,11 @@ HiPoBoards={}
 
 if GLOBALPARSE:
     bar = Bar('Parsing units', max=len(cardsToCheck))
+    allUnitsDictionary=[]
+    for unit in cardsToCheck:
+        allUnitsDictionary.append(unit[0])
+    turnintoJson(allUnitsDictionary, "allUnits",directoryName="jsons")
+
 
 for unit in cardsToCheck:
     ezaTrueFalse=[False]
@@ -209,7 +214,6 @@ for unit in cardsToCheck:
             turnintoJson(unitDictionary, jsonName,directoryName=directoryName)
             jsonTime+=time.time()-jsonStart
         
-    
 
 
 if(GLOBALPARSE):
