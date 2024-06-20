@@ -7,7 +7,7 @@ directory="dataJP/"
 cardsJP=storedatabase(directory,"cards.csv")
 
 DEVEXCEPTIONS=False
-GLOBALPARSE=False
+GLOBALPARSE=True
 MAKEJSON=True
 
 CALCPASSIVE=True
@@ -35,7 +35,7 @@ finishTime=0.0
 linksTime=0.0
 multiplierTime=0.0
 
-cardIDsToCheck=["1028771","1003211"]
+cardIDsToCheck=["1008851"]
 #cardIDsToCheck=["4026911","4025741","4028381","4026401","4027631","4027301","4025781","4026541"]
 
 cardsToCheck=[]
@@ -78,7 +78,7 @@ for unit in cardsToCheck:
     if(GLOBALPARSE):
             bar.next()
     for eza in ezaTrueFalse:
-        if(checkSeza(unit[0]) & eza):
+        if(checkSeza(unit[0]) and eza):
             sezaTrueFalse=[False,True]
         else:
             sezaTrueFalse=[False]

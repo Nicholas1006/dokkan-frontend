@@ -640,10 +640,22 @@
         }
     },
     "Passive": {
-        "1476": {
-            "ID": "1476",
+        "4140": {
+            "ID": "4140",
+            "Timing": "Start of turn",
+            "ATK": 150,
+            "DEF": 150,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "1004140": {
+            "ID": "1004140",
             "Timing": "On Super",
-            "ATK": 140,
+            "ATK": 200,
+            "DEF": 100,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -666,10 +678,41 @@
                 }
             }
         },
-        "1001476": {
-            "ID": "1001476",
+        "2004140": {
+            "ID": "2004140",
+            "Timing": "Start of turn",
+            "DEF": 33,
+            "Target": {
+                "Target": "Allies",
+                "Class": "Super"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "3",
+            "Once only": true
+        },
+        "3004140": {
+            "ID": "3004140",
+            "Timing": "Start of turn",
+            "ATK": 33,
+            "Target": {
+                "Target": "Allies",
+                "Class": "Extreme"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "3",
+            "Once only": true
+        },
+        "4004140": {
+            "ID": "4004140",
             "Timing": "Attacking",
-            "DEF": 70,
+            "ATK": 100,
+            "DEF": 100,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -685,6 +728,150 @@
                         "Slider": {
                             "Name": "How much ki is there",
                             "Logic": "<=11",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    }
+                }
+            }
+        },
+        "5004140": {
+            "ID": "5004140",
+            "Timing": "Attacking the enemy",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 150,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "ATK": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99"
+        },
+        "6004140": {
+            "ID": "6004140",
+            "Timing": "Attacking the enemy",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 150,
+                "Cause": {
+                    "Cause": "Look Elsewhere"
+                }
+            },
+            "DEF": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99"
+        },
+        "7004140": {
+            "ID": "7004140",
+            "Timing": "After all ki collected",
+            "DR": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "3135 and 3169",
+                "Causalities": {
+                    "3135": {
+                        "Button": {
+                            "Name": "Is ki 10 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=10",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    },
+                    "3169": {
+                        "Button": {
+                            "Name": "Is ki 11 or less"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": "<=11",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    }
+                }
+            }
+        },
+        "8004140": {
+            "ID": "8004140",
+            "Timing": "After all ki collected",
+            "Crit Chance": 50,
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "3135 and 3169",
+                "Causalities": {
+                    "3135": {
+                        "Button": {
+                            "Name": "Is ki 10 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=10",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    },
+                    "3169": {
+                        "Button": {
+                            "Name": "Is ki 11 or less"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": "<=11",
+                            "Min": 0,
+                            "Max": 24
+                        }
+                    }
+                }
+            }
+        },
+        "9004140": {
+            "ID": "9004140",
+            "Dodge chance": 50,
+            "Timing": "Start of turn",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1"
+        },
+        "10004140": {
+            "ID": "10004140",
+            "Dodge chance": 33,
+            "Timing": "Being hit",
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "46",
+                "Causalities": {
+                    "46": {
+                        "Button": {
+                            "Name": "Is ki 12 or more"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there",
+                            "Logic": ">=12",
                             "Min": 0,
                             "Max": 24
                         }
