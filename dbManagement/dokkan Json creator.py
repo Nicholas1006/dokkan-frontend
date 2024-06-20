@@ -73,12 +73,12 @@ if GLOBALPARSE:
 
 for unit in cardsToCheck:
     ezaTrueFalse=[False]
-    if(checkEza(unit[0])==True):
+    if(checkEza(unit[0])):
         ezaTrueFalse=[False,True]
     if(GLOBALPARSE):
             bar.next()
     for eza in ezaTrueFalse:
-        if(checkSeza(unit[0])==True & eza):
+        if(checkSeza(unit[0]) & eza):
             sezaTrueFalse=[False,True]
         else:
             sezaTrueFalse=[False]
