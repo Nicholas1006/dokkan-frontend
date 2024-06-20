@@ -4,6 +4,14 @@ document.addEventListener('DOMContentLoaded', function() {
   const urlParams=new URLSearchParams(window.location.search);
   let subURL = urlParams.get('id') || "None";
   let characterSelector = urlParams.get("Selection") || "False";
+  let isSeza = urlParams.get("SEZA") || "False";
+  let isEza;
+  if(isSeza == "False"){
+    isEza = urlParams.get("EZA") || "False";
+  }
+  else{
+    isEza = "False";
+  }
   if(subURL == "None"){
     characterSelector = "True";
   }
@@ -17,18 +25,18 @@ document.addEventListener('DOMContentLoaded', function() {
       document.getElementById("links-and-leads").style.height="0%";
       document.getElementById("passive-container").style.width="0%";
       document.getElementById("passive-container").style.height="0%";
-      const UNITSTODISPLAY = 4800;
+      const UNITSTODISPLAY = 40000;
       const unitsContainer = document.getElementById('unit-selection-container');
       for (let i = allUnitsJson.length-UNITSTODISPLAY; i < allUnitsJson.length;i++) {
-        if(allUnitsJson[i][6]=="0"){
-          const unitButton = document.createElement('button');
-          unitButton.id = "unit-button";
-          unitButton.addEventListener('click', function() {
-            window.location.href = "?id=" + allUnitsJson[i];
-          });
-          unitButton.style.backgroundImage = "url('dbManagement/assets/final_assets/"+allUnitsJson[i]+".png')";
-          unitButton.id="unit-selection-button";
-          unitsContainer.appendChild(unitButton);
+        if(i>0){
+          if(allUnitsJson[i][6]=="0"){
+            const unitButton = document.createElement('a');
+            unitButton.id = "unit-button";
+            unitButton.href = "?id=" + allUnitsJson[i];
+            unitButton.style.backgroundImage = "url('dbManagement/assets/final_assets/"+allUnitsJson[i]+".png')";
+            unitButton.className="unit-selection-button";
+            unitsContainer.appendChild(unitButton);
+          }
         }
       }
     });
@@ -46,8 +54,16 @@ document.addEventListener('DOMContentLoaded', function() {
     else{
       assetSubURL = subURL;
     }
-    const jsonPromise=webFunctions.getJson('dbManagement/jsons/',subURL,'.json');
-
+    let jsonPromise;
+    if(isSeza == "True"){
+      jsonPromise=webFunctions.getJson('dbManagement/jsonsSEZA/',subURL,'.json');
+    }
+    else if(isEza == "True"){
+      jsonPromise=webFunctions.getJson('dbManagement/jsonsEZA/',subURL,'.json');
+    }
+    else{
+      jsonPromise=webFunctions.getJson('dbManagement/jsons/',subURL,'.json');
+    }
     const starButton=document.getElementById('star-button');
     const toggleButtons = Array.from(document.querySelectorAll('.toggle-btn1, .toggle-btn2, .toggle-btn3, .toggle-btn4'));
 
@@ -259,6 +275,38 @@ document.addEventListener('DOMContentLoaded', function() {
 
     jsonPromise.then(json => {
       webFunctions.updateLinkBuffs(json);
+    });
+
+    let ezaContainer=document.getElementById('eza-container');
+    jsonPromise.then(json => {
+      if(json["Can EZA"]){
+        let ezaButton = document.createElement('a');
+        ezaButton.id="eza-button";
+        if(isEza == "True"){
+          ezaButton.style.backgroundImage = "url('dbManagement/assets/misc/eza_icon.png')";
+          ezaButton.href = "?id="+subURL+"&EZA=False";
+        }
+        else{
+          ezaButton.style.backgroundImage = "url('dbManagement/assets/misc/eza_icon_inactive.png')";
+          ezaButton.href = "?id="+subURL+"&EZA=True";
+        }
+        ezaButton.className="eza-button";
+        ezaContainer.appendChild(ezaButton);
+      }
+      if(json["Can SEZA"]){
+        let ezaButton = document.createElement('a');
+        ezaButton.id="seza-button";
+        if(isSeza == "True"){
+          ezaButton.style.backgroundImage = "url('dbManagement/assets/misc/Seza_icon.png')";
+          ezaButton.href = "?id="+subURL+"&SEZA=False";
+        }
+        else{
+          ezaButton.style.backgroundImage = "url('dbManagement/assets/misc/Seza_icon_inactive.png')";
+          ezaButton.href = "?id="+subURL+"&SEZA=True";
+        }
+        ezaButton.className="seza-button";
+        ezaContainer.appendChild(ezaButton);
+      }
     });
 
     let transformationContainer=document.getElementById('transformation-container');
@@ -584,6 +632,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
       conditionNumber+=1;
     }
+    webFunctions.updatePassiveBuffs(json,CausalityLogic);
     CausalityList=Array.from(new Set(CausalityList));
     });
 
