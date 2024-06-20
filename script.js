@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
   let characterSelector = urlParams.get("Selection") || "False";
   let isSeza = urlParams.get("SEZA") || "False";
   let isEza;
+  let jsonPromise;
   if(isSeza == "False"){
     isEza = urlParams.get("EZA") || "False";
   }
@@ -54,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
     else{
       assetSubURL = subURL;
     }
-    let jsonPromise;
+
     if(isSeza == "True"){
       jsonPromise=webFunctions.getJson('dbManagement/jsonsSEZA/',subURL,'.json');
     }
@@ -64,31 +65,16 @@ document.addEventListener('DOMContentLoaded', function() {
     else{
       jsonPromise=webFunctions.getJson('dbManagement/jsons/',subURL,'.json');
     }
+    jsonPromise.then(json => {
+      if((json["Rarity"] == "lr" || json["Rarity"] == "ur") && subURL[6]=="0"){
+        let redirectURL = "?id=";
+        redirectURL = redirectURL + subURL.slice(0, -1)+ "1";
+        window.location.href = redirectURL;
+      }
+    });
     const starButton=document.getElementById('star-button');
     const toggleButtons = Array.from(document.querySelectorAll('.toggle-btn1, .toggle-btn2, .toggle-btn3, .toggle-btn4'));
 
-
-    function toggleButtonHandler(button, jsonPromise) {
-      button.addEventListener('click', function() {
-        button.classList.toggle('active');
-        //if 55% is not active, make it active
-        if (!starButton.classList.contains('active')) {
-          starButton.classList.toggle('active');
-        }
-        //if every button is active, turn on rainbow star
-        if(toggleButtons.every(button => button.classList.contains('active'))){
-          starButton.classList.remove('active');
-          starButton.classList.add('rainbow')
-        }
-        //if rainbow star is active, turn it off 
-        else{
-          starButton.classList.remove('rainbow');
-        }
-        jsonPromise.then(json => {
-          AdjustBaseStats(json);
-        });
-      });
-    }
 
     const seperateOrJoin=document.getElementById('seperate-or-join-leader');
     seperateOrJoin.textContent="Joint Leader Skills";
@@ -383,7 +369,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Add event listeners to toggle buttons
     toggleButtons.forEach(button => {
-      toggleButtonHandler(button, jsonPromise);
+      button.addEventListener('click', function() {
+        button.classList.toggle('active');
+        //if 55% is not active, make it active
+        if (!starButton.classList.contains('active')) {
+          starButton.classList.toggle('active');
+        }
+        //if every button is active, turn on rainbow star
+        if(toggleButtons.every(button => button.classList.contains('active'))){
+          starButton.classList.remove('active');
+          starButton.classList.add('rainbow')
+        }
+        //if rainbow star is active, turn it off 
+        else{
+          starButton.classList.remove('rainbow');
+        }
+        jsonPromise.then(json => {
+          AdjustBaseStats(json);
+        });
+      });
     });
 
     // Function to fetch JSON data and image based on sub-URL
@@ -400,11 +404,7 @@ document.addEventListener('DOMContentLoaded', function() {
         webFunctions.updateImageContainer('image-container', assetSubURL, data.Typing);
         webFunctions.updateContainer('text-container', webFunctions.createParagraph("Tgus us a text"));
         document.getElementById('text-container').innerHTML = subURL;
-        if((data["Rarity"] == "lr" || data["Rarity"] == "ur") && subURL[6]=="0"){
-          let redirectURL = "?id=";
-          redirectURL = redirectURL + subURL.slice(0, -1)+ "1";
-          window.location.href = redirectURL;
-        }
+        
 
         //change the background of the slider to the typing color
         document.getElementById('level-slider').style.backgroundColor = webFunctions.LightenColor(webFunctions.typingToColor(data.Typing), 30);

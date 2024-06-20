@@ -13,6 +13,13 @@ export function getJson(prefix,name,suffix) {
       });
   }
 
+export function updateQueryStringParameter(key, value) {
+    const url = new URL(window.location.href);
+    url.searchParams.set(key, value);
+    window.history.replaceState({ path: url.href}, '', url.href);
+}
+
+
 export function typingToColor(typing){
     if(typing.toLowerCase()=="agl"){
         return("#0000FF")
@@ -281,6 +288,7 @@ export function logicReducer(logicString, CausalityLogic){
     //WIP
     logicString=logicString.toUpperCase();
     logicString=" "+logicString+" ";
+    logicString=logicString.replaceAll("("," ( ").replaceAll(")"," ) "
     for (const logic in (CausalityLogic)){
         logicString=logicString.replaceAll(" "+logic+" "," "+CausalityLogic[logic]+" ");
     }
