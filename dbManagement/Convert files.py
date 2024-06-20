@@ -13,8 +13,13 @@ from dokkanfunctions import *
 directory="dataJP/"
 cards=storedatabase(directory,"cards.csv")
 
-print("scraping global units")
+print("scraping jp units")
 scrapeallunitassetsv2(cards,thumb=True,circle=True,full=True,printing=True)
+print("units scraped")        
+
+cardsGB=storedatabase("dataGB/","cards.csv")
+print("scraping gb units")
+scrapeallunitassetsv2(cardsGB,thumb=True,circle=True,full=True,printing=True)
 print("units scraped")        
 
 misc_assets_urls=storedatabase(directory,"misc_assets_urls.csv")
@@ -50,7 +55,8 @@ leader_skills=storedatabase(directory,"leader_skills.csv")
 total=1
 
 for card in cards:
-    if qualifyUsable(card) and (((card[0]+".png") not in acquiredlist)):
+    #if qualifyUsable(card) and (((card[0]+".png") not in acquiredlist)):
+    if(qualifyUsable(card)):
         if total%100==0:
             print(total)
         total+=1

@@ -288,7 +288,7 @@ export function logicReducer(logicString, CausalityLogic){
     //WIP
     logicString=logicString.toUpperCase();
     logicString=" "+logicString+" ";
-    logicString=logicString.replaceAll("("," ( ").replaceAll(")"," ) "
+    logicString=logicString.replaceAll("("," ( ").replaceAll(")"," ) ");
     for (const logic in (CausalityLogic)){
         logicString=logicString.replaceAll(" "+logic+" "," "+CausalityLogic[logic]+" ");
     }

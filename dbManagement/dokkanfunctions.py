@@ -3086,10 +3086,17 @@ def getUnitClass(unit,printing=True,DEVEXCEPTIONS=False):
         return("Extreme")
     
 def createFinalAsset(card,printing=True):
-    if (card[53]!="2030-12-31 23:59:59") and (card[0][0]!="9") and (card[0][-1]=="0") and (card[22]!=""):
+    if qualifyUsable(card):
+        if(card[48]!=""):
+            resource_id=str(int(float(card[48])))
+            if(resource_id[-1]=="1"):
+                resource_id=str(int(resource_id)-1)
+        else:
+            if(card[0][-1]=="1"):
+                resource_id=str(int(card[0])-1)
+            else:
+                resource_id=card[0]
         unitid=card[0]
-        if unitid[-1]=="1":
-            unitid=str(int(unitid)-1)
         mainunit=card
 
     #background
@@ -3107,10 +3114,7 @@ def createFinalAsset(card,printing=True):
 
     #character icon
         ciconurl=("assets/thumb/")
-        if card[48]=="" or card[48]=="0.0":
-            ciconurl+=unitid
-        else:
-            ciconurl+=str(int(float(card[48])))
+        ciconurl+=resource_id
         ciconurl+=(".png")
         cicon = Image.open(ciconurl).convert("RGBA")
         cicon.resize((250,250))
@@ -3176,25 +3180,29 @@ def scrapeallunitassetsv2(cards,thumb=False,full=False,bg=False,character=False,
     toScrapeList=[]
     amountScraped=0
     for unit in cards:
-        if (unit[0][-1]=="0") and (unit[0][0]!="5") and (unit[53]!="2030-12-31 23:59:59") and (unit[0][0]!="9") and (unit[0][-1]=="0") and (unit[22]!=""):
+        if(qualifyUsable(unit)):
+            if(unit[48]!=""):
+                assetid=unit[48][:-2]
+                if(assetid[-1]=="1"):
+                    assetid=str(int(assetid)-1)
+            else:
+                if(unit[0][-1]=="1"):
+                    assetid=str(int(unit[0])-1)
+                else:
+                    assetid=unit[0]
+
+
             allAssetsDownloaded=True
             for dataType in assetsNeeded:
                 if(allAssetsDownloaded==True):
                     temp=os.path.join("assets",dataType)
-                    temp=os.path.join(temp,unit[0]+".png")
+                    temp=os.path.join(temp,assetid+".png")
                     temp2=os.path.exists(temp)
                     if (False==temp2):
-                        allAssetsDownloaded=False
-            if(allAssetsDownloaded==False):
-                toScrapeList.append(unit[0])
-
-    if(printing): print("Now going to scrape",len(toScrapeList),"units")
-    for unit in toScrapeList:
-        if(printing):print(amountScraped,"/",len(toScrapeList),"scraping ",unit, end=": ")
-        start_time=time.time()
-        scrapeFullUnit(unit,thumb,full,bg,character,circle,cutin,effect,piece,sticker_mask,sp_cutin_1,printing)
-        amountScraped+=1
-        if(printing):print("took: ",round((time.time()-start_time),3)," seconds")
+                        if(printing): 
+                            start_time=time.time()
+                        scrapeFullUnit(assetid,thumb,full,bg,character,circle,cutin,effect,piece,sticker_mask,sp_cutin_1,printing)
+                        if(printing):print(unit[0],"took: ",round((time.time()-start_time),3)," seconds")
 
 def scrapeallunitassets(cards,printing=True):
     scrapedunitsreader=open("Scraped units.txt", "r")

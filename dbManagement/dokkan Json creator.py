@@ -35,7 +35,7 @@ finishTime=0.0
 linksTime=0.0
 multiplierTime=0.0
 
-cardIDsToCheck=["1000360","1000450"]
+cardIDsToCheck=["1003310"]
 #cardIDsToCheck=["4026911","4025741","4028381","4026401","4027631","4027301","4025781","4026541"]
 
 cardsToCheck=[]
@@ -189,6 +189,8 @@ for unit in cardsToCheck:
                     if "Unit" in unitDictionary["Active Skill"]["Effects"][activeLine]["Effect"]:
                         unitDictionary["Transformations"].append(unitDictionary["Active Skill"]["Effects"][activeLine]["Effect"]["Unit"])
 
+            unitDictionary["Dokkan awakenings"]=[]
+            
 
 
 

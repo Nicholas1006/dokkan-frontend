@@ -47,14 +47,15 @@ document.addEventListener('DOMContentLoaded', function() {
   else{
     
 
-    let assetSubURL;
-    // Get the sub-URL from the window object
+    let assetSubURL=subURL;
+    /* Get the sub-URL from the window object
     if(subURL[6] == "1"){
       assetSubURL = subURL.slice(0, -1)+0;
     }
     else{
       assetSubURL = subURL;
     }
+      */
 
     if(isSeza == "True"){
       jsonPromise=webFunctions.getJson('dbManagement/jsonsSEZA/',subURL,'.json');
