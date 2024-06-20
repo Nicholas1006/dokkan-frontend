@@ -115,6 +115,8 @@ def parseSuperAttack(unit,eza=False,DEVEXCEPTIONS=False):
             if(superAttackDictionary["SpecialBonus"]["ID"]!="0"):
                 superAttackDictionary["Multiplier"]=superAttackMultiplierExtractor(superAttackID=superAttackDictionary["superID"],super_attack_lvl=int(unit[14]),DEVEXCEPTIONS=DEVEXCEPTIONS)
                 special_bonus=searchbycolumn(code=superAttackDictionary["SpecialBonus"]["ID"],column=0,database=special_bonusesJP)
+                if(JPExclusiveCheck(unit[0])==False):
+                    special_bonus=searchbycolumn(code=superAttackDictionary["SpecialBonus"]["ID"],column=0,database=special_bonusesGB)
                 special_bonus=special_bonus[0]
                 superAttackDictionary["SpecialBonus"]["Type"]=special_bonus[1]
                 superAttackDictionary["SpecialBonus"]["Description"]=special_bonus[2]
@@ -462,12 +464,27 @@ def JPExclusiveCheck(unitid):
 def checkEza(unitid):
     unit=searchbycolumn(code=unitid,column=0,database=cardsJP)[0]
     awakeningID=unit[16][:-2]
-    ezaRow=searchbycolumn(code=awakeningID,column=0,database=optimal_awakening_growthsJP)
+    ezaRow=searchbycolumn(code=awakeningID,column=1,database=optimal_awakening_growthsJP)
     if(ezaRow==[]):
         return(False)
     else:
         return(True)
 
+def checkSeza(unitid):
+    unit=searchbycolumn(code=unitid,column=0,database=cardsJP)[0]
+    awakeningID=unit[16][:-2]
+    ezaRow=searchbycolumn(code=awakeningID,column=1,database=optimal_awakening_growthsJP)
+    if(ezaRow==[]):
+        return(False)
+    else:
+        for row in ezaRow:
+            #tur Seza would be number 8
+            if(row[2]=="8" and unit[5]=="4"):
+                return(True)
+            #lr Seza would be number 4
+            if(row[2]=="4" and unit[5]=="5"):
+                return(True)
+        return(False)
 
 
 def logic_reducer(expression):
@@ -2658,9 +2675,9 @@ def createEZAWallpapers(cards, directory,printing=True):
             #print("Created final asset for",total,getfullname(card,leader_skills))
     if(printing): print("All EZA assets created")
 
-def parsePassiveSkill(unit,eza=False,DEVEXCEPTIONS=False):
+def parsePassiveSkill(unit,eza=False,seza=False,DEVEXCEPTIONS=False):
     output={}
-    passiveIdList=getpassiveid(unit,eza)
+    passiveIdList=getpassiveid(unit,eza,seza)
     if (passiveIdList!=None and qualifyUsable(unit)):
         for passiveskill in passive_skillsJP[1:]:
             if (passiveskill[0] in passiveIdList):
@@ -2671,7 +2688,7 @@ def parsePassiveSkill(unit,eza=False,DEVEXCEPTIONS=False):
 
 
 
-def parseActiveSkill(unit,eza=False,DEVEXCEPTIONS=False):
+def parseActiveSkill(unit,DEVEXCEPTIONS=False):
     active_id=searchbyid(unit[0],codecolumn=1,database=card_active_skillsJP,column=2)
     if(active_id!=None):
         active_id=active_id[0]
@@ -3554,7 +3571,7 @@ def swapToUnitWith1(unit):
             return(card)
     return(None)
 
-def getpassiveid(unit,eza=False, printing=False):
+def getpassiveid(unit,eza=False,seza=False, printing=False,DEVEXCEPTIONS=False):
     unitPassiveId=unit[21]
     if(eza):
         if(swapToUnitWith1(unit)!=None):
@@ -3564,13 +3581,31 @@ def getpassiveid(unit,eza=False, printing=False):
         unitEZAGrowthId=unitEZA[16][0:-2]
         if(unitEZAGrowthId==""):
             return(getpassiveid(unit,eza=False, printing=printing))
-        unitEZAPassiveId=searchbyid(code=unitEZAGrowthId,codecolumn=1,database=optimal_awakening_growthsJP,column=5)
-        #unitEZAPassiveId=map(floattoint,unitEZAPassiveId)
-        for element in unitEZAPassiveId:
-            if element!= unitPassiveId:
-                unitEZAPassiveId=element
+        if(seza):
+            relevantAwakenings=searchbycolumn(code=unitEZAGrowthId,database=optimal_awakening_growthsJP,column=1)
+            #if the unit is an ur
+            if(unit[5]=="4"):
+                relevantAwakenings=searchbycolumn(code="8",database=relevantAwakenings,column=2)
+            #if the unit is an lr
+            elif(unit[5]=="5"):
+                relevantAwakenings=searchbycolumn(code="4",database=relevantAwakenings,column=2)
+            else:
+                if(DEVEXCEPTIONS):
+                    raise Exception("Unit is not an LR or UR but has a supereza")
+        elif(eza):
+            relevantAwakenings=searchbycolumn(code=unitEZAGrowthId,database=optimal_awakening_growthsJP,column=1)
+            #if the unit is an ur
+            if(unit[5]=="4"):
+                relevantAwakenings=searchbycolumn(code="7",database=relevantAwakenings,column=2)
+            #if the unit is an lr
+            elif(unit[5]=="5"):
+                relevantAwakenings=searchbycolumn(code="3",database=relevantAwakenings,column=2)
+            else:
+                if(DEVEXCEPTIONS):
+                    raise Exception("Unit is not an LR or UR but has a supereza")
+        unitEZAPassiveId=relevantAwakenings[0][5][:-2]
         
-        unitEZAPassiveList=searchbyid(code=unitEZAPassiveId[0:-2],codecolumn=1,database=passive_skill_set_relationsJP,column=2)
+        unitEZAPassiveList=searchbyid(code=unitEZAPassiveId,codecolumn=1,database=passive_skill_set_relationsJP,column=2)
         return(unitEZAPassiveList)
     else:
         unitPassiveId=unitPassiveId[0:-2]
