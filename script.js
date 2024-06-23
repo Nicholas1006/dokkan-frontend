@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', function() {
   if(characterSelector == "True"){
     const allUnitsJsonPromise=webFunctions.getJson('dbManagement/jsons/','allUnits','.json');
     allUnitsJsonPromise.then(allUnitsJson => {
-      console.log(allUnitsJson);
       document.getElementById("base-stats").style.width="0%";
       document.getElementById("base-stats").style.height="0%";
       document.getElementById("links-and-leads").style.width="0%";
@@ -28,8 +27,8 @@ document.addEventListener('DOMContentLoaded', function() {
       document.getElementById("passive-container").style.height="0%";
       const UNITSTODISPLAY = 40000;
       const unitsContainer = document.getElementById('unit-selection-container');
-      for (let i = allUnitsJson.length-UNITSTODISPLAY; i < allUnitsJson.length;i++) {
-        if(i>0){
+      for (let i = UNITSTODISPLAY; i > 0;i--) {
+        if(i<allUnitsJson.length){
           if(allUnitsJson[i][6]=="0"){
             const unitButton = document.createElement('a');
             unitButton.id = "unit-button";
@@ -70,7 +69,8 @@ document.addEventListener('DOMContentLoaded', function() {
       if((json["Rarity"] == "lr" || json["Rarity"] == "ur") && subURL[6]=="0"){
         let redirectURL = "?id=";
         redirectURL = redirectURL + subURL.slice(0, -1)+ "1";
-        window.location.href = redirectURL;
+        jsonPromise=webFunctions.getJson('dbManagement/jsons/',subURL.slice(0, -1)+ "1",'.json');
+        webFunctions.updateQueryStringParameter("id",subURL.slice(0, -1)+ "1");
       }
     });
     const starButton=document.getElementById('star-button');
@@ -316,6 +316,30 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       } else {
         transformationContainer.style.display = "none";
+      }
+    }
+    );
+
+    let AwakeningsContainer=document.getElementById('dokkan-awaken-container');
+    jsonPromise.then(json => {
+      let Awakenings =json["Dokkan awakenings"];
+      if( Array.isArray(Awakenings) && Awakenings.length){
+        for (const AwakeningsID of Awakenings){
+          let unitID = AwakeningsID;
+          if(unitID[6]=="1"){
+            unitID = unitID.slice(0, -1)+0;
+          }
+          //creates a button that links to the suburl of the unit with the background set to the unitID within the assets/final_assets folder
+          let AwakeningsButton = document.createElement('button');
+          AwakeningsButton.style.backgroundImage = "url('dbManagement/assets/final_assets/"+unitID+".png')";
+          AwakeningsButton.id="awakenings-button";
+          AwakeningsContainer.appendChild(AwakeningsButton);
+          AwakeningsButton.onclick = function(){
+            window.location.href = "?id="+unitID;
+          }
+        }
+      } else {
+        AwakeningsContainer.style.display = "none";
       }
     }
     );

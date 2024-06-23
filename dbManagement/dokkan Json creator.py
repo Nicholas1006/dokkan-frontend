@@ -190,6 +190,10 @@ for unit in cardsToCheck:
                         unitDictionary["Transformations"].append(unitDictionary["Active Skill"]["Effects"][activeLine]["Effect"]["Unit"])
 
             unitDictionary["Dokkan awakenings"]=[]
+            relevant_awakenings=searchbycolumn(code=unit1[0],database=card_awakening_routesJP,column=2)
+            relevant_awakenings=searchbycolumn(code="CardAwakeningRoute::Dokkan",database=relevant_awakenings,column=1)
+            for awakening in relevant_awakenings:
+                unitDictionary["Dokkan awakenings"].append(awakening[3])
             
 
 

@@ -2515,7 +2515,16 @@ def activeSkillTransformationUnit(card,printing=True):
                         if unit[0]==possibleactive[6]:
                             return(unit)
 
-def dokkanreverseunit(card,printing=True):
+def dokkanAwakenUnit(card,printing=False):
+    possibleAwakening=searchbycolumn(code=card[0],database=card_awakening_routesJP,column=2)
+    possibleDokkanAwakening=searchbycolumn(code="CardAwakeningRoute::Dokkan",database=possibleAwakening, column=1)
+    if(possibleDokkanAwakening==[]):
+        return(None)
+    else:
+        return(possibleDokkanAwakening[0][3])
+
+
+def dokkanreverseunit(card,printing=False):
     for awakenable_unit in card_awakening_routesJP:
         if awakenable_unit[1]=="CardAwakeningRoute::Dokkan":
             if(card[0])==(awakenable_unit[3]):
