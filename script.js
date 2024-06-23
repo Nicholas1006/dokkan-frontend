@@ -19,6 +19,8 @@ document.addEventListener('DOMContentLoaded', function() {
   if(characterSelector == "True"){
     const allUnitsJsonPromise=webFunctions.getJson('dbManagement/jsons/','allUnits','.json');
     allUnitsJsonPromise.then(allUnitsJson => {
+      document.getElementById("image-container").style.width="0%";
+      document.getElementById("image-container").style.height="0%";
       document.getElementById("base-stats").style.width="0%";
       document.getElementById("base-stats").style.height="0%";
       document.getElementById("links-and-leads").style.width="0%";
@@ -47,14 +49,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
 
     let assetSubURL=subURL;
-    /* Get the sub-URL from the window object
-    if(subURL[6] == "1"){
-      assetSubURL = subURL.slice(0, -1)+0;
-    }
-    else{
-      assetSubURL = subURL;
-    }
-      */
 
     if(isSeza == "True"){
       jsonPromise=webFunctions.getJson('dbManagement/jsonsSEZA/',subURL,'.json');
@@ -69,8 +63,17 @@ document.addEventListener('DOMContentLoaded', function() {
       if((json["Rarity"] == "lr" || json["Rarity"] == "ur") && subURL[6]=="0"){
         let redirectURL = "?id=";
         redirectURL = redirectURL + subURL.slice(0, -1)+ "1";
-        jsonPromise=webFunctions.getJson('dbManagement/jsons/',subURL.slice(0, -1)+ "1",'.json');
+        if(isSeza == "True"){
+          jsonPromise=webFunctions.getJson('dbManagement/jsonsSEZA/',subURL.slice(0, -1)+ "1",'.json');
+        }
+        else if(isEza == "True"){
+          jsonPromise=webFunctions.getJson('dbManagement/jsonsEZA/',subURL.slice(0, -1)+ "1",'.json');
+        }
+        else{
+          jsonPromise=webFunctions.getJson('dbManagement/jsons/',subURL.slice(0, -1)+ "1",'.json');
+          
         webFunctions.updateQueryStringParameter("id",subURL.slice(0, -1)+ "1");
+      }
       }
     });
     const starButton=document.getElementById('star-button');
