@@ -13,6 +13,8 @@ export function getJson(prefix,name,suffix) {
       });
   }
 
+
+
 export function updateQueryStringParameter(key, value) {
     const url = new URL(window.location.href);
     url.searchParams.set(key, value);
