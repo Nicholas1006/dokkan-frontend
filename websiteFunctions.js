@@ -96,6 +96,101 @@ export function createParagraph(text){
   }
 
 
+export function updateSuperAttackStacks(json){
+    let superAttacksQuestionsContainer = document.querySelector('#super-attack-questions-container');
+    let superAttackStacks = superAttacksQuestionsContainer.querySelectorAll('input[type=range]');
+    let totalATKBuff = 0;
+    let totalDEFBuff = 0;
+    let totalEnemyDEFBuff = 0;
+    let totalEnemyATKBuff = 0;
+    let totalCritBuff = 0;
+    let totalEvasionBuff = 0;
+
+    for (const stack of superAttackStacks){
+        let stackAmount = parseInt(stack.value);
+        let superName=stack.textContent.split("How many times has this unit performed ")[1].split(" within the last ")[0];
+        let specifiedSuper;
+        for (const superAttack in Object.keys(json["Super Attack"])){
+            if(superAttack["superName"]==superName){
+                specifiedSuper=superAttack;
+            }
+        };
+        for (const Super of Object.keys(json["Super Attack"])){
+            if(json["Super Attack"][Super]["superName"]==superName){
+                for (const key of Object.keys(json["Super Attack"][Super])){
+                    if(!["superID",
+                        "superName",
+                        "superDescription",
+                        "superMinKi",
+                        "superPriority",
+                        "superStyle",
+                        "superMinLVL",
+                        "superCausality",
+                        "superAimTarget",
+                        "superIsInactive",
+                        "SpecialBonus",
+                        "Multiplier"].includes(key))
+                        {
+                            let buffs=json["Super Attack"][Super][key];
+                            if("ATK" in buffs){
+                                if(buffs["Target"]=="Self"){
+                                    if(buffs["Buff"]["+ or -"]=="+"){
+                                        totalATKBuff+=buffs["ATK"]*stackAmount;
+                                    }
+                                    else{
+                                        totalATKBuff-=buffs["ATK"]*stackAmount;
+                                    }
+                                }
+                                else if(buffs["Target"]=="Enemy"){
+                                    if(buffs["Buff"]["+ or -"]=="+"){
+                                        totalEnemyATKBuff+=buffs["ATK"]*stackAmount;
+                                    }
+                                    else{
+                                        totalEnemyATKBuff-=buffs["ATK"]*stackAmount;
+                                    }
+                                }
+                            }
+                            if("DEF" in buffs){
+                                if(buffs["Target"]=="Self"){
+                                    if(buffs["Buff"]["+ or -"]=="+"){
+                                        totalDEFBuff+=buffs["DEF"]*stackAmount;
+                                    }
+                                    else{
+                                        totalDEFBuff-=buffs["DEF"]*stackAmount;
+                                    }
+                                }
+                                else if(buffs["Target"]=="Enemy"){
+                                    if(buffs["Buff"]["+ or -"]=="+"){
+                                        totalEnemyDEFBuff+=buffs["DEF"]*stackAmount;
+                                    }
+                                    else{
+                                        totalEnemyDEFBuff-=buffs["DEF"]*stackAmount;
+                                    }
+                                }
+                            }
+                            if("Crit" in buffs){
+                                totalCritBuff+=buffs["Crit"]*stackAmount;
+                            }
+                            if("Evasion" in buffs){
+                                totalEvasionBuff+=buffs["Evasion"]*stackAmount;
+                            }
+                        }
+                    }
+                }
+            };
+    }
+    let superAttackBuffsContainer = document.getElementById('super-attack-buffs-container');
+    let superAttackBuffs = document.createElement('p');
+    superAttackBuffs.id = "super-attack-buffs";
+    superAttackBuffs.innerHTML = "Super Attack Buffs: ";
+    if (totalATKBuff) superAttackBuffs.innerHTML += "<br>ATK: " + totalATKBuff + "% ";
+    if (totalDEFBuff) superAttackBuffs.innerHTML += "<br>DEF: " + totalDEFBuff + "% ";
+    if (totalEnemyDEFBuff) superAttackBuffs.innerHTML += "<br>Enemy DEF: " + totalEnemyDEFBuff + "% ";
+    if (totalCritBuff) superAttackBuffs.innerHTML += "<br>Crit: " + totalCritBuff + "% ";
+    if (totalEvasionBuff) superAttackBuffs.innerHTML += "<br>Evasion: " + totalEvasionBuff + "% ";
+    superAttackBuffsContainer.removeChild(superAttackBuffsContainer.lastChild);
+    superAttackBuffsContainer.appendChild(superAttackBuffs);
+}   
 
 export function updateLinkBuffs(json){
     // Select all link sliders and buttons within a specific parent

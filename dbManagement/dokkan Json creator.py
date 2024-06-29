@@ -7,7 +7,7 @@ directory="dataJP/"
 cardsJP=storedatabase(directory,"cards.csv")
 
 DEVEXCEPTIONS=False
-GLOBALPARSE=True
+GLOBALPARSE=False
 MAKEJSON=True
 
 CALCPASSIVE=True
@@ -35,7 +35,7 @@ finishTime=0.0
 linksTime=0.0
 multiplierTime=0.0
 
-cardIDsToCheck=["1003310"]
+cardIDsToCheck=["4028171","1025801","1020311"]
 #cardIDsToCheck=["4026911","4025741","4028381","4026401","4027631","4027301","4025781","4026541"]
 
 cardsToCheck=[]

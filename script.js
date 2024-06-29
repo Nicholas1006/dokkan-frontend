@@ -25,10 +25,11 @@ document.addEventListener('DOMContentLoaded', function() {
       document.getElementById("base-stats").style.height="0%";
       document.getElementById("links-and-leads").style.width="0%";
       document.getElementById("links-and-leads").style.height="0%";
-      document.getElementById("passive-container").style.width="0%";
-      document.getElementById("passive-container").style.height="0%";
+      document.getElementById("super-passive-container").style.width="0%";
+      document.getElementById("super-passive-container").style.height="0%";
       const UNITSTODISPLAY = 40000;
       const unitsContainer = document.getElementById('unit-selection-container');
+      unitsContainer.style.width="100%";
       for (let i = UNITSTODISPLAY; i > 0;i--) {
         if(i<allUnitsJson.length){
           if(allUnitsJson[i][6]=="0"){
@@ -491,6 +492,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     //create queries based on the passive skill conditions
     let passiveContainer=document.getElementById('passive-questions-container');
+    let superQuestionsContainer= document.getElementById('super-attack-questions-container');
+    let superBuffsContainer = document.getElementById('super-attack-buffs-container');
     let conditions=[];
     /*every time we find a causality that includes a condition we will do one of the following
     1. if the slider name is not already in the conditions object, we will add it
@@ -505,7 +508,57 @@ document.addEventListener('DOMContentLoaded', function() {
     6. all condition numbers that rely on it
 
     */
-
+    jsonPromise.then(json => {
+      let superAttackBuffs=document.createElement('label');
+      superAttackBuffs.innerHTML = "Super Attack Buffs: ";
+      superBuffsContainer.appendChild(superAttackBuffs);
+      let superAttackss=json["Super Attack"];
+      for (const key of Object.keys(superAttackss)){
+        let superAttack = superAttackss[key];
+        for (const key of Object.keys(superAttack)){
+          let details=["superID",
+            "superName",
+            "superDescription",
+            "superMinKi",
+            "superPriority",
+            "superStyle",
+            "superMinLVL",
+            "superCausality",
+            "superAimTarget",
+            "superIsInactive",
+            "SpecialBonus",
+            "Multiplier"]
+          if(!(details.includes(key))) {
+            // non-damage buffs from the super attack
+            let buffs = superAttack[key];
+            console.log(key);
+            if(buffs["Duration"]!="1"){
+              let superAttackSlider = document.createElement('input');
+              let superAttackQuestion = document.createElement('label');
+              superAttackSlider.innerText = "How many times has this unit performed " + superAttack["superName"] + " within the last " + buffs["Duration"] + " turns: 0";
+              superAttackQuestion.innerHTML = superAttackSlider.textContent;
+              superAttackQuestion.style.gridRow = 1;
+              superAttackSlider.type = "range";
+              superAttackSlider.style.width = "50%";
+              superAttackSlider.style.cursor = "pointer";
+              superAttackSlider.min = 0;
+              superAttackSlider.max = parseInt(buffs["Duration"]);
+              superAttackSlider.value = 0;
+              superAttackSlider.style.backgroundColor = webFunctions.LightenColor(webFunctions.typingToColor(json.Typing), 30);
+              superAttackSlider.id="super-slider";
+              superAttackSlider.style.gridRow = 2;
+              superAttackSlider.addEventListener('input', function(){
+                superAttackSlider.innerText="How many times has this unit performed " + superAttack["superName"] + " within the last " + buffs["Duration"] + " turns: " + superAttackSlider.value;
+                superAttackQuestion.innerHTML = superAttackSlider.textContent;
+                webFunctions.updateSuperAttackStacks(json);
+              });
+              superQuestionsContainer.appendChild(superAttackSlider);
+              superQuestionsContainer.appendChild(superAttackQuestion);
+            }
+          }
+        };
+      }
+    });
 
     jsonPromise.then(json => {
       let conditionNumber=1;
