@@ -1300,6 +1300,8 @@ def extractPassiveLine(unit,passiveskill,printing=False,DEVEXCEPTIONS=False):
     elif passiveskill[4]=="81":
         effects["Additional attack"]["Activated"]=True
         effects["Additional attack"]["Chance of super"]=passiveskill[15]
+        if(passiveskill[14]!="0"):
+            effects["Additional attack"]["Chance of another additional"]=passiveskill[14]
     elif passiveskill[4]=="82":
         effects["ATK"]+=int(passiveskill[14])
         effects["DEF"]+=int(passiveskill[14])

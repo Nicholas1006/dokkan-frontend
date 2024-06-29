@@ -7,7 +7,7 @@ directory="dataJP/"
 cardsJP=storedatabase(directory,"cards.csv")
 
 DEVEXCEPTIONS=False
-GLOBALPARSE=False
+GLOBALPARSE=True
 MAKEJSON=True
 
 CALCPASSIVE=True
@@ -35,7 +35,7 @@ finishTime=0.0
 linksTime=0.0
 multiplierTime=0.0
 
-cardIDsToCheck=["4028171","1025801","1020311"]
+cardIDsToCheck=["4028291","1012741"]
 #cardIDsToCheck=["4026911","4025741","4028381","4026401","4027631","4027301","4025781","4026541"]
 
 cardsToCheck=[]
@@ -125,6 +125,17 @@ for unit in cardsToCheck:
                     parsedPassive[passiveLine]=shortenPassiveDictionary(parsedPassive[passiveLine])
                 unitDictionary["Passive"]=parsedPassive
                 passiveTime+=time.time()-passiveStart
+
+            unitDictionary["Max Super Attacks"]=1
+            if(unitDictionary["Rarity"]=="lr" or unitDictionary["Rarity"]=="ur"):
+                unitDictionary["Max Super Attacks"]+=1
+            for passive in unitDictionary["Passive"]:
+                if("Additional attack" in unitDictionary["Passive"][passive]):
+                    if(unitDictionary["Passive"][passive]["Additional attack"]["Chance of super"]!="0"):
+                        if("Chance of another additional" in unitDictionary["Passive"][passive]["Additional attack"]):
+                            unitDictionary["Max Super Attacks"]+=2
+                        else:
+                            unitDictionary["Max Super Attacks"]+=1
 
             unitDictionary["Stats at levels"]={}
             if(CALCLEVELS):
