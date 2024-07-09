@@ -21,6 +21,7 @@ CALCBASIC=True
 CALCMULTIPLIER=True
 CALCFINISH=True
 CALCSTANDBY=True
+CALCCIRCLE=True
 
 passiveTime=0.0
 leaderTime=0.0
@@ -33,9 +34,10 @@ jsonTime=0.0
 standbyTime=0.0
 finishTime=0.0
 linksTime=0.0
+circleTime=0.0
 multiplierTime=0.0
 
-cardIDsToCheck=["1027751"]
+cardIDsToCheck=["1028480"]
 #cardIDsToCheck=["4026911","4025741","4028381","4026401","4027631","4027301","4025781","4026541"]
 
 cardsToCheck=[]
@@ -216,6 +218,12 @@ for unit in cardsToCheck:
                 unitDictionary["Ki Multiplier"]=getKiMultipliers(unit)
                 multiplierTime+=time.time()-multiplierStart
             
+            unitDictionary["Ki Circle Segments"]={}
+            if(CALCCIRCLE):
+                circleStart=time.time()
+                unitDictionary["Ki Circle Segments"]=getKiCircleSegments(unitDictionary)
+                circleTime+=time.time()-circleStart
+
             unitDictionary["Can EZA"]=checkEza(unit[0])
             unitDictionary["Can SEZA"]=checkSeza(unit[0])
             
@@ -251,6 +259,7 @@ print("Passive time:",round(passiveTime,2))
 print("Super time:",round(superTime,2))
 print("Level time:",round(levelTime,2))
 print("HiPo time:",round(hipoTime,2))
+print("Ki segments time:",round(circleTime,2))
 print("Multiplier time:",round(multiplierTime,2))
 print("Active time:",round(activeTime,2))
 print("Standby time:",round(standbyTime,2))

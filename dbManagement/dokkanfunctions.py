@@ -2597,6 +2597,37 @@ def qualifyUsable(card,printing=True):
     else:
         return(False)
 
+def getKiCircleSegments(unitDictionary):
+    kiAmounts=unitDictionary["Ki Multiplier"]
+    circleSegments={}
+    if(unitDictionary["Rarity"]=="lr"):
+        maxki=24
+    else:
+        maxki=12
+    minsuperKi=24
+    minUltraKi=24
+    for super in unitDictionary["Super Attack"]:
+        if(unitDictionary["Super Attack"][super]["superStyle"]=="Hyper"):
+            minUltraKi=min(minUltraKi,int(unitDictionary["Super Attack"][super]["superMinKi"]))
+        elif(unitDictionary["Super Attack"][super]["superStyle"]=="Normal"):
+            minsuperKi=min(minsuperKi,int(unitDictionary["Super Attack"][super]["superMinKi"]))
+
+    for ki in range(1,maxki+1):
+        if(kiAmounts[ki]<100):
+            circleSegments[ki]="weaker"
+        else:
+            circleSegments[ki]="equal"
+        if(ki>=minsuperKi):
+            circleSegments[ki]="super"
+        if(ki>=minUltraKi):
+            circleSegments[ki]="ultra"
+
+    return(circleSegments)
+        
+        
+
+        
+
 def createEZAWallpapers(cards, directory,printing=True):
     if(printing): print("Creating EZA wallpapers")
     acquiredlist = os.listdir(r'./assets/EZA wallpapers')

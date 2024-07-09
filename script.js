@@ -32,14 +32,12 @@ document.addEventListener('DOMContentLoaded', function() {
       unitsContainer.style.width="100%";
       for (let i = UNITSTODISPLAY; i > 0;i--) {
         if(i<allUnitsJson.length){
-          if(allUnitsJson[i][6]=="0"){
-            const unitButton = document.createElement('a');
-            unitButton.id = "unit-button";
-            unitButton.href = "?id=" + allUnitsJson[i];
-            unitButton.style.backgroundImage = "url('dbManagement/assets/final_assets/"+allUnitsJson[i]+".png')";
-            unitButton.className="unit-selection-button";
-            unitsContainer.appendChild(unitButton);
-          }
+          const unitButton = document.createElement('a');
+          unitButton.id = "unit-button";
+          unitButton.href = "?id=" + allUnitsJson[i];
+          unitButton.style.backgroundImage = "url('dbManagement/assets/final_assets/"+allUnitsJson[i]+".png')";
+          unitButton.className="unit-selection-button";
+          unitsContainer.appendChild(unitButton);
         }
       }
     });
@@ -420,16 +418,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Function to fetch JSON data and image based on sub-URL
-    function fetchData(subURL) {
-      fetch('dbManagement/jsons/' + subURL + '.json')
-      .then(response =>{
-          if(!response.ok){
-            throw new Error('Network response was not ok' + response.statusText);
-          }
-          return response.json();
-        })
+    function initialiseAspects(jsonPromise) {
       //everything under this can see the data from the json
-      .then(data => {
+      jsonPromise.then(data => {
         webFunctions.updateImageContainer('image-container', assetSubURL, data.Typing);
         webFunctions.updateContainer('text-container', webFunctions.createParagraph("Tgus us a text"));
         document.getElementById('text-container').innerHTML = subURL;
@@ -490,6 +481,13 @@ document.addEventListener('DOMContentLoaded', function() {
       statsContainer.appendChild(DEFstat);
     }
 
+
+
+    jsonPromise.then(json => {
+      //create ki circle
+      webFunctions.createKiCircle(json);
+    });
+
     //create queries based on the passive skill conditions
     let passiveContainer=document.getElementById('passive-questions-container');
     let superQuestionsContainer= document.getElementById('super-attack-questions-container');
@@ -531,7 +529,6 @@ document.addEventListener('DOMContentLoaded', function() {
           if(!(details.includes(key))) {
             // non-damage buffs from the super attack
             let buffs = superAttack[key];
-            console.log(key);
             if(buffs["Duration"]!="1"){
               let superAttackSlider = document.createElement('input');
               let superAttackQuestion = document.createElement('label');
@@ -720,7 +717,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
 
 
-    fetchData(subURL);
+    initialiseAspects(jsonPromise);
     
     jsonPromise.then(json => {
       AdjustBaseStats(json);

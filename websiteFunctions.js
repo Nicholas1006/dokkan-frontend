@@ -3,7 +3,13 @@ export function getJson(prefix,name,suffix) {
     return fetch(prefix + name + suffix)
       .then(response => {
           if (!response.ok) {
+            if(name[6]=="0"){
+                name=name.slice(0, -1)+ "1";
+                return(getJson(prefix,name,suffix))
+            }
+            else{
               throw new Error('Network response was not ok' + response.statusText);
+            }
           }
           return response.json();
       })
@@ -12,6 +18,149 @@ export function getJson(prefix,name,suffix) {
           throw error; // Re-throw the error to propagate it to the caller
       });
   }
+
+export function createKiCircle(json){
+    
+    let kiCircle = document.getElementById("ki_circle");
+    kiCircle.style.width = "220px";
+    kiCircle.style.height = "220px";
+    let circleBase = document.createElement("img");
+    if(json.Typing=="AGL"){
+        circleBase.style.backgroundImage = "url('dbManagement/assets/misc/chara_icon/ing_type_gauge_base_00.png')";
+    }
+    else if(json.Typing=="TEQ"){
+        circleBase.style.backgroundImage = "url('dbManagement/assets/misc/chara_icon/ing_type_gauge_base_01.png')";
+    }
+    else if(json.Typing=="INT"){
+        circleBase.style.backgroundImage = "url('dbManagement/assets/misc/chara_icon/ing_type_gauge_base_02.png')";
+    }
+    else if(json.Typing=="STR"){
+        circleBase.style.backgroundImage = "url('dbManagement/assets/misc/chara_icon/ing_type_gauge_base_03.png')";
+    }
+    else if(json.Typing=="PHY"){
+        circleBase.style.backgroundImage = "url('dbManagement/assets/misc/chara_icon/ing_type_gauge_base_04.png')";
+    }
+
+    circleBase.style.width = "220px";
+    circleBase.style.height = "220px";
+
+    circleBase.style.backgroundSize = "100% 100%";
+
+    circleBase.style.backgroundPosition = "center";
+
+    circleBase.style.backgroundRepeat = "no-repeat";
+
+    circleBase.style.position = "absolute";
+
+    circleBase.style.zIndex = "0";
+
+    let maxKi;
+    if(json["Rarity"]=="lr"){
+        maxKi=24;
+    }
+    else{
+        maxKi=12
+    }
+    kiCircle.appendChild(circleBase);
+
+    //create the unit image in the ki circle
+    let unitImage = document.createElement("img");
+    unitImage.style.width = "220px";
+    unitImage.style.height = "220px";
+    let assetID=json["ID"].slice(0, -1)+ "0";
+    unitImage.style.backgroundImage = "url('dbManagement/assets/circle/" + assetID + ".png')";
+    unitImage.style.backgroundSize = "100% 100%";
+    unitImage.style.backgroundPosition = "center";
+    unitImage.style.backgroundRepeat = "no-repeat";
+    unitImage.style.position = "absolute";
+    unitImage.style.zIndex = "1";
+    kiCircle.appendChild(unitImage);
+
+    //for loop that iterates 12 times
+    for (let i = 0; i < 12; i++) {
+        //create a circle segment
+        let circleSegment = document.createElement("div");
+        //reference the style.css
+        circleSegment.className = "ki-circle-segment";
+        //set the circle segment position
+        circleSegment.style.rotate = (15 + (i * 30)) + "deg";
+        //place the circle segment in the correct position relative to the kiCircle div
+        let xOffset = 61;
+        let yOffset = -32;
+
+        circleSegment.style.transform = "translate(" + xOffset + "px, " + yOffset + "px)";
+        //set the circle segment to the front of the circle
+        circleSegment.style.zIndex = "2";
+        //add the circle segment to the circle
+        kiCircle.appendChild(circleSegment);
+    }
+    if(maxKi==24){
+        for (let i=12; i<24; i++){
+            //create a circle segment
+            let circleSegment = document.createElement("div");
+            //reference the style.css
+            circleSegment.className = "ki-circle-segment";
+            //set the circle segment position
+            circleSegment.style.rotate = (15 + (i * 30)) + "deg";
+            //place the circle segment in the correct position relative to the kiCircle div
+            let xOffset = 61;
+            let yOffset = -32;
+
+            circleSegment.style.transform = "translate(" + xOffset + "px, " + yOffset + "px)";
+            //set the circle segment to the front of the circle
+            circleSegment.style.zIndex = "1";
+            //add the circle segment to the circle
+            kiCircle.appendChild(circleSegment);
+        }
+    }
+
+    let kiText = document.getElementById("ki_text");
+    kiText.innerHTML="Ki: 0"; 
+
+
+    let kiInput = document.getElementById("ki_input");
+    //create the slider input
+    let slider = document.createElement("input");
+    //set the slider class
+    slider.className = "ki-slider";
+    //set the slider type
+    slider.type = "range";
+    //set the slider id
+    slider.id = "ki-slider";
+    //set the slider min
+    slider.min = "0";
+    //set the slider max
+    slider.max = maxKi;
+    //set the slider value
+    slider.value = "0";
+    //set the slider step
+    slider.step = "1";
+    //set the slider oninput function
+    slider.oninput = function() {
+        //iterate through all of the segments
+        kiText.innerHTML="Ki: " + this.value;
+        let segments = document.getElementsByClassName("ki-circle-segment");
+        for (let i = 0; i < maxKi; i++) {
+            //get the current segment
+            let currentSegment = segments[i];
+            if (i < this.value) {
+                if(i>=12){
+                    currentSegment.style.zIndex = "3";
+                }
+                currentSegment.classList.add(json["Ki Circle Segments"][i+1]);
+            } else {
+                if(i>=12){
+                    currentSegment.style.zIndex = "1";
+                }
+                currentSegment.classList.remove(json["Ki Circle Segments"][i+1]);
+            }
+        }
+    }
+
+    kiInput.appendChild(slider);
+
+
+}
 
 
 
