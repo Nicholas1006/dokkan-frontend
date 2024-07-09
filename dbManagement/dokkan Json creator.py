@@ -35,7 +35,7 @@ finishTime=0.0
 linksTime=0.0
 multiplierTime=0.0
 
-cardIDsToCheck=["4028291","1012741"]
+cardIDsToCheck=["1027751"]
 #cardIDsToCheck=["4026911","4025741","4028381","4026401","4027631","4027301","4025781","4026541"]
 
 cardsToCheck=[]
@@ -181,9 +181,10 @@ for unit in cardsToCheck:
                 unitDictionary["Finish Skill"]=parseFinish(unit,DEVEXCEPTIONS)
                 finishTime+=time.time()-finishStart
 
-            unitDictionary["Transformations"]=[]
-            
 
+            #unitDictionary["Transforms from"]=[]
+
+            unitDictionary["Transformations"]=[]
             if("Exchanges to" in unitDictionary["Standby Skill"]):
                 unitDictionary["Transformations"].append(unitDictionary["Standby Skill"]["Exchanges to"])
             if(unitDictionary["Finish Skill"] != {}):

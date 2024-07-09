@@ -2592,7 +2592,7 @@ def switchUnitToGlobal(unitJP):
     return(unitGB)
 
 def qualifyUsable(card,printing=True):
-    if ((card[21]=="" and card[23]=="")==False) and card[0]!="id" and (card[53]!="2030-12-31 23:59:59") and(card[53]!='2030-01-01 00:00:00')and (card[53]!="2038-01-01 00:00:00") and (card[0][0]!="5") and (card[0][0]!="9") and (card[22]!=""):
+    if ( (not (card[5] in ["5","4"] and card[0][-1]=="0")) and (card[21]=="" and card[23]=="")==False) and card[0]!="id" and (card[53]!="2030-12-31 23:59:59") and(card[53]!='2030-01-01 00:00:00')and (card[53]!="2038-01-01 00:00:00") and (card[0][0]!="5") and (card[0][0]!="9") and (card[22]!=""):
         return(True)
     else:
         return(False)
