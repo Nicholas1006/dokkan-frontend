@@ -156,13 +156,25 @@ export function createKiCircle(json){
                     currentSegment.style.zIndex = "3";
                     currentSegment.style.display="block";
                 }
-                currentSegment.classList.add(json["Ki Circle Segments"][i+1]);
+                if(i<2 && json["Ki Circle Segments"][i+1]=="equal"){
+                    currentSegment.classList.add("weaker");
+
+                }
+                else{
+                    currentSegment.classList.add(json["Ki Circle Segments"][i+1]);
+                }
             } else {
                 if(i>=12){
                     currentSegment.style.zIndex = "1";
                     currentSegment.style.display="none";
                 }
-                currentSegment.classList.remove(json["Ki Circle Segments"][i+1]);
+                if(i<2 && json["Ki Circle Segments"][i+1]=="equal"){
+                    currentSegment.classList.remove("weaker");
+
+                }
+                else{
+                    currentSegment.classList.remove(json["Ki Circle Segments"][i+1]);
+                }
             }
         }
     }
