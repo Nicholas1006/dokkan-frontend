@@ -54,6 +54,7 @@ export function createKiCircle(json){
 
     circleBase.style.zIndex = "0";
 
+    kiCircle.appendChild(circleBase);
     let maxKi;
     if(json["Rarity"]=="lr"){
         maxKi=24;
@@ -61,7 +62,6 @@ export function createKiCircle(json){
     else{
         maxKi=12
     }
-    kiCircle.appendChild(circleBase);
 
     //create the unit image in the ki circle
     let unitImage = document.createElement("img");
@@ -86,8 +86,8 @@ export function createKiCircle(json){
         circleSegment.style.rotate = (15 + (i * 30)) + "deg";
         //place the circle segment in the correct position relative to the kiCircle div
         let xOffset = 61;
-        let yOffset = -32;
-
+        let yOffset = -25;
+        circleSegment.style.transformOrigin = "100% 100%";
         circleSegment.style.transform = "translate(" + xOffset + "px, " + yOffset + "px)";
         //set the circle segment to the front of the circle
         circleSegment.style.zIndex = "2";
@@ -100,13 +100,21 @@ export function createKiCircle(json){
             let circleSegment = document.createElement("div");
             //reference the style.css
             circleSegment.className = "ki-circle-segment";
-            //set the circle segment position
-            circleSegment.style.rotate = (15 + (i * 30)) + "deg";
-            //place the circle segment in the correct position relative to the kiCircle div
-            let xOffset = 61;
-            let yOffset = -32;
+//            circleSegment.style.height="220px"
 
-            circleSegment.style.transform = "translate(" + xOffset + "px, " + yOffset + "px)";
+            //set the circle segment position
+            circleSegment.style.backgroundSize = "100% 100%";
+            //place the circle segment in the correct position relative to the kiCircle div
+            let rotateAmount = (15 + (i * 30));
+            let xOffset = 0;
+            let yOffset = -20;
+            circleSegment.style.transform = "translateX(55px)"
+            circleSegment.style.transformOrigin = "50% 100%";
+            circleSegment.style.transform += "rotateZ("+rotateAmount+"deg)" ;
+            circleSegment.style.transform += "translateY("+yOffset+"px)";
+            circleSegment.style.transform += "translateX("+xOffset+"px)";
+            circleSegment.style.transform += "scaleY(1.24)";
+//            circleSegment.style.transform = "rotateY(-45deg) scaleY(1.3) scaleX(1.1) translate(50px, -10px)";
             //set the circle segment to the front of the circle
             circleSegment.style.zIndex = "1";
             //add the circle segment to the circle
@@ -115,7 +123,7 @@ export function createKiCircle(json){
     }
 
     let kiText = document.getElementById("ki_text");
-    kiText.innerHTML="Ki: 0"; 
+    kiText.innerHTML="Ki: "+maxKi; 
 
 
     let kiInput = document.getElementById("ki_input");
@@ -132,7 +140,7 @@ export function createKiCircle(json){
     //set the slider max
     slider.max = maxKi;
     //set the slider value
-    slider.value = "0";
+    slider.value = maxKi;
     //set the slider step
     slider.step = "1";
     //set the slider oninput function
@@ -143,33 +151,34 @@ export function createKiCircle(json){
         for (let i = 0; i < maxKi; i++) {
             //get the current segment
             let currentSegment = segments[i];
-            if (i < this.value) {
+            if (i < this.value && i+12 >= this.value) {
                 if(i>=12){
                     currentSegment.style.zIndex = "3";
+                    currentSegment.style.display="block";
                 }
                 currentSegment.classList.add(json["Ki Circle Segments"][i+1]);
             } else {
                 if(i>=12){
                     currentSegment.style.zIndex = "1";
+                    currentSegment.style.display="none";
                 }
                 currentSegment.classList.remove(json["Ki Circle Segments"][i+1]);
             }
         }
     }
+    
+    slider.dispatchEvent(new Event('input'));	
 
     kiInput.appendChild(slider);
 
 
 }
 
-
-
 export function updateQueryStringParameter(key, value) {
     const url = new URL(window.location.href);
     url.searchParams.set(key, value);
     window.history.replaceState({ path: url.href}, '', url.href);
 }
-
 
 export function typingToColor(typing){
     if(typing.toLowerCase()=="agl"){
@@ -188,7 +197,6 @@ export function typingToColor(typing){
         return("#FF00FF")
     }
 }
-
 export function LightenColor(color, percent){
     var num = parseInt(color.slice(1),16),
     amt = Math.round(2.55 * percent),
@@ -341,7 +349,7 @@ export function updateSuperAttackStacks(json){
     superAttackBuffsContainer.appendChild(superAttackBuffs);
 }   
 
-export function updateLinkBuffs(json){
+export function createLinkBuffs(json){
     // Select all link sliders and buttons within a specific parent
     let linksContainer = document.querySelector('#links-container');
     let linkSliders = linksContainer.querySelectorAll('input[type=range]');
@@ -399,7 +407,7 @@ export function updateLinkBuffs(json){
   }
 
 
-export function addPassiveLineBuffs(passiveLine, passiveBuffsHolder){
+export function createPassiveBuffs(passiveLine, passiveBuffsHolder){
     //wip add building stats and targeting
     //passiveBuffs["Timing"]["Target"]["Buff type"]["Buff amount"]
     let timing=passiveLine["Timing"];
@@ -492,12 +500,12 @@ export function updatePassiveBuffs(json,CausalityLogic){
         if("Condition" in passiveLines[passiveLine]){
             //if the condition is met
             if(logicReducer(passiveLines[passiveLine]["Condition"]["Logic"],CausalityLogic)){
-                addPassiveLineBuffs(passiveLines[passiveLine], passiveBuffs);
+                createPassiveBuffs(passiveLines[passiveLine], passiveBuffs);
             }
         }
         //if there is no condition
         else{
-            addPassiveLineBuffs(passiveLines[passiveLine], passiveBuffs);
+            createPassiveBuffs(passiveLines[passiveLine], passiveBuffs);
         }
     }
     let passiveBuffsContainer = document.getElementById('passive-buffs-container');
@@ -553,10 +561,6 @@ export function logicCalculator(logicArray,sliderState){
     logic=logic.replaceAll("<",sliderState+"<")
     return(eval(logic));
 }
-
-
-
-
 export function getBaseDomain() {
     let host = window.location.host; // e.g., 'www.example.com', 'staging.example.com'
     let parts = host.split('.');

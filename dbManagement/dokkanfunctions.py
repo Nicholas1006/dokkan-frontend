@@ -53,6 +53,18 @@ def superAttackMultiplierExtractor(superAttackID,super_attack_lvl,DEVEXCEPTIONS=
 
     return(multiplier)
     
+def getMinLevel(unit,eza=False):
+    #if its a z unit return the max level of its previous form
+    #if its an eza unit return the max level of itself
+    unit0=swapToUnitWith0(unit)
+    oldRarity=unit0[5]
+    #If the unit has been z awakened
+    if(unit[5]!=unit0[5]):
+        return(int(unit0[13]))
+    elif(eza):
+        return(int(unit[13]))
+    else:
+        return(1)
 def getMaxLevel(unit,eza=False):
     if(eza):
         cardOptimalAwakeningGrowthID=unit[16][:-2]
@@ -1071,6 +1083,9 @@ def extractPassiveLine(unit,passiveskill,printing=False,DEVEXCEPTIONS=False):
         domainID=searchbyid(code=passiveskill[0],codecolumn=2,database=dokkan_field_passive_skill_relationsJP,column=1)[0]
         effects["Domain expansion"]["ID"]=domainID
         domainName=searchbyid(code=domainID,codecolumn=1,database=dokkan_fieldsJP,column=2)[0]
+        GBdomainName=searchbyid(code=domainID,codecolumn=1,database=dokkan_fieldsGB,column=2)
+        if(GBdomainName!=[]):
+            domainName=GBdomainName[0]
         effects["Domain expansion"]["Name"]=domainName
 
     elif passiveskill[4]=="1":
@@ -2016,6 +2031,11 @@ def causalityLineToLogic(causalityLine,DEVEXCEPTIONS=False):
     elif(CausalityRow[1]=="57"):
         output["Button"]["Name"]=("Is the Domain ")
         output["Button"]["Name"]+=searchbyid(code=CausalityRow[2],codecolumn=1,database=dokkan_fieldsJP,column=2)[0]
+        GBdomain=searchbyid(code=CausalityRow[2],codecolumn=1,database=dokkan_fieldsGB,column=2)
+        if(GBdomain!=[]):
+            output["Button"]["Name"]+=GBdomain[0]
+        else:
+            output["Button"]["Name"]+=searchbyid(code=CausalityRow[2],codecolumn=1,database=dokkan_fieldsJP,column=2)[0]
         output["Button"]["Name"]+=(" active")
     elif(CausalityRow[1]=="58"):
         output["Button"]["Name"]=("Is no domain active?")
@@ -2427,7 +2447,12 @@ def causalityLogicFinder(unit,causalityCondition,printing=True,DEVEXCEPTIONS=Fal
                 output["Button"]["Name"]=("Has the character recieved a normal attack?")
             elif(CausalityRow[1]=="57"):
                 output["Button"]["Name"]=("Is the Domain ")
-                output["Button"]["Name"]+=searchbyid(code=CausalityRow[2],codecolumn=1,database=dokkan_fieldsJP,column=2)[0]
+                GBdomain=searchbyid(code=CausalityRow[2],codecolumn=1,database=dokkan_fieldsGB,column=2)
+                if(GBdomain!=[]):
+                    output["Button"]["Name"]+=GBdomain[0]
+                else:
+                    output["Button"]["Name"]+=searchbyid(code=CausalityRow[2],codecolumn=1,database=dokkan_fieldsJP,column=2)[0]
+
                 output["Button"]["Name"]+=(" active")
             elif(CausalityRow[1]=="58"):
                 output["Button"]["Name"]=("Is no domain active?")
@@ -2592,7 +2617,13 @@ def switchUnitToGlobal(unitJP):
     return(unitGB)
 
 def qualifyUsable(card,printing=True):
-    if ( (not (card[5] in ["5","4"] and card[0][-1]=="0")) and (card[21]=="" and card[23]=="")==False) and card[0]!="id" and (card[53]!="2030-12-31 23:59:59") and(card[53]!='2030-01-01 00:00:00')and (card[53]!="2038-01-01 00:00:00") and (card[0][0]!="5") and (card[0][0]!="9") and (card[22]!=""):
+    #if the unit is a tur+ and id ends in 0, decline
+                                                               #ifthe unit doesnt have a passive or a link, decline
+                                                                                                        #If the unit doesnt have "selling only"
+                                                                                                                            #if it isnt the headers
+                                                                                                                                                #its release date isnt set to any of the following
+                                                                                                                                                                                                #the id doesnt start with 3 or5 or 9
+    if ( (not (card[5] in ["5","4"] and card[0][-1]=="0"))and (card[46]=="0") and (card[0]!="id") and (card[53] not in ["2030-12-31 23:59:59",'2030-01-01 00:00:00',"2038-01-01 00:00:00"]) and (card[0][0] not in["3","5","7","9"]) and card[6]!="1"):
         return(True)
     else:
         return(False)
@@ -2607,10 +2638,14 @@ def getKiCircleSegments(unitDictionary):
     minsuperKi=24
     minUltraKi=24
     for super in unitDictionary["Super Attack"]:
+        kiRequired=int(unitDictionary["Super Attack"][super]["superMinKi"])
+        if(unitDictionary["Super Attack"][super]["SpecialBonus"]["ID"]!="0"):
+            if(unitDictionary["Super Attack"][super]["SpecialBonus"]["Type"]=="Ki requirement decrease"):
+                kiRequired-=int(unitDictionary["Super Attack"][super]["SpecialBonus"]["Amount"])
         if(unitDictionary["Super Attack"][super]["superStyle"]=="Hyper"):
-            minUltraKi=min(minUltraKi,int(unitDictionary["Super Attack"][super]["superMinKi"]))
+            minUltraKi=min(minUltraKi,kiRequired)
         elif(unitDictionary["Super Attack"][super]["superStyle"]=="Normal"):
-            minsuperKi=min(minsuperKi,int(unitDictionary["Super Attack"][super]["superMinKi"]))
+            minsuperKi=min(minsuperKi,kiRequired)
 
     for ki in range(1,maxki+1):
         if(kiAmounts[ki]<100):

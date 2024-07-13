@@ -185,13 +185,13 @@ document.addEventListener('DOMContentLoaded', function() {
             linkButton.classList.add('active');
             linkButton.style.background="#00FF00"
           }
-          webFunctions.updateLinkBuffs(json)
+          webFunctions.createLinkBuffs(json)
         }
         linkSlider.addEventListener('input', function(){
           linkLevel = linkSlider.value;
           linkButton.innerHTML = linkName + " <br>Level: " + linkLevel;
           linkData = links[linkName][linkLevel];
-          webFunctions.updateLinkBuffs(json);
+          webFunctions.createLinkBuffs(json);
         });
         linkNumber+=1;
       };
@@ -215,7 +215,7 @@ document.addEventListener('DOMContentLoaded', function() {
           let linkName = linksContainer.querySelectorAll('button')[index].textContent.split(' Level')[0];
           linksContainer.querySelectorAll('button')[index].innerHTML = linkName + " <br>Level: " + allLinksSlider.value;
         });
-        webFunctions.updateLinkBuffs(json);
+        webFunctions.createLinkBuffs(json);
       });
       linksContainer.appendChild(allLinksSlider);
 
@@ -247,7 +247,7 @@ document.addEventListener('DOMContentLoaded', function() {
             button.style.background="#00FF00"
           });
         }
-        webFunctions.updateLinkBuffs(json);
+        webFunctions.createLinkBuffs(json);
       }
       linksContainer.appendChild(allLinksButton);
 
@@ -263,7 +263,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
 
     jsonPromise.then(json => {
-      webFunctions.updateLinkBuffs(json);
+      webFunctions.createLinkBuffs(json);
     });
 
     let ezaContainer=document.getElementById('eza-container');
@@ -347,14 +347,20 @@ document.addEventListener('DOMContentLoaded', function() {
     );
 
 
-
+    
     let levelSlider=document.getElementById('level-slider');
     let levelInput=document.getElementById('level-input');
     jsonPromise.then(json => {
+      levelSlider.min=json["Min Level"];
+      levelInput.min=json["Min Level"];
       levelSlider.max = json["Max Level"];
       levelInput.max=json["Max Level"];
       levelInput.value=json["Max Level"];
       levelSlider.value=json["Max Level"];
+      if(json["Min Level"]==json["Max Level"]){
+        levelInput.disabled = true;
+        levelSlider.style.display = "none";
+      }
     });
 
     levelSlider.addEventListener('input', function(){
@@ -529,7 +535,7 @@ document.addEventListener('DOMContentLoaded', function() {
           if(!(details.includes(key))) {
             // non-damage buffs from the super attack
             let buffs = superAttack[key];
-            if(buffs["Duration"]!="1"){
+            if(buffs["Duration"]!="1" && key!="superCondition"){
               let superAttackSlider = document.createElement('input');
               let superAttackQuestion = document.createElement('label');
               superAttackSlider.innerText = "How many times has this unit performed " + superAttack["superName"] + " within the last " + buffs["Duration"] + " turns: 0";

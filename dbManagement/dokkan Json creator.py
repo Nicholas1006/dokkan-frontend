@@ -7,7 +7,7 @@ directory="dataJP/"
 cardsJP=storedatabase(directory,"cards.csv")
 
 DEVEXCEPTIONS=False
-GLOBALPARSE=True
+GLOBALPARSE=False
 MAKEJSON=True
 
 CALCPASSIVE=True
@@ -37,7 +37,8 @@ linksTime=0.0
 circleTime=0.0
 multiplierTime=0.0
 
-cardIDsToCheck=["1028480"]
+cardIDsToCheck=["4028031"]
+
 #cardIDsToCheck=["4026911","4025741","4028381","4026401","4027631","4027301","4025781","4026541"]
 
 cardsToCheck=[]
@@ -50,7 +51,10 @@ else:
     for ID in cardIDsToCheck:
         for unit in cardsJP:
             if unit[0]==ID:
-                cardsToCheck.append(unit)
+                if(qualifyUsable(unit)):
+                    cardsToCheck.append(unit)
+                else:
+                    print("UNUSABLLE UNIT",unit[0])
 
 
 missingPassiveCount=0
@@ -108,6 +112,7 @@ for unit in cardsToCheck:
                     else:
                         unitDictionary["Name"]=unit[1]
                 unitDictionary["Rarity"]=getrarity(unit)
+                unitDictionary["Min Level"]=getMinLevel(unit,eza)
                 unitDictionary["Max Level"]=getMaxLevel(unit,eza)
                 unitDictionary["Categories"]=getallcategories(unit[0],printing=True)
                 basicTime+=time.time()-basicStart
@@ -146,7 +151,7 @@ for unit in cardsToCheck:
                 levelTime+=time.time()-levelStart
             
             unitDictionary["Leader Skill"]={}
-            if(CALCLEADER):
+            if(CALCLEADER and unit[22]!=""):
                 leaderStart=time.time()
                 unitDictionary["Leader Skill"]=parseLeaderSkill(unit,eza,DEVEXCEPTIONS)
                 leaderTime+=time.time()-leaderStart
