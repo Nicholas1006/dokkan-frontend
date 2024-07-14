@@ -21,7 +21,12 @@ export function getJson(prefix,name,suffix) {
 
 export function createKiCircle(json){
     
-    let kiCircle = document.getElementById("ki_circle");
+    let kiContainer = document.getElementById("ki-container");
+
+    let kiCircle = document.createElement("div");
+    kiContainer.appendChild(kiCircle);
+
+
     kiCircle.style.width = "220px";
     kiCircle.style.height = "220px";
     let circleBase = document.createElement("img");
@@ -65,6 +70,7 @@ export function createKiCircle(json){
 
     //create the unit image in the ki circle
     let unitImage = document.createElement("img");
+    kiCircle.appendChild(unitImage);
     unitImage.style.width = "220px";
     unitImage.style.height = "220px";
     let assetID=json["ID"].slice(0, -1)+ "0";
@@ -74,12 +80,13 @@ export function createKiCircle(json){
     unitImage.style.backgroundRepeat = "no-repeat";
     unitImage.style.position = "absolute";
     unitImage.style.zIndex = "1";
-    kiCircle.appendChild(unitImage);
+    
 
     //for loop that iterates 12 times
     for (let i = 0; i < 12; i++) {
         //create a circle segment
         let circleSegment = document.createElement("div");
+        kiCircle.appendChild(circleSegment);
         //reference the style.css
         circleSegment.className = "ki-circle-segment";
         //set the circle segment position
@@ -92,12 +99,12 @@ export function createKiCircle(json){
         //set the circle segment to the front of the circle
         circleSegment.style.zIndex = "2";
         //add the circle segment to the circle
-        kiCircle.appendChild(circleSegment);
     }
     if(maxKi==24){
         for (let i=12; i<24; i++){
             //create a circle segment
             let circleSegment = document.createElement("div");
+            kiCircle.appendChild(circleSegment);
             //reference the style.css
             circleSegment.className = "ki-circle-segment";
 //            circleSegment.style.height="220px"
@@ -118,17 +125,17 @@ export function createKiCircle(json){
             //set the circle segment to the front of the circle
             circleSegment.style.zIndex = "1";
             //add the circle segment to the circle
-            kiCircle.appendChild(circleSegment);
         }
     }
-
-    let kiText = document.getElementById("ki_text");
-    kiText.innerHTML="Ki: "+maxKi; 
+    
 
 
-    let kiInput = document.getElementById("ki_input");
+
+    let kiInput = document.createElement("div");
+    kiContainer.appendChild(kiInput);
     //create the slider input
     let slider = document.createElement("input");
+    kiInput.appendChild(slider);
     //set the slider class
     slider.className = "ki-slider";
     //set the slider type
@@ -144,9 +151,37 @@ export function createKiCircle(json){
     //set the slider step
     slider.step = "1";
     //set the slider oninput function
+
+    let damageText=document.createElement("div");
+    kiCircle.appendChild(damageText);
+    damageText.className="ki-damage-text";
+    damageText.id="ki-damage-text";
+    damageText.style.width="220px"
+    damageText.style.height="50px"
+    damageText.style.position = "absolute";
+    damageText.style.transform = "translate(0%, 220px";
+    damageText.style.zIndex = "4";
     slider.oninput = function() {
-        //iterate through all of the segments
-        kiText.innerHTML="Ki: " + this.value;
+        let attackStat=json["Ki Multiplier"][this.value]*124852.27;
+
+        let baseATK=document.getElementById("stats-container").value;
+        attackStat=Math.round(attackStat, 2);
+        let numStr=attackStat.toString();
+        const attackDisplay=document.getElementById("ki-damage-text");
+        //remove all children of attackDisplay
+        while (attackDisplay.firstChild) {
+            attackDisplay.removeChild(attackDisplay.firstChild);
+        }
+
+
+        for(let char of numStr){
+            const numDiv = document.createElement('div');
+            numDiv.className="ki-damage-text";
+            numDiv.classList.add(`num-${char}`);
+            attackDisplay.appendChild(numDiv);
+        }
+
+
         let segments = document.getElementsByClassName("ki-circle-segment");
         for (let i = 0; i < maxKi; i++) {
             //get the current segment
@@ -181,7 +216,6 @@ export function createKiCircle(json){
     
     slider.dispatchEvent(new Event('input'));	
 
-    kiInput.appendChild(slider);
 
 
 }
@@ -239,8 +273,8 @@ export function colorToBackground(color){
 // Function to update a container with new content
 export function updateContainer(containerId, content){
     const container = document.getElementById(containerId);
-    container.innerHTML = '';
     container.appendChild(content);
+    container.innerHTML = '';
   }   
 
  // Function to update the image container with a new image

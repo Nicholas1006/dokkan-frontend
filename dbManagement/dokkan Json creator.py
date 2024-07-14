@@ -7,7 +7,7 @@ directory="dataJP/"
 cardsJP=storedatabase(directory,"cards.csv")
 
 DEVEXCEPTIONS=False
-GLOBALPARSE=False
+GLOBALPARSE=True
 MAKEJSON=True
 
 CALCPASSIVE=True
@@ -77,6 +77,9 @@ if GLOBALPARSE:
     turnintoJson(allUnitsDictionary, "allUnits",directoryName="jsons")
 
 
+dokkanAwakenings={}
+transformations={}
+
 for unit in cardsToCheck:
     ezaTrueFalse=[False]
     if(checkEza(unit[0])):
@@ -133,16 +136,25 @@ for unit in cardsToCheck:
                 unitDictionary["Passive"]=parsedPassive
                 passiveTime+=time.time()-passiveStart
 
+            unitDictionary["Max Attacks"]=1
             unitDictionary["Max Super Attacks"]=1
             if(unitDictionary["Rarity"]=="lr" or unitDictionary["Rarity"]=="ur"):
                 unitDictionary["Max Super Attacks"]+=1
+                unitDictionary["Max Attacks"]+=1
             for passive in unitDictionary["Passive"]:
                 if("Additional attack" in unitDictionary["Passive"][passive]):
                     if(unitDictionary["Passive"][passive]["Additional attack"]["Chance of super"]!="0"):
                         if("Chance of another additional" in unitDictionary["Passive"][passive]["Additional attack"]):
                             unitDictionary["Max Super Attacks"]+=2
+                            unitDictionary["Max Attacks"]+=2    
                         else:
                             unitDictionary["Max Super Attacks"]+=1
+                            unitDictionary["Max Attacks"]+=1
+                    else:
+                        unitDictionary["Max Attacks"]+=1
+
+            
+
 
             unitDictionary["Stats at levels"]={}
             if(CALCLEVELS):
@@ -189,31 +201,61 @@ for unit in cardsToCheck:
                 finishTime+=time.time()-finishStart
 
 
-            #unitDictionary["Transforms from"]=[]
+            unitDictionary["Transforms from"]=[]
+
 
             unitDictionary["Transformations"]=[]
             if("Exchanges to" in unitDictionary["Standby Skill"]):
                 unitDictionary["Transformations"].append(unitDictionary["Standby Skill"]["Exchanges to"])
+                if(unit[0] in transformations):
+                    transformations[unit[0]].append(unitDictionary["Standby Skill"]["Exchanges to"])
+                else:
+                    transformations[unit[0]]=[unitDictionary["Standby Skill"]["Exchanges to"]]
             if(unitDictionary["Finish Skill"] != {}):
                 for finishRow in unitDictionary["Finish Skill"]:
                     unitDictionary["Transformations"].append(unitDictionary["Finish Skill"][finishRow]["Exchanges to"])
+                    if(unit[0] in transformations):
+                        transformations[unit[0]].append(unitDictionary["Finish Skill"][finishRow]["Exchanges to"])
+                    else:
+                        transformations[unit[0]]=[unitDictionary["Finish Skill"][finishRow]["Exchanges to"]]
 
 
             if(unitDictionary["Passive"]!=None):
                 for passiveLine in unitDictionary["Passive"]:
                     if "Transformation" in unitDictionary["Passive"][passiveLine]:
                         unitDictionary["Transformations"].append(unitDictionary["Passive"][passiveLine]["Transformation"]["Unit"])
+                        if(unit[0] in transformations):
+                            transformations[unit[0]].append(unitDictionary["Passive"][passiveLine]["Transformation"]["Unit"])
+                        else:
+                            transformations[unit[0]]=[unitDictionary["Passive"][passiveLine]["Transformation"]["Unit"]]
             if(unitDictionary["Active Skill"]!=None):
                 for activeLine in unitDictionary["Active Skill"]["Effects"]:
                     if "Unit" in unitDictionary["Active Skill"]["Effects"][activeLine]["Effect"]:
                         unitDictionary["Transformations"].append(unitDictionary["Active Skill"]["Effects"][activeLine]["Effect"]["Unit"])
+                        if(unit[0] in transformations):
+                            transformations[unit[0]].append(unitDictionary["Active Skill"]["Effects"][activeLine]["Effect"]["Unit"])
+                        else:
+                            transformations[unit[0]]=[unitDictionary["Active Skill"]["Effects"][activeLine]["Effect"]["Unit"]]
+
+            unitDictionary["Transforms from"]=[]
+
+            for transform in transformations:
+                if(unit[0] in transformations[transform]):
+                    unitDictionary["Transforms from"].append(transform)
+
+
 
             unitDictionary["Dokkan awakenings"]=[]
             relevant_awakenings=searchbycolumn(code=unit1[0],database=card_awakening_routesJP,column=2)
             relevant_awakenings=searchbycolumn(code="CardAwakeningRoute::Dokkan",database=relevant_awakenings,column=1)
             for awakening in relevant_awakenings:
                 unitDictionary["Dokkan awakenings"].append(awakening[3])
+                dokkanAwakenings[unit[0]]=awakening[3]
             
+            unitDictionary["Dokkan Reverse awakenings"]=[]
+            for awakening in dokkanAwakenings:
+                if(dokkanAwakenings[awakening]==unit[0]):
+                    unitDictionary["Dokkan Reverse awakenings"].append(awakening)
 
 
 
