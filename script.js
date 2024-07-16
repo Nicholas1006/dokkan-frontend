@@ -20,10 +20,6 @@ document.addEventListener('DOMContentLoaded', function() {
     webFunctions.createCharacterSelection();
   }
   else{
-    
-
-    let assetSubURL=subURL;
-
     if(isSeza == "True"){
       jsonPromise=webFunctions.getJson('dbManagement/jsonsSEZA/',subURL,'.json');
     }
@@ -33,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
     else{
       jsonPromise=webFunctions.getJson('dbManagement/jsons/',subURL,'.json');
     }
-
   jsonPromise.then(json => {
     webFunctions.initialiseAspects(json);
     webFunctions.createLeaderStats();
