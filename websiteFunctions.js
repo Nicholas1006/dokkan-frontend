@@ -465,8 +465,17 @@ export function createStarButton(json){
 }
 
 export function createKiCircles(json){
-    
     let kiContainer = document.getElementById("ki-container");
+    let defaultKi
+    if(json["Rarity"]=="lr"){
+        defaultKi=24;
+    }
+    else{
+        defaultKi=12
+    }
+    if(kiContainer.childNodes.length>1){
+        defaultKi=kiContainer.childNodes[1].firstChild.value;
+    }
     while (kiContainer.firstChild) {
         kiContainer.removeChild(kiContainer.firstChild);
     }
@@ -594,7 +603,7 @@ export function createKiCircles(json){
     //set the slider max
     slider.max = maxKi;
     //set the slider value
-    slider.value = maxKi;
+    slider.value = defaultKi;
     //set the slider step
     slider.step = "1";
     //set the slider oninput function
@@ -1355,7 +1364,7 @@ export function loadPage(firstTime=false){
         createTransformationContainer(json);
         createDokkanAwakenContainer(json);
         createLevelSlider(json);
-        createKiCircles(json);
+        createKiCircles(json,firstTime);
         createSuperAttackContainer(json);
         createPassiveContainer(json);
         AdjustBaseStats();
