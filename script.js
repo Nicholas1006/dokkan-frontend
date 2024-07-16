@@ -304,6 +304,21 @@ document.addEventListener('DOMContentLoaded', function() {
       if( Array.isArray(transformations) && transformations.length){
         for (const transformationID of transformations){
           let unitID = transformationID;
+          //creates a button that links to the suburl of the unit with the background set to the unitID within the assets/final_assets folder
+          let transformationButton = document.createElement('button');
+          transformationButton.style.backgroundImage = "url('dbManagement/assets/final_assets/"+unitID+".png')";
+          transformationButton.id="transformation-button";
+          transformationButton.style.gridRow="1";
+          transformationContainer.appendChild(transformationButton);
+          transformationButton.onclick = function(){
+            window.location.href = "?id="+unitID;
+          }
+        }
+      } 
+      let previousTransformations = json["Transforms from"]
+      if( Array.isArray(previousTransformations) && previousTransformations.length){
+        for (const transformationID of previousTransformations){
+          let unitID = transformationID;
           if(unitID[6]=="1"){
             unitID = unitID.slice(0, -1)+0;
           }
@@ -311,14 +326,13 @@ document.addEventListener('DOMContentLoaded', function() {
           let transformationButton = document.createElement('button');
           transformationButton.style.backgroundImage = "url('dbManagement/assets/final_assets/"+unitID+".png')";
           transformationButton.id="transformation-button";
+          transformationButton.style.gridRow="2";
           transformationContainer.appendChild(transformationButton);
           transformationButton.onclick = function(){
             window.location.href = "?id="+unitID;
           }
         }
-      } else {
-        transformationContainer.style.display = "none";
-      }
+      } 
     }
     );
 
@@ -335,13 +349,29 @@ document.addEventListener('DOMContentLoaded', function() {
           let AwakeningsButton = document.createElement('button');
           AwakeningsButton.style.backgroundImage = "url('dbManagement/assets/final_assets/"+unitID+".png')";
           AwakeningsButton.id="awakenings-button";
+          AwakeningsButton.style.gridRow="1";
           AwakeningsContainer.appendChild(AwakeningsButton);
           AwakeningsButton.onclick = function(){
             window.location.href = "?id="+unitID;
           }
         }
-      } else {
-        AwakeningsContainer.style.display = "none";
+      }
+      let previousAwakenings = json["Dokkan Reverse awakenings"]
+      if( Array.isArray(previousAwakenings) && previousAwakenings.length){
+        for (const AwakeningsID of previousAwakenings){
+          let unitID = AwakeningsID;
+          //creates a button that links to the suburl of the unit with the background set to the unitID within the assets/final_assets folder
+          let AwakeningsButton = document.createElement('button');
+          AwakeningsButton.style.backgroundImage = "url('dbManagement/assets/final_assets/"+unitID+".png')";
+          AwakeningsButton.id="awakenings-button";
+          AwakeningsButton.style.gridRow="2";
+          AwakeningsButton.style.margin="0px";
+          AwakeningsButton.style.border="0px";
+          AwakeningsContainer.appendChild(AwakeningsButton);
+          AwakeningsButton.onclick = function(){
+            window.location.href = "?id="+unitID;
+          }
+        }
       }
     }
     );
@@ -491,7 +521,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     jsonPromise.then(json => {
       //create ki circle
-      webFunctions.createKiCircle(json);
+      webFunctions.createKiCircles(json);
     });
 
     //create queries based on the passive skill conditions
@@ -535,7 +565,7 @@ document.addEventListener('DOMContentLoaded', function() {
           if(!(details.includes(key))) {
             // non-damage buffs from the super attack
             let buffs = superAttack[key];
-            if(buffs["Duration"]!="1" && key!="superCondition"){
+            if(buffs["Duration"]!="1" && buffs["Duration"]!="2" && key!="superCondition"){
               let superAttackSlider = document.createElement('input');
               let superAttackQuestion = document.createElement('label');
               superAttackSlider.innerText = "How many times has this unit performed " + superAttack["superName"] + " within the last " + buffs["Duration"] + " turns: 0";

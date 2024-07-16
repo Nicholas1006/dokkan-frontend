@@ -19,7 +19,7 @@ export function getJson(prefix,name,suffix) {
       });
   }
 
-export function createKiCircle(json){
+export function createKiCircles(json){
     
     let kiContainer = document.getElementById("ki-container");
 
