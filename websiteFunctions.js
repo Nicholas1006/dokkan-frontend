@@ -5,6 +5,7 @@ export function getJson(prefix,name,suffix) {
           if (!response.ok) {
             if(name[6]=="0"){
                 name=name.slice(0, -1)+ "1";
+                updateQueryStringParameter("id",name);
                 return(getJson(prefix,name,suffix))
             }
             else{
@@ -18,6 +19,204 @@ export function getJson(prefix,name,suffix) {
           throw error; // Re-throw the error to propagate it to the caller
       });
   }
+
+export function createCharacterSelection(){
+    const allUnitsJsonPromise=getJson('dbManagement/jsons/','allUnits','.json');
+    allUnitsJsonPromise.then(allUnitsJson => {
+      document.getElementById("image-container").style.display="none";
+      document.getElementById("base-stats").style.display="none";
+      document.getElementById("links-and-leads").style.display="none";
+      document.getElementById("super-passive-container").style.display="none";
+      const UNITSTODISPLAY = 40000;
+      const unitsContainer = document.getElementById('unit-selection-container');
+      unitsContainer.style.width="100%";
+      for (let i = UNITSTODISPLAY; i > 0;i--) {
+        if(i<allUnitsJson.length){
+          const unitButton = document.createElement('a');
+          unitButton.id = "unit-button";
+          unitButton.href = "?id=" + allUnitsJson[i];
+          unitButton.style.backgroundImage = "url('dbManagement/assets/final_assets/"+allUnitsJson[i]+".png')";
+          unitButton.className="unit-selection-button";
+          unitsContainer.appendChild(unitButton);
+        }
+      }
+    });
+}
+
+export function createLeaderStats(){
+    const seperateOrJoin=document.getElementById('seperate-or-join-leader');
+    seperateOrJoin.textContent="Joint Leader Skills";
+    seperateOrJoin.classList.add('JointLeader');
+    seperateOrJoin.addEventListener('click', function(){
+      if(seperateOrJoin.textContent=="Seperate Leader Skills"){
+        seperateOrJoin.classList.remove('SeperateLeader');
+        seperateOrJoin.classList.add('JointLeader');
+  //      seperateOrJoin.style.width="110px";
+        seperateOrJoin.textContent="Joint Leader Skills";
+        //seperateOrJoin.style.background = "url('dbManagement/assets/misc/leader_icon.png') repeat left";
+        leaderAInput.style.display="none";
+        leaderBInput.style.display="none";
+        leaderTotalInput.style.display="block";
+      } else {
+        seperateOrJoin.classList.remove('JointLeader');
+        seperateOrJoin.classList.add('SeperateLeader');
+        seperateOrJoin.textContent="Seperate Leader Skills";
+        //seperateOrJoin.style.background = "url('dbManagement/assets/misc/sub_leader_icon.png') repeat left";
+  //      seperateOrJoin.style.width="220px";
+        leaderAInput.style.display="block";
+        leaderBInput.style.display="block";
+        leaderTotalInput.style.display="none";
+      }
+    });
+
+    const leaderContainer=document.getElementById('leader-container');
+    leaderContainer.style.display="grid";
+    let leaderAInput=document.getElementById('leader-1Input');
+    leaderAInput.value=200;
+    let leaderBInput=document.getElementById('leader-2Input');
+    leaderBInput.value=200;
+    let leaderTotalInput=document.getElementById('leader-TotalInput');
+    leaderTotalInput.value=400;
+    leaderAInput.addEventListener('input', function(){
+      leaderTotalInput.value=parseInt(leaderAInput.value)+parseInt(leaderBInput.value);
+    });
+
+    leaderBInput.addEventListener('input', function(){
+      leaderTotalInput.value=parseInt(leaderAInput.value)+parseInt(leaderBInput.value);
+    });
+    
+    leaderTotalInput.addEventListener('input', function(){
+      leaderAInput.value=Math.floor(parseInt(leaderTotalInput.value)/2);
+      if(parseInt(leaderTotalInput.value)%2==0){
+        leaderBInput.value=Math.floor(parseInt(leaderTotalInput.value)/2);
+      } else {
+        leaderBInput.value=Math.floor(parseInt(leaderTotalInput.value)/2)+1;
+      }
+    });
+    leaderAInput.style.display="none";
+    leaderBInput.style.display="none";
+    leaderTotalInput.style.display="block";
+}
+
+export function createLinkStats(json){
+    const linksContainer=document.getElementById('links-container');
+    let links =json["Links"];
+    let linkNumber=0;
+    for (const link of Object.keys(links)){
+      let linkName = link;
+      let linkLevel = 10;
+      let linkData = links[linkName][linkLevel];
+      let linkButton = document.createElement('button');
+      linkButton.innerHTML = linkName + " <br>Level: " + linkLevel;
+      linkButton.id="links-button";
+      linkButton.style.display="block"
+      linkButton.style.background="#00FF00"
+      linkButton.style.gridRow= linkNumber*2;
+      linkButton.classList.add('active');
+      let linkSlider = document.createElement('input');
+      linkSlider.type = "range";
+      linkSlider.min = 1;
+      linkSlider.max = 10;
+      linkSlider.value = 10;
+      linkSlider.id="links-slider";
+      if(linkNumber%2==0){
+        linkButton.style.gridRow= linkNumber*2+4;
+        linkSlider.style.gridRow= linkNumber*2+5;
+        linkButton.style.gridColumn=1;
+        linkSlider.style.gridColumn=1;
+      }
+      else{
+        linkButton.style.gridRow= (-1+linkNumber)*2+4;
+        linkSlider.style.gridRow= (-1+linkNumber)*2+5;
+        linkButton.style.gridColumn=3;
+        linkSlider.style.gridColumn=3;
+      }
+      linksContainer.appendChild(linkButton);
+      
+      linksContainer.appendChild(linkSlider);
+
+      linkButton.onclick = function(){
+        if(linkButton.classList.contains('active')){
+          linkButton.style.background="#FF5C35"
+          linkButton.classList.remove('active');
+        } else {
+          linkButton.classList.add('active');
+          linkButton.style.background="#00FF00"
+        }
+        createLinkBuffs(json)
+      }
+      linkSlider.addEventListener('input', function(){
+        linkLevel = linkSlider.value;
+        linkButton.innerHTML = linkName + " <br>Level: " + linkLevel;
+        linkData = links[linkName][linkLevel];
+        createLinkBuffs(json);
+      });
+      linkNumber+=1;
+    };
+
+    
+    let allLinksSlider = document.createElement('input');
+    allLinksSlider.type = "range";
+    allLinksSlider.min = 1;
+    allLinksSlider.max = 10;
+    allLinksSlider.value = 10;
+    allLinksSlider.id="links-slider";
+    allLinksSlider.style.gridRowStart = "3";
+    allLinksSlider.style.gridRowEnd = "3";
+    allLinksSlider.style.gridColumnStart = "1";
+    allLinksSlider.style.gridColumnEnd = "4";
+    allLinksSlider.addEventListener('input', function(){
+      let linksContainer = document.querySelector('#links-container');
+      let linkSliders = linksContainer.querySelectorAll('input[type=range]');
+      linkSliders.forEach((slider, index) => {
+        slider.value = allLinksSlider.value;
+        let linkName = linksContainer.querySelectorAll('button')[index].textContent.split(' Level')[0];
+        linksContainer.querySelectorAll('button')[index].innerHTML = linkName + " <br>Level: " + allLinksSlider.value;
+      });
+      createLinkBuffs(json);
+    });
+    linksContainer.appendChild(allLinksSlider);
+
+    let allLinksButton = document.createElement('button');
+    allLinksButton.innerHTML = "All Links";
+    allLinksButton.id="links-button";
+    allLinksButton.style.background="#00FF00"
+    allLinksButton.style.gridRowStart = "2";
+    allLinksButton.style.gridRowEnd = "3";
+    allLinksButton.style.gridColumnStart = "1";
+    allLinksButton.style.gridColumnEnd = "4";
+    allLinksButton.classList.add('active');
+    allLinksButton.onclick = function(){
+      if(allLinksButton.classList.contains('active')){
+        allLinksButton.style.background="#FF5C35"
+        allLinksButton.classList.remove('active');
+        let linkButtons = linksContainer.querySelectorAll('button');
+        linkButtons.forEach((button, index) => {
+          button.classList.remove('active');
+          button.style.background="#FF5C35"
+        });
+      }
+      else{
+        allLinksButton.classList.add('active');
+        allLinksButton.style.background="#00FF00"
+        let linkButtons = linksContainer.querySelectorAll('button');
+        linkButtons.forEach((button, index) => {
+          button.classList.add('active');
+          button.style.background="#00FF00"
+        });
+      }
+      createLinkBuffs(json);
+    }
+    linksContainer.appendChild(allLinksButton);
+
+
+    //create an paragraph so that none of the sliders are .lastchild
+    let linkBuffs = document.createElement('p');
+    linkBuffs.innerHTML = "Link Buffs: ";
+    linksContainer.appendChild(linkBuffs);
+    //webFunctions.updateLinkBuffs(json)
+  ;
+}
 
 export function createKiCircles(json){
     
