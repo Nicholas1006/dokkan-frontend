@@ -1,4 +1,5 @@
 // Function to fetch JSON data based on sub-URL
+let currentJson = null;
 export function getJson(prefix,name,suffix) {
     return fetch(prefix + name + suffix)
       .then(response => {
@@ -219,7 +220,7 @@ export function createLinkStats(json){
 }
 
 
-export function AdjustBaseStats(json){
+export function AdjustBaseStats(){
     const statsContainer = document.getElementById('stats-container');
     const starButton=document.getElementById('star-button');
     const toggleButtons = Array.from(document.querySelectorAll('.toggle-btn1, .toggle-btn2, .toggle-btn3, .toggle-btn4'));
@@ -228,20 +229,20 @@ export function AdjustBaseStats(json){
     const ATKstat = document.createElement('p');
     const DEFstat = document.createElement('p');
     const HPstat = document.createElement('p');
-    let ATK = parseInt(json["Stats at levels"][levelSlider.value]["ATK"]);
-    let DEF = parseInt(json["Stats at levels"][levelSlider.value]["DEF"]);
-    let HP = parseInt((json["Stats at levels"][levelSlider.value]["HP"]));
+    let ATK = parseInt(currentJson["Stats at levels"][levelSlider.value]["ATK"]);
+    let DEF = parseInt(currentJson["Stats at levels"][levelSlider.value]["DEF"]);
+    let HP = parseInt((currentJson["Stats at levels"][levelSlider.value]["HP"]));
     if(starButton.classList.contains('active') || starButton.classList.contains('rainbow')){
-      ATK += parseInt(json["Hidden Potential"]["0"]["ATK"])
-      DEF += parseInt(json["Hidden Potential"]["0"]["DEF"])
-      HP += parseInt(json["Hidden Potential"]["0"]["HP"])
+      ATK += parseInt(currentJson["Hidden Potential"]["0"]["ATK"])
+      DEF += parseInt(currentJson["Hidden Potential"]["0"]["DEF"])
+      HP += parseInt(currentJson["Hidden Potential"]["0"]["HP"])
     }
     
     toggleButtons.forEach((button, index) => {
       if(button.classList.contains('active')){
-        ATK += parseInt(json["Hidden Potential"][index+1]["ATK"])
-        DEF += parseInt(json["Hidden Potential"][index+1]["DEF"])
-        HP += parseInt(json["Hidden Potential"][index+1]["HP"])
+        ATK += parseInt(currentJson["Hidden Potential"][index+1]["ATK"])
+        DEF += parseInt(currentJson["Hidden Potential"][index+1]["DEF"])
+        HP += parseInt(currentJson["Hidden Potential"][index+1]["HP"])
       }
     })
   
@@ -256,38 +257,60 @@ export function AdjustBaseStats(json){
   
 export function createEzaContainer(json,isEza,isSeza){
     let ezaContainer=document.getElementById('eza-container');
+    while (ezaContainer.firstChild) {
+        ezaContainer.removeChild(ezaContainer.firstChild);
+    }
     if(json["Can EZA"]){
-    let ezaButton = document.createElement('a');
+    let ezaButton = document.createElement('button');
+    ezaButton.style.border="none";
     ezaButton.id="eza-button";
     if(isEza == "True"){
         ezaButton.style.backgroundImage = "url('dbManagement/assets/misc/eza_icon.png')";
-        ezaButton.href = "?id="+json["ID"]+"&EZA=False";
+        ezaButton.onclick = function(){
+            updateQueryStringParameter('EZA', 'False');
+            loadPage();
+        }
     }
     else{
         ezaButton.style.backgroundImage = "url('dbManagement/assets/misc/eza_icon_inactive.png')";
-        ezaButton.href = "?id="+json["ID"]+"&EZA=True";
+        ezaButton.onclick = function(){
+            updateQueryStringParameter('EZA', 'True');
+            updateQueryStringParameter('SEZA', 'False');
+            loadPage();
+        }
     }
     ezaButton.className="eza-button";
     ezaContainer.appendChild(ezaButton);
     }
     if(json["Can SEZA"]){
-    let ezaButton = document.createElement('a');
-    ezaButton.id="seza-button";
+    let sezaButton = document.createElement('a');
+    sezaButton.id="seza-button";
+    sezaButton.style.border="none";
     if(isSeza == "True"){
-        ezaButton.style.backgroundImage = "url('dbManagement/assets/misc/Seza_icon.png')";
-        ezaButton.href = "?id="+json["ID"]+"&SEZA=False";
+        sezaButton.style.backgroundImage = "url('dbManagement/assets/misc/Seza_icon.png')";
+        sezaButton.onclick = function(){
+            updateQueryStringParameter('SEZA', 'False');
+            loadPage();
+        }
     }
     else{
-        ezaButton.style.backgroundImage = "url('dbManagement/assets/misc/Seza_icon_inactive.png')";
-        ezaButton.href = "?id="+json["ID"]+"&SEZA=True";
+        sezaButton.style.backgroundImage = "url('dbManagement/assets/misc/Seza_icon_inactive.png')";
+        sezaButton.onclick = function(){
+            updateQueryStringParameter('SEZA', 'True');
+            updateQueryStringParameter('EZA', 'False');
+            loadPage();
+        }
     }
-    ezaButton.className="seza-button";
-    ezaContainer.appendChild(ezaButton);
+    sezaButton.className="seza-button";
+    ezaContainer.appendChild(sezaButton);
     }
 }
 
 export function createTransformationContainer(json){
     let transformationContainer=document.getElementById('transformation-container');
+    while (transformationContainer.firstChild) {
+        transformationContainer.removeChild(transformationContainer.firstChild);
+    }
     let transformations =json["Transformations"];
     if( Array.isArray(transformations) && transformations.length){
     for (const transformationID of transformations){
@@ -333,8 +356,12 @@ export function createLevelSlider(json){
     levelInput.value=json["Max Level"];
     levelSlider.value=json["Max Level"];
     if(json["Min Level"]==json["Max Level"]){
-    levelInput.disabled = true;
-    levelSlider.style.display = "none";
+        levelInput.disabled = true;
+        levelSlider.style.display = "none";
+    }
+    else{
+        levelInput.disabled = false;
+        levelSlider.style.display = "block";
     }
 
     levelSlider.addEventListener('input', function(){
@@ -346,10 +373,8 @@ export function createLevelSlider(json){
       if(levelInput.value>levelSlider.max){
         levelInput.value=levelSlider.max;
       }
-      levelSlider.value=levelInput.value;
-      jsonPromise.then(json => {
+        levelSlider.value=levelInput.value;
         AdjustBaseStats(json);
-      });
     });
 }
 
@@ -381,6 +406,9 @@ export function createPathButtons(json){
 
 export function createDokkanAwakenContainer(json){
     let AwakeningsContainer=document.getElementById('dokkan-awaken-container');
+    while (AwakeningsContainer.firstChild) {
+        AwakeningsContainer.removeChild(AwakeningsContainer.firstChild);
+    }
     let Awakenings =json["Dokkan awakenings"];
     if( Array.isArray(Awakenings) && Awakenings.length){
     for (const AwakeningsID of Awakenings){
@@ -439,7 +467,9 @@ export function createStarButton(json){
 export function createKiCircles(json){
     
     let kiContainer = document.getElementById("ki-container");
-
+    while (kiContainer.firstChild) {
+        kiContainer.removeChild(kiContainer.firstChild);
+    }
     let kiCircle = document.createElement("div");
     kiContainer.appendChild(kiCircle);
 
@@ -690,8 +720,9 @@ export function colorToBackground(color){
 export function createPassiveContainer(json){
     //create queries based on the passive skill conditions
     let passiveContainer=document.getElementById('passive-questions-container');
-    let superQuestionsContainer= document.getElementById('super-attack-questions-container');
-    let superBuffsContainer = document.getElementById('super-attack-buffs-container');
+    while (passiveContainer.firstChild) {
+        passiveContainer.removeChild(passiveContainer.firstChild);
+    }
     let conditions=[];
     
 
@@ -872,7 +903,13 @@ export function initialiseAspects(json) {
 export function createSuperAttackContainer(json){
     let superAttackBuffs=document.createElement('label');
     let superBuffsContainer = document.getElementById('super-attack-buffs-container');
+    while (superBuffsContainer.firstChild) {
+        superBuffsContainer.removeChild(superBuffsContainer.firstChild);
+    }
     let superQuestionsContainer= document.getElementById('super-attack-questions-container');
+    while (superQuestionsContainer.firstChild) {
+        superQuestionsContainer.removeChild(superQuestionsContainer.firstChild);
+    }
     superAttackBuffs.innerHTML = "Super Attack Buffs: ";
     superBuffsContainer.appendChild(superAttackBuffs);
     let superAttackss=json["Super Attack"];
@@ -937,6 +974,9 @@ export function updateContainer(containerId, content){
  // Function to update the image container with a new image
  export function updateImageContainer(imageContainerId, assetSubURL, typing){
   const imageContainer = document.getElementById(imageContainerId);
+  while (imageContainer.firstChild) {
+    imageContainer.removeChild(imageContainer.firstChild);
+  }
   imageContainer.style.backgroundColor = colorToBackground(typingToColor(typing));
   const cardImage = new Image();
   cardImage.onload = function() {
@@ -969,7 +1009,6 @@ export function updateSuperAttackStacks(json){
     for (const stack of superAttackStacks){
         let stackAmount = parseInt(stack.value);
         let superName=stack.textContent.split("How many times has this unit performed ")[1].split(" within the last ")[0];
-        let specifiedSuper;
         for (const superAttack in Object.keys(json["Super Attack"])){
             if(superAttack["superName"]==superName){
                 specifiedSuper=superAttack;
@@ -1253,8 +1292,6 @@ export function logicReducer(logicString, CausalityLogic){
     return(eval(logicString));
 }
 
-
-
 export function logicCalculator(logicArray,sliderState){
     let logic=logicArray[0];
     logic=logic.replaceAll("and","&&");
@@ -1273,3 +1310,60 @@ export function getBaseDomain() {
     }
     return parts.join('.');
 }
+
+export function loadPage(firstTime=false){
+    const urlParams=new URLSearchParams(window.location.search);
+    let subURL = urlParams.get('id') || "None";
+    let characterSelector = urlParams.get("Selection") || "False";
+    let isSeza = urlParams.get("SEZA") || "False";
+    let isEza;
+    let jsonPromise;
+    if(isSeza == "False"){
+        isEza = urlParams.get("EZA") || "False";
+    }
+    else{
+        isEza = "False";
+    }
+    if(subURL == "None"){
+        characterSelector = "True";
+    }
+    if(characterSelector == "True"){
+        createCharacterSelection();
+    }
+    else{
+        if(isSeza == "True"){
+        jsonPromise=getJson('dbManagement/jsonsSEZA/',subURL,'.json');
+        }
+        else if(isEza == "True"){
+        jsonPromise=getJson('dbManagement/jsonsEZA/',subURL,'.json');
+        }
+        else{
+        jsonPromise=getJson('dbManagement/jsons/',subURL,'.json');
+        }
+    }
+    jsonPromise.then(json => {
+        currentJson=json;
+        initialiseAspects(json);
+        createLeaderStats();
+        createLinkStats(json);
+        createLinkBuffs(json);
+        if(firstTime){
+            createStarButton(json);
+            createPathButtons(json);
+        }
+        createEzaContainer(json,isEza,isSeza);
+        createTransformationContainer(json);
+        createDokkanAwakenContainer(json);
+        createLevelSlider(json);
+        createKiCircles(json);
+        createSuperAttackContainer(json);
+        createPassiveContainer(json);
+        AdjustBaseStats();
+        if(json["Rarity"] == "lr" || json["Rarity"] == "ur"){
+            const buttonContainer = document.getElementById('hipo-button-container');
+            buttonContainer.style.display = "grid";
+        }
+    })
+    }
+
+    
