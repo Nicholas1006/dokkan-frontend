@@ -466,16 +466,6 @@ export function createStarButton(json){
 
 export function createKiCircles(json){
     let kiContainer = document.getElementById("ki-container");
-    let defaultKi
-    if(json["Rarity"]=="lr"){
-        defaultKi=24;
-    }
-    else{
-        defaultKi=12
-    }
-    if(kiContainer.childNodes.length>1){
-        defaultKi=kiContainer.childNodes[1].firstChild.value;
-    }
     while (kiContainer.firstChild) {
         kiContainer.removeChild(kiContainer.firstChild);
     }
@@ -603,7 +593,7 @@ export function createKiCircles(json){
     //set the slider max
     slider.max = maxKi;
     //set the slider value
-    slider.value = defaultKi;
+    slider.value = maxKi;
     //set the slider step
     slider.step = "1";
     //set the slider oninput function
@@ -618,7 +608,7 @@ export function createKiCircles(json){
     damageText.style.transform = "translate(0%, 220px";
     damageText.style.zIndex = "4";
     slider.oninput = function() {
-        let attackStat=json["Ki Multiplier"][this.value]*124852.27;
+        let attackStat=currentJson["Ki Multiplier"][this.value]*currentJson["Max Level"]*1252.27;
 
         let baseATK=document.getElementById("stats-container").value;
         attackStat=Math.round(attackStat, 2);
@@ -1353,18 +1343,21 @@ export function loadPage(firstTime=false){
     jsonPromise.then(json => {
         currentJson=json;
         initialiseAspects(json);
-        createLeaderStats();
-        createLinkStats(json);
-        createLinkBuffs(json);
         if(firstTime){
+            createLeaderStats();
+            createLinkStats(json);
+            createLinkBuffs(json);
             createStarButton(json);
             createPathButtons(json);
+            createKiCircles(json,firstTime);
+            createDokkanAwakenContainer(json);
+            createTransformationContainer(json);
+        }
+        else{
+            document.getElementById('ki-slider').dispatchEvent(new Event('input'));	
         }
         createEzaContainer(json,isEza,isSeza);
-        createTransformationContainer(json);
-        createDokkanAwakenContainer(json);
         createLevelSlider(json);
-        createKiCircles(json,firstTime);
         createSuperAttackContainer(json);
         createPassiveContainer(json);
         AdjustBaseStats();
