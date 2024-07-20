@@ -8,6 +8,7 @@ cardsJP=storedatabase(directory,"cards.csv")
 
 DEVEXCEPTIONS=False
 GLOBALPARSE=True
+GLOBALREFRESH=True
 MAKEJSON=True
 
 CALCPASSIVE=True
@@ -42,6 +43,14 @@ cardIDsToCheck=["4005630"]
 #cardIDsToCheck=["4026911","4025741","4028381","4026401","4027631","4027301","4025781","4026541"]
 
 cardsToCheck=[]
+
+
+if(GLOBALREFRESH and GLOBALPARSE):
+    emptyFolder("jsons")
+    emptyFolder("jsonsEZA")
+    emptyFolder("jsonsSEZA")
+    
+
 
 if GLOBALPARSE:
     for unit in cardsJP:
@@ -126,8 +135,8 @@ for unit in cardsToCheck:
                 linksTime+=time.time()-linksStart
 
             unitDictionary["Resource ID"]=unit[0]
-            #if(unit[48]!=""):
-            #    unitDictionary["Resource ID"]=unit[48]
+            if(unit[48]!=""):
+                unitDictionary["Resource ID"]=str(int(float(unit[48])))
             if(unit[0][-1]=="1"):
                 unitDictionary["Resource ID"]=(unit[0][:-1]+"0")
 

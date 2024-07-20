@@ -9,6 +9,7 @@ from PIL import Image
 import time
 import math
 import json
+import shutil
 
 
 def sub_target_types_extractor(sub_target_type_set_id,DEVELOPEREXCEPTIONS=False):
@@ -801,7 +802,8 @@ def getKiMultipliers(unit):
 def getStatsAtAllLevels(unit,eza):
     output={}
     maxLevel=getMaxLevel(unit,eza)
-    for level in range(1,maxLevel+1):
+    minLevel=getMinLevel(unit,eza)
+    for level in range(minLevel,maxLevel+1):
         output[level]=getUnitStats(unit,level)
     return(output)
 
@@ -2618,16 +2620,40 @@ def switchUnitToGlobal(unitJP):
 
 
 def qualifyUsable(card,printing=True):
-    #if the unit is a tur+ and id ends in 0, decline
-                                                               #ifthe unit doesnt have a passive or a link, decline
-                                                                                                        #If the unit doesnt have "selling only"
-                                                                                                                            #if it isnt the headers
-                                                                                                                                                #its release date isnt set to any of the following
-                                                                                                                                                                                                #the id doesnt start with 3 or5 or 9
-    if ( (not (card[5] in ["5","4"] and card[0][-1]=="0"))and (card[46]=="0") and (card[0]!="id") and (card[53] not in ["2030-12-31 23:59:59",'2030-01-01 00:00:00',"2038-01-01 00:00:00"]) and (card[0][0] not in["3","5","7","9"]) and card[6]!="1" and 0!=sum([card[6]%50,card[7]%50,card[8]%50,card[9]%50,card[10]%50,card[11]%50])):
-        return(True)
-    else:
+    #if the unit is a tur+ and id ends in 0
+    if(card[5] in ["5","4"] and card[0][-1]=="0"):
         return(False)
+    #if the unit id doesnt start with a 1 or a 4
+    if(card[0][0] not in ["1","4"]):
+        return(False)
+    #if the unit is selling only
+    if(card[0]=="id"):
+        return(False)
+    #if the unit has a placeholder release date
+    if(card[53] in ["2030-12-31 23:59:59",'2030-01-01 00:00:00',"2038-01-01 00:00:00"]):
+        return(False)
+    #if the unit has 1 in their stats
+    if("1" in card[6:12]):
+        return(False)
+    #if all the units stats are divisible by 50
+    if(0==sum([int(card[6])%50,int(card[7])%50,int(card[8])%50,int(card[9])%50,int(card[10])%50,int(card[11])%50])):
+        return(False)
+    #If the unit has selling only
+    if(card[46]=="1"):
+        return(False)
+    #if the unit is the header
+    return(True)
+
+def emptyFolder(path):
+    for filename in os.listdir(path):
+        file_path = os.path.join(path, filename)
+        try:
+            if os.path.isfile(file_path) or os.path.islink(file_path):
+                os.unlink(file_path)
+            elif os.path.isdir(file_path):
+                shutil.rmtree(file_path)
+        except Exception as e:
+            print('Failed to delete %s. Reason: %s' % (file_path, e))
 
 def getKiCircleSegments(unitDictionary):
     kiAmounts=unitDictionary["Ki Multiplier"]
@@ -2768,7 +2794,7 @@ def createEZAWallpapers(cards, directory,printing=True):
 def parsePassiveSkill(unit,eza=False,seza=False,DEVEXCEPTIONS=False):
     output={}
     passiveIdList=getpassiveid(unit,eza,seza)
-    if (passiveIdList!=None and qualifyUsable(unit)):
+    if (passiveIdList!=None):
         for passiveskill in passive_skillsJP[1:]:
             if (passiveskill[0] in passiveIdList):
                 parsedLine=(extractPassiveLine(unit,passiveskill,printing=False,DEVEXCEPTIONS=DEVEXCEPTIONS))
