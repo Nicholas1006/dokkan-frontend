@@ -437,7 +437,7 @@ export function createDokkanAwakenContainer(json){
         AwakeningsButton.id="awakenings-button";
         AwakeningsButton.style.gridRow="2";
         AwakeningsButton.style.margin="0px";
-        AwakeningsButton.style.border="0px";
+        AwakeningsButton.style.border="none";
         AwakeningsContainer.appendChild(AwakeningsButton);
         AwakeningsButton.onclick = function(){
         window.location.href = "?id="+unitID;
@@ -470,12 +470,15 @@ export function createKiCircles(json){
         kiContainer.removeChild(kiContainer.firstChild);
     }
     let kiCircle = document.createElement("div");
+    kiCircle.style.border = "none";
     kiContainer.appendChild(kiCircle);
 
 
     kiCircle.style.width = "220px";
     kiCircle.style.height = "220px";
     let circleBase = document.createElement("img");
+    circleBase.id="circle-base";
+    circleBase.style.border = "none";
     if(json.Typing=="AGL"){
         circleBase.style.backgroundImage = "url('dbManagement/assets/misc/chara_icon/ing_type_gauge_base_00.png')";
     }
@@ -517,6 +520,7 @@ export function createKiCircles(json){
     //create the unit image in the ki circle
     let unitImage = document.createElement("img");
     kiCircle.appendChild(unitImage);
+    unitImage.id="unit-circle-image";
     unitImage.style.width = "220px";
     unitImage.style.height = "220px";
     let assetID=json["ID"].slice(0, -1)+ "0";
@@ -581,7 +585,7 @@ export function createKiCircles(json){
     kiContainer.appendChild(kiInput);
     //create the slider input
     let slider = document.createElement("input");
-    kiInput.appendChild(slider);
+    kiContainer.appendChild(slider);
     //set the slider class
     slider.className = "ki-slider";
     //set the slider type
@@ -597,6 +601,7 @@ export function createKiCircles(json){
     //set the slider step
     slider.step = "1";
     //set the slider oninput function
+    slider.style.gridRow="-1";
 
     let damageText=document.createElement("div");
     kiCircle.appendChild(damageText);
@@ -605,7 +610,7 @@ export function createKiCircles(json){
     damageText.style.width="220px"
     damageText.style.height="50px"
     damageText.style.position = "absolute";
-    damageText.style.transform = "translate(0%, 220px";
+    damageText.style.transform = "translate(0%, 220px)";
     damageText.style.zIndex = "4";
     slider.oninput = function() {
         let attackStat=currentJson["Ki Multiplier"][this.value]*currentJson["Max Level"]*1252.27;
@@ -1231,7 +1236,7 @@ export function updatePassiveBuffs(json,CausalityLogic){
         "Hit recieved":{},
         "End of turn":{},
         "After all ki collected":{},
-        "Actuvating standby":{},
+        "Activating standby":{},
         "When final blow delivered":{},
         "When ki spheres collected":{}
     }
