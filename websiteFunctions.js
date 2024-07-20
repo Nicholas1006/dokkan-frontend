@@ -1,3 +1,200 @@
+class kiCircleClass{
+
+    constructor(json){
+        this.json=json;
+        this.attackStat=0;
+        this.imageUrl = json["Resource ID"];
+
+
+
+
+        this.kiCircle=document.createElement("div");
+        this.kiCircle.style.width="220px";
+        this.kiCircle.style.height="220px";
+        let circleBase=document.createElement("img");
+        circleBase.id="circle-base";
+        if(json.Typing=="AGL"){
+            circleBase.style.backgroundImage = "url('dbManagement/assets/misc/chara_icon/ing_type_gauge_base_00.png')";
+        }
+        else if(json.Typing=="TEQ"){
+            circleBase.style.backgroundImage = "url('dbManagement/assets/misc/chara_icon/ing_type_gauge_base_01.png')";
+        }
+        else if(json.Typing=="INT"){
+            circleBase.style.backgroundImage = "url('dbManagement/assets/misc/chara_icon/ing_type_gauge_base_02.png')";
+        }
+        else if(json.Typing=="STR"){
+            circleBase.style.backgroundImage = "url('dbManagement/assets/misc/chara_icon/ing_type_gauge_base_03.png')";
+        }
+        else if(json.Typing=="PHY"){
+            circleBase.style.backgroundImage = "url('dbManagement/assets/misc/chara_icon/ing_type_gauge_base_04.png')";
+        }
+        circleBase.style.width="220px";
+        circleBase.style.height="220px";
+        circleBase.style.backgroundSize = "100% 100%";
+        circleBase.style.backgroundPosition = "center";
+        circleBase.style.backgroundRepeat = "no-repeat";
+        circleBase.style.position = "absolute";
+        circleBase.style.zIndex = "0";
+        this.kiCircle.appendChild(circleBase);
+        let maxKi;
+        if(json["Rarity"]=="lr"){
+            maxKi=24;
+        }
+        else{
+            maxKi=12;
+        }
+        this.kiAmount=maxKi
+        let unitImage = document.createElement("img");
+        this.kiCircle.appendChild(unitImage);
+        unitImage.id="unit-circle-image";
+        unitImage.style.width = "220px";
+        unitImage.style.height = "220px";
+        let assetID=json["ID"].slice(0, -1)+ "0";
+        unitImage.style.backgroundImage = "url('dbManagement/assets/circle/" + assetID + ".png')";
+        unitImage.style.backgroundSize = "100% 100%";
+        unitImage.style.backgroundPosition = "center";
+        unitImage.style.backgroundRepeat = "no-repeat";
+        unitImage.style.position = "absolute";
+        unitImage.style.zIndex = "1";
+
+        //for loop that iterates 12 times
+        this.segments=[]
+        for (let i = 0; i < 12; i++) {
+            //create a circle segment
+            let circleSegment = document.createElement("div");
+            this.segments.push(circleSegment);
+            this.kiCircle.appendChild(circleSegment);
+            //reference the style.css
+            circleSegment.className = "ki-circle-segment";
+            //set the circle segment position
+            circleSegment.style.rotate = (15 + (i * 30)) + "deg";
+            //place the circle segment in the correct position relative to the kiCircle div
+            let xOffset = 61;
+            let yOffset = -25;
+            circleSegment.style.transformOrigin = "100% 100%";
+            circleSegment.style.transform = "translate(" + xOffset + "px, " + yOffset + "px)";
+            //set the circle segment to the front of the circle
+            circleSegment.style.zIndex = "2";
+            //add the circle segment to the circle
+        }
+        if(maxKi==24){
+            for (let i=12; i<24; i++){
+                //create a circle segment
+                let circleSegment = document.createElement("div");
+                this.segments.push(circleSegment);
+                this.kiCircle.appendChild(circleSegment);
+                //reference the style.css
+                circleSegment.className = "ki-circle-segment";
+    //            circleSegment.style.height="220px"
+
+                //set the circle segment position
+                circleSegment.style.backgroundSize = "100% 100%";
+                //place the circle segment in the correct position relative to the kiCircle div
+                let rotateAmount = (15 + (i * 30));
+                let xOffset = 0;
+                let yOffset = -20;
+                circleSegment.style.transform = "translateX(55px)"
+                circleSegment.style.transformOrigin = "50% 100%";
+                circleSegment.style.transform += "rotateZ("+rotateAmount+"deg)" ;
+                circleSegment.style.transform += "translateY("+yOffset+"px)";
+                circleSegment.style.transform += "translateX("+xOffset+"px)";
+                circleSegment.style.transform += "scaleY(1.24)";
+    //            circleSegment.style.transform = "rotateY(-45deg) scaleY(1.3) scaleX(1.1) translate(50px, -10px)";
+                //set the circle segment to the front of the circle
+                circleSegment.style.zIndex = "1";
+                //add the circle segment to the circle
+            }
+        }
+
+        this.damageText=document.createElement("div");
+        this.kiCircle.appendChild(this.damageText);
+        this.damageText.className="ki-damage-text";
+        this.damageText.id="ki-damage-text";
+        this.damageText.style.width="220px"
+        this.damageText.style.height="50px"
+        this.damageText.style.position = "absolute";
+        this.damageText.style.transform = "translate(0%, 220px)";
+        this.damageText.style.zIndex = "4";
+    }
+
+    getElement(){
+        return this.kiCircle;
+    }
+
+    updateKi(value){
+        let maxKi;
+        if(this.json["Rarity"]=="lr"){
+            maxKi=24;
+        }
+        else{
+            maxKi=12;
+        }
+        if(value>maxKi){
+            value=maxKi;
+        }
+        else if(value<0){
+            value=0
+        }
+        else{
+            value=value
+        }
+        this.kiAmount=value;
+
+
+        for (let i = 0; i < maxKi; i++) {
+            //get the current segment
+            let currentSegment = this.segments[i];
+            if (i < this.kiAmount && i+12 >= this.kiAmount) {
+                if(i>=12){
+                    currentSegment.style.zIndex = "3";
+                    currentSegment.style.display="block";
+                }
+                if(i<2 && this.json["Ki Circle Segments"][i+1]=="equal"){
+                    currentSegment.classList.add("weaker");
+
+                }
+                else{
+                    currentSegment.classList.add(this.json["Ki Circle Segments"][i+1]);
+                }
+            } else {
+                if(i>=12){
+                    currentSegment.style.zIndex = "1";
+                    currentSegment.style.display="none";
+                }
+                if(i<2 && this.json["Ki Circle Segments"][i+1]=="equal"){
+                    currentSegment.classList.remove("weaker");
+
+                }
+                else{
+                    currentSegment.classList.remove(this.json["Ki Circle Segments"][i+1]);
+                }
+            }
+        }
+    }
+
+    updateValue(value){
+        this.attackStat=parseInt(value);
+        while (this.damageText.firstChild) {
+            this.damageText.removeChild(this.damageText.firstChild);
+        }
+
+
+        for(let char of value.toString()){
+            const numDiv = document.createElement('div');
+            numDiv.className="ki-damage-text";
+            numDiv.classList.add(`num-${char}`);
+            this.damageText.appendChild(numDiv);
+        }
+
+        
+        
+    }
+
+
+}
+
+
+
 // Function to fetch JSON data based on sub-URL
 let currentJson = null;
 export function getJson(prefix,name,suffix) {
@@ -464,212 +661,23 @@ export function createStarButton(json){
     });
 }
 
-export function createKiCircles(json){
+
+export function createKiCirclesWithClass(json){
     let kiContainer = document.getElementById("ki-container");
     while (kiContainer.firstChild) {
         kiContainer.removeChild(kiContainer.firstChild);
     }
-    let kiCircle = document.createElement("div");
-    kiCircle.style.border = "none";
-    kiContainer.appendChild(kiCircle);
 
-
-    kiCircle.style.width = "220px";
-    kiCircle.style.height = "220px";
-    let circleBase = document.createElement("img");
-    circleBase.id="circle-base";
-    circleBase.style.border = "none";
-    if(json.Typing=="AGL"){
-        circleBase.style.backgroundImage = "url('dbManagement/assets/misc/chara_icon/ing_type_gauge_base_00.png')";
-    }
-    else if(json.Typing=="TEQ"){
-        circleBase.style.backgroundImage = "url('dbManagement/assets/misc/chara_icon/ing_type_gauge_base_01.png')";
-    }
-    else if(json.Typing=="INT"){
-        circleBase.style.backgroundImage = "url('dbManagement/assets/misc/chara_icon/ing_type_gauge_base_02.png')";
-    }
-    else if(json.Typing=="STR"){
-        circleBase.style.backgroundImage = "url('dbManagement/assets/misc/chara_icon/ing_type_gauge_base_03.png')";
-    }
-    else if(json.Typing=="PHY"){
-        circleBase.style.backgroundImage = "url('dbManagement/assets/misc/chara_icon/ing_type_gauge_base_04.png')";
+    for (let i = 0; i < 2; i++) {
+        const kiCircle = new kiCircleClass(json);
+        kiCircle.updateValue(i*100);
+        kiCircle.updateKi(i*6);
+        kiContainer.appendChild(kiCircle.getElement());
     }
 
-    circleBase.style.width = "220px";
-    circleBase.style.height = "220px";
-
-    circleBase.style.backgroundSize = "100% 100%";
-
-    circleBase.style.backgroundPosition = "center";
-
-    circleBase.style.backgroundRepeat = "no-repeat";
-
-    circleBase.style.position = "absolute";
-
-    circleBase.style.zIndex = "0";
-
-    kiCircle.appendChild(circleBase);
-    let maxKi;
-    if(json["Rarity"]=="lr"){
-        maxKi=24;
-    }
-    else{
-        maxKi=12
-    }
-
-    //create the unit image in the ki circle
-    let unitImage = document.createElement("img");
-    kiCircle.appendChild(unitImage);
-    unitImage.id="unit-circle-image";
-    unitImage.style.width = "220px";
-    unitImage.style.height = "220px";
-    let assetID=json["ID"].slice(0, -1)+ "0";
-    unitImage.style.backgroundImage = "url('dbManagement/assets/circle/" + assetID + ".png')";
-    unitImage.style.backgroundSize = "100% 100%";
-    unitImage.style.backgroundPosition = "center";
-    unitImage.style.backgroundRepeat = "no-repeat";
-    unitImage.style.position = "absolute";
-    unitImage.style.zIndex = "1";
     
-
-    //for loop that iterates 12 times
-    for (let i = 0; i < 12; i++) {
-        //create a circle segment
-        let circleSegment = document.createElement("div");
-        kiCircle.appendChild(circleSegment);
-        //reference the style.css
-        circleSegment.className = "ki-circle-segment";
-        //set the circle segment position
-        circleSegment.style.rotate = (15 + (i * 30)) + "deg";
-        //place the circle segment in the correct position relative to the kiCircle div
-        let xOffset = 61;
-        let yOffset = -25;
-        circleSegment.style.transformOrigin = "100% 100%";
-        circleSegment.style.transform = "translate(" + xOffset + "px, " + yOffset + "px)";
-        //set the circle segment to the front of the circle
-        circleSegment.style.zIndex = "2";
-        //add the circle segment to the circle
-    }
-    if(maxKi==24){
-        for (let i=12; i<24; i++){
-            //create a circle segment
-            let circleSegment = document.createElement("div");
-            kiCircle.appendChild(circleSegment);
-            //reference the style.css
-            circleSegment.className = "ki-circle-segment";
-//            circleSegment.style.height="220px"
-
-            //set the circle segment position
-            circleSegment.style.backgroundSize = "100% 100%";
-            //place the circle segment in the correct position relative to the kiCircle div
-            let rotateAmount = (15 + (i * 30));
-            let xOffset = 0;
-            let yOffset = -20;
-            circleSegment.style.transform = "translateX(55px)"
-            circleSegment.style.transformOrigin = "50% 100%";
-            circleSegment.style.transform += "rotateZ("+rotateAmount+"deg)" ;
-            circleSegment.style.transform += "translateY("+yOffset+"px)";
-            circleSegment.style.transform += "translateX("+xOffset+"px)";
-            circleSegment.style.transform += "scaleY(1.24)";
-//            circleSegment.style.transform = "rotateY(-45deg) scaleY(1.3) scaleX(1.1) translate(50px, -10px)";
-            //set the circle segment to the front of the circle
-            circleSegment.style.zIndex = "1";
-            //add the circle segment to the circle
-        }
-    }
-    
-
-
-
-    let kiInput = document.createElement("div");
-    kiContainer.appendChild(kiInput);
-    //create the slider input
-    let slider = document.createElement("input");
-    kiContainer.appendChild(slider);
-    //set the slider class
-    slider.className = "ki-slider";
-    //set the slider type
-    slider.type = "range";
-    //set the slider id
-    slider.id = "ki-slider";
-    //set the slider min
-    slider.min = "0";
-    //set the slider max
-    slider.max = maxKi;
-    //set the slider value
-    slider.value = maxKi;
-    //set the slider step
-    slider.step = "1";
-    //set the slider oninput function
-    slider.style.gridRow="-1";
-
-    let damageText=document.createElement("div");
-    kiCircle.appendChild(damageText);
-    damageText.className="ki-damage-text";
-    damageText.id="ki-damage-text";
-    damageText.style.width="220px"
-    damageText.style.height="50px"
-    damageText.style.position = "absolute";
-    damageText.style.transform = "translate(0%, 220px)";
-    damageText.style.zIndex = "4";
-    slider.oninput = function() {
-        let attackStat=currentJson["Ki Multiplier"][this.value]*currentJson["Max Level"]*1252.27;
-
-        let baseATK=document.getElementById("stats-container").value;
-        attackStat=Math.round(attackStat, 2);
-        let numStr=attackStat.toString();
-        const attackDisplay=document.getElementById("ki-damage-text");
-        //remove all children of attackDisplay
-        while (attackDisplay.firstChild) {
-            attackDisplay.removeChild(attackDisplay.firstChild);
-        }
-
-
-        for(let char of numStr){
-            const numDiv = document.createElement('div');
-            numDiv.className="ki-damage-text";
-            numDiv.classList.add(`num-${char}`);
-            attackDisplay.appendChild(numDiv);
-        }
-
-
-        let segments = document.getElementsByClassName("ki-circle-segment");
-        for (let i = 0; i < maxKi; i++) {
-            //get the current segment
-            let currentSegment = segments[i];
-            if (i < this.value && i+12 >= this.value) {
-                if(i>=12){
-                    currentSegment.style.zIndex = "3";
-                    currentSegment.style.display="block";
-                }
-                if(i<2 && json["Ki Circle Segments"][i+1]=="equal"){
-                    currentSegment.classList.add("weaker");
-
-                }
-                else{
-                    currentSegment.classList.add(json["Ki Circle Segments"][i+1]);
-                }
-            } else {
-                if(i>=12){
-                    currentSegment.style.zIndex = "1";
-                    currentSegment.style.display="none";
-                }
-                if(i<2 && json["Ki Circle Segments"][i+1]=="equal"){
-                    currentSegment.classList.remove("weaker");
-
-                }
-                else{
-                    currentSegment.classList.remove(json["Ki Circle Segments"][i+1]);
-                }
-            }
-        }
-    }
-    
-    slider.dispatchEvent(new Event('input'));	
-
-
-
 }
+
 
 export function updateQueryStringParameter(key, value) {
     const url = new URL(window.location.href);
@@ -1354,7 +1362,7 @@ export function loadPage(firstTime=false){
             createLinkBuffs(json);
             createStarButton(json);
             createPathButtons(json);
-            createKiCircles(json,firstTime);
+            createKiCirclesWithClass(json,firstTime);
             createDokkanAwakenContainer(json);
             createTransformationContainer(json);
         }
