@@ -37,7 +37,7 @@ linksTime=0.0
 circleTime=0.0
 multiplierTime=0.0
 
-cardIDsToCheck=["4028031"]
+cardIDsToCheck=["4005630"]
 
 #cardIDsToCheck=["4026911","4025741","4028381","4026401","4027631","4027301","4025781","4026541"]
 
@@ -66,7 +66,6 @@ passivecount=0
 #passive=(passivename(mainunit,passive_skills))
 #passiveIdList=getpassiveid(mainunit,cards,optimal_awakening_growths,passive_skill_set_relations,eza)
 #print(passive)
-longestPassive=["a"]
 HiPoBoards={}
 
 if GLOBALPARSE:
@@ -126,6 +125,11 @@ for unit in cardsToCheck:
                 unitDictionary["Links"]=getalllinkswithbuffs(unit)
                 linksTime+=time.time()-linksStart
 
+            unitDictionary["Resource ID"]=unit[0]
+            #if(unit[48]!=""):
+            #    unitDictionary["Resource ID"]=unit[48]
+            if(unit[0][-1]=="1"):
+                unitDictionary["Resource ID"]=(unit[0][:-1]+"0")
 
             unitDictionary["Passive"]={}
             if(CALCPASSIVE):

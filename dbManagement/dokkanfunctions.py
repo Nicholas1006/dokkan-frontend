@@ -2616,6 +2616,7 @@ def switchUnitToGlobal(unitJP):
         unitGB=None
     return(unitGB)
 
+
 def qualifyUsable(card,printing=True):
     #if the unit is a tur+ and id ends in 0, decline
                                                                #ifthe unit doesnt have a passive or a link, decline
@@ -2623,7 +2624,7 @@ def qualifyUsable(card,printing=True):
                                                                                                                             #if it isnt the headers
                                                                                                                                                 #its release date isnt set to any of the following
                                                                                                                                                                                                 #the id doesnt start with 3 or5 or 9
-    if ( (not (card[5] in ["5","4"] and card[0][-1]=="0"))and (card[46]=="0") and (card[0]!="id") and (card[53] not in ["2030-12-31 23:59:59",'2030-01-01 00:00:00',"2038-01-01 00:00:00"]) and (card[0][0] not in["3","5","7","9"]) and card[6]!="1"):
+    if ( (not (card[5] in ["5","4"] and card[0][-1]=="0"))and (card[46]=="0") and (card[0]!="id") and (card[53] not in ["2030-12-31 23:59:59",'2030-01-01 00:00:00',"2038-01-01 00:00:00"]) and (card[0][0] not in["3","5","7","9"]) and card[6]!="1" and 0!=sum([card[6]%50,card[7]%50,card[8]%50,card[9]%50,card[10]%50,card[11]%50])):
         return(True)
     else:
         return(False)
