@@ -527,9 +527,6 @@ export function createTransformationContainer(json){
     if( Array.isArray(previousTransformations) && previousTransformations.length){
     for (const transformationID of previousTransformations){
         let unitID = transformationID;
-        if(unitID[6]=="1"){
-        unitID = unitID.slice(0, -1)+0;
-        }
         //creates a button that links to the suburl of the unit with the background set to the unitID within the assets/final_assets folder
         let transformationButton = document.createElement('button');
         transformationButton.style.backgroundImage = "url('dbManagement/assets/final_assets/"+unitID+".png')";
