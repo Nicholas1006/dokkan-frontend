@@ -1,5 +1,4 @@
 class kiCircleClass{
-
     constructor(json){
         this.json=json;
         this.attackStat=0;
@@ -194,10 +193,12 @@ class kiCircleClass{
 }
 
 
-class superAttackQuery{
+class superAttackQueryHolder{
 
-    constructor(superAttack){
+    constructor(superAttack,maxPerTurn,unitID){
         this.superAttack=superAttack;
+        this.selfContainer=document.createElement("div");
+        this.selfContainer.style.display="grid";
         for(const key of Object.keys(superAttack)){
             let details=["superID",
                 "superName",
@@ -212,29 +213,100 @@ class superAttackQuery{
                 "SpecialBonus",
                 "superCondition",
                 "Multiplier"]
-            if(!details.includes(key)){
+            if(!details.includes(key) &&superAttack[key]["Duration"]!="1" && superAttack[key]["Duration"]!="2"){
                 let buffs=superAttack[key];
-                if(buffs["Duration"]!="1" && buffs["Duration"]!="2"){
-                    
-                }
+                let buffHolder= new superAttackQuery(buffs,maxPerTurn,unitID,superAttack["superName"]);
+                this.selfContainer.appendChild(buffHolder.getElement());
             }
         }
     }
+    getElement(){
+        return this.selfContainer;
+    }
 }
 
+class superAttackQuery{
+    constructor(buffs,maxPerTurn,unitID,superAttackName){
+        this.selfContainer=document.createElement("div");
+        this.selfContainer.buffs=buffs;
+        this.selfContainer.superAttackName=superAttackName;
+        this.selfContainer.buffsDuration=buffs["Duration"];
+        this.selfContainer.currentValue=0;
+        this.selfContainer.style.display="grid";
+        let superAttackSlider = document.createElement('input');
+        let superAttackQuestion = document.createElement('label');
+        superAttackSlider.innerText = "How many times has this unit performed " + superAttackName + " within the last " + buffs["Duration"] + " turns: 0";
+        let unitImage=document.createElement("img");
+        unitImage.style.backgroundImage="url('dbManagement/assets/final_assets/"+unitID+".png')";
+        unitImage.style.width="50px";
+        unitImage.style.height="50px";
+        unitImage.style.backgroundSize="100% 100%";    
+        this.selfContainer.appendChild(unitImage);
+        superAttackQuestion.innerHTML = superAttackSlider.textContent;
+        superAttackQuestion.style.gridRow = 1;
+        superAttackSlider.type = "range";
+        superAttackSlider.style.width = "50%";
+        superAttackSlider.style.cursor = "pointer";
+        superAttackSlider.min = 0;
+        superAttackSlider.max=maxPerTurn*((buffs["Duration"]-1)/2);
+        superAttackSlider.value = 0;
+        superAttackSlider.id="super-slider";
+        superAttackSlider.style.gridRow = 2;
+        this.selfContainer.appendChild(superAttackQuestion);
+        this.selfContainer.appendChild(superAttackSlider);
+        superAttackSlider.addEventListener('input', function(){
+            superAttackSlider.innerText="How many times has this unit performed " + superAttackName + " within the last " + buffs["Duration"] + " turns: " + superAttackSlider.value;
+            superAttackQuestion.innerHTML = superAttackSlider.textContent;
+            this.parentNode.currentValue=parseInt(superAttackSlider.value);
+            for(const query of this.parentNode.parentNode.children){
+                if(query.superAttackName==this.parentNode.superAttackName){
+                    if(query.buffsDuration>this.parentNode.buffsDuration && query.currentValue<this.parentNode.currentValue){
+                        query.currentValue=this.parentNode.currentValue;
+                        for (const query2 of query.children){
+                            if(query2.localName=="input"){
+                                query2.value=this.parentNode.currentValue;
+                            }
+                            else if(query2.localName=="label"){
+                                query2.currentValue=this.parentNode.currentValue;
+                                query2.innerHTML="How many times has this unit performed " + query2.superAttackName + " within the last " + query.buffsDuration + " turns: " + query2.currentValue;
+                            }
+                        }
+                    }
+                    else if(query.buffsDuration<this.parentNode.buffsDuration && query.currentValue>this.parentNode.currentValue){
+                        query.currentValue=this.parentNode.currentValue;
+                        for (const query2 of query.children){
+                            if(query2.localName=="input"){
+                                query2.value=this.parentNode.currentValue;
+                            }
+                            else if(query2.localName=="label"){
+                                query2.currentValue=this.parentNode.currentValue;
+                                query2.innerHTML="How many times has this unit performed " + query2.superAttackName + " within the last " + query.buffsDuration + " turns: " + query2.currentValue;
+                            }
+                        }
+                    }
+                }
+            }
+            updateSuperAttackStacks();
+        });
 
+        
+    }
 
+    getElement(){
+        return this.selfContainer;
+    }
+}
 
 // Function to fetch JSON data based on sub-URL
 let currentJson = null;
-export function getJson(prefix,name,suffix) {
+export function getJsonPromise(prefix,name,suffix) {
     return fetch(prefix + name + suffix)
       .then(response => {
           if (!response.ok) {
             if(name[6]=="0"){
                 name=name.slice(0, -1)+ "1";
                 updateQueryStringParameter("id",name);
-                return(getJson(prefix,name,suffix))
+                return(getJsonPromise(prefix,name,suffix))
             }
             else{
               throw new Error('Network response was not ok' + response.statusText);
@@ -249,7 +321,7 @@ export function getJson(prefix,name,suffix) {
   }
 
 export function createCharacterSelection(){
-    const allUnitsJsonPromise=getJson('dbManagement/jsons/','allUnits','.json');
+    const allUnitsJsonPromise=getJsonPromise('dbManagement/jsons/','allUnits','.json');
     allUnitsJsonPromise.then(allUnitsJson => {
       document.getElementById("image-container").style.display="none";
       document.getElementById("base-stats").style.display="none";
@@ -940,67 +1012,53 @@ export function initialiseAspects(json) {
   }
 
 export function createSuperAttackContainer(json){
-    let superAttackBuffs=document.createElement('label');
     let superBuffsContainer = document.getElementById('super-attack-buffs-container');
-    while (superBuffsContainer.firstChild) {
-        superBuffsContainer.removeChild(superBuffsContainer.firstChild);
-    }
+    superBuffsContainer.innerHTML="Super Attack Buffs: ";
+
     let superQuestionsContainer= document.getElementById('super-attack-questions-container');
     while (superQuestionsContainer.firstChild) {
         superQuestionsContainer.removeChild(superQuestionsContainer.firstChild);
     }
-    superAttackBuffs.innerHTML = "Super Attack Buffs: ";
-    superBuffsContainer.appendChild(superAttackBuffs);
     let superAttackss=json["Super Attack"];
     for (const key of Object.keys(superAttackss)){
         let superAttack = superAttackss[key];
-        let superAttackObject = new superAttackQuery(superAttack)
-        for (const key of Object.keys(superAttack)){
-        let details=["superID",
-            "superName",
-            "superDescription",
-            "superMinKi",
-            "superPriority",
-            "superStyle",
-            "superMinLVL",
-            "superCausality",
-            "superAimTarget",
-            "superIsInactive",
-            "SpecialBonus",
-            "Multiplier"]
-        if(!(details.includes(key))) {
-            // non-damage buffs from the super attack
-            let buffs = superAttack[key];
-            if(buffs["Duration"]!="1" && buffs["Duration"]!="2" && key!="superCondition"){
-                let superAttackSlider = document.createElement('input');
-                let superAttackQuestion = document.createElement('label');
-                superAttackSlider.innerText = "How many times has this unit performed " + superAttack["superName"] + " within the last " + buffs["Duration"] + " turns: 0";
-                superAttackQuestion.innerHTML = superAttackSlider.textContent;
-                superAttackQuestion.style.gridRow = 1;
-                superAttackSlider.type = "range";
-                superAttackSlider.style.width = "50%";
-                superAttackSlider.style.cursor = "pointer";
-                superAttackSlider.min = 0;
+        let superAttackObject;
+        if(superAttack["superStyle"]=="Normal"){
+            superAttackObject = new superAttackQueryHolder(superAttack,json["Max Super Attacks"],json["ID"]);
+        }
+        else{
+            superAttackObject = new superAttackQueryHolder(superAttack,1,json["ID"]);
+        }
+        superQuestionsContainer.appendChild(superAttackObject.getElement());
+    }
+    for(const key of json["Transforms from"]){
+        let transformPromise;
+        const urlParams=new URLSearchParams(window.location.search);
+        let isSeza = urlParams.get("SEZA") || "False";
+        let isEza = urlParams.get("EZA") || "False";
+        if(isSeza=="True"){
+            transformPromise=getJsonPromise('dbManagement/jsonsSEZA/',key,'.json');
+        }
+        else if(isEza=="True"){
+            transformPromise=getJsonPromise('dbManagement/jsonsEZA/',key,'.json');
+        }
+        else{
+            transformPromise=getJsonPromise('dbManagement/jsons/',key,'.json');
+        }
+        transformPromise.then((json)=>{
+            let superAttackss=json["Super Attack"];
+            for (const key of Object.keys(superAttackss)){
+                let superAttack = superAttackss[key];
+                let superAttackObject;
                 if(superAttack["superStyle"]=="Normal"){
-                    superAttackSlider.max = json["Max Super Attacks"]*((buffs["Duration"]-1)/2);
+                    superAttackObject = new superAttackQueryHolder(superAttack,json["Max Super Attacks"],json["ID"]);
                 }
                 else{
-                    superAttackSlider.max = (buffs["Duration"]-1)/2;
+                    superAttackObject = new superAttackQueryHolder(superAttack,1,json["ID"]);
                 }
-                superAttackSlider.value = 0;
-                superAttackSlider.style.backgroundColor = LightenColor(typingToColor(json.Typing), 30);
-                superAttackSlider.id="super-slider";
-                superAttackSlider.style.gridRow = 2;
-                superAttackSlider.addEventListener('input', function(){
-                    superAttackSlider.innerText="How many times has this unit performed " + superAttack["superName"] + " within the last " + buffs["Duration"] + " turns: " + superAttackSlider.value;
-                    superAttackQuestion.innerHTML = superAttackSlider.textContent;
-                    updateSuperAttackStacks(json);
-                });
-                superQuestionsContainer.appendChild(superAttackSlider);
-                superQuestionsContainer.appendChild(superAttackQuestion);
+                superQuestionsContainer.appendChild(superAttackObject.getElement());
             }
-        }
-        };
+        });
     }
 }
 
@@ -1036,9 +1094,9 @@ export function createParagraph(text){
   }
 
 
-export function updateSuperAttackStacks(json){
+export function updateSuperAttackStacks(){
     let superAttacksQuestionsContainer = document.querySelector('#super-attack-questions-container');
-    let superAttackStacks = superAttacksQuestionsContainer.querySelectorAll('input[type=range]');
+    let superAttackStacks = superAttacksQuestionsContainer.children;
     let totalATKBuff = 0;
     let totalDEFBuff = 0;
     let totalEnemyDEFBuff = 0;
@@ -1046,78 +1104,52 @@ export function updateSuperAttackStacks(json){
     let totalCritBuff = 0;
     let totalEvasionBuff = 0;
 
-    for (const stack of superAttackStacks){
-        let stackAmount = parseInt(stack.value);
-        let superName=stack.textContent.split(" performed ")[1].split(" within the last ")[0];
-        for (const superAttack in Object.keys(json["Super Attack"])){
-            if(superAttack["superName"]==superName){
-                specifiedSuper=superAttack;
-            }
-        };
-        for (const Super of Object.keys(json["Super Attack"])){
-            if(json["Super Attack"][Super]["superName"]==superName){
-                for (const key of Object.keys(json["Super Attack"][Super])){
-                    if(!["superID",
-                        "superName",
-                        "superDescription",
-                        "superMinKi",
-                        "superPriority",
-                        "superStyle",
-                        "superMinLVL",
-                        "superCausality",
-                        "superAimTarget",
-                        "superIsInactive",
-                        "SpecialBonus",
-                        "Multiplier"].includes(key))
-                        {
-                            let buffs=json["Super Attack"][Super][key];
-                            if("ATK" in buffs){
-                                if(buffs["Target"]=="Self"){
-                                    if(buffs["Buff"]["+ or -"]=="+"){
-                                        totalATKBuff+=buffs["ATK"]*stackAmount;
-                                    }
-                                    else{
-                                        totalATKBuff-=buffs["ATK"]*stackAmount;
-                                    }
-                                }
-                                else if(buffs["Target"]=="Enemy"){
-                                    if(buffs["Buff"]["+ or -"]=="+"){
-                                        totalEnemyATKBuff+=buffs["ATK"]*stackAmount;
-                                    }
-                                    else{
-                                        totalEnemyATKBuff-=buffs["ATK"]*stackAmount;
-                                    }
-                                }
-                            }
-                            if("DEF" in buffs){
-                                if(buffs["Target"]=="Self"){
-                                    if(buffs["Buff"]["+ or -"]=="+"){
-                                        totalDEFBuff+=buffs["DEF"]*stackAmount;
-                                    }
-                                    else{
-                                        totalDEFBuff-=buffs["DEF"]*stackAmount;
-                                    }
-                                }
-                                else if(buffs["Target"]=="Enemy"){
-                                    if(buffs["Buff"]["+ or -"]=="+"){
-                                        totalEnemyDEFBuff+=buffs["DEF"]*stackAmount;
-                                    }
-                                    else{
-                                        totalEnemyDEFBuff-=buffs["DEF"]*stackAmount;
-                                    }
-                                }
-                            }
-                            if("Crit" in buffs){
-                                totalCritBuff+=buffs["Crit"]*stackAmount;
-                            }
-                            if("Evasion" in buffs){
-                                totalEvasionBuff+=buffs["Evasion"]*stackAmount;
-                            }
-                        }
+    for (const superAttack of superAttackStacks){
+        if (superAttack.children.length!=0) {
+            for(const question of superAttack.children){
+                let superAttacksPerformed;
+                let buffs=question.buffs;
+                for(const div of question.children){
+                    if(div.localName=="input"){
+                        superAttacksPerformed = parseInt(div.value);
                     }
                 }
-            };
+                for (const buffKey in buffs){
+                    const buff=buffs[buffKey];
+                    if(buffKey=="ATK"){
+                        if(buffs["Target"] == "Self"){
+                            totalATKBuff += buff*superAttacksPerformed;
+                        }
+                        else if(buffs["Target"] == "Enemy"){
+                            totalEnemyATKBuff += buff*superAttacksPerformed;
+                        }
+                        else{
+                            console.log("UNKNOWN TARGET");
+                        }
+                    }
+                    if(buffKey=="DEF"){
+                        if(buffs["Target"] == "Self"){
+                            totalDEFBuff += buff*superAttacksPerformed;
+                        }
+                        else if(buffs["Target"] == "Enemy"){
+                            totalEnemyDEFBuff += buff*superAttacksPerformed;
+                        }
+                        else{
+                            console.log("UNKNOWN TARGET");
+                        }
+                    }
+                    if(buffKey=="Crit"){
+                        totalCritBuff += buff*staAmount*superAttacksPerformed;
+                    }
+                    if(buffKey=="Evasion"){
+                        totalEvasionBuff += buff*superAttacksPerformed;
+                    }
+                }
+            }
+            
+        };
     }
+
     let superAttackBuffsContainer = document.getElementById('super-attack-buffs-container');
     let superAttackBuffs = document.createElement('p');
     superAttackBuffs.id = "super-attack-buffs";
@@ -1373,13 +1405,13 @@ export function loadPage(firstTime=false){
     }
     else{
         if(isSeza == "True"){
-        jsonPromise=getJson('dbManagement/jsonsSEZA/',subURL,'.json');
+        jsonPromise=getJsonPromise('dbManagement/jsonsSEZA/',subURL,'.json');
         }
         else if(isEza == "True"){
-        jsonPromise=getJson('dbManagement/jsonsEZA/',subURL,'.json');
+        jsonPromise=getJsonPromise('dbManagement/jsonsEZA/',subURL,'.json');
         }
         else{
-        jsonPromise=getJson('dbManagement/jsons/',subURL,'.json');
+        jsonPromise=getJsonPromise('dbManagement/jsons/',subURL,'.json');
         }
     }
     jsonPromise.then(json => {
