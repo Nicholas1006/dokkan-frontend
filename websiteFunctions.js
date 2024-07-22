@@ -122,6 +122,16 @@ class kiCircleClass{
 
     updateKi(value){
         let maxKi;
+        for (const passiveSlider of document.getElementById("passive-questions-container").children){
+            //if the innerHTML of the next sibling starts with how much ki is there
+            if(passiveSlider.nextSibling!=null){
+                if(passiveSlider.nextSibling.innerHTML.startsWith("How much ki is there")){
+                    passiveSlider.value=value
+                    passiveSlider.nextSibling.innerHTML="How much ki is there: "+value
+                    //WIP TO UPDATE PASSIVE SKILL LOGIC
+                }
+            }
+        }
         if(this.json["Rarity"]=="lr"){
             maxKi=24;
         }
@@ -171,23 +181,44 @@ class kiCircleClass{
         }
     }
 
-    updateValue(value){
-        this.attackStat=parseInt(value);
-        while (this.damageText.firstChild) {
-            this.damageText.removeChild(this.damageText.firstChild);
-        }
-
-
-        for(let char of value.toString()){
-            const numDiv = document.createElement('div');
-            numDiv.className="ki-damage-text";
-            numDiv.classList.add(`num-${char}`);
-            this.damageText.appendChild(numDiv);
-        }
-
-        
-        
+    updateValue(targetValue) {
+        const duration = 500; // duration of the animation in milliseconds
+        const frameRate= 60;
+        const frameDuration = 1000 / frameRate; // 60 frames per second
+        const totalFrames = Math.round(duration / frameDuration);
+    
+        let startValue = this.attackStat;
+        let currentValue = startValue;
+        let increment = (targetValue - startValue) / totalFrames;
+        let currentFrame = 0;
+    
+        const animate = () => {
+            currentFrame++;
+            const progress = currentFrame / totalFrames;
+            currentValue = Math.round(startValue + increment * progress * totalFrames);
+    
+            // Update the damage text
+            while (this.damageText.firstChild) {
+                this.damageText.removeChild(this.damageText.firstChild);
+            }
+    
+            for (let char of currentValue.toString()) {
+                const numDiv = document.createElement('div');
+                numDiv.className = "ki-damage-text";
+                numDiv.classList.add(`num-${char}`);
+                this.damageText.appendChild(numDiv);
+            }
+    
+            if (currentFrame < totalFrames) {
+                requestAnimationFrame(animate);
+            } else {
+                this.attackStat = targetValue; // Ensure the final value is set correctly
+            }
+        };
+    
+        requestAnimationFrame(animate);
     }
+    
 
 
 }
@@ -299,6 +330,14 @@ class superAttackQuery{
 
 // Function to fetch JSON data based on sub-URL
 let currentJson = null;
+let additionalSupers=[];
+let leaderStats={"HP": "400", "ATK": "400", "DEF": "400"};
+let baseStats={};
+let passiveStats={};
+let superStats={};
+let linkStats={"ATK":"0","DEF":"0","Enemy DEF":"0","Heal":"0","KI":"0","Damage Reduction":"0","Crit":"0","Evasion":"0"};
+let kiSources={};
+let kiCircleList=[];
 export function getJsonPromise(prefix,name,suffix) {
     return fetch(prefix + name + suffix)
       .then(response => {
@@ -343,6 +382,10 @@ export function createCharacterSelection(){
     });
 }
 
+
+export function refreshKiCircle(){
+    kiCircleList[0].updateValue((currentJson["Ki Multiplier"][kiCircleList[0].kiAmount]/100)*(1+linkStats["ATK"]/100)*(1+leaderStats["ATK"]/100)*baseStats["ATK"]);
+}
 export function createLeaderStats(){
     const seperateOrJoin=document.getElementById('seperate-or-join-leader');
     seperateOrJoin.textContent="Joint Leader Skills";
@@ -378,20 +421,32 @@ export function createLeaderStats(){
     let leaderTotalInput=document.getElementById('leader-TotalInput');
     leaderTotalInput.value=400;
     leaderAInput.addEventListener('input', function(){
-      leaderTotalInput.value=parseInt(leaderAInput.value)+parseInt(leaderBInput.value);
+        leaderTotalInput.value=parseInt(leaderAInput.value)+parseInt(leaderBInput.value);
+        leaderStats.HP=leaderTotalInput.value;
+        leaderStats.ATK=leaderTotalInput.value;
+        leaderStats.DEF=leaderTotalInput.value;
+        refreshKiCircle()
     });
 
     leaderBInput.addEventListener('input', function(){
-      leaderTotalInput.value=parseInt(leaderAInput.value)+parseInt(leaderBInput.value);
+        leaderTotalInput.value=parseInt(leaderAInput.value)+parseInt(leaderBInput.value);
+        leaderStats.HP=leaderTotalInput.value;
+        leaderStats.ATK=leaderTotalInput.value;
+        leaderStats.DEF=leaderTotalInput.value;
+        refreshKiCircle()
     });
     
     leaderTotalInput.addEventListener('input', function(){
-      leaderAInput.value=Math.floor(parseInt(leaderTotalInput.value)/2);
-      if(parseInt(leaderTotalInput.value)%2==0){
-        leaderBInput.value=Math.floor(parseInt(leaderTotalInput.value)/2);
-      } else {
-        leaderBInput.value=Math.floor(parseInt(leaderTotalInput.value)/2)+1;
-      }
+        leaderStats.HP=leaderTotalInput.value;
+        leaderStats.ATK=leaderTotalInput.value;
+        leaderStats.DEF=leaderTotalInput.value;
+        refreshKiCircle()
+        leaderAInput.value=Math.floor(parseInt(leaderTotalInput.value)/2);
+        if(parseInt(leaderTotalInput.value)%2==0){
+            leaderBInput.value=Math.floor(parseInt(leaderTotalInput.value)/2);
+        } else {
+            leaderBInput.value=Math.floor(parseInt(leaderTotalInput.value)/2)+1;
+        }
     });
     leaderAInput.style.display="none";
     leaderBInput.style.display="none";
@@ -444,12 +499,14 @@ export function createLinkStats(json){
           linkButton.style.background="#00FF00"
         }
         createLinkBuffs(json)
+        refreshKiCircle()
       }
       linkSlider.addEventListener('input', function(){
         linkLevel = linkSlider.value;
         linkButton.innerHTML = linkName + " <br>Level: " + linkLevel;
         linkData = links[linkName][linkLevel];
         createLinkBuffs(json);
+        refreshKiCircle()
       });
       linkNumber+=1;
     };
@@ -473,7 +530,9 @@ export function createLinkStats(json){
         let linkName = linksContainer.querySelectorAll('button')[index].textContent.split(' Level')[0];
         linksContainer.querySelectorAll('button')[index].innerHTML = linkName + " <br>Level: " + allLinksSlider.value;
       });
+
       createLinkBuffs(json);
+      refreshKiCircle()
     });
     linksContainer.appendChild(allLinksSlider);
 
@@ -506,6 +565,7 @@ export function createLinkStats(json){
         });
       }
       createLinkBuffs(json);
+      refreshKiCircle()
     }
     linksContainer.appendChild(allLinksButton);
 
@@ -545,9 +605,12 @@ export function AdjustBaseStats(){
       }
     })
   
+    HPstat.textContent = "HP: " + HP;
     ATKstat.textContent = "ATK: " + ATK;
     DEFstat.textContent = "DEF: " + DEF;
-    HPstat.textContent = "HP: " + HP;
+
+    baseStats={"HP":HP,"ATK":ATK,"DEF":DEF};
+    refreshKiCircle();
 
     statsContainer.appendChild(HPstat);
     statsContainer.appendChild(ATKstat);
@@ -766,11 +829,28 @@ export function createKiCirclesWithClass(json){
     while (kiContainer.firstChild) {
         kiContainer.removeChild(kiContainer.firstChild);
     }
-
+    let kiSlider = document.createElement('input');
+    kiSlider.type = 'range';
+    kiSlider.min = 0;
+    if(json["Rarity"]=="lr"){
+        kiSlider.max = 24;
+    }
+    else{
+        kiSlider.max = 12;
+    }
+    kiSlider.value = 0;
+    kiSlider.id = 'ki-slider';
+    kiSlider.addEventListener('input', function() {
+        kiCircleList[0].updateValue(json["Ki Multiplier"][kiSlider.value]*(1+linkStats["ATK"]/100)*(1+leaderStats["ATK"]/100));
+        kiCircleList[0].updateKi(kiSlider.value);
+    })
+    kiContainer.appendChild(kiSlider);
+    
     for (let i = 0; i < 2; i++) {
         const kiCircle = new kiCircleClass(json);
         kiCircle.updateValue(i*100);
         kiCircle.updateKi(i*6);
+        kiCircleList.push(kiCircle);
         kiContainer.appendChild(kiCircle.getElement());
     }
 
@@ -938,56 +1018,60 @@ export function createPassiveContainer(json){
     let CausalityLogic={};
     conditionNumber=1;
     for (const key of Object.keys(conditions)){
-    let condition=conditions[key];
-    if(condition["Button or slider"]=="button"){
-        let button = document.createElement('button');
-        CausalityList.push(condition["Condition Logic"][0][1])
-        CausalityLogic[condition["Condition Logic"][0][1]]=false;
-        button.innerHTML=condition["Button"];
-        button.style.gridRow = conditionNumber*2;
-        button.style.gridColumn = 1;
-        button.style.background="#FF5C35"
-        button.addEventListener('click', function(){
-        button.classList.toggle('active');
-        CausalityLogic[condition["Condition Logic"][0][1]]=button.classList.contains('active');
-        updatePassiveBuffs(json,CausalityLogic);
-        if(button.classList.contains('active')){
-            button.style.background="#00FF00"
-        } else {
+        let condition=conditions[key];
+        if(condition["Button or slider"]=="button"){
+            let button = document.createElement('button');
+            CausalityList.push(condition["Condition Logic"][0][1])
+            CausalityLogic[condition["Condition Logic"][0][1]]=false;
+            button.innerHTML=condition["Button"];
+            button.style.gridRow = conditionNumber*2;
+            button.style.gridColumn = 1;
             button.style.background="#FF5C35"
+            button.addEventListener('click', function(){
+            button.classList.toggle('active');
+            CausalityLogic[condition["Condition Logic"][0][1]]=button.classList.contains('active');
+            updatePassiveBuffs(json,CausalityLogic);
+            if(button.classList.contains('active')){
+                button.style.background="#00FF00"
+            } else {
+                button.style.background="#FF5C35"
+            }
+            });
+            passiveContainer.appendChild(button);
         }
-        });
-        passiveContainer.appendChild(button);
-
-    }
-    else if(condition["Button or slider"]=="slider"){
-        let slider = document.createElement('input');
-        let sliderLabel = document.createElement('label');
-        for (const logic of condition["Condition Logic"]){
-        CausalityList.push(logic[1]);
-        CausalityLogic[logic[1]]=logicCalculator(logic, condition["Min"]);
+        else if(condition["Button or slider"]=="slider"){
+            let slider = document.createElement('input');
+            let sliderLabel = document.createElement('label');
+            for (const logic of condition["Condition Logic"]){
+                CausalityList.push(logic[1]);
+                CausalityLogic[logic[1]]=logicCalculator(logic, condition["Min"]);
+            }
+            sliderLabel.innerHTML = condition["Slider"] + ": " + condition["Min"];
+            sliderLabel.style.gridRow = conditionNumber*2;
+            sliderLabel.style.gridColumn = 1;
+            if(condition["Slider"]=="How much ki is there"){
+                sliderLabel.style.display="none";
+                slider.style.display="none";
+            }
+            slider.type = "range";
+            slider.min = condition["Min"];
+            slider.max = condition["Max"];
+            slider.value = condition["Min"];
+            slider.style.backgroundColor = LightenColor(typingToColor(json.Typing), 30);
+            slider.id="passive-slider";
+            slider.style.gridRow = conditionNumber*2+1;
+            slider.addEventListener('input', function(){
+            sliderLabel.innerHTML = condition["Slider"] + ": " + slider.value;
+            for (const logic of condition["Condition Logic"]){
+                CausalityLogic[logic[1]]=logicCalculator(logic, slider.value);
+            }
+            updatePassiveBuffs(json,CausalityLogic);
+            });
+            
+            passiveContainer.appendChild(slider);
+            passiveContainer.appendChild(sliderLabel);
         }
-        sliderLabel.innerHTML = condition["Slider"] + ": " + condition["Min"];
-        sliderLabel.style.gridRow = conditionNumber*2;
-        sliderLabel.style.gridColumn = 1;
-        slider.type = "range";
-        slider.min = condition["Min"];
-        slider.max = condition["Max"];
-        slider.value = condition["Min"];
-        slider.style.backgroundColor = LightenColor(typingToColor(json.Typing), 30);
-        slider.id="passive-slider";
-        slider.style.gridRow = conditionNumber*2+1;
-        slider.addEventListener('input', function(){
-        sliderLabel.innerHTML = condition["Slider"] + ": " + slider.value;
-        for (const logic of condition["Condition Logic"]){
-            CausalityLogic[logic[1]]=logicCalculator(logic, slider.value);
-        }
-        updatePassiveBuffs(json,CausalityLogic);
-        });
-        passiveContainer.appendChild(slider);
-        passiveContainer.appendChild(sliderLabel);
-    }
-    conditionNumber+=1;
+        conditionNumber+=1;
     }
     updatePassiveBuffs(json,CausalityLogic);
     CausalityList=Array.from(new Set(CausalityList));
@@ -1201,6 +1285,7 @@ export function createLinkBuffs(json){
     });
 
     // Create a paragraph element to display the total link buffs
+    linkStats={"ATK":totalATKBuff,"DEF":totalDEFBuff,"Enemy DEF":totalEnemyDEFBuff,"Heal":totalHealBuff,"KI":totalKIBuff,"Damage Reduction":totalDamageReductionBuff,"Crit":totalCritBuff,"Evasion":totalEvasionBuff};
     let linkBuffs = document.createElement('p');
     linkBuffs.id = "link-buffs";
     linkBuffs.innerHTML = "Link Buffs: ";
