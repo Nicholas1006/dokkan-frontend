@@ -194,6 +194,36 @@ class kiCircleClass{
 }
 
 
+class superAttackQuery{
+
+    constructor(superAttack){
+        this.superAttack=superAttack;
+        for(const key of Object.keys(superAttack)){
+            let details=["superID",
+                "superName",
+                "superDescription",
+                "superMinKi",
+                "superPriority",
+                "superStyle",
+                "superMinLVL",
+                "superCausality",
+                "superAimTarget",
+                "superIsInactive",
+                "SpecialBonus",
+                "superCondition",
+                "Multiplier"]
+            if(!details.includes(key)){
+                let buffs=superAttack[key];
+                if(buffs["Duration"]!="1" && buffs["Duration"]!="2"){
+                    
+                }
+            }
+        }
+    }
+}
+
+
+
 
 // Function to fetch JSON data based on sub-URL
 let currentJson = null;
@@ -735,99 +765,99 @@ export function createPassiveContainer(json){
     let conditions=[];
     
 
-let conditionNumber=1;
-let passiveLines=json["Passive"];
-for (const key of Object.keys(passiveLines)){
-    let line = passiveLines[key];
-    if("Building Stat" in line){
-    let BuildingStat = line["Building Stat"];
-    let conditionAdded=false;
-    //WIP
-    }
-
-    if("Condition" in line){
-    let condition = line["Condition"];
-    let Causalities = condition["Causalities"];
-    for (const slightlySmallerKey of Object.keys(Causalities)){
-        let causality=Causalities[slightlySmallerKey];
+    let conditionNumber=1;
+    let passiveLines=json["Passive"];
+    for (const key of Object.keys(passiveLines)){
+        let line = passiveLines[key];
+        if("Building Stat" in line){
+        let BuildingStat = line["Building Stat"];
         let conditionAdded=false;
-        for (const conditionsKey of Object.keys(conditions)){
-        if(conditionAdded==false){
-            //if slider names match
-            if((conditions[conditionsKey]["Slider"]==causality["Slider"]["Name"])){
-            //if button names match
-            if(conditions[conditionsKey]["Button"]==causality["Button"]["Name"]){
+        //WIP
+        }
+
+        if("Condition" in line){
+        let condition = line["Condition"];
+        let Causalities = condition["Causalities"];
+        for (const slightlySmallerKey of Object.keys(Causalities)){
+            let causality=Causalities[slightlySmallerKey];
+            let conditionAdded=false;
+            for (const conditionsKey of Object.keys(conditions)){
+            if(conditionAdded==false){
+                //if slider names match
+                if((conditions[conditionsKey]["Slider"]==causality["Slider"]["Name"])){
+                //if button names match
+                if(conditions[conditionsKey]["Button"]==causality["Button"]["Name"]){
+                    //if the slider name is null
+                    if(conditions[conditionsKey]["Slider"]==null){
+                    let Logic=[null,slightlySmallerKey];
+                    conditions[conditionsKey]["Condition Logic"].push(Logic);
+                    conditionAdded=true;
+                    }
+                    //if the slider has a name
+                    else{
+                    conditions[conditionsKey]["Min"]=Math.min(causality["Slider"]["Min"],conditions[conditionsKey]["Min"]);
+                    conditions[conditionsKey]["Max"]=Math.max(causality["Slider"]["Max"],conditions[conditionsKey]["Max"]);
+                    let Logic=[(causality["Slider"]["Logic"]),slightlySmallerKey];
+                    conditions[conditionsKey]["Condition Logic"].push(Logic);
+                    conditionAdded=true;
+                    }
+                    
+                }
+                //if button names dont match
+                else{
+                    if(conditions[conditionsKey]["Slider"]!=null){
+                    conditions[conditionsKey]["Min"]=Math.min(causality["Slider"]["Min"],conditions[conditionsKey]["Min"]);
+                    conditions[conditionsKey]["Max"]=Math.max(causality["Slider"]["Max"],conditions[conditionsKey]["Max"]);
+                    let Logic=[(causality["Slider"]["Logic"]),slightlySmallerKey];
+                    conditions[conditionsKey]["Condition Logic"].push(Logic);
+                    conditions[conditionsKey]["Button or slider"]="slider";
+                    conditionAdded=true;
+                    }
+                    
+                }
+                }
+                //if slider names dont match
+                else if(causality["Slider"]["Name"]==null){
+                if(conditions[conditionsKey]["Button"]==causality["Button"]["Name"]){
+                    conditions[conditionsKey]["Min"]=null;
+                    conditions[conditionsKey]["Max"]=null;
+                    let Logic=[null,slightlySmallerKey];
+                    conditions[conditionsKey]["Condition Logic"].push(Logic);
+                    conditionAdded=true;
+                }
+                }
+            }
+                }
+                if(conditionAdded==false){
                 //if the slider name is null
-                if(conditions[conditionsKey]["Slider"]==null){
-                let Logic=[null,slightlySmallerKey];
-                conditions[conditionsKey]["Condition Logic"].push(Logic);
-                conditionAdded=true;
+                if(causality["Slider"]["Name"]==null){
+                    let conditionObject={};
+                    conditionObject["Slider"]=null;
+                    conditionObject["Button"]=causality["Button"]["Name"];
+                    conditionObject["Min"]=null;
+                    conditionObject["Max"]=null;
+                    conditionObject["Button or slider"]="button";
+                    let Logic=[null,slightlySmallerKey];
+                    conditionObject["Condition Logic"]=[Logic];
+                    conditions.push(conditionObject);
+                    conditionAdded=true;
                 }
                 //if the slider has a name
                 else{
-                conditions[conditionsKey]["Min"]=Math.min(causality["Slider"]["Min"],conditions[conditionsKey]["Min"]);
-                conditions[conditionsKey]["Max"]=Math.max(causality["Slider"]["Max"],conditions[conditionsKey]["Max"]);
-                let Logic=[(causality["Slider"]["Logic"]),slightlySmallerKey];
-                conditions[conditionsKey]["Condition Logic"].push(Logic);
-                conditionAdded=true;
+                    let conditionObject={};
+                    conditionObject["Slider"]=causality["Slider"]["Name"];
+                    conditionObject["Button"]=causality["Button"]["Name"];
+                    conditionObject["Min"]=causality["Slider"]["Min"];
+                    conditionObject["Max"]=causality["Slider"]["Max"];
+                    conditionObject["Button or slider"]="button";
+                    let Logic=[(causality["Slider"]["Logic"]),slightlySmallerKey];
+                    conditionObject["Condition Logic"]=[Logic];
+                    conditions.push(conditionObject);
+                    conditionAdded=true;
                 }
-                
             }
-            //if button names dont match
-            else{
-                if(conditions[conditionsKey]["Slider"]!=null){
-                conditions[conditionsKey]["Min"]=Math.min(causality["Slider"]["Min"],conditions[conditionsKey]["Min"]);
-                conditions[conditionsKey]["Max"]=Math.max(causality["Slider"]["Max"],conditions[conditionsKey]["Max"]);
-                let Logic=[(causality["Slider"]["Logic"]),slightlySmallerKey];
-                conditions[conditionsKey]["Condition Logic"].push(Logic);
-                conditions[conditionsKey]["Button or slider"]="slider";
-                conditionAdded=true;
-                }
-                
-            }
-            }
-            //if slider names dont match
-            else if(causality["Slider"]["Name"]==null){
-            if(conditions[conditionsKey]["Button"]==causality["Button"]["Name"]){
-                conditions[conditionsKey]["Min"]=null;
-                conditions[conditionsKey]["Max"]=null;
-                let Logic=[null,slightlySmallerKey];
-                conditions[conditionsKey]["Condition Logic"].push(Logic);
-                conditionAdded=true;
-            }
-            }
-        }
-        }
-        if(conditionAdded==false){
-        //if the slider name is null
-        if(causality["Slider"]["Name"]==null){
-            let conditionObject={};
-            conditionObject["Slider"]=null;
-            conditionObject["Button"]=causality["Button"]["Name"];
-            conditionObject["Min"]=null;
-            conditionObject["Max"]=null;
-            conditionObject["Button or slider"]="button";
-            let Logic=[null,slightlySmallerKey];
-            conditionObject["Condition Logic"]=[Logic];
-            conditions.push(conditionObject);
-            conditionAdded=true;
-        }
-        //if the slider has a name
-        else{
-            let conditionObject={};
-            conditionObject["Slider"]=causality["Slider"]["Name"];
-            conditionObject["Button"]=causality["Button"]["Name"];
-            conditionObject["Min"]=causality["Slider"]["Min"];
-            conditionObject["Max"]=causality["Slider"]["Max"];
-            conditionObject["Button or slider"]="button";
-            let Logic=[(causality["Slider"]["Logic"]),slightlySmallerKey];
-            conditionObject["Condition Logic"]=[Logic];
-            conditions.push(conditionObject);
-            conditionAdded=true;
         }
     }
-    }
-}
 }
 
 
@@ -924,6 +954,7 @@ export function createSuperAttackContainer(json){
     let superAttackss=json["Super Attack"];
     for (const key of Object.keys(superAttackss)){
         let superAttack = superAttackss[key];
+        let superAttackObject = new superAttackQuery(superAttack)
         for (const key of Object.keys(superAttack)){
         let details=["superID",
             "superName",
@@ -1017,7 +1048,7 @@ export function updateSuperAttackStacks(json){
 
     for (const stack of superAttackStacks){
         let stackAmount = parseInt(stack.value);
-        let superName=stack.textContent.split("How many times has this unit performed ")[1].split(" within the last ")[0];
+        let superName=stack.textContent.split(" performed ")[1].split(" within the last ")[0];
         for (const superAttack in Object.keys(json["Super Attack"])){
             if(superAttack["superName"]==superName){
                 specifiedSuper=superAttack;
@@ -1093,6 +1124,7 @@ export function updateSuperAttackStacks(json){
     superAttackBuffs.innerHTML = "Super Attack Buffs: ";
     if (totalATKBuff) superAttackBuffs.innerHTML += "<br>ATK: " + totalATKBuff + "% ";
     if (totalDEFBuff) superAttackBuffs.innerHTML += "<br>DEF: " + totalDEFBuff + "% ";
+    if (totalEnemyATKBuff) superAttackBuffs.innerHTML += "<br>Enemy ATK: " + totalEnemyATKBuff + "% ";
     if (totalEnemyDEFBuff) superAttackBuffs.innerHTML += "<br>Enemy DEF: " + totalEnemyDEFBuff + "% ";
     if (totalCritBuff) superAttackBuffs.innerHTML += "<br>Crit: " + totalCritBuff + "% ";
     if (totalEvasionBuff) superAttackBuffs.innerHTML += "<br>Evasion: " + totalEvasionBuff + "% ";
@@ -1364,7 +1396,7 @@ export function loadPage(firstTime=false){
             createTransformationContainer(json);
         }
         else{
-            document.getElementById('ki-slider').dispatchEvent(new Event('input'));	
+            //document.getElementById('ki-slider').dispatchEvent(new Event('input'));	
         }
         createEzaContainer(json,isEza,isSeza);
         createLevelSlider(json);
