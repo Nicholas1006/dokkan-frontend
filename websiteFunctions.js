@@ -841,15 +841,15 @@ export function createKiCirclesWithClass(json){
     kiSlider.value = 0;
     kiSlider.id = 'ki-slider';
     kiSlider.addEventListener('input', function() {
-        kiCircleList[0].updateValue(json["Ki Multiplier"][kiSlider.value]*(1+linkStats["ATK"]/100)*(1+leaderStats["ATK"]/100));
         kiCircleList[0].updateKi(kiSlider.value);
+        refreshKiCircle();
     })
     kiContainer.appendChild(kiSlider);
     
-    for (let i = 0; i < 2; i++) {
+    for (let i = kiSlider.max; i > 0; i-=6) {
         const kiCircle = new kiCircleClass(json);
         kiCircle.updateValue(i*100);
-        kiCircle.updateKi(i*6);
+        kiCircle.updateKi(i);
         kiCircleList.push(kiCircle);
         kiContainer.appendChild(kiCircle.getElement());
     }
@@ -1524,6 +1524,7 @@ export function loadPage(firstTime=false){
             const buttonContainer = document.getElementById('hipo-button-container');
             buttonContainer.style.display = "grid";
         }
+        refreshKiCircle();
     })
     }
 
