@@ -3,7 +3,7 @@ class kiCircleClass{
         this.json=json;
         this.attackStat=0;
         this.imageUrl = json["Resource ID"];
-
+        this.superAttackPerformed=null;
 
 
 
@@ -230,22 +230,9 @@ class superAttackQueryHolder{
         this.superAttack=superAttack;
         this.selfContainer=document.createElement("div");
         this.selfContainer.style.display="grid";
-        for(const key of Object.keys(superAttack)){
-            let details=["superID",
-                "superName",
-                "superDescription",
-                "superMinKi",
-                "superPriority",
-                "superStyle",
-                "superMinLVL",
-                "superCausality",
-                "superAimTarget",
-                "superIsInactive",
-                "SpecialBonus",
-                "superCondition",
-                "Multiplier"]
-            if(!details.includes(key) &&superAttack[key]["Duration"]!="1" && superAttack[key]["Duration"]!="2"){
-                let buffs=superAttack[key];
+        for(const key of Object.keys(superAttack["superBuffs"])){
+            if(superAttack["superBuffs"][key]["Duration"]!="1" && superAttack["superBuffs"][key]["Duration"]!="2"){
+                let buffs=superAttack["superBuffs"][key];
                 let buffHolder= new superAttackQuery(buffs,maxPerTurn,unitID,superAttack["superName"]);
                 this.selfContainer.appendChild(buffHolder.getElement());
             }
@@ -334,7 +321,7 @@ let additionalSupers=[];
 let leaderStats={"HP": "400", "ATK": "400", "DEF": "400"};
 let baseStats={};
 let passiveStats={};
-let superStats={};
+let superStats={"ATK": 0, "DEF": 0, "Enemy ATK": 0, "Enemy DEF": 0, "Crit": 0, "Evasion": 0};
 let linkStats={"ATK":"0","DEF":"0","Enemy DEF":"0","Heal":"0","KI":"0","Damage Reduction":"0","Crit":"0","Evasion":"0"};
 let kiSources={};
 let kiCircleList=[];
@@ -384,7 +371,39 @@ export function createCharacterSelection(){
 
 
 export function refreshKiCircle(){
-    kiCircleList[0].updateValue((currentJson["Ki Multiplier"][kiCircleList[0].kiAmount]/100)*(1+linkStats["ATK"]/100)*(1+leaderStats["ATK"]/100)*baseStats["ATK"]);
+    let finalValue=1;
+    finalValue=Math.floor(finalValue*baseStats["ATK"]);
+    finalValue=Math.floor(finalValue*(1+leaderStats["ATK"]/100));
+    finalValue=Math.floor(finalValue*(1));//Start of turn passive stats
+    finalValue=Math.floor(finalValue*(1));//Item boost
+    finalValue=Math.floor(finalValue*(1+linkStats["ATK"]/100));
+    finalValue=Math.floor(finalValue*(1));//Active boost
+    finalValue=Math.ceil(finalValue*(currentJson["Ki Multiplier"][kiCircleList[0].kiAmount]/100));
+    finalValue=Math.floor(finalValue*(1));//Middle of turn passive stats
+    let superAttackMultiplier=1;
+    let superMinKi=0;
+
+
+    for (const superKey in currentJson["Super Attack"]){
+        const superAttack=currentJson["Super Attack"][superKey];
+        if(parseInt(superAttack["superMinKi"])<=parseInt(kiCircleList[0].kiAmount) && parseInt(superAttack["superMinKi"])>parseInt(superMinKi)){
+            superMinKi=superAttack["superMinKi"];
+            superAttackMultiplier=superAttack["Multiplier"]/100;
+            for (const key of Object.keys(superAttack)){
+                if(key=="SpecialBonus"){
+                    if(superAttack["SpecialBonus"]["Type"]=="SA multiplier increase"){
+                        superAttackMultiplier+=superAttack["SpecialBonus"]["Amount"]/100
+                    }
+                }
+            }
+            
+            kiCircleList[0].superAttackPerformed=superAttack;
+        }
+    }
+    superAttackMultiplier+=superStats["ATK"]/100;
+    finalValue=Math.floor(finalValue*superAttackMultiplier);
+
+    kiCircleList[0].updateValue(finalValue);
 }
 export function createLeaderStats(){
     const seperateOrJoin=document.getElementById('seperate-or-join-leader');
@@ -626,6 +645,7 @@ export function createEzaContainer(json,isEza,isSeza){
     let ezaButton = document.createElement('button');
     ezaButton.style.border="none";
     ezaButton.id="eza-button";
+    ezaButton.style.cursor="pointer"
     if(isEza == "True"){
         ezaButton.style.backgroundImage = "url('dbManagement/assets/misc/eza_icon.png')";
         ezaButton.onclick = function(){
@@ -838,7 +858,7 @@ export function createKiCirclesWithClass(json){
     else{
         kiSlider.max = 12;
     }
-    kiSlider.value = 0;
+    kiSlider.value = kiSlider.max;
     kiSlider.id = 'ki-slider';
     kiSlider.addEventListener('input', function() {
         kiCircleList[0].updateKi(kiSlider.value);
@@ -848,8 +868,8 @@ export function createKiCirclesWithClass(json){
     
     for (let i = kiSlider.max; i > 0; i-=6) {
         const kiCircle = new kiCircleClass(json);
-        kiCircle.updateValue(i*100);
         kiCircle.updateKi(i);
+        kiCircle.updateValue(i*100);
         kiCircleList.push(kiCircle);
         kiContainer.appendChild(kiCircle.getElement());
     }
@@ -1236,6 +1256,8 @@ export function updateSuperAttackStacks(){
 
     let superAttackBuffsContainer = document.getElementById('super-attack-buffs-container');
     let superAttackBuffs = document.createElement('p');
+    superStats={"ATK": totalATKBuff, "DEF": totalDEFBuff, "Enemy ATK": totalEnemyATKBuff, "Enemy DEF": totalEnemyDEFBuff, "Crit": totalCritBuff, "Evasion": totalEvasionBuff};
+    refreshKiCircle();
     superAttackBuffs.id = "super-attack-buffs";
     superAttackBuffs.innerHTML = "Super Attack Buffs: ";
     if (totalATKBuff) superAttackBuffs.innerHTML += "<br>ATK: " + totalATKBuff + "% ";
