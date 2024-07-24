@@ -243,6 +243,44 @@ class superAttackQueryHolder{
     }
 }
 
+class pictureText{
+    constructor(prefixText,imageURL,suffixText){
+        this.selfContainer=document.createElement("div");
+        this.suffixContainer=document.createElement("div");
+
+        let prefix=document.createElement("label");
+        prefix.innerHTML=prefixText;
+        this.selfContainer.appendChild(prefix);
+
+        let image=document.createElement("img");
+        image.style.backgroundImage="url('"+imageURL+"')";
+        image.style.width="50px";
+        image.style.height="50px";
+        image.style.backgroundSize="100% 100%";
+        this.selfContainer.appendChild(image);
+
+        let suffix=document.createElement("label");
+        suffix.innerHTML=suffixText;
+        this.selfContainer.appendChild(suffix);
+    }
+    updatePrefixText(prefixText){
+        this.selfContainer.children[0].innerHTML=prefixText;
+    }
+
+    updateSuffixText(suffixText){
+        this.selfContainer.children[2].innerHTML=suffixText;
+    }
+
+    updateImage(imageURL){
+        this.selfContainer.children[1].style.backgroundImage="url('"+imageURL+"')";
+    }
+
+
+    getElement(){
+        return this.selfContainer;
+    }
+}
+
 class superAttackQuery{
     constructor(buffs,maxPerTurn,unitID,superAttackName){
         this.selfContainer=document.createElement("div");
@@ -253,27 +291,22 @@ class superAttackQuery{
         this.selfContainer.style.display="grid";
         let superAttackSlider = document.createElement('input');
         let superAttackQuestion = document.createElement('label');
-        superAttackSlider.innerText = "How many times has this unit performed " + superAttackName + " within the last " + buffs["Duration"] + " turns: 0";
-        let unitImage=document.createElement("img");
-        unitImage.style.backgroundImage="url('dbManagement/assets/final_assets/"+unitID+".png')";
-        unitImage.style.width="50px";
-        unitImage.style.height="50px";
-        unitImage.style.backgroundSize="100% 100%";    
-        this.selfContainer.appendChild(unitImage);
+        let superAttackText= new pictureText("How many times has","dbManagement/assets/final_assets/"+unitID+".png","performed "+superAttackName+" within the last "+buffs["Duration"]+" turns?: "+superAttackSlider.value);
+        this.selfContainer.appendChild(superAttackText.getElement());
         superAttackQuestion.innerHTML = superAttackSlider.textContent;
         superAttackQuestion.style.gridRow = 1;
         superAttackSlider.type = "range";
         superAttackSlider.style.width = "50%";
         superAttackSlider.style.cursor = "pointer";
         superAttackSlider.min = 0;
-        superAttackSlider.max=maxPerTurn*((buffs["Duration"]-1)/2);
+        superAttackSlider.max=Math.floor(maxPerTurn*((buffs["Duration"]-1)/2));
         superAttackSlider.value = 0;
         superAttackSlider.id="super-slider";
-        superAttackSlider.style.gridRow = 2;
+        superAttackSlider.style.gridRow = 0;
         this.selfContainer.appendChild(superAttackQuestion);
         this.selfContainer.appendChild(superAttackSlider);
         superAttackSlider.addEventListener('input', function(){
-            superAttackSlider.innerText="How many times has this unit performed " + superAttackName + " within the last " + buffs["Duration"] + " turns: " + superAttackSlider.value;
+            superAttackText.updateSuffixText("performed "+superAttackName+" within the last "+buffs["Duration"]+" turns?: "+superAttackSlider.value);
             superAttackQuestion.innerHTML = superAttackSlider.textContent;
             this.parentNode.currentValue=parseInt(superAttackSlider.value);
             for(const query of this.parentNode.parentNode.children){
@@ -286,7 +319,7 @@ class superAttackQuery{
                             }
                             else if(query2.localName=="label"){
                                 query2.currentValue=this.parentNode.currentValue;
-                                query2.innerHTML="How many times has this unit performed " + query2.superAttackName + " within the last " + query.buffsDuration + " turns: " + query2.currentValue;
+                                superAttackText.updateSuffixText("performed "+query2.superAttackName+" within the last "+query.buffsDuration+" turns?: "+superAttackSlider.value);
                             }
                         }
                     }
@@ -298,7 +331,7 @@ class superAttackQuery{
                             }
                             else if(query2.localName=="label"){
                                 query2.currentValue=this.parentNode.currentValue;
-                                query2.innerHTML="How many times has this unit performed " + query2.superAttackName + " within the last " + query.buffsDuration + " turns: " + query2.currentValue;
+                                superAttackText.updateSuffixText("performed "+query2.superAttackName+" within the last "+query.buffsDuration+" turns?: "+superAttackSlider.value);
                             }
                         }
                     }
@@ -315,6 +348,146 @@ class superAttackQuery{
     }
 }
 
+class passiveButton{
+    constructor(min, max, label) {
+        this.min = min;
+        this.max = max;
+        this.label = label;
+        this.value = this.max;
+        this.selfContainer = document.createElement('div');
+        this.element = document.createElement('button');
+        this.selfContainer.appendChild(this.element);
+        this.element.classList.add('passive-button');
+        this.element.innerHTML = this.label;
+        this.element.value = this.value;
+        this.element.style.background="#FF5C35"
+        this.element.onclick = function(){
+            if(this.classList.contains('active')){
+                this.classList.remove('active');
+                this.style.background="#FF5C35"
+            }
+            else{
+                this.classList.add('active');
+                this.style.background="#00FF00"
+            }
+        };
+    }
+
+
+    getElement(){
+        return this.selfContainer;
+    }
+}
+
+class passiveSlider {
+    constructor(min, max, label) {
+        this.selfContainer=document.createElement("div");
+        this.element = document.createElement("input");
+        this.elementLabel = document.createElement("label");
+        this.selfContainer.appendChild(this.element);
+        this.selfContainer.appendChild(this.elementLabel);
+        this.label=label;
+        this.min = min;
+        this.max = max;
+        this.value = this.max;
+        this.element.type = "range";
+        this.element.min = this.min;
+        this.element.max = this.max;
+        this.element.value = this.max;
+        this.element.step = 1;
+        this.element.addEventListener("input", () => this.update());
+        
+        this.elementLabel.innerHTML = this.label+": "+this.value;
+    }
+
+    update() {
+        this.value = parseInt(this.element.value);
+        this.elementLabel.innerHTML = this.label+": "+this.value;
+    }
+
+    getElement() {
+        return this.selfContainer;
+    }
+}
+
+class passiveQuery{
+    constructor(type, buttonName,sliderName, min, max){
+        this.min = min;
+        this.max = max;
+        this.buttonName = buttonName;
+        this.sliderName = sliderName;
+        this.type = type;
+        this.create();
+    }
+
+    changeType(type){
+        if(type!=this.type){
+            this.type = type;
+            this.create();
+        }
+    }
+
+    create(){
+        if(this.type=="slider"){
+            this.queryElement = new passiveSlider(this.min, this.max, this.sliderName);
+        }
+        else if(this.type=="button"){
+            this.queryElement = new passiveButton(this.min, this.max, this.buttonName);
+        }
+        else{
+            console.error("Error: Invalid passive query type.")
+        }
+    }
+
+    getElement(){
+        return this.queryElement.getElement();
+    }
+}
+
+class causalityList{
+    constructor(passiveList,CausalityLogic){
+        this.passiveList=passiveList;
+        this.CausalityLogic=CausalityLogic;
+    }
+
+    getBuffs(){
+        let passiveBuffs={
+            "Start of turn":{},
+            "Attacking":{},
+            "On Super":{},
+            "Attacking the enemy":{},
+            "Being hit":{},
+            "Hit recieved":{},
+            "End of turn":{},
+            "After all ki collected":{},
+            "Activating standby":{},
+            "When final blow delivered":{},
+            "When ki spheres collected":{}
+        }
+        let passiveLines=json.Passive;
+        for(const passiveLine in passiveLines){
+            //if there is a condition
+            if("Condition" in passiveLines[passiveLine]){
+                //if the condition is met
+                if(logicReducer(passiveLines[passiveLine]["Condition"]["Logic"],CausalityLogic)){
+                    createPassiveBuffs(passiveLines[passiveLine], passiveBuffs);
+                }
+            }
+            //if there is no condition
+            else{
+                createPassiveBuffs(passiveLines[passiveLine], passiveBuffs);
+            }
+        }
+        return passiveBuffs
+    }
+
+    updateBuffs(additionalIsSuper){
+        console.log("A")
+
+    }
+}
+
+
 // Function to fetch JSON data based on sub-URL
 let currentJson = null;
 let additionalSupers=[];
@@ -325,6 +498,8 @@ let superStats={"ATK": 0, "DEF": 0, "Enemy ATK": 0, "Enemy DEF": 0, "Crit": 0, "
 let linkStats={"ATK":"0","DEF":"0","Enemy DEF":"0","Heal":"0","KI":"0","Damage Reduction":"0","Crit":"0","Evasion":"0"};
 let kiSources={};
 let kiCircleList=[];
+let passiveQueryList=[];
+let startingCausalityList=[];
 export function getJsonPromise(prefix,name,suffix) {
     return fetch(prefix + name + suffix)
       .then(response => {
@@ -440,6 +615,12 @@ export function createLeaderStats(){
     let leaderTotalInput=document.getElementById('leader-TotalInput');
     leaderTotalInput.value=400;
     leaderAInput.addEventListener('input', function(){
+        if(parseInt(leaderAInput.value)>200){
+            leaderAInput.value=200;
+        }
+        else if (parseInt(leaderAInput.value)<0){
+            leaderAInput.value=0;
+        }
         leaderTotalInput.value=parseInt(leaderAInput.value)+parseInt(leaderBInput.value);
         leaderStats.HP=leaderTotalInput.value;
         leaderStats.ATK=leaderTotalInput.value;
@@ -448,6 +629,12 @@ export function createLeaderStats(){
     });
 
     leaderBInput.addEventListener('input', function(){
+        if(parseInt(leaderBInput.value)>200){
+            leaderBInput.value=200;
+        }
+        else if (parseInt(leaderBInput.value)<0){
+            leaderBInput.value=0;
+        }
         leaderTotalInput.value=parseInt(leaderAInput.value)+parseInt(leaderBInput.value);
         leaderStats.HP=leaderTotalInput.value;
         leaderStats.ATK=leaderTotalInput.value;
@@ -456,6 +643,12 @@ export function createLeaderStats(){
     });
     
     leaderTotalInput.addEventListener('input', function(){
+        if(parseInt(leaderTotalInput.value)>400){
+            leaderTotalInput.value=400;
+        }
+        else if (parseInt(leaderTotalInput.value)<0){
+            leaderTotalInput.value=0;
+        }
         leaderStats.HP=leaderTotalInput.value;
         leaderStats.ATK=leaderTotalInput.value;
         leaderStats.DEF=leaderTotalInput.value;
@@ -928,174 +1121,91 @@ export function colorToBackground(color){
     }
 }
 
+
+
+export function updateQueryList(passiveLine){
+    if("Condition" in passiveLine || "Building Stat" in passiveLine){
+        if("Condition" in passiveLine){
+            for(const CausalityKey of Object.keys(passiveLine["Condition"]["Causalities"])){
+                const Causality = passiveLine["Condition"]["Causalities"][CausalityKey];
+                let queryUpdated=false;
+                startingCausalityList.push(CausalityKey);
+                if(isEmptyDictionary(Causality.Button)){
+                    if(isEmptyDictionary(Causality.Slider)){
+                        console.log("EMPTY CONDITION???");
+                    }
+                    else{
+                        for (const query of passiveQueryList){
+                            if(query.sliderName==Causality.Slider["Name"]){
+                                query.min=Math.min(Causality.Slider["Min"],query.min);
+                                query.max=Math.max(Causality.Slider["Max"],query.max);
+                                queryUpdated=true;
+                            }
+                        }
+                        if(queryUpdated==false){
+                            passiveQueryList.push( new passiveQuery("slider","",Causality.Slider["Name"],Causality.Slider["Min"],Causality.Slider["Max"]) );
+                        }
+                        //console.log("Slider only");
+                    }
+                }
+                else{
+                    if(isEmptyDictionary(Causality.Slider)){
+                        for (const query of passiveQueryList){
+                            if(query.buttonName==Causality.Button["Name"]){
+                                queryUpdated=true;
+                            }
+                        }
+                        if(queryUpdated==false){
+                            passiveQueryList.push( new passiveQuery("button",Causality.Button["Name"],0,0) );
+                        }
+                        //console.log("Button only");
+                    }
+                    else{
+                        for (const query of passiveQueryList){
+                            if(query.sliderName==Causality.Slider["Name"]){
+                                query.min=Math.min(Causality.Slider["Min"],query.min);
+                                query.max=Math.max(Causality.Slider["Max"],query.max);
+                                if(query.buttonName!=Causality.Button["Name"]){
+                                    query.changeType("slider");
+                                }
+                                queryUpdated=true;
+                            }
+                        }
+                        if(queryUpdated==false){
+                            passiveQueryList.push( new passiveQuery("button",Causality.Button["Name"],Causality.Slider["Name"],Causality.Slider["Min"],Causality.Slider["Max"]) );
+                        }
+                        //console.log("Slider and button");
+                    }
+                }
+            }
+        }
+
+        if("Building Stat" in passiveLine){
+            console.log("A");
+        }
+    }
+}
+
+
 export function createPassiveContainer(json){
-    //create queries based on the passive skill conditions
-    let passiveContainer=document.getElementById('passive-questions-container');
+    let passiveContainer = document.getElementById('passive-buffs-container');
     while (passiveContainer.firstChild) {
         passiveContainer.removeChild(passiveContainer.firstChild);
     }
-    let conditions=[];
-    
 
-    let conditionNumber=1;
-    let passiveLines=json["Passive"];
-    for (const key of Object.keys(passiveLines)){
-        let line = passiveLines[key];
-        if("Building Stat" in line){
-        let BuildingStat = line["Building Stat"];
-        let conditionAdded=false;
-        //WIP
-        }
+    let passiveList=json.Passive;
 
-        if("Condition" in line){
-        let condition = line["Condition"];
-        let Causalities = condition["Causalities"];
-        for (const slightlySmallerKey of Object.keys(Causalities)){
-            let causality=Causalities[slightlySmallerKey];
-            let conditionAdded=false;
-            for (const conditionsKey of Object.keys(conditions)){
-            if(conditionAdded==false){
-                //if slider names match
-                if((conditions[conditionsKey]["Slider"]==causality["Slider"]["Name"])){
-                //if button names match
-                if(conditions[conditionsKey]["Button"]==causality["Button"]["Name"]){
-                    //if the slider name is null
-                    if(conditions[conditionsKey]["Slider"]==null){
-                    let Logic=[null,slightlySmallerKey];
-                    conditions[conditionsKey]["Condition Logic"].push(Logic);
-                    conditionAdded=true;
-                    }
-                    //if the slider has a name
-                    else{
-                    conditions[conditionsKey]["Min"]=Math.min(causality["Slider"]["Min"],conditions[conditionsKey]["Min"]);
-                    conditions[conditionsKey]["Max"]=Math.max(causality["Slider"]["Max"],conditions[conditionsKey]["Max"]);
-                    let Logic=[(causality["Slider"]["Logic"]),slightlySmallerKey];
-                    conditions[conditionsKey]["Condition Logic"].push(Logic);
-                    conditionAdded=true;
-                    }
-                    
-                }
-                //if button names dont match
-                else{
-                    if(conditions[conditionsKey]["Slider"]!=null){
-                    conditions[conditionsKey]["Min"]=Math.min(causality["Slider"]["Min"],conditions[conditionsKey]["Min"]);
-                    conditions[conditionsKey]["Max"]=Math.max(causality["Slider"]["Max"],conditions[conditionsKey]["Max"]);
-                    let Logic=[(causality["Slider"]["Logic"]),slightlySmallerKey];
-                    conditions[conditionsKey]["Condition Logic"].push(Logic);
-                    conditions[conditionsKey]["Button or slider"]="slider";
-                    conditionAdded=true;
-                    }
-                    
-                }
-                }
-                //if slider names dont match
-                else if(causality["Slider"]["Name"]==null){
-                if(conditions[conditionsKey]["Button"]==causality["Button"]["Name"]){
-                    conditions[conditionsKey]["Min"]=null;
-                    conditions[conditionsKey]["Max"]=null;
-                    let Logic=[null,slightlySmallerKey];
-                    conditions[conditionsKey]["Condition Logic"].push(Logic);
-                    conditionAdded=true;
-                }
-                }
-            }
-                }
-                if(conditionAdded==false){
-                //if the slider name is null
-                if(causality["Slider"]["Name"]==null){
-                    let conditionObject={};
-                    conditionObject["Slider"]=null;
-                    conditionObject["Button"]=causality["Button"]["Name"];
-                    conditionObject["Min"]=null;
-                    conditionObject["Max"]=null;
-                    conditionObject["Button or slider"]="button";
-                    let Logic=[null,slightlySmallerKey];
-                    conditionObject["Condition Logic"]=[Logic];
-                    conditions.push(conditionObject);
-                    conditionAdded=true;
-                }
-                //if the slider has a name
-                else{
-                    let conditionObject={};
-                    conditionObject["Slider"]=causality["Slider"]["Name"];
-                    conditionObject["Button"]=causality["Button"]["Name"];
-                    conditionObject["Min"]=causality["Slider"]["Min"];
-                    conditionObject["Max"]=causality["Slider"]["Max"];
-                    conditionObject["Button or slider"]="button";
-                    let Logic=[(causality["Slider"]["Logic"]),slightlySmallerKey];
-                    conditionObject["Condition Logic"]=[Logic];
-                    conditions.push(conditionObject);
-                    conditionAdded=true;
-                }
-            }
-        }
+    for (const passiveLineKey of Object.keys(passiveList)) {
+        updateQueryList(passiveList[passiveLineKey]);
     }
+
+    for (const query of passiveQueryList) {
+        passiveContainer.appendChild(query.getElement());
+    }
+    updatePassiveBuffs(json);
 }
 
 
-
-    let CausalityList=[];
-    let CausalityLogic={};
-    conditionNumber=1;
-    for (const key of Object.keys(conditions)){
-        let condition=conditions[key];
-        if(condition["Button or slider"]=="button"){
-            let button = document.createElement('button');
-            CausalityList.push(condition["Condition Logic"][0][1])
-            CausalityLogic[condition["Condition Logic"][0][1]]=false;
-            button.innerHTML=condition["Button"];
-            button.style.gridRow = conditionNumber*2;
-            button.style.gridColumn = 1;
-            button.style.background="#FF5C35"
-            button.addEventListener('click', function(){
-            button.classList.toggle('active');
-            CausalityLogic[condition["Condition Logic"][0][1]]=button.classList.contains('active');
-            updatePassiveBuffs(json,CausalityLogic);
-            if(button.classList.contains('active')){
-                button.style.background="#00FF00"
-            } else {
-                button.style.background="#FF5C35"
-            }
-            });
-            passiveContainer.appendChild(button);
-        }
-        else if(condition["Button or slider"]=="slider"){
-            let slider = document.createElement('input');
-            let sliderLabel = document.createElement('label');
-            for (const logic of condition["Condition Logic"]){
-                CausalityList.push(logic[1]);
-                CausalityLogic[logic[1]]=logicCalculator(logic, condition["Min"]);
-            }
-            sliderLabel.innerHTML = condition["Slider"] + ": " + condition["Min"];
-            sliderLabel.style.gridRow = conditionNumber*2;
-            sliderLabel.style.gridColumn = 1;
-            if(condition["Slider"]=="How much ki is there"){
-                sliderLabel.style.display="none";
-                slider.style.display="none";
-            }
-            slider.type = "range";
-            slider.min = condition["Min"];
-            slider.max = condition["Max"];
-            slider.value = condition["Min"];
-            slider.style.backgroundColor = LightenColor(typingToColor(json.Typing), 30);
-            slider.id="passive-slider";
-            slider.style.gridRow = conditionNumber*2+1;
-            slider.addEventListener('input', function(){
-            sliderLabel.innerHTML = condition["Slider"] + ": " + slider.value;
-            for (const logic of condition["Condition Logic"]){
-                CausalityLogic[logic[1]]=logicCalculator(logic, slider.value);
-            }
-            updatePassiveBuffs(json,CausalityLogic);
-            });
-            
-            passiveContainer.appendChild(slider);
-            passiveContainer.appendChild(sliderLabel);
-        }
-        conditionNumber+=1;
-    }
-    updatePassiveBuffs(json,CausalityLogic);
-    CausalityList=Array.from(new Set(CausalityList));
-}
 
 export function initialiseAspects(json) {
     updateImageContainer('image-container', json["ID"], json.Typing);
@@ -1273,6 +1383,7 @@ export function updateSuperAttackStacks(){
 export function createLinkBuffs(json){
     // Select all link sliders and buttons within a specific parent
     let linksContainer = document.querySelector('#links-container');
+    linksContainer.style.width="200px";
     let linkSliders = linksContainer.querySelectorAll('input[type=range]');
     let linkButtons = linksContainer.querySelectorAll('button');
 
@@ -1309,6 +1420,7 @@ export function createLinkBuffs(json){
     // Create a paragraph element to display the total link buffs
     linkStats={"ATK":totalATKBuff,"DEF":totalDEFBuff,"Enemy DEF":totalEnemyDEFBuff,"Heal":totalHealBuff,"KI":totalKIBuff,"Damage Reduction":totalDamageReductionBuff,"Crit":totalCritBuff,"Evasion":totalEvasionBuff};
     let linkBuffs = document.createElement('p');
+    linkBuffs.style.width=""
     linkBuffs.id = "link-buffs";
     linkBuffs.innerHTML = "Link Buffs: ";
     if (totalATKBuff) linkBuffs.innerHTML += "<br>ATK: " + totalATKBuff + "% ";
@@ -1401,8 +1513,35 @@ export function createPassiveBuffs(passiveLine, passiveBuffsHolder){
     }
 }
 
-export function updatePassiveBuffs(json,CausalityLogic){
-    //passiveBuffs["Timing"]["Target"]["Buff type"]["Buff amount"]
+
+export function queriesToLogic(queries){
+    
+    console.log(queries)
+}
+
+export function generatePassiveEffects(passive, causalities){
+    let passiveTimings={
+        "Activating standby":{},
+        "Start of turn":{},
+        "When ki spheres collected":{},
+        "After all ki collected":{},
+        "Attacking":{},
+        "On Super":{},
+        "Attacking the enemy":{},
+        "Being hit":{},
+        "Hit recieved":{},
+        "When final blow delivered":{},
+        "End of turn":{}
+    }
+
+
+
+
+
+
+}
+
+export function updatePassiveBuffs(json){
     let passiveBuffs={
         "Start of turn":{},
         "Attacking":{},
@@ -1416,6 +1555,7 @@ export function updatePassiveBuffs(json,CausalityLogic){
         "When final blow delivered":{},
         "When ki spheres collected":{}
     }
+    const temp = new causalityList(passiveBuffs,queriesToLogic(passiveQueryList));
     let passiveLines=json.Passive;
     for(const passiveLine in passiveLines){
         //if there is a condition
@@ -1430,6 +1570,8 @@ export function updatePassiveBuffs(json,CausalityLogic){
             createPassiveBuffs(passiveLines[passiveLine], passiveBuffs);
         }
     }
+
+    temp.updateBuffs();
     let passiveBuffsContainer = document.getElementById('passive-buffs-container');
     passiveBuffsContainer.innerHTML = '';
     let buffNumber=5;
@@ -1523,6 +1665,7 @@ export function loadPage(firstTime=false){
     }
     jsonPromise.then(json => {
         currentJson=json;
+        createPassiveContainer(json);
         initialiseAspects(json);
         if(firstTime){
             createLeaderStats();
@@ -1540,7 +1683,6 @@ export function loadPage(firstTime=false){
         createEzaContainer(json,isEza,isSeza);
         createLevelSlider(json);
         createSuperAttackContainer(json);
-        createPassiveContainer(json);
         AdjustBaseStats();
         if(json["Rarity"] == "lr" || json["Rarity"] == "ur"){
             const buttonContainer = document.getElementById('hipo-button-container');
