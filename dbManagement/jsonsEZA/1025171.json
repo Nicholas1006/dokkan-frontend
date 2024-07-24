@@ -742,6 +742,9 @@
                 "From": "AGL",
                 "To": "RAINBOW"
             },
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -769,6 +772,9 @@
             "Timing": "Start of turn",
             "ATK": 40,
             "DEF": 40,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -796,6 +802,9 @@
             "Timing": "Start of turn",
             "ATK": 40,
             "DEF": 40,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -823,6 +832,9 @@
             "Timing": "Start of turn",
             "ATK": 40,
             "DEF": 40,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -850,6 +862,9 @@
             "Timing": "Start of turn",
             "ATK": 40,
             "DEF": 40,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -877,6 +892,9 @@
             "Timing": "Start of turn",
             "ATK": 40,
             "DEF": 40,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -911,21 +929,38 @@
                 "Type": "Percentage",
                 "+ or -": "-"
             },
-            "Length": "2"
+            "Length": "2",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "7002993": {
             "ID": "7002993",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
-                "Max": 0,
+                "Max": 23,
                 "Cause": {
                     "Cause": "Ki sphere obtained",
                     "Type": "any"
                 },
-                "Slider": "How many Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres have been obtained?"
+                "Slider": "How many  Ki Spheres have been obtained?"
             },
             "ATK": 25,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -958,7 +993,7 @@
             },
             "Length": "2",
             "Condition": {
-                "Logic": "1769 and 1770",
+                "Logic": "1769 && 1770",
                 "Causalities": {
                     "1769": {
                         "Button": {

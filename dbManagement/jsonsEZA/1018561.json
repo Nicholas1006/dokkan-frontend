@@ -734,16 +734,36 @@
             "ID": "2634",
             "Timing": "Start of turn",
             "ATK": 130,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1002634": {
             "ID": "1002634",
             "Timing": "On Super",
             "DR": 40,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -769,13 +789,16 @@
             "Timing": "Start of turn",
             "ATK": 130,
             "DEF": 130,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1105 or 1106 or 1107 or 1109",
+                "Logic": "1105 || 1106 || 1107 || 1109",
                 "Causalities": {
                     "1105": {
                         "Button": {
@@ -809,6 +832,9 @@
             "Timing": "Start of turn",
             "ATK": 70,
             "DEF": 70,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"

@@ -742,16 +742,36 @@
             "Timing": "Start of turn",
             "ATK": 100,
             "DEF": 100,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1001595": {
             "ID": "1001595",
             "Timing": "Start of turn",
             "Heals": 7,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -765,7 +785,7 @@
                             "Name": "Is HP 77 % or less?"
                         },
                         "Slider": {
-                            "Name": "What percentage of HP is remaining",
+                            "Name": "What percentage of HP is remaining?",
                             "Logic": "<=77",
                             "Min": 0,
                             "Max": 100
@@ -785,7 +805,21 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         }
     },
     "Max Attacks": 2,
@@ -1523,7 +1557,7 @@
         "Name": "Fusion with Kami",
         "Description": "Fuses with Kami",
         "Condition": {
-            "Logic": "5 and 252 and 165",
+            "Logic": "5 && 252 && 165",
             "Causalities": {
                 "5": {
                     "Button": {

@@ -739,17 +739,37 @@
             "Timing": "Start of turn",
             "ATK": 150,
             "DEF": 150,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1004102": {
             "ID": "1004102",
             "Timing": "On Super",
             "ATK": 100,
             "DEF": 100,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -781,6 +801,9 @@
                 }
             },
             "Ki": 1,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -809,6 +832,9 @@
                 }
             },
             "ATK": 20,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -830,6 +856,9 @@
             "ID": "4004102",
             "Timing": "Start of turn",
             "Guard": true,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -864,13 +893,16 @@
                 }
             },
             "Crit Chance": 15,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "99",
             "Condition": {
-                "Logic": "24 and 3088",
+                "Logic": "24 && 3088",
                 "Causalities": {
                     "24": {
                         "Button": {

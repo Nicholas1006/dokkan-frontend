@@ -640,17 +640,37 @@
             "Timing": "Start of turn",
             "ATK": 100,
             "DEF": 100,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1002677": {
             "ID": "1002677",
             "Timing": "Start of turn",
             "ATK": 100,
             "DEF": 100,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -677,13 +697,16 @@
             "ID": "2002677",
             "Timing": "On Super",
             "ATK": 200,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2727 and 1203",
+                "Logic": "2727 && 1203",
                 "Causalities": {
                     "2727": {
                         "Button": {
@@ -722,7 +745,7 @@
             },
             "Length": "2",
             "Condition": {
-                "Logic": "2727 and 1203",
+                "Logic": "2727 && 1203",
                 "Causalities": {
                     "2727": {
                         "Button": {

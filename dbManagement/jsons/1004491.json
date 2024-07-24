@@ -531,23 +531,43 @@
             "Timing": "Start of turn",
             "ATK": 20000,
             "DEF": 20000,
-            "Buff": {
-                "Type": "Raw stats",
-                "+ or -": "+"
+            "Target": {
+                "Target": "Self"
             },
-            "Length": "1"
-        },
-        "1002338": {
-            "ID": "1002338",
-            "Timing": "On Super",
-            "ATK": 10000,
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "421 or 422 or 535",
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
+        },
+        "1002338": {
+            "ID": "1002338",
+            "Timing": "On Super",
+            "ATK": 10000,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "421 || 422 || 535",
                 "Causalities": {
                     "421": {
                         "Button": {

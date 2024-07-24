@@ -744,6 +744,9 @@
             "ID": "3445",
             "Timing": "Start of turn",
             "Ki": 3,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -770,6 +773,9 @@
             "ID": "1003445",
             "Dodge chance": 50,
             "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -797,37 +803,74 @@
             "Timing": "Start of turn",
             "ATK": 50,
             "DEF": 50,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "3003445": {
             "ID": "3003445",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
-                "Max": 0,
+                "Max": 23,
                 "Cause": {
                     "Cause": "Ki sphere obtained",
                     "Type": "any"
                 },
-                "Slider": "How many Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres have been obtained?"
+                "Slider": "How many  Ki Spheres have been obtained?"
             },
             "ATK": 20,
             "DEF": 20,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "4003445": {
             "ID": "4003445",
             "Timing": "On Super",
             "ATK": 80,
             "DEF": 80,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -858,6 +901,9 @@
                 "To": [
                     "AGL"
                 ]
+            },
+            "Target": {
+                "Target": "Self"
             },
             "Buff": {
                 "Type": "Raw stats",
@@ -894,7 +940,21 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "7003445": {
             "ID": "7003445",
@@ -908,7 +968,21 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         }
     },
     "Max Attacks": 2,

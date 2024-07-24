@@ -736,6 +736,9 @@
             "ID": "3485",
             "Timing": "Start of turn",
             "Ki": 4,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -763,6 +766,9 @@
             "ID": "1003485",
             "Timing": "Start of turn",
             "DEF": 80000,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -790,27 +796,64 @@
             "ID": "2003485",
             "Timing": "Start of turn",
             "Ki": 3,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "3003485": {
             "ID": "3003485",
             "Timing": "Start of turn",
             "ATK": 100000,
             "DEF": 100000,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "4003485": {
             "ID": "4003485",
             "Timing": "Start of turn",
             "Ki": 3,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -838,6 +881,9 @@
             "Timing": "Start of turn",
             "ATK": 60000,
             "DEF": 60000,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -864,13 +910,16 @@
             "ID": "6003485",
             "Timing": "Start of turn",
             "ATK": 60000,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2412 and 2414",
+                "Logic": "2412 && 2414",
                 "Causalities": {
                     "2412": {
                         "Button": {
@@ -900,13 +949,16 @@
             "ID": "7003485",
             "Timing": "Start of turn",
             "Crit Chance": 30,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2412 and 2414",
+                "Logic": "2412 && 2414",
                 "Causalities": {
                     "2412": {
                         "Button": {
@@ -936,6 +988,9 @@
             "ID": "8003485",
             "Timing": "Start of turn",
             "Ki": 2,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -963,6 +1018,9 @@
             "Timing": "Start of turn",
             "ATK": 40000,
             "DEF": 100000,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -989,6 +1047,9 @@
             "ID": "10003485",
             "Timing": "Start of turn",
             "Guard": true,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -1016,6 +1077,9 @@
             "ID": "11003485",
             "Timing": "Start of turn",
             "ATK": 60000,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -1029,7 +1093,7 @@
                             "Name": "Is HP 40 % or less?"
                         },
                         "Slider": {
-                            "Name": "What percentage of HP is remaining",
+                            "Name": "What percentage of HP is remaining?",
                             "Logic": "<=40",
                             "Min": 0,
                             "Max": 100
@@ -1043,6 +1107,9 @@
             "ID": "12003485",
             "Timing": "Start of turn",
             "Crit Chance": 100,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -1056,7 +1123,7 @@
                             "Name": "Is HP 40 % or less?"
                         },
                         "Slider": {
-                            "Name": "What percentage of HP is remaining",
+                            "Name": "What percentage of HP is remaining?",
                             "Logic": "<=40",
                             "Min": 0,
                             "Max": 100
@@ -1979,14 +2046,14 @@
         "Name": "Planet Geyser",
         "Description": "Massively raises ATK temporarily and \ncauses ultimate damage to enemy",
         "Condition": {
-            "Logic": "2416 or (2417 and 2412 and 2414)",
+            "Logic": "2416 || (2417 && 2412 && 2414)",
             "Causalities": {
                 "2416": {
                     "Button": {
                         "Name": "Is HP 40 % or less?"
                     },
                     "Slider": {
-                        "Name": "What percentage of HP is remaining",
+                        "Name": "What percentage of HP is remaining?",
                         "Logic": "<=40",
                         "Min": 0,
                         "Max": 100

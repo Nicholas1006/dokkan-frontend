@@ -740,22 +740,56 @@
             "ID": "3038",
             "Timing": "Start of turn",
             "Ki": 4,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1003038": {
             "ID": "1003038",
             "Timing": "Start of turn",
             "ATK": 120,
             "DEF": 120,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "2003038": {
             "ID": "2003038",
@@ -769,7 +803,21 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "3003038": {
             "ID": "3003038",
@@ -784,7 +832,21 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "4003038": {
             "ID": "4003038",
@@ -797,6 +859,9 @@
                 }
             },
             "ATK": 20,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -825,6 +890,9 @@
                 }
             },
             "DEF": 20,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -846,6 +914,9 @@
             "ID": "6003038",
             "Timing": "Being hit",
             "DR": 50,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -870,11 +941,28 @@
                 "Line": "6003038"
             },
             "Timing": "Hit recieved",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         }
     },
     "Max Attacks": 2,
@@ -1788,7 +1876,7 @@
         "Name": "Maximum Power Kamehameha",
         "Description": "Raises ATK by 610% temporarily then causes \ndamage to enemy and, within the turn activated, \nattacks have a 64% chance of becoming critical hits",
         "Condition": {
-            "Logic": "1868 or 1869",
+            "Logic": "1868 || 1869",
             "Causalities": {
                 "1868": {
                     "Button": {

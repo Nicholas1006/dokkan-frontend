@@ -740,31 +740,82 @@
             "Timing": "Start of turn",
             "ATK": 80,
             "DEF": 80,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1002915": {
             "ID": "1002915",
             "Dodge chance": 30,
             "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "2002915": {
             "ID": "2002915",
             "Dodge chance": 20,
             "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "5",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            },
             "Once only": true
         }
     },
@@ -1502,7 +1553,7 @@
         "Name": "Exchange",
         "Description": "Exchanges with another character",
         "Condition": {
-            "Logic": "1578 or 1579 and 1580",
+            "Logic": "1578 || 1579 && 1580",
             "Causalities": {
                 "1578": {
                     "Button": {
@@ -1530,7 +1581,7 @@
                         "Name": "Is HP 59 % or less?"
                     },
                     "Slider": {
-                        "Name": "What percentage of HP is remaining",
+                        "Name": "What percentage of HP is remaining?",
                         "Logic": "<=59",
                         "Min": 0,
                         "Max": 100

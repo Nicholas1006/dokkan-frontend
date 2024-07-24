@@ -743,17 +743,37 @@
             "Timing": "Start of turn",
             "ATK": 250,
             "DEF": 250,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1002848": {
             "ID": "1002848",
             "Timing": "On Super",
             "ATK": 50,
             "DEF": 50,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -779,6 +799,9 @@
             "Timing": "Start of turn",
             "ATK": 50,
             "DEF": 50,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -805,21 +828,55 @@
             "ID": "3002848",
             "Timing": "Start of turn",
             "Crit Chance": 35,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "4002848": {
             "ID": "4002848",
             "Dodge chance": 35,
             "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "5002848": {
             "ID": "5002848",
@@ -828,6 +885,9 @@
                 "Chance of super": "100"
             },
             "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -1622,14 +1682,14 @@
         "Name": "Rage",
         "Description": "Rages",
         "Condition": {
-            "Logic": "1437 and 1438",
+            "Logic": "1437 && 1438",
             "Causalities": {
                 "1437": {
                     "Button": {
                         "Name": "Is HP 50 % or less?"
                     },
                     "Slider": {
-                        "Name": "What percentage of HP is remaining",
+                        "Name": "What percentage of HP is remaining?",
                         "Logic": "<=50",
                         "Min": 0,
                         "Max": 100

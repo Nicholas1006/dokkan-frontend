@@ -741,16 +741,36 @@
             "Timing": "Start of turn",
             "ATK": 60,
             "DEF": 60,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1001530": {
             "ID": "1001530",
             "Timing": "Start of turn",
             "Ki": 6,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -778,6 +798,9 @@
             "Timing": "Start of turn",
             "ATK": 40,
             "DEF": 40,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -804,6 +827,9 @@
             "ID": "3001530",
             "Timing": "On Super",
             "ATK": 60,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -1066,7 +1092,7 @@
         "Name": "HAIL Frieza",
         "Description": "Causes supreme damage to enemy and \ngreatly lowers ATK & DEF",
         "Condition": {
-            "Logic": "4  and  18",
+            "Logic": "4  &&  18",
             "Causalities": {
                 "4": {
                     "Button": {

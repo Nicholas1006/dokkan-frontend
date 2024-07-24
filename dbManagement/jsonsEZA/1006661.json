@@ -640,23 +640,43 @@
             "Timing": "Start of turn",
             "ATK": 70,
             "DEF": 70,
-            "Buff": {
-                "Type": "Percentage",
-                "+ or -": "+"
+            "Target": {
+                "Target": "Self"
             },
-            "Length": "1"
-        },
-        "1002332": {
-            "ID": "1002332",
-            "Timing": "On Super",
-            "ATK": 50,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "779 and 714",
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
+        },
+        "1002332": {
+            "ID": "1002332",
+            "Timing": "On Super",
+            "ATK": 50,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "779 && 714",
                 "Causalities": {
                     "779": {
                         "Button": {
@@ -685,6 +705,9 @@
             "ID": "2002332",
             "Timing": "When ki spheres collected",
             "Crit Chance": 100,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"

@@ -737,11 +737,28 @@
             "Timing": "Start of turn",
             "ATK": 130,
             "DEF": 130,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1002267": {
             "ID": "1002267",
@@ -755,7 +772,21 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "2002267": {
             "ID": "2002267",
@@ -770,12 +801,29 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "3002267": {
             "ID": "3002267",
             "Timing": "Attacking",
             "Ki": 6,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -797,6 +845,9 @@
             "ID": "4002267",
             "Effective against all": true,
             "Timing": "On Super",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -818,6 +869,9 @@
             "ID": "5002267",
             "Effective against all": true,
             "Timing": "On Super",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -845,6 +899,9 @@
                 "Chance of super": "100"
             },
             "Timing": "On Super",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -1803,7 +1860,7 @@
         "Name": "Fruit of the Tree of Might",
         "Description": "Ki +24 for 1 turn",
         "Condition": {
-            "Logic": "727 or 728",
+            "Logic": "727 || 728",
             "Causalities": {
                 "727": {
                     "Button": {
@@ -1820,7 +1877,7 @@
                         "Name": "Is HP 60 % or less?"
                     },
                     "Slider": {
-                        "Name": "What percentage of HP is remaining",
+                        "Name": "What percentage of HP is remaining?",
                         "Logic": "<=60",
                         "Min": 0,
                         "Max": 100

@@ -748,7 +748,21 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1001558": {
             "ID": "1001558",
@@ -763,7 +777,21 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "2001558": {
             "ID": "2001558",
@@ -787,7 +815,7 @@
                             "Name": "Is HP 30 % or less?"
                         },
                         "Slider": {
-                            "Name": "What percentage of HP is remaining",
+                            "Name": "What percentage of HP is remaining?",
                             "Logic": "<=30",
                             "Min": 0,
                             "Max": 100
@@ -801,6 +829,9 @@
             "ID": "3001558",
             "Timing": "Start of turn",
             "Heals": 100,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -814,7 +845,7 @@
                             "Name": "Is HP 30 % or less?"
                         },
                         "Slider": {
-                            "Name": "What percentage of HP is remaining",
+                            "Name": "What percentage of HP is remaining?",
                             "Logic": "<=30",
                             "Min": 0,
                             "Max": 100

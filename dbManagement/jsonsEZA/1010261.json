@@ -745,18 +745,35 @@
             "Timing": "Start of turn",
             "ATK": 130,
             "DEF": 130,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1002480": {
             "ID": "1002480",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
-                "Max": 0,
+                "Max": 5,
                 "Cause": {
                     "Cause": "Ki sphere obtained",
                     "Type": [
@@ -766,18 +783,35 @@
                 "Slider": "How many Rainbow Ki Spheres have been obtained?"
             },
             "ATK": 30,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "2002480": {
             "ID": "2002480",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
-                "Max": 0,
+                "Max": 5,
                 "Cause": {
                     "Cause": "Ki sphere obtained",
                     "Type": [
@@ -787,11 +821,28 @@
                 "Slider": "How many Rainbow Ki Spheres have been obtained?"
             },
             "DEF": 30,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "3002480": {
             "ID": "3002480",
@@ -807,22 +858,56 @@
                     "Rainbow"
                 ]
             },
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Chance": "50",
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "50",
+                "Causalities": {
+                    "50": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "4002480": {
             "ID": "4002480",
             "Effective against all": true,
             "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "7",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            },
             "Once only": true
         }
     },

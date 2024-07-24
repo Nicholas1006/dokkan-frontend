@@ -737,46 +737,117 @@
             "Timing": "Start of turn",
             "ATK": 158,
             "DEF": 158,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1002407": {
             "ID": "1002407",
             "Dodge chance": 50,
             "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "2002407": {
             "ID": "2002407",
             "Dodge chance": -50,
             "Timing": "On Super",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "3002407": {
             "ID": "3002407",
             "Timing": "On Super",
             "ATK": 58,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "4002407": {
             "ID": "4002407",
             "Effective against all": true,
             "Timing": "Hit recieved",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -798,6 +869,9 @@
             "ID": "5002407",
             "Timing": "Hit recieved",
             "ATK": 58,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -822,13 +896,16 @@
                 "Chance of super": "100"
             },
             "Timing": "On Super",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "733 or 735",
+                "Logic": "733 || 735",
                 "Causalities": {
                     "733": {
                         "Button": {
@@ -859,6 +936,9 @@
             "ID": "7002407",
             "Timing": "Attacking",
             "ATK": 58,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -885,6 +965,9 @@
             "ID": "8002407",
             "Dodge chance": 50,
             "Timing": "On Super",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -1694,7 +1777,7 @@
             },
             "superIsInactive": "0",
             "superCondition": {
-                "Logic": "846 or 847 or 848",
+                "Logic": "846 || 847 || 848",
                 "Causalities": {
                     "846": {
                         "Button": {
@@ -1808,7 +1891,7 @@
             },
             "superIsInactive": "0",
             "superCondition": {
-                "Logic": "846 or 847 or 848",
+                "Logic": "846 || 847 || 848",
                 "Causalities": {
                     "846": {
                         "Button": {
@@ -1840,7 +1923,7 @@
         "Name": "Complicated Female Psyche",
         "Description": "ATK +20% and DEF -20% in battle",
         "Condition": {
-            "Logic": "713 and (846 or 847 or 848)",
+            "Logic": "713 && (846 || 847 || 848)",
             "Causalities": {
                 "713": {
                     "Button": {

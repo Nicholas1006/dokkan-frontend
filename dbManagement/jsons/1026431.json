@@ -739,11 +739,28 @@
             "ID": "3438",
             "Timing": "Start of turn",
             "Ki": 5,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "4",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            },
             "Once only": true
         },
         "1003438": {
@@ -751,11 +768,28 @@
             "Timing": "Start of turn",
             "ATK": 120,
             "DEF": 120,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "4",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            },
             "Once only": true
         },
         "2003438": {
@@ -763,16 +797,36 @@
             "Timing": "Start of turn",
             "ATK": 120,
             "DEF": 120,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "3003438": {
             "ID": "3003438",
             "Timing": "On Super",
             "ATK": 30,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -799,6 +853,9 @@
             "ID": "4003438",
             "Timing": "On Super",
             "ATK": 30,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -826,6 +883,9 @@
             "Timing": "On Super",
             "ATK": 30,
             "DEF": 30,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -852,24 +912,44 @@
             "ID": "6003438",
             "Timing": "Start of turn",
             "Guard": true,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Chance": "70",
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "70",
+                "Causalities": {
+                    "70": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "7003438": {
             "ID": "7003438",
             "Timing": "Start of turn",
             "Guard": true,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2307 or 2308",
+                "Logic": "2307 || 2308",
                 "Causalities": {
                     "2307": {
                         "Button": {
@@ -903,6 +983,9 @@
                 "Chance of super": "50"
             },
             "Timing": "Being hit",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -924,6 +1007,9 @@
             "ID": "9003438",
             "Timing": "Hit recieved",
             "ATK": 100,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -948,11 +1034,28 @@
                 "Line": "9003438"
             },
             "Timing": "Attacking the enemy",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "11003438": {
             "ID": "11003438",
@@ -965,6 +1068,9 @@
                 }
             },
             "Ki": 1,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -993,6 +1099,9 @@
                 }
             },
             "DEF": 20,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -1959,7 +2068,7 @@
         "Name": "Revenge Death Bomber",
         "Description": "Massively raises ATK temporarily, \ncauses ultimate damage to enemy \nand recovers 40% HP; disables \nenemy's action once within the turn",
         "Condition": {
-            "Logic": "2301 and 2302",
+            "Logic": "2301 && 2302",
             "Causalities": {
                 "2301": {
                     "Button": {
@@ -1976,7 +2085,7 @@
                         "Name": "Is HP 60 % or less?"
                     },
                     "Slider": {
-                        "Name": "What percentage of HP is remaining",
+                        "Name": "What percentage of HP is remaining?",
                         "Logic": "<=60",
                         "Min": 0,
                         "Max": 100

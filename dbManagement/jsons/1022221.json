@@ -738,16 +738,36 @@
             "ID": "2451",
             "Timing": "Start of turn",
             "DEF": 158,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1002451": {
             "ID": "1002451",
             "Timing": "On Super",
             "ATK": 158,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -773,6 +793,9 @@
             "Timing": "Start of turn",
             "ATK": 58,
             "DEF": 58,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -799,6 +822,9 @@
             "ID": "3002451",
             "Timing": "Hit recieved",
             "ATK": 58,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -831,7 +857,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "888 and 790",
+                "Logic": "888 && 790",
                 "Causalities": {
                     "888": {
                         "Button": {
@@ -859,7 +885,21 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "6002451": {
             "ID": "6002451",
@@ -872,7 +912,21 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         }
     },
     "Max Attacks": 2,
@@ -1661,7 +1715,7 @@
             },
             "superIsInactive": "0",
             "superCondition": {
-                "Logic": "885 or 886",
+                "Logic": "885 || 886",
                 "Causalities": {
                     "885": {
                         "Button": {
@@ -1694,7 +1748,7 @@
                         "Name": "Is HP 58 % or less?"
                     },
                     "Slider": {
-                        "Name": "What percentage of HP is remaining",
+                        "Name": "What percentage of HP is remaining?",
                         "Logic": "<=58",
                         "Min": 0,
                         "Max": 100

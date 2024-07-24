@@ -740,17 +740,37 @@
             "Timing": "Start of turn",
             "ATK": 100,
             "DEF": 100,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1002597": {
             "ID": "1002597",
             "Timing": "On Super",
             "ATK": 100,
             "DEF": 100,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -775,6 +795,9 @@
             "ID": "2002597",
             "Timing": "Attacking",
             "ATK": 60,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -833,13 +856,16 @@
             "ID": "4002597",
             "Dodge chance": 30,
             "Timing": "Attacking",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1046 or 1047",
+                "Logic": "1046 || 1047",
                 "Causalities": {
                     "1046": {
                         "Button": {
@@ -879,7 +905,7 @@
             },
             "Length": "2",
             "Condition": {
-                "Logic": "1046 or 1047",
+                "Logic": "1046 || 1047",
                 "Causalities": {
                     "1046": {
                         "Button": {

@@ -747,6 +747,9 @@
             "ID": "3525",
             "Timing": "Start of turn",
             "DEF": 100,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -774,6 +777,9 @@
             "ID": "1003525",
             "Timing": "Start of turn",
             "Guard": true,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -801,29 +807,63 @@
             "ID": "2003525",
             "Timing": "Start of turn",
             "Ki": 3,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "3003525": {
             "ID": "3003525",
             "Timing": "Start of turn",
             "ATK": 100,
             "DEF": 100,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "4003525": {
             "ID": "4003525",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
-                "Max": 0,
+                "Max": 23,
                 "Cause": {
                     "Cause": "Ki sphere obtained",
                     "Type": [
@@ -837,17 +877,37 @@
                 "Slider": "How many PHY or STR or INT or TEQ or AGL Ki Spheres have been obtained?"
             },
             "Ki": 2,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "5003525": {
             "ID": "5003525",
             "Timing": "Start of turn",
             "ATK": 50,
             "DEF": 50,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -874,6 +934,9 @@
             "ID": "6003525",
             "Effective against all": true,
             "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -900,6 +963,9 @@
             "ID": "7003525",
             "Timing": "After all ki collected",
             "DEF": 150,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -926,6 +992,9 @@
             "ID": "8003525",
             "Dodge chance": 50,
             "Timing": "After all ki collected",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -953,13 +1022,16 @@
             "Timing": "After all ki collected",
             "ATK": 100,
             "DEF": 50,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2541 or 2542",
+                "Logic": "2541 || 2542",
                 "Causalities": {
                     "2541": {
                         "Button": {
@@ -993,13 +1065,16 @@
                 "Chance of super": "50"
             },
             "Timing": "After all ki collected",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2541 or 2542",
+                "Logic": "2541 || 2542",
                 "Causalities": {
                     "2541": {
                         "Button": {
@@ -1033,6 +1108,9 @@
                 "Chance of super": "100"
             },
             "Timing": "On Super",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -2175,7 +2253,7 @@
         "Name": "Special Fusion",
         "Description": "Performs Potara Fusion",
         "Condition": {
-            "Logic": "(2557 and 2547) or (2558 and (2559 or 2560))",
+            "Logic": "(2557 && 2547) || (2558 && (2559 || 2560))",
             "Causalities": {
                 "2557": {
                     "Button": {
@@ -2191,7 +2269,7 @@
                         "Name": "Is HP 70 % or less?"
                     },
                     "Slider": {
-                        "Name": "What percentage of HP is remaining",
+                        "Name": "What percentage of HP is remaining?",
                         "Logic": "<=70",
                         "Min": 0,
                         "Max": 100

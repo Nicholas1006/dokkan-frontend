@@ -748,11 +748,28 @@
             "ID": "3118",
             "Timing": "Start of turn",
             "Heals": 100,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            },
             "Once only": true
         },
         "1003118": {
@@ -769,32 +786,83 @@
                     "Rainbow"
                 ]
             },
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "2003118": {
             "ID": "2003118",
             "Timing": "Start of turn",
             "Ki": 6,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "3003118": {
             "ID": "3003118",
             "Timing": "Start of turn",
             "ATK": 180,
             "DEF": 180,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "4003118": {
             "ID": "4003118",
@@ -803,19 +871,36 @@
                 "Chance of super": "100"
             },
             "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Chance": "50",
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "50",
+                "Causalities": {
+                    "50": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "5003118": {
             "ID": "5003118",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
-                "Max": 0,
+                "Max": 23,
                 "Cause": {
                     "Cause": "Ki sphere obtained",
                     "Type": [
@@ -830,17 +915,37 @@
                 "Slider": "How many Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres have been obtained?"
             },
             "DR": 3,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "6003118": {
             "ID": "6003118",
             "Timing": "On Super",
             "ATK": 30,
             "DEF": 30,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -868,6 +973,9 @@
             "Timing": "On Super",
             "ATK": 40,
             "DEF": 40,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -895,6 +1003,9 @@
             "Timing": "On Super",
             "ATK": 50,
             "DEF": 50,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -921,6 +1032,9 @@
             "ID": "9003118",
             "Timing": "On Super",
             "ATK": 100,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -945,6 +1059,9 @@
             "ID": "10003118",
             "Timing": "On Super",
             "Crit Chance": 50,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -1169,7 +1286,7 @@
         "Name": "Solar Kamehameha",
         "Description": "Greatly raises ATK temporarily, \ncauses ultimate damage to enemy \nand massively lowers DEF",
         "Condition": {
-            "Logic": "9  and  296",
+            "Logic": "9  &&  296",
             "Causalities": {
                 "9": {
                     "Button": {

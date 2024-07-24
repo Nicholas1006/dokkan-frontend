@@ -737,16 +737,36 @@
             "Timing": "Start of turn",
             "ATK": 100,
             "DEF": 100,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1002031": {
             "ID": "1002031",
             "Timing": "Start of turn",
             "Ki": 3,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -769,6 +789,9 @@
             "Timing": "Start of turn",
             "ATK": 100,
             "DEF": 100,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -790,6 +813,9 @@
             "ID": "3002031",
             "Timing": "Start of turn",
             "ATK": 100,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -816,6 +842,9 @@
             "ID": "4002031",
             "Timing": "Start of turn",
             "Ki": 3,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -837,6 +866,9 @@
             "ID": "5002031",
             "Timing": "Start of turn",
             "ATK": 100,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -858,6 +890,9 @@
             "ID": "6002031",
             "Timing": "Start of turn",
             "Crit Chance": 100,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -1611,7 +1646,7 @@
         "Name": "Gine's Encouragement",
         "Description": "Removes all allies' status effects and \nraises all allies' ATK by 22% for 2 turns",
         "Condition": {
-            "Logic": "492 and 493",
+            "Logic": "492 && 493",
             "Causalities": {
                 "492": {
                     "Button": {
@@ -1628,7 +1663,7 @@
                         "Name": "Is HP 80 % or less?"
                     },
                     "Slider": {
-                        "Name": "What percentage of HP is remaining",
+                        "Name": "What percentage of HP is remaining?",
                         "Logic": "<=80",
                         "Min": 0,
                         "Max": 100

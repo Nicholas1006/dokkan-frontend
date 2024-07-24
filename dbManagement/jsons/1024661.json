@@ -741,7 +741,7 @@
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
-                "Max": 0,
+                "Max": 23,
                 "Cause": {
                     "Cause": "Ki sphere obtained",
                     "Type": [
@@ -756,6 +756,9 @@
                 "Slider": "How many Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres have been obtained?"
             },
             "Ki": 1,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -793,38 +796,92 @@
                     "INT"
                 ]
             },
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "2002911": {
             "ID": "2002911",
             "Timing": "Start of turn",
             "ATK": 100,
             "DEF": 100,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "3002911": {
             "ID": "3002911",
             "Timing": "Start of turn",
             "DR": 20,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "4002911": {
             "ID": "4002911",
             "Timing": "On Super",
             "ATK": 50,
             "DEF": 50,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -852,6 +909,9 @@
                 "Chance of super": "100"
             },
             "Timing": "On Super",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -876,6 +936,9 @@
             "ID": "6002911",
             "Effective against all": true,
             "Timing": "On Super",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -907,6 +970,9 @@
                 }
             },
             "DR": 2,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -935,6 +1001,9 @@
                 }
             },
             "Ki": 1,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -961,6 +1030,9 @@
             "ID": "9002911",
             "Timing": "End of turn",
             "Heals": 10,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -990,6 +1062,9 @@
                 "Absorbed": 0
             },
             "Timing": "Being hit",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -997,7 +1072,7 @@
             "Chance": "70",
             "Length": "1",
             "Condition": {
-                "Logic": "1595 and 141",
+                "Logic": "1595 && 141",
                 "Causalities": {
                     "1595": {
                         "Button": {
@@ -1021,6 +1096,9 @@
                 "Multiplier": "300"
             },
             "Timing": "Being hit",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -1028,7 +1106,7 @@
             "Chance": "70",
             "Length": "1",
             "Condition": {
-                "Logic": "1595 and 141",
+                "Logic": "1595 && 141",
                 "Causalities": {
                     "1595": {
                         "Button": {
@@ -1052,11 +1130,28 @@
                 "Line": "10002911"
             },
             "Timing": "Hit recieved",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "13002911": {
             "ID": "13002911",
@@ -1065,11 +1160,28 @@
                 "Line": "11002911"
             },
             "Timing": "Hit recieved",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         }
     },
     "Max Attacks": 3,

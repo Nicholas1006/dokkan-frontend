@@ -736,6 +736,9 @@
             "Timing": "Start of turn",
             "ATK": 20,
             "DEF": 20,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -763,6 +766,9 @@
             "Timing": "Start of turn",
             "ATK": 20,
             "DEF": 20,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -790,6 +796,9 @@
             "Timing": "Start of turn",
             "ATK": 20,
             "DEF": 20,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -817,6 +826,9 @@
             "Timing": "Start of turn",
             "ATK": 20,
             "DEF": 20,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -844,6 +856,9 @@
             "Timing": "Start of turn",
             "ATK": 20,
             "DEF": 20,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -871,6 +886,9 @@
             "Timing": "Start of turn",
             "ATK": 20,
             "DEF": 20,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -898,6 +916,9 @@
             "Timing": "Start of turn",
             "ATK": 20,
             "DEF": 20,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -932,7 +953,21 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "8002460": {
             "ID": "8002460",
@@ -947,19 +982,36 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "9002460": {
             "ID": "9002460",
             "Timing": "On Super",
             "Crit Chance": 100,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "899 or (900 and 901)",
+                "Logic": "899 || (900 && 901)",
                 "Causalities": {
                     "899": {
                         "Button": {

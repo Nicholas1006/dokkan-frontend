@@ -536,11 +536,28 @@
             "ID": "569",
             "Timing": "Start of turn",
             "ATK": 50,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1000569": {
             "ID": "1000569",
@@ -553,6 +570,9 @@
                 "Reverse chance": "100"
             },
             "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -566,7 +586,7 @@
                             "Name": "Is HP 30 % or less?"
                         },
                         "Slider": {
-                            "Name": "What percentage of HP is remaining",
+                            "Name": "What percentage of HP is remaining?",
                             "Logic": "<=30",
                             "Min": 0,
                             "Max": 100

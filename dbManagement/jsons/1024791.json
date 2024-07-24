@@ -635,21 +635,55 @@
             "Timing": "Start of turn",
             "ATK": 100,
             "DEF": 100,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1002944": {
             "ID": "1002944",
             "Timing": "Start of turn",
             "Guard": true,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "4",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            },
             "Once only": true
         },
         "2002944": {
@@ -663,6 +697,9 @@
                 }
             },
             "ATK": 20,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -691,6 +728,9 @@
                 }
             },
             "DEF": 20,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -719,13 +759,16 @@
                 }
             },
             "ATK": 20,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "99",
             "Condition": {
-                "Logic": "1672 and 1671 or 1673 and 1671",
+                "Logic": "1672 && 1671 || 1673 && 1671",
                 "Causalities": {
                     "1672": {
                         "Button": {
@@ -769,13 +812,16 @@
                 }
             },
             "DEF": 20,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "99",
             "Condition": {
-                "Logic": "1672 and 1671 or 1673 and 1671",
+                "Logic": "1672 && 1671 || 1673 && 1671",
                 "Causalities": {
                     "1672": {
                         "Button": {

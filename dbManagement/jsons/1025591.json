@@ -749,6 +749,9 @@
             "Timing": "Start of turn",
             "ATK": 100,
             "DEF": 100,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -776,6 +779,9 @@
             "ID": "1003072",
             "Timing": "Start of turn",
             "Guard": true,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -804,18 +810,35 @@
             "Timing": "Start of turn",
             "ATK": 150,
             "DEF": 150,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "3003072": {
             "ID": "3003072",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
-                "Max": 0,
+                "Max": 23,
                 "Cause": {
                     "Cause": "Ki sphere obtained",
                     "Type": [
@@ -830,21 +853,55 @@
                 "Slider": "How many Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres have been obtained?"
             },
             "Ki": 1,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "4003072": {
             "ID": "4003072",
             "Timing": "Start of turn",
             "DR": 20,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "5003072": {
             "ID": "5003072",
@@ -857,6 +914,9 @@
                 }
             },
             "ATK": 30,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -885,6 +945,9 @@
                 }
             },
             "DEF": 30,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -930,13 +993,16 @@
             "ID": "8003072",
             "Timing": "Start of turn",
             "Heals": 100,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2010 and 2011",
+                "Logic": "2010 && 2011",
                 "Causalities": {
                     "2010": {
                         "Button": {
@@ -954,7 +1020,7 @@
                             "Name": "Is HP 30 % or less?"
                         },
                         "Slider": {
-                            "Name": "What percentage of HP is remaining",
+                            "Name": "What percentage of HP is remaining?",
                             "Logic": "<=30",
                             "Min": 0,
                             "Max": 100
@@ -968,13 +1034,16 @@
             "ID": "9003072",
             "Timing": "Start of turn",
             "DR": 30,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "99",
             "Condition": {
-                "Logic": "2010 and 2011",
+                "Logic": "2010 && 2011",
                 "Causalities": {
                     "2010": {
                         "Button": {
@@ -992,7 +1061,7 @@
                             "Name": "Is HP 30 % or less?"
                         },
                         "Slider": {
-                            "Name": "What percentage of HP is remaining",
+                            "Name": "What percentage of HP is remaining?",
                             "Logic": "<=30",
                             "Min": 0,
                             "Max": 100
@@ -2031,7 +2100,7 @@
         "Name": "Giant Form",
         "Description": "Turns into Giant Form",
         "Condition": {
-            "Logic": "(2024 and 2025) or (2026 and 2027)",
+            "Logic": "(2024 && 2025) || (2026 && 2027)",
             "Causalities": {
                 "2024": {
                     "Button": {

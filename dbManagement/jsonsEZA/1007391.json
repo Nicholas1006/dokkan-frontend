@@ -745,16 +745,36 @@
             "ID": "1492",
             "Timing": "Start of turn",
             "ATK": 80,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1001492": {
             "ID": "1001492",
             "Timing": "Start of turn",
             "DR": 80,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -781,6 +801,9 @@
             "ID": "2001492",
             "Timing": "Start of turn",
             "DR": 50,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -794,7 +817,7 @@
                             "Name": "Is HP 50 % or less?"
                         },
                         "Slider": {
-                            "Name": "What percentage of HP is remaining",
+                            "Name": "What percentage of HP is remaining?",
                             "Logic": "<=50",
                             "Min": 0,
                             "Max": 100
@@ -807,6 +830,9 @@
             "ID": "3001492",
             "Timing": "Start of turn",
             "ATK": 50,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -820,7 +846,7 @@
                             "Name": "Is HP 50 % or less?"
                         },
                         "Slider": {
-                            "Name": "What percentage of HP is remaining",
+                            "Name": "What percentage of HP is remaining?",
                             "Logic": "<=50",
                             "Min": 0,
                             "Max": 100

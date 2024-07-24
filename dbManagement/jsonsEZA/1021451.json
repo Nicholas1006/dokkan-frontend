@@ -737,16 +737,36 @@
             "Timing": "Start of turn",
             "ATK": 70,
             "DEF": 70,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1002272": {
             "ID": "1002272",
             "Timing": "After all ki collected",
             "Guard": true,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -774,6 +794,9 @@
             "ID": "2002272",
             "Timing": "After all ki collected",
             "Guard": true,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -781,7 +804,7 @@
             "Chance": "30",
             "Length": "1",
             "Condition": {
-                "Logic": "735 or 736",
+                "Logic": "735 || 736",
                 "Causalities": {
                     "735": {
                         "Button": {
@@ -812,6 +835,9 @@
             "ID": "3002272",
             "Timing": "Being hit",
             "DR": 50,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "-"

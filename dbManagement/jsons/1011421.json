@@ -635,7 +635,7 @@
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
-                "Max": 0,
+                "Max": 5,
                 "Cause": {
                     "Cause": "Ki sphere obtained",
                     "Type": [
@@ -645,22 +645,56 @@
                 "Slider": "How many Rainbow Ki Spheres have been obtained?"
             },
             "Heals": 7000,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1000936": {
             "ID": "1000936",
             "Timing": "Being hit",
             "DR": 40,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Chance": "70",
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "70",
+                "Causalities": {
+                    "70": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         }
     },
     "Max Attacks": 2,

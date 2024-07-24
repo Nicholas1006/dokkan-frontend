@@ -745,6 +745,9 @@
             "Timing": "Start of turn",
             "ATK": 70,
             "DEF": 70,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -758,7 +761,7 @@
                             "Name": "Is HP 80 % or less?"
                         },
                         "Slider": {
-                            "Name": "What percentage of HP is remaining",
+                            "Name": "What percentage of HP is remaining?",
                             "Logic": "<=80",
                             "Min": 0,
                             "Max": 100
@@ -778,12 +781,29 @@
                 "Reverse chance": "50"
             },
             "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Chance": "10",
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "10",
+                "Causalities": {
+                    "10": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         }
     },
     "Max Attacks": 2,

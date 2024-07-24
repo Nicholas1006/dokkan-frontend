@@ -750,27 +750,64 @@
             "ID": "2949",
             "Timing": "Start of turn",
             "Ki": 3,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1002949": {
             "ID": "1002949",
             "Timing": "Start of turn",
             "ATK": 180,
             "DEF": 180,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "2002949": {
             "ID": "2002949",
             "Timing": "Start of turn",
             "DEF": 59,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -784,7 +821,7 @@
                             "Name": "Is HP 77 % or less?"
                         },
                         "Slider": {
-                            "Name": "What percentage of HP is remaining",
+                            "Name": "What percentage of HP is remaining?",
                             "Logic": "<=77",
                             "Min": 0,
                             "Max": 100
@@ -797,6 +834,9 @@
             "ID": "3002949",
             "Timing": "Hit recieved",
             "ATK": 59,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -819,17 +859,37 @@
             "ID": "4002949",
             "Timing": "Start of turn",
             "Guard": true,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Chance": "30",
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "30",
+                "Causalities": {
+                    "30": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "5002949": {
             "ID": "5002949",
             "Timing": "Hit recieved",
             "Guard": true,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -851,6 +911,9 @@
             "ID": "6002949",
             "Timing": "Hit recieved",
             "Crit Chance": 50,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -1121,7 +1184,7 @@
         "Name": "Rage",
         "Description": "Rages",
         "Condition": {
-            "Logic": "200  and  27",
+            "Logic": "200  &&  27",
             "Causalities": {
                 "200": {
                     "Button": {
@@ -1138,7 +1201,7 @@
                         "Name": "Is HP 50 % or less?"
                     },
                     "Slider": {
-                        "Name": "What percentage of HP is remaining",
+                        "Name": "What percentage of HP is remaining?",
                         "Logic": "<=50",
                         "Min": 0,
                         "Max": 100

@@ -735,34 +735,71 @@
             "ID": "2340",
             "Timing": "Start of turn",
             "Ki": 3,
-            "Buff": {
-                "Type": "Raw stats",
-                "+ or -": "+"
+            "Target": {
+                "Target": "Self"
             },
-            "Length": "1"
-        },
-        "1002340": {
-            "ID": "1002340",
-            "Timing": "Start of turn",
-            "ATK": 40000,
-            "DEF": 40000,
-            "Buff": {
-                "Type": "Raw stats",
-                "+ or -": "+"
-            },
-            "Length": "1"
-        },
-        "2002340": {
-            "ID": "2002340",
-            "Timing": "Attacking",
-            "Ki": 3,
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "421 or 422 or 535 or 420",
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
+        },
+        "1002340": {
+            "ID": "1002340",
+            "Timing": "Start of turn",
+            "ATK": 40000,
+            "DEF": 40000,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
+        },
+        "2002340": {
+            "ID": "2002340",
+            "Timing": "Attacking",
+            "Ki": 3,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "421 || 422 || 535 || 420",
                 "Causalities": {
                     "421": {
                         "Button": {
@@ -796,13 +833,16 @@
             "Timing": "On Super",
             "ATK": 30000,
             "DEF": 30000,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "421 or 422 or 535 or 420",
+                "Logic": "421 || 422 || 535 || 420",
                 "Causalities": {
                     "421": {
                         "Button": {
@@ -838,16 +878,36 @@
                 "Chance of super": "30"
             },
             "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "5002340": {
             "ID": "5002340",
             "Timing": "End of turn",
             "Heals": 5,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"

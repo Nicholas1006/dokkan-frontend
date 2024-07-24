@@ -741,22 +741,56 @@
             "ID": "3522",
             "Timing": "Start of turn",
             "Ki": 2,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1003522": {
             "ID": "1003522",
             "Timing": "Start of turn",
             "ATK": 100,
             "DEF": 100,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "2003522": {
             "ID": "2003522",
@@ -769,11 +803,28 @@
                 }
             },
             "ATK": 25,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "99"
+            "Length": "99",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "3003522": {
             "ID": "3003522",
@@ -786,11 +837,28 @@
                 }
             },
             "DEF": 25,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "99"
+            "Length": "99",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "4003522": {
             "ID": "4003522",
@@ -803,23 +871,43 @@
                 }
             },
             "Crit Chance": 5,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "99"
+            "Length": "99",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "5003522": {
             "ID": "5003522",
             "Timing": "Start of turn",
             "Crit Chance": 50,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2533 or 2534",
+                "Logic": "2533 || 2534",
                 "Causalities": {
                     "2533": {
                         "Button": {
@@ -851,13 +939,16 @@
             "Timing": "On Super",
             "ATK": 50,
             "DEF": 50,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2535 and 2537",
+                "Logic": "2535 && 2537",
                 "Causalities": {
                     "2535": {
                         "Button": {
@@ -887,13 +978,16 @@
             "Timing": "On Super",
             "ATK": 50,
             "DEF": 50,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2536 and 2537",
+                "Logic": "2536 && 2537",
                 "Causalities": {
                     "2536": {
                         "Button": {
@@ -1169,7 +1263,7 @@
         "Name": "I'm Taking This Fight Somewhere Else",
         "Description": "Creates the Domain \"Wasteland (Future)\" for 4 turns",
         "Condition": {
-            "Logic": "2526 and 2528 or 2526 and 2529",
+            "Logic": "2526 && 2528 || 2526 && 2529",
             "Causalities": {
                 "2526": {
                     "Button": {

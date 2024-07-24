@@ -734,22 +734,56 @@
             "ID": "3081",
             "Timing": "Start of turn",
             "Ki": 3,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1003081": {
             "ID": "1003081",
             "Timing": "Start of turn",
             "ATK": 150,
             "DEF": 150,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "2003081": {
             "ID": "2003081",
@@ -762,7 +796,21 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "3003081": {
             "ID": "3003081",
@@ -776,12 +824,29 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "4003081": {
             "ID": "4003081",
             "Timing": "When ki spheres collected",
             "DEF": 120,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -867,13 +932,16 @@
             "ID": "7003081",
             "Timing": "On Super",
             "ATK": 150,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1962 and 1963",
+                "Logic": "1962 && 1963",
                 "Causalities": {
                     "1962": {
                         "Button": {
@@ -902,13 +970,16 @@
             "ID": "8003081",
             "Timing": "On Super",
             "Crit Chance": 70,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1962 and 1963",
+                "Logic": "1962 && 1963",
                 "Causalities": {
                     "1962": {
                         "Button": {
@@ -937,13 +1008,16 @@
             "ID": "9003081",
             "Dodge chance": 70,
             "Timing": "Hit recieved",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1962 and 24",
+                "Logic": "1962 && 24",
                 "Causalities": {
                     "1962": {
                         "Button": {
@@ -971,21 +1045,55 @@
             "Status": [
                 "Survive K.O attacks"
             ],
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "11003081": {
             "ID": "11003081",
             "Timing": "End of turn",
             "Heals": 10,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         }
     },
     "Max Attacks": 2,
@@ -1699,7 +1807,7 @@
         "Name": "Yajirobe's Senzu Bean",
         "Description": "Fully recovers HP and \nremoves all allies' negative effects",
         "Condition": {
-            "Logic": "1966 and 1967 and 1968",
+            "Logic": "1966 && 1967 && 1968",
             "Causalities": {
                 "1966": {
                     "Button": {
@@ -1727,7 +1835,7 @@
                         "Name": "Is HP 40 % or less?"
                     },
                     "Slider": {
-                        "Name": "What percentage of HP is remaining",
+                        "Name": "What percentage of HP is remaining?",
                         "Logic": "<=40",
                         "Min": 0,
                         "Max": 100

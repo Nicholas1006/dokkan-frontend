@@ -740,26 +740,63 @@
             "ID": "3506",
             "Timing": "Start of turn",
             "ATK": 50,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1003506": {
             "ID": "1003506",
             "Timing": "Start of turn",
             "DEF": 200,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "2003506": {
             "ID": "2003506",
             "Timing": "On Super",
             "ATK": 150,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -784,6 +821,9 @@
             "ID": "3003506",
             "Timing": "When ki spheres collected",
             "DR": 40,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -810,6 +850,9 @@
             "ID": "4003506",
             "Timing": "When ki spheres collected",
             "DR": 30,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -839,17 +882,37 @@
                 "Line": "4003506"
             },
             "Timing": "On Super",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "6003506": {
             "ID": "6003506",
             "Timing": "Hit recieved",
             "ATK": 150,
             "DEF": 150,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -882,6 +945,9 @@
                     "Rainbow"
                 ]
             },
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -908,6 +974,9 @@
             "ID": "8003506",
             "Effective against all": true,
             "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -1181,7 +1250,7 @@
         "Name": "Wrath",
         "Description": "ATK & DEF +50%, attacks effective against \nall Types and guaranteed to hit for 1 turn",
         "Condition": {
-            "Logic": "571 and 572",
+            "Logic": "571 && 572",
             "Causalities": {
                 "571": {
                     "Button": {
@@ -1198,7 +1267,7 @@
                         "Name": "Is HP 70 % or less?"
                     },
                     "Slider": {
-                        "Name": "What percentage of HP is remaining",
+                        "Name": "What percentage of HP is remaining?",
                         "Logic": "<=70",
                         "Min": 0,
                         "Max": 100

@@ -739,17 +739,37 @@
             "Timing": "Start of turn",
             "ATK": 120,
             "DEF": 120,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1003480": {
             "ID": "1003480",
             "Timing": "On Super",
             "ATK": 60,
             "DEF": 60,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -774,17 +794,37 @@
             "ID": "2003480",
             "Timing": "Start of turn",
             "Guard": true,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            },
             "Once only": true
         },
         "3003480": {
             "ID": "3003480",
             "Timing": "After all ki collected",
             "DEF": 80,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -811,6 +851,9 @@
             "ID": "4003480",
             "Timing": "After all ki collected",
             "Guard": true,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -838,13 +881,16 @@
             "ID": "5003480",
             "Timing": "After all ki collected",
             "ATK": 40,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2410 or 2411",
+                "Logic": "2410 || 2411",
                 "Causalities": {
                     "2410": {
                         "Button": {
@@ -875,13 +921,16 @@
             "ID": "6003480",
             "Timing": "On Super",
             "ATK": 80,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2400 and 2408",
+                "Logic": "2400 && 2408",
                 "Causalities": {
                     "2400": {
                         "Button": {},
@@ -910,13 +959,16 @@
             "ID": "7003480",
             "Timing": "On Super",
             "Crit Chance": 30,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2400 and 2408",
+                "Logic": "2400 && 2408",
                 "Causalities": {
                     "2400": {
                         "Button": {},

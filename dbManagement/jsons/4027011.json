@@ -747,22 +747,56 @@
             "ID": "3548",
             "Timing": "Start of turn",
             "Ki": 4,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1003548": {
             "ID": "1003548",
             "Timing": "Start of turn",
             "ATK": 300,
             "DEF": 300,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "2003548": {
             "ID": "2003548",
@@ -771,6 +805,9 @@
                 "Chance of super": "100"
             },
             "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -797,6 +834,9 @@
             "ID": "3003548",
             "Timing": "Start of turn",
             "Guard": true,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -833,17 +873,37 @@
             },
             "ATK": 200,
             "DEF": 200,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "5003548": {
             "ID": "5003548",
             "Timing": "On Super",
             "ATK": 100,
             "DEF": 100,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -1717,7 +1777,7 @@
         "Name": "The Man Who Lived Through Hell",
         "Description": "Massively raises ATK temporarily, \ncauses ultimate damage to enemy and \ndelays a single targeted enemy's attack for 1 turn; \nall attacks become critical hits \nwithin the turn activated",
         "Condition": {
-            "Logic": "2593 or 2587",
+            "Logic": "2593 || 2587",
             "Causalities": {
                 "2593": {
                     "Button": {

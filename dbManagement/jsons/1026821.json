@@ -739,35 +739,72 @@
             "ID": "3500",
             "Timing": "Start of turn",
             "Ki": 5,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1003500": {
             "ID": "1003500",
             "Timing": "Start of turn",
             "ATK": 150,
             "DEF": 150,
-            "Buff": {
-                "Type": "Percentage",
-                "+ or -": "+"
+            "Target": {
+                "Target": "Self"
             },
-            "Length": "1"
-        },
-        "2003500": {
-            "ID": "2003500",
-            "Timing": "On Super",
-            "ATK": 100,
-            "DEF": 100,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2445 and 2446",
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
+        },
+        "2003500": {
+            "ID": "2003500",
+            "Timing": "On Super",
+            "ATK": 100,
+            "DEF": 100,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2445 && 2446",
                 "Causalities": {
                     "2445": {
                         "Button": {
@@ -796,6 +833,9 @@
             "ID": "3003500",
             "Timing": "Start of turn",
             "Ki": 5,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -823,13 +863,16 @@
             "Timing": "On Super",
             "ATK": 30,
             "DEF": 30,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2447 and 2453",
+                "Logic": "2447 && 2453",
                 "Causalities": {
                     "2447": {
                         "Button": {
@@ -859,13 +902,16 @@
             "Timing": "On Super",
             "ATK": 30,
             "DEF": 30,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2449 and 2453",
+                "Logic": "2449 && 2453",
                 "Causalities": {
                     "2449": {
                         "Button": {
@@ -895,13 +941,16 @@
             "Timing": "On Super",
             "ATK": 30,
             "DEF": 30,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2450 and 2453",
+                "Logic": "2450 && 2453",
                 "Causalities": {
                     "2450": {
                         "Button": {
@@ -931,13 +980,16 @@
             "Timing": "On Super",
             "ATK": 30,
             "DEF": 30,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2451 and 2453",
+                "Logic": "2451 && 2453",
                 "Causalities": {
                     "2451": {
                         "Button": {
@@ -967,13 +1019,16 @@
             "Timing": "On Super",
             "ATK": 30,
             "DEF": 30,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2452 and 2453",
+                "Logic": "2452 && 2453",
                 "Causalities": {
                     "2452": {
                         "Button": {
@@ -1002,6 +1057,9 @@
             "ID": "9003500",
             "Timing": "When final blow delivered",
             "Ki": 5,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -1023,6 +1081,9 @@
             "ID": "10003500",
             "Timing": "When final blow delivered",
             "ATK": 59,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -1045,6 +1106,9 @@
             "Timing": "On Super",
             "ATK": 100,
             "DEF": 100,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -1991,7 +2055,7 @@
         "Name": "Super Spirit Bomb",
         "Description": "Massively raises ATK temporarily and \ncauses ultimate damage to enemy",
         "Condition": {
-            "Logic": "2455 and 2456 or 2445 and 2481",
+            "Logic": "2455 && 2456 || 2445 && 2481",
             "Causalities": {
                 "2455": {
                     "Button": {
@@ -2008,7 +2072,7 @@
                         "Name": "Is HP 59 % or less?"
                     },
                     "Slider": {
-                        "Name": "What percentage of HP is remaining",
+                        "Name": "What percentage of HP is remaining?",
                         "Logic": "<=59",
                         "Min": 0,
                         "Max": 100

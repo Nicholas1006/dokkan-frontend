@@ -740,11 +740,28 @@
             "Timing": "Start of turn",
             "ATK": 20000,
             "DEF": 20000,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1001593": {
             "ID": "1001593",
@@ -757,6 +774,9 @@
                 }
             },
             "Ki": 1,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -778,6 +798,9 @@
             "ID": "2001593",
             "Timing": "On Super",
             "ATK": 20000,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -802,13 +825,16 @@
             "ID": "3001593",
             "Timing": "On Super",
             "Crit Chance": 100,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "105 and 204",
+                "Logic": "105 && 204",
                 "Causalities": {
                     "105": {
                         "Button": {

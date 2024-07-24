@@ -734,11 +734,28 @@
             "Timing": "Start of turn",
             "ATK": 60,
             "DEF": 60,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1002213": {
             "ID": "1002213",
@@ -751,13 +768,16 @@
                 }
             },
             "ATK": 30,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "99",
             "Condition": {
-                "Logic": "696 or 697",
+                "Logic": "696 || 697",
                 "Causalities": {
                     "696": {
                         "Button": {
@@ -795,13 +815,16 @@
                 }
             },
             "DEF": 30,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "99",
             "Condition": {
-                "Logic": "696 or 697",
+                "Logic": "696 || 697",
                 "Causalities": {
                     "696": {
                         "Button": {
@@ -832,6 +855,9 @@
             "ID": "3002213",
             "Timing": "End of turn",
             "Heals": 40,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"

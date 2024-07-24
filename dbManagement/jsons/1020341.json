@@ -748,21 +748,55 @@
             "Timing": "Start of turn",
             "ATK": 150,
             "DEF": 150,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1002373": {
             "ID": "1002373",
             "Timing": "Being hit",
             "DR": 10,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "2002373": {
             "ID": "2002373",
@@ -775,6 +809,9 @@
                 }
             },
             "DR": 10,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -803,11 +840,28 @@
                 }
             },
             "Ki": 1,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "99"
+            "Length": "99",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "4002373": {
             "ID": "4002373",
@@ -816,12 +870,29 @@
                 "Chance of super": "100"
             },
             "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Chance": "30",
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "30",
+                "Causalities": {
+                    "30": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "5002373": {
             "ID": "5002373",
@@ -839,14 +910,14 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "731 and 809",
+                "Logic": "731 && 809",
                 "Causalities": {
                     "731": {
                         "Button": {
                             "Name": "Is HP 50 % or less?"
                         },
                         "Slider": {
-                            "Name": "What percentage of HP is remaining",
+                            "Name": "What percentage of HP is remaining?",
                             "Logic": "<=50",
                             "Min": 0,
                             "Max": 100
@@ -1857,7 +1928,7 @@
         "Name": "Final Explosion",
         "Description": "Causes mega-colossal damage to all enemies",
         "Condition": {
-            "Logic": "713 and 685",
+            "Logic": "713 && 685",
             "Causalities": {
                 "713": {
                     "Button": {

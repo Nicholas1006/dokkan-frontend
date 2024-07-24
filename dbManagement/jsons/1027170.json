@@ -631,27 +631,64 @@
             "ID": "3541",
             "Timing": "Start of turn",
             "Ki": 2,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1003541": {
             "ID": "1003541",
             "Timing": "Start of turn",
             "ATK": 120,
             "DEF": 120,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "2003541": {
             "ID": "2003541",
             "Timing": "On Super",
             "DEF": 80,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -676,13 +713,16 @@
             "ID": "3003541",
             "Timing": "On Super",
             "ATK": 300,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2574 and 2575 or 2574 and 2576 or 2574 and 2577 or 2574 and 2578",
+                "Logic": "2574 && 2575 || 2574 && 2576 || 2574 && 2577 || 2574 && 2578",
                 "Causalities": {
                     "2574": {
                         "Button": {},
@@ -734,7 +774,7 @@
             "Chance": "30",
             "Length": "1",
             "Condition": {
-                "Logic": "2579 or 2580",
+                "Logic": "2579 || 2580",
                 "Causalities": {
                     "2579": {
                         "Button": {

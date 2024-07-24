@@ -746,27 +746,64 @@
             "ID": "4054",
             "Timing": "Start of turn",
             "Ki": 3,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1004054": {
             "ID": "1004054",
             "Timing": "Start of turn",
             "DEF": 260,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "2004054": {
             "ID": "2004054",
             "Timing": "On Super",
             "ATK": 260,
             "DEF": 120,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -791,17 +828,37 @@
             "ID": "3004054",
             "Dodge chance": 50,
             "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "4004054": {
             "ID": "4004054",
             "Timing": "When ki spheres collected",
             "ATK": 160,
             "DEF": 60,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -831,6 +888,9 @@
                 "Chance of super": "100"
             },
             "Timing": "When ki spheres collected",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -860,6 +920,9 @@
                 "Chance of super": "100"
             },
             "Timing": "When ki spheres collected",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -886,6 +949,9 @@
             "ID": "7004054",
             "Timing": "When ki spheres collected",
             "Crit Chance": 20,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -912,6 +978,9 @@
             "ID": "8004054",
             "Dodge chance": 20,
             "Timing": "When ki spheres collected",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -1197,7 +1266,7 @@
         "Name": "Let's Wreck Some Faces",
         "Description": "Changes PHY Ki Spheres to STR Ki Spheres; \nattacks effective against all Types for 1 turn",
         "Condition": {
-            "Logic": "647 or 648",
+            "Logic": "647 || 648",
             "Causalities": {
                 "647": {
                     "Button": {

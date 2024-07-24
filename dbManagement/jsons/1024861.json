@@ -743,27 +743,64 @@
             "ID": "2943",
             "Timing": "Start of turn",
             "Ki": 5,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1002943": {
             "ID": "1002943",
             "Timing": "Start of turn",
             "ATK": 159,
             "DEF": 159,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "2002943": {
             "ID": "2002943",
             "Effective against all": true,
             "Timing": "Hit recieved",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -785,6 +822,9 @@
             "ID": "3002943",
             "Timing": "Hit recieved",
             "DEF": 59,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -813,6 +853,9 @@
                 }
             },
             "Ki": 1,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -841,6 +884,9 @@
                 }
             },
             "ATK": 10,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -862,6 +908,9 @@
             "ID": "6002943",
             "Timing": "Start of turn",
             "Guard": true,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -907,7 +956,7 @@
                             "Name": "Is HP 60 % or less?"
                         },
                         "Slider": {
-                            "Name": "What percentage of HP is remaining",
+                            "Name": "What percentage of HP is remaining?",
                             "Logic": "<=60",
                             "Min": 0,
                             "Max": 100
@@ -920,6 +969,9 @@
             "ID": "8002943",
             "Timing": "Start of turn",
             "Guard": true,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -941,6 +993,9 @@
             "ID": "9002943",
             "Timing": "Start of turn",
             "Crit Chance": 50,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -1859,7 +1914,7 @@
         "Name": "Super Saiyan Rage!!!",
         "Description": "Greatly raises ATK temporarily and \ncauses ultimate damage to enemy; \ndisables enemy's action once within the turn",
         "Condition": {
-            "Logic": "1690 and 1688 or 1689",
+            "Logic": "1690 && 1688 || 1689",
             "Causalities": {
                 "1690": {
                     "Button": {
@@ -1876,7 +1931,7 @@
                         "Name": "Is HP 60 % or less?"
                     },
                     "Slider": {
-                        "Name": "What percentage of HP is remaining",
+                        "Name": "What percentage of HP is remaining?",
                         "Logic": "<=60",
                         "Min": 0,
                         "Max": 100

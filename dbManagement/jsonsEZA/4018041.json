@@ -735,28 +735,65 @@
             "ID": "3981",
             "Timing": "Start of turn",
             "Ki": 8,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1003981": {
             "ID": "1003981",
             "Timing": "Start of turn",
             "ATK": 240,
             "DEF": 240,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "2003981": {
             "ID": "2003981",
             "Timing": "On Super",
             "ATK": 160,
             "DEF": 160,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -781,30 +818,50 @@
             "ID": "3003981",
             "Timing": "Start of turn",
             "Crit Chance": 50,
-            "Buff": {
-                "Type": "Raw stats",
-                "+ or -": "+"
+            "Target": {
+                "Target": "Self"
             },
-            "Length": "1"
-        },
-        "4003981": {
-            "ID": "4003981",
-            "Timing": "Start of turn",
-            "Crit Chance": 100,
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "524 or 355",
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
+        },
+        "4003981": {
+            "ID": "4003981",
+            "Timing": "Start of turn",
+            "Crit Chance": 100,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "524 || 355",
                 "Causalities": {
                     "524": {
                         "Button": {
                             "Name": "Is HP 66 % or less?"
                         },
                         "Slider": {
-                            "Name": "What percentage of HP is remaining",
+                            "Name": "What percentage of HP is remaining?",
                             "Logic": "<=66",
                             "Min": 0,
                             "Max": 100
@@ -826,13 +883,16 @@
                 "Chance of super": "100"
             },
             "Timing": "On Super",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "285 or 3009",
+                "Logic": "285 || 3009",
                 "Causalities": {
                     "285": {
                         "Button": {

@@ -751,11 +751,28 @@
             "Timing": "Start of turn",
             "ATK": 59,
             "DEF": 59,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1001941": {
             "ID": "1001941",
@@ -768,6 +785,9 @@
                 }
             },
             "ATK": 10,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -796,6 +816,9 @@
                 }
             },
             "DEF": 10,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -817,20 +840,23 @@
             "ID": "3001941",
             "Timing": "On Super",
             "ATK": 59,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "403 and 405",
+                "Logic": "403 && 405",
                 "Causalities": {
                     "403": {
                         "Button": {
                             "Name": "Is HP 59 % or less?"
                         },
                         "Slider": {
-                            "Name": "What percentage of HP is remaining",
+                            "Name": "What percentage of HP is remaining?",
                             "Logic": "<=59",
                             "Min": 0,
                             "Max": 100
@@ -853,20 +879,23 @@
             "ID": "4001941",
             "Effective against all": true,
             "Timing": "On Super",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "403 and 405",
+                "Logic": "403 && 405",
                 "Causalities": {
                     "403": {
                         "Button": {
                             "Name": "Is HP 59 % or less?"
                         },
                         "Slider": {
-                            "Name": "What percentage of HP is remaining",
+                            "Name": "What percentage of HP is remaining?",
                             "Logic": "<=59",
                             "Min": 0,
                             "Max": 100
@@ -1619,14 +1648,14 @@
         "Name": "Spirit Bomb",
         "Description": "Causes ultimate damage to enemy and \nraises allies' ATK by 30% for 1 turn",
         "Condition": {
-            "Logic": "401 and 402",
+            "Logic": "401 && 402",
             "Causalities": {
                 "401": {
                     "Button": {
                         "Name": "Is HP 59 % or less?"
                     },
                     "Slider": {
-                        "Name": "What percentage of HP is remaining",
+                        "Name": "What percentage of HP is remaining?",
                         "Logic": "<=59",
                         "Min": 0,
                         "Max": 100

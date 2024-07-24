@@ -635,24 +635,44 @@
             "Timing": "Start of turn",
             "ATK": 100,
             "DEF": 100,
-            "Buff": {
-                "Type": "Percentage",
-                "+ or -": "+"
+            "Target": {
+                "Target": "Self"
             },
-            "Length": "1"
-        },
-        "1002807": {
-            "ID": "1002807",
-            "Timing": "On Super",
-            "ATK": 50,
-            "DEF": 50,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1388 and 1387",
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
+        },
+        "1002807": {
+            "ID": "1002807",
+            "Timing": "On Super",
+            "ATK": 50,
+            "DEF": 50,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1388 && 1387",
                 "Causalities": {
                     "1388": {
                         "Button": {},
@@ -681,13 +701,16 @@
             "ID": "2002807",
             "Timing": "On Super",
             "ATK": 50,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1388 and 1387 and 1389",
+                "Logic": "1388 && 1387 && 1389",
                 "Causalities": {
                     "1388": {
                         "Button": {},
@@ -726,13 +749,16 @@
             "ID": "3002807",
             "Timing": "On Super",
             "Crit Chance": 30,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1388 and 1387 and 1389",
+                "Logic": "1388 && 1387 && 1389",
                 "Causalities": {
                     "1388": {
                         "Button": {},
@@ -771,6 +797,9 @@
             "ID": "4002807",
             "Timing": "Start of turn",
             "DEF": 100,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"

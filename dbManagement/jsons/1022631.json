@@ -747,22 +747,56 @@
             "ID": "2542",
             "Timing": "Start of turn",
             "Ki": 2,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1002542": {
             "ID": "1002542",
             "Timing": "Start of turn",
             "ATK": 159,
             "DEF": 159,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "2002542": {
             "ID": "2002542",
@@ -771,6 +805,9 @@
                 "Chance of super": "100"
             },
             "Timing": "Hit recieved",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -792,13 +829,16 @@
             "ID": "3002542",
             "Timing": "Attacking",
             "ATK": 59,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "971 or 972",
+                "Logic": "971 || 972",
                 "Causalities": {
                     "971": {
                         "Button": {
@@ -832,6 +872,9 @@
                 "Chance of super": "100"
             },
             "Timing": "Attacking",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -839,7 +882,7 @@
             "Chance": "30",
             "Length": "1",
             "Condition": {
-                "Logic": "971 or 972",
+                "Logic": "971 || 972",
                 "Causalities": {
                     "971": {
                         "Button": {
@@ -870,6 +913,9 @@
             "ID": "5002542",
             "Timing": "Start of turn",
             "ATK": 59,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -898,6 +944,9 @@
                 }
             },
             "Ki": 1,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -919,6 +968,9 @@
             "ID": "7002542",
             "Timing": "Start of turn",
             "Crit Chance": 100,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -1859,7 +1911,7 @@
         "Name": "Angry Kamehameha",
         "Description": "Greatly raises ATK temporarily and \ncauses ultimate damage to enemy",
         "Condition": {
-            "Logic": "962 and 963 and 964",
+            "Logic": "962 && 963 && 964",
             "Causalities": {
                 "962": {
                     "Button": {

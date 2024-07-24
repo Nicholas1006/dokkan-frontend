@@ -738,6 +738,9 @@
             "ID": "2895",
             "Timing": "Start of turn",
             "Ki": 2,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -765,6 +768,9 @@
             "ID": "1002895",
             "Timing": "Start of turn",
             "DEF": 70,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -792,6 +798,9 @@
             "ID": "2002895",
             "Timing": "Start of turn",
             "Guard": true,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -819,22 +828,56 @@
             "ID": "3002895",
             "Timing": "Start of turn",
             "Ki": 2,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "4002895": {
             "ID": "4002895",
             "Timing": "Start of turn",
             "ATK": 140,
             "DEF": 140,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "5002895": {
             "ID": "5002895",
@@ -843,11 +886,28 @@
                 "Chance of super": "30"
             },
             "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "6002895": {
             "ID": "6002895",
@@ -860,6 +920,9 @@
                 }
             },
             "Ki": 1,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -888,6 +951,9 @@
                 }
             },
             "DEF": 15,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -916,6 +982,9 @@
                 }
             },
             "Crit Chance": 7,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -938,6 +1007,9 @@
             "Timing": "After all ki collected",
             "ATK": 70,
             "DEF": 70,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -964,6 +1036,9 @@
             "ID": "10002895",
             "Timing": "After all ki collected",
             "Guard": true,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -1947,7 +2022,7 @@
         "Name": "Father-Son Galick Gun",
         "Description": "Massively raises ATK temporarily, \ncauses ultimate damage to enemy and, \nwithin the turn activated, all attacks become \ncritical hits; raises all allies' DEF by 20% for 1 turn",
         "Condition": {
-            "Logic": "1542 and 1543 or 1545",
+            "Logic": "1542 && 1543 || 1545",
             "Causalities": {
                 "1542": {
                     "Button": {

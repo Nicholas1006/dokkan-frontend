@@ -745,17 +745,37 @@
             "Timing": "Start of turn",
             "ATK": 160,
             "DEF": 160,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1003440": {
             "ID": "1003440",
             "Timing": "On Super",
             "ATK": 60,
             "DEF": 60,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -783,6 +803,9 @@
                 "Chance of super": "100"
             },
             "Timing": "On Super",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -815,6 +838,9 @@
                 }
             },
             "DR": 20,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -837,6 +863,9 @@
             "Timing": "Start of turn",
             "ATK": 160,
             "DEF": 160,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -866,6 +895,9 @@
                 "Chance of super": "100"
             },
             "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -1704,7 +1736,7 @@
         "Name": "Transformation",
         "Description": "Transforms",
         "Condition": {
-            "Logic": "2310 and 2311 or 2312",
+            "Logic": "2310 && 2311 || 2312",
             "Causalities": {
                 "2310": {
                     "Button": {

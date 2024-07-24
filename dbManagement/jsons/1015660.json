@@ -645,7 +645,21 @@
                 "Type": "Percentage",
                 "+ or -": "-"
             },
-            "Length": "2"
+            "Length": "2",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1001357": {
             "ID": "1001357",
@@ -661,12 +675,29 @@
                 "+ or -": "+"
             },
             "Chance": "30",
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "30",
+                "Causalities": {
+                    "30": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "2001357": {
             "ID": "2001357",
             "Timing": "On Super",
             "ATK": 100,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -691,6 +722,9 @@
             "ID": "3001357",
             "Timing": "On Super",
             "ATK": 60,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -712,6 +746,9 @@
             "ID": "4001357",
             "Effective against all": true,
             "Timing": "On Super",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"

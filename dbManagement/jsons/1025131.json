@@ -742,43 +742,80 @@
             "Timing": "Start of turn",
             "ATK": 59,
             "DEF": 59,
-            "Buff": {
-                "Type": "Percentage",
-                "+ or -": "+"
+            "Target": {
+                "Target": "Self"
             },
-            "Length": "1"
-        },
-        "1002925": {
-            "ID": "1002925",
-            "Timing": "Start of turn",
-            "Building Stat": {
-                "Min": 0,
-                "Max": 0,
-                "Cause": {
-                    "Cause": "Ki sphere obtained",
-                    "Type": "any"
-                },
-                "Slider": "How many Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres have been obtained?"
-            },
-            "ATK": 10,
-            "Buff": {
-                "Type": "Percentage",
-                "+ or -": "+"
-            },
-            "Length": "1"
-        },
-        "2002925": {
-            "ID": "2002925",
-            "Timing": "On Super",
-            "ATK": 59,
-            "DEF": 59,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1635 and 1651",
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
+        },
+        "1002925": {
+            "ID": "1002925",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 23,
+                "Cause": {
+                    "Cause": "Ki sphere obtained",
+                    "Type": "any"
+                },
+                "Slider": "How many  Ki Spheres have been obtained?"
+            },
+            "ATK": 10,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
+        },
+        "2002925": {
+            "ID": "2002925",
+            "Timing": "On Super",
+            "ATK": 59,
+            "DEF": 59,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1635 && 1651",
                 "Causalities": {
                     "1635": {
                         "Button": {},

@@ -734,28 +734,65 @@
             "ID": "3082",
             "Timing": "Start of turn",
             "Ki": 3,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1003082": {
             "ID": "1003082",
             "Timing": "Start of turn",
             "ATK": 80,
             "DEF": 80,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "2003082": {
             "ID": "2003082",
             "Timing": "Hit recieved",
             "ATK": 100,
             "DEF": 100,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -777,23 +814,43 @@
             "ID": "3003082",
             "Timing": "Start of turn",
             "DR": 20,
-            "Buff": {
-                "Type": "Percentage",
-                "+ or -": "+"
+            "Target": {
+                "Target": "Self"
             },
-            "Length": "1"
-        },
-        "4003082": {
-            "ID": "4003082",
-            "Timing": "Start of turn",
-            "DR": 20,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1970 or 1971",
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
+        },
+        "4003082": {
+            "ID": "4003082",
+            "Timing": "Start of turn",
+            "DR": 20,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1970 || 1971",
                 "Causalities": {
                     "1970": {
                         "Button": {
@@ -834,7 +891,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1970 or 1971",
+                "Logic": "1970 || 1971",
                 "Causalities": {
                     "1970": {
                         "Button": {
@@ -1774,7 +1831,7 @@
         "Name": "Giant Form",
         "Description": "Turns into Giant Form",
         "Condition": {
-            "Logic": "1970 or 1971 or 1972 and 1973",
+            "Logic": "1970 || 1971 || 1972 && 1973",
             "Causalities": {
                 "1970": {
                     "Button": {
@@ -1813,7 +1870,7 @@
                         "Name": "Is HP 80 % or less?"
                     },
                     "Slider": {
-                        "Name": "What percentage of HP is remaining",
+                        "Name": "What percentage of HP is remaining?",
                         "Logic": "<=80",
                         "Min": 0,
                         "Max": 100

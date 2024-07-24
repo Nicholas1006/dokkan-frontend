@@ -744,23 +744,43 @@
             "Timing": "Start of turn",
             "ATK": 160,
             "DEF": 130,
-            "Buff": {
-                "Type": "Percentage",
-                "+ or -": "+"
+            "Target": {
+                "Target": "Self"
             },
-            "Length": "1"
-        },
-        "1004046": {
-            "ID": "1004046",
-            "Timing": "Hit recieved",
-            "Crit Chance": 100,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "24 or 365",
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
+        },
+        "1004046": {
+            "ID": "1004046",
+            "Timing": "Hit recieved",
+            "Crit Chance": 100,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "24 || 365",
                 "Causalities": {
                     "24": {
                         "Button": {
@@ -782,13 +802,16 @@
             "Timing": "Hit recieved",
             "ATK": 160,
             "DEF": 130,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "3",
             "Condition": {
-                "Logic": "24 or 365",
+                "Logic": "24 || 365",
                 "Causalities": {
                     "24": {
                         "Button": {
@@ -809,6 +832,9 @@
             "ID": "3004046",
             "Timing": "Start of turn",
             "DR": 60,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -835,13 +861,16 @@
             "ID": "4004046",
             "Timing": "When ki spheres collected",
             "DR": 50,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "11 and 1380 and 301",
+                "Logic": "11 && 1380 && 301",
                 "Causalities": {
                     "11": {
                         "Button": {
@@ -881,13 +910,16 @@
             "ID": "5004046",
             "Timing": "When ki spheres collected",
             "DR": 40,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2375 and 301",
+                "Logic": "2375 && 301",
                 "Causalities": {
                     "2375": {
                         "Button": {
@@ -916,6 +948,9 @@
             "ID": "6004046",
             "Timing": "Start of turn",
             "DR": 20,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -950,7 +985,21 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "8004046": {
             "ID": "8004046",
@@ -965,7 +1014,21 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         }
     },
     "Max Attacks": 2,

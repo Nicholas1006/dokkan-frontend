@@ -742,33 +742,70 @@
             "ID": "2109",
             "Timing": "Start of turn",
             "ATK": 120,
-            "Buff": {
-                "Type": "Percentage",
-                "+ or -": "+"
+            "Target": {
+                "Target": "Self"
             },
-            "Length": "1"
-        },
-        "1002109": {
-            "ID": "1002109",
-            "Timing": "Start of turn",
-            "DR": 40,
-            "Buff": {
-                "Type": "Percentage",
-                "+ or -": "+"
-            },
-            "Length": "1"
-        },
-        "2002109": {
-            "ID": "2002109",
-            "Timing": "On Super",
-            "ATK": 70,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "630 and (623 or 625)",
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
+        },
+        "1002109": {
+            "ID": "1002109",
+            "Timing": "Start of turn",
+            "DR": 40,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
+        },
+        "2002109": {
+            "ID": "2002109",
+            "Timing": "On Super",
+            "ATK": 70,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "630 && (623 || 625)",
                 "Causalities": {
                     "630": {
                         "Button": {},
@@ -798,13 +835,16 @@
             "ID": "3002109",
             "Timing": "On Super",
             "DR": 30,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "630 and (623 or 625)",
+                "Logic": "630 && (623 || 625)",
                 "Causalities": {
                     "630": {
                         "Button": {},

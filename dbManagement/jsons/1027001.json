@@ -747,28 +747,65 @@
             "ID": "3547",
             "Timing": "Start of turn",
             "Ki": 2,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1003547": {
             "ID": "1003547",
             "Timing": "Start of turn",
             "ATK": 150,
             "DEF": 150,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "2003547": {
             "ID": "2003547",
             "Timing": "Start of turn",
             "ATK": 100,
             "DEF": 100,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -798,6 +835,9 @@
                 "Chance of super": "70"
             },
             "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -824,6 +864,9 @@
             "ID": "4003547",
             "Timing": "Start of turn",
             "Guard": true,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -852,6 +895,9 @@
             "Timing": "On Super",
             "ATK": 70,
             "DEF": 70,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -876,6 +922,9 @@
             "ID": "6003547",
             "Effective against all": true,
             "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -904,6 +953,9 @@
                 "Reverse chance": null
             },
             "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -911,7 +963,7 @@
             "Length": "1",
             "First turn to activate": 1,
             "Condition": {
-                "Logic": "2588 or 2589 and 2587",
+                "Logic": "2588 || 2589 && 2587",
                 "Causalities": {
                     "2588": {
                         "Button": {},
@@ -1757,7 +1809,7 @@
         "Name": "The Man Who Lived Through Hell",
         "Description": "Greatly raises ATK temporarily and \ncauses ultimate damage to enemy; \ndisables enemy's action once within the turn",
         "Condition": {
-            "Logic": "2592 and 2593",
+            "Logic": "2592 && 2593",
             "Causalities": {
                 "2592": {
                     "Button": {

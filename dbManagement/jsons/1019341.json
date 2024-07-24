@@ -740,16 +740,36 @@
             "ID": "2068",
             "Timing": "Start of turn",
             "DEF": 100,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1002068": {
             "ID": "1002068",
             "Timing": "On Super",
             "ATK": 150,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -775,6 +795,9 @@
             "Timing": "Hit recieved",
             "ATK": 70,
             "DEF": 70,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -807,6 +830,9 @@
                     "Rainbow"
                 ]
             },
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -833,6 +859,9 @@
             "ID": "4002068",
             "Effective against all": true,
             "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -1600,7 +1629,7 @@
         "Name": "Wrath",
         "Description": "ATK & DEF +50%, attacks effective against \nall Types and guaranteed to hit for 1 turn",
         "Condition": {
-            "Logic": "571 and 572",
+            "Logic": "571 && 572",
             "Causalities": {
                 "571": {
                     "Button": {
@@ -1617,7 +1646,7 @@
                         "Name": "Is HP 70 % or less?"
                     },
                     "Slider": {
-                        "Name": "What percentage of HP is remaining",
+                        "Name": "What percentage of HP is remaining?",
                         "Logic": "<=70",
                         "Min": 0,
                         "Max": 100

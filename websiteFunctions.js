@@ -122,7 +122,7 @@ class kiCircleClass{
 
     updateKi(value){
         let maxKi;
-        for (const passiveSlider of document.getElementById("passive-questions-container").children){
+        for (const passiveSlider of document.getElementById("passive-query-container").children){
             //if the innerHTML of the next sibling starts with how much ki is there
             if(passiveSlider.nextSibling!=null){
                 if(passiveSlider.nextSibling.innerHTML.startsWith("How much ki is there")){
@@ -290,9 +290,11 @@ class superAttackQuery{
         this.selfContainer.currentValue=0;
         this.selfContainer.style.display="grid";
         let superAttackSlider = document.createElement('input');
+        superAttackSlider.value=0;
         let superAttackQuestion = document.createElement('label');
-        let superAttackText= new pictureText("How many times has","dbManagement/assets/final_assets/"+unitID+".png","performed "+superAttackName+" within the last "+buffs["Duration"]+" turns?: "+superAttackSlider.value);
-        this.selfContainer.appendChild(superAttackText.getElement());
+        superAttackQuestion.superAttackName= superAttackName;
+        superAttackQuestion.superAttackText=new pictureText("How many times has","dbManagement/assets/final_assets/"+unitID+".png","performed "+superAttackName+" within the last "+buffs["Duration"]+" turns?: "+superAttackSlider.value);
+        this.selfContainer.appendChild(superAttackQuestion.superAttackText.getElement());
         superAttackQuestion.innerHTML = superAttackSlider.textContent;
         superAttackQuestion.style.gridRow = 1;
         superAttackSlider.type = "range";
@@ -306,7 +308,7 @@ class superAttackQuery{
         this.selfContainer.appendChild(superAttackQuestion);
         this.selfContainer.appendChild(superAttackSlider);
         superAttackSlider.addEventListener('input', function(){
-            superAttackText.updateSuffixText("performed "+superAttackName+" within the last "+buffs["Duration"]+" turns?: "+superAttackSlider.value);
+            this.parentElement.children[1].superAttackText.updateSuffixText("performed "+superAttackName+" within the last "+buffs["Duration"]+" turns?: "+superAttackSlider.value);
             superAttackQuestion.innerHTML = superAttackSlider.textContent;
             this.parentNode.currentValue=parseInt(superAttackSlider.value);
             for(const query of this.parentNode.parentNode.children){
@@ -319,7 +321,7 @@ class superAttackQuery{
                             }
                             else if(query2.localName=="label"){
                                 query2.currentValue=this.parentNode.currentValue;
-                                superAttackText.updateSuffixText("performed "+query2.superAttackName+" within the last "+query.buffsDuration+" turns?: "+superAttackSlider.value);
+                                query2.superAttackText.updateSuffixText("performed "+query2.superAttackName+" within the last "+query.buffsDuration+" turns?: "+superAttackSlider.value);
                             }
                         }
                     }
@@ -331,7 +333,7 @@ class superAttackQuery{
                             }
                             else if(query2.localName=="label"){
                                 query2.currentValue=this.parentNode.currentValue;
-                                superAttackText.updateSuffixText("performed "+query2.superAttackName+" within the last "+query.buffsDuration+" turns?: "+superAttackSlider.value);
+                                query2.superAttackText.updateSuffixText("performed "+query2.superAttackName+" within the last "+query.buffsDuration+" turns?: "+superAttackSlider.value);
                             }
                         }
                     }
@@ -365,17 +367,25 @@ class passiveButton{
             if(this.classList.contains('active')){
                 this.classList.remove('active');
                 this.style.background="#FF5C35"
+                this.parent.setChanceButtonDisplay(false)
             }
             else{
                 this.classList.add('active');
                 this.style.background="#00FF00"
+                this.parent.setChanceButtonDisplay(true)
             }
+            updatePassiveBuffs()
         };
     }
 
 
     getElement(){
         return this.selfContainer;
+    }
+
+    updateParent(parent){
+        this.parent=parent
+        this.element.parent=parent
     }
 }
 
@@ -384,8 +394,8 @@ class passiveSlider {
         this.selfContainer=document.createElement("div");
         this.element = document.createElement("input");
         this.elementLabel = document.createElement("label");
-        this.selfContainer.appendChild(this.element);
         this.selfContainer.appendChild(this.elementLabel);
+        this.selfContainer.appendChild(this.element);
         this.label=label;
         this.min = min;
         this.max = max;
@@ -397,12 +407,17 @@ class passiveSlider {
         this.element.step = 1;
         this.element.addEventListener("input", () => this.update());
         
-        this.elementLabel.innerHTML = this.label+": "+this.value;
+        this.elementLabel.innerHTML = this.label+": "+this.value+"+";
     }
 
     update() {
         this.value = parseInt(this.element.value);
         this.elementLabel.innerHTML = this.label+": "+this.value;
+        if(this.value==this.max){
+            this.elementLabel.innerHTML+="+";
+        }
+        updatePassiveBuffs()
+
     }
 
     getElement() {
@@ -411,13 +426,52 @@ class passiveSlider {
 }
 
 class passiveQuery{
-    constructor(type, buttonName,sliderName, min, max){
+    constructor(type, buttonName,sliderName, min, max, chanceButtonName){
+        this.selfContainer=document.createElement("div");
+        this.alwaysTrue=false;
+        if(buttonName=="true" && sliderName=="true"){
+            this.alwaysTrue=true;
+        }
         this.min = min;
         this.max = max;
         this.buttonName = buttonName;
         this.sliderName = sliderName;
         this.type = type;
+        this.hasChanceButton=false;
         this.create();
+        if(chanceButtonName!=undefined){
+            this.hasChanceButton=true;
+            this.chanceButton=document.createElement("button");
+            this.chanceButton.innerHTML=chanceButtonName;
+            if(this.type=="button"){
+                if(this.queryElement.element.classList.contains('active')){
+                    this.setChanceButtonDisplay(true)
+                }
+                else{
+                    this.setChanceButtonDisplay(false)
+                }
+            }
+            this.chanceButton.style.background="#FF5C35"
+            this.chanceButton.onclick = function(){
+                if(this.classList.contains('active')){
+                    this.classList.remove('active');
+                    this.style.background="#FF5C35"
+                }
+                else{
+                    this.classList.add('active');
+                    this.style.background="#00FF00"
+                }
+                updatePassiveBuffs()
+            };
+            this.selfContainer.appendChild(this.chanceButton);
+            if(this.alwaysTrue){
+                this.setChanceButtonDisplay(true)
+            }
+            this.chanceButtonName=chanceButtonName;
+        }
+        if(this.alwaysTrue){
+            this.queryElement.element.style.display="none";
+        }
     }
 
     changeType(type){
@@ -427,12 +481,27 @@ class passiveQuery{
         }
     }
 
+    setChanceButtonDisplay(isShown){
+        if(this.chanceButton!=undefined){
+            if(isShown){
+                this.chanceButton.style.display="block";
+            }
+            else{
+                this.chanceButton.style.display="none";
+            }
+        }
+    }
+
     create(){
         if(this.type=="slider"){
             this.queryElement = new passiveSlider(this.min, this.max, this.sliderName);
+            this.queryElement.parent=this;
+            this.selfContainer.appendChild(this.queryElement.getElement());
         }
         else if(this.type=="button"){
             this.queryElement = new passiveButton(this.min, this.max, this.buttonName);
+            this.queryElement.updateParent(this);
+            this.selfContainer.appendChild(this.queryElement.getElement());
         }
         else{
             console.error("Error: Invalid passive query type.")
@@ -440,63 +509,140 @@ class passiveQuery{
     }
 
     getElement(){
-        return this.queryElement.getElement();
+        return this.selfContainer;
+    }
+
+    currentValue(){
+        if(this.type=="button"){
+            if(this.hasChanceButton){
+                return((this.queryElement.element.classList.contains('active') || this.alwaysTrue) && this.chanceButton.classList.contains('active'))
+            }
+            else{
+                return(this.queryElement.element.classList.contains('active') || this.alwaysTrue)
+            }
+        }
+        else if(this.type=="slider"){
+            if(this.alwaysTrue){
+                return(true)
+            }
+            return(this.queryElement.element.value)
+        }
     }
 }
 
 class causalityList{
-    constructor(passiveList,CausalityLogic){
-        this.passiveList=passiveList;
+    constructor(CausalityLogic){
         this.CausalityLogic=CausalityLogic;
+        this.passiveBuffs=[];
     }
 
-    getBuffs(){
+    updateBuffs(){
         let passiveBuffs={
-            "Start of turn":{},
-            "Attacking":{},
-            "On Super":{},
-            "Attacking the enemy":{},
-            "Being hit":{},
-            "Hit recieved":{},
-            "End of turn":{},
-            "After all ki collected":{},
-            "Activating standby":{},
-            "When final blow delivered":{},
-            "When ki spheres collected":{}
         }
-        let passiveLines=json.Passive;
-        for(const passiveLine in passiveLines){
-            //if there is a condition
-            if("Condition" in passiveLines[passiveLine]){
-                //if the condition is met
-                if(logicReducer(passiveLines[passiveLine]["Condition"]["Logic"],CausalityLogic)){
-                    createPassiveBuffs(passiveLines[passiveLine], passiveBuffs);
+        let passiveLines=currentJson.Passive;
+        let activatedPassiveLines=[];
+        for(const passiveLineKey in passiveLines){
+            let passiveLine=passiveLines[passiveLineKey];
+            let activatedCondition=true;
+            let buffMultiplier=1
+            if("Building Stat" in passiveLine){
+                const sliderName=buildingSliderNameGenerator(passiveLine);
+                buffMultiplier=this.CausalityLogic[sliderName];
+            }
+            if("Condition" in passiveLine){
+                let conditionLogic=" "+passiveLine["Condition"]["Logic"]+" ";
+                let conditionCausalities=passiveLine["Condition"]["Causalities"];
+                for(const conditionCausalityKey in conditionCausalities){
+                    let conditionCausality=conditionCausalities[conditionCausalityKey];
+                    let buttonLogic=this.CausalityLogic[conditionCausality["Button"]["Name"]];
+                    let sliderLogic=eval(this.CausalityLogic[conditionCausality["Slider"]["Name"]] + conditionCausality["Slider"]["Logic"]);
+                    if(buttonLogic || sliderLogic){
+                        conditionLogic=conditionLogic.replaceAll(" "+conditionCausalityKey+" "," "+true+" ");
+                    }
+                    else{
+                        conditionLogic=conditionLogic.replaceAll(" "+conditionCausalityKey+" "," "+false+" ");
+                    }
+                }
+                if(eval(conditionLogic)){
+                    activatedCondition=true;
+                }
+                else{
+                    activatedCondition=false;
                 }
             }
-            //if there is no condition
-            else{
-                createPassiveBuffs(passiveLines[passiveLine], passiveBuffs);
+            if(activatedCondition){
+                const timing= passiveLine["Timing"];
+                const target = passiveLine["Target"]["Target"];
+                for (const passiveEffect in passiveLine){
+                    if(passiveEffect=="ATK"||
+                    passiveEffect=="DEF"||
+                    passiveEffect=="Ki"||
+                    passiveEffect=="DR"
+                    ){
+                        const timingString = timing;
+                        const targetString = target;
+                        const dictionaryFormat=
+                        {[timing]:
+                            {[target]:
+                                {[passiveEffect]:
+                                    (buffMultiplier*passiveLine[passiveEffect])
+                                }
+                            }
+                        }
+                        
+                        passiveBuffs=addDictionaryValues(passiveBuffs,dictionaryFormat)
+                    }
+                    else if(passiveEffect=="Additional attack"){
+                        const dictionaryFormat=
+                        {[timing]:
+                            {[target]:
+                                {[passiveEffect]:
+                                    (buffMultiplier*1)
+                                }
+                            }
+                        };
+                        additionalAttacks.push(passiveLine["Additional attack"]["Chance of super"]);
+                        passiveBuffs=addDictionaryValues(passiveBuffs,dictionaryFormat)
+                    }
+                    else if(passiveEffect=="Toggle Other Line"){
+                        passiveLinesToggled.push(passiveLine["Toggle Other Line"]["Line"]);
+                    }
+                    else if(passiveEffect=="Guard"){
+                        passiveBuffs[timing][target]["Guard"]=("Activated");
+                    }
+                    else if(passiveEffect=="ID" || passiveEffect=="Condition" || passiveEffect=="Timing" || passiveEffect=="Target" || passiveEffect=="Length" || passiveEffect=="Buff"||passiveEffect=="Building Stat"||passiveEffect=="Nullification"){
+                        continue;
+                    }
+                    else{
+                        console.log(passiveEffect)
+                    }
+                }
             }
         }
-        return passiveBuffs
+        this.passiveBuffs=passiveBuffs
     }
 
-    updateBuffs(additionalIsSuper){
-        console.log("A")
+    returnBuffs(){
+        return this.passiveBuffs;
+    }
 
+    incrementBuffs(additionalIsSuper){
+        console.log("A")
     }
 }
 
 
 // Function to fetch JSON data based on sub-URL
 let currentJson = null;
-let additionalSupers=[];
+
 let leaderStats={"HP": "400", "ATK": "400", "DEF": "400"};
 let baseStats={};
-let passiveStats={};
 let superStats={"ATK": 0, "DEF": 0, "Enemy ATK": 0, "Enemy DEF": 0, "Crit": 0, "Evasion": 0};
 let linkStats={"ATK":"0","DEF":"0","Enemy DEF":"0","Heal":"0","KI":"0","Damage Reduction":"0","Crit":"0","Evasion":"0"};
+let stargingPassiveBuffs={};
+let passiveLinesToggled=[];
 let kiSources={};
+let additionalAttacks=[];
 let kiCircleList=[];
 let passiveQueryList=[];
 let startingCausalityList=[];
@@ -514,12 +660,35 @@ export function getJsonPromise(prefix,name,suffix) {
             }
           }
           return response.json();
-      })
+        }
+      )
       .catch(error => {
           console.error('Error fetching JSON:', error);
           throw error; // Re-throw the error to propagate it to the caller
-      });
-  }
+      }
+    );
+}
+
+export function displayDictionary(element,indentation){
+    let dictionaryContainer=document.createElement("div");
+    if(typeof element === 'object'){
+        for (const key in element) {
+            const label=document.createElement("label");
+            label.innerText=key+":";
+            label.style.paddingLeft=indentation+"0px";
+            dictionaryContainer.appendChild(label);
+            dictionaryContainer.appendChild(displayDictionary(element[key],indentation+2));
+        }
+    }
+    else{
+        const label=document.createElement("label");
+        label.innerText=element+":";
+        label.style.paddingLeft=indentation+"0px";
+        dictionaryContainer.appendChild(label);
+    }
+
+    return dictionaryContainer
+}
 
 export function createCharacterSelection(){
     const allUnitsJsonPromise=getJsonPromise('dbManagement/jsons/','allUnits','.json');
@@ -541,7 +710,8 @@ export function createCharacterSelection(){
           unitsContainer.appendChild(unitButton);
         }
       }
-    });
+    }
+    );
 }
 
 
@@ -580,6 +750,25 @@ export function refreshKiCircle(){
 
     kiCircleList[0].updateValue(finalValue);
 }
+
+export function addDictionaryValues(initialDictionary, additionalDictionary) {
+    let finalDictionary = initialDictionary;
+    for (const key in additionalDictionary) {
+      if (key in initialDictionary) {
+        if(typeof initialDictionary[key] === 'string' || typeof initialDictionary[key] === 'number') {
+            finalDictionary[key] += additionalDictionary[key];
+        }
+        else if(typeof initialDictionary[key] === 'object') {
+            finalDictionary[key]=addDictionaryValues(initialDictionary[key], additionalDictionary[key]);
+        }
+      } 
+      else {
+        finalDictionary[key] = additionalDictionary[key];
+      }
+    }
+    return finalDictionary;
+}
+
 export function createLeaderStats(){
     const seperateOrJoin=document.getElementById('seperate-or-join-leader');
     seperateOrJoin.textContent="Joint Leader Skills";
@@ -1124,7 +1313,7 @@ export function colorToBackground(color){
 
 
 export function updateQueryList(passiveLine){
-    if("Condition" in passiveLine || "Building Stat" in passiveLine){
+    if("Condition" in passiveLine || "Building Stat" in passiveLine || "Chance" in passiveLine){
         if("Condition" in passiveLine){
             for(const CausalityKey of Object.keys(passiveLine["Condition"]["Causalities"])){
                 const Causality = passiveLine["Condition"]["Causalities"][CausalityKey];
@@ -1145,7 +1334,6 @@ export function updateQueryList(passiveLine){
                         if(queryUpdated==false){
                             passiveQueryList.push( new passiveQuery("slider","",Causality.Slider["Name"],Causality.Slider["Min"],Causality.Slider["Max"]) );
                         }
-                        //console.log("Slider only");
                     }
                 }
                 else{
@@ -1158,7 +1346,6 @@ export function updateQueryList(passiveLine){
                         if(queryUpdated==false){
                             passiveQueryList.push( new passiveQuery("button",Causality.Button["Name"],0,0) );
                         }
-                        //console.log("Button only");
                     }
                     else{
                         for (const query of passiveQueryList){
@@ -1172,25 +1359,91 @@ export function updateQueryList(passiveLine){
                             }
                         }
                         if(queryUpdated==false){
-                            passiveQueryList.push( new passiveQuery("button",Causality.Button["Name"],Causality.Slider["Name"],Causality.Slider["Min"],Causality.Slider["Max"]) );
+                            if(passiveLine["Chance"]!=undefined){
+                                passiveQueryList.push( new passiveQuery("button",Causality.Button["Name"],Causality.Slider["Name"],Causality.Slider["Min"],Causality.Slider["Max"],"Has the "+passiveLine["Chance"]+"% chance triggered"));
+                            }
+                            else{
+                                passiveQueryList.push( new passiveQuery("button",Causality.Button["Name"],Causality.Slider["Name"],Causality.Slider["Min"],Causality.Slider["Max"]) );
+                            }
                         }
-                        //console.log("Slider and button");
                     }
                 }
             }
         }
 
         if("Building Stat" in passiveLine){
-            console.log("A");
+            let queryUpdated=false;
+            let sliderName=buildingSliderNameGenerator(passiveLine);
+            for (const query of passiveQueryList){
+                if(query.sliderName==sliderName){
+                    query.min=Math.min(passiveLine["Building Stat"]["Min"],query.min);
+                    query.max=Math.max(passiveLine["Building Stat"]["Max"],query.max);
+                    queryUpdated=true;
+                }
+            }
+            if(!queryUpdated){
+                if(passiveLine["Building Stat"]["Cause"]["Cause"]=="Look Elsewhere"){
+                    passiveQueryList.push( new passiveQuery("slider","",sliderName,passiveLine["Building Stat"]["Min"],passiveLine["Building Stat"]["Max"]) );
+                }
+                else{
+                    passiveQueryList.push( new passiveQuery("slider","",passiveLine["Building Stat"]["Slider"],passiveLine["Building Stat"]["Min"],passiveLine["Building Stat"]["Max"]) );
+                }
+            }
+        }
+
+        if("Chance" in passiveLine && !("Building Stat" in passiveLine) && !("Condition" in passiveLine)){
+            console.log("WIP CONTINUATION FOR TOMORROW")
         }
     }
 }
 
 
+export function buildingSliderNameGenerator(passiveLine){
+    let sliderName="";
+    if(passiveLine["Timing"]=="Start of turn"){
+        sliderName+="How many times has this been on";
+    }
+    else if(passiveLine["Timing"]=="Attacking the enemy"){
+        sliderName+="How many times has this unit attacked the enemy";
+    }
+    else if(passiveLine["Timing"]=="On Super"){
+        sliderName+="How many times has this unit performed a super";
+    }
+    else if(passiveLine["Timing"]=="Being hit"){
+        sliderName+="How many times has this unit been hit";
+    }
+    else if(passiveLine["Timing"]=="Hit recieved"){
+        sliderName+="How many times has this unit recieved a hit";
+    }
+    else if(passiveLine["Timing"]=="End of turn"){
+        sliderName+="How many times has this unit ended a turn";
+    }
+    else if(passiveLine["Timing"]=="After all ki collected"){
+        sliderName+="How many times has this unit collected ki";
+    }
+    else if(passiveLine["Timing"]=="Activating standby"){
+        sliderName+="How many times has this unit activated their standby";
+    }
+    else if(passiveLine["Timing"]=="When final blow delivered"){
+        sliderName+="How many times has this unit delivered the final blow";
+    }
+    else if(passiveLine["Timing"]=="When ki spheres collected"){
+        sliderName+="How many times has this unit collected ki";
+    }
+    if(passiveLine["Condition"]!=undefined){
+        sliderName+="AAA"
+    }
+
+    sliderName+=" within the last "+passiveLine["Length"]+" turns";
+
+    return(sliderName);
+}
+
+
 export function createPassiveContainer(json){
-    let passiveContainer = document.getElementById('passive-buffs-container');
-    while (passiveContainer.firstChild) {
-        passiveContainer.removeChild(passiveContainer.firstChild);
+    let passiveQueryContainer = document.getElementById('passive-query-container');
+    while (passiveQueryContainer.firstChild) {
+        passiveQueryContainer.removeChild(passiveQueryContainer.firstChild);
     }
 
     let passiveList=json.Passive;
@@ -1200,7 +1453,7 @@ export function createPassiveContainer(json){
     }
 
     for (const query of passiveQueryList) {
-        passiveContainer.appendChild(query.getElement());
+        passiveQueryContainer.appendChild(query.getElement());
     }
     updatePassiveBuffs(json);
 }
@@ -1515,87 +1768,27 @@ export function createPassiveBuffs(passiveLine, passiveBuffsHolder){
 
 
 export function queriesToLogic(queries){
-    
-    console.log(queries)
-}
-
-export function generatePassiveEffects(passive, causalities){
-    let passiveTimings={
-        "Activating standby":{},
-        "Start of turn":{},
-        "When ki spheres collected":{},
-        "After all ki collected":{},
-        "Attacking":{},
-        "On Super":{},
-        "Attacking the enemy":{},
-        "Being hit":{},
-        "Hit recieved":{},
-        "When final blow delivered":{},
-        "End of turn":{}
-    }
-
-
-
-
-
-
-}
-
-export function updatePassiveBuffs(json){
-    let passiveBuffs={
-        "Start of turn":{},
-        "Attacking":{},
-        "On Super":{},
-        "Attacking the enemy":{},
-        "Being hit":{},
-        "Hit recieved":{},
-        "End of turn":{},
-        "After all ki collected":{},
-        "Activating standby":{},
-        "When final blow delivered":{},
-        "When ki spheres collected":{}
-    }
-    const temp = new causalityList(passiveBuffs,queriesToLogic(passiveQueryList));
-    let passiveLines=json.Passive;
-    for(const passiveLine in passiveLines){
-        //if there is a condition
-        if("Condition" in passiveLines[passiveLine]){
-            //if the condition is met
-            if(logicReducer(passiveLines[passiveLine]["Condition"]["Logic"],CausalityLogic)){
-                createPassiveBuffs(passiveLines[passiveLine], passiveBuffs);
-            }
+    let output={}
+    for (const query of queries){
+        if(query["type"]=="slider"){
+            output[query["sliderName"]]=query.currentValue();
         }
-        //if there is no condition
-        else{
-            createPassiveBuffs(passiveLines[passiveLine], passiveBuffs);
+        else if(query["type"]=="button"){
+            output[query["buttonName"]]=query.currentValue();
         }
     }
+    return(output);
+}
 
-    temp.updateBuffs();
+export function updatePassiveBuffs(){
+    const passiveThinker = new causalityList(queriesToLogic(passiveQueryList));
+    passiveThinker.updateBuffs();
+    let passiveBuffs=passiveThinker.returnBuffs();
     let passiveBuffsContainer = document.getElementById('passive-buffs-container');
-    passiveBuffsContainer.innerHTML = '';
-    let buffNumber=5;
-    for(const timing in passiveBuffs){
-        if(!(isEmptyDictionary(passiveBuffs[timing]))){
-            let timingContainer = document.createElement('div');
-            timingContainer.style.width = "200%";
-            timingContainer.style.gridColumn = buffNumber;
-            timingContainer.innerHTML = timing + " Buffs: ";
-            for(const target in passiveBuffs[timing]){
-                timingContainer.innerHTML += "<br>" + target + ": ";
-                for(const buffType in passiveBuffs[timing][target]){
-                    timingContainer.innerHTML += "<br>" +"‎ ‎ ‎ ‎ "+ buffType + ": ";
-                    for(const buffKey in passiveBuffs[timing][target][buffType]){
-                        if((passiveBuffs[timing][target][buffType][buffKey])!=NaN){
-                            timingContainer.innerHTML += '<br>' + "‎ ‎‎ ‎ ‎ ‎  ‎ ‎ "+buffKey + ": " + passiveBuffs[timing][target][buffType][buffKey];
-                        }
-                    }
-                }
-            }
-            passiveBuffsContainer.appendChild(timingContainer);
-            buffNumber++;
-        }
+    while (passiveBuffsContainer.firstChild) {
+        passiveBuffsContainer.removeChild(passiveBuffsContainer.firstChild);
     }
+    passiveBuffsContainer.appendChild(displayDictionary(passiveBuffs,0));
 }
 
 export function isEmptyDictionary(dictionary){

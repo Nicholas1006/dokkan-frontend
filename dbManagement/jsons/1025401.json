@@ -636,17 +636,37 @@
             "Timing": "Start of turn",
             "ATK": 100,
             "DEF": 100,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1003066": {
             "ID": "1003066",
             "Timing": "On Super",
             "ATK": 30,
             "DEF": 30,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -671,6 +691,9 @@
             "ID": "2003066",
             "Timing": "Start of turn",
             "Guard": true,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -707,7 +730,21 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "4003066": {
             "ID": "4003066",
@@ -722,7 +759,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1922 and 1923",
+                "Logic": "1922 && 1923",
                 "Causalities": {
                     "1922": {
                         "Button": {
@@ -758,7 +795,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1922 and 1923",
+                "Logic": "1922 && 1923",
                 "Causalities": {
                     "1922": {
                         "Button": {

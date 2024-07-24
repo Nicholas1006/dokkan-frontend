@@ -740,17 +740,37 @@
             "Timing": "Start of turn",
             "ATK": 150,
             "DEF": 150,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1003067": {
             "ID": "1003067",
             "Timing": "On Super",
             "ATK": 50,
             "DEF": 50,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -775,6 +795,9 @@
             "ID": "2003067",
             "Timing": "Start of turn",
             "Guard": true,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -801,13 +824,16 @@
             "ID": "3003067",
             "Timing": "Being hit",
             "DEF": 50,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1924 and 1958",
+                "Logic": "1924 && 1958",
                 "Causalities": {
                     "1924": {
                         "Button": {
@@ -841,7 +867,21 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "5003067": {
             "ID": "5003067",
@@ -856,7 +896,21 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "6003067": {
             "ID": "6003067",
@@ -871,7 +925,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1922 and 1923",
+                "Logic": "1922 && 1923",
                 "Causalities": {
                     "1922": {
                         "Button": {
@@ -907,7 +961,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1922 and 1923",
+                "Logic": "1922 && 1923",
                 "Causalities": {
                     "1922": {
                         "Button": {
@@ -945,7 +999,7 @@
             "Chance": "30",
             "Length": "1",
             "Condition": {
-                "Logic": "1922 and 1923",
+                "Logic": "1922 && 1923",
                 "Causalities": {
                     "1922": {
                         "Button": {
@@ -1753,7 +1807,7 @@
         "Name": "Transformation",
         "Description": "Transforms",
         "Condition": {
-            "Logic": "1937 and 1938 or 1939 and 1940",
+            "Logic": "1937 && 1938 || 1939 && 1940",
             "Causalities": {
                 "1937": {
                     "Button": {

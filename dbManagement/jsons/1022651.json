@@ -742,17 +742,37 @@
             "Timing": "Start of turn",
             "ATK": 150,
             "DEF": 150,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1002493": {
             "ID": "1002493",
             "Timing": "On Super",
             "ATK": 50,
             "DEF": 50,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -778,6 +798,9 @@
             "Timing": "Hit recieved",
             "ATK": 50,
             "DEF": 50,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -1555,7 +1578,7 @@
         "Name": "\"I am Super Vegeta!\"",
         "Description": "Ki +5 and ATK +50% for 1 turn",
         "Condition": {
-            "Logic": "930 and 931 or 932 and 933",
+            "Logic": "930 && 931 || 932 && 933",
             "Causalities": {
                 "930": {
                     "Button": {

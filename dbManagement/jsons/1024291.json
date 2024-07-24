@@ -746,17 +746,37 @@
             "Timing": "Start of turn",
             "ATK": 180,
             "DEF": 180,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1002839": {
             "ID": "1002839",
             "Timing": "On Super",
             "ATK": 59,
             "DEF": 59,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -781,13 +801,16 @@
             "ID": "2002839",
             "Dodge chance": 20,
             "Timing": "Attacking the enemy",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1457 and 1381",
+                "Logic": "1457 && 1381",
                 "Causalities": {
                     "1457": {
                         "Button": {
@@ -813,6 +836,9 @@
             "ID": "3002839",
             "Dodge chance": 30,
             "Timing": "Attacking the enemy",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -841,6 +867,9 @@
                 }
             },
             "ATK": 20,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -869,6 +898,9 @@
                 }
             },
             "DEF": 20,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"

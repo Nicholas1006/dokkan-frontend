@@ -739,50 +739,87 @@
             "Timing": "Start of turn",
             "ATK": 80,
             "DEF": 80,
-            "Buff": {
-                "Type": "Percentage",
-                "+ or -": "+"
+            "Target": {
+                "Target": "Self"
             },
-            "Length": "1"
-        },
-        "1002606": {
-            "ID": "1002606",
-            "Timing": "Start of turn",
-            "Building Stat": {
-                "Min": 0,
-                "Max": 0,
-                "Cause": {
-                    "Cause": "Ki sphere obtained",
-                    "Type": "any"
-                },
-                "Slider": "How many Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres have been obtained?"
-            },
-            "ATK": 15,
-            "DEF": 15,
-            "Buff": {
-                "Type": "Percentage",
-                "+ or -": "+"
-            },
-            "Length": "1"
-        },
-        "2002606": {
-            "ID": "2002606",
-            "Timing": "On Super",
-            "ATK": 80,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1054 and 1053",
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
+        },
+        "1002606": {
+            "ID": "1002606",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 23,
+                "Cause": {
+                    "Cause": "Ki sphere obtained",
+                    "Type": "any"
+                },
+                "Slider": "How many  Ki Spheres have been obtained?"
+            },
+            "ATK": 15,
+            "DEF": 15,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
+        },
+        "2002606": {
+            "ID": "2002606",
+            "Timing": "On Super",
+            "ATK": 80,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1054 && 1053",
                 "Causalities": {
                     "1054": {
                         "Button": {
                             "Name": "Is HP 80 % or less?"
                         },
                         "Slider": {
-                            "Name": "What percentage of HP is remaining",
+                            "Name": "What percentage of HP is remaining?",
                             "Logic": "<=80",
                             "Min": 0,
                             "Max": 100
@@ -811,12 +848,29 @@
                 "Reverse chance": "20"
             },
             "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Chance": "10",
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "10",
+                "Causalities": {
+                    "10": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         }
     },
     "Max Attacks": 2,

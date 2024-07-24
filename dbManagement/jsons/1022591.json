@@ -736,23 +736,43 @@
             "Timing": "Start of turn",
             "ATK": 120,
             "DEF": 120,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1002503": {
             "ID": "1002503",
             "Timing": "After all ki collected",
             "Guard": true,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "733 or 735",
+                "Logic": "733 || 735",
                 "Causalities": {
                     "733": {
                         "Button": {
@@ -790,13 +810,16 @@
                 }
             },
             "Ki": 2,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "99",
             "Condition": {
-                "Logic": "735 or 736",
+                "Logic": "735 || 736",
                 "Causalities": {
                     "735": {
                         "Button": {
@@ -834,13 +857,16 @@
                 }
             },
             "ATK": 22,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "99",
             "Condition": {
-                "Logic": "735 or 736",
+                "Logic": "735 || 736",
                 "Causalities": {
                     "735": {
                         "Button": {
@@ -878,13 +904,16 @@
                 }
             },
             "DEF": 22,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "99",
             "Condition": {
-                "Logic": "735 or 736",
+                "Logic": "735 || 736",
                 "Causalities": {
                     "735": {
                         "Button": {
@@ -918,6 +947,9 @@
                 "Absorbed": 0
             },
             "Timing": "Being hit",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -943,11 +975,28 @@
                 "Line": "5002503"
             },
             "Timing": "Hit recieved",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         }
     },
     "Max Attacks": 2,
@@ -1872,7 +1921,7 @@
         "Name": "Rage",
         "Description": "Rages",
         "Condition": {
-            "Logic": "523 and 284",
+            "Logic": "523 && 284",
             "Causalities": {
                 "523": {
                     "Button": {

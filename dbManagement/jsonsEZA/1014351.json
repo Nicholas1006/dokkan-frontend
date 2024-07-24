@@ -739,35 +739,72 @@
             "ID": "3565",
             "Timing": "Start of turn",
             "Ki": 2,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1003565": {
             "ID": "1003565",
             "Timing": "Start of turn",
             "ATK": 150,
             "DEF": 150,
-            "Buff": {
-                "Type": "Percentage",
-                "+ or -": "+"
+            "Target": {
+                "Target": "Self"
             },
-            "Length": "1"
-        },
-        "2003565": {
-            "ID": "2003565",
-            "Timing": "On Super",
-            "ATK": 100,
-            "DEF": 100,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(2613 or 2614 or 2615) and 2616",
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
+        },
+        "2003565": {
+            "ID": "2003565",
+            "Timing": "On Super",
+            "ATK": 100,
+            "DEF": 100,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "(2613 || 2614 || 2615) && 2616",
                 "Causalities": {
                     "2613": {
                         "Button": {
@@ -821,13 +858,16 @@
                 "Chance of super": "100"
             },
             "Timing": "On Super",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(2613 or 2614 or 2615) and 2616",
+                "Logic": "(2613 || 2614 || 2615) && 2616",
                 "Causalities": {
                     "2613": {
                         "Button": {
@@ -878,6 +918,9 @@
             "ID": "4003565",
             "Timing": "On Super",
             "ATK": 150,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -899,6 +942,9 @@
             "ID": "5003565",
             "Effective against all": true,
             "Timing": "On Super",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"

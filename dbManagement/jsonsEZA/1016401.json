@@ -743,34 +743,71 @@
             "ID": "3863",
             "Timing": "Start of turn",
             "Ki": 6,
-            "Buff": {
-                "Type": "Raw stats",
-                "+ or -": "+"
+            "Target": {
+                "Target": "Self"
             },
-            "Length": "1"
-        },
-        "1003863": {
-            "ID": "1003863",
-            "Timing": "Start of turn",
-            "ATK": 150,
-            "DEF": 150,
-            "Buff": {
-                "Type": "Percentage",
-                "+ or -": "+"
-            },
-            "Length": "1"
-        },
-        "2003863": {
-            "ID": "2003863",
-            "Timing": "Start of turn",
-            "Ki": 6,
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2704 or 2705",
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
+        },
+        "1003863": {
+            "ID": "1003863",
+            "Timing": "Start of turn",
+            "ATK": 150,
+            "DEF": 150,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
+        },
+        "2003863": {
+            "ID": "2003863",
+            "Timing": "Start of turn",
+            "Ki": 6,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2704 || 2705",
                 "Causalities": {
                     "2704": {
                         "Button": {
@@ -802,13 +839,16 @@
             "Timing": "Start of turn",
             "ATK": 100,
             "DEF": 100,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2704 or 2705",
+                "Logic": "2704 || 2705",
                 "Causalities": {
                     "2704": {
                         "Button": {
@@ -839,13 +879,16 @@
             "ID": "4003863",
             "Timing": "Start of turn",
             "Crit Chance": 40,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2704 or 2705",
+                "Logic": "2704 || 2705",
                 "Causalities": {
                     "2704": {
                         "Button": {
@@ -877,13 +920,16 @@
             "Timing": "On Super",
             "ATK": 100,
             "DEF": 100,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2706 and 2707",
+                "Logic": "2706 && 2707",
                 "Causalities": {
                     "2706": {
                         "Button": {},
@@ -912,13 +958,16 @@
             "ID": "6003863",
             "Timing": "On Super",
             "Crit Chance": 40,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2706 and 2707",
+                "Logic": "2706 && 2707",
                 "Causalities": {
                     "2706": {
                         "Button": {},
@@ -947,13 +996,16 @@
             "ID": "7003863",
             "Timing": "On Super",
             "DEF": 150,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2706 and 2708",
+                "Logic": "2706 && 2708",
                 "Causalities": {
                     "2706": {
                         "Button": {},
@@ -969,7 +1021,7 @@
                             "Name": "Is HP 40 % or less?"
                         },
                         "Slider": {
-                            "Name": "What percentage of HP is remaining",
+                            "Name": "What percentage of HP is remaining?",
                             "Logic": "<=40",
                             "Min": 0,
                             "Max": 100
@@ -982,13 +1034,16 @@
             "ID": "8003863",
             "Dodge chance": 50,
             "Timing": "On Super",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2706 and 2708",
+                "Logic": "2706 && 2708",
                 "Causalities": {
                     "2706": {
                         "Button": {},
@@ -1004,7 +1059,7 @@
                             "Name": "Is HP 40 % or less?"
                         },
                         "Slider": {
-                            "Name": "What percentage of HP is remaining",
+                            "Name": "What percentage of HP is remaining?",
                             "Logic": "<=40",
                             "Min": 0,
                             "Max": 100
@@ -1024,6 +1079,9 @@
                 "Reverse chance": "50"
             },
             "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -1037,7 +1095,7 @@
                             "Name": "Is HP 40 % or less?"
                         },
                         "Slider": {
-                            "Name": "What percentage of HP is remaining",
+                            "Name": "What percentage of HP is remaining?",
                             "Logic": "<=40",
                             "Min": 0,
                             "Max": 100

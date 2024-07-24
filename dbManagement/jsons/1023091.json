@@ -736,23 +736,43 @@
             "Timing": "Start of turn",
             "ATK": 170,
             "DEF": 170,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1002610": {
             "ID": "1002610",
             "Timing": "Attacking",
             "Ki": 6,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1056 or 1057",
+                "Logic": "1056 || 1057",
                 "Causalities": {
                     "1056": {
                         "Button": {
@@ -784,13 +804,16 @@
             "Timing": "Attacking",
             "ATK": 60,
             "DEF": 60,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1056 or 1057",
+                "Logic": "1056 || 1057",
                 "Causalities": {
                     "1056": {
                         "Button": {
@@ -832,7 +855,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1056 or 1057",
+                "Logic": "1056 || 1057",
                 "Causalities": {
                     "1056": {
                         "Button": {
@@ -863,13 +886,16 @@
             "ID": "4002610",
             "Guaranteed hit": true,
             "Timing": "Attacking",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1056 or 1057",
+                "Logic": "1056 || 1057",
                 "Causalities": {
                     "1056": {
                         "Button": {
@@ -900,13 +926,16 @@
             "ID": "5002610",
             "Dodge chance": 50,
             "Timing": "Attacking",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1056 or 1057",
+                "Logic": "1056 || 1057",
                 "Causalities": {
                     "1056": {
                         "Button": {
@@ -937,6 +966,9 @@
             "ID": "6002610",
             "Timing": "On Super",
             "ATK": 70,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -963,6 +995,9 @@
             "ID": "7002610",
             "Timing": "Attacking",
             "Ki": 7,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -992,6 +1027,9 @@
                 "Chance of super": "30"
             },
             "Timing": "Attacking",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -1963,7 +2001,7 @@
         "Name": "Ever-Improving Pair",
         "Description": "ATK & DEF +13% in battle",
         "Condition": {
-            "Logic": "1059 and 1060",
+            "Logic": "1059 && 1060",
             "Causalities": {
                 "1059": {
                     "Button": {},
@@ -1979,7 +2017,7 @@
                         "Name": "Is HP 76 % or less?"
                     },
                     "Slider": {
-                        "Name": "What percentage of HP is remaining",
+                        "Name": "What percentage of HP is remaining?",
                         "Logic": "<=76",
                         "Min": 0,
                         "Max": 100

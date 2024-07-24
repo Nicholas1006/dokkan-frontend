@@ -735,34 +735,71 @@
             "Timing": "Start of turn",
             "ATK": 100,
             "DEF": 100,
-            "Buff": {
-                "Type": "Percentage",
-                "+ or -": "+"
+            "Target": {
+                "Target": "Self"
             },
-            "Length": "1"
-        },
-        "1002710": {
-            "ID": "1002710",
-            "Timing": "Start of turn",
-            "Heals": 10,
-            "Buff": {
-                "Type": "Percentage",
-                "+ or -": "+"
-            },
-            "Length": "1"
-        },
-        "2002710": {
-            "ID": "2002710",
-            "Timing": "On Super",
-            "ATK": 50,
-            "DEF": 50,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1253 and 1258",
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
+        },
+        "1002710": {
+            "ID": "1002710",
+            "Timing": "Start of turn",
+            "Heals": 10,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
+        },
+        "2002710": {
+            "ID": "2002710",
+            "Timing": "On Super",
+            "ATK": 50,
+            "DEF": 50,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1253 && 1258",
                 "Causalities": {
                     "1253": {
                         "Button": {},

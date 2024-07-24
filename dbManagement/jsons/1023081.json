@@ -634,23 +634,43 @@
             "Timing": "Start of turn",
             "ATK": 120,
             "DEF": 120,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1002609": {
             "ID": "1002609",
             "Timing": "Attacking",
             "Ki": 3,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1056 or 1057",
+                "Logic": "1056 || 1057",
                 "Causalities": {
                     "1056": {
                         "Button": {
@@ -682,13 +702,16 @@
             "Timing": "Attacking",
             "ATK": 30,
             "DEF": 30,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1056 or 1057",
+                "Logic": "1056 || 1057",
                 "Causalities": {
                     "1056": {
                         "Button": {
@@ -730,7 +753,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1056 or 1057",
+                "Logic": "1056 || 1057",
                 "Causalities": {
                     "1056": {
                         "Button": {
@@ -761,13 +784,16 @@
             "ID": "4002609",
             "Guaranteed hit": true,
             "Timing": "Attacking",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1056 or 1057",
+                "Logic": "1056 || 1057",
                 "Causalities": {
                     "1056": {
                         "Button": {
@@ -798,6 +824,9 @@
             "ID": "5002609",
             "Timing": "On Super",
             "ATK": 40,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -824,6 +853,9 @@
             "ID": "6002609",
             "Timing": "Attacking",
             "Ki": 4,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"

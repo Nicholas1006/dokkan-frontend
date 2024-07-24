@@ -773,6 +773,9 @@
             "ID": "1004139",
             "Timing": "Start of turn",
             "Ki": 6,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -800,22 +803,56 @@
             "ID": "2004139",
             "Timing": "Start of turn",
             "Ki": 3,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "3004139": {
             "ID": "3004139",
             "Timing": "Start of turn",
             "ATK": 180,
             "DEF": 180,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "4004139": {
             "ID": "4004139",
@@ -830,6 +867,9 @@
                 "To": [
                     "AGL"
                 ]
+            },
+            "Target": {
+                "Target": "Self"
             },
             "Buff": {
                 "Type": "Raw stats",
@@ -858,6 +898,9 @@
             "Timing": "On Super",
             "ATK": 58,
             "DEF": 58,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -883,6 +926,9 @@
             "Timing": "On Super",
             "ATK": 58,
             "DEF": 58,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -910,6 +956,9 @@
                 "Chance of super": "70"
             },
             "Timing": "On Super",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -934,6 +983,9 @@
             "ID": "8004139",
             "Timing": "On Super",
             "ATK": 58,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -990,13 +1042,16 @@
                 "Chance of another additional": "100"
             },
             "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "9 and 693",
+                "Logic": "9 && 693",
                 "Causalities": {
                     "9": {
                         "Button": {
@@ -1026,11 +1081,28 @@
             "ID": "11004139",
             "Timing": "Start of turn",
             "Guard": true,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         }
     },
     "Max Attacks": 5,
@@ -2021,7 +2093,7 @@
             },
             "superIsInactive": "0",
             "superCondition": {
-                "Logic": "617 or 620 or 3136",
+                "Logic": "617 || 620 || 3136",
                 "Causalities": {
                     "617": {
                         "Button": {
@@ -2058,7 +2130,7 @@
         "Name": "Burst Rush",
         "Description": "Causes ultimate damage to enemy; \nKi +24 and DEF +58% for 1 turn",
         "Condition": {
-            "Logic": "9 and 3137 or 579 and 2830",
+            "Logic": "9 && 3137 || 579 && 2830",
             "Causalities": {
                 "9": {
                     "Button": {

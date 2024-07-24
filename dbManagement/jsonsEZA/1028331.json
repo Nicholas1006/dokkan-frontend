@@ -739,53 +739,90 @@
             "Timing": "Start of turn",
             "ATK": 99,
             "DEF": 99,
-            "Buff": {
-                "Type": "Percentage",
-                "+ or -": "+"
+            "Target": {
+                "Target": "Self"
             },
-            "Length": "1"
-        },
-        "1004022": {
-            "ID": "1004022",
-            "Timing": "Start of turn",
-            "Building Stat": {
-                "Min": 0,
-                "Max": 0,
-                "Cause": {
-                    "Cause": "Ki sphere obtained",
-                    "Type": "any"
-                },
-                "Slider": "How many Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres have been obtained?"
-            },
-            "ATK": 19,
-            "DEF": 19,
-            "Buff": {
-                "Type": "Percentage",
-                "+ or -": "+"
-            },
-            "Length": "1"
-        },
-        "2004022": {
-            "ID": "2004022",
-            "Timing": "On Super",
-            "Building Stat": {
-                "Min": 0,
-                "Max": 0,
-                "Cause": {
-                    "Cause": "Ki sphere obtained",
-                    "Type": "any"
-                },
-                "Slider": "How many Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres have been obtained?"
-            },
-            "ATK": 9,
-            "DEF": 9,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "3057 or 1692",
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
+        },
+        "1004022": {
+            "ID": "1004022",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 23,
+                "Cause": {
+                    "Cause": "Ki sphere obtained",
+                    "Type": "any"
+                },
+                "Slider": "How many  Ki Spheres have been obtained?"
+            },
+            "ATK": 19,
+            "DEF": 19,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
+        },
+        "2004022": {
+            "ID": "2004022",
+            "Timing": "On Super",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 23,
+                "Cause": {
+                    "Cause": "Ki sphere obtained",
+                    "Type": "any"
+                },
+                "Slider": "How many  Ki Spheres have been obtained?"
+            },
+            "ATK": 9,
+            "DEF": 9,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "3057 || 1692",
                 "Causalities": {
                     "3057": {
                         "Button": {
@@ -816,6 +853,9 @@
             "ID": "3004022",
             "Effective against all": true,
             "Timing": "When ki spheres collected",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -842,6 +882,9 @@
             "ID": "4004022",
             "Timing": "When ki spheres collected",
             "Crit Chance": 100,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"

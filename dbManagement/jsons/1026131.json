@@ -738,11 +738,28 @@
             "ID": "3334",
             "Timing": "Start of turn",
             "Ki": 4,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "6",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            },
             "Once only": true
         },
         "1003334": {
@@ -750,11 +767,28 @@
             "Timing": "Start of turn",
             "ATK": 58,
             "DEF": 58,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "6",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            },
             "Once only": true
         },
         "2003334": {
@@ -764,45 +798,99 @@
                 "Chance of super": "70"
             },
             "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "6",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            },
             "Once only": true
         },
         "3003334": {
             "ID": "3003334",
             "Timing": "Start of turn",
             "Ki": 4,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "4003334": {
             "ID": "4003334",
             "Timing": "Start of turn",
             "ATK": 158,
             "DEF": 158,
-            "Buff": {
-                "Type": "Percentage",
-                "+ or -": "+"
+            "Target": {
+                "Target": "Self"
             },
-            "Length": "1"
-        },
-        "5003334": {
-            "ID": "5003334",
-            "Timing": "Being hit",
-            "DR": 30,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2161 or 2162",
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
+        },
+        "5003334": {
+            "ID": "5003334",
+            "Timing": "Being hit",
+            "DR": 30,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2161 || 2162",
                 "Causalities": {
                     "2161": {
                         "Button": {
@@ -830,6 +918,9 @@
                 }
             },
             "Ki": 1,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -858,6 +949,9 @@
                 }
             },
             "DEF": 8,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -879,6 +973,9 @@
             "ID": "8003334",
             "Timing": "Hit recieved",
             "ATK": 58,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -909,6 +1006,9 @@
                 "Chance of super": "100"
             },
             "Timing": "Hit recieved",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -939,11 +1039,28 @@
                 "Line": "5003334"
             },
             "Timing": "Hit recieved",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         }
     },
     "Max Attacks": 4,
@@ -1857,7 +1974,7 @@
             },
             "superIsInactive": "0",
             "superCondition": {
-                "Logic": "2151 and (2152 or 2153 or 2154 or 2155)",
+                "Logic": "2151 && (2152 || 2153 || 2154 || 2155)",
                 "Causalities": {
                     "2151": {
                         "Button": {},
@@ -1930,7 +2047,7 @@
             },
             "superIsInactive": "0",
             "superCondition": {
-                "Logic": "2151 and 2156",
+                "Logic": "2151 && 2156",
                 "Causalities": {
                     "2151": {
                         "Button": {},
@@ -1964,14 +2081,14 @@
         "Name": "Incident Under the Full Moon",
         "Description": "Massively raises ATK temporarily, \ncauses ultimate damage to enemy and, \nwithin the turn activated, \nattacks effective against all Types",
         "Condition": {
-            "Logic": "2157 or 2158 and 2159",
+            "Logic": "2157 || 2158 && 2159",
             "Causalities": {
                 "2157": {
                     "Button": {
                         "Name": "Is HP 58 % or less?"
                     },
                     "Slider": {
-                        "Name": "What percentage of HP is remaining",
+                        "Name": "What percentage of HP is remaining?",
                         "Logic": "<=58",
                         "Min": 0,
                         "Max": 100

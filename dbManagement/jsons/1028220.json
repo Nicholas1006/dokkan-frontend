@@ -642,23 +642,43 @@
             "Timing": "Start of turn",
             "ATK": 130,
             "DEF": 100,
-            "Buff": {
-                "Type": "Percentage",
-                "+ or -": "+"
+            "Target": {
+                "Target": "Self"
             },
-            "Length": "1"
-        },
-        "1004045": {
-            "ID": "1004045",
-            "Timing": "Hit recieved",
-            "Crit Chance": 70,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "24 or 365",
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
+        },
+        "1004045": {
+            "ID": "1004045",
+            "Timing": "Hit recieved",
+            "Crit Chance": 70,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "24 || 365",
                 "Causalities": {
                     "24": {
                         "Button": {
@@ -679,6 +699,9 @@
             "ID": "2004045",
             "Timing": "Start of turn",
             "DR": 50,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -705,13 +728,16 @@
             "ID": "3004045",
             "Timing": "When ki spheres collected",
             "DR": 40,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "11 and 1380 and 301",
+                "Logic": "11 && 1380 && 301",
                 "Causalities": {
                     "11": {
                         "Button": {
@@ -751,13 +777,16 @@
             "ID": "4004045",
             "Timing": "When ki spheres collected",
             "DR": 30,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2375 and 301",
+                "Logic": "2375 && 301",
                 "Causalities": {
                     "2375": {
                         "Button": {
@@ -794,7 +823,21 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "6004045": {
             "ID": "6004045",
@@ -809,7 +852,21 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         }
     },
     "Max Attacks": 1,

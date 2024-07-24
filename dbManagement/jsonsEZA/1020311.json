@@ -749,21 +749,55 @@
             "Timing": "Start of turn",
             "ATK": 200,
             "DEF": 200,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1004059": {
             "ID": "1004059",
             "Timing": "Start of turn",
             "Ki": 7,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            },
             "Once only": true
         },
         "2004059": {
@@ -773,22 +807,56 @@
                 "Chance of super": "100"
             },
             "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Chance": "77",
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "77",
+                "Causalities": {
+                    "77": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "3004059": {
             "ID": "3004059",
             "Dodge chance": 77,
             "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "4004059": {
             "ID": "4004059",
@@ -800,6 +868,9 @@
                 "Cause": {
                     "Cause": "Look Elsewhere"
                 }
+            },
+            "Target": {
+                "Target": "Self"
             },
             "Buff": {
                 "Type": "Percentage",
@@ -829,6 +900,9 @@
                 }
             },
             "Ki": 2,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -857,6 +931,9 @@
                 }
             },
             "DEF": 30,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -878,6 +955,9 @@
             "ID": "7004059",
             "Timing": "On Super",
             "ATK": 77,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -902,6 +982,9 @@
             "ID": "8004059",
             "Timing": "On Super",
             "Crit Chance": 100,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -945,7 +1028,7 @@
                             "Name": "Is HP 77 % or less?"
                         },
                         "Slider": {
-                            "Name": "What percentage of HP is remaining",
+                            "Name": "What percentage of HP is remaining?",
                             "Logic": "<=77",
                             "Min": 0,
                             "Max": 100
@@ -958,6 +1041,9 @@
             "ID": "10004059",
             "Timing": "Start of turn",
             "Ki": 7,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -980,6 +1066,9 @@
             "Timing": "Start of turn",
             "ATK": 77,
             "DEF": 77,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -1001,6 +1090,9 @@
             "ID": "12004059",
             "Dodge chance": 100,
             "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -1024,6 +1116,9 @@
             "Timing": "Start of turn",
             "ATK": 77,
             "DEF": 77,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -1050,11 +1145,28 @@
             "ID": "14004059",
             "Dodge chance": 100,
             "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            },
             "Once only": true
         }
     },
@@ -1279,7 +1391,7 @@
         "Name": "Strike of Fury",
         "Description": "Greatly raises ATK temporarily and \ncauses ultimate damage to enemy",
         "Condition": {
-            "Logic": "713 and 685",
+            "Logic": "713 && 685",
             "Causalities": {
                 "713": {
                     "Button": {

@@ -738,13 +738,16 @@
             "ID": "3984",
             "Effective against all": true,
             "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "5",
             "Condition": {
-                "Logic": "3038 or 211",
+                "Logic": "3038 || 211",
                 "Causalities": {
                     "3038": {
                         "Button": {
@@ -776,13 +779,16 @@
             "ID": "1003984",
             "Timing": "Start of turn",
             "DR": 30,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "5",
             "Condition": {
-                "Logic": "3038 or 211",
+                "Logic": "3038 || 211",
                 "Causalities": {
                     "3038": {
                         "Button": {
@@ -814,40 +820,91 @@
             "ID": "2003984",
             "Timing": "Start of turn",
             "Ki": 3,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "3003984": {
             "ID": "3003984",
             "Timing": "Start of turn",
             "ATK": 180,
             "DEF": 180,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "4003984": {
             "ID": "4003984",
             "Timing": "On Super",
             "ATK": 130,
             "DEF": 130,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "5003984": {
             "ID": "5003984",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
-                "Max": 0,
+                "Max": 23,
                 "Cause": {
                     "Cause": "Ki sphere obtained",
                     "Type": [
@@ -857,11 +914,28 @@
                 "Slider": "How many INT Ki Spheres have been obtained?"
             },
             "Ki": 3,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "6003984": {
             "ID": "6003984",
@@ -877,13 +951,16 @@
                     "INT"
                 ]
             },
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "3036 or 3037",
+                "Logic": "3036 || 3037",
                 "Causalities": {
                     "3036": {
                         "Button": {
@@ -917,6 +994,9 @@
                 "Chance of super": "50"
             },
             "Timing": "When ki spheres collected",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -946,6 +1026,9 @@
                 "Chance of super": "50"
             },
             "Timing": "When ki spheres collected",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -975,6 +1058,9 @@
                 "Chance of super": "50"
             },
             "Timing": "When ki spheres collected",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -1888,7 +1974,7 @@
         "Name": "Spirit Bomb Super Saiyan",
         "Description": "Massively raises ATK temporarily, \ncauses ultimate damage to enemy and, \nwithin the turn activated, \nall attacks become critical hits",
         "Condition": {
-            "Logic": "1194 and 3040 or 1041",
+            "Logic": "1194 && 3040 || 1041",
             "Causalities": {
                 "1194": {
                     "Button": {

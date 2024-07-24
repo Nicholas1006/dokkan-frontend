@@ -737,24 +737,44 @@
             "Timing": "Start of turn",
             "ATK": 150,
             "DEF": 150,
-            "Buff": {
-                "Type": "Percentage",
-                "+ or -": "+"
+            "Target": {
+                "Target": "Self"
             },
-            "Length": "1"
-        },
-        "1002808": {
-            "ID": "1002808",
-            "Timing": "On Super",
-            "ATK": 50,
-            "DEF": 50,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1388 and 1387",
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
+        },
+        "1002808": {
+            "ID": "1002808",
+            "Timing": "On Super",
+            "ATK": 50,
+            "DEF": 50,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1388 && 1387",
                 "Causalities": {
                     "1388": {
                         "Button": {},
@@ -783,13 +803,16 @@
             "ID": "2002808",
             "Timing": "On Super",
             "ATK": 100,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1388 and 1387 and 1389",
+                "Logic": "1388 && 1387 && 1389",
                 "Causalities": {
                     "1388": {
                         "Button": {},
@@ -828,13 +851,16 @@
             "ID": "3002808",
             "Timing": "On Super",
             "Crit Chance": 50,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1388 and 1387 and 1389",
+                "Logic": "1388 && 1387 && 1389",
                 "Causalities": {
                     "1388": {
                         "Button": {},
@@ -873,6 +899,9 @@
             "ID": "4002808",
             "Timing": "Start of turn",
             "DEF": 150,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -899,13 +928,16 @@
             "ID": "5002808",
             "Timing": "Hit recieved",
             "Crit Chance": 100,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1391 and 1390",
+                "Logic": "1391 && 1390",
                 "Causalities": {
                     "1391": {
                         "Button": {
@@ -931,6 +963,9 @@
             "ID": "6002808",
             "Timing": "When final blow delivered",
             "Ki": 2,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -1719,7 +1754,7 @@
         "Name": "Raditz's Retribution",
         "Description": "Greatly raises ATK temporarily, \ncauses ultimate damage and \nstuns the enemy for 1 turn",
         "Condition": {
-            "Logic": "1400 and 1387",
+            "Logic": "1400 && 1387",
             "Causalities": {
                 "1400": {
                     "Button": {

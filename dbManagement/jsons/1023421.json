@@ -740,11 +740,28 @@
             "Timing": "Start of turn",
             "ATK": 150,
             "DEF": 150,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1002671": {
             "ID": "1002671",
@@ -759,6 +776,9 @@
                 "To": [
                     "AGL"
                 ]
+            },
+            "Target": {
+                "Target": "Self"
             },
             "Buff": {
                 "Type": "Raw stats",
@@ -786,6 +806,9 @@
             "ID": "2002671",
             "Timing": "When ki spheres collected",
             "DEF": 58,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -812,6 +835,9 @@
             "ID": "3002671",
             "Timing": "When ki spheres collected",
             "Crit Chance": 8,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -838,6 +864,9 @@
             "ID": "4002671",
             "Timing": "When ki spheres collected",
             "DR": 8,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -864,6 +893,9 @@
             "ID": "5002671",
             "Timing": "When ki spheres collected",
             "ATK": 58,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -890,6 +922,9 @@
             "ID": "6002671",
             "Timing": "When ki spheres collected",
             "Crit Chance": 8,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -916,6 +951,9 @@
             "ID": "7002671",
             "Timing": "When ki spheres collected",
             "DR": 8,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -945,6 +983,9 @@
                 "Chance of super": "100"
             },
             "Timing": "When ki spheres collected",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -1891,14 +1932,14 @@
         "Name": "Exchange",
         "Description": "Exchanges with another character",
         "Condition": {
-            "Logic": "1192 and 1194",
+            "Logic": "1192 && 1194",
             "Causalities": {
                 "1192": {
                     "Button": {
                         "Name": "Is HP 58 % or less?"
                     },
                     "Slider": {
-                        "Name": "What percentage of HP is remaining",
+                        "Name": "What percentage of HP is remaining?",
                         "Logic": "<=58",
                         "Min": 0,
                         "Max": 100

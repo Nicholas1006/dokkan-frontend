@@ -635,23 +635,43 @@
             "Timing": "Start of turn",
             "ATK": 120,
             "DEF": 120,
-            "Buff": {
-                "Type": "Percentage",
-                "+ or -": "+"
+            "Target": {
+                "Target": "Self"
             },
-            "Length": "1"
-        },
-        "1002686": {
-            "ID": "1002686",
-            "Timing": "On Super",
-            "ATK": 60,
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1224 and 1225",
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
+        },
+        "1002686": {
+            "ID": "1002686",
+            "Timing": "On Super",
+            "ATK": 60,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1224 && 1225",
                 "Causalities": {
                     "1224": {
                         "Button": {},
@@ -667,7 +687,7 @@
                             "Name": "Is HP 80 % or less?"
                         },
                         "Slider": {
-                            "Name": "What percentage of HP is remaining",
+                            "Name": "What percentage of HP is remaining?",
                             "Logic": "<=80",
                             "Min": 0,
                             "Max": 100
@@ -683,13 +703,16 @@
                 "Chance of super": "30"
             },
             "Timing": "On Super",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1224 and 1225",
+                "Logic": "1224 && 1225",
                 "Causalities": {
                     "1224": {
                         "Button": {},
@@ -705,7 +728,7 @@
                             "Name": "Is HP 80 % or less?"
                         },
                         "Slider": {
-                            "Name": "What percentage of HP is remaining",
+                            "Name": "What percentage of HP is remaining?",
                             "Logic": "<=80",
                             "Min": 0,
                             "Max": 100
@@ -718,6 +741,9 @@
             "ID": "3002686",
             "Timing": "Start of turn",
             "Ki": 6,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -731,7 +757,7 @@
                             "Name": "Is HP 80 % or less?"
                         },
                         "Slider": {
-                            "Name": "What percentage of HP is remaining",
+                            "Name": "What percentage of HP is remaining?",
                             "Logic": "<=80",
                             "Min": 0,
                             "Max": 100
@@ -745,6 +771,9 @@
             "ID": "4002686",
             "Timing": "Start of turn",
             "ATK": 60,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -758,7 +787,7 @@
                             "Name": "Is HP 80 % or less?"
                         },
                         "Slider": {
-                            "Name": "What percentage of HP is remaining",
+                            "Name": "What percentage of HP is remaining?",
                             "Logic": "<=80",
                             "Min": 0,
                             "Max": 100

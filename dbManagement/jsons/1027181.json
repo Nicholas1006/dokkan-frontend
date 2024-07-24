@@ -733,27 +733,64 @@
             "ID": "3542",
             "Timing": "Start of turn",
             "Ki": 2,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1003542": {
             "ID": "1003542",
             "Timing": "Start of turn",
             "ATK": 150,
             "DEF": 150,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "2003542": {
             "ID": "2003542",
             "Timing": "On Super",
             "DEF": 100,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -778,13 +815,16 @@
             "ID": "3003542",
             "Timing": "On Super",
             "ATK": 500,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2574 and 2575 or 2574 and 2576 or 2574 and 2577 or 2574 and 2578",
+                "Logic": "2574 && 2575 || 2574 && 2576 || 2574 && 2577 || 2574 && 2578",
                 "Causalities": {
                     "2574": {
                         "Button": {},
@@ -826,13 +866,16 @@
             "ID": "4003542",
             "Timing": "On Super",
             "Crit Chance": 100,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2574 and 2575 or 2574 and 2576 or 2574 and 2577 or 2574 and 2578",
+                "Logic": "2574 && 2575 || 2574 && 2576 || 2574 && 2577 || 2574 && 2578",
                 "Causalities": {
                     "2574": {
                         "Button": {},
@@ -885,7 +928,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2574 and 2575 or 2574 and 2576 or 2574 and 2577 or 2574 and 2578",
+                "Logic": "2574 && 2575 || 2574 && 2576 || 2574 && 2577 || 2574 && 2578",
                 "Causalities": {
                     "2574": {
                         "Button": {},
@@ -936,7 +979,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2579 or 2580",
+                "Logic": "2579 || 2580",
                 "Causalities": {
                     "2579": {
                         "Button": {
@@ -972,7 +1015,7 @@
             "Chance": "50",
             "Length": "1",
             "Condition": {
-                "Logic": "2579 or 2580",
+                "Logic": "2579 || 2580",
                 "Causalities": {
                     "2579": {
                         "Button": {

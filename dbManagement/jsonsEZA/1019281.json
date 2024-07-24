@@ -740,16 +740,36 @@
             "Timing": "Start of turn",
             "ATK": 150,
             "DEF": 150,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1003582": {
             "ID": "1003582",
             "Timing": "Start of turn",
             "DR": 30,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -776,6 +796,9 @@
             "ID": "2003582",
             "Timing": "Start of turn",
             "Ki": 3,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -798,6 +821,9 @@
             "Timing": "Start of turn",
             "ATK": 150,
             "DEF": 150,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -820,6 +846,9 @@
             "Timing": "Start of turn",
             "ATK": 100,
             "DEF": 100,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -846,13 +875,16 @@
             "ID": "5003582",
             "Timing": "Start of turn",
             "Ki": 3,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2670 or 2671",
+                "Logic": "2670 || 2671",
                 "Causalities": {
                     "2670": {
                         "Button": {
@@ -873,13 +905,16 @@
             "ID": "6003582",
             "Timing": "Start of turn",
             "ATK": 150,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2670 or 2671",
+                "Logic": "2670 || 2671",
                 "Causalities": {
                     "2670": {
                         "Button": {
@@ -900,13 +935,16 @@
             "ID": "7003582",
             "Timing": "Start of turn",
             "Crit Chance": 100,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2670 or 2671",
+                "Logic": "2670 || 2671",
                 "Causalities": {
                     "2670": {
                         "Button": {
@@ -1176,7 +1214,7 @@
         "Name": "Evil Containment Wave",
         "Description": "Raises ATK by 628% temporarily then causes \ndamage to enemy and, within the turn activated, \nall attacks become critical hits and stuns the \nattacked enemy while reducing own DEF by half",
         "Condition": {
-            "Logic": "494 and (479 or 480 or 481)",
+            "Logic": "494 && (479 || 480 || 481)",
             "Causalities": {
                 "494": {
                     "Button": {

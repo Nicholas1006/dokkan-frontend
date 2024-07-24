@@ -631,23 +631,43 @@
             "ID": "2805",
             "Timing": "Start of turn",
             "DEF": 80,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1002805": {
             "ID": "1002805",
             "Timing": "When ki spheres collected",
             "Ki": 1,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1382 or 1383",
+                "Logic": "1382 || 1383",
                 "Causalities": {
                     "1382": {
                         "Button": {
@@ -687,7 +707,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1382 or 1383",
+                "Logic": "1382 || 1383",
                 "Causalities": {
                     "1382": {
                         "Button": {
@@ -718,6 +738,9 @@
             "ID": "3002805",
             "Timing": "When ki spheres collected",
             "DEF": 80,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"

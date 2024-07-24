@@ -745,16 +745,36 @@
             "Timing": "Start of turn",
             "ATK": 77,
             "DEF": 77,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "1002022": {
             "ID": "1002022",
             "Timing": "Attacking",
             "Ki": 2,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -781,6 +801,9 @@
             "ID": "2002022",
             "Timing": "Attacking",
             "Ki": 2,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -814,13 +837,16 @@
                 }
             },
             "Ki": 1,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Length": "99",
             "Condition": {
-                "Logic": "25 or 26",
+                "Logic": "25 || 26",
                 "Causalities": {
                     "25": {
                         "Button": {
@@ -854,6 +880,9 @@
                 "Chance of super": "100"
             },
             "Timing": "Attacking",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -887,13 +916,16 @@
                 }
             },
             "ATK": 7,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "99",
             "Condition": {
-                "Logic": "25 or 26",
+                "Logic": "25 || 26",
                 "Causalities": {
                     "25": {
                         "Button": {
@@ -931,13 +963,16 @@
                 }
             },
             "DEF": 7,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Length": "99",
             "Condition": {
-                "Logic": "25 or 26",
+                "Logic": "25 || 26",
                 "Causalities": {
                     "25": {
                         "Button": {
@@ -971,6 +1006,9 @@
                 "Chance of super": "100"
             },
             "Timing": "Attacking",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -997,6 +1035,9 @@
             "ID": "8002022",
             "Dodge chance": 50,
             "Timing": "Attacking",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -1026,6 +1067,9 @@
                 "Chance of super": "100"
             },
             "Timing": "Attacking",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -1972,7 +2016,7 @@
         "Name": "Final Kamehameha",
         "Description": "Greatly raises ATK temporarily and \ncauses ultimate damage to enemy",
         "Condition": {
-            "Logic": "11 and 476 and 477",
+            "Logic": "11 && 476 && 477",
             "Causalities": {
                 "11": {
                     "Button": {

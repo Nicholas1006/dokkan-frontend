@@ -747,7 +747,7 @@
             },
             "Length": "99",
             "Condition": {
-                "Logic": "2425 or 2426",
+                "Logic": "2425 || 2426",
                 "Causalities": {
                     "2425": {
                         "Button": {
@@ -783,7 +783,7 @@
             },
             "Length": "99",
             "Condition": {
-                "Logic": "2425 or 2426",
+                "Logic": "2425 || 2426",
                 "Causalities": {
                     "2425": {
                         "Button": {
@@ -810,16 +810,36 @@
             "Timing": "Start of turn",
             "ATK": 160,
             "DEF": 160,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "true",
+                "Causalities": {
+                    "true": {
+                        "Button": {
+                            "Name": "true"
+                        },
+                        "Slider": {
+                            "Name": "true",
+                            "Logic": ""
+                        }
+                    }
+                }
+            }
         },
         "3003489": {
             "ID": "3003489",
             "Timing": "Start of turn",
             "ATK": 60,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -849,6 +869,9 @@
                 "Chance of super": "50"
             },
             "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -875,6 +898,9 @@
             "ID": "5003489",
             "Timing": "On Super",
             "ATK": 100,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -906,6 +932,9 @@
                 }
             },
             "Ki": 2,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -934,6 +963,9 @@
                 }
             },
             "DR": 5,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -962,6 +994,9 @@
                 }
             },
             "DEF": 40,
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -983,6 +1018,9 @@
             "ID": "9003489",
             "Effective against all": true,
             "Timing": "Attacking the enemy",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
@@ -1010,6 +1048,9 @@
                 "Chance of super": "50"
             },
             "Timing": "Attacking the enemy",
+            "Target": {
+                "Target": "Self"
+            },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
@@ -1856,7 +1897,7 @@
         "Name": "Live Like a Saiyan!",
         "Description": "Greatly raises ATK temporarily and \ncauses ultimate damage to enemy",
         "Condition": {
-            "Logic": "2436 or (2437 and 2425) or (2437 and 2426)",
+            "Logic": "2436 || (2437 && 2425) || (2437 && 2426)",
             "Causalities": {
                 "2436": {
                     "Button": {
