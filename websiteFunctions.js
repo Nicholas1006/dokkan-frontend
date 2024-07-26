@@ -481,6 +481,10 @@ class passiveQuery{
         }
     }
 
+    chanceButtonValue(){
+        return this.chanceButtonName || 100;
+    }
+
     setChanceButtonDisplay(isShown){
         if(this.chanceButton!=undefined){
             if(isShown){
@@ -557,7 +561,12 @@ class causalityList{
                     let buttonLogic=this.CausalityLogic[conditionCausality["Button"]["Name"]];
                     let sliderLogic=eval(this.CausalityLogic[conditionCausality["Slider"]["Name"]] + conditionCausality["Slider"]["Logic"]);
                     if(buttonLogic || sliderLogic){
-                        conditionLogic=conditionLogic.replaceAll(" "+conditionCausalityKey+" "," "+true+" ");
+                        if(passiveLine["Chance"]!=undefined){
+                            conditionLogic=conditionLogic.replaceAll(" "+passiveLine["Chance"]+" "," "+   this.CausalityLogic["Has the "+passiveLine["Chance"]+"% chance triggered"]   +" ");
+                        }
+                        else{
+                            conditionLogic=conditionLogic.replaceAll(" "+conditionCausalityKey+" "," "+true+" ");
+                        }
                     }
                     else{
                         conditionLogic=conditionLogic.replaceAll(" "+conditionCausalityKey+" "," "+false+" ");
@@ -668,6 +677,19 @@ export function getJsonPromise(prefix,name,suffix) {
       }
     );
 }
+
+export function extractDigitsFromString(string){
+    let stringArray=string.split("");
+    let digitArray=[];
+    for(let i=0;i<stringArray.length;i++){
+        if(!isNaN(stringArray[i])){
+            digitArray.push(stringArray[i]);
+        }
+    }
+    let digitInteger=digitArray.join("");
+    return digitInteger
+}
+
 
 export function displayDictionary(element,indentation){
     let dictionaryContainer=document.createElement("div");
@@ -1313,88 +1335,87 @@ export function colorToBackground(color){
 
 
 export function updateQueryList(passiveLine){
-    if("Condition" in passiveLine || "Building Stat" in passiveLine || "Chance" in passiveLine){
-        if("Condition" in passiveLine){
-            for(const CausalityKey of Object.keys(passiveLine["Condition"]["Causalities"])){
-                const Causality = passiveLine["Condition"]["Causalities"][CausalityKey];
-                let queryUpdated=false;
-                startingCausalityList.push(CausalityKey);
-                if(isEmptyDictionary(Causality.Button)){
-                    if(isEmptyDictionary(Causality.Slider)){
-                        console.log("EMPTY CONDITION???");
-                    }
-                    else{
-                        for (const query of passiveQueryList){
-                            if(query.sliderName==Causality.Slider["Name"]){
-                                query.min=Math.min(Causality.Slider["Min"],query.min);
-                                query.max=Math.max(Causality.Slider["Max"],query.max);
-                                queryUpdated=true;
-                            }
-                        }
-                        if(queryUpdated==false){
-                            passiveQueryList.push( new passiveQuery("slider","",Causality.Slider["Name"],Causality.Slider["Min"],Causality.Slider["Max"]) );
-                        }
-                    }
-                }
-                else{
-                    if(isEmptyDictionary(Causality.Slider)){
-                        for (const query of passiveQueryList){
-                            if(query.buttonName==Causality.Button["Name"]){
-                                queryUpdated=true;
-                            }
-                        }
-                        if(queryUpdated==false){
-                            passiveQueryList.push( new passiveQuery("button",Causality.Button["Name"],0,0) );
-                        }
-                    }
-                    else{
-                        for (const query of passiveQueryList){
-                            if(query.sliderName==Causality.Slider["Name"]){
-                                query.min=Math.min(Causality.Slider["Min"],query.min);
-                                query.max=Math.max(Causality.Slider["Max"],query.max);
-                                if(query.buttonName!=Causality.Button["Name"]){
-                                    query.changeType("slider");
-                                }
-                                queryUpdated=true;
-                            }
-                        }
-                        if(queryUpdated==false){
-                            if(passiveLine["Chance"]!=undefined){
-                                passiveQueryList.push( new passiveQuery("button",Causality.Button["Name"],Causality.Slider["Name"],Causality.Slider["Min"],Causality.Slider["Max"],"Has the "+passiveLine["Chance"]+"% chance triggered"));
-                            }
-                            else{
-                                passiveQueryList.push( new passiveQuery("button",Causality.Button["Name"],Causality.Slider["Name"],Causality.Slider["Min"],Causality.Slider["Max"]) );
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        if("Building Stat" in passiveLine){
+    if(passiveLine["Condition"]["Logic"]!="asdsadsa"){
+        for(const CausalityKey of Object.keys(passiveLine["Condition"]["Causalities"])){
+            const Causality = passiveLine["Condition"]["Causalities"][CausalityKey];
             let queryUpdated=false;
-            let sliderName=buildingSliderNameGenerator(passiveLine);
-            for (const query of passiveQueryList){
-                if(query.sliderName==sliderName){
-                    query.min=Math.min(passiveLine["Building Stat"]["Min"],query.min);
-                    query.max=Math.max(passiveLine["Building Stat"]["Max"],query.max);
-                    queryUpdated=true;
-                }
-            }
-            if(!queryUpdated){
-                if(passiveLine["Building Stat"]["Cause"]["Cause"]=="Look Elsewhere"){
-                    passiveQueryList.push( new passiveQuery("slider","",sliderName,passiveLine["Building Stat"]["Min"],passiveLine["Building Stat"]["Max"]) );
+            startingCausalityList.push(CausalityKey);
+            if(isEmptyDictionary(Causality.Button)){
+                if(isEmptyDictionary(Causality.Slider)){
+                    console.log("EMPTY CONDITION???");
                 }
                 else{
-                    passiveQueryList.push( new passiveQuery("slider","",passiveLine["Building Stat"]["Slider"],passiveLine["Building Stat"]["Min"],passiveLine["Building Stat"]["Max"]) );
+                    for (const query of passiveQueryList){
+                        if(query.sliderName==Causality.Slider["Name"]){
+                            query.min=Math.min(Causality.Slider["Min"],query.min);
+                            query.max=Math.max(Causality.Slider["Max"],query.max);
+                            queryUpdated=true;
+                        }
+                    }
+                    if(queryUpdated==false){
+                        passiveQueryList.push( new passiveQuery("slider","",Causality.Slider["Name"],Causality.Slider["Min"],Causality.Slider["Max"]) );
+                    }
                 }
             }
-        }
-
-        if("Chance" in passiveLine && !("Building Stat" in passiveLine) && !("Condition" in passiveLine)){
-            console.log("WIP CONTINUATION FOR TOMORROW")
+            else{
+                if(isEmptyDictionary(Causality.Slider)){
+                    for (const query of passiveQueryList){
+                        if(query.buttonName==Causality.Button["Name"]){
+                            queryUpdated=true;
+                        }
+                    }
+                    if(queryUpdated==false){
+                        passiveQueryList.push( new passiveQuery("button",Causality.Button["Name"],0,0) );
+                    }
+                }
+                else{
+                    for (const query of passiveQueryList){
+                        if(query.sliderName==Causality.Slider["Name"]){
+                            query.min=Math.min(Causality.Slider["Min"],query.min);
+                            query.max=Math.max(Causality.Slider["Max"],query.max);
+                            if(query.buttonName!=Causality.Button["Name"]){
+                                query.changeType("slider");
+                            }
+                            queryUpdated=true;
+                        }
+                    }
+                    if(queryUpdated==false){
+                        if(passiveLine["Chance"]!=undefined){
+                            passiveQueryList.push( new passiveQuery("button",Causality.Button["Name"],Causality.Slider["Name"],Causality.Slider["Min"],Causality.Slider["Max"],"Has the "+passiveLine["Chance"]+"% chance triggered"));
+                        }
+                        else{
+                            passiveQueryList.push( new passiveQuery("button",Causality.Button["Name"],Causality.Slider["Name"],Causality.Slider["Min"],Causality.Slider["Max"]) );
+                        }
+                    }
+                }
+            }
         }
     }
+
+    if("Building Stat" in passiveLine){
+        let queryUpdated=false;
+        let sliderName=buildingSliderNameGenerator(passiveLine);
+        for (const query of passiveQueryList){
+            if(query.sliderName==sliderName){
+                query.min=Math.min(passiveLine["Building Stat"]["Min"],query.min);
+                query.max=Math.max(passiveLine["Building Stat"]["Max"],query.max);
+                queryUpdated=true;
+            }
+        }
+        if(!queryUpdated){
+            if(passiveLine["Building Stat"]["Cause"]["Cause"]=="Look Elsewhere"){
+                passiveQueryList.push( new passiveQuery("slider","",sliderName,passiveLine["Building Stat"]["Min"],passiveLine["Building Stat"]["Max"]) );
+            }
+            else{
+                passiveQueryList.push( new passiveQuery("slider","",passiveLine["Building Stat"]["Slider"],passiveLine["Building Stat"]["Min"],passiveLine["Building Stat"]["Max"]) );
+            }
+        }
+    }
+
+    if(passiveLine["Condition"]["Logic"]=="true"){
+        console.log("WIP CONTINUATION FOR TOMORROW")
+    }
+    
 }
 
 
@@ -1430,8 +1451,23 @@ export function buildingSliderNameGenerator(passiveLine){
     else if(passiveLine["Timing"]=="When ki spheres collected"){
         sliderName+="How many times has this unit collected ki";
     }
+
     if(passiveLine["Condition"]!=undefined){
-        sliderName+="AAA"
+        let causalityKeys=Object.keys(passiveLine["Condition"]["Causalities"])
+        let causalityLogic=passiveLine["Condition"]["Logic"]
+        for (const causalityKey of causalityKeys){
+            const causality = passiveLine["Condition"]["Causalities"][causalityKey];
+            if (!(isEmptyDictionary(causality["Button"]))){
+                causalityLogic=causalityLogic.replaceAll(causalityKey,causality["Button"]["Name"]);
+            }
+            else if (!(isEmptyDictionary(causality["Slider"]))){
+                causalityLogic=causalityLogic.replaceAll(causalityKey,causality["Slider"]["Name"]);
+            }
+            else{
+                console.log("AAAA");
+            }
+        }
+        sliderName+=" while ("+causalityLogic+") is active";
     }
 
     sliderName+=" within the last "+passiveLine["Length"]+" turns";
@@ -1770,6 +1806,9 @@ export function createPassiveBuffs(passiveLine, passiveBuffsHolder){
 export function queriesToLogic(queries){
     let output={}
     for (const query of queries){
+        if(query.chanceButtonValue()!=100){
+            output[query.chanceButtonValue()]=query.currentValue();
+        }
         if(query["type"]=="slider"){
             output[query["sliderName"]]=query.currentValue();
         }
