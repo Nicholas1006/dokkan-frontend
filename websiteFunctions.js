@@ -367,12 +367,10 @@ class passiveButton{
             if(this.classList.contains('active')){
                 this.classList.remove('active');
                 this.style.background="#FF5C35"
-                this.parent.setChanceButtonDisplay(false)
             }
             else{
                 this.classList.add('active');
                 this.style.background="#00FF00"
-                this.parent.setChanceButtonDisplay(true)
             }
             updatePassiveBuffs()
         };
@@ -426,12 +424,8 @@ class passiveSlider {
 }
 
 class passiveQuery{
-    constructor(type, buttonName,sliderName, min, max, chanceButtonName){
+    constructor(type, buttonName,sliderName, min, max){
         this.selfContainer=document.createElement("div");
-        this.alwaysTrue=false;
-        if(buttonName=="true" && sliderName=="true"){
-            this.alwaysTrue=true;
-        }
         this.min = min;
         this.max = max;
         this.buttonName = buttonName;
@@ -439,60 +433,12 @@ class passiveQuery{
         this.type = type;
         this.hasChanceButton=false;
         this.create();
-        if(chanceButtonName!=undefined){
-            this.hasChanceButton=true;
-            this.chanceButton=document.createElement("button");
-            this.chanceButton.innerHTML=chanceButtonName;
-            if(this.type=="button"){
-                if(this.queryElement.element.classList.contains('active')){
-                    this.setChanceButtonDisplay(true)
-                }
-                else{
-                    this.setChanceButtonDisplay(false)
-                }
-            }
-            this.chanceButton.style.background="#FF5C35"
-            this.chanceButton.onclick = function(){
-                if(this.classList.contains('active')){
-                    this.classList.remove('active');
-                    this.style.background="#FF5C35"
-                }
-                else{
-                    this.classList.add('active');
-                    this.style.background="#00FF00"
-                }
-                updatePassiveBuffs()
-            };
-            this.selfContainer.appendChild(this.chanceButton);
-            if(this.alwaysTrue){
-                this.setChanceButtonDisplay(true)
-            }
-            this.chanceButtonName=chanceButtonName;
-        }
-        if(this.alwaysTrue){
-            this.queryElement.element.style.display="none";
-        }
     }
 
     changeType(type){
         if(type!=this.type){
             this.type = type;
             this.create();
-        }
-    }
-
-    chanceButtonValue(){
-        return this.chanceButtonName || 100;
-    }
-
-    setChanceButtonDisplay(isShown){
-        if(this.chanceButton!=undefined){
-            if(isShown){
-                this.chanceButton.style.display="block";
-            }
-            else{
-                this.chanceButton.style.display="none";
-            }
         }
     }
 
@@ -519,16 +465,13 @@ class passiveQuery{
     currentValue(){
         if(this.type=="button"){
             if(this.hasChanceButton){
-                return((this.queryElement.element.classList.contains('active') || this.alwaysTrue) && this.chanceButton.classList.contains('active'))
+                return(this.queryElement.element.classList.contains('active') && this.chanceButton.classList.contains('active'))
             }
             else{
-                return(this.queryElement.element.classList.contains('active') || this.alwaysTrue)
+                return(this.queryElement.element.classList.contains('active') )
             }
         }
         else if(this.type=="slider"){
-            if(this.alwaysTrue){
-                return(true)
-            }
             return(this.queryElement.element.value)
         }
     }
@@ -544,7 +487,7 @@ class causalityList{
         let passiveBuffs={
         }
         let passiveLines=currentJson.Passive;
-        let activatedPassiveLines=[];
+        let activatedPassiveLineMultipliers=[];
         for(const passiveLineKey in passiveLines){
             let passiveLine=passiveLines[passiveLineKey];
             let activatedCondition=true;
@@ -559,14 +502,10 @@ class causalityList{
                 for(const conditionCausalityKey in conditionCausalities){
                     let conditionCausality=conditionCausalities[conditionCausalityKey];
                     let buttonLogic=this.CausalityLogic[conditionCausality["Button"]["Name"]];
-                    let sliderLogic=eval(this.CausalityLogic[conditionCausality["Slider"]["Name"]] + conditionCausality["Slider"]["Logic"]);
+                    //let sliderLogic=eval(this.CausalityLogic[conditionCausality["Slider"]["Name"]] + conditionCausality["Slider"]["Logic"]);
+                    let sliderLogic=true
                     if(buttonLogic || sliderLogic){
-                        if(passiveLine["Chance"]!=undefined){
-                            conditionLogic=conditionLogic.replaceAll(" "+passiveLine["Chance"]+" "," "+   this.CausalityLogic["Has the "+passiveLine["Chance"]+"% chance triggered"]   +" ");
-                        }
-                        else{
-                            conditionLogic=conditionLogic.replaceAll(" "+conditionCausalityKey+" "," "+true+" ");
-                        }
+                        conditionLogic=conditionLogic.replaceAll(" "+conditionCausalityKey+" "," "+true+" ");
                     }
                     else{
                         conditionLogic=conditionLogic.replaceAll(" "+conditionCausalityKey+" "," "+false+" ");
@@ -580,54 +519,66 @@ class causalityList{
                 }
             }
             if(activatedCondition){
+                dictionaryToggle(activatedPassiveLineMultipliers,passiveLineKey,buffMultiplier);
                 const timing= passiveLine["Timing"];
                 const target = passiveLine["Target"]["Target"];
-                for (const passiveEffect in passiveLine){
-                    if(passiveEffect=="ATK"||
-                    passiveEffect=="DEF"||
-                    passiveEffect=="Ki"||
-                    passiveEffect=="DR"
-                    ){
-                        const timingString = timing;
-                        const targetString = target;
-                        const dictionaryFormat=
-                        {[timing]:
-                            {[target]:
-                                {[passiveEffect]:
-                                    (buffMultiplier*passiveLine[passiveEffect])
-                                }
+                if("Toggle Other Line" in passiveLine){
+                    dictionaryToggle(activatedPassiveLineMultipliers,passiveLine["Toggle Other Line"]["Line"],1);
+                }
+
+                
+            }
+        }
+        for (const key in activatedPassiveLineMultipliers){
+            const passiveLine=passiveLines[key];
+            for (const passiveEffect in passiveLine){
+                const timingString = passiveLine["Timing"];
+                const targetString = passiveLine["Target"]["Target"];
+                const buffMultiplier=1;
+                let totalBuff=1;
+                if(passiveEffect=="ATK"||
+                passiveEffect=="DEF"||
+                passiveEffect=="Ki"||
+                passiveEffect=="DR"
+                ){
+                    if("Building Stat" in passiveLine){
+                        totalBuff=2
+                    }
+                    const dictionaryFormat=
+                    {[timingString]:
+                        {[targetString]:
+                            {[passiveEffect]:
+                                (buffMultiplier*passiveLine[passiveEffect])
                             }
                         }
-                        
-                        passiveBuffs=addDictionaryValues(passiveBuffs,dictionaryFormat)
                     }
-                    else if(passiveEffect=="Additional attack"){
-                        const dictionaryFormat=
-                        {[timing]:
-                            {[target]:
-                                {[passiveEffect]:
-                                    (buffMultiplier*1)
-                                }
+                    
+                    passiveBuffs=addDictionaryValues(passiveBuffs,dictionaryFormat)
+                }
+                else if(passiveEffect=="Additional attack"){
+                    const dictionaryFormat=
+                    {[timingString]:
+                        {[targetString]:
+                            {[passiveEffect]:
+                                (buffMultiplier*1)
                             }
-                        };
-                        additionalAttacks.push(passiveLine["Additional attack"]["Chance of super"]);
-                        passiveBuffs=addDictionaryValues(passiveBuffs,dictionaryFormat)
-                    }
-                    else if(passiveEffect=="Toggle Other Line"){
-                        passiveLinesToggled.push(passiveLine["Toggle Other Line"]["Line"]);
-                    }
-                    else if(passiveEffect=="Guard"){
-                        passiveBuffs[timing][target]["Guard"]=("Activated");
-                    }
-                    else if(passiveEffect=="ID" || passiveEffect=="Condition" || passiveEffect=="Timing" || passiveEffect=="Target" || passiveEffect=="Length" || passiveEffect=="Buff"||passiveEffect=="Building Stat"||passiveEffect=="Nullification"){
-                        continue;
-                    }
-                    else{
-                        console.log(passiveEffect)
-                    }
+                        }
+                    };
+                    additionalAttacks.push(passiveLine["Additional attack"]["Chance of super"]);
+                    passiveBuffs=addDictionaryValues(passiveBuffs,dictionaryFormat)
+                }
+                else if(passiveEffect=="Guard"){
+                    passiveBuffs[timingString][targetString]["Guard"]=("Activated");
+                }
+                else if(passiveEffect=="ID" || passiveEffect=="Condition" || passiveEffect=="Timing" || passiveEffect=="Target" || passiveEffect=="Length" || passiveEffect=="Buff"||passiveEffect=="Building Stat"||passiveEffect=="Nullification"){
+                    continue;
+                }
+                else{
+                    console.log(passiveEffect)
                 }
             }
         }
+
         this.passiveBuffs=passiveBuffs
     }
 
@@ -710,6 +661,26 @@ export function displayDictionary(element,indentation){
     }
 
     return dictionaryContainer
+}
+
+Array.prototype.arrayToggle = function(element) {
+  if (this.includes(element)) {
+    this.splice(this.indexOf(element), 1);
+  } else {
+    this.push(element);
+  }
+};
+
+
+export function dictionaryToggle(originalDictionary,key,element) {
+    if(key in originalDictionary){
+        originalDictionary[key]=null;
+        return(false);
+    }
+    else{
+        originalDictionary[key]=element;
+        return(true);
+    }
 }
 
 export function createCharacterSelection(){
@@ -1335,7 +1306,7 @@ export function colorToBackground(color){
 
 
 export function updateQueryList(passiveLine){
-    if(passiveLine["Condition"]["Logic"]!="asdsadsa"){
+    if(passiveLine["Condition"]!=undefined){
         for(const CausalityKey of Object.keys(passiveLine["Condition"]["Causalities"])){
             const Causality = passiveLine["Condition"]["Causalities"][CausalityKey];
             let queryUpdated=false;
@@ -1412,7 +1383,7 @@ export function updateQueryList(passiveLine){
         }
     }
 
-    if(passiveLine["Condition"]["Logic"]=="true"){
+    if(passiveLine["Condition"]==undefined){
         console.log("WIP CONTINUATION FOR TOMORROW")
     }
     
@@ -1806,9 +1777,6 @@ export function createPassiveBuffs(passiveLine, passiveBuffsHolder){
 export function queriesToLogic(queries){
     let output={}
     for (const query of queries){
-        if(query.chanceButtonValue()!=100){
-            output[query.chanceButtonValue()]=query.currentValue();
-        }
         if(query["type"]=="slider"){
             output[query["sliderName"]]=query.currentValue();
         }
@@ -1831,7 +1799,10 @@ export function updatePassiveBuffs(){
 }
 
 export function isEmptyDictionary(dictionary){
-    return(Object.keys(dictionary).length==0);
+    if(dictionary==undefined){
+        return(true)
+    }
+    return(Object.keys(dictionary).length==0 );
 }
 
 export function logicReducer(logicString, CausalityLogic){
