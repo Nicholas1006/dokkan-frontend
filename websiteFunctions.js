@@ -481,11 +481,178 @@ class causalityList{
     constructor(CausalityLogic){
         this.CausalityLogic=CausalityLogic;
         this.passiveBuffs=[];
+        this.activeLines={};
+        this.updateActiveLines();
+    }
+
+    updateActiveLines(){
+        this.activeLines={};
+        let passiveLines=currentJson.Passive;
+        for(const passiveLineKey in passiveLines){
+            let passiveLine=passiveLines[passiveLineKey];
+            let buffMultiplier=1;
+            let lineActive=true;
+            if("Condition" in passiveLine){
+                let conditionLogic=" "+passiveLine["Condition"]["Logic"]+" ";
+                let conditionCausalities=passiveLine["Condition"]["Causalities"];
+                for(const conditionCausalityKey in conditionCausalities){
+                    let conditionCausality=conditionCausalities[conditionCausalityKey];
+                    let buttonLogic;
+                    let sliderLogic;
+                    if("Button" in conditionCausality){
+                        buttonLogic=this.CausalityLogic[conditionCausality["Button"]["Name"]] || false;
+                    }
+                    else{
+                        buttonLogic=false
+                    }
+                    if("Slider" in conditionCausality){
+                        sliderLogic=this.CausalityLogic[conditionCausality["Slider"]["Name"]] || false;
+                    }
+                    else{
+                        sliderLogic=false
+                    }
+                    conditionLogic=conditionLogic.replaceAll(" "+conditionCausalityKey+" "," "+buttonLogic || sliderLogic+" ");
+                    lineActive=eval(conditionLogic);
+                }
+            }
+            if("Building Stat" in passiveLine && lineActive){
+                buffMultiplier*=this.CausalityLogic[buildingSliderNameGenerator(passiveLine)];
+            }
+            if(lineActive){
+                this.activeLines[passiveLineKey]=buffMultiplier;
+            }
+        }
     }
 
     updateBuffs(){
-        let passiveBuffs={
+        this.updateActiveLines();
+        this.passiveBuffs={}
+        for (const passiveLineKey in this.activeLines){
+            let passiveLine=currentJson.Passive[passiveLineKey];
+            let buffMultiplier=this.activeLines[passiveLineKey];
+            const timing = passiveLine["Timing"];
+            const target = passiveLine["Target"]["Target"];
+            if("Building Stat" in passiveLine){
+                if("DEF" in passiveLine){
+                    let buffAmount=(passiveLine["DEF"]*buffMultiplier).clamp(passiveLine["Building Stat"]["Min"],passiveLine["Building Stat"]["Max"]);
+                    const dictionaryFormat=
+                    {[timing]:
+                        {[target]:
+                            {["DEF"]:
+                                (buffAmount)
+                            }
+                        }
+                    }
+                    
+                    this.passiveBuffs=addDictionaryValues(this.passiveBuffs,dictionaryFormat)
+                };
+
+                if("ATK" in passiveLine){
+                    let buffAmount=(passiveLine["ATK"]*buffMultiplier).clamp(passiveLine["Building Stat"]["Min"],passiveLine["Building Stat"]["Max"]);
+                    const dictionaryFormat=
+                    {[timing]:
+                        {[target]:
+                            {["ATK"]:
+                                (buffAmount)
+                            }
+                        }
+                    }
+                    
+                    this.passiveBuffs=addDictionaryValues(this.passiveBuffs,dictionaryFormat)
+                };
+
+                if("Ki" in passiveLine){
+                    let buffAmount=(passiveLine["Ki"]*buffMultiplier).clamp(passiveLine["Building Stat"]["Min"],passiveLine["Building Stat"]["Max"]);
+                    const dictionaryFormat=
+                    {[timing]:
+                        {[target]:
+                            {["Ki"]:
+                                (buffAmount)
+                            }
+                        }
+                    }
+                    
+                    this.passiveBuffs=addDictionaryValues(this.passiveBuffs,dictionaryFormat)
+                };
+
+                if("DR" in passiveLine){
+                    let buffAmount=(passiveLine["DR"]*buffMultiplier).clamp(passiveLine["Building Stat"]["Min"],passiveLine["Building Stat"]["Max"]);
+                    const dictionaryFormat=
+                    {[timing]:
+                        {[target]:
+                            {["DR"]:
+                                (buffAmount)
+                            }
+                        }
+                    }
+                    
+                    this.passiveBuffs=addDictionaryValues(this.passiveBuffs,dictionaryFormat)
+                };
+
+            }
+
+            else{
+                if("DEF" in passiveLine){
+                    let buffAmount=passiveLine["DEF"];
+                    const dictionaryFormat=
+                    {[timing]:
+                        {[target]:
+                            {["DEF"]:
+                                (buffAmount)
+                            }
+                        }
+                    }
+                    
+                    this.passiveBuffs=addDictionaryValues(this.passiveBuffs,dictionaryFormat)
+                };
+
+                if("ATK" in passiveLine){
+                    let buffAmount=passiveLine["ATK"];
+                    const dictionaryFormat=
+                    {[timing]:
+                        {[target]:
+                            {["ATK"]:
+                                (buffAmount)
+                            }
+                        }
+                    }
+                    
+                    this.passiveBuffs=addDictionaryValues(this.passiveBuffs,dictionaryFormat)
+                };
+
+                if("Ki" in passiveLine){
+                    let buffAmount=passiveLine["Ki"];
+                    const dictionaryFormat=
+                    {[timing]:
+                        {[target]:
+                            {["Ki"]:
+                                (buffAmount)
+                            }
+                        }
+                    }
+                    
+                    this.passiveBuffs=addDictionaryValues(this.passiveBuffs,dictionaryFormat)
+                };
+
+                if("DR" in passiveLine){
+                    let buffAmount=passiveLine["DR"];
+                    const dictionaryFormat=
+                    {[timing]:
+                        {[target]:
+                            {["DR"]:
+                                (buffAmount)
+                            }
+                        }
+                    }
+                    
+                    this.passiveBuffs=addDictionaryValues(this.passiveBuffs,dictionaryFormat)
+                };
+            }
         }
+    }
+
+    OLDupdateBuffs(){
+        let passiveBuffs={}
         let passiveLines=currentJson.Passive;
         let activatedPassiveLineMultipliers=[];
         for(const passiveLineKey in passiveLines){
@@ -641,6 +808,20 @@ export function extractDigitsFromString(string){
     return digitInteger
 }
 
+/**
+ * Returns a number whose value is limited to the given range.
+ *
+ * Example: limit the output of this computation to between 0 and 255
+ * (x * 255).clamp(0, 255)
+ *
+ * @param {Number} min The lower boundary of the output range
+ * @param {Number} max The upper boundary of the output range
+ * @returns A number in the range [min, max]
+ * @type Number
+ */
+Number.prototype.clamp = function(min, max) {
+    return Math.min(Math.max(this, min), max);
+  };
 
 export function displayDictionary(element,indentation){
     let dictionaryContainer=document.createElement("div");
@@ -663,13 +844,17 @@ export function displayDictionary(element,indentation){
     return dictionaryContainer
 }
 
-Array.prototype.arrayToggle = function(element) {
-  if (this.includes(element)) {
-    this.splice(this.indexOf(element), 1);
-  } else {
-    this.push(element);
-  }
-};
+
+export function arrayToggle(originalArray,element){
+    if(originalArray.includes(element)){
+        originalArray.splice(originalArray.indexOf(element), 1);
+        return(false);
+    }
+    else{
+        originalArray.push(element);
+        return(true);
+    }
+}
 
 
 export function dictionaryToggle(originalDictionary,key,element) {
@@ -1374,6 +1559,14 @@ export function updateQueryList(passiveLine){
             }
         }
         if(!queryUpdated){
+            let slowestStatAmount=Number.MAX_SAFE_INTEGER;
+            for (const param of Object.keys(passiveLine)){
+                if(param=="ATK" || param=="DEF" || param=="Ki" || param=="DR" || param=="Crit Chance"){
+                    slowestStatAmount=Math.min(slowestStatAmount,passiveLine[param]);
+                }
+            }
+            let max=passiveLine["Building Stat"]["Min"];
+            let min=passiveLine["Building Stat"]["Max"];
             if(passiveLine["Building Stat"]["Cause"]["Cause"]=="Look Elsewhere"){
                 passiveQueryList.push( new passiveQuery("slider","",sliderName,passiveLine["Building Stat"]["Min"],passiveLine["Building Stat"]["Max"]) );
             }
@@ -1393,7 +1586,7 @@ export function updateQueryList(passiveLine){
 export function buildingSliderNameGenerator(passiveLine){
     let sliderName="";
     if(passiveLine["Timing"]=="Start of turn"){
-        sliderName+="How many times has this been on";
+        sliderName+="How many turns has this unit been on";
     }
     else if(passiveLine["Timing"]=="Attacking the enemy"){
         sliderName+="How many times has this unit attacked the enemy";
@@ -1441,7 +1634,32 @@ export function buildingSliderNameGenerator(passiveLine){
         sliderName+=" while ("+causalityLogic+") is active";
     }
 
-    sliderName+=" within the last "+passiveLine["Length"]+" turns";
+    if("Building Stat" in passiveLine){
+        if(passiveLine["Building Stat"]["Cause"]["Cause"]=="Look Elsewhere"){
+            let causalities=[];
+            if("Condition" in passiveLine){
+                for (const key of Object.keys(passiveLine["Condition"]["Causalities"])){
+                    causalities.push(passiveLine["Condition"]["Causalities"][key]["Button"]["Name"]);
+                }
+            }
+            if(causalities[0]=="Has attack been recieved?" && causalities.length==1){
+                sliderName="How many attacks has this character recieved?";
+            }
+            else if(passiveLine["Timing"]=="Start of turn"){
+                sliderName="How many turns has this character been on";
+            }
+            else if(passiveLine["Timing"]=="Attacking the enemy"){
+                sliderName="How many times has this character attacked the enemy";
+            }
+        }
+        else{
+            console.log("MORE PROGRESS FOR BUILDINGSLIDERNAMEGENERATOR FUNCTION");
+        }
+    }
+    
+    if(passiveLine["Length"]!="99" && passiveLine["Length"]!="1"){
+        sliderName+=" within the last "+passiveLine["Length"]+" turns";
+    }
 
     return(sliderName);
 }
