@@ -1022,7 +1022,9 @@ export function createCharacterSelection(){
       document.getElementById("image-container").style.display="none";
       document.getElementById("base-stats").style.display="none";
       document.getElementById("links-and-leads").style.display="none";
-      document.getElementById("super-passive-container").style.display="none";
+      document.getElementById("super-container").style.display="none";
+      document.getElementById("passive-container").style.display="none";
+
       const UNITSTODISPLAY = 40000;
       const unitsContainer = document.getElementById('unit-selection-container');
       unitsContainer.style.width="100%";
