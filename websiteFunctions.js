@@ -5,12 +5,12 @@ class kiCircleClass{
         this.imageUrl = json["Resource ID"];
         this.superAttackPerformed=null;
 
-
-
+        
+        
         this.kiCircle=document.createElement("div");
         this.kiCircle.style.width="220px";
         this.kiCircle.style.height="220px";
-        let circleBase=document.createElement("img");
+        let circleBase=document.createElement("div");
         circleBase.id="circle-base";
         if(json.Typing=="AGL"){
             circleBase.style.backgroundImage = "url('dbManagement/assets/misc/chara_icon/ing_type_gauge_base_00.png')";
@@ -42,8 +42,12 @@ class kiCircleClass{
         else{
             maxKi=12;
         }
+
+        
+        
+
         this.kiAmount=maxKi
-        let unitImage = document.createElement("img");
+        let unitImage = document.createElement("div");
         this.kiCircle.appendChild(unitImage);
         unitImage.id="unit-circle-image";
         unitImage.style.width = "220px";
@@ -114,6 +118,19 @@ class kiCircleClass{
         this.damageText.style.position = "absolute";
         this.damageText.style.transform = "translate(0%, 220px)";
         this.damageText.style.zIndex = "4";
+
+        this.superAttackName=document.createElement("div");
+        this.superAttackName.style.width="250px";
+        this.superAttackName.style.height="51px";
+        this.superAttackName.style.zIndex = "5";
+        this.superAttackName.style.backgroundImage = "url('dbManagement/assets/sp_name_00/"+this.imageUrl+".png')";
+        this.superAttackName.style.display="none";
+        this.superAttackName.style.backgroundSize = "180% 250%";
+        this.superAttackName.style.backgroundPosition = "center";
+        this.superAttackName.style.backgroundRepeat = "no-repeat";
+        this.superAttackName.style.position = "absolute";
+        this.superAttackName.style.border="none";
+        this.kiCircle.appendChild(this.superAttackName);
     }
 
     getElement(){
@@ -218,7 +235,16 @@ class kiCircleClass{
     
         requestAnimationFrame(animate);
     }
-    
+
+    updateSuperAttack(superAttackID){
+        if(superAttackID==-1){
+            this.superAttackName.style.display="none";
+        }
+        else{
+            this.superAttackName.style.backgroundImage = "url('dbManagement/assets/sp_name_0"+superAttackID+"/"+this.imageUrl+".png')";
+            this.superAttackName.style.display="block";
+        }
+    }
 
 
 }
@@ -904,6 +930,7 @@ export function refreshKiCircle(){
     finalValue=Math.ceil(finalValue*(currentJson["Ki Multiplier"][kiCircleList[0].kiAmount]/100));
     finalValue=Math.floor(finalValue*(1));//Middle of turn passive stats
     let superAttackMultiplier=1;
+    let superAttackID=-1;
     let superMinKi=0;
 
 
@@ -912,6 +939,7 @@ export function refreshKiCircle(){
         if(parseInt(superAttack["superMinKi"])<=parseInt(kiCircleList[0].kiAmount) && parseInt(superAttack["superMinKi"])>parseInt(superMinKi)){
             superMinKi=superAttack["superMinKi"];
             superAttackMultiplier=superAttack["Multiplier"]/100;
+            superAttackID=superAttack["special_name_no"];
             for (const key of Object.keys(superAttack)){
                 if(key=="SpecialBonus"){
                     if(superAttack["SpecialBonus"]["Type"]=="SA multiplier increase"){
@@ -925,7 +953,7 @@ export function refreshKiCircle(){
     }
     superAttackMultiplier+=superStats["ATK"]/100;
     finalValue=Math.floor(finalValue*superAttackMultiplier);
-
+    kiCircleList[0].updateSuperAttack(superAttackID);
     kiCircleList[0].updateValue(finalValue);
 }
 
