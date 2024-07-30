@@ -462,13 +462,14 @@ class passiveQuery{
     }
 
     changeType(type){
-        if(type!=this.type){
-            this.type = type;
-            this.create();
-        }
+        this.type = type;
+        this.create();
     }
 
     create(){
+        while(this.selfContainer.firstChild){
+            this.selfContainer.removeChild(this.selfContainer.firstChild);
+        }
         if(this.type=="slider"){
             this.queryElement = new passiveSlider(this.min, this.max, this.sliderName);
             this.queryElement.parent=this;
@@ -490,12 +491,7 @@ class passiveQuery{
 
     currentValue(){
         if(this.type=="button"){
-            if(this.hasChanceButton){
-                return(this.queryElement.element.classList.contains('active') && this.chanceButton.classList.contains('active'))
-            }
-            else{
-                return(this.queryElement.element.classList.contains('active') )
-            }
+            return(this.queryElement.element.classList.contains('active') )
         }
         else if(this.type=="slider"){
             return(this.queryElement.element.value)
@@ -532,12 +528,14 @@ class causalityList{
                         buttonLogic=false
                     }
                     if("Slider" in conditionCausality){
-                        sliderLogic=this.CausalityLogic[conditionCausality["Slider"]["Name"]] || false;
+                        //sliderLogic=this.CausalityLogic[conditionCausality["Slider"]["Name"]] || false;
+                        let currentSliderValue=this.CausalityLogic[conditionCausality["Slider"]["Name"]]
+                        sliderLogic=eval(currentSliderValue+conditionCausality["Slider"]["Logic"])
                     }
                     else{
                         sliderLogic=false
                     }
-                    conditionLogic=conditionLogic.replaceAll(" "+conditionCausalityKey+" "," "+buttonLogic || sliderLogic+" ");
+                    conditionLogic=conditionLogic.replaceAll(" "+conditionCausalityKey+" "," "+(buttonLogic || sliderLogic)+" ");
                     lineActive=eval(conditionLogic);
                 }
             }
@@ -557,7 +555,40 @@ class causalityList{
             let passiveLine=currentJson.Passive[passiveLineKey];
             let buffMultiplier=this.activeLines[passiveLineKey];
             const timing = passiveLine["Timing"];
-            const target = passiveLine["Target"]["Target"];
+            let target;
+            if(passiveLine["Target"]["Target"]=="Self"){
+                target="Self"
+            }
+            else if(passiveLine["Target"]["Target"]=="Allies"){
+                if("Category" in passiveLine["Target"]){
+                    if(arraysHaveOverlap(passiveLine["Target"]["Category"]["Included"], currentJson["Categories"]) && !arraysHaveOverlap(passiveLine["Target"]["Category"]["Excluded"], currentJson["Categories"])){
+                        target=""
+                        for (const category of passiveLine["Target"]["Category"]["Included"]){
+                            target+=category+", ";
+                        }
+                        target=target.slice(0, -2);
+                        target+=" Allies";
+                    }
+                    else{
+                        target=""
+                        for (const category of passiveLine["Target"]["Category"]["Included"]){
+                            target+=category+", ";
+                        }
+                        target=target.slice(0, -2);
+                        target+=" Allies(self excluded)";
+                    }
+                }
+            }
+            else if(passiveLine["Target"]["Target"]=="Allies(self excluded)"){
+                if(arraysHaveOverlap(passiveLine["Target"]["Category"]["Included"], currentJson["Categories"]) && !arraysHaveOverlap(passiveLine["Target"]["Category"]["Excluded"], currentJson["Categories"])){
+                    target=""
+                    for (const category of passiveLine["Target"]["Category"]["Included"]){
+                        target+=category+", ";
+                    }
+                    target=target.slice(0, -2);
+                    target+=" Allies(self excluded)";
+                }
+            }
             if("Building Stat" in passiveLine){
                 if("DEF" in passiveLine){
                     let buffAmount=(passiveLine["DEF"]*buffMultiplier).clamp(passiveLine["Building Stat"]["Min"],passiveLine["Building Stat"]["Max"]);
@@ -614,6 +645,47 @@ class causalityList{
                     
                     this.passiveBuffs=addDictionaryValues(this.passiveBuffs,dictionaryFormat)
                 };
+                if("Crit Chance" in passiveLine){
+                    let buffAmount=(passiveLine["Crit Chance"]*buffMultiplier).clamp(passiveLine["Building Stat"]["Min"],passiveLine["Building Stat"]["Max"]);
+                    const dictionaryFormat=
+                    {[timing]:
+                        {[target]:
+                            {["Crit Chance"]:
+                                (buffAmount)
+                            }
+                        }
+                    }
+                    
+                    this.passiveBuffs=addDictionaryValues(this.passiveBuffs,dictionaryFormat)
+                }
+
+                if("Dodge chance" in passiveLine){
+                    let buffAmount=(passiveLine["Dodge chance"]*buffMultiplier).clamp(passiveLine["Building Stat"]["Min"],passiveLine["Building Stat"]["Max"]);
+                    const dictionaryFormat=
+                    {[timing]:
+                        {[target]:
+                            {["Dodge chance"]:
+                                (buffAmount)
+                            }
+                        }
+                    }
+                    
+                    this.passiveBuffs=addDictionaryValues(this.passiveBuffs,dictionaryFormat)
+                }
+                if("Additional attack" in passiveLine){
+                    console.log("BUILDING STAT ADDITIONALS???")
+                    if(!(timing in this.passiveBuffs)){
+                        this.passiveBuffs[timing]={}
+                    }
+                    if(!(target in this.passiveBuffs[timing])){
+                        this.passiveBuffs[timing][target]={}
+                    }
+                    if(!("Additional attack" in this.passiveBuffs[timing][target])){
+                        this.passiveBuffs[timing][target]["Additional attack"]=[]
+                    }
+                    let superChance=passiveLine["Additional attack"]["Chance of super"];
+                    this.passiveBuffs[timing][target]["Additional attack"].push(superChance)
+                }
 
             }
 
@@ -673,6 +745,47 @@ class causalityList{
                     
                     this.passiveBuffs=addDictionaryValues(this.passiveBuffs,dictionaryFormat)
                 };
+
+                if("Crit Chance" in passiveLine){
+                    let buffAmount=passiveLine["Crit Chance"];
+                    const dictionaryFormat=
+                    {[timing]:
+                        {[target]:
+                            {["Crit Chance"]:
+                                (buffAmount)
+                            }
+                        }
+                    }
+                    
+                    this.passiveBuffs=addDictionaryValues(this.passiveBuffs,dictionaryFormat)
+                }
+
+                if("Dodge chance" in passiveLine){
+                    let buffAmount=passiveLine["Dodge chance"];
+                    const dictionaryFormat=
+                    {[timing]:
+                        {[target]:
+                            {["Dodge chance"]:
+                                (buffAmount)
+                            }
+                        }
+                    }
+                    
+                    this.passiveBuffs=addDictionaryValues(this.passiveBuffs,dictionaryFormat)
+                }
+                if("Additional attack" in passiveLine){
+                    if(!(timing in this.passiveBuffs)){
+                        this.passiveBuffs[timing]={}
+                    }
+                    if(!(target in this.passiveBuffs[timing])){
+                        this.passiveBuffs[timing][target]={}
+                    }
+                    if(!("Additional attack" in this.passiveBuffs[timing][target])){
+                        this.passiveBuffs[timing][target]["Additional attack"]=[]
+                    }
+                    let superChance=passiveLine["Additional attack"]["Chance of super"];
+                    this.passiveBuffs[timing][target]["Additional attack"].push(superChance)
+                }
             }
         }
     }
@@ -847,8 +960,17 @@ export function extractDigitsFromString(string){
  */
 Number.prototype.clamp = function(min, max) {
     return Math.min(Math.max(this, min), max);
-  };
+};
 
+export function arraysHaveOverlap(array1,array2){
+    for(let i=0;i<array1.length;i++){
+        if(array2.includes(array1[i])){
+            return true
+        }
+    }
+    return false
+}
+  
 export function displayDictionary(element,indentation){
     let dictionaryContainer=document.createElement("div");
     if(typeof element === 'object'){
@@ -1533,6 +1655,7 @@ export function updateQueryList(passiveLine){
                         if(query.sliderName==Causality.Slider["Name"]){
                             query.min=Math.min(Causality.Slider["Min"],query.min);
                             query.max=Math.max(Causality.Slider["Max"],query.max);
+                            query.changeType("slider");
                             queryUpdated=true;
                         }
                     }
@@ -1557,9 +1680,7 @@ export function updateQueryList(passiveLine){
                         if(query.sliderName==Causality.Slider["Name"]){
                             query.min=Math.min(Causality.Slider["Min"],query.min);
                             query.max=Math.max(Causality.Slider["Max"],query.max);
-                            if(query.buttonName!=Causality.Button["Name"]){
-                                query.changeType("slider");
-                            }
+                            query.changeType("slider");
                             queryUpdated=true;
                         }
                     }
@@ -1579,32 +1700,38 @@ export function updateQueryList(passiveLine){
     if("Building Stat" in passiveLine){
         let queryUpdated=false;
         let sliderName=buildingSliderNameGenerator(passiveLine);
+        let slowestStatAmount=Number.MAX_SAFE_INTEGER;
+        for (const param of Object.keys(passiveLine)){
+            if(param=="ATK" || param=="DEF" || param=="Ki" || param=="DR" || param=="Crit Chance"){
+                slowestStatAmount=Math.min(slowestStatAmount,passiveLine[param]);
+            }
+        }
+        if(sliderName.includes("Ki Spheres have been obtained")){
+            slowestStatAmount=1;
+        }
+        let min=Math.floor(passiveLine["Building Stat"]["Min"]/slowestStatAmount);
+        let max=Math.ceil(passiveLine["Building Stat"]["Max"]/slowestStatAmount);
+
+        
         for (const query of passiveQueryList){
             if(query.sliderName==sliderName){
-                query.min=Math.min(passiveLine["Building Stat"]["Min"],query.min);
-                query.max=Math.max(passiveLine["Building Stat"]["Max"],query.max);
+                query.min=Math.min(min,query.min);
+                query.max=Math.max(max,query.max);
+                query.changeType("slider");
                 queryUpdated=true;
             }
         }
         if(!queryUpdated){
-            let slowestStatAmount=Number.MAX_SAFE_INTEGER;
-            for (const param of Object.keys(passiveLine)){
-                if(param=="ATK" || param=="DEF" || param=="Ki" || param=="DR" || param=="Crit Chance"){
-                    slowestStatAmount=Math.min(slowestStatAmount,passiveLine[param]);
-                }
-            }
-            let max=passiveLine["Building Stat"]["Min"];
-            let min=passiveLine["Building Stat"]["Max"];
             if(passiveLine["Building Stat"]["Cause"]["Cause"]=="Look Elsewhere"){
-                passiveQueryList.push( new passiveQuery("slider","",sliderName,passiveLine["Building Stat"]["Min"],passiveLine["Building Stat"]["Max"]) );
+                passiveQueryList.push( new passiveQuery("slider","",sliderName,min,max) );
             }
             else{
-                passiveQueryList.push( new passiveQuery("slider","",passiveLine["Building Stat"]["Slider"],passiveLine["Building Stat"]["Min"],passiveLine["Building Stat"]["Max"]) );
+                passiveQueryList.push( new passiveQuery("slider","",passiveLine["Building Stat"]["Slider"],min,max) );
             }
         }
     }
 
-    if(passiveLine["Condition"]==undefined){
+    if(passiveLine["Condition"]==undefined && passiveLine["Building Stat"]==undefined){
         console.log("WIP CONTINUATION FOR TOMORROW")
     }
     
@@ -1613,80 +1740,88 @@ export function updateQueryList(passiveLine){
 
 export function buildingSliderNameGenerator(passiveLine){
     let sliderName="";
-    if(passiveLine["Timing"]=="Start of turn"){
-        sliderName+="How many turns has this unit been on";
-    }
-    else if(passiveLine["Timing"]=="Attacking the enemy"){
-        sliderName+="How many times has this unit attacked the enemy";
-    }
-    else if(passiveLine["Timing"]=="On Super"){
-        sliderName+="How many times has this unit performed a super";
-    }
-    else if(passiveLine["Timing"]=="Being hit"){
-        sliderName+="How many times has this unit been hit";
-    }
-    else if(passiveLine["Timing"]=="Hit recieved"){
-        sliderName+="How many times has this unit recieved a hit";
-    }
-    else if(passiveLine["Timing"]=="End of turn"){
-        sliderName+="How many times has this unit ended a turn";
-    }
-    else if(passiveLine["Timing"]=="After all ki collected"){
-        sliderName+="How many times has this unit collected ki";
-    }
-    else if(passiveLine["Timing"]=="Activating standby"){
-        sliderName+="How many times has this unit activated their standby";
-    }
-    else if(passiveLine["Timing"]=="When final blow delivered"){
-        sliderName+="How many times has this unit delivered the final blow";
-    }
-    else if(passiveLine["Timing"]=="When ki spheres collected"){
-        sliderName+="How many times has this unit collected ki";
-    }
-
-    if(passiveLine["Condition"]!=undefined){
-        let causalityKeys=Object.keys(passiveLine["Condition"]["Causalities"])
-        let causalityLogic=passiveLine["Condition"]["Logic"]
-        for (const causalityKey of causalityKeys){
-            const causality = passiveLine["Condition"]["Causalities"][causalityKey];
-            if (!(isEmptyDictionary(causality["Button"]))){
-                causalityLogic=causalityLogic.replaceAll(causalityKey,causality["Button"]["Name"]);
-            }
-            else if (!(isEmptyDictionary(causality["Slider"]))){
-                causalityLogic=causalityLogic.replaceAll(causalityKey,causality["Slider"]["Name"]);
-            }
-            else{
-                console.log("AAAA");
-            }
+    if(passiveLine["Building Stat"]["Cause"]["Cause"]=="Look Elsewhere"){
+        if(passiveLine["Timing"]=="Start of turn"){
+            sliderName+="How many turns has this unit been on";
         }
-        sliderName+=" while ("+causalityLogic+") is active";
-    }
+        else if(passiveLine["Timing"]=="Attacking the enemy"){
+            sliderName+="How many times has this unit attacked the enemy";
+        }
+        else if(passiveLine["Timing"]=="On Super"){
+            sliderName+="How many times has this unit performed a super";
+        }
+        else if(passiveLine["Timing"]=="Being hit"){
+            sliderName+="How many times has this unit been hit";
+        }
+        else if(passiveLine["Timing"]=="Hit recieved"){
+            sliderName+="How many times has this unit recieved a hit";
+        }
+        else if(passiveLine["Timing"]=="End of turn"){
+            sliderName+="How many times has this unit ended a turn";
+        }
+        else if(passiveLine["Timing"]=="After all ki collected"){
+            sliderName+="How many times has this unit collected ki";
+        }
+        else if(passiveLine["Timing"]=="Activating standby"){
+            sliderName+="How many times has this unit activated their standby";
+        }
+        else if(passiveLine["Timing"]=="When final blow delivered"){
+            sliderName+="How many times has this unit delivered the final blow";
+        }
+        else if(passiveLine["Timing"]=="When ki spheres collected"){
+            sliderName+="How many times has this unit collected ki";
+        }
 
-    if("Building Stat" in passiveLine){
-        if(passiveLine["Building Stat"]["Cause"]["Cause"]=="Look Elsewhere"){
-            let causalities=[];
-            if("Condition" in passiveLine){
-                for (const key of Object.keys(passiveLine["Condition"]["Causalities"])){
-                    causalities.push(passiveLine["Condition"]["Causalities"][key]["Button"]["Name"]);
+        if(passiveLine["Condition"]!=undefined){
+            let causalityKeys=Object.keys(passiveLine["Condition"]["Causalities"])
+            let causalityLogic=passiveLine["Condition"]["Logic"]
+            for (const causalityKey of causalityKeys){
+                const causality = passiveLine["Condition"]["Causalities"][causalityKey];
+                if (!(isEmptyDictionary(causality["Button"]))){
+                    causalityLogic=causalityLogic.replaceAll(causalityKey,causality["Button"]["Name"]);
+                }
+                else if (!(isEmptyDictionary(causality["Slider"]))){
+                    causalityLogic=causalityLogic.replaceAll(causalityKey,causality["Slider"]["Name"]);
+                }
+                else{
+                    console.log("AAAA");
                 }
             }
-            if(causalities[0]=="Has attack been recieved?" && causalities.length==1){
-                sliderName="How many attacks has this character recieved?";
+            sliderName+=" while ("+causalityLogic+") is active";
+        }
+
+        if("Building Stat" in passiveLine){
+            if(passiveLine["Building Stat"]["Cause"]["Cause"]=="Look Elsewhere"){
+                let causalities=[];
+                if("Condition" in passiveLine){
+                    for (const key of Object.keys(passiveLine["Condition"]["Causalities"])){
+                        causalities.push(passiveLine["Condition"]["Causalities"][key]["Button"]["Name"]);
+                    }
+                }
+                if(causalities[0]=="Has attack been recieved?" && causalities.length==1){
+                    sliderName="How many attacks has this character recieved?";
+                }
+                else if(passiveLine["Timing"]=="Start of turn"){
+                    sliderName="How many turns has this character been on";
+                }
+                else if(passiveLine["Timing"]=="Attacking the enemy"){
+                    sliderName="How many times has this character attacked the enemy";
+                }
             }
-            else if(passiveLine["Timing"]=="Start of turn"){
-                sliderName="How many turns has this character been on";
-            }
-            else if(passiveLine["Timing"]=="Attacking the enemy"){
-                sliderName="How many times has this character attacked the enemy";
+            else{
+                console.log("MORE PROGRESS FOR BUILDINGSLIDERNAMEGENERATOR FUNCTION");
             }
         }
-        else{
-            console.log("MORE PROGRESS FOR BUILDINGSLIDERNAMEGENERATOR FUNCTION");
+
+        if(passiveLine["Length"]=="1"){
+            sliderName+=" within the last turn";
+        }
+        else if(passiveLine["Length"]!="99"){
+            sliderName+=" within the last "+passiveLine["Length"]+" turns";
         }
     }
-    
-    if(passiveLine["Length"]!="99" && passiveLine["Length"]!="1"){
-        sliderName+=" within the last "+passiveLine["Length"]+" turns";
+    else{
+        sliderName=passiveLine["Building Stat"]["Slider"];
     }
 
     return(sliderName);
