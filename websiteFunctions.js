@@ -510,6 +510,7 @@ class causalityList{
             let lineActive=true;
             if("Condition" in passiveLine){
                 let conditionLogic=" "+passiveLine["Condition"]["Logic"]+" ";
+                conditionLogic=conditionLogic.replaceAll("("," ( ").replaceAll(")", " ) ");
                 let conditionCausalities=passiveLine["Condition"]["Causalities"];
                 for(const conditionCausalityKey in conditionCausalities){
                     let conditionCausality=conditionCausalities[conditionCausalityKey];
@@ -530,8 +531,8 @@ class causalityList{
                         sliderLogic=false
                     }
                     conditionLogic=conditionLogic.replaceAll(" "+conditionCausalityKey+" "," "+(buttonLogic || sliderLogic)+" ");
-                    lineActive=eval(conditionLogic);
                 }
+                lineActive=eval(conditionLogic);
             }
             if("Building Stat" in passiveLine && lineActive){
                 buffMultiplier*=this.CausalityLogic[buildingSliderNameGenerator(passiveLine)];
@@ -599,7 +600,7 @@ class causalityList{
                 for(const buffType in passiveLine){
                     if(["ATK","DEF","Ki","DR","Crit Chance","Dodge chance"].includes(buffType)){
                         let buffAmount;
-                        if(passiveLine["Building Stat"]["Slider"].includes("Ki Spheres have been obtained")){
+                        if(buildingSliderNameGenerator(passiveLine).includes("Ki Spheres have been obtained")){
                             buffAmount=(passiveLine[buffType]*buffMultiplier)
                         }
                         else{
@@ -954,7 +955,11 @@ export function refreshKiCircle(){
     }
     let SOTATK=1;
     let MOTATK=1;
-    const SOTTIMINGS=["Start of turn"]
+    const passiveSupportContainer=document.getElementById("passive-support-container");
+    SOTATK+=(parseInt(passiveSupportContainer.ATKsupport.input.value)||0)/100;
+
+
+    const SOTTIMINGS=["Start of turn","After all ki collected"]
     const MOTTIMINGS=["On Super", "Being hit","Hit recieved","Attacking the enemy"]
     for (const timing in startingPassiveBuffs){
         if(SOTTIMINGS.includes(timing)){
@@ -1395,7 +1400,17 @@ export function createLevelSlider(json){
 
 export function createPathButtons(json){
     const pathButtons = Array.from(document.querySelectorAll('.toggle-btn1, .toggle-btn2, .toggle-btn3, .toggle-btn4'));
+    pathButtons[0].style.gridColumn = "1"
+    pathButtons[0].style.gridRow = "1"
 
+    pathButtons[1].style.gridColumn = "1"
+    pathButtons[1].style.gridRow = "3"
+
+    pathButtons[2].style.gridColumn = "3"
+    pathButtons[2].style.gridRow = "1"
+
+    pathButtons[3].style.gridColumn = "3"
+    pathButtons[3].style.gridRow = "3"
     // Add event listeners to toggle buttons
     pathButtons.forEach(button => {
       button.addEventListener('click', function() {
@@ -1752,6 +1767,35 @@ export function buildingSliderNameGenerator(passiveLine){
 
 
 export function createPassiveContainer(json){
+
+    let passiveSupportContainer=document.getElementById('passive-support-container');
+    if(!(passiveSupportContainer.firstChild)){
+        const passiveATKSupport=document.createElement('div');
+        passiveATKSupport.label=document.createElement('label');
+        passiveATKSupport.input=document.createElement('input');
+        passiveATKSupport.input.type="number";
+        passiveATKSupport.input.value="0";
+        passiveATKSupport.addEventListener('input', refreshKiCircle);
+        passiveATKSupport.appendChild(passiveATKSupport.label);
+        passiveATKSupport.appendChild(passiveATKSupport.input);
+        passiveATKSupport.label.textContent="ATK Support: ";
+        passiveSupportContainer.ATKsupport=passiveATKSupport;
+        passiveSupportContainer.appendChild(passiveATKSupport);
+        
+
+        const passiveDEFSupport=document.createElement('div');
+        passiveDEFSupport.label=document.createElement('label');
+        passiveDEFSupport.input=document.createElement('input');
+        passiveDEFSupport.input.type="number";
+        passiveDEFSupport.input.value="0";
+        passiveDEFSupport.appendChild(passiveDEFSupport.label);
+        passiveDEFSupport.appendChild(passiveDEFSupport.input);
+        passiveDEFSupport.addEventListener('input', refreshKiCircle);
+        passiveDEFSupport.label.textContent="DEF Support: ";
+        passiveSupportContainer.DEFsupport=passiveDEFSupport;
+        passiveSupportContainer.appendChild(passiveDEFSupport);
+    }
+
     let passiveQueryContainer = document.getElementById('passive-query-container');
     while (passiveQueryContainer.firstChild) {
         passiveQueryContainer.removeChild(passiveQueryContainer.firstChild);
@@ -1773,20 +1817,14 @@ export function createPassiveContainer(json){
 
 export function initialiseAspects(json) {
     updateImageContainer('image-container', json["ID"], json.Typing);
-    updateContainer('text-container', createParagraph("Tgus us a text"));
-    document.getElementById('text-container').innerHTML = json["ID"];
-    
+    document.getElementById('name-container').innerHTML = json["Name"];
 
     //change the background of the slider to the typing color
-    document.getElementById('level-slider').style.backgroundColor = LightenColor(typingToColor(json.Typing), 30);
-    document.getElementById('level-container').style.display="flex";
     document.title="["
     document.title+=json["Leader Skill"]["Name"];
     document.title+="] ";
     document.title+=json.Name;
 
-    updateContainer('typing-container', createParagraph(json.Typing || "Typing data not found"));
-    updateContainer('name-container', createParagraph(json.Name || "Name not found"));
   }
 
 export function createSuperAttackContainer(json){
