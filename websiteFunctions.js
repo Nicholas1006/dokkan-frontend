@@ -8,6 +8,7 @@ class kiCircleClass{
         
         
         this.kiCircle=document.createElement("div");
+        this.kiCircle.className="ki-circle";
         this.kiCircle.style.width="220px";
         this.kiCircle.style.height="220px";
         let circleBase=document.createElement("div");
@@ -48,6 +49,7 @@ class kiCircleClass{
 
         this.kiAmount=maxKi
         let unitImage = document.createElement("div");
+        unitImage.className = "ki-unit-image";
         this.kiCircle.appendChild(unitImage);
         unitImage.id="unit-circle-image";
         unitImage.style.width = "220px";
@@ -120,16 +122,9 @@ class kiCircleClass{
         this.damageText.style.zIndex = "4";
 
         this.superAttackName=document.createElement("div");
-        this.superAttackName.style.width="250px";
-        this.superAttackName.style.height="51px";
-        this.superAttackName.style.zIndex = "5";
+        this.superAttackName.className="super-attack-name";
         this.superAttackName.style.backgroundImage = "url('dbManagement/assets/sp_name_00/"+this.imageUrl+".png')";
         this.superAttackName.style.display="none";
-        this.superAttackName.style.backgroundSize = "180% 250%";
-        this.superAttackName.style.backgroundPosition = "center";
-        this.superAttackName.style.backgroundRepeat = "no-repeat";
-        this.superAttackName.style.position = "absolute";
-        this.superAttackName.style.border="none";
         this.kiCircle.appendChild(this.superAttackName);
     }
 
@@ -324,7 +319,6 @@ class superAttackQuery{
         superAttackQuestion.innerHTML = superAttackSlider.textContent;
         superAttackQuestion.style.gridRow = 1;
         superAttackSlider.type = "range";
-        superAttackSlider.style.width = "50%";
         superAttackSlider.style.cursor = "pointer";
         superAttackSlider.min = 0;
         superAttackSlider.max=Math.floor(maxPerTurn*((buffs["Duration"]-1)/2));
@@ -423,11 +417,11 @@ class passiveSlider {
         this.label=label;
         this.min = min;
         this.max = max;
-        this.value = this.max;
+        this.value = this.min;
         this.element.type = "range";
         this.element.min = this.min;
         this.element.max = this.max;
-        this.element.value = this.max;
+        this.element.value = this.min;
         this.element.step = 1;
         this.element.addEventListener("input", () => this.update());
         
@@ -578,99 +572,51 @@ class causalityList{
                         target+=" Allies(self excluded)";
                     }
                 }
+                else{
+                    target="Allies"
+                }
             }
             else if(passiveLine["Target"]["Target"]=="Allies(self excluded)"){
-                if(arraysHaveOverlap(passiveLine["Target"]["Category"]["Included"], currentJson["Categories"]) && !arraysHaveOverlap(passiveLine["Target"]["Category"]["Excluded"], currentJson["Categories"])){
-                    target=""
-                    for (const category of passiveLine["Target"]["Category"]["Included"]){
-                        target+=category+", ";
+                if("Category" in passiveLine["Target"]){
+                    if(arraysHaveOverlap(passiveLine["Target"]["Category"]["Included"], currentJson["Categories"]) && !arraysHaveOverlap(passiveLine["Target"]["Category"]["Excluded"], currentJson["Categories"])){
+                        target=""
+                        for (const category of passiveLine["Target"]["Category"]["Included"]){
+                            target+=category+", ";
+                        }
+                        target=target.slice(0, -2);
+                        target+=" Allies(self excluded)";
                     }
-                    target=target.slice(0, -2);
-                    target+=" Allies(self excluded)";
+                }
+                else{
+                    target="Allies(self excluded)"
                 }
             }
+            if(target==undefined){
+                console.log("UNKNOWN TARGET: ",passiveLine)
+            }
+
             if("Building Stat" in passiveLine){
-                if("DEF" in passiveLine){
-                    let buffAmount=(passiveLine["DEF"]*buffMultiplier).clamp(passiveLine["Building Stat"]["Min"],passiveLine["Building Stat"]["Max"]);
-                    const dictionaryFormat=
-                    {[timing]:
-                        {[target]:
-                            {["DEF"]:
-                                (buffAmount)
+                for(const buffType in passiveLine){
+                    if(["ATK","DEF","Ki","DR","Crit Chance","Dodge chance"].includes(buffType)){
+                        let buffAmount;
+                        if(passiveLine["Building Stat"]["Slider"].includes("Ki Spheres have been obtained")){
+                            buffAmount=(passiveLine[buffType]*buffMultiplier)
+                        }
+                        else{
+                            buffAmount=(passiveLine[buffType]*buffMultiplier).clamp(passiveLine["Building Stat"]["Min"],passiveLine["Building Stat"]["Max"]);
+                        }
+                        const dictionaryFormat=
+                        {[timing]:
+                            {[target]:
+                                {[buffType]:
+                                    (buffAmount)
+                                }
                             }
                         }
+                        
+                        this.passiveBuffs=addDictionaryValues(this.passiveBuffs,dictionaryFormat)
                     }
                     
-                    this.passiveBuffs=addDictionaryValues(this.passiveBuffs,dictionaryFormat)
-                };
-
-                if("ATK" in passiveLine){
-                    let buffAmount=(passiveLine["ATK"]*buffMultiplier).clamp(passiveLine["Building Stat"]["Min"],passiveLine["Building Stat"]["Max"]);
-                    const dictionaryFormat=
-                    {[timing]:
-                        {[target]:
-                            {["ATK"]:
-                                (buffAmount)
-                            }
-                        }
-                    }
-                    
-                    this.passiveBuffs=addDictionaryValues(this.passiveBuffs,dictionaryFormat)
-                };
-
-                if("Ki" in passiveLine){
-                    let buffAmount=(passiveLine["Ki"]*buffMultiplier).clamp(passiveLine["Building Stat"]["Min"],passiveLine["Building Stat"]["Max"]);
-                    const dictionaryFormat=
-                    {[timing]:
-                        {[target]:
-                            {["Ki"]:
-                                (buffAmount)
-                            }
-                        }
-                    }
-                    
-                    this.passiveBuffs=addDictionaryValues(this.passiveBuffs,dictionaryFormat)
-                };
-
-                if("DR" in passiveLine){
-                    let buffAmount=(passiveLine["DR"]*buffMultiplier).clamp(passiveLine["Building Stat"]["Min"],passiveLine["Building Stat"]["Max"]);
-                    const dictionaryFormat=
-                    {[timing]:
-                        {[target]:
-                            {["DR"]:
-                                (buffAmount)
-                            }
-                        }
-                    }
-                    
-                    this.passiveBuffs=addDictionaryValues(this.passiveBuffs,dictionaryFormat)
-                };
-                if("Crit Chance" in passiveLine){
-                    let buffAmount=(passiveLine["Crit Chance"]*buffMultiplier).clamp(passiveLine["Building Stat"]["Min"],passiveLine["Building Stat"]["Max"]);
-                    const dictionaryFormat=
-                    {[timing]:
-                        {[target]:
-                            {["Crit Chance"]:
-                                (buffAmount)
-                            }
-                        }
-                    }
-                    
-                    this.passiveBuffs=addDictionaryValues(this.passiveBuffs,dictionaryFormat)
-                }
-
-                if("Dodge chance" in passiveLine){
-                    let buffAmount=(passiveLine["Dodge chance"]*buffMultiplier).clamp(passiveLine["Building Stat"]["Min"],passiveLine["Building Stat"]["Max"]);
-                    const dictionaryFormat=
-                    {[timing]:
-                        {[target]:
-                            {["Dodge chance"]:
-                                (buffAmount)
-                            }
-                        }
-                    }
-                    
-                    this.passiveBuffs=addDictionaryValues(this.passiveBuffs,dictionaryFormat)
                 }
                 if("Additional attack" in passiveLine){
                     console.log("BUILDING STAT ADDITIONALS???")
@@ -690,88 +636,20 @@ class causalityList{
             }
 
             else{
-                if("DEF" in passiveLine){
-                    let buffAmount=passiveLine["DEF"];
-                    const dictionaryFormat=
-                    {[timing]:
-                        {[target]:
-                            {["DEF"]:
-                                (buffAmount)
+                for(const buffType in passiveLine){
+                    if(["ATK","DEF","Ki","DR","Crit Chance","Dodge chance"].includes(buffType)){
+                        let buffAmount=passiveLine[buffType];
+                        const dictionaryFormat=
+                        {[timing]:
+                            {[target]:
+                                {[buffType]:
+                                    (buffAmount)
+                                }
                             }
                         }
+                        
+                        this.passiveBuffs=addDictionaryValues(this.passiveBuffs,dictionaryFormat)
                     }
-                    
-                    this.passiveBuffs=addDictionaryValues(this.passiveBuffs,dictionaryFormat)
-                };
-
-                if("ATK" in passiveLine){
-                    let buffAmount=passiveLine["ATK"];
-                    const dictionaryFormat=
-                    {[timing]:
-                        {[target]:
-                            {["ATK"]:
-                                (buffAmount)
-                            }
-                        }
-                    }
-                    
-                    this.passiveBuffs=addDictionaryValues(this.passiveBuffs,dictionaryFormat)
-                };
-
-                if("Ki" in passiveLine){
-                    let buffAmount=passiveLine["Ki"];
-                    const dictionaryFormat=
-                    {[timing]:
-                        {[target]:
-                            {["Ki"]:
-                                (buffAmount)
-                            }
-                        }
-                    }
-                    
-                    this.passiveBuffs=addDictionaryValues(this.passiveBuffs,dictionaryFormat)
-                };
-
-                if("DR" in passiveLine){
-                    let buffAmount=passiveLine["DR"];
-                    const dictionaryFormat=
-                    {[timing]:
-                        {[target]:
-                            {["DR"]:
-                                (buffAmount)
-                            }
-                        }
-                    }
-                    
-                    this.passiveBuffs=addDictionaryValues(this.passiveBuffs,dictionaryFormat)
-                };
-
-                if("Crit Chance" in passiveLine){
-                    let buffAmount=passiveLine["Crit Chance"];
-                    const dictionaryFormat=
-                    {[timing]:
-                        {[target]:
-                            {["Crit Chance"]:
-                                (buffAmount)
-                            }
-                        }
-                    }
-                    
-                    this.passiveBuffs=addDictionaryValues(this.passiveBuffs,dictionaryFormat)
-                }
-
-                if("Dodge chance" in passiveLine){
-                    let buffAmount=passiveLine["Dodge chance"];
-                    const dictionaryFormat=
-                    {[timing]:
-                        {[target]:
-                            {["Dodge chance"]:
-                                (buffAmount)
-                            }
-                        }
-                    }
-                    
-                    this.passiveBuffs=addDictionaryValues(this.passiveBuffs,dictionaryFormat)
                 }
                 if("Additional attack" in passiveLine){
                     if(!(timing in this.passiveBuffs)){
@@ -905,8 +783,7 @@ let leaderStats={"HP": "400", "ATK": "400", "DEF": "400"};
 let baseStats={};
 let superStats={"ATK": 0, "DEF": 0, "Enemy ATK": 0, "Enemy DEF": 0, "Crit": 0, "Evasion": 0};
 let linkStats={"ATK":"0","DEF":"0","Enemy DEF":"0","Heal":"0","KI":"0","Damage Reduction":"0","Crit":"0","Evasion":"0"};
-let stargingPassiveBuffs={};
-let passiveLinesToggled=[];
+let startingPassiveBuffs={};
 let kiSources={};
 let additionalAttacks=[];
 let kiCircleList=[];
@@ -1044,22 +921,14 @@ export function createCharacterSelection(){
 
 
 export function refreshKiCircle(){
-    let finalValue=1;
-    finalValue=Math.floor(finalValue*baseStats["ATK"]);
-    finalValue=Math.floor(finalValue*(1+leaderStats["ATK"]/100));
-    finalValue=Math.floor(finalValue*(1));//Start of turn passive stats
-    finalValue=Math.floor(finalValue*(1));//Item boost
-    finalValue=Math.floor(finalValue*(1+linkStats["ATK"]/100));
-    finalValue=Math.floor(finalValue*(1));//Active boost
-    finalValue=Math.ceil(finalValue*(currentJson["Ki Multiplier"][kiCircleList[0].kiAmount]/100));
-    finalValue=Math.floor(finalValue*(1));//Middle of turn passive stats
+    
     let superAttackMultiplier=1;
     let superAttackID=-1;
     let superMinKi=0;
-
-
+    let minKiToSuperAttack=25;
     for (const superKey in currentJson["Super Attack"]){
         const superAttack=currentJson["Super Attack"][superKey];
+        minKiToSuperAttack=Math.min(superAttack["superMinKi"],minKiToSuperAttack);
         if(parseInt(superAttack["superMinKi"])<=parseInt(kiCircleList[0].kiAmount) && parseInt(superAttack["superMinKi"])>parseInt(superMinKi)){
             superMinKi=superAttack["superMinKi"];
             superAttackMultiplier=superAttack["Multiplier"]/100;
@@ -1070,15 +939,70 @@ export function refreshKiCircle(){
                         superAttackMultiplier+=superAttack["SpecialBonus"]["Amount"]/100
                     }
                 }
+                if(key=="superBuffs"){
+                    for (const superBuffKey of Object.keys(superAttack["superBuffs"])){
+                        if (!(superAttack["superBuffs"][superBuffKey]["Target"].includes("excluded" || "enem"))){
+                            superAttackMultiplier+=(superAttack["superBuffs"][superBuffKey]["ATK"]||0)/100
+                        }
+                    }
+                }
             }
             
             kiCircleList[0].superAttackPerformed=superAttack;
         }
+        
     }
+    let SOTATK=1;
+    let MOTATK=1;
+    const SOTTIMINGS=["Start of turn"]
+    const MOTTIMINGS=["On Super", "Being hit","Hit recieved","Attacking the enemy"]
+    for (const timing in startingPassiveBuffs){
+        if(SOTTIMINGS.includes(timing)){
+            for (const target in startingPassiveBuffs[timing]){
+                if(!(target.includes("self excluded"))){
+                    SOTATK+=(startingPassiveBuffs[timing][target]["ATK"]||0)/100;
+                }
+            }
+        }
+        
+        
+        
+        
+        else if(MOTTIMINGS.includes(timing)){
+            for (const target in startingPassiveBuffs[timing]){
+                if(!(target.includes("self excluded"))){
+                    if(timing=="On Super"){
+                        if(kiCircleList[0].kiAmount>=minKiToSuperAttack){
+                            MOTATK+=(startingPassiveBuffs[timing][target]["ATK"]||0)/100;
+                        }
+                    }
+                    else{
+                        MOTATK+=(startingPassiveBuffs[timing][target]["ATK"]||0)/100;
+                    }
+                }
+            }
+        }
+        else{
+            console.log(timing)
+        }
+    }
+    
+    
+    let finalValue=1;
+    finalValue=Math.floor(finalValue*baseStats["ATK"]);
+    finalValue=Math.floor(finalValue*(1+leaderStats["ATK"]/100));
+    finalValue=Math.floor(finalValue*(SOTATK));//Start of turn passive stats
+    finalValue=Math.floor(finalValue*(1));//Item boost
+    finalValue=Math.floor(finalValue*(1+linkStats["ATK"]/100));
+    finalValue=Math.floor(finalValue*(1));//Active boost
+    finalValue=Math.ceil(finalValue*(currentJson["Ki Multiplier"][kiCircleList[0].kiAmount]/100));
+    finalValue=Math.floor(finalValue*(MOTATK));//Middle of turn passive stats
     superAttackMultiplier+=superStats["ATK"]/100;
     finalValue=Math.floor(finalValue*superAttackMultiplier);
     kiCircleList[0].updateSuperAttack(superAttackID);
-    kiCircleList[0].updateValue(finalValue);
+    if(kiCircleList[0].attackStat!=finalValue){
+        kiCircleList[0].updateValue(finalValue);
+    }
 }
 
 export function addDictionaryValues(initialDictionary, additionalDictionary) {
@@ -1733,9 +1657,6 @@ export function updateQueryList(passiveLine){
         }
     }
 
-    if(passiveLine["Condition"]==undefined && passiveLine["Building Stat"]==undefined){
-        console.log("WIP CONTINUATION FOR TOMORROW")
-    }
     
 }
 
@@ -2174,11 +2095,13 @@ export function updatePassiveBuffs(){
     const passiveThinker = new causalityList(queriesToLogic(passiveQueryList));
     passiveThinker.updateBuffs();
     let passiveBuffs=passiveThinker.returnBuffs();
+    startingPassiveBuffs=passiveBuffs;
     let passiveBuffsContainer = document.getElementById('passive-buffs-container');
     while (passiveBuffsContainer.firstChild) {
         passiveBuffsContainer.removeChild(passiveBuffsContainer.firstChild);
     }
     passiveBuffsContainer.appendChild(displayDictionary(passiveBuffs,0));
+    refreshKiCircle();
 }
 
 export function isEmptyDictionary(dictionary){
@@ -2251,7 +2174,6 @@ export function loadPage(firstTime=false){
     }
     jsonPromise.then(json => {
         currentJson=json;
-        createPassiveContainer(json);
         initialiseAspects(json);
         if(firstTime){
             createLeaderStats();
@@ -2266,6 +2188,7 @@ export function loadPage(firstTime=false){
         else{
             //document.getElementById('ki-slider').dispatchEvent(new Event('input'));	
         }
+        createPassiveContainer(json);
         createEzaContainer(json,isEza,isSeza);
         createLevelSlider(json);
         createSuperAttackContainer(json);
