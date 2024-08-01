@@ -244,6 +244,34 @@ class kiCircleClass{
 
 }
 
+class equipNodeQuery{
+    constructor(imageLocation){
+        this.selfContainer=document.createElement("div");
+        this.selfContainer.id="equip-node-container";
+        this.selfContainer.style.display="grid";
+
+        let image=document.createElement("div");
+        image.id="equip-node-image";
+        image.style.backgroundImage="url('"+imageLocation+"')";
+        this.selfContainer.appendChild(image);
+
+        this.numberInput=document.createElement("input");
+        this.numberInput.id="equip-node-input";
+        this.numberInput.type="number";
+        this.numberInput.min=0;
+        this.numberInput.max=32;
+        this.numberInput.value=0;
+        this.numberInput.addEventListener('input', function(){
+            this.parentNode.value=parseInt(this.value);
+        })
+        this.selfContainer.value=0;
+        this.selfContainer.appendChild(this.numberInput);
+    }
+
+    getElement(){
+        return(this.selfContainer);
+    }
+}
 
 class superAttackQueryHolder{
 
@@ -1820,7 +1848,6 @@ export function createPassiveContainer(json){
 
 export function initialiseAspects(json) {
     updateImageContainer('image-container', json["ID"], json.Typing);
-    document.getElementById('name-container').innerHTML = json["Name"];
     if(currentJson["Min Level"] != currentJson["Max Level"]){
         document.getElementById("level-container").style.display="flex";
     }
@@ -2148,6 +2175,32 @@ export function updatePassiveBuffs(){
     refreshKiCircle();
 }
 
+export function createSkillOrbContainer(json){
+    let skillOrbContainer=document.getElementById('all-skill-orb-container');
+    skillOrbContainer.additionalNode=new equipNodeQuery("dbManagement/assets/misc/potential/Pot_skill_additional.png")
+    skillOrbContainer.appendChild(skillOrbContainer.additionalNode.getElement());
+
+    skillOrbContainer.critNode=new equipNodeQuery("dbManagement/assets/misc/potential/Pot_skill_critical.png")
+    skillOrbContainer.appendChild(skillOrbContainer.critNode.getElement());
+
+    skillOrbContainer.evasionNode=new equipNodeQuery("dbManagement/assets/misc/potential/Pot_skill_dodge.png")
+    skillOrbContainer.appendChild(skillOrbContainer.evasionNode.getElement());
+
+    skillOrbContainer.typeATKBoostNode=new equipNodeQuery("dbManagement/assets/misc/potential/Pot_skill_type_damage.png")
+    skillOrbContainer.appendChild(skillOrbContainer.typeATKBoostNode.getElement());
+
+    skillOrbContainer.typeDEFBoostNode=new equipNodeQuery("dbManagement/assets/misc/potential/Pot_skill_type_defense.png")
+    skillOrbContainer.appendChild(skillOrbContainer.typeDEFBoostNode.getElement());
+
+    skillOrbContainer.superAttackBoostNode=new equipNodeQuery("dbManagement/assets/misc/potential/Pot_skill_additional.png")
+    skillOrbContainer.appendChild(skillOrbContainer.superAttackBoostNode.getElement());
+
+    skillOrbContainer.recoveryBoostNode=new equipNodeQuery("dbManagement/assets/misc/potential/Pot_skill_heal.png")
+    skillOrbContainer.appendChild(skillOrbContainer.recoveryBoostNode.getElement());
+
+
+}
+
 export function isEmptyDictionary(dictionary){
     if(dictionary==undefined){
         return(true)
@@ -2228,6 +2281,7 @@ export function loadPage(firstTime=false){
             createKiCirclesWithClass(json,firstTime);
             createDokkanAwakenContainer(json);
             createTransformationContainer(json);
+            createSkillOrbContainer(json);
         }
         else{
             //document.getElementById('ki-slider').dispatchEvent(new Event('input'));	
