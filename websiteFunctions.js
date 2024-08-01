@@ -115,10 +115,10 @@ class kiCircleClass{
         this.kiCircle.appendChild(this.damageText);
         this.damageText.className="ki-damage-text";
         this.damageText.id="ki-damage-text";
-        this.damageText.style.width="220px"
+        this.damageText.style.width="300px"
         this.damageText.style.height="50px"
         this.damageText.style.position = "absolute";
-        this.damageText.style.transform = "translate(0%, 220px)";
+        this.damageText.style.transform = "translate(-40px, 220px)";
         this.damageText.style.zIndex = "4";
 
         this.superAttackName=document.createElement("div");
@@ -262,6 +262,12 @@ class equipNodeQuery{
         this.numberInput.max=32;
         this.numberInput.value=0;
         this.numberInput.addEventListener('input', function(){
+            if(this.value<0){
+                this.value=0;
+            }
+            else if(this.value>32){
+                this.value=32;
+            }
             this.parentNode.value=parseInt(this.value);
         })
         this.selfContainer.value=0;
@@ -990,7 +996,7 @@ export function refreshKiCircle(){
     SOTATK+=(parseInt(passiveSupportContainer.ATKsupport.input.value)||0)/100;
 
 
-    const SOTTIMINGS=["Start of turn","After all ki collected"]
+    const SOTTIMINGS=["Start of turn","After all ki collected","When ki spheres collected"]
     const MOTTIMINGS=["On Super", "Being hit","Hit recieved","Attacking the enemy"]
     for (const timing in startingPassiveBuffs){
         if(SOTTIMINGS.includes(timing)){
@@ -1474,9 +1480,6 @@ export function createDokkanAwakenContainer(json){
     if( Array.isArray(Awakenings) && Awakenings.length){
     for (const AwakeningsID of Awakenings){
         let unitID = AwakeningsID;
-        if(unitID[6]=="1"){
-        unitID = unitID.slice(0, -1)+0;
-        }
         //creates a button that links to the suburl of the unit with the background set to the unitID within the assets/final_assets folder
         let AwakeningsButton = document.createElement('button');
         AwakeningsButton.style.backgroundImage = "url('dbManagement/assets/final_assets/"+unitID+".png')";
