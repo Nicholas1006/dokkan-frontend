@@ -539,6 +539,9 @@ class causalityList{
             }
             if(lineActive){
                 this.activeLines[passiveLineKey]=buffMultiplier;
+                if("Toggle Other Line" in passiveLine){
+                    dictionaryToggle(this.activeLines, passiveLine["Toggle Other Line"]["Line"], 1);
+                }
             }
         }
     }
@@ -885,7 +888,7 @@ export function arrayToggle(originalArray,element){
 
 export function dictionaryToggle(originalDictionary,key,element) {
     if(key in originalDictionary){
-        originalDictionary[key]=null;
+        delete originalDictionary[key];
         return(false);
     }
     else{
@@ -1619,8 +1622,8 @@ export function updateQueryList(passiveLine){
                 else{
                     for (const query of passiveQueryList){
                         if(query.sliderName==Causality.Slider["Name"]){
-                            query.min=Math.min(Causality.Slider["Min"],query.min);
-                            query.max=Math.max(Causality.Slider["Max"],query.max);
+                            query.min=(Math.min(Causality.Slider["Min"],query.min)||query.min);
+                            query.max=(Math.max(Causality.Slider["Max"],query.max)||query.max);
                             query.changeType("slider");
                             queryUpdated=true;
                         }
@@ -1818,6 +1821,9 @@ export function createPassiveContainer(json){
 export function initialiseAspects(json) {
     updateImageContainer('image-container', json["ID"], json.Typing);
     document.getElementById('name-container').innerHTML = json["Name"];
+    if(currentJson["Min Level"] != currentJson["Max Level"]){
+        document.getElementById("level-container").style.display="flex";
+    }
 
     //change the background of the slider to the typing color
     document.title="["
