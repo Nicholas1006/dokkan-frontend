@@ -7,6 +7,7 @@ class kiCircleClass{
 
         
         
+        
         this.kiCircle=document.createElement("div");
         this.kiCircle.className="ki-circle";
         this.kiCircle.style.width="220px";
