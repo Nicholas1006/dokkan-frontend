@@ -1301,16 +1301,23 @@ export function AdjustBaseStats(){
         HP += parseInt(currentJson["Hidden Potential"][index+1]["HP"])
       }
     })
-  
-    HPstat.textContent = "HP: " + HP;
-    ATKstat.textContent = "ATK: " + ATK;
-    DEFstat.textContent = "DEF: " + DEF;
+    HPstat.id="base-stat";
+    ATKstat.id="base-stat";
+    DEFstat.id="base-stat";
+
+    HPstat.textContent  = "HP:  " + HP +"+";
+    ATKstat.textContent = "ATK: " + ATK+"+";
+    DEFstat.textContent = "DEF: " + DEF+"+";
 
     baseStats={"HP":HP,"ATK":ATK,"DEF":DEF};
     refreshKiCircle();
 
     statsContainer.appendChild(HPstat);
+
+    
     statsContainer.appendChild(ATKstat);
+    
+    
     statsContainer.appendChild(DEFstat);
   }
   
@@ -2178,8 +2185,9 @@ export function updatePassiveBuffs(){
     refreshKiCircle();
 }
 
-export function createSkillOrbContainer(json){
+export function createSkillOrbContainer(){
     let skillOrbContainer=document.getElementById('all-skill-orb-container');
+    skillOrbContainer.style.display="grid";
     skillOrbContainer.additionalNode=new equipNodeQuery("dbManagement/assets/misc/potential/Pot_skill_additional.png")
     skillOrbContainer.appendChild(skillOrbContainer.additionalNode.getElement());
 
@@ -2276,15 +2284,17 @@ export function loadPage(firstTime=false){
         currentJson=json;
         initialiseAspects(json);
         if(firstTime){
+            if(json["Rarity"] == "lr" || json["Rarity"] == "ur"){
+                createStarButton(json);
+                createPathButtons(json);
+                createSkillOrbContainer();
+            }
             createLeaderStats();
             createLinkStats(json);
             createLinkBuffs(json);
-            createStarButton(json);
-            createPathButtons(json);
             createKiCirclesWithClass(json,firstTime);
             createDokkanAwakenContainer(json);
             createTransformationContainer(json);
-            createSkillOrbContainer(json);
         }
         else{
             //document.getElementById('ki-slider').dispatchEvent(new Event('input'));	
