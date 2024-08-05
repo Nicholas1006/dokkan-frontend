@@ -125,35 +125,27 @@
 }
 
 #leader-container {
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: 110px 40px 55px;
+  grid-template-rows: repeat(3, 1fr);
   gap: 0px;
-  width: 170px;
-  height: 100px;
+  width: auto;
+  height: 150px;
   position: relative;
   display:none
 }
 
-#leader-1Input, #leader-2Input, #leader-TotalInput{
-  grid-row:2;
-  width:102px;
+#leader-A-Input-Ki, #leader-B-Input-Ki, #leader-Total-Input-Ki, #leader-A-Input-Stats, #leader-B-Input-Stats, #leader-Total-Input-Stats{
+  width:auto;
   margin:0px;
 }
 
-#seperate-or-join-leader.JointLeader{
-  background: url('dbManagement/assets/misc/leader_icon.png') repeat left;
-  width: 110px;
-  height: 50px;
-  grid-row: 1;
-  grid-area: 1/1/2/3;
-}
 
 #links-container {
   display: grid;
   grid-template-columns: 5fr 1fr 5fr;
   grid-template-rows: repeat(18, 1fr);
-  gap: 10px;
-  width: 100px;
+  gap: 5px;
+  width: 100%;
   height: 400px;
   position: relative;
 }
@@ -164,16 +156,21 @@
 
 #seperate-or-join-leader {
   background-color: #FF5C35;
-  width:10px;
+  width: 110px;
+  grid-column: 1; 
+}
+
+#seperate-or-join-leader.JointLeader{
+  background: url('dbManagement/assets/misc/leader_icon.png');
+  height: 50px;
+  grid-row: 2;
 }
 
 #seperate-or-join-leader.SeperateLeader{
-  background: url('dbManagement/assets/misc/sub_leader_icon.png') repeat left;
-  width: 220px;
-  height: 50px;
-  grid-row: 1;
-  grid-area: 1/1/2/3;
-
+  background: url('dbManagement/assets/misc/sub_leader_icon.png');
+  background-repeat:repeat-y;
+  height: 100px;
+  grid-row: 2 /span 2;
 }
 #unit-circle-image{
   border: none;

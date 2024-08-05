@@ -841,7 +841,7 @@ let baseStats={};
 let superStats={"ATK": 0, "DEF": 0, "Enemy ATK": 0, "Enemy DEF": 0, "Crit": 0, "Evasion": 0};
 let linkStats={"ATK":"0","DEF":"0","Enemy DEF":"0","Heal":"0","KI":"0","Damage Reduction":"0","Crit":"0","Evasion":"0"};
 let startingPassiveBuffs={};
-let kiSources={};
+let kiSources={"leader":0,"Support":0,"Links":0,};
 let skillOrbBuffs={"Additional":"0","Crit":"0","Evasion":"0","Attack":"0","Defense":"0","SuperBoost":"0","Recovery":"0"}
 let additionalAttacks=[];
 let kiCircleList=[];
@@ -1090,88 +1090,228 @@ export function addDictionaryValues(initialDictionary, additionalDictionary) {
 }
 
 export function createLeaderStats(){
-    const seperateOrJoin=document.getElementById('seperate-or-join-leader');
-    seperateOrJoin.textContent="Joint Leader Skills";
+    const leaderContainer=document.getElementById('leader-container');
+    leaderContainer.style.display="grid";
+
+    const kiLabel=document.createElement('div');
+    leaderContainer.appendChild(kiLabel);
+    kiLabel.id="ki-label";
+    kiLabel.style.gridRow="1";
+    kiLabel.style.gridColumn="2";
+    kiLabel.innerText="Ki:"
+    kiLabel.style.fontWeight="bold";
+
+    const statsLabel=document.createElement('div');
+    leaderContainer.appendChild(statsLabel);
+    statsLabel.id="ki-label";
+    statsLabel.style.gridRow="1";
+    statsLabel.style.gridColumn="3";
+    statsLabel.innerHTML="HP<br>ATK<br>DEF:"
+    statsLabel.style.fontWeight="bold";
+
+    const seperateOrJoin=document.createElement('div');
+    leaderContainer.appendChild(seperateOrJoin);
+    seperateOrJoin.gridColumn="1";
+    seperateOrJoin.id="seperate-or-join-leader";
     seperateOrJoin.classList.add('JointLeader');
     seperateOrJoin.addEventListener('click', function(){
-      if(seperateOrJoin.textContent=="Seperate Leader Skills"){
+      if(seperateOrJoin.classList.contains("SeperateLeader")){
         seperateOrJoin.classList.remove('SeperateLeader');
         seperateOrJoin.classList.add('JointLeader');
   //      seperateOrJoin.style.width="110px";
-        seperateOrJoin.textContent="Joint Leader Skills";
         //seperateOrJoin.style.background = "url('dbManagement/assets/misc/leader_icon.png') repeat left";
-        leaderAInput.style.display="none";
-        leaderBInput.style.display="none";
-        leaderTotalInput.style.display="block";
+        leaderAInputKi.style.display="none";
+        leaderBInputKi.style.display="none";
+        leaderTotalInputKi.style.display="block";
+        leaderAInputStats.style.display="none";
+        leaderBInputStats.style.display="none";
+        leaderTotalInputStats.style.display="block";
       } else {
         seperateOrJoin.classList.remove('JointLeader');
         seperateOrJoin.classList.add('SeperateLeader');
-        seperateOrJoin.textContent="Seperate Leader Skills";
         //seperateOrJoin.style.background = "url('dbManagement/assets/misc/sub_leader_icon.png') repeat left";
   //      seperateOrJoin.style.width="220px";
-        leaderAInput.style.display="block";
-        leaderBInput.style.display="block";
-        leaderTotalInput.style.display="none";
+        leaderAInputKi.style.display="block";
+        leaderBInputKi.style.display="block";
+        leaderTotalInputKi.style.display="none";
+        leaderAInputStats.style.display="block";
+        leaderBInputStats.style.display="block";
+        leaderTotalInputStats.style.display="none";
       }
     });
 
-    const leaderContainer=document.getElementById('leader-container');
-    leaderContainer.style.display="grid";
-    let leaderAInput=document.getElementById('leader-1Input');
-    leaderAInput.value=200;
-    let leaderBInput=document.getElementById('leader-2Input');
-    leaderBInput.value=200;
-    let leaderTotalInput=document.getElementById('leader-TotalInput');
-    leaderTotalInput.value=400;
-    leaderAInput.addEventListener('input', function(){
-        if(parseInt(leaderAInput.value)>200){
-            leaderAInput.value=200;
+    let leaderAInputKi=document.createElement('input');
+    leaderAInputKi.id="leader-A-Input-Ki";
+    leaderAInputKi.type="number";
+    leaderAInputKi.min=0;
+    leaderAInputKi.max=4;
+    leaderAInputKi.step=1;
+    leaderAInputKi.value=3;
+
+    leaderAInputKi.style.gridColumn="2";
+    leaderAInputKi.style.gridRow="2";
+    leaderContainer.appendChild(leaderAInputKi);
+    
+    let leaderBInputKi=document.createElement('input');
+    leaderBInputKi.id="leader-B-Input-Ki";
+    leaderBInputKi.type="number";
+    leaderBInputKi.min=0;
+    leaderBInputKi.max=4;
+    leaderBInputKi.step=1;
+    leaderBInputKi.value=3;
+    
+    leaderBInputKi.style.gridColumn="2";
+    leaderBInputKi.style.gridRow="3";
+    leaderContainer.appendChild(leaderBInputKi);
+
+
+    let leaderTotalInputKi=document.createElement('input');
+    leaderTotalInputKi.id="leader-Total-Input-Ki";
+    leaderTotalInputKi.type="number";
+    leaderTotalInputKi.min=0;
+    leaderTotalInputKi.max=8;
+    leaderTotalInputKi.step=1;
+    leaderTotalInputKi.value=6;
+
+    leaderTotalInputKi.style.gridColumn="2";
+    leaderTotalInputKi.style.gridRow="2";
+    leaderContainer.appendChild(leaderTotalInputKi);
+    
+
+    leaderAInputKi.addEventListener('input', function(){
+        if(parseInt(leaderAInputKi.value)>200){
+            leaderAInputKi.value=200;
         }
-        else if (parseInt(leaderAInput.value)<0){
-            leaderAInput.value=0;
+        else if (parseInt(leaderAInputKi.value)<0){
+            leaderAInputKi.value=0;
         }
-        leaderTotalInput.value=parseInt(leaderAInput.value)+parseInt(leaderBInput.value);
-        leaderStats.HP=leaderTotalInput.value;
-        leaderStats.ATK=leaderTotalInput.value;
-        leaderStats.DEF=leaderTotalInput.value;
+        leaderTotalInputKi.value=parseInt(leaderAInputKi.value)+parseInt(leaderBInputKi.value);
+        leaderStats.Ki=leaderTotalInputKi.value;
         refreshKiCircle()
     });
 
-    leaderBInput.addEventListener('input', function(){
-        if(parseInt(leaderBInput.value)>200){
-            leaderBInput.value=200;
+    leaderBInputKi.addEventListener('input', function(){
+        if(parseInt(leaderBInputKi.value)>200){
+            leaderBInputKi.value=200;
         }
-        else if (parseInt(leaderBInput.value)<0){
-            leaderBInput.value=0;
+        else if (parseInt(leaderBInputKi.value)<0){
+            leaderBInputKi.value=0;
         }
-        leaderTotalInput.value=parseInt(leaderAInput.value)+parseInt(leaderBInput.value);
-        leaderStats.HP=leaderTotalInput.value;
-        leaderStats.ATK=leaderTotalInput.value;
-        leaderStats.DEF=leaderTotalInput.value;
+        leaderTotalInputKi.value=parseInt(leaderAInputKi.value)+parseInt(leaderBInputKi.value);
+        leaderStats.Ki=leaderTotalInputKi.value;
         refreshKiCircle()
     });
     
-    leaderTotalInput.addEventListener('input', function(){
-        if(parseInt(leaderTotalInput.value)>400){
-            leaderTotalInput.value=400;
+    leaderTotalInputKi.addEventListener('input', function(){
+        if(parseInt(leaderTotalInputKi.value)>400){
+            leaderTotalInputKi.value=400;
         }
-        else if (parseInt(leaderTotalInput.value)<0){
-            leaderTotalInput.value=0;
+        else if (parseInt(leaderTotalInputKi.value)<0){
+            leaderTotalInputKi.value=0;
         }
-        leaderStats.HP=leaderTotalInput.value;
-        leaderStats.ATK=leaderTotalInput.value;
-        leaderStats.DEF=leaderTotalInput.value;
+        leaderStats.Ki=leaderTotalInputKi.value;
         refreshKiCircle()
-        leaderAInput.value=Math.floor(parseInt(leaderTotalInput.value)/2);
-        if(parseInt(leaderTotalInput.value)%2==0){
-            leaderBInput.value=Math.floor(parseInt(leaderTotalInput.value)/2);
+        leaderAInputKi.value=Math.floor(parseInt(leaderTotalInputKi.value)/2);
+        if(parseInt(leaderTotalInputKi.value)%2==0){
+            leaderBInputKi.value=Math.floor(parseInt(leaderTotalInputKi.value)/2);
         } else {
-            leaderBInput.value=Math.floor(parseInt(leaderTotalInput.value)/2)+1;
+            leaderBInputKi.value=Math.floor(parseInt(leaderTotalInputKi.value)/2)+1;
         }
     });
-    leaderAInput.style.display="none";
-    leaderBInput.style.display="none";
-    leaderTotalInput.style.display="block";
+    leaderAInputKi.style.display="none";
+    leaderBInputKi.style.display="none";
+    leaderTotalInputKi.style.display="block";
+
+    let leaderAInputStats=document.createElement('input');
+    leaderAInputStats.id="leader-A-Input-Stats";
+    leaderAInputStats.type="number";
+    leaderAInputStats.min=0;
+    leaderAInputStats.max=200;
+    leaderAInputStats.step=1;
+    leaderAInputStats.value=200;
+
+    leaderAInputStats.style.gridColumn="3";
+    leaderAInputStats.style.gridRow="2"
+    leaderContainer.appendChild(leaderAInputStats);
+    
+    let leaderBInputStats=document.createElement('input');
+    leaderBInputStats.id="leader-B-Input-Stats";
+    leaderBInputStats.type="number";
+    leaderBInputStats.min=0;
+    leaderBInputStats.max=200;
+    leaderBInputStats.step=1;
+    leaderBInputStats.value=200;
+
+    leaderBInputStats.style.gridColumn="3";
+    leaderBInputStats.style.gridRow="3"
+    leaderContainer.appendChild(leaderBInputStats);
+
+
+    let leaderTotalInputStats=document.createElement('input');
+    leaderTotalInputStats.id="leader-total-Input-Stats";
+    leaderTotalInputStats.type="number";
+    leaderTotalInputStats.min=0;
+    leaderTotalInputStats.max=400;
+    leaderTotalInputStats.step=1;
+    leaderTotalInputStats.value=400;
+
+    leaderTotalInputStats.style.gridColumn="3";
+    leaderTotalInputStats.style.gridRow="2"
+    leaderContainer.appendChild(leaderTotalInputStats);
+    
+
+    leaderAInputStats.addEventListener('input', function(){
+        if(parseInt(leaderAInputStats.value)>200){
+            leaderAInputStats.value=200;
+        }
+        else if (parseInt(leaderAInputStats.value)<0){
+            leaderAInputStats.value=0;
+        }
+        leaderTotalInputStats.value=parseInt(leaderAInputStats.value)+parseInt(leaderBInputStats.value);
+        leaderStats.HP=leaderTotalInputStats.value;
+        leaderStats.ATK=leaderTotalInputStats.value;
+        leaderStats.DEF=leaderTotalInputStats.value;
+        refreshKiCircle()
+    });
+
+    leaderBInputStats.addEventListener('input', function(){
+        if(parseInt(leaderBInputStats.value)>200){
+            leaderBInputStats.value=200;
+        }
+        else if (parseInt(leaderBInputStats.value)<0){
+            leaderBInputStats.value=0;
+        }
+        leaderTotalInputStats.value=parseInt(leaderAInputStats.value)+parseInt(leaderBInputStats.value);
+        leaderStats.HP=leaderTotalInputStats.value;
+        leaderStats.ATK=leaderTotalInputStats.value;
+        leaderStats.DEF=leaderTotalInputStats.value;
+        refreshKiCircle()
+    });
+    
+    leaderTotalInputStats.addEventListener('input', function(){
+        if(parseInt(leaderTotalInputStats.value)>400){
+            leaderTotalInputStats.value=400;
+        }
+        else if (parseInt(leaderTotalInputStats.value)<0){
+            leaderTotalInputStats.value=0;
+        }
+        leaderStats.HP=leaderTotalInputStats.value;
+        leaderStats.ATK=leaderTotalInputStats.value;
+        leaderStats.DEF=leaderTotalInputStats.value;
+        refreshKiCircle()
+        leaderAInputStats.value=Math.floor(parseInt(leaderTotalInputStats.value)/2);
+        if(parseInt(leaderTotalInputStats.value)%2==0){
+            leaderBInputStats.value=Math.floor(parseInt(leaderTotalInputStats.value)/2);
+        } else {
+            leaderBInputStats.value=Math.floor(parseInt(leaderTotalInputStats.value)/2)+1;
+        }
+    });
+    leaderAInputStats.style.display="none";
+    leaderBInputStats.style.display="none";
+    leaderTotalInputStats.style.display="block";
+
+
+    
 }
 
 export function createLinkStats(json){
