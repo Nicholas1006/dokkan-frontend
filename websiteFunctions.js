@@ -2304,7 +2304,7 @@ export function loadPage(firstTime=false){
         jsonPromise=getJsonPromise('dbManagement/jsons/',subURL,'.json');
         }
     }
-    let linksPromise=getJsonPromise("dbManagement/uniquejsons/","links",".json");
+    let linksPromise=getJsonPromise("dbManagement/uniqueJsons/","links",".json");
 
 
     jsonPromise.then(json => {
