@@ -834,6 +834,7 @@ class causalityList{
 
 // Function to fetch JSON data based on sub-URL
 let currentJson = null;
+let linkData=null;
 
 let leaderStats={"HP": "400", "ATK": "400", "DEF": "400"};
 let baseStats={};
@@ -1177,10 +1178,10 @@ export function createLinkStats(json){
     const linksContainer=document.getElementById('links-container');
     let links =json["Links"];
     let linkNumber=0;
-    for (const link of Object.keys(links)){
+    for (const linkid in links){
+      let link=links[linkid]
       let linkName = link;
       let linkLevel = 10;
-      let linkData = links[linkName][linkLevel];
       let linkButton = document.createElement('button');
       linkButton.innerHTML = linkName + " <br>Level: " + linkLevel;
       linkButton.id="links-button";
@@ -1224,9 +1225,9 @@ export function createLinkStats(json){
       linkSlider.addEventListener('input', function(){
         linkLevel = linkSlider.value;
         linkButton.innerHTML = linkName + " <br>Level: " + linkLevel;
-        linkData = links[linkName][linkLevel];
         createLinkBuffs(json);
         refreshKiCircle()
+        
       });
       linkNumber+=1;
     };
@@ -2072,17 +2073,17 @@ export function createLinkBuffs(json){
       let linkName = linkButtons[index].textContent.split(' Level')[0];
       
       let linkLevel = parseInt(slider.value);
-      let linkData = json.Links[linkName][linkLevel];
+      let linksData = linkData[linkName][linkLevel];
 
       // Add the link buffs to the total link buffs
-      totalATKBuff += linkData.ATK || 0;
-      totalDEFBuff += linkData.DEF || 0;
-      totalEnemyDEFBuff += linkData.ENEMYDEF || 0;
-      totalHealBuff += linkData.HEAL || 0;
-      totalKIBuff += linkData.KI || 0;
-      totalDamageReductionBuff += linkData.DREDUCTION || 0;
-      totalCritBuff += linkData.CRIT || 0;
-      totalEvasionBuff += linkData.EVASION || 0;
+      totalATKBuff += linksData.ATK || 0;
+      totalDEFBuff += linksData.DEF || 0;
+      totalEnemyDEFBuff += linksData.ENEMYDEF || 0;
+      totalHealBuff += linksData.HEAL || 0;
+      totalKIBuff += linksData.KI || 0;
+      totalDamageReductionBuff += linksData.DREDUCTION || 0;
+      totalCritBuff += linksData.CRIT || 0;
+      totalEvasionBuff += linksData.EVASION || 0;
     });
 
     // Create a paragraph element to display the total link buffs
@@ -2303,35 +2304,44 @@ export function loadPage(firstTime=false){
         jsonPromise=getJsonPromise('dbManagement/jsons/',subURL,'.json');
         }
     }
+    let linksPromise=getJsonPromise("dbManagement/Uniquejsons/","links",".json");
+
+    linksPromise.then(links => {
+        linkData=links;
+    })
+
     jsonPromise.then(json => {
         currentJson=json;
-        initialiseAspects(json);
-        if(firstTime){
-            if(json["Rarity"] == "lr" || json["Rarity"] == "ur"){
-                createStarButton(json);
-                createPathButtons(json);
-                createSkillOrbContainer();
+        linksPromise.then(links => {
+            linkData=links;
+            initialiseAspects(json);
+            if(firstTime){
+                if(json["Rarity"] == "lr" || json["Rarity"] == "ur"){
+                    createStarButton(json);
+                    createPathButtons(json);
+                    createSkillOrbContainer();
+                }
+                createLeaderStats();
+                createLinkStats(json);
+                createLinkBuffs(json);
+                createKiCirclesWithClass(json,firstTime);
+                createDokkanAwakenContainer(json);
+                createTransformationContainer(json);
             }
-            createLeaderStats();
-            createLinkStats(json);
-            createLinkBuffs(json);
-            createKiCirclesWithClass(json,firstTime);
-            createDokkanAwakenContainer(json);
-            createTransformationContainer(json);
-        }
-        else{
-            //document.getElementById('ki-slider').dispatchEvent(new Event('input'));	
-        }
-        createPassiveContainer(json);
-        createEzaContainer(json,isEza,isSeza);
-        createLevelSlider(json);
-        createSuperAttackContainer(json);
-        AdjustBaseStats();
-        if(json["Rarity"] == "lr" || json["Rarity"] == "ur"){
-            const buttonContainer = document.getElementById('hipo-button-container');
-            buttonContainer.style.display = "grid";
-        }
-        refreshKiCircle();
+            else{
+                //document.getElementById('ki-slider').dispatchEvent(new Event('input'));	
+            }
+            createPassiveContainer(json);
+            createEzaContainer(json,isEza,isSeza);
+            createLevelSlider(json);
+            createSuperAttackContainer(json);
+            AdjustBaseStats();
+            if(json["Rarity"] == "lr" || json["Rarity"] == "ur"){
+                const buttonContainer = document.getElementById('hipo-button-container');
+                buttonContainer.style.display = "grid";
+            }
+            refreshKiCircle();
+        })
     })
     }
 
