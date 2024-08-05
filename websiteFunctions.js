@@ -245,7 +245,7 @@ class kiCircleClass{
 }
 
 class equipNodeQuery{
-    constructor(imageLocation){
+    constructor(variableToChange,imageLocation){
         this.selfContainer=document.createElement("div");
         this.selfContainer.id="equip-node-container";
         this.selfContainer.style.display="grid";
@@ -266,9 +266,11 @@ class equipNodeQuery{
                 this.value=0;
             }
             else if(this.value>32){
-                this.value=32;
+                this.value=32;  
             }
+            skillOrbBuffs[variableToChange]=this.value;
             this.parentNode.value=parseInt(this.value);
+            refreshKiCircle();
         })
         this.selfContainer.value=0;
         this.selfContainer.appendChild(this.numberInput);
@@ -439,6 +441,9 @@ class passiveButton{
         this.parent=parent
         this.element.parent=parent
     }
+    updateCondition(){
+        console.log("WIP");
+    }
 }
 
 class passiveSlider {
@@ -460,6 +465,9 @@ class passiveSlider {
         this.element.addEventListener("input", () => this.update());
         
         this.elementLabel.innerHTML = this.label+": "+this.value+"+";
+        if(this.label=="How much ki is there"){
+            this.selfContainer.style.display="none";
+        }
     }
 
     update() {
@@ -474,6 +482,12 @@ class passiveSlider {
 
     getElement() {
         return this.selfContainer;
+    }
+
+    updateCondition(){
+        if(this.label=="How much ki is there"){
+            this.value=kiCircleList[0].kiAmount;
+        }
     }
 }
 
@@ -524,6 +538,10 @@ class passiveQuery{
         else if(this.type=="slider"){
             return(this.queryElement.element.value)
         }
+    }
+
+    updateCondition(){
+        this.queryElement.updateCondition();
     }
 }
 
@@ -823,6 +841,7 @@ let superStats={"ATK": 0, "DEF": 0, "Enemy ATK": 0, "Enemy DEF": 0, "Crit": 0, "
 let linkStats={"ATK":"0","DEF":"0","Enemy DEF":"0","Heal":"0","KI":"0","Damage Reduction":"0","Crit":"0","Evasion":"0"};
 let startingPassiveBuffs={};
 let kiSources={};
+let skillOrbBuffs={"Additional":"0","Crit":"0","Evasion":"0","Attack":"0","Defense":"0","SuperBoost":"0","Recovery":"0"}
 let additionalAttacks=[];
 let kiCircleList=[];
 let passiveQueryList=[];
@@ -959,6 +978,9 @@ export function createCharacterSelection(){
 
 
 export function refreshKiCircle(){
+    for (const PassiveQuery of passiveQueryList){
+        PassiveQuery.updateCondition();
+    }
     
     let superAttackMultiplier=1;
     let superAttackID=-1;
@@ -970,6 +992,7 @@ export function refreshKiCircle(){
         if(parseInt(superAttack["superMinKi"])<=parseInt(kiCircleList[0].kiAmount) && parseInt(superAttack["superMinKi"])>parseInt(superMinKi)){
             superMinKi=superAttack["superMinKi"];
             superAttackMultiplier=superAttack["Multiplier"]/100;
+            superAttackMultiplier+=skillOrbBuffs["SuperBoost"]/100*5;
             superAttackID=superAttack["special_name_no"];
             for (const key of Object.keys(superAttack)){
                 if(key=="SpecialBonus"){
@@ -2188,25 +2211,25 @@ export function updatePassiveBuffs(){
 export function createSkillOrbContainer(){
     let skillOrbContainer=document.getElementById('all-skill-orb-container');
     skillOrbContainer.style.display="grid";
-    skillOrbContainer.additionalNode=new equipNodeQuery("dbManagement/assets/misc/potential/Pot_skill_additional.png")
+    skillOrbContainer.additionalNode=new equipNodeQuery("Additional","dbManagement/assets/misc/potential/Pot_skill_additional.png")
     skillOrbContainer.appendChild(skillOrbContainer.additionalNode.getElement());
 
-    skillOrbContainer.critNode=new equipNodeQuery("dbManagement/assets/misc/potential/Pot_skill_critical.png")
+    skillOrbContainer.critNode=new equipNodeQuery("Crit","dbManagement/assets/misc/potential/Pot_skill_critical.png")
     skillOrbContainer.appendChild(skillOrbContainer.critNode.getElement());
 
-    skillOrbContainer.evasionNode=new equipNodeQuery("dbManagement/assets/misc/potential/Pot_skill_dodge.png")
+    skillOrbContainer.evasionNode=new equipNodeQuery("Evasion","dbManagement/assets/misc/potential/Pot_skill_dodge.png")
     skillOrbContainer.appendChild(skillOrbContainer.evasionNode.getElement());
 
-    skillOrbContainer.typeATKBoostNode=new equipNodeQuery("dbManagement/assets/misc/potential/Pot_skill_type_damage.png")
+    skillOrbContainer.typeATKBoostNode=new equipNodeQuery("Attack","dbManagement/assets/misc/potential/Pot_skill_type_damage.png")
     skillOrbContainer.appendChild(skillOrbContainer.typeATKBoostNode.getElement());
 
-    skillOrbContainer.typeDEFBoostNode=new equipNodeQuery("dbManagement/assets/misc/potential/Pot_skill_type_defense.png")
+    skillOrbContainer.typeDEFBoostNode=new equipNodeQuery("Defense","dbManagement/assets/misc/potential/Pot_skill_type_defense.png")
     skillOrbContainer.appendChild(skillOrbContainer.typeDEFBoostNode.getElement());
 
-    skillOrbContainer.superAttackBoostNode=new equipNodeQuery("dbManagement/assets/misc/potential/Pot_skill_additional.png")
+    skillOrbContainer.superAttackBoostNode=new equipNodeQuery("SuperBoost","dbManagement/assets/misc/potential/Pot_skill_super.png")
     skillOrbContainer.appendChild(skillOrbContainer.superAttackBoostNode.getElement());
 
-    skillOrbContainer.recoveryBoostNode=new equipNodeQuery("dbManagement/assets/misc/potential/Pot_skill_heal.png")
+    skillOrbContainer.recoveryBoostNode=new equipNodeQuery("Recovery","dbManagement/assets/misc/potential/Pot_skill_heal.png")
     skillOrbContainer.appendChild(skillOrbContainer.recoveryBoostNode.getElement());
 
 
