@@ -285,6 +285,7 @@ class equipNodeQuery{
         this.selfContainer=document.createElement("div");
         this.selfContainer.id="equip-node-container";
         this.selfContainer.style.display="grid";
+        this.variableToChange=variableToChange;
 
         let image=document.createElement("div");
         image.id="equip-node-image";
@@ -305,7 +306,7 @@ class equipNodeQuery{
             else if(this.value>32){
                 this.value=32;  
             }
-            skillOrbBuffs[variableToChange]=this.value;
+            skillOrbBuffs[variableToChange]=parseInt(this.value);
             this.parentNode.value=parseInt(this.value);
             this.parentNode.parentNode.classList.add("Edited");
             refreshKiCircle();
@@ -314,7 +315,155 @@ class equipNodeQuery{
         this.selfContainer.appendChild(this.numberInput);
     }
     updateValue(Value){
+        skillOrbBuffs[this.variableToChange]=Value;
         this.numberInput.value=parseInt(Value);
+    }
+
+    getElement(){
+        return(this.selfContainer);
+    }
+}
+
+class statsContainerClass{
+    constructor(startHP, startATK, startDEF){
+        this.selfContainer=document.createElement("div");
+        this.selfContainer.style.display="grid";
+        this.selfContainer.classConstruction=this;
+        
+        this.startHP=startHP;
+        this.startATK=startATK;
+        this.startDEF=startDEF;
+
+        this.queryHP=0;
+        this.queryATK=0;
+        this.queryDEF=0;
+
+        this.finalHP=startHP;
+        this.finalATK=startATK;
+        this.finalDEF=startDEF;
+        
+        
+        this.initialHPDisplay=document.createElement("div");
+        this.initialHPDisplay.style.gridRow="1";
+        this.initialHPDisplay.style.gridColumn="1";
+        this.initialHPDisplay.innerHTML="HP: "+startHP+"+";
+        this.selfContainer.appendChild(this.initialHPDisplay);
+
+        this.initialATKDisplay=document.createElement("div");
+        this.initialATKDisplay.style.gridRow="2";
+        this.initialATKDisplay.style.gridColumn="1";
+        this.initialATKDisplay.innerHTML="ATK: "+startATK+"+";
+        this.selfContainer.appendChild(this.initialATKDisplay);
+
+        this.initialDEFDisplay=document.createElement("div");
+        this.initialDEFDisplay.style.gridRow="3";
+        this.initialDEFDisplay.style.gridColumn="1";
+        this.initialDEFDisplay.innerHTML="DEF: "+startDEF+"+";        
+        this.selfContainer.appendChild(this.initialDEFDisplay);
+
+        this.extraHPQuery=document.createElement("input");
+        this.extraHPQuery.id="extra-HP-input";
+        this.extraHPQuery.value=0;
+        this.extraHPQuery.step=100;
+        this.extraHPQuery.min=0;
+        this.extraHPQuery.type="number";
+        this.extraHPQuery.style.gridRow="1";
+        this.extraHPQuery.style.gridColumn="2";
+        this.extraHPQuery.addEventListener("input",function(){
+            this.value=parseInt(this.value) || 0;
+            this.parentNode.classConstruction.queryHP=parseInt(this.value);
+            this.parentNode.classConstruction.refreshStats();
+            refreshKiCircle();
+        })
+        this.selfContainer.appendChild(this.extraHPQuery);
+
+        this.extraATKQuery=document.createElement("input");
+        this.extraATKQuery.id="extra-ATK-input";
+        this.extraATKQuery.value=0;
+        this.extraATKQuery.step=100;
+        this.extraATKQuery.min=0;
+        this.extraATKQuery.type="number";
+        this.extraATKQuery.style.gridRow="2";
+        this.extraATKQuery.style.gridColumn="2";
+        this.selfContainer.appendChild(this.extraATKQuery);
+        this.extraATKQuery.addEventListener("input",function(){
+            this.value=parseInt(this.value) || 0;
+            this.parentNode.classConstruction.queryATK=parseInt(this.value);
+            this.parentNode.classConstruction.refreshStats();
+            refreshKiCircle();
+        })
+
+        this.extraDEFQuery=document.createElement("input");
+        this.extraDEFQuery.id="extra-DEF-input";
+        this.extraDEFQuery.value=0;
+        this.extraDEFQuery.step=100;
+        this.extraDEFQuery.min=0;
+        this.extraDEFQuery.type="number";
+        this.extraDEFQuery.style.gridRow="3";
+        this.extraDEFQuery.style.gridColumn="2";
+        this.extraDEFQuery.addEventListener("input",function(){
+            this.value=parseInt(this.value) || 0;
+            this.parentNode.classConstruction.queryDEF=parseInt(this.value);
+            this.parentNode.classConstruction.refreshStats();
+            refreshKiCircle();
+        })
+        this.selfContainer.appendChild(this.extraDEFQuery);
+
+        this.finalHPDisplay=document.createElement("div");
+        this.finalHPDisplay.style.gridRow="1";
+        this.finalHPDisplay.style.gridColumn="3";
+        this.finalHPDisplay.innerHTML=this.finalHP;
+        this.selfContainer.appendChild(this.finalHPDisplay);
+
+        this.finalATKDisplay=document.createElement("div");
+        this.finalATKDisplay.style.gridRow="2";
+        this.finalATKDisplay.style.gridColumn="3";
+        this.finalATKDisplay.innerHTML=this.finalATK;
+        this.selfContainer.appendChild(this.finalATKDisplay);
+
+        this.finalDEFDisplay=document.createElement("div");
+        this.finalDEFDisplay.style.gridRow="3";
+        this.finalDEFDisplay.style.gridColumn="3";
+        this.finalDEFDisplay.innerHTML=this.finalDEF;
+        this.selfContainer.appendChild(this.finalDEFDisplay);
+    }
+
+    refreshStats(){
+        this.finalHP=this.startHP+this.queryHP;
+        this.finalATK=this.startATK+this.queryATK;
+        this.finalDEF=this.startDEF+this.queryDEF;
+
+        this.finalHPDisplay.innerHTML="="+this.finalHP;
+        this.finalATKDisplay.innerHTML="="+this.finalATK;
+        this.finalDEFDisplay.innerHTML="="+this.finalDEF;
+
+        baseStats["HP"]=this.finalHP;
+        baseStats["ATK"]=this.finalATK;
+        baseStats["DEF"]=this.finalDEF;
+    }
+
+    updateInitialHP(HP,refresh=true){
+        this.startHP=HP;
+        this.initialHPDisplay.innerHTML="HP: "+HP+"+";
+        if(refresh){
+            this.refreshStats();
+        }
+    }
+
+    updateInitialATK(ATK,refresh=true){
+        this.startATK=ATK;
+        this.initialATKDisplay.innerHTML="ATK: "+ATK+"+";
+        if(refresh){
+            this.refreshStats();
+        }
+    }
+
+    updateInitialDEF(DEF,refresh=true){
+        this.startDEF=DEF;
+        this.initialDEFDisplay.innerHTML="DEF: "+DEF+"+";
+        if(refresh){
+            this.refreshStats();
+        }
     }
 
     getElement(){
@@ -878,7 +1027,7 @@ let currentJson = null;
 let linkData=null;
 let domainData=null;
 
-let baseStats={};
+let baseStats={"ATK": 0, "DEF": 0, "HP": 0};
 
 let leaderBuffs={"HP": 400, "ATK": 400, "DEF": 400, "Ki": 6};
 let superBuffs={"ATK": 0, "DEF": 0, "Enemy ATK": 0, "Enemy DEF": 0, "Crit": 0, "Evasion": 0};
@@ -1488,17 +1637,14 @@ export function createLinkStats(json){
 
 
 export function AdjustBaseStats(){
-    const statsContainer = document.getElementById('stats-container');
-    const starButton=document.getElementById('star-button');
-    const toggleButtons = Array.from(document.querySelectorAll('.toggle-btn1, .toggle-btn2, .toggle-btn3, .toggle-btn4'));
     let levelSlider=document.getElementById('level-slider');
-    statsContainer.innerHTML = '';
-    const ATKstat = document.createElement('p');
-    const DEFstat = document.createElement('p');
-    const HPstat = document.createElement('p');
     let ATK = parseInt(currentJson["Stats at levels"][levelSlider.value]["ATK"]);
     let DEF = parseInt(currentJson["Stats at levels"][levelSlider.value]["DEF"]);
     let HP = parseInt((currentJson["Stats at levels"][levelSlider.value]["HP"]));
+
+    const statsContainerObject = document.getElementById('stats-container').firstChild.classConstruction;
+    const starButton=document.getElementById('star-button');
+    const toggleButtons = Array.from(document.querySelectorAll('.toggle-btn1, .toggle-btn2, .toggle-btn3, .toggle-btn4'));
     let Additional=0;
     let Crit=0;
     let Evasion=0;
@@ -1536,13 +1682,6 @@ export function AdjustBaseStats(){
         recovery_boost+=parseInt(currentJson["Hidden Potential"][index+1]["Recovery boost"])
       }
     })
-    HPstat.id="base-stat";
-    ATKstat.id="base-stat";
-    DEFstat.id="base-stat";
-
-    HPstat.textContent  = "HP:  " + HP +"+";
-    ATKstat.textContent = "ATK: " + ATK+"+";
-    DEFstat.textContent = "DEF: " + DEF+"+";
 
     if(!(skill_orb_container.classList.contains('Edited'))){
         skill_orb_container.additionalNode.updateValue(Additional)
@@ -1555,27 +1694,29 @@ export function AdjustBaseStats(){
     }
 
     baseStats={"HP":HP,"ATK":ATK,"DEF":DEF};
+    statsContainerObject.updateInitialHP(HP,false);
+
+    
+    statsContainerObject.updateInitialATK(ATK,false);
+    
+    
+    statsContainerObject.updateInitialDEF(DEF,false);
+
+    statsContainerObject.refreshStats();
     refreshKiCircle();
 
-    statsContainer.appendChild(HPstat);
 
-    
-    statsContainer.appendChild(ATKstat);
-    
-    
-    statsContainer.appendChild(DEFstat);
   }
   
 export function createEzaContainer(json,isEza,isSeza){
     let ezaContainer=document.getElementById('eza-container');
+    ezaContainer.style.display="grid";
     while (ezaContainer.firstChild) {
         ezaContainer.removeChild(ezaContainer.firstChild);
     }
     if(json["Can EZA"]){
     let ezaButton = document.createElement('button');
-    ezaButton.style.border="none";
     ezaButton.id="eza-button";
-    ezaButton.style.cursor="pointer"
     if(isEza == "True"){
         ezaButton.style.backgroundImage = "url('dbManagement/assets/misc/eza_icon.png')";
         ezaButton.onclick = function(){
@@ -1597,7 +1738,6 @@ export function createEzaContainer(json,isEza,isSeza){
     if(json["Can SEZA"]){
     let sezaButton = document.createElement('a');
     sezaButton.id="seza-button";
-    sezaButton.style.border="none";
     if(isSeza == "True"){
         sezaButton.style.backgroundImage = "url('dbManagement/assets/misc/Seza_icon.png')";
         sezaButton.onclick = function(){
@@ -1619,10 +1759,7 @@ export function createEzaContainer(json,isEza,isSeza){
 }
 
 export function createTransformationContainer(json){
-    let transformationContainer=document.getElementById('transformation-container');
-    while (transformationContainer.firstChild) {
-        transformationContainer.removeChild(transformationContainer.firstChild);
-    }
+    let transformationContainer=document.getElementById('awaken-container');
     let transformations =json["Transformations"];
     if( Array.isArray(transformations) && transformations.length){
     for (const transformationID of transformations){
@@ -1685,6 +1822,15 @@ export function createLevelSlider(json){
         levelSlider.value=levelInput.value;
         AdjustBaseStats(json);
     });
+
+    
+}
+
+export function createStatsContainer(){
+        const statsContainer=document.getElementById('stats-container');
+        const statsContainerObject= new statsContainerClass(0,0,0);
+        statsContainer.appendChild(statsContainerObject.getElement());
+        statsContainer.style.display="grid";
 }
 
 export function createPathButtons(json){
@@ -1724,10 +1870,7 @@ export function createPathButtons(json){
 }
 
 export function createDokkanAwakenContainer(json){
-    let AwakeningsContainer=document.getElementById('dokkan-awaken-container');
-    while (AwakeningsContainer.firstChild) {
-        AwakeningsContainer.removeChild(AwakeningsContainer.firstChild);
-    }
+    let AwakeningsContainer=document.getElementById('awaken-container');
     let Awakenings =json["Dokkan awakenings"];
     if( Array.isArray(Awakenings) && Awakenings.length){
     for (const AwakeningsID of Awakenings){
@@ -2626,6 +2769,7 @@ export function loadPage(firstTime=false){
                     createDokkanAwakenContainer(json);
                     createTransformationContainer(json);
                     createDomainContainer(json);
+                    createStatsContainer();
                 }
                 else{
                     //document.getElementById('ki-slider').dispatchEvent(new Event('input'));	
