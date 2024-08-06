@@ -14,19 +14,19 @@ class kiCircleClass{
         let circleBase=document.createElement("div");
         circleBase.id="circle-base";
         if(json.Typing=="AGL"){
-            circleBase.style.backgroundImage = "url('dbManagement/assets/misc/chara_icon/ing_type_gauge_base_00.png')";
+            circleBase.style.backgroundImage = "url('../dbManagement/assets/misc/chara_icon/ing_type_gauge_base_00.png')";
         }
         else if(json.Typing=="TEQ"){
-            circleBase.style.backgroundImage = "url('dbManagement/assets/misc/chara_icon/ing_type_gauge_base_01.png')";
+            circleBase.style.backgroundImage = "url('../dbManagement/assets/misc/chara_icon/ing_type_gauge_base_01.png')";
         }
         else if(json.Typing=="INT"){
-            circleBase.style.backgroundImage = "url('dbManagement/assets/misc/chara_icon/ing_type_gauge_base_02.png')";
+            circleBase.style.backgroundImage = "url('../dbManagement/assets/misc/chara_icon/ing_type_gauge_base_02.png')";
         }
         else if(json.Typing=="STR"){
-            circleBase.style.backgroundImage = "url('dbManagement/assets/misc/chara_icon/ing_type_gauge_base_03.png')";
+            circleBase.style.backgroundImage = "url('../dbManagement/assets/misc/chara_icon/ing_type_gauge_base_03.png')";
         }
         else if(json.Typing=="PHY"){
-            circleBase.style.backgroundImage = "url('dbManagement/assets/misc/chara_icon/ing_type_gauge_base_04.png')";
+            circleBase.style.backgroundImage = "url('../dbManagement/assets/misc/chara_icon/ing_type_gauge_base_04.png')";
         }
         circleBase.style.width="220px";
         circleBase.style.height="220px";
@@ -55,7 +55,7 @@ class kiCircleClass{
         unitImage.style.width = "220px";
         unitImage.style.height = "220px";
         let assetID=json["ID"].slice(0, -1)+ "0";
-        unitImage.style.backgroundImage = "url('dbManagement/assets/circle/" + assetID + ".png')";
+        unitImage.style.backgroundImage = "url('../dbManagement/assets/circle/" + assetID + ".png')";
         unitImage.style.backgroundSize = "100% 100%";
         unitImage.style.backgroundPosition = "center";
         unitImage.style.backgroundRepeat = "no-repeat";
@@ -123,7 +123,7 @@ class kiCircleClass{
 
         this.superAttackName=document.createElement("div");
         this.superAttackName.className="super-attack-name";
-        this.superAttackName.style.backgroundImage = "url('dbManagement/assets/sp_name_00/"+this.imageUrl+".png')";
+        this.superAttackName.style.backgroundImage = "url('../dbManagement/assets/sp_name_00/"+this.imageUrl+".png')";
         this.superAttackName.style.display="none";
         this.kiCircle.appendChild(this.superAttackName);
     }
@@ -272,7 +272,7 @@ class kiCircleClass{
             this.superAttackName.style.display="none";
         }
         else{
-            this.superAttackName.style.backgroundImage = "url('dbManagement/assets/sp_name_0"+superAttackID+"/"+this.imageUrl+".png')";
+            this.superAttackName.style.backgroundImage = "url('../dbManagement/assets/sp_name_0"+superAttackID+"/"+this.imageUrl+".png')";
             this.superAttackName.style.display="block";
         }
     }
@@ -540,7 +540,7 @@ class superAttackQuery{
         superAttackSlider.value=0;
         let superAttackQuestion = document.createElement('label');
         superAttackQuestion.superAttackName= superAttackName;
-        superAttackQuestion.superAttackText=new pictureText("How many times has","dbManagement/assets/final_assets/"+unitID+".png","performed "+superAttackName+" within the last "+buffs["Duration"]+" turns?: "+superAttackSlider.value);
+        superAttackQuestion.superAttackText=new pictureText("How many times has","../dbManagement/assets/final_assets/"+unitID+".png","performed "+superAttackName+" within the last "+buffs["Duration"]+" turns?: "+superAttackSlider.value);
         this.selfContainer.appendChild(superAttackQuestion.superAttackText.getElement());
         superAttackQuestion.innerHTML = superAttackSlider.textContent;
         superAttackQuestion.style.gridRow = 1;
@@ -1147,31 +1147,6 @@ export function dictionaryToggle(originalDictionary,key,element) {
     }
 }
 
-export function createCharacterSelection(){
-    const allUnitsJsonPromise=getJsonPromise('dbManagement/jsons/','allUnits','.json');
-    allUnitsJsonPromise.then(allUnitsJson => {
-      document.getElementById("image-container").style.display="none";
-      document.getElementById("base-stats").style.display="none";
-      document.getElementById("links-and-leads").style.display="none";
-      document.getElementById("super-container").style.display="none";
-      document.getElementById("passive-container").style.display="none";
-
-      const UNITSTODISPLAY = 40000;
-      const unitsContainer = document.getElementById('unit-selection-container');
-      unitsContainer.style.width="100%";
-      for (let i = UNITSTODISPLAY; i > 0;i--) {
-        if(i<allUnitsJson.length){
-          const unitButton = document.createElement('a');
-          unitButton.id = "unit-button";
-          unitButton.href = "?id=" + allUnitsJson[i];
-          unitButton.style.backgroundImage = "url('dbManagement/assets/final_assets/"+allUnitsJson[i]+".png')";
-          unitButton.className="unit-selection-button";
-          unitsContainer.appendChild(unitButton);
-        }
-      }
-    }
-    );
-}
 
 
 export function refreshKiCircle(){
@@ -1288,7 +1263,6 @@ export function addDictionaryValues(initialDictionary, additionalDictionary) {
 
 export function createLeaderStats(){
     const leaderContainer=document.getElementById('leader-container');
-    leaderContainer.style.display="grid";
 
     const kiLabel=document.createElement('div');
     leaderContainer.appendChild(kiLabel);
@@ -1711,7 +1685,6 @@ export function AdjustBaseStats(){
   
 export function createEzaContainer(json,isEza,isSeza){
     let ezaContainer=document.getElementById('eza-container');
-    ezaContainer.style.display="grid";
     while (ezaContainer.firstChild) {
         ezaContainer.removeChild(ezaContainer.firstChild);
     }
@@ -1719,14 +1692,14 @@ export function createEzaContainer(json,isEza,isSeza){
     let ezaButton = document.createElement('button');
     ezaButton.id="eza-button";
     if(isEza == "True"){
-        ezaButton.style.backgroundImage = "url('dbManagement/assets/misc/eza_icon.png')";
+        ezaButton.style.backgroundImage = "url('../dbManagement/assets/misc/eza_icon.png')";
         ezaButton.onclick = function(){
             updateQueryStringParameter('EZA', 'False');
             loadPage();
         }
     }
     else{
-        ezaButton.style.backgroundImage = "url('dbManagement/assets/misc/eza_icon_inactive.png')";
+        ezaButton.style.backgroundImage = "url('../dbManagement/assets/misc/eza_icon_inactive.png')";
         ezaButton.onclick = function(){
             updateQueryStringParameter('EZA', 'True');
             updateQueryStringParameter('SEZA', 'False');
@@ -1740,14 +1713,14 @@ export function createEzaContainer(json,isEza,isSeza){
     let sezaButton = document.createElement('a');
     sezaButton.id="seza-button";
     if(isSeza == "True"){
-        sezaButton.style.backgroundImage = "url('dbManagement/assets/misc/Seza_icon.png')";
+        sezaButton.style.backgroundImage = "url('../dbManagement/assets/misc/Seza_icon.png')";
         sezaButton.onclick = function(){
             updateQueryStringParameter('SEZA', 'False');
             loadPage();
         }
     }
     else{
-        sezaButton.style.backgroundImage = "url('dbManagement/assets/misc/Seza_icon_inactive.png')";
+        sezaButton.style.backgroundImage = "url('../dbManagement/assets/misc/Seza_icon_inactive.png')";
         sezaButton.onclick = function(){
             updateQueryStringParameter('SEZA', 'True');
             updateQueryStringParameter('EZA', 'False');
@@ -1767,7 +1740,7 @@ export function createTransformationContainer(json){
         let unitID = transformationID;
         //creates a button that links to the suburl of the unit with the background set to the unitID within the assets/final_assets folder
         let transformationButton = document.createElement('button');
-        transformationButton.style.backgroundImage = "url('dbManagement/assets/final_assets/"+unitID+".png')";
+        transformationButton.style.backgroundImage = "url('../dbManagement/assets/final_assets/"+unitID+".png')";
         transformationButton.id="transformation-button";
         transformationButton.style.gridRow="1";
         transformationContainer.appendChild(transformationButton);
@@ -1782,7 +1755,7 @@ export function createTransformationContainer(json){
         let unitID = transformationID;
         //creates a button that links to the suburl of the unit with the background set to the unitID within the assets/final_assets folder
         let transformationButton = document.createElement('button');
-        transformationButton.style.backgroundImage = "url('dbManagement/assets/final_assets/"+unitID+".png')";
+        transformationButton.style.backgroundImage = "url('../dbManagement/assets/final_assets/"+unitID+".png')";
         transformationButton.id="transformation-button";
         transformationButton.style.gridRow="2";
         transformationContainer.appendChild(transformationButton);
@@ -1828,10 +1801,9 @@ export function createLevelSlider(json){
 }
 
 export function createStatsContainer(){
-        const statsContainer=document.getElementById('stats-container');
-        const statsContainerObject= new statsContainerClass(0,0,0);
-        statsContainer.appendChild(statsContainerObject.getElement());
-        statsContainer.style.display="grid";
+    const statsContainer=document.getElementById('stats-container');
+    const statsContainerObject= new statsContainerClass(0,0,0);
+    statsContainer.appendChild(statsContainerObject.getElement());
 }
 
 export function createPathButtons(json){
@@ -1878,7 +1850,7 @@ export function createDokkanAwakenContainer(json){
         let unitID = AwakeningsID;
         //creates a button that links to the suburl of the unit with the background set to the unitID within the assets/final_assets folder
         let AwakeningsButton = document.createElement('button');
-        AwakeningsButton.style.backgroundImage = "url('dbManagement/assets/final_assets/"+unitID+".png')";
+        AwakeningsButton.style.backgroundImage = "url('../dbManagement/assets/final_assets/"+unitID+".png')";
         AwakeningsButton.id="awakenings-button";
         AwakeningsButton.style.gridRow="1";
         AwakeningsContainer.appendChild(AwakeningsButton);
@@ -1893,7 +1865,7 @@ export function createDokkanAwakenContainer(json){
         let unitID = AwakeningsID;
         //creates a button that links to the suburl of the unit with the background set to the unitID within the assets/final_assets folder
         let AwakeningsButton = document.createElement('button');
-        AwakeningsButton.style.backgroundImage = "url('dbManagement/assets/final_assets/"+unitID+".png')";
+        AwakeningsButton.style.backgroundImage = "url('../dbManagement/assets/final_assets/"+unitID+".png')";
         AwakeningsButton.id="awakenings-button";
         AwakeningsButton.style.gridRow="2";
         AwakeningsButton.style.margin="0px";
@@ -2410,7 +2382,7 @@ export function updateContainer(containerId, content){
   cardImage.onerror = function() {
     console.error('Error loading image:', cardImage.src);
   };
-  cardImage.src = 'dbManagement/assets/final_assets/' + assetSubURL + '.png';
+  cardImage.src = '../dbManagement/assets/final_assets/' + assetSubURL + '.png';
 }
 
   // Function to create a paragraph element with the given text
@@ -2655,26 +2627,25 @@ export function updatePassiveBuffs(){
 
 export function createSkillOrbContainer(){
     let skillOrbContainer=document.getElementById('all-skill-orb-container');
-    skillOrbContainer.style.display="grid";
-    skillOrbContainer.additionalNode=new equipNodeQuery("Additional","dbManagement/assets/misc/potential/Pot_skill_additional.png")
+    skillOrbContainer.additionalNode=new equipNodeQuery("Additional","../dbManagement/assets/misc/potential/Pot_skill_additional.png")
     skillOrbContainer.appendChild(skillOrbContainer.additionalNode.getElement());
 
-    skillOrbContainer.critNode=new equipNodeQuery("Crit","dbManagement/assets/misc/potential/Pot_skill_critical.png")
+    skillOrbContainer.critNode=new equipNodeQuery("Crit","../dbManagement/assets/misc/potential/Pot_skill_critical.png")
     skillOrbContainer.appendChild(skillOrbContainer.critNode.getElement());
 
-    skillOrbContainer.evasionNode=new equipNodeQuery("Evasion","dbManagement/assets/misc/potential/Pot_skill_dodge.png")
+    skillOrbContainer.evasionNode=new equipNodeQuery("Evasion","../dbManagement/assets/misc/potential/Pot_skill_dodge.png")
     skillOrbContainer.appendChild(skillOrbContainer.evasionNode.getElement());
 
-    skillOrbContainer.typeATKBoostNode=new equipNodeQuery("Attack","dbManagement/assets/misc/potential/Pot_skill_type_damage.png")
+    skillOrbContainer.typeATKBoostNode=new equipNodeQuery("Attack","../dbManagement/assets/misc/potential/Pot_skill_type_damage.png")
     skillOrbContainer.appendChild(skillOrbContainer.typeATKBoostNode.getElement());
 
-    skillOrbContainer.typeDEFBoostNode=new equipNodeQuery("Defense","dbManagement/assets/misc/potential/Pot_skill_type_defense.png")
+    skillOrbContainer.typeDEFBoostNode=new equipNodeQuery("Defense","../dbManagement/assets/misc/potential/Pot_skill_type_defense.png")
     skillOrbContainer.appendChild(skillOrbContainer.typeDEFBoostNode.getElement());
 
-    skillOrbContainer.superAttackBoostNode=new equipNodeQuery("SuperBoost","dbManagement/assets/misc/potential/Pot_skill_super.png")
+    skillOrbContainer.superAttackBoostNode=new equipNodeQuery("SuperBoost","../dbManagement/assets/misc/potential/Pot_skill_super.png")
     skillOrbContainer.appendChild(skillOrbContainer.superAttackBoostNode.getElement());
 
-    skillOrbContainer.recoveryBoostNode=new equipNodeQuery("Recovery","dbManagement/assets/misc/potential/Pot_skill_heal.png")
+    skillOrbContainer.recoveryBoostNode=new equipNodeQuery("Recovery","../dbManagement/assets/misc/potential/Pot_skill_heal.png")
     skillOrbContainer.appendChild(skillOrbContainer.recoveryBoostNode.getElement());
 
 
@@ -2721,7 +2692,6 @@ export function getBaseDomain() {
 export function loadPage(firstTime=false){
     const urlParams=new URLSearchParams(window.location.search);
     let subURL = urlParams.get('id') || "None";
-    let characterSelector = urlParams.get("Selection") || "False";
     let isSeza = urlParams.get("SEZA") || "False";
     let isEza;
     let jsonPromise;
@@ -2731,25 +2701,18 @@ export function loadPage(firstTime=false){
     else{
         isEza = "False";
     }
-    if(subURL == "None"){
-        characterSelector = "True";
+    if(isSeza == "True"){
+    jsonPromise=getJsonPromise('../dbManagement/jsonsSEZA/',subURL,'.json');
     }
-    if(characterSelector == "True"){
-        createCharacterSelection();
+    else if(isEza == "True"){
+    jsonPromise=getJsonPromise('../dbManagement/jsonsEZA/',subURL,'.json');
     }
     else{
-        if(isSeza == "True"){
-        jsonPromise=getJsonPromise('dbManagement/jsonsSEZA/',subURL,'.json');
-        }
-        else if(isEza == "True"){
-        jsonPromise=getJsonPromise('dbManagement/jsonsEZA/',subURL,'.json');
-        }
-        else{
-        jsonPromise=getJsonPromise('dbManagement/jsons/',subURL,'.json');
-        }
+    jsonPromise=getJsonPromise('../dbManagement/jsons/',subURL,'.json');
     }
-    let linksPromise=getJsonPromise("dbManagement/uniqueJsons/","links",".json");
-    let domainPromise=getJsonPromise("dbManagement/uniqueJsons/","domains",".json");
+    
+    let linksPromise=getJsonPromise("../dbManagement/uniqueJsons/","links",".json");
+    let domainPromise=getJsonPromise("../dbManagement/uniqueJsons/","domains",".json");
 
     jsonPromise.then(json => {
         currentJson=json;
@@ -2793,3 +2756,4 @@ export function loadPage(firstTime=false){
     }
 
     
+loadPage(true)
