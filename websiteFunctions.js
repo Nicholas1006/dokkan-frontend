@@ -192,8 +192,44 @@ class kiCircleClass{
             }
         }
     }
-
     updateValue(targetValue) {
+        const duration = 500; // duration of the animation in milliseconds
+        const frameRate= 60;
+        const frameDuration = 1000 / frameRate; // 60 frames per second
+        const totalFrames = Math.round(duration / frameDuration);
+    
+        let startValue = this.attackStat;
+        let currentValue = startValue;
+        let increment = (targetValue - startValue) / totalFrames;
+        let currentFrame = 0;
+    
+        const animate = () => {
+            currentFrame++;
+            const progress = currentFrame / totalFrames;
+            currentValue = Math.round(startValue + increment * progress * totalFrames);
+    
+            // Update the damage text
+            while (this.damageText.firstChild) {
+                this.damageText.removeChild(this.damageText.firstChild);
+            }
+    
+            for (let char of currentValue.toString()) {
+                const numDiv = document.createElement('div');
+                numDiv.className = "ki-damage-text";
+                numDiv.classList.add(`num-${char}`);
+                this.damageText.appendChild(numDiv);
+            }
+    
+            if (currentFrame < totalFrames) {
+                requestAnimationFrame(animate);
+            } else {
+                this.attackStat = targetValue; // Ensure the final value is set correctly
+            }
+        };
+    
+        requestAnimationFrame(animate);
+    }
+    updateValueOLD(targetValue) {
         const duration = 500; // duration of the animation in milliseconds
         const frameRate= 60;
         const frameDuration = 1000 / frameRate; // 60 frames per second
@@ -835,14 +871,18 @@ class causalityList{
 // Function to fetch JSON data based on sub-URL
 let currentJson = null;
 let linkData=null;
+let domainData=null;
 
 let baseStats={};
-let leaderStats={"HP": 400, "ATK": 400, "DEF": 400, "Ki": 6};
-let superStats={"ATK": 0, "DEF": 0, "Enemy ATK": 0, "Enemy DEF": 0, "Crit": 0, "Evasion": 0};
-let linkStats={"ATK":0,"DEF":0,"Enemy DEF":0,"Heal":0,"KI":0,"Damage Reduction":0,"Crit":0,"Evasion":0};
+
+let leaderBuffs={"HP": 400, "ATK": 400, "DEF": 400, "Ki": 6};
+let superBuffs={"ATK": 0, "DEF": 0, "Enemy ATK": 0, "Enemy DEF": 0, "Crit": 0, "Evasion": 0};
+let linkBuffs={"ATK":0,"DEF":0,"Enemy DEF":0,"Heal":0,"KI":0,"Damage Reduction":0,"Crit":0,"Evasion":0};
 let skillOrbBuffs={"Additional":0,"Crit":0,"Evasion":0,"Attack":0,"Defense":0,"SuperBoost":0,"Recovery":0}
 let domainBuffs={"ATK":0,"DEF":0,"Increased damage recieved":0}
 let startingPassiveBuffs={};
+
+let currentDomain=null;
 let kiSources={"leader":0,"Support":0,"Links":0,"Active":0,"Domain":0};
 let additionalAttacks=[];
 let kiCircleList=[];
@@ -1057,15 +1097,16 @@ export function refreshKiCircle(){
     
     let finalValue=1;
     finalValue=Math.floor(finalValue*baseStats["ATK"]);
-    finalValue=Math.floor(finalValue*(1+leaderStats["ATK"]/100));
+    finalValue=Math.floor(finalValue*(1+leaderBuffs["ATK"]/100));
     finalValue=Math.floor(finalValue*(SOTATK));//Start of turn passive stats
     finalValue=Math.floor(finalValue*(1));//Item boost
-    finalValue=Math.floor(finalValue*(1+linkStats["ATK"]/100));
+    finalValue=Math.floor(finalValue*(1+linkBuffs["ATK"]/100));
     finalValue=Math.floor(finalValue*(1));//Active boost
     finalValue=Math.ceil(finalValue*(currentJson["Ki Multiplier"][kiCircleList[0].kiAmount]/100));
     finalValue=Math.floor(finalValue*(MOTATK));//Middle of turn passive stats
-    superAttackMultiplier+=superStats["ATK"]/100;
+    superAttackMultiplier+=superBuffs["ATK"]/100;
     finalValue=Math.floor(finalValue*superAttackMultiplier);
+    finalValue=Math.floor(finalValue*(1+domainBuffs["ATK"]/100));
     kiCircleList[0].updateSuperAttack(superAttackID);
     if(kiCircleList[0].attackStat!=finalValue){
         kiCircleList[0].updateValue(finalValue);
@@ -1187,7 +1228,7 @@ export function createLeaderStats(){
             leaderAInputKi.value=0;
         }
         leaderTotalInputKi.value=parseInt(leaderAInputKi.value)+parseInt(leaderBInputKi.value);
-        leaderStats.Ki=leaderTotalInputKi.value;
+        leaderBuffs.Ki=leaderTotalInputKi.value;
         refreshKiCircle()
     });
 
@@ -1199,7 +1240,7 @@ export function createLeaderStats(){
             leaderBInputKi.value=0;
         }
         leaderTotalInputKi.value=parseInt(leaderAInputKi.value)+parseInt(leaderBInputKi.value);
-        leaderStats.Ki=leaderTotalInputKi.value;
+        leaderBuffs.Ki=leaderTotalInputKi.value;
         refreshKiCircle()
     });
     
@@ -1210,7 +1251,7 @@ export function createLeaderStats(){
         else if (parseInt(leaderTotalInputKi.value)<0){
             leaderTotalInputKi.value=0;
         }
-        leaderStats.Ki=leaderTotalInputKi.value;
+        leaderBuffs.Ki=leaderTotalInputKi.value;
         refreshKiCircle()
         leaderAInputKi.value=Math.floor(parseInt(leaderTotalInputKi.value)/2);
         if(parseInt(leaderTotalInputKi.value)%2==0){
@@ -1269,9 +1310,9 @@ export function createLeaderStats(){
             leaderAInputStats.value=0;
         }
         leaderTotalInputStats.value=parseInt(leaderAInputStats.value)+parseInt(leaderBInputStats.value);
-        leaderStats.HP=leaderTotalInputStats.value;
-        leaderStats.ATK=leaderTotalInputStats.value;
-        leaderStats.DEF=leaderTotalInputStats.value;
+        leaderBuffs.HP=leaderTotalInputStats.value;
+        leaderBuffs.ATK=leaderTotalInputStats.value;
+        leaderBuffs.DEF=leaderTotalInputStats.value;
         refreshKiCircle()
     });
 
@@ -1283,9 +1324,9 @@ export function createLeaderStats(){
             leaderBInputStats.value=0;
         }
         leaderTotalInputStats.value=parseInt(leaderAInputStats.value)+parseInt(leaderBInputStats.value);
-        leaderStats.HP=leaderTotalInputStats.value;
-        leaderStats.ATK=leaderTotalInputStats.value;
-        leaderStats.DEF=leaderTotalInputStats.value;
+        leaderBuffs.HP=leaderTotalInputStats.value;
+        leaderBuffs.ATK=leaderTotalInputStats.value;
+        leaderBuffs.DEF=leaderTotalInputStats.value;
         refreshKiCircle()
     });
     
@@ -1296,9 +1337,9 @@ export function createLeaderStats(){
         else if (parseInt(leaderTotalInputStats.value)<0){
             leaderTotalInputStats.value=0;
         }
-        leaderStats.HP=leaderTotalInputStats.value;
-        leaderStats.ATK=leaderTotalInputStats.value;
-        leaderStats.DEF=leaderTotalInputStats.value;
+        leaderBuffs.HP=leaderTotalInputStats.value;
+        leaderBuffs.ATK=leaderTotalInputStats.value;
+        leaderBuffs.DEF=leaderTotalInputStats.value;
         refreshKiCircle()
         leaderAInputStats.value=Math.floor(parseInt(leaderTotalInputStats.value)/2);
         if(parseInt(leaderTotalInputStats.value)%2==0){
@@ -1972,6 +2013,85 @@ export function buildingSliderNameGenerator(passiveLine){
 }
 
 
+export function createDomainContainer(json){
+    let domainContainer=document.getElementById('domain-container');
+    const domainDropDown=document.createElement('div');
+    domainDropDown.className="dropdown";
+    domainDropDown.label=document.createElement('label');
+    domainDropDown.label.textContent="Domain: ";
+    domainDropDown.select=document.createElement('select');
+    domainDropDown.appendChild(domainDropDown.label);
+    domainDropDown.appendChild(domainDropDown.select);
+    domainDropDown.select.addEventListener("change", function(){
+        currentDomain=domainDropDown.select.value
+        refreshDomainBuffs()
+    })
+    domainContainer.domain=domainDropDown;
+    domainContainer.appendChild(domainDropDown);
+
+    const nullOption = document.createElement('option');
+    nullOption.value = null;
+    nullOption.textContent = "No domain";
+    domainDropDown.select.appendChild(nullOption);
+
+    for (const domainKey in domainData){
+        const domain = domainData[domainKey];
+        const option = document.createElement('option');
+        option.value = domain["ID"];
+        option.textContent = domain["Name"];
+        domainDropDown.select.appendChild(option);
+    }
+}
+
+export function refreshDomainBuffs(){
+    if(currentDomain=="null"){
+        domainBuffs={"ATK":0,"DEF":0,"Increased damage recieved":0}
+    }
+    else{
+        domainBuffs={"ATK":0,"DEF":0,"Increased damage recieved":0}
+        let domain=domainData[currentDomain]
+        for (const efficiacyKey in domain["Efficiacies"]){
+            const efficiacy = domain["Efficiacies"][efficiacyKey];
+            let efficiacyActive=false;
+            if(efficiacy["superCondition"]!=undefined){
+                let efficiacyLogic=efficiacy["superCondition"]["Logic"];
+                efficiacyLogic=" "+efficiacyLogic+" ";
+                efficiacyLogic=efficiacyLogic.replaceAll("("," ( ").replaceAll(")"," ) ");
+                for (const causalityKey of Object.keys(efficiacy["superCondition"]["Causalities"])){
+                    const causality = efficiacy["superCondition"]["Causalities"][causalityKey];
+                    let categoryMatch= false;
+                    if(causality["Category"]=="any"){
+                        categoryMatch=true;
+                    }
+                    else{
+                        categoryMatch=currentJson.Categories.includes(causality["Category"]);
+                    }
+                    let classMatch=false;
+                    if(causality["Class"]=="any"){
+                        classMatch=true;
+                    }
+                    else{
+                        classMatch=currentJson.Class.toUpperCase()==(causality["Class"]).toUpperCase();
+                    }
+                    if(categoryMatch && classMatch){
+                        efficiacyLogic=efficiacyLogic.replaceAll(" "+causalityKey+" "      ,      " true ");
+                    }
+                    else{
+                        efficiacyLogic=efficiacyLogic.replaceAll(" "+causalityKey+" "      ,      " false ");
+                    }
+                }
+                efficiacyActive=eval(efficiacyLogic);
+            }
+            if(efficiacy["Effect"]["Type"]=="ATK & DEF" && efficiacyActive && efficiacy["Timing"] == "On domain Being out"){
+                domainBuffs["ATK"]+=efficiacy["Effect"]["ATK"];
+                domainBuffs["DEF"]+=efficiacy["Effect"]["DEF"];
+            }
+        }
+        
+    }
+    refreshKiCircle()
+}
+
 export function createPassiveContainer(json){
 
     let passiveSupportContainer=document.getElementById('passive-support-container');
@@ -2016,7 +2136,6 @@ export function createPassiveContainer(json){
     for (const query of passiveQueryList) {
         passiveQueryContainer.appendChild(query.getElement());
     }
-    updatePassiveBuffs(json);
 }
 
 
@@ -2176,7 +2295,7 @@ export function updateSuperAttackStacks(){
 
     let superAttackBuffsContainer = document.getElementById('super-attack-buffs-container');
     let superAttackBuffs = document.createElement('p');
-    superStats={"ATK": totalATKBuff, "DEF": totalDEFBuff, "Enemy ATK": totalEnemyATKBuff, "Enemy DEF": totalEnemyDEFBuff, "Crit": totalCritBuff, "Evasion": totalEvasionBuff};
+    superBuffs={"ATK": totalATKBuff, "DEF": totalDEFBuff, "Enemy ATK": totalEnemyATKBuff, "Enemy DEF": totalEnemyDEFBuff, "Crit": totalCritBuff, "Evasion": totalEvasionBuff};
     refreshKiCircle();
     superAttackBuffs.id = "super-attack-buffs";
     superAttackBuffs.innerHTML = "Super Attack Buffs: ";
@@ -2228,26 +2347,26 @@ export function createLinkBuffs(json){
     });
 
     // Create a paragraph element to display the total link buffs
-    linkStats={"ATK":totalATKBuff,"DEF":totalDEFBuff,"Enemy DEF":totalEnemyDEFBuff,"Heal":totalHealBuff,"KI":totalKIBuff,"Damage Reduction":totalDamageReductionBuff,"Crit":totalCritBuff,"Evasion":totalEvasionBuff};
-    let linkBuffs = document.createElement('p');
-    linkBuffs.style.width=""
-    linkBuffs.id = "link-buffs";
-    linkBuffs.innerHTML = "Link Buffs: ";
-    if (totalATKBuff) linkBuffs.innerHTML += "<br>ATK: " + totalATKBuff + "% ";
-    if (totalDEFBuff) linkBuffs.innerHTML += "<br>DEF: " + totalDEFBuff + "% ";
-    if (totalEnemyDEFBuff) linkBuffs.innerHTML += "<br>Enemy DEF: " + totalEnemyDEFBuff + "% ";
-    if (totalHealBuff) linkBuffs.innerHTML += "<br>Heal: " + totalHealBuff + "% ";
-    if (totalKIBuff) linkBuffs.innerHTML += "<br>KI: " + totalKIBuff + " ";
-    if (totalDamageReductionBuff) linkBuffs.innerHTML += "<br>Damage Reduction: " + totalDamageReductionBuff + "% ";
-    if (totalCritBuff) linkBuffs.innerHTML += "<br>Crit: " + totalCritBuff + "% ";
-    if (totalEvasionBuff) linkBuffs.innerHTML += "<br>Evasion: " + totalEvasionBuff + "% ";
+    linkBuffs={"ATK":totalATKBuff,"DEF":totalDEFBuff,"Enemy DEF":totalEnemyDEFBuff,"Heal":totalHealBuff,"KI":totalKIBuff,"Damage Reduction":totalDamageReductionBuff,"Crit":totalCritBuff,"Evasion":totalEvasionBuff};
+    let linkBuffElement = document.createElement('p');
+    linkBuffElement.style.width=""
+    linkBuffElement.id = "link-buffs";
+    linkBuffElement.innerHTML = "Link Buffs: ";
+    if (totalATKBuff) linkBuffElement.innerHTML += "<br>ATK: " + totalATKBuff + "% ";
+    if (totalDEFBuff) linkBuffElement.innerHTML += "<br>DEF: " + totalDEFBuff + "% ";
+    if (totalEnemyDEFBuff) linkBuffElement.innerHTML += "<br>Enemy DEF: " + totalEnemyDEFBuff + "% ";
+    if (totalHealBuff) linkBuffElement.innerHTML += "<br>Heal: " + totalHealBuff + "% ";
+    if (totalKIBuff) linkBuffElement.innerHTML += "<br>KI: " + totalKIBuff + " ";
+    if (totalDamageReductionBuff) linkBuffElement.innerHTML += "<br>Damage Reduction: " + totalDamageReductionBuff + "% ";
+    if (totalCritBuff) linkBuffElement.innerHTML += "<br>Crit: " + totalCritBuff + "% ";
+    if (totalEvasionBuff) linkBuffElement.innerHTML += "<br>Evasion: " + totalEvasionBuff + "% ";
     //remove the old paragraph from the links container
     linksContainer.removeChild(linksContainer.lastChild);
 
 
 
     // Append the paragraph element to the links container
-    linksContainer.appendChild(linkBuffs);
+    linksContainer.appendChild(linkBuffElement);
   }
 
 
@@ -2446,39 +2565,44 @@ export function loadPage(firstTime=false){
         }
     }
     let linksPromise=getJsonPromise("dbManagement/uniqueJsons/","links",".json");
-
+    let domainPromise=getJsonPromise("dbManagement/uniqueJsons/","domains",".json");
 
     jsonPromise.then(json => {
         currentJson=json;
         linksPromise.then(links => {
             linkData=links;
-            initialiseAspects(json);
-            if(firstTime){
-                if(json["Rarity"] == "lr" || json["Rarity"] == "ur"){
-                    createStarButton(json);
-                    createPathButtons(json);
-                    createSkillOrbContainer();
+            domainPromise.then(domains => {
+                domainData=domains;
+                initialiseAspects(json);
+                if(firstTime){
+                    if(json["Rarity"] == "lr" || json["Rarity"] == "ur"){
+                        createStarButton(json);
+                        createPathButtons(json);
+                        createSkillOrbContainer();
+                    }
+                    createLeaderStats();
+                    createLinkStats(json);
+                    createLinkBuffs(json);
+                    createKiCirclesWithClass(json,firstTime);
+                    createDokkanAwakenContainer(json);
+                    createTransformationContainer(json);
+                    createDomainContainer(json);
                 }
-                createLeaderStats();
-                createLinkStats(json);
-                createLinkBuffs(json);
-                createKiCirclesWithClass(json,firstTime);
-                createDokkanAwakenContainer(json);
-                createTransformationContainer(json);
-            }
-            else{
-                //document.getElementById('ki-slider').dispatchEvent(new Event('input'));	
-            }
-            createPassiveContainer(json);
-            createEzaContainer(json,isEza,isSeza);
-            createLevelSlider(json);
-            createSuperAttackContainer(json);
-            AdjustBaseStats();
-            if(json["Rarity"] == "lr" || json["Rarity"] == "ur"){
-                const buttonContainer = document.getElementById('hipo-button-container');
-                buttonContainer.style.display = "grid";
-            }
-            refreshKiCircle();
+                else{
+                    //document.getElementById('ki-slider').dispatchEvent(new Event('input'));	
+                }
+                createPassiveContainer(json);
+                createEzaContainer(json,isEza,isSeza);
+                createLevelSlider(json);
+                createSuperAttackContainer(json);
+                AdjustBaseStats();
+                if(json["Rarity"] == "lr" || json["Rarity"] == "ur"){
+                    const buttonContainer = document.getElementById('hipo-button-container');
+                    buttonContainer.style.display = "grid";
+                }
+                updatePassiveBuffs();
+                refreshKiCircle();
+            })
         })
     })
     }
