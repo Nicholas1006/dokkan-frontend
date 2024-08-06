@@ -466,7 +466,7 @@ class passiveSlider {
         
         this.elementLabel.innerHTML = this.label+": "+this.value+"+";
         if(this.label=="How much ki is there"){
-            this.selfContainer.style.display="none";
+            //this.selfContainer.style.display="none";
         }
     }
 
@@ -836,13 +836,14 @@ class causalityList{
 let currentJson = null;
 let linkData=null;
 
-let leaderStats={"HP": "400", "ATK": "400", "DEF": "400"};
 let baseStats={};
+let leaderStats={"HP": 400, "ATK": 400, "DEF": 400, "Ki": 6};
 let superStats={"ATK": 0, "DEF": 0, "Enemy ATK": 0, "Enemy DEF": 0, "Crit": 0, "Evasion": 0};
-let linkStats={"ATK":"0","DEF":"0","Enemy DEF":"0","Heal":"0","KI":"0","Damage Reduction":"0","Crit":"0","Evasion":"0"};
+let linkStats={"ATK":0,"DEF":0,"Enemy DEF":0,"Heal":0,"KI":0,"Damage Reduction":0,"Crit":0,"Evasion":0};
+let skillOrbBuffs={"Additional":0,"Crit":0,"Evasion":0,"Attack":0,"Defense":0,"SuperBoost":0,"Recovery":0}
+let domainBuffs={"ATK":0,"DEF":0,"Increased damage recieved":0}
 let startingPassiveBuffs={};
-let kiSources={"leader":0,"Support":0,"Links":0,};
-let skillOrbBuffs={"Additional":"0","Crit":"0","Evasion":"0","Attack":"0","Defense":"0","SuperBoost":"0","Recovery":"0"}
+let kiSources={"leader":0,"Support":0,"Links":0,"Active":0,"Domain":0};
 let additionalAttacks=[];
 let kiCircleList=[];
 let passiveQueryList=[];
