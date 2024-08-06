@@ -290,6 +290,7 @@ class equipNodeQuery{
         image.id="equip-node-image";
         image.style.backgroundImage="url('"+imageLocation+"')";
         this.selfContainer.appendChild(image);
+        this.selfContainer.classConstruction=this;
 
         this.numberInput=document.createElement("input");
         this.numberInput.id="equip-node-input";
@@ -306,10 +307,14 @@ class equipNodeQuery{
             }
             skillOrbBuffs[variableToChange]=this.value;
             this.parentNode.value=parseInt(this.value);
+            this.parentNode.parentNode.classList.add("Edited");
             refreshKiCircle();
         })
         this.selfContainer.value=0;
         this.selfContainer.appendChild(this.numberInput);
+    }
+    updateValue(Value){
+        this.numberInput.value=parseInt(Value);
     }
 
     getElement(){
@@ -1494,10 +1499,27 @@ export function AdjustBaseStats(){
     let ATK = parseInt(currentJson["Stats at levels"][levelSlider.value]["ATK"]);
     let DEF = parseInt(currentJson["Stats at levels"][levelSlider.value]["DEF"]);
     let HP = parseInt((currentJson["Stats at levels"][levelSlider.value]["HP"]));
+    let Additional=0;
+    let Crit=0;
+    let Evasion=0;
+    let type_atk=0;
+    let type_def=0;
+    let super_attack_boost=0;
+    let recovery_boost=0;
+    const skill_orb_container=document.getElementById('all-skill-orb-container');
     if(starButton.classList.contains('active') || starButton.classList.contains('rainbow')){
-      ATK += parseInt(currentJson["Hidden Potential"]["0"]["ATK"])
-      DEF += parseInt(currentJson["Hidden Potential"]["0"]["DEF"])
-      HP += parseInt(currentJson["Hidden Potential"]["0"]["HP"])
+        ATK += parseInt(currentJson["Hidden Potential"]["0"]["ATK"])
+        DEF += parseInt(currentJson["Hidden Potential"]["0"]["DEF"])
+        HP += parseInt(currentJson["Hidden Potential"]["0"]["HP"])
+
+        Additional+=parseInt(currentJson["Hidden Potential"]["0"]["Additional"])
+        Crit+=parseInt(currentJson["Hidden Potential"]["0"]["Crit"])
+        Evasion+=parseInt(currentJson["Hidden Potential"]["0"]["Evasion"])
+        type_atk+=parseInt(currentJson["Hidden Potential"]["0"]["Type ATK"])
+        type_def+=parseInt(currentJson["Hidden Potential"]["0"]["Type DEF"])
+        super_attack_boost+=parseInt(currentJson["Hidden Potential"]["0"]["Super Attack boost"])
+        recovery_boost+=parseInt(currentJson["Hidden Potential"]["0"]["Recovery boost"])
+
     }
     
     toggleButtons.forEach((button, index) => {
@@ -1505,6 +1527,13 @@ export function AdjustBaseStats(){
         ATK += parseInt(currentJson["Hidden Potential"][index+1]["ATK"])
         DEF += parseInt(currentJson["Hidden Potential"][index+1]["DEF"])
         HP += parseInt(currentJson["Hidden Potential"][index+1]["HP"])
+        Additional+=parseInt(currentJson["Hidden Potential"][index+1]["Additional"])
+        Crit+=parseInt(currentJson["Hidden Potential"][index+1]["Crit"])
+        Evasion+=parseInt(currentJson["Hidden Potential"][index+1]["Evasion"])
+        type_atk+=parseInt(currentJson["Hidden Potential"][index+1]["Type ATK"])
+        type_def+=parseInt(currentJson["Hidden Potential"][index+1]["Type DEF"])
+        super_attack_boost+=parseInt(currentJson["Hidden Potential"][index+1]["Super Attack boost"])
+        recovery_boost+=parseInt(currentJson["Hidden Potential"][index+1]["Recovery boost"])
       }
     })
     HPstat.id="base-stat";
@@ -1514,6 +1543,16 @@ export function AdjustBaseStats(){
     HPstat.textContent  = "HP:  " + HP +"+";
     ATKstat.textContent = "ATK: " + ATK+"+";
     DEFstat.textContent = "DEF: " + DEF+"+";
+
+    if(!(skill_orb_container.classList.contains('Edited'))){
+        skill_orb_container.additionalNode.updateValue(Additional)
+        skill_orb_container.critNode.updateValue(Crit)
+        skill_orb_container.evasionNode.updateValue(Evasion)
+        skill_orb_container.typeATKBoostNode.updateValue(type_atk)
+        skill_orb_container.typeDEFBoostNode.updateValue(type_def)
+        skill_orb_container.superAttackBoostNode.updateValue(super_attack_boost)
+        skill_orb_container.recoveryBoostNode.updateValue(recovery_boost)
+    }
 
     baseStats={"HP":HP,"ATK":ATK,"DEF":DEF};
     refreshKiCircle();
@@ -2576,9 +2615,9 @@ export function loadPage(firstTime=false){
                 initialiseAspects(json);
                 if(firstTime){
                     if(json["Rarity"] == "lr" || json["Rarity"] == "ur"){
+                        createSkillOrbContainer();
                         createStarButton(json);
                         createPathButtons(json);
-                        createSkillOrbContainer();
                     }
                     createLeaderStats();
                     createLinkStats(json);
