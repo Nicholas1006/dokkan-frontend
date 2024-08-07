@@ -32,7 +32,7 @@ export function createCharacterSelection(){
       if(i<allUnitsJson.length){
         const unitButton = document.createElement('a');
         unitButton.id = "unit-button";
-        unitButton.href = "/cards/index.html?id=" + allUnitsJson[i];
+        unitButton.href = baseDomain+"/cards/index.html?id=" + allUnitsJson[i];
         unitButton.style.backgroundImage = "url('dbManagement/assets/final_assets/"+allUnitsJson[i]+".png')";
         unitButton.className="unit-selection-button";
         unitsContainer.appendChild(unitButton);
@@ -40,5 +40,10 @@ export function createCharacterSelection(){
     }
   }
   );
+}
+const currentUrl=window.location.href;
+const baseDomain=window.location.origin;
+if(currentUrl.includes("dokkan-frontend")){
+  baseDomain=baseDomain+"/dokkan-frontend";
 }
 createCharacterSelection();

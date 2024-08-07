@@ -328,6 +328,7 @@ class statsContainerClass{
     constructor(startHP, startATK, startDEF){
         this.selfContainer=document.createElement("div");
         this.selfContainer.style.display="grid";
+        this.selfContainer.style.gridTemplateColumns="1fr 1fr 1fr";
         this.selfContainer.classConstruction=this;
         
         this.startHP=startHP;
@@ -344,20 +345,20 @@ class statsContainerClass{
         
         
         this.initialHPDisplay=document.createElement("div");
+        this.initialHPDisplay.id="initial-HP-display";
         this.initialHPDisplay.style.gridRow="1";
-        this.initialHPDisplay.style.gridColumn="1";
         this.initialHPDisplay.innerHTML="HP: "+startHP+"+";
         this.selfContainer.appendChild(this.initialHPDisplay);
 
         this.initialATKDisplay=document.createElement("div");
+        this.initialATKDisplay.id="initial-ATK-display";
         this.initialATKDisplay.style.gridRow="2";
-        this.initialATKDisplay.style.gridColumn="1";
         this.initialATKDisplay.innerHTML="ATK: "+startATK+"+";
         this.selfContainer.appendChild(this.initialATKDisplay);
 
         this.initialDEFDisplay=document.createElement("div");
+        this.initialDEFDisplay.id="initial-DEF-display";
         this.initialDEFDisplay.style.gridRow="3";
-        this.initialDEFDisplay.style.gridColumn="1";
         this.initialDEFDisplay.innerHTML="DEF: "+startDEF+"+";        
         this.selfContainer.appendChild(this.initialDEFDisplay);
 
@@ -410,19 +411,25 @@ class statsContainerClass{
         this.selfContainer.appendChild(this.extraDEFQuery);
 
         this.finalHPDisplay=document.createElement("div");
-        this.finalHPDisplay.style.gridRow="1";
-        this.finalHPDisplay.style.gridColumn="3";
+        this.finalHPDisplay.id="final-HP-display";
+        this.finalHPDisplay.style.backgroundImage="url('../dbManagement/assets/misc/potential/cha_detail_st_base_hp_textadded.png')";
+        this.finalHPDisplay.style.gridRow="4";
+        this.finalHPDisplay.style.gridColumn="1";
         this.finalHPDisplay.innerHTML=this.finalHP;
         this.selfContainer.appendChild(this.finalHPDisplay);
 
         this.finalATKDisplay=document.createElement("div");
-        this.finalATKDisplay.style.gridRow="2";
-        this.finalATKDisplay.style.gridColumn="3";
+        this.finalATKDisplay.id="final-ATK-display";
+        this.finalATKDisplay.style.backgroundImage="url('../dbManagement/assets/misc/potential/cha_detail_st_base_atk_textadded.png')";
+        this.finalATKDisplay.style.gridRow="4";
+        this.finalATKDisplay.style.gridColumn="2";
         this.finalATKDisplay.innerHTML=this.finalATK;
         this.selfContainer.appendChild(this.finalATKDisplay);
 
         this.finalDEFDisplay=document.createElement("div");
-        this.finalDEFDisplay.style.gridRow="3";
+        this.finalDEFDisplay.id="final-DEF-display";
+        this.finalDEFDisplay.style.backgroundImage="url('../dbManagement/assets/misc/potential/cha_detail_st_base_def_textadded.png')";
+        this.finalDEFDisplay.style.gridRow="4";
         this.finalDEFDisplay.style.gridColumn="3";
         this.finalDEFDisplay.innerHTML=this.finalDEF;
         this.selfContainer.appendChild(this.finalDEFDisplay);
@@ -433,9 +440,9 @@ class statsContainerClass{
         this.finalATK=this.startATK+this.queryATK;
         this.finalDEF=this.startDEF+this.queryDEF;
 
-        this.finalHPDisplay.innerHTML="="+this.finalHP;
-        this.finalATKDisplay.innerHTML="="+this.finalATK;
-        this.finalDEFDisplay.innerHTML="="+this.finalDEF;
+        this.finalHPDisplay.innerHTML=this.finalHP;
+        this.finalATKDisplay.innerHTML=this.finalATK;
+        this.finalDEFDisplay.innerHTML=this.finalDEF;
 
         baseStats["HP"]=this.finalHP;
         baseStats["ATK"]=this.finalATK;
@@ -477,6 +484,7 @@ class superAttackQueryHolder{
         this.superAttack=superAttack;
         this.selfContainer=document.createElement("div");
         this.selfContainer.style.display="grid";
+        this.selfContainer.id="superAttackQueryHolder";
         for(const key of Object.keys(superAttack["superBuffs"])){
             if(superAttack["superBuffs"][key]["Duration"]!="1" && superAttack["superBuffs"][key]["Duration"]!="2"){
                 let buffs=superAttack["superBuffs"][key];
@@ -776,7 +784,7 @@ class causalityList{
                 lineActive=eval(conditionLogic);
             }
             if("Building Stat" in passiveLine && lineActive){
-                buffMultiplier*=this.CausalityLogic[buildingSliderNameGenerator(passiveLine)];
+                buffMultiplier*=this.CausalityLogic[passiveLine["Building Stat"]["Slider"]];
             }
             if(lineActive){
                 this.activeLines[passiveLineKey]=buffMultiplier;
@@ -844,7 +852,7 @@ class causalityList{
                 for(const buffType in passiveLine){
                     if(["ATK","DEF","Ki","DR","Crit Chance","Dodge chance"].includes(buffType)){
                         let buffAmount;
-                        if(buildingSliderNameGenerator(passiveLine).includes("Ki Spheres have been obtained")){
+                        if(passiveLine["Building Stat"]["Slider"].includes("Ki Spheres have been obtained")){
                             buffAmount=(passiveLine[buffType]*buffMultiplier)
                         }
                         else{
@@ -922,7 +930,7 @@ class causalityList{
             let activatedCondition=true;
             let buffMultiplier=1
             if("Building Stat" in passiveLine){
-                const sliderName=buildingSliderNameGenerator(passiveLine);
+                const sliderName=passiveLine["Building Stat"]["Slider"];;
                 buffMultiplier=this.CausalityLogic[sliderName];
             }
             if("Condition" in passiveLine){
@@ -2042,7 +2050,7 @@ export function updateQueryList(passiveLine){
 
     if("Building Stat" in passiveLine){
         let queryUpdated=false;
-        let sliderName=buildingSliderNameGenerator(passiveLine);
+        let sliderName=passiveLine["Building Stat"]["Slider"];
         let slowestStatAmount=Number.MAX_SAFE_INTEGER;
         for (const param of Object.keys(passiveLine)){
             if(param=="ATK" || param=="DEF" || param=="Ki" || param=="DR" || param=="Crit Chance"){
@@ -2077,95 +2085,6 @@ export function updateQueryList(passiveLine){
     
 }
 
-
-export function buildingSliderNameGenerator(passiveLine){
-    let sliderName="";
-    if(passiveLine["Building Stat"]["Cause"]["Cause"]=="Look Elsewhere"){
-        if(passiveLine["Timing"]=="Start of turn"){
-            sliderName+="How many turns has this unit been on";
-        }
-        else if(passiveLine["Timing"]=="Attacking the enemy"){
-            sliderName+="How many times has this unit attacked the enemy";
-        }
-        else if(passiveLine["Timing"]=="On Super"){
-            sliderName+="How many times has this unit performed a super";
-        }
-        else if(passiveLine["Timing"]=="Being hit"){
-            sliderName+="How many times has this unit been hit";
-        }
-        else if(passiveLine["Timing"]=="Hit recieved"){
-            sliderName+="How many times has this unit recieved a hit";
-        }
-        else if(passiveLine["Timing"]=="End of turn"){
-            sliderName+="How many times has this unit ended a turn";
-        }
-        else if(passiveLine["Timing"]=="After all ki collected"){
-            sliderName+="How many times has this unit collected ki";
-        }
-        else if(passiveLine["Timing"]=="Activating standby"){
-            sliderName+="How many times has this unit activated their standby";
-        }
-        else if(passiveLine["Timing"]=="When final blow delivered"){
-            sliderName+="How many times has this unit delivered the final blow";
-        }
-        else if(passiveLine["Timing"]=="When ki spheres collected"){
-            sliderName+="How many times has this unit collected ki";
-        }
-
-        if(passiveLine["Condition"]!=undefined){
-            let causalityKeys=Object.keys(passiveLine["Condition"]["Causalities"])
-            let causalityLogic=passiveLine["Condition"]["Logic"]
-            for (const causalityKey of causalityKeys){
-                const causality = passiveLine["Condition"]["Causalities"][causalityKey];
-                if (!(isEmptyDictionary(causality["Button"]))){
-                    causalityLogic=causalityLogic.replaceAll(causalityKey,causality["Button"]["Name"]);
-                }
-                else if (!(isEmptyDictionary(causality["Slider"]))){
-                    causalityLogic=causalityLogic.replaceAll(causalityKey,causality["Slider"]["Name"]);
-                }
-                else{
-                    console.log("AAAA");
-                }
-            }
-            sliderName+=" while ("+causalityLogic+") is active";
-        }
-
-        if("Building Stat" in passiveLine){
-            if(passiveLine["Building Stat"]["Cause"]["Cause"]=="Look Elsewhere"){
-                let causalities=[];
-                if("Condition" in passiveLine){
-                    for (const key of Object.keys(passiveLine["Condition"]["Causalities"])){
-                        causalities.push(passiveLine["Condition"]["Causalities"][key]["Button"]["Name"]);
-                    }
-                }
-                if(causalities[0]=="Has attack been recieved?" && causalities.length==1){
-                    sliderName="How many attacks has this character recieved?";
-                }
-                else if(passiveLine["Timing"]=="Start of turn"){
-                    sliderName="How many turns has this character been on";
-                }
-                else if(passiveLine["Timing"]=="Attacking the enemy"){
-                    sliderName="How many times has this character attacked the enemy";
-                }
-            }
-            else{
-                console.log("MORE PROGRESS FOR BUILDINGSLIDERNAMEGENERATOR FUNCTION");
-            }
-        }
-
-        if(passiveLine["Length"]=="1"){
-            sliderName+=" within the last turn";
-        }
-        else if(passiveLine["Length"]!="99"){
-            sliderName+=" within the last "+passiveLine["Length"]+" turns";
-        }
-    }
-    else{
-        sliderName=passiveLine["Building Stat"]["Slider"];
-    }
-
-    return(sliderName);
-}
 
 
 export function createDomainContainer(json){
@@ -2328,7 +2247,9 @@ export function createSuperAttackContainer(json){
         else{
             superAttackObject = new superAttackQueryHolder(superAttack,1,json["ID"]);
         }
-        superQuestionsContainer.appendChild(superAttackObject.getElement());
+        if(superAttackObject.getElement().firstChild){
+            superQuestionsContainer.appendChild(superAttackObject.getElement());
+        }
     }
     for(const key of json["Transforms from"]){
         let transformPromise;
@@ -2336,13 +2257,13 @@ export function createSuperAttackContainer(json){
         let isSeza = urlParams.get("SEZA") || "False";
         let isEza = urlParams.get("EZA") || "False";
         if(isSeza=="True"){
-            transformPromise=getJsonPromise('dbManagement/jsonsSEZA/',key,'.json');
+            transformPromise=getJsonPromise('../dbManagement/jsonsSEZA/',key,'.json');
         }
         else if(isEza=="True"){
-            transformPromise=getJsonPromise('dbManagement/jsonsEZA/',key,'.json');
+            transformPromise=getJsonPromise('../dbManagement/jsonsEZA/',key,'.json');
         }
         else{
-            transformPromise=getJsonPromise('dbManagement/jsons/',key,'.json');
+            transformPromise=getJsonPromise('../dbManagement/jsons/',key,'.json');
         }
         transformPromise.then((json)=>{
             let superAttackss=json["Super Attack"];
@@ -2355,7 +2276,9 @@ export function createSuperAttackContainer(json){
                 else{
                     superAttackObject = new superAttackQueryHolder(superAttack,1,json["ID"]);
                 }
+                if(superAttackObject.getElement().firstChild){
                 superQuestionsContainer.appendChild(superAttackObject.getElement());
+            }
             }
         });
     }

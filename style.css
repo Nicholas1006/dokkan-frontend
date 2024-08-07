@@ -1,7 +1,7 @@
 #base-stats {
   grid-column: 1;
   display: grid;
-  grid-template-rows: 250px 100px 140px auto;
+  grid-template-rows: 250px 150px 140px auto;
   grid-template-columns: 246px auto;
   width: 500px;
   height: 100%;
@@ -14,9 +14,32 @@
   align-items: center;
 }
 
+#initial-HP-display, #initial-ATK-display, #initial-DEF-display{
+  grid-column:1;
+  font-size: 14px;
+  justify-self: right;
+}
+
 #extra-HP-input, #extra-ATK-input, #extra-DEF-input{
+  grid-column:2;
   width: 50px;
-  height: 20px;
+  height: 15px;
+  justify-self: center;
+  align-self: center;
+}
+
+#final-HP-display, #final-ATK-display, #final-DEF-display{
+  width: 150px;
+  height: 60px;
+  font-size: 35px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-style:italic;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .toggle-btn1, .toggle-btn2, .toggle-btn3, .toggle-btn4{
@@ -103,10 +126,14 @@
 
 #unit-filter{
   display:grid;
-  z-index: 2;
+  z-index: 0;
   position: absolute;
   width: 50vh;
   height: 100vh;
+}
+
+#unit-filter-button{
+  display:none;
 }
 
 #eza-container{
@@ -115,7 +142,7 @@
   height: auto;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
-  grid-row: 2;
+  grid-row: 4;
   grid-column: 2;
 }
 
@@ -230,8 +257,11 @@
 #level-container {
   display:none;
   align-items: center;
-  justify-content: center;  flex-direction: column;
+  justify-content: center;  
+  flex-direction: column;
   width: 100%;
+  grid-column:1/span 2;
+  grid-row: 2;
 }
 
 #all-skill-orb-container{
@@ -465,10 +495,11 @@
 #passive-support-container{
   display: grid;
   grid-column: 1;
+
 }
 
 #passive-query-container{
-  width: 400px;
+  width: 100%;
 }
 
 #passive-slider{
@@ -481,13 +512,19 @@
 
 #super-attack-questions-container{
   display: grid;
+  align-items: start;
   
 }
 
+#superAttackQueryHolder{
+  height: 10px;
+  align-self: flex-start;
+}
 #super-container{
   display: grid;
   grid-column: 4;
   grid-row: 1;
+  padding-top: 100px;
 }
 
 #domain-container{
