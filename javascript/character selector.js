@@ -42,7 +42,7 @@ export function createCharacterSelection(){
   );
 }
 const currentUrl=window.location.href;
-const baseDomain=window.location.origin;
+let baseDomain=window.location.origin;
 if(currentUrl.includes("dokkan-frontend")){
   baseDomain=baseDomain+"/dokkan-frontend";
 }
