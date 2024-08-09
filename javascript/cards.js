@@ -202,7 +202,9 @@ class kiCircleClass{
         this.CausalityLogic=queriesToLogic(passiveQueryList);
         this.SOTATK=1;
         this.MOTATK=1;
-        this.ONSUPER=1;
+        this.SOTATKONSUPER=1;
+        this.MOTATKONSUPER=1;
+        this.EXTRAKIONSUPER=0;
         this.Ki=0;
         for (const kiSourcesKey in kiSources){
             this.Ki+=parseInt(kiSources[kiSourcesKey]);
@@ -271,16 +273,40 @@ class kiCircleClass{
                         buffMultiplier=Math.min(buffMultiplier,passiveLine["Building Stat"]["Max"]);
                     }
                     if(!(targetString.includes("self excluded"))){
+                        /*
+                        if(timingString=="On Super"){
+                            if(passiveLine["Calc option"]=="2"){
+                                this.SOTONSUPERATK+=buffMultiplier*(passiveLine.ATK||0)/100
+                            }
+                            else{
+                                this.MOTONSUPERATK+=buffMultiplier*(passiveLine.ATK||0)/100
+                            }
+                            this.EXTRAKIONSUPER+=buffMultiplier*(passiveLine.KI||0)
+                        }
+                        else{
+                            if(passiveLine["Calc option"]=="2"){
+                                this.SOTATK+=buffMultiplier*(passiveLine.ATK||0)/100
+                            }
+                            else{
+                                this.MOTATK+=buffMultiplier*(passiveLine.ATK||0)/100
+                            }
+                            this.Ki+=buffMultiplier*(passiveLine.KI||0)
+                        }
+                        */
+
                         if(SOTTIMINGS.includes(timingString)){
                             this.SOTATK+=(buffMultiplier*(passiveLine.ATK||0))/100
+                            this.Ki+=buffMultiplier*(passiveLine.Ki||0)
                         }
                         else if (MOTTIMINGS.includes(timingString)){
                             this.MOTATK+=buffMultiplier*(passiveLine.ATK||0)/100
+                            this.Ki+=buffMultiplier*(passiveLine.Ki||0)
                         }
                         else if (ONSUPERTIMING.includes(timingString)){
-                            this.ONSUPER+=buffMultiplier*(passiveLine.ATK||0)/100
+                            this.SOTATKONSUPER+=buffMultiplier*(passiveLine.ATK||0)/100
+                            this.EXTRAKIONSUPER+=buffMultiplier*(passiveLine.Ki||0)
                         }
-                        this.Ki+=buffMultiplier*(passiveLine.Ki||0)
+                        
                     }
                 }
                 else if(passiveEffect=="ID" || passiveEffect=="Condition" || passiveEffect=="Timing" || passiveEffect=="Target" || passiveEffect=="Length" || passiveEffect=="Buff"||passiveEffect=="Building Stat"||passiveEffect=="Nullification"||passiveEffect=="Additional attack"){
@@ -304,8 +330,9 @@ class kiCircleClass{
             if(parseInt(superAttack["superMinKi"])<=parseInt(this.Ki) && parseInt(superAttack["superMinKi"])>parseInt(superMinKi)){
                 superMinKi=superAttack["superMinKi"];
                 this.superAttackMultiplier=superAttack["Multiplier"]/100;
-                this.superAttackMultiplier+=skillOrbBuffs["SuperBoost"]/100*5;
+                this.superAttackMultiplier+=skillOrbBuffs["SuperBoost"]*0.05;
                 this.superAttackID=superAttack["special_name_no"];
+                this.superattackhasbeenperformed=true;
                 for (const key of Object.keys(superAttack)){
                     if(key=="SpecialBonus"){
                         if(superAttack["SpecialBonus"]["Type"]=="SA multiplier increase"){
@@ -327,7 +354,11 @@ class kiCircleClass{
         }
 
         this.superAttackMultiplier+=superAttackMultiplierIncrease
-
+        if(this.superattackhasbeenperformed){
+            this.MOTATK+=this.MOTATKONSUPER;
+            this.SOTATK+=this.SOTATKONSUPER;
+            this.Ki+=this.EXTRAKIONSUPER;
+        }
         let finalValue=1;
         finalValue=Math.floor(finalValue*baseStats["ATK"]);
         finalValue=Math.floor(finalValue*(1+leaderBuffs["ATK"]/100));
@@ -1300,7 +1331,7 @@ export function dictionaryToggle(originalDictionary,key,element) {
 
 
 export function refreshKiCircle(){
-    kiCircleDictionary["Original"].updateConditions(passiveQueryList,1,true);
+    kiCircleDictionary["Original"].updateConditions(passiveQueryList,0,true);
 }
 
 export function OLDrefreshKiCircle(){
@@ -2075,7 +2106,7 @@ export function createKiCirclesWithClass(){
         kiCircleDictionary[attack]=(kiCircle);
         if(attack=="Original"){
             kiCircle.changeGridRow("1");
-            kiCircle.updateConditions(passiveQueryList, 1,true);
+            kiCircle.updateConditions(passiveQueryList, 0,true);
         }
         else{
             kiCircle.changeGridRow(2);
