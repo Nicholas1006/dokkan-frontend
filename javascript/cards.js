@@ -4,13 +4,12 @@ class kiCircleClass{
         this.attackStat=0;
         this.imageUrl = currentJson["Resource ID"];
         this.superAttackPerformed=null;
-
         
         
-        this.kiCircle=document.createElement("div");
-        this.kiCircle.className="ki-circle";
-        this.kiCircle.style.width="220px";
-        this.kiCircle.style.height="220px";
+        this.KiCircle=document.createElement("div");
+        this.KiCircle.className="ki-circle";
+        this.KiCircle.style.width="220px";
+        this.KiCircle.style.height="220px";
         let circleBase=document.createElement("div");
         circleBase.id="circle-base";
         if(currentJson.Typing=="AGL"){
@@ -35,22 +34,20 @@ class kiCircleClass{
         circleBase.style.backgroundRepeat = "no-repeat";
         circleBase.style.position = "absolute";
         circleBase.style.zIndex = "0";
-        this.kiCircle.appendChild(circleBase);
-        let maxKi;
+        this.KiCircle.appendChild(circleBase);
         if(currentJson["Rarity"]=="lr"){
-            maxKi=24;
+            this.maxKi=24;
         }
         else{
-            maxKi=12;
+            this.maxKi=12;
         }
 
         
         
 
-        this.kiAmount=maxKi
         let unitImage = document.createElement("div");
         unitImage.className = "ki-unit-image";
-        this.kiCircle.appendChild(unitImage);
+        this.KiCircle.appendChild(unitImage);
         unitImage.id="unit-circle-image";
         unitImage.style.width = "220px";
         unitImage.style.height = "220px";
@@ -68,7 +65,7 @@ class kiCircleClass{
             //create a circle segment
             let circleSegment = document.createElement("div");
             this.segments.push(circleSegment);
-            this.kiCircle.appendChild(circleSegment);
+            this.KiCircle.appendChild(circleSegment);
             //reference the style.css
             circleSegment.className = "ki-circle-segment";
             //set the circle segment position
@@ -82,12 +79,12 @@ class kiCircleClass{
             circleSegment.style.zIndex = "2";
             //add the circle segment to the circle
         }
-        if(maxKi==24){
+        if(this.maxKi==24){
             for (let i=12; i<24; i++){
                 //create a circle segment
                 let circleSegment = document.createElement("div");
                 this.segments.push(circleSegment);
-                this.kiCircle.appendChild(circleSegment);
+                this.KiCircle.appendChild(circleSegment);
                 //reference the style.css
                 circleSegment.className = "ki-circle-segment";
     //            circleSegment.style.height="220px"
@@ -112,7 +109,7 @@ class kiCircleClass{
         }
 
         this.damageText=document.createElement("div");
-        this.kiCircle.appendChild(this.damageText);
+        this.KiCircle.appendChild(this.damageText);
         this.damageText.className="ki-damage-text";
         this.damageText.id="ki-damage-text";
         this.damageText.style.width="300px"
@@ -125,73 +122,13 @@ class kiCircleClass{
         this.superAttackName.className="super-attack-name";
         this.superAttackName.style.backgroundImage = "url('../dbManagement/assets/sp_name_00/"+this.imageUrl+".png')";
         this.superAttackName.style.display="none";
-        this.kiCircle.appendChild(this.superAttackName);
+        this.KiCircle.appendChild(this.superAttackName);
     }
 
     getElement(){
-        return this.kiCircle;
+        return this.KiCircle;
     }
 
-    updateKi(value){
-        let maxKi;
-        for (const passiveSlider of document.getElementById("passive-query-container").children){
-            //if the innerHTML of the next sibling starts with how much ki is there
-            if(passiveSlider.nextSibling!=null){
-                if(passiveSlider.nextSibling.innerHTML.startsWith("How much ki is there")){
-                    passiveSlider.value=value
-                    passiveSlider.nextSibling.innerHTML="How much ki is there: "+value
-                    //WIP TO UPDATE PASSIVE SKILL LOGIC
-                }
-            }
-        }
-        if(currentJson["Rarity"]=="lr"){
-            maxKi=24;
-        }
-        else{
-            maxKi=12;
-        }
-        if(value>maxKi){
-            value=maxKi;
-        }
-        else if(value<0){
-            value=0
-        }
-        else{
-            value=value
-        }
-        this.kiAmount=value;
-
-
-        for (let i = 0; i < maxKi; i++) {
-            //get the current segment
-            let currentSegment = this.segments[i];
-            if (i < this.kiAmount && i+12 >= this.kiAmount) {
-                if(i>=12){
-                    currentSegment.style.zIndex = "3";
-                    currentSegment.style.display="block";
-                }
-                if(i<2 && currentJson["Ki Circle Segments"][i+1]=="equal"){
-                    currentSegment.classList.add("weaker");
-
-                }
-                else{
-                    currentSegment.classList.add(currentJson["Ki Circle Segments"][i+1]);
-                }
-            } else {
-                if(i>=12){
-                    currentSegment.style.zIndex = "1";
-                    currentSegment.style.display="none";
-                }
-                if(i<2 && currentJson["Ki Circle Segments"][i+1]=="equal"){
-                    currentSegment.classList.remove("weaker");
-
-                }
-                else{
-                    currentSegment.classList.remove(currentJson["Ki Circle Segments"][i+1]);
-                }
-            }
-        }
-    }
     updateValue(targetValue) {
         const duration = 500; // duration of the animation in milliseconds
         const frameRate= 60;
@@ -224,6 +161,15 @@ class kiCircleClass{
                 requestAnimationFrame(animate);
             } else {
                 this.attackStat = targetValue; // Ensure the final value is set correctly
+                while (this.damageText.firstChild) {
+                    this.damageText.removeChild(this.damageText.firstChild);
+                }
+                for (let char of currentValue.toString()) {
+                    const numDiv = document.createElement('div');
+                    numDiv.className = "ki-damage-text";
+                    numDiv.classList.add(`num-${char}`);
+                    this.damageText.appendChild(numDiv);
+                }
             }
         };
     
@@ -231,7 +177,7 @@ class kiCircleClass{
     }
 
     changeGridRow(rowNumber){
-        this.kiCircle.style.gridRow = rowNumber;
+        this.KiCircle.style.gridRow = rowNumber;
     }
     updateValueOLD(targetValue) {
         const duration = 500; // duration of the animation in milliseconds
@@ -281,6 +227,218 @@ class kiCircleClass{
         }
     }
 
+    updateConditions(passiveQueryList, superAttackMultiplierIncrease,superHasBeenPerformed){
+        this.passiveQueryList=passiveQueryList;
+        this.superHasBeenPerformed=superHasBeenPerformed;
+        this.activatedPassiveLineMultipliers={};
+        this.passiveBuffs={};
+        this.additionalAttacks={};
+        this.superAttackMultiplier=1;
+        this.CausalityLogic=queriesToLogic(passiveQueryList);
+        this.SOTATK=1;
+        this.MOTATK=1;
+        this.ONSUPER=1;
+        this.Ki=0;
+        for (const kiSourcesKey in kiSources){
+            this.Ki+=parseInt(kiSources[kiSourcesKey]);
+        }
+
+        const SOTTIMINGS=["Start of turn","After all ki collected","When ki spheres collected"]
+        const MOTTIMINGS=["Being hit","Hit recieved","Attacking the enemy"]
+        const ONSUPERTIMING=["On Super"]
+        let passiveLines=currentJson.Passive;
+        for(const passiveLineKey in passiveLines){
+            let passiveLine=passiveLines[passiveLineKey];
+            let activatedCondition=true;
+            let buffMultiplier=1
+            if("Building Stat" in passiveLine){
+                const sliderName=passiveLine["Building Stat"]["Slider"];
+                buffMultiplier=this.CausalityLogic[sliderName];
+            }
+            if("Condition" in passiveLine){
+                let conditionLogic=" "+passiveLine["Condition"]["Logic"]+" ";
+                let conditionCausalities=passiveLine["Condition"]["Causalities"];
+                for(const conditionCausalityKey in conditionCausalities){
+                    let conditionCausality=conditionCausalities[conditionCausalityKey];
+                    let buttonLogic=this.CausalityLogic[conditionCausality["Button"]["Name"]];
+                    let sliderLogic=eval(this.CausalityLogic[conditionCausality["Slider"]["Name"]] + conditionCausality["Slider"]["Logic"]);
+                    if(buttonLogic || sliderLogic){
+                        conditionLogic=conditionLogic.replaceAll(" "+conditionCausalityKey+" "," "+true+" ");
+                    }
+                    else{
+                        conditionLogic=conditionLogic.replaceAll(" "+conditionCausalityKey+" "," "+false+" ");
+                    }
+                }
+                if(eval(conditionLogic)){
+                    activatedCondition=true;
+                }
+                else{
+                    activatedCondition=false;
+                }
+            }
+            if(activatedCondition){
+                dictionaryToggle(this.activatedPassiveLineMultipliers,passiveLineKey,buffMultiplier);
+                const timing= passiveLine["Timing"];
+                const target = passiveLine["Target"]["Target"];
+                if("Toggle Other Line" in passiveLine){
+                    dictionaryToggle(this.activatedPassiveLineMultipliers,passiveLine["Toggle Other Line"]["Line"],1);
+                }
+                if("Additional attack" in passiveLine){
+                    this.additionalAttacks[passiveLineKey]="Activated";
+                }                
+            }
+        }
+
+        for (const key in this.activatedPassiveLineMultipliers){
+            const passiveLine=passiveLines[key];
+            for (const passiveEffect in passiveLine){
+                const timingString = passiveLine["Timing"];
+                const targetString = passiveLine["Target"]["Target"];
+                let buffMultiplier=1;
+                if(passiveEffect=="ATK"||
+                    passiveEffect=="Ki"
+                ){
+                    if("Building Stat" in passiveLine){
+                        buffMultiplier=this.CausalityLogic[passiveLine["Building Stat"]["Slider"]];
+                        buffMultiplier=Math.min(buffMultiplier,passiveLine["Building Stat"]["Max"]);
+                    }
+                    if(!(targetString.includes("self excluded"))){
+                        if(SOTTIMINGS.includes(timingString)){
+                            this.SOTATK+=(buffMultiplier*(passiveLine.ATK||0))/100
+                        }
+                        else if (MOTTIMINGS.includes(timingString)){
+                            this.MOTATK+=buffMultiplier*(passiveLine.ATK||0)/100
+                        }
+                        else if (ONSUPERTIMING.includes(timingString)){
+                            this.ONSUPER+=buffMultiplier*(passiveLine.ATK||0)/100
+                        }
+                        this.Ki+=buffMultiplier*(passiveLine.Ki||0)
+                    }
+                }
+                else if(passiveEffect=="ID" || passiveEffect=="Condition" || passiveEffect=="Timing" || passiveEffect=="Target" || passiveEffect=="Length" || passiveEffect=="Buff"||passiveEffect=="Building Stat"||passiveEffect=="Nullification"||passiveEffect=="Additional attack"){
+                    continue;
+                }
+                else{
+                    console.log(passiveEffect)
+                }
+            }
+        }
+
+        this.Ki=Math.min(this.Ki,this.maxKi)
+
+        //bring over the super attack boosts
+        this.superAttackID=1;
+        let superMinKi=0;
+        let minKiToSuperAttack=25;
+        for (const superKey in currentJson["Super Attack"]){
+            const superAttack=currentJson["Super Attack"][superKey];
+            minKiToSuperAttack=Math.min(superAttack["superMinKi"],minKiToSuperAttack);
+            if(parseInt(superAttack["superMinKi"])<=parseInt(this.Ki) && parseInt(superAttack["superMinKi"])>parseInt(superMinKi)){
+                superMinKi=superAttack["superMinKi"];
+                this.superAttackMultiplier=superAttack["Multiplier"]/100;
+                this.superAttackMultiplier+=skillOrbBuffs["SuperBoost"]/100*5;
+                this.superAttackID=superAttack["special_name_no"];
+                for (const key of Object.keys(superAttack)){
+                    if(key=="SpecialBonus"){
+                        if(superAttack["SpecialBonus"]["Type"]=="SA multiplier increase"){
+                            this.superAttackMultiplier+=superAttack["SpecialBonus"]["Amount"]/100
+                        }
+                    }
+                    if(key=="superBuffs"){
+                        for (const superBuffKey of Object.keys(superAttack["superBuffs"])){
+                            if (!(superAttack["superBuffs"][superBuffKey]["Target"].includes("excluded" || "enem"))){
+                                this.superAttackMultiplier+=(superAttack["superBuffs"][superBuffKey]["ATK"]||0)/100
+                            }
+                        }
+                    }
+                }
+                
+                kiCircleDictionary["Original"].superAttackPerformed=superAttack;
+            }
+            
+        }
+
+        this.superAttackMultiplier+=superAttackMultiplierIncrease
+
+        let finalValue=1;
+        finalValue=Math.floor(finalValue*baseStats["ATK"]);
+        finalValue=Math.floor(finalValue*(1+leaderBuffs["ATK"]/100));
+        finalValue=Math.floor(finalValue*(this.SOTATK));//Start of turn passive stats
+        finalValue=Math.floor(finalValue*(1));//Item boost
+        finalValue=Math.floor(finalValue*(1+linkBuffs["ATK"]/100));
+        finalValue=Math.floor(finalValue*(1));//Active boost
+        finalValue=Math.ceil(finalValue*(currentJson["Ki Multiplier"][this.Ki]/100));
+        finalValue=Math.floor(finalValue*(this.MOTATK));//Middle of turn passive stats
+        this.superAttackMultiplier+=superBuffs["ATK"]/100;
+        finalValue=Math.floor(finalValue*this.superAttackMultiplier);
+        finalValue=Math.floor(finalValue*(1+domainBuffs["ATK"]/100));
+        this.updateKi(this.Ki);
+        this.updateValueOLD(finalValue);
+    }
+    updateKi(value){
+        let maxKi;
+        for (const passiveSlider of document.getElementById("passive-query-container").children){
+            //if the innerHTML of the next sibling starts with how much ki is there
+            if(passiveSlider.nextSibling!=null){
+                if(passiveSlider.nextSibling.innerHTML.startsWith("How much ki is there")){
+                    passiveSlider.value=value
+                    passiveSlider.nextSibling.innerHTML="How much ki is there: "+value
+                    //WIP TO UPDATE PASSIVE SKILL LOGIC
+                }
+            }
+        }
+        if(currentJson["Rarity"]=="lr"){
+            maxKi=24;
+        }
+        else{
+            maxKi=12;
+        }
+        if(value>maxKi){
+            value=maxKi;
+        }
+        else if(value<0){
+            value=0
+        }
+        else{
+            value=value
+        }
+        this.Ki=value;
+
+
+        for (let i = 0; i < maxKi; i++) {
+            //get the current segment
+            let currentSegment = this.segments[i];
+            if (i < this.Ki && i+12 >= this.Ki) {
+                if(i>=12){
+                    currentSegment.style.zIndex = "3";
+                    currentSegment.style.display="block";
+                }
+                if(i<2 && currentJson["Ki Circle Segments"][i+1]=="equal"){
+                    currentSegment.classList.add("weaker");
+
+                }
+                else{
+                    currentSegment.classList.add(currentJson["Ki Circle Segments"][i+1]);
+                }
+            } else {
+                if(i>=12){
+                    currentSegment.style.zIndex = "1";
+                    currentSegment.style.display="none";
+                }
+                if(i<2 && currentJson["Ki Circle Segments"][i+1]=="equal"){
+                    currentSegment.classList.remove("weaker");
+
+                }
+                else{
+                    currentSegment.classList.remove(currentJson["Ki Circle Segments"][i+1]);
+                }
+            }
+        }
+    }
+
+    returnUpdatedConditions(){
+        return [this.passiveQueryList,this.superAttackMultiplierIncrease,this.superHasBeenPerformed];
+    }
 
 }
 
@@ -688,7 +846,17 @@ class passiveSlider {
 
     updateCondition(){
         if(this.label=="How much ki is there"){
-            this.value=kiCircleList[0].kiAmount;
+            let totalKi=0;
+            for (const kiAmountKey in Object.keys(kiSources)){
+                totalKi+=kiSources[kiAmountKey];
+            }
+            if(currentJson["Rarity"]=="lr"){
+                totalKi=Math.min(totalKi, 24)
+            }
+            else{
+                totalKi=Math.min(totalKi, 12)
+            }
+            this.value=totalKi
         }
     }
 }
@@ -920,6 +1088,7 @@ class causalityList{
                     }
                     let superChance=passiveLine["Additional attack"]["Chance of super"];
                     this.passiveBuffs[timing][target]["Additional attack"].push(superChance)
+                    additionalAttacks[passiveLineKey]="activated"
                 }
             }
         }
@@ -1048,9 +1217,9 @@ let domainBuffs={"ATK":0,"DEF":0,"Increased damage recieved":0}
 let startingPassiveBuffs={};
 
 let currentDomain=null;
-let kiSources={"leader":0,"Support":0,"Links":0,"Active":0,"Domain":0};
+let kiSources={"leader":6,"Support":0,"Links":0,"Active":0,"Domain":0};
 let additionalAttacks={};
-let kiCircleList=[];
+let kiCircleDictionary=[];
 let passiveQueryList=[];
 let startingCausalityList=[];
 let relevantPassiveEffects=["Ki","ATK","DEF","Guard","Toggle Other Line","Evasion","Crit Chance","DR","Additional attack"]
@@ -1160,12 +1329,11 @@ export function dictionaryToggle(originalDictionary,key,element) {
 }
 
 
-
 export function refreshKiCircle(){
-    for (const PassiveQuery of passiveQueryList){
-        PassiveQuery.updateCondition();
-    }
-    
+    kiCircleDictionary["Original"].updateConditions(passiveQueryList,1,true);
+}
+
+export function OLDrefreshKiCircle(){
     let superAttackMultiplier=1;
     let superAttackID=-1;
     let superMinKi=0;
@@ -1173,7 +1341,7 @@ export function refreshKiCircle(){
     for (const superKey in currentJson["Super Attack"]){
         const superAttack=currentJson["Super Attack"][superKey];
         minKiToSuperAttack=Math.min(superAttack["superMinKi"],minKiToSuperAttack);
-        if(parseInt(superAttack["superMinKi"])<=parseInt(kiCircleList[0].kiAmount) && parseInt(superAttack["superMinKi"])>parseInt(superMinKi)){
+        if(parseInt(superAttack["superMinKi"])<=parseInt(kiCircleDictionary["Original"].kiAmount) && parseInt(superAttack["superMinKi"])>parseInt(superMinKi)){
             superMinKi=superAttack["superMinKi"];
             superAttackMultiplier=superAttack["Multiplier"]/100;
             superAttackMultiplier+=skillOrbBuffs["SuperBoost"]/100*5;
@@ -1193,7 +1361,7 @@ export function refreshKiCircle(){
                 }
             }
             
-            kiCircleList[0].superAttackPerformed=superAttack;
+            kiCircleDictionary["Original"].superAttackPerformed=superAttack;
         }
         
     }
@@ -1221,7 +1389,7 @@ export function refreshKiCircle(){
             for (const target in startingPassiveBuffs[timing]){
                 if(!(target.includes("self excluded"))){
                     if(timing=="On Super"){
-                        if(kiCircleList[0].kiAmount>=minKiToSuperAttack){
+                        if(kiCircleDictionary["Original"].kiAmount>=minKiToSuperAttack){
                             MOTATK+=(startingPassiveBuffs[timing][target]["ATK"]||0)/100;
                         }
                     }
@@ -1244,14 +1412,14 @@ export function refreshKiCircle(){
     finalValue=Math.floor(finalValue*(1));//Item boost
     finalValue=Math.floor(finalValue*(1+linkBuffs["ATK"]/100));
     finalValue=Math.floor(finalValue*(1));//Active boost
-    finalValue=Math.ceil(finalValue*(currentJson["Ki Multiplier"][kiCircleList[0].kiAmount]/100));
+    finalValue=Math.ceil(finalValue*(currentJson["Ki Multiplier"][kiCircleDictionary["Original"].kiAmount]/100));
     finalValue=Math.floor(finalValue*(MOTATK));//Middle of turn passive stats
     superAttackMultiplier+=superBuffs["ATK"]/100;
     finalValue=Math.floor(finalValue*superAttackMultiplier);
     finalValue=Math.floor(finalValue*(1+domainBuffs["ATK"]/100));
-    kiCircleList[0].updateSuperAttack(superAttackID);
-    if(kiCircleList[0].attackStat!=finalValue){
-        kiCircleList[0].updateValue(finalValue);
+    kiCircleDictionary["Original"].updateSuperAttack(superAttackID);
+    if(kiCircleDictionary["Original"].attackStat!=finalValue){
+        kiCircleDictionary["Original"].updateValue(finalValue);
     }
 }
 
@@ -1382,6 +1550,7 @@ export function createLeaderStats(){
         }
         leaderTotalInputKi.value=parseInt(leaderAInputKi.value)+parseInt(leaderBInputKi.value);
         leaderBuffs.Ki=leaderTotalInputKi.value;
+        kiSources.leader=leaderBuffs.Ki;
         refreshKiCircle()
     });
 
@@ -1394,6 +1563,7 @@ export function createLeaderStats(){
         }
         leaderTotalInputKi.value=parseInt(leaderAInputKi.value)+parseInt(leaderBInputKi.value);
         leaderBuffs.Ki=leaderTotalInputKi.value;
+        kiSources.leader=leaderBuffs.Ki;
         refreshKiCircle()
     });
     
@@ -1405,6 +1575,7 @@ export function createLeaderStats(){
             leaderTotalInputKi.value=0;
         }
         leaderBuffs.Ki=leaderTotalInputKi.value;
+        kiSources.leader=leaderBuffs.Ki;
         refreshKiCircle()
         leaderAInputKi.value=Math.floor(parseInt(leaderTotalInputKi.value)/2);
         if(parseInt(leaderTotalInputKi.value)%2==0){
@@ -1627,15 +1798,15 @@ export function createLinkStats(json){
 
 
     //create an paragraph so that none of the sliders are .lastchild
-    let linkBuffs = document.createElement('p');
-    linkBuffs.innerHTML = "Link Buffs: ";
-    linksContainer.appendChild(linkBuffs);
+    let linkBuffsDiv = document.createElement('p');
+    linkBuffsDiv.innerHTML = "Link Buffs: ";
+    linksContainer.appendChild(linkBuffsDiv);
     //webFunctions.updateLinkBuffs(json)
   ;
 }
 
 
-export function AdjustBaseStats(){
+export function updateBaseStats(){
     let levelSlider=document.getElementById('level-slider');
     let ATK = parseInt(currentJson["Stats at levels"][levelSlider.value]["ATK"]);
     let DEF = parseInt(currentJson["Stats at levels"][levelSlider.value]["DEF"]);
@@ -1810,7 +1981,7 @@ export function createLevelSlider(json){
 
     levelSlider.addEventListener('input', function(){
         levelInput.value=levelSlider.value;
-        AdjustBaseStats(json);
+        updateBaseStats(json);
     });
 
     levelInput.addEventListener('input', function(){
@@ -1818,7 +1989,7 @@ export function createLevelSlider(json){
         levelInput.value=levelSlider.max;
       }
         levelSlider.value=levelInput.value;
-        AdjustBaseStats(json);
+        updateBaseStats(json);
     });
 
     
@@ -1861,7 +2032,7 @@ export function createPathButtons(json){
         else{
           starButton.classList.remove('rainbow');
         }
-        AdjustBaseStats(json);
+        updateBaseStats(json);
       });
     });
 }
@@ -1916,7 +2087,7 @@ export function createStarButton(json){
       } else {
         starButton.classList.add('active');
       }
-        AdjustBaseStats(json);
+        updateBaseStats(json);
     });
 }
 
@@ -1930,21 +2101,17 @@ export function createKiCirclesWithClass(){
     let row=2;
     for(const attack in additionalAttacks){
         const kiCircle = new kiCircleClass(attack);
-        kiCircle.updateKi(12);
         kiCircle.updateValue(12);
-        kiCircleList.push(kiCircle);
+        kiCircleDictionary[attack]=(kiCircle);
         if(attack=="Original"){
             kiCircle.changeGridRow("1");
-        }
-        else if (attack=="Hidden potential"){
-            kiCircle.changeGridRow(1+Object.keys(additionalAttacks).length);
+            kiCircle.updateConditions(passiveQueryList, 1,true);
         }
         else{
-            kiCircle.changeGridRow(row);
-            row++;
-            kiCircle.updateValue(parseInt(attack));
+            kiCircle.changeGridRow(2);
         }
         kiContainer.appendChild(kiCircle.getElement());
+        
     }
 }
 
@@ -2185,7 +2352,9 @@ export function createPassiveContainer(json){
         passiveATKSupport.input=document.createElement('input');
         passiveATKSupport.input.type="number";
         passiveATKSupport.input.value="0";
-        passiveATKSupport.addEventListener('input', refreshKiCircle);
+        passiveATKSupport.addEventListener('input', function(){
+            refreshKiCircle();
+        });
         passiveATKSupport.appendChild(passiveATKSupport.label);
         passiveATKSupport.appendChild(passiveATKSupport.input);
         passiveATKSupport.label.textContent="ATK Support: ";
@@ -2200,10 +2369,27 @@ export function createPassiveContainer(json){
         passiveDEFSupport.input.value="0";
         passiveDEFSupport.appendChild(passiveDEFSupport.label);
         passiveDEFSupport.appendChild(passiveDEFSupport.input);
-        passiveDEFSupport.addEventListener('input', refreshKiCircle);
+        passiveDEFSupport.addEventListener('input', function(){
+            refreshKiCircle();
+        });
         passiveDEFSupport.label.textContent="DEF Support: ";
         passiveSupportContainer.DEFsupport=passiveDEFSupport;
         passiveSupportContainer.appendChild(passiveDEFSupport);
+
+        const passiveKiSupport=document.createElement('div');
+        passiveKiSupport.label=document.createElement('label');
+        passiveKiSupport.input=document.createElement('input');
+        passiveKiSupport.input.type="number";
+        passiveKiSupport.input.value="0";
+        passiveKiSupport.appendChild(passiveKiSupport.label);
+        passiveKiSupport.appendChild(passiveKiSupport.input);
+        passiveKiSupport.addEventListener('input', function(){
+            kiSources.Support=parseInt(passiveKiSupport.input.value);
+            refreshKiCircle();
+        });
+        passiveKiSupport.label.textContent="Ki Support: ";
+        passiveSupportContainer.Kisupport=passiveKiSupport;
+        passiveSupportContainer.appendChild(passiveKiSupport);
     }
 
     let passiveQueryContainer = document.getElementById('passive-query-container');
@@ -2449,6 +2635,7 @@ export function createLinkBuffs(json){
 
     // Create a paragraph element to display the total link buffs
     linkBuffs={"ATK":totalATKBuff,"DEF":totalDEFBuff,"Enemy DEF":totalEnemyDEFBuff,"Heal":totalHealBuff,"KI":totalKIBuff,"Damage Reduction":totalDamageReductionBuff,"Crit":totalCritBuff,"Evasion":totalEvasionBuff};
+    kiSources["Links"] = totalKIBuff;
     let linkBuffElement = document.createElement('p');
     linkBuffElement.style.width=""
     linkBuffElement.id = "link-buffs";
@@ -2666,6 +2853,7 @@ export function loadPage(firstTime=false){
             domainPromise.then(domains => {
                 domainData=domains;
                 initialiseAspects(json);
+                createPassiveContainer(json);
                 if(firstTime){
                     if(json["Rarity"] == "lr" || json["Rarity"] == "ur"){
                         createSkillOrbContainer();
@@ -2684,11 +2872,10 @@ export function loadPage(firstTime=false){
                 else{
                     //document.getElementById('ki-slider').dispatchEvent(new Event('input'));	
                 }
-                createPassiveContainer(json);
                 createEzaContainer(json,isEza,isSeza);
                 createLevelSlider(json);
                 createSuperAttackContainer(json);
-                AdjustBaseStats();
+                updateBaseStats();
                 if(json["Rarity"] == "lr" || json["Rarity"] == "ur"){
                     const buttonContainer = document.getElementById('hipo-button-container');
                     buttonContainer.style.display = "grid";
