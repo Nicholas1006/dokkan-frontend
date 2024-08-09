@@ -2,6 +2,7 @@ class kiCircleClass{
     constructor(passiveLineKey){
         this.passiveLineKey=passiveLineKey;
         this.attackStat=0;
+        this.displayedAttackStat=0;
         this.imageUrl = currentJson["Resource ID"];
         this.superAttackPerformed=null;
         
@@ -130,12 +131,13 @@ class kiCircleClass{
     }
 
     updateValue(targetValue) {
+        this.attackStat = targetValue;
         const duration = 500; // duration of the animation in milliseconds
         const frameRate= 60;
         const frameDuration = 1000 / frameRate; // 60 frames per second
         const totalFrames = Math.round(duration / frameDuration);
     
-        let startValue = this.attackStat;
+        let startValue = this.displayedAttackStat;
         let currentValue = startValue;
         let increment = (targetValue - startValue) / totalFrames;
         let currentFrame = 0;
@@ -160,7 +162,7 @@ class kiCircleClass{
             if (currentFrame < totalFrames) {
                 requestAnimationFrame(animate);
             } else {
-                this.attackStat = targetValue; // Ensure the final value is set correctly
+                this.displayedAttackStat = this.attackStat; // Ensure the final value is set correctly
                 while (this.damageText.firstChild) {
                     this.damageText.removeChild(this.damageText.firstChild);
                 }
@@ -178,43 +180,6 @@ class kiCircleClass{
 
     changeGridRow(rowNumber){
         this.KiCircle.style.gridRow = rowNumber;
-    }
-    updateValueOLD(targetValue) {
-        const duration = 500; // duration of the animation in milliseconds
-        const frameRate= 60;
-        const frameDuration = 1000 / frameRate; // 60 frames per second
-        const totalFrames = Math.round(duration / frameDuration);
-    
-        let startValue = this.attackStat;
-        let currentValue = startValue;
-        let increment = (targetValue - startValue) / totalFrames;
-        let currentFrame = 0;
-    
-        const animate = () => {
-            currentFrame++;
-            const progress = currentFrame / totalFrames;
-            currentValue = Math.round(startValue + increment * progress * totalFrames);
-    
-            // Update the damage text
-            while (this.damageText.firstChild) {
-                this.damageText.removeChild(this.damageText.firstChild);
-            }
-    
-            for (let char of currentValue.toString()) {
-                const numDiv = document.createElement('div');
-                numDiv.className = "ki-damage-text";
-                numDiv.classList.add(`num-${char}`);
-                this.damageText.appendChild(numDiv);
-            }
-    
-            if (currentFrame < totalFrames) {
-                requestAnimationFrame(animate);
-            } else {
-                this.attackStat = targetValue; // Ensure the final value is set correctly
-            }
-        };
-    
-        requestAnimationFrame(animate);
     }
 
     updateSuperAttack(superAttackID){
@@ -261,7 +226,10 @@ class kiCircleClass{
                 for(const conditionCausalityKey in conditionCausalities){
                     let conditionCausality=conditionCausalities[conditionCausalityKey];
                     let buttonLogic=this.CausalityLogic[conditionCausality["Button"]["Name"]];
-                    let sliderLogic=eval(this.CausalityLogic[conditionCausality["Slider"]["Name"]] + conditionCausality["Slider"]["Logic"]);
+                    let sliderLogic=false;
+                    if("Slider" in conditionCausality){
+                        sliderLogic=eval(this.CausalityLogic[conditionCausality["Slider"]["Name"]] + conditionCausality["Slider"]["Logic"]);
+                    }
                     if(buttonLogic || sliderLogic){
                         conditionLogic=conditionLogic.replaceAll(" "+conditionCausalityKey+" "," "+true+" ");
                     }
@@ -373,7 +341,9 @@ class kiCircleClass{
         finalValue=Math.floor(finalValue*this.superAttackMultiplier);
         finalValue=Math.floor(finalValue*(1+domainBuffs["ATK"]/100));
         this.updateKi(this.Ki);
-        this.updateValueOLD(finalValue);
+        if(this.attackStat!=finalValue){
+            this.updateValue(finalValue);
+        }
     }
     updateKi(value){
         let maxKi;
