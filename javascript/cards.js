@@ -1,8 +1,8 @@
 class kiCircleClass{
-    constructor(json){
-        this.json=json;
+    constructor(passiveLineKey){
+        this.passiveLineKey=passiveLineKey;
         this.attackStat=0;
-        this.imageUrl = json["Resource ID"];
+        this.imageUrl = currentJson["Resource ID"];
         this.superAttackPerformed=null;
 
         
@@ -13,19 +13,19 @@ class kiCircleClass{
         this.kiCircle.style.height="220px";
         let circleBase=document.createElement("div");
         circleBase.id="circle-base";
-        if(json.Typing=="AGL"){
+        if(currentJson.Typing=="AGL"){
             circleBase.style.backgroundImage = "url('../dbManagement/assets/misc/chara_icon/ing_type_gauge_base_00.png')";
         }
-        else if(json.Typing=="TEQ"){
+        else if(currentJson.Typing=="TEQ"){
             circleBase.style.backgroundImage = "url('../dbManagement/assets/misc/chara_icon/ing_type_gauge_base_01.png')";
         }
-        else if(json.Typing=="INT"){
+        else if(currentJson.Typing=="INT"){
             circleBase.style.backgroundImage = "url('../dbManagement/assets/misc/chara_icon/ing_type_gauge_base_02.png')";
         }
-        else if(json.Typing=="STR"){
+        else if(currentJson.Typing=="STR"){
             circleBase.style.backgroundImage = "url('../dbManagement/assets/misc/chara_icon/ing_type_gauge_base_03.png')";
         }
-        else if(json.Typing=="PHY"){
+        else if(currentJson.Typing=="PHY"){
             circleBase.style.backgroundImage = "url('../dbManagement/assets/misc/chara_icon/ing_type_gauge_base_04.png')";
         }
         circleBase.style.width="220px";
@@ -37,7 +37,7 @@ class kiCircleClass{
         circleBase.style.zIndex = "0";
         this.kiCircle.appendChild(circleBase);
         let maxKi;
-        if(json["Rarity"]=="lr"){
+        if(currentJson["Rarity"]=="lr"){
             maxKi=24;
         }
         else{
@@ -54,7 +54,7 @@ class kiCircleClass{
         unitImage.id="unit-circle-image";
         unitImage.style.width = "220px";
         unitImage.style.height = "220px";
-        let assetID=json["ID"].slice(0, -1)+ "0";
+        let assetID=currentJson["ID"].slice(0, -1)+ "0";
         unitImage.style.backgroundImage = "url('../dbManagement/assets/circle/" + assetID + ".png')";
         unitImage.style.backgroundSize = "100% 100%";
         unitImage.style.backgroundPosition = "center";
@@ -144,7 +144,7 @@ class kiCircleClass{
                 }
             }
         }
-        if(this.json["Rarity"]=="lr"){
+        if(currentJson["Rarity"]=="lr"){
             maxKi=24;
         }
         else{
@@ -170,24 +170,24 @@ class kiCircleClass{
                     currentSegment.style.zIndex = "3";
                     currentSegment.style.display="block";
                 }
-                if(i<2 && this.json["Ki Circle Segments"][i+1]=="equal"){
+                if(i<2 && currentJson["Ki Circle Segments"][i+1]=="equal"){
                     currentSegment.classList.add("weaker");
 
                 }
                 else{
-                    currentSegment.classList.add(this.json["Ki Circle Segments"][i+1]);
+                    currentSegment.classList.add(currentJson["Ki Circle Segments"][i+1]);
                 }
             } else {
                 if(i>=12){
                     currentSegment.style.zIndex = "1";
                     currentSegment.style.display="none";
                 }
-                if(i<2 && this.json["Ki Circle Segments"][i+1]=="equal"){
+                if(i<2 && currentJson["Ki Circle Segments"][i+1]=="equal"){
                     currentSegment.classList.remove("weaker");
 
                 }
                 else{
-                    currentSegment.classList.remove(this.json["Ki Circle Segments"][i+1]);
+                    currentSegment.classList.remove(currentJson["Ki Circle Segments"][i+1]);
                 }
             }
         }
@@ -228,6 +228,10 @@ class kiCircleClass{
         };
     
         requestAnimationFrame(animate);
+    }
+
+    changeGridRow(rowNumber){
+        this.kiCircle.style.gridRow = rowNumber;
     }
     updateValueOLD(targetValue) {
         const duration = 500; // duration of the animation in milliseconds
@@ -1045,11 +1049,11 @@ let startingPassiveBuffs={};
 
 let currentDomain=null;
 let kiSources={"leader":0,"Support":0,"Links":0,"Active":0,"Domain":0};
-let additionalAttacks=[];
+let additionalAttacks={};
 let kiCircleList=[];
 let passiveQueryList=[];
 let startingCausalityList=[];
-let relevantPassiveEffects=["Ki","ATK","DEF","Evasion","Crit Chance","DR"]
+let relevantPassiveEffects=["Ki","ATK","DEF","Guard","Toggle Other Line","Evasion","Crit Chance","DR","Additional attack"]
 
 export function getJsonPromise(prefix,name,suffix) {
     return fetch(prefix + name + suffix)
@@ -1250,6 +1254,18 @@ export function refreshKiCircle(){
         kiCircleList[0].updateValue(finalValue);
     }
 }
+
+export function calculateAdditionalChance(hiPoAdditional, attacksPerformed){
+    output={};
+    output["Super"]=1-(1-hiPoAdditional)**attacksPerformed;
+    output["Neither"]=(1-(2*hiPoAdditional))**attacksPerformed;
+    output["Normal"]=1-output["Super"]-output["Neither"];
+    //Other option if the first method doesn't work
+//    output["Normal"]= -((1+  (2*hiPoAdditional)  )**attacksPerformed)    +     (1-hiPoAdditional)**attacksPerformed;    
+
+    return output
+}
+
 
 export function addDictionaryValues(initialDictionary, additionalDictionary) {
     let finalDictionary = initialDictionary;
@@ -1905,37 +1921,31 @@ export function createStarButton(json){
 }
 
 
-export function createKiCirclesWithClass(json){
+export function createKiCirclesWithClass(){
     let kiContainer = document.getElementById("ki-container");
     while (kiContainer.firstChild) {
         kiContainer.removeChild(kiContainer.firstChild);
     }
-    let kiSlider = document.createElement('input');
-    kiSlider.type = 'range';
-    kiSlider.min = 0;
-    if(json["Rarity"]=="lr"){
-        kiSlider.max = 24;
-    }
-    else{
-        kiSlider.max = 12;
-    }
-    kiSlider.value = kiSlider.max;
-    kiSlider.id = 'ki-slider';
-    kiSlider.addEventListener('input', function() {
-        kiCircleList[0].updateKi(kiSlider.value);
-        refreshKiCircle();
-    })
-    kiContainer.appendChild(kiSlider);
     
-    for (let i = kiSlider.max; i > 0; i-=6) {
-        const kiCircle = new kiCircleClass(json);
-        kiCircle.updateKi(i);
-        kiCircle.updateValue(i*100);
+    let row=2;
+    for(const attack in additionalAttacks){
+        const kiCircle = new kiCircleClass(attack);
+        kiCircle.updateKi(12);
+        kiCircle.updateValue(12);
         kiCircleList.push(kiCircle);
+        if(attack=="Original"){
+            kiCircle.changeGridRow("1");
+        }
+        else if (attack=="Hidden potential"){
+            kiCircle.changeGridRow(1+Object.keys(additionalAttacks).length);
+        }
+        else{
+            kiCircle.changeGridRow(row);
+            row++;
+            kiCircle.updateValue(parseInt(attack));
+        }
         kiContainer.appendChild(kiCircle.getElement());
     }
-
-    
 }
 
 
@@ -2212,6 +2222,8 @@ export function createPassiveContainer(json){
     for (const query of passiveQueryList) {
         passiveQueryContainer.appendChild(query.getElement());
     }
+    console.log(passiveQueryContainer);
+    passiveQueryContainer.style.height=passiveQueryContainer.clientHeight+"px";
 }
 
 
@@ -2226,6 +2238,16 @@ export function initialiseAspects(json) {
     document.title+=json["Leader Skill"]["Name"];
     document.title+="] ";
     document.title+=json.Name;
+
+    additionalAttacks={"Original": "Unactivated"};
+    for (const passiveLineKey of Object.keys(json.Passive)) {
+        if("Additional attack" in json.Passive[passiveLineKey]){
+            additionalAttacks[passiveLineKey]="Unactivated";
+        }
+    }
+    if(currentJson["Rarity"]=="ur" || currentJson["Rarity"]=="lr"){
+        additionalAttacks["Hidden potential"]= "Unactivated";
+    }
 
   }
 
@@ -2653,7 +2675,7 @@ export function loadPage(firstTime=false){
                     createLeaderStats();
                     createLinkStats(json);
                     createLinkBuffs(json);
-                    createKiCirclesWithClass(json,firstTime);
+                    createKiCirclesWithClass();
                     createDokkanAwakenContainer(json);
                     createTransformationContainer(json);
                     createDomainContainer(json);
