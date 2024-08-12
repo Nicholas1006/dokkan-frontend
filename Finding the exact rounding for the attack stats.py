@@ -1,7 +1,7 @@
 import math
 import itertools
 from progress.bar import Bar
-import concurrent.futures
+from decimal import *
 target=13123920
 base=18040
 Lead=5
@@ -13,16 +13,16 @@ SA_Multiplier=6.99
 components=[base,Lead,SOTPassive,Links,Ki_multiplier,MOTPassive,SA_Multiplier]
 
 def multiply_in_certain_order(components):
-    result = 1
+    result = Decimal(1)
     for component in components:
         if(component[1]=="Ceil"):
-            result = math.ceil(result * component[0])
+            result = math.ceil(Decimal(result) * Decimal(component[0]))
         elif(component[1]=="Floor"):
-            result = math.floor(result * component[0])
+            result = math.floor(result * Decimal(component[0]))
         elif(component[1]=="Round"):
-            result = round(result * component[0])
+            result = round(Decimal(result) * Decimal(component[0]))
         else:
-            result = result * component[0]
+            result = Decimal(result) * Decimal(component[0])
     return(result)
 
 def change_words_to_numbers(possible_list,dataset):
@@ -57,44 +57,40 @@ forms = ["Ceil", "Floor", "Round", "None"]
 
 
 
-# Generate all possible combinations of forms for the 7 elements
-all_form_combinations = list(itertools.product(forms, repeat=len(elements)))
-
-# Now, for each form combination, generate all permutations of the element order
-all_possible_lists = []
-bar=Bar("Generating all possible lists", max=len(all_form_combinations))
-for form_combination in list(all_form_combinations):
-    # Pair each element with its form
-    paired_elements = list(zip(elements, form_combination))
-    
-    # Generate all permutations of the paired elements
-    permuted_lists = itertools.permutations(paired_elements)
-    for permuted_list in permuted_lists:
-        all_possible_lists.append(permuted_list)
-
-    bar.next()
-bar.finish()
 
 datasets=[]
 datasets.append([16810904 , 19400 , 5 , 3.77 , 1.72 , 2   , 1.77 , 7.55])
 datasets.append([9070307  , 17870 , 5 , 4.54 , 1.72 , 2   , 1    , 6.5])
 datasets.append([8615550  , 19375 , 5 , 3.5  , 1.4  , 2   , 1.5  , 6.05])
+correctCondition=[1,2,3]
+# Generate all possible combinations of forms for the 7 elements
+all_form_combinations = list(itertools.product(forms, repeat=len(elements)))
 
-
-bar=Bar("Iterating all possible lists", max=len(all_possible_lists)/1000)
+# Now, for each form combination, generate all permutations of the element order
 working_lists=[]
-for possible_list_number in range(0,len(all_possible_lists)):
-    possible_list=all_possible_lists[possible_list_number]
-    if(possible_list_number%1000==0):
-        bar.next()
-    correct=[]
-    for dataset in datasets:
-        if(multiply_in_certain_order(change_words_to_numbers(possible_list,dataset))==dataset[0]):
-            correct.append(datasets.index(dataset)+1)
+all_possible_lists = []
+bar=Bar("Generating all possible lists", max=len(all_form_combinations))
+for form_combination in list(all_form_combinations):
+    bar.next()
+    # Pair each element with its form
+    paired_elements = list(zip(elements, form_combination))
+                            
+    # Generate all permutations of the paired elements
+    permuted_lists = itertools.permutations(paired_elements)
+    for permuted_list in permuted_lists:
+        
 
-    all_possible_lists[possible_list_number]=list(possible_list)+[correct]
-                
+        correct=[]
+        for dataset in datasets:
+            if(multiply_in_certain_order(change_words_to_numbers(permuted_list,dataset))==Decimal(dataset[0])):
+                correct.append(datasets.index(dataset)+1)
+        if(correct!=[]):
+            all_possible_lists.append(list(permuted_list)+[correct])
+        if(correct==correctCondition):
+            working_lists.append(permuted_list)
 bar.finish()
+
+
 
 import csv
 
@@ -102,6 +98,10 @@ with open('out.csv', 'w', newline='') as f:
     writer = csv.writer(f)
     writer.writerows(all_possible_lists)
 
+with open('out2.csv', 'w', newline='') as f:
+    writer = csv.writer(f)
+    writer.writerows(working_lists)
 
 print(working_lists)
 
+print("Done")
