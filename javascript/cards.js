@@ -1,16 +1,40 @@
 class kiCircleClass{
-    constructor(passiveLineKey){
+    constructor(passiveLineKey,CausalityLogic,performedChance,superChance){
+        this.CausalityLogic=CausalityLogic;
+        this.attackPerformed=true;
+        if(performedChance==0){
+            this.attackPerformed=false
+        }
         this.passiveLineKey=passiveLineKey;
+        this.superChance=superChance
+        this.performedChance=performedChance;
         this.attackStat=0;
         this.displayedAttackStat=0;
         this.imageUrl = currentJson["Resource ID"];
-        this.superAttackPerformed=null;
+        this.superPerformed=false
         
         
         this.KiCircle=document.createElement("div");
-        this.KiCircle.className="ki-circle";
-        this.KiCircle.style.width="220px";
-        this.KiCircle.style.height="220px";
+        this.KiCircle.id="ki-circle";
+        let queryCount=0;
+        if(this.superChance!=0 && this.superChance!=100){
+            queryCount++
+        }
+        if(this.performedChance!=0 && this.performedChance!=100){
+            queryCount++
+        }
+        if(queryCount==0){
+            this.KiCircle.style.gridTemplateRows="230px";
+        }
+        else if(queryCount==1){
+            this.KiCircle.style.gridTemplateRows="230px 35px";
+        }
+        else if(queryCount==2){
+            this.KiCircle.style.gridTemplateRows="230px 35px 35px";
+        }
+        let setHeight=queryCount*35+230;
+        this.KiCircle.style.height=setHeight+"px";
+
         let circleBase=document.createElement("div");
         circleBase.id="circle-base";
         if(currentJson.Typing=="AGL"){
@@ -116,7 +140,6 @@ class kiCircleClass{
         this.damageText.style.width="300px"
         this.damageText.style.height="50px"
         this.damageText.style.position = "absolute";
-        this.damageText.style.transform = "translate(-40px, 220px)";
         this.damageText.style.zIndex = "4";
 
         this.superAttackName=document.createElement("div");
@@ -124,6 +147,84 @@ class kiCircleClass{
         this.superAttackName.style.backgroundImage = "url('../dbManagement/assets/sp_name_00/"+this.imageUrl+".png')";
         this.superAttackName.style.display="none";
         this.KiCircle.appendChild(this.superAttackName);
+        this.superChanceQuery=document.createElement("button");
+        this.superChanceQuery.id="super-chance-query";
+        if(this.performedChance!=0 && this.performedChance!=100){
+            this.superChanceQuery.style.gridRow="2"
+        }
+        else{
+            this.superChanceQuery.style.gridRow="3"
+        }
+        this.superChanceQuery.innerHTML="Does the "+this.superChance+"% chance this is a super attack activate?"
+        this.superChanceQuery.style.background="#FF5C35";
+        this.superChanceQuery.passiveLineKey=this.passiveLineKey
+        if(this.superChance==0){
+            this.superChanceQuery.style.display="none"
+            this.superPerformed=false
+        }
+        else if(this.superChance==100 && this.passiveLineKey!="0"){
+            this.superChanceQuery.style.display="none"
+            this.superChanceQuery.classList.add("active");
+            this.superPerformed=true
+        }
+        else if(this.superChance==0){
+            this.superChanceQuery.style.display="none"
+        }
+        
+        this.superChanceQuery.style.cursor="pointer"
+        this.superChanceQuery.style.zIndex = "6";
+        this.superChanceQuery.parentClass=this
+        this.superChanceQuery.addEventListener('click', function(){
+            if(this.classList.contains("active")){
+                this.parentClass.toggleSuperPerformed(false)
+            }
+            else{
+                this.parentClass.toggleSuperPerformed(true)
+            }
+            refreshKiCircle()
+        })
+        if(this.passiveLineKey!="0"){
+            this.KiCircle.appendChild(this.superChanceQuery);
+        }
+        //this.superChanceQuery.style.transform = "translate(0px, 200px)";
+        
+
+        this.performedChanceQuery=document.createElement("button");
+        this.performedChanceQuery.id="performed-chance-query";
+        this.performedChanceQuery.style.gridRow="2"
+        this.performedChanceQuery.innerHTML="Does the "+this.performedChance+"% chance to attack activate?"
+        this.performedChanceQuery.style.background="#FF5C35";
+        this.performedChanceQuery.passiveLineKey=this.passiveLineKey
+        if(this.performedChance==0){
+            this.performedChanceQuery.style.display="none"
+            this.superPerformed=false
+        }
+        else if(this.performedChance==100){
+            this.performedChanceQuery.style.display="none"
+            this.performedChanceQuery.classList.add("active");
+            this.attackPerformed=true
+        }
+        else if(this.performedChance==0){
+            this.performedChanceQuery.style.display="none"
+            this.performedChanceQuery.classList.remove("active");
+            this.attackPerformed=false
+        }
+            
+        this.performedChanceQuery.style.cursor="pointer"
+        this.performedChanceQuery.style.zIndex = "6";
+        this.performedChanceQuery.parentClass=this
+        this.performedChanceQuery.addEventListener('click', function(){
+            if(this.classList.contains("active")){
+                this.parentClass.toggleAttackPerformed(false)
+            }
+            else{
+                this.parentClass.toggleAttackPerformed(true)
+            }
+            refreshKiCircle();
+        })
+        this.KiCircle.appendChild(this.performedChanceQuery);
+        //this.performedChanceQuery.style.transform = "translate(0px, 200px)";
+
     }
 
     getElement(){
@@ -154,7 +255,7 @@ class kiCircleClass{
     
             for (let char of currentValue.toString()) {
                 const numDiv = document.createElement('div');
-                numDiv.className = "ki-damage-text";
+                numDiv.className = "ki-damage-text-numDiv";
                 numDiv.classList.add(`num-${char}`);
                 this.damageText.appendChild(numDiv);
             }
@@ -168,7 +269,7 @@ class kiCircleClass{
                 }
                 for (let char of currentValue.toString()) {
                     const numDiv = document.createElement('div');
-                    numDiv.className = "ki-damage-text";
+                    numDiv.className = "ki-damage-text-numDiv";
                     numDiv.classList.add(`num-${char}`);
                     this.damageText.appendChild(numDiv);
                 }
@@ -181,6 +282,9 @@ class kiCircleClass{
     changeGridRow(rowNumber){
         this.KiCircle.style.gridRow = rowNumber;
     }
+    getGridRow(){
+        return this.KiCircle.style.gridRow
+    }
 
     updateSuperAttack(superAttackID){
         if(superAttackID==-1){
@@ -192,188 +296,243 @@ class kiCircleClass{
         }
     }
 
-    updateConditions(passiveQueryList, superAttackMultiplierIncrease,superHasBeenPerformed){
-        this.passiveQueryList=passiveQueryList;
-        this.superHasBeenPerformed=superHasBeenPerformed;
-        this.activatedPassiveLineMultipliers={};
-        this.passiveBuffs={};
-        this.additionalAttacks={};
-        this.superAttackMultiplier=1;
-        this.CausalityLogic=queriesToLogic(passiveQueryList);
-        this.SOTATK=1;
-        this.MOTATK=1;
-        this.SOTATKONSUPER=1;
-        this.MOTATKONSUPER=1;
-        this.EXTRAKIONSUPER=0;
-        this.Ki=0;
-        for (const kiSourcesKey in kiSources){
-            this.Ki+=parseInt(kiSources[kiSourcesKey]);
-        }
+    updateCausalityLogic(CausalityLogic){
+        this.CausalityLogic=CausalityLogic
+    }
+    updateConditions(superAttackMultiplierIncrease,superHasBeenPerformed){
+        if(this.attackPerformed){
+            this.superHasBeenPerformed=superHasBeenPerformed||this.superPerformed;
+            this.activatedPassiveLineMultipliers={};
+            this.passiveBuffs={};
+            this.additionalAttacks={};
+            this.superAttackMultiplier=1;
+            this.SOTATK=1;
+            this.MOTATK=1;
+            this.SOTATKONSUPER=0;
+            this.MOTATKONSUPER=0;
+            this.EXTRAKIONSUPER=0;
+            this.Ki=0;
+            for (const kiSourcesKey in kiSources){
+                this.Ki+=parseInt(kiSources[kiSourcesKey]);
+            }
 
-        const SOTTIMINGS=["Start of turn","After all ki collected","When ki spheres collected"]
-        const MOTTIMINGS=["Being hit","Hit recieved","Attacking the enemy"]
-        const ONSUPERTIMING=["On Super"]
-        let passiveLines=currentJson.Passive;
-        for(const passiveLineKey in passiveLines){
-            let passiveLine=passiveLines[passiveLineKey];
-            let activatedCondition=true;
-            let buffMultiplier=1
-            if("Building Stat" in passiveLine){
-                const sliderName=passiveLine["Building Stat"]["Slider"];
-                buffMultiplier=this.CausalityLogic[sliderName];
-            }
-            if("Condition" in passiveLine){
-                let conditionLogic=" "+passiveLine["Condition"]["Logic"]+" ";
-                let conditionCausalities=passiveLine["Condition"]["Causalities"];
-                for(const conditionCausalityKey in conditionCausalities){
-                    let conditionCausality=conditionCausalities[conditionCausalityKey];
-                    let buttonLogic=this.CausalityLogic[conditionCausality["Button"]["Name"]];
-                    let sliderLogic=false;
-                    if("Slider" in conditionCausality){
-                        sliderLogic=eval(this.CausalityLogic[conditionCausality["Slider"]["Name"]] + conditionCausality["Slider"]["Logic"]);
-                    }
-                    if(buttonLogic || sliderLogic){
-                        conditionLogic=conditionLogic.replaceAll(" "+conditionCausalityKey+" "," "+true+" ");
-                    }
-                    else{
-                        conditionLogic=conditionLogic.replaceAll(" "+conditionCausalityKey+" "," "+false+" ");
-                    }
+            const SOTTIMINGS=["Start of turn","After all ki collected","When ki spheres collected"]
+            const MOTTIMINGS=["Being hit","Hit recieved","Attacking the enemy"]
+            const ONSUPERTIMING=["On Super"]
+            let passiveLines=currentJson.Passive;
+            for(const passiveLineKey in passiveLines){
+                let passiveLine=passiveLines[passiveLineKey];
+                let activatedCondition=true;
+                let buffMultiplier=1
+                if("Building Stat" in passiveLine){
+                    const sliderName=passiveLine["Building Stat"]["Slider"];
+                    buffMultiplier=this.CausalityLogic[sliderName];
                 }
-                if(eval(conditionLogic)){
-                    activatedCondition=true;
-                }
-                else{
-                    activatedCondition=false;
-                }
-            }
-            if(activatedCondition){
-                dictionaryToggle(this.activatedPassiveLineMultipliers,passiveLineKey,buffMultiplier);
-                const timing= passiveLine["Timing"];
-                const target = passiveLine["Target"]["Target"];
-                if("Toggle Other Line" in passiveLine){
-                    dictionaryToggle(this.activatedPassiveLineMultipliers,passiveLine["Toggle Other Line"]["Line"],1);
-                }
-                if("Additional attack" in passiveLine){
-                    this.additionalAttacks[passiveLineKey]="Activated";
-                }                
-            }
-        }
-
-        for (const key in this.activatedPassiveLineMultipliers){
-            const passiveLine=passiveLines[key];
-            for (const passiveEffect in passiveLine){
-                const timingString = passiveLine["Timing"];
-                const targetString = passiveLine["Target"]["Target"];
-                let buffMultiplier=1;
-                if(passiveEffect=="ATK"||
-                    passiveEffect=="Ki"
-                ){
-                    if("Building Stat" in passiveLine){
-                        buffMultiplier=this.CausalityLogic[passiveLine["Building Stat"]["Slider"]];
-                        buffMultiplier=Math.min(buffMultiplier,passiveLine["Building Stat"]["Max"]);
-                    }
-                    if(!(targetString.includes("self excluded"))){
-                        /*
-                        if(timingString=="On Super"){
-                            if(passiveLine["Calc option"]=="2"){
-                                this.SOTONSUPERATK+=buffMultiplier*(passiveLine.ATK||0)/100
-                            }
-                            else{
-                                this.MOTONSUPERATK+=buffMultiplier*(passiveLine.ATK||0)/100
-                            }
-                            this.EXTRAKIONSUPER+=buffMultiplier*(passiveLine.KI||0)
+                if("Condition" in passiveLine){
+                    let conditionLogic=" "+passiveLine["Condition"]["Logic"]+" ";
+                    let conditionCausalities=passiveLine["Condition"]["Causalities"];
+                    for(const conditionCausalityKey in conditionCausalities){
+                        let conditionCausality=conditionCausalities[conditionCausalityKey];
+                        let buttonLogic=false;
+                        if("Button" in conditionCausality){
+                            buttonLogic=this.CausalityLogic[conditionCausality["Button"]["Name"]];
+                        }
+                        let sliderLogic=false;
+                        if("Slider" in conditionCausality){
+                            sliderLogic=eval(this.CausalityLogic[conditionCausality["Slider"]["Name"]] + conditionCausality["Slider"]["Logic"]);
+                        }
+                        if(buttonLogic || sliderLogic){
+                            conditionLogic=conditionLogic.replaceAll(" "+conditionCausalityKey+" "," "+true+" ");
                         }
                         else{
-                            if(passiveLine["Calc option"]=="2"){
-                                this.SOTATK+=buffMultiplier*(passiveLine.ATK||0)/100
-                            }
-                            else{
-                                this.MOTATK+=buffMultiplier*(passiveLine.ATK||0)/100
-                            }
-                            this.Ki+=buffMultiplier*(passiveLine.KI||0)
+                            conditionLogic=conditionLogic.replaceAll(" "+conditionCausalityKey+" "," "+false+" ");
                         }
-                        */
-
-                        if(SOTTIMINGS.includes(timingString)){
-                            this.SOTATK+=(buffMultiplier*(passiveLine.ATK||0))/100
-                            this.Ki+=buffMultiplier*(passiveLine.Ki||0)
-                        }
-                        else if (MOTTIMINGS.includes(timingString)){
-                            this.MOTATK+=buffMultiplier*(passiveLine.ATK||0)/100
-                            this.Ki+=buffMultiplier*(passiveLine.Ki||0)
-                        }
-                        else if (ONSUPERTIMING.includes(timingString)){
-                            this.SOTATKONSUPER+=buffMultiplier*(passiveLine.ATK||0)/100
-                            this.EXTRAKIONSUPER+=buffMultiplier*(passiveLine.Ki||0)
-                        }
-                        
+                    }
+                    if(eval(conditionLogic)){
+                        activatedCondition=true;
+                    }
+                    else{
+                        activatedCondition=false;
                     }
                 }
-                else if(passiveEffect=="ID" || passiveEffect=="Condition" || passiveEffect=="Timing" || passiveEffect=="Target" || passiveEffect=="Length" || passiveEffect=="Buff"||passiveEffect=="Building Stat"||passiveEffect=="Nullification"||passiveEffect=="Additional attack"){
-                    continue;
-                }
-                else{
-                    console.log(passiveEffect)
+                if(activatedCondition){
+                    dictionaryToggle(this.activatedPassiveLineMultipliers,passiveLineKey,buffMultiplier);
+                    if("Toggle Other Line" in passiveLine){
+                        dictionaryToggle(this.activatedPassiveLineMultipliers,passiveLine["Toggle Other Line"]["Line"],1);
+                    }
+                    if("Additional attack" in passiveLine){
+                        this.additionalAttacks[passiveLineKey]="Offered";
+                    }                
                 }
             }
-        }
 
-        this.Ki=Math.min(this.Ki,this.maxKi)
+            for (const key in this.activatedPassiveLineMultipliers){
+                const passiveLine=passiveLines[key];
+                for (const passiveEffect in passiveLine){
+                    const timingString = passiveLine["Timing"];
+                    const targetString = passiveLine["Target"]["Target"];
+                    let buffMultiplier=1;
+                    if(passiveEffect=="ATK"||
+                        passiveEffect=="Ki"
+                    ){
+                        if("Building Stat" in passiveLine){
+                            buffMultiplier=this.CausalityLogic[passiveLine["Building Stat"]["Slider"]];
+                            buffMultiplier=Math.min(buffMultiplier,passiveLine["Building Stat"]["Max"]);
+                        }
+                        if(!(targetString.includes("self excluded"))){
+                            /*
+                            if(timingString=="On Super"){
+                                if(passiveLine["Calc option"]=="2"){
+                                    this.SOTONSUPERATK+=buffMultiplier*(passiveLine.ATK||0)/100
+                                }
+                                else{
+                                    this.MOTONSUPERATK+=buffMultiplier*(passiveLine.ATK||0)/100
+                                }
+                                this.EXTRAKIONSUPER+=buffMultiplier*(passiveLine.KI||0)
+                            }
+                            else{
+                                if(passiveLine["Calc option"]=="2"){
+                                    this.SOTATK+=buffMultiplier*(passiveLine.ATK||0)/100
+                                }
+                                else{
+                                    this.MOTATK+=buffMultiplier*(passiveLine.ATK||0)/100
+                                }
+                                this.Ki+=buffMultiplier*(passiveLine.KI||0)
+                            }
+                            */
 
-        //bring over the super attack boosts
-        this.superAttackID=1;
-        let superMinKi=0;
-        let minKiToSuperAttack=25;
-        for (const superKey in currentJson["Super Attack"]){
-            const superAttack=currentJson["Super Attack"][superKey];
-            minKiToSuperAttack=Math.min(superAttack["superMinKi"],minKiToSuperAttack);
-            if(parseInt(superAttack["superMinKi"])<=parseInt(this.Ki) && parseInt(superAttack["superMinKi"])>parseInt(superMinKi)){
-                superMinKi=superAttack["superMinKi"];
-                this.superAttackMultiplier=superAttack["Multiplier"]/100;
-                this.superAttackMultiplier+=skillOrbBuffs["SuperBoost"]*0.05;
-                this.superAttackID=superAttack["special_name_no"];
-                this.superattackhasbeenperformed=true;
-                for (const key of Object.keys(superAttack)){
-                    if(key=="SpecialBonus"){
+                            if(SOTTIMINGS.includes(timingString)){
+                                this.SOTATK+=(buffMultiplier*(passiveLine.ATK||0))/100
+                                this.Ki+=buffMultiplier*(passiveLine.Ki||0)
+                            }
+                            else if (MOTTIMINGS.includes(timingString)){
+                                this.MOTATK+=buffMultiplier*(passiveLine.ATK||0)/100
+                                this.Ki+=buffMultiplier*(passiveLine.Ki||0)
+                            }
+                            else if (ONSUPERTIMING.includes(timingString)){
+                                this.MOTATKONSUPER+=buffMultiplier*(passiveLine.ATK||0)/100
+                                this.EXTRAKIONSUPER+=buffMultiplier*(passiveLine.Ki||0)
+                            }
+                            else{
+                                console.log("UNKNOWN TIMING",timingString)
+                            }
+                            
+                        }
+                    }
+                    else if(passiveEffect=="ID" || passiveEffect=="Condition" || passiveEffect=="Timing" || passiveEffect=="Target" || passiveEffect=="Length" || passiveEffect=="Buff"||passiveEffect=="Building Stat"||passiveEffect=="Nullification"||passiveEffect=="Additional attack"){
+                        continue;
+                    }
+                    else{
+                        console.log(passiveEffect)
+                    }
+                }
+            }
+            
+            if(this.superPerformed){
+                this.Ki+=this.EXTRAKIONSUPER;
+            }
+            this.Ki=Math.min(this.Ki,this.maxKi)
+            
+            //bring over the super attack boosts
+            this.superAttackAssetID=1;
+            this.atkRaise=superAttackMultiplierIncrease;
+            let superMinKi=0;
+            let tempatkRaise=0;
+            let minKiToSuperAttack=25;
+            if(this.passiveLineKey==0){
+                for (const superKey in currentJson["Super Attack"]){
+                    const superAttack=currentJson["Super Attack"][superKey];
+                    minKiToSuperAttack=Math.min(superAttack["superMinKi"],minKiToSuperAttack);
+                    if(parseInt(superAttack["superMinKi"])<=parseInt(this.Ki) && parseInt(superAttack["superMinKi"])>parseInt(superMinKi)){
+                        superMinKi=superAttack["superMinKi"];
+                        this.superAttackMultiplier=superAttack["Multiplier"]/100;
+                        this.superAttackMultiplier+=skillOrbBuffs["SuperBoost"]*0.05;
+                        this.superAttackAssetID=superAttack["special_name_no"];
+                        this.superPerformed=true;
+                        if("SpecialBonus" in superAttack){
+                            if(superAttack["SpecialBonus"]["Type"]=="SA multiplier increase"){
+                                this.superAttackMultiplier+=superAttack["SpecialBonus"]["Amount"]/100
+                            }
+                        }
+                        if("superBuffs" in superAttack){
+                            for (const superBuffKey of Object.keys(superAttack["superBuffs"])){
+                                if (!(superAttack["superBuffs"][superBuffKey]["Target"].includes("excluded" || "enem"))){
+                                    this.superAttackMultiplier+=(superAttack["superBuffs"][superBuffKey]["ATK"]||0)/100
+                                    tempatkRaise+=(superAttack["superBuffs"][superBuffKey]["ATK"]||0)/100;
+                                }
+                            }
+                        }
+                        this.superAttackPerformed=superAttack;
+                    }
+                    
+                }
+            }
+            else{
+                if(this.superPerformed){
+                    console.log("Here")
+                    this.Ki=currentJson["SuperMinKi"];
+                    this.superAttackID=currentJson["AdditionalSuperID"];
+                    const superAttack=currentJson["Super Attack"][this.superAttackID];
+                    this.superAttackMultiplier=superAttack["Multiplier"]/100;
+                    this.superAttackAssetID=superAttack["special_name_no"];
+                    this.superAttackMultiplier+=skillOrbBuffs["SuperBoost"]*0.05;
+                    this.superPerformed=true;
+                    if("SpecialBonus" in superAttack){
                         if(superAttack["SpecialBonus"]["Type"]=="SA multiplier increase"){
                             this.superAttackMultiplier+=superAttack["SpecialBonus"]["Amount"]/100
                         }
                     }
-                    if(key=="superBuffs"){
+                    if("superBuffs" in superAttack){
                         for (const superBuffKey of Object.keys(superAttack["superBuffs"])){
                             if (!(superAttack["superBuffs"][superBuffKey]["Target"].includes("excluded" || "enem"))){
                                 this.superAttackMultiplier+=(superAttack["superBuffs"][superBuffKey]["ATK"]||0)/100
+                                tempatkRaise+=(superAttack["superBuffs"][superBuffKey]["ATK"]||0)/100;
                             }
                         }
                     }
+                    
                 }
-                
-                kiCircleDictionary["Original"].superAttackPerformed=superAttack;
+                else{
+                    tempatkRaise=0
+                    console.log("Here")
+                    
+                }
             }
-            
-        }
 
-        this.superAttackMultiplier+=superAttackMultiplierIncrease
-        if(this.superattackhasbeenperformed){
-            this.MOTATK+=this.MOTATKONSUPER;
-            this.SOTATK+=this.SOTATKONSUPER;
-            this.Ki+=this.EXTRAKIONSUPER;
+            if(this.superPerformed){
+                this.MOTATK+=this.MOTATKONSUPER;
+                this.SOTATK+=this.SOTATKONSUPER;
+            }
+            this.atkRaise+=tempatkRaise;
+            this.superAttackMultiplier+=this.atkRaise
+            this.updateSuperAttack(this.superAttackAssetID)
+
+            const passiveSupportContainer=document.getElementById("passive-support-container");
+            this.SOTATK+=(parseInt(passiveSupportContainer.ATKsupport.input.value)||0)/100;
+            
+            let finalValue=1;
+            finalValue=Math.floor(finalValue*baseStats["ATK"]);
+            finalValue=Math.floor(finalValue*(1+leaderBuffs["ATK"]/100));
+            finalValue=Math.floor(finalValue*(this.SOTATK));//Start of turn passive stats
+            finalValue=Math.floor(finalValue*(1));//Item boost
+            finalValue=Math.floor(finalValue*(1+linkBuffs["ATK"]/100));
+            finalValue=Math.floor(finalValue*(1));//Active boost
+            finalValue=Math.ceil(finalValue*(currentJson["Ki Multiplier"][this.Ki]/100));
+            finalValue=Math.floor(finalValue*(this.MOTATK));//Middle of turn passive stats
+            this.superAttackMultiplier+=superBuffs["ATK"]/100;
+            finalValue=Math.floor(finalValue*this.superAttackMultiplier);
+            finalValue=Math.floor(finalValue*(1+domainBuffs["ATK"]/100));
+            this.updateKi(this.Ki);
+            if(this.attackStat!=finalValue){
+                this.updateValue(finalValue);
+            }
         }
-        let finalValue=1;
-        finalValue=Math.floor(finalValue*baseStats["ATK"]);
-        finalValue=Math.floor(finalValue*(1+leaderBuffs["ATK"]/100));
-        finalValue=Math.floor(finalValue*(this.SOTATK));//Start of turn passive stats
-        finalValue=Math.floor(finalValue*(1));//Item boost
-        finalValue=Math.floor(finalValue*(1+linkBuffs["ATK"]/100));
-        finalValue=Math.floor(finalValue*(1));//Active boost
-        finalValue=Math.ceil(finalValue*(currentJson["Ki Multiplier"][this.Ki]/100));
-        finalValue=Math.floor(finalValue*(this.MOTATK));//Middle of turn passive stats
-        this.superAttackMultiplier+=superBuffs["ATK"]/100;
-        finalValue=Math.floor(finalValue*this.superAttackMultiplier);
-        finalValue=Math.floor(finalValue*(1+domainBuffs["ATK"]/100));
-        this.updateKi(this.Ki);
-        if(this.attackStat!=finalValue){
-            this.updateValue(finalValue);
+        else{
+            this.updateValue(0);
+            this.updateKi(0);
+            this.updateSuperAttack(0);
+            this.superPerformed=false
+            this.atkRaise=superAttackMultiplierIncrease;
         }
     }
     updateKi(value){
@@ -437,10 +596,103 @@ class kiCircleClass{
         }
     }
 
-    returnUpdatedConditions(){
-        return [this.passiveQueryList,this.superAttackMultiplierIncrease,this.superHasBeenPerformed];
+    changeSuperChance(value){
+        this.superChance=Math.round(value*10000)/100
+        this.superChanceQuery.innerHTML="Does the "+this.superChance+"% chance this is a super attack activate?"
+        if(this.superChance==0){
+            if(this.superHasBeenPerformed==true){
+                this.superHasBeenPerformed=false;
+                refreshKiCircle();
+            }
+            this.superChanceQuery.style.display="none";
+        }
+        else if(this.superChance==100){
+            if(this.superHasBeenPerformed==false){
+                this.superHasBeenPerformed=true;
+                refreshKiCircle();
+            }
+            this.superChanceQuery.style.display="none";
+        }
+        else{
+            this.superChanceQuery.style.display="block";
+        }
+        if(this.attackPerformed==false){
+            this.superChanceQuery.style.display="none"
+        }
+        
     }
 
+    toggleSuperPerformed(isActivated){
+        if(isActivated){
+            this.superChanceQuery.classList.add("active")
+            this.superChanceQuery.style.background="#00FF00"
+            this.superPerformed=true
+        }
+        else{
+            this.superChanceQuery.classList.remove("active")
+            this.superChanceQuery.style.background="#FF5C35"
+            this.superPerformed=false
+        }
+    }
+
+    toggleAttackPerformed(isActivated){
+        if(isActivated){
+            this.performedChanceQuery.classList.add("active")
+            this.performedChanceQuery.style.background="#00FF00"
+            this.attackPerformed=true
+            if(this.superChance!=0 && this.superChance!=100){
+                this.superChanceQuery.style.display="block"
+            }
+        }
+        else{
+            this.performedChanceQuery.classList.remove("active")
+            this.performedChanceQuery.style.background="#FF5C35"
+            this.attackPerformed=false
+            this.superChanceQuery.style.display="none"
+        }
+    }
+
+    changePerformedChance(value){
+        this.performedChance=Math.round(value*10000)/100
+        this.performedChanceQuery.innerHTML="Does the "+this.performedChance+"% chance to perform an attack activate?"
+        if(this.performedChance==0){
+            if(this.attackPerformed==true){
+                this.attackPerformed=false;
+                refreshKiCircle();
+            }
+            this.performedChanceQuery.style.display="none";
+        }
+        else if(this.performedChance==100){
+            if(this.attackPerformed==false){
+                this.attackPerformed=true;
+                refreshKiCircle();
+            }
+            this.performedChanceQuery.style.display="none";
+        }
+        else{
+            this.performedChanceQuery.style.display="block";
+        }
+        if(this.performedChance==0){
+            this.KiCircle.style.display="none";
+        }
+    }
+
+    display(thisDisplayed){
+        if(thisDisplayed || this.passiveLineKey=="0"){
+            this.KiCircle.style.display="grid";
+        }
+        else{
+            this.KiCircle.style.display="none";
+        }
+    }
+
+    iterateCausalityLogic(passiveSliderName, iterationAmount){
+        for (let Causality in this.CausalityLogic){
+            if(Causality==passiveSliderName){
+                this.CausalityLogic[Causality]+=parseInt(iterationAmount)
+            }
+        }
+    }
 }
 
 class equipNodeQuery{
@@ -662,7 +914,7 @@ class superAttackQueryHolder{
 }
 
 class pictureText{
-    constructor(prefixText,imageURL,suffixText){
+    constructor(prefixText,imageURL,suffixText, imageHref=""){
         this.selfContainer=document.createElement("div");
         this.suffixContainer=document.createElement("div");
 
@@ -670,11 +922,21 @@ class pictureText{
         prefix.innerHTML=prefixText;
         this.selfContainer.appendChild(prefix);
 
-        let image=document.createElement("img");
+        let image=document.createElement("button");
+        image.style.border="none";
+        image.style.display="inline-block";
+        
+        if(imageHref!=""){
+            image.href=imageHref;
+        }
+        image.addEventListener("click",function(){
+            window.location.href=(imageHref);
+        })        
         image.style.backgroundImage="url('"+imageURL+"')";
         image.style.width="50px";
         image.style.height="50px";
         image.style.backgroundSize="100% 100%";
+        image.style.cursor="pointer";
         this.selfContainer.appendChild(image);
 
         let suffix=document.createElement("label");
@@ -711,7 +973,10 @@ class superAttackQuery{
         superAttackSlider.value=0;
         let superAttackQuestion = document.createElement('label');
         superAttackQuestion.superAttackName= superAttackName;
-        superAttackQuestion.superAttackText=new pictureText("How many times has","../dbManagement/assets/final_assets/"+unitID+".png","performed "+superAttackName+" within the last "+buffs["Duration"]+" turns?: "+superAttackSlider.value);
+        const urlParams=new URLSearchParams(window.location.search);
+        let isSeza = urlParams.get("SEZA") || "False";
+        let isEza = urlParams.get("EZA") || "False";
+        superAttackQuestion.superAttackText=new pictureText("How many times has","../dbManagement/assets/final_assets/"+unitID+".png","performed "+superAttackName+" within the last "+buffs["Duration"]+" turns?: "+superAttackSlider.value, "index.html?id="+unitID+"&EZA="+isEza+"&SEZA="+isSeza);
         this.selfContainer.appendChild(superAttackQuestion.superAttackText.getElement());
         superAttackQuestion.innerHTML = superAttackSlider.textContent;
         superAttackQuestion.style.gridRow = 1;
@@ -971,6 +1236,7 @@ class causalityList{
     updateBuffs(){
         this.updateActiveLines();
         this.passiveBuffs={}
+        this.additionalAttacks={}
         for (const passiveLineKey in this.activeLines){
             let passiveLine=currentJson.Passive[passiveLineKey];
             let buffMultiplier=this.activeLines[passiveLineKey];
@@ -1089,7 +1355,7 @@ class causalityList{
                     }
                     let superChance=passiveLine["Additional attack"]["Chance of super"];
                     this.passiveBuffs[timing][target]["Additional attack"].push(superChance)
-                    additionalAttacks[passiveLineKey]="activated"
+                    this.additionalAttacks[passiveLineKey]="Offered"
                 }
             }
         }
@@ -1329,9 +1595,113 @@ export function dictionaryToggle(originalDictionary,key,element) {
     }
 }
 
+export function getFirstInDictionary(originalDictionary,valueList){
+    for (const searchedKey in originalDictionary) {
+        if(valueList.includes(originalDictionary[searchedKey])){
+            return(searchedKey)
+        }
+    }
+}
+
+export function getLastInDictionary(originalDictionary,value){
+    let output=""
+    for (const searchedKey in originalDictionary) {
+        if(originalDictionary[searchedKey]==value){
+            output=searchedKey
+        }
+    }
+    return(output)
+}
+
+
+export function iterateCausalityLogic(CausalityLogic,KiCircleObject){
+    if("How many attacks has this character performed in battle?" in CausalityLogic){
+        CausalityLogic["How many attacks has this character performed in battle?"]++;
+    }
+    if(KiCircleObject.superPerformed){
+        if("How many super attacks has this character performed?" in CausalityLogic){
+            CausalityLogic["How many super attacks has this character performed?"]++;
+        }
+    }
+    return(CausalityLogic)
+}
+
 
 export function refreshKiCircle(){
-    kiCircleDictionary["Original"].updateConditions(passiveQueryList,0,true);
+    let superAttackRaise=0;
+    let iteratingCausalityLogic=queriesToLogic(passiveQueryList);
+    for (const key in kiCircleDictionary){
+        kiCircleDictionary[key].display(false);
+    }
+    for (const key in additionalAttacks){
+        additionalAttacks[key]="Unactivated";
+    }
+    kiCircleDictionary[0].updateCausalityLogic(iteratingCausalityLogic);
+    kiCircleDictionary[0].updateConditions(0,true);
+    kiCircleDictionary[0].display(true);
+    iteratingCausalityLogic=iterateCausalityLogic(iteratingCausalityLogic,kiCircleDictionary[0]);
+    superAttackRaise=kiCircleDictionary[0].atkRaise;
+    for(const key in kiCircleDictionary[0].additionalAttacks){
+        if(kiCircleDictionary[0].additionalAttacks[key]=="Offered" && additionalAttacks[key]=="Unactivated"){
+            if(kiCircleDictionary[key]["performedChance"]==100){
+                additionalAttacks[key]="Activated";
+            }
+            else{
+                additionalAttacks[key]="Offered";
+            }
+        }
+    }
+    let currentRow=2;
+    if(skillOrbBuffs["Additional"]>0){
+        if(kiCircleDictionary["Hidden potential"]["attackPerformed"]){
+            additionalAttacks["Hidden potential"]="Activated";
+        }
+        else{
+            additionalAttacks["Hidden potential"]="Offered";
+        }
+    }
+    additionalAttacks[0]="Performed";
+    let attackCount=1;
+    while(Object.values(additionalAttacks).includes("Activated") || Object.values(additionalAttacks).includes("Offered")){
+        const nextLineToActivate=getFirstInDictionary(additionalAttacks,["Activated","Offered"]);
+        if(nextLineToActivate=="Hidden potential"){
+            let additionalChance=calculateAdditionalChance(skillOrbBuffs["Additional"],attackCount);
+            kiCircleDictionary[nextLineToActivate].changePerformedChance(additionalChance["Normal"]+additionalChance["Super"])
+            let chanceTheAdditionalIsASuper=additionalChance["Super"]/(additionalChance["Super"]+additionalChance["Normal"])
+            kiCircleDictionary[nextLineToActivate].changeSuperChance(chanceTheAdditionalIsASuper)
+            if(additionalChance["Normal"]!=0){
+                kiCircleDictionary[nextLineToActivate].display(true)
+            }
+        }
+        else {
+            kiCircleDictionary[nextLineToActivate].display(true)
+        }
+        kiCircleDictionary[nextLineToActivate].changeGridRow(currentRow);
+        kiCircleDictionary[nextLineToActivate].updateCausalityLogic(iteratingCausalityLogic);
+        if(additionalAttacks[nextLineToActivate]=="Activated"){
+            kiCircleDictionary[nextLineToActivate].updateConditions(superAttackRaise,true);
+            iteratingCausalityLogic=iterateCausalityLogic(iteratingCausalityLogic,kiCircleDictionary[nextLineToActivate])
+            superAttackRaise=kiCircleDictionary[nextLineToActivate].atkRaise;
+            for(const key in kiCircleDictionary[nextLineToActivate].additionalAttacks){
+                if(kiCircleDictionary[nextLineToActivate].additionalAttacks[key]=="Offered" && additionalAttacks[key]=="Unactivated"){
+                    if(kiCircleDictionary[key]["performedChance"]==100){
+                        additionalAttacks[key]="Activated";
+                    }
+                    else{
+                        additionalAttacks[key]="Offered";
+                    }
+                }
+            }
+        }
+        else{
+            kiCircleDictionary[nextLineToActivate].updateKi(0);
+            kiCircleDictionary[nextLineToActivate].updateValue(0);
+        }
+        additionalAttacks[nextLineToActivate]="Offer Displayed";
+        currentRow++;
+        attackCount++;
+    }
+
 }
 
 export function OLDrefreshKiCircle(){
@@ -1342,7 +1712,7 @@ export function OLDrefreshKiCircle(){
     for (const superKey in currentJson["Super Attack"]){
         const superAttack=currentJson["Super Attack"][superKey];
         minKiToSuperAttack=Math.min(superAttack["superMinKi"],minKiToSuperAttack);
-        if(parseInt(superAttack["superMinKi"])<=parseInt(kiCircleDictionary["Original"].kiAmount) && parseInt(superAttack["superMinKi"])>parseInt(superMinKi)){
+        if(parseInt(superAttack["superMinKi"])<=parseInt(kiCircleDictionary[0].kiAmount) && parseInt(superAttack["superMinKi"])>parseInt(superMinKi)){
             superMinKi=superAttack["superMinKi"];
             superAttackMultiplier=superAttack["Multiplier"]/100;
             superAttackMultiplier+=skillOrbBuffs["SuperBoost"]/100*5;
@@ -1362,7 +1732,7 @@ export function OLDrefreshKiCircle(){
                 }
             }
             
-            kiCircleDictionary["Original"].superAttackPerformed=superAttack;
+            kiCircleDictionary[0].superAttackPerformed=superAttack;
         }
         
     }
@@ -1390,7 +1760,7 @@ export function OLDrefreshKiCircle(){
             for (const target in startingPassiveBuffs[timing]){
                 if(!(target.includes("self excluded"))){
                     if(timing=="On Super"){
-                        if(kiCircleDictionary["Original"].kiAmount>=minKiToSuperAttack){
+                        if(kiCircleDictionary[0].kiAmount>=minKiToSuperAttack){
                             MOTATK+=(startingPassiveBuffs[timing][target]["ATK"]||0)/100;
                         }
                     }
@@ -1413,21 +1783,21 @@ export function OLDrefreshKiCircle(){
     finalValue=Math.floor(finalValue*(1));//Item boost
     finalValue=Math.floor(finalValue*(1+linkBuffs["ATK"]/100));
     finalValue=Math.floor(finalValue*(1));//Active boost
-    finalValue=Math.ceil(finalValue*(currentJson["Ki Multiplier"][kiCircleDictionary["Original"].kiAmount]/100));
+    finalValue=Math.ceil(finalValue*(currentJson["Ki Multiplier"][kiCircleDictionary[0].kiAmount]/100));
     finalValue=Math.floor(finalValue*(MOTATK));//Middle of turn passive stats
     superAttackMultiplier+=superBuffs["ATK"]/100;
     finalValue=Math.floor(finalValue*superAttackMultiplier);
     finalValue=Math.floor(finalValue*(1+domainBuffs["ATK"]/100));
-    kiCircleDictionary["Original"].updateSuperAttack(superAttackID);
-    if(kiCircleDictionary["Original"].attackStat!=finalValue){
-        kiCircleDictionary["Original"].updateValue(finalValue);
+    kiCircleDictionary[0].updateSuperAttack(superAttackID);
+    if(kiCircleDictionary[0].attackStat!=finalValue){
+        kiCircleDictionary[0].updateValue(finalValue);
     }
 }
 
 export function calculateAdditionalChance(hiPoAdditional, attacksPerformed){
-    output={};
-    output["Super"]=1-(1-hiPoAdditional)**attacksPerformed;
-    output["Neither"]=(1-(2*hiPoAdditional))**attacksPerformed;
+    let output={};
+    output["Super"]=1-(1-hiPoAdditional/100)**attacksPerformed;
+    output["Neither"]=(1-(2*hiPoAdditional/100))**attacksPerformed;
     output["Normal"]=1-output["Super"]-output["Neither"];
     //Other option if the first method doesn't work
 //    output["Normal"]= -((1+  (2*hiPoAdditional)  )**attacksPerformed)    +     (1-hiPoAdditional)**attacksPerformed;    
@@ -1807,7 +2177,7 @@ export function createLinkStats(json){
 }
 
 
-export function updateBaseStats(){
+export function updateBaseStats(refreshKi=true){
     let levelSlider=document.getElementById('level-slider');
     let ATK = parseInt(currentJson["Stats at levels"][levelSlider.value]["ATK"]);
     let DEF = parseInt(currentJson["Stats at levels"][levelSlider.value]["DEF"]);
@@ -1874,7 +2244,9 @@ export function updateBaseStats(){
     statsContainerObject.updateInitialDEF(DEF,false);
 
     statsContainerObject.refreshStats();
-    refreshKiCircle();
+    if(refreshKi){
+        refreshKiCircle();
+    }
 
 
   }
@@ -1931,34 +2303,37 @@ export function createEzaContainer(json,isEza,isSeza){
 export function createTransformationContainer(json){
     let transformationContainer=document.getElementById('awaken-container');
     let transformations =json["Transformations"];
+    const urlParams=new URLSearchParams(window.location.search);
+    let isSeza = urlParams.get("SEZA") || "False";
+    let isEza = urlParams.get("EZA") || "False";
     if( Array.isArray(transformations) && transformations.length){
-    for (const transformationID of transformations){
-        let unitID = transformationID;
-        //creates a button that links to the suburl of the unit with the background set to the unitID within the assets/final_assets folder
-        let transformationButton = document.createElement('button');
-        transformationButton.style.backgroundImage = "url('../dbManagement/assets/final_assets/"+unitID+".png')";
-        transformationButton.id="transformation-button";
-        transformationButton.style.gridRow="1";
-        transformationContainer.appendChild(transformationButton);
-        transformationButton.onclick = function(){
-        window.location.href = "?id="+unitID;
+        for (const transformationID of transformations){
+            let unitID = transformationID;
+            //creates a button that links to the suburl of the unit with the background set to the unitID within the assets/final_assets folder
+            let transformationButton = document.createElement('button');
+            transformationButton.style.backgroundImage = "url('../dbManagement/assets/final_assets/"+unitID+".png')";
+            transformationButton.id="transformation-button";
+            transformationButton.style.gridRow="1";
+            transformationContainer.appendChild(transformationButton);
+            transformationButton.onclick = function(){
+                window.location.href = "?id="+unitID+"&SEZA="+isSeza+"&EZA="+isEza;
+            }
         }
-    }
-    } 
-    let previousTransformations = json["Transforms from"]
-    if( Array.isArray(previousTransformations) && previousTransformations.length){
-    for (const transformationID of previousTransformations){
-        let unitID = transformationID;
-        //creates a button that links to the suburl of the unit with the background set to the unitID within the assets/final_assets folder
-        let transformationButton = document.createElement('button');
-        transformationButton.style.backgroundImage = "url('../dbManagement/assets/final_assets/"+unitID+".png')";
-        transformationButton.id="transformation-button";
-        transformationButton.style.gridRow="2";
-        transformationContainer.appendChild(transformationButton);
-        transformationButton.onclick = function(){
-        window.location.href = "?id="+unitID;
+        } 
+        let previousTransformations = json["Transforms from"]
+        if( Array.isArray(previousTransformations) && previousTransformations.length){
+        for (const transformationID of previousTransformations){
+            let unitID = transformationID;
+            //creates a button that links to the suburl of the unit with the background set to the unitID within the assets/final_assets folder
+            let transformationButton = document.createElement('button');
+            transformationButton.style.backgroundImage = "url('../dbManagement/assets/final_assets/"+unitID+".png')";
+            transformationButton.id="transformation-button";
+            transformationButton.style.gridRow="2";
+            transformationContainer.appendChild(transformationButton);
+            transformationButton.onclick = function(){
+            window.location.href = "?id="+unitID+"&SEZA="+isSeza+"&EZA="+isEza;
+            }
         }
-    }
     } 
 }
 
@@ -1982,7 +2357,7 @@ export function createLevelSlider(json){
 
     levelSlider.addEventListener('input', function(){
         levelInput.value=levelSlider.value;
-        updateBaseStats(json);
+        updateBaseStats();
     });
 
     levelInput.addEventListener('input', function(){
@@ -1990,7 +2365,7 @@ export function createLevelSlider(json){
         levelInput.value=levelSlider.max;
       }
         levelSlider.value=levelInput.value;
-        updateBaseStats(json);
+        updateBaseStats();
     });
 
     
@@ -2033,7 +2408,7 @@ export function createPathButtons(json){
         else{
           starButton.classList.remove('rainbow');
         }
-        updateBaseStats(json);
+        updateBaseStats();
       });
     });
 }
@@ -2088,7 +2463,7 @@ export function createStarButton(json){
       } else {
         starButton.classList.add('active');
       }
-        updateBaseStats(json);
+        updateBaseStats();
     });
 }
 
@@ -2101,12 +2476,19 @@ export function createKiCirclesWithClass(){
     
     let row=2;
     for(const attack in additionalAttacks){
-        const kiCircle = new kiCircleClass(attack);
-        kiCircle.updateValue(12);
+        let kiCircle;
+        if(attack=="0"){        
+            kiCircle = new kiCircleClass(attack,queriesToLogic(passiveQueryList),100,100);
+        }
+        else if(attack=="Hidden potential"){
+            kiCircle = new kiCircleClass(attack,queriesToLogic(passiveQueryList),0,0);
+        }
+        else{
+            kiCircle = new kiCircleClass(attack,queriesToLogic(passiveQueryList),currentJson["Passive"][attack]["Chance"]||100,currentJson["Passive"][attack]["Additional attack"]["Chance of super"]);
+        }
         kiCircleDictionary[attack]=(kiCircle);
-        if(attack=="Original"){
+        if(attack==0){
             kiCircle.changeGridRow("1");
-            kiCircle.updateConditions(passiveQueryList, 0,true);
         }
         else{
             kiCircle.changeGridRow(2);
@@ -2416,9 +2798,7 @@ export function createPassiveContainer(json){
 
 export function initialiseAspects(json) {
     updateImageContainer('image-container', json["ID"], json.Typing);
-    if(currentJson["Min Level"] != currentJson["Max Level"]){
-        document.getElementById("level-container").style.display="flex";
-    }
+    document.getElementById("level-container").style.display="flex";
 
     //change the background of the slider to the typing color
     document.title="["
@@ -2426,7 +2806,7 @@ export function initialiseAspects(json) {
     document.title+="] ";
     document.title+=json.Name;
 
-    additionalAttacks={"Original": "Unactivated"};
+    additionalAttacks={0: "Unactivated"};
     for (const passiveLineKey of Object.keys(json.Passive)) {
         if("Additional attack" in json.Passive[passiveLineKey]){
             additionalAttacks[passiveLineKey]="Unactivated";
@@ -2491,6 +2871,7 @@ export function createSuperAttackContainer(json){
             }
         });
     }
+    superQuestionsContainer.style.height = superQuestionsContainer.scrollHeight + "px";
 }
 
 // Function to update a container with new content
@@ -2736,7 +3117,7 @@ export function queriesToLogic(queries){
     let output={}
     for (const query of queries){
         if(query["type"]=="slider"){
-            output[query["sliderName"]]=query.currentValue();
+            output[query["sliderName"]]=parseInt(query.currentValue());
         }
         else if(query["type"]=="button"){
             output[query["buttonName"]]=query.currentValue();
@@ -2745,17 +3126,20 @@ export function queriesToLogic(queries){
     return(output);
 }
 
-export function updatePassiveBuffs(){
+export function updatePassiveBuffs(refreshKi=true){
     const passiveThinker = new causalityList(queriesToLogic(passiveQueryList));
     passiveThinker.updateBuffs();
     let passiveBuffs=passiveThinker.returnBuffs();
     startingPassiveBuffs=passiveBuffs;
     let passiveBuffsContainer = document.getElementById('passive-buffs-container');
+    passiveBuffsContainer.style.display="none";
     while (passiveBuffsContainer.firstChild) {
         passiveBuffsContainer.removeChild(passiveBuffsContainer.firstChild);
     }
     passiveBuffsContainer.appendChild(displayDictionary(passiveBuffs,0));
-    refreshKiCircle();
+    if(refreshKi){
+        refreshKiCircle();
+    }
 }
 
 export function createSkillOrbContainer(){
@@ -2864,7 +3248,6 @@ export function loadPage(firstTime=false){
                     createLeaderStats();
                     createLinkStats(json);
                     createLinkBuffs(json);
-                    createKiCirclesWithClass();
                     createDokkanAwakenContainer(json);
                     createTransformationContainer(json);
                     createDomainContainer(json);
@@ -2876,12 +3259,13 @@ export function loadPage(firstTime=false){
                 createEzaContainer(json,isEza,isSeza);
                 createLevelSlider(json);
                 createSuperAttackContainer(json);
-                updateBaseStats();
+                updateBaseStats(false);
                 if(json["Rarity"] == "lr" || json["Rarity"] == "ur"){
                     const buttonContainer = document.getElementById('hipo-button-container');
                     buttonContainer.style.display = "grid";
                 }
-                updatePassiveBuffs();
+                updatePassiveBuffs(false);
+                createKiCirclesWithClass();
                 refreshKiCircle();
             })
         })
