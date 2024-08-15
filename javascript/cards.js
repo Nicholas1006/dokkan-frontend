@@ -232,6 +232,12 @@ class kiCircleClass{
     }
 
     updateValue(targetValue) {
+        if(targetValue<0){
+            targetValue=0
+        }
+        else if(targetValue>2147483648){
+            targetValue=2147483648
+        }
         this.attackStat = targetValue;
         const duration = 500; // duration of the animation in milliseconds
         const frameRate= 60;
