@@ -1,8 +1,8 @@
 class kiCircleClass{
     constructor(passiveLineKey,CausalityLogic,performedChance,superChance){
         this.CausalityLogic=CausalityLogic;
-        this.attackPerformed=true;
-        if(performedChance==0){
+        this.attackPerformed=false;
+        if(performedChance==100){
             this.attackPerformed=false
         }
         this.passiveLineKey=passiveLineKey;
@@ -1643,7 +1643,7 @@ export function refreshKiCircle(){
     superAttackRaise=kiCircleDictionary[0].atkRaise;
     for(const key in kiCircleDictionary[0].additionalAttacks){
         if(kiCircleDictionary[0].additionalAttacks[key]=="Offered" && additionalAttacks[key]=="Unactivated"){
-            if(kiCircleDictionary[key]["performedChance"]==100){
+            if(kiCircleDictionary[key]["attackPerformed"]){
                 additionalAttacks[key]="Activated";
             }
             else{
@@ -1702,96 +1702,6 @@ export function refreshKiCircle(){
         attackCount++;
     }
 
-}
-
-export function OLDrefreshKiCircle(){
-    let superAttackMultiplier=1;
-    let superAttackID=-1;
-    let superMinKi=0;
-    let minKiToSuperAttack=25;
-    for (const superKey in currentJson["Super Attack"]){
-        const superAttack=currentJson["Super Attack"][superKey];
-        minKiToSuperAttack=Math.min(superAttack["superMinKi"],minKiToSuperAttack);
-        if(parseInt(superAttack["superMinKi"])<=parseInt(kiCircleDictionary[0].kiAmount) && parseInt(superAttack["superMinKi"])>parseInt(superMinKi)){
-            superMinKi=superAttack["superMinKi"];
-            superAttackMultiplier=superAttack["Multiplier"]/100;
-            superAttackMultiplier+=skillOrbBuffs["SuperBoost"]/100*5;
-            superAttackID=superAttack["special_name_no"];
-            for (const key of Object.keys(superAttack)){
-                if(key=="SpecialBonus"){
-                    if(superAttack["SpecialBonus"]["Type"]=="SA multiplier increase"){
-                        superAttackMultiplier+=superAttack["SpecialBonus"]["Amount"]/100
-                    }
-                }
-                if(key=="superBuffs"){
-                    for (const superBuffKey of Object.keys(superAttack["superBuffs"])){
-                        if (!(superAttack["superBuffs"][superBuffKey]["Target"].includes("excluded" || "enem"))){
-                            superAttackMultiplier+=(superAttack["superBuffs"][superBuffKey]["ATK"]||0)/100
-                        }
-                    }
-                }
-            }
-            
-            kiCircleDictionary[0].superAttackPerformed=superAttack;
-        }
-        
-    }
-    let SOTATK=1;
-    let MOTATK=1;
-    const passiveSupportContainer=document.getElementById("passive-support-container");
-    SOTATK+=(parseInt(passiveSupportContainer.ATKsupport.input.value)||0)/100;
-
-
-    const SOTTIMINGS=["Start of turn","After all ki collected","When ki spheres collected"]
-    const MOTTIMINGS=["On Super", "Being hit","Hit recieved","Attacking the enemy"]
-    for (const timing in startingPassiveBuffs){
-        if(SOTTIMINGS.includes(timing)){
-            for (const target in startingPassiveBuffs[timing]){
-                if(!(target.includes("self excluded"))){
-                    SOTATK+=(startingPassiveBuffs[timing][target]["ATK"]||0)/100;
-                }
-            }
-        }
-        
-        
-        
-        
-        else if(MOTTIMINGS.includes(timing)){
-            for (const target in startingPassiveBuffs[timing]){
-                if(!(target.includes("self excluded"))){
-                    if(timing=="On Super"){
-                        if(kiCircleDictionary[0].kiAmount>=minKiToSuperAttack){
-                            MOTATK+=(startingPassiveBuffs[timing][target]["ATK"]||0)/100;
-                        }
-                    }
-                    else{
-                        MOTATK+=(startingPassiveBuffs[timing][target]["ATK"]||0)/100;
-                    }
-                }
-            }
-        }
-        else{
-            console.log(timing)
-        }
-    }
-    
-    
-    let finalValue=1;
-    finalValue=Math.floor(finalValue*baseStats["ATK"]);
-    finalValue=Math.floor(finalValue*(1+leaderBuffs["ATK"]/100));
-    finalValue=Math.floor(finalValue*(SOTATK));//Start of turn passive stats
-    finalValue=Math.floor(finalValue*(1));//Item boost
-    finalValue=Math.floor(finalValue*(1+linkBuffs["ATK"]/100));
-    finalValue=Math.floor(finalValue*(1));//Active boost
-    finalValue=Math.ceil(finalValue*(currentJson["Ki Multiplier"][kiCircleDictionary[0].kiAmount]/100));
-    finalValue=Math.floor(finalValue*(MOTATK));//Middle of turn passive stats
-    superAttackMultiplier+=superBuffs["ATK"]/100;
-    finalValue=Math.floor(finalValue*superAttackMultiplier);
-    finalValue=Math.floor(finalValue*(1+domainBuffs["ATK"]/100));
-    kiCircleDictionary[0].updateSuperAttack(superAttackID);
-    if(kiCircleDictionary[0].attackStat!=finalValue){
-        kiCircleDictionary[0].updateValue(finalValue);
-    }
 }
 
 export function calculateAdditionalChance(hiPoAdditional, attacksPerformed){
