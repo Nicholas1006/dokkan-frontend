@@ -149,7 +149,7 @@ class kiCircleClass{
         this.KiCircle.appendChild(this.superAttackName);
         this.superChanceQuery=document.createElement("button");
         this.superChanceQuery.id="super-chance-query";
-        if(this.performedChance!=0 && this.performedChance!=100){
+        if(this.performedChance==0 || this.performedChance==100){
             this.superChanceQuery.style.gridRow="2"
         }
         else{
@@ -300,7 +300,7 @@ class kiCircleClass{
         this.CausalityLogic=CausalityLogic
     }
     updateConditions(superAttackMultiplierIncrease,superHasBeenPerformed){
-        if(this.attackPerformed){
+        if(this.attackPerformed || additionalAttacks[this.passiveLineKey]=="Predictor"){
             this.superHasBeenPerformed=superHasBeenPerformed||this.superPerformed;
             this.activatedPassiveLineMultipliers={};
             this.passiveBuffs={};
@@ -656,6 +656,7 @@ class kiCircleClass{
         this.performedChance=Math.round(value*10000)/100
         this.performedChanceQuery.innerHTML="Does the "+this.performedChance+"% chance to perform an attack activate?"
         if(this.performedChance==0){
+            this.superChanceQuery.style.gridRow="2";
             if(this.attackPerformed==true){
                 this.attackPerformed=false;
                 refreshKiCircle();
@@ -663,6 +664,7 @@ class kiCircleClass{
             this.performedChanceQuery.style.display="none";
         }
         else if(this.performedChance==100){
+            this.superChanceQuery.style.gridRow="2";
             if(this.attackPerformed==false){
                 this.attackPerformed=true;
                 refreshKiCircle();
@@ -670,6 +672,7 @@ class kiCircleClass{
             this.performedChanceQuery.style.display="none";
         }
         else{
+            this.superChanceQuery.style.gridRow="3";
             this.performedChanceQuery.style.display="block";
         }
         if(this.performedChance==0){
@@ -678,7 +681,7 @@ class kiCircleClass{
     }
 
     display(thisDisplayed){
-        if(thisDisplayed || this.passiveLineKey=="0"){
+        if((thisDisplayed || this.passiveLineKey=="0")&&additionalAttacks[this.passiveLineKey]!="Predictor"){
             this.KiCircle.style.display="grid";
         }
         else{
@@ -1660,10 +1663,11 @@ export function refreshKiCircle(){
             additionalAttacks["Hidden potential"]="Offered";
         }
     }
+    additionalAttacks["Predictor1"]="Predictor"
     additionalAttacks[0]="Performed";
     let attackCount=1;
-    while(Object.values(additionalAttacks).includes("Activated") || Object.values(additionalAttacks).includes("Offered")){
-        const nextLineToActivate=getFirstInDictionary(additionalAttacks,["Activated","Offered"]);
+    while(Object.values(additionalAttacks).includes("Activated") || Object.values(additionalAttacks).includes("Offered") || Object.values(additionalAttacks).includes("Predictor")){
+        const nextLineToActivate=getFirstInDictionary(additionalAttacks,["Activated","Offered","Predictor"]);
         if(nextLineToActivate=="Hidden potential"){
             let additionalChance=calculateAdditionalChance(skillOrbBuffs["Additional"],attackCount);
             kiCircleDictionary[nextLineToActivate].changePerformedChance(additionalChance["Normal"]+additionalChance["Super"])
@@ -1692,14 +1696,39 @@ export function refreshKiCircle(){
                     }
                 }
             }
+            additionalAttacks[nextLineToActivate]="Performed";
+            currentRow++;
+            attackCount++;
         }
-        else{
+        else if(additionalAttacks[nextLineToActivate]=="Offered"){
             kiCircleDictionary[nextLineToActivate].updateKi(0);
-            kiCircleDictionary[nextLineToActivate].updateValue(0);
+            kiCircleDictionary[nextLineToActivate].updateValue(0);        
+            kiCircleDictionary[nextLineToActivate].display(true);
+            additionalAttacks[nextLineToActivate]="Offer Displayed";
+            currentRow++;
+            attackCount++;
         }
-        additionalAttacks[nextLineToActivate]="Offer Displayed";
-        currentRow++;
-        attackCount++;
+        else if(additionalAttacks[nextLineToActivate]=="Predictor"){
+            kiCircleDictionary[nextLineToActivate].display(false);
+            kiCircleDictionary[nextLineToActivate].updateCausalityLogic(iteratingCausalityLogic);
+            kiCircleDictionary[nextLineToActivate].updateConditions(0,true);
+            let additionalFound=false;
+            for(const key in kiCircleDictionary[nextLineToActivate].additionalAttacks){
+                if(kiCircleDictionary[nextLineToActivate].additionalAttacks[key]=="Offered" && additionalAttacks[key]=="Unactivated"){
+                    if(kiCircleDictionary[key]["performedChance"]==100){
+                        additionalAttacks[key]="Activated";
+                    }
+                    else{
+                        additionalAttacks[key]="Offered";
+                    }
+                    additionalFound=true;
+                }
+            }
+            if(!additionalFound){
+                additionalAttacks[nextLineToActivate]="Performed";
+            }
+        }
+        
     }
 
 }
@@ -2390,7 +2419,7 @@ export function createKiCirclesWithClass(){
         if(attack=="0"){        
             kiCircle = new kiCircleClass(attack,queriesToLogic(passiveQueryList),100,100);
         }
-        else if(attack=="Hidden potential"){
+        else if(attack=="Hidden potential"||additionalAttacks[attack]=="Predictor" ){
             kiCircle = new kiCircleClass(attack,queriesToLogic(passiveQueryList),0,0);
         }
         else{
@@ -2725,6 +2754,7 @@ export function initialiseAspects(json) {
     if(currentJson["Rarity"]=="ur" || currentJson["Rarity"]=="lr"){
         additionalAttacks["Hidden potential"]= "Unactivated";
     }
+    additionalAttacks["Predictor1"]="Predictor"
 
   }
 
