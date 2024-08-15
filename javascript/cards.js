@@ -2391,6 +2391,7 @@ export function createDokkanAwakenContainer(json){
 export function createStarButton(json){
     const toggleButtons = Array.from(document.querySelectorAll('.toggle-btn1, .toggle-btn2, .toggle-btn3, .toggle-btn4'));
     const starButton=document.getElementById('star-button');
+    starButton.classList.add('active');
     starButton.addEventListener('click', function() {
       if(starButton.classList.contains('active')){
         starButton.classList.remove('active');
@@ -2759,8 +2760,6 @@ export function initialiseAspects(json) {
   }
 
 export function createSuperAttackContainer(json){
-    let superBuffsContainer = document.getElementById('super-attack-buffs-container');
-    superBuffsContainer.innerHTML="Super Attack Buffs: ";
 
     let superQuestionsContainer= document.getElementById('super-attack-questions-container');
     while (superQuestionsContainer.firstChild) {
@@ -2811,7 +2810,6 @@ export function createSuperAttackContainer(json){
             }
         });
     }
-    superQuestionsContainer.style.height = superQuestionsContainer.scrollHeight + "px";
 }
 
 // Function to update a container with new content
@@ -2902,20 +2900,9 @@ export function updateSuperAttackStacks(){
         };
     }
 
-    let superAttackBuffsContainer = document.getElementById('super-attack-buffs-container');
-    let superAttackBuffs = document.createElement('p');
     superBuffs={"ATK": totalATKBuff, "DEF": totalDEFBuff, "Enemy ATK": totalEnemyATKBuff, "Enemy DEF": totalEnemyDEFBuff, "Crit": totalCritBuff, "Evasion": totalEvasionBuff};
     refreshKiCircle();
-    superAttackBuffs.id = "super-attack-buffs";
-    superAttackBuffs.innerHTML = "Super Attack Buffs: ";
-    if (totalATKBuff) superAttackBuffs.innerHTML += "<br>ATK: " + totalATKBuff + "% ";
-    if (totalDEFBuff) superAttackBuffs.innerHTML += "<br>DEF: " + totalDEFBuff + "% ";
-    if (totalEnemyATKBuff) superAttackBuffs.innerHTML += "<br>Enemy ATK: " + totalEnemyATKBuff + "% ";
-    if (totalEnemyDEFBuff) superAttackBuffs.innerHTML += "<br>Enemy DEF: " + totalEnemyDEFBuff + "% ";
-    if (totalCritBuff) superAttackBuffs.innerHTML += "<br>Crit: " + totalCritBuff + "% ";
-    if (totalEvasionBuff) superAttackBuffs.innerHTML += "<br>Evasion: " + totalEvasionBuff + "% ";
-    superAttackBuffsContainer.removeChild(superAttackBuffsContainer.lastChild);
-    superAttackBuffsContainer.appendChild(superAttackBuffs);
+    
 }   
 
 export function createLinkBuffs(json){
