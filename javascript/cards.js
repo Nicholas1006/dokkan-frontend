@@ -92,14 +92,16 @@ class kiCircleClass{
             //reference the style.css
             circleSegment.className = "ki-circle-segment";
             //set the circle segment position
-            //circleSegment.style.rotate = (15 + (i * 30)) + "deg";
             //place the circle segment in the correct position relative to the kiCircle div
+            //circleSegment.style.rotate = (15 + (i * 30)) + "deg";
             let xOffset = 61;
             //let yOffset = -480;
-            let yOffset=0
-            //yOffset-=(i*110)
+            let yOffset=-10;
+
+            let rotateOffset=(15 + (i * 30));
             //circleSegment.style.transformOrigin = "100% 100%";
-            //circleSegment.style.transform = "translate(" + xOffset + "px, " + yOffset + "px)";
+            circleSegment.style.transform += "translate(" + xOffset + "px, " + yOffset + "px) "
+            circleSegment.style.transform += "rotateZ("+rotateOffset + "deg)";
             //set the circle segment to the front of the circle
             circleSegment.style.zIndex = "2";
             //add the circle segment to the circle
