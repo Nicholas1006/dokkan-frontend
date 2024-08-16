@@ -57,7 +57,6 @@ class kiCircleClass{
         circleBase.style.backgroundSize = "100% 100%";
         circleBase.style.backgroundPosition = "center";
         circleBase.style.backgroundRepeat = "no-repeat";
-        circleBase.style.position = "absolute";
         circleBase.style.zIndex = "0";
         this.KiCircle.appendChild(circleBase);
         if(currentJson["Rarity"]=="lr"){
@@ -81,7 +80,6 @@ class kiCircleClass{
         unitImage.style.backgroundSize = "100% 100%";
         unitImage.style.backgroundPosition = "center";
         unitImage.style.backgroundRepeat = "no-repeat";
-        unitImage.style.position = "absolute";
         unitImage.style.zIndex = "1";
 
         //for loop that iterates 12 times
@@ -94,12 +92,14 @@ class kiCircleClass{
             //reference the style.css
             circleSegment.className = "ki-circle-segment";
             //set the circle segment position
-            circleSegment.style.rotate = (15 + (i * 30)) + "deg";
+            //circleSegment.style.rotate = (15 + (i * 30)) + "deg";
             //place the circle segment in the correct position relative to the kiCircle div
             let xOffset = 61;
-            let yOffset = -25;
-            circleSegment.style.transformOrigin = "100% 100%";
-            circleSegment.style.transform = "translate(" + xOffset + "px, " + yOffset + "px)";
+            //let yOffset = -480;
+            let yOffset=0
+            //yOffset-=(i*110)
+            //circleSegment.style.transformOrigin = "100% 100%";
+            //circleSegment.style.transform = "translate(" + xOffset + "px, " + yOffset + "px)";
             //set the circle segment to the front of the circle
             circleSegment.style.zIndex = "2";
             //add the circle segment to the circle
@@ -120,12 +120,18 @@ class kiCircleClass{
                 let rotateAmount = (15 + (i * 30));
                 let xOffset = 0;
                 let yOffset = -20;
-                circleSegment.style.transform = "translateX(55px)"
-                circleSegment.style.transformOrigin = "50% 100%";
-                circleSegment.style.transform += "rotateZ("+rotateAmount+"deg)" ;
-                circleSegment.style.transform += "translateY("+yOffset+"px)";
-                circleSegment.style.transform += "translateX("+xOffset+"px)";
-                circleSegment.style.transform += "scaleY(1.24)";
+
+
+
+                //circleSegment.style.transform = "translateX(55px)"
+                //circleSegment.style.transformOrigin = "50% 100%";
+                //circleSegment.style.transform += "rotateZ("+rotateAmount+"deg)" ;
+                //circleSegment.style.transform += "translateY("+yOffset+"px)";
+                //circleSegment.style.transform += "translateX("+xOffset+"px)";
+                //circleSegment.style.transform += "scaleY(1.24)";
+
+
+
     //            circleSegment.style.transform = "rotateY(-45deg) scaleY(1.3) scaleX(1.1) translate(50px, -10px)";
                 //set the circle segment to the front of the circle
                 circleSegment.style.zIndex = "1";
@@ -139,7 +145,6 @@ class kiCircleClass{
         this.damageText.id="ki-damage-text";
         this.damageText.style.width="300px"
         this.damageText.style.height="50px"
-        this.damageText.style.position = "absolute";
         this.damageText.style.zIndex = "4";
 
         this.superAttackName=document.createElement("div");
