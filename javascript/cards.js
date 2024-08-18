@@ -85,52 +85,33 @@ class kiCircleClass{
         //for loop that iterates 12 times
         this.segments=[]
         for (let i = 0; i < 12; i++) {
-            //create a circle segment
             let circleSegment = document.createElement("div");
             this.segments.push(circleSegment);
             this.KiCircle.appendChild(circleSegment);
-            //reference the style.css
             circleSegment.className = "ki-circle-segment";
-            //set the circle segment position
-            //place the circle segment in the correct position relative to the kiCircle div
-            //circleSegment.style.rotate = (15 + (i * 30)) + "deg";
-            let xOffset = 61;
-            //let yOffset = -480;
-            let yOffset=-10;
-
+            
             let rotateOffset=(15 + (i * 30));
-            //circleSegment.style.transformOrigin = "100% 100%";
+            let rotateOffsetRadians=rotateOffset*(Math.PI/180);
+            let xOffset = Math.sin(rotateOffsetRadians)*85 + 55;
+            let yOffset = (1-Math.cos(rotateOffsetRadians))*85-30;
             circleSegment.style.transform += "translate(" + xOffset + "px, " + yOffset + "px) "
-            circleSegment.style.transform += "rotateZ("+rotateOffset + "deg)";
-            //set the circle segment to the front of the circle
+            circleSegment.style.transform += "rotateZ("+(rotateOffset-3.5) + "deg)";
             circleSegment.style.zIndex = "2";
-            //add the circle segment to the circle
         }
         if(this.maxKi==24){
             for (let i=12; i<24; i++){
-                //create a circle segment
                 let circleSegment = document.createElement("div");
                 this.segments.push(circleSegment);
                 this.KiCircle.appendChild(circleSegment);
-                //reference the style.css
                 circleSegment.className = "ki-circle-segment";
-    //            circleSegment.style.height="220px"
 
-                //set the circle segment position
-                circleSegment.style.backgroundSize = "100% 100%";
-                //place the circle segment in the correct position relative to the kiCircle div
-                let rotateAmount = (15 + (i * 30));
-                let xOffset = 0;
-                let yOffset = -20;
-
-
-
-                //circleSegment.style.transform = "translateX(55px)"
-                //circleSegment.style.transformOrigin = "50% 100%";
-                //circleSegment.style.transform += "rotateZ("+rotateAmount+"deg)" ;
-                //circleSegment.style.transform += "translateY("+yOffset+"px)";
-                //circleSegment.style.transform += "translateX("+xOffset+"px)";
-                //circleSegment.style.transform += "scaleY(1.24)";
+                let rotateOffset=(15 + (i * 30));
+                let rotateOffsetRadians=(rotateOffset)*(Math.PI/180);
+                let xOffset = Math.sin(rotateOffsetRadians)*85 + 55;
+                let yOffset = (1-Math.cos(rotateOffsetRadians))*85-30;
+                circleSegment.style.transform += "translate(" + xOffset + "px, " + yOffset + "px) "
+                circleSegment.style.transform += "rotateZ("+(rotateOffset-3.5) + "deg)";
+                circleSegment.style.transform += "scaleY(1.24)";
 
 
 
@@ -610,6 +591,26 @@ class kiCircleClass{
     }
 
     changeSuperChance(value){
+        let queryCount=0;
+        if(this.superChance!=0 && this.superChance!=100){
+            queryCount++
+        }
+        if(this.performedChance!=0 && this.performedChance!=100){
+            queryCount++
+        }
+        if(queryCount==0){
+            this.KiCircle.style.gridTemplateRows="230px";
+        }
+        else if(queryCount==1){
+            this.KiCircle.style.gridTemplateRows="230px 35px";
+        }
+        else if(queryCount==2){
+            this.KiCircle.style.gridTemplateRows="230px 35px 35px";
+        }
+        let setHeight=queryCount*35+230;
+        this.KiCircle.style.height=setHeight+"px";
+
+
         this.superChance=Math.round(value*10000)/100
         this.superChanceQuery.innerHTML="Does the "+this.superChance+"% chance this is a super attack activate?"
         if(this.superChance==0){
@@ -668,6 +669,28 @@ class kiCircleClass{
     changePerformedChance(value){
         this.performedChance=Math.round(value*10000)/100
         this.performedChanceQuery.innerHTML="Does the "+this.performedChance+"% chance to perform an attack activate?"
+
+
+        let queryCount=0;
+        if(this.superChance!=0 && this.superChance!=100){
+            queryCount++
+        }
+        if(this.performedChance!=0 && this.performedChance!=100){
+            queryCount++
+        }
+        if(queryCount==0){
+            this.KiCircle.style.gridTemplateRows="230px";
+        }
+        else if(queryCount==1){
+            this.KiCircle.style.gridTemplateRows="230px 35px";
+        }
+        else if(queryCount==2){
+            this.KiCircle.style.gridTemplateRows="230px 35px 35px";
+        }
+        let setHeight=queryCount*35+230;
+        this.KiCircle.style.height=setHeight+"px";
+
+
         if(this.performedChance==0){
             this.superChanceQuery.style.gridRow="2";
             if(this.attackPerformed==true){
