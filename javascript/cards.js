@@ -417,7 +417,7 @@ class kiCircleClass{
                         continue;
                     }
                     else{
-                        console.log(passiveEffect)
+                        //console.log(passiveEffect)
                     }
                 }
             }
@@ -463,7 +463,6 @@ class kiCircleClass{
             }
             else{
                 if(this.superPerformed){
-                    console.log("Here")
                     this.Ki=currentJson["SuperMinKi"];
                     this.superAttackID=currentJson["AdditionalSuperID"];
                     const superAttack=currentJson["Super Attack"][this.superAttackID];
@@ -488,7 +487,6 @@ class kiCircleClass{
                 }
                 else{
                     tempatkRaise=0
-                    console.log("Here")
                     
                 }
             }
@@ -2767,7 +2765,6 @@ export function createPassiveContainer(json){
     for (const query of passiveQueryList) {
         passiveQueryContainer.appendChild(query.getElement());
     }
-    console.log(passiveQueryContainer);
     passiveQueryContainer.style.height=passiveQueryContainer.clientHeight+"px";
 }
 
