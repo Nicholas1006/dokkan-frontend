@@ -311,7 +311,7 @@ class kiCircleClass{
             }
 
             const SOTTIMINGS=["Start of turn","After all ki collected","When ki spheres collected"]
-            const MOTTIMINGS=["Being hit","Hit recieved","Attacking the enemy"]
+            const MOTTIMINGS=["Being hit","Hit recieved","Attacking the enemy","Attacking"]
             const ONSUPERTIMING=["On Super"]
             let passiveLines=currentJson.Passive;
             for(const passiveLineKey in passiveLines){
@@ -2523,8 +2523,6 @@ export function colorToBackground(color){
     }
 }
 
-
-
 export function updateQueryList(passiveLine){
     if(passiveLine["Condition"]!=undefined){
         for(const CausalityKey of Object.keys(passiveLine["Condition"]["Causalities"])){
@@ -2618,8 +2616,6 @@ export function updateQueryList(passiveLine){
 
     
 }
-
-
 
 export function createDomainContainer(json){
     let domainContainer=document.getElementById('domain-container');
@@ -2999,7 +2995,6 @@ export function createLinkBuffs(json){
     linksContainer.appendChild(linkBuffElement);
   }
 
-
 export function createPassiveBuffs(passiveLine, passiveBuffsHolder){
     //wip add building stats and targeting
     //passiveBuffs["Timing"]["Target"]["Buff type"]["Buff amount"]
@@ -3071,7 +3066,6 @@ export function createPassiveBuffs(passiveLine, passiveBuffsHolder){
         }
     }
 }
-
 
 export function queriesToLogic(queries){
     let output={}
