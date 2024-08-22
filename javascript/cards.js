@@ -2197,7 +2197,7 @@ export function updateBaseStats(refreshKi=true){
       }
     })
 
-    if(!(skill_orb_container.classList.contains('Edited'))){
+    if((currentJson["Rarity"]=="ur" || currentJson["Rarity"]=="lr") && !(skill_orb_container.classList.contains('Edited'))){
         skill_orb_container.additionalNode.updateValue(Additional)
         skill_orb_container.critNode.updateValue(Crit)
         skill_orb_container.evasionNode.updateValue(Evasion)
@@ -2229,47 +2229,63 @@ export function createEzaContainer(json,isEza,isSeza){
     while (ezaContainer.firstChild) {
         ezaContainer.removeChild(ezaContainer.firstChild);
     }
+    let ezaButton = document.createElement('a');
     if(json["Can EZA"]){
-    let ezaButton = document.createElement('button');
-    ezaButton.id="eza-button";
-    if(isEza == "True"){
-        ezaButton.style.backgroundImage = "url('../dbManagement/assets/misc/eza_icon.png')";
-        ezaButton.onclick = function(){
-            updateQueryStringParameter('EZA', 'False');
-            loadPage();
+        ezaButton.id="eza-button";
+        if(json["Can SEZA"]){
+            ezaButton.style.transform="translate(150px, 170px)"
         }
-    }
-    else{
-        ezaButton.style.backgroundImage = "url('../dbManagement/assets/misc/eza_icon_inactive.png')";
-        ezaButton.onclick = function(){
-            updateQueryStringParameter('EZA', 'True');
-            updateQueryStringParameter('SEZA', 'False');
-            loadPage();
+        else{
+            ezaButton.style.transform="translate(180px, 170px)"
         }
+        if(isEza == "True"){
+            ezaButton.style.backgroundImage = "url('../dbManagement/assets/misc/extra/eZa.png')";
+            ezaButton.onclick = function(){
+                updateQueryStringParameter('EZA', 'False');
+                loadPage();
+            }
+        }
+        else if(isSeza=="True"){
+            ezaButton.style.backgroundImage = "url('../dbManagement/assets/misc/extra/eZa.png')";
+            ezaButton.onclick = function(){
+                updateQueryStringParameter('EZA', 'False');
+                updateQueryStringParameter('SEZA', 'False');
+                loadPage();
+            }
+        }
+        else{
+            ezaButton.style.backgroundImage = "url('../dbManagement/assets/misc/extra/eZa_inactive.png')";
+            ezaButton.onclick = function(){
+                updateQueryStringParameter('EZA', 'True');
+                updateQueryStringParameter('SEZA', 'False');
+                loadPage();
+            }
+        }
+        ezaButton.className="eza-button";
+        ezaContainer.appendChild(ezaButton);
     }
-    ezaButton.className="eza-button";
-    ezaContainer.appendChild(ezaButton);
-    }
-    if(json["Can SEZA"]){
     let sezaButton = document.createElement('a');
-    sezaButton.id="seza-button";
-    if(isSeza == "True"){
-        sezaButton.style.backgroundImage = "url('../dbManagement/assets/misc/Seza_icon.png')";
-        sezaButton.onclick = function(){
-            updateQueryStringParameter('SEZA', 'False');
-            loadPage();
+    if(json["Can SEZA"]){
+        sezaButton.style.transform="translate(150px, 170px)"
+        sezaButton.id="seza-button";
+        if(isSeza == "True"){
+            sezaButton.style.backgroundImage = "url('../dbManagement/assets/misc/extra/seZa.png')";
+            sezaButton.onclick = function(){
+                updateQueryStringParameter('SEZA', 'False');
+                updateQueryStringParameter('EZA', 'True');
+                loadPage();
+            }
         }
-    }
-    else{
-        sezaButton.style.backgroundImage = "url('../dbManagement/assets/misc/Seza_icon_inactive.png')";
-        sezaButton.onclick = function(){
-            updateQueryStringParameter('SEZA', 'True');
-            updateQueryStringParameter('EZA', 'False');
-            loadPage();
+        else{
+            sezaButton.style.backgroundImage = "url('../dbManagement/assets/misc/extra/seZa_inactive.png')";
+            sezaButton.onclick = function(){
+                updateQueryStringParameter('SEZA', 'True');
+                updateQueryStringParameter('EZA', 'False');
+                loadPage();
+            }
         }
-    }
-    sezaButton.className="seza-button";
-    ezaContainer.appendChild(sezaButton);
+        sezaButton.className="seza-button";
+        ezaContainer.appendChild(sezaButton);
     }
 }
 
@@ -2863,6 +2879,9 @@ export function updateContainer(containerId, content){
     console.error('Error loading image:', cardImage.src);
   };
   cardImage.src = '../dbManagement/assets/final_assets/' + assetSubURL + '.png';
+
+
+  document.getElementById("cards-body-container").style.backgroundColor=LightenColor(colorToBackground(typingToColor(typing)),50);
 }
 
   // Function to create a paragraph element with the given text
