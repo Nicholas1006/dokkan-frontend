@@ -44,7 +44,17 @@
                 "+ or -": "+"
             },
             "Length": "5",
-            "Once only": true
+            "Once only": true,
+            "Condition": {
+                "Logic": "3577",
+                "Causalities": {
+                    "3577": {
+                        "Button": {
+                            "Name": "Is it within the first 5 turns from entry turn"
+                        }
+                    }
+                }
+            }
         },
         "1003577": {
             "ID": "1003577",
@@ -59,7 +69,17 @@
                 "+ or -": "+"
             },
             "Length": "5",
-            "Once only": true
+            "Once only": true,
+            "Condition": {
+                "Logic": "1003577",
+                "Causalities": {
+                    "1003577": {
+                        "Button": {
+                            "Name": "Is it within the first 5 turns from entry turn"
+                        }
+                    }
+                }
+            }
         },
         "2003577": {
             "ID": "2003577",
@@ -284,21 +304,10 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2526 && 2648",
+                "Logic": "11003577",
                 "Causalities": {
-                    "2526": {
-                        "Button": {
-                            "Name": "Is no domain active?"
-                        }
-                    },
-                    "2648": {
-                        "Button": {
-                            "Name": "Is it on or after the first 4 turns from this characters entry turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many turns is it since the characters entry turn?",
-                            "Logic": ">=4"
-                        }
+                    "11003577": {
+                        "Button": "Is it the first time that the following is true: Is no domain active and Is it on or after the first 4 turns from this characters entry turn "
                     }
                 }
             },

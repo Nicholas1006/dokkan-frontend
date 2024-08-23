@@ -57,7 +57,17 @@
                 "+ or -": "+"
             },
             "Length": "5",
-            "Once only": true
+            "Once only": true,
+            "Condition": {
+                "Logic": "1002920",
+                "Causalities": {
+                    "1002920": {
+                        "Button": {
+                            "Name": "Is it within the first 5 turns from entry turn"
+                        }
+                    }
+                }
+            }
         },
         "2002920": {
             "ID": "2002920",
@@ -86,7 +96,17 @@
                 "+ or -": "+"
             },
             "Length": "5",
-            "Once only": true
+            "Once only": true,
+            "Condition": {
+                "Logic": "3002920",
+                "Causalities": {
+                    "3002920": {
+                        "Button": {
+                            "Name": "Is it within the first 5 turns from entry turn"
+                        }
+                    }
+                }
+            }
         },
         "4002920": {
             "ID": "4002920",
@@ -134,18 +154,10 @@
             },
             "Length": "3",
             "Condition": {
-                "Logic": "1600",
+                "Logic": "5002920",
                 "Causalities": {
-                    "1600": {
-                        "Button": {
-                            "Name": "Has this character evaded 6th times in battle?"
-                        },
-                        "Slider": {
-                            "Name": "How many attacks have been evaded?",
-                            "Logic": ">=6",
-                            "Min": 0,
-                            "Max": 6
-                        }
+                    "5002920": {
+                        "Button": "Was it the first time that the following is true: Has this character evaded 6th times in battle within the last 3 turns"
                     }
                 }
             },

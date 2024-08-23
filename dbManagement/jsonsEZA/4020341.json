@@ -64,7 +64,17 @@
                 "+ or -": "+"
             },
             "Length": "1",
-            "Once only": true
+            "Once only": true,
+            "Condition": {
+                "Logic": "1004060",
+                "Causalities": {
+                    "1004060": {
+                        "Button": {
+                            "Name": "Is it within the first 1 turns from entry turn"
+                        }
+                    }
+                }
+            }
         },
         "2004060": {
             "ID": "2004060",
@@ -341,12 +351,10 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1019",
+                "Logic": "13004060",
                 "Causalities": {
-                    "1019": {
-                        "Button": {
-                            "Name": "Has this character or an ally attacking in the same turn been KO'd? "
-                        }
+                    "13004060": {
+                        "Button": "Is it the first time that the following is true: Has this character or an ally attacking in the same turn been KO'd? "
                     }
                 }
             },
@@ -365,7 +373,17 @@
                 "+ or -": "+"
             },
             "Length": "1",
-            "Once only": true
+            "Once only": true,
+            "Condition": {
+                "Logic": "14004060",
+                "Causalities": {
+                    "14004060": {
+                        "Button": {
+                            "Name": "Is it within the first 1 turns from entry turn"
+                        }
+                    }
+                }
+            }
         }
     },
     "Max Attacks": 3,

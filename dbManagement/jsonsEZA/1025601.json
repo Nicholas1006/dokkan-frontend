@@ -71,7 +71,17 @@
                 "+ or -": "+"
             },
             "Length": "1",
-            "Once only": true
+            "Once only": true,
+            "Condition": {
+                "Logic": "2003100",
+                "Causalities": {
+                    "2003100": {
+                        "Button": {
+                            "Name": "Is it within the first 1 turns from entry turn"
+                        }
+                    }
+                }
+            }
         },
         "3003100": {
             "ID": "3003100",
@@ -89,7 +99,17 @@
                 "+ or -": "+"
             },
             "Length": "1",
-            "Once only": true
+            "Once only": true,
+            "Condition": {
+                "Logic": "3003100",
+                "Causalities": {
+                    "3003100": {
+                        "Button": {
+                            "Name": "Is it within the first 1 turns from entry turn"
+                        }
+                    }
+                }
+            }
         },
         "4003100": {
             "ID": "4003100",
@@ -193,15 +213,10 @@
             },
             "Length": "99",
             "Condition": {
-                "Logic": "2000",
+                "Logic": "8003100",
                 "Causalities": {
-                    "2000": {
-                        "Slider": {
-                            "Name": "How many super attacks has this character performed?",
-                            "Logic": ">=3",
-                            "Min": 0,
-                            "Max": 3
-                        }
+                    "8003100": {
+                        "Button": "Was it the first time that the following is true: How many super attacks has this character performed is greater than or equal to 3 within the last 99 turns"
                     }
                 }
             },

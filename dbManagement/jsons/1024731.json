@@ -38,7 +38,17 @@
                 "+ or -": "+"
             },
             "Length": "10",
-            "Once only": true
+            "Once only": true,
+            "Condition": {
+                "Logic": "2941",
+                "Causalities": {
+                    "2941": {
+                        "Button": {
+                            "Name": "Is it within the first 10 turns from entry turn"
+                        }
+                    }
+                }
+            }
         },
         "1002941": {
             "ID": "1002941",
@@ -54,12 +64,10 @@
             },
             "Length": "10",
             "Condition": {
-                "Logic": "1655",
+                "Logic": "1002941",
                 "Causalities": {
-                    "1655": {
-                        "Button": {
-                            "Name": "Is there an extreme class enemy? "
-                        }
+                    "1002941": {
+                        "Button": "Was it the first time that the following is true: Is there an extreme class enemy? within the last 10 turns"
                     }
                 }
             },

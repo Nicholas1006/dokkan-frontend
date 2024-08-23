@@ -74,7 +74,17 @@
                 "+ or -": "+"
             },
             "Length": "4",
-            "Once only": true
+            "Once only": true,
+            "Condition": {
+                "Logic": "2002842",
+                "Causalities": {
+                    "2002842": {
+                        "Button": {
+                            "Name": "Is it within the first 4 turns from entry turn"
+                        }
+                    }
+                }
+            }
         },
         "3002842": {
             "ID": "3002842",
@@ -154,15 +164,10 @@
             },
             "Length": "99",
             "Condition": {
-                "Logic": "1448",
+                "Logic": "5002842",
                 "Causalities": {
-                    "1448": {
-                        "Slider": {
-                            "Name": "How many attacks has this character performed in battle?",
-                            "Logic": ">=5",
-                            "Min": 0,
-                            "Max": 5
-                        }
+                    "5002842": {
+                        "Button": "Was it the first time that the following is true: How many attacks has this character performed in battle is greater than or equal to 5 within the last 99 turns"
                     }
                 }
             },
@@ -182,15 +187,10 @@
             },
             "Length": "99",
             "Condition": {
-                "Logic": "1453",
+                "Logic": "6002842",
                 "Causalities": {
-                    "1453": {
-                        "Slider": {
-                            "Name": "How many attacks has this character performed in battle?",
-                            "Logic": ">=10",
-                            "Min": 0,
-                            "Max": 10
-                        }
+                    "6002842": {
+                        "Button": "Was it the first time that the following is true: How many attacks has this character performed in battle is greater than or equal to 10 within the last 99 turns"
                     }
                 }
             },

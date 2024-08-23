@@ -73,7 +73,17 @@
                 "+ or -": "+"
             },
             "Length": "4",
-            "Once only": true
+            "Once only": true,
+            "Condition": {
+                "Logic": "2002841",
+                "Causalities": {
+                    "2002841": {
+                        "Button": {
+                            "Name": "Is it within the first 4 turns from entry turn"
+                        }
+                    }
+                }
+            }
         },
         "3002841": {
             "ID": "3002841",
@@ -90,15 +100,10 @@
             },
             "Length": "99",
             "Condition": {
-                "Logic": "1448",
+                "Logic": "3002841",
                 "Causalities": {
-                    "1448": {
-                        "Slider": {
-                            "Name": "How many attacks has this character performed in battle?",
-                            "Logic": ">=5",
-                            "Min": 0,
-                            "Max": 5
-                        }
+                    "3002841": {
+                        "Button": "Was it the first time that the following is true: How many attacks has this character performed in battle is greater than or equal to 5 within the last 99 turns"
                     }
                 }
             },

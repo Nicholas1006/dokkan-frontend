@@ -41,7 +41,17 @@
                 "+ or -": "+"
             },
             "Length": "1",
-            "Once only": true
+            "Once only": true,
+            "Condition": {
+                "Logic": "2922",
+                "Causalities": {
+                    "2922": {
+                        "Button": {
+                            "Name": "Is it within the first 1 turns from entry turn"
+                        }
+                    }
+                }
+            }
         },
         "1002922": {
             "ID": "1002922",
@@ -135,18 +145,10 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1602",
+                "Logic": "4002922",
                 "Causalities": {
-                    "1602": {
-                        "Button": {
-                            "Name": "Has attack been recieved?"
-                        },
-                        "Slider": {
-                            "Name": "How many attacks has this character recieved?",
-                            "Logic": ">=1",
-                            "Min": 0,
-                            "Max": 1
-                        }
+                    "4002922": {
+                        "Button": "Is it the first time that the following is true: Has attack been recieved "
                     }
                 }
             },
