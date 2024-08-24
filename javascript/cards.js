@@ -1011,8 +1011,6 @@ class superAttackQuery{
         let superAttackQuestion = document.createElement('label');
         superAttackQuestion.superAttackName= superAttackName;
         const urlParams=new URLSearchParams(window.location.search);
-        let isSeza = urlParams.get("SEZA") || "False";
-        let isEza = urlParams.get("EZA") || "False";
         superAttackQuestion.superAttackText=new pictureText("How many times has","../dbManagement/assets/final_assets/"+unitID+".png","performed "+superAttackName+" within the last "+buffs["Duration"]+" turns?: "+superAttackSlider.value, "index.html?id="+unitID+"&EZA="+isEza+"&SEZA="+isSeza);
         this.selfContainer.appendChild(superAttackQuestion.superAttackText.getElement());
         superAttackQuestion.innerHTML = superAttackSlider.textContent;
@@ -1104,9 +1102,6 @@ class passiveButton{
         this.parent=parent
         this.element.parent=parent
     }
-    updateCondition(){
-        console.log("WIP");
-    }
 }
 
 class passiveSlider {
@@ -1145,22 +1140,6 @@ class passiveSlider {
 
     getElement() {
         return this.selfContainer;
-    }
-
-    updateCondition(){
-        if(this.label=="How much ki is there"){
-            let totalKi=0;
-            for (const kiAmountKey in Object.keys(kiSources)){
-                totalKi+=kiSources[kiAmountKey];
-            }
-            if(currentJson["Rarity"]=="lr"){
-                totalKi=Math.min(totalKi, 24)
-            }
-            else{
-                totalKi=Math.min(totalKi, 12)
-            }
-            this.value=totalKi
-        }
     }
 }
 
@@ -1209,6 +1188,21 @@ class passiveQuery{
         }
         else if(this.type=="slider"){
             return(this.queryElement.element.value)
+        }
+    }
+
+    updateValue(value){
+        if(this.type=="button"){
+            if(value){
+                this.queryElement.element.classList.add("active")
+            }
+            else{
+                this.queryElement.element.classList.remove("active")   
+            }
+        }
+        else if(this.type=="slider"){
+            this.queryElement.element.value=value
+            this.queryElement.update()
         }
     }
 
@@ -1506,10 +1500,13 @@ class causalityList{
 }
 
 
-// Function to fetch JSON data based on sub-URL
+// GLOBAL VARIABLES
 let currentJson = null;
 let linkData=null;
 let domainData=null;
+
+let isEza;
+let isSeza;
 
 let baseStats={"ATK": 0, "DEF": 0, "HP": 0};
 
@@ -1518,10 +1515,12 @@ let superBuffs={"ATK": 0, "DEF": 0, "Enemy ATK": 0, "Enemy DEF": 0, "Crit": 0, "
 let linkBuffs={"ATK":0,"DEF":0,"Enemy DEF":0,"Heal":0,"KI":0,"Damage Reduction":0,"Crit":0,"Evasion":0};
 let skillOrbBuffs={"Additional":0,"Crit":0,"Evasion":0,"Attack":0,"Defense":0,"SuperBoost":0,"Recovery":0}
 let domainBuffs={"ATK":0,"DEF":0,"Increased damage recieved":0}
-let startingPassiveBuffs={};
+let currentKiSphere="STR";
+let currentKiSphereAmount=0;
+let rainbowKiSphereAmount=0;
 
 let currentDomain=null;
-let kiSources={"leader":6,"Support":0,"Links":0,"Active":0,"Domain":0};
+let kiSources={"leader":6,"Support":0,"Links":0,"Active":0,"Domain":0,"Orbs":0};
 let additionalAttacks={};
 let kiCircleDictionary=[];
 let passiveQueryList=[];
@@ -2024,9 +2023,9 @@ export function createLeaderStats(){
     
 }
 
-export function createLinkStats(json){
+export function createLinkStats(){
     const linksContainer=document.getElementById('links-container');
-    let links =json["Links"];
+    let links =currentJson["Links"];
     let linkNumber=0;
     for (const linkid in links){
       let link=links[linkid]
@@ -2069,13 +2068,13 @@ export function createLinkStats(json){
           linkButton.classList.add('active');
           linkButton.style.background="#00FF00"
         }
-        createLinkBuffs(json)
+        createLinkBuffs()
         refreshKiCircle()
       }
       linkSlider.addEventListener('input', function(){
         linkLevel = linkSlider.value;
         linkButton.innerHTML = linkName + " <br>Level: " + linkLevel;
-        createLinkBuffs(json);
+        createLinkBuffs();
         refreshKiCircle()
         
       });
@@ -2102,7 +2101,7 @@ export function createLinkStats(json){
         linksContainer.querySelectorAll('button')[index].innerHTML = linkName + " <br>Level: " + allLinksSlider.value;
       });
 
-      createLinkBuffs(json);
+      createLinkBuffs();
       refreshKiCircle()
     });
     linksContainer.appendChild(allLinksSlider);
@@ -2135,7 +2134,7 @@ export function createLinkStats(json){
           button.style.background="#00FF00"
         });
       }
-      createLinkBuffs(json);
+      createLinkBuffs();
       refreshKiCircle()
     }
     linksContainer.appendChild(allLinksButton);
@@ -2145,7 +2144,6 @@ export function createLinkStats(json){
     let linkBuffsDiv = document.createElement('p');
     linkBuffsDiv.innerHTML = "Link Buffs: ";
     linksContainer.appendChild(linkBuffsDiv);
-    //webFunctions.updateLinkBuffs(json)
   ;
 }
 
@@ -2224,15 +2222,15 @@ export function updateBaseStats(refreshKi=true){
 
   }
   
-export function createEzaContainer(json,isEza,isSeza){
+export function createEzaContainer(){
     let ezaContainer=document.getElementById('eza-container');
     while (ezaContainer.firstChild) {
         ezaContainer.removeChild(ezaContainer.firstChild);
     }
     let ezaButton = document.createElement('a');
-    if(json["Can EZA"]){
+    if(currentJson["Can EZA"]){
         ezaButton.id="eza-button";
-        if(json["Can SEZA"]){
+        if(currentJson["Can SEZA"]){
             ezaButton.style.transform="translate(150px, 170px)"
         }
         else{
@@ -2265,7 +2263,7 @@ export function createEzaContainer(json,isEza,isSeza){
         ezaContainer.appendChild(ezaButton);
     }
     let sezaButton = document.createElement('a');
-    if(json["Can SEZA"]){
+    if(currentJson["Can SEZA"]){
         sezaButton.style.transform="translate(150px, 170px)"
         sezaButton.id="seza-button";
         if(isSeza == "True"){
@@ -2289,12 +2287,10 @@ export function createEzaContainer(json,isEza,isSeza){
     }
 }
 
-export function createTransformationContainer(json){
+export function createTransformationContainer(){
     let transformationContainer=document.getElementById('awaken-container');
-    let transformations =json["Transformations"];
+    let transformations =currentJson["Transformations"];
     const urlParams=new URLSearchParams(window.location.search);
-    let isSeza = urlParams.get("SEZA") || "False";
-    let isEza = urlParams.get("EZA") || "False";
     if( Array.isArray(transformations) && transformations.length){
         for (const transformationID of transformations){
             let unitID = transformationID;
@@ -2309,7 +2305,7 @@ export function createTransformationContainer(json){
             }
         }
         } 
-        let previousTransformations = json["Transforms from"]
+        let previousTransformations = currentJson["Transforms from"]
         if( Array.isArray(previousTransformations) && previousTransformations.length){
         for (const transformationID of previousTransformations){
             let unitID = transformationID;
@@ -2326,16 +2322,16 @@ export function createTransformationContainer(json){
     } 
 }
 
-export function createLevelSlider(json){
+export function createLevelSlider(){
     let levelSlider=document.getElementById('level-slider');
     let levelInput=document.getElementById('level-input');
-    levelSlider.min=json["Min Level"];
-    levelInput.min=json["Min Level"];
-    levelSlider.max = json["Max Level"];
-    levelInput.max=json["Max Level"];
-    levelInput.value=json["Max Level"];
-    levelSlider.value=json["Max Level"];
-    if(json["Min Level"]==json["Max Level"]){
+    levelSlider.min=currentJson["Min Level"];
+    levelInput.min=currentJson["Min Level"];
+    levelSlider.max = currentJson["Max Level"];
+    levelInput.max=currentJson["Max Level"];
+    levelInput.value=currentJson["Max Level"];
+    levelSlider.value=currentJson["Max Level"];
+    if(currentJson["Min Level"]==currentJson["Max Level"]){
         levelInput.disabled = true;
         levelSlider.style.display = "none";
     }
@@ -2366,7 +2362,7 @@ export function createStatsContainer(){
     statsContainer.appendChild(statsContainerObject.getElement());
 }
 
-export function createPathButtons(json){
+export function createPathButtons(){
     const pathButtons = Array.from(document.querySelectorAll('.toggle-btn1, .toggle-btn2, .toggle-btn3, .toggle-btn4'));
     pathButtons[0].style.gridColumn = "1"
     pathButtons[0].style.gridRow = "1"
@@ -2402,9 +2398,9 @@ export function createPathButtons(json){
     });
 }
 
-export function createDokkanAwakenContainer(json){
+export function createDokkanAwakenContainer(){
     let AwakeningsContainer=document.getElementById('awaken-container');
-    let Awakenings =json["Dokkan awakenings"];
+    let Awakenings =currentJson["Dokkan awakenings"];
     if( Array.isArray(Awakenings) && Awakenings.length){
     for (const AwakeningsID of Awakenings){
         let unitID = AwakeningsID;
@@ -2419,7 +2415,7 @@ export function createDokkanAwakenContainer(json){
         }
     }
     }
-    let previousAwakenings = json["Dokkan Reverse awakenings"]
+    let previousAwakenings = currentJson["Dokkan Reverse awakenings"]
     if( Array.isArray(previousAwakenings) && previousAwakenings.length){
     for (const AwakeningsID of previousAwakenings){
         let unitID = AwakeningsID;
@@ -2438,7 +2434,7 @@ export function createDokkanAwakenContainer(json){
     }
 }
 
-export function createStarButton(json){
+export function createStarButton(){
     const toggleButtons = Array.from(document.querySelectorAll('.toggle-btn1, .toggle-btn2, .toggle-btn3, .toggle-btn4'));
     const starButton=document.getElementById('star-button');
     starButton.classList.add('active');
@@ -2633,7 +2629,7 @@ export function updateQueryList(passiveLine){
     
 }
 
-export function createDomainContainer(json){
+export function createDomainContainer(){
     let domainContainer=document.getElementById('domain-container');
     const domainDropDown=document.createElement('div');
     domainDropDown.className="dropdown";
@@ -2712,7 +2708,7 @@ export function refreshDomainBuffs(){
     refreshKiCircle()
 }
 
-export function createPassiveContainer(json){
+export function createPassiveContainer(){
     passiveQueryList=[]
     let passiveSupportContainer=document.getElementById('passive-support-container');
     let passiveQueryContainer = document.getElementById('passive-query-container');
@@ -2769,7 +2765,7 @@ export function createPassiveContainer(json){
     
     
     
-    let passiveList=json.Passive;
+    let passiveList=currentJson.Passive;
 
     for (const passiveLineKey of Object.keys(passiveList)) {
         if(arraysHaveOverlap(relevantPassiveEffects, Object.keys(passiveList[passiveLineKey]))){
@@ -2784,19 +2780,19 @@ export function createPassiveContainer(json){
 }
 
 
-export function initialiseAspects(json) {
-    updateImageContainer('image-container', json["ID"], json.Typing);
+export function initialiseAspects() {
+    updateImageContainer('image-container', currentJson["ID"], currentJson.Typing);
     document.getElementById("level-container").style.display="flex";
 
     //change the background of the slider to the typing color
     document.title="["
-    document.title+=json["Leader Skill"]["Name"];
+    document.title+=currentJson["Leader Skill"]["Name"];
     document.title+="] ";
-    document.title+=json.Name;
+    document.title+=currentJson.Name;
 
     additionalAttacks={0: "Unactivated"};
-    for (const passiveLineKey of Object.keys(json.Passive)) {
-        if("Additional attack" in json.Passive[passiveLineKey]){
+    for (const passiveLineKey of Object.keys(currentJson.Passive)) {
+        if("Additional attack" in currentJson.Passive[passiveLineKey]){
             additionalAttacks[passiveLineKey]="Unactivated";
         }
     }
@@ -2807,31 +2803,29 @@ export function initialiseAspects(json) {
 
   }
 
-export function createSuperAttackContainer(json){
+export function createSuperAttackContainer(){
 
     let superQuestionsContainer= document.getElementById('super-attack-questions-container');
     while (superQuestionsContainer.firstChild) {
         superQuestionsContainer.removeChild(superQuestionsContainer.firstChild);
     }
-    let superAttackss=json["Super Attack"];
+    let superAttackss=currentJson["Super Attack"];
     for (const key of Object.keys(superAttackss)){
         let superAttack = superAttackss[key];
         let superAttackObject;
         if(superAttack["superStyle"]=="Normal"){
-            superAttackObject = new superAttackQueryHolder(superAttack,json["Max Super Attacks"],json["ID"]);
+            superAttackObject = new superAttackQueryHolder(superAttack,currentJson["Max Super Attacks"],currentJson["ID"]);
         }
         else{
-            superAttackObject = new superAttackQueryHolder(superAttack,1,json["ID"]);
+            superAttackObject = new superAttackQueryHolder(superAttack,1,currentJson["ID"]);
         }
         if(superAttackObject.getElement().firstChild){
             superQuestionsContainer.appendChild(superAttackObject.getElement());
         }
     }
-    for(const key of json["Transforms from"]){
+    for(const key of currentJson["Transforms from"]){
         let transformPromise;
         const urlParams=new URLSearchParams(window.location.search);
-        let isSeza = urlParams.get("SEZA") || "False";
-        let isEza = urlParams.get("EZA") || "False";
         if(isSeza=="True"){
             transformPromise=getJsonPromise('../dbManagement/jsonsSEZA/',key,'.json');
         }
@@ -2956,7 +2950,7 @@ export function updateSuperAttackStacks(){
     
 }   
 
-export function createLinkBuffs(json){
+export function createLinkBuffs(){
     // Select all link sliders and buttons within a specific parent
     let linksContainer = document.querySelector('#links-container');
     linksContainer.style.width="200px";
@@ -3106,7 +3100,6 @@ export function updatePassiveBuffs(refreshKi=true){
     const passiveThinker = new causalityList(queriesToLogic(passiveQueryList));
     passiveThinker.updateBuffs();
     let passiveBuffs=passiveThinker.returnBuffs();
-    startingPassiveBuffs=passiveBuffs;
     let passiveBuffsContainer = document.getElementById('passive-buffs-container');
     passiveBuffsContainer.style.display="none";
     while (passiveBuffsContainer.firstChild) {
@@ -3143,6 +3136,105 @@ export function createSkillOrbContainer(){
 
 
 }
+
+export function updateKiSphereBuffs(){
+    let kiGain=0;
+    kiGain+=rainbowKiSphereAmount;
+    if(currentJson["Typing"]==currentKiSphere){
+        kiGain+=currentKiSphereAmount;
+    }
+    if(currentKiSphere!="Candy"){
+        kiGain+=currentKiSphereAmount;
+    }
+
+    for(const Query of passiveQueryList){
+        if(Query.type=="slider"){
+            if(Query.sliderName.startsWith("How many ")&& Query.sliderName.endsWith("Ki Spheres have been obtained?")){
+                let kiText=Query["sliderName"].substring(9,Query["sliderName"].length-31);
+                let kiTypes=kiText.split(" or ");
+                let specificKiGain=0;
+                for (const kiType of kiTypes){
+                    if(kiType==currentKiSphere){
+                        specificKiGain+=currentKiSphereAmount;
+                    }
+                    if(kiType=="Rainbow"){
+                        specificKiGain+=rainbowKiSphereAmount;
+                    }
+                }
+                Query.updateValue(specificKiGain);
+            }
+        }
+    }
+    
+
+    kiSources["Orbs"]=kiGain;
+
+    refreshKiCircle();
+}
+
+export function createKiSphereContainer(){
+    const kiSphereContainer=document.getElementById("ki-sphere-container");
+    const rainbowQuery=document.getElementById("rainbow-sphere-query");
+    const otherQuery=document.getElementById("other-sphere-query");
+    kiSphereContainer.rainbowQuery=rainbowQuery;
+    kiSphereContainer.otherQuery=otherQuery;
+
+    const rainbowlabel=document.createElement("label");
+    rainbowQuery.label=rainbowlabel;
+    rainbowQuery.appendChild(rainbowlabel);
+    rainbowlabel.innerHTML="How many rainbow ki spheres have been obtained: 0"
+
+    const rainbowSlider=document.createElement("input");
+    rainbowQuery.slider=rainbowSlider;
+    rainbowQuery.appendChild(rainbowSlider)
+    rainbowSlider.type="range";
+    rainbowSlider.min="0";
+    rainbowSlider.max="5";
+    rainbowSlider.value="0";
+    rainbowSlider.addEventListener("input", function(){
+        rainbowKiSphereAmount=parseInt(this.value);
+        updateKiSphereBuffs()
+        this.parentElement.label.innerHTML="How many rainbow ki spheres have been obtained: "+this.value;
+    })
+
+    const otherPrefixLabel=document.createElement("Label");
+    otherPrefixLabel.innerHTML="How many";
+    otherQuery.prefixLabel=otherPrefixLabel;
+    otherQuery.appendChild(otherPrefixLabel)
+
+    
+
+    const otherDropdown=document.createElement("select");
+    otherQuery.appendChild(otherDropdown)
+    otherDropdown.addEventListener("change", function(){
+        currentKiSphere=otherDropdown.value
+        updateKiSphereBuffs()
+    })
+    for (const orbType of ["STR","AGL","TEQ","INT","PHY","Candy"]){
+        const option = document.createElement('option');
+        option.textContent = orbType;
+        otherDropdown.appendChild(option);
+    }
+
+    const otherSuffixLabel=document.createElement("Label");
+    otherSuffixLabel.innerHTML="ki spheres have been obtained: 0";
+    otherQuery.sufffixLabel=otherSuffixLabel;
+    otherQuery.appendChild(otherSuffixLabel)
+
+
+    const otherSlider=document.createElement("input");
+    otherQuery.appendChild(otherSlider)
+    otherSlider.type="range";
+    otherSlider.min="0";
+    otherSlider.max="23";
+    otherSlider.value="0";
+    otherSlider.addEventListener("input", function(){
+        currentKiSphereAmount=parseInt(this.value)
+        updateKiSphereBuffs();
+        this.parentElement.sufffixLabel.innerHTML="ki spheres have been obtained: "+this.value;
+    })
+}
+
 
 export function isEmptyDictionary(dictionary){
     if(dictionary==undefined){
@@ -3185,14 +3277,11 @@ export function getBaseDomain() {
 export function loadPage(firstTime=false){
     const urlParams=new URLSearchParams(window.location.search);
     let subURL = urlParams.get('id') || "None";
-    let isSeza = urlParams.get("SEZA") || "False";
-    let isEza;
+    isEza = urlParams.get("EZA") || "False";
+    isSeza = urlParams.get("SEZA") || "False";
     let jsonPromise;
-    if(isSeza == "False"){
-        isEza = urlParams.get("EZA") || "False";
-    }
-    else{
-        isEza = "False";
+    if(isSeza == "True" && isEza == "True"){
+        isEza="False"
     }
     if(isSeza == "True"){
     jsonPromise=getJsonPromise('../dbManagement/jsonsSEZA/',subURL,'.json');
@@ -3213,34 +3302,36 @@ export function loadPage(firstTime=false){
             linkData=links;
             domainPromise.then(domains => {
                 domainData=domains;
-                initialiseAspects(json);
-                createPassiveContainer(json);
+                initialiseAspects();
+                createPassiveContainer();
                 if(firstTime){
-                    if(json["Rarity"] == "lr" || json["Rarity"] == "ur"){
+                    if(currentJson["Rarity"] == "lr" || currentJson["Rarity"] == "ur"){
                         createSkillOrbContainer();
-                        createStarButton(json);
-                        createPathButtons(json);
+                        createStarButton();
+                        createPathButtons();
                     }
                     createLeaderStats();
-                    createLinkStats(json);
-                    createLinkBuffs(json);
-                    createDokkanAwakenContainer(json);
-                    createTransformationContainer(json);
-                    createDomainContainer(json);
+                    createLinkStats();
+                    createLinkBuffs();
+                    createDokkanAwakenContainer();
+                    createTransformationContainer();
+                    createDomainContainer();
                     createStatsContainer();
+                    createKiSphereContainer();
                 }
                 else{
                     //document.getElementById('ki-slider').dispatchEvent(new Event('input'));	
                 }
-                createEzaContainer(json,isEza,isSeza);
-                createLevelSlider(json);
-                createSuperAttackContainer(json);
+                createEzaContainer();
+                createLevelSlider();
+                createSuperAttackContainer();
                 updateBaseStats(false);
-                if(json["Rarity"] == "lr" || json["Rarity"] == "ur"){
+                if(currentJson["Rarity"] == "lr" || currentJson["Rarity"] == "ur"){
                     const buttonContainer = document.getElementById('hipo-button-container');
                     buttonContainer.style.display = "grid";
                 }
                 updatePassiveBuffs(false);
+                
                 createKiCirclesWithClass();
                 refreshKiCircle();
             })
