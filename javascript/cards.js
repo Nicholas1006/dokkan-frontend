@@ -422,7 +422,7 @@ class kiCircleClass{
                 }
             }
             
-            if(this.superPerformed){
+            if(this.superPerformed||this.superHasBeenPerformed){
                 this.Ki+=this.EXTRAKIONSUPER;
             }
             this.Ki=Math.min(this.Ki,this.maxKi)
@@ -491,7 +491,7 @@ class kiCircleClass{
                 }
             }
 
-            if(this.superPerformed){
+            if(this.superPerformed||this.superHasBeenPerformed){
                 this.MOTATK+=this.MOTATKONSUPER;
                 this.SOTATK+=this.SOTATKONSUPER;
             }
@@ -1068,7 +1068,7 @@ class superAttackQuery{
 }
 
 class passiveButton{
-    constructor(min, max, label) {
+    constructor(min, max, label, parent) {
         this.min = min;
         this.max = max;
         this.label = label;
@@ -1091,6 +1091,17 @@ class passiveButton{
             }
             updatePassiveBuffs()
         };
+        this.updateParent(parent);
+        if(
+            this.label.includes("Ki Spheres have been obtained?")||
+            this.label.includes("Is the Domain ")||
+            this.label.includes("Is Ki at least ")||
+            this.label.includes("Ki Spheres been obtained?")
+            ){
+                if(HIDEUNNEEDEDPASSIVE){
+                    this.parent.selfContainer.style.display="none"
+                }
+        }
     }
 
 
@@ -1105,7 +1116,8 @@ class passiveButton{
 }
 
 class passiveSlider {
-    constructor(min, max, label) {
+    constructor(min, max, label, parent) {
+        this.parent=parent
         this.selfContainer=document.createElement("div");
         this.element = document.createElement("input");
         this.elementLabel = document.createElement("label");
@@ -1116,25 +1128,35 @@ class passiveSlider {
         this.max = max;
         this.value = this.min;
         this.element.type = "range";
+        this.element.parent=this;
         this.element.min = this.min;
         this.element.max = this.max;
         this.element.value = this.min;
         this.element.step = 1;
-        this.element.addEventListener("input", () => this.update());
+        this.element.addEventListener("input", function(){
+            this.parent.updateValueAndLabel();
+            updateKiSphereBuffs();
+        });
         
         this.elementLabel.innerHTML = this.label+": "+this.value+"+";
-        if(this.label=="How much ki is there"){
-            //this.selfContainer.style.display="none";
+        if(
+            this.label.includes("Ki Spheres have been obtained?")||
+            this.label=="How much ki is there"
+            ){
+                if(HIDEUNNEEDEDPASSIVE){
+                    this.parent.selfContainer.style.display="none"
+                }
         }
     }
 
-    update() {
+    updateValueAndLabel() {
         this.value = parseInt(this.element.value);
         this.elementLabel.innerHTML = this.label+": "+this.value;
         if(this.value==this.max){
             this.elementLabel.innerHTML+="+";
         }
-        updatePassiveBuffs()
+
+
 
     }
 
@@ -1155,6 +1177,7 @@ class passiveQuery{
     }
 
     changeType(type){
+        this.selfContainer.style.display=("block")
         this.type = type;
         this.create();
     }
@@ -1164,13 +1187,11 @@ class passiveQuery{
             this.selfContainer.removeChild(this.selfContainer.firstChild);
         }
         if(this.type=="slider"){
-            this.queryElement = new passiveSlider(this.min, this.max, this.sliderName);
-            this.queryElement.parent=this;
+            this.queryElement = new passiveSlider(this.min, this.max, this.sliderName, this);
             this.selfContainer.appendChild(this.queryElement.getElement());
         }
         else if(this.type=="button"){
-            this.queryElement = new passiveButton(this.min, this.max, this.buttonName);
-            this.queryElement.updateParent(this);
+            this.queryElement = new passiveButton(this.min, this.max, this.buttonName, this);
             this.selfContainer.appendChild(this.queryElement.getElement());
         }
         else{
@@ -1191,18 +1212,23 @@ class passiveQuery{
         }
     }
 
-    updateValue(value){
+    updateValue(value,runUpdatePassiveBuffs=true){
         if(this.type=="button"){
             if(value){
                 this.queryElement.element.classList.add("active")
+                this.queryElement.element.style.background="#00FF00"
             }
             else{
                 this.queryElement.element.classList.remove("active")   
+                this.queryElement.element.style.background="#FF5C35"
             }
         }
         else if(this.type=="slider"){
             this.queryElement.element.value=value
-            this.queryElement.update()
+            this.queryElement.updateValueAndLabel()
+        }
+        if(runUpdatePassiveBuffs){
+            updatePassiveBuffs()
         }
     }
 
@@ -1500,7 +1526,8 @@ class causalityList{
 }
 
 
-// GLOBAL VARIABLES
+// CONSTANT GLOBAL VARIABLES
+const HIDEUNNEEDEDPASSIVE=true;
 let currentJson = null;
 let linkData=null;
 let domainData=null;
@@ -1649,23 +1676,67 @@ export function getLastInDictionary(originalDictionary,value){
     return(output)
 }
 
+export function prepareCausalityLogic(CausalityLogic,KiCircleObject){
+    for(const Cause of Object.keys(CausalityLogic)){
+        if(Cause.startsWith("Is Ki at least")){
+            let kiNeeded=parseInt(extractDigitsFromString(Cause).replaceAll(" ",""))
+
+            let circleKi=KiCircleObject.Ki;
+            let superMinKi=currentJson["SuperMinKi"]
+            let effectiveCurrentKi=Math.max(circleKi,superMinKi)
+
+
+            CausalityLogic[Cause]=(effectiveCurrentKi>=kiNeeded);
+        }
+    }
+    return(CausalityLogic)
+}
 
 export function iterateCausalityLogic(CausalityLogic,KiCircleObject){
-    if("How many attacks has this character performed in battle?" in CausalityLogic){
-        CausalityLogic["How many attacks has this character performed in battle?"]++;
-    }
-    if(KiCircleObject.superPerformed){
-        if("How many super attacks has this character performed?" in CausalityLogic){
+    for(const Cause of Object.keys(CausalityLogic)){
+        if(Cause=="How many attacks has this character performed in battle?"){
+            CausalityLogic["How many attacks has this character performed in battle?"]++;
+        }
+        else if(Cause=="How many super attacks has this character performed?"){
             CausalityLogic["How many super attacks has this character performed?"]++;
         }
+        else{
+            console.log(Cause)
+        }
+
     }
     return(CausalityLogic)
 }
 
 
 export function refreshKiCircle(){
+    let kiCalculator= new kiCircleClass("0",queriesToLogic(passiveQueryList),100,100);
+    kiCalculator.updateConditions()
+    let startingKi=kiCalculator.Ki
+
+    kiCalculator=null;
+    
+
+    for(const Query of passiveQueryList){
+        if(Query.type=="slider"){
+            if(Query.sliderName==("How much ki is there")){
+                Query.updateValue(startingKi,false);
+            }
+        }
+        else if(Query.type=="button"){
+            if(Query.buttonName.startsWith("Is Ki at least ")){
+                const kiNeeded=extractDigitsFromString(Query.buttonName).replaceAll(" ","")
+                Query.updateValue(startingKi>=kiNeeded,false)
+            }
+        }
+    }
+
+
+
+
     let superAttackRaise=0;
     let iteratingCausalityLogic=queriesToLogic(passiveQueryList);
+    iteratingCausalityLogic=prepareCausalityLogic(iteratingCausalityLogic,kiCircleDictionary[0])
     for (const key in kiCircleDictionary){
         kiCircleDictionary[key].display(false);
     }
@@ -1673,7 +1744,8 @@ export function refreshKiCircle(){
         additionalAttacks[key]="Unactivated";
     }
     kiCircleDictionary[0].updateCausalityLogic(iteratingCausalityLogic);
-    kiCircleDictionary[0].updateConditions(0,true);
+    kiCircleDictionary[0].updateConditions(0,false);
+    let superHasBeenPerformed=kiCircleDictionary[0].superHasBeenPerformed;
     kiCircleDictionary[0].display(true);
     iteratingCausalityLogic=iterateCausalityLogic(iteratingCausalityLogic,kiCircleDictionary[0]);
     superAttackRaise=kiCircleDictionary[0].atkRaise;
@@ -1714,9 +1786,11 @@ export function refreshKiCircle(){
             kiCircleDictionary[nextLineToActivate].display(true)
         }
         kiCircleDictionary[nextLineToActivate].changeGridRow(currentRow);
+        iteratingCausalityLogic=prepareCausalityLogic(iteratingCausalityLogic,kiCircleDictionary[nextLineToActivate])
         kiCircleDictionary[nextLineToActivate].updateCausalityLogic(iteratingCausalityLogic);
         if(additionalAttacks[nextLineToActivate]=="Activated"){
-            kiCircleDictionary[nextLineToActivate].updateConditions(superAttackRaise,true);
+            kiCircleDictionary[nextLineToActivate].updateConditions(superAttackRaise,superHasBeenPerformed);
+            superHasBeenPerformed=superHasBeenPerformed||kiCircleDictionary[nextLineToActivate].superHasBeenPerformed;
             iteratingCausalityLogic=iterateCausalityLogic(iteratingCausalityLogic,kiCircleDictionary[nextLineToActivate])
             superAttackRaise=kiCircleDictionary[nextLineToActivate].atkRaise;
             for(const key in kiCircleDictionary[nextLineToActivate].additionalAttacks){
@@ -1743,8 +1817,10 @@ export function refreshKiCircle(){
         }
         else if(additionalAttacks[nextLineToActivate]=="Predictor"){
             kiCircleDictionary[nextLineToActivate].display(false);
+            iteratingCausalityLogic=prepareCausalityLogic(iteratingCausalityLogic,kiCircleDictionary[nextLineToActivate])
             kiCircleDictionary[nextLineToActivate].updateCausalityLogic(iteratingCausalityLogic);
-            kiCircleDictionary[nextLineToActivate].updateConditions(0,true);
+            kiCircleDictionary[nextLineToActivate].updateConditions(superAttackRaise,superHasBeenPerformed);
+            superHasBeenPerformed=superHasBeenPerformed||kiCircleDictionary[nextLineToActivate].superHasBeenPerformed;
             let additionalFound=false;
             for(const key in kiCircleDictionary[nextLineToActivate].additionalAttacks){
                 if(kiCircleDictionary[nextLineToActivate].additionalAttacks[key]=="Offered" && additionalAttacks[key]=="Unactivated"){
@@ -2660,6 +2736,20 @@ export function createDomainContainer(){
 }
 
 export function refreshDomainBuffs(){
+    for(const Query of passiveQueryList){
+        if(Query.type=="button"){
+            if(Query.buttonName.startsWith("Is the Domain ") && Query.buttonName.endsWith(" active")){
+                const queryDomain=Query.buttonName.substring(14,Query.buttonName.length-7);
+                if(currentDomain=="null"){
+                    Query.updateValue(false)
+                }
+                else{
+                    Query.updateValue(domainData[currentDomain]["Name"]==queryDomain);
+                }
+            }
+        }
+    }
+
     if(currentDomain=="null"){
         domainBuffs={"ATK":0,"DEF":0,"Increased damage recieved":0}
     }
@@ -3153,6 +3243,10 @@ export function updateKiSphereBuffs(){
                 let kiText=Query["sliderName"].substring(9,Query["sliderName"].length-31);
                 let kiTypes=kiText.split(" or ");
                 let specificKiGain=0;
+                if(kiText==""){
+                    specificKiGain+=currentKiSphereAmount;
+                    specificKiGain+=rainbowKiSphereAmount;
+                }
                 for (const kiType of kiTypes){
                     if(kiType==currentKiSphere){
                         specificKiGain+=currentKiSphereAmount;
@@ -3162,6 +3256,22 @@ export function updateKiSphereBuffs(){
                     }
                 }
                 Query.updateValue(specificKiGain);
+            }
+        }
+        else if(Query.type=="button"){
+            if(Query.buttonName.startsWith("Has ")&& Query.buttonName.endsWith("Ki Spheres been obtained?")){
+                const kiNeeded=extractDigitsFromString(Query.buttonName).replaceAll(" ","")
+                const viableKiTypes=Query.buttonName.substring(14,Query.buttonName.length-26).split(" or ")
+                let kiProgress=0
+                for (const kiType of viableKiTypes){
+                    if(kiType==currentKiSphere){
+                        kiProgress+=currentKiSphereAmount
+                    }
+                    if(kiType=="Rainbow"){
+                        kiProgress+=rainbowKiSphereAmount
+                    }
+                }
+                Query.updateValue(kiProgress>=kiNeeded)
             }
         }
     }
@@ -3188,11 +3298,17 @@ export function createKiSphereContainer(){
     rainbowQuery.slider=rainbowSlider;
     rainbowQuery.appendChild(rainbowSlider)
     rainbowSlider.type="range";
-    rainbowSlider.min="0";
-    rainbowSlider.max="5";
-    rainbowSlider.value="0";
+    rainbowSlider.min=0;
+    rainbowSlider.max=5;
+    rainbowSlider.value=0;
     rainbowSlider.addEventListener("input", function(){
         rainbowKiSphereAmount=parseInt(this.value);
+        if(parseInt(this.value)+parseInt(this.parentElement.parentElement.otherQuery.otherSlider.value)>23){
+            this.parentElement.parentElement.otherQuery.otherSlider.value=23-this.value;
+            this.parentElement.parentElement.otherQuery.sufffixLabel.innerHTML="ki spheres have been obtained: "
+            this.parentElement.parentElement.otherQuery.sufffixLabel.innerHTML+=23-this.value;
+            currentKiSphereAmount=23-this.value;
+        }
         updateKiSphereBuffs()
         this.parentElement.label.innerHTML="How many rainbow ki spheres have been obtained: "+this.value;
     })
@@ -3223,12 +3339,19 @@ export function createKiSphereContainer(){
 
 
     const otherSlider=document.createElement("input");
+    otherQuery.otherSlider=otherSlider;
     otherQuery.appendChild(otherSlider)
     otherSlider.type="range";
-    otherSlider.min="0";
-    otherSlider.max="23";
-    otherSlider.value="0";
+    otherSlider.min=0;
+    otherSlider.max=23;
+    otherSlider.value=0;
     otherSlider.addEventListener("input", function(){
+        if(parseInt(this.value)+parseInt(this.parentElement.parentElement.rainbowQuery.slider.value)>23){
+            this.parentElement.parentElement.rainbowQuery.slider.value=23-this.value;
+            this.parentElement.parentElement.rainbowQuery.label.innerHTML="How many rainbow ki spheres have been obtained: "
+            this.parentElement.parentElement.rainbowQuery.label.innerHTML+=23-parseInt(this.value);
+            rainbowKiSphereAmount=23-this.value
+        }
         currentKiSphereAmount=parseInt(this.value)
         updateKiSphereBuffs();
         this.parentElement.sufffixLabel.innerHTML="ki spheres have been obtained: "+this.value;
