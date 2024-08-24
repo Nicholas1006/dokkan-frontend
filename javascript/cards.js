@@ -1109,7 +1109,8 @@ class passiveButton{
             this.label.includes("Ki Spheres have been obtained?")||
             this.label.includes("Is the Domain ")||
             this.label.includes("Is Ki at least ")||
-            this.label.includes("Ki Spheres been obtained?")
+            this.label.includes("Ki Spheres been obtained?")||
+            this.label.includes("Is a super being performed")
             ){
                 if(HIDEUNNEEDEDPASSIVE){
                     this.parent.selfContainer.style.display="none"
@@ -1741,21 +1742,22 @@ export function iterateCausalityLogic(CausalityLogic,KiCircleObject){
 export function refreshKiCircle(){
     let kiCalculator= new kiCircleClass("0",queriesToLogic(passiveQueryList),100,100);
     kiCalculator.updateConditions()
-    let startingKi=kiCalculator.Ki
 
-    kiCalculator=null;
     
 
     for(const Query of passiveQueryList){
         if(Query.type=="slider"){
             if(Query.sliderName.includes("How much ki is there")){
-                Query.updateValue(startingKi,false);
+                Query.updateValue(kiCalculator.Ki,false);
             }
         }
         else if(Query.type=="button"){
             if(Query.buttonName.startsWith("Is Ki at least ")){
                 const kiNeeded=extractDigitsFromString(Query.buttonName).replaceAll(" ","")
-                Query.updateValue(startingKi>=kiNeeded,false)
+                Query.updateValue(kiCalculator.Ki>=kiNeeded,false)
+            }
+            if(Query.buttonName=="Is a super being performed on this turn?"){
+                Query.updateValue(kiCalculator.superPerformed,false)
             }
         }
     }
@@ -2901,7 +2903,6 @@ export function createPassiveContainer(){
     for (const query of passiveQueryList) {
         passiveQueryContainer.appendChild(query.getElement());
     }
-    passiveQueryContainer.style.height=passiveQueryContainer.clientHeight+"px";
 }
 
 
