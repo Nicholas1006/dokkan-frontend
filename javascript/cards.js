@@ -2,6 +2,7 @@ class kiCircleClass{
     constructor(passiveLineKey,CausalityLogic,performedChance,superChance){
         this.CausalityLogic=CausalityLogic;
         this.attackPerformed=false;
+        this.Ki=0;
         if(performedChance==100){
             this.attackPerformed=false
         }
@@ -294,6 +295,7 @@ class kiCircleClass{
         this.CausalityLogic=CausalityLogic
     }
     updateConditions(superAttackMultiplierIncrease,superHasBeenPerformed){
+        const startOfCalcSuper=superHasBeenPerformed||this.superPerformed
         if(this.attackPerformed || additionalAttacks[this.passiveLineKey]=="Predictor"){
             this.superHasBeenPerformed=superHasBeenPerformed||this.superPerformed;
             this.activatedPassiveLineMultipliers={};
@@ -469,7 +471,6 @@ class kiCircleClass{
                     this.superAttackMultiplier=superAttack["Multiplier"]/100;
                     this.superAttackAssetID=superAttack["special_name_no"];
                     this.superAttackMultiplier+=skillOrbBuffs["SuperBoost"]*0.05;
-                    this.superPerformed=true;
                     if("SpecialBonus" in superAttack){
                         if(superAttack["SpecialBonus"]["Type"]=="SA multiplier increase"){
                             this.superAttackMultiplier+=superAttack["SpecialBonus"]["Amount"]/100
@@ -490,7 +491,7 @@ class kiCircleClass{
                     
                 }
             }
-
+            
             if(this.superPerformed||this.superHasBeenPerformed){
                 this.MOTATK+=this.MOTATKONSUPER;
                 this.SOTATK+=this.SOTATKONSUPER;
@@ -525,6 +526,18 @@ class kiCircleClass{
             this.updateSuperAttack(0);
             this.superPerformed=false
             this.atkRaise=superAttackMultiplierIncrease;
+        }
+
+        if(this.superAttackAssetID==1 && (this.superPerformed)){
+            this.superPerformed=false;
+            this.CausalityLogic=prepareCausalityLogic(this.CausalityLogic,this)
+            this.updateConditions(superAttackMultiplierIncrease,superHasBeenPerformed)
+        }
+        else if(this.superAttackAssetID!=1 && !startOfCalcSuper){
+            this.superPerformed=true;
+            this.superHasBeenPerformed=true;
+            this.CausalityLogic=prepareCausalityLogic(this.CausalityLogic,this)
+            this.updateConditions(superAttackMultiplierIncrease,superHasBeenPerformed)
         }
     }
     updateKi(value){
@@ -1141,7 +1154,7 @@ class passiveSlider {
         this.elementLabel.innerHTML = this.label+": "+this.value+"+";
         if(
             this.label.includes("Ki Spheres have been obtained?")||
-            this.label=="How much ki is there"
+            this.label.includes("How much ki is there")
             ){
                 if(HIDEUNNEEDEDPASSIVE){
                     this.parent.selfContainer.style.display="none"
@@ -1681,12 +1694,27 @@ export function prepareCausalityLogic(CausalityLogic,KiCircleObject){
         if(Cause.startsWith("Is Ki at least")){
             let kiNeeded=parseInt(extractDigitsFromString(Cause).replaceAll(" ",""))
 
+            let firstCircleKi=kiCircleDictionary["0"].Ki
             let circleKi=KiCircleObject.Ki;
             let superMinKi=currentJson["SuperMinKi"]
-            let effectiveCurrentKi=Math.max(circleKi,superMinKi)
-
-
+            let effectiveCurrentKi=Math.max(firstCircleKi,circleKi);
+            if(KiCircleObject.superHasBeenPerformed){
+                effectiveCurrentKi=Math.max(effectiveCurrentKi,superMinKi)
+            }
+            
             CausalityLogic[Cause]=(effectiveCurrentKi>=kiNeeded);
+        }
+        else if(Cause=="How much ki is there on this turn?"){
+            let firstCircleKi=kiCircleDictionary["0"].Ki
+            let circleKi=KiCircleObject.Ki;
+            let superMinKi=currentJson["SuperMinKi"]
+            let effectiveCurrentKi=Math.max(firstCircleKi,circleKi);
+            if(KiCircleObject.superHasBeenPerformed){
+                effectiveCurrentKi=Math.max(effectiveCurrentKi,superMinKi)
+            }
+
+
+            CausalityLogic[Cause]=(effectiveCurrentKi);
         }
     }
     return(CausalityLogic)
@@ -1709,6 +1737,7 @@ export function iterateCausalityLogic(CausalityLogic,KiCircleObject){
 }
 
 
+
 export function refreshKiCircle(){
     let kiCalculator= new kiCircleClass("0",queriesToLogic(passiveQueryList),100,100);
     kiCalculator.updateConditions()
@@ -1719,7 +1748,7 @@ export function refreshKiCircle(){
 
     for(const Query of passiveQueryList){
         if(Query.type=="slider"){
-            if(Query.sliderName==("How much ki is there")){
+            if(Query.sliderName.includes("How much ki is there")){
                 Query.updateValue(startingKi,false);
             }
         }
@@ -2583,6 +2612,9 @@ export function typingToColor(typing){
     if(typing.toLowerCase()=="int"){
         return("#FF00FF")
     }
+    if(typing.toLowerCase()=="candy"){
+        return("#FFFFFF")
+    }
 }
 export function LightenColor(color, percent){
     var num = parseInt(color.slice(1),16),
@@ -2608,6 +2640,9 @@ export function colorToBackground(color){
     }
     if(color=="#FF00FF"){
         return("#680474")
+    }
+    if(color=="#FFFFFF"){
+        return("#FFFFFF")
     }
 }
 
@@ -2738,7 +2773,7 @@ export function createDomainContainer(){
 export function refreshDomainBuffs(){
     for(const Query of passiveQueryList){
         if(Query.type=="button"){
-            if(Query.buttonName.startsWith("Is the Domain ") && Query.buttonName.endsWith(" active")){
+            if(Query.buttonName.startsWith("Is the Domain ") && Query.buttonName.includes(" active")){
                 const queryDomain=Query.buttonName.substring(14,Query.buttonName.length-7);
                 if(currentDomain=="null"){
                     Query.updateValue(false)
@@ -3239,7 +3274,7 @@ export function updateKiSphereBuffs(){
 
     for(const Query of passiveQueryList){
         if(Query.type=="slider"){
-            if(Query.sliderName.startsWith("How many ")&& Query.sliderName.endsWith("Ki Spheres have been obtained?")){
+            if(Query.sliderName.startsWith("How many ")&& Query.sliderName.includes("Ki Spheres have been obtained?")){
                 let kiText=Query["sliderName"].substring(9,Query["sliderName"].length-31);
                 let kiTypes=kiText.split(" or ");
                 let specificKiGain=0;
@@ -3259,7 +3294,7 @@ export function updateKiSphereBuffs(){
             }
         }
         else if(Query.type=="button"){
-            if(Query.buttonName.startsWith("Has ")&& Query.buttonName.endsWith("Ki Spheres been obtained?")){
+            if(Query.buttonName.startsWith("Has ")&& Query.buttonName.includes("Ki Spheres been obtained?")){
                 const kiNeeded=extractDigitsFromString(Query.buttonName).replaceAll(" ","")
                 const viableKiTypes=Query.buttonName.substring(14,Query.buttonName.length-26).split(" or ")
                 let kiProgress=0
@@ -3324,20 +3359,23 @@ export function createKiSphereContainer(){
     otherQuery.appendChild(otherDropdown)
     otherDropdown.addEventListener("change", function(){
         currentKiSphere=otherDropdown.value
+        otherDropdown.style.backgroundColor=LightenColor(colorToBackground(typingToColor(otherDropdown.value)),50)
         updateKiSphereBuffs()
     })
     for (const orbType of ["STR","AGL","TEQ","INT","PHY","Candy"]){
         const option = document.createElement('option');
+        option.style.backgroundColor=LightenColor(colorToBackground(typingToColor(orbType)),50);
         option.textContent = orbType;
         otherDropdown.appendChild(option);
     }
-
+    otherDropdown.style.backgroundColor=LightenColor(colorToBackground(typingToColor(otherDropdown.value)),50)
+    
     const otherSuffixLabel=document.createElement("Label");
     otherSuffixLabel.innerHTML="ki spheres have been obtained: 0";
     otherQuery.sufffixLabel=otherSuffixLabel;
     otherQuery.appendChild(otherSuffixLabel)
-
-
+    
+    
     const otherSlider=document.createElement("input");
     otherQuery.otherSlider=otherSlider;
     otherQuery.appendChild(otherSlider)
