@@ -313,7 +313,7 @@ class kiCircleClass{
             }
 
             const SOTTIMINGS=["Start of turn","After all ki collected","When ki spheres collected"]
-            const MOTTIMINGS=["Being hit","Hit recieved","Attacking the enemy","Attacking"]
+            const MOTTIMINGS=["Being hit","Hit recieved","Attacking the enemy","Attacking","End of turn"]
             const ONSUPERTIMING=["On Super"]
             let passiveLines=currentJson.Passive;
             for(const passiveLineKey in passiveLines){
@@ -1106,10 +1106,10 @@ class passiveButton{
         };
         this.updateParent(parent);
         if(
-            this.label.includes("Ki Spheres have been obtained?")||
+            this.label.includes("Ki Spheres have been obtained")||
             this.label.includes("Is the Domain ")||
             this.label.includes("Is Ki at least ")||
-            this.label.includes("Ki Spheres been obtained?")||
+            this.label.includes("Ki Spheres been obtained")||
             this.label.includes("Is a super being performed")
             ){
                 if(HIDEUNNEEDEDPASSIVE){
@@ -1155,7 +1155,8 @@ class passiveSlider {
         this.elementLabel.innerHTML = this.label+": "+this.value+"+";
         if(
             this.label.includes("Ki Spheres have been obtained?")||
-            this.label.includes("How much ki is there")
+            this.label.includes("How much ki is there")||
+            this.label.includes("Ki Spheres have been obtained on this turn?")
             ){
                 if(HIDEUNNEEDEDPASSIVE){
                     this.parent.selfContainer.style.display="none"
@@ -1728,9 +1729,6 @@ export function iterateCausalityLogic(CausalityLogic,KiCircleObject){
         }
         else if(Cause=="How many super attacks has this character performed?"){
             CausalityLogic["How many super attacks has this character performed?"]++;
-        }
-        else{
-            console.log(Cause)
         }
 
     }
@@ -3004,7 +3002,9 @@ export function updateContainer(containerId, content){
   cardImage.src = '../dbManagement/assets/final_assets/' + assetSubURL + '.png';
 
 
-  document.getElementById("cards-body-container").style.backgroundColor=LightenColor(colorToBackground(typingToColor(typing)),50);
+  document.getElementById("cards-body-container").style.backgroundColor=(typingToColor(typing));
+  document.getElementById("cards-body-container").style.backgroundColor=LightenColor(colorToBackground(typingToColor(typing)),30);
+  document.getElementById("cards-body-container").style.backgroundColor=(colorToBackground(typingToColor(typing)));
 }
 
   // Function to create a paragraph element with the given text
@@ -3275,8 +3275,8 @@ export function updateKiSphereBuffs(){
 
     for(const Query of passiveQueryList){
         if(Query.type=="slider"){
-            if(Query.sliderName.startsWith("How many ")&& Query.sliderName.includes("Ki Spheres have been obtained?")){
-                let kiText=Query["sliderName"].substring(9,Query["sliderName"].length-31);
+            if(Query.sliderName.startsWith("How many ")&& Query.sliderName.includes("Ki Spheres have been obtained on this turn?")){
+                let kiText=Query["sliderName"].substring(9,Query["sliderName"].length-44);
                 let kiTypes=kiText.split(" or ");
                 let specificKiGain=0;
                 if(kiText==""){
@@ -3295,9 +3295,9 @@ export function updateKiSphereBuffs(){
             }
         }
         else if(Query.type=="button"){
-            if(Query.buttonName.startsWith("Has ")&& Query.buttonName.includes("Ki Spheres been obtained?")){
+            if(Query.buttonName.startsWith("Has ")&& Query.buttonName.includes("Ki Spheres been obtained on this turn?")){
                 const kiNeeded=extractDigitsFromString(Query.buttonName).replaceAll(" ","")
-                const viableKiTypes=Query.buttonName.substring(14,Query.buttonName.length-26).split(" or ")
+                const viableKiTypes=Query.buttonName.substring(14,Query.buttonName.length-39).split(" or ")
                 let kiProgress=0
                 for (const kiType of viableKiTypes){
                     if(kiType==currentKiSphere){

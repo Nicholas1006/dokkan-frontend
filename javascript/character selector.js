@@ -24,8 +24,7 @@ export function getJsonPromise(prefix,name,suffix) {
 export function createCharacterSelection(){
   const allUnitsJsonPromise=getJsonPromise('dbManagement/jsons/','allUnits','.json');
   allUnitsJsonPromise.then(allUnitsJson => {
-
-    const UNITSTODISPLAY = 40000;
+    const UNITSTODISPLAY = 10000;
     const unitsContainer = document.getElementById('unit-selection-container');
     unitsContainer.style.width="100%";
     for (let i = UNITSTODISPLAY; i > 0;i--) {
