@@ -2713,8 +2713,14 @@ export function refreshDomainBuffs(){
 }
 
 export function createPassiveContainer(json){
-
+    passiveQueryList=[]
     let passiveSupportContainer=document.getElementById('passive-support-container');
+    let passiveQueryContainer = document.getElementById('passive-query-container');
+    while (passiveQueryContainer.firstChild) {
+        passiveQueryContainer.removeChild(passiveQueryContainer.firstChild);
+    }
+
+
     if(!(passiveSupportContainer.firstChild)){
         const passiveATKSupport=document.createElement('div');
         passiveATKSupport.label=document.createElement('label');
@@ -2760,12 +2766,9 @@ export function createPassiveContainer(json){
         passiveSupportContainer.Kisupport=passiveKiSupport;
         passiveSupportContainer.appendChild(passiveKiSupport);
     }
-
-    let passiveQueryContainer = document.getElementById('passive-query-container');
-    while (passiveQueryContainer.firstChild) {
-        passiveQueryContainer.removeChild(passiveQueryContainer.firstChild);
-    }
-
+    
+    
+    
     let passiveList=json.Passive;
 
     for (const passiveLineKey of Object.keys(passiveList)) {
