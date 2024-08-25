@@ -375,7 +375,23 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Condition": {
+                "Logic": "14004038",
+                "Causalities": {
+                    "14004038": {
+                        "Button": {
+                            "Name": "How many attacks has this character performed on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character performed? on this turn",
+                            "Logic": "<=1",
+                            "Max": "2",
+                            "Min": "1"
+                        }
+                    }
+                }
+            }
         },
         "15004038": {
             "ID": "15004038",
@@ -714,7 +730,9 @@
     "Active Skill": null,
     "Standby Skill": {},
     "Finish Skill": {},
-    "Transforms from": [],
+    "Transforms from": [
+        "1020371"
+    ],
     "Transformations": [],
     "Dokkan awakenings": [],
     "Dokkan Reverse awakenings": [],

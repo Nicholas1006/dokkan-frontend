@@ -1448,15 +1448,14 @@
         "ID": "18",
         "Exec limit": "1",
         "Condition": {
-            "Logic": "(((not 12662649224) And 12662649225) Or ((not 12662649226) And 12662649227))",
-            "Causality": {
-                "12662649224": {
+            "Logic": "3205 && (74 || 1085)",
+            "Causalities": {
+                "3205": {
                     "Button": {
                         "Name": "Has this characters finish effect been activated?"
-                    },
-                    "Slider": {}
+                    }
                 },
-                "12662649225": {
+                "74": {
                     "Button": {
                         "Name": "Is HP 70 % or less?"
                     },
@@ -1467,18 +1466,9 @@
                         "Max": 100
                     }
                 },
-                "12662649226": {
-                    "Button": {
-                        "Name": "Has this characters finish effect been activated?"
-                    },
-                    "Slider": {}
-                },
-                "12662649227": {
-                    "Button": {
-                        "Name": "Has this character performed their 3rd attack in battle?"
-                    },
+                "1085": {
                     "Slider": {
-                        "Name": "How many attacks has this character performed?",
+                        "Name": "How many attacks has this character performed in battle?",
                         "Logic": ">=3",
                         "Min": 0,
                         "Max": 3
@@ -1488,7 +1478,7 @@
         },
         "Standby Exclusivity": "charge",
         "Charge type": {
-            "type": "attack",
+            "type": "k:",
             "gauge_value": "1",
             "count_multiplier": "100",
             "max_effect_value": "24200"

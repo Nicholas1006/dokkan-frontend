@@ -1427,15 +1427,14 @@
         "ID": "4",
         "Exec limit": "1",
         "Condition": {
-            "Logic": "(((not 12662649195) And 12662649196) Or ((not 12662649197) And 12662649198 And 12662649199))",
-            "Causality": {
-                "12662649195": {
+            "Logic": "3205 && (27 || (5 && 3167))",
+            "Causalities": {
+                "3205": {
                     "Button": {
                         "Name": "Has this characters finish effect been activated?"
-                    },
-                    "Slider": {}
+                    }
                 },
-                "12662649196": {
+                "27": {
                     "Button": {
                         "Name": "Is HP 50 % or less?"
                     },
@@ -1446,13 +1445,7 @@
                         "Max": 100
                     }
                 },
-                "12662649197": {
-                    "Button": {
-                        "Name": "Has this characters finish effect been activated?"
-                    },
-                    "Slider": {}
-                },
-                "12662649198": {
+                "5": {
                     "Button": {
                         "Name": "Is the turn count 4 or more?"
                     },
@@ -1462,12 +1455,9 @@
                         "Min": 1
                     }
                 },
-                "12662649199": {
-                    "Button": {
-                        "Name": "Has this character performed their 4th attack in battle?"
-                    },
+                "3167": {
                     "Slider": {
-                        "Name": "How many attacks has this character performed?",
+                        "Name": "How many attacks has this character performed in battle?",
                         "Logic": ">=4",
                         "Min": 0,
                         "Max": 4
@@ -1477,7 +1467,7 @@
         },
         "Standby Exclusivity": "charge",
         "Charge type": {
-            "type": "energy_ball",
+            "type": "y_ball:",
             "gauge_value": "39",
             "count_multiplier": "20",
             "max_effect_value": "6440"
