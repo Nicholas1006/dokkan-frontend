@@ -22,7 +22,7 @@ export function getJsonPromise(prefix,name,suffix) {
 }
 
 export function createCharacterSelection(){
-  const allUnitsJsonPromise=getJsonPromise('dbManagement/jsons/','allUnits','.json');
+  const allUnitsJsonPromise=getJsonPromise('dbManagement/uniqueJsons/','allUnits','.json');
   allUnitsJsonPromise.then(allUnitsJson => {
     const UNITSTODISPLAY = 10000;
     const unitsContainer = document.getElementById('unit-selection-container');
