@@ -1112,7 +1112,8 @@ class passiveButton{
             this.label.includes("Is the Domain ")||
             this.label.includes("Is Ki at least ")||
             this.label.includes("Ki Spheres been obtained")||
-            this.label.includes("Is a super being performed")
+            this.label.includes("Is a super being performed")||
+            this.label.includes("Has this character performed an attack on this turn")
             ){
                 if(HIDEUNNEEDEDPASSIVE){
                     this.parent.selfContainer.style.display="none"
@@ -1732,7 +1733,9 @@ export function iterateCausalityLogic(CausalityLogic,KiCircleObject){
         else if(Cause=="How many super attacks has this character performed?"){
             CausalityLogic["How many super attacks has this character performed?"]++;
         }
-
+        else if(Cause=="Has this character performed an attack on this turn?"){
+            CausalityLogic["Has this character performed an attack on this turn?"]=true;
+        }
     }
     return(CausalityLogic)
 }
