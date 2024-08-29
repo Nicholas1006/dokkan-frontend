@@ -354,8 +354,8 @@ class kiCircleClass{
                 }
                 if(activatedCondition){
                     dictionaryToggle(this.activatedPassiveLineMultipliers,passiveLineKey,buffMultiplier);
-                    if("Toggle Other Line" in passiveLine){
-                        dictionaryToggle(this.activatedPassiveLineMultipliers,passiveLine["Toggle Other Line"]["Line"],1);
+                    if("Disable Other Line" in passiveLine){
+                        dictionaryRemove(this.activatedPassiveLineMultipliers,passiveLine["Disable Other Line"]["Line"]);
                     }
                     if("Additional attack" in passiveLine){
                         this.additionalAttacks[passiveLineKey]="Offered";
@@ -1300,8 +1300,8 @@ class causalityList{
             }
             if(lineActive){
                 this.activeLines[passiveLineKey]=buffMultiplier;
-                if("Toggle Other Line" in passiveLine){
-                    dictionaryToggle(this.activeLines, passiveLine["Toggle Other Line"]["Line"], 1);
+                if("Disable Other Line" in passiveLine){
+                    dictionaryRemove(this.activeLines, passiveLine["Disable Other Line"]["Line"]);
                 }
             }
         }
@@ -1473,8 +1473,8 @@ class causalityList{
                 dictionaryToggle(activatedPassiveLineMultipliers,passiveLineKey,buffMultiplier);
                 const timing= passiveLine["Timing"];
                 const target = passiveLine["Target"]["Target"];
-                if("Toggle Other Line" in passiveLine){
-                    dictionaryToggle(activatedPassiveLineMultipliers,passiveLine["Toggle Other Line"]["Line"],1);
+                if("Disable Other Line" in passiveLine){
+                    dictionaryDisable(activatedPassiveLineMultipliers,passiveLine["Disable Other Line"]["Line"],1);
                 }
 
                 
@@ -1569,7 +1569,7 @@ let additionalAttacks={};
 let kiCircleDictionary=[];
 let passiveQueryList=[];
 let startingCausalityList=[];
-let relevantPassiveEffects=["Ki","ATK","DEF","Guard","Toggle Other Line","Evasion","Crit Chance","DR","Additional attack"]
+let relevantPassiveEffects=["Ki","ATK","DEF","Guard","Disable Other Line","Evasion","Crit Chance","DR","Additional attack"]
 
 export function getJsonPromise(prefix,name,suffix) {
     return fetch(prefix + name + suffix)
@@ -3175,7 +3175,7 @@ export function createPassiveBuffs(passiveLine, passiveBuffsHolder){
     }
     for (const buffKey in (passiveLine)){
         let buffRecieved=passiveLine[buffKey];
-        const disallowedOptions = ["Buff","Nullification", "Condition", "Toggle Other Line", "Once only", "ID", "Additional attack", "Target", "Building Stat", "Length", "Timing"];
+        const disallowedOptions = ["Buff","Nullification", "Condition", "Disable Other Line", "Once only", "ID", "Additional attack", "Target", "Building Stat", "Length", "Timing"];
         if (!disallowedOptions.includes(buffKey)) {
             if(!(buffKey in passiveBuffsHolder[timing][target][buffType])){
                 passiveBuffsHolder[timing][target][buffType][buffKey]=0;
@@ -3374,6 +3374,12 @@ export function createActiveContainer(){
         }
 
         
+    }
+}
+
+export function dictionaryRemove(dictionary, key){
+    if(key in dictionary){
+        delete dictionary[key];
     }
 }
 
