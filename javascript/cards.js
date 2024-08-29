@@ -294,7 +294,8 @@ class kiCircleClass{
     updateCausalityLogic(CausalityLogic){
         this.CausalityLogic=CausalityLogic
     }
-    updateConditions(superAttackMultiplierIncrease,superHasBeenPerformed){
+    updateConditions(previousBuffs,superHasBeenPerformed){
+        this.previousBuffs = { ...previousBuffs };
         const startOfCalcSuper=superHasBeenPerformed||this.superPerformed
         if(this.attackPerformed || additionalAttacks[this.passiveLineKey]=="Predictor"){
             this.superHasBeenPerformed=superHasBeenPerformed||this.superPerformed;
@@ -415,11 +416,14 @@ class kiCircleClass{
                             
                         }
                     }
-                    else if(passiveEffect=="ID" || passiveEffect=="Condition" || passiveEffect=="Timing" || passiveEffect=="Target" || passiveEffect=="Length" || passiveEffect=="Buff"||passiveEffect=="Building Stat"||passiveEffect=="Nullification"||passiveEffect=="Additional attack"){
+                    else if(passiveEffect=="Status"){
+                        console.log("WIP");
+                    }
+                    else if(passiveEffect=="ID" || passiveEffect=="Condition" || passiveEffect=="Timing" || passiveEffect=="Target" || passiveEffect=="Length" || passiveEffect=="Buff"||passiveEffect=="Building Stat"||passiveEffect=="Nullification"||passiveEffect=="Additional attack"|| passiveEffect=="Calc option"){
                         continue;
                     }
                     else{
-                        //console.log(passiveEffect)
+                        console.log(passiveEffect)
                     }
                 }
             }
@@ -431,7 +435,6 @@ class kiCircleClass{
             
             //bring over the super attack boosts
             this.superAttackAssetID=1;
-            this.atkRaise=superAttackMultiplierIncrease;
             let superMinKi=0;
             let tempatkRaise=0;
             let minKiToSuperAttack=25;
@@ -496,8 +499,8 @@ class kiCircleClass{
                 this.MOTATK+=this.MOTATKONSUPER;
                 this.SOTATK+=this.SOTATKONSUPER;
             }
-            this.atkRaise+=tempatkRaise;
-            this.superAttackMultiplier+=this.atkRaise
+            this.previousBuffs["ATK"]+=tempatkRaise;
+            this.superAttackMultiplier+=this.previousBuffs["ATK"]
             this.updateSuperAttack(this.superAttackAssetID)
 
             const passiveSupportContainer=document.getElementById("passive-support-container");
@@ -525,19 +528,18 @@ class kiCircleClass{
             this.updateKi(0);
             this.updateSuperAttack(0);
             this.superPerformed=false
-            this.atkRaise=superAttackMultiplierIncrease;
         }
 
         if(this.superAttackAssetID==1 && (this.superPerformed)){
             this.superPerformed=false;
             this.CausalityLogic=prepareCausalityLogic(this.CausalityLogic,this)
-            this.updateConditions(superAttackMultiplierIncrease,superHasBeenPerformed)
+            this.updateConditions(previousBuffs,superHasBeenPerformed)
         }
         else if(this.superAttackAssetID!=1 && !startOfCalcSuper){
             this.superPerformed=true;
             this.superHasBeenPerformed=true;
             this.CausalityLogic=prepareCausalityLogic(this.CausalityLogic,this)
-            this.updateConditions(superAttackMultiplierIncrease,superHasBeenPerformed)
+            this.updateConditions(previousBuffs,superHasBeenPerformed)
         }
     }
     updateKi(value){
@@ -1739,7 +1741,14 @@ export function iterateCausalityLogic(CausalityLogic,KiCircleObject){
 
 export function refreshKiCircle(){
     let kiCalculator= new kiCircleClass("0",queriesToLogic(passiveQueryList),100,100);
-    kiCalculator.updateConditions()
+    let superStatRaises={
+        "ATK":0,
+        "DEF":0,
+        "Health":0,
+        "Dodge chance":0,
+        "Crit chance":0
+    }
+    kiCalculator.updateConditions(superStatRaises)
 
     
 
@@ -1772,12 +1781,13 @@ export function refreshKiCircle(){
     for (const key in additionalAttacks){
         additionalAttacks[key]="Unactivated";
     }
+    
     kiCircleDictionary[0].updateCausalityLogic(iteratingCausalityLogic);
-    kiCircleDictionary[0].updateConditions(0,false);
+    kiCircleDictionary[0].updateConditions(superStatRaises,false);
     let superHasBeenPerformed=kiCircleDictionary[0].superHasBeenPerformed;
     kiCircleDictionary[0].display(true);
     iteratingCausalityLogic=iterateCausalityLogic(iteratingCausalityLogic,kiCircleDictionary[0]);
-    superAttackRaise=kiCircleDictionary[0].atkRaise;
+    superStatRaises=kiCircleDictionary[0].previousBuffs;
     for(const key in kiCircleDictionary[0].additionalAttacks){
         if(kiCircleDictionary[0].additionalAttacks[key]=="Offered" && additionalAttacks[key]=="Unactivated"){
             if(kiCircleDictionary[key]["attackPerformed"]){
@@ -1818,10 +1828,10 @@ export function refreshKiCircle(){
         iteratingCausalityLogic=prepareCausalityLogic(iteratingCausalityLogic,kiCircleDictionary[nextLineToActivate])
         kiCircleDictionary[nextLineToActivate].updateCausalityLogic(iteratingCausalityLogic);
         if(additionalAttacks[nextLineToActivate]=="Activated"){
-            kiCircleDictionary[nextLineToActivate].updateConditions(superAttackRaise,superHasBeenPerformed);
+            kiCircleDictionary[nextLineToActivate].updateConditions(superStatRaises,superHasBeenPerformed);
             superHasBeenPerformed=superHasBeenPerformed||kiCircleDictionary[nextLineToActivate].superHasBeenPerformed;
             iteratingCausalityLogic=iterateCausalityLogic(iteratingCausalityLogic,kiCircleDictionary[nextLineToActivate])
-            superAttackRaise=kiCircleDictionary[nextLineToActivate].atkRaise;
+            superStatRaises=kiCircleDictionary[nextLineToActivate].previousBuffs;
             for(const key in kiCircleDictionary[nextLineToActivate].additionalAttacks){
                 if(kiCircleDictionary[nextLineToActivate].additionalAttacks[key]=="Offered" && additionalAttacks[key]=="Unactivated"){
                     if(kiCircleDictionary[key]["performedChance"]==100){
@@ -1848,7 +1858,7 @@ export function refreshKiCircle(){
             kiCircleDictionary[nextLineToActivate].display(false);
             iteratingCausalityLogic=prepareCausalityLogic(iteratingCausalityLogic,kiCircleDictionary[nextLineToActivate])
             kiCircleDictionary[nextLineToActivate].updateCausalityLogic(iteratingCausalityLogic);
-            kiCircleDictionary[nextLineToActivate].updateConditions(superAttackRaise,superHasBeenPerformed);
+            kiCircleDictionary[nextLineToActivate].updateConditions(superStatRaises,superHasBeenPerformed);
             superHasBeenPerformed=superHasBeenPerformed||kiCircleDictionary[nextLineToActivate].superHasBeenPerformed;
             let additionalFound=false;
             for(const key in kiCircleDictionary[nextLineToActivate].additionalAttacks){
@@ -3321,11 +3331,49 @@ export function updateKiSphereBuffs(){
 
 export function createActiveContainer(){
     const activecontainer=document.getElementById("active-container");
-    if(currentJson["Active"]==[]){
+    if(currentJson["Active Skill"]==null){
         activecontainer.style.display="none";
     }
     else{
-        activecontainer.label
+        let needsDisplay=false;
+        const relevantActiveEffects=[
+            "ATK Buff",
+            "DEF Buff",
+            "Heals",
+            "Ki Buff",
+            "Effective against all",
+            "Guard",
+            "Crit chance",
+            "Dodge chance",
+            "Redirect attacks to me"
+        ]
+
+        for(const effectKey in currentJson["Active Skill"]["Effects"]){
+            const effect=currentJson["Active Skill"]["Effects"][effectKey]["Effect"]["Buff"];
+            if(relevantActiveEffects.includes(effect)){
+                needsDisplay=true;
+                break;
+            }
+        }
+
+        if("Attack" in currentJson["Active Skill"]){
+            needsDisplay=true;
+        }
+
+        if(!needsDisplay){
+            activecontainer.style.display="none";
+        }
+        else{
+            activecontainer.titleLabel=document.createElement("label");
+            activecontainer.appendChild(activecontainer.titleLabel);
+            activecontainer.titleLabel.innerText=currentJson["Active Skill"]["Name"];
+
+            activecontainer.Condition=document.createElement("label");
+            activecontainer.appendChild(activecontainer.Condition);
+            activecontainer.Condition.innerText=currentJson["Active Skill"]["Condition Description"];
+        }
+
+        
     }
 }
 
@@ -3350,7 +3398,13 @@ export function createKiSphereContainer(){
     rainbowSlider.value=0;
     rainbowSlider.addEventListener("input", function(){
         rainbowKiSphereAmount=parseInt(this.value);
-        if(parseInt(this.value)+parseInt(this.parentElement.parentElement.otherQuery.otherSlider.value)>23){
+        if(parseInt(this.value)==5){
+            this.parentElement.parentElement.otherQuery.otherSlider.value=0;
+            this.parentElement.parentElement.otherQuery.sufffixLabel.innerHTML="ki spheres have been obtained: "
+            this.parentElement.parentElement.otherQuery.sufffixLabel.innerHTML+=0;
+            currentKiSphereAmount=0;
+        }
+        else if(parseInt(this.value)+parseInt(this.parentElement.parentElement.otherQuery.otherSlider.value)>23){
             this.parentElement.parentElement.otherQuery.otherSlider.value=23-this.value;
             this.parentElement.parentElement.otherQuery.sufffixLabel.innerHTML="ki spheres have been obtained: "
             this.parentElement.parentElement.otherQuery.sufffixLabel.innerHTML+=23-this.value;
@@ -3401,6 +3455,12 @@ export function createKiSphereContainer(){
             this.parentElement.parentElement.rainbowQuery.label.innerHTML="How many rainbow ki spheres have been obtained: "
             this.parentElement.parentElement.rainbowQuery.label.innerHTML+=23-parseInt(this.value);
             rainbowKiSphereAmount=23-this.value
+        }
+        else if(parseInt(this.value)>0 && parseInt(this.parentElement.parentElement.rainbowQuery.slider.value)==5){
+            this.parentElement.parentElement.rainbowQuery.slider.value=4;
+            this.parentElement.parentElement.rainbowQuery.label.innerHTML="How many rainbow ki spheres have been obtained: "
+            this.parentElement.parentElement.rainbowQuery.label.innerHTML+=4;
+            rainbowKiSphereAmount=4
         }
         currentKiSphereAmount=parseInt(this.value)
         updateKiSphereBuffs();
