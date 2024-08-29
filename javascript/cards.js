@@ -3318,6 +3318,17 @@ export function updateKiSphereBuffs(){
     refreshKiCircle();
 }
 
+
+export function createActiveContainer(){
+    const activecontainer=document.getElementById("active-container");
+    if(currentJson["Active"]==[]){
+        activecontainer.style.display="none";
+    }
+    else{
+        activecontainer.label
+    }
+}
+
 export function createKiSphereContainer(){
     const kiSphereContainer=document.getElementById("ki-sphere-container");
     const rainbowQuery=document.getElementById("rainbow-sphere-query");
@@ -3472,6 +3483,7 @@ export function loadPage(firstTime=false){
                         createStarButton();
                         createPathButtons();
                     }
+                    createActiveContainer();
                     createLeaderStats();
                     createLinkStats();
                     createLinkBuffs();
