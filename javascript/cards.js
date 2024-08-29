@@ -1570,7 +1570,7 @@ let additionalAttacks={};
 let kiCircleDictionary=[];
 let passiveQueryList=[];
 let startingCausalityList=[];
-let relevantPassiveEffects=["Ki","ATK","DEF","Guard","Disable Other Line","Evasion","Crit Chance","DR","Additional attack"]
+let relevantPassiveEffects=["Ki","ATK","DEF","Guard","Disable Other Line","Dodge chance","Crit Chance","DR","Additional attack"]
 
 export function getJsonPromise(prefix,name,suffix) {
     return fetch(prefix + name + suffix)
