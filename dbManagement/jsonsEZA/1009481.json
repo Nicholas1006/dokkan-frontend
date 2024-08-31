@@ -389,11 +389,22 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "10004117",
+                "Logic": "100041170 && 100041171",
                 "Causalities": {
-                    "10004117": {
+                    "100041170": {
                         "Button": {
-                            "Name": "Is it the first time that the following is true: Is there an extreme class enemy and Is HP 30 % or less "
+                            "Name": "Was the following true: Is there an extreme class enemy and Is HP 30 % or less "
+                        }
+                    },
+                    "100041171": {
+                        "Button": {
+                            "Name": " Is there an extreme class enemy and Is HP 30 % or less "
+                        },
+                        "Slider": {
+                            "Name": "Has the following been true for the first time on this turn:How many turns since the following was true for the first time: Is there an extreme class enemy and Is HP 30 % or less ",
+                            "Logic": "<=1",
+                            "Min": 0,
+                            "Max": 2
                         }
                     }
                 }

@@ -229,11 +229,22 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "8002778",
+                "Logic": "80027780 && 80027781",
                 "Causalities": {
-                    "8002778": {
+                    "80027780": {
                         "Button": {
-                            "Name": "Is it the first time that the following is true: Is Ki at least 24 and Is there 2 or more enemies "
+                            "Name": "Was the following true: Is Ki at least 24 and Is there 2 or more enemies "
+                        }
+                    },
+                    "80027781": {
+                        "Button": {
+                            "Name": " Is Ki at least 24 and Is there 2 or more enemies "
+                        },
+                        "Slider": {
+                            "Name": "Has the following been true for the first time on this turn:How many turns since the following was true for the first time: Is Ki at least 24 and Is there 2 or more enemies ",
+                            "Logic": "<=1",
+                            "Min": 0,
+                            "Max": 2
                         }
                     }
                 }

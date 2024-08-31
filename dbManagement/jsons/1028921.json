@@ -39,11 +39,22 @@
             },
             "Length": "4",
             "Condition": {
-                "Logic": "4126",
+                "Logic": "41260 && 41261",
                 "Causalities": {
-                    "4126": {
+                    "41260": {
                         "Button": {
-                            "Name": "Was it the first time that the following is true: Are there 3 or more DB Saga category units on the team or Are there 3 or more Earth-Bred Fighters category units on the team within the last 4 turns"
+                            "Name": "Was the following true: Are there 3 or more DB Saga category units on the team or Are there 3 or more Earth-Bred Fighters category units on the team "
+                        }
+                    },
+                    "41261": {
+                        "Button": {
+                            "Name": "Was the following true for the first time in the last 4 turns: Are there 3 or more DB Saga category units on the team or Are there 3 or more Earth-Bred Fighters category units on the team "
+                        },
+                        "Slider": {
+                            "Name": "How many turns since the following was true for the first time: Are there 3 or more DB Saga category units on the team or Are there 3 or more Earth-Bred Fighters category units on the team ",
+                            "Logic": "<=4",
+                            "Min": 0,
+                            "Max": 5
                         }
                     }
                 }

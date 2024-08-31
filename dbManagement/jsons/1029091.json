@@ -75,11 +75,22 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2004208",
+                "Logic": "20042080 && 20042081",
                 "Causalities": {
-                    "2004208": {
+                    "20042080": {
                         "Button": {
-                            "Name": "Is it the first time that the following is true: Is it within the first 1 turns from entry turn "
+                            "Name": "Was the following true: Is it within the first 1 turns from entry turn "
+                        }
+                    },
+                    "20042081": {
+                        "Button": {
+                            "Name": " Is it within the first 1 turns from entry turn "
+                        },
+                        "Slider": {
+                            "Name": "Has the following been true for the first time on this turn:How many turns since the following was true for the first time: Is it within the first 1 turns from entry turn ",
+                            "Logic": "<=1",
+                            "Min": 0,
+                            "Max": 2
                         }
                     }
                 }

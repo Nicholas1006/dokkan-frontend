@@ -151,11 +151,22 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "4002922",
+                "Logic": "40029220 && 40029221",
                 "Causalities": {
-                    "4002922": {
+                    "40029220": {
                         "Button": {
-                            "Name": "Is it the first time that the following is true: Has attack been recieved "
+                            "Name": "Was the following true: Has attack been recieved "
+                        }
+                    },
+                    "40029221": {
+                        "Button": {
+                            "Name": " Has attack been recieved "
+                        },
+                        "Slider": {
+                            "Name": "Has the following been true for the first time on this turn:How many turns since the following was true for the first time: Has attack been recieved ",
+                            "Logic": "<=1",
+                            "Min": 0,
+                            "Max": 2
                         }
                     }
                 }

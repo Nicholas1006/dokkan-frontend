@@ -225,11 +225,22 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "7002968",
+                "Logic": "70029680 && 70029681",
                 "Causalities": {
-                    "7002968": {
+                    "70029680": {
                         "Button": {
-                            "Name": "Is it the first time that the following is true: Is there 2 or more enemies "
+                            "Name": "Was the following true: Is there 2 or more enemies "
+                        }
+                    },
+                    "70029681": {
+                        "Button": {
+                            "Name": " Is there 2 or more enemies "
+                        },
+                        "Slider": {
+                            "Name": "Has the following been true for the first time on this turn:How many turns since the following was true for the first time: Is there 2 or more enemies ",
+                            "Logic": "<=1",
+                            "Min": 0,
+                            "Max": 2
                         }
                     }
                 }

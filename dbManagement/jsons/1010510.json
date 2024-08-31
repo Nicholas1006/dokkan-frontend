@@ -32,11 +32,22 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "861",
+                "Logic": "8610 && 8611",
                 "Causalities": {
-                    "861": {
+                    "8610": {
                         "Button": {
-                            "Name": "Is it the first time that the following is true: Is there less than 4 enemies "
+                            "Name": "Was the following true: Is there less than 4 enemies "
+                        }
+                    },
+                    "8611": {
+                        "Button": {
+                            "Name": " Is there less than 4 enemies "
+                        },
+                        "Slider": {
+                            "Name": "Has the following been true for the first time on this turn:How many turns since the following was true for the first time: Is there less than 4 enemies ",
+                            "Logic": "<=1",
+                            "Min": 0,
+                            "Max": 2
                         }
                     }
                 }

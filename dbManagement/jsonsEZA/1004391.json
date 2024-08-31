@@ -160,11 +160,22 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "5002225",
+                "Logic": "50022250 && 50022251",
                 "Causalities": {
-                    "5002225": {
+                    "50022250": {
                         "Button": {
-                            "Name": "Is it the first time that the following is true: Is Ki at least 12 and Is HP 60 % or less "
+                            "Name": "Was the following true: Is Ki at least 12 and Is HP 60 % or less "
+                        }
+                    },
+                    "50022251": {
+                        "Button": {
+                            "Name": "Has the following been true for the first time on this turn: Is Ki at least 12 and Is HP 60 % or less "
+                        },
+                        "Slider": {
+                            "Name": "How many turns since the following was true for the first time: Is Ki at least 12 and Is HP 60 % or less ",
+                            "Logic": "<=1",
+                            "Min": 0,
+                            "Max": 2
                         }
                     }
                 }
@@ -412,10 +423,7 @@
     "Transforms from": [],
     "Transformations": [],
     "Dokkan awakenings": [],
-    "Dokkan Reverse awakenings": [
-        "1001930",
-        "1001931"
-    ],
+    "Dokkan Reverse awakenings": [],
     "Ki Multiplier": {
         "0": 70.0,
         "1": 75.83333333333333,

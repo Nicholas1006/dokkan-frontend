@@ -229,11 +229,22 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "8004012",
+                "Logic": "80040120 && 80040121",
                 "Causalities": {
-                    "8004012": {
+                    "80040120": {
                         "Button": {
-                            "Name": "Is it the first time that the following is true: Is HP 50 % or less and Is there an extreme class enemy "
+                            "Name": "Was the following true: Is HP 50 % or less and Is there an extreme class enemy "
+                        }
+                    },
+                    "80040121": {
+                        "Button": {
+                            "Name": " Is HP 50 % or less and Is there an extreme class enemy "
+                        },
+                        "Slider": {
+                            "Name": "Has the following been true for the first time on this turn:How many turns since the following was true for the first time: Is HP 50 % or less and Is there an extreme class enemy ",
+                            "Logic": "<=1",
+                            "Min": 0,
+                            "Max": 2
                         }
                     }
                 }
@@ -254,11 +265,22 @@
             },
             "Length": "4",
             "Condition": {
-                "Logic": "9004012",
+                "Logic": "90040120 && 90040121",
                 "Causalities": {
-                    "9004012": {
+                    "90040120": {
                         "Button": {
-                            "Name": "Was it the first time that the following is true: Is there an extreme class enemy within the last 4 turns"
+                            "Name": "Was the following true: Is there an extreme class enemy "
+                        }
+                    },
+                    "90040121": {
+                        "Button": {
+                            "Name": "Was the following true for the first time in the last 4 turns: Is there an extreme class enemy "
+                        },
+                        "Slider": {
+                            "Name": "How many turns since the following was true for the first time: Is there an extreme class enemy ",
+                            "Logic": "<=4",
+                            "Min": 0,
+                            "Max": 5
                         }
                     }
                 }

@@ -188,11 +188,22 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "5003536",
+                "Logic": "50035360 && 50035361",
                 "Causalities": {
-                    "5003536": {
+                    "50035360": {
                         "Button": {
-                            "Name": "Is it the first time that the following is true: Is HP 50 % or less and Is the turn count 4 or more "
+                            "Name": "Was the following true: Is HP 50 % or less and Is the turn count 4 or more "
+                        }
+                    },
+                    "50035361": {
+                        "Button": {
+                            "Name": " Is HP 50 % or less and Is the turn count 4 or more "
+                        },
+                        "Slider": {
+                            "Name": "Has the following been true for the first time on this turn:How many turns since the following was true for the first time: Is HP 50 % or less and Is the turn count 4 or more ",
+                            "Logic": "<=1",
+                            "Min": 0,
+                            "Max": 2
                         }
                     }
                 }

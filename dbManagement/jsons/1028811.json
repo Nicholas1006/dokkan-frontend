@@ -48,11 +48,22 @@
             },
             "Length": "5",
             "Condition": {
-                "Logic": "4132",
+                "Logic": "41320 && 41321",
                 "Causalities": {
-                    "4132": {
+                    "41320": {
                         "Button": {
-                            "Name": "Was it the first time that the following is true: Are there 2 or more Majin Buu Saga category units on the team within the last 5 turns"
+                            "Name": "Was the following true: Are there 2 or more Majin Buu Saga category units on the team "
+                        }
+                    },
+                    "41321": {
+                        "Button": {
+                            "Name": "Was the following true for the first time in the last 5 turns: Are there 2 or more Majin Buu Saga category units on the team "
+                        },
+                        "Slider": {
+                            "Name": "How many turns since the following was true for the first time: Are there 2 or more Majin Buu Saga category units on the team ",
+                            "Logic": "<=5",
+                            "Min": 0,
+                            "Max": 6
                         }
                     }
                 }

@@ -166,11 +166,22 @@
             },
             "Length": "3",
             "Condition": {
-                "Logic": "5002920",
+                "Logic": "50029200 && 50029201",
                 "Causalities": {
-                    "5002920": {
+                    "50029200": {
                         "Button": {
-                            "Name": "Was it the first time that the following is true: Has this character evaded 6th times in battle within the last 3 turns"
+                            "Name": "Was the following true: Has this character evaded 6th times in battle "
+                        }
+                    },
+                    "50029201": {
+                        "Button": {
+                            "Name": "Was the following true for the first time in the last 3 turns: Has this character evaded 6th times in battle "
+                        },
+                        "Slider": {
+                            "Name": "How many turns since the following was true for the first time: Has this character evaded 6th times in battle ",
+                            "Logic": "<=3",
+                            "Min": 0,
+                            "Max": 4
                         }
                     }
                 }

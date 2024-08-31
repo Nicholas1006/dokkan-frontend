@@ -44,11 +44,22 @@
             },
             "Length": "4",
             "Condition": {
-                "Logic": "3529",
+                "Logic": "35290 && 35291",
                 "Causalities": {
-                    "3529": {
+                    "35290": {
                         "Button": {
-                            "Name": "Was it the first time that the following is true: Are there 2 or more Realm of Gods category units on the team within the last 4 turns"
+                            "Name": "Was the following true: Are there 2 or more Realm of Gods category units on the team "
+                        }
+                    },
+                    "35291": {
+                        "Button": {
+                            "Name": "Was the following true for the first time in the last 4 turns: Are there 2 or more Realm of Gods category units on the team "
+                        },
+                        "Slider": {
+                            "Name": "How many turns since the following was true for the first time: Are there 2 or more Realm of Gods category units on the team ",
+                            "Logic": "<=4",
+                            "Min": 0,
+                            "Max": 5
                         }
                     }
                 }
@@ -69,11 +80,22 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1003529",
+                "Logic": "10035290 && 10035291",
                 "Causalities": {
-                    "1003529": {
+                    "10035290": {
                         "Button": {
-                            "Name": "Is it the first time that the following is true: Are there 2 or more Realm of Gods category units on the team "
+                            "Name": "Was the following true: Are there 2 or more Realm of Gods category units on the team "
+                        }
+                    },
+                    "10035291": {
+                        "Button": {
+                            "Name": " Are there 2 or more Realm of Gods category units on the team "
+                        },
+                        "Slider": {
+                            "Name": "Has the following been true for the first time on this turn:How many turns since the following was true for the first time: Are there 2 or more Realm of Gods category units on the team ",
+                            "Logic": "<=1",
+                            "Min": 0,
+                            "Max": 2
                         }
                     }
                 }

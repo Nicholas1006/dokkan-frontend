@@ -220,59 +220,88 @@ class kiCircleClass{
         return this.KiCircle;
     }
 
-    updateValue(targetValue) {
-        if(targetValue<0){
-            targetValue=0
-        }
-        else if(targetValue>2147483648){
-            targetValue=2147483648
-        }
-        this.attackStat = targetValue;
-        const duration = 500; // duration of the animation in milliseconds
-        const frameRate= 60;
-        const frameDuration = 1000 / frameRate; // 60 frames per second
-        const totalFrames = Math.round(duration / frameDuration);
-    
-        let startValue = this.displayedAttackStat;
-        let currentValue = startValue;
-        let increment = (targetValue - startValue) / totalFrames;
-        let currentFrame = 0;
-    
-        const animate = () => {
-            currentFrame++;
-            const progress = currentFrame / totalFrames;
-            currentValue = Math.round(startValue + increment * progress * totalFrames);
-    
-            // Update the damage text
+    updateValue(targetValue,isSuper=true) {
+        if(targetValue=="-1"){
+            this.animating=false;
+            this.displayedAttackStat=-1;
             while (this.damageText.firstChild) {
                 this.damageText.removeChild(this.damageText.firstChild);
             }
-    
-            for (let char of currentValue.toString()) {
-                const numDiv = document.createElement('div');
-                numDiv.className = "ki-damage-text-numDiv";
-                numDiv.classList.add(`num-${char}`);
-                this.damageText.appendChild(numDiv);
+        }
+        else if(this.displayedAttackStat==targetValue){
+            return
+        }
+        else{
+            this.animating=true;
+            if(targetValue<0){
+                targetValue=0
             }
-    
-            if (currentFrame < totalFrames) {
-                requestAnimationFrame(animate);
-            } else {
-                this.displayedAttackStat = this.attackStat; // Ensure the final value is set correctly
+            else if(targetValue>2147483648){
+                targetValue=2147483648
+            }
+            this.attackStat = targetValue;
+            const duration = 500; // duration of the animation in milliseconds
+            const frameRate= 60;
+            const frameDuration = 1000 / frameRate; // 60 frames per second
+            const totalFrames = Math.round(duration / frameDuration);
+        
+            let startValue = this.displayedAttackStat;
+            let currentValue = startValue;
+            let increment = (targetValue - startValue) / totalFrames;
+            let currentFrame = 0;
+        
+            const animate = () => {
+                if(!this.animating){
+                    return
+                }
+                currentFrame++;
+                const progress = currentFrame / totalFrames;
+                currentValue = Math.round(startValue + increment * progress * totalFrames);
+        
+                // Update the damage text
                 while (this.damageText.firstChild) {
                     this.damageText.removeChild(this.damageText.firstChild);
                 }
+        
                 for (let char of currentValue.toString()) {
                     const numDiv = document.createElement('div');
-                    numDiv.className = "ki-damage-text-numDiv";
-                    numDiv.classList.add(`num-${char}`);
+                    if(isSuper){
+                        numDiv.className = "ki-damage-text-numDiv-red";
+                        numDiv.classList.add(`num-red-${char}`);
+                    }
+                    else{
+                        numDiv.className = "ki-damage-text-numDiv-yellow";
+                        numDiv.classList.add(`num-yellow-${char}`);
+                    }
                     this.damageText.appendChild(numDiv);
                 }
-            }
-        };
-    
-        requestAnimationFrame(animate);
+        
+                if (currentFrame < totalFrames) {
+                    requestAnimationFrame(animate);
+                } else {
+                    this.displayedAttackStat = this.attackStat; // Ensure the final value is set correctly
+                    while (this.damageText.firstChild) {
+                        this.damageText.removeChild(this.damageText.firstChild);
+                    }
+                    for (let char of currentValue.toString()) {
+                        const numDiv = document.createElement('div');
+                        if(isSuper){
+                            numDiv.className = "ki-damage-text-numDiv-red";
+                            numDiv.classList.add(`num-red-${char}`);
+                        }
+                        else{
+                            numDiv.className = "ki-damage-text-numDiv-yellow";
+                            numDiv.classList.add(`num-yellow-${char}`);
+                        }
+                        this.damageText.appendChild(numDiv);
+                    }
+                }
+            };
+        
+            requestAnimationFrame(animate);
+        }
     }
+
 
     changeGridRow(rowNumber){
         this.KiCircle.style.gridRow = rowNumber;
@@ -419,7 +448,7 @@ class kiCircleClass{
                     else if(passiveEffect=="Status"){
                         console.log("WIP");
                     }
-                    else if(passiveEffect=="ID" || passiveEffect=="Condition" || passiveEffect=="Timing" || passiveEffect=="Target" || passiveEffect=="Length" || passiveEffect=="Buff"||passiveEffect=="Building Stat"||passiveEffect=="Nullification"||passiveEffect=="Additional attack"|| passiveEffect=="Calc option"){
+                    else if(["ID","Condition","Timing","Target","Length","Buff","Building Stat","Nullification","Additional attack","Calc option"].includes(passiveEffect)){
                         continue;
                     }
                     else{
@@ -519,12 +548,10 @@ class kiCircleClass{
             finalValue=Math.floor(finalValue*this.superAttackMultiplier);
             finalValue=Math.floor(finalValue*(1+domainBuffs["ATK"]/100));
             this.updateKi(this.Ki);
-            if(this.attackStat!=finalValue){
-                this.updateValue(finalValue);
-            }
+            this.updateValue(finalValue,this.superPerformed);
         }
         else{
-            this.updateValue(0);
+            this.updateValue(-1,false);
             this.updateKi(0);
             this.updateSuperAttack(0);
             this.superPerformed=false
@@ -1110,7 +1137,7 @@ class passiveButton{
         if(
             this.label.includes("Ki Spheres have been obtained")||
             this.label.includes("Is the Domain ")||
-            this.label.includes("Is Ki at least ")||
+            this.label.startsWith("Is Ki at least ")||
             this.label.includes("Ki Spheres been obtained")||
             this.label.includes("Is a super being performed")||
             this.label.includes("Has this character performed an attack on this turn")
@@ -1155,11 +1182,12 @@ class passiveSlider {
             updateKiSphereBuffs();
         });
         
-        this.elementLabel.innerHTML = this.label+": "+this.value+"+";
+        this.elementLabel.innerHTML = this.label+": "+this.value;
         if(
             this.label.includes("Ki Spheres have been obtained?")||
             this.label.includes("How much ki is there")||
-            this.label.includes("Ki Spheres have been obtained on this turn?")
+            this.label.includes("Ki Spheres have been obtained on this turn?")||
+            this.label==("How many attacks has this character performed on this turn?")
             ){
                 if(HIDEUNNEEDEDPASSIVE){
                     this.parent.selfContainer.style.display="none"
@@ -1727,8 +1755,8 @@ export function prepareCausalityLogic(CausalityLogic,KiCircleObject){
 
 export function iterateCausalityLogic(CausalityLogic,KiCircleObject){
     for(const Cause of Object.keys(CausalityLogic)){
-        if(Cause=="How many attacks has this character performed in battle?"){
-            CausalityLogic["How many attacks has this character performed in battle?"]++;
+        if(Cause.includes("How many attacks has this character performed")){
+            CausalityLogic[Cause]++;
         }
         else if(Cause=="How many super attacks has this character performed?"){
             CausalityLogic["How many super attacks has this character performed?"]++;
@@ -1851,7 +1879,7 @@ export function refreshKiCircle(){
         }
         else if(additionalAttacks[nextLineToActivate]=="Offered"){
             kiCircleDictionary[nextLineToActivate].updateKi(0);
-            kiCircleDictionary[nextLineToActivate].updateValue(0);        
+            kiCircleDictionary[nextLineToActivate].updateValue(-1,false);        
             kiCircleDictionary[nextLineToActivate].display(true);
             additionalAttacks[nextLineToActivate]="Offer Displayed";
             currentRow++;
@@ -2743,6 +2771,9 @@ export function updateQueryList(passiveLine){
         if(!queryUpdated){
             if(passiveLine["Building Stat"]["Cause"]["Cause"]=="Look Elsewhere"){
                 passiveQueryList.push( new passiveQuery("slider","",sliderName,min,max) );
+            }
+            else if(passiveLine["Building Stat"]["Cause"]["Cause"]=="HP"){
+                passiveQueryList.push( new passiveQuery("slider",passiveLine["Building Stat"]["Slider"],sliderName,0,100) );
             }
             else{
                 passiveQueryList.push( new passiveQuery("slider","",passiveLine["Building Stat"]["Slider"],min,max) );

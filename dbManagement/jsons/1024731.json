@@ -70,11 +70,22 @@
             },
             "Length": "10",
             "Condition": {
-                "Logic": "1002941",
+                "Logic": "10029410 && 10029411",
                 "Causalities": {
-                    "1002941": {
+                    "10029410": {
                         "Button": {
-                            "Name": "Was it the first time that the following is true: Is there an extreme class enemy within the last 10 turns"
+                            "Name": "Was the following true: Is there an extreme class enemy "
+                        }
+                    },
+                    "10029411": {
+                        "Button": {
+                            "Name": "Was the following true for the first time in the last 10 turns: Is there an extreme class enemy "
+                        },
+                        "Slider": {
+                            "Name": "How many turns since the following was true for the first time: Is there an extreme class enemy ",
+                            "Logic": "<=10",
+                            "Min": 0,
+                            "Max": 11
                         }
                     }
                 }

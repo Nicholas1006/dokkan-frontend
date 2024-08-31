@@ -59,11 +59,22 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1003550",
+                "Logic": "10035500 && 10035501",
                 "Causalities": {
-                    "1003550": {
+                    "10035500": {
                         "Button": {
-                            "Name": "Is it the first time that the following is true: Is HP 40 % or less "
+                            "Name": "Was the following true: Is HP 40 % or less "
+                        }
+                    },
+                    "10035501": {
+                        "Button": {
+                            "Name": " Is HP 40 % or less "
+                        },
+                        "Slider": {
+                            "Name": "Has the following been true for the first time on this turn:How many turns since the following was true for the first time: Is HP 40 % or less ",
+                            "Logic": "<=1",
+                            "Min": 0,
+                            "Max": 2
                         }
                     }
                 }

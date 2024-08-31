@@ -157,11 +157,22 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "6002938",
+                "Logic": "60029380 && 60029381",
                 "Causalities": {
-                    "6002938": {
+                    "60029380": {
                         "Button": {
-                            "Name": "Is it the first time that the following is true: Is there an enemy whose name includes Goku "
+                            "Name": "Was the following true: Is there an enemy whose name includes Goku "
+                        }
+                    },
+                    "60029381": {
+                        "Button": {
+                            "Name": " Is there an enemy whose name includes Goku "
+                        },
+                        "Slider": {
+                            "Name": "Has the following been true for the first time on this turn:How many turns since the following was true for the first time: Is there an enemy whose name includes Goku ",
+                            "Logic": "<=1",
+                            "Min": 0,
+                            "Max": 2
                         }
                     }
                 }

@@ -44,11 +44,22 @@
             },
             "Length": "3",
             "Condition": {
-                "Logic": "2942",
+                "Logic": "29420 && 29421",
                 "Causalities": {
-                    "2942": {
+                    "29420": {
                         "Button": {
-                            "Name": "Was it the first time that the following is true: Are there 2 or more Terrifying Conquerors category units on the team within the last 3 turns"
+                            "Name": "Was the following true: Are there 2 or more Terrifying Conquerors category units on the team "
+                        }
+                    },
+                    "29421": {
+                        "Button": {
+                            "Name": "Was the following true for the first time in the last 3 turns: Are there 2 or more Terrifying Conquerors category units on the team "
+                        },
+                        "Slider": {
+                            "Name": "How many turns since the following was true for the first time: Are there 2 or more Terrifying Conquerors category units on the team ",
+                            "Logic": "<=3",
+                            "Min": 0,
+                            "Max": 4
                         }
                     }
                 }
