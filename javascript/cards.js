@@ -3,6 +3,7 @@ class kiCircleClass{
         this.CausalityLogic=CausalityLogic;
         this.attackPerformed=false;
         this.Ki=0;
+        this.displayedKi=0;
         if(performedChance==100){
             this.attackPerformed=false
         }
@@ -13,6 +14,7 @@ class kiCircleClass{
         this.displayedAttackStat=0;
         this.imageUrl = currentJson["Resource ID"];
         this.superPerformed=false
+        this.superBuffs={"ATK": 0, "DEF": 0, "Enemy ATK": 0, "Enemy DEF": 0, "Crit": 0, "Evasion": 0};
         
         
         this.KiCircle=document.createElement("div");
@@ -465,7 +467,7 @@ class kiCircleClass{
             //bring over the super attack boosts
             this.superAttackAssetID=1;
             let superMinKi=0;
-            let tempatkRaise=0;
+            this.superBuffs["ATK"]=0;
             let minKiToSuperAttack=25;
             if(this.passiveLineKey==0){
                 for (const superKey in currentJson["Super Attack"]){
@@ -473,6 +475,7 @@ class kiCircleClass{
                     minKiToSuperAttack=Math.min(superAttack["superMinKi"],minKiToSuperAttack);
                     if(parseInt(superAttack["superMinKi"])<=parseInt(this.Ki) && parseInt(superAttack["superMinKi"])>parseInt(superMinKi)){
                         superMinKi=superAttack["superMinKi"];
+                        this.superBuffs["ATK"]=0;
                         this.superAttackMultiplier=superAttack["Multiplier"]/100;
                         this.superAttackMultiplier+=skillOrbBuffs["SuperBoost"]*0.05;
                         this.superAttackAssetID=superAttack["special_name_no"];
@@ -484,9 +487,8 @@ class kiCircleClass{
                         }
                         if("superBuffs" in superAttack){
                             for (const superBuffKey of Object.keys(superAttack["superBuffs"])){
-                                if (!(superAttack["superBuffs"][superBuffKey]["Target"].includes("excluded" || "enem"))){
-                                    this.superAttackMultiplier+=(superAttack["superBuffs"][superBuffKey]["ATK"]||0)/100
-                                    tempatkRaise+=(superAttack["superBuffs"][superBuffKey]["ATK"]||0)/100;
+                                if (!(superAttack["superBuffs"][superBuffKey]["Target"].includes("excluded") || superAttack["superBuffs"][superBuffKey]["Target"].includes("Enem"))){
+                                    this.superBuffs["ATK"]+=parseInt(superAttack["superBuffs"][superBuffKey]["ATK"]||0);
                                 }
                             }
                         }
@@ -498,6 +500,7 @@ class kiCircleClass{
             else{
                 if(this.superPerformed){
                     this.Ki=currentJson["SuperMinKi"];
+                    this.superBuffs["ATK"]=0;
                     this.superAttackID=currentJson["AdditionalSuperID"];
                     const superAttack=currentJson["Super Attack"][this.superAttackID];
                     this.superAttackMultiplier=superAttack["Multiplier"]/100;
@@ -510,17 +513,15 @@ class kiCircleClass{
                     }
                     if("superBuffs" in superAttack){
                         for (const superBuffKey of Object.keys(superAttack["superBuffs"])){
-                            if (!(superAttack["superBuffs"][superBuffKey]["Target"].includes("excluded" || "enem"))){
-                                this.superAttackMultiplier+=(superAttack["superBuffs"][superBuffKey]["ATK"]||0)/100
-                                tempatkRaise+=(superAttack["superBuffs"][superBuffKey]["ATK"]||0)/100;
+                            if (!(superAttack["superBuffs"][superBuffKey]["Target"].includes("excluded") || superAttack["superBuffs"][superBuffKey]["Target"].includes("Enem"))){
+                                this.superBuffs["ATK"]+=parseInt(superAttack["superBuffs"][superBuffKey]["ATK"]||0);
                             }
                         }
                     }
                     
                 }
                 else{
-                    tempatkRaise=0
-                    
+                    this.superBuffs["ATK"]=0
                 }
             }
             
@@ -528,7 +529,8 @@ class kiCircleClass{
                 this.MOTATK+=this.MOTATKONSUPER;
                 this.SOTATK+=this.SOTATKONSUPER;
             }
-            this.previousBuffs["ATK"]+=tempatkRaise;
+            this.previousBuffs["ATK"]+=this.superBuffs["ATK"]/100;
+            this.superAttackMultiplier+=superBuffs["ATK"]/100;
             this.superAttackMultiplier+=this.previousBuffs["ATK"]
             this.updateSuperAttack(this.superAttackAssetID)
 
@@ -544,10 +546,29 @@ class kiCircleClass{
             finalValue=Math.floor(finalValue*(1));//Active boost
             finalValue=Math.ceil(finalValue*(currentJson["Ki Multiplier"][this.Ki]/100));
             finalValue=Math.floor(finalValue*(this.MOTATK));//Middle of turn passive stats
-            this.superAttackMultiplier+=superBuffs["ATK"]/100;
             finalValue=Math.floor(finalValue*this.superAttackMultiplier);
             finalValue=Math.floor(finalValue*(1+domainBuffs["ATK"]/100));
-            this.updateKi(this.Ki);
+            
+
+
+            if(this.superAttackAssetID==1 && (this.superPerformed)){
+                this.superPerformed=false;
+                this.CausalityLogic=prepareCausalityLogic(this.CausalityLogic,this)
+                this.updateConditions(previousBuffs,superHasBeenPerformed)
+            }
+            else if(this.superAttackAssetID!=1 && !startOfCalcSuper){
+                this.superPerformed=true;
+                this.superHasBeenPerformed=true;
+                this.CausalityLogic=prepareCausalityLogic(this.CausalityLogic,this)
+                this.updateConditions(previousBuffs,superHasBeenPerformed)
+            }
+            
+            if(this.Ki!=this.displayedKi){
+                this.updateKi(this.Ki);
+                this.CausalityLogic=prepareCausalityLogic(this.CausalityLogic,this)
+                this.updateConditions(previousBuffs,superHasBeenPerformed)
+            }
+            
             this.updateValue(finalValue,this.superPerformed);
         }
         else{
@@ -557,17 +578,6 @@ class kiCircleClass{
             this.superPerformed=false
         }
 
-        if(this.superAttackAssetID==1 && (this.superPerformed)){
-            this.superPerformed=false;
-            this.CausalityLogic=prepareCausalityLogic(this.CausalityLogic,this)
-            this.updateConditions(previousBuffs,superHasBeenPerformed)
-        }
-        else if(this.superAttackAssetID!=1 && !startOfCalcSuper){
-            this.superPerformed=true;
-            this.superHasBeenPerformed=true;
-            this.CausalityLogic=prepareCausalityLogic(this.CausalityLogic,this)
-            this.updateConditions(previousBuffs,superHasBeenPerformed)
-        }
     }
     updateKi(value){
         let maxKi;
@@ -628,6 +638,7 @@ class kiCircleClass{
                 }
             }
         }
+        this.displayedKi=value
     }
 
     changeSuperChance(value){
@@ -1815,6 +1826,7 @@ export function refreshKiCircle(){
     
     kiCircleDictionary[0].updateCausalityLogic(iteratingCausalityLogic);
     kiCircleDictionary[0].updateConditions(superStatRaises,false);
+    kiCircleDictionary[0].updateConditions(superStatRaises,false);
     let superHasBeenPerformed=kiCircleDictionary[0].superHasBeenPerformed;
     kiCircleDictionary[0].display(true);
     iteratingCausalityLogic=iterateCausalityLogic(iteratingCausalityLogic,kiCircleDictionary[0]);
@@ -1860,6 +1872,7 @@ export function refreshKiCircle(){
         kiCircleDictionary[nextLineToActivate].updateCausalityLogic(iteratingCausalityLogic);
         if(additionalAttacks[nextLineToActivate]=="Activated"){
             kiCircleDictionary[nextLineToActivate].updateConditions(superStatRaises,superHasBeenPerformed);
+            kiCircleDictionary[nextLineToActivate].updateConditions(superStatRaises,superHasBeenPerformed);
             superHasBeenPerformed=superHasBeenPerformed||kiCircleDictionary[nextLineToActivate].superHasBeenPerformed;
             iteratingCausalityLogic=iterateCausalityLogic(iteratingCausalityLogic,kiCircleDictionary[nextLineToActivate])
             superStatRaises=kiCircleDictionary[nextLineToActivate].previousBuffs;
@@ -1889,6 +1902,7 @@ export function refreshKiCircle(){
             kiCircleDictionary[nextLineToActivate].display(false);
             iteratingCausalityLogic=prepareCausalityLogic(iteratingCausalityLogic,kiCircleDictionary[nextLineToActivate])
             kiCircleDictionary[nextLineToActivate].updateCausalityLogic(iteratingCausalityLogic);
+            kiCircleDictionary[nextLineToActivate].updateConditions(superStatRaises,superHasBeenPerformed);
             kiCircleDictionary[nextLineToActivate].updateConditions(superStatRaises,superHasBeenPerformed);
             superHasBeenPerformed=superHasBeenPerformed||kiCircleDictionary[nextLineToActivate].superHasBeenPerformed;
             let additionalFound=false;
@@ -2513,11 +2527,11 @@ export function createPathButtons(){
     pathButtons[0].style.gridColumn = "1"
     pathButtons[0].style.gridRow = "1"
 
-    pathButtons[1].style.gridColumn = "1"
-    pathButtons[1].style.gridRow = "3"
+    pathButtons[1].style.gridColumn = "3"
+    pathButtons[1].style.gridRow = "1"
 
-    pathButtons[2].style.gridColumn = "3"
-    pathButtons[2].style.gridRow = "1"
+    pathButtons[2].style.gridColumn = "1"
+    pathButtons[2].style.gridRow = "3"
 
     pathButtons[3].style.gridColumn = "3"
     pathButtons[3].style.gridRow = "3"
