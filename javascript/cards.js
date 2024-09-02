@@ -15,6 +15,7 @@ class kiCircleClass{
         this.imageUrl = currentJson["Resource ID"];
         this.superPerformed=false
         this.superBuffs={"ATK": 0, "DEF": 0, "Enemy ATK": 0, "Enemy DEF": 0, "Crit": 0, "Evasion": 0};
+        this.activeAttackMultiplier=1;
         
         
         this.KiCircle=document.createElement("div");
@@ -325,12 +326,12 @@ class kiCircleClass{
     updateCausalityLogic(CausalityLogic){
         this.CausalityLogic=CausalityLogic
     }
-    updateConditions(previousBuffs,superHasBeenPerformed){
+    updateConditions(previousBuffs,previousActiveLines,superHasBeenPerformed){
         this.previousBuffs = { ...previousBuffs };
         const startOfCalcSuper=superHasBeenPerformed||this.superPerformed
         if(this.attackPerformed || additionalAttacks[this.passiveLineKey]=="Predictor"){
             this.superHasBeenPerformed=superHasBeenPerformed||this.superPerformed;
-            this.activatedPassiveLineMultipliers={};
+            this.activatedPassiveLineMultipliers={ ...previousActiveLines};
             this.passiveBuffs={};
             this.additionalAttacks={};
             this.superAttackMultiplier=1;
@@ -345,53 +346,63 @@ class kiCircleClass{
             }
 
             const SOTTIMINGS=["Start of turn","After all ki collected","When ki spheres collected"]
-            const MOTTIMINGS=["Being hit","Hit recieved","Attacking the enemy","Attacking","End of turn"]
+            const MOTTIMINGS=["Being hit","Hit recieved","Right before attack","Right after attack","End of turn"]
             const ONSUPERTIMING=["On Super"]
             let passiveLines=currentJson.Passive;
             for(const passiveLineKey in passiveLines){
-                let passiveLine=passiveLines[passiveLineKey];
-                let activatedCondition=true;
-                let buffMultiplier=1
-                if("Building Stat" in passiveLine){
-                    const sliderName=passiveLine["Building Stat"]["Slider"];
-                    buffMultiplier=this.CausalityLogic[sliderName];
+                let isAlreadyActive=false;
+                if(passiveLineKey in this.activatedPassiveLineMultipliers){
+                    if(this.activatedPassiveLineMultipliers[passiveLineKey]==1){
+                        isAlreadyActive=true;
+                    }
                 }
-                if("Condition" in passiveLine){
-                    let conditionLogic=" "+passiveLine["Condition"]["Logic"]+" ";
-                    let conditionCausalities=passiveLine["Condition"]["Causalities"];
-                    for(const conditionCausalityKey in conditionCausalities){
-                        let conditionCausality=conditionCausalities[conditionCausalityKey];
-                        let buttonLogic=false;
-                        if("Button" in conditionCausality){
-                            buttonLogic=this.CausalityLogic[conditionCausality["Button"]["Name"]];
+                if(!isAlreadyActive || ("Building Stat" in passiveLines[passiveLineKey])){
+                    let passiveLine=passiveLines[passiveLineKey];
+                    let activatedCondition=true;
+                    let buffMultiplier=1
+                    if("Building Stat" in passiveLine){
+                        const sliderName=passiveLine["Building Stat"]["Slider"];
+                        buffMultiplier=this.CausalityLogic[sliderName];
+                    }
+                    if("Condition" in passiveLine){
+                        let conditionLogic=" "+passiveLine["Condition"]["Logic"]+" ";
+                        let conditionCausalities=passiveLine["Condition"]["Causalities"];
+                        for(const conditionCausalityKey in conditionCausalities){
+                            let conditionCausality=conditionCausalities[conditionCausalityKey];
+                            let buttonLogic=false;
+                            if("Button" in conditionCausality){
+                                buttonLogic=this.CausalityLogic[conditionCausality["Button"]["Name"]];
+                            }
+                            let sliderLogic=false;
+                            if("Slider" in conditionCausality){
+                                sliderLogic=eval(this.CausalityLogic[conditionCausality["Slider"]["Name"]] + conditionCausality["Slider"]["Logic"]);
+                            }
+                            if(buttonLogic || sliderLogic){
+                                conditionLogic=conditionLogic.replaceAll(" "+conditionCausalityKey+" "," "+true+" ");
+                            }
+                            else{
+                                conditionLogic=conditionLogic.replaceAll(" "+conditionCausalityKey+" "," "+false+" ");
+                            }
                         }
-                        let sliderLogic=false;
-                        if("Slider" in conditionCausality){
-                            sliderLogic=eval(this.CausalityLogic[conditionCausality["Slider"]["Name"]] + conditionCausality["Slider"]["Logic"]);
-                        }
-                        if(buttonLogic || sliderLogic){
-                            conditionLogic=conditionLogic.replaceAll(" "+conditionCausalityKey+" "," "+true+" ");
+                        if(eval(conditionLogic)){
+                            activatedCondition=true;
                         }
                         else{
-                            conditionLogic=conditionLogic.replaceAll(" "+conditionCausalityKey+" "," "+false+" ");
+                            activatedCondition=false;
                         }
                     }
-                    if(eval(conditionLogic)){
-                        activatedCondition=true;
-                    }
-                    else{
-                        activatedCondition=false;
+                    if(activatedCondition){
+                        dictionaryToggle(this.activatedPassiveLineMultipliers,passiveLineKey,buffMultiplier);
+                        if("Disable Other Line" in passiveLine){
+                            dictionaryRemove(this.activatedPassiveLineMultipliers,passiveLine["Disable Other Line"]["Line"]);
+                            dictionaryRemove(this.activatedPassiveLineMultipliers,passiveLine["ID"]);
+                        }
+                        if("Additional attack" in passiveLine){
+                            this.additionalAttacks[passiveLineKey]="Offered";
+                        }                
                     }
                 }
-                if(activatedCondition){
-                    dictionaryToggle(this.activatedPassiveLineMultipliers,passiveLineKey,buffMultiplier);
-                    if("Disable Other Line" in passiveLine){
-                        dictionaryRemove(this.activatedPassiveLineMultipliers,passiveLine["Disable Other Line"]["Line"]);
-                    }
-                    if("Additional attack" in passiveLine){
-                        this.additionalAttacks[passiveLineKey]="Offered";
-                    }                
-                }
+
             }
 
             for (const key in this.activatedPassiveLineMultipliers){
@@ -404,31 +415,21 @@ class kiCircleClass{
                         passiveEffect=="Ki"
                     ){
                         if("Building Stat" in passiveLine){
-                            buffMultiplier=this.CausalityLogic[passiveLine["Building Stat"]["Slider"]];
+                            if(passiveLine["Building Stat"]["Cause"]["Cause"]=="HP"){
+                                if(passiveLine["Building Stat"]["Cause"]["Type"]=="More HP remaining"){
+                                    buffMultiplier=(((passiveLine["Building Stat"]["Max"]-passiveLine["Building Stat"]["Min"])*(this.CausalityLogic[passiveLine["Building Stat"]["Slider"]]/100))+passiveLine["Building Stat"]["Min"])/passiveLine["Building Stat"]["Max"];
+                                    console.log(buffMultiplier);
+                                }
+                                else if(passiveLine["Building Stat"]["Cause"]["Type"]=="Less HP remaining"){
+                                    buffMultiplier=((-(passiveLine["Building Stat"]["Max"]-passiveLine["Building Stat"]["Min"])*(this.CausalityLogic[passiveLine["Building Stat"]["Slider"]]/100))+passiveLine["Building Stat"]["Max"])/passiveLine["Building Stat"]["Max"];
+                                }
+                            }
+                            else{
+                                buffMultiplier=this.CausalityLogic[passiveLine["Building Stat"]["Slider"]];
+                            }
                             buffMultiplier=Math.min(buffMultiplier,passiveLine["Building Stat"]["Max"]);
                         }
                         if(!(targetString.includes("self excluded"))){
-                            /*
-                            if(timingString=="On Super"){
-                                if(passiveLine["Calc option"]=="2"){
-                                    this.SOTONSUPERATK+=buffMultiplier*(passiveLine.ATK||0)/100
-                                }
-                                else{
-                                    this.MOTONSUPERATK+=buffMultiplier*(passiveLine.ATK||0)/100
-                                }
-                                this.EXTRAKIONSUPER+=buffMultiplier*(passiveLine.KI||0)
-                            }
-                            else{
-                                if(passiveLine["Calc option"]=="2"){
-                                    this.SOTATK+=buffMultiplier*(passiveLine.ATK||0)/100
-                                }
-                                else{
-                                    this.MOTATK+=buffMultiplier*(passiveLine.ATK||0)/100
-                                }
-                                this.Ki+=buffMultiplier*(passiveLine.KI||0)
-                            }
-                            */
-
                             if(SOTTIMINGS.includes(timingString)){
                                 this.SOTATK+=(buffMultiplier*(passiveLine.ATK||0))/100
                                 this.Ki+=buffMultiplier*(passiveLine.Ki||0)
@@ -462,7 +463,7 @@ class kiCircleClass{
             if(this.superPerformed||this.superHasBeenPerformed){
                 this.Ki+=this.EXTRAKIONSUPER;
             }
-            this.Ki=Math.min(this.Ki,this.maxKi)
+            this.Ki=this.Ki.clamp(0,this.maxKi)
             
             //bring over the super attack boosts
             this.superAttackAssetID=1;
@@ -496,6 +497,18 @@ class kiCircleClass{
                     }
                     
                 }
+            }
+            else if(this.passiveLineKey=="Active"){
+               const active=currentJson["Active Skill"];
+               this.activeAttackMultiplier=active["Attack"]["Multiplier"]/100;
+               if(currentJson["Rarity"]=="lr"){
+                this.Ki=24;
+               }
+               else{
+                   this.Ki=12;
+               }
+               this.superPerformed=true;
+               
             }
             else{
                 if(this.superPerformed){
@@ -543,24 +556,30 @@ class kiCircleClass{
             finalValue=Math.floor(finalValue*(this.SOTATK));//Start of turn passive stats
             finalValue=Math.floor(finalValue*(1));//Item boost
             finalValue=Math.floor(finalValue*(1+linkBuffs["ATK"]/100));
-            finalValue=Math.floor(finalValue*(1));//Active boost
+            if(this.passiveLineKey=="Active"){
+                finalValue=Math.floor(finalValue*(this.activeAttackMultiplier+activeMultipliers["ATK"]));
+            }
+            else{
+                finalValue=Math.floor(finalValue*(activeMultipliers["ATK"]));//Active boost
+            }
             finalValue=Math.ceil(finalValue*(currentJson["Ki Multiplier"][this.Ki]/100));
             finalValue=Math.floor(finalValue*(this.MOTATK));//Middle of turn passive stats
             finalValue=Math.floor(finalValue*this.superAttackMultiplier);
             finalValue=Math.floor(finalValue*(1+domainBuffs["ATK"]/100));
             
 
-
-            if(this.superAttackAssetID==1 && (this.superPerformed)){
-                this.superPerformed=false;
-                this.CausalityLogic=prepareCausalityLogic(this.CausalityLogic,this)
-                this.updateConditions(previousBuffs,superHasBeenPerformed)
-            }
-            else if(this.superAttackAssetID!=1 && !startOfCalcSuper){
-                this.superPerformed=true;
-                this.superHasBeenPerformed=true;
-                this.CausalityLogic=prepareCausalityLogic(this.CausalityLogic,this)
-                this.updateConditions(previousBuffs,superHasBeenPerformed)
+            if(this.passiveLineKey!="Active"){
+                if(this.superAttackAssetID==1 && (this.superPerformed)){
+                    this.superPerformed=false;
+                    this.CausalityLogic=prepareCausalityLogic(this.CausalityLogic,this)
+                    this.updateConditions(previousBuffs,superHasBeenPerformed)
+                }
+                else if(this.superAttackAssetID!=1 && !startOfCalcSuper){
+                    this.superPerformed=true;
+                    this.superHasBeenPerformed=true;
+                    this.CausalityLogic=prepareCausalityLogic(this.CausalityLogic,this)
+                    this.updateConditions(previousBuffs,superHasBeenPerformed)
+                }
             }
             
             if(this.Ki!=this.displayedKi){
@@ -1588,6 +1607,8 @@ const HIDEUNNEEDEDPASSIVE=true;
 let currentJson = null;
 let linkData=null;
 let domainData=null;
+let activeAttackPerformed=false;
+let activeDisplayed=false;
 
 let isEza;
 let isSeza;
@@ -1602,6 +1623,7 @@ let domainBuffs={"ATK":0,"DEF":0,"Increased damage recieved":0}
 let currentKiSphere="STR";
 let currentKiSphereAmount=0;
 let rainbowKiSphereAmount=0;
+let activeMultipliers={"ATK":1,"DEF":1};
 
 let currentDomain=null;
 let kiSources={"leader":6,"Support":0,"Links":0,"Active":0,"Domain":0,"Orbs":0};
@@ -1783,6 +1805,9 @@ export function iterateCausalityLogic(CausalityLogic,KiCircleObject){
 
 export function refreshKiCircle(){
     let kiCalculator= new kiCircleClass("0",queriesToLogic(passiveQueryList),100,100);
+    for (const key in additionalAttacks){
+        additionalAttacks[key]="Unactivated";
+    }
     let superStatRaises={
         "ATK":0,
         "DEF":0,
@@ -1790,9 +1815,34 @@ export function refreshKiCircle(){
         "Dodge chance":0,
         "Crit chance":0
     }
-    kiCalculator.updateConditions(superStatRaises)
+    let superActivatedLines=[]
+    if(activeDisplayed){
+        const activecontainer=document.getElementById("active-container");
+        activecontainer.kiCircle.updateCausalityLogic(queriesToLogic(passiveQueryList))
+        if(activeAttackPerformed){
+            activecontainer.kiCircle.CausalityLogic=prepareCausalityLogic(activecontainer.kiCircle.CausalityLogic,activecontainer.kiCircle)
+            activecontainer.kiCircle.updateConditions(superStatRaises,true)
+            activecontainer.kiCircle.display(true)
+            superActivatedLines=activecontainer.kiCircle.activatedPassiveLineMultipliers
+            
+            for(const key in activecontainer.kiCircle.additionalAttacks){
+                if(activecontainer.kiCircle.additionalAttacks[key]=="Offered" && additionalAttacks[key]=="Unactivated"){
+                    if(kiCircleDictionary[key]["attackPerformed"]){
+                        additionalAttacks[key]="Activated";
+                    }
+                    else{
+                        additionalAttacks[key]="Offered";
+                    }
+                }
+            }
 
+        }
+        else{
+            activecontainer.kiCircle.display(false)
+        }
+    }
     
+    kiCalculator.updateConditions(superStatRaises,superActivatedLines)
 
     for(const Query of passiveQueryList){
         if(Query.type=="slider"){
@@ -1820,17 +1870,16 @@ export function refreshKiCircle(){
     for (const key in kiCircleDictionary){
         kiCircleDictionary[key].display(false);
     }
-    for (const key in additionalAttacks){
-        additionalAttacks[key]="Unactivated";
-    }
+    
     
     kiCircleDictionary[0].updateCausalityLogic(iteratingCausalityLogic);
-    kiCircleDictionary[0].updateConditions(superStatRaises,false);
-    kiCircleDictionary[0].updateConditions(superStatRaises,false);
+    kiCircleDictionary[0].updateConditions(superStatRaises,superActivatedLines,false);
+    kiCircleDictionary[0].updateConditions(superStatRaises,superActivatedLines,false);
     let superHasBeenPerformed=kiCircleDictionary[0].superHasBeenPerformed;
     kiCircleDictionary[0].display(true);
     iteratingCausalityLogic=iterateCausalityLogic(iteratingCausalityLogic,kiCircleDictionary[0]);
     superStatRaises=kiCircleDictionary[0].previousBuffs;
+    superActivatedLines=kiCircleDictionary[0].activatedPassiveLineMultipliers
     for(const key in kiCircleDictionary[0].additionalAttacks){
         if(kiCircleDictionary[0].additionalAttacks[key]=="Offered" && additionalAttacks[key]=="Unactivated"){
             if(kiCircleDictionary[key]["attackPerformed"]){
@@ -1871,11 +1920,12 @@ export function refreshKiCircle(){
         iteratingCausalityLogic=prepareCausalityLogic(iteratingCausalityLogic,kiCircleDictionary[nextLineToActivate])
         kiCircleDictionary[nextLineToActivate].updateCausalityLogic(iteratingCausalityLogic);
         if(additionalAttacks[nextLineToActivate]=="Activated"){
-            kiCircleDictionary[nextLineToActivate].updateConditions(superStatRaises,superHasBeenPerformed);
-            kiCircleDictionary[nextLineToActivate].updateConditions(superStatRaises,superHasBeenPerformed);
+            kiCircleDictionary[nextLineToActivate].updateConditions(superStatRaises,superActivatedLines,superHasBeenPerformed);
+            kiCircleDictionary[nextLineToActivate].updateConditions(superStatRaises,superActivatedLines,superHasBeenPerformed);
             superHasBeenPerformed=superHasBeenPerformed||kiCircleDictionary[nextLineToActivate].superHasBeenPerformed;
             iteratingCausalityLogic=iterateCausalityLogic(iteratingCausalityLogic,kiCircleDictionary[nextLineToActivate])
             superStatRaises=kiCircleDictionary[nextLineToActivate].previousBuffs;
+            superActivatedLines=kiCircleDictionary[nextLineToActivate].activatedPassiveLineMultipliers
             for(const key in kiCircleDictionary[nextLineToActivate].additionalAttacks){
                 if(kiCircleDictionary[nextLineToActivate].additionalAttacks[key]=="Offered" && additionalAttacks[key]=="Unactivated"){
                     if(kiCircleDictionary[key]["performedChance"]==100){
@@ -1902,8 +1952,8 @@ export function refreshKiCircle(){
             kiCircleDictionary[nextLineToActivate].display(false);
             iteratingCausalityLogic=prepareCausalityLogic(iteratingCausalityLogic,kiCircleDictionary[nextLineToActivate])
             kiCircleDictionary[nextLineToActivate].updateCausalityLogic(iteratingCausalityLogic);
-            kiCircleDictionary[nextLineToActivate].updateConditions(superStatRaises,superHasBeenPerformed);
-            kiCircleDictionary[nextLineToActivate].updateConditions(superStatRaises,superHasBeenPerformed);
+            kiCircleDictionary[nextLineToActivate].updateConditions(superStatRaises,superActivatedLines,superHasBeenPerformed);
+            kiCircleDictionary[nextLineToActivate].updateConditions(superStatRaises,superActivatedLines,superHasBeenPerformed);
             superHasBeenPerformed=superHasBeenPerformed||kiCircleDictionary[nextLineToActivate].superHasBeenPerformed;
             let additionalFound=false;
             for(const key in kiCircleDictionary[nextLineToActivate].additionalAttacks){
@@ -2938,7 +2988,12 @@ export function createPassiveContainer(){
         passiveKiSupport.appendChild(passiveKiSupport.label);
         passiveKiSupport.appendChild(passiveKiSupport.input);
         passiveKiSupport.addEventListener('input', function(){
-            kiSources.Support=parseInt(passiveKiSupport.input.value);
+            if(passiveKiSupport.input.value==""){
+                kiSources.Support=0;
+            }
+            else{
+                kiSources.Support=parseInt(passiveKiSupport.input.value);
+            }
             refreshKiCircle();
         });
         passiveKiSupport.label.textContent="Ki Support: ";
@@ -3409,9 +3464,11 @@ export function createActiveContainer(){
         }
 
         if(!needsDisplay){
+            activeDisplayed=false
             activecontainer.style.display="none";
         }
         else{
+            activeDisplayed=true
             activecontainer.titleLabel=document.createElement("label");
             activecontainer.appendChild(activecontainer.titleLabel);
             activecontainer.titleLabel.innerText=currentJson["Active Skill"]["Name"];
@@ -3419,6 +3476,64 @@ export function createActiveContainer(){
             activecontainer.Condition=document.createElement("label");
             activecontainer.appendChild(activecontainer.Condition);
             activecontainer.Condition.innerText=currentJson["Active Skill"]["Condition Description"];
+            
+            activecontainer.Button=document.createElement("button");
+            activecontainer.Button = document.createElement('button');
+            activecontainer.Button.innerHTML = "Activate Active Skill?";
+            activecontainer.Button.style.background="#FF5C35"
+            activecontainer.Button.style.zIndex=10
+            activecontainer.Button.onclick = function(){
+              if(activecontainer.Button.classList.contains('active')){
+                activecontainer.Button.style.background="#FF5C35"
+                activecontainer.Button.classList.remove('active');
+                activeAttackPerformed=false
+                activeMultipliers={"ATK":1,"DEF":1}
+                kiSources["Active"]=0
+              }
+              else{
+                activecontainer.Button.classList.add('active');
+                activecontainer.Button.style.background="#00FF00"
+                if("Attack" in currentJson["Active Skill"]){
+                    activeAttackPerformed=true
+                }
+                for(const effectKey of Object.keys(currentJson["Active Skill"]["Effects"])){
+                    const effect=currentJson["Active Skill"]["Effects"][effectKey]
+                    if(effect["Effect"]["Buff"]=="Ki Buff"){
+                        if(effect["Effect"]["+ or -"]=="+"){
+                            kiSources["Active"]=effect["Effect"]["Amount"];
+                        }
+                        else{
+                            kiSources["Active"]=-effect["Effect"]["Amount"];
+                        }
+                    }
+                    else if(effect["Effect"]["Buff"]=="ATK Buff"){
+                        if(effect["Effect"]["+ or -"]=="+"){
+                            activeMultipliers["ATK"]=1+(effect["Effect"]["Amount"]/100);
+                        }
+                        else{
+                            activeMultipliers["ATK"]=1-(effect["Effect"]["Amount"]/100);
+                        }
+                    }
+                    else if(effect["Effect"]["Buff"]=="DEF Buff"){
+                        if(effect["Effect"]["+ or -"]=="+"){
+                            activeMultipliers["DEF"]=1+(effect["Effect"]["Amount"]/100);
+                        }
+                        else{
+                            activeMultipliers["DEF"]=1-(effect["Effect"]["Amount"]/100);
+                        }
+                    }
+                    else{
+                        console.log("UNACCOUNTED ACTIVE BUFF")
+                    }
+                }
+              }
+              refreshKiCircle();
+            }
+            activecontainer.appendChild(activecontainer.Button);
+
+            activecontainer.kiCircle=new kiCircleClass("Active",queriesToLogic(passiveQueryList),100,100);
+            activecontainer.appendChild(activecontainer.kiCircle.getElement());
+
         }
 
         
