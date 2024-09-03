@@ -33,7 +33,15 @@
                 "Max": 23,
                 "Cause": {
                     "Cause": "Ki sphere obtained",
-                    "Type": "any"
+                    "Type": [
+                        "AGL",
+                        "INT",
+                        "PHY",
+                        "STR",
+                        "TEQ",
+                        "Rainbow",
+                        "Sweet treats"
+                    ]
                 },
                 "Slider": "How many  Ki Spheres have been obtained on this turn?"
             },
@@ -46,7 +54,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Brief effect description": "ATK and DEF +30% per Ki Sphere obtained at the start of turn"
         },
         "1004005": {
             "ID": "1004005",
@@ -76,7 +85,8 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Brief effect description": "Ki: +2 perRainbow and PHY and STR and INT and TEQ and AGL Ki Spheres obtained at the start of turn"
         },
         "2004005": {
             "ID": "2004005",
@@ -101,7 +111,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Brief effect description": "ATK +10% perPHY Ki Spheres obtained at the start of turn"
         },
         "3004005": {
             "ID": "3004005",
@@ -126,7 +137,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Brief effect description": "DEF +10% perPHY Ki Spheres obtained at the start of turn"
         },
         "4004005": {
             "ID": "4004005",
@@ -167,7 +179,8 @@
                         }
                     }
                 }
-            }
+            },
+            "Brief effect description": "allies Ki: +2 after this unit collects ki spheres"
         },
         "5004005": {
             "ID": "5004005",
@@ -208,7 +221,8 @@
                         }
                     }
                 }
-            }
+            },
+            "Brief effect description": "allies ATK +39% after this unit collects ki spheres"
         },
         "6004005": {
             "ID": "6004005",
@@ -249,7 +263,8 @@
                         }
                     }
                 }
-            }
+            },
+            "Brief effect description": "allies Ki: +2 after this unit collects ki spheres"
         },
         "7004005": {
             "ID": "7004005",
@@ -290,7 +305,8 @@
                         }
                     }
                 }
-            }
+            },
+            "Brief effect description": "allies DEF +39% after this unit collects ki spheres"
         },
         "8004005": {
             "ID": "8004005",
@@ -320,7 +336,8 @@
                         }
                     }
                 }
-            }
+            },
+            "Brief effect description": "allies Ki: +2 after this unit collects ki spheres"
         },
         "9004005": {
             "ID": "9004005",
@@ -351,7 +368,8 @@
                         }
                     }
                 }
-            }
+            },
+            "Brief effect description": "allies ATK and DEF +15% after this unit collects ki spheres"
         },
         "10004005": {
             "ID": "10004005",
@@ -381,14 +399,16 @@
                         }
                     }
                 }
-            }
+            },
+            "Brief effect description": "ATK +39%  when attacking"
         },
         "11004005": {
             "ID": "11004005",
             "Calc option": "2",
             "Additional attack": {
                 "Activated": true,
-                "Chance of super": "100"
+                "Chance of super": "100",
+                "Chance of another additional": "0"
             },
             "Timing": "Right before attack",
             "Target": {
@@ -414,7 +434,8 @@
                         }
                     }
                 }
-            }
+            },
+            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack  when attacking"
         },
         "12004005": {
             "ID": "12004005",
@@ -450,7 +471,8 @@
                         }
                     }
                 }
-            }
+            },
+            "Brief effect description": "Included and Excluded category allies Damage recieved +10%  when attacking"
         },
         "13004005": {
             "ID": "13004005",
@@ -488,7 +510,8 @@
                         }
                     }
                 }
-            }
+            },
+            "Brief effect description": "Included and Excluded category allies Damage recieved +10%  when attacking"
         },
         "14004005": {
             "ID": "14004005",
@@ -502,7 +525,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Brief effect description": "Chance of evading enemy attacks +50% at the start of turn"
         },
         "15004005": {
             "ID": "15004005",
@@ -532,7 +556,8 @@
                         }
                     }
                 }
-            }
+            },
+            "Brief effect description": "Evades enemy attacks after this unit collects ki spheres"
         },
         "16004005": {
             "ID": "16004005",
@@ -547,7 +572,8 @@
                 ],
                 "To": [
                     "PHY"
-                ]
+                ],
+                "Style": "Randomly"
             },
             "Target": {
                 "Target": "Self"
@@ -572,7 +598,8 @@
                         }
                     }
                 }
-            }
+            },
+            "Brief effect description": "Randomly changes Ki Spheres of a certain Type(PHY excluded) to PHY Ki Spheres at the start of turn"
         },
         "17004005": {
             "ID": "17004005",
@@ -588,7 +615,8 @@
                     "Rainbow",
                     "Sweet treats"
                 ],
-                "To": "PHY"
+                "To": "PHY",
+                "Style": "All"
             },
             "Target": {
                 "Target": "Self"
@@ -619,11 +647,12 @@
                     }
                 }
             },
-            "Once only": true
+            "Once only": true,
+            "Brief effect description": "Changes all Ki Spheres to P Ki Spheres at the start of turn"
         }
     },
-    "Max Attacks": 3,
-    "Max Super Attacks": 3,
+    "Max Attacks": 4,
+    "Max Super Attacks": 4,
     "Stats at levels": {
         "150": {
             "HP": 21575,

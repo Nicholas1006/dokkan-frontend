@@ -48,7 +48,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Brief effect description": "ATK and DEF +120% at the start of turn"
         },
         "1003859": {
             "ID": "1003859",
@@ -78,7 +79,8 @@
                         }
                     }
                 }
-            }
+            },
+            "Brief effect description": "DEF +40%  when attacking"
         },
         "2003859": {
             "ID": "2003859",
@@ -89,7 +91,15 @@
                 "Max": 23,
                 "Cause": {
                     "Cause": "Ki sphere obtained",
-                    "Type": "any"
+                    "Type": [
+                        "AGL",
+                        "INT",
+                        "PHY",
+                        "STR",
+                        "TEQ",
+                        "Rainbow",
+                        "Sweet treats"
+                    ]
                 },
                 "Slider": "How many  Ki Spheres have been obtained on this turn?"
             },
@@ -101,14 +111,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Brief effect description": "ATK +18% per Ki Sphere obtained at the start of turn"
         },
         "3003859": {
             "ID": "3003859",
             "Calc option": "0",
             "Additional attack": {
                 "Activated": true,
-                "Chance of super": "100"
+                "Chance of super": "100",
+                "Chance of another additional": "0"
             },
             "Timing": "When ki spheres collected",
             "Target": {
@@ -134,7 +146,8 @@
                         }
                     }
                 }
-            }
+            },
+            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack after this unit collects ki spheres"
         },
         "4003859": {
             "ID": "4003859",
@@ -142,7 +155,8 @@
             "Timing": "Start of turn",
             "Ki change": {
                 "From": "STR",
-                "To": "PHY"
+                "To": "PHY",
+                "Style": "Single"
             },
             "Target": {
                 "Target": "Self"
@@ -152,7 +166,8 @@
                 "+ or -": "+"
             },
             "Chance": "70",
-            "Length": "1"
+            "Length": "1",
+            "Brief effect description": "Changes STR Ki Spheres to PHY Ki Spheres at the start of turn"
         },
         "5003859": {
             "ID": "5003859",
@@ -174,11 +189,12 @@
                 "+ or -": "+"
             },
             "Length": "1",
-            "First turn to activate": 1
+            "First turn to activate": 1,
+            "Brief effect description": "Transforms into 4016531 at the start of turn"
         }
     },
-    "Max Attacks": 3,
-    "Max Super Attacks": 3,
+    "Max Attacks": 4,
+    "Max Super Attacks": 4,
     "Stats at levels": {
         "120": {
             "HP": 10470,

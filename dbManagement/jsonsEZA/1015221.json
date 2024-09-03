@@ -34,13 +34,14 @@
             "Ki": 3,
             "Target": {
                 "Target": "Allies",
-                "Type": "STR"
+                "Typing": "STR"
             },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Brief effect description": "S and T and Rallies Ki: +3 at the start of turn"
         },
         "1004015": {
             "ID": "1004015",
@@ -50,13 +51,14 @@
             "DEF": 10,
             "Target": {
                 "Target": "Allies",
-                "Type": "STR"
+                "Typing": "STR"
             },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Brief effect description": "S and T and Rallies ATK and DEF +10% at the start of turn"
         },
         "2004015": {
             "ID": "2004015",
@@ -69,7 +71,7 @@
                 "Class": [
                     "Super"
                 ],
-                "Type": [
+                "Typing": [
                     "STR"
                 ]
             },
@@ -77,7 +79,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Brief effect description": "SuperSTRallies ATK and DEF +50% at the start of turn"
         },
         "3004015": {
             "ID": "3004015",
@@ -92,7 +95,8 @@
                 ],
                 "To": [
                     "STR"
-                ]
+                ],
+                "Style": "Randomly"
             },
             "Target": {
                 "Target": "Self"
@@ -101,7 +105,8 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Brief effect description": "Randomly changes Ki Spheres of a certain Type(STR excluded) to STR Ki Spheres at the start of turn"
         },
         "4004015": {
             "ID": "4004015",
@@ -126,7 +131,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Brief effect description": "Chance of performing a critical hit +10% perSTR Ki Spheres obtained at the start of turn"
         },
         "5004015": {
             "ID": "5004015",
@@ -151,7 +157,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Brief effect description": "ATK +20% perSTR Ki Spheres obtained at the start of turn"
         },
         "6004015": {
             "ID": "6004015",
@@ -176,7 +183,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Brief effect description": "DEF +20% perSTR Ki Spheres obtained at the start of turn"
         },
         "7004015": {
             "ID": "7004015",
@@ -187,7 +195,15 @@
                 "Max": 23,
                 "Cause": {
                     "Cause": "Ki sphere obtained",
-                    "Type": "any"
+                    "Type": [
+                        "AGL",
+                        "INT",
+                        "PHY",
+                        "STR",
+                        "TEQ",
+                        "Rainbow",
+                        "Sweet treats"
+                    ]
                 },
                 "Slider": "How many  Ki Spheres have been obtained on this turn?"
             },
@@ -200,7 +216,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Brief effect description": "ATK and DEF +50% per Ki Sphere obtained at the start of turn"
         },
         "8004015": {
             "ID": "8004015",
@@ -216,7 +233,8 @@
                     "Rainbow",
                     "Sweet treats"
                 ],
-                "To": "STR"
+                "To": "STR",
+                "Style": "All"
             },
             "Target": {
                 "Target": "Self"
@@ -247,7 +265,8 @@
                     }
                 }
             },
-            "Once only": true
+            "Once only": true,
+            "Brief effect description": "Changes all Ki Spheres to S Ki Spheres at the start of turn"
         },
         "9004015": {
             "ID": "9004015",
@@ -283,7 +302,8 @@
                     }
                 }
             },
-            "Once only": true
+            "Once only": true,
+            "Brief effect description": "Guards all attacks at the start of turn"
         }
     },
     "Max Attacks": 2,

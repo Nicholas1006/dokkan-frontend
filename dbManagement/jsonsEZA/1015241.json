@@ -29,13 +29,14 @@
             "Ki": 3,
             "Target": {
                 "Target": "Allies",
-                "Type": "AGL"
+                "Typing": "AGL"
             },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Brief effect description": "A and G and Lallies Ki: +3 at the start of turn"
         },
         "1004017": {
             "ID": "1004017",
@@ -45,13 +46,14 @@
             "DEF": 10,
             "Target": {
                 "Target": "Allies",
-                "Type": "AGL"
+                "Typing": "AGL"
             },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Brief effect description": "A and G and Lallies ATK and DEF +10% at the start of turn"
         },
         "2004017": {
             "ID": "2004017",
@@ -64,7 +66,7 @@
                 "Class": [
                     "Extreme"
                 ],
-                "Type": [
+                "Typing": [
                     "AGL"
                 ]
             },
@@ -72,7 +74,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Brief effect description": "ExtremeAGLallies ATK and DEF +50% at the start of turn"
         },
         "3004017": {
             "ID": "3004017",
@@ -87,7 +90,8 @@
                 ],
                 "To": [
                     "AGL"
-                ]
+                ],
+                "Style": "Randomly"
             },
             "Target": {
                 "Target": "Self"
@@ -96,7 +100,8 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Brief effect description": "Randomly changes Ki Spheres of a certain Type(AGL excluded) to AGL Ki Spheres at the start of turn"
         },
         "4004017": {
             "ID": "4004017",
@@ -121,7 +126,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Brief effect description": "Chance of performing a critical hit +10% perAGL Ki Spheres obtained at the start of turn"
         },
         "5004017": {
             "ID": "5004017",
@@ -146,7 +152,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Brief effect description": "ATK +20% perAGL Ki Spheres obtained at the start of turn"
         },
         "6004017": {
             "ID": "6004017",
@@ -171,7 +178,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Brief effect description": "DEF +20% perAGL Ki Spheres obtained at the start of turn"
         },
         "7004017": {
             "ID": "7004017",
@@ -182,7 +190,15 @@
                 "Max": 23,
                 "Cause": {
                     "Cause": "Ki sphere obtained",
-                    "Type": "any"
+                    "Type": [
+                        "AGL",
+                        "INT",
+                        "PHY",
+                        "STR",
+                        "TEQ",
+                        "Rainbow",
+                        "Sweet treats"
+                    ]
                 },
                 "Slider": "How many  Ki Spheres have been obtained on this turn?"
             },
@@ -195,7 +211,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Brief effect description": "ATK and DEF +50% per Ki Sphere obtained at the start of turn"
         },
         "8004017": {
             "ID": "8004017",
@@ -211,7 +228,8 @@
                     "Rainbow",
                     "Sweet treats"
                 ],
-                "To": "AGL"
+                "To": "AGL",
+                "Style": "All"
             },
             "Target": {
                 "Target": "Self"
@@ -242,7 +260,8 @@
                     }
                 }
             },
-            "Once only": true
+            "Once only": true,
+            "Brief effect description": "Changes all Ki Spheres to A Ki Spheres at the start of turn"
         },
         "9004017": {
             "ID": "9004017",
@@ -278,7 +297,8 @@
                     }
                 }
             },
-            "Once only": true
+            "Once only": true,
+            "Brief effect description": "Guards all attacks at the start of turn"
         }
     },
     "Max Attacks": 2,

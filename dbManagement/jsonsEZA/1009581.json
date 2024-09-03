@@ -40,7 +40,8 @@
             "Timing": "Start of turn",
             "Ki change": {
                 "From": "STR",
-                "To": "INT"
+                "To": "INT",
+                "Style": "Single"
             },
             "Target": {
                 "Target": "Self"
@@ -49,7 +50,8 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Brief effect description": "Changes STR Ki Spheres to INT Ki Spheres at the start of turn"
         },
         "1002089": {
             "ID": "1002089",
@@ -60,7 +62,15 @@
                 "Max": 23,
                 "Cause": {
                     "Cause": "Ki sphere obtained",
-                    "Type": "any"
+                    "Type": [
+                        "AGL",
+                        "INT",
+                        "PHY",
+                        "STR",
+                        "TEQ",
+                        "Rainbow",
+                        "Sweet treats"
+                    ]
                 },
                 "Slider": "How many  Ki Spheres have been obtained on this turn?"
             },
@@ -73,7 +83,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Brief effect description": "ATK and DEF +20% per Ki Sphere obtained at the start of turn"
         },
         "2002089": {
             "ID": "2002089",
@@ -87,7 +98,8 @@
                 ],
                 "To": [
                     "Rainbow"
-                ]
+                ],
+                "Style": "Randomly"
             },
             "Target": {
                 "Target": "Self"
@@ -112,7 +124,8 @@
                         }
                     }
                 }
-            }
+            },
+            "Brief effect description": "Randomly changes Ki Spheres of a certain Type(INT excluded) to Rainbow Ki Spheres at the start of turn"
         },
         "3002089": {
             "ID": "3002089",
@@ -142,7 +155,8 @@
                         }
                     }
                 }
-            }
+            },
+            "Brief effect description": "Attacks effective against all Types after this unit collects ki spheres"
         }
     },
     "Max Attacks": 2,

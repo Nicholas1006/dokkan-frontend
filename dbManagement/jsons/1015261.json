@@ -36,7 +36,7 @@
             "Ki": 3,
             "Target": {
                 "Target": "Allies",
-                "Type": [
+                "Typing": [
                     "PHY"
                 ]
             },
@@ -44,7 +44,8 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Brief effect description": "PHYallies Ki: +3 at the start of turn"
         },
         "1002082": {
             "ID": "1002082",
@@ -57,7 +58,7 @@
                 "Class": [
                     "Super"
                 ],
-                "Type": [
+                "Typing": [
                     "PHY"
                 ]
             },
@@ -65,7 +66,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Brief effect description": "SuperPHYallies ATK and DEF +50% at the start of turn"
         },
         "2002082": {
             "ID": "2002082",
@@ -80,7 +82,8 @@
                 ],
                 "To": [
                     "PHY"
-                ]
+                ],
+                "Style": "Randomly"
             },
             "Target": {
                 "Target": "Self"
@@ -89,7 +92,8 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Brief effect description": "Randomly changes Ki Spheres of a certain Type(PHY excluded) to PHY Ki Spheres at the start of turn"
         },
         "3002082": {
             "ID": "3002082",
@@ -100,7 +104,15 @@
                 "Max": 23,
                 "Cause": {
                     "Cause": "Ki sphere obtained",
-                    "Type": "any"
+                    "Type": [
+                        "AGL",
+                        "INT",
+                        "PHY",
+                        "STR",
+                        "TEQ",
+                        "Rainbow",
+                        "Sweet treats"
+                    ]
                 },
                 "Slider": "How many  Ki Spheres have been obtained on this turn?"
             },
@@ -113,7 +125,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Brief effect description": "ATK and DEF +20% per Ki Sphere obtained at the start of turn"
         }
     },
     "Max Attacks": 2,

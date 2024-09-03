@@ -35,13 +35,14 @@
             "Ki": 3,
             "Target": {
                 "Target": "Allies",
-                "Type": "TEQ"
+                "Typing": "TEQ"
             },
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Brief effect description": "T and E and Qallies Ki: +3 at the start of turn"
         },
         "1004013": {
             "ID": "1004013",
@@ -51,13 +52,14 @@
             "DEF": 10,
             "Target": {
                 "Target": "Allies",
-                "Type": "TEQ"
+                "Typing": "TEQ"
             },
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Brief effect description": "T and E and Qallies ATK and DEF +10% at the start of turn"
         },
         "2004013": {
             "ID": "2004013",
@@ -70,7 +72,7 @@
                 "Class": [
                     "Super"
                 ],
-                "Type": [
+                "Typing": [
                     "TEQ"
                 ]
             },
@@ -78,7 +80,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Brief effect description": "SuperTEQallies ATK and DEF +50% at the start of turn"
         },
         "3004013": {
             "ID": "3004013",
@@ -93,7 +96,8 @@
                 ],
                 "To": [
                     "TEQ"
-                ]
+                ],
+                "Style": "Randomly"
             },
             "Target": {
                 "Target": "Self"
@@ -102,7 +106,8 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Brief effect description": "Randomly changes Ki Spheres of a certain Type(TEQ excluded) to TEQ Ki Spheres at the start of turn"
         },
         "4004013": {
             "ID": "4004013",
@@ -127,7 +132,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Brief effect description": "Chance of performing a critical hit +10% perTEQ Ki Spheres obtained at the start of turn"
         },
         "5004013": {
             "ID": "5004013",
@@ -152,7 +158,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Brief effect description": "ATK +20% perTEQ Ki Spheres obtained at the start of turn"
         },
         "6004013": {
             "ID": "6004013",
@@ -177,7 +184,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Brief effect description": "DEF +20% perTEQ Ki Spheres obtained at the start of turn"
         },
         "7004013": {
             "ID": "7004013",
@@ -188,7 +196,15 @@
                 "Max": 23,
                 "Cause": {
                     "Cause": "Ki sphere obtained",
-                    "Type": "any"
+                    "Type": [
+                        "AGL",
+                        "INT",
+                        "PHY",
+                        "STR",
+                        "TEQ",
+                        "Rainbow",
+                        "Sweet treats"
+                    ]
                 },
                 "Slider": "How many  Ki Spheres have been obtained on this turn?"
             },
@@ -201,7 +217,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": "1"
+            "Length": "1",
+            "Brief effect description": "ATK and DEF +50% per Ki Sphere obtained at the start of turn"
         },
         "8004013": {
             "ID": "8004013",
@@ -217,7 +234,8 @@
                     "Rainbow",
                     "Sweet treats"
                 ],
-                "To": "TEQ"
+                "To": "TEQ",
+                "Style": "All"
             },
             "Target": {
                 "Target": "Self"
@@ -248,7 +266,8 @@
                     }
                 }
             },
-            "Once only": true
+            "Once only": true,
+            "Brief effect description": "Changes all Ki Spheres to T Ki Spheres at the start of turn"
         },
         "9004013": {
             "ID": "9004013",
@@ -284,7 +303,8 @@
                     }
                 }
             },
-            "Once only": true
+            "Once only": true,
+            "Brief effect description": "Guards all attacks at the start of turn"
         }
     },
     "Max Attacks": 2,
