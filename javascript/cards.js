@@ -429,7 +429,7 @@ class kiCircleClass{
                             }
                             buffMultiplier=Math.min(buffMultiplier,passiveLine["Building Stat"]["Max"]);
                         }
-                        if(!(targetString.includes("self excluded"))){
+                        if(includedInSupportBuff(passiveLine)){
                             if(SOTTIMINGS.includes(timingString)){
                                 this.SOTATK+=(buffMultiplier*(passiveLine.ATK||0))/100
                                 this.Ki+=buffMultiplier*(passiveLine.Ki||0)
@@ -1801,6 +1801,28 @@ export function iterateCausalityLogic(CausalityLogic,KiCircleObject){
     return(CausalityLogic)
 }
 
+export function includedInSupportBuff(passiveLine){
+    if(passiveLine["Target"]["Target"]=="Self"){
+        return (true);
+    }
+    if(passiveLine["Target"]["Target"]=="Allies"){
+        if("Category" in passiveLine["Target"]){
+            let categoryQualified=false;
+            for(const key of passiveLine["Target"]["Category"]["Included"]){
+                if(currentJson["Categories"].includes(key)){
+                  categoryQualified=true;
+                } 
+            }
+            for(const key of passiveLine["Target"]["Category"]["Excluded"]){
+                if(currentJson["Categories"].includes(key)){
+                  categoryQualified=false;
+                } 
+            }
+            return (categoryQualified);
+        }
+    }
+    return(false)
+}
 
 
 export function refreshKiCircle(){
