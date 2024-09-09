@@ -451,8 +451,11 @@ class kiCircleClass{
                     else if(passiveEffect=="Status"){
                         console.log("WIP");
                     }
-                    else if(["ID","Condition","Timing","Target","Length","Buff","Building Stat","Nullification","Additional attack","Calc option"].includes(passiveEffect)){
+                    else if(["ID","Condition","Timing","Target","Length","Buff","Transformation","First Turn To Activate","Once only","Nullification","Additional Attack","Calc option","Building Stat","Brief effect description"].includes(passiveEffect)){
                         continue;
+                    }
+                    else if(["DEF","DR","Dodge Chance","Crit Chance","Guard"].includes(passiveEffect)){
+                        continue; //WIP
                     }
                     else{
                         console.log(passiveEffect)
@@ -1004,7 +1007,7 @@ class statsContainerClass{
 
 class superAttackQueryHolder{
 
-    constructor(superAttack,maxPerTurn,unitID){
+    constructor(superAttack,maxPerTurn,maxTurns,unitID){
         this.superAttack=superAttack;
         this.selfContainer=document.createElement("div");
         this.selfContainer.style.display="grid";
@@ -1012,7 +1015,7 @@ class superAttackQueryHolder{
         for(const key of Object.keys(superAttack["superBuffs"])){
             if(superAttack["superBuffs"][key]["Duration"]!="1" && superAttack["superBuffs"][key]["Duration"]!="2"){
                 let buffs=superAttack["superBuffs"][key];
-                let buffHolder= new superAttackQuery(buffs,maxPerTurn,unitID,superAttack["superName"]);
+                let buffHolder= new superAttackQuery(buffs,maxPerTurn,maxTurns,unitID,superAttack["superName"]);
                 this.selfContainer.appendChild(buffHolder.getElement());
             }
         }
@@ -1071,7 +1074,7 @@ class pictureText{
 }
 
 class superAttackQuery{
-    constructor(buffs,maxPerTurn,unitID,superAttackName){
+    constructor(buffs,maxPerTurn,maxTurns,unitID,superAttackName){
         this.selfContainer=document.createElement("div");
         this.selfContainer.buffs=buffs;
         this.selfContainer.superAttackName=superAttackName;
@@ -1090,7 +1093,7 @@ class superAttackQuery{
         superAttackSlider.type = "range";
         superAttackSlider.style.cursor = "pointer";
         superAttackSlider.min = 0;
-        superAttackSlider.max=Math.floor(maxPerTurn*((buffs["Duration"]-1)/2));
+        superAttackSlider.max=Math.floor(maxPerTurn*(Math.min(buffs["Duration"],maxTurns)));
         superAttackSlider.value = 0;
         superAttackSlider.id="super-slider";
         superAttackSlider.style.gridRow = 0;
@@ -3073,10 +3076,10 @@ export function createSuperAttackContainer(){
         let superAttack = superAttackss[key];
         let superAttackObject;
         if(superAttack["superStyle"]=="Normal"){
-            superAttackObject = new superAttackQueryHolder(superAttack,currentJson["Max Super Attacks"],currentJson["ID"]);
+            superAttackObject = new superAttackQueryHolder(superAttack,currentJson["Max Super Attacks"],currentJson["Max Appearances In Form"],currentJson["ID"]);
         }
         else{
-            superAttackObject = new superAttackQueryHolder(superAttack,1,currentJson["ID"]);
+            superAttackObject = new superAttackQueryHolder(superAttack,1,currentJson["Max Appearances In Form"],currentJson["ID"]);
         }
         if(superAttackObject.getElement().firstChild){
             superQuestionsContainer.appendChild(superAttackObject.getElement());
@@ -3100,10 +3103,10 @@ export function createSuperAttackContainer(){
                 let superAttack = superAttackss[key];
                 let superAttackObject;
                 if(superAttack["superStyle"]=="Normal"){
-                    superAttackObject = new superAttackQueryHolder(superAttack,json["Max Super Attacks"],json["ID"]);
+                    superAttackObject = new superAttackQueryHolder(superAttack,json["Max Super Attacks"],json["Max Appearances In Form"],json["ID"]);
                 }
                 else{
-                    superAttackObject = new superAttackQueryHolder(superAttack,1,json["ID"]);
+                    superAttackObject = new superAttackQueryHolder(superAttack,1,json["Max Appearances In Form"],json["ID"]);
                 }
                 if(superAttackObject.getElement().firstChild){
                 superQuestionsContainer.appendChild(superAttackObject.getElement());
@@ -3601,6 +3604,12 @@ export function createKiSphereContainer(){
             this.parentElement.parentElement.otherQuery.sufffixLabel.innerHTML+=23-this.value;
             currentKiSphereAmount=23-this.value;
         }
+        else if(parseInt(this.parentElement.parentElement.otherQuery.otherSlider.value)==0 && parseInt(this.value)<5){
+            this.parentElement.parentElement.otherQuery.otherSlider.value=1;
+            this.parentElement.parentElement.otherQuery.sufffixLabel.innerHTML="ki spheres have been obtained: "
+            this.parentElement.parentElement.otherQuery.sufffixLabel.innerHTML+=1;
+            currentKiSphereAmount=1;
+        }
         updateKiSphereBuffs()
         this.parentElement.label.innerHTML="How many rainbow ki spheres have been obtained: "+this.value;
     })
@@ -3628,7 +3637,7 @@ export function createKiSphereContainer(){
     otherDropdown.style.backgroundColor=LightenColor(colorToBackground(typingToColor(otherDropdown.value)),50)
     
     const otherSuffixLabel=document.createElement("Label");
-    otherSuffixLabel.innerHTML="ki spheres have been obtained: 0";
+    otherSuffixLabel.innerHTML="ki spheres have been obtained: 6";
     otherQuery.sufffixLabel=otherSuffixLabel;
     otherQuery.appendChild(otherSuffixLabel)
     
@@ -3639,7 +3648,8 @@ export function createKiSphereContainer(){
     otherSlider.type="range";
     otherSlider.min=0;
     otherSlider.max=23;
-    otherSlider.value=0;
+    otherSlider.value=6;
+    currentKiSphereAmount=6;
     otherSlider.addEventListener("input", function(){
         if(parseInt(this.value)+parseInt(this.parentElement.parentElement.rainbowQuery.slider.value)>23){
             this.parentElement.parentElement.rainbowQuery.slider.value=23-this.value;
@@ -3652,6 +3662,12 @@ export function createKiSphereContainer(){
             this.parentElement.parentElement.rainbowQuery.label.innerHTML="How many rainbow ki spheres have been obtained: "
             this.parentElement.parentElement.rainbowQuery.label.innerHTML+=4;
             rainbowKiSphereAmount=4
+        }
+        else if(parseInt(this.value)==0){
+            this.parentElement.parentElement.rainbowQuery.slider.value=5;
+            this.parentElement.parentElement.rainbowQuery.label.innerHTML="How many rainbow ki spheres have been obtained: "
+            this.parentElement.parentElement.rainbowQuery.label.innerHTML+=5;
+            rainbowKiSphereAmount=5
         }
         currentKiSphereAmount=parseInt(this.value)
         updateKiSphereBuffs();
