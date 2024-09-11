@@ -1093,7 +1093,7 @@ class superAttackQuery{
         superAttackSlider.type = "range";
         superAttackSlider.style.cursor = "pointer";
         superAttackSlider.min = 0;
-        superAttackSlider.max=Math.floor(maxPerTurn*(Math.min(buffs["Duration"],maxTurns)));
+        superAttackSlider.max=Math.min(Math.floor((buffs["Duration"]-1)/2),maxTurns)*maxPerTurn;
         superAttackSlider.value = 0;
         superAttackSlider.id="super-slider";
         superAttackSlider.style.gridRow = 0;
