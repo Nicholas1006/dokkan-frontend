@@ -1286,7 +1286,32 @@
             "Name": "Final Hope Slash",
             "Description": "Raises ATK by 50% temporarily \nper charge count and causes \nsuper-ultimate damage to enemy",
             "Timing": "On activation",
-            "Condition": "{\"source\":\"11&3213\",\"compiled\":[\"&\",11,3213]}",
+            "Condition": {
+                "Logic": "11 && 3213",
+                "Causalities": {
+                    "11": {
+                        "Button": {
+                            "Name": "Is it on or after the first 1 turns from this characters entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since entry turn?",
+                            "Logic": ">=1",
+                            "Min": 0,
+                            "Max": 1
+                        }
+                    },
+                    "3213": {
+                        "Button": {
+                            "Name": "Is the charge count greater than or equal to 1"
+                        },
+                        "Slider": {
+                            "Name": "What is the charge count at?",
+                            "Logic": ">=1",
+                            "Min": 1
+                        }
+                    }
+                }
+            },
             "Multiplier": 750,
             "Standby Exclusivity": "charge",
             "CONFUSION": true,

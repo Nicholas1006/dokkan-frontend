@@ -1244,7 +1244,32 @@
             "Name": "Spirit Bomb",
             "Description": "Raises ATK by 15% temporarily \nper charge count and \ncauses ultimate damage to enemy",
             "Timing": "On activation",
-            "Condition": "{\"source\":\"11&3211\",\"compiled\":[\"&\",11,3211]}",
+            "Condition": {
+                "Logic": "11 && 3211",
+                "Causalities": {
+                    "11": {
+                        "Button": {
+                            "Name": "Is it on or after the first 1 turns from this characters entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since entry turn?",
+                            "Logic": ">=1",
+                            "Min": 0,
+                            "Max": 1
+                        }
+                    },
+                    "3211": {
+                        "Button": {
+                            "Name": "Is the charge count less than 39"
+                        },
+                        "Slider": {
+                            "Name": "What is the charge count at?",
+                            "Logic": "<38",
+                            "Min": 0
+                        }
+                    }
+                }
+            },
             "Multiplier": 550,
             "Standby Exclusivity": "charge",
             "CONFUSION": true,
@@ -1257,7 +1282,32 @@
             "Name": "Super Spirit Bomb",
             "Description": "Raises ATK by 20% temporarily \nper charge count and causes \nsuper-ultimate damage to enemy",
             "Timing": "On activation",
-            "Condition": "{\"source\":\"11&3212\",\"compiled\":[\"&\",11,3212]}",
+            "Condition": {
+                "Logic": "11 && 3212",
+                "Causalities": {
+                    "11": {
+                        "Button": {
+                            "Name": "Is it on or after the first 1 turns from this characters entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since entry turn?",
+                            "Logic": ">=1",
+                            "Min": 0,
+                            "Max": 1
+                        }
+                    },
+                    "3212": {
+                        "Button": {
+                            "Name": "Is the charge count greater than or equal to 39"
+                        },
+                        "Slider": {
+                            "Name": "What is the charge count at?",
+                            "Logic": ">=39",
+                            "Min": 39
+                        }
+                    }
+                }
+            },
             "Multiplier": 750,
             "Standby Exclusivity": "charge",
             "CONFUSION": true,

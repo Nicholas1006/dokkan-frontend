@@ -360,7 +360,32 @@
             "Name": "Incomplete Domination",
             "Description": "Raises ATK by 15% temporarily \nper charge count and \ncauses ultimate damage to enemy",
             "Timing": "On activation",
-            "Condition": "{\"source\":\"11&3209\",\"compiled\":[\"&\",11,3209]}",
+            "Condition": {
+                "Logic": "11 && 3209",
+                "Causalities": {
+                    "11": {
+                        "Button": {
+                            "Name": "Is it on or after the first 1 turns from this characters entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since entry turn?",
+                            "Logic": ">=1",
+                            "Min": 0,
+                            "Max": 1
+                        }
+                    },
+                    "3209": {
+                        "Button": {
+                            "Name": "Is the charge count less than 30"
+                        },
+                        "Slider": {
+                            "Name": "What is the charge count at?",
+                            "Logic": "<29",
+                            "Min": 0
+                        }
+                    }
+                }
+            },
             "Multiplier": 550,
             "Standby Exclusivity": "charge",
             "CONFUSION": true,
@@ -373,7 +398,32 @@
             "Name": "Majin Buu Resurrected!",
             "Description": "Raises ATK by 15% temporarily \nper charge count and causes \nsuper-ultimate damage to enemy",
             "Timing": "On activation",
-            "Condition": "{\"source\":\"11&3210\",\"compiled\":[\"&\",11,3210]}",
+            "Condition": {
+                "Logic": "11 && 3210",
+                "Causalities": {
+                    "11": {
+                        "Button": {
+                            "Name": "Is it on or after the first 1 turns from this characters entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since entry turn?",
+                            "Logic": ">=1",
+                            "Min": 0,
+                            "Max": 1
+                        }
+                    },
+                    "3210": {
+                        "Button": {
+                            "Name": "Is the charge count greater than or equal to 30"
+                        },
+                        "Slider": {
+                            "Name": "What is the charge count at?",
+                            "Logic": ">=30",
+                            "Min": 30
+                        }
+                    }
+                }
+            },
             "Multiplier": 750,
             "Standby Exclusivity": "charge",
             "CONFUSION": true,

@@ -1158,7 +1158,32 @@
             "Name": "\u547c\u3073\u8d77\u3053\u3055\u308c\u308b\u30c8\u30e9\u30a6\u30de",
             "Description": "\u81ea\u8eab\u306e\u30b9\u30bf\u30f3\u30d0\u30a4\u30e2\u30fc\u30c9\u304c\u7d42\u4e86\u3057\u3001\n3\u30bf\u30fc\u30f3\u306e\u9593\u3001\u81ea\u8eab\u306e\u6c17\u529b+3\u3001\nATK30%UP",
             "Timing": "On activation",
-            "Condition": "{\"source\":\"11&3214\",\"compiled\":[\"&\",11,3214]}",
+            "Condition": {
+                "Logic": "11 && 3214",
+                "Causalities": {
+                    "11": {
+                        "Button": {
+                            "Name": "Is it on or after the first 1 turns from this characters entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since entry turn?",
+                            "Logic": ">=1",
+                            "Min": 0,
+                            "Max": 1
+                        }
+                    },
+                    "3214": {
+                        "Button": {
+                            "Name": "Is the charge count less than 25"
+                        },
+                        "Slider": {
+                            "Name": "What is the charge count at?",
+                            "Logic": "<24",
+                            "Min": 0
+                        }
+                    }
+                }
+            },
             "Standby Exclusivity": "charge",
             "CONFUSION": true,
             "Duration": "3",
@@ -1171,7 +1196,32 @@
             "Name": "\u547c\u3073\u899a\u307e\u3055\u308c\u308b\u30d5\u30eb\u30d1\u30ef\u30fc",
             "Description": "\u30b8\u30ec\u30f3(\u30d5\u30eb\u30d1\u30ef\u30fc)\u3078\u899a\u9192\u3059\u308b",
             "Timing": "On activation",
-            "Condition": "{\"source\":\"11&3215\",\"compiled\":[\"&\",11,3215]}",
+            "Condition": {
+                "Logic": "11 && 3215",
+                "Causalities": {
+                    "11": {
+                        "Button": {
+                            "Name": "Is it on or after the first 1 turns from this characters entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since entry turn?",
+                            "Logic": ">=1",
+                            "Min": 0,
+                            "Max": 1
+                        }
+                    },
+                    "3215": {
+                        "Button": {
+                            "Name": "Is the charge count greater than or equal to 25"
+                        },
+                        "Slider": {
+                            "Name": "What is the charge count at?",
+                            "Logic": ">=25",
+                            "Min": 25
+                        }
+                    }
+                }
+            },
             "Standby Exclusivity": "charge",
             "CONFUSION": true,
             "Exchanges to": "4029111"

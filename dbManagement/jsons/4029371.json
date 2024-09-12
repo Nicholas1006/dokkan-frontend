@@ -2343,7 +2343,32 @@
             "Name": "Punch of Bonds",
             "Description": "Raises ATK by 15% temporarily \nper charge count and causes \nultimate damage to enemy",
             "Timing": "On activation",
-            "Condition": "{\"source\":\"11&3234\",\"compiled\":[\"&\",11,3234]}",
+            "Condition": {
+                "Logic": "11 && 3234",
+                "Causalities": {
+                    "11": {
+                        "Button": {
+                            "Name": "Is it on or after the first 1 turns from this characters entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since entry turn?",
+                            "Logic": ">=1",
+                            "Min": 0,
+                            "Max": 1
+                        }
+                    },
+                    "3234": {
+                        "Button": {
+                            "Name": "Is the charge count less than 41"
+                        },
+                        "Slider": {
+                            "Name": "What is the charge count at?",
+                            "Logic": "<40",
+                            "Min": 0
+                        }
+                    }
+                }
+            },
             "Multiplier": 550,
             "Standby Exclusivity": "charge",
             "CONFUSION": true,
@@ -2356,7 +2381,32 @@
             "Name": "Miraculous Punch",
             "Description": "Raises ATK by 20% temporarily \nper charge count and causes \nsuper-ultimate damage to enemy",
             "Timing": "On activation",
-            "Condition": "{\"source\":\"11&3235\",\"compiled\":[\"&\",11,3235]}",
+            "Condition": {
+                "Logic": "11 && 3235",
+                "Causalities": {
+                    "11": {
+                        "Button": {
+                            "Name": "Is it on or after the first 1 turns from this characters entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since entry turn?",
+                            "Logic": ">=1",
+                            "Min": 0,
+                            "Max": 1
+                        }
+                    },
+                    "3235": {
+                        "Button": {
+                            "Name": "Is the charge count greater than or equal to 41"
+                        },
+                        "Slider": {
+                            "Name": "What is the charge count at?",
+                            "Logic": ">=41",
+                            "Min": 41
+                        }
+                    }
+                }
+            },
             "Multiplier": 750,
             "Standby Exclusivity": "charge",
             "CONFUSION": true,

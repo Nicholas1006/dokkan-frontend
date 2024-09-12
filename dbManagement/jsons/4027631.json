@@ -1104,7 +1104,16 @@
             "Name": "Dragon Fist",
             "Description": "Massively raises ATK temporarily, \nnullifies enemy's Super Attack and \ncounters with ferocious power; \nperforms a critical hit",
             "Timing": "On Counter",
-            "Condition": "{\"source\":\"141\",\"compiled\":141}",
+            "Condition": {
+                "Logic": "141",
+                "Causalities": {
+                    "141": {
+                        "Button": {
+                            "Name": "Is a super being performed?"
+                        }
+                    }
+                }
+            },
             "Multiplier": 500,
             "Standby Exclusivity": "special_counter",
             "Nullification": {
@@ -1123,7 +1132,7 @@
             "Name": "None",
             "Description": "None",
             "Timing": "On super attack Counter(Held by str dragon fist)",
-            "Condition": "",
+            "Condition": null,
             "Disable Other Line": {
                 "Activated": true,
                 "Line": "0"

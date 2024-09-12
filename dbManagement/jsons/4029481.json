@@ -1159,7 +1159,32 @@
             "Name": "Kamehameha",
             "Description": "Raises ATK by 15% temporarily \nper charge count and causes \nultimate damage to enemy",
             "Timing": "On activation",
-            "Condition": "{\"source\":\"11&3268\",\"compiled\":[\"&\",11,3268]}",
+            "Condition": {
+                "Logic": "11 && 3268",
+                "Causalities": {
+                    "11": {
+                        "Button": {
+                            "Name": "Is it on or after the first 1 turns from this characters entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since entry turn?",
+                            "Logic": ">=1",
+                            "Min": 0,
+                            "Max": 1
+                        }
+                    },
+                    "3268": {
+                        "Button": {
+                            "Name": "Is the charge count less than 35"
+                        },
+                        "Slider": {
+                            "Name": "What is the charge count at?",
+                            "Logic": "<34",
+                            "Min": 0
+                        }
+                    }
+                }
+            },
             "Multiplier": 550,
             "Standby Exclusivity": "charge",
             "CONFUSION": true,
@@ -1172,7 +1197,43 @@
             "Name": "Brotherhood Kamehameha",
             "Description": "Raises ATK by 15% temporarily \nper charge count and causes \nsuper-ultimate damage to enemy",
             "Timing": "On activation",
-            "Condition": "{\"source\":\"11&3269&3270\",\"compiled\":[\"&\",11,3269,3270]}",
+            "Condition": {
+                "Logic": "11 && 3269 && 3270",
+                "Causalities": {
+                    "11": {
+                        "Button": {
+                            "Name": "Is it on or after the first 1 turns from this characters entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since entry turn?",
+                            "Logic": ">=1",
+                            "Min": 0,
+                            "Max": 1
+                        }
+                    },
+                    "3269": {
+                        "Button": {
+                            "Name": "Is the charge count greater than or equal to 35"
+                        },
+                        "Slider": {
+                            "Name": "What is the charge count at?",
+                            "Logic": ">=35",
+                            "Min": 35
+                        }
+                    },
+                    "3270": {
+                        "Button": {
+                            "Name": "Have less than or equal to 6 dragon ball orbs been obtained?"
+                        },
+                        "Slider": {
+                            "Name": "How many dragon ball orbs have been obtained?",
+                            "Logic": "<=6",
+                            "Min": 0,
+                            "Max": 7
+                        }
+                    }
+                }
+            },
             "Multiplier": 750,
             "Standby Exclusivity": "charge",
             "CONFUSION": true,
@@ -1185,7 +1246,43 @@
             "Name": "Family Kamehameha",
             "Description": "Raises ATK by 20% temporarily \nper charge count, causes \nsuper-ultimate damage to enemy and \nattacks effective against all Types",
             "Timing": "On activation",
-            "Condition": "{\"source\":\"11&3269&3271\",\"compiled\":[\"&\",11,3269,3271]}",
+            "Condition": {
+                "Logic": "11 && 3269 && 3271",
+                "Causalities": {
+                    "11": {
+                        "Button": {
+                            "Name": "Is it on or after the first 1 turns from this characters entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since entry turn?",
+                            "Logic": ">=1",
+                            "Min": 0,
+                            "Max": 1
+                        }
+                    },
+                    "3269": {
+                        "Button": {
+                            "Name": "Is the charge count greater than or equal to 35"
+                        },
+                        "Slider": {
+                            "Name": "What is the charge count at?",
+                            "Logic": ">=35",
+                            "Min": 35
+                        }
+                    },
+                    "3271": {
+                        "Button": {
+                            "Name": "Have more than 6 dragon ball orbs been obtained?"
+                        },
+                        "Slider": {
+                            "Name": "How many dragon ball orbs have been obtained?",
+                            "Logic": ">6",
+                            "Min": 0,
+                            "Max": 7
+                        }
+                    }
+                }
+            },
             "Multiplier": 750,
             "Standby Exclusivity": "charge",
             "CONFUSION": true,
