@@ -518,5 +518,138 @@
                 }
             }
         }
+    },
+    "7": {
+        "ID": "7",
+        "Name": "Molten Lava of Natade Village",
+        "Description": "\"Uncontrollable Power\" Category \nenemies' and allies' ATK & DEF +15%; \nincreases damage received by \nSuper Class enemies and allies by 15%, \nplus an additional 10% for characters who \nalso belong to the \"Movie Heroes\" Category",
+        "Efficiacies": {
+            "7": {
+                "ID": "7",
+                "Timing": "On domain Being out",
+                "Effect": {
+                    "Type": "Closes domain"
+                },
+                "Turn activation": "3"
+            },
+            "1000007": {
+                "ID": "1000007",
+                "Timing": "On domain Being out",
+                "Effect": {
+                    "Type": "ATK & DEF",
+                    "ATK": 15,
+                    "DEF": 15
+                },
+                "Turn activation": "1",
+                "superCondition": {
+                    "Logic": "3243",
+                    "Causalities": {
+                        "3243": {
+                            "Class": "any",
+                            "Category": "Uncontrollable Power"
+                        }
+                    }
+                }
+            },
+            "2000007": {
+                "ID": "2000007",
+                "Timing": "On domain Being out",
+                "Effect": {
+                    "Type": "Increases damage recieved",
+                    "Amount": 15
+                },
+                "Turn activation": "1",
+                "superCondition": {
+                    "Logic": "2563",
+                    "Causalities": {
+                        "2563": {
+                            "Class": "super",
+                            "Category": "any"
+                        }
+                    }
+                }
+            },
+            "3000007": {
+                "ID": "3000007",
+                "Timing": "On domain Being out",
+                "Effect": {
+                    "Type": "Increases damage recieved",
+                    "Amount": 10
+                },
+                "Turn activation": "1",
+                "superCondition": {
+                    "Logic": "2563 && 3244",
+                    "Causalities": {
+                        "2563": {
+                            "Class": "super",
+                            "Category": "any"
+                        },
+                        "3244": {
+                            "Class": "any",
+                            "Category": "Movie Heroes"
+                        }
+                    }
+                }
+            },
+            "4000007": {
+                "ID": "4000007",
+                "Timing": "At the start of turn",
+                "Effect": {
+                    "Type": "ATK & DEF",
+                    "ATK": 15,
+                    "DEF": 15
+                },
+                "Turn activation": "1",
+                "superCondition": {
+                    "Logic": "3243",
+                    "Causalities": {
+                        "3243": {
+                            "Class": "any",
+                            "Category": "Uncontrollable Power"
+                        }
+                    }
+                }
+            },
+            "5000007": {
+                "ID": "5000007",
+                "Timing": "At the start of turn",
+                "Effect": {
+                    "Type": "Increases damage recieved",
+                    "Amount": 15
+                },
+                "Turn activation": "1",
+                "superCondition": {
+                    "Logic": "2563",
+                    "Causalities": {
+                        "2563": {
+                            "Class": "super",
+                            "Category": "any"
+                        }
+                    }
+                }
+            },
+            "6000007": {
+                "ID": "6000007",
+                "Timing": "At the start of turn",
+                "Effect": {
+                    "Type": "Increases damage recieved",
+                    "Amount": 10
+                },
+                "Turn activation": "1",
+                "superCondition": {
+                    "Logic": "2563 && 3244",
+                    "Causalities": {
+                        "2563": {
+                            "Class": "super",
+                            "Category": "any"
+                        },
+                        "3244": {
+                            "Class": "any",
+                            "Category": "Movie Heroes"
+                        }
+                    }
+                }
+            }
+        }
     }
 }
