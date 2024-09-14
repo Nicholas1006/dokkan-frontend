@@ -1695,7 +1695,7 @@ class causalityList{
 
 
 // CONSTANT GLOBAL VARIABLES
-const HIDEUNNEEDEDPASSIVE=false;
+const HIDEUNNEEDEDPASSIVE=true;
 let finishType;
 let currentJson = null;
 let linkData=null;
