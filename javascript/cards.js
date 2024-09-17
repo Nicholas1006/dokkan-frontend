@@ -3277,9 +3277,7 @@ export function updateContainer(containerId, content){
   cardImage.src = '../dbManagement/assets/final_assets/' + assetSubURL + '.png';
 
 
-  document.getElementById("cards-body-container").style.backgroundColor=(typingToColor(typing));
-  document.getElementById("cards-body-container").style.backgroundColor=LightenColor(colorToBackground(typingToColor(typing)),30);
-  document.getElementById("cards-body-container").style.backgroundColor=(colorToBackground(typingToColor(typing)));
+  document.body.style.backgroundColor = colorToBackground(typingToColor(typing));
 }
 
   // Function to create a paragraph element with the given text
