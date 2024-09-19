@@ -1389,7 +1389,7 @@
         "ID": "24",
         "Exec limit": "1",
         "Condition": {
-            "Logic": "3205 && (97 || 4)",
+            "Logic": "3205 && (97 || 296)",
             "Causalities": {
                 "3205": {
                     "Button": {
@@ -1407,14 +1407,15 @@
                         "Max": 100
                     }
                 },
-                "4": {
+                "296": {
                     "Button": {
-                        "Name": "Is the turn count 3 or more?"
+                        "Name": "Is it on or after the first 2 turns from this characters entry turn?"
                     },
                     "Slider": {
-                        "Name": "What turn is it?",
-                        "Logic": ">=3",
-                        "Min": 1
+                        "Name": "How many turns is it since entry turn?",
+                        "Logic": ">=2",
+                        "Min": 0,
+                        "Max": 2
                     }
                 }
             }
