@@ -393,7 +393,7 @@ class kiCircleClass{
                         }
                     }
                     if(activatedCondition){
-                        dictionaryToggle(this.activatedPassiveLineMultipliers,passiveLineKey,buffMultiplier);
+                        this.activatedPassiveLineMultipliers[passiveLineKey]=buffMultiplier;
                         if("Disable Other Line" in passiveLine){
                             dictionaryRemove(this.activatedPassiveLineMultipliers,passiveLine["Disable Other Line"]["Line"]);
                             dictionaryRemove(this.activatedPassiveLineMultipliers,passiveLine["ID"]);
@@ -1164,6 +1164,7 @@ class pictureText{
 
 class superAttackQuery{
     constructor(buffs,maxPerTurn,maxTurns,unitID,superAttackName){
+        document.getElementById("super-container").style.display="grid";
         this.selfContainer=document.createElement("div");
         this.selfContainer.buffs=buffs;
         this.selfContainer.superAttackName=superAttackName;
@@ -1695,7 +1696,7 @@ class causalityList{
 
 
 // CONSTANT GLOBAL VARIABLES
-const HIDEUNNEEDEDPASSIVE=true;
+const HIDEUNNEEDEDPASSIVE=false;
 let finishType;
 let currentJson = null;
 let linkData=null;
@@ -1729,7 +1730,7 @@ let additionalAttacks={};
 let kiCircleDictionary=[];
 let passiveQueryList=[];
 let startingCausalityList=[];
-let relevantPassiveEffects=["Ki","ATK","DEF","Guard","Disable Other Line","Dodge chance","Crit Chance","DR","Additional attack"]
+let relevantPassiveEffects=["Ki","ATK","DEF","Guard","Disable Other Line","Dodge chance","Crit Chance","DR","Additional Attack"]
 
 export function getJsonPromise(prefix,name,suffix) {
     return fetch(prefix + name + suffix)
@@ -3498,13 +3499,6 @@ export function queriesToLogic(queries){
 export function updatePassiveBuffs(refreshKi=true){
     const passiveThinker = new causalityList(queriesToLogic(passiveQueryList));
     passiveThinker.updateBuffs();
-    let passiveBuffs=passiveThinker.returnBuffs();
-    let passiveBuffsContainer = document.getElementById('passive-buffs-container');
-    passiveBuffsContainer.style.display="none";
-    while (passiveBuffsContainer.firstChild) {
-        passiveBuffsContainer.removeChild(passiveBuffsContainer.firstChild);
-    }
-    passiveBuffsContainer.appendChild(displayDictionary(passiveBuffs,0));
     if(refreshKi){
         refreshKiCircle();
     }
@@ -3950,6 +3944,25 @@ export function getBaseDomain() {
     return parts.join('.');
 }
 
+export function polishPage(){
+    const passiveQueryContainer=document.getElementById("passive-query-container");
+    if(passiveQueryContainer.firstChild==null){
+        passiveQueryContainer.style.display="none";
+    }
+
+    const activeContainer=document.getElementById("active-container");
+    if(activeContainer.firstChild==null){
+        activeContainer.style.display="none";
+    }
+
+    if(regularAttacksPerformed==false){
+        document.getElementById("ki-container").style.display="none";
+    }
+
+
+
+}
+
 export function loadPage(firstTime=false){
     const urlParams=new URLSearchParams(window.location.search);
     let subURL = urlParams.get('id') || "None";
@@ -4013,6 +4026,7 @@ export function loadPage(firstTime=false){
                 createKiCirclesWithClass();
                 updateKiSphereBuffs();
                 refreshKiCircle();
+                polishPage();
             })
         })
     })
