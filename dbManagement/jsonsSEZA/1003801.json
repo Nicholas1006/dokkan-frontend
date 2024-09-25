@@ -1,0 +1,1092 @@
+{
+    "ID": "1003801",
+    "Typing": "STR",
+    "Class": "Extreme",
+    "Name": "Legendary Super Saiyan Broly\u00a0",
+    "Rarity": "ur",
+    "Min Level": 120,
+    "Max Level": 140,
+    "Categories": [
+        "Movie Bosses",
+        "Pure Saiyans",
+        "Full Power",
+        "Target: Goku",
+        "Exploding Rage",
+        "Inhuman Deeds",
+        "Planetary Destruction",
+        "Legendary Existence",
+        "Power Beyond Super Saiyan",
+        "Uncontrollable Power"
+    ],
+    "Links": [
+        "Hardened Grudge",
+        "Saiyan Warrior Race",
+        "Super Saiyan",
+        "The Saiyan Lineage",
+        "Berserker",
+        "Fierce Battle"
+    ],
+    "Resource ID": "1003800",
+    "Passive": {
+        "4252": {
+            "ID": "4252",
+            "Calc option": "0",
+            "Timing": "Start of turn",
+            "Ki": 2,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Brief effect description": "Ki +2 "
+        },
+        "1004252": {
+            "ID": "1004252",
+            "Calc option": "2",
+            "Timing": "Start of turn",
+            "ATK": 200,
+            "DEF": 200,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Brief effect description": "ATK and DEF +200% "
+        },
+        "2004252": {
+            "ID": "2004252",
+            "Calc option": "2",
+            "Timing": "Right before attack",
+            "ATK": 150,
+            "DEF": 150,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Brief effect description": "ATK and DEF +150% when attacking"
+        },
+        "3004252": {
+            "ID": "3004252",
+            "Calc option": "2",
+            "Timing": "Right after attack",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 150,
+                "Cause": {
+                    "Cause": "Super being performed"
+                },
+                "Slider": "How many super attacks has this character performed?"
+            },
+            "ATK": 30,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Brief effect description": "ATK +30% (up to 150%) based on 'How many super attacks has this character performed' after attacking"
+        },
+        "4004252": {
+            "ID": "4004252",
+            "Calc option": "2",
+            "Timing": "Right after attack",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 150,
+                "Cause": {
+                    "Cause": "Super being performed"
+                },
+                "Slider": "How many super attacks has this character performed?"
+            },
+            "DEF": 30,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Brief effect description": "DEF +30% (up to 150%) based on 'How many super attacks has this character performed' after attacking"
+        },
+        "5004252": {
+            "ID": "5004252",
+            "Calc option": "2",
+            "Timing": "Right after attack",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 50,
+                "Cause": {
+                    "Cause": "Super being performed"
+                },
+                "Slider": "How many super attacks has this character performed?"
+            },
+            "DR": 10,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Brief effect description": "Damage recieved +10% (up to 50%) based on 'How many super attacks has this character performed' after attacking"
+        },
+        "6004252": {
+            "ID": "6004252",
+            "Calc option": "0",
+            "Timing": "Start of turn",
+            "Ki Change": {
+                "From": [
+                    "PHY",
+                    "STR",
+                    "INT",
+                    "TEQ",
+                    "AGL"
+                ],
+                "To": [
+                    "Rainbow"
+                ],
+                "Style": "Randomly"
+            },
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2442 || 490",
+                "Causalities": {
+                    "2442": {
+                        "Button": {
+                            "Name": "Are there 2 or more Planetary Destruction category units on the same turn on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Planetary Destruction category units on the same turn on this turn?",
+                            "Logic": ">=2",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    },
+                    "490": {
+                        "Button": {
+                            "Name": "Are there 2 or more Pure Saiyans category units on the same turn on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Pure Saiyans category units on the same turn on this turn?",
+                            "Logic": ">=2",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    }
+                }
+            },
+            "Brief effect description": "Randomly changes Ki Spheres of a certain Type to Rainbow Ki Spheres "
+        },
+        "7004252": {
+            "ID": "7004252",
+            "Calc option": "0",
+            "Timing": "When ki spheres collected",
+            "Ki": 1,
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2061",
+                "Causalities": {
+                    "2061": {
+                        "Button": {
+                            "Name": "Has 1 or more Rainbow Ki Spheres been obtained on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Rainbow Ki Spheres have been obtained on this turn?",
+                            "Logic": ">=1",
+                            "Min": 0,
+                            "Max": 1
+                        }
+                    }
+                }
+            },
+            "Brief effect description": "allies Ki +1 after this unit collects ki spheres"
+        },
+        "8004252": {
+            "ID": "8004252",
+            "Calc option": "0",
+            "Timing": "When ki spheres collected",
+            "Ki": 1,
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2062",
+                "Causalities": {
+                    "2062": {
+                        "Button": {
+                            "Name": "Has 2 or more Rainbow Ki Spheres been obtained on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Rainbow Ki Spheres have been obtained on this turn?",
+                            "Logic": ">=2",
+                            "Min": 0,
+                            "Max": 2
+                        }
+                    }
+                }
+            },
+            "Brief effect description": "allies Ki +1 after this unit collects ki spheres"
+        },
+        "9004252": {
+            "ID": "9004252",
+            "Calc option": "0",
+            "Timing": "When ki spheres collected",
+            "Ki": 1,
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2063",
+                "Causalities": {
+                    "2063": {
+                        "Button": {
+                            "Name": "Has 3 or more Rainbow Ki Spheres been obtained on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Rainbow Ki Spheres have been obtained on this turn?",
+                            "Logic": ">=3",
+                            "Min": 0,
+                            "Max": 3
+                        }
+                    }
+                }
+            },
+            "Brief effect description": "allies Ki +1 after this unit collects ki spheres"
+        },
+        "10004252": {
+            "ID": "10004252",
+            "Calc option": "0",
+            "Timing": "When ki spheres collected",
+            "Ki": 1,
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2064",
+                "Causalities": {
+                    "2064": {
+                        "Button": {
+                            "Name": "Has 4 or more Rainbow Ki Spheres been obtained on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Rainbow Ki Spheres have been obtained on this turn?",
+                            "Logic": ">=4",
+                            "Min": 0,
+                            "Max": 4
+                        }
+                    }
+                }
+            },
+            "Brief effect description": "allies Ki +1 after this unit collects ki spheres"
+        },
+        "11004252": {
+            "ID": "11004252",
+            "Calc option": "0",
+            "Timing": "When ki spheres collected",
+            "Ki": 1,
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2065",
+                "Causalities": {
+                    "2065": {
+                        "Button": {
+                            "Name": "Has 5 or more Rainbow Ki Spheres been obtained on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Rainbow Ki Spheres have been obtained on this turn?",
+                            "Logic": ">=5",
+                            "Min": 0,
+                            "Max": 5
+                        }
+                    }
+                }
+            },
+            "Brief effect description": "allies Ki +1 after this unit collects ki spheres"
+        },
+        "12004252": {
+            "ID": "12004252",
+            "Calc option": "2",
+            "Timing": "When ki spheres collected",
+            "ATK": 10,
+            "Target": {
+                "Target": "Allies",
+                "Class": "Super"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2061",
+                "Causalities": {
+                    "2061": {
+                        "Button": {
+                            "Name": "Has 1 or more Rainbow Ki Spheres been obtained on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Rainbow Ki Spheres have been obtained on this turn?",
+                            "Logic": ">=1",
+                            "Min": 0,
+                            "Max": 1
+                        }
+                    }
+                }
+            },
+            "Brief effect description": "Super class allies ATK +10% after this unit collects ki spheres"
+        },
+        "13004252": {
+            "ID": "13004252",
+            "Calc option": "2",
+            "Timing": "When ki spheres collected",
+            "ATK": 10,
+            "Target": {
+                "Target": "Allies",
+                "Class": "Super"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2062",
+                "Causalities": {
+                    "2062": {
+                        "Button": {
+                            "Name": "Has 2 or more Rainbow Ki Spheres been obtained on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Rainbow Ki Spheres have been obtained on this turn?",
+                            "Logic": ">=2",
+                            "Min": 0,
+                            "Max": 2
+                        }
+                    }
+                }
+            },
+            "Brief effect description": "Super class allies ATK +10% after this unit collects ki spheres"
+        },
+        "14004252": {
+            "ID": "14004252",
+            "Calc option": "2",
+            "Timing": "When ki spheres collected",
+            "ATK": 10,
+            "Target": {
+                "Target": "Allies",
+                "Class": "Super"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2063",
+                "Causalities": {
+                    "2063": {
+                        "Button": {
+                            "Name": "Has 3 or more Rainbow Ki Spheres been obtained on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Rainbow Ki Spheres have been obtained on this turn?",
+                            "Logic": ">=3",
+                            "Min": 0,
+                            "Max": 3
+                        }
+                    }
+                }
+            },
+            "Brief effect description": "Super class allies ATK +10% after this unit collects ki spheres"
+        },
+        "15004252": {
+            "ID": "15004252",
+            "Calc option": "2",
+            "Timing": "When ki spheres collected",
+            "ATK": 10,
+            "Target": {
+                "Target": "Allies",
+                "Class": "Super"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2064",
+                "Causalities": {
+                    "2064": {
+                        "Button": {
+                            "Name": "Has 4 or more Rainbow Ki Spheres been obtained on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Rainbow Ki Spheres have been obtained on this turn?",
+                            "Logic": ">=4",
+                            "Min": 0,
+                            "Max": 4
+                        }
+                    }
+                }
+            },
+            "Brief effect description": "Super class allies ATK +10% after this unit collects ki spheres"
+        },
+        "16004252": {
+            "ID": "16004252",
+            "Calc option": "2",
+            "Timing": "When ki spheres collected",
+            "ATK": 10,
+            "Target": {
+                "Target": "Allies",
+                "Class": "Super"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2065",
+                "Causalities": {
+                    "2065": {
+                        "Button": {
+                            "Name": "Has 5 or more Rainbow Ki Spheres been obtained on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Rainbow Ki Spheres have been obtained on this turn?",
+                            "Logic": ">=5",
+                            "Min": 0,
+                            "Max": 5
+                        }
+                    }
+                }
+            },
+            "Brief effect description": "Super class allies ATK +10% after this unit collects ki spheres"
+        },
+        "17004252": {
+            "ID": "17004252",
+            "Calc option": "2",
+            "Timing": "When ki spheres collected",
+            "ATK": 20,
+            "DEF": 20,
+            "Target": {
+                "Target": "Allies",
+                "Class": "Extreme"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2061",
+                "Causalities": {
+                    "2061": {
+                        "Button": {
+                            "Name": "Has 1 or more Rainbow Ki Spheres been obtained on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Rainbow Ki Spheres have been obtained on this turn?",
+                            "Logic": ">=1",
+                            "Min": 0,
+                            "Max": 1
+                        }
+                    }
+                }
+            },
+            "Brief effect description": "Extreme class allies ATK and DEF +20% after this unit collects ki spheres"
+        },
+        "18004252": {
+            "ID": "18004252",
+            "Calc option": "2",
+            "Timing": "When ki spheres collected",
+            "ATK": 20,
+            "DEF": 20,
+            "Target": {
+                "Target": "Allies",
+                "Class": "Extreme"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2062",
+                "Causalities": {
+                    "2062": {
+                        "Button": {
+                            "Name": "Has 2 or more Rainbow Ki Spheres been obtained on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Rainbow Ki Spheres have been obtained on this turn?",
+                            "Logic": ">=2",
+                            "Min": 0,
+                            "Max": 2
+                        }
+                    }
+                }
+            },
+            "Brief effect description": "Extreme class allies ATK and DEF +20% after this unit collects ki spheres"
+        },
+        "19004252": {
+            "ID": "19004252",
+            "Calc option": "2",
+            "Timing": "When ki spheres collected",
+            "ATK": 20,
+            "DEF": 20,
+            "Target": {
+                "Target": "Allies",
+                "Class": "Extreme"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2063",
+                "Causalities": {
+                    "2063": {
+                        "Button": {
+                            "Name": "Has 3 or more Rainbow Ki Spheres been obtained on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Rainbow Ki Spheres have been obtained on this turn?",
+                            "Logic": ">=3",
+                            "Min": 0,
+                            "Max": 3
+                        }
+                    }
+                }
+            },
+            "Brief effect description": "Extreme class allies ATK and DEF +20% after this unit collects ki spheres"
+        },
+        "20004252": {
+            "ID": "20004252",
+            "Calc option": "2",
+            "Timing": "When ki spheres collected",
+            "ATK": 20,
+            "DEF": 20,
+            "Target": {
+                "Target": "Allies",
+                "Class": "Extreme"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2064",
+                "Causalities": {
+                    "2064": {
+                        "Button": {
+                            "Name": "Has 4 or more Rainbow Ki Spheres been obtained on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Rainbow Ki Spheres have been obtained on this turn?",
+                            "Logic": ">=4",
+                            "Min": 0,
+                            "Max": 4
+                        }
+                    }
+                }
+            },
+            "Brief effect description": "Extreme class allies ATK and DEF +20% after this unit collects ki spheres"
+        },
+        "21004252": {
+            "ID": "21004252",
+            "Calc option": "2",
+            "Timing": "When ki spheres collected",
+            "ATK": 20,
+            "DEF": 20,
+            "Target": {
+                "Target": "Allies",
+                "Class": "Extreme"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2065",
+                "Causalities": {
+                    "2065": {
+                        "Button": {
+                            "Name": "Has 5 or more Rainbow Ki Spheres been obtained on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Rainbow Ki Spheres have been obtained on this turn?",
+                            "Logic": ">=5",
+                            "Min": 0,
+                            "Max": 5
+                        }
+                    }
+                }
+            },
+            "Brief effect description": "Extreme class allies ATK and DEF +20% after this unit collects ki spheres"
+        },
+        "22004252": {
+            "ID": "22004252",
+            "Calc option": "2",
+            "Timing": "When ki spheres collected",
+            "Crit Chance": 50,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2062",
+                "Causalities": {
+                    "2062": {
+                        "Button": {
+                            "Name": "Has 2 or more Rainbow Ki Spheres been obtained on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Rainbow Ki Spheres have been obtained on this turn?",
+                            "Logic": ">=2",
+                            "Min": 0,
+                            "Max": 2
+                        }
+                    }
+                }
+            },
+            "Brief effect description": "Chance of performing a critical hit +50% after this unit collects ki spheres"
+        },
+        "23004252": {
+            "ID": "23004252",
+            "Calc option": "2",
+            "Timing": "When ki spheres collected",
+            "Crit Chance": 50,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2064",
+                "Causalities": {
+                    "2064": {
+                        "Button": {
+                            "Name": "Has 4 or more Rainbow Ki Spheres been obtained on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Rainbow Ki Spheres have been obtained on this turn?",
+                            "Logic": ">=4",
+                            "Min": 0,
+                            "Max": 4
+                        }
+                    }
+                }
+            },
+            "Brief effect description": "Chance of performing a critical hit +50% after this unit collects ki spheres"
+        },
+        "24004252": {
+            "ID": "24004252",
+            "Calc option": "2",
+            "Additional Attack": {
+                "Activated": true,
+                "Chance of super": "100",
+                "Chance of another additional": "0"
+            },
+            "Timing": "When ki spheres collected",
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2062",
+                "Causalities": {
+                    "2062": {
+                        "Button": {
+                            "Name": "Has 2 or more Rainbow Ki Spheres been obtained on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Rainbow Ki Spheres have been obtained on this turn?",
+                            "Logic": ">=2",
+                            "Min": 0,
+                            "Max": 2
+                        }
+                    }
+                }
+            },
+            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack after this unit collects ki spheres"
+        },
+        "25004252": {
+            "ID": "25004252",
+            "Calc option": "2",
+            "Additional Attack": {
+                "Activated": true,
+                "Chance of super": "100",
+                "Chance of another additional": "0"
+            },
+            "Timing": "When ki spheres collected",
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2064",
+                "Causalities": {
+                    "2064": {
+                        "Button": {
+                            "Name": "Has 4 or more Rainbow Ki Spheres been obtained on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Rainbow Ki Spheres have been obtained on this turn?",
+                            "Logic": ">=4",
+                            "Min": 0,
+                            "Max": 4
+                        }
+                    }
+                }
+            },
+            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack after this unit collects ki spheres"
+        }
+    },
+    "Max Attacks": 4,
+    "Max Super Attacks": 4,
+    "Stats at levels": {
+        "120": {
+            "HP": 9843,
+            "ATK": 9243,
+            "DEF": 4532
+        },
+        "121": {
+            "HP": 9990,
+            "ATK": 9380,
+            "DEF": 4593
+        },
+        "122": {
+            "HP": 10137,
+            "ATK": 9517,
+            "DEF": 4655
+        },
+        "123": {
+            "HP": 10284,
+            "ATK": 9654,
+            "DEF": 4717
+        },
+        "124": {
+            "HP": 10431,
+            "ATK": 9791,
+            "DEF": 4779
+        },
+        "125": {
+            "HP": 10578,
+            "ATK": 9929,
+            "DEF": 4841
+        },
+        "126": {
+            "HP": 10725,
+            "ATK": 10066,
+            "DEF": 4903
+        },
+        "127": {
+            "HP": 10873,
+            "ATK": 10203,
+            "DEF": 4965
+        },
+        "128": {
+            "HP": 11020,
+            "ATK": 10340,
+            "DEF": 5027
+        },
+        "129": {
+            "HP": 11167,
+            "ATK": 10478,
+            "DEF": 5088
+        },
+        "130": {
+            "HP": 11314,
+            "ATK": 10615,
+            "DEF": 5150
+        },
+        "131": {
+            "HP": 11461,
+            "ATK": 10752,
+            "DEF": 5212
+        },
+        "132": {
+            "HP": 11608,
+            "ATK": 10889,
+            "DEF": 5274
+        },
+        "133": {
+            "HP": 11755,
+            "ATK": 11027,
+            "DEF": 5336
+        },
+        "134": {
+            "HP": 11903,
+            "ATK": 11164,
+            "DEF": 5398
+        },
+        "135": {
+            "HP": 12050,
+            "ATK": 11301,
+            "DEF": 5460
+        },
+        "136": {
+            "HP": 12197,
+            "ATK": 11438,
+            "DEF": 5522
+        },
+        "137": {
+            "HP": 12344,
+            "ATK": 11576,
+            "DEF": 5584
+        },
+        "138": {
+            "HP": 12491,
+            "ATK": 11713,
+            "DEF": 5645
+        },
+        "139": {
+            "HP": 12638,
+            "ATK": 11850,
+            "DEF": 5707
+        },
+        "140": {
+            "HP": 12785,
+            "ATK": 11987,
+            "DEF": 5769
+        }
+    },
+    "Leader Skill": {
+        "Name": "Super Warrior of Destruction",
+        "5256": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "STR"
+                ]
+            },
+            "HP": 70,
+            "ATK": 70,
+            "DEF": 70
+        },
+        "5257": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2800,
+            "ATK": 2800,
+            "DEF": 2800,
+            "Additional": 0,
+            "Crit": 5,
+            "Evasion": 0,
+            "Type ATK": 6,
+            "Type DEF": 5,
+            "Super Attack boost": 6,
+            "Recovery boost": 6
+        },
+        "1": {
+            "HP": 420,
+            "ATK": 420,
+            "DEF": 420,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 1,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "2": {
+            "HP": 434,
+            "ATK": 980,
+            "DEF": 434,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 2,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "3": {
+            "HP": 966,
+            "ATK": 420,
+            "DEF": 966,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 0,
+            "Type DEF": 2,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "4": {
+            "HP": 2380,
+            "ATK": 2940,
+            "DEF": 1820,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 1,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        }
+    },
+    "Super Attack": {
+        "996": {
+            "superID": "996",
+            "Type": "Other",
+            "special_name_no": "0",
+            "superName": "Gigantic Meteor (Extreme)",
+            "superDescription": "Causes supreme damage to all \nenemies and raises ATK for 3 turns",
+            "superMinKi": "12",
+            "superPriority": "0.0",
+            "superStyle": "Normal",
+            "superMinLVL": "14",
+            "superCausality": "",
+            "superAimTarget": "1",
+            "superBuffs": {
+                "996": {
+                    "Type": "NormalEfficacySpecial",
+                    "Chance": "100",
+                    "Duration": "3",
+                    "Buff": {
+                        "Type": "Percentage",
+                        "+ or -": "+"
+                    },
+                    "Target": "Self",
+                    "ATK": "50"
+                }
+            },
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "0"
+            },
+            "Multiplier": 480
+        }
+    },
+    "Active Skill": null,
+    "Standby Skill": null,
+    "Finish Skill": null,
+    "Transforms from": [],
+    "Transformations": [],
+    "Max Appearances In Form": 50,
+    "Dokkan awakenings": [],
+    "Dokkan Reverse awakenings": [],
+    "Ki Multiplier": {
+        "0": 70.0,
+        "1": 75.83333333333333,
+        "2": 81.66666666666667,
+        "3": 87.5,
+        "4": 93.33333333333333,
+        "5": 99.16666666666667,
+        "6": 105.0,
+        "7": 110.83333333333334,
+        "8": 116.66666666666666,
+        "9": 122.5,
+        "10": 128.33333333333334,
+        "11": 134.16666666666666,
+        "12": 140.0
+    },
+    "Ki Circle Segments": {
+        "1": "weaker",
+        "2": "weaker",
+        "3": "weaker",
+        "4": "weaker",
+        "5": "weaker",
+        "6": "equal",
+        "7": "equal",
+        "8": "equal",
+        "9": "equal",
+        "10": "equal",
+        "11": "equal",
+        "12": "super"
+    },
+    "SuperMinKi": 12,
+    "AdditionalSuperID": "996",
+    "Can EZA": true,
+    "Can SEZA": true
+}
