@@ -34,7 +34,6 @@
     "Passive": {
         "953": {
             "ID": "953",
-            "Calc option": "3",
             "Timing": "Start of turn",
             "ATK": 20,
             "DEF": 20,
@@ -47,11 +46,11 @@
                 "+ or -": "-"
             },
             "Length": "1",
+            "Type": "Single activator",
             "Brief effect description": "All enemies ATK and DEF -20% "
         },
         "1000953": {
             "ID": "1000953",
-            "Calc option": "2",
             "Timing": "Start of turn",
             "ATK": 120,
             "Target": {
@@ -62,16 +61,16 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Single activator",
             "Brief effect description": "ATK +120% "
         },
         "2000953": {
             "ID": "2000953",
-            "Calc option": "0",
             "Nullification": {
                 "Activated": true,
                 "Absorbed": 0
             },
-            "Timing": "Being hit",
+            "Timing": "Right before being hit",
             "Target": {
                 "Target": "Self"
             },
@@ -91,16 +90,16 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "Nullifies enemy attack right before being hit"
         },
         "3000953": {
             "ID": "3000953",
-            "Calc option": "0",
             "Counter": {
                 "Activated": true,
                 "Multiplier": "300"
             },
-            "Timing": "Being hit",
+            "Timing": "Right before being hit",
             "Target": {
                 "Target": "Self"
             },
@@ -120,16 +119,16 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "Counter attacks with a 300% multiplier right before being hit"
         },
         "4000953": {
             "ID": "4000953",
-            "Calc option": "0",
             "Disable Other Line": {
                 "Activated": true,
                 "Line": "2000953"
             },
-            "Timing": "Hit recieved",
+            "Timing": "Right after being hit",
             "Target": {
                 "Target": "Self"
             },
@@ -138,16 +137,16 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Disable Other Line",
             "Brief effect description": "Disables a different passive line:2000953 after being hit"
         },
         "5000953": {
             "ID": "5000953",
-            "Calc option": "0",
             "Disable Other Line": {
                 "Activated": true,
                 "Line": "3000953"
             },
-            "Timing": "Hit recieved",
+            "Timing": "Right after being hit",
             "Target": {
                 "Target": "Self"
             },
@@ -156,6 +155,7 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Disable Other Line",
             "Brief effect description": "Disables a different passive line:3000953 after being hit"
         }
     },

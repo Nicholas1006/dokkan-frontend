@@ -30,8 +30,7 @@
     "Passive": {
         "1973": {
             "ID": "1973",
-            "Calc option": "2",
-            "Timing": "Hit recieved",
+            "Timing": "Right after being hit",
             "ATK": 40,
             "DEF": 40,
             "Target": {
@@ -58,11 +57,11 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "ATK and DEF +40% after being hit"
         },
         "1001973": {
             "ID": "1001973",
-            "Calc option": "2",
             "Forsee Super Attack": true,
             "Timing": "Start of turn",
             "Target": {
@@ -89,17 +88,17 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": " allies Forsee enemy super attack "
         },
         "2001973": {
             "ID": "2001973",
-            "Calc option": "0",
             "Counter": {
                 "Activated": true,
                 "Multiplier": "300",
                 "DR from normals": "80"
             },
-            "Timing": "Being hit",
+            "Timing": "Right before being hit",
             "Target": {
                 "Target": "Self"
             },
@@ -118,16 +117,16 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "Damage received from normal attacks -80% andCounter attacks with a 300% multiplier right before being hit"
         },
         "3001973": {
             "ID": "3001973",
-            "Calc option": "0",
             "Disable Other Line": {
                 "Activated": true,
                 "Line": "2001973"
             },
-            "Timing": "Hit recieved",
+            "Timing": "Right after being hit",
             "Target": {
                 "Target": "Self"
             },
@@ -136,6 +135,7 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Disable Other Line",
             "Brief effect description": "Disables a different passive line:2001973 after being hit"
         }
     },

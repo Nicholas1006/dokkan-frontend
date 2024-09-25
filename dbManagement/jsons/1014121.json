@@ -39,7 +39,6 @@
     "Passive": {
         "1207": {
             "ID": "1207",
-            "Calc option": "2",
             "Timing": "Start of turn",
             "ATK": 80,
             "Target": {
@@ -50,11 +49,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Single activator",
             "Brief effect description": "ATK +80% "
         },
         "1001207": {
             "ID": "1001207",
-            "Calc option": "2",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 10,
@@ -75,16 +74,16 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Building Stat",
             "Brief effect description": "ATK and DEF +60% (up to 60%) based on 'What percentage of HP is remaining' "
         },
         "2001207": {
             "ID": "2001207",
-            "Calc option": "0",
             "Nullification": {
                 "Activated": true,
                 "Absorbed": 0
             },
-            "Timing": "Being hit",
+            "Timing": "Right before being hit",
             "Target": {
                 "Target": "Self"
             },
@@ -104,16 +103,16 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "Nullifies enemy attack right before being hit"
         },
         "3001207": {
             "ID": "3001207",
-            "Calc option": "0",
             "Counter": {
                 "Activated": true,
                 "Multiplier": "300"
             },
-            "Timing": "Being hit",
+            "Timing": "Right before being hit",
             "Target": {
                 "Target": "Self"
             },
@@ -133,16 +132,16 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "Counter attacks with a 300% multiplier right before being hit"
         },
         "4001207": {
             "ID": "4001207",
-            "Calc option": "0",
             "Disable Other Line": {
                 "Activated": true,
                 "Line": "2001207"
             },
-            "Timing": "Hit recieved",
+            "Timing": "Right after being hit",
             "Target": {
                 "Target": "Self"
             },
@@ -151,16 +150,16 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Disable Other Line",
             "Brief effect description": "Disables a different passive line:2001207 after being hit"
         },
         "5001207": {
             "ID": "5001207",
-            "Calc option": "0",
             "Disable Other Line": {
                 "Activated": true,
                 "Line": "3001207"
             },
-            "Timing": "Hit recieved",
+            "Timing": "Right after being hit",
             "Target": {
                 "Target": "Self"
             },
@@ -169,6 +168,7 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Disable Other Line",
             "Brief effect description": "Disables a different passive line:3001207 after being hit"
         }
     },

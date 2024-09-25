@@ -36,7 +36,6 @@
     "Passive": {
         "2011": {
             "ID": "2011",
-            "Calc option": "2",
             "Timing": "Start of turn",
             "ATK": 40,
             "DEF": 40,
@@ -48,11 +47,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Single activator",
             "Brief effect description": "ATK and DEF +40% "
         },
         "1002011": {
             "ID": "1002011",
-            "Calc option": "0",
             "Additional Attack": {
                 "Activated": true,
                 "Chance of super": "30",
@@ -67,17 +66,17 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Single activator",
             "Brief effect description": "Performs an additional attack with a 70% chance of another additional attack each with a 30% chance of becoming a super attack after all ki collected"
         },
         "2002011": {
             "ID": "2002011",
-            "Calc option": "2",
             "Counter": {
                 "Activated": true,
                 "Multiplier": "300",
                 "DR from normals": "40"
             },
-            "Timing": "Being hit",
+            "Timing": "Right before being hit",
             "Target": {
                 "Target": "Self"
             },
@@ -96,16 +95,16 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "Damage received from normal attacks -40% andCounter attacks with a 300% multiplier right before being hit"
         },
         "3002011": {
             "ID": "3002011",
-            "Calc option": "0",
             "Disable Other Line": {
                 "Activated": true,
                 "Line": "2002011"
             },
-            "Timing": "Hit recieved",
+            "Timing": "Right after being hit",
             "Target": {
                 "Target": "Self"
             },
@@ -114,6 +113,7 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Disable Other Line",
             "Brief effect description": "Disables a different passive line:2002011 after being hit"
         }
     },

@@ -31,7 +31,6 @@
     "Passive": {
         "3012": {
             "ID": "3012",
-            "Calc option": "2",
             "Timing": "Start of turn",
             "DEF": 50,
             "Target": {
@@ -43,6 +42,7 @@
             },
             "Length": "4",
             "Once Only": true,
+            "Type": "Single activator",
             "Condition": {
                 "Logic": "3012",
                 "Causalities": {
@@ -63,7 +63,6 @@
         },
         "1003012": {
             "ID": "1003012",
-            "Calc option": "0",
             "Additional Attack": {
                 "Activated": true,
                 "Chance of super": "30",
@@ -79,6 +78,7 @@
             },
             "Length": "4",
             "Once Only": true,
+            "Type": "Single activator",
             "Condition": {
                 "Logic": "1003012",
                 "Causalities": {
@@ -99,7 +99,6 @@
         },
         "2003012": {
             "ID": "2003012",
-            "Calc option": "2",
             "Timing": "Start of turn",
             "ATK": 150,
             "DEF": 150,
@@ -111,11 +110,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Single activator",
             "Brief effect description": "ATK and DEF +150% "
         },
         "3003012": {
             "ID": "3003012",
-            "Calc option": "2",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 100,
             "Target": {
@@ -142,11 +141,11 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "ATK +100% when attacking"
         },
         "4003012": {
             "ID": "4003012",
-            "Calc option": "2",
             "Timing": "Right after attack",
             "Building Stat": {
                 "Min": 0,
@@ -165,11 +164,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "Type": "Building Stat",
             "Brief effect description": "ATK +20% (up to 100%) based on 'How many attacks has this character performed in battle' after attacking"
         },
         "5003012": {
             "ID": "5003012",
-            "Calc option": "2",
             "Timing": "Right after attack",
             "Building Stat": {
                 "Min": 0,
@@ -188,11 +187,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "Type": "Building Stat",
             "Brief effect description": "DEF +20% (up to 100%) based on 'How many attacks has this character performed in battle' after attacking"
         },
         "6003012": {
             "ID": "6003012",
-            "Calc option": "2",
             "Timing": "Right after attack",
             "Building Stat": {
                 "Min": 0,
@@ -211,11 +210,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "Type": "Building Stat",
             "Brief effect description": "Chance of performing a critical hit +10% (up to 50%) based on 'How many attacks has this character performed in battle' after attacking"
         },
         "7003012": {
             "ID": "7003012",
-            "Calc option": "0",
             "Additional Attack": {
                 "Activated": true,
                 "Chance of super": "70",
@@ -243,11 +242,11 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "Performs an additional attack with a 70% chance of becoming a super attack after attacking"
         },
         "8003012": {
             "ID": "8003012",
-            "Calc option": "0",
             "Timing": "Start of turn",
             "Ki": 2,
             "Target": {
@@ -258,11 +257,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Single activator",
             "Brief effect description": " allies Ki +2 "
         },
         "9003012": {
             "ID": "9003012",
-            "Calc option": "2",
             "Timing": "Start of turn",
             "ATK": 30,
             "Target": {
@@ -273,16 +272,16 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Single activator",
             "Brief effect description": " allies ATK +30% "
         },
         "10003012": {
             "ID": "10003012",
-            "Calc option": "0",
             "Nullification": {
                 "Activated": true,
                 "Absorbed": 0
             },
-            "Timing": "Being hit",
+            "Timing": "Right before being hit",
             "Target": {
                 "Target": "Self"
             },
@@ -302,16 +301,16 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "Nullifies enemy attack right before being hit"
         },
         "11003012": {
             "ID": "11003012",
-            "Calc option": "0",
             "Disable Other Line": {
                 "Activated": true,
                 "Line": "10003012"
             },
-            "Timing": "Hit recieved",
+            "Timing": "Right after being hit",
             "Target": {
                 "Target": "Self"
             },
@@ -320,6 +319,7 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Disable Other Line",
             "Brief effect description": "Disables a different passive line:10003012 after being hit"
         }
     },

@@ -27,7 +27,6 @@
     "Passive": {
         "1046": {
             "ID": "1046",
-            "Calc option": "0",
             "Timing": "Start of turn",
             "Ki": 3,
             "Target": {
@@ -54,11 +53,11 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "Ki +3 "
         },
         "1001046": {
             "ID": "1001046",
-            "Calc option": "2",
             "Timing": "Start of turn",
             "ATK": 50,
             "DEF": 50,
@@ -86,16 +85,16 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "ATK and DEF +50% "
         },
         "2001046": {
             "ID": "2001046",
-            "Calc option": "0",
             "Counter": {
                 "Activated": true,
                 "Multiplier": "200"
             },
-            "Timing": "Being hit",
+            "Timing": "Right before being hit",
             "Target": {
                 "Target": "Self"
             },
@@ -114,16 +113,16 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "Counter attacks with a 200% multiplier right before being hit"
         },
         "3001046": {
             "ID": "3001046",
-            "Calc option": "0",
             "Disable Other Line": {
                 "Activated": true,
                 "Line": "2001046"
             },
-            "Timing": "Hit recieved",
+            "Timing": "Right after being hit",
             "Target": {
                 "Target": "Self"
             },
@@ -132,6 +131,7 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Disable Other Line",
             "Brief effect description": "Disables a different passive line:2001046 after being hit"
         }
     },

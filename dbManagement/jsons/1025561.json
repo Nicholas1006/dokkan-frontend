@@ -38,7 +38,6 @@
     "Passive": {
         "3071": {
             "ID": "3071",
-            "Calc option": "2",
             "Timing": "Start of turn",
             "ATK": 100,
             "DEF": 100,
@@ -72,11 +71,11 @@
                 }
             },
             "Once Only": true,
+            "Type": "Single activator",
             "Brief effect description": "ATK and DEF +100% "
         },
         "1003071": {
             "ID": "1003071",
-            "Calc option": "0",
             "Timing": "Start of turn",
             "Guard": true,
             "Target": {
@@ -109,11 +108,11 @@
                 }
             },
             "Once Only": true,
+            "Type": "Single activator",
             "Brief effect description": "Guards all attacks "
         },
         "2003071": {
             "ID": "2003071",
-            "Calc option": "2",
             "Timing": "Start of turn",
             "ATK": 150,
             "DEF": 150,
@@ -125,11 +124,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Single activator",
             "Brief effect description": "ATK and DEF +150% "
         },
         "3003071": {
             "ID": "3003071",
-            "Calc option": "0",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -156,11 +155,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Building Stat",
             "Brief effect description": "Ki +1 per Ki Sphere obtained "
         },
         "4003071": {
             "ID": "4003071",
-            "Calc option": "2",
             "Timing": "Right after attack",
             "Building Stat": {
                 "Min": 0,
@@ -179,11 +178,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "Type": "Building Stat",
             "Brief effect description": "ATK +30% (up to 150%) based on 'How many super attacks has this character performed' after attacking"
         },
         "5003071": {
             "ID": "5003071",
-            "Calc option": "2",
             "Timing": "Right after attack",
             "Building Stat": {
                 "Min": 0,
@@ -202,11 +201,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "Type": "Building Stat",
             "Brief effect description": "DEF +30% (up to 150%) based on 'How many super attacks has this character performed' after attacking"
         },
         "6003071": {
             "ID": "6003071",
-            "Calc option": "0",
             "Additional Attack": {
                 "Activated": true,
                 "Chance of super": "70",
@@ -237,11 +236,11 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "Performs an additional attack with a 70% chance of becoming a super attack when attacking"
         },
         "7003071": {
             "ID": "7003071",
-            "Calc option": "0",
             "Effective Against All": true,
             "Timing": "Right before attack(MOT stat)",
             "Target": {
@@ -268,16 +267,16 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "Attacks effective against all Types when attacking"
         },
         "8003071": {
             "ID": "8003071",
-            "Calc option": "0",
             "Nullification": {
                 "Activated": true,
                 "Absorbed": 0
             },
-            "Timing": "Being hit",
+            "Timing": "Right before being hit",
             "Target": {
                 "Target": "Self"
             },
@@ -297,16 +296,16 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "Nullifies enemy attack right before being hit"
         },
         "9003071": {
             "ID": "9003071",
-            "Calc option": "0",
             "Disable Other Line": {
                 "Activated": true,
                 "Line": "8003071"
             },
-            "Timing": "Hit recieved",
+            "Timing": "Right after being hit",
             "Target": {
                 "Target": "Self"
             },
@@ -315,6 +314,7 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Disable Other Line",
             "Brief effect description": "Disables a different passive line:8003071 after being hit"
         }
     },

@@ -25,7 +25,6 @@
     "Passive": {
         "4072": {
             "ID": "4072",
-            "Calc option": "0",
             "Timing": "Start of turn",
             "Ki": 2,
             "Target": {
@@ -36,11 +35,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Single activator",
             "Brief effect description": "Ki +2 "
         },
         "1004072": {
             "ID": "1004072",
-            "Calc option": "2",
             "Timing": "Start of turn",
             "ATK": 240,
             "DEF": 240,
@@ -52,11 +51,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Single activator",
             "Brief effect description": "ATK and DEF +240% "
         },
         "2004072": {
             "ID": "2004072",
-            "Calc option": "2",
             "Timing": "Start of turn",
             "DR": 30,
             "Target": {
@@ -67,11 +66,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Single activator",
             "Brief effect description": "Damage recieved +30% "
         },
         "3004072": {
             "ID": "3004072",
-            "Calc option": "2",
             "Timing": "Start of turn",
             "DR": 20,
             "Target": {
@@ -83,6 +82,7 @@
             },
             "Length": "99",
             "Once Only": true,
+            "Type": "Single activator",
             "Condition": {
                 "Logic": "3004072",
                 "Causalities": {
@@ -103,8 +103,7 @@
         },
         "4004072": {
             "ID": "4004072",
-            "Calc option": "2",
-            "Timing": "Hit recieved",
+            "Timing": "Right after being hit",
             "ATK": 240,
             "Target": {
                 "Target": "Self"
@@ -130,12 +129,12 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "ATK +240% after being hit"
         },
         "5004072": {
             "ID": "5004072",
-            "Calc option": "3",
-            "Timing": "Hit recieved",
+            "Timing": "Right after being hit",
             "ATK": 24,
             "DEF": 24,
             "Target": {
@@ -162,11 +161,11 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "All enemies ATK and DEF -24% after being hit"
         },
         "6004072": {
             "ID": "6004072",
-            "Calc option": "0",
             "Timing": "Start of turn",
             "Status": [
                 "Seal"
@@ -201,11 +200,11 @@
                 }
             },
             "Once Only": true,
+            "Type": "Single activator",
             "Brief effect description": "Seal "
         },
         "7004072": {
             "ID": "7004072",
-            "Calc option": "0",
             "Disable Other Line": {
                 "Activated": true,
                 "Line": "3004072"
@@ -235,11 +234,11 @@
                     }
                 }
             },
+            "Type": "Disable Other Line",
             "Brief effect description": "Disables a different passive line:3004072 "
         },
         "8004072": {
             "ID": "8004072",
-            "Calc option": "0",
             "Timing": "Start of turn",
             "Status": [
                 "Stun"
@@ -274,16 +273,16 @@
                 }
             },
             "Once Only": true,
+            "Type": "Single activator",
             "Brief effect description": "Stun "
         },
         "9004072": {
             "ID": "9004072",
-            "Calc option": "0",
             "Nullification": {
                 "Activated": true,
                 "Absorbed": 0
             },
-            "Timing": "Being hit",
+            "Timing": "Right before being hit",
             "Target": {
                 "Target": "Self"
             },
@@ -313,16 +312,16 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "Nullifies enemy attack right before being hit"
         },
         "10004072": {
             "ID": "10004072",
-            "Calc option": "0",
             "Disable Other Line": {
                 "Activated": true,
                 "Line": "9004072"
             },
-            "Timing": "Hit recieved",
+            "Timing": "Right after being hit",
             "Target": {
                 "Target": "Self"
             },
@@ -331,6 +330,7 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Disable Other Line",
             "Brief effect description": "Disables a different passive line:9004072 after being hit"
         }
     },

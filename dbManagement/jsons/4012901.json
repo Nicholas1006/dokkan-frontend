@@ -34,7 +34,6 @@
     "Passive": {
         "1092": {
             "ID": "1092",
-            "Calc option": "2",
             "Timing": "Start of turn",
             "Heals": 100,
             "Target": {
@@ -46,6 +45,7 @@
             },
             "Length": "1",
             "Once Only": true,
+            "Type": "Single activator",
             "Condition": {
                 "Logic": "1092",
                 "Causalities": {
@@ -66,12 +66,11 @@
         },
         "1001092": {
             "ID": "1001092",
-            "Calc option": "0",
             "Counter": {
                 "Activated": true,
                 "Multiplier": "300"
             },
-            "Timing": "Being hit",
+            "Timing": "Right before being hit",
             "Target": {
                 "Target": "Self"
             },
@@ -90,16 +89,16 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "Counter attacks with a 300% multiplier right before being hit"
         },
         "2001092": {
             "ID": "2001092",
-            "Calc option": "0",
             "Disable Other Line": {
                 "Activated": true,
                 "Line": "1001092"
             },
-            "Timing": "Hit recieved",
+            "Timing": "Right after being hit",
             "Target": {
                 "Target": "Self"
             },
@@ -108,11 +107,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Disable Other Line",
             "Brief effect description": "Disables a different passive line:1001092 after being hit"
         },
         "3001092": {
             "ID": "3001092",
-            "Calc option": "2",
             "Timing": "Start of turn",
             "ATK": 150,
             "DEF": 150,
@@ -124,11 +123,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Single activator",
             "Brief effect description": "ATK and DEF +150% "
         },
         "4001092": {
             "ID": "4001092",
-            "Calc option": "0",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -150,6 +149,7 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Building Stat",
             "Brief effect description": "Ki +3 per Rainbow Ki Spheres obtained "
         }
     },

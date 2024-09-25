@@ -32,7 +32,6 @@
     "Passive": {
         "3334": {
             "ID": "3334",
-            "Calc option": "0",
             "Timing": "Start of turn",
             "Ki": 4,
             "Target": {
@@ -44,6 +43,7 @@
             },
             "Length": "6",
             "Once Only": true,
+            "Type": "Single activator",
             "Condition": {
                 "Logic": "3334",
                 "Causalities": {
@@ -64,7 +64,6 @@
         },
         "1003334": {
             "ID": "1003334",
-            "Calc option": "2",
             "Timing": "Start of turn",
             "ATK": 58,
             "DEF": 58,
@@ -77,6 +76,7 @@
             },
             "Length": "6",
             "Once Only": true,
+            "Type": "Single activator",
             "Condition": {
                 "Logic": "1003334",
                 "Causalities": {
@@ -97,7 +97,6 @@
         },
         "2003334": {
             "ID": "2003334",
-            "Calc option": "0",
             "Additional Attack": {
                 "Activated": true,
                 "Chance of super": "70",
@@ -113,6 +112,7 @@
             },
             "Length": "6",
             "Once Only": true,
+            "Type": "Single activator",
             "Condition": {
                 "Logic": "2003334",
                 "Causalities": {
@@ -133,7 +133,6 @@
         },
         "3003334": {
             "ID": "3003334",
-            "Calc option": "0",
             "Timing": "Start of turn",
             "Ki": 4,
             "Target": {
@@ -144,11 +143,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Single activator",
             "Brief effect description": "Ki +4 "
         },
         "4003334": {
             "ID": "4003334",
-            "Calc option": "2",
             "Timing": "Start of turn",
             "ATK": 158,
             "DEF": 158,
@@ -160,12 +159,12 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Single activator",
             "Brief effect description": "ATK and DEF +158% "
         },
         "5003334": {
             "ID": "5003334",
-            "Calc option": "2",
-            "Timing": "Being hit",
+            "Timing": "Right before being hit",
             "DR": 30,
             "Target": {
                 "Target": "Self"
@@ -190,12 +189,12 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "Damage recieved +30% right before being hit"
         },
         "6003334": {
             "ID": "6003334",
-            "Calc option": "0",
-            "Timing": "Hit recieved",
+            "Timing": "Right after being hit",
             "Building Stat": {
                 "Min": 0,
                 "Max": 5,
@@ -213,12 +212,12 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "Type": "Building Stat",
             "Brief effect description": "Ki +1 (up to 5) based on 'How many attacks has this character recieved' after being hit"
         },
         "7003334": {
             "ID": "7003334",
-            "Calc option": "2",
-            "Timing": "Hit recieved",
+            "Timing": "Right after being hit",
             "Building Stat": {
                 "Min": 0,
                 "Max": 58,
@@ -236,12 +235,12 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "Type": "Building Stat",
             "Brief effect description": "DEF +8% (up to 58%) based on 'How many attacks has this character recieved' after being hit"
         },
         "8003334": {
             "ID": "8003334",
-            "Calc option": "2",
-            "Timing": "Hit recieved",
+            "Timing": "Right after being hit",
             "ATK": 58,
             "Target": {
                 "Target": "Self"
@@ -262,17 +261,17 @@
                 }
             },
             "Once Only": true,
+            "Type": "Single activator",
             "Brief effect description": "ATK +58% after being hit"
         },
         "9003334": {
             "ID": "9003334",
-            "Calc option": "0",
             "Additional Attack": {
                 "Activated": true,
                 "Chance of super": "100",
                 "Chance of another additional": "0"
             },
-            "Timing": "Hit recieved",
+            "Timing": "Right after being hit",
             "Target": {
                 "Target": "Self"
             },
@@ -292,16 +291,16 @@
                 }
             },
             "Once Only": true,
+            "Type": "Single activator",
             "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack after being hit"
         },
         "10003334": {
             "ID": "10003334",
-            "Calc option": "0",
             "Disable Other Line": {
                 "Activated": true,
                 "Line": "5003334"
             },
-            "Timing": "Hit recieved",
+            "Timing": "Right after being hit",
             "Target": {
                 "Target": "Self"
             },
@@ -310,6 +309,7 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Disable Other Line",
             "Brief effect description": "Disables a different passive line:5003334 after being hit"
         }
     },

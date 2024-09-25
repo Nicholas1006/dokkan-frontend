@@ -33,7 +33,6 @@
     "Passive": {
         "2911": {
             "ID": "2911",
-            "Calc option": "0",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -82,11 +81,11 @@
                 }
             },
             "Once Only": true,
+            "Type": "Building Stat",
             "Brief effect description": "Ki +1 per Ki Sphere obtained "
         },
         "1002911": {
             "ID": "1002911",
-            "Calc option": "0",
             "Timing": "Start of turn",
             "Ki Change": {
                 "From": [
@@ -108,11 +107,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Single activator",
             "Brief effect description": "Randomly changes Ki Spheres of a certain Type(INT excluded) to INT Ki Spheres "
         },
         "2002911": {
             "ID": "2002911",
-            "Calc option": "2",
             "Timing": "Start of turn",
             "ATK": 100,
             "DEF": 100,
@@ -124,11 +123,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Single activator",
             "Brief effect description": "ATK and DEF +100% "
         },
         "3002911": {
             "ID": "3002911",
-            "Calc option": "2",
             "Timing": "Start of turn",
             "DR": 20,
             "Target": {
@@ -139,11 +138,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Single activator",
             "Brief effect description": "Damage recieved +20% "
         },
         "4002911": {
             "ID": "4002911",
-            "Calc option": "2",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 50,
             "DEF": 50,
@@ -171,11 +170,11 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "ATK and DEF +50% when attacking"
         },
         "5002911": {
             "ID": "5002911",
-            "Calc option": "0",
             "Additional Attack": {
                 "Activated": true,
                 "Chance of super": "100",
@@ -206,11 +205,11 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking"
         },
         "6002911": {
             "ID": "6002911",
-            "Calc option": "0",
             "Effective Against All": true,
             "Timing": "Right before attack(MOT stat)",
             "Target": {
@@ -237,12 +236,12 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "Attacks effective against all Types when attacking"
         },
         "7002911": {
             "ID": "7002911",
-            "Calc option": "2",
-            "Timing": "Hit recieved",
+            "Timing": "Right after being hit",
             "Building Stat": {
                 "Min": 0,
                 "Max": 10,
@@ -260,12 +259,12 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Building Stat",
             "Brief effect description": "Damage recieved +2% (up to 10%) based on 'How many attacks has this character recieved' after being hit"
         },
         "8002911": {
             "ID": "8002911",
-            "Calc option": "0",
-            "Timing": "Hit recieved",
+            "Timing": "Right after being hit",
             "Building Stat": {
                 "Min": 0,
                 "Max": 5,
@@ -283,11 +282,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "Type": "Building Stat",
             "Brief effect description": "Ki +1 (up to 5) based on 'How many times has this character recieved 5 attacks' after being hit"
         },
         "9002911": {
             "ID": "9002911",
-            "Calc option": "2",
             "Timing": "End of turn",
             "Heals": 10,
             "Target": {
@@ -314,16 +313,16 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "Heals +10% at the end of turn"
         },
         "10002911": {
             "ID": "10002911",
-            "Calc option": "0",
             "Nullification": {
                 "Activated": true,
                 "Absorbed": 0
             },
-            "Timing": "Being hit",
+            "Timing": "Right before being hit",
             "Target": {
                 "Target": "Self"
             },
@@ -348,16 +347,16 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "Nullifies enemy attack right before being hit"
         },
         "11002911": {
             "ID": "11002911",
-            "Calc option": "0",
             "Counter": {
                 "Activated": true,
                 "Multiplier": "300"
             },
-            "Timing": "Being hit",
+            "Timing": "Right before being hit",
             "Target": {
                 "Target": "Self"
             },
@@ -382,16 +381,16 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "Counter attacks with a 300% multiplier right before being hit"
         },
         "12002911": {
             "ID": "12002911",
-            "Calc option": "0",
             "Disable Other Line": {
                 "Activated": true,
                 "Line": "10002911"
             },
-            "Timing": "Hit recieved",
+            "Timing": "Right after being hit",
             "Target": {
                 "Target": "Self"
             },
@@ -400,16 +399,16 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Disable Other Line",
             "Brief effect description": "Disables a different passive line:10002911 after being hit"
         },
         "13002911": {
             "ID": "13002911",
-            "Calc option": "0",
             "Disable Other Line": {
                 "Activated": true,
                 "Line": "11002911"
             },
-            "Timing": "Hit recieved",
+            "Timing": "Right after being hit",
             "Target": {
                 "Target": "Self"
             },
@@ -418,6 +417,7 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Disable Other Line",
             "Brief effect description": "Disables a different passive line:11002911 after being hit"
         }
     },

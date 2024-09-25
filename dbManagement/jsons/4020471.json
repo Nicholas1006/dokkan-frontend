@@ -34,7 +34,6 @@
     "Passive": {
         "2179": {
             "ID": "2179",
-            "Calc option": "2",
             "Timing": "Start of turn",
             "Heals": 50,
             "Target": {
@@ -46,6 +45,7 @@
             },
             "Length": "1",
             "Once Only": true,
+            "Type": "Single activator",
             "Condition": {
                 "Logic": "2179",
                 "Causalities": {
@@ -66,7 +66,6 @@
         },
         "1002179": {
             "ID": "1002179",
-            "Calc option": "2",
             "Timing": "Start of turn",
             "ATK": 150,
             "DEF": 150,
@@ -78,11 +77,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Single activator",
             "Brief effect description": "ATK and DEF +150% "
         },
         "2002179": {
             "ID": "2002179",
-            "Calc option": "0",
             "Timing": "Start of turn",
             "Crit Chance": 30,
             "Target": {
@@ -93,16 +92,16 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Single activator",
             "Brief effect description": "Chance of performing a critical hit +30% "
         },
         "3002179": {
             "ID": "3002179",
-            "Calc option": "0",
             "Counter": {
                 "Activated": true,
                 "Multiplier": "300"
             },
-            "Timing": "Being hit",
+            "Timing": "Right before being hit",
             "Target": {
                 "Target": "Self"
             },
@@ -121,16 +120,16 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "Counter attacks with a 300% multiplier right before being hit"
         },
         "4002179": {
             "ID": "4002179",
-            "Calc option": "0",
             "Disable Other Line": {
                 "Activated": true,
                 "Line": "3002179"
             },
-            "Timing": "Hit recieved",
+            "Timing": "Right after being hit",
             "Target": {
                 "Target": "Self"
             },
@@ -139,11 +138,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Disable Other Line",
             "Brief effect description": "Disables a different passive line:3002179 after being hit"
         },
         "5002179": {
             "ID": "5002179",
-            "Calc option": "0",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -170,11 +169,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Building Stat",
             "Brief effect description": "Ki +1 per Ki Sphere obtained "
         },
         "6002179": {
             "ID": "6002179",
-            "Calc option": "0",
             "Timing": "Start of turn",
             "Ki": 5,
             "Target": {
@@ -186,6 +185,7 @@
             },
             "Length": "10",
             "Once Only": true,
+            "Type": "Single activator",
             "Condition": {
                 "Logic": "6002179",
                 "Causalities": {
@@ -206,7 +206,6 @@
         },
         "7002179": {
             "ID": "7002179",
-            "Calc option": "2",
             "Forsee Super Attack": true,
             "Timing": "Start of turn",
             "Target": {
@@ -218,6 +217,7 @@
             },
             "Length": "10",
             "Once Only": true,
+            "Type": "Single activator",
             "Condition": {
                 "Logic": "7002179",
                 "Causalities": {

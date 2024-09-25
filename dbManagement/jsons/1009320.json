@@ -34,7 +34,6 @@
     "Passive": {
         "725": {
             "ID": "725",
-            "Calc option": "0",
             "Additional Attack": {
                 "Activated": true,
                 "Chance of super": "7",
@@ -49,17 +48,17 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Single activator",
             "Brief effect description": "Performs an additional attack with a 50% chance of another additional attack each with a 7% chance of becoming a super attack after all ki collected"
         },
         "1000725": {
             "ID": "1000725",
-            "Calc option": "2",
             "Counter": {
                 "Activated": true,
                 "Multiplier": "200",
                 "DR from normals": "20"
             },
-            "Timing": "Being hit",
+            "Timing": "Right before being hit",
             "Target": {
                 "Target": "Self"
             },
@@ -78,16 +77,16 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "Damage received from normal attacks -20% andCounter attacks with a 200% multiplier right before being hit"
         },
         "2000725": {
             "ID": "2000725",
-            "Calc option": "0",
             "Disable Other Line": {
                 "Activated": true,
                 "Line": "1000725"
             },
-            "Timing": "Hit recieved",
+            "Timing": "Right after being hit",
             "Target": {
                 "Target": "Self"
             },
@@ -96,6 +95,7 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Disable Other Line",
             "Brief effect description": "Disables a different passive line:1000725 after being hit"
         }
     },

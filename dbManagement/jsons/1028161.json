@@ -31,7 +31,6 @@
     "Passive": {
         "3989": {
             "ID": "3989",
-            "Calc option": "0",
             "Timing": "Start of turn",
             "Ki": 3,
             "Target": {
@@ -43,6 +42,7 @@
             },
             "Length": "5",
             "Once Only": true,
+            "Type": "Single activator",
             "Condition": {
                 "Logic": "3989",
                 "Causalities": {
@@ -63,7 +63,6 @@
         },
         "1003989": {
             "ID": "1003989",
-            "Calc option": "2",
             "Timing": "Start of turn",
             "ATK": 100,
             "DEF": 100,
@@ -76,6 +75,7 @@
             },
             "Length": "5",
             "Once Only": true,
+            "Type": "Single activator",
             "Condition": {
                 "Logic": "1003989",
                 "Causalities": {
@@ -96,7 +96,6 @@
         },
         "2003989": {
             "ID": "2003989",
-            "Calc option": "2",
             "Timing": "Start of turn",
             "Crit Chance": 50,
             "Target": {
@@ -108,6 +107,7 @@
             },
             "Length": "5",
             "Once Only": true,
+            "Type": "Single activator",
             "Condition": {
                 "Logic": "2003989",
                 "Causalities": {
@@ -128,7 +128,6 @@
         },
         "3003989": {
             "ID": "3003989",
-            "Calc option": "2",
             "Timing": "Start of turn",
             "ATK": 200,
             "DEF": 200,
@@ -140,11 +139,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Single activator",
             "Brief effect description": "ATK and DEF +200% "
         },
         "4003989": {
             "ID": "4003989",
-            "Calc option": "2",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 100,
             "Target": {
@@ -155,11 +154,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Single activator",
             "Brief effect description": "ATK +100% when attacking"
         },
         "5003989": {
             "ID": "5003989",
-            "Calc option": "2",
             "Dodge Chance": 70,
             "Timing": "Start of turn",
             "Target": {
@@ -170,17 +169,17 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Single activator",
             "Brief effect description": "Chance of evading enemy attacks +70% "
         },
         "6003989": {
             "ID": "6003989",
-            "Calc option": "0",
             "Additional Attack": {
                 "Activated": true,
                 "Chance of super": "70",
                 "Chance of another additional": "0"
             },
-            "Timing": "Hit recieved",
+            "Timing": "Right after being hit",
             "Target": {
                 "Target": "Self"
             },
@@ -199,12 +198,12 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "Performs an additional attack with a 70% chance of becoming a super attack after being hit"
         },
         "7003989": {
             "ID": "7003989",
-            "Calc option": "2",
-            "Timing": "Hit recieved",
+            "Timing": "Right after being hit",
             "Building Stat": {
                 "Min": 0,
                 "Max": 50,
@@ -222,6 +221,7 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "Type": "Building Stat",
             "Brief effect description": "DEF +10% (up to 50%) based on 'How many attacks have been evaded' after being hit"
         }
     },

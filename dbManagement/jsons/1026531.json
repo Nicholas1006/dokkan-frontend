@@ -36,7 +36,6 @@
     "Passive": {
         "3451": {
             "ID": "3451",
-            "Calc option": "0",
             "Timing": "Start of turn",
             "Guard": true,
             "Target": {
@@ -48,6 +47,7 @@
             },
             "Length": "1",
             "Once Only": true,
+            "Type": "Single activator",
             "Condition": {
                 "Logic": "3451",
                 "Causalities": {
@@ -68,7 +68,6 @@
         },
         "1003451": {
             "ID": "1003451",
-            "Calc option": "0",
             "Timing": "Start of turn",
             "Ki": 2,
             "Target": {
@@ -80,6 +79,7 @@
             },
             "Length": "5",
             "Once Only": true,
+            "Type": "Single activator",
             "Condition": {
                 "Logic": "1003451",
                 "Causalities": {
@@ -100,7 +100,6 @@
         },
         "2003451": {
             "ID": "2003451",
-            "Calc option": "2",
             "Timing": "Start of turn",
             "ATK": 101,
             "DEF": 101,
@@ -113,6 +112,7 @@
             },
             "Length": "5",
             "Once Only": true,
+            "Type": "Single activator",
             "Condition": {
                 "Logic": "2003451",
                 "Causalities": {
@@ -133,12 +133,11 @@
         },
         "3003451": {
             "ID": "3003451",
-            "Calc option": "0",
             "Nullification": {
                 "Activated": true,
                 "Absorbed": 0
             },
-            "Timing": "Being hit",
+            "Timing": "Right before being hit",
             "Target": {
                 "Target": "Self"
             },
@@ -158,16 +157,16 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "Nullifies enemy attack right before being hit"
         },
         "4003451": {
             "ID": "4003451",
-            "Calc option": "0",
             "Disable Other Line": {
                 "Activated": true,
                 "Line": "3003451"
             },
-            "Timing": "Hit recieved",
+            "Timing": "Right after being hit",
             "Target": {
                 "Target": "Self"
             },
@@ -176,11 +175,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Disable Other Line",
             "Brief effect description": "Disables a different passive line:3003451 after being hit"
         },
         "5003451": {
             "ID": "5003451",
-            "Calc option": "0",
             "Timing": "Start of turn",
             "Ki": 3,
             "Target": {
@@ -191,11 +190,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Single activator",
             "Brief effect description": "Ki +3 "
         },
         "6003451": {
             "ID": "6003451",
-            "Calc option": "2",
             "Timing": "Start of turn",
             "ATK": 150,
             "DEF": 150,
@@ -207,12 +206,12 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Single activator",
             "Brief effect description": "ATK and DEF +150% "
         },
         "7003451": {
             "ID": "7003451",
-            "Calc option": "2",
-            "Timing": "Hit recieved",
+            "Timing": "Right after being hit",
             "Building Stat": {
                 "Min": 0,
                 "Max": 100,
@@ -230,12 +229,12 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "Type": "Building Stat",
             "Brief effect description": "ATK +10% (up to 100%) based on 'How many attacks has this character recieved' after being hit"
         },
         "8003451": {
             "ID": "8003451",
-            "Calc option": "2",
-            "Timing": "Hit recieved",
+            "Timing": "Right after being hit",
             "Building Stat": {
                 "Min": 0,
                 "Max": 100,
@@ -253,11 +252,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "Type": "Building Stat",
             "Brief effect description": "DEF +10% (up to 100%) based on 'How many attacks has this character recieved' after being hit"
         },
         "9003451": {
             "ID": "9003451",
-            "Calc option": "0",
             "Effective Against All": true,
             "Timing": "Start of turn",
             "Target": {
@@ -284,11 +283,11 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "Attacks effective against all Types "
         },
         "10003451": {
             "ID": "10003451",
-            "Calc option": "0",
             "Timing": "Start of turn",
             "Guard": true,
             "Target": {
@@ -300,17 +299,17 @@
             },
             "Chance": "50",
             "Length": "1",
+            "Type": "Single activator",
             "Brief effect description": "Guards all attacks "
         },
         "11003451": {
             "ID": "11003451",
-            "Calc option": "0",
             "Additional Attack": {
                 "Activated": true,
                 "Chance of super": "70",
                 "Chance of another additional": "0"
             },
-            "Timing": "Being hit",
+            "Timing": "Right before being hit",
             "Target": {
                 "Target": "Self"
             },
@@ -329,12 +328,12 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "Performs an additional attack with a 70% chance of becoming a super attack right before being hit"
         },
         "12003451": {
             "ID": "12003451",
-            "Calc option": "2",
-            "Timing": "Hit recieved",
+            "Timing": "Right after being hit",
             "Building Stat": {
                 "Min": 0,
                 "Max": 100,
@@ -352,11 +351,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "Type": "Building Stat",
             "Brief effect description": "DEF +20% (up to 100%) based on 'How many times has this character's guard been activated' after being hit"
         },
         "13003451": {
             "ID": "13003451",
-            "Calc option": "2",
             "Timing": "Start of turn",
             "ATK": 150,
             "DEF": 150,
@@ -378,11 +377,11 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "ATK and DEF +150% "
         },
         "14003451": {
             "ID": "14003451",
-            "Calc option": "0",
             "Additional Attack": {
                 "Activated": true,
                 "Chance of super": "100",
@@ -407,11 +406,11 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack "
         },
         "15003451": {
             "ID": "15003451",
-            "Calc option": "0",
             "Timing": "Start of turn",
             "Guard": true,
             "Target": {
@@ -432,6 +431,7 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "Guards all attacks "
         }
     },

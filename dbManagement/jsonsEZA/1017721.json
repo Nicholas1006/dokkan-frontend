@@ -33,7 +33,6 @@
     "Passive": {
         "2516": {
             "ID": "2516",
-            "Calc option": "2",
             "Timing": "Start of turn",
             "ATK": 59,
             "DEF": 59,
@@ -45,11 +44,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Single activator",
             "Brief effect description": "ATK and DEF +59% "
         },
         "1002516": {
             "ID": "1002516",
-            "Calc option": "2",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 59,
             "DEF": 59,
@@ -77,11 +76,11 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "ATK and DEF +59% when attacking"
         },
         "2002516": {
             "ID": "2002516",
-            "Calc option": "2",
             "Timing": "Right after attack",
             "Building Stat": {
                 "Min": 0,
@@ -100,11 +99,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Building Stat",
             "Brief effect description": "ATK +20% (up to 59%) based on 'How many attacks has this character performed on this turn' after attacking"
         },
         "3002516": {
             "ID": "3002516",
-            "Calc option": "2",
             "Timing": "Right after attack",
             "Building Stat": {
                 "Min": 0,
@@ -123,11 +122,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Building Stat",
             "Brief effect description": "DEF +20% (up to 59%) based on 'How many attacks has this character performed on this turn' after attacking"
         },
         "4002516": {
             "ID": "4002516",
-            "Calc option": "2",
             "Timing": "Right after attack",
             "Building Stat": {
                 "Min": 0,
@@ -146,11 +145,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Building Stat",
             "Brief effect description": "Chance of performing a critical hit +7% (up to 21%) based on 'How many attacks has this character performed on this turn' after attacking"
         },
         "5002516": {
             "ID": "5002516",
-            "Calc option": "2",
             "Dodge Chance": 50,
             "Timing": "Right before attack(SOT stat)",
             "Target": {
@@ -177,17 +176,17 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "Chance of evading enemy attacks +50% when attacking"
         },
         "6002516": {
             "ID": "6002516",
-            "Calc option": "0",
             "Counter": {
                 "Activated": true,
                 "Multiplier": "200",
                 "DR from normals": "59"
             },
-            "Timing": "Being hit",
+            "Timing": "Right before being hit",
             "Target": {
                 "Target": "Self"
             },
@@ -228,16 +227,16 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "Damage received from normal attacks -59% andCounter attacks with a 200% multiplier right before being hit"
         },
         "7002516": {
             "ID": "7002516",
-            "Calc option": "0",
             "Disable Other Line": {
                 "Activated": true,
                 "Line": "6002516"
             },
-            "Timing": "Hit recieved",
+            "Timing": "Right after being hit",
             "Target": {
                 "Target": "Self"
             },
@@ -246,6 +245,7 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Disable Other Line",
             "Brief effect description": "Disables a different passive line:6002516 after being hit"
         }
     },

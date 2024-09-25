@@ -42,7 +42,6 @@
     "Passive": {
         "3514": {
             "ID": "3514",
-            "Calc option": "0",
             "Timing": "Start of turn",
             "Status": [
                 "Unable to attack"
@@ -55,11 +54,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Single activator",
             "Brief effect description": "Unable to attack "
         },
         "1003514": {
             "ID": "1003514",
-            "Calc option": "2",
             "Timing": "Start of turn",
             "DEF": 300,
             "Target": {
@@ -70,11 +69,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Single activator",
             "Brief effect description": "DEF +300% "
         },
         "2003514": {
             "ID": "2003514",
-            "Calc option": "2",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -116,11 +115,11 @@
                     }
                 }
             },
+            "Type": "Building Stat",
             "Brief effect description": "Damage recieved +10% per Type Ki Sphere obtained "
         },
         "3003514": {
             "ID": "3003514",
-            "Calc option": "0",
             "Timing": "When ki spheres collected",
             "Guard": true,
             "Target": {
@@ -158,11 +157,11 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "Guards all attacks after this unit collects ki spheres"
         },
         "4003514": {
             "ID": "4003514",
-            "Calc option": "0",
             "Timing": "Start of turn",
             "Ki": 3,
             "Target": {
@@ -174,6 +173,7 @@
             },
             "Length": "2",
             "Once Only": true,
+            "Type": "Single activator",
             "Condition": {
                 "Logic": "4003514",
                 "Causalities": {
@@ -194,7 +194,6 @@
         },
         "5003514": {
             "ID": "5003514",
-            "Calc option": "2",
             "Timing": "Start of turn",
             "DEF": 70,
             "Target": {
@@ -206,6 +205,7 @@
             },
             "Length": "2",
             "Once Only": true,
+            "Type": "Single activator",
             "Condition": {
                 "Logic": "5003514",
                 "Causalities": {
@@ -226,7 +226,6 @@
         },
         "6003514": {
             "ID": "6003514",
-            "Calc option": "0",
             "Timing": "Start of turn",
             "Ki Change": {
                 "From": [
@@ -248,16 +247,16 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Single activator",
             "Brief effect description": "Randomly changes Ki Spheres of a certain Type(INT excluded) to INT Ki Spheres "
         },
         "7003514": {
             "ID": "7003514",
-            "Calc option": "0",
             "Nullification": {
                 "Activated": true,
                 "Absorbed": 0
             },
-            "Timing": "Being hit",
+            "Timing": "Right before being hit",
             "Target": {
                 "Target": "Self"
             },
@@ -276,16 +275,16 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "Nullifies enemy attack right before being hit"
         },
         "8003514": {
             "ID": "8003514",
-            "Calc option": "0",
             "Disable Other Line": {
                 "Activated": true,
                 "Line": "7003514"
             },
-            "Timing": "Hit recieved",
+            "Timing": "Right after being hit",
             "Target": {
                 "Target": "Self"
             },
@@ -294,11 +293,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Disable Other Line",
             "Brief effect description": "Disables a different passive line:7003514 after being hit"
         },
         "9003514": {
             "ID": "9003514",
-            "Calc option": "0",
             "Standby": {
                 "Activated": true,
                 "Change form": {
@@ -331,6 +330,7 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "Reverts standby to 1026900 when activating standby"
         }
     },

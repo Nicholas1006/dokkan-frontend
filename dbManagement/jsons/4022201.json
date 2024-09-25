@@ -36,7 +36,6 @@
     "Passive": {
         "2465": {
             "ID": "2465",
-            "Calc option": "2",
             "Timing": "Start of turn",
             "Heals": 30,
             "Target": {
@@ -48,6 +47,7 @@
             },
             "Length": "1",
             "Once Only": true,
+            "Type": "Single activator",
             "Condition": {
                 "Logic": "2465",
                 "Causalities": {
@@ -68,7 +68,6 @@
         },
         "1002465": {
             "ID": "1002465",
-            "Calc option": "2",
             "Timing": "Start of turn",
             "ATK": 150,
             "DEF": 150,
@@ -80,11 +79,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Single activator",
             "Brief effect description": "ATK and DEF +150% "
         },
         "2002465": {
             "ID": "2002465",
-            "Calc option": "0",
             "Effective Against All": true,
             "Timing": "Start of turn",
             "Target": {
@@ -95,11 +94,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Single activator",
             "Brief effect description": "Attacks effective against all Types "
         },
         "3002465": {
             "ID": "3002465",
-            "Calc option": "0",
             "Timing": "Start of turn",
             "Crit Chance": 70,
             "Target": {
@@ -110,11 +109,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Single activator",
             "Brief effect description": "Chance of performing a critical hit +70% "
         },
         "4002465": {
             "ID": "4002465",
-            "Calc option": "0",
             "Timing": "Start of turn",
             "Ki Change": {
                 "From": [
@@ -137,11 +136,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Single activator",
             "Brief effect description": "Randomly changes Ki Spheres of a certain Type to Rainbow Ki Spheres "
         },
         "5002465": {
             "ID": "5002465",
-            "Calc option": "0",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -163,11 +162,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Building Stat",
             "Brief effect description": "Ki +2 per Rainbow Ki Spheres obtained "
         },
         "6002465": {
             "ID": "6002465",
-            "Calc option": "0",
             "Timing": "Start of turn",
             "Ki": 5,
             "Target": {
@@ -179,6 +178,7 @@
             },
             "Length": "5",
             "Once Only": true,
+            "Type": "Single activator",
             "Condition": {
                 "Logic": "6002465",
                 "Causalities": {
@@ -199,7 +199,6 @@
         },
         "7002465": {
             "ID": "7002465",
-            "Calc option": "2",
             "Timing": "Start of turn",
             "DR": 30,
             "Target": {
@@ -211,6 +210,7 @@
             },
             "Length": "5",
             "Once Only": true,
+            "Type": "Single activator",
             "Condition": {
                 "Logic": "7002465",
                 "Causalities": {
@@ -231,7 +231,6 @@
         },
         "8002465": {
             "ID": "8002465",
-            "Calc option": "2",
             "Forsee Super Attack": true,
             "Timing": "Start of turn",
             "Target": {
@@ -243,6 +242,7 @@
             },
             "Length": "5",
             "Once Only": true,
+            "Type": "Single activator",
             "Condition": {
                 "Logic": "8002465",
                 "Causalities": {
@@ -263,12 +263,11 @@
         },
         "9002465": {
             "ID": "9002465",
-            "Calc option": "0",
             "Nullification": {
                 "Activated": true,
                 "Absorbed": 0
             },
-            "Timing": "Being hit",
+            "Timing": "Right before being hit",
             "Target": {
                 "Target": "Self"
             },
@@ -292,16 +291,16 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "Nullifies enemy attack right before being hit"
         },
         "10002465": {
             "ID": "10002465",
-            "Calc option": "0",
             "Disable Other Line": {
                 "Activated": true,
                 "Line": "9002465"
             },
-            "Timing": "Hit recieved",
+            "Timing": "Right after being hit",
             "Target": {
                 "Target": "Self"
             },
@@ -310,6 +309,7 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Disable Other Line",
             "Brief effect description": "Disables a different passive line:9002465 after being hit"
         }
     },

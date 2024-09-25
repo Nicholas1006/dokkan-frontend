@@ -37,7 +37,6 @@
     "Passive": {
         "4049": {
             "ID": "4049",
-            "Calc option": "0",
             "Timing": "Start of turn",
             "Ki": 8,
             "Target": {
@@ -49,6 +48,7 @@
             },
             "Length": "5",
             "Once Only": true,
+            "Type": "Single activator",
             "Condition": {
                 "Logic": "4049",
                 "Causalities": {
@@ -69,7 +69,6 @@
         },
         "1004049": {
             "ID": "1004049",
-            "Calc option": "2",
             "Timing": "Start of turn",
             "Crit Chance": 40,
             "Target": {
@@ -81,6 +80,7 @@
             },
             "Length": "5",
             "Once Only": true,
+            "Type": "Single activator",
             "Condition": {
                 "Logic": "1004049",
                 "Causalities": {
@@ -101,7 +101,6 @@
         },
         "2004049": {
             "ID": "2004049",
-            "Calc option": "2",
             "Timing": "Start of turn",
             "DR": 40,
             "Target": {
@@ -113,6 +112,7 @@
             },
             "Length": "5",
             "Once Only": true,
+            "Type": "Single activator",
             "Condition": {
                 "Logic": "2004049",
                 "Causalities": {
@@ -133,7 +133,6 @@
         },
         "3004049": {
             "ID": "3004049",
-            "Calc option": "0",
             "Timing": "Start of turn",
             "Ki": 3,
             "Target": {
@@ -144,11 +143,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Single activator",
             "Brief effect description": "Ki +3 "
         },
         "4004049": {
             "ID": "4004049",
-            "Calc option": "2",
             "Timing": "Start of turn",
             "ATK": 250,
             "DEF": 250,
@@ -160,11 +159,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Single activator",
             "Brief effect description": "ATK and DEF +250% "
         },
         "5004049": {
             "ID": "5004049",
-            "Calc option": "0",
             "Timing": "Start of turn",
             "Guard": true,
             "Target": {
@@ -175,11 +174,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Single activator",
             "Brief effect description": "Guards all attacks "
         },
         "6004049": {
             "ID": "6004049",
-            "Calc option": "2",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 50,
             "Target": {
@@ -190,11 +189,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Single activator",
             "Brief effect description": "ATK +50% when attacking"
         },
         "7004049": {
             "ID": "7004049",
-            "Calc option": "2",
             "Timing": "Right before attack(MOT stat)",
             "Crit Chance": 20,
             "Target": {
@@ -221,12 +220,12 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "Chance of performing a critical hit +20% when attacking"
         },
         "8004049": {
             "ID": "8004049",
-            "Calc option": "2",
-            "Timing": "Being hit",
+            "Timing": "Right before being hit",
             "DEF": 80,
             "Target": {
                 "Target": "Self"
@@ -236,12 +235,12 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Single activator",
             "Brief effect description": "DEF +80% right before being hit"
         },
         "9004049": {
             "ID": "9004049",
-            "Calc option": "2",
-            "Timing": "Being hit",
+            "Timing": "Right before being hit",
             "DR": 20,
             "Target": {
                 "Target": "Self"
@@ -267,11 +266,11 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "Damage recieved +20% right before being hit"
         },
         "10004049": {
             "ID": "10004049",
-            "Calc option": "0",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -298,17 +297,17 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Building Stat",
             "Brief effect description": "Ki +1 per Ki Sphere obtained "
         },
         "11004049": {
             "ID": "11004049",
-            "Calc option": "0",
             "Additional Attack": {
                 "Activated": true,
                 "Chance of super": "100",
                 "Chance of another additional": "0"
             },
-            "Timing": "Hit recieved",
+            "Timing": "Right after being hit",
             "Target": {
                 "Target": "Self"
             },
@@ -333,12 +332,12 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack after being hit"
         },
         "12004049": {
             "ID": "12004049",
-            "Calc option": "0",
-            "Timing": "Hit recieved",
+            "Timing": "Right after being hit",
             "Ki": 3,
             "Target": {
                 "Target": "Allies(self excluded)"
@@ -364,12 +363,12 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": " allies Ki +3 after being hit"
         },
         "13004049": {
             "ID": "13004049",
-            "Calc option": "0",
-            "Timing": "Hit recieved",
+            "Timing": "Right after being hit",
             "Building Stat": {
                 "Min": 0,
                 "Max": 5,
@@ -387,12 +386,12 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "Type": "Building Stat",
             "Brief effect description": "Ki +1 (up to 5) based on 'How many attacks has this character recieved' after being hit"
         },
         "14004049": {
             "ID": "14004049",
-            "Calc option": "2",
-            "Timing": "Hit recieved",
+            "Timing": "Right after being hit",
             "Building Stat": {
                 "Min": 0,
                 "Max": 2000,
@@ -410,12 +409,12 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Building Stat",
             "Brief effect description": "ATK +20% (up to 2000%) based on 'How many attacks has this character recieved' after being hit"
         },
         "15004049": {
             "ID": "15004049",
-            "Calc option": "2",
-            "Timing": "Hit recieved",
+            "Timing": "Right after being hit",
             "Building Stat": {
                 "Min": 0,
                 "Max": 100,
@@ -433,11 +432,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Building Stat",
             "Brief effect description": "Chance of performing a critical hit +20% (up to 100%) based on 'How many attacks has this character recieved' after being hit"
         },
         "16004049": {
             "ID": "16004049",
-            "Calc option": "2",
             "Timing": "Start of turn",
             "Crit Chance": 20,
             "Target": {
@@ -472,11 +471,11 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "Chance of performing a critical hit +20% "
         },
         "17004049": {
             "ID": "17004049",
-            "Calc option": "2",
             "Timing": "Start of turn",
             "DR": 20,
             "Target": {
@@ -511,11 +510,11 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "Damage recieved +20% "
         },
         "18004049": {
             "ID": "18004049",
-            "Calc option": "0",
             "Timing": "Start of turn",
             "Ki": 2,
             "Target": {
@@ -550,6 +549,7 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": " allies Ki +2 "
         }
     },

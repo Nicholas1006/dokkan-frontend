@@ -36,7 +36,6 @@
     "Passive": {
         "726": {
             "ID": "726",
-            "Calc option": "0",
             "Additional Attack": {
                 "Activated": true,
                 "Chance of super": "10",
@@ -51,17 +50,17 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Single activator",
             "Brief effect description": "Performs an additional attack with a 70% chance of another additional attack each with a 10% chance of becoming a super attack after all ki collected"
         },
         "1000726": {
             "ID": "1000726",
-            "Calc option": "2",
             "Counter": {
                 "Activated": true,
                 "Multiplier": "300",
                 "DR from normals": "30"
             },
-            "Timing": "Being hit",
+            "Timing": "Right before being hit",
             "Target": {
                 "Target": "Self"
             },
@@ -80,16 +79,16 @@
                     }
                 }
             },
+            "Type": "Single activator",
             "Brief effect description": "Damage received from normal attacks -30% andCounter attacks with a 300% multiplier right before being hit"
         },
         "2000726": {
             "ID": "2000726",
-            "Calc option": "0",
             "Disable Other Line": {
                 "Activated": true,
                 "Line": "1000726"
             },
-            "Timing": "Hit recieved",
+            "Timing": "Right after being hit",
             "Target": {
                 "Target": "Self"
             },
@@ -98,6 +97,7 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "Type": "Disable Other Line",
             "Brief effect description": "Disables a different passive line:1000726 after being hit"
         }
     },
