@@ -346,8 +346,8 @@ class kiCircleClass{
                 this.Ki+=parseInt(kiSources[kiSourcesKey]);
             }
 
-            const SOTTIMINGS=["Start of turn","After all ki collected","When ki spheres collected"]
-            const MOTTIMINGS=["Being hit","Hit recieved","Right before attack","Right after attack","End of turn"]
+            const SOTTIMINGS=["Start of turn","After all ki collected","Right before attack(SOT stat)","When ki spheres collected"]
+            const MOTTIMINGS=["Being hit","Hit recieved","Right before attack(MOT stat)","Right after attack","End of turn"]
             const ONSUPERTIMING=["On Super"]
             let passiveLines=currentJson.Passive;
             for(const passiveLineKey in passiveLines){
