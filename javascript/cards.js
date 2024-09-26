@@ -1806,9 +1806,41 @@ export function activatePassiveLines(previousActiveLineMultipliers,exec_timing_t
                 updatedPassiveLineMultipliers[passiveLine["ID"]]=1;
            }
         }
+
+
+
         else if(passiveLine["Type"]=="Disable Other Line"){
-            console.log(passiveLine);
-            //WIP
+            if("Condition" in passiveLine){
+                let conditionLogic=" "+passiveLine["Condition"]["Logic"]+" ";
+                for (const causalityKey of Object.keys(passiveLine["Condition"]["Causalities"])){
+                    const causality=passiveLine["Condition"]["Causalities"][causalityKey];
+                    let buttonLogic=false;
+                    if("Button" in causality){
+                        if(causality["Button"]["Name"] in causalityLogic){
+                            buttonLogic=causalityLogic[causality["Button"]["Name"]];
+                        }
+                    }
+                    
+                    let sliderLogic=false;
+                    if("Slider" in causality){
+                        if(causality["Slider"]["Name"] in causalityLogic){
+                            sliderLogic=causalityLogic[causality["Slider"]["Name"]]+causality["Slider"]["Logic"];
+                            sliderLogic=evaluate(sliderLogic);
+                        }
+                    }
+
+                    const overallLogic=(buttonLogic||sliderLogic);
+
+                    conditionLogic=conditionLogic.replaceAll(" "+causalityKey+" ",    " "+overallLogic+" ");
+                }
+
+                if(evaluate(conditionLogic)){
+                    delete updatedPassiveLineMultipliers[passiveLine["Disable Other Line"]["Line"]]
+                }
+           }
+           else{
+                delete updatedPassiveLineMultipliers[passiveLine["Disable Other Line"]["Line"]]
+           }
         }
         else if(passiveLine["Type"]=="Building Stat"){
             console.log(passiveLine);
@@ -2004,29 +2036,38 @@ export function includedInSupportBuff(passiveLine){
 
 
 export function updatePassiveStats(){
+    //MAJOR WIP
     let currentActivePassiveMultipliers={};
-    currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Start of turn",queriesToLogic(passiveQueryList))
     //create a list that runs through all the different timings to see which passive skills activate
     
-
+    
     //  Start of turn
+    currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Start of turn",queriesToLogic(passiveQueryList))
     //  if (an attacking active skill is performed){
     //      Right before attack(SOT stat)
     //      Right before attack(MOT stat)
     //      *record the stats at this point and save them to be displayed
     //  }
     //  When ki spheres collected
+    currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"When ki spheres collected",queriesToLogic(passiveQueryList))
     //  After all ki collected
+    currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"After all ki collected",queriesToLogic(passiveQueryList))
+    
     //  for(each time that an attack is recieved before we attack){
     //      Right before being hit
+            currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before being hit",queriesToLogic(passiveQueryList))
     //      Right after being hit
+            currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after being hit",queriesToLogic(passiveQueryList))
     //      *Record stats
     //  }
     //  for(each attack done){
     //      Right before attack(SOT stat)
+            currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(SOT stat)",queriesToLogic(passiveQueryList))
     //      Right before attack(MOT stat)
+            currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(MOT stat)",queriesToLogic(passiveQueryList))
     //      *Record stats
     //      Right after attack
+            currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after attack",queriesToLogic(passiveQueryList))
     //  }
 
 
