@@ -172,10 +172,10 @@ class kiCircleClass{
         this.superChanceQuery.parentClass=this
         this.superChanceQuery.addEventListener('click', function(){
             if(this.classList.contains("active")){
-                this.parentClass.toggleSuperPerformed(false)
+                this.parentClass.togglesuperPerformed(false)
             }
             else{
-                this.parentClass.toggleSuperPerformed(true)
+                this.parentClass.togglesuperPerformed(true)
             }
             updatePassiveStats()
         })
@@ -280,7 +280,7 @@ class kiCircleClass{
 
         finalValue*=(1+(leaderBuffs["ATK"]/100));
 
-        finalValue*=(1+buffs["SOT ATK %"]/100)
+        finalValue*=(1+(buffs["SOT ATK %"]+supportBuffs["ATK"])/100)
         finalValue+=buffs["SOT ATK flat"]
         
         finalValue*=1;//Item boost
@@ -310,7 +310,32 @@ class kiCircleClass{
         return(0)
     }
 
-    updateValue(targetValue,isSuper=true) {
+    updateKiFromBuffs(buffs){
+        if(this.passiveLineKey=="0"){
+            this.Ki=0;
+            for (const kiSourcesKey in kiSources){
+                this.Ki+=parseInt(kiSources[kiSourcesKey]);
+            }
+            this.Ki+=buffs["Ki"];
+            this.superAttackID=findSuperAttackID(this.Ki);
+        }
+        else{
+            if(this.superPerformed){
+                this.Ki=currentJson["SuperMinKi"];
+            }
+            else{
+                this.Ki=0;
+                for (const kiSourcesKey in kiSources){
+                    this.Ki+=parseInt(kiSources[kiSourcesKey]);
+                }
+                this.Ki+=buffs["Ki"];
+            }
+        }
+        this.updateKi(this.Ki);
+        return(this.Ki)
+    }
+
+    OLDupdateValue(targetValue,isSuper=true) {
         targetValue=parseInt(targetValue);
         if(targetValue=="-1"){
             this.animating=false;
@@ -356,7 +381,7 @@ class kiCircleClass{
         
                 for (let char of currentValue.toString()) {
                     const numDiv = document.createElement('div');
-                    if(isSuper){
+                    if(this.superPerformed){
                         numDiv.className = "ki-damage-text-numDiv-red";
                         numDiv.classList.add(`num-red-${char}`);
                     }
@@ -376,7 +401,7 @@ class kiCircleClass{
                     }
                     for (let char of currentValue.toString()) {
                         const numDiv = document.createElement('div');
-                        if(isSuper){
+                        if(this.superPerformed){
                             numDiv.className = "ki-damage-text-numDiv-red";
                             numDiv.classList.add(`num-red-${char}`);
                         }
@@ -393,6 +418,89 @@ class kiCircleClass{
         }
     }
 
+    updateValue(targetValue) {
+        targetValue=parseInt(targetValue);
+        if(targetValue=="-1"){
+            this.animating=false;
+            this.displayedAttackStat=-1;
+            while (this.damageText.firstChild) {
+                this.damageText.removeChild(this.damageText.firstChild);
+            }
+        }
+        else if(this.displayedAttackStat==targetValue){
+            return
+        }
+        else{
+            this.animating=true;
+            if(targetValue<0){
+                targetValue=0
+            }
+            else if(targetValue>2147483648){
+                targetValue=2147483648
+            }
+            this.attackStat = targetValue;
+            const duration = 750; // duration of the animation in milliseconds
+            const frameRate= 60;
+            const frameDuration = 1000 / frameRate; // 60 frames per second
+            const totalFrames = Math.round(duration / frameDuration);
+        
+            this.nextToShow = this.displayedAttackStat;
+            this.increment = Math.round((targetValue - this.displayedAttackStat) / totalFrames);
+        
+            const animate = () => {
+                this.nextToShow+=this.increment
+                if((this.increment>0 && this.nextToShow>this.attackStat) || (this.increment<0 && this.nextToShow<this.attackStat)){
+                    this.nextToShow=this.attackStat;
+                    this.displayValueQuickly(this.attackStat);
+                }
+                //if its going to go past the value
+                else if((this.nextToShow>this.attackStat && this.displayedAttackStat<this.attackStat) || (this.nextToShow<this.attackStat && this.displayedAttackStat>this.attackStat)){
+                    this.nextToShow=this.attackStat;
+                    this.displayValueQuickly(this.attackStat);
+                }
+                //if it is going the right way and still has progress
+                else if(this.nextToShow==this.attackStat){
+                    this.displayValueQuickly(this.nextToShow);
+                    return 0;
+                }
+                else{
+                    this.displayValueQuickly(this.nextToShow);
+                    requestAnimationFrame(animate);
+                }
+            };
+        
+            requestAnimationFrame(animate);
+        }
+    }
+
+    displayValueQuickly(value){
+        if(value<1){
+            value=0
+        }
+        else if(value>2147483648){
+            value=2147483648
+        }
+        else if(isNaN(value)){
+            value=0;
+        }
+        while (this.damageText.firstChild) {
+            this.damageText.removeChild(this.damageText.firstChild);
+        }
+
+        for (let char of value.toString()) {
+            const numDiv = document.createElement('div');
+            if(this.superPerformed){
+                numDiv.className = "ki-damage-text-numDiv-red";
+                numDiv.classList.add(`num-red-${char}`);
+            }
+            else{
+                numDiv.className = "ki-damage-text-numDiv-yellow";
+                numDiv.classList.add(`num-yellow-${char}`);
+            }
+            this.damageText.appendChild(numDiv);
+        }
+        this.displayedAttackStat=value
+    }
 
     changeGridRow(rowNumber){
         this.KiCircle.style.gridRow = rowNumber;
@@ -864,7 +972,7 @@ class kiCircleClass{
         
     }
 
-    toggleSuperPerformed(isActivated){
+    togglesuperPerformed(isActivated){
         if(isActivated){
             this.superChanceQuery.classList.add("active")
             this.superChanceQuery.style.background="#00FF00"
@@ -1265,7 +1373,7 @@ class superAttackQuery{
         this.selfContainer.buffs=buffs;
         this.selfContainer.superAttackName=superAttackName;
         this.selfContainer.buffsDuration=buffs["Duration"];
-        this.selfContainer.currentValue=0;
+        this.selfContainer.nextToShow=0;
         this.selfContainer.style.display="grid";
         let superAttackSlider = document.createElement('input');
         superAttackSlider.value=0;
@@ -1815,6 +1923,7 @@ let superBuffs={"ATK": 0, "DEF": 0, "Enemy ATK": 0, "Enemy DEF": 0, "Crit": 0, "
 let linkBuffs={"ATK":0,"DEF":0,"Enemy DEF":0,"Heal":0,"KI":0,"Damage Reduction":0,"Crit":0,"Evasion":0};
 let skillOrbBuffs={"Additional":0,"Crit":0,"Evasion":0,"Attack":0,"Defense":0,"SuperBoost":0,"Recovery":0}
 let domainBuffs={"ATK":0,"DEF":0,"Increased damage recieved":0}
+let supportBuffs={"ATK": 0, "DEF":0, "Dodge":0, "Crit": 0}
 let currentKiSphere="STR";
 let currentKiSphereAmount=0;
 let rainbowKiSphereAmount=0;
@@ -2050,13 +2159,21 @@ export function updatePassiveStats(){
     additionalAttacks[0]="Activated";
     kiCircleDictionary[0].changeGridRow(1);
 
+    if(skillOrbBuffs["Additional"]!=0){
+        additionalAttacks["Hidden potential"]="Offered"
+    }
+    
+    
+
     let currentActivePassiveMultipliers={};
     let iteratingCausalityLogic=queriesToLogic(passiveQueryList);
     let iteratingPassiveBuffs;
     let iteratingAttackRow=2;
     let iteratingSuperAttackBuffs={...superBuffs};
+    let attacksPerformed=0;
     //create a list that runs through all the different timings to see which passive skills activate
     
+    //Account for previously built stats
     
     //  Start of turn
     progressCausalityLogic(iteratingCausalityLogic,"Start of turn");
@@ -2099,8 +2216,11 @@ export function updatePassiveStats(){
             currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(MOT stat)",iteratingCausalityLogic)
             //      *Record stats
             
+            currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Building Stat",iteratingCausalityLogic)
+            
             kiCircleDictionary[0].display(true);
-            kiCircleDictionary[0].updateFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
+            kiCircleDictionary[0].updateKiFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
+            attacksPerformed+=1;
             iteratingCausalityLogic=prepareCausalityLogic(iteratingCausalityLogic,kiCircleDictionary[0]);
             currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(SOT stat)",iteratingCausalityLogic)
             currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(MOT stat)",iteratingCausalityLogic)
@@ -2123,37 +2243,57 @@ export function updatePassiveStats(){
             //  for(each attack done){
             while(Object.values(additionalAttacks).includes("Offered")){
                 const nextLineToActivate=getFirstInDictionary(additionalAttacks,["Offered"]);
+
+
+                if(nextLineToActivate=="Hidden potential"){
+                    let additionalChance=calculateAdditionalChance(skillOrbBuffs["Additional"],attacksPerformed);
+                    kiCircleDictionary[nextLineToActivate].changePerformedChance(additionalChance["Normal"]+additionalChance["Super"])
+                    let chanceTheAdditionalIsASuper=additionalChance["Super"]/(additionalChance["Super"]+additionalChance["Normal"])
+                    kiCircleDictionary[nextLineToActivate].changeSuperChance(chanceTheAdditionalIsASuper)
+                    if(additionalChance["Normal"]!=0){
+                        kiCircleDictionary[nextLineToActivate].display(true)
+                    }
+                }
                 //if super is actually performed
-                if(true){
+                if(kiCircleDictionary[nextLineToActivate]["superPerformed"]){
                     progressCausalityLogic(iteratingCausalityLogic,"Right before super attack");
                 }
                 //if normal is actually performed
-                else if(true){
+                else if(kiCircleDictionary[nextLineToActivate]["attackPerformed"]){
                     progressCausalityLogic(iteratingCausalityLogic,"Right before normal attack");
                 }
-                //currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(SOT stat)",iteratingCausalityLogic)
-                //currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(MOT stat)",iteratingCausalityLogic)
+                else{
+                    kiCircleDictionary[nextLineToActivate].updateValue(0);
+                    kiCircleDictionary[nextLineToActivate].updateKi(0);
+                }
+
                 kiCircleDictionary[nextLineToActivate].changeGridRow(iteratingAttackRow);
                 iteratingAttackRow++;
-                kiCircleDictionary[nextLineToActivate].display(true);
-                kiCircleDictionary[nextLineToActivate].updateFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
-                iteratingCausalityLogic=prepareCausalityLogic(iteratingCausalityLogic,kiCircleDictionary[0]);
-                currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(SOT stat)",iteratingCausalityLogic)
-                currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(MOT stat)",iteratingCausalityLogic)
-                kiCircleDictionary[nextLineToActivate].updateFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
-                iteratingSuperAttackBuffs=kiCircleDictionary[nextLineToActivate].superBuffs;
-
+                kiCircleDictionary[nextLineToActivate].display(true);    
+                if(kiCircleDictionary[nextLineToActivate]["attackPerformed"]){
+                    //currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(SOT stat)",iteratingCausalityLogic)
+                    //currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(MOT stat)",iteratingCausalityLogic)
+                    
+                    currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Building Stat",iteratingCausalityLogic)
+                    kiCircleDictionary[nextLineToActivate].updateKiFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
+                    attacksPerformed+=1;
+                    iteratingCausalityLogic=prepareCausalityLogic(iteratingCausalityLogic,kiCircleDictionary[0]);
+                    currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(SOT stat)",iteratingCausalityLogic)
+                    currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(MOT stat)",iteratingCausalityLogic)
+                    kiCircleDictionary[nextLineToActivate].updateFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
+                    iteratingSuperAttackBuffs=kiCircleDictionary[nextLineToActivate].superBuffs;
+                }
+                
                 //if super is actually performed
-                if(true){
+                if(kiCircleDictionary[nextLineToActivate]["superPerformed"]){
                     progressCausalityLogic(iteratingCausalityLogic,"Right after super attack");
                 }
                 //if normal is actually performed
-                else if(true){
+                else if(kiCircleDictionary[nextLineToActivate]["attackPerformed"]){
                     progressCausalityLogic(iteratingCausalityLogic,"Right after normal attack");
                 }
 
                 //      Right after attack
-                progressCausalityLogic(iteratingCausalityLogic,"Right after super attack");
                 iteratingPassiveBuffs =(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers));
                 for (const additionalAttack in iteratingPassiveBuffs["Additional Attack"]){
                     if(additionalAttacks[additionalAttack]=="Unactivated"){
@@ -2358,11 +2498,11 @@ export function activePassiveMultipliersToPassiveBuffs(activePassiveMultipliers)
                 if("Ki" in activatedLine){
                     //Ki increase
                     if(activatedLine["Buff"]["+ or -"]=="+"){
-                        buffs["Ki"]+=activatedLine["Ki"]*buffMultiplier;
+                        buffs["Ki"]+=Math.min(activatedLine["Building Stat"]["Max"],activatedLine["Ki"]*buffMultiplier);
                     }
                     //Ki decrease
                     else{
-                        buffs["Ki"]-=activatedLine["Ki"]*buffMultiplier;
+                        buffs["Ki"]-=Math.min(activatedLine["Building Stat"]["Max"],activatedLine["Ki"]*buffMultiplier);
                     }
                 }
                 if("ATK" in activatedLine){
@@ -2370,21 +2510,21 @@ export function activePassiveMultipliersToPassiveBuffs(activePassiveMultipliers)
                         if(activatedLine["Buff"]["+ or -"]=="+"){
                             //Start of turn attack % increase
                             if(SOTTIMINGS.includes(activatedLine["Timing"])){
-                                buffs["SOT ATK %"]+=activatedLine["ATK"]*buffMultiplier;
+                                buffs["SOT ATK %"]+=Math.min(activatedLine["Building Stat"]["Max"],activatedLine["ATK"]*buffMultiplier);
                             }
                             //Middle of turn attack % increase
                             else{
-                                buffs["MOT ATK %"]+=activatedLine["ATK"]*buffMultiplier;
+                                buffs["MOT ATK %"]+=Math.min(activatedLine["Building Stat"]["Max"],activatedLine["ATK"]*buffMultiplier);
                             }
                         }
                         else{
                             //Start of turn attack % decrease
                             if(SOTTIMINGS.includes(activatedLine["Timing"])){
-                                buffs["SOT ATK %"]-=activatedLine["ATK"]*buffMultiplier;
+                                buffs["SOT ATK %"]-=Math.min(activatedLine["Building Stat"]["Max"],activatedLine["ATK"]*buffMultiplier);
                             }
                             //Middle of turn attack % decrease
                             else{
-                                buffs["MOT ATK %"]-=activatedLine["ATK"]*buffMultiplier;
+                                buffs["MOT ATK %"]-=Math.min(activatedLine["Building Stat"]["Max"],activatedLine["ATK"]*buffMultiplier);
                             }
                         }
                     }
@@ -2392,21 +2532,21 @@ export function activePassiveMultipliersToPassiveBuffs(activePassiveMultipliers)
                         if(activatedLine["Buff"]["+ or -"]=="+"){
                             //Start of turn attack flat increase
                             if(SOTTIMINGS.includes(activatedLine["Timing"])){
-                                buffs["SOT ATK flat"]+=activatedLine["ATK"]*buffMultiplier;
+                                buffs["SOT ATK flat"]+=Math.min(activatedLine["Building Stat"]["Max"],activatedLine["ATK"]*buffMultiplier);
                             }
                             //Middle of turn attack flat increase
                             else{
-                                buffs["MOT ATK flat"]+=activatedLine["ATK"]*buffMultiplier;
+                                buffs["MOT ATK flat"]+=Math.min(activatedLine["Building Stat"]["Max"],activatedLine["ATK"]*buffMultiplier);
                             }
                         }
                         else{
                             //Start of turn attack flat decrease
                             if(SOTTIMINGS.includes(activatedLine["Timing"])){
-                                buffs["SOT ATK flat"]-=activatedLine["ATK"]*buffMultiplier;
+                                buffs["SOT ATK flat"]-=Math.min(activatedLine["Building Stat"]["Max"],activatedLine["ATK"]*buffMultiplier);
                             }
                             //Middle of turn attack flat decrease
                             else{
-                                buffs["MOT ATK flat"]-=activatedLine["ATK"]*buffMultiplier;
+                                buffs["MOT ATK flat"]-=Math.min(activatedLine["Building Stat"]["Max"],activatedLine["ATK"]*buffMultiplier);
                             }
                         }
                     }
@@ -2416,21 +2556,21 @@ export function activePassiveMultipliersToPassiveBuffs(activePassiveMultipliers)
                         if(activatedLine["Buff"]["+ or -"]=="+"){
                             //Start of turn defense % increase
                             if(SOTTIMINGS.includes(activatedLine["Timing"])){
-                                buffs["SOT DEF %"]+=activatedLine["DEF"]*buffMultiplier;
+                                buffs["SOT DEF %"]+=Math.min(activatedLine["Building Stat"]["Max"],activatedLine["DEF"]*buffMultiplier);
                             }
                             //Middle of turn defense % increase
                             else{
-                                buffs["MOT DEF %"]+=activatedLine["DEF"]*buffMultiplier;
+                                buffs["MOT DEF %"]+=Math.min(activatedLine["Building Stat"]["Max"],activatedLine["DEF"]*buffMultiplier);
                             }
                         }
                         else{
                             //Start of turn defense % decrease
                             if(SOTTIMINGS.includes(activatedLine["Timing"])){
-                                buffs["SOT DEF %"]-=activatedLine["DEF"]*buffMultiplier;
+                                buffs["SOT DEF %"]-=Math.min(activatedLine["Building Stat"]["Max"],activatedLine["DEF"]*buffMultiplier);
                             }
                             //Middle of turn defense % decrease
                             else{
-                                buffs["MOT DEF %"]-=activatedLine["DEF"]*buffMultiplier;
+                                buffs["MOT DEF %"]-=Math.min(activatedLine["Building Stat"]["Max"],activatedLine["DEF"]*buffMultiplier);
                             }
                         }
                     }
@@ -2438,61 +2578,61 @@ export function activePassiveMultipliersToPassiveBuffs(activePassiveMultipliers)
                         if(activatedLine["Buff"]["+ or -"]=="+"){
                             //Start of turn defense flat increase
                             if(SOTTIMINGS.includes(activatedLine["Timing"])){
-                                buffs["SOT DEF flat"]+=activatedLine["DEF"]*buffMultiplier;
+                                buffs["SOT DEF flat"]+=Math.min(activatedLine["Building Stat"]["Max"],activatedLine["DEF"]*buffMultiplier);
                             }
                             //Middle of turn defense flat increase
                             else{
-                                buffs["MOT DEF flat"]+=activatedLine["DEF"]*buffMultiplier;
+                                buffs["MOT DEF flat"]+=Math.min(activatedLine["Building Stat"]["Max"],activatedLine["DEF"]*buffMultiplier);
                             }
                         }
                         else{
                             //Start of turn defense flat decrease
                             if(SOTTIMINGS.includes(activatedLine["Timing"])){
-                                buffs["SOT DEF flat"]-=activatedLine["DEF"]*buffMultiplier;
+                                buffs["SOT DEF flat"]-=Math.min(activatedLine["Building Stat"]["Max"],activatedLine["DEF"]*buffMultiplier);
                             }
                             //Middle of turn defense flat decrease
                             else{
-                                buffs["MOT DEF flat"]-=activatedLine["DEF"]*buffMultiplier;
+                                buffs["MOT DEF flat"]-=Math.min(activatedLine["Building Stat"]["Max"],activatedLine["DEF"]*buffMultiplier);
                             }
                         }
                     }
                 }
                 if("Dodge Chance" in activatedLine){
-                    buffs["Dodge Chance"]+=activatedLine["Dodge Chance"]*buffMultiplier
+                    buffs["Dodge Chance"]+=Math.min(activatedLine["Building Stat"]["Max"],activatedLine["Dodge Chance"]*buffMultiplier);
                 }
                 if("Heals" in activatedLine){
                     if(activatedLine["Buff"]["Type"]=="Percentage"){
                         //Heal percentage
                         if(activatedLine["Buff"]["+ or -"]=="+"){
-                            buffs["Heal %"]+=activatedLine["Heals"]*buffMultiplier;
+                            buffs["Heal %"]+=Math.min(activatedLine["Building Stat"]["Max"],activatedLine["Heals"]*buffMultiplier);
                         }
                         //Self inflict damage percentage
                         else{
-                            buffs["Heal %"]-=activatedLine["Heals"]*buffMultiplier;
+                            buffs["Heal %"]-=Math.min(activatedLine["Building Stat"]["Max"],activatedLine["Heals"]*buffMultiplier);
                         }
                     }
                     else{
                         //Heal flat
                         if(activatedLine["Buff"]["+ or -"]=="+"){
-                            buffs["Heal flat"]+=activatedLine["Heals"]*buffMultiplier;
+                            buffs["Heal flat"]+=Math.min(activatedLine["Building Stat"]["Max"],activatedLine["Heals"]*buffMultiplier);
                         }
                         //Self inflict damage flat
                         else{
-                            buffs["Heal flat"]-=activatedLine["Heals"]*buffMultiplier;
+                            buffs["Heal flat"]-=Math.min(activatedLine["Building Stat"]["Max"],activatedLine["Heals"]*buffMultiplier);
                         }
                     }
                     if("DR" in activatedLine){
                         //DR increase
                         if(activatedLine["Buff"]["+ or -"]=="+"){
-                            buffs["Damage Reduction"]+=activatedLine["DR"]*buffMultiplier;
+                            buffs["Damage Reduction"]+=Math.min(activatedLine["Building Stat"]["Max"],activatedLine["DR"]*buffMultiplier);
                         }
                         //DR decrease
                         else{
-                            buffs["Damage Reduction"]-=activatedLine["DR"]*buffMultiplier;
+                            buffs["Damage Reduction"]-=Math.min(activatedLine["Building Stat"]["Max"],activatedLine["DR"]*buffMultiplier);
                         }
                     }
                     if("Crit Chance" in activatedLine){
-                        buffs["Crit Chance"]+=activatedLine["Crit Chance"]*buffMultiplier;
+                        buffs["Crit Chance"]+=Math.min(activatedLine["Building Stat"]["Max"],activatedLine["Crit Chance"]*buffMultiplier);
                     }
                 }
             }
@@ -2516,10 +2656,10 @@ export function progressCausalityLogic(causalityLogic,progressingDetails){
 
     }
     else if(progressingDetails=="Right before being hit by super"){
-        iterateSpecificCausality(causalityLogic,"How many super attacks has this character recieved?")
+        iterateCausalityThatContains(causalityLogic,"How many super attacks has this character recieved")
     }
     else if(progressingDetails=="Right after being hit by normal"){
-        iterateSpecificCausality(causalityLogic,"How many attacks has this character recieved?")
+        iterateCausalityThatContains(causalityLogic,"How many attacks has this character recieved")
 
         iterateSpecificCausality(causalityLogic,"How many attacks has this character recieved on this turn?")
         iterateCausalityThatContains(causalityLogic,"Has attack been recieved ")
@@ -2548,14 +2688,12 @@ export function progressCausalityLogic(causalityLogic,progressingDetails){
         
     }
     else if(progressingDetails=="Right after normal attack"){
-        iterateSpecificCausality(causalityLogic,"How many super attacks has this character performed on this turn?")
-
-        iterateSpecificCausality(causalityLogic,"How many attacks has this character performed in battle?")
+        iterateCausalityThatContains(causalityLogic,"How many attacks has this character performed")
     }
     else if(progressingDetails=="Right after super attack"){
-        iterateSpecificCausality(causalityLogic,"How many super attacks has this character performed on this turn?")
+        iterateCausalityThatContains(causalityLogic,"How many super attacks has this character performed")
 
-        iterateSpecificCausality(causalityLogic,"How many attacks has this character performed in battle?")
+        iterateCausalityThatContains(causalityLogic,"How many attacks has this character performed")
     }
 
     return(0);
@@ -2593,105 +2731,132 @@ export function isDigit(myString){
 export function activatePassiveLines(previousActiveLineMultipliers,exec_timing_type,causalityLogic){
     let updatedPassiveLineMultipliers={...previousActiveLineMultipliers}
     let activateablePassiveLines=[];
-    for (const passiveLine of Object.values(currentJson["Passive"])){
-        if(passiveLine["Timing"]==exec_timing_type){
-            if(passiveLine["Type"]=="Single activator" && !(Object.keys(previousActiveLineMultipliers).includes(passiveLine["ID"]))){
-                activateablePassiveLines.push(passiveLine)
+
+    if(exec_timing_type!="Building Stat"){
+
+        for (const passiveLine of Object.values(currentJson["Passive"])){
+            if(passiveLine["Timing"]==exec_timing_type){
+                if(passiveLine["Type"]=="Single activator" && !(Object.keys(previousActiveLineMultipliers).includes(passiveLine["ID"]))){
+                    activateablePassiveLines.push(passiveLine)
+                }
+                else if(passiveLine["Type"]=="Disable Other Line"){
+                    activateablePassiveLines.push(passiveLine)
+                }else if(passiveLine["Type"]=="Building Stat"){
+                    activateablePassiveLines.push(passiveLine)
+                }
             }
+        }
+        for(const passiveLine of activateablePassiveLines){    
+            if(passiveLine["Type"]=="Single activator"){
+                if("Condition" in passiveLine){
+                    let conditionLogic=" "+passiveLine["Condition"]["Logic"]+" ";
+                    for (const causalityKey of Object.keys(passiveLine["Condition"]["Causalities"])){
+                        const causality=passiveLine["Condition"]["Causalities"][causalityKey];
+                        let buttonLogic=false;
+                        if("Button" in causality){
+                            if(causality["Button"]["Name"] in causalityLogic){
+                                buttonLogic=causalityLogic[causality["Button"]["Name"]];
+                            }
+                        }
+                        
+                        let sliderLogic=false;
+                        if("Slider" in causality){
+                            if(causality["Slider"]["Name"] in causalityLogic){
+                                sliderLogic=causalityLogic[causality["Slider"]["Name"]]+causality["Slider"]["Logic"];
+                                sliderLogic=evaluate(sliderLogic);
+                            }
+                        }
+
+                        const overallLogic=(buttonLogic||sliderLogic);
+
+                        conditionLogic=conditionLogic.replaceAll(" "+causalityKey+" ",    " "+overallLogic+" ");
+                    }
+
+                    if(evaluate(conditionLogic)){
+                        updatedPassiveLineMultipliers[passiveLine["ID"]]=1;
+                    }
+                }
+                else{
+                        updatedPassiveLineMultipliers[passiveLine["ID"]]=1;
+                }
+            }
+
+
+
             else if(passiveLine["Type"]=="Disable Other Line"){
-                activateablePassiveLines.push(passiveLine)
-            }else if(passiveLine["Type"]=="Building Stat"){
-                activateablePassiveLines.push(passiveLine)
+                if("Condition" in passiveLine){
+                    let conditionLogic=" "+passiveLine["Condition"]["Logic"]+" ";
+                    for (const causalityKey of Object.keys(passiveLine["Condition"]["Causalities"])){
+                        const causality=passiveLine["Condition"]["Causalities"][causalityKey];
+                        let buttonLogic=false;
+                        if("Button" in causality){
+                            if(causality["Button"]["Name"] in causalityLogic){
+                                buttonLogic=causalityLogic[causality["Button"]["Name"]];
+                            }
+                        }
+                        
+                        let sliderLogic=false;
+                        if("Slider" in causality){
+                            if(causality["Slider"]["Name"] in causalityLogic){
+                                sliderLogic=causalityLogic[causality["Slider"]["Name"]]+causality["Slider"]["Logic"];
+                                sliderLogic=evaluate(sliderLogic);
+                            }
+                        }
+
+                        const overallLogic=(buttonLogic||sliderLogic);
+
+                        conditionLogic=conditionLogic.replaceAll(" "+causalityKey+" ",    " "+overallLogic+" ");
+                    }
+
+                    if(evaluate(conditionLogic)){
+                        delete updatedPassiveLineMultipliers[passiveLine["Disable Other Line"]["Line"]]
+                    }
+            }
+            else{
+                    delete updatedPassiveLineMultipliers[passiveLine["Disable Other Line"]["Line"]]
+            }
+            }
+            else if(passiveLine["Type"]=="Building Stat"){
+                let buffMultiplier=0;
+                if(passiveLine["Building Stat"]["Cause"]["Cause"]=="HP"){
+                    if(passiveLine["Building Stat"]["Cause"]["Type"]=="More HP remaining"){
+                        buffMultiplier=(((passiveLine["Building Stat"]["Max"]-passiveLine["Building Stat"]["Min"])*(this.CausalityLogic[passiveLine["Building Stat"]["Slider"]]/100))+passiveLine["Building Stat"]["Min"])/passiveLine["Building Stat"]["Max"];
+                        console.log(buffMultiplier);
+                    }
+                    else if(passiveLine["Building Stat"]["Cause"]["Type"]=="Less HP remaining"){
+                        buffMultiplier=((-(passiveLine["Building Stat"]["Max"]-passiveLine["Building Stat"]["Min"])*(this.CausalityLogic[passiveLine["Building Stat"]["Slider"]]/100))+passiveLine["Building Stat"]["Max"])/passiveLine["Building Stat"]["Max"];
+                    }
+                }
+                else{
+                    buffMultiplier=causalityLogic[passiveLine["Building Stat"]["Slider"]];
+                }
+                buffMultiplier=Math.min(buffMultiplier,passiveLine["Building Stat"]["Max"]);
+                if(buffMultiplier!=0){
+                    updatedPassiveLineMultipliers[passiveLine["ID"]]=buffMultiplier;
+                }
             }
         }
     }
-    for(const passiveLine of activateablePassiveLines){    
-        if(passiveLine["Type"]=="Single activator"){
-           if("Condition" in passiveLine){
-                let conditionLogic=" "+passiveLine["Condition"]["Logic"]+" ";
-                for (const causalityKey of Object.keys(passiveLine["Condition"]["Causalities"])){
-                    const causality=passiveLine["Condition"]["Causalities"][causalityKey];
-                    let buttonLogic=false;
-                    if("Button" in causality){
-                        if(causality["Button"]["Name"] in causalityLogic){
-                            buttonLogic=causalityLogic[causality["Button"]["Name"]];
-                        }
+    else{
+        for(const passiveLine of Object.values(currentJson["Passive"])){    
+            if(passiveLine["Type"]=="Building Stat"){
+                let buffMultiplier=0;
+                if(passiveLine["Building Stat"]["Cause"]["Cause"]=="HP"){
+                    if(passiveLine["Building Stat"]["Cause"]["Type"]=="More HP remaining"){
+                        buffMultiplier=(((passiveLine["Building Stat"]["Max"]-passiveLine["Building Stat"]["Min"])*(this.CausalityLogic[passiveLine["Building Stat"]["Slider"]]/100))+passiveLine["Building Stat"]["Min"])/passiveLine["Building Stat"]["Max"];
+                        console.log(buffMultiplier);
                     }
-                    
-                    let sliderLogic=false;
-                    if("Slider" in causality){
-                        if(causality["Slider"]["Name"] in causalityLogic){
-                            sliderLogic=causalityLogic[causality["Slider"]["Name"]]+causality["Slider"]["Logic"];
-                            sliderLogic=evaluate(sliderLogic);
-                        }
+                    else if(passiveLine["Building Stat"]["Cause"]["Type"]=="Less HP remaining"){
+                        buffMultiplier=((-(passiveLine["Building Stat"]["Max"]-passiveLine["Building Stat"]["Min"])*(this.CausalityLogic[passiveLine["Building Stat"]["Slider"]]/100))+passiveLine["Building Stat"]["Max"])/passiveLine["Building Stat"]["Max"];
                     }
-
-                    const overallLogic=(buttonLogic||sliderLogic);
-
-                    conditionLogic=conditionLogic.replaceAll(" "+causalityKey+" ",    " "+overallLogic+" ");
                 }
-
-                if(evaluate(conditionLogic)){
-                    updatedPassiveLineMultipliers[passiveLine["ID"]]=1;
+                else{
+                    buffMultiplier=causalityLogic[passiveLine["Building Stat"]["Slider"]];
                 }
-           }
-           else{
-                updatedPassiveLineMultipliers[passiveLine["ID"]]=1;
-           }
-        }
-
-
-
-        else if(passiveLine["Type"]=="Disable Other Line"){
-            if("Condition" in passiveLine){
-                let conditionLogic=" "+passiveLine["Condition"]["Logic"]+" ";
-                for (const causalityKey of Object.keys(passiveLine["Condition"]["Causalities"])){
-                    const causality=passiveLine["Condition"]["Causalities"][causalityKey];
-                    let buttonLogic=false;
-                    if("Button" in causality){
-                        if(causality["Button"]["Name"] in causalityLogic){
-                            buttonLogic=causalityLogic[causality["Button"]["Name"]];
-                        }
-                    }
-                    
-                    let sliderLogic=false;
-                    if("Slider" in causality){
-                        if(causality["Slider"]["Name"] in causalityLogic){
-                            sliderLogic=causalityLogic[causality["Slider"]["Name"]]+causality["Slider"]["Logic"];
-                            sliderLogic=evaluate(sliderLogic);
-                        }
-                    }
-
-                    const overallLogic=(buttonLogic||sliderLogic);
-
-                    conditionLogic=conditionLogic.replaceAll(" "+causalityKey+" ",    " "+overallLogic+" ");
+                buffMultiplier=Math.min(buffMultiplier,passiveLine["Building Stat"]["Max"]);
+                if(buffMultiplier!=0){
+                    updatedPassiveLineMultipliers[passiveLine["ID"]]=buffMultiplier;
                 }
-
-                if(evaluate(conditionLogic)){
-                    delete updatedPassiveLineMultipliers[passiveLine["Disable Other Line"]["Line"]]
-                }
-           }
-           else{
-                delete updatedPassiveLineMultipliers[passiveLine["Disable Other Line"]["Line"]]
-           }
-        }
-        else if(passiveLine["Type"]=="Building Stat"){
-            let buffMultiplier=0;
-            if(passiveLine["Building Stat"]["Cause"]["Cause"]=="HP"){
-                if(passiveLine["Building Stat"]["Cause"]["Type"]=="More HP remaining"){
-                    buffMultiplier=(((passiveLine["Building Stat"]["Max"]-passiveLine["Building Stat"]["Min"])*(this.CausalityLogic[passiveLine["Building Stat"]["Slider"]]/100))+passiveLine["Building Stat"]["Min"])/passiveLine["Building Stat"]["Max"];
-                    console.log(buffMultiplier);
-                }
-                else if(passiveLine["Building Stat"]["Cause"]["Type"]=="Less HP remaining"){
-                    buffMultiplier=((-(passiveLine["Building Stat"]["Max"]-passiveLine["Building Stat"]["Min"])*(this.CausalityLogic[passiveLine["Building Stat"]["Slider"]]/100))+passiveLine["Building Stat"]["Max"])/passiveLine["Building Stat"]["Max"];
-                }
-            }
-            else{
-                buffMultiplier=causalityLogic[passiveLine["Building Stat"]["Slider"]];
-            }
-            buffMultiplier=Math.min(buffMultiplier,passiveLine["Building Stat"]["Max"]);
-            if(buffMultiplier!=0){
-                updatedPassiveLineMultipliers[passiveLine["ID"]]=buffMultiplier;
             }
         }
     }
@@ -3898,6 +4063,7 @@ export function createPassiveContainer(){
         passiveATKSupport.input.type="number";
         passiveATKSupport.input.value="0";
         passiveATKSupport.addEventListener('input', function(){
+            supportBuffs["ATK"]=parseInt(this.input.value);
             updatePassiveStats();
         });
         passiveATKSupport.appendChild(passiveATKSupport.label);
@@ -3915,6 +4081,7 @@ export function createPassiveContainer(){
         passiveDEFSupport.appendChild(passiveDEFSupport.label);
         passiveDEFSupport.appendChild(passiveDEFSupport.input);
         passiveDEFSupport.addEventListener('input', function(){
+            supportBuffs["DEF"]=parseInt(this.input.value);
             updatePassiveStats();
         });
         passiveDEFSupport.label.textContent="DEF Support: ";
