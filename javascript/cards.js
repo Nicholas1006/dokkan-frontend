@@ -228,6 +228,7 @@ class kiCircleClass{
     }
 
     updateFromBuffs(buffs,superBuffs){
+        this.superAttackAssetID=-1;
         this.superBuffs={...superBuffs};
         this.superAttackMultiplier=superBuffs["ATK"]/100 +1;
         if(this.passiveLineKey=="0"){
@@ -237,6 +238,15 @@ class kiCircleClass{
             }
             this.Ki+=buffs["Ki"];
             this.superAttackID=findSuperAttackID(this.Ki);
+        }
+        else if(this.passiveLineKey=="Active"){
+            if(currentJson["Rarity"]=="lr"){
+                this.Ki=24;
+            }
+            else{
+                this.Ki=12;
+            }
+            this.superAttackID="Active";
         }
         else{
             if(this.superPerformed){
@@ -253,7 +263,7 @@ class kiCircleClass{
             }
         }
         this.updateKi(this.Ki);
-        if(this.superAttackID!="-1"){
+        if(this.superAttackID!="-1" && this.superAttackID!="Active"){
             const superAttack=currentJson["Super Attack"][this.superAttackID]
             this.superAttackMultiplier+=superAttack["Multiplier"]/100;
             this.superAttackMultiplier+=skillOrbBuffs["SuperBoost"]*0.05;
@@ -272,6 +282,13 @@ class kiCircleClass{
             }
             this.superAttackPerformed=superAttack;
         }
+
+        else if(this.superAttackID=="Active"){
+            const active = currentJson["Active Skill"];
+            this.activeAttackMultiplier=active["Attack"]["Multiplier"]/100;
+            this.activeAttackMultiplier+=skillOrbBuffs["SuperBoost"]*0.05;
+            this.superPerformed=true;
+        }
         
         
 
@@ -287,7 +304,7 @@ class kiCircleClass{
         
         finalValue*=1+linkBuffs["ATK"]/100;
         if(this.passiveLineKey=="Active"){
-            finalValue*=finalValue*(this.activeAttackMultiplier+activeMultipliers["ATK"]);
+            finalValue*=(this.activeAttackMultiplier+(activeMultipliers["ATK"]-1));
         }
         else{
             finalValue*=activeMultipliers["ATK"];//Active boost
@@ -318,6 +335,14 @@ class kiCircleClass{
             }
             this.Ki+=buffs["Ki"];
             this.superAttackID=findSuperAttackID(this.Ki);
+        }
+        else if(this.passiveLineKey=="Active"){
+            if(currentJson["Rarity"]=="lr"){
+                this.Ki=24;
+            }
+            else{
+                this.Ki=12;
+            }
         }
         else{
             if(this.superPerformed){
@@ -439,7 +464,7 @@ class kiCircleClass{
                 targetValue=2147483648
             }
             this.attackStat = targetValue;
-            const duration = 750; // duration of the animation in milliseconds
+            const duration = 500; // duration of the animation in milliseconds
             const frameRate= 60;
             const frameDuration = 1000 / frameRate; // 60 frames per second
             const totalFrames = Math.round(duration / frameDuration);
@@ -468,7 +493,6 @@ class kiCircleClass{
                     requestAnimationFrame(animate);
                 }
             };
-        
             requestAnimationFrame(animate);
         }
     }
@@ -518,6 +542,8 @@ class kiCircleClass{
             this.superAttackName.style.display="block";
         }
     }
+
+
 
     updateCausalityLogic(CausalityLogic){
         this.CausalityLogic=CausalityLogic
@@ -2178,6 +2204,42 @@ export function updatePassiveStats(){
     //  Start of turn
     progressCausalityLogic(iteratingCausalityLogic,"Start of turn");
     currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Start of turn",iteratingCausalityLogic)
+    
+    if(activeAttackPerformed){
+        const activecontainer=document.getElementById("active-container");
+        progressCausalityLogic(iteratingCausalityLogic,"Right before super attack");
+        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(SOT stat)",iteratingCausalityLogic)
+        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(MOT stat)",iteratingCausalityLogic)
+        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Building Stat",iteratingCausalityLogic)
+        activecontainer.kiCircle.display(true);
+        activecontainer.kiCircle.updateKiFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
+        attacksPerformed+=1;
+        iteratingCausalityLogic=prepareCausalityLogic(iteratingCausalityLogic,activecontainer.kiCircle);
+        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(SOT stat)",iteratingCausalityLogic)
+        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(MOT stat)",iteratingCausalityLogic)
+        activecontainer.kiCircle.updateFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
+        iteratingSuperAttackBuffs=activecontainer.kiCircle.superBuffs;
+        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after attack",iteratingCausalityLogic)
+
+
+        //      Right after attack
+        progressCausalityLogic(iteratingCausalityLogic,"Right after super attack");
+        iteratingPassiveBuffs =(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers));
+        for (const additionalAttack of iteratingPassiveBuffs["Additional Attack"]){
+            if(additionalAttacks[additionalAttack]=="Unactivated"){
+                additionalAttacks[additionalAttack]="Offered";
+                kiCircleDictionary[additionalAttack].display(true);
+            }
+        }
+    }
+    else if(currentJson["Active Skill"]!=null){
+        if("Attack" in currentJson["Active Skill"]){
+            const activecontainer=document.getElementById("active-container");
+            activecontainer.kiCircle.display(false);
+            activecontainer.kiCircle.updateKi(0);
+            activecontainer.kiCircle.updateValue(0);
+        }
+    }
     //  if (an attacking active skill is performed){
         //      Right before attack(SOT stat)
         //      Right before attack(MOT stat)
@@ -2225,6 +2287,7 @@ export function updatePassiveStats(){
             currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(SOT stat)",iteratingCausalityLogic)
             currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(MOT stat)",iteratingCausalityLogic)
             kiCircleDictionary[0].updateFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
+            currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after attack",iteratingCausalityLogic)
             iteratingSuperAttackBuffs=kiCircleDictionary[0].superBuffs;
 
 
@@ -2281,21 +2344,24 @@ export function updatePassiveStats(){
                     currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(SOT stat)",iteratingCausalityLogic)
                     currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(MOT stat)",iteratingCausalityLogic)
                     kiCircleDictionary[nextLineToActivate].updateFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
+                    
                     iteratingSuperAttackBuffs=kiCircleDictionary[nextLineToActivate].superBuffs;
                 }
                 
                 //if super is actually performed
                 if(kiCircleDictionary[nextLineToActivate]["superPerformed"]){
                     progressCausalityLogic(iteratingCausalityLogic,"Right after super attack");
+                    currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after attack",iteratingCausalityLogic)
                 }
                 //if normal is actually performed
                 else if(kiCircleDictionary[nextLineToActivate]["attackPerformed"]){
                     progressCausalityLogic(iteratingCausalityLogic,"Right after normal attack");
+                    currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after attack",iteratingCausalityLogic)
                 }
 
                 //      Right after attack
                 iteratingPassiveBuffs =(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers));
-                for (const additionalAttack in iteratingPassiveBuffs["Additional Attack"]){
+                for (const additionalAttack of iteratingPassiveBuffs["Additional Attack"]){
                     if(additionalAttacks[additionalAttack]=="Unactivated"){
                         additionalAttacks[additionalAttack]="Offered";
                         kiCircleDictionary[additionalAttack].display(true);
@@ -2307,6 +2373,13 @@ export function updatePassiveStats(){
 
             }
             currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after attack",iteratingCausalityLogic)
+            if(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers)["Debuff"].includes("Unable to attack")){
+                for (const additional in additionalAttacks){
+                    additionalAttacks[additional]="Unactivated";
+                    kiCircleDictionary[additional].display(false);
+                    kiCircleDictionary[additional].updateValue(0);
+                }
+            }
     //  }
 
 
@@ -2476,7 +2549,7 @@ export function activePassiveMultipliersToPassiveBuffs(activePassiveMultipliers)
                 }
             }
             if("Status" in activatedLine){
-                buffs["Debuff"]+=(activatedLine["Status"]);
+                buffs["Debuff"]=buffs["Debuff"].concat(activatedLine["Status"]);
             }
             if("DR" in activatedLine){
                 //DR increase
@@ -2820,11 +2893,10 @@ export function activatePassiveLines(previousActiveLineMultipliers,exec_timing_t
                 let buffMultiplier=0;
                 if(passiveLine["Building Stat"]["Cause"]["Cause"]=="HP"){
                     if(passiveLine["Building Stat"]["Cause"]["Type"]=="More HP remaining"){
-                        buffMultiplier=(((passiveLine["Building Stat"]["Max"]-passiveLine["Building Stat"]["Min"])*(this.CausalityLogic[passiveLine["Building Stat"]["Slider"]]/100))+passiveLine["Building Stat"]["Min"])/passiveLine["Building Stat"]["Max"];
-                        console.log(buffMultiplier);
+                        buffMultiplier=(((passiveLine["Building Stat"]["Max"]-passiveLine["Building Stat"]["Min"])*(causalityLogic[passiveLine["Building Stat"]["Slider"]]/100))+passiveLine["Building Stat"]["Min"])/passiveLine["Building Stat"]["Max"];
                     }
                     else if(passiveLine["Building Stat"]["Cause"]["Type"]=="Less HP remaining"){
-                        buffMultiplier=((-(passiveLine["Building Stat"]["Max"]-passiveLine["Building Stat"]["Min"])*(this.CausalityLogic[passiveLine["Building Stat"]["Slider"]]/100))+passiveLine["Building Stat"]["Max"])/passiveLine["Building Stat"]["Max"];
+                        buffMultiplier=((-(passiveLine["Building Stat"]["Max"]-passiveLine["Building Stat"]["Min"])*(causalityLogic[passiveLine["Building Stat"]["Slider"]]/100))+passiveLine["Building Stat"]["Max"])/passiveLine["Building Stat"]["Max"];
                     }
                 }
                 else{
@@ -2843,11 +2915,10 @@ export function activatePassiveLines(previousActiveLineMultipliers,exec_timing_t
                 let buffMultiplier=0;
                 if(passiveLine["Building Stat"]["Cause"]["Cause"]=="HP"){
                     if(passiveLine["Building Stat"]["Cause"]["Type"]=="More HP remaining"){
-                        buffMultiplier=(((passiveLine["Building Stat"]["Max"]-passiveLine["Building Stat"]["Min"])*(this.CausalityLogic[passiveLine["Building Stat"]["Slider"]]/100))+passiveLine["Building Stat"]["Min"])/passiveLine["Building Stat"]["Max"];
-                        console.log(buffMultiplier);
+                        buffMultiplier=(((passiveLine["Building Stat"]["Max"]-passiveLine["Building Stat"]["Min"])*(causalityLogic[passiveLine["Building Stat"]["Slider"]]/100))+passiveLine["Building Stat"]["Min"])/passiveLine["Building Stat"]["Max"];
                     }
                     else if(passiveLine["Building Stat"]["Cause"]["Type"]=="Less HP remaining"){
-                        buffMultiplier=((-(passiveLine["Building Stat"]["Max"]-passiveLine["Building Stat"]["Min"])*(this.CausalityLogic[passiveLine["Building Stat"]["Slider"]]/100))+passiveLine["Building Stat"]["Max"])/passiveLine["Building Stat"]["Max"];
+                        buffMultiplier=((-(passiveLine["Building Stat"]["Max"]-passiveLine["Building Stat"]["Min"])*(causalityLogic[passiveLine["Building Stat"]["Slider"]]/100))+passiveLine["Building Stat"]["Max"])/passiveLine["Building Stat"]["Max"];
                     }
                 }
                 else{
@@ -3891,22 +3962,25 @@ export function updateQueryList(passiveLine){
                         passiveQueryList.push( new passiveQuery("button",Causality.Button["Name"],0,0) );
                     }
                 }
+                //You have a button and a slider
                 else{
                     for (const query of passiveQueryList){
-                        if(query.sliderName==Causality.Slider["Name"]){
-                            query.min=(Math.min(Causality.Slider["Min"],query.min)||query.min);
-                            query.max=(Math.max(Causality.Slider["Max"],query.max)||query.max);
-                            query.changeType("slider");
+                        if(query.buttonName==Causality.Button["Name"] && query.type=="button"){
                             queryUpdated=true;
                         }
                     }
                     if(queryUpdated==false){
-                        if(passiveLine["Chance"]!=undefined){
-                            passiveQueryList.push( new passiveQuery("button",Causality.Button["Name"],Causality.Slider["Name"],Causality.Slider["Min"],Causality.Slider["Max"],"Has the "+passiveLine["Chance"]+"% chance triggered"));
+                        for (const query of passiveQueryList){
+                            if(query.sliderName==Causality.Slider["Name"]){
+                                query.min=(Math.min(Causality.Slider["Min"],query.min)||query.min);
+                                query.max=(Math.max(Causality.Slider["Max"],query.max)||query.max);
+                                query.changeType("slider");
+                                queryUpdated=true;
+                            }
                         }
-                        else{
-                            passiveQueryList.push( new passiveQuery("button",Causality.Button["Name"],Causality.Slider["Name"],Causality.Slider["Min"],Causality.Slider["Max"]) );
-                        }
+                    }
+                    if(queryUpdated==false){
+                        passiveQueryList.push( new passiveQuery("button",Causality.Button["Name"],Causality.Slider["Name"],Causality.Slider["Min"],Causality.Slider["Max"]) );
                     }
                 }
             }
@@ -4639,7 +4713,8 @@ export function createActiveContainer(){
             "Guard",
             "Crit chance",
             "Dodge chance",
-            "Redirect attacks to me"
+            "Redirect attacks to me",
+            "Effective Against All"
         ]
 
         for(const effectKey in currentJson["Active Skill"]["Effects"]){
@@ -4715,7 +4790,7 @@ export function createActiveContainer(){
                         }
                     }
                     else{
-                        console.log("UNACCOUNTED ACTIVE BUFF")
+                        console.log("UNACCOUNTED ACTIVE BUFF",effect["Effect"]["Buff"]);
                     }
                 }
               }
@@ -4724,6 +4799,10 @@ export function createActiveContainer(){
             activecontainer.appendChild(activecontainer.Button);
 
             activecontainer.kiCircle=new kiCircleClass("Active",queriesToLogic(passiveQueryList),100,100);
+            if(!("Attack" in currentJson["Active Skill"])){
+                activecontainer.kiCircle.display(false);
+            }
+
             activecontainer.appendChild(activecontainer.kiCircle.getElement());
 
         }
@@ -4885,6 +4964,9 @@ export function polishPage(){
     const passiveQueryContainer=document.getElementById("passive-query-container");
     if(passiveQueryContainer.firstChild==null){
         passiveQueryContainer.style.display="none";
+    }
+    else{
+        passiveQueryContainer.style.display="block";
     }
 
     const activeContainer=document.getElementById("active-container");
