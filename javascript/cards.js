@@ -2203,23 +2203,23 @@ export function updatePassiveStats(){
     
     //  Start of turn
     progressCausalityLogic(iteratingCausalityLogic,"Start of turn");
-    currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Start of turn",iteratingCausalityLogic)
+    currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Start of turn","Single activator",iteratingCausalityLogic)
     
     if(activeAttackPerformed){
         const activecontainer=document.getElementById("active-container");
         progressCausalityLogic(iteratingCausalityLogic,"Right before super attack");
-        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(SOT stat)",iteratingCausalityLogic)
-        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(MOT stat)",iteratingCausalityLogic)
-        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Building Stat",iteratingCausalityLogic)
+        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(SOT stat)","Single activator",iteratingCausalityLogic)
+        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(MOT stat)","Single activator",iteratingCausalityLogic)
+        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"All","Building Stat",iteratingCausalityLogic)
         activecontainer.kiCircle.display(true);
         activecontainer.kiCircle.updateKiFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
         attacksPerformed+=1;
         iteratingCausalityLogic=prepareCausalityLogic(iteratingCausalityLogic,activecontainer.kiCircle);
-        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(SOT stat)",iteratingCausalityLogic)
-        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(MOT stat)",iteratingCausalityLogic)
+        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(SOT stat)","Single activator",iteratingCausalityLogic)
+        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(MOT stat)","Single activator",iteratingCausalityLogic)
         activecontainer.kiCircle.updateFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
         iteratingSuperAttackBuffs=activecontainer.kiCircle.superBuffs;
-        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after attack",iteratingCausalityLogic)
+        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after attack","Single activator",iteratingCausalityLogic)
 
 
         //      Right after attack
@@ -2247,10 +2247,10 @@ export function updatePassiveStats(){
         //  }
     //  When ki spheres collected
     progressCausalityLogic(iteratingCausalityLogic,"When ki spheres collected");
-    currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"When ki spheres collected",iteratingCausalityLogic)
+    currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"When ki spheres collected","Single activator",iteratingCausalityLogic)
     //  After all ki collected
     progressCausalityLogic(iteratingCausalityLogic,"After all ki collected");
-    currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"After all ki collected",iteratingCausalityLogic)
+    currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"After all ki collected","Single activator",iteratingCausalityLogic)
     
     //  for(each time that an attack is recieved before we attack){
     //      Right before being hit
@@ -2258,14 +2258,14 @@ export function updatePassiveStats(){
             //Options for this
             //"Right before being hit by normal"
             //"Right before being hit by super"
-            currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before being hit",iteratingCausalityLogic)
+            currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before being hit","Single activator",iteratingCausalityLogic)
             //      Right after being hit
             progressCausalityLogic(iteratingCausalityLogic,"Right after being hit by normal");
             //"Right after being hit by normal"
             //"Right after being hit by super"
             //"Right after dodging normal"
             //"Right after dodging super"
-            currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after being hit",iteratingCausalityLogic)
+            currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after being hit","Single activator",iteratingCausalityLogic)
 
             //      *Record stats
             //  }
@@ -2273,21 +2273,22 @@ export function updatePassiveStats(){
             progressCausalityLogic(iteratingCausalityLogic,"Right before super attack");
             //Right before super attack
             //Right before normal attack
-            currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(SOT stat)",iteratingCausalityLogic)
+            currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(SOT stat)","Single activator",iteratingCausalityLogic)
             //      Right before attack(MOT stat)
-            currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(MOT stat)",iteratingCausalityLogic)
+            currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(MOT stat)","Single activator",iteratingCausalityLogic)
             //      *Record stats
+            currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after attack","Single activator",iteratingCausalityLogic,false)
             
-            currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Building Stat",iteratingCausalityLogic)
+            currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Building Stat","All",iteratingCausalityLogic)
             
             kiCircleDictionary[0].display(true);
             kiCircleDictionary[0].updateKiFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
             attacksPerformed+=1;
             iteratingCausalityLogic=prepareCausalityLogic(iteratingCausalityLogic,kiCircleDictionary[0]);
-            currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(SOT stat)",iteratingCausalityLogic)
-            currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(MOT stat)",iteratingCausalityLogic)
+            currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(SOT stat)","Single activator",iteratingCausalityLogic)
+            currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(MOT stat)","Single activator",iteratingCausalityLogic)
             kiCircleDictionary[0].updateFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
-            currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after attack",iteratingCausalityLogic)
+            currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after attack","Single activator",iteratingCausalityLogic)
             iteratingSuperAttackBuffs=kiCircleDictionary[0].superBuffs;
 
 
@@ -2337,12 +2338,12 @@ export function updatePassiveStats(){
                     //currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(SOT stat)",iteratingCausalityLogic)
                     //currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(MOT stat)",iteratingCausalityLogic)
                     
-                    currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Building Stat",iteratingCausalityLogic)
+                    currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"All","Building Stat",iteratingCausalityLogic)
                     kiCircleDictionary[nextLineToActivate].updateKiFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
                     attacksPerformed+=1;
                     iteratingCausalityLogic=prepareCausalityLogic(iteratingCausalityLogic,kiCircleDictionary[0]);
-                    currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(SOT stat)",iteratingCausalityLogic)
-                    currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(MOT stat)",iteratingCausalityLogic)
+                    currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(SOT stat)","Single activator",iteratingCausalityLogic)
+                    currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(MOT stat)","Single activator",iteratingCausalityLogic)
                     kiCircleDictionary[nextLineToActivate].updateFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
                     
                     iteratingSuperAttackBuffs=kiCircleDictionary[nextLineToActivate].superBuffs;
@@ -2351,12 +2352,12 @@ export function updatePassiveStats(){
                 //if super is actually performed
                 if(kiCircleDictionary[nextLineToActivate]["superPerformed"]){
                     progressCausalityLogic(iteratingCausalityLogic,"Right after super attack");
-                    currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after attack",iteratingCausalityLogic)
+                    currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after attack","Single activator",iteratingCausalityLogic)
                 }
                 //if normal is actually performed
                 else if(kiCircleDictionary[nextLineToActivate]["attackPerformed"]){
                     progressCausalityLogic(iteratingCausalityLogic,"Right after normal attack");
-                    currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after attack",iteratingCausalityLogic)
+                    currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after attack","Single activator",iteratingCausalityLogic)
                 }
 
                 //      Right after attack
@@ -2372,7 +2373,7 @@ export function updatePassiveStats(){
 
 
             }
-            currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after attack",iteratingCausalityLogic)
+            currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after attack","Single activator",iteratingCausalityLogic)
             if(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers)["Debuff"].includes("Unable to attack")){
                 for (const additional in additionalAttacks){
                     additionalAttacks[additional]="Unactivated";
@@ -2801,132 +2802,125 @@ export function isDigit(myString){
 }
 
 
-export function activatePassiveLines(previousActiveLineMultipliers,exec_timing_type,causalityLogic){
+
+/**
+ * Activates passive lines based on the given conditions. Returns an object with all the IDs of the passive lines that are active, with the value of the multiplier of that passive line.
+ * @param {Object} previousActiveLineMultipliers - An object with the IDs of the passive lines that were previously active, with the value of the multiplier of that passive line.
+ * @param {String} exec_timing_type - The type of timing for the passive lines to activate.
+ * @param {String} activationType - The type of passive lines to activate. Can be "Single activator", "Disable Other Line", "Building Stat", or "All".
+ * @param {Object} causalityLogic - An object with the IDs of the causalities as keys, and the value of the causality as values.
+ * @returns {Object} - An object with all the IDs of the passive lines that are active, with the value of the multiplier of that passive line.
+ */
+export function activatePassiveLines(previousActiveLineMultipliers,exec_timing_type,activationType,causalityLogic,thisTurnActivationCounted=true){
     let updatedPassiveLineMultipliers={...previousActiveLineMultipliers}
     let activateablePassiveLines=[];
 
-    if(exec_timing_type!="Building Stat"){
-
+    if(activationType=="Single activator" || activationType=="All"){
         for (const passiveLine of Object.values(currentJson["Passive"])){
-            if(passiveLine["Timing"]==exec_timing_type){
+            if(passiveLine["Timing"]==exec_timing_type || exec_timing_type=="All"){
                 if(passiveLine["Type"]=="Single activator" && !(Object.keys(previousActiveLineMultipliers).includes(passiveLine["ID"]))){
-                    activateablePassiveLines.push(passiveLine)
+                    if(thisTurnActivationCounted || passiveLine["Length"]!="1"){
+                        activateablePassiveLines.push(passiveLine)
+                    }
                 }
-                else if(passiveLine["Type"]=="Disable Other Line"){
-                    activateablePassiveLines.push(passiveLine)
-                }else if(passiveLine["Type"]=="Building Stat"){
+            }
+        }
+        for(const passiveLine of activateablePassiveLines){  
+            if("Condition" in passiveLine){
+                let conditionLogic=" "+passiveLine["Condition"]["Logic"]+" ";
+                for (const causalityKey of Object.keys(passiveLine["Condition"]["Causalities"])){
+                    const causality=passiveLine["Condition"]["Causalities"][causalityKey];
+                    let buttonLogic=false;
+                    if("Button" in causality){
+                        if(causality["Button"]["Name"] in causalityLogic){
+                            buttonLogic=causalityLogic[causality["Button"]["Name"]];
+                        }
+                    }
+                    
+                    let sliderLogic=false;
+                    if("Slider" in causality){
+                        if(causality["Slider"]["Name"] in causalityLogic){
+                            sliderLogic=causalityLogic[causality["Slider"]["Name"]]+causality["Slider"]["Logic"];
+                            sliderLogic=evaluate(sliderLogic);
+                        }
+                    }
+
+                    const overallLogic=(buttonLogic||sliderLogic);
+
+                    conditionLogic=conditionLogic.replaceAll(" "+causalityKey+" ",    " "+overallLogic+" ");
+                }
+
+                if(evaluate(conditionLogic)){
+                    updatedPassiveLineMultipliers[passiveLine["ID"]]=1;
+                }
+            }
+            else{
+                    updatedPassiveLineMultipliers[passiveLine["ID"]]=1;
+            }
+        }
+    }
+    if(activationType=="Disable Other Line" || activationType=="All"){
+        for (const passiveLine of Object.values(currentJson["Passive"])){
+            if(passiveLine["Timing"]==exec_timing_type || exec_timing_type=="All"){
+                if(passiveLine["Type"]=="Disable Other Line"){
                     activateablePassiveLines.push(passiveLine)
                 }
             }
         }
         for(const passiveLine of activateablePassiveLines){    
-            if(passiveLine["Type"]=="Single activator"){
-                if("Condition" in passiveLine){
-                    let conditionLogic=" "+passiveLine["Condition"]["Logic"]+" ";
-                    for (const causalityKey of Object.keys(passiveLine["Condition"]["Causalities"])){
-                        const causality=passiveLine["Condition"]["Causalities"][causalityKey];
-                        let buttonLogic=false;
-                        if("Button" in causality){
-                            if(causality["Button"]["Name"] in causalityLogic){
-                                buttonLogic=causalityLogic[causality["Button"]["Name"]];
-                            }
+            if("Condition" in passiveLine){
+                let conditionLogic=" "+passiveLine["Condition"]["Logic"]+" ";
+                for (const causalityKey of Object.keys(passiveLine["Condition"]["Causalities"])){
+                    const causality=passiveLine["Condition"]["Causalities"][causalityKey];
+                    let buttonLogic=false;
+                    if("Button" in causality){
+                        if(causality["Button"]["Name"] in causalityLogic){
+                            buttonLogic=causalityLogic[causality["Button"]["Name"]];
                         }
-                        
-                        let sliderLogic=false;
-                        if("Slider" in causality){
-                            if(causality["Slider"]["Name"] in causalityLogic){
-                                sliderLogic=causalityLogic[causality["Slider"]["Name"]]+causality["Slider"]["Logic"];
-                                sliderLogic=evaluate(sliderLogic);
-                            }
+                    }
+                    
+                    let sliderLogic=false;
+                    if("Slider" in causality){
+                        if(causality["Slider"]["Name"] in causalityLogic){
+                            sliderLogic=causalityLogic[causality["Slider"]["Name"]]+causality["Slider"]["Logic"];
+                            sliderLogic=evaluate(sliderLogic);
                         }
-
-                        const overallLogic=(buttonLogic||sliderLogic);
-
-                        conditionLogic=conditionLogic.replaceAll(" "+causalityKey+" ",    " "+overallLogic+" ");
                     }
 
-                    if(evaluate(conditionLogic)){
-                        updatedPassiveLineMultipliers[passiveLine["ID"]]=1;
-                    }
+                    const overallLogic=(buttonLogic||sliderLogic);
+
+                    conditionLogic=conditionLogic.replaceAll(" "+causalityKey+" ",    " "+overallLogic+" ");
                 }
-                else{
-                        updatedPassiveLineMultipliers[passiveLine["ID"]]=1;
+
+                if(evaluate(conditionLogic)){
+                    delete updatedPassiveLineMultipliers[passiveLine["Disable Other Line"]["Line"]]
                 }
-            }
-
-
-
-            else if(passiveLine["Type"]=="Disable Other Line"){
-                if("Condition" in passiveLine){
-                    let conditionLogic=" "+passiveLine["Condition"]["Logic"]+" ";
-                    for (const causalityKey of Object.keys(passiveLine["Condition"]["Causalities"])){
-                        const causality=passiveLine["Condition"]["Causalities"][causalityKey];
-                        let buttonLogic=false;
-                        if("Button" in causality){
-                            if(causality["Button"]["Name"] in causalityLogic){
-                                buttonLogic=causalityLogic[causality["Button"]["Name"]];
-                            }
-                        }
-                        
-                        let sliderLogic=false;
-                        if("Slider" in causality){
-                            if(causality["Slider"]["Name"] in causalityLogic){
-                                sliderLogic=causalityLogic[causality["Slider"]["Name"]]+causality["Slider"]["Logic"];
-                                sliderLogic=evaluate(sliderLogic);
-                            }
-                        }
-
-                        const overallLogic=(buttonLogic||sliderLogic);
-
-                        conditionLogic=conditionLogic.replaceAll(" "+causalityKey+" ",    " "+overallLogic+" ");
-                    }
-
-                    if(evaluate(conditionLogic)){
-                        delete updatedPassiveLineMultipliers[passiveLine["Disable Other Line"]["Line"]]
-                    }
             }
             else{
                     delete updatedPassiveLineMultipliers[passiveLine["Disable Other Line"]["Line"]]
             }
-            }
-            else if(passiveLine["Type"]=="Building Stat"){
-                let buffMultiplier=0;
-                if(passiveLine["Building Stat"]["Cause"]["Cause"]=="HP"){
-                    if(passiveLine["Building Stat"]["Cause"]["Type"]=="More HP remaining"){
-                        buffMultiplier=(((passiveLine["Building Stat"]["Max"]-passiveLine["Building Stat"]["Min"])*(causalityLogic[passiveLine["Building Stat"]["Slider"]]/100))+passiveLine["Building Stat"]["Min"])/passiveLine["Building Stat"]["Max"];
-                    }
-                    else if(passiveLine["Building Stat"]["Cause"]["Type"]=="Less HP remaining"){
-                        buffMultiplier=((-(passiveLine["Building Stat"]["Max"]-passiveLine["Building Stat"]["Min"])*(causalityLogic[passiveLine["Building Stat"]["Slider"]]/100))+passiveLine["Building Stat"]["Max"])/passiveLine["Building Stat"]["Max"];
-                    }
-                }
-                else{
-                    buffMultiplier=causalityLogic[passiveLine["Building Stat"]["Slider"]];
-                }
-                buffMultiplier=Math.min(buffMultiplier,passiveLine["Building Stat"]["Max"]);
-                if(buffMultiplier!=0){
-                    updatedPassiveLineMultipliers[passiveLine["ID"]]=buffMultiplier;
-                }
-            }
         }
     }
-    else{
+    if(activationType=="Building Stat" || activationType=="All"){
         for(const passiveLine of Object.values(currentJson["Passive"])){    
-            if(passiveLine["Type"]=="Building Stat"){
-                let buffMultiplier=0;
-                if(passiveLine["Building Stat"]["Cause"]["Cause"]=="HP"){
-                    if(passiveLine["Building Stat"]["Cause"]["Type"]=="More HP remaining"){
-                        buffMultiplier=(((passiveLine["Building Stat"]["Max"]-passiveLine["Building Stat"]["Min"])*(causalityLogic[passiveLine["Building Stat"]["Slider"]]/100))+passiveLine["Building Stat"]["Min"])/passiveLine["Building Stat"]["Max"];
+            if(passiveLine["Timing"]==exec_timing_type || exec_timing_type=="All"){
+                if(passiveLine["Type"]=="Building Stat"){
+                    let buffMultiplier=0;
+                    if(passiveLine["Building Stat"]["Cause"]["Cause"]=="HP"){
+                        if(passiveLine["Building Stat"]["Cause"]["Type"]=="More HP remaining"){
+                            buffMultiplier=(((passiveLine["Building Stat"]["Max"]-passiveLine["Building Stat"]["Min"])*(causalityLogic[passiveLine["Building Stat"]["Slider"]]/100))+passiveLine["Building Stat"]["Min"])/passiveLine["Building Stat"]["Max"];
+                        }
+                        else if(passiveLine["Building Stat"]["Cause"]["Type"]=="Less HP remaining"){
+                            buffMultiplier=((-(passiveLine["Building Stat"]["Max"]-passiveLine["Building Stat"]["Min"])*(causalityLogic[passiveLine["Building Stat"]["Slider"]]/100))+passiveLine["Building Stat"]["Max"])/passiveLine["Building Stat"]["Max"];
+                        }
                     }
-                    else if(passiveLine["Building Stat"]["Cause"]["Type"]=="Less HP remaining"){
-                        buffMultiplier=((-(passiveLine["Building Stat"]["Max"]-passiveLine["Building Stat"]["Min"])*(causalityLogic[passiveLine["Building Stat"]["Slider"]]/100))+passiveLine["Building Stat"]["Max"])/passiveLine["Building Stat"]["Max"];
+                    else{
+                        buffMultiplier=causalityLogic[passiveLine["Building Stat"]["Slider"]];
                     }
-                }
-                else{
-                    buffMultiplier=causalityLogic[passiveLine["Building Stat"]["Slider"]];
-                }
-                buffMultiplier=Math.min(buffMultiplier,passiveLine["Building Stat"]["Max"]);
-                if(buffMultiplier!=0){
-                    updatedPassiveLineMultipliers[passiveLine["ID"]]=buffMultiplier;
+                    buffMultiplier=Math.min(buffMultiplier,passiveLine["Building Stat"]["Max"]);
+                    if(buffMultiplier!=0){
+                        updatedPassiveLineMultipliers[passiveLine["ID"]]=buffMultiplier;
+                    }
                 }
             }
         }
