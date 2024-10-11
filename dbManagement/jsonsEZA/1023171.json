@@ -1,0 +1,724 @@
+{
+    "ID": "1023171",
+    "Typing": "AGL",
+    "Class": "Extreme",
+    "Name": "Hit",
+    "Rarity": "ur",
+    "Min Level": 120,
+    "Max Level": 140,
+    "Categories": [
+        "Universe Survival Saga",
+        "Universe 6",
+        "Target: Goku",
+        "Rapid Growth",
+        "Space-Traveling Warriors",
+        "Legendary Existence",
+        "Accelerated Battle",
+        "Tournament Participants",
+        "Super Bosses"
+    ],
+    "Can EZA": true,
+    "Can SEZA": false,
+    "Links": [
+        "Supreme Warrior",
+        "Experienced Fighters",
+        "Cold Judgment",
+        "Infighter",
+        "Shocking Speed",
+        "Warriors of Universe 6 ",
+        "Shattering the Limit"
+    ],
+    "Resource ID": "1023170",
+    "Passive": {
+        "4276": {
+            "ID": "4276",
+            "Timing": "Start of turn",
+            "Ki": 2,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "Ki +2 "
+        },
+        "1004276": {
+            "ID": "1004276",
+            "Timing": "Start of turn",
+            "ATK": 160,
+            "DEF": 160,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "ATK and DEF +160% "
+        },
+        "2004276": {
+            "ID": "2004276",
+            "Timing": "Right before attack(MOT stat)",
+            "ATK": 120,
+            "DEF": 120,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2709",
+                "Causalities": {
+                    "2709": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there on this turn?",
+                            "Logic": ">=12",
+                            "Min": 0,
+                            "Max": 12
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "ATK and DEF +120% when attacking"
+        },
+        "3004276": {
+            "ID": "3004276",
+            "Timing": "Right after attack",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 80,
+                "Cause": {
+                    "Cause": "Super being performed"
+                },
+                "Slider": "How many super attacks has this character performed?"
+            },
+            "ATK": 20,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Type": "Building Stat",
+            "Brief effect description": "ATK +20% (up to 80%) based on 'How many super attacks has this character performed' after attacking"
+        },
+        "4004276": {
+            "ID": "4004276",
+            "Timing": "Right after attack",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 80,
+                "Cause": {
+                    "Cause": "Super being performed"
+                },
+                "Slider": "How many super attacks has this character performed?"
+            },
+            "DEF": 20,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Type": "Building Stat",
+            "Brief effect description": "DEF +20% (up to 80%) based on 'How many super attacks has this character performed' after attacking"
+        },
+        "5004276": {
+            "ID": "5004276",
+            "Timing": "Right before attack(SOT stat)",
+            "ATK": 100,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2326",
+                "Causalities": {
+                    "2326": {
+                        "Button": {
+                            "Name": "Is this the 1st attacker in the turn on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "What position is this character attacking in on this turn?",
+                            "Logic": "==1",
+                            "Min": 1,
+                            "Max": 3
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "ATK +100% when attacking"
+        },
+        "6004276": {
+            "ID": "6004276",
+            "Additional Attack": {
+                "Activated": true,
+                "Chance of super": "50",
+                "Chance of another additional": "0"
+            },
+            "Timing": "Right before attack(SOT stat)",
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2326",
+                "Causalities": {
+                    "2326": {
+                        "Button": {
+                            "Name": "Is this the 1st attacker in the turn on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "What position is this character attacking in on this turn?",
+                            "Logic": "==1",
+                            "Min": 1,
+                            "Max": 3
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "Performs an additional attack with a 50% chance of becoming a super attack when attacking"
+        },
+        "7004276": {
+            "ID": "7004276",
+            "Timing": "Right after attack",
+            "Status": [
+                "Stun"
+            ],
+            "Target": {
+                "Target": "Enemy"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Chance": "70",
+            "Length": "1",
+            "Condition": {
+                "Logic": "2326",
+                "Causalities": {
+                    "2326": {
+                        "Button": {
+                            "Name": "Is this the 1st attacker in the turn on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "What position is this character attacking in on this turn?",
+                            "Logic": "==1",
+                            "Min": 1,
+                            "Max": 3
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": " allies Stun after attacking"
+        },
+        "8004276": {
+            "ID": "8004276",
+            "Timing": "Right before attack(SOT stat)",
+            "Ki": 2,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2541 || 2542",
+                "Causalities": {
+                    "2541": {
+                        "Button": {
+                            "Name": "Is this the 2nd attacker in the turn on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "What position is this character attacking in on this turn?",
+                            "Logic": "==2",
+                            "Min": 1,
+                            "Max": 3
+                        }
+                    },
+                    "2542": {
+                        "Button": {
+                            "Name": "Is this the 3rd attacker in the turn on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "What position is this character attacking in on this turn?",
+                            "Logic": "==3",
+                            "Min": 1,
+                            "Max": 3
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "Ki +2 when attacking"
+        },
+        "9004276": {
+            "ID": "9004276",
+            "Dodge Chance": 50,
+            "Timing": "Right before attack(SOT stat)",
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2541 || 2542",
+                "Causalities": {
+                    "2541": {
+                        "Button": {
+                            "Name": "Is this the 2nd attacker in the turn on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "What position is this character attacking in on this turn?",
+                            "Logic": "==2",
+                            "Min": 1,
+                            "Max": 3
+                        }
+                    },
+                    "2542": {
+                        "Button": {
+                            "Name": "Is this the 3rd attacker in the turn on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "What position is this character attacking in on this turn?",
+                            "Logic": "==3",
+                            "Min": 1,
+                            "Max": 3
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "Chance of evading enemy attacks +50% when attacking"
+        },
+        "10004276": {
+            "ID": "10004276",
+            "Timing": "Right after attack",
+            "ATK": 30,
+            "Target": {
+                "Target": "Enemy"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "-"
+            },
+            "Length": "3",
+            "Condition": {
+                "Logic": "2541 || 2542",
+                "Causalities": {
+                    "2541": {
+                        "Button": {
+                            "Name": "Is this the 2nd attacker in the turn within the last 3 turns?"
+                        },
+                        "Slider": {
+                            "Name": "What position is this character attacking in within the last 3 turns?",
+                            "Logic": "==2",
+                            "Min": 1,
+                            "Max": 3
+                        }
+                    },
+                    "2542": {
+                        "Button": {
+                            "Name": "Is this the 3rd attacker in the turn within the last 3 turns?"
+                        },
+                        "Slider": {
+                            "Name": "What position is this character attacking in within the last 3 turns?",
+                            "Logic": "==3",
+                            "Min": 1,
+                            "Max": 3
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": " allies ATK -30% after attacking"
+        },
+        "11004276": {
+            "ID": "11004276",
+            "Timing": "Right before attack(MOT stat)",
+            "Crit Chance": 70,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "3294",
+                "Causalities": {
+                    "3294": {
+                        "Button": {
+                            "Name": "Is the target enemy in \"ATK down\" status or stunned on this turn?"
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "Chance of performing a critical hit +70% when attacking"
+        },
+        "12004276": {
+            "ID": "12004276",
+            "Additional Attack": {
+                "Activated": true,
+                "Chance of super": "100",
+                "Chance of another additional": "0"
+            },
+            "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2189",
+                "Causalities": {
+                    "2189": {
+                        "Button": {
+                            "Name": "Is there an enemy whose name includes Goku on this turn?"
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack "
+        }
+    },
+    "Max Attacks": 4,
+    "Max Super Attacks": 4,
+    "Stats at levels": {
+        "120": {
+            "HP": 8129,
+            "ATK": 8469,
+            "DEF": 4735
+        },
+        "121": {
+            "HP": 8266,
+            "ATK": 8611,
+            "DEF": 4814
+        },
+        "122": {
+            "HP": 8403,
+            "ATK": 8754,
+            "DEF": 4894
+        },
+        "123": {
+            "HP": 8540,
+            "ATK": 8897,
+            "DEF": 4974
+        },
+        "124": {
+            "HP": 8677,
+            "ATK": 9040,
+            "DEF": 5054
+        },
+        "125": {
+            "HP": 8814,
+            "ATK": 9183,
+            "DEF": 5134
+        },
+        "126": {
+            "HP": 8951,
+            "ATK": 9326,
+            "DEF": 5214
+        },
+        "127": {
+            "HP": 9088,
+            "ATK": 9469,
+            "DEF": 5294
+        },
+        "128": {
+            "HP": 9226,
+            "ATK": 9611,
+            "DEF": 5374
+        },
+        "129": {
+            "HP": 9363,
+            "ATK": 9754,
+            "DEF": 5454
+        },
+        "130": {
+            "HP": 9500,
+            "ATK": 9897,
+            "DEF": 5533
+        },
+        "131": {
+            "HP": 9637,
+            "ATK": 10040,
+            "DEF": 5613
+        },
+        "132": {
+            "HP": 9774,
+            "ATK": 10183,
+            "DEF": 5693
+        },
+        "133": {
+            "HP": 9911,
+            "ATK": 10326,
+            "DEF": 5773
+        },
+        "134": {
+            "HP": 10048,
+            "ATK": 10469,
+            "DEF": 5853
+        },
+        "135": {
+            "HP": 10185,
+            "ATK": 10611,
+            "DEF": 5933
+        },
+        "136": {
+            "HP": 10323,
+            "ATK": 10754,
+            "DEF": 6013
+        },
+        "137": {
+            "HP": 10460,
+            "ATK": 10897,
+            "DEF": 6093
+        },
+        "138": {
+            "HP": 10597,
+            "ATK": 11040,
+            "DEF": 6173
+        },
+        "139": {
+            "HP": 10734,
+            "ATK": 11183,
+            "DEF": 6252
+        },
+        "140": {
+            "HP": 10871,
+            "ATK": 11326,
+            "DEF": 6332
+        }
+    },
+    "Leader Skill": {
+        "Name": "Tremendous Potential",
+        "102317200": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "AGL"
+                ]
+            },
+            "HP": 100,
+            "ATK": 100,
+            "DEF": 100
+        },
+        "102317201": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 1200,
+            "ATK": 1200,
+            "DEF": 1200,
+            "Additional": 5,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 6,
+            "Type DEF": 5,
+            "Super Attack boost": 6,
+            "Recovery boost": 6
+        },
+        "1": {
+            "HP": 180,
+            "ATK": 180,
+            "DEF": 180,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 1,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "2": {
+            "HP": 186,
+            "ATK": 420,
+            "DEF": 186,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 2,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "3": {
+            "HP": 414,
+            "ATK": 180,
+            "DEF": 414,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 0,
+            "Type DEF": 2,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "4": {
+            "HP": 780,
+            "ATK": 1020,
+            "DEF": 1260,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 1,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        }
+    },
+    "Super Attack": {
+        "6021": {
+            "superID": "6021",
+            "Type": "Unarmed",
+            "special_name_no": "0",
+            "superName": "Time Skip (Extreme)",
+            "superDescription": "Raises ATK, raises DEF for 1 turn and \ncauses supreme damage with \na high chance of stunning the enemy",
+            "superMinKi": "12",
+            "superPriority": "0.0",
+            "superStyle": "Normal",
+            "superMinLVL": "14",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superBuffs": {
+                "6021": {
+                    "Type": "NormalEfficacySpecial",
+                    "Chance": "100",
+                    "Duration": "99",
+                    "Buff": {
+                        "Type": "Percentage",
+                        "+ or -": "+"
+                    },
+                    "Target": "Self",
+                    "ATK": "30"
+                },
+                "1006021": {
+                    "Type": "NormalEfficacySpecial",
+                    "Chance": "100",
+                    "Duration": "1",
+                    "Buff": {
+                        "Type": "Percentage",
+                        "+ or -": "+"
+                    },
+                    "Target": "Self",
+                    "DEF": "30"
+                },
+                "2006021": {
+                    "Type": "ExtraEfficacySpecial",
+                    "Chance": "50",
+                    "Duration": "2",
+                    "Buff": {
+                        "Type": "Raw stats",
+                        "+ or -": "+"
+                    },
+                    "Target": "Enemy",
+                    "Status": "Stun"
+                }
+            },
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "0"
+            },
+            "Multiplier": 500
+        }
+    },
+    "Active Skill": null,
+    "Standby Skill": null,
+    "Finish Skill": null,
+    "Transforms from": [],
+    "Transformations": [],
+    "Max Appearances In Form": 50,
+    "Dokkan awakenings": [],
+    "Dokkan Reverse awakenings": [
+        "1014250",
+        "1014251"
+    ],
+    "Ki Multiplier": {
+        "0": 70.0,
+        "1": 75.83333333333333,
+        "2": 81.66666666666667,
+        "3": 87.5,
+        "4": 93.33333333333333,
+        "5": 99.16666666666667,
+        "6": 105.0,
+        "7": 110.83333333333334,
+        "8": 116.66666666666666,
+        "9": 122.5,
+        "10": 128.33333333333334,
+        "11": 134.16666666666666,
+        "12": 140.0
+    },
+    "Ki Circle Segments": {
+        "1": "weaker",
+        "2": "weaker",
+        "3": "weaker",
+        "4": "weaker",
+        "5": "weaker",
+        "6": "equal",
+        "7": "equal",
+        "8": "equal",
+        "9": "equal",
+        "10": "equal",
+        "11": "equal",
+        "12": "super"
+    },
+    "SuperMinKi": 12,
+    "AdditionalSuperID": "6021"
+}
