@@ -2279,7 +2279,7 @@ export function updatePassiveStats(){
             //      *Record stats
             currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after attack","Single activator",iteratingCausalityLogic,false)
             
-            currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Building Stat","All",iteratingCausalityLogic)
+            currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"All","Building Stat",iteratingCausalityLogic)
             
             kiCircleDictionary[0].display(true);
             kiCircleDictionary[0].updateKiFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
@@ -2815,7 +2815,7 @@ export function activatePassiveLines(previousActiveLineMultipliers,exec_timing_t
     let updatedPassiveLineMultipliers={...previousActiveLineMultipliers}
     let activateablePassiveLines=[];
 
-    if(activationType=="Single activator" || activationType=="All"){
+    if(activationType=="Single activator"){
         for (const passiveLine of Object.values(currentJson["Passive"])){
             if(passiveLine["Timing"]==exec_timing_type || exec_timing_type=="All"){
                 if(passiveLine["Type"]=="Single activator" && !(Object.keys(previousActiveLineMultipliers).includes(passiveLine["ID"]))){
@@ -2859,7 +2859,7 @@ export function activatePassiveLines(previousActiveLineMultipliers,exec_timing_t
             }
         }
     }
-    if(activationType=="Disable Other Line" || activationType=="All"){
+    if(activationType=="Disable Other Line"){
         for (const passiveLine of Object.values(currentJson["Passive"])){
             if(passiveLine["Timing"]==exec_timing_type || exec_timing_type=="All"){
                 if(passiveLine["Type"]=="Disable Other Line"){
@@ -2901,7 +2901,7 @@ export function activatePassiveLines(previousActiveLineMultipliers,exec_timing_t
             }
         }
     }
-    if(activationType=="Building Stat" || activationType=="All"){
+    if(activationType=="Building Stat"){
         for(const passiveLine of Object.values(currentJson["Passive"])){    
             if(passiveLine["Timing"]==exec_timing_type || exec_timing_type=="All"){
                 if(passiveLine["Type"]=="Building Stat"){
@@ -2913,6 +2913,20 @@ export function activatePassiveLines(previousActiveLineMultipliers,exec_timing_t
                         else if(passiveLine["Building Stat"]["Cause"]["Type"]=="Less HP remaining"){
                             buffMultiplier=((-(passiveLine["Building Stat"]["Max"]-passiveLine["Building Stat"]["Min"])*(causalityLogic[passiveLine["Building Stat"]["Slider"]]/100))+passiveLine["Building Stat"]["Max"])/passiveLine["Building Stat"]["Max"];
                         }
+                    }
+                    else if(passiveLine["Building Stat"]["Cause"]["Cause"]=="Ki sphere obtained"){
+                        let kiSphereCount=0;
+                        for (const type of passiveLine["Building Stat"]["Cause"]["Type"]){
+                            if(type=="Rainbow"){
+                                kiSphereCount+=rainbowKiSphereAmount;
+                            }
+                            else{
+                                if(currentKiSphere==type){
+                                    kiSphereCount+=currentKiSphereAmount;
+                                }
+                            }
+                        }
+                        buffMultiplier=kiSphereCount;
                     }
                     else{
                         buffMultiplier=causalityLogic[passiveLine["Building Stat"]["Slider"]];

@@ -37,19 +37,6 @@
       }
     },
     {
-      "label": "Use new database",
-      "type": "shell",
-      "command": "cmd",
-      "args": [
-        "/c",
-        "python 'Use_after_DDL.py'"
-      ],
-      "options": {
-        "cwd": "${workspaceFolder}/../backend"
-      },
-      "problemMatcher": []
-    },
-    {
       "label": "Open Json",
       "type": "shell",
       "command": "code",
@@ -99,7 +86,123 @@
         "showReuseMessage": true,
         "clear": false
       }
-    }
+    },
+
+    {
+      "label": "Use new database",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "Expand database",
+        "Convert files and create Jsons"
+      ],
+      "problemMatcher": []
+    },
+
+    {
+      "label": "Expand database",
+      "type": "shell",
+      "command": "cmd",
+      "args": [
+        "/c",
+        "python",
+        "Database expander.py"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "close": true,
+        "reveal": "always"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}/../backend",
+        "statusbar": {
+          "hide": true
+        }
+      }
+    },
+
+    {
+      "label": "Convert files",
+      "type": "shell",
+      "command": "cmd",
+      "args": [
+        "/c",
+        "python",
+       "Convert files.py"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "close":true,
+        "reveal": "always"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}/../backend",
+        "statusbar": {
+          "hide" : true
+        }
+      }
+    },
+
+    {
+      "label": "Create jsons",
+      "type": "shell",
+      "command": "cmd",
+      "args": [
+        "/c",
+        "python",
+        "dokkan Json creator.py"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "close":true,
+        "reveal": "always"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}/../backend",
+        "statusbar": {
+          "hide" : true
+        }
+      }
+    },
+
+    {
+      "label": "Create unique Jsons",
+      "type": "shell",
+      "command": "cmd",
+      "args": [
+        "/c",
+        "python",
+        "uniqueJsonCreator.py"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "close":true,
+        "reveal": "always"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}/../backend",
+        "statusbar": {
+          "hide" : true
+        }
+      }
+    },
+
+    {
+      "label": "Convert files and create Jsons",
+      "dependsOrder": "parallel",
+      "dependsOn": [
+        "Convert files",
+        "Create jsons",
+        "Create unique Jsons"
+      ],
+      "problemMatcher": [],
+      "options": {
+        "cwd": "${workspaceFolder}/../backend",
+        "statusbar": {
+          "hide" : true
+        }
+      }
+    },
+
   ],
   "inputs": [
     {
