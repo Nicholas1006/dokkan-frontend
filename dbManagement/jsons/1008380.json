@@ -32,6 +32,37 @@
         "613": {
             "ID": "613",
             "Timing": "Right before attack(MOT stat)",
+            "ATK": 20,
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "45",
+                "Causalities": {
+                    "45": {
+                        "Button": {
+                            "Name": "Is Ki at least 5 on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there on this turn?",
+                            "Logic": ">=5",
+                            "Min": 0,
+                            "Max": 12
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": " allies ATK +20% when attacking"
+        },
+        "10000613": {
+            "ID": "10000613",
+            "Timing": "Right before attack(MOT stat)",
             "ATK": 30,
             "Target": {
                 "Target": "Self"
@@ -59,38 +90,6 @@
             },
             "Type": "Single activator",
             "Brief effect description": "ATK +30% when attacking"
-        },
-        "1000613": {
-            "ID": "1000613",
-            "Timing": "Right before attack(MOT stat)",
-            "ATK": 20,
-            "DEF": 20,
-            "Target": {
-                "Target": "Allies"
-            },
-            "Buff": {
-                "Type": "Percentage",
-                "+ or -": "+"
-            },
-            "Length": "1",
-            "Condition": {
-                "Logic": "52",
-                "Causalities": {
-                    "52": {
-                        "Button": {
-                            "Name": "Is Ki at least 7 on this turn?"
-                        },
-                        "Slider": {
-                            "Name": "How much ki is there on this turn?",
-                            "Logic": ">=7",
-                            "Min": 0,
-                            "Max": 12
-                        }
-                    }
-                }
-            },
-            "Type": "Single activator",
-            "Brief effect description": " allies ATK and DEF +20% when attacking"
         }
     },
     "Max Attacks": 1,
@@ -585,7 +584,7 @@
             "superName": "Kamehameha",
             "superDescription": "Causes extreme damage to enemy",
             "superMinKi": "12",
-            "superPriority": "0.0",
+            "superPriority": "0",
             "superStyle": "Normal",
             "superMinLVL": "0",
             "superCausality": "",
@@ -593,7 +592,12 @@
             "superBuffs": {},
             "superIsInactive": "0",
             "SpecialBonus": {
-                "ID": "0"
+                "ID": "1",
+                "Type": "SA multiplier increase",
+                "Description": "Super Attacks will become more powerful!",
+                "Chance": "100",
+                "Duration": "1",
+                "Amount": "20"
             },
             "Multiplier": 355
         }

@@ -1,6 +1,6 @@
 {
     "ID": "1010640",
-    "Typing": "STR",
+    "Typing": "INT",
     "Class": null,
     "Name": "Goku (Angel)",
     "Rarity": "sr",
@@ -29,8 +29,23 @@
     ],
     "Resource ID": "1010640",
     "Passive": {
-        "1197": {
-            "ID": "1197",
+        "941": {
+            "ID": "941",
+            "Timing": "Start of turn",
+            "Ki": 3,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "Ki +3 "
+        },
+        "1000941": {
+            "ID": "1000941",
             "Timing": "Start of turn",
             "ATK": 60,
             "DEF": 30,
@@ -45,21 +60,6 @@
             "Length": "1",
             "Type": "Single activator",
             "Brief effect description": "ATK +60% and DEF +30% "
-        },
-        "1001197": {
-            "ID": "1001197",
-            "Timing": "Start of turn",
-            "Ki": 3,
-            "Target": {
-                "Target": "Self"
-            },
-            "Buff": {
-                "Type": "Raw stats",
-                "+ or -": "+"
-            },
-            "Length": "1",
-            "Type": "Single activator",
-            "Brief effect description": "Ki +3 "
         }
     },
     "Max Attacks": 1,
@@ -454,7 +454,7 @@
             "superName": "Kamehameha",
             "superDescription": "Causes huge damage to enemy \nand raises ATK for 3 turns",
             "superMinKi": "12",
-            "superPriority": "0.0",
+            "superPriority": "0",
             "superStyle": "Normal",
             "superMinLVL": "0",
             "superCausality": "",
@@ -469,7 +469,7 @@
                 "Duration": "0",
                 "Amount": "3"
             },
-            "Multiplier": 355
+            "Multiplier": 240
         }
     },
     "Active Skill": null,
