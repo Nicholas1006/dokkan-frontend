@@ -651,5 +651,79 @@
                 }
             }
         }
+    },
+    "9": {
+        "ID": "9",
+        "Name": "Earth Shrouded in Clouds",
+        "Description": "\"Demonic Power\" Category \nenemies' and allies' ATK & DEF +15%; \nincreases damage received by \nSuper Class enemies and allies by 10%, \nplus an additional 15% for characters who \nalso belong to the \"Earth-Bred Fighters\" Category",
+        "Efficiacies": {
+            "9": {
+                "ID": "9",
+                "Timing": "On domain Being out",
+                "Effect": {
+                    "Type": "Closes domain"
+                },
+                "Turn activation": "3"
+            },
+            "1000009": {
+                "ID": "1000009",
+                "Timing": "On domain Being out",
+                "Effect": {
+                    "Type": "ATK & DEF",
+                    "ATK": 15,
+                    "DEF": 15
+                },
+                "Turn activation": "1",
+                "superCondition": {
+                    "Logic": "3342",
+                    "Causalities": {
+                        "3342": {
+                            "Class": "any",
+                            "Category": "Demonic Power"
+                        }
+                    }
+                }
+            },
+            "2000009": {
+                "ID": "2000009",
+                "Timing": "On domain Being out",
+                "Effect": {
+                    "Type": "Increases damage recieved",
+                    "Amount": 10
+                },
+                "Turn activation": "1",
+                "superCondition": {
+                    "Logic": "2563",
+                    "Causalities": {
+                        "2563": {
+                            "Class": "super",
+                            "Category": "any"
+                        }
+                    }
+                }
+            },
+            "3000009": {
+                "ID": "3000009",
+                "Timing": "On domain Being out",
+                "Effect": {
+                    "Type": "Increases damage recieved",
+                    "Amount": 15
+                },
+                "Turn activation": "1",
+                "superCondition": {
+                    "Logic": "2563 && 3343",
+                    "Causalities": {
+                        "2563": {
+                            "Class": "super",
+                            "Category": "any"
+                        },
+                        "3343": {
+                            "Class": "any",
+                            "Category": "Earth-Bred Fighters"
+                        }
+                    }
+                }
+            }
+        }
     }
 }
