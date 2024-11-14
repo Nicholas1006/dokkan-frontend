@@ -4036,6 +4036,7 @@ export function updateQueryList(passiveLine){
 }
 
 export function createDomainContainer(){
+    //TODO: DOMAIN IMAGE IS STORED IN C:\Users\horva\OneDrive - Trinity College Dublin\Documents\dokkan\frontend\dbManagement\DokkanFiles\global\en\outgame\extension\dokkan_field\field_thumb_image_3007 and similar
     let domainContainer=document.getElementById('domain-container');
     const domainDropDown=document.createElement('div');
     domainDropDown.className="dropdown";
