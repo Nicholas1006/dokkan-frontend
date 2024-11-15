@@ -53,3 +53,5 @@ if(currentUrl.includes("dokkan-frontend")){
   baseDomain=baseDomain+"/dokkan-frontend";
 }
 createCharacterSelection();
+
+//WIP: Use the json to create filters and sorting for the units
