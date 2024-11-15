@@ -14,19 +14,19 @@ class kiCircleClass{
         let circleBase=document.createElement("div");
         circleBase.id="circle-base";
         if(json.Typing=="AGL"){
-            circleBase.style.backgroundImage = "url('dbManagement/assets/misc/chara_icon/ing_type_gauge_base_00.png')";
+            circleBase.style.backgroundImage = "url('dbManagement\DokkanFiles\global\en\layout\en\image\ingame\battle\chara_icon\ing_type_gauge_base_00.png')";
         }
         else if(json.Typing=="TEQ"){
-            circleBase.style.backgroundImage = "url('dbManagement/assets/misc/chara_icon/ing_type_gauge_base_01.png')";
+            circleBase.style.backgroundImage = "url('dbManagement\DokkanFiles\global\en\layout\en\image\ingame\battle\chara_icon\ing_type_gauge_base_01.png')";
         }
         else if(json.Typing=="INT"){
-            circleBase.style.backgroundImage = "url('dbManagement/assets/misc/chara_icon/ing_type_gauge_base_02.png')";
+            circleBase.style.backgroundImage = "url('dbManagement\DokkanFiles\global\en\layout\en\image\ingame\battle\chara_icon\ing_type_gauge_base_02.png')";
         }
         else if(json.Typing=="STR"){
-            circleBase.style.backgroundImage = "url('dbManagement/assets/misc/chara_icon/ing_type_gauge_base_03.png')";
+            circleBase.style.backgroundImage = "url('dbManagement\DokkanFiles\global\en\layout\en\image\ingame\battle\chara_icon\ing_type_gauge_base_03.png')";
         }
         else if(json.Typing=="PHY"){
-            circleBase.style.backgroundImage = "url('dbManagement/assets/misc/chara_icon/ing_type_gauge_base_04.png')";
+            circleBase.style.backgroundImage = "url('dbManagement\DokkanFiles\global\en\layout\en\image\ingame\battle\chara_icon\ing_type_gauge_base_04.png')";
         }
         circleBase.style.width="220px";
         circleBase.style.height="220px";
@@ -55,7 +55,7 @@ class kiCircleClass{
         unitImage.style.width = "220px";
         unitImage.style.height = "220px";
         let assetID=json["ID"].slice(0, -1)+ "0";
-        unitImage.style.backgroundImage = "url('dbManagement/assets/circle/" + assetID + ".png')";
+        unitImage.style.backgroundImage = "url('dbManagement/DokkanFiles/global/en/character/card/" +assetID+"/card_"+assetID+"_circle.png')";
         unitImage.style.backgroundSize = "100% 100%";
         unitImage.style.backgroundPosition = "center";
         unitImage.style.backgroundRepeat = "no-repeat";
@@ -123,7 +123,7 @@ class kiCircleClass{
 
         this.superAttackName=document.createElement("div");
         this.superAttackName.className="super-attack-name";
-        this.superAttackName.style.backgroundImage = "url('dbManagement/assets/sp_name_00/"+this.imageUrl+".png')";
+        this.superAttackName.style.backgroundImage = "url('dbManagement/DokkanFiles/global/en/character/card/"+this.imageUrl+"/en/card_"+this.imageUrl+"_sp_name.png')";
         this.superAttackName.style.display="none";
         this.kiCircle.appendChild(this.superAttackName);
     }
@@ -272,7 +272,12 @@ class kiCircleClass{
             this.superAttackName.style.display="none";
         }
         else{
-            this.superAttackName.style.backgroundImage = "url('dbManagement/assets/sp_name_0"+superAttackID+"/"+this.imageUrl+".png')";
+            if(superAttackID==0){
+                this.superAttackName.style.backgroundImage = "url('dbManagement/DokkanFiles/global/en/character/card/1011640/en/card_"+this.imageUrl+"_sp_name.png')";
+            }
+            else{
+                this.superAttackName.style.backgroundImage = "url('dbManagement/DokkanFiles/global/en/character/card/1011640/en/card_"+this.imageUrl+"_sp"+superAttackID+"_name.png')";
+            }
             this.superAttackName.style.display="block";
         }
     }
@@ -540,7 +545,7 @@ class superAttackQuery{
         superAttackSlider.value=0;
         let superAttackQuestion = document.createElement('label');
         superAttackQuestion.superAttackName= superAttackName;
-        superAttackQuestion.superAttackText=new pictureText("How many times has","dbManagement/assets/final_assets/"+unitID+".png","performed "+superAttackName+" within the last "+buffs["Duration"]+" turns?: "+superAttackSlider.value);
+        superAttackQuestion.superAttackText=new pictureText("How many times has","dbManagement/DokkanFiles/global/en/character/card/"+unitID+"/card_"+unitID+"_full_thumb.png","performed "+superAttackName+" within the last "+buffs["Duration"]+" turns?: "+superAttackSlider.value);
         this.selfContainer.appendChild(superAttackQuestion.superAttackText.getElement());
         superAttackQuestion.innerHTML = superAttackSlider.textContent;
         superAttackQuestion.style.gridRow = 1;
@@ -1164,7 +1169,7 @@ export function createCharacterSelection(){
           const unitButton = document.createElement('a');
           unitButton.id = "unit-button";
           unitButton.href = "?id=" + allUnitsJson[i];
-          unitButton.style.backgroundImage = "url('dbManagement/assets/final_assets/"+allUnitsJson[i]+".png')";
+          unitButton.style.backgroundImage = "url('dbManagement/DokkanFiles/global/en/character/card/"+allUnitsJson[i]+"/card_"+allUnitsJson[i]+"_full_thumb.png')";
           unitButton.className="unit-selection-button";
           unitsContainer.appendChild(unitButton);
         }
@@ -1315,8 +1320,6 @@ export function createLeaderStats(){
       if(seperateOrJoin.classList.contains("SeperateLeader")){
         seperateOrJoin.classList.remove('SeperateLeader');
         seperateOrJoin.classList.add('JointLeader');
-  //      seperateOrJoin.style.width="110px";
-        //seperateOrJoin.style.background = "url('dbManagement/assets/misc/leader_icon.png') repeat left";
         leaderAInputKi.style.display="none";
         leaderBInputKi.style.display="none";
         leaderTotalInputKi.style.display="block";
@@ -1326,8 +1329,6 @@ export function createLeaderStats(){
       } else {
         seperateOrJoin.classList.remove('JointLeader');
         seperateOrJoin.classList.add('SeperateLeader');
-        //seperateOrJoin.style.background = "url('dbManagement/assets/misc/sub_leader_icon.png') repeat left";
-  //      seperateOrJoin.style.width="220px";
         leaderAInputKi.style.display="block";
         leaderBInputKi.style.display="block";
         leaderTotalInputKi.style.display="none";
@@ -1765,9 +1766,8 @@ export function createTransformationContainer(json){
     if( Array.isArray(transformations) && transformations.length){
     for (const transformationID of transformations){
         let unitID = transformationID;
-        //creates a button that links to the suburl of the unit with the background set to the unitID within the assets/final_assets folder
         let transformationButton = document.createElement('button');
-        transformationButton.style.backgroundImage = "url('dbManagement/assets/final_assets/"+unitID+".png')";
+        transformationButton.style.backgroundImage = "url('dbManagement/DokkanFiles/global/en/character/card/"+unitID+"/card_"+unitID+"_full_thumb.png')";
         transformationButton.id="transformation-button";
         transformationButton.style.gridRow="1";
         transformationContainer.appendChild(transformationButton);
@@ -1782,7 +1782,7 @@ export function createTransformationContainer(json){
         let unitID = transformationID;
         //creates a button that links to the suburl of the unit with the background set to the unitID within the assets/final_assets folder
         let transformationButton = document.createElement('button');
-        transformationButton.style.backgroundImage = "url('dbManagement/assets/final_assets/"+unitID+".png')";
+        transformationButton.style.backgroundImage = "url('dbManagement/DokkanFiles/global/en/character/card/"+unitID+"/card_"+unitID+"_full_thumb.png')";
         transformationButton.id="transformation-button";
         transformationButton.style.gridRow="2";
         transformationContainer.appendChild(transformationButton);
@@ -1878,7 +1878,7 @@ export function createDokkanAwakenContainer(json){
         let unitID = AwakeningsID;
         //creates a button that links to the suburl of the unit with the background set to the unitID within the assets/final_assets folder
         let AwakeningsButton = document.createElement('button');
-        AwakeningsButton.style.backgroundImage = "url('dbManagement/assets/final_assets/"+unitID+".png')";
+        AwakeningsButton.style.backgroundImage = "url('dbManagement/DokkanFiles/global/en/character/card/"+unitID+"/card_"+unitID+"_full_thumb.png')";
         AwakeningsButton.id="awakenings-button";
         AwakeningsButton.style.gridRow="1";
         AwakeningsContainer.appendChild(AwakeningsButton);
@@ -1893,7 +1893,7 @@ export function createDokkanAwakenContainer(json){
         let unitID = AwakeningsID;
         //creates a button that links to the suburl of the unit with the background set to the unitID within the assets/final_assets folder
         let AwakeningsButton = document.createElement('button');
-        AwakeningsButton.style.backgroundImage = "url('dbManagement/assets/final_assets/"+unitID+".png')";
+        AwakeningsButton.style.backgroundImage = "url('dbManagement/DokkanFiles/global/en/character/card/"+unitID+"/card_"+unitID+"_full_thumb.png')";
         AwakeningsButton.id="awakenings-button";
         AwakeningsButton.style.gridRow="2";
         AwakeningsButton.style.margin="0px";
@@ -2397,7 +2397,7 @@ export function updateContainer(containerId, content){
   }   
 
  // Function to update the image container with a new image
- export function updateImageContainer(imageContainerId, assetSubURL, typing){
+ export function updateImageContainer(imageContainerId, assetsubURL, typing){
   const imageContainer = document.getElementById(imageContainerId);
   while (imageContainer.firstChild) {
     imageContainer.removeChild(imageContainer.firstChild);
@@ -2410,7 +2410,7 @@ export function updateContainer(containerId, content){
   cardImage.onerror = function() {
     console.error('Error loading image:', cardImage.src);
   };
-  cardImage.src = 'dbManagement/assets/final_assets/' + assetSubURL + '.png';
+  cardImage.src = 'dbManagement/DokkanFiles/global/en/character/card/'+assetsubURL+'/card_'+assetsubURL+'_full_thumb.png';
 }
 
   // Function to create a paragraph element with the given text
@@ -2656,25 +2656,25 @@ export function updatePassiveBuffs(){
 export function createSkillOrbContainer(){
     let skillOrbContainer=document.getElementById('all-skill-orb-container');
     skillOrbContainer.style.display="grid";
-    skillOrbContainer.additionalNode=new equipNodeQuery("Additional","dbManagement/assets/misc/potential/Pot_skill_additional.png")
+    skillOrbContainer.additionalNode=new equipNodeQuery("Additional","dbManagement/DokkanFiles/global/en/outgame/extension/potential/pot_skill_01_on.png")
     skillOrbContainer.appendChild(skillOrbContainer.additionalNode.getElement());
 
-    skillOrbContainer.critNode=new equipNodeQuery("Crit","dbManagement/assets/misc/potential/Pot_skill_critical.png")
+    skillOrbContainer.critNode=new equipNodeQuery("Crit","dbManagement/DokkanFiles/global/en/outgame/extension/potential/pot_skill_02_on.png")
     skillOrbContainer.appendChild(skillOrbContainer.critNode.getElement());
 
-    skillOrbContainer.evasionNode=new equipNodeQuery("Evasion","dbManagement/assets/misc/potential/Pot_skill_dodge.png")
+    skillOrbContainer.evasionNode=new equipNodeQuery("Evasion","dbManagement/DokkanFiles/global/en/outgame/extension/potential/pot_skill_03_on.png")
     skillOrbContainer.appendChild(skillOrbContainer.evasionNode.getElement());
 
-    skillOrbContainer.typeATKBoostNode=new equipNodeQuery("Attack","dbManagement/assets/misc/potential/Pot_skill_type_damage.png")
+    skillOrbContainer.typeATKBoostNode=new equipNodeQuery("Attack","dbManagement/DokkanFiles/global/en/outgame/extension/potential/pot_skill_04_on.png")
     skillOrbContainer.appendChild(skillOrbContainer.typeATKBoostNode.getElement());
 
-    skillOrbContainer.typeDEFBoostNode=new equipNodeQuery("Defense","dbManagement/assets/misc/potential/Pot_skill_type_defense.png")
+    skillOrbContainer.typeDEFBoostNode=new equipNodeQuery("Defense","dbManagement/DokkanFiles/global/en/outgame/extension/potential/pot_skill_05_on.png")
     skillOrbContainer.appendChild(skillOrbContainer.typeDEFBoostNode.getElement());
 
-    skillOrbContainer.superAttackBoostNode=new equipNodeQuery("SuperBoost","dbManagement/assets/misc/potential/Pot_skill_super.png")
+    skillOrbContainer.superAttackBoostNode=new equipNodeQuery("SuperBoost","dbManagement/DokkanFiles/global/en/outgame/extension/potential/pot_skill_06_on.png")
     skillOrbContainer.appendChild(skillOrbContainer.superAttackBoostNode.getElement());
 
-    skillOrbContainer.recoveryBoostNode=new equipNodeQuery("Recovery","dbManagement/assets/misc/potential/Pot_skill_heal.png")
+    skillOrbContainer.recoveryBoostNode=new equipNodeQuery("Recovery","dbManagement/DokkanFiles/global/en/outgame/extension/potential/pot_skill_07_on.png")
     skillOrbContainer.appendChild(skillOrbContainer.recoveryBoostNode.getElement());
 
 

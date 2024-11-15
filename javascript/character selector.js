@@ -21,6 +21,13 @@ export function getJsonPromise(prefix,name,suffix) {
   );
 }
 
+export function getAssetID(unitID){
+  if(unitID[unitID.length-1]=="1"){
+    unitID=unitID.slice(0,-1)+"0";
+  }
+  return unitID;
+}
+
 export function createCharacterSelection(){
   const allUnitsJsonPromise=getJsonPromise('dbManagement/uniqueJsons/','allUnits','.json');
   allUnitsJsonPromise.then(allUnitsJson => {
@@ -32,7 +39,7 @@ export function createCharacterSelection(){
         const unitButton = document.createElement('a');
         unitButton.id = "unit-button";
         unitButton.href = baseDomain+"/cards/index.html?id=" + allUnitsJson[i];
-        unitButton.style.backgroundImage = "url('dbManagement/assets/final_assets/"+allUnitsJson[i]+".png')";
+        unitButton.style.backgroundImage = "url('dbManagement/DokkanFiles/global/en/character/card/"+getAssetID(allUnitsJson[i])+"/card_"+getAssetID(allUnitsJson[i])+"_full_thumb.png')";
         unitButton.className="unit-selection-button";
         unitsContainer.appendChild(unitButton);
       }
