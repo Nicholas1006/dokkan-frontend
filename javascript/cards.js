@@ -542,7 +542,7 @@ class kiCircleClass{
                 this.superAttackName.style.backgroundImage = "url('../dbManagement/DokkanFiles/global/en/character/card/"+this.imageUrl+"/en/card_"+this.imageUrl+"_sp_name.png')";
             }
             else{
-                this.superAttackName.style.backgroundImage = "url('../dbManagement/DokkanFiles/global/en/character/card/"+this.imageUrl+"/en/card_"+this.imageUrl+"_sp"+superAttackID+"_name.png')";
+                this.superAttackName.style.backgroundImage = "url('../dbManagement/DokkanFiles/global/en/character/card/"+this.imageUrl+"/en/card_"+this.imageUrl+"_sp0"+superAttackID+"_name.png')";
             }
             this.superAttackName.style.display="block";
         }
