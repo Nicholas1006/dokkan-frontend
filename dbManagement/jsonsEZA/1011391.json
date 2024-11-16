@@ -1,0 +1,596 @@
+{
+    "ID": "1011391",
+    "Typing": "TEQ",
+    "Class": "Super",
+    "Name": "Super Saiyan 2 Gohan (Youth)",
+    "Rarity": "ur",
+    "Min Level": 120,
+    "Max Level": 140,
+    "Categories": [
+        "Hybrid Saiyans",
+        "Full Power",
+        "Goku's Family",
+        "Youth",
+        "Androids/Cell Saga",
+        "Kamehameha",
+        "Bond of Master and Disciple",
+        "Super Saiyan 2",
+        "Exploding Rage",
+        "All-Out Struggle",
+        "Miraculous Awakening",
+        "Entrusted Will",
+        "Battle of Fate",
+        "Power Beyond Super Saiyan",
+        "Bond of Parent and Child",
+        "Earth-Bred Fighters",
+        "Tournament Participants",
+        "Demonic Power"
+    ],
+    "Can EZA": true,
+    "Can SEZA": false,
+    "Links": [
+        "Golden Warrior",
+        "Saiyan Warrior Race",
+        "Super Saiyan",
+        "Kamehameha",
+        "Soul vs Soul",
+        "Prepared for Battle",
+        "Shattering the Limit"
+    ],
+    "Resource ID": "1011390",
+    "Passive": {
+        "3329": {
+            "ID": "3329",
+            "Timing": "Start of turn",
+            "ATK": 120,
+            "DEF": 120,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "ATK and DEF +120% "
+        },
+        "1003329": {
+            "ID": "1003329",
+            "Timing": "Right before attack(MOT stat)",
+            "ATK": 40,
+            "DEF": 40,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2080",
+                "Causalities": {
+                    "2080": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there on this turn?",
+                            "Logic": ">=12",
+                            "Min": 0,
+                            "Max": 12
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "ATK and DEF +40% when attacking"
+        },
+        "2003329": {
+            "ID": "2003329",
+            "Timing": "Start of turn",
+            "Ki": 2,
+            "Target": {
+                "Target": "Allies",
+                "Typing": [
+                    "PHY",
+                    "TEQ",
+                    "AGL"
+                ]
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "PHY and TEQ and AGL allies Ki +2 "
+        },
+        "3003329": {
+            "ID": "3003329",
+            "Timing": "Start of turn",
+            "ATK": 30,
+            "DEF": 30,
+            "Target": {
+                "Target": "Allies",
+                "Typing": [
+                    "AGL"
+                ]
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "AGL allies ATK and DEF +30% "
+        },
+        "4003329": {
+            "ID": "4003329",
+            "Timing": "After all ki collected",
+            "DEF": 120,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2082",
+                "Causalities": {
+                    "2082": {
+                        "Button": {
+                            "Name": "Is this the 3rd attacker in the turn on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "What position is this character attacking in on this turn?",
+                            "Logic": "==3",
+                            "Min": 1,
+                            "Max": 3
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "DEF +120% after all ki collected"
+        },
+        "5003329": {
+            "ID": "5003329",
+            "Timing": "After all ki collected",
+            "ATK": 20,
+            "DEF": 20,
+            "Target": {
+                "Target": "Allies",
+                "Typing": [
+                    "AGL"
+                ]
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2082",
+                "Causalities": {
+                    "2082": {
+                        "Button": {
+                            "Name": "Is this the 3rd attacker in the turn on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "What position is this character attacking in on this turn?",
+                            "Logic": "==3",
+                            "Min": 1,
+                            "Max": 3
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "AGL allies ATK and DEF +20% after all ki collected"
+        },
+        "6003329": {
+            "ID": "6003329",
+            "Timing": "Start of turn",
+            "ATK": 30,
+            "DEF": 30,
+            "Target": {
+                "Target": "Allies",
+                "Typing": [
+                    "TEQ"
+                ]
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "TEQ allies ATK and DEF +30% "
+        },
+        "7003329": {
+            "ID": "7003329",
+            "Timing": "Start of turn",
+            "ATK": 30,
+            "DEF": 30,
+            "Target": {
+                "Target": "Allies",
+                "Typing": [
+                    "PHY"
+                ]
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "PHY allies ATK and DEF +30% "
+        },
+        "8003329": {
+            "ID": "8003329",
+            "Timing": "After all ki collected",
+            "ATK": 20,
+            "DEF": 20,
+            "Target": {
+                "Target": "Allies",
+                "Typing": [
+                    "TEQ"
+                ]
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2082",
+                "Causalities": {
+                    "2082": {
+                        "Button": {
+                            "Name": "Is this the 3rd attacker in the turn on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "What position is this character attacking in on this turn?",
+                            "Logic": "==3",
+                            "Min": 1,
+                            "Max": 3
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "TEQ allies ATK and DEF +20% after all ki collected"
+        },
+        "9003329": {
+            "ID": "9003329",
+            "Timing": "After all ki collected",
+            "ATK": 20,
+            "DEF": 20,
+            "Target": {
+                "Target": "Allies",
+                "Typing": [
+                    "PHY"
+                ]
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2082",
+                "Causalities": {
+                    "2082": {
+                        "Button": {
+                            "Name": "Is this the 3rd attacker in the turn on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "What position is this character attacking in on this turn?",
+                            "Logic": "==3",
+                            "Min": 1,
+                            "Max": 3
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "PHY allies ATK and DEF +20% after all ki collected"
+        }
+    },
+    "Max Attacks": 2,
+    "Max Super Attacks": 2,
+    "Stats at levels": {
+        "120": {
+            "HP": 10015,
+            "ATK": 8688,
+            "DEF": 3405
+        },
+        "121": {
+            "HP": 10160,
+            "ATK": 8814,
+            "DEF": 3454
+        },
+        "122": {
+            "HP": 10305,
+            "ATK": 8940,
+            "DEF": 3503
+        },
+        "123": {
+            "HP": 10451,
+            "ATK": 9066,
+            "DEF": 3553
+        },
+        "124": {
+            "HP": 10596,
+            "ATK": 9192,
+            "DEF": 3602
+        },
+        "125": {
+            "HP": 10742,
+            "ATK": 9318,
+            "DEF": 3652
+        },
+        "126": {
+            "HP": 10887,
+            "ATK": 9444,
+            "DEF": 3701
+        },
+        "127": {
+            "HP": 11032,
+            "ATK": 9571,
+            "DEF": 3751
+        },
+        "128": {
+            "HP": 11178,
+            "ATK": 9697,
+            "DEF": 3800
+        },
+        "129": {
+            "HP": 11323,
+            "ATK": 9823,
+            "DEF": 3849
+        },
+        "130": {
+            "HP": 11469,
+            "ATK": 9949,
+            "DEF": 3899
+        },
+        "131": {
+            "HP": 11614,
+            "ATK": 10075,
+            "DEF": 3948
+        },
+        "132": {
+            "HP": 11760,
+            "ATK": 10201,
+            "DEF": 3998
+        },
+        "133": {
+            "HP": 11905,
+            "ATK": 10328,
+            "DEF": 4047
+        },
+        "134": {
+            "HP": 12050,
+            "ATK": 10454,
+            "DEF": 4097
+        },
+        "135": {
+            "HP": 12196,
+            "ATK": 10580,
+            "DEF": 4146
+        },
+        "136": {
+            "HP": 12341,
+            "ATK": 10706,
+            "DEF": 4196
+        },
+        "137": {
+            "HP": 12487,
+            "ATK": 10832,
+            "DEF": 4245
+        },
+        "138": {
+            "HP": 12632,
+            "ATK": 10958,
+            "DEF": 4294
+        },
+        "139": {
+            "HP": 12778,
+            "ATK": 11085,
+            "DEF": 4344
+        },
+        "140": {
+            "HP": 12923,
+            "ATK": 11211,
+            "DEF": 4393
+        }
+    },
+    "Leader Skill": {
+        "Name": "Full-Power Collision",
+        "101139200": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        },
+        "101139201": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "PHY",
+                    "TEQ",
+                    "AGL"
+                ]
+            },
+            "HP": 80,
+            "ATK": 80,
+            "DEF": 80
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000,
+            "Additional": 0,
+            "Crit": 5,
+            "Evasion": 0,
+            "Type ATK": 6,
+            "Type DEF": 5,
+            "Super Attack boost": 6,
+            "Recovery boost": 6
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 1,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 2,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 0,
+            "Type DEF": 2,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "4": {
+            "HP": 1300,
+            "ATK": 2100,
+            "DEF": 1700,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 1,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        }
+    },
+    "Super Attack": {
+        "4411": {
+            "superID": "4411",
+            "Type": "Ki blast",
+            "special_name_no": "0",
+            "superName": "Super Kamehameha (Extreme)",
+            "superDescription": "Raises DEF, massively raises ATK for 1 turn \nand causes supreme damage to enemy",
+            "superMinKi": "12",
+            "superPriority": "0",
+            "superStyle": "Normal",
+            "superMinLVL": "14",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superBuffs": {
+                "4411": {
+                    "Type": "NormalEfficacySpecial",
+                    "Chance": "100",
+                    "Duration": "99",
+                    "Buff": {
+                        "Type": "Percentage",
+                        "+ or -": "+"
+                    },
+                    "Target": "Self",
+                    "DEF": "30"
+                },
+                "1004411": {
+                    "Type": "NormalEfficacySpecial",
+                    "Chance": "100",
+                    "Duration": "1",
+                    "Buff": {
+                        "Type": "Percentage",
+                        "+ or -": "+"
+                    },
+                    "Target": "Self",
+                    "ATK": "100"
+                }
+            },
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "0"
+            },
+            "Multiplier": 530
+        }
+    },
+    "Active Skill": null,
+    "Standby Skill": null,
+    "Finish Skill": null,
+    "Transforms from": [],
+    "Transformations": [],
+    "Max Appearances In Form": 50,
+    "Dokkan awakenings": [],
+    "Dokkan Reverse awakenings": [
+        "1004010",
+        "1004011"
+    ],
+    "Ki Multiplier": {
+        "0": 70.0,
+        "1": 75.83333333333333,
+        "2": 81.66666666666667,
+        "3": 87.5,
+        "4": 93.33333333333333,
+        "5": 99.16666666666667,
+        "6": 105.0,
+        "7": 110.83333333333334,
+        "8": 116.66666666666666,
+        "9": 122.5,
+        "10": 128.33333333333334,
+        "11": 134.16666666666666,
+        "12": 140.0
+    },
+    "Ki Circle Segments": {
+        "1": "weaker",
+        "2": "weaker",
+        "3": "weaker",
+        "4": "weaker",
+        "5": "weaker",
+        "6": "equal",
+        "7": "equal",
+        "8": "equal",
+        "9": "equal",
+        "10": "equal",
+        "11": "equal",
+        "12": "super"
+    },
+    "SuperMinKi": 12,
+    "AdditionalSuperID": "4411"
+}

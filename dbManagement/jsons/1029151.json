@@ -1,0 +1,510 @@
+{
+    "ID": "1029151",
+    "Typing": "AGL",
+    "Class": "Super",
+    "Name": "Bulma (Bunny)",
+    "Rarity": "ur",
+    "Min Level": 80,
+    "Max Level": 100,
+    "Categories": [
+        "DB Saga",
+        "Peppy Gals",
+        "Dragon Ball Seekers",
+        "Earthlings",
+        "Earth-Bred Fighters"
+    ],
+    "Can EZA": false,
+    "Can SEZA": false,
+    "Links": [
+        "Brainiacs",
+        "Money Money Money",
+        "Solid Support",
+        "Battlefield Diva",
+        "The Incredible Adventure",
+        "Guidance of the Dragon Balls"
+    ],
+    "Resource ID": "1029150",
+    "Passive": {
+        "4200": {
+            "ID": "4200",
+            "Timing": "Start of turn",
+            "ATK": 100,
+            "DEF": 100,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "ATK and DEF +100% "
+        },
+        "1004200": {
+            "ID": "1004200",
+            "Timing": "Right before attack(MOT stat)",
+            "ATK": 86,
+            "DEF": 86,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "47",
+                "Causalities": {
+                    "47": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there on this turn?",
+                            "Logic": ">=12",
+                            "Min": 0,
+                            "Max": 12
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "ATK and DEF +86% when attacking"
+        },
+        "2004200": {
+            "ID": "2004200",
+            "Dodge Chance": 30,
+            "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "Chance of evading enemy attacks +30% "
+        },
+        "3004200": {
+            "ID": "3004200",
+            "Additional Attack": {
+                "Activated": true,
+                "Chance of super": "30",
+                "Chance of another additional": "0"
+            },
+            "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "Performs an additional attack with a 30% chance of becoming a super attack "
+        },
+        "4004200": {
+            "ID": "4004200",
+            "Timing": "Start of turn",
+            "ATK": 30,
+            "DEF": 30,
+            "Target": {
+                "Category": {
+                    "Included": [
+                        "DB Saga"
+                    ],
+                    "Excluded": []
+                },
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "DB Saga category allies ATK and DEF +30% "
+        },
+        "5004200": {
+            "ID": "5004200",
+            "Timing": "Start of turn",
+            "ATK": 30,
+            "DEF": 30,
+            "Target": {
+                "Category": {
+                    "Included": [
+                        "Earth-Bred Fighters"
+                    ],
+                    "Excluded": [
+                        "DB Saga"
+                    ]
+                },
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "Earth-Bred Fighters category allies ATK and DEF +30% "
+        },
+        "6004200": {
+            "ID": "6004200",
+            "Timing": "Start of turn",
+            "ATK": 30,
+            "DEF": 30,
+            "Target": {
+                "Category": {
+                    "Included": [
+                        "Peppy Gals"
+                    ],
+                    "Excluded": [
+                        "DB Saga",
+                        "Earth-Bred Fighters"
+                    ]
+                },
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "Peppy Gals category allies ATK and DEF +30% "
+        },
+        "7004200": {
+            "ID": "7004200",
+            "Dodge Chance": 10,
+            "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "Chance of evading enemy attacks +10% "
+        },
+        "8004200": {
+            "ID": "8004200",
+            "Disable Other Line": {
+                "Activated": true,
+                "Line": "7004200"
+            },
+            "Timing": "Right after being hit",
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "24",
+                "Causalities": {
+                    "24": {
+                        "Button": {
+                            "Name": "Has attack been recieved on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character recieved on this turn?",
+                            "Logic": ">=1",
+                            "Min": 0,
+                            "Max": 1
+                        }
+                    }
+                }
+            },
+            "Type": "Disable Other Line",
+            "Brief effect description": "Disables a different passive line:7004200 after being hit"
+        }
+    },
+    "Max Attacks": 3,
+    "Max Super Attacks": 3,
+    "Stats at levels": {
+        "80": {
+            "HP": 6570,
+            "ATK": 7221,
+            "DEF": 3714
+        },
+        "81": {
+            "HP": 6573,
+            "ATK": 7228,
+            "DEF": 3716
+        },
+        "82": {
+            "HP": 6576,
+            "ATK": 7235,
+            "DEF": 3718
+        },
+        "83": {
+            "HP": 6580,
+            "ATK": 7242,
+            "DEF": 3719
+        },
+        "84": {
+            "HP": 6583,
+            "ATK": 7250,
+            "DEF": 3721
+        },
+        "85": {
+            "HP": 6586,
+            "ATK": 7257,
+            "DEF": 3723
+        },
+        "86": {
+            "HP": 6589,
+            "ATK": 7264,
+            "DEF": 3724
+        },
+        "87": {
+            "HP": 6593,
+            "ATK": 7271,
+            "DEF": 3726
+        },
+        "88": {
+            "HP": 6596,
+            "ATK": 7279,
+            "DEF": 3728
+        },
+        "89": {
+            "HP": 6599,
+            "ATK": 7286,
+            "DEF": 3730
+        },
+        "90": {
+            "HP": 6602,
+            "ATK": 7293,
+            "DEF": 3731
+        },
+        "91": {
+            "HP": 6605,
+            "ATK": 7300,
+            "DEF": 3733
+        },
+        "92": {
+            "HP": 6609,
+            "ATK": 7307,
+            "DEF": 3735
+        },
+        "93": {
+            "HP": 6612,
+            "ATK": 7314,
+            "DEF": 3736
+        },
+        "94": {
+            "HP": 6615,
+            "ATK": 7321,
+            "DEF": 3738
+        },
+        "95": {
+            "HP": 6618,
+            "ATK": 7328,
+            "DEF": 3740
+        },
+        "96": {
+            "HP": 6622,
+            "ATK": 7336,
+            "DEF": 3742
+        },
+        "97": {
+            "HP": 6625,
+            "ATK": 7343,
+            "DEF": 3743
+        },
+        "98": {
+            "HP": 6628,
+            "ATK": 7350,
+            "DEF": 3745
+        },
+        "99": {
+            "HP": 6631,
+            "ATK": 7357,
+            "DEF": 3747
+        },
+        "100": {
+            "HP": 6635,
+            "ATK": 7365,
+            "DEF": 3749
+        }
+    },
+    "Leader Skill": {
+        "Name": "Bunny Girl's Shopping",
+        "10291500": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "DB Saga"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 2
+        },
+        "10291501": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "DB Saga"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": []
+            },
+            "HP": 100,
+            "ATK": 100,
+            "DEF": 100
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000,
+            "Additional": 5,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 6,
+            "Type DEF": 5,
+            "Super Attack boost": 6,
+            "Recovery boost": 6
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 1,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 2,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 0,
+            "Type DEF": 2,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "4": {
+            "HP": 1300,
+            "ATK": 1700,
+            "DEF": 2100,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 1,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        }
+    },
+    "Super Attack": {
+        "5780": {
+            "superID": "5780",
+            "Type": "Unarmed",
+            "special_name_no": "0",
+            "superName": "Yamcha's Determined Rescue!",
+            "superDescription": "Causes supreme damage to enemy and \nseals Super Attack",
+            "superMinKi": "12",
+            "superPriority": "0",
+            "superStyle": "Normal",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superBuffs": {
+                "5780": {
+                    "Type": "ExtraEfficacySpecial",
+                    "Chance": "100",
+                    "Duration": "2",
+                    "Buff": {
+                        "Type": "Raw stats",
+                        "+ or -": "+"
+                    },
+                    "Target": "Enemy",
+                    "Status": "Seals"
+                }
+            },
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "0"
+            },
+            "Multiplier": 430
+        }
+    },
+    "Active Skill": null,
+    "Standby Skill": null,
+    "Finish Skill": null,
+    "Transforms from": [],
+    "Transformations": [],
+    "Max Appearances In Form": 50,
+    "Dokkan awakenings": [
+        "1029161"
+    ],
+    "Dokkan Reverse awakenings": [],
+    "Ki Multiplier": {
+        "0": 65.0,
+        "1": 70.41666666666667,
+        "2": 75.83333333333333,
+        "3": 81.25,
+        "4": 86.66666666666666,
+        "5": 92.08333333333334,
+        "6": 97.5,
+        "7": 102.91666666666667,
+        "8": 108.33333333333333,
+        "9": 113.75,
+        "10": 119.16666666666667,
+        "11": 124.58333333333333,
+        "12": 130.0
+    },
+    "Ki Circle Segments": {
+        "1": "weaker",
+        "2": "weaker",
+        "3": "weaker",
+        "4": "weaker",
+        "5": "weaker",
+        "6": "weaker",
+        "7": "equal",
+        "8": "equal",
+        "9": "equal",
+        "10": "equal",
+        "11": "equal",
+        "12": "super"
+    },
+    "SuperMinKi": 12,
+    "AdditionalSuperID": "5780"
+}

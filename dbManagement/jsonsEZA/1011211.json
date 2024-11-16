@@ -1,0 +1,527 @@
+{
+    "ID": "1011211",
+    "Typing": "INT",
+    "Class": "Super",
+    "Name": "Jackie Chun",
+    "Rarity": "ur",
+    "Min Level": 120,
+    "Max Level": 140,
+    "Categories": [
+        "World Tournament",
+        "DB Saga",
+        "Earthlings",
+        "Battle of Wits",
+        "Planetary Destruction",
+        "Accelerated Battle",
+        "Earth-Bred Fighters",
+        "Tournament Participants"
+    ],
+    "Can EZA": true,
+    "Can SEZA": false,
+    "Links": [
+        "Supreme Warrior",
+        "World Tournament Champion",
+        "Guidance of the Dragon Balls",
+        "The Incredible Adventure",
+        "Brainiacs",
+        "Gentleman",
+        "Shattering the Limit"
+    ],
+    "Resource ID": "1011210",
+    "Passive": {
+        "4108": {
+            "ID": "4108",
+            "Timing": "Start of turn",
+            "Ki": 2,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "Ki +2 "
+        },
+        "1004108": {
+            "ID": "1004108",
+            "Timing": "Start of turn",
+            "ATK": 100,
+            "DEF": 100,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "ATK and DEF +100% "
+        },
+        "2004108": {
+            "ID": "2004108",
+            "Timing": "Right before attack(MOT stat)",
+            "ATK": 100,
+            "DEF": 100,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "47",
+                "Causalities": {
+                    "47": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there on this turn?",
+                            "Logic": ">=12",
+                            "Min": 0,
+                            "Max": 12
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "ATK and DEF +100% when attacking"
+        },
+        "3004108": {
+            "ID": "3004108",
+            "Dodge Chance": 15,
+            "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "Chance of evading enemy attacks +15% "
+        },
+        "4004108": {
+            "ID": "4004108",
+            "Timing": "Right after being hit",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 150,
+                "Cause": {
+                    "Cause": "Attacks recieved"
+                },
+                "Slider": "How many attacks has this character recieved?"
+            },
+            "ATK": 30,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Type": "Building Stat",
+            "Brief effect description": "ATK +30% (up to 150%) based on 'How many attacks has this character recieved' after being hit"
+        },
+        "5004108": {
+            "ID": "5004108",
+            "Dodge Chance": 20,
+            "Timing": "Right after being hit",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 60,
+                "Cause": {
+                    "Cause": "Attacks recieved"
+                },
+                "Slider": "How many attacks has this character recieved?"
+            },
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Type": "Building Stat",
+            "Brief effect description": "Chance of evading enemy attacks +20% (up to 60%) based on 'How many attacks has this character recieved' after being hit"
+        },
+        "6004108": {
+            "ID": "6004108",
+            "Timing": "Right after being hit",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 150,
+                "Cause": {
+                    "Cause": "Attacks evaded"
+                },
+                "Slider": "How many attacks have been evaded?"
+            },
+            "DEF": 30,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Type": "Building Stat",
+            "Brief effect description": "DEF +30% (up to 150%) based on 'How many attacks have been evaded' after being hit"
+        },
+        "7004108": {
+            "ID": "7004108",
+            "Timing": "Right after being hit",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 60,
+                "Cause": {
+                    "Cause": "Attacks evaded"
+                },
+                "Slider": "How many attacks have been evaded?"
+            },
+            "Crit Chance": 20,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Type": "Building Stat",
+            "Brief effect description": "Chance of performing a critical hit +20% (up to 60%) based on 'How many attacks have been evaded' after being hit"
+        },
+        "8004108": {
+            "ID": "8004108",
+            "Timing": "Right before being hit",
+            "Status": [
+                "Survive K.O attacks"
+            ],
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "3089",
+                "Causalities": {
+                    "3089": {
+                        "Button": {
+                            "Name": "Is HP 10 % or more on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining on this turn?",
+                            "Logic": ">=10",
+                            "Min": 0,
+                            "Max": 100
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "Survive K.O attacks right before being hit"
+        }
+    },
+    "Max Attacks": 2,
+    "Max Super Attacks": 2,
+    "Stats at levels": {
+        "120": {
+            "HP": 7550,
+            "ATK": 7308,
+            "DEF": 5215
+        },
+        "121": {
+            "HP": 7677,
+            "ATK": 7431,
+            "DEF": 5302
+        },
+        "122": {
+            "HP": 7804,
+            "ATK": 7554,
+            "DEF": 5390
+        },
+        "123": {
+            "HP": 7932,
+            "ATK": 7677,
+            "DEF": 5478
+        },
+        "124": {
+            "HP": 8059,
+            "ATK": 7801,
+            "DEF": 5566
+        },
+        "125": {
+            "HP": 8186,
+            "ATK": 7924,
+            "DEF": 5654
+        },
+        "126": {
+            "HP": 8314,
+            "ATK": 8047,
+            "DEF": 5742
+        },
+        "127": {
+            "HP": 8441,
+            "ATK": 8170,
+            "DEF": 5830
+        },
+        "128": {
+            "HP": 8568,
+            "ATK": 8294,
+            "DEF": 5918
+        },
+        "129": {
+            "HP": 8696,
+            "ATK": 8417,
+            "DEF": 6006
+        },
+        "130": {
+            "HP": 8823,
+            "ATK": 8540,
+            "DEF": 6094
+        },
+        "131": {
+            "HP": 8951,
+            "ATK": 8664,
+            "DEF": 6182
+        },
+        "132": {
+            "HP": 9078,
+            "ATK": 8787,
+            "DEF": 6270
+        },
+        "133": {
+            "HP": 9205,
+            "ATK": 8910,
+            "DEF": 6358
+        },
+        "134": {
+            "HP": 9333,
+            "ATK": 9033,
+            "DEF": 6446
+        },
+        "135": {
+            "HP": 9460,
+            "ATK": 9157,
+            "DEF": 6534
+        },
+        "136": {
+            "HP": 9587,
+            "ATK": 9280,
+            "DEF": 6622
+        },
+        "137": {
+            "HP": 9715,
+            "ATK": 9403,
+            "DEF": 6710
+        },
+        "138": {
+            "HP": 9842,
+            "ATK": 9527,
+            "DEF": 6798
+        },
+        "139": {
+            "HP": 9970,
+            "ATK": 9650,
+            "DEF": 6886
+        },
+        "140": {
+            "HP": 10097,
+            "ATK": 9773,
+            "DEF": 6974
+        }
+    },
+    "Leader Skill": {
+        "Name": "Domineering Victory Declaration",
+        "101121200": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "World Tournament"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": []
+            },
+            "HP": 90,
+            "ATK": 90,
+            "DEF": 90
+        },
+        "101121201": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "World Tournament"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 1200,
+            "ATK": 1200,
+            "DEF": 1200,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 5,
+            "Type ATK": 6,
+            "Type DEF": 5,
+            "Super Attack boost": 6,
+            "Recovery boost": 6
+        },
+        "1": {
+            "HP": 180,
+            "ATK": 180,
+            "DEF": 180,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 1,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "2": {
+            "HP": 186,
+            "ATK": 420,
+            "DEF": 186,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 2,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "3": {
+            "HP": 414,
+            "ATK": 180,
+            "DEF": 414,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 0,
+            "Type DEF": 2,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "4": {
+            "HP": 1020,
+            "ATK": 1020,
+            "DEF": 1020,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 1,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        }
+    },
+    "Super Attack": {
+        "5464": {
+            "superID": "5464",
+            "Type": "Other",
+            "special_name_no": "0",
+            "superName": "Sleepy Boy Technique (Extreme)",
+            "superDescription": "Greatly raises ATK for 1 turn, \ncauses supreme damage to enemy \nand seals Super Attack",
+            "superMinKi": "12",
+            "superPriority": "0",
+            "superStyle": "Normal",
+            "superMinLVL": "14",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superBuffs": {
+                "5464": {
+                    "Type": "NormalEfficacySpecial",
+                    "Chance": "100",
+                    "Duration": "1",
+                    "Buff": {
+                        "Type": "Percentage",
+                        "+ or -": "+"
+                    },
+                    "Target": "Self",
+                    "ATK": "50"
+                },
+                "1005464": {
+                    "Type": "ExtraEfficacySpecial",
+                    "Chance": "100",
+                    "Duration": "2",
+                    "Buff": {
+                        "Type": "Raw stats",
+                        "+ or -": "+"
+                    },
+                    "Target": "Enemy",
+                    "Status": "Seals"
+                }
+            },
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "0"
+            },
+            "Multiplier": 530
+        }
+    },
+    "Active Skill": null,
+    "Standby Skill": null,
+    "Finish Skill": null,
+    "Transforms from": [],
+    "Transformations": [],
+    "Max Appearances In Form": 50,
+    "Dokkan awakenings": [],
+    "Dokkan Reverse awakenings": [
+        "1011200",
+        "1011201"
+    ],
+    "Ki Multiplier": {
+        "0": 70.0,
+        "1": 75.83333333333333,
+        "2": 81.66666666666667,
+        "3": 87.5,
+        "4": 93.33333333333333,
+        "5": 99.16666666666667,
+        "6": 105.0,
+        "7": 110.83333333333334,
+        "8": 116.66666666666666,
+        "9": 122.5,
+        "10": 128.33333333333334,
+        "11": 134.16666666666666,
+        "12": 140.0
+    },
+    "Ki Circle Segments": {
+        "1": "weaker",
+        "2": "weaker",
+        "3": "weaker",
+        "4": "weaker",
+        "5": "weaker",
+        "6": "equal",
+        "7": "equal",
+        "8": "equal",
+        "9": "equal",
+        "10": "equal",
+        "11": "equal",
+        "12": "super"
+    },
+    "SuperMinKi": 12,
+    "AdditionalSuperID": "5464"
+}

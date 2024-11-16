@@ -1,0 +1,568 @@
+{
+    "ID": "1028621",
+    "Typing": "PHY",
+    "Class": "Extreme",
+    "Name": "Buyon",
+    "Rarity": "ur",
+    "Min Level": 80,
+    "Max Level": 100,
+    "Categories": [
+        "Terrifying Conquerors",
+        "DB Saga"
+    ],
+    "Can EZA": false,
+    "Can SEZA": false,
+    "Links": [
+        "More Than Meets the Eye",
+        "Tough as Nails",
+        "RR Army",
+        "Thirst for Conquest",
+        "The Incredible Adventure",
+        "Guidance of the Dragon Balls"
+    ],
+    "Resource ID": "1028620",
+    "Passive": {
+        "4071": {
+            "ID": "4071",
+            "Timing": "Start of turn",
+            "Ki": 1,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "Ki +1 "
+        },
+        "1004071": {
+            "ID": "1004071",
+            "Timing": "Start of turn",
+            "ATK": 120,
+            "DEF": 120,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "ATK and DEF +120% "
+        },
+        "2004071": {
+            "ID": "2004071",
+            "Timing": "Start of turn",
+            "DR": 10,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "Damage recieved +10% "
+        },
+        "3004071": {
+            "ID": "3004071",
+            "Timing": "Start of turn",
+            "DR": 20,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Once Only": true,
+            "Type": "Single activator",
+            "Condition": {
+                "Logic": "3004071",
+                "Causalities": {
+                    "3004071": {
+                        "Button": {
+                            "Name": "Is it within the first 99 turns from entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since entry turn?",
+                            "Logic": "<=99",
+                            "Max": "100",
+                            "Min": "1"
+                        }
+                    }
+                }
+            },
+            "Brief effect description": "Damage recieved +20% "
+        },
+        "4004071": {
+            "ID": "4004071",
+            "Timing": "Right after being hit",
+            "ATK": 120,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "24",
+                "Causalities": {
+                    "24": {
+                        "Button": {
+                            "Name": "Has attack been recieved on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character recieved on this turn?",
+                            "Logic": ">=1",
+                            "Min": 0,
+                            "Max": 1
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "ATK +120% after being hit"
+        },
+        "5004071": {
+            "ID": "5004071",
+            "Timing": "Right after being hit",
+            "ATK": 12,
+            "DEF": 12,
+            "Target": {
+                "Target": "Enemies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "-"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "24",
+                "Causalities": {
+                    "24": {
+                        "Button": {
+                            "Name": "Has attack been recieved on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character recieved on this turn?",
+                            "Logic": ">=1",
+                            "Min": 0,
+                            "Max": 1
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "All enemies ATK and DEF -12% after being hit"
+        },
+        "6004071": {
+            "ID": "6004071",
+            "Timing": "Start of turn",
+            "Status": [
+                "Seal"
+            ],
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "60040710 && 60040711",
+                "Causalities": {
+                    "60040710": {
+                        "Button": {
+                            "Name": "Was the following true: Has this character recieved their 7th attack in battle "
+                        }
+                    },
+                    "60040711": {
+                        "Button": {
+                            "Name": "Was the following true for the first time on this turn: Has this character recieved their 7th attack in battle "
+                        },
+                        "Slider": {
+                            "Name": "How many turns since the following was true for the first time: Has this character recieved their 7th attack in battle ",
+                            "Logic": "<=1",
+                            "Min": 0,
+                            "Max": 2
+                        }
+                    }
+                }
+            },
+            "Once Only": true,
+            "Type": "Single activator",
+            "Brief effect description": "Seal "
+        },
+        "7004071": {
+            "ID": "7004071",
+            "Disable Other Line": {
+                "Activated": true,
+                "Line": "3004071"
+            },
+            "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "803",
+                "Causalities": {
+                    "803": {
+                        "Button": {
+                            "Name": "Has this character recieved their 7th attack in battle on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character recieved on this turn?",
+                            "Logic": ">=7",
+                            "Min": 0,
+                            "Max": 7
+                        }
+                    }
+                }
+            },
+            "Type": "Disable Other Line",
+            "Brief effect description": "Disables a different passive line:3004071 "
+        },
+        "8004071": {
+            "ID": "8004071",
+            "Timing": "Start of turn",
+            "Status": [
+                "Stun"
+            ],
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "80040710 && 80040711",
+                "Causalities": {
+                    "80040710": {
+                        "Button": {
+                            "Name": "Was the following true: Has this character recieved their 10th attack in battle "
+                        }
+                    },
+                    "80040711": {
+                        "Button": {
+                            "Name": "Was the following true for the first time on this turn: Has this character recieved their 10th attack in battle "
+                        },
+                        "Slider": {
+                            "Name": "How many turns since the following was true for the first time: Has this character recieved their 10th attack in battle ",
+                            "Logic": "<=1",
+                            "Min": 0,
+                            "Max": 2
+                        }
+                    }
+                }
+            },
+            "Once Only": true,
+            "Type": "Single activator",
+            "Brief effect description": "Stun "
+        }
+    },
+    "Max Attacks": 2,
+    "Max Super Attacks": 2,
+    "Stats at levels": {
+        "80": {
+            "HP": 7048,
+            "ATK": 7104,
+            "DEF": 3959
+        },
+        "81": {
+            "HP": 7056,
+            "ATK": 7113,
+            "DEF": 3963
+        },
+        "82": {
+            "HP": 7063,
+            "ATK": 7123,
+            "DEF": 3967
+        },
+        "83": {
+            "HP": 7071,
+            "ATK": 7132,
+            "DEF": 3971
+        },
+        "84": {
+            "HP": 7078,
+            "ATK": 7142,
+            "DEF": 3975
+        },
+        "85": {
+            "HP": 7086,
+            "ATK": 7151,
+            "DEF": 3979
+        },
+        "86": {
+            "HP": 7094,
+            "ATK": 7161,
+            "DEF": 3983
+        },
+        "87": {
+            "HP": 7101,
+            "ATK": 7170,
+            "DEF": 3987
+        },
+        "88": {
+            "HP": 7109,
+            "ATK": 7180,
+            "DEF": 3991
+        },
+        "89": {
+            "HP": 7116,
+            "ATK": 7189,
+            "DEF": 3995
+        },
+        "90": {
+            "HP": 7123,
+            "ATK": 7199,
+            "DEF": 3999
+        },
+        "91": {
+            "HP": 7131,
+            "ATK": 7208,
+            "DEF": 4003
+        },
+        "92": {
+            "HP": 7138,
+            "ATK": 7218,
+            "DEF": 4007
+        },
+        "93": {
+            "HP": 7146,
+            "ATK": 7227,
+            "DEF": 4011
+        },
+        "94": {
+            "HP": 7153,
+            "ATK": 7236,
+            "DEF": 4015
+        },
+        "95": {
+            "HP": 7161,
+            "ATK": 7246,
+            "DEF": 4019
+        },
+        "96": {
+            "HP": 7169,
+            "ATK": 7256,
+            "DEF": 4023
+        },
+        "97": {
+            "HP": 7176,
+            "ATK": 7265,
+            "DEF": 4027
+        },
+        "98": {
+            "HP": 7184,
+            "ATK": 7275,
+            "DEF": 4031
+        },
+        "99": {
+            "HP": 7191,
+            "ATK": 7284,
+            "DEF": 4035
+        },
+        "100": {
+            "HP": 7199,
+            "ATK": 7294,
+            "DEF": 4039
+        }
+    },
+    "Leader Skill": {
+        "Name": "The Monster in Muscle Tower",
+        "10286200": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Terrifying Conquerors"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 2
+        },
+        "10286201": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Terrifying Conquerors"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "HP": 30,
+            "ATK": 30,
+            "DEF": 30
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 1200,
+            "ATK": 1200,
+            "DEF": 1200,
+            "Additional": 5,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 6,
+            "Type DEF": 5,
+            "Super Attack boost": 6,
+            "Recovery boost": 6
+        },
+        "1": {
+            "HP": 180,
+            "ATK": 180,
+            "DEF": 180,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 1,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "2": {
+            "HP": 186,
+            "ATK": 420,
+            "DEF": 186,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 2,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "3": {
+            "HP": 414,
+            "ATK": 180,
+            "DEF": 414,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 0,
+            "Type DEF": 2,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "4": {
+            "HP": 1260,
+            "ATK": 1020,
+            "DEF": 780,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 1,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        }
+    },
+    "Super Attack": {
+        "5351": {
+            "superID": "5351",
+            "Type": "Other",
+            "special_name_no": "0",
+            "superName": "Electric Beam",
+            "superDescription": "Raises DEF for 1 turn and \ncauses supreme damage with \na medium chance of stunning the enemy",
+            "superMinKi": "12",
+            "superPriority": "0",
+            "superStyle": "Normal",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superBuffs": {
+                "5351": {
+                    "Type": "NormalEfficacySpecial",
+                    "Chance": "100",
+                    "Duration": "1",
+                    "Buff": {
+                        "Type": "Percentage",
+                        "+ or -": "+"
+                    },
+                    "Target": "Self",
+                    "DEF": "30"
+                },
+                "1005351": {
+                    "Type": "ExtraEfficacySpecial",
+                    "Chance": "30",
+                    "Duration": "2",
+                    "Buff": {
+                        "Type": "Raw stats",
+                        "+ or -": "+"
+                    },
+                    "Target": "Enemy",
+                    "Status": "Stun"
+                }
+            },
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "0"
+            },
+            "Multiplier": 430
+        }
+    },
+    "Active Skill": null,
+    "Standby Skill": null,
+    "Finish Skill": null,
+    "Transforms from": [],
+    "Transformations": [],
+    "Max Appearances In Form": 50,
+    "Dokkan awakenings": [
+        "1028631"
+    ],
+    "Dokkan Reverse awakenings": [],
+    "Ki Multiplier": {
+        "0": 65.0,
+        "1": 70.41666666666667,
+        "2": 75.83333333333333,
+        "3": 81.25,
+        "4": 86.66666666666666,
+        "5": 92.08333333333334,
+        "6": 97.5,
+        "7": 102.91666666666667,
+        "8": 108.33333333333333,
+        "9": 113.75,
+        "10": 119.16666666666667,
+        "11": 124.58333333333333,
+        "12": 130.0
+    },
+    "Ki Circle Segments": {
+        "1": "weaker",
+        "2": "weaker",
+        "3": "weaker",
+        "4": "weaker",
+        "5": "weaker",
+        "6": "weaker",
+        "7": "equal",
+        "8": "equal",
+        "9": "equal",
+        "10": "equal",
+        "11": "equal",
+        "12": "super"
+    },
+    "SuperMinKi": 12,
+    "AdditionalSuperID": "5351"
+}

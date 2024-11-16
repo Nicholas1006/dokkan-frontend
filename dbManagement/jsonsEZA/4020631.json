@@ -1,0 +1,536 @@
+{
+    "ID": "4020631",
+    "Typing": "INT",
+    "Class": "Super",
+    "Name": "Goku",
+    "Rarity": "ur",
+    "Min Level": 120,
+    "Max Level": 140,
+    "Categories": [
+        "Majin Buu Saga",
+        "Pure Saiyans",
+        "Goku's Family",
+        "Super Saiyan 3",
+        "Kamehameha",
+        "Final Trump Card",
+        "Connected Hope",
+        "Turtle School",
+        "Mastered Evolution",
+        "Bond of Friendship",
+        "Accelerated Battle",
+        "Battle of Fate",
+        "Power Beyond Super Saiyan",
+        "Bond of Parent and Child",
+        "Earth-Bred Fighters",
+        "Power of Wishes"
+    ],
+    "Can EZA": true,
+    "Can SEZA": false,
+    "Links": [
+        "The Saiyan Lineage",
+        "Saiyan Warrior Race",
+        "All in the Family",
+        "Prepared for Battle",
+        "Experienced Fighters",
+        "Supreme Power",
+        "Shattering the Limit"
+    ],
+    "Resource ID": "4020630",
+    "Passive": {
+        "2220": {
+            "ID": "2220",
+            "Timing": "Start of turn",
+            "Ki Change": {
+                "From": "INT",
+                "To": "RAINBOW",
+                "Style": "Single"
+            },
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Once Only": true,
+            "Type": "Single activator",
+            "Condition": {
+                "Logic": "2220",
+                "Causalities": {
+                    "2220": {
+                        "Button": {
+                            "Name": "Is it within the first 1 turns from entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since entry turn?",
+                            "Logic": "<=1",
+                            "Max": "2",
+                            "Min": "1"
+                        }
+                    }
+                }
+            },
+            "Brief effect description": "Changes INT Ki Spheres to RAINBOW Ki Spheres "
+        },
+        "1002220": {
+            "ID": "1002220",
+            "Timing": "Start of turn",
+            "ATK": 120,
+            "DEF": 120,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "ATK and DEF +120% "
+        },
+        "2002220": {
+            "ID": "2002220",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 150,
+                "Cause": {
+                    "Cause": "Ki sphere obtained",
+                    "Type": [
+                        "Rainbow"
+                    ]
+                },
+                "Slider": "How many Rainbow Ki Spheres have been obtained on this turn?"
+            },
+            "ATK": 30,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Building Stat",
+            "Brief effect description": "ATK +30% per Rainbow Ki Spheres obtained "
+        },
+        "3002220": {
+            "ID": "3002220",
+            "Effective Against All": true,
+            "Timing": "When ki spheres collected",
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "665",
+                "Causalities": {
+                    "665": {
+                        "Button": {
+                            "Name": "Has 1 or more Rainbow Ki Spheres been obtained on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Rainbow Ki Spheres have been obtained on this turn?",
+                            "Logic": ">=1",
+                            "Min": 0,
+                            "Max": 1
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "Attacks effective against all Types after this unit collects ki spheres"
+        },
+        "4002220": {
+            "ID": "4002220",
+            "Timing": "Start of turn",
+            "Crit Chance": 30,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "706",
+                "Causalities": {
+                    "706": {
+                        "Button": {
+                            "Name": "Are there 7 or more Majin Buu Saga category units on the team on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Majin Buu Saga category units on the team on this turn?",
+                            "Logic": ">=7",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "Chance of performing a critical hit +30% "
+        }
+    },
+    "Max Attacks": 2,
+    "Max Super Attacks": 2,
+    "Stats at levels": {
+        "120": {
+            "HP": 7136,
+            "ATK": 7705,
+            "DEF": 3857
+        },
+        "121": {
+            "HP": 7256,
+            "ATK": 7834,
+            "DEF": 3922
+        },
+        "122": {
+            "HP": 7376,
+            "ATK": 7964,
+            "DEF": 3987
+        },
+        "123": {
+            "HP": 7497,
+            "ATK": 8094,
+            "DEF": 4052
+        },
+        "124": {
+            "HP": 7617,
+            "ATK": 8224,
+            "DEF": 4117
+        },
+        "125": {
+            "HP": 7737,
+            "ATK": 8354,
+            "DEF": 4182
+        },
+        "126": {
+            "HP": 7858,
+            "ATK": 8484,
+            "DEF": 4247
+        },
+        "127": {
+            "HP": 7978,
+            "ATK": 8614,
+            "DEF": 4312
+        },
+        "128": {
+            "HP": 8099,
+            "ATK": 8744,
+            "DEF": 4377
+        },
+        "129": {
+            "HP": 8219,
+            "ATK": 8874,
+            "DEF": 4442
+        },
+        "130": {
+            "HP": 8339,
+            "ATK": 9004,
+            "DEF": 4507
+        },
+        "131": {
+            "HP": 8460,
+            "ATK": 9134,
+            "DEF": 4572
+        },
+        "132": {
+            "HP": 8580,
+            "ATK": 9264,
+            "DEF": 4637
+        },
+        "133": {
+            "HP": 8700,
+            "ATK": 9394,
+            "DEF": 4703
+        },
+        "134": {
+            "HP": 8821,
+            "ATK": 9524,
+            "DEF": 4768
+        },
+        "135": {
+            "HP": 8941,
+            "ATK": 9654,
+            "DEF": 4833
+        },
+        "136": {
+            "HP": 9062,
+            "ATK": 9784,
+            "DEF": 4898
+        },
+        "137": {
+            "HP": 9182,
+            "ATK": 9914,
+            "DEF": 4963
+        },
+        "138": {
+            "HP": 9302,
+            "ATK": 10044,
+            "DEF": 5028
+        },
+        "139": {
+            "HP": 9423,
+            "ATK": 10174,
+            "DEF": 5093
+        },
+        "140": {
+            "HP": 9543,
+            "ATK": 10304,
+            "DEF": 5158
+        }
+    },
+    "Leader Skill": {
+        "Name": "Resolve for the Final Battle",
+        "8971": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Final Trump Card"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": []
+            },
+            "HP": 77,
+            "ATK": 77,
+            "DEF": 77
+        },
+        "8972": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Final Trump Card"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        },
+        "8973": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [
+                    "Final Trump Card"
+                ],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "INT"
+                ]
+            },
+            "HP": 50,
+            "ATK": 50,
+            "DEF": 50
+        },
+        "8974": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [
+                    "Final Trump Card"
+                ],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 1200,
+            "ATK": 1200,
+            "DEF": 1200,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 5,
+            "Type ATK": 6,
+            "Type DEF": 5,
+            "Super Attack boost": 6,
+            "Recovery boost": 6
+        },
+        "1": {
+            "HP": 180,
+            "ATK": 180,
+            "DEF": 180,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 1,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "2": {
+            "HP": 186,
+            "ATK": 420,
+            "DEF": 186,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 2,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "3": {
+            "HP": 414,
+            "ATK": 180,
+            "DEF": 414,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 0,
+            "Type DEF": 2,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "4": {
+            "HP": 1020,
+            "ATK": 1020,
+            "DEF": 1020,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 1,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        }
+    },
+    "Super Attack": {
+        "2685": {
+            "superID": "2685",
+            "Type": "Ki blast",
+            "special_name_no": "0",
+            "superName": "Spirit Bomb (Extreme)",
+            "superDescription": "Causes supreme damage to enemy and raises \nSuper Class allies' ATK by 25% for 1 turn",
+            "superMinKi": "12",
+            "superPriority": "0",
+            "superStyle": "Normal",
+            "superMinLVL": "14",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superBuffs": {
+                "2685": {
+                    "Type": "NormalEfficacySpecial",
+                    "Chance": "100",
+                    "Duration": "1",
+                    "Buff": {
+                        "Type": "Percentage",
+                        "+ or -": "+"
+                    },
+                    "Target": "Super class Allies",
+                    "ATK": "25"
+                }
+            },
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "0"
+            },
+            "Multiplier": 505
+        },
+        "2686": {
+            "superID": "2686",
+            "Type": "Ki blast",
+            "special_name_no": "3",
+            "superName": "Super Spirit Bomb (Extreme)",
+            "superDescription": "Causes immense damage to enemy \nand raises Super Class allies' \nATK & DEF by 25% for 1 turn",
+            "superMinKi": "12",
+            "superPriority": "10",
+            "superStyle": "Condition",
+            "superMinLVL": "14",
+            "superCausality": "Activated when there is \na \"Majin Buu Saga\" Category ally \nwhose name includes \"Hercule\" \nattacking in the same turn",
+            "superAimTarget": "0",
+            "superBuffs": {
+                "2686": {
+                    "Type": "NormalEfficacySpecial",
+                    "Chance": "100",
+                    "Duration": "1",
+                    "Buff": {
+                        "Type": "Percentage",
+                        "+ or -": "+"
+                    },
+                    "Target": "Super class Allies",
+                    "ATK": "25",
+                    "DEF": "25"
+                }
+            },
+            "superIsInactive": "0",
+            "superCondition": {
+                "Logic": "694",
+                "Causalities": {
+                    "694": {
+                        "Button": {
+                            "Name": "Is there a Majin Buu Saga Category ally whose name includes  attacking in the same turn?"
+                        }
+                    }
+                }
+            },
+            "SpecialBonus": {
+                "ID": "0"
+            },
+            "Multiplier": 605
+        }
+    },
+    "Active Skill": null,
+    "Standby Skill": null,
+    "Finish Skill": null,
+    "Transforms from": [
+        "1020621"
+    ],
+    "Transformations": [],
+    "Max Appearances In Form": 50,
+    "Dokkan awakenings": [],
+    "Dokkan Reverse awakenings": [],
+    "Ki Multiplier": {
+        "0": 70.0,
+        "1": 75.83333333333333,
+        "2": 81.66666666666667,
+        "3": 87.5,
+        "4": 93.33333333333333,
+        "5": 99.16666666666667,
+        "6": 105.0,
+        "7": 110.83333333333334,
+        "8": 116.66666666666666,
+        "9": 122.5,
+        "10": 128.33333333333334,
+        "11": 134.16666666666666,
+        "12": 140.0
+    },
+    "Ki Circle Segments": {
+        "1": "weaker",
+        "2": "weaker",
+        "3": "weaker",
+        "4": "weaker",
+        "5": "weaker",
+        "6": "equal",
+        "7": "equal",
+        "8": "equal",
+        "9": "equal",
+        "10": "equal",
+        "11": "equal",
+        "12": "super"
+    },
+    "SuperMinKi": 12,
+    "AdditionalSuperID": "2685"
+}

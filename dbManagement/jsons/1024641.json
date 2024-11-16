@@ -1,0 +1,502 @@
+{
+    "ID": "1024641",
+    "Typing": "INT",
+    "Class": "Extreme",
+    "Name": "Fusion Zamasu",
+    "Rarity": "ur",
+    "Min Level": 80,
+    "Max Level": 100,
+    "Categories": [
+        "Worldwide Chaos",
+        "Potara",
+        "Realm of Gods",
+        "Future Saga",
+        "Time Travelers",
+        "Final Trump Card",
+        "Battle of Fate",
+        "Fused Fighters",
+        "Power of Wishes",
+        "Super Bosses"
+    ],
+    "Can EZA": false,
+    "Can SEZA": false,
+    "Links": [
+        "Big Bad Bosses",
+        "Dismal Future",
+        "Godly Power",
+        "Fused Fighter",
+        "Nightmare"
+    ],
+    "Resource ID": "1024640",
+    "Passive": {
+        "2909": {
+            "ID": "2909",
+            "Timing": "Start of turn",
+            "Ki Change": {
+                "From": [
+                    "PHY",
+                    "STR",
+                    "TEQ",
+                    "AGL"
+                ],
+                "To": [
+                    "INT"
+                ],
+                "Style": "Randomly"
+            },
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "Randomly changes Ki Spheres of a certain Type(INT excluded) to INT Ki Spheres "
+        },
+        "1002909": {
+            "ID": "1002909",
+            "Timing": "Start of turn",
+            "ATK": 60,
+            "DEF": 60,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "ATK and DEF +60% "
+        },
+        "2002909": {
+            "ID": "2002909",
+            "Timing": "Start of turn",
+            "DR": 10,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "Damage recieved +10% "
+        },
+        "3002909": {
+            "ID": "3002909",
+            "Timing": "Right before attack(MOT stat)",
+            "ATK": 30,
+            "DEF": 30,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1583",
+                "Causalities": {
+                    "1583": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there on this turn?",
+                            "Logic": ">=12",
+                            "Min": 0,
+                            "Max": 12
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "ATK and DEF +30% when attacking"
+        },
+        "4002909": {
+            "ID": "4002909",
+            "Timing": "Right after being hit",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 5,
+                "Cause": {
+                    "Cause": "Attacks recieved"
+                },
+                "Slider": "How many attacks has this character recieved?"
+            },
+            "DR": 1,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Building Stat",
+            "Brief effect description": "Damage recieved +1% (up to 5%) based on 'How many attacks has this character recieved' after being hit"
+        },
+        "5002909": {
+            "ID": "5002909",
+            "Timing": "End of turn",
+            "Heals": 5,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1585",
+                "Causalities": {
+                    "1585": {
+                        "Button": {
+                            "Name": "Has this character recieved their 5th attack in battle on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character recieved on this turn?",
+                            "Logic": ">=5",
+                            "Min": 0,
+                            "Max": 5
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "Heals +5% at the end of turn"
+        }
+    },
+    "Max Attacks": 2,
+    "Max Super Attacks": 2,
+    "Stats at levels": {
+        "80": {
+            "HP": 7593,
+            "ATK": 8395,
+            "DEF": 3789
+        },
+        "81": {
+            "HP": 7605,
+            "ATK": 8408,
+            "DEF": 3795
+        },
+        "82": {
+            "HP": 7617,
+            "ATK": 8422,
+            "DEF": 3801
+        },
+        "83": {
+            "HP": 7629,
+            "ATK": 8436,
+            "DEF": 3806
+        },
+        "84": {
+            "HP": 7641,
+            "ATK": 8450,
+            "DEF": 3812
+        },
+        "85": {
+            "HP": 7653,
+            "ATK": 8464,
+            "DEF": 3817
+        },
+        "86": {
+            "HP": 7666,
+            "ATK": 8478,
+            "DEF": 3823
+        },
+        "87": {
+            "HP": 7678,
+            "ATK": 8492,
+            "DEF": 3829
+        },
+        "88": {
+            "HP": 7690,
+            "ATK": 8506,
+            "DEF": 3834
+        },
+        "89": {
+            "HP": 7702,
+            "ATK": 8520,
+            "DEF": 3840
+        },
+        "90": {
+            "HP": 7714,
+            "ATK": 8534,
+            "DEF": 3845
+        },
+        "91": {
+            "HP": 7726,
+            "ATK": 8547,
+            "DEF": 3851
+        },
+        "92": {
+            "HP": 7738,
+            "ATK": 8561,
+            "DEF": 3857
+        },
+        "93": {
+            "HP": 7750,
+            "ATK": 8575,
+            "DEF": 3862
+        },
+        "94": {
+            "HP": 7763,
+            "ATK": 8589,
+            "DEF": 3868
+        },
+        "95": {
+            "HP": 7775,
+            "ATK": 8603,
+            "DEF": 3873
+        },
+        "96": {
+            "HP": 7787,
+            "ATK": 8617,
+            "DEF": 3879
+        },
+        "97": {
+            "HP": 7799,
+            "ATK": 8631,
+            "DEF": 3885
+        },
+        "98": {
+            "HP": 7811,
+            "ATK": 8645,
+            "DEF": 3890
+        },
+        "99": {
+            "HP": 7823,
+            "ATK": 8659,
+            "DEF": 3896
+        },
+        "100": {
+            "HP": 7836,
+            "ATK": 8673,
+            "DEF": 3902
+        }
+    },
+    "Leader Skill": {
+        "Name": "Purification by the Name of Despair",
+        "11868": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Worldwide Chaos"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 2
+        },
+        "11869": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Worldwide Chaos"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": []
+            },
+            "HP": 100,
+            "ATK": 100,
+            "DEF": 100
+        },
+        "11870": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Potara"
+                ],
+                "Excluded Category": [
+                    "Worldwide Chaos"
+                ],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 2
+        },
+        "11871": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Potara"
+                ],
+                "Excluded Category": [
+                    "Worldwide Chaos"
+                ],
+                "Allies or enemies": "Allies",
+                "Class": []
+            },
+            "HP": 100,
+            "ATK": 100,
+            "DEF": 100
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 5,
+            "Type ATK": 6,
+            "Type DEF": 5,
+            "Super Attack boost": 6,
+            "Recovery boost": 6
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 1,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 2,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 0,
+            "Type DEF": 2,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "4": {
+            "HP": 1700,
+            "ATK": 1700,
+            "DEF": 1700,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 1,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        }
+    },
+    "Super Attack": {
+        "3952": {
+            "superID": "3952",
+            "Type": "Ki blast",
+            "special_name_no": "0",
+            "superName": "Blades of Judgement",
+            "superDescription": "Raises ATK & DEF for 1 turn, \ncauses supreme damage to enemy \nand lowers ATK",
+            "superMinKi": "12",
+            "superPriority": "0",
+            "superStyle": "Normal",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superBuffs": {
+                "3952": {
+                    "Type": "NormalEfficacySpecial",
+                    "Chance": "100",
+                    "Duration": "1",
+                    "Buff": {
+                        "Type": "Percentage",
+                        "+ or -": "+"
+                    },
+                    "Target": "Self",
+                    "ATK": "30",
+                    "DEF": "30"
+                },
+                "1003952": {
+                    "Type": "NormalEfficacySpecial",
+                    "Chance": "100",
+                    "Duration": "3",
+                    "Buff": {
+                        "Type": "Percentage",
+                        "+ or -": "-"
+                    },
+                    "Target": "Enemy",
+                    "ATK": "20"
+                }
+            },
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "0"
+            },
+            "Multiplier": 430
+        }
+    },
+    "Active Skill": null,
+    "Standby Skill": null,
+    "Finish Skill": null,
+    "Transforms from": [],
+    "Transformations": [],
+    "Max Appearances In Form": 50,
+    "Dokkan awakenings": [
+        "1024651"
+    ],
+    "Dokkan Reverse awakenings": [],
+    "Ki Multiplier": {
+        "0": 70.0,
+        "1": 75.83333333333333,
+        "2": 81.66666666666667,
+        "3": 87.5,
+        "4": 93.33333333333333,
+        "5": 99.16666666666667,
+        "6": 105.0,
+        "7": 110.83333333333334,
+        "8": 116.66666666666666,
+        "9": 122.5,
+        "10": 128.33333333333334,
+        "11": 134.16666666666666,
+        "12": 140.0
+    },
+    "Ki Circle Segments": {
+        "1": "weaker",
+        "2": "weaker",
+        "3": "weaker",
+        "4": "weaker",
+        "5": "weaker",
+        "6": "equal",
+        "7": "equal",
+        "8": "equal",
+        "9": "equal",
+        "10": "equal",
+        "11": "equal",
+        "12": "super"
+    },
+    "SuperMinKi": 12,
+    "AdditionalSuperID": "3952"
+}
