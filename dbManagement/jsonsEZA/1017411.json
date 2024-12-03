@@ -1,0 +1,680 @@
+{
+    "ID": "1017411",
+    "Typing": "INT",
+    "Class": "Super",
+    "Name": "Super Saiyan 2 Goku (Angel)",
+    "Rarity": "ur",
+    "Min Level": 120,
+    "Max Level": 140,
+    "Categories": [
+        "Otherworld Warriors",
+        "Majin Buu Saga",
+        "Pure Saiyans",
+        "Goku's Family",
+        "Kamehameha",
+        "Resurrected Warriors",
+        "Super Saiyan 2",
+        "Transformation Boost",
+        "Super Saiyan 3",
+        "Connected Hope",
+        "Turtle School",
+        "Time Limit",
+        "Mastered Evolution",
+        "Bond of Friendship",
+        "Accelerated Battle",
+        "Power Beyond Super Saiyan",
+        "Bond of Parent and Child",
+        "Earth-Bred Fighters"
+    ],
+    "Can EZA": true,
+    "Can SEZA": false,
+    "Links": [
+        "Saiyan Warrior Race",
+        "Super Saiyan",
+        "Golden Warrior",
+        "Kamehameha",
+        "Prepared for Battle",
+        "Supreme Power",
+        "Fierce Battle"
+    ],
+    "Resource ID": "1017410",
+    "Passive": {
+        "4456": {
+            "ID": "4456",
+            "Timing": "Start of turn",
+            "Ki": 2,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "Ki +2 "
+        },
+        "1004456": {
+            "ID": "1004456",
+            "Timing": "Start of turn",
+            "ATK": 150,
+            "DEF": 150,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "ATK and DEF +150% "
+        },
+        "2004456": {
+            "ID": "2004456",
+            "Dodge Chance": 50,
+            "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "Chance of evading enemy attacks +50% "
+        },
+        "3004456": {
+            "ID": "3004456",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 10,
+                "Max": 120,
+                "Cause": {
+                    "Cause": "HP",
+                    "Type": "More HP remaining"
+                },
+                "Slider": "What percentage of HP is remaining?"
+            },
+            "DEF": 120,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Building Stat",
+            "Brief effect description": "DEF +120% (up to 120%) based on 'What percentage of HP is remaining' "
+        },
+        "4004456": {
+            "ID": "4004456",
+            "Dodge Chance": 20,
+            "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "21",
+                "Causalities": {
+                    "21": {
+                        "Button": {
+                            "Name": "Is HP 50 % or more on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining on this turn?",
+                            "Logic": ">=50",
+                            "Min": 0,
+                            "Max": 100
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "Chance of evading enemy attacks +20% "
+        },
+        "5004456": {
+            "ID": "5004456",
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 20,
+                "Max": 120,
+                "Cause": {
+                    "Cause": "HP",
+                    "Type": "Less HP remaining"
+                },
+                "Slider": "What percentage of HP is remaining?"
+            },
+            "ATK": 120,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Building Stat",
+            "Brief effect description": "ATK +120% (up to 120%) based on 'What percentage of HP is remaining' "
+        },
+        "6004456": {
+            "ID": "6004456",
+            "Timing": "Start of turn",
+            "Crit Chance": 20,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "27",
+                "Causalities": {
+                    "27": {
+                        "Button": {
+                            "Name": "Is HP 50 % or less on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining on this turn?",
+                            "Logic": "<=50",
+                            "Min": 0,
+                            "Max": 100
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "Chance of performing a critical hit +20% "
+        },
+        "7004456": {
+            "ID": "7004456",
+            "Timing": "Start of turn",
+            "Ki Change": {
+                "From": [
+                    "PHY",
+                    "STR",
+                    "INT",
+                    "TEQ",
+                    "AGL"
+                ],
+                "To": [
+                    "Rainbow"
+                ],
+                "Style": "Randomly"
+            },
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "258 || 2830",
+                "Causalities": {
+                    "258": {
+                        "Button": {
+                            "Name": "Are there 1 or more Majin Buu Saga category enemies on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Majin Buu Saga category enemies on this turn?",
+                            "Logic": ">=1",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    },
+                    "2830": {
+                        "Button": {
+                            "Name": "Are there 2 or more Majin Buu Saga category units on the same turn on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Majin Buu Saga category units on the same turn on this turn?",
+                            "Logic": ">=2",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "Randomly changes Ki Spheres of a certain Type to Rainbow Ki Spheres "
+        },
+        "8004456": {
+            "ID": "8004456",
+            "Timing": "When ki spheres collected",
+            "Crit Chance": 50,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "665",
+                "Causalities": {
+                    "665": {
+                        "Button": {
+                            "Name": "Has 1 or more Rainbow Ki Spheres been obtained on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Rainbow Ki Spheres have been obtained on this turn?",
+                            "Logic": ">=1",
+                            "Min": 0,
+                            "Max": 1
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "Chance of performing a critical hit +50% after this unit collects ki spheres"
+        },
+        "9004456": {
+            "ID": "9004456",
+            "Timing": "Right before attack(MOT stat)",
+            "ATK": 120,
+            "DEF": 120,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "461",
+                "Causalities": {
+                    "461": {
+                        "Button": {
+                            "Name": "Has 3 or more Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres been obtained on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres have been obtained on this turn?",
+                            "Logic": ">=3",
+                            "Min": 0,
+                            "Max": 3
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "ATK and DEF +120% when attacking"
+        },
+        "10004456": {
+            "ID": "10004456",
+            "Transformation": {
+                "Activated": true,
+                "Unit": "4018761",
+                "Giant/Rage": false,
+                "Min Turns": null,
+                "Max Turns": null,
+                "Reverse chance": null
+            },
+            "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "First Turn To Activate": 3,
+            "Condition": {
+                "Logic": "470 && 788",
+                "Causalities": {
+                    "470": {
+                        "Button": {
+                            "Name": "Is there less than 2 enemies on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many enemies are there on this turn?",
+                            "Logic": "<2",
+                            "Min": 1,
+                            "Max": 7
+                        }
+                    },
+                    "788": {
+                        "Button": {
+                            "Name": "Is the enemy's health 50 % or more on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP does the enemy have on this turn?",
+                            "Logic": ">=50",
+                            "Max": 100
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "Transforms into 4018761 "
+        }
+    },
+    "Max Attacks": 2,
+    "Max Super Attacks": 2,
+    "Stats at levels": {
+        "120": {
+            "HP": 11850,
+            "ATK": 12440,
+            "DEF": 6400
+        },
+        "121": {
+            "HP": 12049,
+            "ATK": 12649,
+            "DEF": 6507
+        },
+        "122": {
+            "HP": 12249,
+            "ATK": 12859,
+            "DEF": 6615
+        },
+        "123": {
+            "HP": 12449,
+            "ATK": 13069,
+            "DEF": 6723
+        },
+        "124": {
+            "HP": 12649,
+            "ATK": 13279,
+            "DEF": 6831
+        },
+        "125": {
+            "HP": 12849,
+            "ATK": 13489,
+            "DEF": 6939
+        },
+        "126": {
+            "HP": 13049,
+            "ATK": 13699,
+            "DEF": 7047
+        },
+        "127": {
+            "HP": 13249,
+            "ATK": 13908,
+            "DEF": 7155
+        },
+        "128": {
+            "HP": 13449,
+            "ATK": 14118,
+            "DEF": 7263
+        },
+        "129": {
+            "HP": 13649,
+            "ATK": 14328,
+            "DEF": 7371
+        },
+        "130": {
+            "HP": 13849,
+            "ATK": 14538,
+            "DEF": 7479
+        },
+        "131": {
+            "HP": 14048,
+            "ATK": 14748,
+            "DEF": 7587
+        },
+        "132": {
+            "HP": 14248,
+            "ATK": 14958,
+            "DEF": 7695
+        },
+        "133": {
+            "HP": 14448,
+            "ATK": 15168,
+            "DEF": 7803
+        },
+        "134": {
+            "HP": 14648,
+            "ATK": 15377,
+            "DEF": 7911
+        },
+        "135": {
+            "HP": 14848,
+            "ATK": 15587,
+            "DEF": 8019
+        },
+        "136": {
+            "HP": 15048,
+            "ATK": 15797,
+            "DEF": 8127
+        },
+        "137": {
+            "HP": 15248,
+            "ATK": 16007,
+            "DEF": 8235
+        },
+        "138": {
+            "HP": 15448,
+            "ATK": 16217,
+            "DEF": 8343
+        },
+        "139": {
+            "HP": 15648,
+            "ATK": 16427,
+            "DEF": 8451
+        },
+        "140": {
+            "HP": 15848,
+            "ATK": 16637,
+            "DEF": 8559
+        }
+    },
+    "Leader Skill": {
+        "Name": "Rousing Fighting Spirit",
+        "101741100": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Otherworld Warriors"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": []
+            },
+            "HP": 170,
+            "ATK": 170,
+            "DEF": 170
+        },
+        "101741101": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Otherworld Warriors"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        },
+        "101741102": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Super Saiyan 3"
+                ],
+                "Excluded Category": [
+                    "Otherworld Warriors"
+                ],
+                "Allies or enemies": "Allies",
+                "Class": []
+            },
+            "HP": 170,
+            "ATK": 170,
+            "DEF": 170
+        },
+        "101741103": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Super Saiyan 3"
+                ],
+                "Excluded Category": [
+                    "Otherworld Warriors"
+                ],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 5,
+            "Type ATK": 6,
+            "Type DEF": 5,
+            "Super Attack boost": 6,
+            "Recovery boost": 6
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 1,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 2,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 0,
+            "Type DEF": 2,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "4": {
+            "HP": 1700,
+            "ATK": 1700,
+            "DEF": 1700,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 1,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        }
+    },
+    "Super Attack": {
+        "7006": {
+            "superID": "7006",
+            "Type": "Other",
+            "special_name_no": "0",
+            "superName": "Super Kamehameha (Extreme)",
+            "superDescription": "Raises ATK & DEF for 1 turn and \ncauses immense damage to enemy",
+            "superMinKi": "12",
+            "superPriority": "0",
+            "superStyle": "Normal",
+            "superMinLVL": "14",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superBuffs": {
+                "7006": {
+                    "Type": "NormalEfficacySpecial",
+                    "Chance": "100",
+                    "Duration": "1",
+                    "Buff": {
+                        "Type": "Percentage",
+                        "+ or -": "+"
+                    },
+                    "Target": "Self",
+                    "ATK": "30",
+                    "DEF": "30"
+                }
+            },
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "0"
+            },
+            "Multiplier": 630
+        }
+    },
+    "Active Skill": null,
+    "Standby Skill": null,
+    "Finish Skill": null,
+    "Transforms from": [],
+    "Transformations": [
+        "4018761"
+    ],
+    "Max Appearances In Form": 50,
+    "Dokkan awakenings": [],
+    "Dokkan Reverse awakenings": [],
+    "Ki Multiplier": {
+        "0": 75.0,
+        "1": 81.25,
+        "2": 87.5,
+        "3": 93.75,
+        "4": 100.0,
+        "5": 106.25,
+        "6": 112.5,
+        "7": 118.75,
+        "8": 125.0,
+        "9": 131.25,
+        "10": 137.5,
+        "11": 143.75,
+        "12": 150.0
+    },
+    "Ki Circle Segments": {
+        "1": "weaker",
+        "2": "weaker",
+        "3": "weaker",
+        "4": "equal",
+        "5": "equal",
+        "6": "equal",
+        "7": "equal",
+        "8": "equal",
+        "9": "equal",
+        "10": "equal",
+        "11": "equal",
+        "12": "super"
+    },
+    "SuperMinKi": 12,
+    "AdditionalSuperID": "7006"
+}
