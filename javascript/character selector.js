@@ -1,3 +1,15 @@
+// GLOBAL VARIABLES
+let unitsToDisplay = 500;
+
+let currentSort = "Acquired";
+let currentOrder = "Descending";
+let currentFilter = "Type";
+let currentFilterValue = "";
+let currentFilteredUnits = {};
+let allUnits;
+let unitBasics;
+
+
 export function getJsonPromise(prefix,name,suffix) {
   return fetch(prefix + name + suffix)
     .then(response => {
@@ -28,23 +40,195 @@ export function getAssetID(unitID){
   return unitID;
 }
 
-export function createCharacterSelection(){
-  const allUnitsJsonPromise=getJsonPromise('dbManagement/uniqueJsons/','allUnits','.json');
-  allUnitsJsonPromise.then(allUnitsJson => {
-    const UNITSTODISPLAY = 10000;
-    const unitsContainer = document.getElementById('unit-selection-container');
-    unitsContainer.style.width="100%";
-    for (let i = UNITSTODISPLAY; i > 0;i--) {
-      if(i<allUnitsJson.length){
-        const unitButton = document.createElement('a');
-        unitButton.id = "unit-button";
-        unitButton.href = baseDomain+"/cards/index.html?id=" + allUnitsJson[i];
-        unitButton.style.backgroundImage = "url('dbManagement/DokkanFiles/global/en/character/card/"+getAssetID(allUnitsJson[i])+"/card_"+getAssetID(allUnitsJson[i])+"_full_thumb.png')";
-        unitButton.className="unit-selection-button";
-        unitsContainer.appendChild(unitButton);
+export function rarityToInt(rarity){
+  switch(rarity){
+    case "n":
+      return 0;
+    case "r":
+      return 1;
+    case "sr":
+      return 2;
+    case "ssr":
+      return 3;
+    case "ur":
+      return 4;
+    case "lr":
+      return 5;
+  }
+}
+
+
+export function createFilterOption(){
+  const filterContainer = document.getElementById('filter-container');
+  const filterSelect = document.createElement('select');
+  const filterOptions = ['Type', 'Name', 'Rarity', 'Eza', "Seza", "Class","Categories","Super Attack Types", "Links"]; 
+  filterOptions.forEach(option => {
+    const optionElement = document.createElement('option');
+    optionElement.value = option;
+    optionElement.textContent = option;
+    filterSelect.appendChild(optionElement);
+    filterSelect.addEventListener('change', function() {
+      currentFilter = this.value;
+      reFilterCards();
+    })
+  });
+
+  const filterTextInput = document.createElement('input');
+  filterTextInput.type="text";
+  filterTextInput.id="currentFilterInput";
+  filterTextInput.placeholder="Enter text to filter by";
+  filterTextInput.addEventListener('input', function() {
+    currentFilterValue = this.value;
+    reFilterCards();
+  });
+
+  filterContainer.appendChild(filterSelect);
+  filterContainer.appendChild(filterTextInput);
+}
+
+export function reFilterCards() {
+  currentFilteredUnits = { ...unitBasics };
+  if(['Eza',"Seza"].includes(currentFilter)){
+    currentFilteredUnits = Object.fromEntries(
+      Object.entries(currentFilteredUnits).filter(([key, value]) => 
+        value[currentFilter] === true
+      )
+    );
+  }
+  else if (['Type', 'Name', 'Rarity','Class'].includes(currentFilter)) {
+    currentFilteredUnits = Object.fromEntries(
+      Object.entries(currentFilteredUnits).filter(([key, value]) => 
+        value[currentFilter] === null ? currentFilterValue === "" : value[currentFilter].toLowerCase() === currentFilterValue.toLowerCase()
+      )
+    );
+  }
+
+  else if (["Categories","Links","Super Attack Types"].includes(currentFilter)) {
+    currentFilteredUnits = Object.fromEntries(
+      Object.entries(currentFilteredUnits).filter(([key, value]) => 
+        value[currentFilter].map(x => x.toLowerCase()).includes(currentFilterValue.toLowerCase())
+      )
+    );
+  }
+
+  reSortCards();
+}
+
+
+
+export function createSortOption(){
+  const sortContainer = document.getElementById('sort-container');
+  const sortSelect = document.createElement('select');
+  const sortOptions = ["Acquired", 'ID', 'Max Level', 'Rarity', 'Cost', 'HP', 'Attack', "Defense", "Sp Atk Lv"];
+  sortOptions.forEach(option => {
+    const optionElement = document.createElement('option');
+    optionElement.value = option;
+    optionElement.textContent = option;
+    sortSelect.appendChild(optionElement);
+    sortSelect.addEventListener('change', function() {
+      currentSort = this.value;
+      reSortCards();
+    })
+  });
+  sortContainer.appendChild(sortSelect);
+
+  const reverseOrderInput = document.createElement('input');
+  reverseOrderInput.type = 'checkbox';
+  reverseOrderInput.id = 'reverse-sort';
+  const reverseOrderLabel = document.createElement('label');
+  reverseOrderLabel.textContent = 'Reverse order';
+  reverseOrderLabel.setAttribute('for', 'reverse-sort');
+  reverseOrderInput.addEventListener('change', function() {
+    currentOrder = this.checked ? 'Ascending' : 'Descending';
+    reSortCards();
+  })
+  const unitBasicsJsonPromise=getJsonPromise('dbManagement/uniqueJsons/','unitBasics','.json');
+  unitBasicsJsonPromise.then(unitBasicsJson => {
+    unitBasics=unitBasicsJson;
+    currentFilteredUnits=unitBasics;
+    sortContainer.appendChild(reverseOrderInput);
+    sortContainer.appendChild(reverseOrderLabel);
+    reSortCards();
+  }
+  );
+}
+
+
+export function reSortCards(){
+  const unitsContainer = document.getElementById('unit-selection-container');
+  while (unitsContainer.firstChild) {
+    unitsContainer.removeChild(unitsContainer.firstChild);
+  }
+
+  let sortedUnits = Object.values(currentFilteredUnits);
+  const order = currentOrder =="Ascending" ? 1 : -1;
+
+  sortedUnits.sort((a, b) => {
+    let valueA = a[currentSort];
+    let valueB = b[currentSort];
+    if (currentSort === "Rarity") {
+      valueA = rarityToInt(valueA);
+      valueB = rarityToInt(valueB);
+    }
+
+    if(valueA < valueB) {
+      return -1 * order;
+    }
+    if(valueA > valueB) {
+      return 1 * order;
+    }
+    return 0;
+  });
+
+  for (let i = 0; i < unitsToDisplay;i++) {
+    if(i<sortedUnits.length){
+      const unitButtonContainer = document.createElement('div');
+      unitButtonContainer.className="unit-button-container";
+
+      const unitButton = document.createElement('a');
+      unitsContainer.appendChild(unitButtonContainer);
+      unitButtonContainer.appendChild(unitButton);
+      unitButton.id = "unit-button";
+      unitButton.className="unit-selection-button";
+      unitButton.href = baseDomain+"/cards/index.html?id=" + sortedUnits[i]["ID"];
+      unitButton.style.backgroundImage = "url('dbManagement/DokkanFiles/global/en/character/card/"+getAssetID(sortedUnits[i]["ID"])+"/card_"+getAssetID(sortedUnits[i]["ID"])+"_full_thumb.png')";
+
+      if(sortedUnits[i]["Eza"] || sortedUnits[i]["Seza"]){
+        const ezaImage = document.createElement('img');
+        ezaImage.style.backgroundImage = "url('../dbManagement/assets/misc/extra/eZa.png')";
+        ezaImage.style.transform="translate(0px, 0px)"
+        ezaImage.style.zIndex = "5";
+        unitButtonContainer.appendChild(ezaImage);
       }
+
+      if(sortedUnits[i]["Seza"]){
+        const sezaImage = document.createElement('img');
+        sezaImage.style.backgroundImage = "url('../dbManagement/assets/misc/extra/seZa.png')";
+        sezaImage.style.transform="translate(0px, 0px)"
+        sezaImage.style.zIndex = "5";
+        unitButtonContainer.appendChild(sezaImage);
+      }
+
     }
   }
+  
+  
+}
+
+
+export function createCharacterSelection(){
+  createSortOption();
+  createFilterOption();
+
+  const allUnitsJsonPromise=getJsonPromise('dbManagement/uniqueJsons/','allUnits','.json');
+  allUnitsJsonPromise.then(allUnitsJson => {
+    allUnits=allUnitsJson;
+
+    
+    const unitsContainer = document.getElementById('unit-selection-container');
+    unitsContainer.style.width="100%";
+  }
+
   );
 }
 const currentUrl=window.location.href;
