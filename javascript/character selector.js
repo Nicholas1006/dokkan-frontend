@@ -6,7 +6,6 @@ let currentOrder = "Descending";
 let currentFilter = "Type";
 let currentFilterValue = "";
 let currentFilteredUnits = {};
-let allUnits;
 let unitBasics;
 
 
@@ -91,7 +90,7 @@ export function reFilterCards() {
   if(['Eza',"Seza"].includes(currentFilter)){
     currentFilteredUnits = Object.fromEntries(
       Object.entries(currentFilteredUnits).filter(([key, value]) => 
-        value[currentFilter] === true
+        value[currentFilter]
       )
     );
   }
@@ -145,6 +144,8 @@ export function createSortOption(){
   const unitBasicsJsonPromise=getJsonPromise('dbManagement/uniqueJsons/','unitBasics','.json');
   unitBasicsJsonPromise.then(unitBasicsJson => {
     unitBasics=unitBasicsJson;
+    
+    
     currentFilteredUnits=unitBasics;
     sortContainer.appendChild(reverseOrderInput);
     sortContainer.appendChild(reverseOrderLabel);
@@ -190,22 +191,48 @@ export function reSortCards(){
       unitButtonContainer.appendChild(unitButton);
       unitButton.id = "unit-button";
       unitButton.className="unit-selection-button";
-      unitButton.href = baseDomain+"/cards/index.html?id=" + sortedUnits[i]["ID"];
-      unitButton.style.backgroundImage = "url('dbManagement/DokkanFiles/global/en/character/card/"+getAssetID(sortedUnits[i]["ID"])+"/card_"+getAssetID(sortedUnits[i]["ID"])+"_full_thumb.png')";
+      unitButton.href = baseDomain+"/cards/index.html?id=" + sortedUnits[i]["ID"] + "&EZA="+sortedUnits[i]["Eza"]+"&SEZA="+sortedUnits[i]["Seza"];
+
+      const unitButtonBackgroundImage = document.createElement('img');
+      unitButtonBackgroundImage.src="dbManagement/DokkanFiles/global/en/character/card/"+getAssetID(sortedUnits[i]["ID"])+"/card_"+getAssetID(sortedUnits[i]["ID"])+"_full_thumb.png";
+      unitButtonBackgroundImage.loading="lazy";
+      unitButtonBackgroundImage.style.width="100%";
+      unitButtonBackgroundImage.style.height="100%";
+      unitButton.appendChild(unitButtonBackgroundImage)
+
+
+
+      //unitButton.style.backgroundImage = "url('dbManagement/DokkanFiles/global/en/character/card/"+getAssetID(sortedUnits[i]["ID"])+"/card_"+getAssetID(sortedUnits[i]["ID"])+"_full_thumb.png')";
 
       if(sortedUnits[i]["Eza"] || sortedUnits[i]["Seza"]){
         const ezaImage = document.createElement('img');
-        ezaImage.style.backgroundImage = "url('../dbManagement/assets/misc/extra/eZa.png')";
-        ezaImage.style.transform="translate(0px, 0px)"
+        ezaImage.src = "dbManagement/assets/misc/extra/eZa.png";
+        ezaImage.loading="lazy";
+        ezaImage.style.width = "20%";
+        ezaImage.style.height = "20%";
+        ezaImage.style.position = "absolute";
+        ezaImage.style.bottom = "0";
+        ezaImage.style.right = "30px";
+        ezaImage.style.border = "none";
         ezaImage.style.zIndex = "5";
+        ezaImage.style.pointerEvents = "none";
+        unitButtonContainer.style.position = "relative";
         unitButtonContainer.appendChild(ezaImage);
       }
 
       if(sortedUnits[i]["Seza"]){
         const sezaImage = document.createElement('img');
-        sezaImage.style.backgroundImage = "url('../dbManagement/assets/misc/extra/seZa.png')";
-        sezaImage.style.transform="translate(0px, 0px)"
+        sezaImage.src = "dbManagement/assets/misc/extra/seZa.png";
+        sezaImage.loading="lazy";
+        sezaImage.style.width = "20%";
+        sezaImage.style.height = "20%";
+        sezaImage.style.position = "absolute";
+        sezaImage.style.bottom = "0";
+        sezaImage.style.right = "15px";
+        sezaImage.style.border = "none";
         sezaImage.style.zIndex = "5";
+        sezaImage.style.pointerEvents = "none";
+        unitButtonContainer.style.position = "relative";
         unitButtonContainer.appendChild(sezaImage);
       }
 
@@ -219,17 +246,6 @@ export function reSortCards(){
 export function createCharacterSelection(){
   createSortOption();
   createFilterOption();
-
-  const allUnitsJsonPromise=getJsonPromise('dbManagement/uniqueJsons/','allUnits','.json');
-  allUnitsJsonPromise.then(allUnitsJson => {
-    allUnits=allUnitsJson;
-
-    
-    const unitsContainer = document.getElementById('unit-selection-container');
-    unitsContainer.style.width="100%";
-  }
-
-  );
 }
 const currentUrl=window.location.href;
 let baseDomain=window.location.origin;

@@ -3633,14 +3633,14 @@ export function createEzaContainer(){
         else{
             ezaButton.style.transform="translate(180px, 170px)"
         }
-        if(isEza == "True"){
+        if(isEza == "true"){
             ezaButton.style.backgroundImage = "url('../dbManagement/assets/misc/extra/eZa.png')";
             ezaButton.onclick = function(){
                 updateQueryStringParameter('EZA', 'False');
                 loadPage();
             }
         }
-        else if(isSeza=="True"){
+        else if(isSeza=="true"){
             ezaButton.style.backgroundImage = "url('../dbManagement/assets/misc/extra/eZa.png')";
             ezaButton.onclick = function(){
                 updateQueryStringParameter('EZA', 'False');
@@ -3651,7 +3651,7 @@ export function createEzaContainer(){
         else{
             ezaButton.style.backgroundImage = "url('../dbManagement/assets/misc/extra/eZa_inactive.png')";
             ezaButton.onclick = function(){
-                updateQueryStringParameter('EZA', 'True');
+                updateQueryStringParameter('EZA', 'true');
                 updateQueryStringParameter('SEZA', 'False');
                 loadPage();
             }
@@ -3663,18 +3663,18 @@ export function createEzaContainer(){
     if(currentJson["Can SEZA"]){
         sezaButton.style.transform="translate(150px, 170px)"
         sezaButton.id="seza-button";
-        if(isSeza == "True"){
+        if(isSeza == "true"){
             sezaButton.style.backgroundImage = "url('../dbManagement/assets/misc/extra/seZa.png')";
             sezaButton.onclick = function(){
                 updateQueryStringParameter('SEZA', 'False');
-                updateQueryStringParameter('EZA', 'True');
+                updateQueryStringParameter('EZA', 'true');
                 loadPage();
             }
         }
         else{
             sezaButton.style.backgroundImage = "url('../dbManagement/assets/misc/extra/seZa_inactive.png')";
             sezaButton.onclick = function(){
-                updateQueryStringParameter('SEZA', 'True');
+                updateQueryStringParameter('SEZA', 'true');
                 updateQueryStringParameter('EZA', 'False');
                 loadPage();
             }
@@ -4252,10 +4252,10 @@ export function createSuperAttackContainer(){
     for(const key of currentJson["Transforms from"]){
         let transformPromise;
         const urlParams=new URLSearchParams(window.location.search);
-        if(isSeza=="True"){
+        if(isSeza=="true"){
             transformPromise=getJsonPromise('../dbManagement/jsonsSEZA/',key,'.json');
         }
-        else if(isEza=="True"){
+        else if(isEza=="true"){
             transformPromise=getJsonPromise('../dbManagement/jsonsEZA/',key,'.json');
         }
         else{
@@ -4998,13 +4998,13 @@ export async function loadPage(firstTime=false){
     isEza = urlParams.get("EZA") || "False";
     isSeza = urlParams.get("SEZA") || "False";
     let jsonPromise;
-    if(isSeza == "True" && isEza == "True"){
+    if(isSeza == "true" && isEza == "true"){
         isEza="False"
     }
-    if(isSeza == "True"){
+    if(isSeza == "true"){
     jsonPromise=getJsonPromise('../dbManagement/jsonsSEZA/',subURL,'.json');
     }
-    else if(isEza == "True"){
+    else if(isEza == "true"){
     jsonPromise=getJsonPromise('../dbManagement/jsonsEZA/',subURL,'.json');
     }
     else{
