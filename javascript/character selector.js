@@ -242,10 +242,31 @@ export function reSortCards(){
   
 }
 
+export function createSortButton(){
+  const sortButton = document.getElementById('sort-filter-container');
+  sortButton.addEventListener('click', function() {
+    if(currentOrder == "Ascending"){
+      currentOrder = "Descending";
+    }
+    else{
+      currentOrder = "Ascending";
+    }
+    const sortDirection = document.getElementById("sort-direction")
+    if(currentOrder == "Ascending"){
+      sortDirection.src = "dbManagement/DokkanFiles/global/en/layout/en/image/common/btn/filter_icon_ascending.png";
+    }
+    else{
+      sortDirection.src = "dbManagement/DokkanFiles/global/en/layout/en/image/common/btn/filter_icon_descending.png";
+    }
+    reSortCards();
+  })
+}
+
 
 export function createCharacterSelection(){
   createSortOption();
   createFilterOption();
+  createSortButton();
 }
 const currentUrl=window.location.href;
 let baseDomain=window.location.origin;
