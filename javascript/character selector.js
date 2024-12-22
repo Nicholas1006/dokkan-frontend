@@ -1,5 +1,7 @@
+import { unitDisplay } from "./unitDisplay.js";
+
 // GLOBAL VARIABLES
-let unitsToDisplay = 500;
+let unitsToDisplay = 300;
 
 let currentSort = "Acquired";
 let currentOrder = "Descending";
@@ -183,77 +185,10 @@ export function reSortCards(){
 
   for (let i = 0; i < unitsToDisplay;i++) {
     if(i<sortedUnits.length){
-      const unitButtonContainer = document.createElement('div');
-      unitButtonContainer.className="unit-button-container";
-
-      const unitButton = document.createElement('a');
-      unitsContainer.appendChild(unitButtonContainer);
-      unitButtonContainer.appendChild(unitButton);
-      unitButton.id = "unit-button";
-      unitButton.className="unit-selection-button";
-      unitButton.href = baseDomain+"/cards/index.html?id=" + sortedUnits[i]["ID"] + "&EZA="+sortedUnits[i]["Eza"]+"&SEZA="+sortedUnits[i]["Seza"];
-
-      const OLDunitImage = document.createElement('img');
-      OLDunitImage.src="dbManagement/DokkanFiles/global/en/character/card/"+getAssetID(sortedUnits[i]["ID"])+"/card_"+getAssetID(sortedUnits[i]["ID"])+"_full_thumb.png";
-      OLDunitImage.loading="lazy";
-      OLDunitImage.style.width="100%";
-      OLDunitImage.style.height="100%";
-      //unitButton.appendChild(OLDunitImage)
-
-      const unitRarityImage = document.createElement('img');
-      unitRarityImage.src="dbManagement/DokkanFiles/global/en/layout/en/image/character/cha_rare_sm_"+sortedUnits[i]["Rarity"]+".png";
-      unitRarityImage.loading="eager";
-      unitRarityImage.style.width="45%";
-      unitRarityImage.style.height="45%";
-      unitRarityImage.style.position = "absolute";
-      unitRarityImage.style.bottom = "-7px";
-      unitRarityImage.style.left = "-1px";
-      unitRarityImage.style.border = "none";
-      unitRarityImage.style.zIndex = "5";
-      unitRarityImage.style.pointerEvents = "none";
-      unitButtonContainer.appendChild(unitRarityImage);
-
-      const unitThumbImage = document.createElement('img');
-      unitThumbImage.src="dbManagement/DokkanFiles/global/en/character/thumb/card_"+getAssetID(sortedUnits[i]["ID"])+"_thumb.png";
-      unitThumbImage.loading="lazy";
-      unitThumbImage.style.width="100%";
-      unitThumbImage.style.height="100%";
-      unitThumbImage.style.position = "absolute";
-      unitThumbImage.style.top = "0";
-      unitThumbImage.style.left = "0";
-      unitThumbImage.style.zIndex = "2";
-      unitButton.appendChild(unitThumbImage);
-
-      const unitBackImage = document.createElement('img');
-      unitBackImage.src="dbManagement/DokkanFiles/global/en/layout/en/image/character/character_thumb_bg/cha_base_0"+typeToInt(sortedUnits[i]["Type"])+"_0"+rarityToInt(sortedUnits[i]["Rarity"])+".png";
-      unitBackImage.loading="eager";
-      unitBackImage.style.width="75%";
-      unitBackImage.style.height="79%";
-      unitBackImage.style.position = "absolute";
-      unitBackImage.style.top = "17px";
-      unitBackImage.style.left = "12px";
-      unitBackImage.style.border = "none";
-      unitBackImage.style.zIndex = "1";
-      unitBackImage.style.pointerEvents = "none";
-      unitButtonContainer.appendChild(unitBackImage);
-
-      const unitTypingImage = document.createElement('img');
-      unitTypingImage.src="dbManagement/DokkanFiles/global/en/layout/en/image/character/cha_type_icon_"+classToInt(sortedUnits[i]["Class"])+typeToInt(sortedUnits[i]["Type"])+".png";
-      unitTypingImage.loading="eager";
-      unitTypingImage.style.width="34%";
-      unitTypingImage.style.height="34%";
-      unitTypingImage.style.position = "absolute";
-      unitTypingImage.style.top = "4px";
-      unitTypingImage.style.right = "2px";
-      unitTypingImage.style.border = "none";
-      unitTypingImage.style.zIndex = "5";
-      unitTypingImage.style.pointerEvents = "none";
-      unitButtonContainer.appendChild(unitTypingImage);
-
-
-      
-      
-      unitButtonContainer.style.position = "relative";
+      const unitURL = baseDomain+"/cards/index.html?id=" + sortedUnits[i]["ID"] + "&EZA="+sortedUnits[i]["Eza"]+"&SEZA="+sortedUnits[i]["Seza"];
+      const unitButtonContainer = new unitDisplay(sortedUnits[i]["ID"],sortedUnits[i]["Class"],sortedUnits[i]["Type"],sortedUnits[i]["Rarity"],unitURL);
+      unitsContainer.appendChild(unitButtonContainer.container);
+      unitButtonContainer.container.offsetWidth;
 
 
 
@@ -271,8 +206,7 @@ export function reSortCards(){
         ezaImage.style.border = "none";
         ezaImage.style.zIndex = "5";
         ezaImage.style.pointerEvents = "none";
-        unitButtonContainer.style.position = "relative";
-        unitButtonContainer.appendChild(ezaImage);
+        unitButtonContainer.container.appendChild(ezaImage);
       }
 
       if(sortedUnits[i]["Seza"]){
@@ -287,8 +221,7 @@ export function reSortCards(){
         sezaImage.style.border = "none";
         sezaImage.style.zIndex = "5";
         sezaImage.style.pointerEvents = "none";
-        unitButtonContainer.style.position = "relative";
-        unitButtonContainer.appendChild(sezaImage);
+        unitButtonContainer.container.appendChild(sezaImage);
       }
 
     }
