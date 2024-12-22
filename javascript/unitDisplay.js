@@ -90,6 +90,12 @@ export class unitDisplay{
         this.container.unitTypingImage.loading="eager";
         this.container.appendChild(this.container.unitTypingImage);
 
+        this.container.infoHolder = document.createElement('div');
+        this.container.infoHolder.className="unit-info-holder";
+        this.container.infoHolder.style.backgroundImage="url('dbManagement/DokkanFiles/global/en/layout/en/image/character/cha_base_bottom_0"+this.typeInt+".png')";
+        this.container.appendChild(this.container.infoHolder);
+
+
 
         
         

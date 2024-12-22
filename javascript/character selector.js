@@ -106,7 +106,7 @@ export function reFilterCards() {
   else if (['Type', 'Name', 'Rarity','Class'].includes(currentFilter)) {
     currentFilteredUnits = Object.fromEntries(
       Object.entries(currentFilteredUnits).filter(([key, value]) => 
-        value[currentFilter] === null ? currentFilterValue === "" : value[currentFilter].toLowerCase() === currentFilterValue.toLowerCase()
+        value[currentFilter] === null ? currentFilterValue === "" : value[currentFilter].toLowerCase().includes( currentFilterValue.toLowerCase())
       )
     );
   }
@@ -193,7 +193,7 @@ export function reSortCards(){
   for (let i = 0; i < unitsToDisplay;i++) {
     if(i<sortedUnits.length){
       const unitURL = baseDomain+"/cards/index.html?id=" + sortedUnits[i]["ID"] + "&EZA="+sortedUnits[i]["Eza"]+"&SEZA="+sortedUnits[i]["Seza"];
-      const unitButtonContainer = new unitDisplay(getAssetID(sortedUnits[i]["ID"]),sortedUnits[i]["Class"],sortedUnits[i]["Type"],sortedUnits[i]["Rarity"],unitURL);
+      const unitButtonContainer = new unitDisplay(sortedUnits[i]["Resource ID"],sortedUnits[i]["Class"],sortedUnits[i]["Type"],sortedUnits[i]["Rarity"],unitURL);
       unitsContainer.appendChild(unitButtonContainer.container);
       unitButtonContainer.container.offsetWidth;
 
@@ -201,15 +201,15 @@ export function reSortCards(){
 
       //unitButton.style.backgroundImage = "url('dbManagement/DokkanFiles/global/en/character/card/"+getAssetID(sortedUnits[i]["ID"])+"/card_"+getAssetID(sortedUnits[i]["ID"])+"_full_thumb.png')";
 
-      if(sortedUnits[i]["Eza"] || sortedUnits[i]["Seza"]){
+      if(sortedUnits[i]["Eza"]){
         const ezaImage = document.createElement('img');
-        ezaImage.src = "dbManagement/assets/misc/extra/eZa.png";
+        ezaImage.src = "/dbManagement/DokkanFiles/global/en/layout/en/image/charamenu/dokkan/dok_img_kyokugen.png";
         ezaImage.loading="lazy";
-        ezaImage.style.width = "20%";
-        ezaImage.style.height = "20%";
+        ezaImage.style.width = "40%";
+        ezaImage.style.height = "40%";
         ezaImage.style.position = "absolute";
         ezaImage.style.bottom = "0";
-        ezaImage.style.right = "30px";
+        ezaImage.style.right = "0px";
         ezaImage.style.border = "none";
         ezaImage.style.zIndex = "5";
         ezaImage.style.pointerEvents = "none";
@@ -218,13 +218,13 @@ export function reSortCards(){
 
       if(sortedUnits[i]["Seza"]){
         const sezaImage = document.createElement('img');
-        sezaImage.src = "dbManagement/assets/misc/extra/seZa.png";
+        sezaImage.src = "/dbManagement/DokkanFiles/global/en/layout/en/image/charamenu/dokkan/dok_img_super_optimal.png";
         sezaImage.loading="lazy";
-        sezaImage.style.width = "20%";
-        sezaImage.style.height = "20%";
+        sezaImage.style.width = "40%";
+        sezaImage.style.height = "40%";
         sezaImage.style.position = "absolute";
         sezaImage.style.bottom = "0";
-        sezaImage.style.right = "15px";
+        sezaImage.style.right = "0px";
         sezaImage.style.border = "none";
         sezaImage.style.zIndex = "5";
         sezaImage.style.pointerEvents = "none";
