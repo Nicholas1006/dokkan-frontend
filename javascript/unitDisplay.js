@@ -74,7 +74,7 @@ export class unitDisplay{
 
         this.container.unitThumbImage = document.createElement('img');
         this.container.unitThumbImage.className="unit-thumb-image";
-        this.container.unitThumbImage.src="dbManagement/DokkanFiles/global/en/character/thumb/card_"+getAssetID(this.assetID)+"_thumb.png";
+        this.container.unitThumbImage.src="dbManagement/DokkanFiles/global/en/character/thumb/card_"+this.assetID+"_thumb.png";
         this.container.unitThumbImage.loading="lazy";
         this.container.unitButton.appendChild(this.container.unitThumbImage);
 

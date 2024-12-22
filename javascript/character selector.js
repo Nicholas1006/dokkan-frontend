@@ -35,8 +35,15 @@ export function getJsonPromise(prefix,name,suffix) {
 }
 
 export function getAssetID(unitID){
-  if(unitID[unitID.length-1]=="1"){
-    unitID=unitID.slice(0,-1)+"0";
+  if(unitID.typeof === "string") {
+    if(unitID[unitID.length-1]=="1"){
+      unitID=unitID.slice(0,-1)+"0";
+    }
+  }
+  else{
+    if(unitID%10==1){
+      unitID=unitID-1;
+    }
   }
   return unitID;
 }
@@ -186,7 +193,7 @@ export function reSortCards(){
   for (let i = 0; i < unitsToDisplay;i++) {
     if(i<sortedUnits.length){
       const unitURL = baseDomain+"/cards/index.html?id=" + sortedUnits[i]["ID"] + "&EZA="+sortedUnits[i]["Eza"]+"&SEZA="+sortedUnits[i]["Seza"];
-      const unitButtonContainer = new unitDisplay(sortedUnits[i]["ID"],sortedUnits[i]["Class"],sortedUnits[i]["Type"],sortedUnits[i]["Rarity"],unitURL);
+      const unitButtonContainer = new unitDisplay(getAssetID(sortedUnits[i]["ID"]),sortedUnits[i]["Class"],sortedUnits[i]["Type"],sortedUnits[i]["Rarity"],unitURL);
       unitsContainer.appendChild(unitButtonContainer.container);
       unitButtonContainer.container.offsetWidth;
 
