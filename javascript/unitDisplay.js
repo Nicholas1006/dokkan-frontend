@@ -40,7 +40,7 @@ export function rarityToInt(rarity){
         return 4;
     }
   }
-  export function getAssetID(unitID){
+  export function getresourceID(unitID){
     if(unitID[unitID.length-1]=="1"){
       unitID=unitID.slice(0,-1)+"0";
     }
@@ -49,81 +49,166 @@ export function rarityToInt(rarity){
 
   
 export class unitDisplay{
-    constructor(assetID,Class,type,rarity,url){
-        this.assetID=assetID;
-        this.ClassInt=classToInt(Class);
-        this.typeInt=typeToInt(type);
-        this.rarity=rarity;
-        this.rarityInt=rarityToInt(rarity);
-        this.url=url;
+    constructor(){
 
-        this.container=document.createElement("div");
-        this.container.className="unit-container";
-        this.container.style.position="relative";
-        
-        this.container.unitButton=document.createElement("a");
-        this.container.unitButton.href=this.url;
-        this.container.unitButton.className="unit-selection-button";
-        this.container.appendChild(this.container.unitButton);
+      this.container=document.createElement("div");
+      this.container.className="unit-container";
+      this.container.style.position="relative";
+      
+      this.container.unitButton=document.createElement("a");
+      this.container.unitButton.href=this.url;
+      this.container.unitButton.className="unit-selection-button";
+      this.container.appendChild(this.container.unitButton);
 
-        this.container.unitRarityImage = document.createElement('img');
-        this.container.unitRarityImage.className="unit-rarity-image";
-        this.container.unitRarityImage.src="dbManagement/DokkanFiles/global/en/layout/en/image/character/cha_rare_sm_"+this.rarity+".png";
-        this.container.unitRarityImage.loading="eager";
-        this.container.appendChild(this.container.unitRarityImage);
+      this.container.unitRarityImage = document.createElement('img');
+      this.container.unitRarityImage.className="unit-rarity-image";
+      this.container.unitRarityImage.loading="eager";
+      this.container.appendChild(this.container.unitRarityImage);
 
-        this.container.unitThumbImage = document.createElement('img');
-        this.container.unitThumbImage.className="unit-thumb-image";
-        this.container.unitThumbImage.src="dbManagement/DokkanFiles/global/en/character/thumb/card_"+this.assetID+"_thumb.png";
-        this.container.unitThumbImage.loading="lazy";
-        this.container.unitButton.appendChild(this.container.unitThumbImage);
+      this.container.unitThumbImage = document.createElement('img');
+      this.container.unitThumbImage.className="unit-thumb-image";
+      this.container.unitThumbImage.loading="lazy";
+      this.container.unitButton.appendChild(this.container.unitThumbImage);
 
-        this.container.unitBackImage = document.createElement('img');
-        this.container.unitBackImage.className="unit-back-image";
-        this.container.unitBackImage.src="dbManagement/DokkanFiles/global/en/layout/en/image/character/character_thumb_bg/cha_base_0"+this.typeInt+"_0"+this.rarityInt+".png";
-        this.container.unitBackImage.loading="eager";
-        this.container.appendChild(this.container.unitBackImage);
+      this.container.unitBackImage = document.createElement('img');
+      this.container.unitBackImage.className="unit-back-image";
+      this.container.unitBackImage.loading="eager";
+      this.container.appendChild(this.container.unitBackImage);
 
-        this.container.unitTypingImage = document.createElement('img');
-        this.container.unitTypingImage.className="unit-typing-image";
-        this.container.unitTypingImage.src="dbManagement/DokkanFiles/global/en/layout/en/image/character/cha_type_icon_"+this.ClassInt+this.typeInt+".png";
-        this.container.unitTypingImage.loading="eager";
-        this.container.appendChild(this.container.unitTypingImage);
+      this.container.unitTypingImage = document.createElement('img');
+      this.container.unitTypingImage.className="unit-typing-image";
+      this.container.unitTypingImage.loading="eager";
+      this.container.appendChild(this.container.unitTypingImage);
 
-        this.container.infoHolder = document.createElement('div');
-        this.container.infoHolder.className="unit-info-holder";
-        this.container.infoHolder.style.backgroundImage="url('dbManagement/DokkanFiles/global/en/layout/en/image/character/cha_base_bottom_0"+this.typeInt+".png')";
-        this.container.appendChild(this.container.infoHolder);
+      
+      this.container.ezaImage = document.createElement('img');
+      this.container.ezaImage.src = "dbManagement/DokkanFiles/global/en/layout/en/image/charamenu/dokkan/dok_img_kyokugen.png";
+      this.container.ezaImage.loading="lazy";
+      this.container.ezaImage.className="unit-eza-image";
+      if(this.ezaLevel=="eza"){
+        this.container.ezaImage.style.display="block";
+      }
+      else{
+        this.container.ezaImage.style.display="none";
+      }
+      this.container.appendChild(this.container.ezaImage);
 
+      this.container.sezaImage = document.createElement('img');
+      this.container.sezaImage.src = "dbManagement/DokkanFiles/global/en/layout/en/image/charamenu/dokkan/dok_img_super_optimal.png";
+      this.container.sezaImage.loading="lazy";
+      this.container.sezaImage.className="unit-eza-image";
+      if(this.ezaLevel=="seza"){
+        this.container.sezaImage.style.display="block";
+      }
+      else{
+        this.container.sezaImage.style.display="none";
+      }
+      this.container.appendChild(this.container.sezaImage);
+      
+      this.container.infoHolder = document.createElement('div');
+      this.container.infoHolder.className="unit-info-holder";
+      this.container.appendChild(this.container.infoHolder);
 
+      this.container.infoHolder.unitLevel=document.createElement("div");
+      this.container.infoHolder.unitLevel.className="unit-info-holder-level";
+      this.container.infoHolder.appendChild(this.container.infoHolder.unitLevel);
+      if(this.otherDisplayedValue!=null){
+          this.container.infoHolder.unitLevel.style.animation="fade 4s infinite";
+      }
+      else{
+          this.container.infoHolder.unitLevel.style.animation="none";
+      }
 
-        
-        
-        
+      this.container.infoHolder.unitLevel.level=document.createElement("img")
+      this.container.infoHolder.unitLevel.level.className="unit-info-holder-level-level";
+      this.container.infoHolder.unitLevel.level.src="dbManagement/DokkanFiles/global/en/layout/en/image/common/label/com_label_large_lv.png";
+      this.container.infoHolder.unitLevel.level.loading="eager";
+      this.container.infoHolder.unitLevel.appendChild(this.container.infoHolder.unitLevel.level);
+
+      this.container.infoHolder.unitLevel.number=document.createElement("div");
+      this.container.infoHolder.unitLevel.number.className="unit-info-holder-level-number";
+      this.container.infoHolder.unitLevel.number.innerHTML=this.level;
+      this.container.infoHolder.unitLevel.appendChild(this.container.infoHolder.unitLevel.number);
+
+      this.container.infoHolder.unitText=document.createElement("div");
+      this.container.infoHolder.unitText.className="unit-info-holder-text";
+      this.container.infoHolder.unitText.style.animation="fade 4s infinite";
+      this.container.infoHolder.unitText.style.animationDelay="-2s";
+      this.container.infoHolder.unitText.innerHTML=this.otherDisplayedValue;
+      this.container.infoHolder.appendChild(this.container.infoHolder.unitText);
+
     }
 
-    setassetID(assetID){
-        this.assetID=assetID;
-        this.container.unitThumbImage.src="dbManagement/DokkanFiles/global/en/character/thumb/card_"+this.assetID+"_thumb.png";
+    setResourceID(resourceID){
+      this.resourceID=resourceID;
+      this.container.unitThumbImage.src="dbManagement/DokkanFiles/global/en/character/thumb/card_"+this.resourceID+"_thumb.png";
     };
 
     setClass(Class){
-        this.ClassInt=Class;
-        this.container.unitBackImage.src="dbManagement/DokkanFiles/global/en/layout/en/image/character/character_thumb_bg/cha_base_0"+this.typeInt+"_0"+rarityToInt(this.rarity)+".png";
-        this.container.unitTypingImage.src="dbManagement/DokkanFiles/global/en/layout/en/image/character/cha_type_icon_"+this.ClassInt+this.typeInt+".png";
+      this.ClassInt=classToInt(Class);
+      this.container.unitBackImage.src="dbManagement/DokkanFiles/global/en/layout/en/image/character/character_thumb_bg/cha_base_0"+this.typeInt+"_0"+rarityToInt(this.rarity)+".png";
+      this.container.unitTypingImage.src="dbManagement/DokkanFiles/global/en/layout/en/image/character/cha_type_icon_"+this.ClassInt+this.typeInt+".png";
     };
     setType(type){
-        this.typeInt=type;
-        this.container.unitBackImage.src="dbManagement/DokkanFiles/global/en/layout/en/image/character/character_thumb_bg/cha_base_0"+this.typeInt+"_0"+rarityToInt(this.rarity)+".png";
-        this.container.unitTypingImage.src="dbManagement/DokkanFiles/global/en/layout/en/image/character/cha_type_icon_"+this.ClassInt+this.typeInt+".png";
+      this.typeInt=typeToInt(type);
+      this.container.infoHolder.style.backgroundImage="url('dbManagement/DokkanFiles/global/en/layout/en/image/character/cha_base_bottom_0"+this.typeInt+".png')";
+      this.container.unitBackImage.src="dbManagement/DokkanFiles/global/en/layout/en/image/character/character_thumb_bg/cha_base_0"+this.typeInt+"_0"+rarityToInt(this.rarity)+".png";
+      this.container.unitTypingImage.src="dbManagement/DokkanFiles/global/en/layout/en/image/character/cha_type_icon_"+this.ClassInt+this.typeInt+".png";
     };
     setRarity(rarity){
-        this.rarity=rarity;
-        this.container.unitBackImage.src="dbManagement/DokkanFiles/global/en/layout/en/image/character/character_thumb_bg/cha_base_0"+this.typeInt+"_0"+rarityToInt(this.rarity)+".png";
+      this.rarity=rarity;
+      this.rarityInt=rarityToInt(rarity);
+      this.container.unitBackImage.src="dbManagement/DokkanFiles/global/en/layout/en/image/character/character_thumb_bg/cha_base_0"+this.typeInt+"_0"+rarityToInt(this.rarity)+".png";
+      this.container.unitRarityImage.src="dbManagement/DokkanFiles/global/en/layout/en/image/character/cha_rare_sm_"+this.rarity+".png";
     }
+
+    setLevel(level){
+      this.level=level;
+      this.container.infoHolder.unitLevel.number.innerHTML=this.level;
+    }
+
+    setOtherDisplayedValue(otherDisplayedValue){
+      this.otherDisplayedValue=otherDisplayedValue;
+      this.container.infoHolder.unitText.innerHTML=this.otherDisplayedValue;
+      if(this.otherDisplayedValue==null){
+        this.container.infoHolder.unitText.style.display="none";
+        this.container.infoHolder.unitLevel.style.animation="none";
+      }
+      else{
+        this.container.infoHolder.unitText.style.display="block";
+        this.container.infoHolder.unitLevel.style.animation="fade 4s infinite";
+      }
+    }
+    setEzaLevel(ezaLevel){
+      this.ezaLevel=ezaLevel;
+      if(this.ezaLevel=="none"){
+        this.container.ezaImage.style.display="none";
+        this.container.sezaImage.style.display="none";
+      }
+      if(this.ezaLevel=="eza"){
+        this.container.ezaImage.style.display="block";
+        this.container.sezaImage.style.display="none";
+      }
+      if(this.ezaLevel=="seza"){
+        this.container.ezaImage.style.display="none";
+        this.container.sezaImage.style.display="block";
+      }
+    }
+
     setUrl(url){
         this.url=url;
         this.container.unitButton.href=this.url;
+    }
+
+    setDisplay(displayed){
+      this.displayed=displayed;
+      if(displayed){
+        this.container.style.display="block";
+      }
+      else{
+        this.container.style.display="none";
+      }
+
     }
 
     
