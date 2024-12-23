@@ -203,7 +203,7 @@ export function reSortCards(){
 
       if(sortedUnits[i]["Eza"]){
         const ezaImage = document.createElement('img');
-        ezaImage.src = "/dbManagement/DokkanFiles/global/en/layout/en/image/charamenu/dokkan/dok_img_kyokugen.png";
+        ezaImage.src = "dbManagement/DokkanFiles/global/en/layout/en/image/charamenu/dokkan/dok_img_kyokugen.png";
         ezaImage.loading="lazy";
         ezaImage.style.width = "40%";
         ezaImage.style.height = "40%";
@@ -218,7 +218,7 @@ export function reSortCards(){
 
       if(sortedUnits[i]["Seza"]){
         const sezaImage = document.createElement('img');
-        sezaImage.src = "/dbManagement/DokkanFiles/global/en/layout/en/image/charamenu/dokkan/dok_img_super_optimal.png";
+        sezaImage.src = "dbManagement/DokkanFiles/global/en/layout/en/image/charamenu/dokkan/dok_img_super_optimal.png";
         sezaImage.loading="lazy";
         sezaImage.style.width = "40%";
         sezaImage.style.height = "40%";
