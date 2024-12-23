@@ -1,5 +1,3 @@
-import { unitDisplay } from "./unitDisplay.js";
-
 class kiCircleClass{
     constructor(passiveLineKey,CausalityLogic,performedChance,superChance){
         this.CausalityLogic=CausalityLogic;
@@ -4210,10 +4208,7 @@ export function createPassiveContainer(){
 
 
 export function initialiseAspects() {
-    //updateImageContainer('image-container', currentJson["Resource ID"], currentJson.Typing);
-    const unitImage = new unitDisplay(currentJson["Resource ID"],currentJson["Class"],currentJson["Typing"],currentJson["Rarity"],null);  
-    document.body.style.backgroundColor = colorToBackground(typingToColor(currentJson["Typing"]));
-    document.getElementById("image-container").appendChild(unitImage.getElement());
+    updateImageContainer('image-container', currentJson["Resource ID"], currentJson.Typing);
     document.getElementById("level-container").style.display="flex";
 
     //change the background of the slider to the typing color
