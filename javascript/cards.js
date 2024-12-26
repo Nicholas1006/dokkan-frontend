@@ -1,3 +1,5 @@
+import { unitDisplay } from "./unitDisplay.js";
+
 class kiCircleClass{
     constructor(passiveLineKey,CausalityLogic,performedChance,superChance){
         this.CausalityLogic=CausalityLogic;
@@ -4208,7 +4210,7 @@ export function createPassiveContainer(){
 
 
 export function initialiseAspects() {
-    updateImageContainer('image-container', currentJson["Resource ID"], currentJson.Typing);
+    updateCharacterIcon('character-icon', currentJson["Resource ID"], currentJson.Typing);
     document.getElementById("level-container").style.display="flex";
 
     //change the background of the slider to the typing color
@@ -4288,23 +4290,27 @@ export function updateContainer(containerId, content){
   }   
 
  // Function to update the image container with a new image
- export function updateImageContainer(imageContainerId, assetsubURL, typing){
-  const imageContainer = document.getElementById(imageContainerId);
-  while (imageContainer.firstChild) {
-    imageContainer.removeChild(imageContainer.firstChild);
-  }
-  imageContainer.style.backgroundColor = colorToBackground(typingToColor(typing));
-  const cardImage = new Image();
-  cardImage.onload = function() {
-    imageContainer.appendChild(cardImage);
-  };
-  cardImage.onerror = function() {
-    console.error('Error loading image:', cardImage.src);
-  };
-  cardImage.src = '../dbManagement/DokkanFiles/global/en/character/card/'+assetsubURL+'/card_'+assetsubURL+'_full_thumb.png';
+ export function updateCharacterIcon(){
+    const imageContainer = document.getElementById("character-icon");
+    while (imageContainer.firstChild) {
+        imageContainer.removeChild(imageContainer.firstChild);
+    }
+
+    const cardImage=new unitDisplay();
+    cardImage.setResourceID(currentJson["Resource ID"]);
+    cardImage.setClass(currentJson["Class"]);
+    cardImage.setType(currentJson["Type"]);
+    cardImage.setRarity(currentJson["Rarity"]);
+    cardImage.setDisplayExtraInfo(false);
+    cardImage.setDisplay(true);
+    cardImage.setWidthFit(true);
+    cardImage.setHeightFit(true);
+
+    imageContainer.appendChild(cardImage.getElement());
+    //imageContainer.style.backgroundColor = colorToBackground(typingToColor(typing));
 
 
-  document.body.style.backgroundColor = colorToBackground(typingToColor(typing));
+    document.body.style.backgroundColor = colorToBackground(typingToColor(currentJson["Type"]));
 }
 
   // Function to create a paragraph element with the given text
