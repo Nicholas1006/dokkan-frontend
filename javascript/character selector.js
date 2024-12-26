@@ -5,7 +5,7 @@ let unitsToDisplay = 200;
 
 let currentSort = "Acquired";
 let currentOrder = "Descending";
-let currentFilter = "Type";
+let currentFilter = "Name";
 let currentFilterValue = "";
 let currentFilteredUnits = {};
 let unitBasics;
@@ -87,7 +87,7 @@ export function rarityToInt(rarity){
 export function createFilterOption(){
   const filterContainer = document.getElementById('filter-container');
   const filterSelect = document.createElement('select');
-  const filterOptions = ['Type', 'Name', 'Rarity', 'Eza', "Seza", "Class","Categories","Super Attack Types", "Links"]; 
+  const filterOptions = ['Name','Type', 'Rarity', 'Eza', "Seza", "Class","Categories","Super Attack Types", "Links"]; 
   filterOptions.forEach(option => {
     const optionElement = document.createElement('option');
     optionElement.value = option;
@@ -235,7 +235,6 @@ export function reSortCards(){
     }
   }
   
-  console.log("Sorting took " + (Date.now() - startTime) + " ms");
 }
 
 export function OLDreSortCards(){

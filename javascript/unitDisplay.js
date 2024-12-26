@@ -82,7 +82,7 @@ export class unitDisplay{
 
       
       this.container.ezaImage = document.createElement('img');
-      this.container.ezaImage.src = "dbManagement/DokkanFiles/global/en/layout/en/image/charamenu/dokkan/dok_img_kyokugen.png";
+      this.container.ezaImage.src = "/dbManagement/DokkanFiles/global/en/layout/en/image/charamenu/dokkan/dok_img_kyokugen.png";
       this.container.ezaImage.loading="lazy";
       this.container.ezaImage.className="unit-eza-image";
       if(this.ezaLevel=="eza"){
@@ -94,7 +94,7 @@ export class unitDisplay{
       this.container.appendChild(this.container.ezaImage);
 
       this.container.sezaImage = document.createElement('img');
-      this.container.sezaImage.src = "dbManagement/DokkanFiles/global/en/layout/en/image/charamenu/dokkan/dok_img_super_optimal.png";
+      this.container.sezaImage.src = "/dbManagement/DokkanFiles/global/en/layout/en/image/charamenu/dokkan/dok_img_super_optimal.png";
       this.container.sezaImage.loading="lazy";
       this.container.sezaImage.className="unit-eza-image";
       if(this.ezaLevel=="seza"){
@@ -121,7 +121,7 @@ export class unitDisplay{
 
       this.container.infoHolder.unitLevel.level=document.createElement("img")
       this.container.infoHolder.unitLevel.level.className="unit-info-holder-level-level";
-      this.container.infoHolder.unitLevel.level.src="dbManagement/DokkanFiles/global/en/layout/en/image/common/label/com_label_large_lv.png";
+      this.container.infoHolder.unitLevel.level.src="/dbManagement/DokkanFiles/global/en/layout/en/image/common/label/com_label_large_lv.png";
       this.container.infoHolder.unitLevel.level.loading="eager";
       this.container.infoHolder.unitLevel.appendChild(this.container.infoHolder.unitLevel.level);
 
@@ -241,6 +241,14 @@ export class unitDisplay{
       else{
         this.container.style.height="auto";
       }
+    }
+
+    setExactWidth(width){
+      this.container.style.width=width;
+    }
+
+    setExactHeight(height){
+      this.container.style.height=height;
     }
 
 
