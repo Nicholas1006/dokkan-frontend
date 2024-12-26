@@ -140,8 +140,14 @@ export class unitDisplay{
     }
 
     setResourceID(resourceID){
-      this.resourceID=resourceID;
-      this.container.unitThumbImage.src="/dbManagement/DokkanFiles/global/en/character/thumb/card_"+this.resourceID+"_thumb.png";
+      if(resourceID!=this.resourceID){
+        this.resourceID = resourceID;
+        this.container.unitThumbImage.style.visibility="hidden";
+        this.container.unitThumbImage.onload = () => {
+          this.container.unitThumbImage.style.visibility="visible";
+        };
+        this.container.unitThumbImage.src = "/dbManagement/DokkanFiles/global/en/character/thumb/card_"+this.resourceID+"_thumb.png";
+      }
     };
 
     setClass(Class){
