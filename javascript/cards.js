@@ -3694,35 +3694,52 @@ export function createEzaContainer(){
 
 export function createTransformationContainer(){
     let transformationContainer=document.getElementById('awaken-container');
-    let transformations =currentJson["Transformations"];
-    const urlParams=new URLSearchParams(window.location.search);
-    if( Array.isArray(transformations) && transformations.length){
-        for (const transformationID of transformations){
-            let unitID = transformationID.slice(0,-1)+"0";
-            let transformationButton = document.createElement('button');
-            transformationButton.style.backgroundImage = "url('/dbManagement/DokkanFiles/global/en/character/card/"+unitID+"/card_"+unitID+"_full_thumb.png')";
-        transformationButton.id="transformation-button";
-            transformationButton.style.gridRow="1";
-            transformationContainer.appendChild(transformationButton);
-            transformationButton.onclick = function(){
-                window.location.href = "?id="+unitID+"&SEZA="+isSeza+"&EZA="+isEza;
-            }
-        }
-    } 
     let previousTransformations = currentJson["Transforms from"]
     if( Array.isArray(previousTransformations) && previousTransformations.length){
         for (const transformationID of previousTransformations){
-            let unitID = transformationID.slice(0,-1)+"0";
-            let transformationButton = document.createElement('button');
-            transformationButton.style.backgroundImage = "url('/dbManagement/DokkanFiles/global/en/character/card/"+unitID+"/card_"+unitID+"_full_thumb.png')";
-            transformationButton.id="transformation-button";
-            transformationButton.style.gridRow="2";
-            transformationContainer.appendChild(transformationButton);
-            transformationButton.onclick = function(){
-            window.location.href = "?id="+unitID+"&SEZA="+isSeza+"&EZA="+isEza;
-            }
+            
+            const transformationJsonPromise = getJsonPromise("/dbManagement/jsons/",transformationID,".json");
+            const transformationButton = new unitDisplay();
+            transformationButton.setDisplayExtraInfo(false);
+            transformationButton.setDisplay(true);
+            transformationButton.setWidthFit(true);
+            transformationButton.setHeightFit(true);
+            transformationButton.container.style.gridRow="1";
+            transformationContainer.appendChild(transformationButton.getElement());
+            transformationJsonPromise.then(
+                transformationJson => {
+                    transformationButton.setResourceID(transformationJson["Resource ID"]);
+                    transformationButton.setClass(transformationJson["Class"]);
+                    transformationButton.setType(transformationJson["Type"]);
+                    transformationButton.setRarity(transformationJson["Rarity"]);
+                    transformationButton.setUrl(baseDomain+"/cards/index.html?id="+transformationID+"&SEZA="+isSeza+"&EZA="+isEza);
+                }
+            )
         }
     } 
+    let transformations =currentJson["Transformations"];
+    if( Array.isArray(transformations) && transformations.length){
+        for (const transformationID of transformations){
+            const transformationJsonPromise = getJsonPromise("/dbManagement/jsons/",transformationID,".json");
+            const transformationButton = new unitDisplay();
+            transformationButton.setDisplayExtraInfo(false);
+            transformationButton.setDisplay(true);
+            transformationButton.setWidthFit(true);
+            transformationButton.setHeightFit(true);
+            transformationButton.container.style.gridRow="1";
+            transformationContainer.appendChild(transformationButton.getElement());
+            transformationJsonPromise.then(
+                transformationJson => {
+                    transformationButton.setResourceID(transformationJson["Resource ID"]);
+                    transformationButton.setClass(transformationJson["Class"]);
+                    transformationButton.setType(transformationJson["Type"]);
+                    transformationButton.setRarity(transformationJson["Rarity"]);
+                    transformationButton.setUrl(baseDomain+"/cards/index.html?id="+transformationID+"&SEZA="+isSeza+"&EZA="+isEza);
+                }
+            )
+        }
+    } 
+    
 }
 
 export function createLevelSlider(){
@@ -3807,20 +3824,20 @@ export function createDokkanAwakenContainer(){
     if( Array.isArray(Awakenings) && Awakenings.length){
     }for (const AwakeningsID of Awakenings){
         const awakeningJsonPromise = getJsonPromise("/dbManagement/jsons/",AwakeningsID,".json");
+        const AwakeningsButton = new unitDisplay();
+        AwakeningsButton.setDisplayExtraInfo(false);
+        AwakeningsButton.setDisplay(true);
+        AwakeningsButton.setWidthFit(true);
+        AwakeningsButton.setHeightFit(true);
+        AwakeningsButton.container.style.gridRow="1";
+        AwakeningsContainer.appendChild(AwakeningsButton.getElement());
         awakeningJsonPromise.then(
             awakeningJson => {
-                const AwakeningsButton = new unitDisplay();
                 AwakeningsButton.setResourceID(awakeningJson["Resource ID"]);
                 AwakeningsButton.setClass(awakeningJson["Class"]);
                 AwakeningsButton.setType(awakeningJson["Type"]);
                 AwakeningsButton.setRarity(awakeningJson["Rarity"]);
-                AwakeningsButton.setDisplayExtraInfo(false);
-                AwakeningsButton.setDisplay(true);
-                AwakeningsButton.setWidthFit(true);
-                AwakeningsButton.setHeightFit(true);
                 AwakeningsButton.setUrl(baseDomain+"/cards/index.html?id=" + awakeningJson["ID"]);
-                AwakeningsButton.container.style.gridRow="1";
-                AwakeningsContainer.appendChild(AwakeningsButton.getElement());
             }
         )
     }
@@ -3829,20 +3846,20 @@ export function createDokkanAwakenContainer(){
     if( Array.isArray(previousAwakenings) && previousAwakenings.length){
     }for (const AwakeningsID of previousAwakenings){
         const previousAwakeningJsonPromise = getJsonPromise("/dbManagement/jsons/",AwakeningsID,".json");
+        const AwakeningsButton = new unitDisplay();
+        AwakeningsButton.setDisplayExtraInfo(false);
+        AwakeningsButton.setDisplay(true);
+        AwakeningsButton.setWidthFit(true);
+        AwakeningsButton.setHeightFit(true);
+        AwakeningsButton.container.style.gridRow="2";
+        AwakeningsContainer.appendChild(AwakeningsButton.getElement());
         previousAwakeningJsonPromise.then(
             previousAwakeningJson => {
-                const AwakeningsButton = new unitDisplay();
                 AwakeningsButton.setResourceID(previousAwakeningJson["Resource ID"]);
                 AwakeningsButton.setClass(previousAwakeningJson["Class"]);
                 AwakeningsButton.setType(previousAwakeningJson["Type"]);
                 AwakeningsButton.setRarity(previousAwakeningJson["Rarity"]);
-                AwakeningsButton.setDisplayExtraInfo(false);
-                AwakeningsButton.setDisplay(true);
-                AwakeningsButton.setWidthFit(true);
-                AwakeningsButton.setHeightFit(true);
                 AwakeningsButton.setUrl(baseDomain+"/cards/index.html?id=" + previousAwakeningJson["ID"]);
-                AwakeningsButton.container.style.gridRow="2";
-                AwakeningsContainer.appendChild(AwakeningsButton.getElement());
             }
         )
     }
