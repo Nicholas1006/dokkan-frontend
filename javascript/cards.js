@@ -48,20 +48,20 @@ class kiCircleClass{
 
         let circleBase=document.createElement("div");
         circleBase.id="circle-base";
-        if(currentJson.Typing=="AGL"){
-            circleBase.style.backgroundImage = "url('../dbManagement/DokkanFiles/global/en/layout/en/image/ingame/battle/chara_icon/ing_type_gauge_base_00.png')";
+        if(currentJson.Type=="AGL"){
+            circleBase.style.backgroundImage = "url('/dbManagement/DokkanFiles/global/en/layout/en/image/ingame/battle/chara_icon/ing_type_gauge_base_00.png')";
         }
-        else if(currentJson.Typing=="TEQ"){
-            circleBase.style.backgroundImage = "url('../dbManagement/DokkanFiles/global/en/layout/en/image/ingame/battle/chara_icon/ing_type_gauge_base_01.png')";
+        else if(currentJson.Type=="TEQ"){
+            circleBase.style.backgroundImage = "url('/dbManagement/DokkanFiles/global/en/layout/en/image/ingame/battle/chara_icon/ing_type_gauge_base_01.png')";
         }
-        else if(currentJson.Typing=="INT"){
-            circleBase.style.backgroundImage = "url('../dbManagement/DokkanFiles/global/en/layout/en/image/ingame/battle/chara_icon/ing_type_gauge_base_02.png')";
+        else if(currentJson.Type=="INT"){
+            circleBase.style.backgroundImage = "url('/dbManagement/DokkanFiles/global/en/layout/en/image/ingame/battle/chara_icon/ing_type_gauge_base_02.png')";
         }
-        else if(currentJson.Typing=="STR"){
-            circleBase.style.backgroundImage = "url('../dbManagement/DokkanFiles/global/en/layout/en/image/ingame/battle/chara_icon/ing_type_gauge_base_03.png')";
+        else if(currentJson.Type=="STR"){
+            circleBase.style.backgroundImage = "url('/dbManagement/DokkanFiles/global/en/layout/en/image/ingame/battle/chara_icon/ing_type_gauge_base_03.png')";
         }
-        else if(currentJson.Typing=="PHY"){
-            circleBase.style.backgroundImage = "url('../dbManagement/DokkanFiles/global/en/layout/en/image/ingame/battle/chara_icon/ing_type_gauge_base_04.png')";
+        else if(currentJson.Type=="PHY"){
+            circleBase.style.backgroundImage = "url('/dbManagement/DokkanFiles/global/en/layout/en/image/ingame/battle/chara_icon/ing_type_gauge_base_04.png')";
         }
         circleBase.style.width="220px";
         circleBase.style.height="220px";
@@ -87,7 +87,7 @@ class kiCircleClass{
         unitImage.style.width = "220px";
         unitImage.style.height = "220px";
         let assetID=currentJson["ID"].slice(0, -1)+ "0";
-        unitImage.style.backgroundImage = "url('../dbManagement/DokkanFiles/global/en/character/card/" +assetID+"/card_"+assetID+"_circle.png')";
+        unitImage.style.backgroundImage = "url('/dbManagement/DokkanFiles/global/en/character/card/" +assetID+"/card_"+assetID+"_circle.png')";
         unitImage.style.backgroundSize = "100% 100%";
         unitImage.style.backgroundPosition = "center";
         unitImage.style.backgroundRepeat = "no-repeat";
@@ -143,7 +143,7 @@ class kiCircleClass{
 
         this.superAttackName=document.createElement("div");
         this.superAttackName.className="super-attack-name";
-        this.superAttackName.style.backgroundImage = "url('../dbManagement/DokkanFiles/global/en/character/card/"+this.imageUrl+"/en/card_"+this.imageUrl+"_sp_name.png')";
+        this.superAttackName.style.backgroundImage = "url('/dbManagement/DokkanFiles/global/en/character/card/"+this.imageUrl+"/en/card_"+this.imageUrl+"_sp_name.png')";
         this.superAttackName.style.display="none";
         this.KiCircle.appendChild(this.superAttackName);
         this.superChanceQuery=document.createElement("button");
@@ -542,10 +542,10 @@ class kiCircleClass{
         }
         else{
             if(superAttackID==0){
-                this.superAttackName.style.backgroundImage = "url('../dbManagement/DokkanFiles/global/en/character/card/"+this.imageUrl+"/en/card_"+this.imageUrl+"_sp_name.png')";
+                this.superAttackName.style.backgroundImage = "url('/dbManagement/DokkanFiles/global/en/character/card/"+this.imageUrl+"/en/card_"+this.imageUrl+"_sp_name.png')";
             }
             else{
-                this.superAttackName.style.backgroundImage = "url('../dbManagement/DokkanFiles/global/en/character/card/"+this.imageUrl+"/en/card_"+this.imageUrl+"_sp0"+superAttackID+"_name.png')";
+                this.superAttackName.style.backgroundImage = "url('/dbManagement/DokkanFiles/global/en/character/card/"+this.imageUrl+"/en/card_"+this.imageUrl+"_sp0"+superAttackID+"_name.png')";
             }
             this.superAttackName.style.display="block";
         }
@@ -1266,7 +1266,7 @@ class statsContainerClass{
 
         this.finalHPDisplay=document.createElement("div");
         this.finalHPDisplay.id="final-HP-display";
-        this.finalHPDisplay.style.backgroundImage="url('../dbManagement/assets/misc/potential/cha_detail_st_base_hp_textadded.png')";
+        this.finalHPDisplay.style.backgroundImage="url('/dbManagement/assets/misc/potential/cha_detail_st_base_hp_textadded.png')";
         this.finalHPDisplay.style.gridRow="4";
         this.finalHPDisplay.style.gridColumn="1";
         this.finalHPDisplay.innerHTML=this.finalHP;
@@ -1274,7 +1274,7 @@ class statsContainerClass{
 
         this.finalATKDisplay=document.createElement("div");
         this.finalATKDisplay.id="final-ATK-display";
-        this.finalATKDisplay.style.backgroundImage="url('../dbManagement/assets/misc/potential/cha_detail_st_base_atk_textadded.png')";
+        this.finalATKDisplay.style.backgroundImage="url('/dbManagement/assets/misc/potential/cha_detail_st_base_atk_textadded.png')";
         this.finalATKDisplay.style.gridRow="4";
         this.finalATKDisplay.style.gridColumn="2";
         this.finalATKDisplay.innerHTML=this.finalATK;
@@ -1282,7 +1282,7 @@ class statsContainerClass{
 
         this.finalDEFDisplay=document.createElement("div");
         this.finalDEFDisplay.id="final-DEF-display";
-        this.finalDEFDisplay.style.backgroundImage="url('../dbManagement/assets/misc/potential/cha_detail_st_base_def_textadded.png')";
+        this.finalDEFDisplay.style.backgroundImage="url('/dbManagement/assets/misc/potential/cha_detail_st_base_def_textadded.png')";
         this.finalDEFDisplay.style.gridRow="4";
         this.finalDEFDisplay.style.gridColumn="3";
         this.finalDEFDisplay.innerHTML=this.finalDEF;
@@ -1352,38 +1352,26 @@ class superAttackQueryHolder{
     }
 }
 
-class pictureText{
-    constructor(prefixText,imageURL,suffixText, imageHref=""){
+class pictureDiv{
+    constructor(prefixText,insertedDiv,suffixText, imageHref=""){
         this.selfContainer=document.createElement("div");
+        this.selfContainer.style.display="flex";
         this.suffixContainer=document.createElement("div");
 
-        let prefix=document.createElement("label");
-        prefix.innerHTML=prefixText;
-        this.selfContainer.appendChild(prefix);
+        this.prefix=document.createElement("label");
+        this.prefix.innerHTML=prefixText;
+        this.prefix.style.alignSelf="center";
+        this.selfContainer.appendChild(this.prefix);
 
-        let image=document.createElement("button");
-        image.style.border="none";
-        image.style.display="inline-block";
-        
-        if(imageHref!=""){
-            image.href=imageHref;
-        }
-        image.addEventListener("click",function(){
-            window.location.href=(imageHref);
-        })        
-        image.style.backgroundImage="url('"+imageURL+"')";
-        image.style.width="50px";
-        image.style.height="50px";
-        image.style.backgroundSize="100% 100%";
-        image.style.cursor="pointer";
-        this.selfContainer.appendChild(image);
+        this.selfContainer.appendChild(insertedDiv);
 
-        let suffix=document.createElement("label");
-        suffix.innerHTML=suffixText;
-        this.selfContainer.appendChild(suffix);
+        this.suffix=document.createElement("label");
+        this.suffix.innerHTML=suffixText;
+        this.suffix.style.alignSelf="center";
+        this.selfContainer.appendChild(this.suffix);
     }
     updatePrefixText(prefixText){
-        this.selfContainer.children[0].innerHTML=prefixText;
+        this.prefix.innerHTML=prefixText;
     }
 
     updateSuffixText(suffixText){
@@ -1414,7 +1402,22 @@ class superAttackQuery{
         let superAttackQuestion = document.createElement('label');
         superAttackQuestion.superAttackName= superAttackName;
         const urlParams=new URLSearchParams(window.location.search);
-        superAttackQuestion.superAttackText=new pictureText("How many times has","../dbManagement/DokkanFiles/global/en/character/card/"+unitID.slice(0,-1)+"0"+"/card_"+unitID.slice(0,-1)+"0"+"_full_thumb.png","performed "+superAttackName+" within the last "+buffs["Duration"]+" turns?: "+superAttackSlider.value);
+        const insertedDiv=new unitDisplay();
+        superAttackQuestion.superAttackText=new pictureDiv("How many times has",insertedDiv.getElement(),"performed "+superAttackName+" within the last "+buffs["Duration"]+" turns?: "+superAttackSlider.value);
+        const unitJsonPromise= getJsonPromise("/dbManagement/jsons/",unitID,".json");
+        unitJsonPromise.then(
+            unit => {
+                insertedDiv.setResourceID(unit["Resource ID"]);
+                insertedDiv.setClass(unit["Class"]);
+                insertedDiv.setType(unit["Type"]);
+                insertedDiv.setRarity(unit["Rarity"]);
+                insertedDiv.setUrl(baseDomain+"/cards/index.html?id="+unit["ID"]);
+                insertedDiv.setDisplayExtraInfo(false);
+                insertedDiv.setExactWidth("70px");
+                insertedDiv.setExactHeight("70px");
+
+            }
+        )
         this.selfContainer.appendChild(superAttackQuestion.superAttackText.getElement());
         superAttackQuestion.innerHTML = superAttackSlider.textContent;
         superAttackQuestion.style.gridRow = 1;
@@ -3639,14 +3642,14 @@ export function createEzaContainer(){
             ezaButton.style.transform="translate(180px, 170px)"
         }
         if(isEza == "true"){
-            ezaButton.style.backgroundImage = "url('../dbManagement/assets/misc/extra/eZa.png')";
+            ezaButton.style.backgroundImage = "url('/dbManagement/assets/misc/extra/eZa.png')";
             ezaButton.onclick = function(){
                 updateQueryStringParameter('EZA', 'False');
                 loadPage();
             }
         }
         else if(isSeza=="true"){
-            ezaButton.style.backgroundImage = "url('../dbManagement/assets/misc/extra/eZa.png')";
+            ezaButton.style.backgroundImage = "url('/dbManagement/assets/misc/extra/eZa.png')";
             ezaButton.onclick = function(){
                 updateQueryStringParameter('EZA', 'False');
                 updateQueryStringParameter('SEZA', 'False');
@@ -3654,7 +3657,7 @@ export function createEzaContainer(){
             }
         }
         else{
-            ezaButton.style.backgroundImage = "url('../dbManagement/assets/misc/extra/eZa_inactive.png')";
+            ezaButton.style.backgroundImage = "url('/dbManagement/assets/misc/extra/eZa_inactive.png')";
             ezaButton.onclick = function(){
                 updateQueryStringParameter('EZA', 'true');
                 updateQueryStringParameter('SEZA', 'False');
@@ -3669,7 +3672,7 @@ export function createEzaContainer(){
         sezaButton.style.transform="translate(150px, 170px)"
         sezaButton.id="seza-button";
         if(isSeza == "true"){
-            sezaButton.style.backgroundImage = "url('../dbManagement/assets/misc/extra/seZa.png')";
+            sezaButton.style.backgroundImage = "url('/dbManagement/assets/misc/extra/seZa.png')";
             sezaButton.onclick = function(){
                 updateQueryStringParameter('SEZA', 'False');
                 updateQueryStringParameter('EZA', 'true');
@@ -3677,7 +3680,7 @@ export function createEzaContainer(){
             }
         }
         else{
-            sezaButton.style.backgroundImage = "url('../dbManagement/assets/misc/extra/seZa_inactive.png')";
+            sezaButton.style.backgroundImage = "url('/dbManagement/assets/misc/extra/seZa_inactive.png')";
             sezaButton.onclick = function(){
                 updateQueryStringParameter('SEZA', 'true');
                 updateQueryStringParameter('EZA', 'False');
@@ -3697,7 +3700,7 @@ export function createTransformationContainer(){
         for (const transformationID of transformations){
             let unitID = transformationID.slice(0,-1)+"0";
             let transformationButton = document.createElement('button');
-            transformationButton.style.backgroundImage = "url('../dbManagement/DokkanFiles/global/en/character/card/"+unitID+"/card_"+unitID+"_full_thumb.png')";
+            transformationButton.style.backgroundImage = "url('/dbManagement/DokkanFiles/global/en/character/card/"+unitID+"/card_"+unitID+"_full_thumb.png')";
         transformationButton.id="transformation-button";
             transformationButton.style.gridRow="1";
             transformationContainer.appendChild(transformationButton);
@@ -3711,7 +3714,7 @@ export function createTransformationContainer(){
         for (const transformationID of previousTransformations){
             let unitID = transformationID.slice(0,-1)+"0";
             let transformationButton = document.createElement('button');
-            transformationButton.style.backgroundImage = "url('../dbManagement/DokkanFiles/global/en/character/card/"+unitID+"/card_"+unitID+"_full_thumb.png')";
+            transformationButton.style.backgroundImage = "url('/dbManagement/DokkanFiles/global/en/character/card/"+unitID+"/card_"+unitID+"_full_thumb.png')";
             transformationButton.id="transformation-button";
             transformationButton.style.gridRow="2";
             transformationContainer.appendChild(transformationButton);
@@ -3803,7 +3806,7 @@ export function createDokkanAwakenContainer(){
     let Awakenings =currentJson["Dokkan awakenings"];
     if( Array.isArray(Awakenings) && Awakenings.length){
     }for (const AwakeningsID of Awakenings){
-        const awakeningJsonPromise = getJsonPromise("../dbManagement/jsons/",AwakeningsID,".json");
+        const awakeningJsonPromise = getJsonPromise("/dbManagement/jsons/",AwakeningsID,".json");
         awakeningJsonPromise.then(
             awakeningJson => {
                 const AwakeningsButton = new unitDisplay();
@@ -3825,7 +3828,7 @@ export function createDokkanAwakenContainer(){
     let previousAwakenings =currentJson["Dokkan Reverse awakenings"];
     if( Array.isArray(previousAwakenings) && previousAwakenings.length){
     }for (const AwakeningsID of previousAwakenings){
-        const previousAwakeningJsonPromise = getJsonPromise("../dbManagement/jsons/",AwakeningsID,".json");
+        const previousAwakeningJsonPromise = getJsonPromise("/dbManagement/jsons/",AwakeningsID,".json");
         previousAwakeningJsonPromise.then(
             previousAwakeningJson => {
                 const AwakeningsButton = new unitDisplay();
@@ -3903,23 +3906,23 @@ export function updateQueryStringParameter(key, value) {
     window.history.replaceState({ path: url.href}, '', url.href);
 }
 
-export function typingToColor(typing){
-    if(typing.toLowerCase()=="agl"){
+export function typeToColor(type){
+    if(type.toLowerCase()=="agl"){
         return("#0000FF")
     }
-    if(typing.toLowerCase()=="str"){
+    if(type.toLowerCase()=="str"){
         return("#FF0000")
     }
-    if(typing.toLowerCase()=="teq"){
+    if(type.toLowerCase()=="teq"){
         return("#00FF00")
     }
-    if(typing.toLowerCase()=="phy"){
+    if(type.toLowerCase()=="phy"){
         return("#FFFF00")
     }
-    if(typing.toLowerCase()=="int"){
+    if(type.toLowerCase()=="int"){
         return("#FF00FF")
     }
-    if(typing.toLowerCase()=="candy"){
+    if(type.toLowerCase()=="candy"){
         return("#FFFFFF")
     }
 }
@@ -4227,10 +4230,10 @@ export function createPassiveContainer(){
 
 
 export function initialiseAspects() {
-    updateCharacterIcon('character-icon', currentJson["Resource ID"], currentJson.Typing);
+    updateCharacterIcon('character-icon', currentJson["Resource ID"], currentJson.Type);
     document.getElementById("level-container").style.display="flex";
 
-    //change the background of the slider to the typing color
+    //change the background of the slider to the type color
     document.title="["
     document.title+=currentJson["Leader Skill"]["Name"];
     document.title+="] ";
@@ -4272,13 +4275,13 @@ export function createSuperAttackContainer(){
         let transformPromise;
         const urlParams=new URLSearchParams(window.location.search);
         if(isSeza=="true"){
-            transformPromise=getJsonPromise('../dbManagement/jsonsSEZA/',key,'.json');
+            transformPromise=getJsonPromise('/dbManagement/jsonsSEZA/',key,'.json');
         }
         else if(isEza=="true"){
-            transformPromise=getJsonPromise('../dbManagement/jsonsEZA/',key,'.json');
+            transformPromise=getJsonPromise('/dbManagement/jsonsEZA/',key,'.json');
         }
         else{
-            transformPromise=getJsonPromise('../dbManagement/jsons/',key,'.json');
+            transformPromise=getJsonPromise('/dbManagement/jsons/',key,'.json');
         }
         transformPromise.then((json)=>{
             let superAttackss=json["Super Attack"];
@@ -4324,10 +4327,10 @@ export function updateContainer(containerId, content){
     cardImage.setHeightFit(true);
 
     imageContainer.appendChild(cardImage.getElement());
-    //imageContainer.style.backgroundColor = colorToBackground(typingToColor(typing));
+    //imageContainer.style.backgroundColor = colorToBackground(typeToColor(type));
 
 
-    document.body.style.backgroundColor = colorToBackground(typingToColor(currentJson["Type"]));
+    document.body.style.backgroundColor = colorToBackground(typeToColor(currentJson["Type"]));
 }
 
   // Function to create a paragraph element with the given text
@@ -4549,25 +4552,25 @@ export function queriesToLogic(queries){
 export function createSkillOrbContainer(){
     let skillOrbContainer=document.getElementById('all-skill-orb-container');
     skillOrbContainer.style.display="grid";
-    skillOrbContainer.additionalNode=new equipNodeQuery("Additional","../dbManagement/DokkanFiles/global/en/outgame/extension/potential/pot_skill_01_on.png")
+    skillOrbContainer.additionalNode=new equipNodeQuery("Additional","/dbManagement/DokkanFiles/global/en/outgame/extension/potential/pot_skill_01_on.png")
     skillOrbContainer.appendChild(skillOrbContainer.additionalNode.getElement());
 
-    skillOrbContainer.critNode=new equipNodeQuery("Crit","../dbManagement/DokkanFiles/global/en/outgame/extension/potential/pot_skill_02_on.png")
+    skillOrbContainer.critNode=new equipNodeQuery("Crit","/dbManagement/DokkanFiles/global/en/outgame/extension/potential/pot_skill_02_on.png")
     skillOrbContainer.appendChild(skillOrbContainer.critNode.getElement());
 
-    skillOrbContainer.evasionNode=new equipNodeQuery("Evasion","../dbManagement/DokkanFiles/global/en/outgame/extension/potential/pot_skill_03_on.png")
+    skillOrbContainer.evasionNode=new equipNodeQuery("Evasion","/dbManagement/DokkanFiles/global/en/outgame/extension/potential/pot_skill_03_on.png")
     skillOrbContainer.appendChild(skillOrbContainer.evasionNode.getElement());
 
-    skillOrbContainer.typeATKBoostNode=new equipNodeQuery("Attack","../dbManagement/DokkanFiles/global/en/outgame/extension/potential/pot_skill_04_on.png")
+    skillOrbContainer.typeATKBoostNode=new equipNodeQuery("Attack","/dbManagement/DokkanFiles/global/en/outgame/extension/potential/pot_skill_04_on.png")
     skillOrbContainer.appendChild(skillOrbContainer.typeATKBoostNode.getElement());
 
-    skillOrbContainer.typeDEFBoostNode=new equipNodeQuery("Defense","../dbManagement/DokkanFiles/global/en/outgame/extension/potential/pot_skill_05_on.png")
+    skillOrbContainer.typeDEFBoostNode=new equipNodeQuery("Defense","/dbManagement/DokkanFiles/global/en/outgame/extension/potential/pot_skill_05_on.png")
     skillOrbContainer.appendChild(skillOrbContainer.typeDEFBoostNode.getElement());
 
-    skillOrbContainer.superAttackBoostNode=new equipNodeQuery("SuperBoost","../dbManagement/DokkanFiles/global/en/outgame/extension/potential/pot_skill_06_on.png")
+    skillOrbContainer.superAttackBoostNode=new equipNodeQuery("SuperBoost","/dbManagement/DokkanFiles/global/en/outgame/extension/potential/pot_skill_06_on.png")
     skillOrbContainer.appendChild(skillOrbContainer.superAttackBoostNode.getElement());
 
-    skillOrbContainer.recoveryBoostNode=new equipNodeQuery("Recovery","../dbManagement/DokkanFiles/global/en/outgame/extension/potential/pot_skill_07_on.png")
+    skillOrbContainer.recoveryBoostNode=new equipNodeQuery("Recovery","/dbManagement/DokkanFiles/global/en/outgame/extension/potential/pot_skill_07_on.png")
     skillOrbContainer.appendChild(skillOrbContainer.recoveryBoostNode.getElement());
 
 
@@ -4592,7 +4595,7 @@ export function changePassiveSlider(sliderName, value){
 export function updateKiSphereBuffs(){
     let kiGain=0;
     kiGain+=rainbowKiSphereAmount;
-    if(currentJson["Typing"]==currentKiSphere){
+    if(currentJson["Type"]==currentKiSphere){
         kiGain+=currentKiSphereAmount;
     }
     if(currentKiSphere!="Candy"){
@@ -4903,16 +4906,16 @@ export function createKiSphereContainer(){
     otherQuery.appendChild(otherDropdown)
     otherDropdown.addEventListener("change", function(){
         currentKiSphere=otherDropdown.value
-        otherDropdown.style.backgroundColor=LightenColor(colorToBackground(typingToColor(otherDropdown.value)),50)
+        otherDropdown.style.backgroundColor=LightenColor(colorToBackground(typeToColor(otherDropdown.value)),50)
         updateKiSphereBuffs()
     })
     for (const orbType of ["STR","AGL","TEQ","INT","PHY","Candy"]){
         const option = document.createElement('option');
-        option.style.backgroundColor=LightenColor(colorToBackground(typingToColor(orbType)),50);
+        option.style.backgroundColor=LightenColor(colorToBackground(typeToColor(orbType)),50);
         option.textContent = orbType;
         otherDropdown.appendChild(option);
     }
-    otherDropdown.style.backgroundColor=LightenColor(colorToBackground(typingToColor(otherDropdown.value)),50)
+    otherDropdown.style.backgroundColor=LightenColor(colorToBackground(typeToColor(otherDropdown.value)),50)
     
     const otherSuffixLabel=document.createElement("Label");
     otherSuffixLabel.innerHTML="ki spheres have been obtained: 6";
@@ -5025,21 +5028,21 @@ export async function loadPage(firstTime=false){
         isEza="False"
     }
     if(isSeza == "true"){
-    jsonPromise=getJsonPromise('../dbManagement/jsonsSEZA/',subURL,'.json');
+    jsonPromise=getJsonPromise('/dbManagement/jsonsSEZA/',subURL,'.json');
     }
     else if(isEza == "true"){
-    jsonPromise=getJsonPromise('../dbManagement/jsonsEZA/',subURL,'.json');
+    jsonPromise=getJsonPromise('/dbManagement/jsonsEZA/',subURL,'.json');
     }
     else{
-    jsonPromise=getJsonPromise('../dbManagement/jsons/',subURL,'.json');
+    jsonPromise=getJsonPromise('/dbManagement/jsons/',subURL,'.json');
     }
 
     try{
         //await all JSON promises so they finish before continuing
         [currentJson, linkData, domainData] = await Promise.all([
             jsonPromise,
-            getJsonPromise("../dbManagement/uniqueJsons/", "links", ".json"),
-            getJsonPromise("../dbManagement/uniqueJsons/", "domains", ".json")
+            getJsonPromise("/dbManagement/uniqueJsons/", "links", ".json"),
+            getJsonPromise("/dbManagement/uniqueJsons/", "domains", ".json")
         ]);
         initialiseAspects();
         createPassiveContainer();

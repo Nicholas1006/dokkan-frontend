@@ -144,6 +144,8 @@ export function createCharacterBoxes() {
   const unitsContainer = document.getElementById('unit-selection-container');
   for (let unitCount = 0; unitCount < unitsToDisplay; unitCount++) {
     displayBoxes[unitCount] = new unitDisplay();
+    displayBoxes[unitCount].setExactWidth("164px");
+    displayBoxes[unitCount].setExactHeight("150px");
     unitsContainer.appendChild(displayBoxes[unitCount].container);
   }
 }
