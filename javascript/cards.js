@@ -556,348 +556,6 @@ class kiCircleClass{
     updateCausalityLogic(CausalityLogic){
         this.CausalityLogic=CausalityLogic
     }
-    updateConditions(previousBuffs,previousActiveLines,superHasBeenPerformed){
-        this.previousBuffs = { ...previousBuffs };
-        const startOfCalcSuper=superHasBeenPerformed||this.superPerformed
-        if(this.attackPerformed || additionalAttacks[this.passiveLineKey]=="Predictor"){
-            this.superHasBeenPerformed=superHasBeenPerformed||this.superPerformed;
-            this.activatedPassiveLineMultipliers={ ...previousActiveLines};
-            this.passiveBuffs={};
-            this.additionalAttacks={};
-            this.superAttackMultiplier=1;
-            this.SOTATK=1;
-            this.MOTATK=1;
-            this.SOTATKONSUPER=0;
-            this.MOTATKONSUPER=0;
-            this.EXTRAKIONSUPER=0;
-            this.finishBuffs=0;
-            this.Ki=0;
-            for (const kiSourcesKey in kiSources){
-                this.Ki+=parseInt(kiSources[kiSourcesKey]);
-            }
-
-            const SOTTIMINGS=["Start of turn","After all ki collected","Right before attack(SOT stat)","When ki spheres collected"]
-            const MOTTIMINGS=["Right before being hit","Right after being hit","Right before attack(MOT stat)","Right after attack","End of turn"]
-            const ONSUPERTIMING=["On Super"]
-            let passiveLines=currentJson.Passive;
-            for(const passiveLineKey in passiveLines){
-                let isAlreadyActive=false;
-                if(passiveLineKey in this.activatedPassiveLineMultipliers){
-                    if(this.activatedPassiveLineMultipliers[passiveLineKey]==1){
-                        isAlreadyActive=true;
-                    }
-                }
-                if(!isAlreadyActive || ("Building Stat" in passiveLines[passiveLineKey])){
-                    let passiveLine=passiveLines[passiveLineKey];
-                    let activatedCondition=true;
-                    let buffMultiplier=1
-                    if("Building Stat" in passiveLine){
-                        const sliderName=passiveLine["Building Stat"]["Slider"];
-                        buffMultiplier=this.CausalityLogic[sliderName];
-                    }
-                    if("Condition" in passiveLine){
-                        let conditionLogic=" "+passiveLine["Condition"]["Logic"]+" ";
-                        let conditionCausalities=passiveLine["Condition"]["Causalities"];
-                        for(const conditionCausalityKey in conditionCausalities){
-                            let conditionCausality=conditionCausalities[conditionCausalityKey];
-                            let buttonLogic=false;
-                            if("Button" in conditionCausality){
-                                buttonLogic=this.CausalityLogic[conditionCausality["Button"]["Name"]];
-                            }
-                            let sliderLogic=false;
-                            if("Slider" in conditionCausality){
-                                sliderLogic=eval(this.CausalityLogic[conditionCausality["Slider"]["Name"]] + conditionCausality["Slider"]["Logic"]);
-                            }
-                            if(buttonLogic || sliderLogic){
-                                conditionLogic=conditionLogic.replaceAll(" "+conditionCausalityKey+" "," "+true+" ");
-                            }
-                            else{
-                                conditionLogic=conditionLogic.replaceAll(" "+conditionCausalityKey+" "," "+false+" ");
-                            }
-                        }
-                        if(eval(conditionLogic)){
-                            activatedCondition=true;
-                        }
-                        else{
-                            activatedCondition=false;
-                        }
-                    }
-                    if(activatedCondition){
-                        this.activatedPassiveLineMultipliers[passiveLineKey]=buffMultiplier;
-                        if("Disable Other Line" in passiveLine){
-                            dictionaryRemove(this.activatedPassiveLineMultipliers,passiveLine["Disable Other Line"]["Line"]);
-                            dictionaryRemove(this.activatedPassiveLineMultipliers,passiveLine["ID"]);
-                        }
-                        if("Additional Attack" in passiveLine){
-                            this.additionalAttacks[passiveLineKey]="Offered";
-                        }                
-                    }
-                }
-
-            }
-
-            for (const key in this.activatedPassiveLineMultipliers){
-                const passiveLine=passiveLines[key];
-                for (const passiveEffect in passiveLine){
-                    const timingString = passiveLine["Timing"];
-                    const targetString = passiveLine["Target"]["Target"];
-                    let buffMultiplier=1;
-                    if(passiveEffect=="ATK"||passiveEffect=="Ki"){
-                        if("Building Stat" in passiveLine){
-                            if(passiveLine["Building Stat"]["Cause"]["Cause"]=="HP"){
-                                if(passiveLine["Building Stat"]["Cause"]["Type"]=="More HP remaining"){
-                                    buffMultiplier=(((passiveLine["Building Stat"]["Max"]-passiveLine["Building Stat"]["Min"])*(this.CausalityLogic[passiveLine["Building Stat"]["Slider"]]/100))+passiveLine["Building Stat"]["Min"])/passiveLine["Building Stat"]["Max"];
-                                    console.log(buffMultiplier);
-                                }
-                                else if(passiveLine["Building Stat"]["Cause"]["Type"]=="Less HP remaining"){
-                                    buffMultiplier=((-(passiveLine["Building Stat"]["Max"]-passiveLine["Building Stat"]["Min"])*(this.CausalityLogic[passiveLine["Building Stat"]["Slider"]]/100))+passiveLine["Building Stat"]["Max"])/passiveLine["Building Stat"]["Max"];
-                                }
-                            }
-                            else{
-                                buffMultiplier=this.CausalityLogic[passiveLine["Building Stat"]["Slider"]];
-                            }
-                            buffMultiplier=Math.min(buffMultiplier,passiveLine["Building Stat"]["Max"]);
-                        }
-                        if(includedInSupportBuff(passiveLine)){
-                            if(SOTTIMINGS.includes(timingString)){
-                                this.SOTATK+=(buffMultiplier*(passiveLine.ATK||0))/100
-                                this.Ki+=buffMultiplier*(passiveLine.Ki||0)
-                            }
-                            else if (MOTTIMINGS.includes(timingString)){
-                                this.MOTATK+=buffMultiplier*(passiveLine.ATK||0)/100
-                                this.Ki+=buffMultiplier*(passiveLine.Ki||0)
-                            }
-                            else if (ONSUPERTIMING.includes(timingString)){
-                                this.MOTATKONSUPER+=buffMultiplier*(passiveLine.ATK||0)/100
-                                this.EXTRAKIONSUPER+=buffMultiplier*(passiveLine.Ki||0)
-                            }
-                            else{
-                                console.log("UNKNOWN TIMING",timingString)
-                            }
-                        }
-                    }
-                    else if(passiveEffect=="Status"){
-                        for (const statusEffectKey in (passiveLine["Status"])){
-                            const statusEffect=passiveLine["Status"][statusEffectKey];
-                            if(statusEffect=="Unable to attack"){
-                                regularAttacksPerformed=false;
-                                if(this.passiveLineKey!="Finish"){
-                                   updatePassiveStats();
-                                   return;
-                                }
-                            }
-                            else{
-                                console.log("WIP");
-                            }
-                        }
-                    }
-                    else if(["ID","Condition","Timing","Target","Length","Buff","Transformation","First Turn To Activate","Once only","Nullification","Additional Attack","Calc option","Building Stat","Brief effect description"].includes(passiveEffect)){
-                        continue;
-                    }
-                    else if(["DEF","DR","Dodge Chance","Crit Chance","Guard"].includes(passiveEffect)){
-                        continue; //WIP
-                    }
-                    else{
-                        console.log(passiveEffect)
-                    }
-                }
-            }
-            
-            if(this.superPerformed||this.superHasBeenPerformed){
-                this.Ki+=this.EXTRAKIONSUPER;
-            }
-            this.Ki=this.Ki.clamp(0,this.maxKi)
-            
-            //bring over the super attack boosts
-            this.superAttackAssetID=1;
-            let superMinKi=0;
-            this.superBuffs["ATK"]=0;
-            let minKiToSuperAttack=25;
-            if(this.passiveLineKey==0){
-                for (const superKey in currentJson["Super Attack"]){
-                    const superAttack=currentJson["Super Attack"][superKey];
-                    minKiToSuperAttack=Math.min(superAttack["superMinKi"],minKiToSuperAttack);
-                    if(parseInt(superAttack["superMinKi"])<=parseInt(this.Ki) && parseInt(superAttack["superMinKi"])>parseInt(superMinKi)){
-                        superMinKi=superAttack["superMinKi"];
-                        this.superBuffs["ATK"]=0;
-                        this.superAttackMultiplier=superAttack["Multiplier"]/100;
-                        this.superAttackMultiplier+=skillOrbBuffs["SuperBoost"]*0.05;
-                        this.superAttackAssetID=superAttack["special_name_no"];
-                        this.superPerformed=true;
-                        if("SpecialBonus" in superAttack){
-                            if(superAttack["SpecialBonus"]["Type"]=="SA multiplier increase"){
-                                this.superAttackMultiplier+=superAttack["SpecialBonus"]["Amount"]/100
-                            }
-                        }
-                        if("superBuffs" in superAttack){
-                            for (const superBuffKey of Object.keys(superAttack["superBuffs"])){
-                                if (!(superAttack["superBuffs"][superBuffKey]["Target"].includes("excluded") || superAttack["superBuffs"][superBuffKey]["Target"].includes("Enem"))){
-                                    this.superBuffs["ATK"]+=parseInt(superAttack["superBuffs"][superBuffKey]["ATK"]||0);
-                                }
-                            }
-                        }
-                        this.superAttackPerformed=superAttack;
-                    }
-                    
-                }
-            }
-            else if(this.passiveLineKey=="Active"){
-               const active=currentJson["Active Skill"];
-               this.activeAttackMultiplier=active["Attack"]["Multiplier"]/100;
-               if(currentJson["Rarity"]=="lr"){
-                this.Ki=24;
-               }
-               else{
-                   this.Ki=12;
-               }
-               this.superPerformed=true;
-               
-            }
-            else if(this.passiveLineKey=="Finish"){
-                const finishOptions=currentJson["Finish Skill"];
-                let finishPerformed;
-                for (const finishKey in finishOptions){
-                    const finishOption=finishOptions[finishKey];
-                    if(finishOption["Condition"]!=null){
-                        let conditionLogic=" "+finishOption["Condition"]["Logic"]+" ";
-                        for(const causalityKey in finishOption["Condition"]["Causalities"]){
-                            const causality=finishOption["Condition"]["Causalities"][causalityKey];
-                            if(causality["Button"]["Name"].startsWith("Is it on or after the first")){
-                                conditionLogic=conditionLogic.replace(" "+causalityKey+" "," true ");
-                            }
-                            else if(causality["Button"]["Name"].startsWith("Is the charge count")){
-                                const chargeLogic=eval(finishSkillCharges+causality["Slider"]["Logic"])
-                                if(chargeLogic){
-                                    conditionLogic=conditionLogic.replace(" "+causalityKey+" "," true ");
-                                }
-                                else{
-                                    conditionLogic=conditionLogic.replace(" "+causalityKey+" "," false ");
-                                }
-                            }
-
-                        }
-                        if(eval(conditionLogic)){
-                            if(finishOption["Description"]!="None"){
-                                finishPerformed=finishOption
-                            }
-                        }
-                    }
-                    else{
-                        if(finishOption["Description"]!="None"){
-                            finishPerformed=finishOption
-                        }
-                    }
-                }
-
-                console.log(finishPerformed)
-                this.finishBuffs=finishPerformed["Multiplier"]/100;
-                if(finishPerformed["Standby Exclusivity"]=="charge"){
-                    this.finishBuffs+=finishPerformed["Multipler per charge"]*finishSkillCharges/100;
-                }
-            }   
-
-            else{
-                if(this.superPerformed){
-                    this.Ki=currentJson["SuperMinKi"];
-                    this.superBuffs["ATK"]=0;
-                    this.superAttackID=currentJson["AdditionalSuperID"];
-                    const superAttack=currentJson["Super Attack"][this.superAttackID];
-                    this.superAttackMultiplier=superAttack["Multiplier"]/100;
-                    this.superAttackAssetID=superAttack["special_name_no"];
-                    this.superAttackMultiplier+=skillOrbBuffs["SuperBoost"]*0.05;
-                    if("SpecialBonus" in superAttack){
-                        if(superAttack["SpecialBonus"]["Type"]=="SA multiplier increase"){
-                            this.superAttackMultiplier+=superAttack["SpecialBonus"]["Amount"]/100
-                        }
-                    }
-                    if("superBuffs" in superAttack){
-                        for (const superBuffKey of Object.keys(superAttack["superBuffs"])){
-                            if (!(superAttack["superBuffs"][superBuffKey]["Target"].includes("excluded") || superAttack["superBuffs"][superBuffKey]["Target"].includes("Enem"))){
-                                this.superBuffs["ATK"]+=parseInt(superAttack["superBuffs"][superBuffKey]["ATK"]||0);
-                            }
-                        }
-                    }
-                    
-                }
-                else{
-                    this.superBuffs["ATK"]=0
-                }
-            }
-            
-            if(this.superPerformed||this.superHasBeenPerformed){
-                this.MOTATK+=this.MOTATKONSUPER;
-                this.SOTATK+=this.SOTATKONSUPER;
-            }
-            this.previousBuffs["ATK"]+=this.superBuffs["ATK"]/100;
-            this.superAttackMultiplier+=superBuffs["ATK"]/100;
-            this.superAttackMultiplier+=this.previousBuffs["ATK"]
-            this.updateSuperAttack(this.superAttackAssetID)
-
-            const passiveSupportContainer=document.getElementById("passive-support-container");
-            this.SOTATK+=(parseInt(passiveSupportContainer.ATKsupport.input.value)||0)/100;
-            
-            if(this.passiveLineKey=="Finish" || this.passiveLineKey=="Active"){
-                if(currentJson["Rarity"]==("lr")){
-                    this.Ki=24;
-                }
-                else{
-                    this.Ki=12;
-                }
-            }
-
-            let finalValue=1;
-            finalValue=Math.floor(finalValue*baseStats["ATK"]);
-            finalValue=Math.floor(finalValue*(1+leaderBuffs["ATK"]/100));
-            finalValue=Math.floor(finalValue*(this.SOTATK));//Start of turn passive stats
-            finalValue=Math.floor(finalValue*(1));//Item boost
-            finalValue=Math.floor(finalValue*(1+linkBuffs["ATK"]/100));
-            if(this.passiveLineKey=="Active"){
-                finalValue=Math.floor(finalValue*(this.activeAttackMultiplier+activeMultipliers["ATK"]));
-            }
-            else{
-                finalValue=Math.floor(finalValue*(activeMultipliers["ATK"]));//Active boost
-            }
-            finalValue=Math.ceil(finalValue*(currentJson["Ki Multiplier"][this.Ki]/100));
-            finalValue=Math.floor(finalValue*(this.MOTATK));//Middle of turn passive stats
-            finalValue=Math.floor(finalValue*this.superAttackMultiplier);
-            finalValue=Math.floor(finalValue*(1+domainBuffs["ATK"]/100));
-            if(this.passiveLineKey=="Finish"){
-                finalValue=Math.floor(finalValue*(this.finishBuffs));
-            }
-            
-
-            if(this.passiveLineKey!="Active"){
-                if(this.superAttackAssetID==1 && (this.superPerformed)){
-                    this.superPerformed=false;
-                    this.CausalityLogic=prepareCausalityLogic(this.CausalityLogic,this)
-                    this.updateConditions(previousBuffs,superHasBeenPerformed)
-                }
-                else if(this.superAttackAssetID!=1 && !startOfCalcSuper){
-                    this.superPerformed=true;
-                    this.superHasBeenPerformed=true;
-                    this.CausalityLogic=prepareCausalityLogic(this.CausalityLogic,this)
-                    this.updateConditions(previousBuffs,superHasBeenPerformed)
-                }
-            }
-
-            
-            
-            if(this.Ki!=this.displayedKi){
-                this.updateKi(this.Ki);
-                this.CausalityLogic=prepareCausalityLogic(this.CausalityLogic,this)
-                this.updateConditions(previousBuffs,superHasBeenPerformed)
-            }
-            
-            this.updateValue(finalValue,this.superPerformed);
-        }
-        else{
-            this.updateValue(-1,false);
-            this.updateKi(0);
-            this.updateSuperAttack(0);
-            this.superPerformed=false
-        }
-
-    }
     updateKi(value){
         let maxKi;
         for (const passiveSlider of document.getElementById("passive-query-container").children){
@@ -1130,6 +788,31 @@ class kiCircleClass{
                 this.CausalityLogic[Causality]+=parseInt(iterationAmount)
             }
         }
+    }
+
+    getDefense(){
+        //WIP
+        return(500000)
+    }
+
+    getAttack(){
+        //WIP
+        return(10000000)
+    }
+
+    getDodgeChance(){
+        //WIP
+        return(0.7)
+    }
+
+    getDamageReduction(){
+        //WIP
+        return(0.6)
+    }
+
+    getGuard(){
+        //WIP
+        return(true)
     }
 }
 
@@ -2394,10 +2077,29 @@ export function updatePassiveStats(){
                     kiCircleDictionary[additional].updateValue(0);
                 }
             }
+
+
     //  }
 
 
-
+    let finalStats={}
+    finalStats["Defense"]= kiCircleDictionary[Object.keys(additionalAttacks)[Object.keys(additionalAttacks).length-1]].getDefense();
+    finalStats["Dodge chance"]= kiCircleDictionary[Object.keys(additionalAttacks)[Object.keys(additionalAttacks).length-1]].getDodgeChance();
+    finalStats["Damage Reduction"]= kiCircleDictionary[Object.keys(additionalAttacks)[Object.keys(additionalAttacks).length-1]].getDamageReduction();
+    finalStats["Guard"]= kiCircleDictionary[Object.keys(additionalAttacks)[Object.keys(additionalAttacks).length-1]].getGuard();
+        
+    let finalStatsString="";
+    finalStatsString+="DEF: "+finalStats["Defense"]+"\n";
+    if(finalStats["Dodge chance"]>0){
+        finalStatsString+="Dodge chance: "+finalStats["Dodge chance"]+"\n";
+    }
+    if(finalStats["Damage Reduction"]>0){
+        finalStatsString+="Damage Reduction: "+finalStats["Damage Reduction"]+"\n";
+    }
+    if(finalStats["Guard"]==true){
+        finalStatsString+="Guard: "+finalStats["Guard"]+"\n";
+    }
+    document.getElementById("final-stats").innerHTML=finalStatsString;
 }
 
 
