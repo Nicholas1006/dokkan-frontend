@@ -1,9 +1,31 @@
-#base-stats {
+#column1{
   grid-column: 1;
+  display:grid;
+}
+
+#column2{
+  grid-column: 2;
+  display:grid;
+}
+
+#column3{
+  grid-column: 3;
+  display:grid;
+}
+
+#column4{
+  grid-column: 4;
+  display:grid;
+}
+
+#column5{
+  grid-column: 5;
+  display:grid;
+}
+
+
+#base-stats {
   display: grid;
-  grid-template-rows: 250px 150px 140px auto;
-  grid-template-columns: 246px auto;
-  width: 500px;
   height: 100%;
   position: relative;
 }
@@ -62,6 +84,7 @@
 }
 
 #ki-container {
+  grid-row:1;
   display:grid;
   width: 350px;
   height:90vh;
@@ -69,6 +92,10 @@
   overflow-y: scroll;
   scrollbar-width: auto;
   scrollbar-color: #333 #ffffff;
+}
+
+#final-stats{
+  grid-row:2;
 }
 
 
@@ -169,8 +196,8 @@
 
 .eza-button, .seza-button{
   display: block;
-  width: 50px;
-  height: 50px;
+  width: 36px;
+  height: 35px;
   border: none;
   cursor: pointer;
   background-size:cover;
@@ -254,8 +281,7 @@
   grid-column: 1;
   grid-row:1;
   gap: 0px;
-  width: 100%;
-  height: 100%;
+  aspect-ratio: 215/219;
   position: relative;
 }
 
@@ -284,8 +310,7 @@
   grid-column-start: 1;
   grid-column-end: 3;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  width:500px;
-  height:100%;
+  aspect-ratio: 500/140;
 }
 
 #equip-node-container{
@@ -360,12 +385,16 @@
   grid-column: 1;
 }
 
+#domain-container{
+  display: grid;
+  grid-row: 1;
+  width: 100%;
+  height: 10%;
+}
 
 #super-passive-container{
-  height:100vh;
-  grid-column:3;
-  grid-row:1;
-  padding-top:80px;
+  height:90vh;
+  grid-row:2;
 }
 
 #super-chance-query{
@@ -670,10 +699,9 @@
 
 #cards-body-container {
   display: grid;
-  grid-template-columns: auto auto auto auto auto;
-  width: max-content;
+  grid-template-columns: 22fr 10fr 29fr 17fr 17fr;
   height: max-content;
-  place-items: center;
+  place-items: start;
 }
 
 
@@ -764,7 +792,7 @@
 .unit-info-holder-level-number{
   position: absolute;
   left: 45%;
-  top: 11%;
+  top: 20%;
   font-size: 149%;
   color: yellow;
   font-family: sans-serif;
@@ -872,7 +900,6 @@
   grid-column: 3;
   grid-row: 1 ;
   
-  width: 320px;
   height: 40%;
   position: relative;
   
@@ -921,13 +948,7 @@
   scrollbar-color: #333 #ffffff;
 }
 
-#domain-container{
-  display: grid;
-  grid-column: 3;
-  grid-row: 1;
-  width: 100%;
-  height: 10%;
-}
+
 
 .dropbtn {
   background-color: #4CAF50;
@@ -977,8 +998,6 @@
 
 
 #links-and-leads {
-  grid-column: 2 / span 1;
-  grid-row: 1 / span 1;
   width: 100%;
   height: 100%;
   position: relative;
@@ -1062,8 +1081,6 @@ input[type="range"] {
 
 #active-container{
   display: grid;
-  grid-column: 5;
-  grid-row: 1;
   width: 100%;
   height: 10%;
 }

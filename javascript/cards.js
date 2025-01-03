@@ -3,6 +3,12 @@ let baseDomain=window.location.origin;
 
 class kiCircleClass{
     constructor(passiveLineKey,CausalityLogic,performedChance,superChance){
+        this.attack=0;
+        this.defense=0;
+        this.damageReduction=0;
+        this.dodgeChance=0;
+        this.guard=false;
+
         this.CausalityLogic=CausalityLogic;
         this.attackPerformed=false;
         this.Ki=0;
@@ -234,6 +240,11 @@ class kiCircleClass{
         this.superAttackAssetID=-1;
         this.superBuffs={...superBuffs};
         this.superAttackMultiplier=superBuffs["ATK"]/100 +1;
+        this.damageReduction=buffs["Damage Reduction"];
+        this.dodgeChance=buffs["Dodge Chance"];
+        this.guard=buffs["Guard"];
+
+
         if(this.passiveLineKey=="0"){
             this.Ki=0;
             for (const kiSourcesKey in kiSources){
@@ -280,6 +291,7 @@ class kiCircleClass{
                 for (const superBuffKey of Object.keys(superAttack["superBuffs"])){
                     if (!(superAttack["superBuffs"][superBuffKey]["Target"].includes("excluded") || superAttack["superBuffs"][superBuffKey]["Target"].includes("Enem"))){
                         this.superBuffs["ATK"]+=parseInt(superAttack["superBuffs"][superBuffKey]["ATK"]||0);
+                        this.superBuffs["DEF"]+=parseInt(superAttack["superBuffs"][superBuffKey]["DEF"]||0);
                     }
                 }
             }
@@ -295,36 +307,65 @@ class kiCircleClass{
         
         
 
-        let finalValue=1;
-        finalValue*=baseStats["ATK"];
+        this.attack=baseStats["ATK"];
 
-        finalValue*=(1+(leaderBuffs["ATK"]/100));
+        this.attack*=(1+(leaderBuffs["ATK"]/100));
 
-        finalValue*=(1+(buffs["SOT ATK %"]+supportBuffs["ATK"])/100)
-        finalValue+=buffs["SOT ATK flat"]
+        this.attack*=(1+(buffs["SOT ATK %"]+supportBuffs["ATK"])/100)
+        this.attack+=buffs["SOT ATK flat"]
         
-        finalValue*=1;//Item boost
+        this.attack*=1;//Item boost
         
-        finalValue*=1+linkBuffs["ATK"]/100;
+        this.attack*=1+linkBuffs["ATK"]/100;
         if(this.passiveLineKey=="Active"){
-            finalValue*=(this.activeAttackMultiplier+(activeMultipliers["ATK"]-1));
+            this.attack*=(this.activeAttackMultiplier+(activeMultipliers["ATK"]-1));
         }
         else{
-            finalValue*=activeMultipliers["ATK"];//Active boost
+            this.attack*=activeMultipliers["ATK"];//Active boost
         }
-        finalValue*=(currentJson["Ki Multiplier"][this.Ki]/100);
+        this.attack*=(currentJson["Ki Multiplier"][this.Ki]/100);
         
-        finalValue*=(1+buffs["MOT ATK %"]/100)
-        finalValue+=buffs["MOT ATK flat"]
+        this.attack*=(1+buffs["MOT ATK %"]/100)
+        this.attack+=buffs["MOT ATK flat"]
 
-        finalValue*=this.superAttackMultiplier;
+        this.attack*=this.superAttackMultiplier;
 
-        finalValue*=(1+domainBuffs["ATK"]/100);
+        this.attack*=(1+domainBuffs["ATK"]/100);
         if(this.passiveLineKey=="Finish"){
-            finalValue*=(this.finishBuffs);
+            this.attack*=(this.finishBuffs);
         }
 
-        this.updateValue(finalValue,this.superPerformed);
+
+        this.defense=baseStats["DEF"];
+
+        this.defense*=(1+(leaderBuffs["DEF"]/100));
+
+        this.defense*=(1+(buffs["SOT DEF %"]+supportBuffs["DEF"])/100)
+        this.defense+=buffs["SOT DEF flat"]
+        
+        this.defense*=1;//Item boost
+        
+        this.defense*=1+linkBuffs["DEF"]/100;
+        if(this.passiveLineKey=="Active"){
+            this.defense*=(this.activeAttackMultiplier+(activeMultipliers["DEF"]-1));
+        }
+        else{
+            this.defense*=activeMultipliers["DEF"];//Active boost
+        }
+        
+        this.defense*=(1+buffs["MOT DEF %"]/100)
+        this.defense+=buffs["MOT DEF flat"]
+
+        this.defense*=(1+(this.superBuffs["DEF"] / 100));
+
+        this.defense*=(1+domainBuffs["DEF"]/100);
+        if(this.passiveLineKey=="Finish"){
+            this.defense*=(this.finishBuffs);
+        }
+        this.defense=Math.floor(this.defense);
+
+        
+        this.updateValue(this.attack,this.superPerformed);
         this.updateSuperAttack(this.superAttackAssetID)
 
         return(0)
@@ -791,28 +832,23 @@ class kiCircleClass{
     }
 
     getDefense(){
-        //WIP
-        return(500000)
+        return(this.defense);
     }
 
     getAttack(){
-        //WIP
-        return(10000000)
+        return(this.attack);
     }
 
     getDodgeChance(){
-        //WIP
-        return(0.7)
+        return(this.dodgeChance);
     }
 
     getDamageReduction(){
-        //WIP
-        return(0.6)
+        return(this.damageReduction)
     }
 
     getGuard(){
-        //WIP
-        return(true)
+        return(this.guard)
     }
 }
 
@@ -1891,6 +1927,7 @@ export function updatePassiveStats(){
     let iteratingAttackRow=2;
     let iteratingSuperAttackBuffs={...superBuffs};
     let attacksPerformed=0;
+    let lastAttack="0";
     //create a list that runs through all the different timings to see which passive skills activate
     
     //Account for previously built stats
@@ -2031,6 +2068,7 @@ export function updatePassiveStats(){
                 iteratingAttackRow++;
                 kiCircleDictionary[nextLineToActivate].display(true);    
                 if(kiCircleDictionary[nextLineToActivate]["attackPerformed"]){
+                    lastAttack=nextLineToActivate;
                     //currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(SOT stat)",iteratingCausalityLogic)
                     //currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(MOT stat)",iteratingCausalityLogic)
                     
@@ -2043,6 +2081,9 @@ export function updatePassiveStats(){
                     kiCircleDictionary[nextLineToActivate].updateFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
                     
                     iteratingSuperAttackBuffs=kiCircleDictionary[nextLineToActivate].superBuffs;
+                }
+                else{
+
                 }
                 
                 //if super is actually performed
@@ -2083,13 +2124,14 @@ export function updatePassiveStats(){
 
 
     let finalStats={}
-    finalStats["Defense"]= kiCircleDictionary[Object.keys(additionalAttacks)[Object.keys(additionalAttacks).length-1]].getDefense();
-    finalStats["Dodge chance"]= kiCircleDictionary[Object.keys(additionalAttacks)[Object.keys(additionalAttacks).length-1]].getDodgeChance();
-    finalStats["Damage Reduction"]= kiCircleDictionary[Object.keys(additionalAttacks)[Object.keys(additionalAttacks).length-1]].getDamageReduction();
-    finalStats["Guard"]= kiCircleDictionary[Object.keys(additionalAttacks)[Object.keys(additionalAttacks).length-1]].getGuard();
+    
+    finalStats["Defense"]= kiCircleDictionary[lastAttack].getDefense();
+    finalStats["Dodge chance"]= Math.min(kiCircleDictionary[lastAttack].getDodgeChance(),100);
+    finalStats["Damage Reduction"]= Math.min(kiCircleDictionary[lastAttack].getDamageReduction(),100);
+    finalStats["Guard"]= kiCircleDictionary[lastAttack].getGuard();
         
     let finalStatsString="";
-    finalStatsString+="DEF: "+finalStats["Defense"]+"\n";
+    finalStatsString+="DEF: "+finalStats["Defense"].toLocaleString()+"\n";
     if(finalStats["Dodge chance"]>0){
         finalStatsString+="Dodge chance: "+finalStats["Dodge chance"]+"\n";
     }
@@ -2097,9 +2139,9 @@ export function updatePassiveStats(){
         finalStatsString+="Damage Reduction: "+finalStats["Damage Reduction"]+"\n";
     }
     if(finalStats["Guard"]==true){
-        finalStatsString+="Guard: "+finalStats["Guard"]+"\n";
+        finalStatsString+="Guard against all: "+"\n";
     }
-    document.getElementById("final-stats").innerHTML=finalStatsString;
+    document.getElementById("final-stats").innerText=finalStatsString;
 }
 
 
@@ -2110,6 +2152,7 @@ export function activePassiveMultipliersToPassiveBuffs(activePassiveMultipliers)
         "SOT DEF %":0, "SOT DEF flat":0, "MOT DEF %":0, "MOT DEF flat":0, "Enemy DEF":0,
         "Forsee Super Attack": false,
         "Guaranteed Hit": false,
+        "Guard": false,
         "Dodge Chance": 0,
         "Effective Against All":false,
         "Additional Attack":[],
@@ -2279,6 +2322,9 @@ export function activePassiveMultipliersToPassiveBuffs(activePassiveMultipliers)
             }
             if("Crit Chance" in activatedLine){
                 buffs["Crit Chance"]+=activatedLine["Crit Chance"];
+            }
+            if("Guard" in activatedLine){
+                buffs["Guard"]=activatedLine["Guard"];
             }
         }
         else if(activatedLine["Type"]=="Building Stat"){
@@ -3338,10 +3384,10 @@ export function createEzaContainer(){
     if(currentJson["Can EZA"]){
         ezaButton.id="eza-button";
         if(currentJson["Can SEZA"]){
-            ezaButton.style.transform="translate(150px, 170px)"
+            ezaButton.style.transform="translate(98px, 156px)"
         }
         else{
-            ezaButton.style.transform="translate(180px, 170px)"
+            ezaButton.style.transform="translate(128px, 156px)"
         }
         if(isEza == "true"){
             ezaButton.style.backgroundImage = "url('/dbManagement/assets/misc/extra/eZa.png')";
@@ -3371,7 +3417,7 @@ export function createEzaContainer(){
     }
     let sezaButton = document.createElement('a');
     if(currentJson["Can SEZA"]){
-        sezaButton.style.transform="translate(150px, 170px)"
+        sezaButton.style.transform="translate(98px, 156px)"
         sezaButton.id="seza-button";
         if(isSeza == "true"){
             sezaButton.style.backgroundImage = "url('/dbManagement/assets/misc/extra/seZa.png')";
@@ -3886,7 +3932,12 @@ export function createPassiveContainer(){
         passiveATKSupport.input.type="number";
         passiveATKSupport.input.value="0";
         passiveATKSupport.addEventListener('input', function(){
-            supportBuffs["ATK"]=parseInt(this.input.value);
+            if(this.input.value==""){
+                supportBuffs["ATK"]=0;
+            }
+            else{
+                supportBuffs["ATK"]=parseInt(this.input.value);
+            }
             updatePassiveStats();
         });
         passiveATKSupport.appendChild(passiveATKSupport.label);
@@ -3904,7 +3955,12 @@ export function createPassiveContainer(){
         passiveDEFSupport.appendChild(passiveDEFSupport.label);
         passiveDEFSupport.appendChild(passiveDEFSupport.input);
         passiveDEFSupport.addEventListener('input', function(){
-            supportBuffs["DEF"]=parseInt(this.input.value);
+            if(this.input.value==""){
+                supportBuffs["DEF"]=0;
+            }
+            else{
+                supportBuffs["DEF"]=parseInt(this.input.value);
+            }
             updatePassiveStats();
         });
         passiveDEFSupport.label.textContent="DEF Support: ";

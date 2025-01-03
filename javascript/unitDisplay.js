@@ -56,8 +56,8 @@ export class unitDisplay{
       this.container.style.position="relative";
       
       this.container.unitButton=document.createElement("a");
-      this.container.unitButton.href=this.url;
       this.container.unitButton.className="unit-selection-button";
+      this.container.unitButton.style.pointerEvents="none";
       this.container.appendChild(this.container.unitButton);
 
       this.container.unitRarityImage = document.createElement('img');
@@ -203,7 +203,13 @@ export class unitDisplay{
 
     setUrl(url){
         this.url=url;
-        this.container.unitButton.href=this.url;
+        if(this.url==null){
+          this.container.unitButton.style.pointerEvents="none";
+        }
+        else{
+          this.container.unitButton.href=this.url;
+          this.container.unitButton.style.pointerEvents="auto";
+        }
     }
 
     setDisplayExtraInfo(displayed){
