@@ -1218,7 +1218,7 @@ class passiveButton{
         };
         this.updateParent(parent);
         if(
-            this.label.includes("Ki Spheres have been obtained")||
+            this.label.includes("Ki Spheres have been obtained on this turn?")||
             this.label.includes("Is the Domain ")||
             this.label.startsWith("Is Ki at least ")||
             this.label.includes("Ki Spheres been obtained")||
@@ -1267,10 +1267,10 @@ class passiveSlider {
         
         this.elementLabel.innerHTML = this.label+": "+this.value;
         if(
-            this.label.includes("Ki Spheres have been obtained?")||
             this.label.includes("How much ki is there")||
             this.label.includes("Ki Spheres have been obtained on this turn?")||
-            this.label==("How many attacks has this character performed on this turn?")
+            this.label==("How many attacks has this character performed on this turn?")||
+            this.label==("How many super attacks has this character performed on this turn?")
             ){
                 if(HIDEUNNEEDEDPASSIVE){
                     this.parent.selfContainer.style.display="none"
@@ -1666,6 +1666,8 @@ let activeDisplayed=false;
 let finishSkillPerformed=false;
 let finishDisplayed=false;
 let finishSkillCharges=0;
+let hitBeforeAttacking=false;
+let superHitBeforeAttacking=false;
 
 let regularAttacksPerformed=true;
 
@@ -1935,6 +1937,8 @@ export function updatePassiveStats(){
     //  Start of turn
     progressCausalityLogic(iteratingCausalityLogic,"Start of turn");
     currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Start of turn","Single activator",iteratingCausalityLogic)
+    currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Start of turn","Disable Other Line",iteratingCausalityLogic)
+    currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"All","Building Stat",iteratingCausalityLogic)
     
     if(activeAttackPerformed){
         const activecontainer=document.getElementById("active-container");
@@ -1942,17 +1946,21 @@ export function updatePassiveStats(){
         
         progressCausalityLogic(iteratingCausalityLogic,"Right before super attack");
         currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(SOT stat)","Single activator",iteratingCausalityLogic)
+        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(SOT stat)","Disable Other Line",iteratingCausalityLogic)
         currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(MOT stat)","Single activator",iteratingCausalityLogic)
-        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"All","Building Stat",iteratingCausalityLogic)
+        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(MOT stat)","Disable Other Line",iteratingCausalityLogic)
         activecontainer.kiCircle.display(true);
         activecontainer.kiCircle.updateKiFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
         attacksPerformed+=1;
         iteratingCausalityLogic=prepareCausalityLogic(iteratingCausalityLogic,activecontainer.kiCircle);
         currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(SOT stat)","Single activator",iteratingCausalityLogic)
+        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(SOT stat)","Disable Other Line",iteratingCausalityLogic)
         currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(MOT stat)","Single activator",iteratingCausalityLogic)
+        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(MOT stat)","Disable Other Line",iteratingCausalityLogic)
         activecontainer.kiCircle.updateFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
         iteratingSuperAttackBuffs=activecontainer.kiCircle.superBuffs;
         currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after attack","Single activator",iteratingCausalityLogic)
+        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after attack","Disable Other Line",iteratingCausalityLogic)
 
 
         //      Right after attack
@@ -1981,25 +1989,30 @@ export function updatePassiveStats(){
     //  When ki spheres collected
     progressCausalityLogic(iteratingCausalityLogic,"When ki spheres collected");
     currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"When ki spheres collected","Single activator",iteratingCausalityLogic)
+    currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"When ki spheres collected","Disable Other Line",iteratingCausalityLogic)
     //  After all ki collected
     progressCausalityLogic(iteratingCausalityLogic,"After all ki collected");
     currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"After all ki collected","Single activator",iteratingCausalityLogic)
-    
+    currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"After all ki collected","Disable Other Line",iteratingCausalityLogic)
+    if("How much ki is there on this turn?" in iteratingCausalityLogic){
+        iteratingCausalityLogic["How much ki is there on this turn?"]=kiCircleDictionary[0].updateKiFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
+    }
     //  for(each time that an attack is recieved before we attack){
     //      Right before being hit
-            progressCausalityLogic(iteratingCausalityLogic,"Right before being hit by normal");
-            //Options for this
-            //"Right before being hit by normal"
-            //"Right before being hit by super"
-            currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before being hit","Single activator",iteratingCausalityLogic)
-            //      Right after being hit
-            progressCausalityLogic(iteratingCausalityLogic,"Right after being hit by normal");
-            //"Right after being hit by normal"
-            //"Right after being hit by super"
-            //"Right after dodging normal"
-            //"Right after dodging super"
-            currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after being hit","Single activator",iteratingCausalityLogic)
-
+    if(hitBeforeAttacking){
+        progressCausalityLogic(iteratingCausalityLogic,"Right before being hit by normal");
+        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before being hit","Single activator",iteratingCausalityLogic)
+        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before being hit","Disable Other Line",iteratingCausalityLogic)
+        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after being hit","Single activator",iteratingCausalityLogic)
+        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after being hit","Disable Other Line",iteratingCausalityLogic)
+    }
+    else if(superHitBeforeAttacking){
+        progressCausalityLogic(iteratingCausalityLogic,"Right before being hit by super");
+        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before being hit","Single activator",iteratingCausalityLogic)
+        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before being hit","Disable Other Line",iteratingCausalityLogic)
+        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after being hit","Single activator",iteratingCausalityLogic)
+        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after being hit","Disable Other Line",iteratingCausalityLogic)
+    }
             //      *Record stats
             //  }
             //      Right before attack(SOT stat)
@@ -2007,10 +2020,13 @@ export function updatePassiveStats(){
             //Right before super attack
             //Right before normal attack
             currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(SOT stat)","Single activator",iteratingCausalityLogic)
+            currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(SOT stat)","Disable Other Line",iteratingCausalityLogic)
             //      Right before attack(MOT stat)
             currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(MOT stat)","Single activator",iteratingCausalityLogic)
+            currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(MOT stat)","Disable Other Line",iteratingCausalityLogic)
             //      *Record stats
             currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after attack","Single activator",iteratingCausalityLogic,false)
+            currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after attack","Disable Other Line",iteratingCausalityLogic,false)
             
             currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"All","Building Stat",iteratingCausalityLogic)
             
@@ -2019,9 +2035,12 @@ export function updatePassiveStats(){
             attacksPerformed+=1;
             iteratingCausalityLogic=prepareCausalityLogic(iteratingCausalityLogic,kiCircleDictionary[0]);
             currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(SOT stat)","Single activator",iteratingCausalityLogic)
+            currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(SOT stat)","Disable Other Line",iteratingCausalityLogic)
             currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(MOT stat)","Single activator",iteratingCausalityLogic)
+            currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(MOT stat)","Disable Other Line",iteratingCausalityLogic)
             kiCircleDictionary[0].updateFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
             currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after attack","Single activator",iteratingCausalityLogic)
+            currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after attack","Disable Other Line",iteratingCausalityLogic)
             iteratingSuperAttackBuffs=kiCircleDictionary[0].superBuffs;
 
 
@@ -2077,7 +2096,9 @@ export function updatePassiveStats(){
                     attacksPerformed+=1;
                     iteratingCausalityLogic=prepareCausalityLogic(iteratingCausalityLogic,kiCircleDictionary[0]);
                     currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(SOT stat)","Single activator",iteratingCausalityLogic)
+                    currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(SOT stat)","Disable Other Line",iteratingCausalityLogic)
                     currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(MOT stat)","Single activator",iteratingCausalityLogic)
+                    currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(MOT stat)","Disable Other Line",iteratingCausalityLogic)
                     kiCircleDictionary[nextLineToActivate].updateFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
                     
                     iteratingSuperAttackBuffs=kiCircleDictionary[nextLineToActivate].superBuffs;
@@ -2090,11 +2111,13 @@ export function updatePassiveStats(){
                 if(kiCircleDictionary[nextLineToActivate]["superPerformed"]){
                     progressCausalityLogic(iteratingCausalityLogic,"Right after super attack");
                     currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after attack","Single activator",iteratingCausalityLogic)
+                    currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after attack","Disable Other Line",iteratingCausalityLogic)
                 }
                 //if normal is actually performed
                 else if(kiCircleDictionary[nextLineToActivate]["attackPerformed"]){
                     progressCausalityLogic(iteratingCausalityLogic,"Right after normal attack");
                     currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after attack","Single activator",iteratingCausalityLogic)
+                    currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after attack","Disable Other Line",iteratingCausalityLogic)
                 }
 
                 //      Right after attack
@@ -2111,6 +2134,7 @@ export function updatePassiveStats(){
 
             }
             currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after attack","Single activator",iteratingCausalityLogic)
+            currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after attack","Disable Other Line",iteratingCausalityLogic)
             if(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers)["Debuff"].includes("Unable to attack")){
                 for (const additional in additionalAttacks){
                     additionalAttacks[additional]="Unactivated";
@@ -2126,17 +2150,19 @@ export function updatePassiveStats(){
     let finalStats={}
     
     finalStats["Defense"]= kiCircleDictionary[lastAttack].getDefense();
-    finalStats["Dodge chance"]= Math.min(kiCircleDictionary[lastAttack].getDodgeChance(),100);
+    finalStats["Dodge chance"]= Math.min(kiCircleDictionary[lastAttack].getDodgeChance(),100)/100;
+    finalStats["Dodge chance"]=1 - (1-(finalStats["Dodge chance"]))*(1-(skillOrbBuffs["Evasion"]/100));
+    finalStats["Dodge chance"]=Math.round(finalStats["Dodge chance"]*1000)/10;
     finalStats["Damage Reduction"]= Math.min(kiCircleDictionary[lastAttack].getDamageReduction(),100);
     finalStats["Guard"]= kiCircleDictionary[lastAttack].getGuard();
         
     let finalStatsString="";
     finalStatsString+="DEF: "+finalStats["Defense"].toLocaleString()+"\n";
     if(finalStats["Dodge chance"]>0){
-        finalStatsString+="Dodge chance: "+finalStats["Dodge chance"]+"\n";
+        finalStatsString+="Dodge chance: "+finalStats["Dodge chance"]+"%\n";
     }
     if(finalStats["Damage Reduction"]>0){
-        finalStatsString+="Damage Reduction: "+finalStats["Damage Reduction"]+"\n";
+        finalStatsString+="Damage Reduction: "+finalStats["Damage Reduction"]+"%\n";
     }
     if(finalStats["Guard"]==true){
         finalStatsString+="Guard against all: "+"\n";
@@ -2456,19 +2482,19 @@ export function activePassiveMultipliersToPassiveBuffs(activePassiveMultipliers)
                             buffs["Heal flat"]-=Math.min(activatedLine["Building Stat"]["Max"],activatedLine["Heals"]*buffMultiplier);
                         }
                     }
-                    if("DR" in activatedLine){
-                        //DR increase
-                        if(activatedLine["Buff"]["+ or -"]=="+"){
-                            buffs["Damage Reduction"]+=Math.min(activatedLine["Building Stat"]["Max"],activatedLine["DR"]*buffMultiplier);
-                        }
-                        //DR decrease
-                        else{
-                            buffs["Damage Reduction"]-=Math.min(activatedLine["Building Stat"]["Max"],activatedLine["DR"]*buffMultiplier);
-                        }
+                }
+                if("DR" in activatedLine){
+                    //DR increase
+                    if(activatedLine["Buff"]["+ or -"]=="+"){
+                        buffs["Damage Reduction"]+=Math.min(activatedLine["Building Stat"]["Max"],activatedLine["DR"]*buffMultiplier);
                     }
-                    if("Crit Chance" in activatedLine){
-                        buffs["Crit Chance"]+=Math.min(activatedLine["Building Stat"]["Max"],activatedLine["Crit Chance"]*buffMultiplier);
+                    //DR decrease
+                    else{
+                        buffs["Damage Reduction"]-=Math.min(activatedLine["Building Stat"]["Max"],activatedLine["DR"]*buffMultiplier);
                     }
+                }
+                if("Crit Chance" in activatedLine){
+                    buffs["Crit Chance"]+=Math.min(activatedLine["Building Stat"]["Max"],activatedLine["Crit Chance"]*buffMultiplier);
                 }
             }
         }
@@ -3818,6 +3844,49 @@ export function updateQueryList(passiveLine){
         }
     }
 
+    if(passiveLine["Timing"]=="Right before being hit"|| passiveLine["Timing"]=="Right after being hit"){
+        let hitCheck=false;
+        for (const query of passiveQueryList){
+            if(query.type=="button" && query.buttonName=="Has this character been hit"){
+                hitCheck=true;
+            }
+        }
+        if(hitCheck==false){
+            let hitCheckButton = new passiveQuery("button","Has this character been hit","How many times has this character been hit",0,0);
+            hitCheckButton.queryElement.element.onclick=function(){
+                if(this.classList.contains('active')){
+                    this.classList.remove('active');
+                    this.style.background="#FF5C35"
+                    hitBeforeAttacking=false
+                }
+                else{
+                    this.classList.add('active');
+                    this.style.background="#00FF00"
+                    hitBeforeAttacking=true
+                }
+                updatePassiveStats();
+            }
+
+            let superHitCheckButton = new passiveQuery("button","Has this character been hit by a super attack","How many times has this character been hit by a super attack",0,0);
+            superHitCheckButton.queryElement.element.onclick=function(){
+                if(this.classList.contains('active')){
+                    this.classList.remove('active');
+                    this.style.background="#FF5C35"
+                    superHitBeforeAttacking=false
+                }
+                else{
+                    this.classList.add('active');
+                    this.style.background="#00FF00"
+                    superHitBeforeAttacking=true
+                }
+                updatePassiveStats();
+            }
+
+            passiveQueryList.push(hitCheckButton);
+            passiveQueryList.push(superHitCheckButton);
+        }
+    }
+
     
 }
 
@@ -3997,6 +4066,7 @@ export function createPassiveContainer(){
             updateQueryList(passiveList[passiveLineKey]);
         }
     }
+    
 
     for (const query of passiveQueryList) {
         passiveQueryContainer.appendChild(query.getElement());
