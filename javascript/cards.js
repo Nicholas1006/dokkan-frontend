@@ -2615,6 +2615,7 @@ export function activatePassiveLines(previousActiveLineMultipliers,exec_timing_t
         for(const passiveLine of activateablePassiveLines){  
             if("Condition" in passiveLine){
                 let conditionLogic=" "+passiveLine["Condition"]["Logic"]+" ";
+                conditionLogic=conditionLogic.replaceAll("("," ( ").replaceAll(")", " ) ");
                 for (const causalityKey of Object.keys(passiveLine["Condition"]["Causalities"])){
                     const causality=passiveLine["Condition"]["Causalities"][causalityKey];
                     let buttonLogic=false;
