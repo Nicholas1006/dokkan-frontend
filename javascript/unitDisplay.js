@@ -80,29 +80,21 @@ export class unitDisplay{
       this.container.unitTypingImage.loading="eager";
       this.container.appendChild(this.container.unitTypingImage);
 
+      this.possibleEzaLevel="none";
+      this.ezaLevel="none";
       
       this.container.ezaImage = document.createElement('img');
       this.container.ezaImage.src = "/dbManagement/DokkanFiles/global/en/layout/en/image/charamenu/dokkan/dok_img_kyokugen.png";
       this.container.ezaImage.loading="lazy";
       this.container.ezaImage.className="unit-eza-image";
-      if(this.ezaLevel=="eza"){
-        this.container.ezaImage.style.display="block";
-      }
-      else{
-        this.container.ezaImage.style.display="none";
-      }
+      this.container.ezaImage.style.display="none";
       this.container.appendChild(this.container.ezaImage);
 
       this.container.sezaImage = document.createElement('img');
       this.container.sezaImage.src = "/dbManagement/DokkanFiles/global/en/layout/en/image/charamenu/dokkan/dok_img_super_optimal.png";
       this.container.sezaImage.loading="lazy";
       this.container.sezaImage.className="unit-eza-image";
-      if(this.ezaLevel=="seza"){
-        this.container.sezaImage.style.display="block";
-      }
-      else{
-        this.container.sezaImage.style.display="none";
-      }
+      this.container.sezaImage.style.display="none";
       this.container.appendChild(this.container.sezaImage);
       
       this.container.infoHolder = document.createElement('div');
@@ -187,16 +179,40 @@ export class unitDisplay{
     }
     setEzaLevel(ezaLevel){
       this.ezaLevel=ezaLevel;
+      if(this.possibleEzaLevel!="seza" && this.ezaLevel=="seza"){
+        this.setPossibleEzaLevel("seza");
+      }
+      else if(this.possibleEzaLevel=="none" && this.ezaLevel!="none"){
+        this.setPossibleEzaLevel("eza");
+      }
+
+      
       if(this.ezaLevel=="none"){
+        this.container.ezaImage.style.filter="grayscale(100%)";
+        this.container.sezaImage.style.filter="grayscale(100%)";
+      }
+      else if(this.ezaLevel=="eza"){
+        this.container.ezaImage.style.filter="";
+        this.container.sezaImage.style.filter="grayscale(100%)";
+      }
+      else if(this.ezaLevel=="seza"){
+        this.container.ezaImage.style.filter="";
+        this.container.sezaImage.style.filter="";
+      }
+    }
+
+    setPossibleEzaLevel(possibleEzaLevel){
+      this.possibleEzaLevel=possibleEzaLevel;
+      if(this.possibleEzaLevel=="none"){
         this.container.ezaImage.style.display="none";
         this.container.sezaImage.style.display="none";
       }
-      if(this.ezaLevel=="eza"){
+      else if(this.possibleEzaLevel=="eza"){
         this.container.ezaImage.style.display="block";
         this.container.sezaImage.style.display="none";
       }
-      if(this.ezaLevel=="seza"){
-        this.container.ezaImage.style.display="none";
+      else if(this.possibleEzaLevel=="seza"){
+        this.container.ezaImage.style.display="block";
         this.container.sezaImage.style.display="block";
       }
     }
@@ -215,9 +231,11 @@ export class unitDisplay{
     setDisplayExtraInfo(displayed){
       this.displayedExtraInfo=displayed;
       if(displayed){
+        this.container.style.marginBottom="24px";
         this.container.infoHolder.style.display="block";
       }
       else{
+        this.container.style.marginBottom="0px";
         this.container.infoHolder.style.display="none";
       }
     }
@@ -261,6 +279,20 @@ export class unitDisplay{
 
     setExactHeight(height){
       this.container.style.height=height;
+    }
+    addPressableEza(onClickFunction){
+      if(this.possibleEzaLevel=="seza"){
+        this.container.ezaImage.style.right="33%";
+      }
+      this.container.ezaImage.style.cursor="pointer";
+      this.container.ezaImage.style.pointerEvents="auto";
+      this.container.ezaImage.addEventListener("click",onClickFunction);
+    }
+    
+    addPressableSeza(onClickFunction){
+      this.container.sezaImage.style.cursor="pointer";
+      this.container.sezaImage.style.pointerEvents="auto";
+      this.container.sezaImage.addEventListener("click",onClickFunction);
     }
 
 

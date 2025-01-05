@@ -146,6 +146,7 @@ export function createCharacterBoxes() {
     displayBoxes[unitCount] = new unitDisplay();
     displayBoxes[unitCount].setExactWidth("164px");
     displayBoxes[unitCount].setExactHeight("150px");
+    displayBoxes[unitCount].setDisplayExtraInfo(true);
     unitsContainer.appendChild(displayBoxes[unitCount].container);
   }
 }
@@ -216,6 +217,7 @@ export function reSortCards(){
       else if(sortedUnits[i]["Seza"]){
         ezaLevel = "seza";
       }
+
       displayBoxes[i].setResourceID(sortedUnits[i]["Resource ID"]);
       displayBoxes[i].setClass(sortedUnits[i]["Class"]);
       displayBoxes[i].setType(sortedUnits[i]["Type"]);
@@ -223,7 +225,7 @@ export function reSortCards(){
       displayBoxes[i].setLevel(sortedUnits[i]["Max Level"]);
       displayBoxes[i].setOtherDisplayedValue(otherDisplayedValue);
       displayBoxes[i].setEzaLevel(ezaLevel);
-      displayBoxes[i].setUrl(baseDomain+"/cards/index.html?id=" + sortedUnits[i]["ID"] + "&EZA="+sortedUnits[i]["Eza"]+"&SEZA="+sortedUnits[i]["Seza"]);
+      displayBoxes[i].setUrl(baseDomain+"/cards/index.html?id=" + sortedUnits[i]["ID"] + "&EZA="+(sortedUnits[i]["Eza"]||sortedUnits[i]["Seza"])+"&SEZA="+sortedUnits[i]["Seza"]);
       displayBoxes[i].setDisplay(true);
 
 

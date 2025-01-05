@@ -1221,7 +1221,7 @@ class passiveButton{
             this.label.includes("Ki Spheres have been obtained on this turn?")||
             this.label.includes("Is the Domain ")||
             this.label.startsWith("Is Ki at least ")||
-            this.label.includes("Ki Spheres been obtained")||
+            this.label.includes("Ki Spheres beenKi Spheres been obtained")||
             this.label.includes("Is a super being performed")||
             this.label.includes("Has this character performed an attack on this turn")
             ){
@@ -2690,7 +2690,47 @@ export function activatePassiveLines(previousActiveLineMultipliers,exec_timing_t
         }
     }
     if(activationType=="Building Stat"){
-        for(const passiveLine of Object.values(currentJson["Passive"])){    
+        for (const passiveLine of Object.values(currentJson["Passive"])){
+            if(passiveLine["Timing"]==exec_timing_type || exec_timing_type=="All"){
+                if(passiveLine["Type"]=="Building Stat" && !(Object.keys(previousActiveLineMultipliers).includes(passiveLine["ID"]))){
+                    if(thisTurnActivationCounted || passiveLine["Length"]!="1"){
+                        if("Condition" in passiveLine){
+                            let conditionLogic=" "+passiveLine["Condition"]["Logic"]+" ";
+                            conditionLogic=conditionLogic.replaceAll("("," ( ").replaceAll(")", " ) ");
+                            for (const causalityKey of Object.keys(passiveLine["Condition"]["Causalities"])){
+                                const causality=passiveLine["Condition"]["Causalities"][causalityKey];
+                                let buttonLogic=false;
+                                if("Button" in causality){
+                                    if(causality["Button"]["Name"] in causalityLogic){
+                                        buttonLogic=causalityLogic[causality["Button"]["Name"]];
+                                    }
+                                }
+                                
+                                let sliderLogic=false;
+                                if("Slider" in causality){
+                                    if(causality["Slider"]["Name"] in causalityLogic){
+                                        sliderLogic=causalityLogic[causality["Slider"]["Name"]]+causality["Slider"]["Logic"];
+                                        sliderLogic=evaluate(sliderLogic);
+                                    }
+                                }
+            
+                                const overallLogic=(buttonLogic||sliderLogic);
+            
+                                conditionLogic=conditionLogic.replaceAll(" "+causalityKey+" ",    " "+overallLogic+" ");
+                            }
+            
+                            if(evaluate(conditionLogic)){
+                                activateablePassiveLines.push(passiveLine)
+                            }
+                        }
+                        else{
+                            activateablePassiveLines.push(passiveLine)
+                        }
+                    }
+                }
+            }
+        }
+        for(const passiveLine of activateablePassiveLines){    
             if(passiveLine["Timing"]==exec_timing_type || exec_timing_type=="All"){
                 if(passiveLine["Type"]=="Building Stat"){
                     let buffMultiplier=0;
@@ -3416,18 +3456,18 @@ export function createEzaContainer(){
         else{
             ezaButton.style.transform="translate(128px, 156px)"
         }
-        if(isEza == "true"){
+        if(isEza){
             ezaButton.style.backgroundImage = "url('/dbManagement/assets/misc/extra/eZa.png')";
             ezaButton.onclick = function(){
-                updateQueryStringParameter('EZA', 'False');
+                updateQueryStringParameter('EZA', 'false');
                 loadPage();
             }
         }
-        else if(isSeza=="true"){
+        else if(isSeza){
             ezaButton.style.backgroundImage = "url('/dbManagement/assets/misc/extra/eZa.png')";
             ezaButton.onclick = function(){
-                updateQueryStringParameter('EZA', 'False');
-                updateQueryStringParameter('SEZA', 'False');
+                updateQueryStringParameter('EZA', 'false');
+                updateQueryStringParameter('SEZA', 'false');
                 loadPage();
             }
         }
@@ -3435,7 +3475,7 @@ export function createEzaContainer(){
             ezaButton.style.backgroundImage = "url('/dbManagement/assets/misc/extra/eZa_inactive.png')";
             ezaButton.onclick = function(){
                 updateQueryStringParameter('EZA', 'true');
-                updateQueryStringParameter('SEZA', 'False');
+                updateQueryStringParameter('SEZA', 'false');
                 loadPage();
             }
         }
@@ -3449,7 +3489,7 @@ export function createEzaContainer(){
         if(isSeza == "true"){
             sezaButton.style.backgroundImage = "url('/dbManagement/assets/misc/extra/seZa.png')";
             sezaButton.onclick = function(){
-                updateQueryStringParameter('SEZA', 'False');
+                updateQueryStringParameter('SEZA', 'false');
                 updateQueryStringParameter('EZA', 'true');
                 loadPage();
             }
@@ -3458,7 +3498,7 @@ export function createEzaContainer(){
             sezaButton.style.backgroundImage = "url('/dbManagement/assets/misc/extra/seZa_inactive.png')";
             sezaButton.onclick = function(){
                 updateQueryStringParameter('SEZA', 'true');
-                updateQueryStringParameter('EZA', 'False');
+                updateQueryStringParameter('EZA', 'false');
                 loadPage();
             }
         }
@@ -4120,10 +4160,10 @@ export function createSuperAttackContainer(){
     for(const key of currentJson["Transforms from"]){
         let transformPromise;
         const urlParams=new URLSearchParams(window.location.search);
-        if(isSeza=="true"){
+        if(isSeza){
             transformPromise=getJsonPromise('/dbManagement/jsonsSEZA/',key,'.json');
         }
-        else if(isEza=="true"){
+        else if(isEza){
             transformPromise=getJsonPromise('/dbManagement/jsonsEZA/',key,'.json');
         }
         else{
@@ -4171,6 +4211,69 @@ export function updateContainer(containerId, content){
     cardImage.setDisplay(true);
     cardImage.setWidthFit(true);
     cardImage.setHeightFit(true);
+
+    if(currentJson["Can SEZA"]){
+        cardImage.setPossibleEzaLevel("seza");
+        if(isSeza){
+            cardImage.setEzaLevel("seza");
+        }
+        else if(isEza){
+            cardImage.setEzaLevel("eza");
+        }
+        else{
+            cardImage.setEzaLevel("none");
+        }
+        cardImage.addPressableEza(function(){
+            updateQueryStringParameter('EZA', !isEza);
+            updateQueryStringParameter('SEZA', 'false');
+            loadPage();
+        })
+        cardImage.addPressableSeza(function(){
+            updateQueryStringParameter('EZA', 'true');
+            updateQueryStringParameter('SEZA', !isSeza);
+            loadPage();
+        })
+    }
+    else if(currentJson["Can EZA"]){
+        cardImage.setPossibleEzaLevel("eza");
+        if(isEza){
+            cardImage.setEzaLevel("eza");
+        }
+        else{
+            cardImage.setEzaLevel("none");
+        }
+        cardImage.addPressableEza(function(){
+            updateQueryStringParameter('EZA', !isEza);
+            loadPage();
+        })
+    }
+
+
+
+    if(isSeza){
+        cardImage.setEzaLevel("seza");
+    }
+    else if(isEza){
+        cardImage.setEzaLevel("eza");
+    }
+    else{
+        cardImage.setEzaLevel("none");
+    }
+    if(currentJson["Can SEZA"]){
+        cardImage.setPossibleEzaLevel("seza");
+        cardImage.addPressableEza(function(){
+
+        })
+    }
+    else if(currentJson["Can EZA"]){
+        cardImage.setPossibleEzaLevel("eza");
+        cardImage.addPressableSeza(function(){
+            
+        })
+    }
+    else{
+        cardImage.setPossibleEzaLevel("none");
+    }
 
     imageContainer.appendChild(cardImage.getElement());
     //imageContainer.style.backgroundColor = colorToBackground(typeToColor(type));
@@ -4454,7 +4557,7 @@ export function updateKiSphereBuffs(){
                 let kiText=Query["sliderName"].substring(9,Query["sliderName"].length-44);
                 let kiTypes=kiText.split(" or ");
                 let specificKiGain=0;
-                if(kiText==""){
+                if(kiText==""|| kiText==" "){
                     specificKiGain+=currentKiSphereAmount;
                     specificKiGain+=rainbowKiSphereAmount;
                 }
@@ -4867,16 +4970,15 @@ export function polishPage(){
 export async function loadPage(firstTime=false){
     const urlParams=new URLSearchParams(window.location.search);
     let subURL = urlParams.get('id') || "None";
-    isEza = urlParams.get("EZA") || "False";
-    isSeza = urlParams.get("SEZA") || "False";
+    isEza = urlParams.get("EZA") || "false";
+    isEza=(isEza=="true");
+    isSeza = urlParams.get("SEZA") || "false";
+    isSeza=(isSeza=="true");
     let jsonPromise;
-    if(isSeza == "true" && isEza == "true"){
-        isEza="False"
-    }
-    if(isSeza == "true"){
+    if(isSeza){
     jsonPromise=getJsonPromise('/dbManagement/jsonsSEZA/',subURL,'.json');
     }
-    else if(isEza == "true"){
+    else if(isEza){
     jsonPromise=getJsonPromise('/dbManagement/jsonsEZA/',subURL,'.json');
     }
     else{
@@ -4912,7 +5014,6 @@ export async function loadPage(firstTime=false){
         else{
             //document.getElementById('ki-slider').dispatchEvent(new Event('input'));	
         }
-        createEzaContainer();
         createLevelSlider();
         createSuperAttackContainer();
         updateBaseStats(false);
