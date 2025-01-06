@@ -17,7 +17,7 @@ export function rarityToInt(rarity){
 
   export function classToInt(Class){
     switch(Class){
-      case null:
+      case "None":
         return 0;
       case "Super":
         return 1;

@@ -11,6 +11,8 @@ let currentFilteredUnits = {};
 let unitBasics;
 let displayBoxes=[];
 
+let unitBasicsDetails={};
+
 
 export function unixToDateTime(unixTimestamp) {
   // Create a new Date object using the Unix timestamp (in milliseconds)
@@ -33,14 +35,7 @@ export function getJsonPromise(prefix,name,suffix) {
   return fetch(prefix + name + suffix)
     .then(response => {
         if (!response.ok) {
-          if(name[6]=="0"){
-              name=name.slice(0, -1)+ "1";
-              updateQueryStringParameter("id",name);
-              return(getJsonPromise(prefix,name,suffix))
-          }
-          else{
-            throw new Error('Network response was not ok' + response.statusText);
-          }
+          throw new Error('Network response was not ok' + response.statusText);
         }
         return response.json();
       }
@@ -113,31 +108,51 @@ export function createFilterOption(){
 }
 
 export function reFilterCards() {
-  currentFilteredUnits = { ...unitBasics };
-  if(['Eza',"Seza"].includes(currentFilter)){
-    currentFilteredUnits = Object.fromEntries(
-      Object.entries(currentFilteredUnits).filter(([key, value]) => 
-        value[currentFilter]
-      )
-    );
-  }
-  else if (['Type', 'Name', 'Rarity','Class'].includes(currentFilter) && currentFilterValue !== "") {
-    currentFilteredUnits = Object.fromEntries(
-      Object.entries(currentFilteredUnits).filter(([key, value]) => 
-        value[currentFilter] === null ? currentFilterValue === "" : value[currentFilter].toLowerCase().includes( currentFilterValue.toLowerCase())
-      )
-    );
-  }
+  if(Object.keys(unitBasicsDetails).includes(currentFilter)){
+    currentFilteredUnits = Object.keys(unitBasicsDetails["Max Level"]);
+    if(['Eza',"Seza"].includes(currentFilter)){
+      let currentFilteringUnits = [];
+      for (const unit of currentFilteredUnits){
+        if(unit.endsWith(currentFilter.toUpperCase())){
+          currentFilteringUnits.push(unit)
+        }
+      }
+      currentFilteredUnits=currentFilteringUnits;
+    }
+    else if (['Type', 'Name', 'Rarity','Class'].includes(currentFilter) && currentFilterValue !== "") {
+      let currentFilteringUnits = [];
+      for (const unit of currentFilteredUnits){
+        if(unitBasicsDetails[currentFilter][unit].toLowerCase().includes(currentFilterValue.toLowerCase()) ){
+          currentFilteringUnits.push(unit)
+        }
+      }
+      currentFilteredUnits=currentFilteringUnits;
+    }
 
-  else if (["Categories","Links","Super Attack Types"].includes(currentFilter) && currentFilterValue !== "") {
-    currentFilteredUnits = Object.fromEntries(
-      Object.entries(currentFilteredUnits).filter(([key, value]) => 
-        value[currentFilter].map(x => x.toLowerCase()).includes(currentFilterValue.toLowerCase())
-      )
-    );
-  }
+    else if (["Categories","Links","Super Attack Types"].includes(currentFilter) && currentFilterValue !== "") {
 
-  reSortCards();
+      let currentFilteringUnits = [];
+      for (const unit of currentFilteredUnits){
+        if(unitBasicsDetails[currentFilter][unit].some(category => category.toLowerCase().includes(currentFilterValue.toLowerCase()))){
+        //reawaken for exact matching rather than .includes
+        //if(unitBasicsDetails[currentFilter][unit].includes(currentFilterValue)){
+            currentFilteringUnits.push(unit)
+          }
+        }
+      currentFilteredUnits=currentFilteringUnits;
+    }
+
+    reSortCards();
+  }
+  else{
+    const unitBasicsDetailPromise=getJsonPromise("/dbManagement/uniqueJsons/unitBasics/",currentFilter,".json");
+    unitBasicsDetailPromise.then(
+      unitBasicsDetail =>{
+        unitBasicsDetails[currentFilter]=unitBasicsDetail;
+        reFilterCards();
+      }
+    )
+  }
 }
 
 export function createCharacterBoxes() {
@@ -167,76 +182,81 @@ export function createSortOption(){
   })
   sortContainer.appendChild(sortSelect);
 
-  const unitBasicsJsonPromise=getJsonPromise('dbManagement/uniqueJsons/','unitBasics','.json');
-  unitBasicsJsonPromise.then(unitBasicsJson => {
-    unitBasics=unitBasicsJson;
-    
-    
-    currentFilteredUnits=unitBasics;
-    reSortCards();
-  }
-  );
 }
 
 
 export function reSortCards(){
-  const startTime=Date.now();
+  if(Object.keys(unitBasicsDetails).includes(currentSort)){
+    const startTime=Date.now();
 
-  const unitsContainer = document.getElementById('unit-selection-container');
+    const unitsContainer = document.getElementById('unit-selection-container');
 
-  let sortedUnits = Object.values(currentFilteredUnits);
-  const order = currentOrder =="Ascending" ? 1 : -1;
+    let sortedUnits = currentFilteredUnits;
+    const order = currentOrder =="Ascending" ? 1 : -1;
 
-  sortedUnits.sort((a, b) => {
-    let valueA = a[currentSort];
-    let valueB = b[currentSort];
-    if (currentSort === "Rarity") {
-      valueA = rarityToInt(valueA);
-      valueB = rarityToInt(valueB);
-    }
-
-    if(valueA < valueB) {
-      return -1 * order;
-    }
-    if(valueA > valueB) {
-      return 1 * order;
-    }
-    return 0;
-  });
-
-  for (let i = 0; i < unitsToDisplay;i++) {
-    if(i<sortedUnits.length){
-      let otherDisplayedValue=null;
-      if(["Cost","HP","Attack","Defense","Sp Atk Lv"].includes(currentSort)){
-        otherDisplayedValue=sortedUnits[i][currentSort];
-      }
-      let ezaLevel = "none";
-      if(sortedUnits[i]["Eza"]){
-        ezaLevel = "eza";
-      }
-      else if(sortedUnits[i]["Seza"]){
-        ezaLevel = "seza";
+    sortedUnits.sort((a, b) => {
+      let valueA = unitBasicsDetails[currentSort][a];
+      let valueB = unitBasicsDetails[currentSort][b];
+      if (currentSort === "Rarity") {
+        valueA = rarityToInt(valueA);
+        valueB = rarityToInt(valueB);
       }
 
-      displayBoxes[i].setResourceID(sortedUnits[i]["Resource ID"]);
-      displayBoxes[i].setClass(sortedUnits[i]["Class"]);
-      displayBoxes[i].setType(sortedUnits[i]["Type"]);
-      displayBoxes[i].setRarity(sortedUnits[i]["Rarity"]);
-      displayBoxes[i].setLevel(sortedUnits[i]["Max Level"]);
-      displayBoxes[i].setOtherDisplayedValue(otherDisplayedValue);
-      displayBoxes[i].setEzaLevel(ezaLevel);
-      displayBoxes[i].setUrl(baseDomain+"/cards/index.html?id=" + sortedUnits[i]["ID"] + "&EZA="+(sortedUnits[i]["Eza"]||sortedUnits[i]["Seza"])+"&SEZA="+sortedUnits[i]["Seza"]);
-      displayBoxes[i].setDisplay(true);
+      if(valueA < valueB) {
+        return -1 * order;
+      }
+      if(valueA > valueB) {
+        return 1 * order;
+      }
+      return 0;
+    });
+
+    
+    for (let i = 0; i < unitsToDisplay;i++) {
+      if(i<sortedUnits.length){
+        let otherDisplayedValue=null;
+        if(["Cost","HP","Attack","Defense","Sp Atk Lv"].includes(currentSort)){
+          otherDisplayedValue=sortedUnits[i][currentSort];
+        }
+        let ezaLevel = "none";
+        if(sortedUnits[i].endsWith("SEZA")){
+          ezaLevel = "seza";
+        }
+        else if(sortedUnits[i].endsWith("EZA")){
+          ezaLevel = "eza";
+        }
+        
+
+        displayBoxes[i].setResourceID(unitBasicsDetails["Resource ID"][sortedUnits[i]]);
+        displayBoxes[i].setClass(unitBasicsDetails["Class"][sortedUnits[i]]);
+        displayBoxes[i].setType(unitBasicsDetails["Type"][sortedUnits[i]]);
+        displayBoxes[i].setRarity(unitBasicsDetails["Rarity"][sortedUnits[i]]);
+        displayBoxes[i].setLevel(unitBasicsDetails["Max Level"][sortedUnits[i]]);
+        displayBoxes[i].setOtherDisplayedValue(otherDisplayedValue);
+        displayBoxes[i].setPossibleEzaLevel(ezaLevel);
+        displayBoxes[i].setEzaLevel(ezaLevel);
+        displayBoxes[i].setUrl(baseDomain+"/cards/index.html?id=" + sortedUnits[i].substring(0,7) + "&EZA="+(sortedUnits[i].endsWith("EZA"))+"&SEZA="+sortedUnits[i].endsWith("SEZA"));
+        displayBoxes[i].setDisplay(true);
 
 
 
-      //unitButton.style.backgroundImage = "url('dbManagement/DokkanFiles/global/en/character/card/"+getAssetID(sortedUnits[i]["ID"])+"/card_"+getAssetID(sortedUnits[i]["ID"])+"_full_thumb.png')";
+        //unitButton.style.backgroundImage = "url('dbManagement/DokkanFiles/global/en/character/card/"+getAssetID(sortedUnits[i]["ID"])+"/card_"+getAssetID(sortedUnits[i]["ID"])+"_full_thumb.png')";
 
 
+      }
+      if(i>=sortedUnits.length){
+        displayBoxes[i].setDisplay(false);
+      }
     }
-    if(i>=sortedUnits.length){
-      displayBoxes[i].setDisplay(false);
-    }
+  }
+  else{
+    const unitBasicsDetailPromise=getJsonPromise("/dbManagement/uniqueJsons/unitBasics/",currentSort,".json");
+    unitBasicsDetailPromise.then(
+      unitBasicsDetail =>{
+        unitBasicsDetails[currentSort]=unitBasicsDetail;
+        reFilterCards();
+      }
+    )
   }
   
 }
@@ -351,7 +371,21 @@ export function createCharacterSelection(){
   createSortOption();
   createFilterOption();
   createSortButton();
-}
+  const jsonPromises = ["Resource ID", "Class", "Type", "Rarity", "Max Level"].map(field => 
+    getJsonPromise("/dbManagement/uniqueJsons/unitBasics/", field, ".json")
+  );
+
+  Promise.all(jsonPromises).then(
+    results => {
+      ["Resource ID", "Class", "Type", "Rarity", "Max Level"].forEach(
+        (field, index) => {
+          unitBasicsDetails[field] = results[index];
+        }
+      );
+      reFilterCards();
+    }
+  )
+};
 const currentUrl=window.location.href;
 let baseDomain=window.location.origin;
 if(currentUrl.includes("dokkan-frontend")){
