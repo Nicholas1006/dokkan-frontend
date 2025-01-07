@@ -94,25 +94,30 @@
                 "Type": "Percentage",
                 "+ or -": "-"
             },
-            "Length": "7",
-            "Once Only": true,
-            "Type": "Single activator",
+            "Length": "1",
             "Condition": {
-                "Logic": "2002853",
+                "Logic": "20028530 && 20028531",
                 "Causalities": {
-                    "2002853": {
+                    "20028530": {
                         "Button": {
-                            "Name": "Is it within the first 7 turns from entry turn?"
+                            "Name": "Was the following true: Is it within the first 7 turns from entry turn "
+                        }
+                    },
+                    "20028531": {
+                        "Button": {
+                            "Name": "Was the following true for the first time on this turn: Is it within the first 7 turns from entry turn "
                         },
                         "Slider": {
-                            "Name": "How many turns is it since entry turn?",
-                            "Logic": "<=7",
-                            "Max": "8",
-                            "Min": "1"
+                            "Name": "How many turns since the following was true for the first time: Is it within the first 7 turns from entry turn ",
+                            "Logic": "<=1",
+                            "Min": 0,
+                            "Max": 2
                         }
                     }
                 }
             },
+            "Once Only": true,
+            "Type": "Single activator",
             "Brief effect description": " allies Disable guard when attacking"
         },
         "3002853": {

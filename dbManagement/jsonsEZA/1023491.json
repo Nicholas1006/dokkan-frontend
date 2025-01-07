@@ -1,0 +1,1006 @@
+{
+    "ID": "1023491",
+    "Type": "STR",
+    "Class": "Extreme",
+    "Name": "Buu (Kid)",
+    "Rarity": "ur",
+    "Min Level": 120,
+    "Max Level": 140,
+    "Categories": [
+        "Battle of Fate",
+        "Majin Buu Saga",
+        "Resurrected Warriors",
+        "Transformation Boost",
+        "Artificial Life Forms",
+        "Majin Power",
+        "Planetary Destruction",
+        "Storied Figures",
+        "Legendary Existence",
+        "Sworn Enemies",
+        "Accelerated Battle",
+        "Worldwide Chaos",
+        "Uncontrollable Power",
+        "Demonic Power"
+    ],
+    "Can EZA": true,
+    "Can SEZA": false,
+    "Links": [
+        "More Than Meets the Eye",
+        "Brutal Beatdown",
+        "Big Bad Bosses",
+        "Majin",
+        "Infinite Regeneration",
+        "The Wall Standing Tall",
+        "Fierce Battle"
+    ],
+    "Resource ID": 1023490,
+    "Passive": {
+        "4493": {
+            "ID": "4493",
+            "Timing": "Start of turn",
+            "Ki": 3,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "Ki +3 "
+        },
+        "1004493": {
+            "ID": "1004493",
+            "Timing": "Start of turn",
+            "ATK": 250,
+            "DEF": 250,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "ATK and DEF +250% "
+        },
+        "2004493": {
+            "ID": "2004493",
+            "Timing": "Right after attack",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 160,
+                "Cause": {
+                    "Cause": "Attacks performed"
+                },
+                "Slider": "How many attacks has this character performed in battle?"
+            },
+            "ATK": 40,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Type": "Building Stat",
+            "Brief effect description": "ATK +40% (up to 160%) based on 'How many attacks has this character performed in battle' after attacking"
+        },
+        "3004493": {
+            "ID": "3004493",
+            "Timing": "Right after attack",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 160,
+                "Cause": {
+                    "Cause": "Attacks performed"
+                },
+                "Slider": "How many attacks has this character performed in battle?"
+            },
+            "DEF": 40,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Type": "Building Stat",
+            "Brief effect description": "DEF +40% (up to 160%) based on 'How many attacks has this character performed in battle' after attacking"
+        },
+        "4004493": {
+            "ID": "4004493",
+            "Additional Attack": {
+                "Activated": true,
+                "Chance of super": "50",
+                "Chance of another additional": "0"
+            },
+            "Timing": "Right before attack(SOT stat)",
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "Performs an additional attack with a 50% chance of becoming a super attack when attacking"
+        },
+        "5004493": {
+            "ID": "5004493",
+            "Timing": "Start of turn",
+            "Crit Chance": 50,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "Chance of performing a critical hit +50% "
+        },
+        "6004493": {
+            "ID": "6004493",
+            "Timing": "Start of turn",
+            "DR": 20,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "Damage recieved -20% "
+        },
+        "7004493": {
+            "ID": "7004493",
+            "Nullification": {
+                "Activated": true,
+                "Absorbed": 0
+            },
+            "Timing": "Right before being hit",
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1595 && 1444",
+                "Causalities": {
+                    "1595": {
+                        "Button": {
+                            "Name": "Has the character been attacked by an unarmed super attack on this turn?"
+                        }
+                    },
+                    "1444": {
+                        "Button": {
+                            "Name": "Is it within the first 3 turns from entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since entry turn on this turn?",
+                            "Logic": "<=3",
+                            "Min": 0,
+                            "Max": 3
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "Nullifies enemy attack right before being hit"
+        },
+        "8004493": {
+            "ID": "8004493",
+            "Disable Other Line": {
+                "Activated": true,
+                "Line": "7004493"
+            },
+            "Timing": "Right after being hit",
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Disable Other Line",
+            "Brief effect description": "Disables a different passive line:7004493 after being hit"
+        },
+        "9004493": {
+            "ID": "9004493",
+            "Nullification": {
+                "Activated": true,
+                "Absorbed": 0
+            },
+            "Timing": "Right before being hit",
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Chance": "70",
+            "Length": "1",
+            "Condition": {
+                "Logic": "1595",
+                "Causalities": {
+                    "1595": {
+                        "Button": {
+                            "Name": "Has the character been attacked by an unarmed super attack on this turn?"
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "Nullifies enemy attack right before being hit"
+        },
+        "10004493": {
+            "ID": "10004493",
+            "Disable Other Line": {
+                "Activated": true,
+                "Line": "9004493"
+            },
+            "Timing": "Right after being hit",
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Disable Other Line",
+            "Brief effect description": "Disables a different passive line:9004493 after being hit"
+        },
+        "11004493": {
+            "ID": "11004493",
+            "Timing": "Start of turn",
+            "DEF": 100,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Once Only": true,
+            "Type": "Single activator",
+            "Condition": {
+                "Logic": "11004493",
+                "Causalities": {
+                    "11004493": {
+                        "Button": {
+                            "Name": "Is it within the first 99 turns from entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since entry turn?",
+                            "Logic": "<=99",
+                            "Max": "100",
+                            "Min": "1"
+                        }
+                    }
+                }
+            },
+            "Brief effect description": "DEF +100% "
+        },
+        "12004493": {
+            "ID": "12004493",
+            "Timing": "Start of turn",
+            "DR": 20,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Once Only": true,
+            "Type": "Single activator",
+            "Condition": {
+                "Logic": "12004493",
+                "Causalities": {
+                    "12004493": {
+                        "Button": {
+                            "Name": "Is it within the first 99 turns from entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since entry turn?",
+                            "Logic": "<=99",
+                            "Max": "100",
+                            "Min": "1"
+                        }
+                    }
+                }
+            },
+            "Brief effect description": "Damage recieved -20% "
+        },
+        "13004493": {
+            "ID": "13004493",
+            "Disable Other Line": {
+                "Activated": true,
+                "Line": "11004493"
+            },
+            "Timing": "Right after being hit",
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1235",
+                "Causalities": {
+                    "1235": {
+                        "Button": {
+                            "Name": "Has this character recieved their 6th attack in battle on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character recieved on this turn?",
+                            "Logic": ">=6",
+                            "Min": 0,
+                            "Max": 6
+                        }
+                    }
+                }
+            },
+            "Type": "Disable Other Line",
+            "Brief effect description": "Disables a different passive line:11004493 after being hit"
+        },
+        "14004493": {
+            "ID": "14004493",
+            "Disable Other Line": {
+                "Activated": true,
+                "Line": "12004493"
+            },
+            "Timing": "Right after being hit",
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1235",
+                "Causalities": {
+                    "1235": {
+                        "Button": {
+                            "Name": "Has this character recieved their 6th attack in battle on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character recieved on this turn?",
+                            "Logic": ">=6",
+                            "Min": 0,
+                            "Max": 6
+                        }
+                    }
+                }
+            },
+            "Type": "Disable Other Line",
+            "Brief effect description": "Disables a different passive line:12004493 after being hit"
+        },
+        "15004493": {
+            "ID": "15004493",
+            "Timing": "Start of turn",
+            "ATK": 40,
+            "DEF": 40,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "ATK and DEF +40% "
+        },
+        "16004493": {
+            "ID": "16004493",
+            "Timing": "Start of turn",
+            "ATK": 40,
+            "DEF": 40,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "3390 || 3141",
+                "Causalities": {
+                    "3390": {
+                        "Button": {
+                            "Name": "Are there 2 or more Majin Power category units on the team on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Majin Power category units on the team on this turn?",
+                            "Logic": ">=2",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    },
+                    "3141": {
+                        "Button": {
+                            "Name": "Are there 2 or more Majin Buu Saga category units on the team on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Majin Buu Saga category units on the team on this turn?",
+                            "Logic": ">=2",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "ATK and DEF +40% "
+        },
+        "17004493": {
+            "ID": "17004493",
+            "Timing": "Start of turn",
+            "ATK": 40,
+            "DEF": 40,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "3391 || 3161",
+                "Causalities": {
+                    "3391": {
+                        "Button": {
+                            "Name": "Are there 3 or more Majin Power category units on the team on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Majin Power category units on the team on this turn?",
+                            "Logic": ">=3",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    },
+                    "3161": {
+                        "Button": {
+                            "Name": "Are there 3 or more Majin Buu Saga category units on the team on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Majin Buu Saga category units on the team on this turn?",
+                            "Logic": ">=3",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "ATK and DEF +40% "
+        },
+        "18004493": {
+            "ID": "18004493",
+            "Timing": "Start of turn",
+            "DR": 10,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "Damage recieved -10% "
+        },
+        "19004493": {
+            "ID": "19004493",
+            "Timing": "Start of turn",
+            "DR": 10,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "3390 || 3141",
+                "Causalities": {
+                    "3390": {
+                        "Button": {
+                            "Name": "Are there 2 or more Majin Power category units on the team on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Majin Power category units on the team on this turn?",
+                            "Logic": ">=2",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    },
+                    "3141": {
+                        "Button": {
+                            "Name": "Are there 2 or more Majin Buu Saga category units on the team on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Majin Buu Saga category units on the team on this turn?",
+                            "Logic": ">=2",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "Damage recieved -10% "
+        },
+        "20004493": {
+            "ID": "20004493",
+            "Timing": "Start of turn",
+            "DR": 10,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "3391 || 3161",
+                "Causalities": {
+                    "3391": {
+                        "Button": {
+                            "Name": "Are there 3 or more Majin Power category units on the team on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Majin Power category units on the team on this turn?",
+                            "Logic": ">=3",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    },
+                    "3161": {
+                        "Button": {
+                            "Name": "Are there 3 or more Majin Buu Saga category units on the team on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Majin Buu Saga category units on the team on this turn?",
+                            "Logic": ">=3",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "Damage recieved -10% "
+        },
+        "21004493": {
+            "ID": "21004493",
+            "Timing": "End of turn",
+            "Heals": 20,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2739",
+                "Causalities": {
+                    "2739": {
+                        "Button": {
+                            "Name": "Did the character recieve an attack on this turn?"
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "Heals +20% at the end of turn"
+        }
+    },
+    "Max Attacks": 3,
+    "Max Super Attacks": 3,
+    "Stats at levels": {
+        "120": {
+            "HP": 18150,
+            "ATK": 10460,
+            "DEF": 4975
+        },
+        "121": {
+            "HP": 18456,
+            "ATK": 10636,
+            "DEF": 5058
+        },
+        "122": {
+            "HP": 18762,
+            "ATK": 10812,
+            "DEF": 5142
+        },
+        "123": {
+            "HP": 19068,
+            "ATK": 10989,
+            "DEF": 5226
+        },
+        "124": {
+            "HP": 19374,
+            "ATK": 11165,
+            "DEF": 5310
+        },
+        "125": {
+            "HP": 19680,
+            "ATK": 11342,
+            "DEF": 5394
+        },
+        "126": {
+            "HP": 19986,
+            "ATK": 11518,
+            "DEF": 5478
+        },
+        "127": {
+            "HP": 20293,
+            "ATK": 11695,
+            "DEF": 5562
+        },
+        "128": {
+            "HP": 20599,
+            "ATK": 11871,
+            "DEF": 5646
+        },
+        "129": {
+            "HP": 20905,
+            "ATK": 12048,
+            "DEF": 5730
+        },
+        "130": {
+            "HP": 21211,
+            "ATK": 12224,
+            "DEF": 5814
+        },
+        "131": {
+            "HP": 21517,
+            "ATK": 12400,
+            "DEF": 5898
+        },
+        "132": {
+            "HP": 21823,
+            "ATK": 12577,
+            "DEF": 5982
+        },
+        "133": {
+            "HP": 22129,
+            "ATK": 12753,
+            "DEF": 6066
+        },
+        "134": {
+            "HP": 22436,
+            "ATK": 12930,
+            "DEF": 6150
+        },
+        "135": {
+            "HP": 22742,
+            "ATK": 13106,
+            "DEF": 6233
+        },
+        "136": {
+            "HP": 23048,
+            "ATK": 13283,
+            "DEF": 6317
+        },
+        "137": {
+            "HP": 23354,
+            "ATK": 13459,
+            "DEF": 6401
+        },
+        "138": {
+            "HP": 23660,
+            "ATK": 13636,
+            "DEF": 6485
+        },
+        "139": {
+            "HP": 23966,
+            "ATK": 13812,
+            "DEF": 6569
+        },
+        "140": {
+            "HP": 24273,
+            "ATK": 13989,
+            "DEF": 6653
+        }
+    },
+    "Leader Skill": {
+        "Name": "Majin of Destruction",
+        "102349100": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Battle of Fate"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "HP": 170,
+            "ATK": 170,
+            "DEF": 170
+        },
+        "102349101": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Battle of Fate"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        },
+        "102349102": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Majin Buu Saga"
+                ],
+                "Excluded Category": [
+                    "Battle of Fate"
+                ],
+                "Allies or enemies": "Allies"
+            },
+            "HP": 170,
+            "ATK": 170,
+            "DEF": 170
+        },
+        "102349103": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Majin Buu Saga"
+                ],
+                "Excluded Category": [
+                    "Battle of Fate"
+                ],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000,
+            "Additional": 0,
+            "Crit": 5,
+            "Evasion": 0,
+            "Type ATK": 6,
+            "Type DEF": 5,
+            "Super Attack boost": 6,
+            "Recovery boost": 6
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 1,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 2,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 0,
+            "Type DEF": 2,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "4": {
+            "HP": 1700,
+            "ATK": 2100,
+            "DEF": 1300,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 1,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        }
+    },
+    "Super Attack": {
+        "7101": {
+            "superID": "7101",
+            "Type": "Unarmed",
+            "special_name_no": "0",
+            "superName": "Elimination Burst (Extreme)",
+            "superDescription": "Greatly raises ATK & DEF for 1 turn and \ncauses immense damage with \na high chance of stunning the enemy",
+            "superMinKi": "12",
+            "superPriority": "0.0",
+            "superStyle": "Normal",
+            "superMinLVL": "14",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superBuffs": {
+                "7101": {
+                    "Type": "NormalEfficacySpecial",
+                    "Chance": "100",
+                    "Duration": "1",
+                    "Buff": {
+                        "Type": "Percentage",
+                        "+ or -": "+"
+                    },
+                    "Target": "Self",
+                    "ATK": "50",
+                    "DEF": "50"
+                },
+                "1007101": {
+                    "Type": "ExtraEfficacySpecial",
+                    "Chance": "50",
+                    "Duration": "2",
+                    "Buff": {
+                        "Type": "Raw stats",
+                        "+ or -": "+"
+                    },
+                    "Target": "Enemy",
+                    "Status": "Stun"
+                }
+            },
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "0"
+            },
+            "Multiplier": 630
+        }
+    },
+    "Active Skill": {
+        "Name": "Evil War Cry",
+        "Effect Description": "ATK & DEF +20% in battle",
+        "Condition Description": "Can be activated when there is a \n\"Majin Buu Saga\" Category enemy, \nor after the character receives an attack \n6 or more times in battle (once only)",
+        "Condition": {
+            "Logic": "1234 || 1235",
+            "Causalities": {
+                "1234": {
+                    "Button": {
+                        "Name": "Are there 1 or more Majin Buu Saga category enemies "
+                    },
+                    "Slider": {
+                        "Name": "How many Majin Buu Saga category enemies ",
+                        "Logic": ">=1",
+                        "Max": 7,
+                        "Min": 0
+                    }
+                },
+                "1235": {
+                    "Button": {
+                        "Name": "Has this character recieved their 6th attack in battle?"
+                    },
+                    "Slider": {
+                        "Name": "How many attacks has this character recieved?",
+                        "Logic": ">=6",
+                        "Min": 0,
+                        "Max": 6
+                    }
+                }
+            }
+        },
+        "Uses": 1,
+        "Effects": {
+            "145": {
+                "Duration": "99",
+                "Effect": {
+                    "Type": "Percentage",
+                    "+ or -": "+",
+                    "Buff": "ATK Buff",
+                    "Amount": 20
+                },
+                "Target": "Self"
+            },
+            "204": {
+                "Duration": "99",
+                "Effect": {
+                    "Type": "Percentage",
+                    "+ or -": "+",
+                    "Buff": "DEF Buff",
+                    "Amount": 20
+                },
+                "Target": "Self"
+            }
+        }
+    },
+    "Standby Skill": null,
+    "Finish Skill": null,
+    "Transforms from": [],
+    "Transformations": [],
+    "Max Appearances In Form": 50,
+    "Dokkan awakenings": [],
+    "Dokkan Reverse awakenings": [
+        "1023480",
+        "1023481"
+    ],
+    "Ki Multiplier": {
+        "0": 75.0,
+        "1": 81.25,
+        "2": 87.5,
+        "3": 93.75,
+        "4": 100.0,
+        "5": 106.25,
+        "6": 112.5,
+        "7": 118.75,
+        "8": 125.0,
+        "9": 131.25,
+        "10": 137.5,
+        "11": 143.75,
+        "12": 150.0
+    },
+    "Ki Circle Segments": {
+        "1": "weaker",
+        "2": "weaker",
+        "3": "weaker",
+        "4": "equal",
+        "5": "equal",
+        "6": "equal",
+        "7": "equal",
+        "8": "equal",
+        "9": "equal",
+        "10": "equal",
+        "11": "equal",
+        "12": "super"
+    },
+    "SuperMinKi": 12,
+    "AdditionalSuperID": "7101"
+}
