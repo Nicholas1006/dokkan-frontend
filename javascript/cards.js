@@ -255,6 +255,12 @@ class kiCircleClass{
             }
             this.Ki+=buffs["Ki"];
             this.superAttackID=findSuperAttackID(this.Ki);
+            if(this.superAttackID==-1){
+                this.superPerformed=false;
+            }
+            else{
+                this.superPerformed=true;
+            }
         }
         else if(this.passiveLineKey=="Active"){
             if(currentJson["Rarity"]=="lr"){
@@ -2118,7 +2124,13 @@ export function updatePassiveStats(){
 
 
     //      Right after attack
-    progressCausalityLogic(iteratingCausalityLogic,"Right after super attack");
+    if(kiCircleDictionary[0]["superPerformed"]){
+        progressCausalityLogic(iteratingCausalityLogic,"Right after super attack");
+    }
+    else if(kiCircleDictionary[0]["attackPerformed"]){
+        progressCausalityLogic(iteratingCausalityLogic,"Right after normal attack");
+    }
+
     iteratingPassiveBuffs =(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers));
     for (const additionalAttack of iteratingPassiveBuffs["Additional Attack"]){
         if(additionalAttacks[additionalAttack]=="Unactivated"){
@@ -2216,8 +2228,8 @@ export function updatePassiveStats(){
         }
     }
 
-
-
+    currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"All","Building Stat",iteratingCausalityLogic)
+    kiCircleDictionary[lastAttack].updateDefensiveFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
 
     let finalStats={}
     
@@ -2764,7 +2776,7 @@ export function activatePassiveLines(previousActiveLineMultipliers,exec_timing_t
     if(activationType=="Building Stat"){
         for (const passiveLine of Object.values(currentJson["Passive"])){
             if(passiveLine["Timing"]==exec_timing_type || exec_timing_type=="All"){
-                if(passiveLine["Type"]=="Building Stat" && !(Object.keys(previousActiveLineMultipliers).includes(passiveLine["ID"]))){
+                if(passiveLine["Type"]=="Building Stat"){
                     if(thisTurnActivationCounted || passiveLine["Length"]!="1"){
                         if("Condition" in passiveLine){
                             let conditionLogic=" "+passiveLine["Condition"]["Logic"]+" ";
