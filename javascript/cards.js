@@ -1183,6 +1183,7 @@ class superAttackQuery{
                 insertedDiv.setDisplayExtraInfo(false);
                 insertedDiv.setExactWidth("70px");
                 insertedDiv.setExactHeight("70px");
+                insertedDiv.setDisplay(true);
 
             }
         )
