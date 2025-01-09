@@ -14,7 +14,7 @@ let displayBoxes=[];
 let unitBasicsDetails={};
 
 
-export function unixToDateTime(unixTimestamp) {
+function unixToDateTime(unixTimestamp) {
   // Create a new Date object using the Unix timestamp (in milliseconds)
   const date = new Date(unixTimestamp * 1000);
 
@@ -31,7 +31,7 @@ export function unixToDateTime(unixTimestamp) {
 }
 
 
-export function getJsonPromise(prefix,name,suffix) {
+function getJsonPromise(prefix,name,suffix) {
   return fetch(prefix + name + suffix)
     .then(response => {
         if (!response.ok) {
@@ -47,7 +47,7 @@ export function getJsonPromise(prefix,name,suffix) {
   );
 }
 
-export function getAssetID(unitID){
+function getAssetID(unitID){
   if(unitID.typeof === "string") {
     if(unitID[unitID.length-1]=="1"){
       unitID=unitID.slice(0,-1)+"0";
@@ -61,7 +61,7 @@ export function getAssetID(unitID){
   return unitID;
 }
 
-export function rarityToInt(rarity){
+function rarityToInt(rarity){
   switch(rarity){
     case "n":
       return 0;
@@ -79,7 +79,7 @@ export function rarityToInt(rarity){
 }
 
 
-export function createFilterOption(){
+function createFilterOption(){
   const filterContainer = document.getElementById('filter-container');
   const filterSelect = document.createElement('select');
   const filterOptions = ['Name','Type', 'Rarity', 'Eza', "Seza", "Class","Categories","Super Attack Types", "Links"]; 
@@ -107,7 +107,7 @@ export function createFilterOption(){
   filterContainer.appendChild(filterTextInput);
 }
 
-export function reFilterCards() {
+function reFilterCards() {
   if(Object.keys(unitBasicsDetails).includes(currentFilter)){
     currentFilteredUnits = Object.keys(unitBasicsDetails["Max Level"]);
     if(['Eza',"Seza"].includes(currentFilter)){
@@ -155,7 +155,7 @@ export function reFilterCards() {
   }
 }
 
-export function createCharacterBoxes() {
+function createCharacterBoxes() {
   const unitsContainer = document.getElementById('unit-selection-container');
   for (let unitCount = 0; unitCount < unitsToDisplay; unitCount++) {
     displayBoxes[unitCount] = new unitDisplay();
@@ -166,7 +166,7 @@ export function createCharacterBoxes() {
   }
 }
 
-export function createSortOption(){
+function createSortOption(){
   const sortContainer = document.getElementById('sort-container');
   const sortSelect = document.createElement('select');
   const sortOptions = ["Acquired", 'ID', 'Max Level', 'Rarity', 'Cost', 'HP', 'Attack', "Defense", "Sp Atk Lv"];
@@ -185,7 +185,7 @@ export function createSortOption(){
 }
 
 
-export function reSortCards(){
+function reSortCards(){
   if(Object.keys(unitBasicsDetails).includes(currentSort)){
     const startTime=Date.now();
 
@@ -261,7 +261,7 @@ export function reSortCards(){
   
 }
 
-export function OLDreSortCards(){
+function OLDreSortCards(){
   const startTime=Date.now();
 
   const unitsContainer = document.getElementById('unit-selection-container');
@@ -319,7 +319,7 @@ export function OLDreSortCards(){
   console.log("Sorting took " + (Date.now() - startTime) + " ms");
 }
 
-export function classToInt(Class){
+function classToInt(Class){
   switch(Class){
     case null:
       return 0;
@@ -330,7 +330,7 @@ export function classToInt(Class){
   }
 }
 
-export function typeToInt(type){
+function typeToInt(type){
   switch(type){
     case "AGL":
       return 0;
@@ -345,7 +345,7 @@ export function typeToInt(type){
   }
 }
 
-export function createSortButton(){
+function createSortButton(){
   const sortButton = document.getElementById('sort-filter-container');
   sortButton.addEventListener('click', function() {
     if(currentOrder == "Ascending"){
@@ -366,7 +366,7 @@ export function createSortButton(){
 }
 
 
-export function createCharacterSelection(){
+function createCharacterSelection(){
   createCharacterBoxes();
   createSortOption();
   createFilterOption();

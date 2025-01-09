@@ -54,6 +54,7 @@ export class unitDisplay{
       this.container=document.createElement("div");
       this.container.className="unit-container";
       this.container.style.position="relative";
+      this.container.style.display="none";
       
       this.container.unitButton=document.createElement("a");
       this.container.unitButton.className="unit-selection-button";

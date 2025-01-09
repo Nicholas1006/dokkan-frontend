@@ -1285,6 +1285,10 @@ class passiveButton{
         return this.selfContainer;
     }
 
+    getValue(){
+        return(this.element.classList.contains('active'))
+    }
+
     updateParent(parent){
         this.parent=parent
         this.element.parent=parent
@@ -1741,10 +1745,11 @@ let kiSources={"leader":6,"Support":0,"Links":0,"Active":0,"Domain":0,"Orbs":0};
 let additionalAttacks={};
 let kiCircleDictionary=[];
 let passiveQueryList=[];
+let passiveChanceList={};
 let startingCausalityList=[];
 let relevantPassiveEffects=["Ki","ATK","Heals","DEF","Guard","Disable Other Line","Dodge chance","Crit Chance","DR","Additional Attack"]
 
-export function getJsonPromise(prefix,name,suffix) {
+function getJsonPromise(prefix,name,suffix) {
     return fetch(prefix + name + suffix)
       .then(response => {
           if (!response.ok) {
@@ -1778,12 +1783,12 @@ export function getJsonPromise(prefix,name,suffix) {
  * @returns Evaluated answer
  * @type Depends on the input lol
  */
-export function evaluate(expression){
+function evaluate(expression){
     return(eval(expression));
 }
 
 
-export function findSuperAttackID(kiAmount,causalities=null){
+function findSuperAttackID(kiAmount,causalities=null){
     //no unit super conditions
     let superAttackId="-1";
     let superMinKi=0;
@@ -1804,7 +1809,7 @@ export function findSuperAttackID(kiAmount,causalities=null){
     return(superAttackId);
 }
 
-export function extractDigitsFromString(string){
+function extractDigitsFromString(string){
     let stringArray=string.split("");
     let digitArray=[];
     for(let i=0;i<stringArray.length;i++){
@@ -1831,7 +1836,7 @@ Number.prototype.clamp = function(min, max) {
     return Math.min(Math.max(this, min), max);
 };
 
-export function arraysHaveOverlap(array1,array2){
+function arraysHaveOverlap(array1,array2){
     for(let i=0;i<array1.length;i++){
         if(array2.includes(array1[i])){
             return true
@@ -1840,7 +1845,7 @@ export function arraysHaveOverlap(array1,array2){
     return false
 }
   
-export function displayDictionary(element,indentation){
+function displayDictionary(element,indentation){
     let dictionaryContainer=document.createElement("div");
     if(typeof element === 'object'){
         for (const key in element) {
@@ -1862,7 +1867,7 @@ export function displayDictionary(element,indentation){
 }
 
 
-export function arrayToggle(originalArray,element){
+function arrayToggle(originalArray,element){
     if(originalArray.includes(element)){
         originalArray.splice(originalArray.indexOf(element), 1);
         return(false);
@@ -1874,7 +1879,7 @@ export function arrayToggle(originalArray,element){
 }
 
 
-export function dictionaryToggle(originalDictionary,key,element) {
+function dictionaryToggle(originalDictionary,key,element) {
     if(key in originalDictionary){
         delete originalDictionary[key];
         return(false);
@@ -1885,7 +1890,7 @@ export function dictionaryToggle(originalDictionary,key,element) {
     }
 }
 
-export function getFirstInDictionary(originalDictionary,valueList){
+function getFirstInDictionary(originalDictionary,valueList){
     for (const searchedKey in originalDictionary) {
         if(valueList.includes(originalDictionary[searchedKey])){
             return(searchedKey)
@@ -1893,7 +1898,7 @@ export function getFirstInDictionary(originalDictionary,valueList){
     }
 }
 
-export function getLastInDictionary(originalDictionary,value){
+function getLastInDictionary(originalDictionary,value){
     let output=""
     for (const searchedKey in originalDictionary) {
         if(originalDictionary[searchedKey]==value){
@@ -1903,7 +1908,7 @@ export function getLastInDictionary(originalDictionary,value){
     return(output)
 }
 
-export function prepareCausalityLogic(CausalityLogic,KiCircleObject){
+function prepareCausalityLogic(CausalityLogic,KiCircleObject){
     for(const Cause of Object.keys(CausalityLogic)){
         if(Cause.startsWith("Is Ki at least")){
             CausalityLogic[Cause]=(KiCircleObject.Ki >= parseInt(extractDigitsFromString(Cause).replaceAll(" ","")));
@@ -1915,7 +1920,7 @@ export function prepareCausalityLogic(CausalityLogic,KiCircleObject){
     return(CausalityLogic)
 }
 
-export function iterateCausalityLogic(CausalityLogic,KiCircleObject){
+function iterateCausalityLogic(CausalityLogic,KiCircleObject){
     for(const Cause of Object.keys(CausalityLogic)){
         if(Cause.includes("How many attacks has this character performed")){
             CausalityLogic[Cause]++;
@@ -1930,7 +1935,7 @@ export function iterateCausalityLogic(CausalityLogic,KiCircleObject){
     return(CausalityLogic)
 }
 
-export function includedInSupportBuff(passiveLine){
+function includedInSupportBuff(passiveLine){
     if(passiveLine["Target"]["Target"]=="Self"){
         return (true);
     }
@@ -1954,7 +1959,7 @@ export function includedInSupportBuff(passiveLine){
 }
 
 
-export function updatePassiveStats(){
+function updatePassiveStats(){
     for(const attack of Object.values(kiCircleDictionary)){
         attack.display(false);
     }
@@ -2255,7 +2260,7 @@ export function updatePassiveStats(){
 }
 
 
-export function activePassiveMultipliersToPassiveBuffs(activePassiveMultipliers){
+function activePassiveMultipliersToPassiveBuffs(activePassiveMultipliers){
     let buffs={
         "Ki":0,
         "SOT ATK %":0, "SOT ATK flat":0, "MOT ATK %":0, "MOT ATK flat":0, "Enemy ATK":0,
@@ -2587,7 +2592,7 @@ export function activePassiveMultipliersToPassiveBuffs(activePassiveMultipliers)
 }
 
 
-export function progressCausalityLogic(causalityLogic,progressingDetails){
+function progressCausalityLogic(causalityLogic,progressingDetails){
     if(progressingDetails=="Start of turn"){
 
     }
@@ -2645,7 +2650,7 @@ export function progressCausalityLogic(causalityLogic,progressingDetails){
 }
 
 
-export function iterateCausalityThatContains(causalityLogic,causalityThatContains){
+function iterateCausalityThatContains(causalityLogic,causalityThatContains){
     for (const causality of Object.keys(causalityLogic)){
         if(causality.includes(causalityThatContains)){
             if( typeof (causalityLogic[causality]) == "number" ){
@@ -2657,7 +2662,7 @@ export function iterateCausalityThatContains(causalityLogic,causalityThatContain
         }
     }
 }
-export function iterateSpecificCausality(causalityLogic,causalityToIterate){
+function iterateSpecificCausality(causalityLogic,causalityToIterate){
     if(causalityToIterate in causalityLogic){
         if( typeof (causalityLogic[causalityToIterate]) == "number" ){
             causalityLogic[causalityToIterate]=1+causalityLogic[causalityToIterate]
@@ -2668,7 +2673,7 @@ export function iterateSpecificCausality(causalityLogic,causalityToIterate){
     }
 }
 
-export function isDigit(myString){
+function isDigit(myString){
     return !isNaN(myString - parseFloat(myString));
 }
 
@@ -2682,7 +2687,7 @@ export function isDigit(myString){
  * @param {Object} causalityLogic - An object with the IDs of the causalities as keys, and the value of the causality as values.
  * @returns {Object} - An object with all the IDs of the passive lines that are active, with the value of the multiplier of that passive line.
  */
-export function activatePassiveLines(previousActiveLineMultipliers,exec_timing_type,activationType,causalityLogic,thisTurnActivationCounted=true){
+function activatePassiveLines(previousActiveLineMultipliers,exec_timing_type,activationType,causalityLogic,thisTurnActivationCounted=true){
     let updatedPassiveLineMultipliers={...previousActiveLineMultipliers}
     let activateablePassiveLines=[];
 
@@ -2691,12 +2696,19 @@ export function activatePassiveLines(previousActiveLineMultipliers,exec_timing_t
             if(passiveLine["Timing"]==exec_timing_type || exec_timing_type=="All"){
                 if(passiveLine["Type"]=="Single activator" && !(Object.keys(previousActiveLineMultipliers).includes(passiveLine["ID"]))){
                     if(thisTurnActivationCounted || passiveLine["Length"]!="1"){
-                        activateablePassiveLines.push(passiveLine)
+                        if("Additional Attack" in passiveLine || !("Chance" in passiveLine)){
+                            activateablePassiveLines.push(passiveLine)
+                        }
+                        else if(("Chance" in passiveLine && !("Additional Attack" in passiveLine))){
+                            if(passiveChanceList[passiveLine["ID"]].getValue()){
+                                activateablePassiveLines.push(passiveLine)
+                            }
+                        }
                     }
                 }
             }
         }
-        for(const passiveLine of activateablePassiveLines){  
+        for(const passiveLine of activateablePassiveLines){
             if("Condition" in passiveLine){
                 let conditionLogic=" "+passiveLine["Condition"]["Logic"]+" ";
                 conditionLogic=conditionLogic.replaceAll("("," ( ").replaceAll(")", " ) ");
@@ -2735,7 +2747,14 @@ export function activatePassiveLines(previousActiveLineMultipliers,exec_timing_t
         for (const passiveLine of Object.values(currentJson["Passive"])){
             if(passiveLine["Timing"]==exec_timing_type || exec_timing_type=="All"){
                 if(passiveLine["Type"]=="Disable Other Line"){
-                    activateablePassiveLines.push(passiveLine)
+                    if("Additional Attack" in passiveLine || !("Chance" in passiveLine)){
+                        activateablePassiveLines.push(passiveLine)
+                    }
+                    else if(("Chance" in passiveLine && !("Additional Attack" in passiveLine))){
+                        if(passiveChanceList[passiveLine["ID"]].getValue()){
+                            activateablePassiveLines.push(passiveLine)
+                        }
+                    }
                 }
             }
         }
@@ -2804,11 +2823,25 @@ export function activatePassiveLines(previousActiveLineMultipliers,exec_timing_t
                             }
             
                             if(evaluate(conditionLogic)){
-                                activateablePassiveLines.push(passiveLine)
+                                if("Additional Attack" in passiveLine || !("Chance" in passiveLine)){
+                                    activateablePassiveLines.push(passiveLine)
+                                }
+                                else if(("Chance" in passiveLine && !("Additional Attack" in passiveLine))){
+                                    if(passiveChanceList[passiveLine["ID"]].getValue()){
+                                        activateablePassiveLines.push(passiveLine)
+                                    }
+                                }
                             }
                         }
                         else{
-                            activateablePassiveLines.push(passiveLine)
+                            if("Additional Attack" in passiveLine || !("Chance" in passiveLine)){
+                                activateablePassiveLines.push(passiveLine)
+                            }
+                            else if(("Chance" in passiveLine && !("Additional Attack" in passiveLine))){
+                                if(passiveChanceList[passiveLine["ID"]].getValue()){
+                                    activateablePassiveLines.push(passiveLine)
+                                }
+                            }
                         }
                     }
                 }
@@ -2857,7 +2890,7 @@ export function activatePassiveLines(previousActiveLineMultipliers,exec_timing_t
     return(updatedPassiveLineMultipliers)
 }
 
-export function OLDupdatePassiveStats(){
+function OLDupdatePassiveStats(){
     if(regularAttacksPerformed){
 
         let kiCalculator= new kiCircleClass("0",queriesToLogic(passiveQueryList),100,100);
@@ -3070,7 +3103,7 @@ export function OLDupdatePassiveStats(){
 
 }
 
-export function calculateAdditionalChance(hiPoAdditional, attacksPerformed){
+function calculateAdditionalChance(hiPoAdditional, attacksPerformed){
     let output={};
     output["Super"]=1-(1-hiPoAdditional/100)**attacksPerformed;
     output["Neither"]=(1-(2*hiPoAdditional/100))**attacksPerformed;
@@ -3082,7 +3115,7 @@ export function calculateAdditionalChance(hiPoAdditional, attacksPerformed){
 }
 
 
-export function addDictionaryValues(initialDictionary, additionalDictionary) {
+function addDictionaryValues(initialDictionary, additionalDictionary) {
     let finalDictionary = initialDictionary;
     for (const key in additionalDictionary) {
       if (key in initialDictionary) {
@@ -3102,7 +3135,7 @@ export function addDictionaryValues(initialDictionary, additionalDictionary) {
 
 
 
-export function createLeaderStats(){
+function createLeaderStats(){
     const leaderContainer=document.getElementById('leader-container');
 
     const kiLabel=document.createElement('div');
@@ -3327,7 +3360,7 @@ export function createLeaderStats(){
     
 }
 
-export function createLinkStats(){
+function createLinkStats(){
     const linksContainer=document.getElementById('links-container');
     let links =currentJson["Links"];
     let linkNumber=0;
@@ -3452,7 +3485,7 @@ export function createLinkStats(){
 }
 
 
-export function updateBaseStats(refreshKi=true){
+function updateBaseStats(refreshKi=true){
     let levelSlider=document.getElementById('level-slider');
     let ATK = parseInt(currentJson["Stats at levels"][levelSlider.value]["ATK"]);
     let DEF = parseInt(currentJson["Stats at levels"][levelSlider.value]["DEF"]);
@@ -3526,7 +3559,7 @@ export function updateBaseStats(refreshKi=true){
 
   }
   
-export function createEzaContainer(){
+function createEzaContainer(){
     let ezaContainer=document.getElementById('eza-container');
     while (ezaContainer.firstChild) {
         ezaContainer.removeChild(ezaContainer.firstChild);
@@ -3591,7 +3624,7 @@ export function createEzaContainer(){
     }
 }
 
-export function createTransformationContainer(){
+function createTransformationContainer(){
     let transformationContainer=document.getElementById('awaken-container');
     let previousTransformations = currentJson["Transforms from"]
     if( Array.isArray(previousTransformations) && previousTransformations.length){
@@ -3641,7 +3674,7 @@ export function createTransformationContainer(){
     
 }
 
-export function createLevelSlider(){
+function createLevelSlider(){
     let levelSlider=document.getElementById('level-slider');
     let levelInput=document.getElementById('level-input');
     levelSlider.min=currentJson["Min Level"];
@@ -3675,13 +3708,13 @@ export function createLevelSlider(){
     
 }
 
-export function createStatsContainer(){
+function createStatsContainer(){
     const statsContainer=document.getElementById('stats-container');
     const statsContainerObject= new statsContainerClass(0,0,0);
     statsContainer.appendChild(statsContainerObject.getElement());
 }
 
-export function createPathButtons(){
+function createPathButtons(){
     const pathButtons = Array.from(document.querySelectorAll('.toggle-btn1, .toggle-btn2, .toggle-btn3, .toggle-btn4'));
     pathButtons[0].style.gridColumn = "1"
     pathButtons[0].style.gridRow = "1"
@@ -3717,7 +3750,7 @@ export function createPathButtons(){
     });
 }
 
-export function createDokkanAwakenContainer(){
+function createDokkanAwakenContainer(){
     let AwakeningsContainer=document.getElementById('awaken-container');
     let Awakenings =currentJson["Dokkan awakenings"];
     if( Array.isArray(Awakenings) && Awakenings.length){
@@ -3765,7 +3798,7 @@ export function createDokkanAwakenContainer(){
 
 }
 
-export function createStarButton(){
+function createStarButton(){
     const toggleButtons = Array.from(document.querySelectorAll('.toggle-btn1, .toggle-btn2, .toggle-btn3, .toggle-btn4'));
     const starButton=document.getElementById('star-button');
     starButton.classList.add('active');
@@ -3785,7 +3818,7 @@ export function createStarButton(){
 }
 
 
-export function createKiCirclesWithClass(){
+function createKiCirclesWithClass(){
     let kiContainer = document.getElementById("ki-container");
     while (kiContainer.firstChild) {
         kiContainer.removeChild(kiContainer.firstChild);
@@ -3816,13 +3849,13 @@ export function createKiCirclesWithClass(){
 }
 
 
-export function updateQueryStringParameter(key, value) {
+function updateQueryStringParameter(key, value) {
     const url = new URL(window.location.href);
     url.searchParams.set(key, value);
     window.history.replaceState({ path: url.href}, '', url.href);
 }
 
-export function typeToColor(type){
+function typeToColor(type){
     if(type.toLowerCase()=="agl"){
         return("#0000FF")
     }
@@ -3842,7 +3875,7 @@ export function typeToColor(type){
         return("#FFFFFF")
     }
 }
-export function LightenColor(color, percent){
+function LightenColor(color, percent){
     var num = parseInt(color.slice(1),16),
     amt = Math.round(2.55 * percent),
     R = (num >> 16) + amt,
@@ -3851,7 +3884,7 @@ export function LightenColor(color, percent){
     return "#" + (0x1000000 + (R<255?R<1?0:R:255)*0x10000 + (B<255?B<1?0:B:255)*0x100 + (G<255?G<1?0:G:255)).toString(16).slice(1);
 }
 
-export function colorToBackground(color){
+function colorToBackground(color){
     if(color=="#0000FF"){
         return("#28147C")
     }
@@ -3872,7 +3905,7 @@ export function colorToBackground(color){
     }
 }
 
-export function updateQueryList(passiveLine){
+function updateQueryList(passiveLine){
     if(passiveLine["Condition"]!=undefined){
         for(const CausalityKey of Object.keys(passiveLine["Condition"]["Causalities"])){
             const Causality = passiveLine["Condition"]["Causalities"][CausalityKey];
@@ -3972,12 +4005,12 @@ export function updateQueryList(passiveLine){
     if(passiveLine["Timing"]=="Right before being hit"|| passiveLine["Timing"]=="Right after being hit"){
         let hitCheck=false;
         for (const query of passiveQueryList){
-            if(query.type=="button" && query.buttonName=="Has this character been hit"){
+            if(query.type=="button" && query.buttonName=="Has this character been hit on this turn?"){
                 hitCheck=true;
             }
         }
         if(hitCheck==false){
-            let hitCheckButton = new passiveQuery("button","Has this character been hit","How many times has this character been hit",0,0);
+            let hitCheckButton = new passiveQuery("button","Has this character been hit on this turn?","How many times Has this character been hit on this turn?",0,0);
             hitCheckButton.queryElement.element.onclick=function(){
                 if(this.classList.contains('active')){
                     this.classList.remove('active');
@@ -3991,8 +4024,16 @@ export function updateQueryList(passiveLine){
                 }
                 updatePassiveStats();
             }
-
-            let superHitCheckButton = new passiveQuery("button","Has this character been hit by a super attack","How many times has this character been hit by a super attack",0,0);
+            passiveQueryList.push(hitCheckButton);
+        }
+        let superHitCheck=false;
+        for (const query of passiveQueryList){
+            if(query.type=="button" && query.buttonName=="Has this character been hit by a super attack?"){
+                superHitCheck=true;
+            }
+        }
+        if(superHitCheck==false){
+            let superHitCheckButton = new passiveQuery("button","Has this character been hit by a super attack?","How many times has this character been hit by a super attack",0,0);
             superHitCheckButton.queryElement.element.onclick=function(){
                 if(this.classList.contains('active')){
                     this.classList.remove('active');
@@ -4006,8 +4047,7 @@ export function updateQueryList(passiveLine){
                 }
                 updatePassiveStats();
             }
-
-            passiveQueryList.push(hitCheckButton);
+            
             passiveQueryList.push(superHitCheckButton);
         }
     }
@@ -4015,7 +4055,18 @@ export function updateQueryList(passiveLine){
     
 }
 
-export function createDomainContainer(){
+function updateChanceList(passiveLine){
+    const newChanceQuery=new passiveButton(
+        0,
+        0,
+        "Does the "+passiveLine["Chance"]+" chance of "+passiveLine["Brief effect description"]+" activate?",
+        null
+    );
+    newChanceQuery.referenceLine=passiveLine;
+    passiveChanceList[passiveLine["ID"]]=(newChanceQuery);
+}
+
+function createDomainContainer(){
     //TODO: DOMAIN IMAGE IS STORED IN C:/Users/horva/OneDrive - Trinity College Dublin/Documents/dokkan/frontend/dbManagement/DokkanFiles/global/en/outgame/extension/dokkan_field/field_thumb_image_3007 and similar
     let domainContainer=document.getElementById('domain-container');
     const domainDropDown=document.createElement('div');
@@ -4046,7 +4097,7 @@ export function createDomainContainer(){
     }
 }
 
-export function refreshDomainBuffs(){
+function refreshDomainBuffs(){
     for(const Query of passiveQueryList){
         if(Query.type=="button"){
             if(Query.buttonName.startsWith("Is the Domain ") && Query.buttonName.includes(" active")){
@@ -4110,12 +4161,17 @@ export function refreshDomainBuffs(){
 }
 
 
-export function createPassiveContainer(){
+function createPassiveContainer(){
     passiveQueryList=[]
+    passiveChanceList=[]
     let passiveSupportContainer=document.getElementById('passive-support-container');
     let passiveQueryContainer = document.getElementById('passive-query-container');
+    let passiveChanceContainer=document.getElementById('passive-chance-container');
     while (passiveQueryContainer.firstChild) {
         passiveQueryContainer.removeChild(passiveQueryContainer.firstChild);
+    }
+    while (passiveChanceContainer.firstChild) {
+        passiveChanceContainer.removeChild(passiveChanceContainer.firstChild);
     }
 
 
@@ -4190,16 +4246,23 @@ export function createPassiveContainer(){
         if(arraysHaveOverlap(relevantPassiveEffects, Object.keys(passiveList[passiveLineKey]))){
             updateQueryList(passiveList[passiveLineKey]);
         }
+        if(Object.keys(passiveList[passiveLineKey]).includes("Chance") && !(Object.keys(passiveList[passiveLineKey]).includes("Additional Attack"))){
+            updateChanceList(passiveList[passiveLineKey]);
+        }
     }
+
     
 
     for (const query of passiveQueryList) {
         passiveQueryContainer.appendChild(query.getElement());
     }
+
+    for (const query of Object.values(passiveChanceList)){
+        passiveChanceContainer.appendChild(query.getElement());
+    }
 }
 
-
-export function initialiseAspects() {
+function initialiseAspects() {
     updateCharacterIcon('character-icon', currentJson["Resource ID"], currentJson.Type);
     document.getElementById("level-container").style.display="flex";
 
@@ -4221,7 +4284,7 @@ export function initialiseAspects() {
 
   }
 
-export function createSuperAttackContainer(){
+function createSuperAttackContainer(){
 
     let superQuestionsContainer= document.getElementById('super-attack-questions-container');
     while (superQuestionsContainer.firstChild) {
@@ -4273,14 +4336,14 @@ export function createSuperAttackContainer(){
 }
 
 // Function to update a container with new content
-export function updateContainer(containerId, content){
+function updateContainer(containerId, content){
     const container = document.getElementById(containerId);
     container.appendChild(content);
     container.innerHTML = '';
   }   
 
  // Function to update the image container with a new image
- export function updateCharacterIcon(){
+ function updateCharacterIcon(){
     const imageContainer = document.getElementById("character-icon");
     while (imageContainer.firstChild) {
         imageContainer.removeChild(imageContainer.firstChild);
@@ -4367,14 +4430,14 @@ export function updateContainer(containerId, content){
 }
 
   // Function to create a paragraph element with the given text
-export function createParagraph(text){
+function createParagraph(text){
     const paragraph = document.createElement('p');
     paragraph.textContent = text;
     return paragraph;
   }
 
 
-export function updateSuperAttackStacks(){
+function updateSuperAttackStacks(){
     let superAttacksQuestionsContainer = document.querySelector('#super-attack-questions-container');
     let superAttackStacks = superAttacksQuestionsContainer.children;
     let totalATKBuff = 0;
@@ -4435,7 +4498,7 @@ export function updateSuperAttackStacks(){
     
 }   
 
-export function createLinkBuffs(){
+function createLinkBuffs(){
     // Select all link sliders and buttons within a specific parent
     let linksContainer = document.querySelector('#links-container');
     linksContainer.style.width="200px";
@@ -4496,7 +4559,7 @@ export function createLinkBuffs(){
     linksContainer.appendChild(linkBuffElement);
   }
 
-export function createPassiveBuffs(passiveLine, passiveBuffsHolder){
+function createPassiveBuffs(passiveLine, passiveBuffsHolder){
     //wip add building stats and targeting
     //passiveBuffs["Timing"]["Target"]["Buff type"]["Buff amount"]
     let timing=passiveLine["Timing"];
@@ -4568,7 +4631,7 @@ export function createPassiveBuffs(passiveLine, passiveBuffsHolder){
     }
 }
 
-export function queriesToLogic(queries){
+function queriesToLogic(queries){
     let output={}
     for (const query of queries){
         if(query["type"]=="slider"){
@@ -4582,7 +4645,7 @@ export function queriesToLogic(queries){
 }
 
 
-export function createSkillOrbContainer(){
+function createSkillOrbContainer(){
     let skillOrbContainer=document.getElementById('all-skill-orb-container');
     skillOrbContainer.style.display="grid";
     skillOrbContainer.additionalNode=new equipNodeQuery("Additional","/dbManagement/DokkanFiles/global/en/outgame/extension/potential/pot_skill_01_on.png")
@@ -4609,7 +4672,7 @@ export function createSkillOrbContainer(){
 
 }
 
-export function changePassiveButton(buttonName, value){
+function changePassiveButton(buttonName, value){
     for (const Query of passiveQueryList){
         if(Query.buttonName==buttonName){
             Query.updateValue(value);
@@ -4617,7 +4680,7 @@ export function changePassiveButton(buttonName, value){
     }
 }
 
-export function changePassiveSlider(sliderName, value){
+function changePassiveSlider(sliderName, value){
     for (const Query of passiveQueryList){
         if(Query.sliderName==sliderName){
             Query.updateValue(value);
@@ -4625,7 +4688,7 @@ export function changePassiveSlider(sliderName, value){
     }
 }
 
-export function updateKiSphereBuffs(){
+function updateKiSphereBuffs(){
     let kiGain=0;
     kiGain+=rainbowKiSphereAmount;
     if(currentJson["Type"]==currentKiSphere){
@@ -4680,7 +4743,7 @@ export function updateKiSphereBuffs(){
     updatePassiveStats();
 }
 
-export function createFinishContainer(){
+function createFinishContainer(){
     let maxChargeCount=0;
     const finishcontainer=document.getElementById("finish-container");
     if(currentJson["Finish Skill"]==null){
@@ -4765,7 +4828,7 @@ export function createFinishContainer(){
 }
 
 
-export function createActiveContainer(){
+function createActiveContainer(){
     const activecontainer=document.getElementById("active-container");
     if(currentJson["Active Skill"]==null){
         activecontainer.style.display="none";
@@ -4887,13 +4950,13 @@ export function createActiveContainer(){
     }
 }
 
-export function dictionaryRemove(dictionary, key){
+function dictionaryRemove(dictionary, key){
     if(key in dictionary){
         delete dictionary[key];
     }
 }
 
-export function createKiSphereContainer(){
+function createKiSphereContainer(){
     const kiSphereContainer=document.getElementById("ki-sphere-container");
     const rainbowQuery=document.getElementById("rainbow-sphere-query");
     const otherQuery=document.getElementById("other-sphere-query");
@@ -4998,14 +5061,14 @@ export function createKiSphereContainer(){
 }
 
 
-export function isEmptyDictionary(dictionary){
+function isEmptyDictionary(dictionary){
     if(dictionary==undefined){
         return(true)
     }
     return(Object.keys(dictionary).length==0 );
 }
 
-export function logicReducer(logicString, CausalityLogic){
+function logicReducer(logicString, CausalityLogic){
     //WIP
     logicString=logicString.toUpperCase();
     logicString=" "+logicString+" ";
@@ -5017,7 +5080,7 @@ export function logicReducer(logicString, CausalityLogic){
     return(eval(logicString));
 }
 
-export function logicCalculator(logicArray,sliderState){
+function logicCalculator(logicArray,sliderState){
     let logic=logicArray[0];
     logic=logic.replaceAll("and","&&");
     logic=logic.replaceAll("or","||");
@@ -5026,7 +5089,7 @@ export function logicCalculator(logicArray,sliderState){
     logic=logic.replaceAll("<",sliderState+"<")
     return(eval(logic));
 }
-export function getBaseDomain() {
+function getBaseDomain() {
     let host = window.location.host; // e.g., 'www.example.com', 'staging.example.com'
     let parts = host.split('.');
     if (parts.length > 2) {
@@ -5036,7 +5099,7 @@ export function getBaseDomain() {
     return parts.join('.');
 }
 
-export function polishPage(){
+function polishPage(){
     const passiveQueryContainer=document.getElementById("passive-query-container");
     if(passiveQueryContainer.firstChild==null){
         passiveQueryContainer.style.display="none";
