@@ -1120,10 +1120,13 @@ class superAttackQueryHolder{
     }
 }
 
+//WIP update this so that the super attack name is instead just the image for it as used in kicirlce
+//Plan is to change parameters to "text" and a replacement dictionary e.g. "How many times has 1023301 performed Kamehameha within the last 99 turns?", {"1023301": "unitDisplay div". "Kamehameha": superAttackImage}
 class pictureDiv{
     constructor(prefixText,insertedDiv,suffixText, imageHref=""){
         this.selfContainer=document.createElement("div");
         this.selfContainer.style.display="flex";
+        this.selfContainer.style.flexWrap="wrap";
         this.suffixContainer=document.createElement("div");
 
         this.prefix=document.createElement("label");
@@ -1271,7 +1274,7 @@ class passiveButton{
             this.label.includes("Ki Spheres have been obtained on this turn?")||
             this.label.includes("Is the Domain ")||
             this.label.startsWith("Is Ki at least ")||
-            this.label.includes("Ki Spheres beenKi Spheres been obtained")||
+            this.label.includes("Ki Spheres been obtained")||
             this.label.includes("Is a super being performed")||
             this.label.includes("Has this character performed an attack on this turn")
             ){
@@ -1420,294 +1423,6 @@ class passiveQuery{
     }
 }
 
-class causalityList{
-    constructor(CausalityLogic){
-        this.CausalityLogic=CausalityLogic;
-        this.passiveBuffs=[];
-        this.activeLines={};
-        this.updateActiveLines();
-    }
-
-    updateActiveLines(){
-        this.activeLines={};
-        let passiveLines=currentJson.Passive;
-        for(const passiveLineKey in passiveLines){
-            let passiveLine=passiveLines[passiveLineKey];
-            let buffMultiplier=1;
-            let lineActive=true;
-            if("Condition" in passiveLine){
-                let conditionLogic=" "+passiveLine["Condition"]["Logic"]+" ";
-                conditionLogic=conditionLogic.replaceAll("("," ( ").replaceAll(")", " ) ");
-                let conditionCausalities=passiveLine["Condition"]["Causalities"];
-                for(const conditionCausalityKey in conditionCausalities){
-                    let conditionCausality=conditionCausalities[conditionCausalityKey];
-                    let buttonLogic;
-                    let sliderLogic;
-                    if("Button" in conditionCausality){
-                        buttonLogic=this.CausalityLogic[conditionCausality["Button"]["Name"]] || false;
-                    }
-                    else{
-                        buttonLogic=false
-                    }
-                    if("Slider" in conditionCausality){
-                        //sliderLogic=this.CausalityLogic[conditionCausality["Slider"]["Name"]] || false;
-                        let currentSliderValue=this.CausalityLogic[conditionCausality["Slider"]["Name"]]
-                        sliderLogic=eval(currentSliderValue+conditionCausality["Slider"]["Logic"])
-                    }
-                    else{
-                        sliderLogic=false
-                    }
-                    conditionLogic=conditionLogic.replaceAll(" "+conditionCausalityKey+" "," "+(buttonLogic || sliderLogic)+" ");
-                }
-                lineActive=eval(conditionLogic);
-            }
-            if("Building Stat" in passiveLine && lineActive){
-                buffMultiplier*=this.CausalityLogic[passiveLine["Building Stat"]["Slider"]];
-            }
-            if(lineActive){
-                this.activeLines[passiveLineKey]=buffMultiplier;
-                if("Disable Other Line" in passiveLine){
-                    dictionaryRemove(this.activeLines, passiveLine["Disable Other Line"]["Line"]);
-                }
-            }
-        }
-    }
-
-    updateBuffs(){
-        this.updateActiveLines();
-        this.passiveBuffs={}
-        this.additionalAttacks={}
-        for (const passiveLineKey in this.activeLines){
-            let passiveLine=currentJson.Passive[passiveLineKey];
-            let buffMultiplier=this.activeLines[passiveLineKey];
-            const timing = passiveLine["Timing"];
-            let target;
-            if(passiveLine["Target"]["Target"]=="Self"){
-                target="Self"
-            }
-            else if(passiveLine["Target"]["Target"]=="Allies"){
-                if("Category" in passiveLine["Target"]){
-                    if(arraysHaveOverlap(passiveLine["Target"]["Category"]["Included"], currentJson["Categories"]) && !arraysHaveOverlap(passiveLine["Target"]["Category"]["Excluded"], currentJson["Categories"])){
-                        target=""
-                        for (const category of passiveLine["Target"]["Category"]["Included"]){
-                            target+=category+", ";
-                        }
-                        target=target.slice(0, -2);
-                        target+=" Allies";
-                    }
-                    else{
-                        target=""
-                        for (const category of passiveLine["Target"]["Category"]["Included"]){
-                            target+=category+", ";
-                        }
-                        target=target.slice(0, -2);
-                        target+=" Allies(self excluded)";
-                    }
-                }
-                else{
-                    target="Allies"
-                }
-            }
-            else if(passiveLine["Target"]["Target"]=="Allies(self excluded)"){
-                if("Category" in passiveLine["Target"]){
-                    if(arraysHaveOverlap(passiveLine["Target"]["Category"]["Included"], currentJson["Categories"]) && !arraysHaveOverlap(passiveLine["Target"]["Category"]["Excluded"], currentJson["Categories"])){
-                        target=""
-                        for (const category of passiveLine["Target"]["Category"]["Included"]){
-                            target+=category+", ";
-                        }
-                        target=target.slice(0, -2);
-                        target+=" Allies(self excluded)";
-                    }
-                }
-                else{
-                    target="Allies(self excluded)"
-                }
-            }
-            if(target==undefined){
-                console.log("UNKNOWN TARGET: ",passiveLine)
-            }
-
-            if("Building Stat" in passiveLine){
-                for(const buffType in passiveLine){
-                    if(["ATK","DEF","Ki","DR","Crit Chance","Dodge chance"].includes(buffType)){
-                        let buffAmount;
-                        if(passiveLine["Building Stat"]["Slider"].includes("Ki Spheres have been obtained")){
-                            buffAmount=(passiveLine[buffType]*buffMultiplier)
-                        }
-                        else{
-                            buffAmount=(passiveLine[buffType]*buffMultiplier).clamp(passiveLine["Building Stat"]["Min"],passiveLine["Building Stat"]["Max"]);
-                        }
-                        const dictionaryFormat=
-                        {[timing]:
-                            {[target]:
-                                {[buffType]:
-                                    (buffAmount)
-                                }
-                            }
-                        }
-                        
-                        this.passiveBuffs=addDictionaryValues(this.passiveBuffs,dictionaryFormat)
-                    }
-                    
-                }
-                if("Additional Attack" in passiveLine){
-                    console.log("BUILDING STAT ADDITIONALS???")
-                    if(!(timing in this.passiveBuffs)){
-                        this.passiveBuffs[timing]={}
-                    }
-                    if(!(target in this.passiveBuffs[timing])){
-                        this.passiveBuffs[timing][target]={}
-                    }
-                    if(!("Additional Attack" in this.passiveBuffs[timing][target])){
-                        this.passiveBuffs[timing][target]["Additional Attack"]=[]
-                    }
-                    let superChance=passiveLine["Additional Attack"]["Chance of super"];
-                    this.passiveBuffs[timing][target]["Additional Attack"].push(superChance)
-                }
-
-            }
-
-            else{
-                for(const buffType in passiveLine){
-                    if(["ATK","DEF","Ki","DR","Crit Chance","Dodge chance"].includes(buffType)){
-                        let buffAmount=passiveLine[buffType];
-                        const dictionaryFormat=
-                        {[timing]:
-                            {[target]:
-                                {[buffType]:
-                                    (buffAmount)
-                                }
-                            }
-                        }
-                        
-                        this.passiveBuffs=addDictionaryValues(this.passiveBuffs,dictionaryFormat)
-                    }
-                }
-                if("Additional Attack" in passiveLine){
-                    if(!(timing in this.passiveBuffs)){
-                        this.passiveBuffs[timing]={}
-                    }
-                    if(!(target in this.passiveBuffs[timing])){
-                        this.passiveBuffs[timing][target]={}
-                    }
-                    if(!("Additional Attack" in this.passiveBuffs[timing][target])){
-                        this.passiveBuffs[timing][target]["Additional Attack"]=[]
-                    }
-                    let superChance=passiveLine["Additional Attack"]["Chance of super"];
-                    this.passiveBuffs[timing][target]["Additional Attack"].push(superChance)
-                    this.additionalAttacks[passiveLineKey]="Offered"
-                }
-            }
-        }
-    }
-
-    OLDupdateBuffs(){
-        let passiveBuffs={}
-        let passiveLines=currentJson.Passive;
-        let activatedPassiveLineMultipliers=[];
-        for(const passiveLineKey in passiveLines){
-            let passiveLine=passiveLines[passiveLineKey];
-            let activatedCondition=true;
-            let buffMultiplier=1
-            if("Building Stat" in passiveLine){
-                const sliderName=passiveLine["Building Stat"]["Slider"];;
-                buffMultiplier=this.CausalityLogic[sliderName];
-            }
-            if("Condition" in passiveLine){
-                let conditionLogic=" "+passiveLine["Condition"]["Logic"]+" ";
-                let conditionCausalities=passiveLine["Condition"]["Causalities"];
-                for(const conditionCausalityKey in conditionCausalities){
-                    let conditionCausality=conditionCausalities[conditionCausalityKey];
-                    let buttonLogic=this.CausalityLogic[conditionCausality["Button"]["Name"]];
-                    //let sliderLogic=eval(this.CausalityLogic[conditionCausality["Slider"]["Name"]] + conditionCausality["Slider"]["Logic"]);
-                    let sliderLogic=true
-                    if(buttonLogic || sliderLogic){
-                        conditionLogic=conditionLogic.replaceAll(" "+conditionCausalityKey+" "," "+true+" ");
-                    }
-                    else{
-                        conditionLogic=conditionLogic.replaceAll(" "+conditionCausalityKey+" "," "+false+" ");
-                    }
-                }
-                if(eval(conditionLogic)){
-                    activatedCondition=true;
-                }
-                else{
-                    activatedCondition=false;
-                }
-            }
-            if(activatedCondition){
-                dictionaryToggle(activatedPassiveLineMultipliers,passiveLineKey,buffMultiplier);
-                const timing= passiveLine["Timing"];
-                const target = passiveLine["Target"]["Target"];
-                if("Disable Other Line" in passiveLine){
-                    dictionaryDisable(activatedPassiveLineMultipliers,passiveLine["Disable Other Line"]["Line"],1);
-                }
-
-                
-            }
-        }
-        for (const key in activatedPassiveLineMultipliers){
-            const passiveLine=passiveLines[key];
-            for (const passiveEffect in passiveLine){
-                const timingString = passiveLine["Timing"];
-                const targetString = passiveLine["Target"]["Target"];
-                const buffMultiplier=1;
-                let totalBuff=1;
-                if(passiveEffect=="ATK"||
-                passiveEffect=="DEF"||
-                passiveEffect=="Ki"||
-                passiveEffect=="DR"
-                ){
-                    if("Building Stat" in passiveLine){
-                        totalBuff=2
-                    }
-                    const dictionaryFormat=
-                    {[timingString]:
-                        {[targetString]:
-                            {[passiveEffect]:
-                                (buffMultiplier*passiveLine[passiveEffect])
-                            }
-                        }
-                    }
-                    
-                    passiveBuffs=addDictionaryValues(passiveBuffs,dictionaryFormat)
-                }
-                else if(passiveEffect=="Additional Attack"){
-                    const dictionaryFormat=
-                    {[timingString]:
-                        {[targetString]:
-                            {[passiveEffect]:
-                                (buffMultiplier*1)
-                            }
-                        }
-                    };
-                    additionalAttacks.push(passiveLine["Additional Attack"]["Chance of super"]);
-                    passiveBuffs=addDictionaryValues(passiveBuffs,dictionaryFormat)
-                }
-                else if(passiveEffect=="Guard"){
-                    passiveBuffs[timingString][targetString]["Guard"]=("Activated");
-                }
-                else if(passiveEffect=="ID" || passiveEffect=="Condition" || passiveEffect=="Timing" || passiveEffect=="Target" || passiveEffect=="Length" || passiveEffect=="Buff"||passiveEffect=="Building Stat"||passiveEffect=="Nullification"){
-                    continue;
-                }
-                else{
-                    console.log(passiveEffect)
-                }
-            }
-        }
-
-        this.passiveBuffs=passiveBuffs
-    }
-
-    returnBuffs(){
-        return this.passiveBuffs;
-    }
-
-    incrementBuffs(additionalIsSuper){
-        console.log("A")
-    }
-}
-
 
 // CONSTANT GLOBAL VARIABLES
 const HIDEUNNEEDEDPASSIVE=true;
@@ -1716,8 +1431,6 @@ let currentJson = null;
 let linkData=null;
 let domainData=null;
 let activeAttackPerformed=false;
-let activeDisplayed=false;
-let finishSkillPerformed=false;
 let finishDisplayed=false;
 let finishSkillCharges=0;
 let hitBeforeAttacking=false;
@@ -1736,7 +1449,7 @@ let linkBuffs={"ATK":0,"DEF":0,"Enemy DEF":0,"Heal":0,"KI":0,"Damage Reduction":
 let skillOrbBuffs={"Additional":0,"Crit":0,"Evasion":0,"Attack":0,"Defense":0,"SuperBoost":0,"Recovery":0}
 let domainBuffs={"ATK":0,"DEF":0,"Increased damage recieved":0}
 let supportBuffs={"ATK": 0, "DEF":0, "Dodge":0, "Crit": 0}
-let currentKiSphere="STR";
+let currentKiSphere;
 let currentKiSphereAmount=0;
 let rainbowKiSphereAmount=0;
 let activeMultipliers={"ATK":1,"DEF":1};
@@ -1777,12 +1490,8 @@ function getJsonPromise(prefix,name,suffix) {
 
 
 /**
- * They wouldnt let me use eval in a loop so I'm doing this instead
- * It just calls eval again
- *
- * @param {String} expression Expression to be evaluated
- * @returns Evaluated answer
- * @type Depends on the input lol
+  They wouldnt let me use eval in a loop so I'm doing this instead
+  It just calls eval again
  */
 function evaluate(expression){
     return(eval(expression));
@@ -1846,50 +1555,6 @@ function arraysHaveOverlap(array1,array2){
     return false
 }
   
-function displayDictionary(element,indentation){
-    let dictionaryContainer=document.createElement("div");
-    if(typeof element === 'object'){
-        for (const key in element) {
-            const label=document.createElement("label");
-            label.innerText=key+":";
-            label.style.paddingLeft=indentation+"0px";
-            dictionaryContainer.appendChild(label);
-            dictionaryContainer.appendChild(displayDictionary(element[key],indentation+2));
-        }
-    }
-    else{
-        const label=document.createElement("label");
-        label.innerText=element+":";
-        label.style.paddingLeft=indentation+"0px";
-        dictionaryContainer.appendChild(label);
-    }
-
-    return dictionaryContainer
-}
-
-
-function arrayToggle(originalArray,element){
-    if(originalArray.includes(element)){
-        originalArray.splice(originalArray.indexOf(element), 1);
-        return(false);
-    }
-    else{
-        originalArray.push(element);
-        return(true);
-    }
-}
-
-
-function dictionaryToggle(originalDictionary,key,element) {
-    if(key in originalDictionary){
-        delete originalDictionary[key];
-        return(false);
-    }
-    else{
-        originalDictionary[key]=element;
-        return(true);
-    }
-}
 
 function getFirstInDictionary(originalDictionary,valueList){
     for (const searchedKey in originalDictionary) {
@@ -1899,16 +1564,6 @@ function getFirstInDictionary(originalDictionary,valueList){
     }
 }
 
-function getLastInDictionary(originalDictionary,value){
-    let output=""
-    for (const searchedKey in originalDictionary) {
-        if(originalDictionary[searchedKey]==value){
-            output=searchedKey
-        }
-    }
-    return(output)
-}
-
 function prepareCausalityLogic(CausalityLogic,KiCircleObject){
     for(const Cause of Object.keys(CausalityLogic)){
         if(Cause.startsWith("Is Ki at least")){
@@ -1916,21 +1571,6 @@ function prepareCausalityLogic(CausalityLogic,KiCircleObject){
         }
         else if(Cause=="How much ki is there on this turn?"){
             CausalityLogic[Cause]=(KiCircleObject.Ki);
-        }
-    }
-    return(CausalityLogic)
-}
-
-function iterateCausalityLogic(CausalityLogic,KiCircleObject){
-    for(const Cause of Object.keys(CausalityLogic)){
-        if(Cause.includes("How many attacks has this character performed")){
-            CausalityLogic[Cause]++;
-        }
-        else if(Cause=="How many super attacks has this character performed?"){
-            CausalityLogic["How many super attacks has this character performed?"]++;
-        }
-        else if(Cause=="Has this character performed an attack on this turn?"){
-            CausalityLogic["Has this character performed an attack on this turn?"]=true;
         }
     }
     return(CausalityLogic)
@@ -2674,11 +2314,6 @@ function iterateSpecificCausality(causalityLogic,causalityToIterate){
     }
 }
 
-function isDigit(myString){
-    return !isNaN(myString - parseFloat(myString));
-}
-
-
 
 /**
  * Activates passive lines based on the given conditions. Returns an object with all the IDs of the passive lines that are active, with the value of the multiplier of that passive line.
@@ -2891,219 +2526,6 @@ function activatePassiveLines(previousActiveLineMultipliers,exec_timing_type,act
     return(updatedPassiveLineMultipliers)
 }
 
-function OLDupdatePassiveStats(){
-    if(regularAttacksPerformed){
-
-        let kiCalculator= new kiCircleClass("0",queriesToLogic(passiveQueryList),100,100);
-        for (const key in additionalAttacks){
-            additionalAttacks[key]="Unactivated";
-        }
-        let superStatRaises={
-            "ATK":0,
-            "DEF":0,
-            "Health":0,
-            "Dodge chance":0,
-            "Crit chance":0
-        }
-        let superActivatedLines=[]
-        if(activeDisplayed){
-            const activecontainer=document.getElementById("active-container");
-            activecontainer.kiCircle.updateCausalityLogic(queriesToLogic(passiveQueryList))
-            if(activeAttackPerformed){
-                activecontainer.kiCircle.CausalityLogic=prepareCausalityLogic(activecontainer.kiCircle.CausalityLogic,activecontainer.kiCircle)
-                activecontainer.kiCircle.updateConditions(superStatRaises,true)
-                activecontainer.kiCircle.display(true)
-                superActivatedLines=activecontainer.kiCircle.activatedPassiveLineMultipliers
-                
-                for(const key in activecontainer.kiCircle.additionalAttacks){
-                    if(activecontainer.kiCircle.additionalAttacks[key]=="Offered" && additionalAttacks[key]=="Unactivated"){
-                        if(kiCircleDictionary[key]["attackPerformed"]){
-                            additionalAttacks[key]="Activated";
-                        }
-                        else{
-                            additionalAttacks[key]="Offered";
-                        }
-                    }
-                }
-    
-            }
-            else{
-                activecontainer.kiCircle.display(false)
-            }
-        }
-        if(finishDisplayed){
-            const finishcontainer=document.getElementById("finish-container");
-            finishcontainer.kiCircle.updateCausalityLogic(queriesToLogic(passiveQueryList))
-            if(finishSkillPerformed){
-                finishcontainer.kiCircle.CausalityLogic=prepareCausalityLogic(finishcontainer.kiCircle.CausalityLogic,finishcontainer.kiCircle)
-                finishcontainer.kiCircle.updateConditions(superStatRaises,false)
-                finishcontainer.kiCircle.display(true)
-                superActivatedLines=finishcontainer.kiCircle.activatedPassiveLineMultipliers
-            }
-            else{
-                finishcontainer.kiCircle.display(false)
-            }
-        }
-        
-        kiCalculator.updateConditions(superStatRaises,superActivatedLines)
-    
-        for(const Query of passiveQueryList){
-            if(Query.type=="slider"){
-                if(Query.sliderName.includes("How much ki is there")){
-                    Query.updateValue(kiCalculator.Ki,false);
-                }
-            }
-            else if(Query.type=="button"){
-                if(Query.buttonName.startsWith("Is Ki at least ")){
-                    const kiNeeded=extractDigitsFromString(Query.buttonName).replaceAll(" ","")
-                    Query.updateValue(kiCalculator.Ki>=kiNeeded,false)
-                }
-                if(Query.buttonName=="Is a super being performed on this turn?"){
-                    Query.updateValue(kiCalculator.superPerformed,false)
-                }
-            }
-        }
-    
-    
-    
-    
-        let superAttackRaise=0;
-        let iteratingCausalityLogic=queriesToLogic(passiveQueryList);
-        iteratingCausalityLogic=prepareCausalityLogic(iteratingCausalityLogic,kiCircleDictionary[0])
-        for (const key in kiCircleDictionary){
-            kiCircleDictionary[key].display(false);
-        }
-        
-        
-        kiCircleDictionary[0].updateCausalityLogic(iteratingCausalityLogic);
-        kiCircleDictionary[0].updateConditions(superStatRaises,superActivatedLines,false);
-        kiCircleDictionary[0].updateConditions(superStatRaises,superActivatedLines,false);
-        let superHasBeenPerformed=kiCircleDictionary[0].superHasBeenPerformed;
-        kiCircleDictionary[0].display(true);
-        iteratingCausalityLogic=iterateCausalityLogic(iteratingCausalityLogic,kiCircleDictionary[0]);
-        superStatRaises=kiCircleDictionary[0].previousBuffs;
-        superActivatedLines=kiCircleDictionary[0].activatedPassiveLineMultipliers
-        for(const key in kiCircleDictionary[0].additionalAttacks){
-            if(kiCircleDictionary[0].additionalAttacks[key]=="Offered" && additionalAttacks[key]=="Unactivated"){
-                if(kiCircleDictionary[key]["attackPerformed"]){
-                    additionalAttacks[key]="Activated";
-                }
-                else{
-                    additionalAttacks[key]="Offered";
-                }
-            }
-        }
-        let currentRow=2;
-        if(skillOrbBuffs["Additional"]>0){
-            if(kiCircleDictionary["Hidden potential"]["attackPerformed"]){
-                additionalAttacks["Hidden potential"]="Activated";
-            }
-            else{
-                additionalAttacks["Hidden potential"]="Offered";
-            }
-        }
-        additionalAttacks[0]="Performed";
-        let attackCount=1;
-        while(Object.values(additionalAttacks).includes("Activated") || Object.values(additionalAttacks).includes("Offered") || Object.values(additionalAttacks).includes("Predictor")){
-            const nextLineToActivate=getFirstInDictionary(additionalAttacks,["Activated","Offered","Predictor"]);
-            if(nextLineToActivate=="Hidden potential"){
-                let additionalChance=calculateAdditionalChance(skillOrbBuffs["Additional"],attackCount);
-                kiCircleDictionary[nextLineToActivate].changePerformedChance(additionalChance["Normal"]+additionalChance["Super"])
-                let chanceTheAdditionalIsASuper=additionalChance["Super"]/(additionalChance["Super"]+additionalChance["Normal"])
-                kiCircleDictionary[nextLineToActivate].changeSuperChance(chanceTheAdditionalIsASuper)
-                if(additionalChance["Normal"]!=0){
-                    kiCircleDictionary[nextLineToActivate].display(true)
-                }
-            }
-            else {
-                kiCircleDictionary[nextLineToActivate].display(true)
-            }
-            kiCircleDictionary[nextLineToActivate].changeGridRow(currentRow);
-            iteratingCausalityLogic=prepareCausalityLogic(iteratingCausalityLogic,kiCircleDictionary[nextLineToActivate])
-            kiCircleDictionary[nextLineToActivate].updateCausalityLogic(iteratingCausalityLogic);
-            if(additionalAttacks[nextLineToActivate]=="Activated"){
-                kiCircleDictionary[nextLineToActivate].updateConditions(superStatRaises,superActivatedLines,superHasBeenPerformed);
-                kiCircleDictionary[nextLineToActivate].updateConditions(superStatRaises,superActivatedLines,superHasBeenPerformed);
-                superHasBeenPerformed=superHasBeenPerformed||kiCircleDictionary[nextLineToActivate].superHasBeenPerformed;
-                iteratingCausalityLogic=iterateCausalityLogic(iteratingCausalityLogic,kiCircleDictionary[nextLineToActivate])
-                superStatRaises=kiCircleDictionary[nextLineToActivate].previousBuffs;
-                superActivatedLines=kiCircleDictionary[nextLineToActivate].activatedPassiveLineMultipliers
-                for(const key in kiCircleDictionary[nextLineToActivate].additionalAttacks){
-                    if(kiCircleDictionary[nextLineToActivate].additionalAttacks[key]=="Offered" && additionalAttacks[key]=="Unactivated"){
-                        if(kiCircleDictionary[key]["performedChance"]==100){
-                            additionalAttacks[key]="Activated";
-                        }
-                        else{
-                            additionalAttacks[key]="Offered";
-                        }
-                    }
-                }
-                additionalAttacks[nextLineToActivate]="Performed";
-                currentRow++;
-                attackCount++;
-            }
-            else if(additionalAttacks[nextLineToActivate]=="Offered"){
-                kiCircleDictionary[nextLineToActivate].updateKi(0);
-                kiCircleDictionary[nextLineToActivate].updateValue(-1,false);        
-                kiCircleDictionary[nextLineToActivate].display(true);
-                additionalAttacks[nextLineToActivate]="Offer Displayed";
-                currentRow++;
-                attackCount++;
-            }
-            else if(additionalAttacks[nextLineToActivate]=="Predictor"){
-                kiCircleDictionary[nextLineToActivate].display(false);
-                iteratingCausalityLogic=prepareCausalityLogic(iteratingCausalityLogic,kiCircleDictionary[nextLineToActivate])
-                kiCircleDictionary[nextLineToActivate].updateCausalityLogic(iteratingCausalityLogic);
-                kiCircleDictionary[nextLineToActivate].updateConditions(superStatRaises,superActivatedLines,superHasBeenPerformed);
-                kiCircleDictionary[nextLineToActivate].updateConditions(superStatRaises,superActivatedLines,superHasBeenPerformed);
-                superHasBeenPerformed=superHasBeenPerformed||kiCircleDictionary[nextLineToActivate].superHasBeenPerformed;
-                let additionalFound=false;
-                for(const key in kiCircleDictionary[nextLineToActivate].additionalAttacks){
-                    if(kiCircleDictionary[nextLineToActivate].additionalAttacks[key]=="Offered" && additionalAttacks[key]=="Unactivated"){
-                        if(kiCircleDictionary[key]["performedChance"]==100){
-                            additionalAttacks[key]="Activated";
-                        }
-                        else{
-                            additionalAttacks[key]="Offered";
-                        }
-                        additionalFound=true;
-                    }
-                }
-                if(!additionalFound){
-                    additionalAttacks[nextLineToActivate]="Performed";
-                }
-            }
-            
-        }
-        if(regularAttacksPerformed==false){
-            updatePassiveStats();
-        }
-    }
-    else{
-        for (const key in kiCircleDictionary) {
-            kiCircleDictionary[key].display(false);
-        }
-        const finishcontainer=document.getElementById("finish-container");
-        let superStatRaises={
-            "ATK":0,
-            "DEF":0,
-            "Health":0,
-            "Dodge chance":0,
-            "Crit chance":0
-        }
-        if(finishSkillPerformed){
-            finishcontainer.kiCircle.updateCausalityLogic(queriesToLogic(passiveQueryList))
-            finishcontainer.kiCircle.CausalityLogic=prepareCausalityLogic(finishcontainer.kiCircle.CausalityLogic,finishcontainer.kiCircle)
-            finishcontainer.kiCircle.updateConditions(superStatRaises,[],false)
-            finishcontainer.kiCircle.display(true)
-        }
-        else{
-            finishcontainer.kiCircle.display(false)
-        }
-    }
-
-}
-
 function calculateAdditionalChance(hiPoAdditional, attacksPerformed){
     let output={};
     output["Super"]=1-(1-hiPoAdditional/100)**attacksPerformed;
@@ -3113,25 +2535,6 @@ function calculateAdditionalChance(hiPoAdditional, attacksPerformed){
 //    output["Normal"]= -((1+  (2*hiPoAdditional)  )**attacksPerformed)    +     (1-hiPoAdditional)**attacksPerformed;    
 
     return output
-}
-
-
-function addDictionaryValues(initialDictionary, additionalDictionary) {
-    let finalDictionary = initialDictionary;
-    for (const key in additionalDictionary) {
-      if (key in initialDictionary) {
-        if(typeof initialDictionary[key] === 'string' || typeof initialDictionary[key] === 'number') {
-            finalDictionary[key] += additionalDictionary[key];
-        }
-        else if(typeof initialDictionary[key] === 'object') {
-            finalDictionary[key]=addDictionaryValues(initialDictionary[key], additionalDictionary[key]);
-        }
-      } 
-      else {
-        finalDictionary[key] = additionalDictionary[key];
-      }
-    }
-    return finalDictionary;
 }
 
 
@@ -3560,71 +2963,6 @@ function updateBaseStats(refreshKi=true){
 
   }
   
-function createEzaContainer(){
-    let ezaContainer=document.getElementById('eza-container');
-    while (ezaContainer.firstChild) {
-        ezaContainer.removeChild(ezaContainer.firstChild);
-    }
-    let ezaButton = document.createElement('a');
-    if(currentJson["Can EZA"]){
-        ezaButton.id="eza-button";
-        if(currentJson["Can SEZA"]){
-            ezaButton.style.transform="translate(98px, 156px)"
-        }
-        else{
-            ezaButton.style.transform="translate(128px, 156px)"
-        }
-        if(isEza){
-            ezaButton.style.backgroundImage = "url('/dbManagement/assets/misc/extra/eZa.png')";
-            ezaButton.onclick = function(){
-                updateQueryStringParameter('EZA', 'false');
-                loadPage();
-            }
-        }
-        else if(isSeza){
-            ezaButton.style.backgroundImage = "url('/dbManagement/assets/misc/extra/eZa.png')";
-            ezaButton.onclick = function(){
-                updateQueryStringParameter('EZA', 'false');
-                updateQueryStringParameter('SEZA', 'false');
-                loadPage();
-            }
-        }
-        else{
-            ezaButton.style.backgroundImage = "url('/dbManagement/assets/misc/extra/eZa_inactive.png')";
-            ezaButton.onclick = function(){
-                updateQueryStringParameter('EZA', 'true');
-                updateQueryStringParameter('SEZA', 'false');
-                loadPage();
-            }
-        }
-        ezaButton.className="eza-button";
-        ezaContainer.appendChild(ezaButton);
-    }
-    let sezaButton = document.createElement('a');
-    if(currentJson["Can SEZA"]){
-        sezaButton.style.transform="translate(98px, 156px)"
-        sezaButton.id="seza-button";
-        if(isSeza == "true"){
-            sezaButton.style.backgroundImage = "url('/dbManagement/assets/misc/extra/seZa.png')";
-            sezaButton.onclick = function(){
-                updateQueryStringParameter('SEZA', 'false');
-                updateQueryStringParameter('EZA', 'true');
-                loadPage();
-            }
-        }
-        else{
-            sezaButton.style.backgroundImage = "url('/dbManagement/assets/misc/extra/seZa_inactive.png')";
-            sezaButton.onclick = function(){
-                updateQueryStringParameter('SEZA', 'true');
-                updateQueryStringParameter('EZA', 'false');
-                loadPage();
-            }
-        }
-        sezaButton.className="seza-button";
-        ezaContainer.appendChild(sezaButton);
-    }
-}
-
 function createTransformationContainer(){
     let transformationContainer=document.getElementById('awaken-container');
     let previousTransformations = currentJson["Transforms from"]
@@ -4336,13 +3674,6 @@ function createSuperAttackContainer(){
     }
 }
 
-// Function to update a container with new content
-function updateContainer(containerId, content){
-    const container = document.getElementById(containerId);
-    container.appendChild(content);
-    container.innerHTML = '';
-  }   
-
  // Function to update the image container with a new image
  function updateCharacterIcon(){
     const imageContainer = document.getElementById("character-icon");
@@ -4429,14 +3760,6 @@ function updateContainer(containerId, content){
 
     document.body.style.backgroundColor = colorToBackground(typeToColor(currentJson["Type"]));
 }
-
-  // Function to create a paragraph element with the given text
-function createParagraph(text){
-    const paragraph = document.createElement('p');
-    paragraph.textContent = text;
-    return paragraph;
-  }
-
 
 function updateSuperAttackStacks(){
     let superAttacksQuestionsContainer = document.querySelector('#super-attack-questions-container');
@@ -4560,77 +3883,6 @@ function createLinkBuffs(){
     linksContainer.appendChild(linkBuffElement);
   }
 
-function createPassiveBuffs(passiveLine, passiveBuffsHolder){
-    //wip add building stats and targeting
-    //passiveBuffs["Timing"]["Target"]["Buff type"]["Buff amount"]
-    let timing=passiveLine["Timing"];
-    let target="Self"
-    if("Target" in passiveLine){
-        target=passiveLine["Target"]["Target"];
-        if("Class" in passiveLine["Target"]){
-            target=passiveLine["Target"]["Class"]+" "+target;
-        }
-        if("Type" in passiveLine["Target"]){
-            let allTypes=";"
-            for (const type in passiveLine["Target"]["Type"]){
-                allTypes+=type+" and ";
-            }
-            allTypes=allTypes.substring(0,allTypes.length-5);
-            target=allTypes+" "+target;
-        }
-    }
-    if(!(target in passiveBuffsHolder[timing])){
-        passiveBuffsHolder[timing][target]={};
-    }
-    let buffType=passiveLine["Buff"]["Type"];
-    if(!(buffType in passiveBuffsHolder[timing][target])){
-        passiveBuffsHolder[timing][target][buffType]={};
-    }
-    for (const buffKey in (passiveLine)){
-        let buffRecieved=passiveLine[buffKey];
-        const disallowedOptions = ["Buff","Nullification", "Condition", "Disable Other Line", "Once only", "ID", "Additional Attack", "Target", "Building Stat", "Length", "Timing"];
-        if (!disallowedOptions.includes(buffKey)) {
-            if(!(buffKey in passiveBuffsHolder[timing][target][buffType])){
-                passiveBuffsHolder[timing][target][buffType][buffKey]=0;
-            }
-            if(passiveLine["Buff"]["+ or -"]=="-"){
-                passiveBuffsHolder[timing][target][buffType][buffKey]-=buffRecieved;
-            }
-            else if (passiveLine["Buff"]["+ or -"]=="+"){
-                passiveBuffsHolder[timing][target][buffType][buffKey]+=buffRecieved;
-            }
-            else{
-                console.error("Error: Buff type not recognized")
-            }
-        }   
-        else if(buffKey=="Additional Attack"){
-            if(!(buffKey in passiveBuffsHolder[timing][target][buffType])){
-                passiveBuffsHolder[timing][target][buffType][buffKey]=[];
-            }
-            if(buffRecieved["Chance of super"]=="100"){
-                passiveBuffsHolder[timing][target][buffType][buffKey].push("Additional Super Attack<br>");
-            }
-            else if(buffRecieved["Chance of super"]=="0"){
-                passiveBuffsHolder[timing][target][buffType][buffKey].push("Additional Normal Attack<br>");
-            }
-            else{
-                passiveBuffsHolder[timing][target][buffType][buffKey].push("Additional Attack with a "+buffRecieved["Chance of super"]+"% chance of being a Super Attack <br>");
-            }
-        }
-        else if(buffKey=="Nullification"){
-            if(buffRecieved["Absorbed"]!="0"){
-                passiveBuffsHolder[timing][target][buffType][buffKey]="Absorbs "+buffRecieved["Absorbed"]+"% of recieved damage<br>";
-            }
-            else{
-                passiveBuffsHolder[timing][target][buffType][buffKey]="Nullifies all recieved damage<br>";
-            }
-        }
-        else if(buffKey=="Building Stat"){
-            //WIP
-            console.log()
-        }
-    }
-}
 
 function queriesToLogic(queries){
     let output={}
@@ -4862,11 +4114,9 @@ function createActiveContainer(){
         }
 
         if(!needsDisplay){
-            activeDisplayed=false
             activecontainer.style.display="none";
         }
         else{
-            activeDisplayed=true
             activecontainer.titleLabel=document.createElement("label");
             activecontainer.appendChild(activecontainer.titleLabel);
             activecontainer.titleLabel.innerText=currentJson["Active Skill"]["Name"];
@@ -5010,7 +4260,6 @@ function createKiSphereContainer(){
     const otherDropdown=document.createElement("select");
     otherQuery.appendChild(otherDropdown)
     otherDropdown.addEventListener("change", function(){
-        currentKiSphere=otherDropdown.value
         otherDropdown.style.backgroundColor=LightenColor(colorToBackground(typeToColor(otherDropdown.value)),50)
         updateKiSphereBuffs()
     })
@@ -5019,11 +4268,15 @@ function createKiSphereContainer(){
         option.style.backgroundColor=LightenColor(colorToBackground(typeToColor(orbType)),50);
         option.textContent = orbType;
         otherDropdown.appendChild(option);
+        if(orbType==currentJson["Type"]){
+            option.selected = true;
+            currentKiSphere=orbType;
+        }
     }
     otherDropdown.style.backgroundColor=LightenColor(colorToBackground(typeToColor(otherDropdown.value)),50)
     
     const otherSuffixLabel=document.createElement("Label");
-    otherSuffixLabel.innerHTML="ki spheres have been obtained: 6";
+    otherSuffixLabel.innerHTML="ki spheres have been obtained: 3";
     otherQuery.sufffixLabel=otherSuffixLabel;
     otherQuery.appendChild(otherSuffixLabel)
     
@@ -5034,8 +4287,8 @@ function createKiSphereContainer(){
     otherSlider.type="range";
     otherSlider.min=0;
     otherSlider.max=23;
-    otherSlider.value=6;
-    currentKiSphereAmount=6;
+    otherSlider.value=3;
+    currentKiSphereAmount=3;
     otherSlider.addEventListener("input", function(){
         if(parseInt(this.value)+parseInt(this.parentElement.parentElement.rainbowQuery.slider.value)>23){
             this.parentElement.parentElement.rainbowQuery.slider.value=23-this.value;
@@ -5067,37 +4320,6 @@ function isEmptyDictionary(dictionary){
         return(true)
     }
     return(Object.keys(dictionary).length==0 );
-}
-
-function logicReducer(logicString, CausalityLogic){
-    //WIP
-    logicString=logicString.toUpperCase();
-    logicString=" "+logicString+" ";
-    logicString=logicString.replaceAll("("," ( ").replaceAll(")"," ) ");
-    for (const logic in (CausalityLogic)){
-        logicString=logicString.replaceAll(" "+logic+" "," "+CausalityLogic[logic]+" ");
-    }
-    logicString=logicString.replaceAll("AND","&&").replaceAll("OR","||").replaceAll("NOT","!");
-    return(eval(logicString));
-}
-
-function logicCalculator(logicArray,sliderState){
-    let logic=logicArray[0];
-    logic=logic.replaceAll("and","&&");
-    logic=logic.replaceAll("or","||");
-    logic=logic.replaceAll("==",sliderState+"==")
-    logic=logic.replaceAll(">",sliderState+">")
-    logic=logic.replaceAll("<",sliderState+"<")
-    return(eval(logic));
-}
-function getBaseDomain() {
-    let host = window.location.host; // e.g., 'www.example.com', 'staging.example.com'
-    let parts = host.split('.');
-    if (parts.length > 2) {
-        // Remove the subdomain part (e.g., 'www', 'staging')
-        parts.shift();
-    }
-    return parts.join('.');
 }
 
 function polishPage(){
@@ -5182,6 +4404,15 @@ export async function loadPage(firstTime=false){
         updateKiSphereBuffs();
         updatePassiveStats();
         polishPage();
+        
+        const scale = Math.min(
+            document.body.scrollWidth /window.innerWidth,
+            document.body.scrollHeight/ window.innerHeight
+          );
+    
+        document.body.style.transform = `scale(${scale})`;
+        document.body.style.transformOrigin = "top left";
+
     }
     catch(error){
         console.error("Error loading page data", error);

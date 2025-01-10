@@ -1,26 +1,31 @@
 #column1{
   grid-column: 1;
   display:grid;
+  height:100vh;
 }
 
 #column2{
   grid-column: 2;
   display:grid;
+  height:100vh;
 }
 
 #column3{
   grid-column: 3;
   display:grid;
+  height:100vh;
 }
 
 #column4{
   grid-column: 4;
   display:grid;
+  height:100vh;
 }
 
 #column5{
   grid-column: 5;
   display:grid;
+  height:100vh;
 }
 
 
@@ -283,11 +288,11 @@
 }
 
 #character-icon {
+  aspect-ratio: 215/219;
   display: block;
   grid-column: 1;
   grid-row:1;
   gap: 0px;
-  aspect-ratio: 215/219;
   position: relative;
 }
 
@@ -316,20 +321,17 @@
   grid-column-start: 1;
   grid-column-end: 3;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  aspect-ratio: 500/140;
 }
 
 #equip-node-container{
   display:grid;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 3fr 1fr;
   width:100%;
   height:100%;
 }
 
 #equip-node-image{
   grid-row:1;
-  width: 100%;
-  height: 100%;
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center; 
@@ -337,18 +339,16 @@
 
 #equip-node-input{
   grid-row:2;
-  width: 89%;
-  height: 50%;
 }
 
 #hipo-button-container {
+  aspect-ratio: 1/1;
   position: relative;
   display:none;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   width: 250px;
   height: 100%;
-  aspect-ratio: 1/1;
   grid-row:1;
   grid-column:2;
 }
@@ -707,7 +707,8 @@
 #cards-body-container {
   display: grid;
   grid-template-columns: 22fr 10fr 29fr 17fr 17fr;
-  height: max-content;
+  height: 100vh;
+  width: 100vw;
   place-items: start;
 }
 
@@ -762,8 +763,8 @@
 }
 
 .unit-eza-image{
-  width:40%;
   aspect-ratio: 75/49;
+  width:40%;
   position:absolute;
   bottom:0;
   right:0px;
@@ -828,6 +829,45 @@
   pointer-events: none;
 }
 
+.unit-lr-animation{
+  aspect-ratio: 1/1;
+  display:none;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width:85%;
+  border:none;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.unit-lr-background{
+  aspect-ratio: 1/1;
+  display:none;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  top: 0%;
+  left: -2%;
+  width:100%;
+  border:none;
+  z-index: 2;
+  pointer-events: none;
+  animation: spin 20s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .unit-selection-button {
   background-size: 100% 100%;
   background-repeat: no-repeat;
@@ -860,7 +900,7 @@
   position: absolute;
   top: 6%;
   left: 0%;
-  z-index: 2;
+  z-index: 3;
   pointer-events: none;
 }
 
@@ -907,7 +947,6 @@
   grid-column: 3;
   grid-row: 1 ;
   
-  height: 40%;
   position: relative;
   
   overflow-y: auto;
@@ -918,7 +957,6 @@
 #passive-support-container{
   display: grid;
   grid-column: 1;
-  height:70px;
 
 }
 

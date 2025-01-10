@@ -66,6 +66,18 @@ export class unitDisplay{
       this.container.unitRarityImage.loading="eager";
       this.container.appendChild(this.container.unitRarityImage);
 
+      this.container.lrAnimation=document.createElement('img');
+      this.container.lrAnimation.className="unit-lr-animation";
+      this.container.lrAnimation.src="/dbManagement/assets/misc/lr_icon_animation.png";
+      this.container.lrAnimation.loading="eager";
+      this.container.appendChild(this.container.lrAnimation);
+
+      this.container.lrBackground=document.createElement('img');
+      this.container.lrBackground.className="unit-lr-background";
+      this.container.lrBackground.src="/dbManagement/assets/misc/lr_background.png";
+      this.container.lrBackground.loading="eager";
+      this.container.appendChild(this.container.lrBackground);
+
       this.container.unitThumbImage = document.createElement('img');
       this.container.unitThumbImage.className="unit-thumb-image";
       this.container.unitThumbImage.loading="lazy";
@@ -159,6 +171,14 @@ export class unitDisplay{
       this.rarityInt=rarityToInt(rarity);
       this.container.unitBackImage.src="/dbManagement/DokkanFiles/global/en/layout/en/image/character/character_thumb_bg/cha_base_0"+this.typeInt+"_0"+rarityToInt(this.rarity)+".png";
       this.container.unitRarityImage.src="/dbManagement/DokkanFiles/global/en/layout/en/image/character/cha_rare_sm_"+this.rarity+".png";
+      if(this.rarity=="lr"){
+        this.container.lrAnimation.style.display="block";
+        this.container.lrBackground.style.display="block";
+      }
+      else{
+        this.container.lrAnimation.style.display="none";
+        this.container.lrBackground.style.display="none";
+      }
     }
 
     setLevel(level){
