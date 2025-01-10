@@ -2,7 +2,7 @@ import { unitDisplay } from "./unitDisplay.js";
 let baseDomain=window.location.origin;
 
 class kiCircleClass{
-    constructor(passiveLineKey,CausalityLogic,performedChance,superChance){
+    constructor(passiveLineKey,CausalityLogic,performedChance,superChance,critChance){
         this.attack=0;
         this.defense=0;
         this.damageReduction=0;
@@ -19,6 +19,7 @@ class kiCircleClass{
         this.passiveLineKey=passiveLineKey;
         this.superChance=superChance
         this.performedChance=performedChance;
+        this.critChance=critChance;
         this.attackStat=0;
         this.displayedAttackStat=0;
         this.imageUrl = currentJson["Resource ID"];
@@ -34,22 +35,19 @@ class kiCircleClass{
         this.KiCircle.id="ki-circle";
         this.KiCircle.name=passiveLineKey;
         let queryCount=0;
-        if(this.superChance!=0 && this.superChance!=100){
+        if(this.critChance!=0){
             queryCount++
         }
-        if(this.performedChance!=0 && this.performedChance!=100){
+        if(this.superChance!=0 && this.superChance!=100 && this.passiveLineKey!="0" && this.passiveLineKey!="Active"){
+            queryCount++
+        }
+        if(this.performedChance!=0 && this.performedChance!=100 && this.passiveLineKey!="0" && this.passiveLineKey!="Active"){
             queryCount++
         }
         if(queryCount==0){
-            this.KiCircle.style.gridTemplateRows="230px";
+            this.KiCircle.style.gridTemplateRows="230px"+(" 35px".repeat(queryCount));
         }
-        else if(queryCount==1){
-            this.KiCircle.style.gridTemplateRows="230px 35px";
-        }
-        else if(queryCount==2){
-            this.KiCircle.style.gridTemplateRows="230px 35px 35px";
-        }
-        let setHeight=queryCount*35+230;
+        let setHeight=230+(queryCount*35);
         this.KiCircle.style.height=setHeight+"px";
 
         let circleBase=document.createElement("div");
@@ -152,67 +150,148 @@ class kiCircleClass{
         this.superAttackName.style.backgroundImage = "url('/dbManagement/DokkanFiles/global/en/character/card/"+this.imageUrl+"/en/card_"+this.imageUrl+"_sp_name.png')";
         this.superAttackName.style.display="none";
         this.KiCircle.appendChild(this.superAttackName);
+
+        let querySlotsTaken=0;
+        this.critChanceQuery=document.createElement("button");
+        this.critChanceQuery.id="crit-chance-query";
+        this.critChanceQuery.innerHTML="Does the "+this.critChance+"% chance to crit activate?"
+        this.critChanceQuery.passiveLineKey=this.passiveLineKey
+        this.critChanceQuery.style.cursor="pointer";
+        this.critChanceQuery.style.zIndex="6";
+        this.critChanceQuery.parentClass=this;
+        if(this.critChance==0){
+            this.critChanceQuery.style.background="#FF5C35";
+            this.critChanceQuery.style.display="none"
+            this.critPerformed=false
+        }
+        else if(this.critChance<100){
+            if(Math.random()<this.critChance/100){
+                this.critChanceQuery.style.background="#FF5C35";
+                this.critChanceQuery.style.display="block"
+                this.critPerformed=false
+                this.critChanceQuery.style.gridRow=querySlotsTaken+2;
+                querySlotsTaken++;
+            }
+            else{
+                this.critChanceQuery.style.background="#00FF00"
+                this.critChanceQuery.style.display="block"
+                this.critChanceQuery.classList.add("active");
+                this.critPerformed=true
+                this.critChanceQuery.style.gridRow=querySlotsTaken+2;
+                querySlotsTaken++;
+            }
+        }
+        else if(this.critChance==100){
+            this.critChanceQuery.style.background="#00FF00"
+            this.critChanceQuery.style.display="block"
+            this.critChanceQuery.classList.add("active");
+            this.critChanceQuery.style.pointerEvents="none";
+            this.critChanceQuery.style.cursor="default";
+            this.critPerformed=true
+            this.critChanceQuery.gridRow=querySlotsTaken+2;
+            querySlotsTaken++;
+        }
+
+        this.critChanceQuery.addEventListener(
+            "click", function(){
+                if(this.classList.contains("active")){
+                    this.parentClass.toggleCritPerformed(false);
+                }
+                else{
+                    this.parentClass.toggleCritPerformed(true);
+                }
+                updatePassiveStats();
+            }
+        )
+        this.KiCircle.appendChild(this.critChanceQuery);
+
         this.superChanceQuery=document.createElement("button");
         this.superChanceQuery.id="super-chance-query";
-        if(this.performedChance==0 || this.performedChance==100){
-            this.superChanceQuery.style.gridRow="2"
-        }
-        else{
-            this.superChanceQuery.style.gridRow="3"
-        }
         this.superChanceQuery.innerHTML="Does the "+this.superChance+"% chance this is a super attack activate?"
-        this.superChanceQuery.style.background="#FF5C35";
         this.superChanceQuery.passiveLineKey=this.passiveLineKey
         if(this.superChance==0){
+            this.superChanceQuery.style.background="#FF5C35";
             this.superChanceQuery.style.display="none"
             this.superPerformed=false
         }
-        else if(this.superChance==100 && this.passiveLineKey!="0"){
+        else if(this.superChance<100){
+            if(Math.random() < this.superChance/100){
+                this.superChanceQuery.style.display="block"
+                this.superChanceQuery.style.background="#FF5C35";
+                this.superPerformed=false;
+                this.superChanceQuery.style.gridRow=querySlotsTaken+2;
+                querySlotsTaken++;
+            }
+            else{
+                this.superChanceQuery.style.display="block"
+                this.superChanceQuery.style.background="#00FF00"
+                this.superChanceQuery.classList.add("active");
+                this.superPerformed=true
+                this.superChanceQuery.style.gridRow=querySlotsTaken+2;
+                querySlotsTaken++;
+            }
+        }
+        else if(this.superChance==100 && this.passiveLineKey!="0" && this.passiveLineKey!="active"){
+            this.superChanceQuery.style.background="#00FF00"
             this.superChanceQuery.style.display="none"
             this.superChanceQuery.classList.add("active");
             this.superPerformed=true
         }
-        else if(this.superChance==0){
-            this.superChanceQuery.style.display="none"
+        else if(this.passiveLineKey=="0" || this.passiveLineKey=="active"){
+            this.superChanceQuery.style.display="none";
         }
         
         this.superChanceQuery.style.cursor="pointer"
         this.superChanceQuery.style.zIndex = "6";
         this.superChanceQuery.parentClass=this
-        this.superChanceQuery.addEventListener('click', function(){
-            if(this.classList.contains("active")){
-                this.parentClass.togglesuperPerformed(false)
+        this.superChanceQuery.addEventListener(
+            'click', function(){
+                if(this.classList.contains("active")){
+                    this.parentClass.toggleSuperPerformed(false)
+                }
+                else{
+                    this.parentClass.toggleSuperPerformed(true)
+                }
+                updatePassiveStats();
             }
-            else{
-                this.parentClass.togglesuperPerformed(true)
-            }
-            updatePassiveStats()
-        })
-        if(this.passiveLineKey!="0"){
-            this.KiCircle.appendChild(this.superChanceQuery);
-        }
-        //this.superChanceQuery.style.transform = "translate(0px, 200px)";
+        )
+        this.KiCircle.appendChild(this.superChanceQuery);
         
 
         this.performedChanceQuery=document.createElement("button");
         this.performedChanceQuery.id="performed-chance-query";
-        this.performedChanceQuery.style.gridRow="2"
         this.performedChanceQuery.innerHTML="Does the "+this.performedChance+"% chance to attack activate?"
-        this.performedChanceQuery.style.background="#FF5C35";
         this.performedChanceQuery.passiveLineKey=this.passiveLineKey
         if(this.performedChance==0){
+            this.performedChanceQuery.style.background="#FF5C35";
             this.performedChanceQuery.style.display="none"
             this.superPerformed=false
         }
-        else if(this.performedChance==100){
+        else if(this.performedChance<100){
+            if(Math.random() < this.performedChance/100){
+                this.performedChanceQuery.style.background="#FF5C35";
+                this.performedChanceQuery.style.display="block"
+                this.attackPerformed=false;
+                this.performedChanceQuery.style.gridRow=querySlotsTaken+2;
+                querySlotsTaken++;
+            }
+            else{
+                this.performedChanceQuery.style.background="#00FF00";
+                this.performedChanceQuery.style.display="block"
+                this.attackPerformed=true
+                this.performedChanceQuery.classList.add("active");
+                this.performedChanceQuery.style.gridRow=querySlotsTaken+2;
+                querySlotsTaken++;
+            }            
+        }
+        else if(this.performedChance==100 && this.passiveLineKey!="0" && this.passiveLineKey!="active"){
+            this.performedChanceQuery.style.background="#00FF00";
             this.performedChanceQuery.style.display="none"
             this.performedChanceQuery.classList.add("active");
             this.attackPerformed=true
         }
-        else if(this.performedChance==0){
-            this.performedChanceQuery.style.display="none"
-            this.performedChanceQuery.classList.remove("active");
-            this.attackPerformed=false
+        else if(this.passiveLineKey=="0" || this.passiveLineKey=="active"){
+            this.performedChanceQuery.style.display="none";
         }
             
         this.performedChanceQuery.style.cursor="pointer"
@@ -242,6 +321,7 @@ class kiCircleClass{
         this.superAttackMultiplier=superBuffs["ATK"]/100 +1;
         this.damageReduction=buffs["Damage Reduction"];
         this.dodgeChance=buffs["Dodge Chance"];
+        this.critChance=buffs["Crit Chance"];
         if(activeMultipliers["Dodge"]!=null){
             this.dodgeChance+=(activeMultipliers["Dodge"]*100);
         }
@@ -301,6 +381,7 @@ class kiCircleClass{
                     if (!(superAttack["superBuffs"][superBuffKey]["Target"].includes("excluded") || superAttack["superBuffs"][superBuffKey]["Target"].includes("Enem"))){
                         this.superBuffs["ATK"]+=parseInt(superAttack["superBuffs"][superBuffKey]["ATK"]||0);
                         this.superBuffs["DEF"]+=parseInt(superAttack["superBuffs"][superBuffKey]["DEF"]||0);
+                        this.superBuffs["Crit Chance"]+=parseInt(superAttack["superBuffs"][superBuffKey]["Crit Chance"]||0);
                     }
                 }
             }
@@ -327,10 +408,10 @@ class kiCircleClass{
         
         this.attack*=1+linkBuffs["ATK"]/100;
         if(this.passiveLineKey=="Active"){
-            this.attack*=(this.activeAttackMultiplier+(activeMultipliers["ATK"]-1));
+            this.attack*=(this.activeAttackMultiplier+(1+activeMultipliers["ATK"]));
         }
         else{
-            this.attack*=activeMultipliers["ATK"];//Active boost
+            this.attack*=(1+activeMultipliers["ATK"]);//Active boost
         }
         this.attack*=(currentJson["Ki Multiplier"][this.Ki]/100);
         
@@ -344,6 +425,12 @@ class kiCircleClass{
             this.attack*=(this.finishBuffs);
         }
 
+        this.critChance=(buffs["Crit Chance"]+superBuffs["Crit"])/100;
+        this.critChance=(1-this.critChance)*(1-(skillOrbBuffs["Crit"]/100));
+        this.critChance=1-this.critChance;
+        this.changeCritChance(this.critChance);
+
+
 
         this.defense=baseStats["DEF"];
 
@@ -356,10 +443,10 @@ class kiCircleClass{
         
         this.defense*=1+linkBuffs["DEF"]/100;
         if(this.passiveLineKey=="Active"){
-            this.defense*=(this.activeAttackMultiplier+(activeMultipliers["DEF"]-1));
+            this.defense*=(this.activeAttackMultiplier+(activeMultipliers["DEF"]));
         }
         else{
-            this.defense*=activeMultipliers["DEF"];//Active boost
+            this.defense*=(1+activeMultipliers["DEF"]);//Active boost
         }
         
         this.defense*=(1+buffs["MOT DEF %"]/100)
@@ -400,10 +487,10 @@ class kiCircleClass{
         
         this.defense*=1+linkBuffs["DEF"]/100;
         if(this.passiveLineKey=="Active"){
-            this.defense*=(this.activeAttackMultiplier+(activeMultipliers["DEF"]-1));
+            this.defense*=(this.activeAttackMultiplier+(activeMultipliers["DEF"]));
         }
         else{
-            this.defense*=activeMultipliers["DEF"];//Active boost
+            this.defense*=(1+activeMultipliers["DEF"]);//Active boost
         }
         
         this.defense*=(1+buffs["MOT DEF %"]/100)
@@ -451,89 +538,6 @@ class kiCircleClass{
         }
         this.updateKi(this.Ki);
         return(this.Ki)
-    }
-
-    OLDupdateValue(targetValue,isSuper=true) {
-        targetValue=parseInt(targetValue);
-        if(targetValue=="-1"){
-            this.animating=false;
-            this.displayedAttackStat=-1;
-            while (this.damageText.firstChild) {
-                this.damageText.removeChild(this.damageText.firstChild);
-            }
-        }
-        else if(this.displayedAttackStat==targetValue){
-            return
-        }
-        else{
-            this.animating=true;
-            if(targetValue<0){
-                targetValue=0
-            }
-            else if(targetValue>2147483648){
-                targetValue=2147483648
-            }
-            this.attackStat = targetValue;
-            const duration = 500; // duration of the animation in milliseconds
-            const frameRate= 60;
-            const frameDuration = 1000 / frameRate; // 60 frames per second
-            const totalFrames = Math.round(duration / frameDuration);
-        
-            let startValue = this.displayedAttackStat;
-            let currentValue = startValue;
-            let increment = (targetValue - startValue) / totalFrames;
-            let currentFrame = 0;
-        
-            const animate = () => {
-                if(!this.animating){
-                    return
-                }
-                currentFrame++;
-                const progress = currentFrame / totalFrames;
-                currentValue = Math.round(startValue + increment * progress * totalFrames);
-        
-                // Update the damage text
-                while (this.damageText.firstChild) {
-                    this.damageText.removeChild(this.damageText.firstChild);
-                }
-        
-                for (let char of currentValue.toString()) {
-                    const numDiv = document.createElement('div');
-                    if(this.superPerformed){
-                        numDiv.className = "ki-damage-text-numDiv-red";
-                        numDiv.classList.add(`num-red-${char}`);
-                    }
-                    else{
-                        numDiv.className = "ki-damage-text-numDiv-yellow";
-                        numDiv.classList.add(`num-yellow-${char}`);
-                    }
-                    this.damageText.appendChild(numDiv);
-                }
-        
-                if (currentFrame < totalFrames) {
-                    requestAnimationFrame(animate);
-                } else {
-                    this.displayedAttackStat = this.attackStat; // Ensure the final value is set correctly
-                    while (this.damageText.firstChild) {
-                        this.damageText.removeChild(this.damageText.firstChild);
-                    }
-                    for (let char of currentValue.toString()) {
-                        const numDiv = document.createElement('div');
-                        if(this.superPerformed){
-                            numDiv.className = "ki-damage-text-numDiv-red";
-                            numDiv.classList.add(`num-red-${char}`);
-                        }
-                        else{
-                            numDiv.className = "ki-damage-text-numDiv-yellow";
-                            numDiv.classList.add(`num-yellow-${char}`);
-                        }
-                        this.damageText.appendChild(numDiv);
-                    }
-                }
-            };
-        
-            requestAnimationFrame(animate);
-        }
     }
 
     updateValue(targetValue) {
@@ -709,62 +713,112 @@ class kiCircleClass{
     }
 
     changeSuperChance(value){
-        let queryCount=0;
-        if(this.superChance!=0 && this.superChance!=100){
-            queryCount++
-        }
-        if(this.performedChance!=0 && this.performedChance!=100){
-            queryCount++
-        }
-        if(queryCount==0){
-            this.KiCircle.style.gridTemplateRows="230px";
-        }
-        else if(queryCount==1){
-            this.KiCircle.style.gridTemplateRows="230px 35px";
-        }
-        else if(queryCount==2){
-            this.KiCircle.style.gridTemplateRows="230px 35px 35px";
-        }
-        let setHeight=queryCount*35+230;
-        this.KiCircle.style.height=setHeight+"px";
-
-
         this.superChance=Math.round(value*10000)/100
         this.superChanceQuery.innerHTML="Does the "+this.superChance+"% chance this is a super attack activate?"
+
+        this.reAlignQueries();
+
         if(this.superChance==0){
-            if(this.superHasBeenPerformed==true){
-                this.superHasBeenPerformed=false;
-                updatePassiveStats();
+            if(this.superPerformed==true){
+                this.superPerformed=false;
+                updatePassiveStats;
             }
-            this.superChanceQuery.style.display="none";
         }
         else if(this.superChance==100){
-            if(this.superHasBeenPerformed==false){
-                this.superHasBeenPerformed=true;
+            if(this.superPerformed==false){
+                this.superPerformed=true;
                 updatePassiveStats();
             }
-            this.superChanceQuery.style.display="none";
-        }
-        else{
-            this.superChanceQuery.style.display="block";
-        }
-        if(this.attackPerformed==false){
-            this.superChanceQuery.style.display="none"
         }
         
     }
 
-    togglesuperPerformed(isActivated){
+    toggleSuperPerformed(isActivated){
         if(isActivated){
             this.superChanceQuery.classList.add("active")
             this.superChanceQuery.style.background="#00FF00"
             this.superPerformed=true
+            this.toggleAttackPerformed(true);
         }
         else{
             this.superChanceQuery.classList.remove("active")
             this.superChanceQuery.style.background="#FF5C35"
             this.superPerformed=false
         }
+    }
+
+    changePerformedChance(value){
+        this.performedChance=Math.round(value*10000)/100
+        this.performedChanceQuery.innerHTML="Does the "+this.performedChance+"% chance to perform an attack activate?"
+
+
+        this.reAlignQueries()
+
+        this.KiCircle.style.display="block";
+        this.performedChanceQuery.style.display="block";
+        if(this.performedChance==0){
+            if(this.attackPerformed==true){
+                this.attackPerformed=false;
+                this.KiCircle.style.display="none";
+                updatePassiveStats();
+            }
+        }
+        else if(this.performedChance==100){
+            if(this.attackPerformed==false){
+                this.attackPerformed=true;
+                this.performedChanceQuery.style.display="none";
+                updatePassiveStats();
+            }
+        }
+    }
+
+    reAlignQueries(){
+        let queryCount=0;
+        if(this.critChance!=0){
+            queryCount++
+        }
+        if(this.superChance!=0 && this.superChance!=100){
+            queryCount++
+        }
+        if(this.performedChance!=0 && this.performedChance!=100){
+            queryCount++
+        }
+        this.KiCircle.style.gridTemplateRows="230px"+(" 35px".repeat(queryCount));
+        let setHeight=230+(queryCount*35);
+        this.KiCircle.style.height=setHeight+"px";
+
+        let querySlotsUsed=0;
+
+        if(this.critChance==0){
+            this.critChanceQuery.style.display="none";
+        }
+        else{
+            this.critChanceQuery.style.display="block";
+            this.critChanceQuery.style.gridRow=querySlotsUsed+2;
+            querySlotsUsed++;
+        }
+
+        if(this.performedChance==100 || this.passiveLineKey=="0" || this.passiveLineKey=="Active"){
+            this.performedChanceQuery.style.display="none";
+        }
+        else if(this.performedChance==0){
+            this.KiCircle.style.display="none";
+        }
+        else{
+            this.performedChanceQuery.style.display="block";    
+            this.performedChanceQuery.style.gridRow=querySlotsUsed+2;
+            querySlotsUsed++;
+        }
+
+        if(this.superChance==0 || this.passiveLineKey=="0" || this.passiveLineKey=="Active"){
+            this.superChanceQuery.style.display="none";
+        }
+        else{
+            this.superChanceQuery.style.display="block";
+            this.superChanceQuery.style.gridRow=querySlotsUsed+2;
+            querySlotsUsed++;
+        }
+
     }
 
     toggleAttackPerformed(isActivated){
@@ -780,57 +834,41 @@ class kiCircleClass{
             this.performedChanceQuery.classList.remove("active")
             this.performedChanceQuery.style.background="#FF5C35"
             this.attackPerformed=false
-            this.superChanceQuery.style.display="none"
+            this.toggleSuperPerformed(false);
         }
     }
 
-    changePerformedChance(value){
-        this.performedChance=Math.round(value*10000)/100
-        this.performedChanceQuery.innerHTML="Does the "+this.performedChance+"% chance to perform an attack activate?"
+    changeCritChance(value){
+        this.critChance=Math.min(Math.round(value*10000)/100,100);
+        this.critChanceQuery.innerHTML="Does the "+this.critChance+"% chance to crit activate?"
 
+        this.reAlignQueries();
 
-        let queryCount=0;
-        if(this.superChance!=0 && this.superChance!=100){
-            queryCount++
+        if(this.critChance==0){
+            this.toggleCritPerformed(false);
         }
-        if(this.performedChance!=0 && this.performedChance!=100){
-            queryCount++
-        }
-        if(queryCount==0){
-            this.KiCircle.style.gridTemplateRows="230px";
-        }
-        else if(queryCount==1){
-            this.KiCircle.style.gridTemplateRows="230px 35px";
-        }
-        else if(queryCount==2){
-            this.KiCircle.style.gridTemplateRows="230px 35px 35px";
-        }
-        let setHeight=queryCount*35+230;
-        this.KiCircle.style.height=setHeight+"px";
-
-
-        if(this.performedChance==0){
-            this.superChanceQuery.style.gridRow="2";
-            if(this.attackPerformed==true){
-                this.attackPerformed=false;
-                updatePassiveStats();
-            }
-            this.performedChanceQuery.style.display="none";
-        }
-        else if(this.performedChance==100){
-            this.superChanceQuery.style.gridRow="2";
-            if(this.attackPerformed==false){
-                this.attackPerformed=true;
-                updatePassiveStats();
-            }
-            this.performedChanceQuery.style.display="none";
+        if(this.critChance==100){
+            this.critChanceQuery.style.cursor="default";
+            this.critChanceQuery.style.pointerEvents="none";
+            this.toggleCritPerformed(true);
         }
         else{
-            this.superChanceQuery.style.gridRow="3";
-            this.performedChanceQuery.style.display="block";
+            this.critChanceQuery.style.pointerEvents="auto";
+            this.critChanceQuery.style.cursor="pointer";
+
         }
-        if(this.performedChance==0){
-            this.KiCircle.style.display="none";
+    }
+    
+    toggleCritPerformed(isActivated){
+        if(isActivated){
+            this.critChanceQuery.classList.add("active")
+            this.critChanceQuery.style.background="#00FF00"
+            this.critPerformed=true
+        }
+        else{
+            this.critChanceQuery.classList.remove("active")
+            this.critChanceQuery.style.background="#FF5C35"
+            this.critPerformed=false
         }
     }
 
@@ -840,35 +878,6 @@ class kiCircleClass{
         }
         else{
             this.KiCircle.style.display="none";
-        }
-    }
-    OLDdisplay(thisDisplayed){
-        if(this.passiveLineKey=="0"){
-            if(regularAttacksPerformed){        
-                this.KiCircle.style.display="grid";
-            }
-            else{
-                this.KiCircle.style.display="none";
-            }
-        }
-        else if(this.passiveLineKey=="Predictor"){
-            this.KiCircle.style.display="none";
-        }
-        else if(this.passiveLineKey=="Finish"){
-            if(thisDisplayed){
-                this.KiCircle.style.display="grid";
-            }
-            else{
-                this.KiCircle.style.display="none";
-            }
-        }
-        else{
-            if(thisDisplayed){
-                this.KiCircle.style.display="grid";
-            }
-            else{
-                this.KiCircle.style.display="none";
-            }
         }
     }
 
@@ -1452,7 +1461,7 @@ let supportBuffs={"ATK": 0, "DEF":0, "Dodge":0, "Crit": 0}
 let currentKiSphere;
 let currentKiSphereAmount=0;
 let rainbowKiSphereAmount=0;
-let activeMultipliers={"ATK":1,"DEF":1};
+let activeMultipliers={"ATK":0,"DEF":0,"Effective against all":false,"Guard":false,"Dodge Chance":0,"Crit Chance":0,"Redirect attacks to me":false};
 
 let currentDomain=null;
 let kiSources={"leader":6,"Support":0,"Links":0,"Active":0,"Domain":0,"Orbs":0};
@@ -3167,13 +3176,13 @@ function createKiCirclesWithClass(){
     for(const attack in additionalAttacks){
         let kiCircle;
         if(attack=="0"){        
-            kiCircle = new kiCircleClass(attack,queriesToLogic(passiveQueryList),100,100);
+            kiCircle = new kiCircleClass(attack,queriesToLogic(passiveQueryList),100,100,0);
         }
         else if(attack=="Hidden potential"||additionalAttacks[attack]=="Predictor" ){
-            kiCircle = new kiCircleClass(attack,queriesToLogic(passiveQueryList),0,0);
+            kiCircle = new kiCircleClass(attack,queriesToLogic(passiveQueryList),0,0,0);
         }
         else{
-            kiCircle = new kiCircleClass(attack,queriesToLogic(passiveQueryList),currentJson["Passive"][attack]["Chance"]||100,currentJson["Passive"][attack]["Additional Attack"]["Chance of super"]);
+            kiCircle = new kiCircleClass(attack,queriesToLogic(passiveQueryList),currentJson["Passive"][attack]["Chance"]||100,currentJson["Passive"][attack]["Additional Attack"]["Chance of super"],0);
         }
         kiCircleDictionary[attack]=(kiCircle);
         if(attack==0){
@@ -4073,7 +4082,7 @@ function createFinishContainer(){
             }
             finishcontainer.appendChild(finishcontainer.Button);
 
-            finishcontainer.kiCircle=new kiCircleClass("Finish",queriesToLogic(passiveQueryList),100,100);
+            finishcontainer.kiCircle=new kiCircleClass("Finish",queriesToLogic(passiveQueryList),100,100,0);
             finishcontainer.kiCircle.updateKi("24");
             finishcontainer.appendChild(finishcontainer.kiCircle.getElement());
         }
@@ -4136,7 +4145,7 @@ function createActiveContainer(){
                 activecontainer.Button.style.background="#FF5C35"
                 activecontainer.Button.classList.remove('active');
                 activeAttackPerformed=false
-                activeMultipliers={"ATK":1,"DEF":1}
+                activeMultipliers={"ATK":0,"DEF":0,"Effective against all":false,"Guard":false,"Dodge Chance":0,"Crit Chance":0,"Redirect attacks to me":false}
                 kiSources["Active"]=0
               }
               else{
@@ -4157,18 +4166,18 @@ function createActiveContainer(){
                     }
                     else if(effect["Effect"]["Buff"]=="ATK Buff"){
                         if(effect["Effect"]["+ or -"]=="+"){
-                            activeMultipliers["ATK"]=1+(effect["Effect"]["Amount"]/100);
+                            activeMultipliers["ATK"]=(effect["Effect"]["Amount"]/100);
                         }
                         else{
-                            activeMultipliers["ATK"]=1-(effect["Effect"]["Amount"]/100);
+                            activeMultipliers["ATK"]=(effect["Effect"]["Amount"]/100);
                         }
                     }
                     else if(effect["Effect"]["Buff"]=="DEF Buff"){
                         if(effect["Effect"]["+ or -"]=="+"){
-                            activeMultipliers["DEF"]=1+(effect["Effect"]["Amount"]/100);
+                            activeMultipliers["DEF"]=(effect["Effect"]["Amount"]/100);
                         }
                         else{
-                            activeMultipliers["DEF"]=1-(effect["Effect"]["Amount"]/100);
+                            activeMultipliers["DEF"]=(effect["Effect"]["Amount"]/100);
                         }
                     }
                     else if(effect["Effect"]["Buff"]=="Dodge Chance"){
@@ -4179,6 +4188,23 @@ function createActiveContainer(){
                             activeMultipliers["Dodge"]=-(effect["Effect"]["Amount"]/100);
                         }
                     }
+                    else if(effect["Effect"]["Buff"]=="Crit Chance"){
+                        if(effect["Effect"]["+ or -"]=="+"){
+                            activeMultipliers["Crit"]=(effect["Effect"]["Amount"]/100);
+                        }
+                        else{
+                            activeMultipliers["Crit"]=-(effect["Effect"]["Amount"]/100);
+                        }
+                    }
+                    else if(effect["Effect"]["Buff"]=="Effective against all"){
+                        activeMultipliers["Effective against all"]=true;
+                    }
+                    else if(effect["Effect"]["Buff"]=="Guard"){
+                        activeMultipliers["Guard"]=true;
+                    }
+                    else if(effect["Effect"]["Buff"]=="Redirect attacks to me"){
+                        activeMultipliers["Redirect attacks to me"]=true;
+                    }
                     else{
                         console.log("UNACCOUNTED ACTIVE BUFF",effect["Effect"]["Buff"]);
                     }
@@ -4188,7 +4214,7 @@ function createActiveContainer(){
             }
             activecontainer.appendChild(activecontainer.Button);
 
-            activecontainer.kiCircle=new kiCircleClass("Active",queriesToLogic(passiveQueryList),100,100);
+            activecontainer.kiCircle=new kiCircleClass("Active",queriesToLogic(passiveQueryList),100,100,0);
             if(!("Attack" in currentJson["Active Skill"])){
                 activecontainer.kiCircle.display(false);
             }
