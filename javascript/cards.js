@@ -4349,18 +4349,27 @@ function isEmptyDictionary(dictionary){
 }
 
 function polishPage(){
-    const passiveQueryContainer=document.getElementById("passive-query-container");
-    if(passiveQueryContainer.firstChild==null){
-        passiveQueryContainer.style.display="none";
+    if(document.getElementById("passive-query-container").firstChild==null){
+        document.getElementById("passive-query-container").style.display="none";
     }
     else{
-        passiveQueryContainer.style.display="block";
+        document.getElementById("passive-query-container").style.display="block";
     }
 
-    const activeContainer=document.getElementById("active-container");
-    if(activeContainer.firstChild==null){
-        activeContainer.style.display="none";
+    if(document.getElementById("active-container").firstChild==null){
+        document.getElementById("active-container").style.display="none";
     }
+
+    if(document.getElementById("finish-container").firstChild==null){
+        document.getElementById("finish-container").style.display="none";
+    }
+
+    if(document.getElementById("active-container").firstChild==null && document.getElementById("finish-container").firstChild==null){
+        document.getElementById("column5").style="none";
+        document.getElementById("cards-body-container").style.gridTemplateColumns="22fr 10fr 29fr 17fr";
+    }
+
+
 
     if(regularAttacksPerformed==false){
         document.getElementById("ki-container").style.display="none";
