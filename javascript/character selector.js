@@ -98,6 +98,7 @@ function createFilterOption(){
   filterTextInput.type="text";
   filterTextInput.id="currentFilterInput";
   filterTextInput.placeholder="Enter text to filter by";
+  filterTextInput.setAttribute('autocomplete', 'off');
   filterTextInput.addEventListener('input', function() {
     currentFilterValue = this.value;
     reFilterCards();

@@ -26,18 +26,34 @@ export function rarityToInt(rarity){
     }
   }
   
-  export function typeToInt(type){
-    switch(type){
-      case "AGL":
-        return 0;
-      case "TEQ":
-        return 1;
-      case "INT":
-        return 2;
-      case "STR":
-        return 3;
-      case "PHY":
-        return 4;
+  export function typeToInt(type,advantageConcern=false){
+    if(advantageConcern){
+      switch(type){
+        case "STR":
+          return 4;
+        case "PHY":
+          return 3;
+        case "INT":
+          return 2;
+        case "TEQ":
+          return 1;
+        case "AGL":
+          return 0;
+      }
+    }
+    else{
+      switch(type){
+        case "AGL":
+          return 0;
+        case "TEQ":
+          return 1;
+        case "INT":
+          return 2;
+        case "STR":
+          return 3;
+        case "PHY":
+          return 4;
+      }
     }
   }
   export function getresourceID(unitID){

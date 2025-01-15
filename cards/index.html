@@ -78,6 +78,33 @@
     <div id="column5">
         <div id="active-container" class="active-container"></div>
         <div id="finish-container" class="finish-container"></div>
+        <div id="enemy-interaction-container" class="enemy-interaction-container">
+            <div id="enemy-details-selection" class="enemy-defending-details-selection">
+                <text>Please Input Enemy details</text>
+                <div id="enemy-defending-class-typing-selection" class="class-typing-selection"></div>
+                <div id="enemy-stats-input" class="enemy-stats-input">
+                    <input type="text" id="enemy-ATK-input" class="enemy-ATK-input" placeholder="ATK" autocomplete="off">
+                    <input type="text" id="enemy-DEF-input" class="enemy-DEF-input" placeholder="DEF" autocomplete="off" >
+                    <input type="text" id="enemy-DR-input" class="enemy-DR-input" placeholder="DR" autocomplete="off" >
+                    <input text="text" id="enemy-ATK-threshold-input" class="enemy-ATK-threshold-input" placeholder="ATK Threshold" autocomplete="off" >
+                </div>
+            </div>
+            <div id="specific-moment-details-selection" class="specific-moment-details-selection">
+                <text>Which attack do you want to see the damage of?</text>
+                <select id="attack-performed-selector" class="attack-performed-selector"></select>
+                <text>Do you want to see defensive capabilities before or after attacking?</text>
+                <div id="before-or-after-attack-selector" class="before-or-after-attack-selector">
+                    <input type="radio" name="attack-timing" id="attack-timing-before" class="attack-timing">Before</option>
+                    <input type="radio" name="attack-timing" id="attack-timing-after" class="attack-timing" checked>After</option>
+                </div>
+
+                <div id="enemy-final-numbers" class="enemy-final-numbers">
+                    <label id="enemy-attack-taken" class="enemy-attack-taken"></label>
+                    <label id="enemy-attack-dealt" class="enemy-attack-dealt"></label>
+
+                </div>
+            </div>
+        </div>
     </div>
 </div id="cards-body-container">
 </html>

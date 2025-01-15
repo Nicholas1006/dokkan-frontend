@@ -1,4 +1,4 @@
-import { unitDisplay } from "./unitDisplay.js";
+import { unitDisplay, typeToInt, classToInt } from "./unitDisplay.js";
 let baseDomain=window.location.origin;
 
 class kiCircleClass{
@@ -13,8 +13,8 @@ class kiCircleClass{
         this.attackPerformed=false;
         this.Ki=0;
         this.displayedKi=0;
-        if(performedChance==100){
-            this.attackPerformed=false
+        if(performedChance==100 || passiveLineKey=="0" ){
+            this.attackPerformed=true
         }
         this.passiveLineKey=passiveLineKey;
         this.superChance=superChance
@@ -266,6 +266,7 @@ class kiCircleClass{
             this.performedChanceQuery.style.background="#FF5C35";
             this.performedChanceQuery.style.display="none"
             this.superPerformed=false
+            this.attackPerformed=false
         }
         else if(this.performedChance<100){
             if(Math.random() < this.performedChance/100){
@@ -721,7 +722,7 @@ class kiCircleClass{
         if(this.superChance==0){
             if(this.superPerformed==true){
                 this.superPerformed=false;
-                updatePassiveStats;
+                updatePassiveStats();
             }
         }
         else if(this.superChance==100){
@@ -1267,6 +1268,7 @@ class passiveButton{
         this.element.innerHTML = this.label;
         this.element.value = this.value;
         this.element.style.background="#FF5C35"
+        this.element.style.cursor = "pointer";
         this.element.onclick = function(){
             if(this.classList.contains('active')){
                 this.classList.remove('active');
@@ -1471,6 +1473,15 @@ let passiveQueryList=[];
 let passiveChanceList={};
 let startingCausalityList=[];
 let relevantPassiveEffects=["Ki","ATK","Heals","DEF","Guard","Disable Other Line","Dodge chance","Crit Chance","DR","Additional Attack"]
+
+let attackRecievedTiming="after";
+let enemyClass="Super";
+let enemyTyping="INT";
+let enemyATK=0;
+let enemyDEF=0;
+let enemyDR=0;
+let enemyATKThreshold=0;
+
 
 function getJsonPromise(prefix,name,suffix) {
     return fetch(prefix + name + suffix)
@@ -1811,22 +1822,26 @@ function updatePassiveStats(){
             }
         }
         //if super is actually performed
-        if(kiCircleDictionary[nextLineToActivate]["superPerformed"]){
+        if(kiCircleDictionary[nextLineToActivate]["superChanceQuery"].classList.contains("active")){
             progressCausalityLogic(iteratingCausalityLogic,"Right before super attack");
+            kiCircleDictionary[nextLineToActivate].toggleSuperPerformed(true);
         }
         //if normal is actually performed
-        else if(kiCircleDictionary[nextLineToActivate]["attackPerformed"]){
+        else if(kiCircleDictionary[nextLineToActivate]["performedChanceQuery"].classList.contains("active")){
             progressCausalityLogic(iteratingCausalityLogic,"Right before normal attack");
+            kiCircleDictionary[nextLineToActivate].toggleAttackPerformed(true);
         }
         else{
             kiCircleDictionary[nextLineToActivate].updateValue(0);
             kiCircleDictionary[nextLineToActivate].updateKi(0);
+            kiCircleDictionary[nextLineToActivate].toggleSuperPerformed(false);
+            kiCircleDictionary[nextLineToActivate].toggleAttackPerformed(false);
         }
 
         kiCircleDictionary[nextLineToActivate].changeGridRow(iteratingAttackRow);
         iteratingAttackRow++;
         kiCircleDictionary[nextLineToActivate].display(true);    
-        if(kiCircleDictionary[nextLineToActivate]["attackPerformed"]){
+        if(kiCircleDictionary[nextLineToActivate]["performedChanceQuery"].classList.contains("active")){
             lastAttack=nextLineToActivate;
             //currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(SOT stat)",iteratingCausalityLogic)
             //currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(MOT stat)",iteratingCausalityLogic)
@@ -1844,7 +1859,6 @@ function updatePassiveStats(){
             iteratingSuperAttackBuffs=kiCircleDictionary[nextLineToActivate].superBuffs;
         }
         else{
-
         }
         
         //if super is actually performed
@@ -1880,6 +1894,13 @@ function updatePassiveStats(){
             additionalAttacks[additional]="Unactivated";
             kiCircleDictionary[additional].display(false);
             kiCircleDictionary[additional].updateValue(0);
+            kiCircleDictionary[additional].attackPerformed=false;
+        }
+    }
+
+    for (const additional in additionalAttacks){
+        if(additionalAttacks[additional]=="Unactivated"){
+            kiCircleDictionary[additional].attackPerformed=false;
         }
     }
 
@@ -1907,6 +1928,7 @@ function updatePassiveStats(){
         finalStatsString+="Guard against all: "+"\n";
     }
     document.getElementById("final-stats").innerText=finalStatsString;
+    updateDamageTakenQueryContainer();
 }
 
 
@@ -2572,6 +2594,7 @@ function createLeaderStats(){
     seperateOrJoin.gridColumn="1";
     seperateOrJoin.id="seperate-or-join-leader";
     seperateOrJoin.classList.add('JointLeader');
+    seperateOrJoin.style.cursor="pointer";
     seperateOrJoin.addEventListener('click', function(){
       if(seperateOrJoin.classList.contains("SeperateLeader")){
         seperateOrJoin.classList.remove('SeperateLeader');
@@ -3683,7 +3706,6 @@ function createSuperAttackContainer(){
     }
 }
 
- // Function to update the image container with a new image
  function updateCharacterIcon(){
     const imageContainer = document.getElementById("character-icon");
     while (imageContainer.firstChild) {
@@ -4227,6 +4249,296 @@ function createActiveContainer(){
     }
 }
 
+function createDamageTakenContainer(){
+    const damageTakenContainer=document.getElementById("enemy-defending-details-selection");
+    const enemyTypingSelection = document.getElementById("enemy-defending-class-typing-selection");
+    let columnCount=1;
+    for (const possibleEnemyTyping of ["AGL","TEQ","INT","STR","PHY"]){
+        const option=document.createElement("div");
+        option.referenceTyping=possibleEnemyTyping;
+        option.referenceData="Typing";
+        option.style.backgroundImage='url("/dbManagement/DokkanFiles/global/en/layout/en/image/character/cha_type_icon_0'+typeToInt(possibleEnemyTyping)+'.png")';
+        if(possibleEnemyTyping!=enemyTyping){
+            option.style.filter="grayscale(90%)";
+        }
+        option.id="enemy-defending-class"+possibleEnemyTyping;
+        option.className="enemy-defending-class-typing";
+        option.style.gridRow="1";
+        option.style.cursor="pointer";
+        option.style.gridColumn=columnCount++;
+        enemyTypingSelection.appendChild(option);
+        option.addEventListener(
+            "click", function(){
+                enemyTyping=possibleEnemyTyping;
+                updateDamageTakenQueryContainer();
+            }
+        )
+    }
+
+    columnCount=2;
+    for (const possibleEnemyClass of ["Super","None","Extreme"]){
+        const option=document.createElement("div");
+        option.referenceClass=possibleEnemyClass;
+        option.referenceData="Class";
+        option.style.backgroundImage='url("/dbManagement/DokkanFiles/global/en/layout/en/image/character/cha_type_icon_'+classToInt(possibleEnemyClass)+typeToInt(enemyTyping)+'.png")';
+        if(possibleEnemyClass!=enemyClass){
+            option.style.filter="grayscale(90%)";
+        }
+        option.id="enemy-defending-typing"+possibleEnemyClass;
+        option.className="enemy-defending-class-typing";
+        option.style.gridColumn=columnCount++;
+        option.style.gridRow="2";
+        option.style.cursor="pointer";
+        enemyTypingSelection.appendChild(option);
+        option.addEventListener(
+            "click", function(){
+                enemyClass=possibleEnemyClass;
+                updateDamageTakenQueryContainer();
+            }
+        )
+
+        //remove once you figure out the advantage for None
+        if(possibleEnemyClass=="None"){
+            option.style.display="none";
+        }
+    }
+    //creating enemy typing and class complete
+    const atkInput = document.getElementById("enemy-ATK-input");
+
+    atkInput.addEventListener("input", function(){
+      // Remove any non-digit characters (except for commas)
+      let value = this.value.replace(/,/g, "").replace(/\D/g, "");
+
+      // Format the number with commas
+      const formattedValue = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+      // Update the input's value with the formatted number
+      this.value = formattedValue;
+      enemyATK=value;
+      updateDamageTakenQueryContainer();
+    });
+
+
+    const defInput = document.getElementById("enemy-DEF-input");
+
+    defInput.addEventListener("input", function(){
+      // Remove any non-digit characters (except for commas)
+      let value = this.value.replace(/,/g, "").replace(/\D/g, "");
+
+      // Format the number with commas
+      const formattedValue = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+      // Update the input's value with the formatted number
+      this.value = formattedValue;
+      enemyDEF=value;
+      updateDamageTakenQueryContainer();
+    });
+    
+    const drInput = document.getElementById("enemy-DR-input");
+    
+    drInput.addEventListener("input", function(){
+        // Remove any non-digit characters (except for commas)
+        let value = this.value.replace(/,/g, "").replace(/\D/g, "");
+        
+        //limit the damageReduction to 100%
+        if(value>100){
+            value=100;
+        }
+        
+        this.value=value;
+        enemyDR=value;
+        updateDamageTakenQueryContainer();
+    })
+    
+    const atkThresholdInput = document.getElementById("enemy-ATK-threshold-input");
+
+    atkThresholdInput.addEventListener("input", function(){
+        // Remove any non-digit characters (except for commas)
+        let value = this.value.replace(/,/g, "").replace(/\D/g, "");
+
+        // Format the number with commas
+        const formattedValue = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+        // Update the input's value with the formatted number
+        this.value = formattedValue;
+        enemyATKThreshold=value;
+        updateDamageTakenQueryContainer();
+    });
+    //creating enemy stats input complete
+    
+    
+    const beforeAttackTimnig=document.getElementById("attack-timing-before");
+    beforeAttackTimnig.addEventListener(
+        "input", function(){
+            attackRecievedTiming="before";
+            updateEnemyNumbers();
+        }
+    )
+    const afterAttackTimnig=document.getElementById("attack-timing-after");
+    afterAttackTimnig.addEventListener(
+        "input", function(){
+            attackRecievedTiming="after";
+            updateEnemyNumbers();
+        }
+    )
+}
+
+function updateDamageTakenQueryContainer(){
+    for (const option of document.getElementsByClassName("enemy-defending-class-typing")){
+        if(option.referenceData=="Typing"){
+            option.style.filter="grayscale(85%)";
+            if(option.referenceTyping==enemyTyping){
+                option.style.filter="grayscale(0%)";
+            }
+        }
+        else if(option.referenceData=="Class"){
+            option.style.backgroundImage='url("/dbManagement/DokkanFiles/global/en/layout/en/image/character/cha_type_icon_'+classToInt(option.referenceClass)+typeToInt(enemyTyping)+'.png")';
+            option.style.filter="grayscale(85%)";
+            if(option.referenceClass==enemyClass){
+                option.style.filter="grayscale(0%)";
+            }
+        }
+    }
+    //fixing enemyTyping and class complete
+
+    //create specific attack details selection
+    const attackperformedselector = document.getElementById("attack-performed-selector");
+    while (attackperformedselector.firstChild) {
+        attackperformedselector.removeChild(attackperformedselector.firstChild);
+    }
+    let attackCount=1;
+    for (const attack of Object.values(kiCircleDictionary)){
+        if(attack.attackPerformed){
+            const option=document.createElement("option");
+            option.value=attack.passiveLineKey;
+            option.textContent=attackCount++ + ": " + Math.floor(attack.getAttack()).toLocaleString('en-US');
+            attackperformedselector.appendChild(option);
+        }
+    }
+    const option=document.createElement("option");
+    option.value="all";
+    option.textContent="All";
+    attackperformedselector.appendChild(option);
+
+    updateEnemyNumbers()
+}
+
+function updateEnemyNumbers(){
+    const enemyAttackTaken=document.getElementById("enemy-attack-taken");
+    let attackDealt;
+    if(document.getElementById("attack-performed-selector").value=="all"){
+        attackDealt=0;
+        for (const attack of Object.values(kiCircleDictionary)){
+            if(attack.attackPerformed){
+                attackDealt=calculateAttackRecieved(
+                    attackDealt.getAttack(),
+                    attackDealt.effectiveAgainstAll,
+                    attackDealt.critPerformed,
+                    currentJson["Type"],
+                    currentJson["Class"],
+                    skillOrbBuffs["Attack"],
+        
+        
+                    enemyDEF,
+                    enemyDR,
+                    enemyTyping,
+                    enemyClass,
+                    enemyATKThreshold,
+                    0//skillOrbBuffs["Defense"],
+                );
+            }
+        }
+    }
+    else{
+        attackDealt=calculateAttackRecieved(
+            kiCircleDictionary[document.getElementById("attack-performed-selector").value].getAttack(),
+            kiCircleDictionary[document.getElementById("attack-performed-selector").value].effectiveAgainstAll,
+            kiCircleDictionary[document.getElementById("attack-performed-selector").value].critPerformed,
+            currentJson["Type"],
+            currentJson["Class"],
+            skillOrbBuffs["Attack"],
+
+
+            enemyDEF,
+            enemyDR,
+            enemyTyping,
+            enemyClass,
+            enemyATKThreshold,
+            0,//skillOrbBuffs["Defense"],
+            false
+        );
+    }
+    enemyAttackTaken.innerHTML=attackDealt.toLocaleString('en-US');
+
+
+    const enemyAttackDealt=document.getElementById("enemy-attack-dealt");
+}
+
+function calculateAttackRecieved(
+    attackerAttack,
+    attackerEffectiveAgainstAll,
+    attackerCritPerformed,
+    attackerTyping,
+    attackerClass,
+    attackerSkillOrbBuffAttack,
+    defenderDEF,
+    defenderDR,
+    defenderTyping,
+    defenderClass,
+    defenderATKThreshold,
+    defenderSkillOrbBuffDefense,
+    defenderPassiveGuard){
+
+
+    let advantageMultiplier=advantageCalculator(attackerTyping, attackerClass, defenderTyping, defenderClass,defenderPassiveGuard);
+    let variance=1;
+    let attackDealt=attackerAttack * (1-defenderDR) * advantageMultiplier * variance;
+    return(attackDealt);
+    }
+
+//WIP
+function advantageCalculator(attackerTyping, attackerClass, defenderTyping, defenderClass,defenderGuard){
+    let attackerAdvantage=(typeToInt(attackerTyping,true)-typeToInt(defenderTyping,true));
+    if(attackerAdvantage==4){
+        attackerAdvantage=-1;
+    }
+    else if(attackerAdvantage==3 || attackerAdvantage==2){
+        attackerAdvantage=0;
+    }
+    if(defenderGuard){
+        return(0.8);
+    }
+    else{
+        switch(attackerAdvantage){
+            case -1:
+                if(attackerClass==defenderClass){
+                    return(0.9);
+                }
+                else{
+                    return(1);
+                }
+            case 0:
+                if(attackerClass==defenderClass){
+                    return(1);
+                }
+                else{
+                    return(1.15);
+                }
+            case 1:
+                if(attackerClass==defenderClass){
+                    return(1.25);
+                }
+                else{
+                    return(1.5);
+                }
+        }
+    }
+
+
+    
+}
+
+
 function dictionaryRemove(dictionary, key){
     if(key in dictionary){
         delete dictionary[key];
@@ -4364,10 +4676,6 @@ function polishPage(){
         document.getElementById("finish-container").style.display="none";
     }
 
-    if(document.getElementById("active-container").firstChild==null && document.getElementById("finish-container").firstChild==null){
-        document.getElementById("column5").style="none";
-        document.getElementById("cards-body-container").style.gridTemplateColumns="22fr 10fr 29fr 17fr";
-    }
 
 
 
@@ -4423,6 +4731,7 @@ export async function loadPage(firstTime=false){
             createDomainContainer();
             createStatsContainer();
             createKiSphereContainer();
+            createDamageTakenContainer();
         }
         else{
             //document.getElementById('ki-slider').dispatchEvent(new Event('input'));	
@@ -4438,6 +4747,7 @@ export async function loadPage(firstTime=false){
         createKiCirclesWithClass();
         updateKiSphereBuffs();
         updatePassiveStats();
+        updateDamageTakenQueryContainer();
         polishPage();
         
         const scale = Math.min(
