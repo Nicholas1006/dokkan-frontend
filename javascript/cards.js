@@ -1481,6 +1481,8 @@ let enemyATK=0;
 let enemyDEF=0;
 let enemyDR=0;
 let enemyATKThreshold=0;
+let startingStats={};
+let finalStats={};
 
 
 function getJsonPromise(prefix,name,suffix) {
@@ -1735,7 +1737,7 @@ function updatePassiveStats(){
     }
     kiCircleDictionary[0].updateDefensiveFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
 
-    let startingStats={};
+    startingStats={};
     startingStats["Defense"]=kiCircleDictionary[0].getDefense();
     startingStats["Dodge chance"]=Math.min(kiCircleDictionary[0].getDodgeChance(),100)/100;
     startingStats["Dodge chance"]=1 - (1-(startingStats["Dodge chance"]))*(1-(skillOrbBuffs["Evasion"]/100));
@@ -1907,7 +1909,7 @@ function updatePassiveStats(){
     currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"All","Building Stat",iteratingCausalityLogic)
     kiCircleDictionary[lastAttack].updateDefensiveFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
 
-    let finalStats={}
+    finalStats={}
     
     finalStats["Defense"]= kiCircleDictionary[lastAttack].getDefense();
     finalStats["Dodge chance"]= Math.min(kiCircleDictionary[lastAttack].getDodgeChance(),100)/100;
@@ -1929,6 +1931,7 @@ function updatePassiveStats(){
     }
     document.getElementById("final-stats").innerText=finalStatsString;
     updateDamageTakenQueryContainer();
+    updateEnemyNumbers();
 }
 
 
@@ -4297,10 +4300,6 @@ function createDamageTakenContainer(){
             }
         )
 
-        //remove once you figure out the advantage for None
-        if(possibleEnemyClass=="None"){
-            option.style.display="none";
-        }
     }
     //creating enemy typing and class complete
     const atkInput = document.getElementById("enemy-ATK-input");
@@ -4402,45 +4401,119 @@ function updateDamageTakenQueryContainer(){
     //fixing enemyTyping and class complete
 
     //create specific attack details selection
-    const attackperformedselector = document.getElementById("attack-performed-selector");
-    while (attackperformedselector.firstChild) {
-        attackperformedselector.removeChild(attackperformedselector.firstChild);
-    }
+    const attackPerformedSelector = document.getElementById("attack-performed-selector");
     let attackCount=1;
-    for (const attack of Object.values(kiCircleDictionary)){
-        if(attack.attackPerformed){
+    if(activeAttackPerformed){
+        if(!Array.from(attackPerformedSelector.options).some(o => o.value == "active")){
             const option=document.createElement("option");
-            option.value=attack.passiveLineKey;
-            option.textContent=attackCount++ + ": " + Math.floor(attack.getAttack()).toLocaleString('en-US');
-            attackperformedselector.appendChild(option);
+            option.id="attack-performed-active";
+            option.textContent="1: Active: " + Math.floor(document.getElementById("active-container").kiCircle.getAttack()).toLocaleString('en-US') ;
+            option.value="active";
+            attackPerformedSelector.add(option,attackCount++);
+        }
+        else{
+            const existingOption=Array.from(attackPerformedSelector.options).find(o => o.value == "active");
+            existingOption.textContent="1: Active: " + Math.floor(document.getElementById("active-container").kiCircle.getAttack()).toLocaleString('en-US') ;
         }
     }
-    const option=document.createElement("option");
-    option.value="all";
-    option.textContent="All";
-    attackperformedselector.appendChild(option);
+    else{
+        if(Array.from(attackPerformedSelector.options).some(o => o.value == "active")){
+            attackPerformedSelector.removeChild(document.getElementById("attack-performed-active"));
+        }
+    }
 
-    updateEnemyNumbers()
+    for (const attack of Object.values(kiCircleDictionary)){
+        if(attack.attackPerformed){
+            
+            if(!Array.from(attackPerformedSelector.options).some(o => o.value == attack.passiveLineKey)){
+                const option=document.createElement("option");
+                option.id="attack-performed-"+attack.passiveLineKey;
+                option.value=attack.passiveLineKey;
+                option.textContent=attackCount + ": " + Math.floor(attack.getAttack()).toLocaleString('en-US');
+                attackPerformedSelector.add(option,attackCount++);
+            }
+            else{
+                const existingOption=Array.from(attackPerformedSelector.options).find(o => o.value == attack.passiveLineKey);
+                existingOption.textContent=attackCount + ": " + Math.floor(attack.getAttack()).toLocaleString('en-US');
+                if(attackPerformedSelector.value == attack.passiveLineKey){
+                    attackPerformedSelector.removeChild(existingOption);
+                    attackPerformedSelector.add(existingOption,attackCount++);
+                    attackPerformedSelector.value=attack.passiveLineKey;
+                }
+                else{
+                    attackPerformedSelector.removeChild(existingOption);
+                    attackPerformedSelector.add(existingOption,attackCount++);
+                }
+            }
+        }
+        else{
+            if(Array.from(attackPerformedSelector.options).some(o => o.value == attack.passiveLineKey)){
+                attackPerformedSelector.removeChild(document.getElementById("attack-performed-"+attack.passiveLineKey));
+            }
+        }
+    }
+    attackPerformedSelector.addEventListener(
+        "change", function(){
+            updateEnemyNumbers();
+        }
+    )
+    if(!(Array.from(attackPerformedSelector.options).some(o => o.value == "all"))){
+        const option=document.createElement("option");
+        option.value="all";
+        option.textContent="All";
+        option.id="attack-performed-all";
+        attackPerformedSelector.appendChild(option);
+    }
+    const allOption=document.getElementById("attack-performed-all");
+    if(attackPerformedSelector.value=="all"){
+        attackPerformedSelector.removeChild(allOption);
+        attackPerformedSelector.appendChild(allOption);
+        attackPerformedSelector.value="all";
+    }
+    else{
+        attackPerformedSelector.removeChild(allOption);
+        attackPerformedSelector.appendChild(allOption);
+    }
+    updateEnemyNumbers();
 }
+    
 
 function updateEnemyNumbers(){
     const enemyAttackTaken=document.getElementById("enemy-attack-taken");
     let attackDealt;
     if(document.getElementById("attack-performed-selector").value=="all"){
         attackDealt=0;
+        if(activeAttackPerformed){
+            attackDealt+=calculateAttackRecieved(
+                document.getElementById("active-container").kiCircle.getAttack(),
+                document.getElementById("active-container").kiCircle.effectiveAgainstAll,
+                document.getElementById("active-container").kiCircle.critPerformed,
+                currentJson["Type"],
+                currentJson["Class"],
+                skillOrbBuffs["Attack"],
+    
+    
+                enemyDEF,
+                enemyDR/100,
+                enemyTyping,
+                enemyClass,
+                enemyATKThreshold,
+                0//skillOrbBuffs["Defense"],
+            );
+        }
         for (const attack of Object.values(kiCircleDictionary)){
             if(attack.attackPerformed){
-                attackDealt=calculateAttackRecieved(
-                    attackDealt.getAttack(),
-                    attackDealt.effectiveAgainstAll,
-                    attackDealt.critPerformed,
+                attackDealt+=calculateAttackRecieved(
+                    attack.getAttack(),
+                    attack.effectiveAgainstAll,
+                    attack.critPerformed,
                     currentJson["Type"],
                     currentJson["Class"],
                     skillOrbBuffs["Attack"],
         
         
                     enemyDEF,
-                    enemyDR,
+                    enemyDR/100,
                     enemyTyping,
                     enemyClass,
                     enemyATKThreshold,
@@ -4448,6 +4521,24 @@ function updateEnemyNumbers(){
                 );
             }
         }
+    }
+    else if(document.getElementById("attack-performed-selector").value=="active"){
+        attackDealt=calculateAttackRecieved(
+            document.getElementById("active-container").kiCircle.getAttack(),
+            document.getElementById("active-container").kiCircle.effectiveAgainstAll,
+            document.getElementById("active-container").kiCircle.critPerformed,
+            currentJson["Type"],
+            currentJson["Class"],
+            skillOrbBuffs["Attack"],
+
+
+            enemyDEF,
+            enemyDR/100,
+            enemyTyping,
+            enemyClass,
+            enemyATKThreshold,
+            0//skillOrbBuffs["Defense"],
+        );
     }
     else{
         attackDealt=calculateAttackRecieved(
@@ -4460,7 +4551,7 @@ function updateEnemyNumbers(){
 
 
             enemyDEF,
-            enemyDR,
+            enemyDR/100,
             enemyTyping,
             enemyClass,
             enemyATKThreshold,
@@ -4468,10 +4559,49 @@ function updateEnemyNumbers(){
             false
         );
     }
-    enemyAttackTaken.innerHTML=attackDealt.toLocaleString('en-US');
+    enemyAttackTaken.innerHTML="Damage dealt: "+Math.round(attackDealt,0).toLocaleString('en-US');
 
 
     const enemyAttackDealt=document.getElementById("enemy-attack-dealt");
+    let attackTaken;
+    if(attackRecievedTiming=="before"){
+        attackTaken=calculateAttackRecieved(
+            enemyATK,
+            false,
+            false,
+            enemyTyping,
+            enemyClass,
+            0,
+            
+            startingStats.Defense||0,
+            (startingStats["Damage Reduction"]||0/100),
+            currentJson["Type"],
+            currentJson["Class"],
+            0,
+            skillOrbBuffs["Defense"],
+            startingStats.Guard||false
+        )
+    }
+    else if(attackRecievedTiming=="after"){
+        attackTaken=calculateAttackRecieved(
+            enemyATK,
+            false,
+            false,
+            enemyTyping,
+            enemyClass,
+            0,
+            
+            finalStats.Defense||0,
+            (finalStats["Damage Reduction"]||0)/100,
+            currentJson["Type"],
+            currentJson["Class"],
+            0,
+            skillOrbBuffs["Defense"],
+            finalStats.Guard||false
+        )
+    }
+    
+    enemyAttackDealt.innerHTML="Damage taken: "+Math.round(attackTaken,0).toLocaleString('en-US');
 }
 
 function calculateAttackRecieved(
@@ -4490,49 +4620,95 @@ function calculateAttackRecieved(
     defenderPassiveGuard){
 
 
-    let advantageMultiplier=advantageCalculator(attackerTyping, attackerClass, defenderTyping, defenderClass,defenderPassiveGuard);
+    let [advantageMultiplier,guardMultiplier]=advantageCalculator(attackerTyping, attackerClass, defenderTyping, defenderClass,defenderPassiveGuard);
+    if(attackerEffectiveAgainstAll){
+        guardMultiplier=1;
+        advantageMultiplier=1.5;
+    }
+    if(attackerCritPerformed){
+        guardMultiplier=1;
+        advantageMultiplier=1.875
+        defenderDEF=0;
+    }
     let variance=1;
-    let attackDealt=attackerAttack * (1-defenderDR) * advantageMultiplier * variance;
+    let DRToNormals=0;
+    let attackDealt=(attackerAttack  * (1 - defenderDR) * (1 - DRToNormals) * advantageMultiplier * variance - defenderDEF) * guardMultiplier;
+    if(attackDealt<defenderATKThreshold){
+        attackDealt=0;
+    }
     return(attackDealt);
     }
 
-//WIP
 function advantageCalculator(attackerTyping, attackerClass, defenderTyping, defenderClass,defenderGuard){
-    let attackerAdvantage=(typeToInt(attackerTyping,true)-typeToInt(defenderTyping,true));
-    if(attackerAdvantage==4){
-        attackerAdvantage=-1;
-    }
-    else if(attackerAdvantage==3 || attackerAdvantage==2){
-        attackerAdvantage=0;
-    }
     if(defenderGuard){
-        return(0.8);
+        return([0.8,0.5]);
     }
-    else{
-        switch(attackerAdvantage){
-            case -1:
-                if(attackerClass==defenderClass){
-                    return(0.9);
-                }
-                else{
-                    return(1);
-                }
-            case 0:
-                if(attackerClass==defenderClass){
-                    return(1);
-                }
-                else{
-                    return(1.15);
-                }
-            case 1:
-                if(attackerClass==defenderClass){
-                    return(1.25);
-                }
-                else{
-                    return(1.5);
-                }
+    let attackerTypeAdvantage=(typeToInt(attackerTyping,true)-typeToInt(defenderTyping,true));
+    if(attackerTypeAdvantage<-1){
+        attackerTypeAdvantage+=5;
+    }
+    if(attackerTypeAdvantage==4){
+        attackerTypeAdvantage=-1;
+    }
+    else if(attackerTypeAdvantage==3 || attackerTypeAdvantage==2){
+        attackerTypeAdvantage=0;
+    }
+
+    let attackerClassAdvantage;
+    if(attackerClass=="None"){
+        if(defenderClass=="None"){
+            attackerClassAdvantage=0;
+        }
+        else{
+            attackerClassAdvantage=-1;
         }
     }
+    else if(defenderClass=="None"){
+        //if (attackerClass=="None"){
+        //    attackerClassAdvantage=0;
+        //}
+        //else{
+        attackerClassAdvantage=1;
+    }
+    else{
+        if(attackerClass==defenderClass){
+            attackerClassAdvantage=0;
+        }
+        else{
+            attackerClassAdvantage=1;
+        }
+    }
+
+    switch(attackerTypeAdvantage){
+        case -1:
+            switch(attackerClassAdvantage){
+                case -1:
+                    return([0.8,0.5]);
+                case 0:
+                    return([0.8,0.5]);
+                case 1:
+                    return([1,1]);
+            }
+        case 0:
+            switch(attackerClassAdvantage){
+                case -1:
+                    return([0.9,0.5]);
+                case 0:
+                    return([1,1]);
+                case 1:
+                    return([1.25,1]);
+            }
+        case 1:
+            switch(attackerClassAdvantage){
+                case -1:
+                    return([1,0.5]);
+                case 0:
+                    return([1.15,1]);
+                case 1:
+                    return([1.5,1]);
+            }
+    }
+
 
 
     
