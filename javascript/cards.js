@@ -1475,12 +1475,12 @@ let startingCausalityList=[];
 let relevantPassiveEffects=["Ki","ATK","Heals","DEF","Guard","Disable Other Line","Dodge chance","Crit Chance","DR","Additional Attack"]
 
 let attackRecievedTiming="after";
-let enemyClass="Super";
-let enemyTyping="INT";
-let enemyATK=0;
-let enemyDEF=0;
-let enemyDR=0;
-let enemyATKThreshold=0;
+let enemyClass="Extreme";
+let enemyTyping="STR";
+let enemyATK=1900000;
+let enemyDEF=2000000;
+let enemyDR=65;
+let enemyATKThreshold=10000000;
 let startingStats={};
 let finalStats={};
 
@@ -4303,7 +4303,7 @@ function createDamageTakenContainer(){
     }
     //creating enemy typing and class complete
     const atkInput = document.getElementById("enemy-ATK-input");
-
+    atkInput.value=(""+enemyATK).replace(/,/g, "").replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     atkInput.addEventListener("input", function(){
       // Remove any non-digit characters (except for commas)
       let value = this.value.replace(/,/g, "").replace(/\D/g, "");
@@ -4319,7 +4319,7 @@ function createDamageTakenContainer(){
 
 
     const defInput = document.getElementById("enemy-DEF-input");
-
+    defInput.value=(""+enemyDEF).replace(/,/g, "").replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     defInput.addEventListener("input", function(){
       // Remove any non-digit characters (except for commas)
       let value = this.value.replace(/,/g, "").replace(/\D/g, "");
@@ -4334,7 +4334,7 @@ function createDamageTakenContainer(){
     });
     
     const drInput = document.getElementById("enemy-DR-input");
-    
+    drInput.value=(""+enemyDR).replace(/,/g, "").replace(/\D/g, "");
     drInput.addEventListener("input", function(){
         // Remove any non-digit characters (except for commas)
         let value = this.value.replace(/,/g, "").replace(/\D/g, "");
@@ -4350,7 +4350,7 @@ function createDamageTakenContainer(){
     })
     
     const atkThresholdInput = document.getElementById("enemy-ATK-threshold-input");
-
+    atkThresholdInput.value=(""+enemyATKThreshold).replace(/,/g, "").replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     atkThresholdInput.addEventListener("input", function(){
         // Remove any non-digit characters (except for commas)
         let value = this.value.replace(/,/g, "").replace(/\D/g, "");
@@ -4574,7 +4574,7 @@ function updateEnemyNumbers(){
             0,
             
             startingStats.Defense||0,
-            (startingStats["Damage Reduction"]||0/100),
+            (startingStats["Damage Reduction"]||0)/100,
             currentJson["Type"],
             currentJson["Class"],
             0,
@@ -4621,6 +4621,12 @@ function calculateAttackRecieved(
 
 
     let [advantageMultiplier,guardMultiplier]=advantageCalculator(attackerTyping, attackerClass, defenderTyping, defenderClass,defenderPassiveGuard);
+    if(typeToInt(attackerTyping,true)-typeToInt(defenderTyping,true)==1 || typeToInt(attackerTyping,true)-typeToInt(defenderTyping,true)==-4){
+        advantageMultiplier+=attackerSkillOrbBuffAttack*0.05;
+    }
+    else if(typeToInt(attackerTyping,true)-typeToInt(defenderTyping,true)==-1 || typeToInt(attackerTyping,true)-typeToInt(defenderTyping,true)==4){
+        advantageMultiplier-=defenderSkillOrbBuffDefense*0.01;
+    }
     if(attackerEffectiveAgainstAll){
         guardMultiplier=1;
         advantageMultiplier=1.5;
@@ -4630,6 +4636,8 @@ function calculateAttackRecieved(
         advantageMultiplier=1.875
         defenderDEF=0;
     }
+    
+
     let variance=1;
     let DRToNormals=0;
     let attackDealt=(attackerAttack  * (1 - defenderDR) * (1 - DRToNormals) * advantageMultiplier * variance - defenderDEF) * guardMultiplier;
