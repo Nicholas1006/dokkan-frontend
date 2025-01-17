@@ -47,8 +47,8 @@ class kiCircleClass{
         if(queryCount==0){
             this.KiCircle.style.gridTemplateRows="230px"+(" 35px".repeat(queryCount));
         }
-        let setHeight=230+(queryCount*35);
-        this.KiCircle.style.height=setHeight+"px";
+        let setHeight=45.6%+(queryCount*6.9);
+        this.KiCircle.style.height=setHeight+"%";
 
         let circleBase=document.createElement("div");
         circleBase.id="circle-base";
@@ -97,7 +97,7 @@ class kiCircleClass{
         unitImage.style.backgroundRepeat = "no-repeat";
         unitImage.style.zIndex = "1";
 
-        //for loop that iterates 12 times
+        
         this.segments=[]
         for (let i = 0; i < 12; i++) {
             let circleSegment = document.createElement("div");
@@ -107,10 +107,11 @@ class kiCircleClass{
             
             let rotateOffset=(15 + (i * 30));
             let rotateOffsetRadians=rotateOffset*(Math.PI/180);
-            let xOffset = Math.sin(rotateOffsetRadians)*85 + 55;
-            let yOffset = (1-Math.cos(rotateOffsetRadians))*85-30;
-            circleSegment.style.transform += "translate(" + xOffset + "px, " + yOffset + "px) "
-            circleSegment.style.transform += "rotateZ("+(rotateOffset-3.5) + "deg)";
+            let xOffset = Math.sin(rotateOffsetRadians)*81 + 59;
+            let yOffset = (1-Math.cos(rotateOffsetRadians))*74-24;
+            circleSegment.style.transform += "translate(" + xOffset + "%, " + yOffset + "%) "
+            
+            circleSegment.style.transform += "rotateZ("+(rotateOffset) + "deg)";
             circleSegment.style.zIndex = "2";
         }
         if(this.maxKi==24){
@@ -122,11 +123,11 @@ class kiCircleClass{
 
                 let rotateOffset=(15 + (i * 30));
                 let rotateOffsetRadians=(rotateOffset)*(Math.PI/180);
-                let xOffset = Math.sin(rotateOffsetRadians)*85 + 55;
-                let yOffset = (1-Math.cos(rotateOffsetRadians))*85-30;
-                circleSegment.style.transform += "translate(" + xOffset + "px, " + yOffset + "px) "
-                circleSegment.style.transform += "rotateZ("+(rotateOffset-3.5) + "deg)";
-                circleSegment.style.transform += "scaleY(1.24)";
+                let xOffset = Math.sin(rotateOffsetRadians)*83 + 59;
+                let yOffset = (1-Math.cos(rotateOffsetRadians))*77-27;
+                circleSegment.style.transform += "translate(" + xOffset + "%, " + yOffset + "%) "
+                circleSegment.style.transform += "rotateZ("+(rotateOffset) + "deg)";
+                circleSegment.style.transform += "scaleY(1.3) scaleX(1.1)";
 
 
 
@@ -144,12 +145,21 @@ class kiCircleClass{
         this.damageText.style.width="300px"
         this.damageText.style.height="50px"
         this.damageText.style.zIndex = "4";
+        
 
         this.superAttackName=document.createElement("div");
         this.superAttackName.className="super-attack-name";
         this.superAttackName.style.backgroundImage = "url('/dbManagement/DokkanFiles/global/en/character/card/"+this.imageUrl+"/en/card_"+this.imageUrl+"_sp_name.png')";
         this.superAttackName.style.display="none";
         this.KiCircle.appendChild(this.superAttackName);
+
+        this.superAttackWords=document.createElement("div");
+        this.superAttackWords.className="super-attack-words";
+        this.superAttackWords.classList.add("ultra-super")
+        this.KiCircle.appendChild(this.superAttackWords);
+
+        this.superAttackWords.image=document.createElement("img");
+        this.superAttackWords.appendChild(this.superAttackWords.image);
 
         let querySlotsTaken=0;
         this.critChanceQuery=document.createElement("button");
@@ -634,15 +644,35 @@ class kiCircleClass{
     updateSuperAttack(superAttackID=this.superAttackAssetID){
         if(superAttackID==-1){
             this.superAttackName.style.display="none";
+            this.superAttackWords.style.display="none";
+            this.damageText.style.animation="none";
         }
         else{
+            this.superAttackName.style.display="block";
+            this.superAttackWords.style.display="block";
+            const currentOffset=((Date.now()/1000)%5)
+            this.superAttackWords.style.animation="none";
+            this.damageText.style.animation="none";
+
+            //this line causes a css reload before the animationDelays are applied
+            void this.superAttackWords.offsetWidth;
+            
+            this.superAttackWords.style.animation="swap4off1on 5s infinite";
+            this.damageText.style.animation="swap4on1off 5s infinite";
+            this.superAttackWords.style.animationDelay="-"+currentOffset+"s";
+            this.damageText.style.animationDelay="-"+currentOffset+"s";
+            this.superAttackWords.classList.remove("super");
+            this.superAttackWords.classList.remove("ultra-super");
             if(superAttackID==0){
                 this.superAttackName.style.backgroundImage = "url('/dbManagement/DokkanFiles/global/en/character/card/"+this.imageUrl+"/en/card_"+this.imageUrl+"_sp_name.png')";
+                this.superAttackWords.image.src="/dbManagement/DokkanFiles/global/en/ingame/battle/effect/battle_140000/en/battle_140000-0.png"
+                this.superAttackWords.classList.add("super")
             }
             else{
                 this.superAttackName.style.backgroundImage = "url('/dbManagement/DokkanFiles/global/en/character/card/"+this.imageUrl+"/en/card_"+this.imageUrl+"_sp0"+superAttackID+"_name.png')";
+                this.superAttackWords.image.src="/dbManagement/DokkanFiles/global/en/ingame/battle/effect/battle_140000/en/battle_140000-1.png"
+                this.superAttackWords.classList.add("ultra-super")
             }
-            this.superAttackName.style.display="block";
         }
     }
 
@@ -1120,7 +1150,7 @@ class superAttackQueryHolder{
         for(const key of Object.keys(superAttack["superBuffs"])){
             if(superAttack["superBuffs"][key]["Duration"]!="1" && superAttack["superBuffs"][key]["Duration"]!="2"){
                 let buffs=superAttack["superBuffs"][key];
-                let buffHolder= new superAttackQuery(buffs,maxPerTurn,maxTurns,unitID,superAttack["superName"]);
+                let buffHolder= new superAttackQuery(buffs,maxPerTurn,maxTurns,unitID,superAttack);
                 this.selfContainer.appendChild(buffHolder.getElement());
             }
         }
@@ -1133,117 +1163,119 @@ class superAttackQueryHolder{
 //WIP update this so that the super attack name is instead just the image for it as used in kicirlce
 //Plan is to change parameters to "text" and a replacement dictionary e.g. "How many times has 1023301 performed Kamehameha within the last 99 turns?", {"1023301": "unitDisplay div". "Kamehameha": superAttackImage}
 class pictureDiv{
-    constructor(prefixText,insertedDiv,suffixText, imageHref=""){
+    constructor(textContent,insertedDivDictionary){
         this.selfContainer=document.createElement("div");
         this.selfContainer.style.display="flex";
         this.selfContainer.style.flexWrap="wrap";
-        this.suffixContainer=document.createElement("div");
-
-        this.prefix=document.createElement("label");
-        this.prefix.innerHTML=prefixText;
-        this.prefix.style.alignSelf="center";
-        this.selfContainer.appendChild(this.prefix);
-
-        this.selfContainer.appendChild(insertedDiv);
-
-        this.suffix=document.createElement("label");
-        this.suffix.innerHTML=suffixText;
-        this.suffix.style.alignSelf="center";
-        this.selfContainer.appendChild(this.suffix);
+        this.textContentList=splitTextByWords(textContent,Object.keys(insertedDivDictionary));
+        for (const textSegment of this.textContentList){
+            if(textSegment in insertedDivDictionary){
+                this.selfContainer.appendChild(insertedDivDictionary[textSegment]);
+                if(this[textSegment]){
+                    this[textSegment].push(insertedDivDictionary[textSegment]);
+                }
+                else{
+                    this[textSegment]=[insertedDivDictionary[textSegment]];
+                }
+            }
+            else{
+                let textDiv=document.createElement("div");
+                textDiv.innerHTML=textSegment;
+                this.selfContainer.appendChild(textDiv);
+                
+            }
+        }
     }
-    updatePrefixText(prefixText){
-        this.prefix.innerHTML=prefixText;
-    }
-
-    updateSuffixText(suffixText){
-        this.selfContainer.children[2].innerHTML=suffixText;
-    }
-
-    updateImage(imageURL){
-        this.selfContainer.children[1].style.backgroundImage="url('"+imageURL+"')";
-    }
-
-
     getElement(){
         return this.selfContainer;
     }
 }
 
 class superAttackQuery{
-    constructor(buffs,maxPerTurn,maxTurns,unitID,superAttackName){
+    constructor(buffs,maxPerTurn,maxTurns,unitID,superAttack){
         document.getElementById("super-container").style.display="grid";
         this.selfContainer=document.createElement("div");
         this.selfContainer.buffs=buffs;
-        this.selfContainer.superAttackName=superAttackName;
+        this.selfContainer.superAttack=superAttack;
+        this.selfContainer.superAttackName=superAttack["superName"];
         this.selfContainer.buffsDuration=buffs["Duration"];
         this.selfContainer.nextToShow=0;
         this.selfContainer.style.display="grid";
-        let superAttackSlider = document.createElement('input');
-        superAttackSlider.value=0;
-        let superAttackQuestion = document.createElement('label');
-        superAttackQuestion.superAttackName= superAttackName;
-        const urlParams=new URLSearchParams(window.location.search);
-        const insertedDiv=new unitDisplay();
-        superAttackQuestion.superAttackText=new pictureDiv("How many times has",insertedDiv.getElement(),"performed "+superAttackName+" within the last "+buffs["Duration"]+" turns?: "+superAttackSlider.value);
+        this.superAttackSlider = document.createElement('input');
+        this.superAttackSlider.parentClass=this;
+        this.superAttackSlider.value=0;
+        this.superAttackQuestion = document.createElement('div');
+        this.superAttackQuestion.superAttackName= this.selfContainer.superAttackName;
+        this.insertedUnitDiv=new unitDisplay();
+
+        const insertedSuperAttackDiv=document.createElement("div");
+        insertedSuperAttackDiv.className="super-attack-query-question-super-attack-name";
+
+        this.numberInput=document.createElement("input");
+        this.numberInput.type="number";
+        this.numberInput.min=0;
+        this.numberInput.max=Math.min(Math.floor((buffs["Duration"]-1)/2),maxTurns)*maxPerTurn;
+        this.numberInput.value=0;
+        this.numberInput.className="super-attack-query-number-input";
+        this.numberInput.parentClass=this;
+        this.numberInput.addEventListener(
+            'input', function(){
+                if(this.value<0){
+                    this.value=0;
+                }
+                else if(this.value>Math.min(Math.floor((buffs["Duration"]-1)/2),maxTurns)*maxPerTurn){
+                    this.value=Math.min(Math.floor((buffs["Duration"]-1)/2),maxTurns)*maxPerTurn;
+                }
+                this.parentClass.superAttackSlider.value=parseInt(this.value);
+                this.parentClass.currentValue=parseInt(this.value);
+                updateSuperAttackStacks()
+
+            }       
+        );
+
+        const replacementDictionary = {};
+        replacementDictionary[unitID] = this.insertedUnitDiv.getElement();
+        replacementDictionary[this.selfContainer.superAttackName] = insertedSuperAttackDiv;
+        replacementDictionary["NUMBERINPUT"]=this.numberInput;
+        this.superAttackQuestion.superAttackText=new pictureDiv("How many times has"+unitID+"performed "+this.selfContainer.superAttackName+" within the last "+buffs["Duration"]+" turns?NUMBERINPUT",replacementDictionary);
+        this.superAttackQuestion.superAttackText.getElement().className="super-attack-query-question";
         const unitJsonPromise= getJsonPromise("/dbManagement/jsons/",unitID,".json");
         unitJsonPromise.then(
             unit => {
-                insertedDiv.setResourceID(unit["Resource ID"]);
-                insertedDiv.setClass(unit["Class"]);
-                insertedDiv.setType(unit["Type"]);
-                insertedDiv.setRarity(unit["Rarity"]);
-                insertedDiv.setUrl(baseDomain+"/cards/index.html?id="+unit["ID"]);
-                insertedDiv.setDisplayExtraInfo(false);
-                insertedDiv.setExactWidth("70px");
-                insertedDiv.setExactHeight("70px");
-                insertedDiv.setDisplay(true);
+                this.insertedUnitDiv.setResourceID(unit["Resource ID"]);
+                this.insertedUnitDiv.setClass(unit["Class"]);
+                this.insertedUnitDiv.setType(unit["Type"]);
+                this.insertedUnitDiv.setRarity(unit["Rarity"]);
+                this.insertedUnitDiv.setUrl(baseDomain+"/cards/index.html?id="+unit["ID"]);
+                this.insertedUnitDiv.setDisplayExtraInfo(false);
+                this.insertedUnitDiv.setExactWidth("60px");
+                this.insertedUnitDiv.setExactHeight("60px");
+                this.insertedUnitDiv.setDisplay(true);
+
+                if(this.selfContainer.superAttack.special_name_no=="0"){
+                    insertedSuperAttackDiv.style.backgroundImage="url('/dbManagement/DokkanFiles/global/en/character/card/"+unit["Resource ID"]+"/en/card_"+unit["Resource ID"]+"_sp_name.png')";
+                }
+                else{
+                    insertedSuperAttackDiv.style.backgroundImage="url('/dbManagement/DokkanFiles/global/en/character/card/"+unit["Resource ID"]+"/en/card_"+unit["Resource ID"]+"_sp0"+this.selfContainer.superAttack.special_name_no+"_name.png')"
+                }
 
             }
         )
-        this.selfContainer.appendChild(superAttackQuestion.superAttackText.getElement());
-        superAttackQuestion.innerHTML = superAttackSlider.textContent;
-        superAttackQuestion.style.gridRow = 1;
-        superAttackSlider.type = "range";
-        superAttackSlider.style.cursor = "pointer";
-        superAttackSlider.min = 0;
-        superAttackSlider.max=Math.min(Math.floor((buffs["Duration"]-1)/2),maxTurns)*maxPerTurn;
-        superAttackSlider.value = 0;
-        superAttackSlider.id="super-slider";
-        superAttackSlider.style.gridRow = 0;
-        this.selfContainer.appendChild(superAttackQuestion);
-        this.selfContainer.appendChild(superAttackSlider);
-        superAttackSlider.addEventListener('input', function(){
-            this.parentElement.children[1].superAttackText.updateSuffixText("performed "+superAttackName+" within the last "+buffs["Duration"]+" turns?: "+superAttackSlider.value);
-            superAttackQuestion.innerHTML = superAttackSlider.textContent;
-            this.parentNode.currentValue=parseInt(superAttackSlider.value);
-            for(const query of this.parentNode.parentNode.children){
-                if(query.superAttackName==this.parentNode.superAttackName){
-                    if(query.buffsDuration>this.parentNode.buffsDuration && query.currentValue<this.parentNode.currentValue){
-                        query.currentValue=this.parentNode.currentValue;
-                        for (const query2 of query.children){
-                            if(query2.localName=="input"){
-                                query2.value=this.parentNode.currentValue;
-                            }
-                            else if(query2.localName=="label"){
-                                query2.currentValue=this.parentNode.currentValue;
-                                query2.superAttackText.updateSuffixText("performed "+query2.superAttackName+" within the last "+query.buffsDuration+" turns?: "+superAttackSlider.value);
-                            }
-                        }
-                    }
-                    else if(query.buffsDuration<this.parentNode.buffsDuration && query.currentValue>this.parentNode.currentValue){
-                        query.currentValue=this.parentNode.currentValue;
-                        for (const query2 of query.children){
-                            if(query2.localName=="input"){
-                                query2.value=this.parentNode.currentValue;
-                            }
-                            else if(query2.localName=="label"){
-                                query2.currentValue=this.parentNode.currentValue;
-                                query2.superAttackText.updateSuffixText("performed "+query2.superAttackName+" within the last "+query.buffsDuration+" turns?: "+superAttackSlider.value);
-                            }
-                        }
-                    }
-                }
-            }
+        this.selfContainer.appendChild(this.superAttackQuestion.superAttackText.getElement());
+        this.superAttackQuestion.innerHTML = this.superAttackSlider.textContent;
+        this.superAttackQuestion.style.gridRow = 1;
+        this.superAttackSlider.type = "range";
+        this.superAttackSlider.style.cursor = "pointer";
+        this.superAttackSlider.min = 0;
+        this.superAttackSlider.max=Math.min(Math.floor((buffs["Duration"]-1)/2),maxTurns)*maxPerTurn;
+        this.superAttackSlider.value = 0;
+        this.superAttackSlider.id="super-slider";
+        this.superAttackSlider.style.gridRow = 0;
+        this.selfContainer.appendChild(this.superAttackQuestion);
+        this.selfContainer.appendChild(this.superAttackSlider);
+        this.superAttackSlider.addEventListener('input', function(){
+            this.parentClass.superAttackQuestion.superAttackText.NUMBERINPUT[0].value=parseInt(this.value);
+            this.parentClass.currentValue=parseInt(this.value);
             updateSuperAttackStacks();
         });
 
@@ -3709,6 +3741,22 @@ function createSuperAttackContainer(){
     }
 }
 
+function splitTextByWords(text, words) {
+    // Sort words by length in descending order to handle overlapping words correctly
+    words.sort((a, b) => b.length - a.length);
+
+    // Escape special regex characters in the words
+    const escapedWords = words.map(word => word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+
+    // Create a regex to match any of the words
+    const regex = new RegExp(`(${escapedWords.join('|')})`, 'g');
+
+    // Split the text using the regex and preserve the matched words as separate elements
+    const result = text.split(regex);
+
+    return result.filter(part => part !== ""); // Remove any empty strings from the result
+}
+
  function updateCharacterIcon(){
     const imageContainer = document.getElementById("character-icon");
     while (imageContainer.firstChild) {
@@ -4947,5 +4995,4 @@ export async function loadPage(firstTime=false){
         console.error("Error loading page data", error);
     }
 }
-    
 loadPage(true)

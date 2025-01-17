@@ -129,6 +129,58 @@
   grid-column:1;
 }
 
+.super-attack-words{
+  display:none;
+  grid-row:3;
+  grid-column:1;
+  overflow:hidden;
+  z-index:6;
+}
+
+.super-attack-words.super{
+  width:225px;
+  height: 62px;
+  transform:translate(-2px, -86px);
+}
+
+.super-attack-words.super img{
+  transform: rotate(-90deg) scale(1.5);
+  position : relative;
+  top: -157px;
+  left: -1035px;
+}
+
+.super-attack-words.ultra-super{
+  width:239px;
+  height: 91px;
+  transform:translate(-13px, -110px);
+}
+
+.super-attack-words.ultra-super img{
+  transform: rotate(-90deg) scale(1.5);
+  position : relative;
+  top: 181px;
+  left: -141px;
+}
+
+@keyframes swap4on1off {
+  0%, 79.9% {
+    opacity: 1;
+  }
+  80%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes swap4off1on {
+  0%, 79.9% {
+    opacity: 0;
+  }
+  80%, 100% {
+    opacity: 1;
+  }
+}
+
 #ki-circle{
   display:grid;
   width:220px;
@@ -136,38 +188,54 @@
 }
 .ki-circle-segment{
   background: url('/dbManagement/DokkanFiles/global/en/layout/en/image/ingame/battle/parts/btl_gauge_1.png');
-  width: 110px;
-  height: 110px;
+  width: 34%;
+  height: 48%;
   grid-row:1;
   grid-column:1;
+  background-repeat: no-repeat;
+  background-size:contain;
 }
 
 .ki-circle-segment.blue{
-  background: url('/dbManagement/DokkanFiles/global/en/layout/en/image/ingame/battle/parts/btl_gauge_0.png')
+  background: url('/dbManagement/DokkanFiles/global/en/layout/en/image/ingame/battle/parts/btl_gauge_0.png');
+  background-repeat: no-repeat;
+  background-size:contain;
 }
 
 .ki-circle-segment.blackened{
-  background: url('/dbManagement/DokkanFiles/global/en/layout/en/image/ingame/battle/parts/btl_gauge_1.png')
+  background: url('/dbManagement/DokkanFiles/global/en/layout/en/image/ingame/battle/parts/btl_gauge_1.png');
+  background-repeat: no-repeat;
+  background-size:contain;
 }
 
 .ki-circle-segment.weaker{
-  background: url('/dbManagement/DokkanFiles/global/en/layout/en/image/ingame/battle/parts/btl_gauge_2.png')
+  background: url('/dbManagement/DokkanFiles/global/en/layout/en/image/ingame/battle/parts/btl_gauge_2.png');
+  background-repeat: no-repeat;
+  background-size:contain;
 }
 
 .ki-circle-segment.equal{
-  background: url('/dbManagement/DokkanFiles/global/en/layout/en/image/ingame/battle/parts/btl_gauge_3.png')
+  background: url('/dbManagement/DokkanFiles/global/en/layout/en/image/ingame/battle/parts/btl_gauge_3.png');
+  background-repeat: no-repeat;
+  background-size:contain;
 }
 
 .ki-circle-segment.super{
-  background: url('/dbManagement/DokkanFiles/global/en/layout/en/image/ingame/battle/parts/btl_gauge_4.png')
+  background: url('/dbManagement/DokkanFiles/global/en/layout/en/image/ingame/battle/parts/btl_gauge_4.png');
+  background-repeat: no-repeat;
+  background-size:contain;
 }
 
 .ki-circle-segment.ultra{
-  background: url('/dbManagement/DokkanFiles/global/en/layout/en/image/ingame/battle/parts/btl_gauge_5.png')
+  background: url('/dbManagement/DokkanFiles/global/en/layout/en/image/ingame/battle/parts/btl_gauge_5.png');
+  background-repeat: no-repeat;
+  background-size:contain;
 }
 
 .ki-circle-segment.unit-super{
-  background: url('/dbManagement/DokkanFiles/global/en/layout/en/image/ingame/battle/parts/btl_gauge_6.png')
+  background: url('/dbManagement/DokkanFiles/global/en/layout/en/image/ingame/battle/parts/btl_gauge_6.png');
+  background-repeat: no-repeat;
+  background-size:contain;
 }
 
 .HiPoStar {
@@ -999,6 +1067,7 @@
   overflow-y: auto;
   scrollbar-width: auto;
   scrollbar-color: #333 #ffffff;
+  font-size:72%;
 }
 
 
@@ -1170,6 +1239,28 @@ input[type="range"] {
   grid-template-columns: 2fr 3fr;
 }
 
+
+.super-attack-query-number-input{
+  width: 6.7%;
+}
+
+.super-attack-query-question{
+  display:grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-rows: 1fr;
+}
+
+
+
+.super-attack-query-question-super-attack-name{
+  grid-row:1;
+  background-size: 160%;
+  background-position:center;
+  background-repeat: no-repeat;
+  height: 47%;
+  aspect-ratio: 6/1;
+}
 
 @font-face {
   font-family: 'Helvetica Black Condensed Oblique';
