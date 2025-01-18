@@ -1963,7 +1963,6 @@ function updatePassiveStats(){
     }
     document.getElementById("final-stats").innerText=finalStatsString;
     updateDamageTakenQueryContainer();
-    updateEnemyNumbers();
 }
 
 
@@ -4023,7 +4022,7 @@ function changePassiveSlider(sliderName, value){
     }
 }
 
-function updateKiSphereBuffs(){
+function updateKiSphereBuffs(pageLoad=false){
     let kiGain=0;
     kiGain+=rainbowKiSphereAmount;
     if(currentJson["Type"]==currentKiSphere){
@@ -4074,8 +4073,9 @@ function updateKiSphereBuffs(){
     
 
     kiSources["Orbs"]=kiGain;
-
-    updatePassiveStats();
+    if(pageLoad==false){
+        updatePassiveStats();
+    }
 }
 
 function createFinishContainer(){
@@ -4977,9 +4977,8 @@ export async function loadPage(firstTime=false){
         }
         
         createKiCirclesWithClass();
-        updateKiSphereBuffs();
+        updateKiSphereBuffs(true);
         updatePassiveStats();
-        updateDamageTakenQueryContainer();
         polishPage();
         
         const scale = Math.min(
