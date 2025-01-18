@@ -8,10 +8,27 @@ let currentOrder = "Descending";
 let currentFilter = "Name";
 let currentFilterValue = "";
 let currentFilteredUnits = {};
+let unitBasics;
 let displayBoxes=[];
 
 let unitBasicsDetails={};
 
+
+function unixToDateTime(unixTimestamp) {
+  // Create a new Date object using the Unix timestamp (in milliseconds)
+  const date = new Date(unixTimestamp * 1000);
+
+  // Format the date and time
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+  const day = String(date.getDate()).padStart(2, '0');
+  const hours = String(date.getHours()).padStart(2, '0');
+  const minutes = String(date.getMinutes()).padStart(2, '0');
+  const seconds = String(date.getSeconds()).padStart(2, '0');
+
+  // Return the formatted date and time string
+  return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+}
 
 
 function getJsonPromise(prefix,name,suffix) {
@@ -28,6 +45,20 @@ function getJsonPromise(prefix,name,suffix) {
         throw error; // Re-throw the error to propagate it to the caller
     }
   );
+}
+
+function getAssetID(unitID){
+  if(unitID.typeof === "string") {
+    if(unitID[unitID.length-1]=="1"){
+      unitID=unitID.slice(0,-1)+"0";
+    }
+  }
+  else{
+    if(unitID%10==1){
+      unitID=unitID-1;
+    }
+  }
+  return unitID;
 }
 
 function rarityToInt(rarity){
@@ -231,6 +262,89 @@ function reSortCards(){
   
 }
 
+function OLDreSortCards(){
+  const startTime=Date.now();
+
+  const unitsContainer = document.getElementById('unit-selection-container');
+  while (unitsContainer.firstChild) {
+    unitsContainer.removeChild(unitsContainer.firstChild);
+  }
+
+  let sortedUnits = Object.values(currentFilteredUnits);
+  const order = currentOrder =="Ascending" ? 1 : -1;
+
+  sortedUnits.sort((a, b) => {
+    let valueA = a[currentSort];
+    let valueB = b[currentSort];
+    if (currentSort === "Rarity") {
+      valueA = rarityToInt(valueA);
+      valueB = rarityToInt(valueB);
+    }
+
+    if(valueA < valueB) {
+      return -1 * order;
+    }
+    if(valueA > valueB) {
+      return 1 * order;
+    }
+    return 0;
+  });
+
+  for (let i = 0; i < unitsToDisplay;i++) {
+    if(i<sortedUnits.length){
+      const unitURL = baseDomain+"/cards/index.html?id=" + sortedUnits[i]["ID"] + "&EZA="+sortedUnits[i]["Eza"]+"&SEZA="+sortedUnits[i]["Seza"];
+      let otherDisplayedValue=null;
+      if(["Cost","HP","Attack","Defense","Sp Atk Lv"].includes(currentSort)){
+        otherDisplayedValue=sortedUnits[i][currentSort];
+      }
+      let ezaLevel = "None";
+      if(sortedUnits[i]["Eza"]){
+        ezaLevel = "eza";
+      }
+      else if(sortedUnits[i]["Seza"]){
+        ezaLevel = "seza";
+      }
+
+      const unitButtonContainer = new unitDisplay(sortedUnits[i]["Resource ID"],sortedUnits[i]["Class"],sortedUnits[i]["Type"],sortedUnits[i]["Rarity"],sortedUnits[i]["Max Level"],otherDisplayedValue,ezaLevel,unitURL);
+      unitsContainer.appendChild(unitButtonContainer.container);
+      unitButtonContainer.container.offsetWidth;
+
+
+
+      //unitButton.style.backgroundImage = "url('dbManagement/DokkanFiles/global/en/character/card/"+getAssetID(sortedUnits[i]["ID"])+"/card_"+getAssetID(sortedUnits[i]["ID"])+"_full_thumb.png')";
+
+
+    }
+  }
+  
+  console.log("Sorting took " + (Date.now() - startTime) + " ms");
+}
+
+function classToInt(Class){
+  switch(Class){
+    case null:
+      return 0;
+    case "Super":
+      return 1;
+    case "Extreme":
+      return 2;
+  }
+}
+
+function typeToInt(type){
+  switch(type){
+    case "AGL":
+      return 0;
+    case "TEQ":
+      return 1;
+    case "INT":
+      return 2;
+    case "STR":
+      return 3;
+    case "PHY":
+      return 4;
+  }
+}
 
 function createSortButton(){
   const sortButton = document.getElementById('sort-filter-container');
@@ -273,5 +387,9 @@ function createCharacterSelection(){
     }
   )
 };
+const currentUrl=window.location.href;
 let baseDomain=window.location.origin;
+if(currentUrl.includes("dokkan-frontend")){
+  baseDomain=baseDomain+"/dokkan-frontend";
+}
 createCharacterSelection();

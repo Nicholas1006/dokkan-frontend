@@ -90,15 +90,14 @@
 
 #ki-container {
   grid-row:2;
-  display:flex;
-  flex-direction:row;
-  flex-wrap:wrap;
-  width: 100%;
-  height:90vh;
+  display:grid;
+  width: 350px;
+  max-height:90vh;
+  min-height:calc(fit-content + 440px);
   justify-content: center;
+  overflow-y: auto;
   scrollbar-width: auto;
   scrollbar-color: #333 #ffffff;
-  overflow-y: auto;
 }
 
 #starting-stats{
@@ -120,50 +119,48 @@
 
 
 .super-attack-name{
-  width:74%;
-  position:relative;
+  width:220px;
+  height:50px;
   z-index:5;
-  background-size:169%;
+  background-size:150%;
   background-position:center;
   border:none;
   grid-row:1;
   grid-column:1;
-  transform: translate(0%, -40%);
-  background-repeat: no-repeat;
 }
 
 .super-attack-words{
   display:none;
-  grid-row:1;
+  grid-row:3;
   grid-column:1;
   overflow:hidden;
   z-index:6;
 }
 
 .super-attack-words.super{
-  width: 81%;
-  aspect-ratio: 100/28;
-  transform:translate(-4%, 244%);
+  width:225px;
+  height: 62px;
+  transform:translate(-2px, -86px);
 }
 
 .super-attack-words.super img{
-  transform: rotate(-90deg) scale(1.5) translate(11%, -68%);
+  transform: rotate(-90deg) scale(1.5);
   position : relative;
-  width: 500%
+  top: -157px;
+  left: -1035px;
 }
 
 .super-attack-words.ultra-super{
-  width: 86%;
-  aspect-ratio: 100/38;
-  transform:translate(-11%, 133%);
+  width:239px;
+  height: 91px;
+  transform:translate(-13px, -110px);
 }
 
 .super-attack-words.ultra-super img{
-  width: 265%;
   transform: rotate(-90deg) scale(1.5);
   position : relative;
-  top: 199.5%;
-  left: -59%;
+  top: 181px;
+  left: -141px;
 }
 
 @keyframes swap4on1off {
@@ -186,59 +183,59 @@
 
 #ki-circle{
   display:grid;
-  width:50%;
-  grid-auto-rows:0;
+  width:220px;
+  padding-bottom:44px;
 }
 .ki-circle-segment{
   background: url('/dbManagement/DokkanFiles/global/en/layout/en/image/ingame/battle/parts/btl_gauge_1.png');
-  width: 35%;
-  aspect-ratio:1/1;
+  width: 34%;
+  height: 48%;
   grid-row:1;
   grid-column:1;
   background-repeat: no-repeat;
-  background-size:100% 100%;
+  background-size:contain;
 }
 
 .ki-circle-segment.blue{
   background: url('/dbManagement/DokkanFiles/global/en/layout/en/image/ingame/battle/parts/btl_gauge_0.png');
   background-repeat: no-repeat;
-  background-size:100% 100%;
+  background-size:contain;
 }
 
 .ki-circle-segment.blackened{
   background: url('/dbManagement/DokkanFiles/global/en/layout/en/image/ingame/battle/parts/btl_gauge_1.png');
   background-repeat: no-repeat;
-  background-size:100% 100%;
+  background-size:contain;
 }
 
 .ki-circle-segment.weaker{
   background: url('/dbManagement/DokkanFiles/global/en/layout/en/image/ingame/battle/parts/btl_gauge_2.png');
   background-repeat: no-repeat;
-  background-size:100% 100%;
+  background-size:contain;
 }
 
 .ki-circle-segment.equal{
   background: url('/dbManagement/DokkanFiles/global/en/layout/en/image/ingame/battle/parts/btl_gauge_3.png');
   background-repeat: no-repeat;
-  background-size:100% 100%;
+  background-size:contain;
 }
 
 .ki-circle-segment.super{
   background: url('/dbManagement/DokkanFiles/global/en/layout/en/image/ingame/battle/parts/btl_gauge_4.png');
   background-repeat: no-repeat;
-  background-size:100% 100%;
+  background-size:contain;
 }
 
 .ki-circle-segment.ultra{
   background: url('/dbManagement/DokkanFiles/global/en/layout/en/image/ingame/battle/parts/btl_gauge_5.png');
   background-repeat: no-repeat;
-  background-size:100% 100%;
+  background-size:contain;
 }
 
 .ki-circle-segment.unit-super{
   background: url('/dbManagement/DokkanFiles/global/en/layout/en/image/ingame/battle/parts/btl_gauge_6.png');
   background-repeat: no-repeat;
-  background-size:100% 100%;
+  background-size:contain;
 }
 
 .HiPoStar {
@@ -348,16 +345,12 @@
 }
 #unit-circle-image{
   border: none;
-  aspect-ratio: 1/1;
-  width: 74.1%;
   grid-row:1;
   grid-column:1;
 }
 
 #circle-base{
   border: none;
-  aspect-ratio:1/1;
-  width: 74.5%;
   grid-row:1;
   grid-column:1;
 }
@@ -455,11 +448,15 @@
 
 .ki-damage-text{
   display: inline-block;
-  width: 100%;
+  width: 30px;
+  height: 30px;
+  margin:-2px;
   background-size:contain;
   background-repeat: no-repeat;
-  transform:translate(2%, 61%);
-  grid-row: 1;
+  vertical-align: bottom;
+  text-align: center;
+  transform:translate(-35px, -25px);
+  grid-row: 2;
   grid-column: 1;
 }
 
@@ -475,8 +472,24 @@
   grid-row:2;
 }
 
-#super-chance-query, #performed-chance-query, #crit-chance-query{
-  width:100%;
+#super-chance-query{
+  width:220px;
+  height: min-content;
+  padding: 0px;
+  margin: 0px;
+  grid-column:1;
+}
+
+#performed-chance-query{
+  width:220px;
+  height: min-content;
+  padding: 0px;
+  margin: 0px;
+  grid-column:1;
+}
+
+#crit-chance-query{
+  width:220px;
   height: min-content;
   padding: 0px;
   margin: 0px;
@@ -485,9 +498,9 @@
 
 .ki-damage-text-numDiv-red{
   display: inline-block;
-  width: 10%;
-  height: 60%;
-  margin:-0.69%;
+  width: 30px;
+  height: 30px;
+  margin:-2px;
   background-size:contain;
   background-repeat: no-repeat;
   vertical-align: bottom;
@@ -627,9 +640,9 @@
 
 .ki-damage-text-numDiv-yellow{
   display: inline-block;
-  width: 10%;
-  height: 60%;
-  margin:-0.69%;
+  width: 30px;
+  height: 30px;
+  margin:-2px;
   background-size:contain;
   background-repeat: no-repeat;
   vertical-align: bottom;

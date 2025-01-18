@@ -34,6 +34,21 @@ class kiCircleClass{
         this.KiCircle=document.createElement("div");
         this.KiCircle.id="ki-circle";
         this.KiCircle.name=passiveLineKey;
+        let queryCount=0;
+        if(this.critChance!=0){
+            queryCount++
+        }
+        if(this.superChance!=0 && this.superChance!=100 && this.passiveLineKey!="0" && this.passiveLineKey!="Active"){
+            queryCount++
+        }
+        if(this.performedChance!=0 && this.performedChance!=100 && this.passiveLineKey!="0" && this.passiveLineKey!="Active"){
+            queryCount++
+        }
+        if(queryCount==0){
+            this.KiCircle.style.gridTemplateRows="230px"+(" 35px".repeat(queryCount));
+        }
+        let setHeight=45.6%+(queryCount*6.9);
+        this.KiCircle.style.height=setHeight+"%";
 
         let circleBase=document.createElement("div");
         circleBase.id="circle-base";
@@ -52,6 +67,8 @@ class kiCircleClass{
         else if(currentJson.Type=="PHY"){
             circleBase.style.backgroundImage = "url('/dbManagement/DokkanFiles/global/en/layout/en/image/ingame/battle/chara_icon/ing_type_gauge_base_04.png')";
         }
+        circleBase.style.width="220px";
+        circleBase.style.height="220px";
         circleBase.style.backgroundSize = "100% 100%";
         circleBase.style.backgroundPosition = "center";
         circleBase.style.backgroundRepeat = "no-repeat";
@@ -71,6 +88,8 @@ class kiCircleClass{
         unitImage.className = "ki-unit-image";
         this.KiCircle.appendChild(unitImage);
         unitImage.id="unit-circle-image";
+        unitImage.style.width = "220px";
+        unitImage.style.height = "220px";
         let assetID=currentJson["ID"].slice(0, -1)+ "0";
         unitImage.style.backgroundImage = "url('/dbManagement/DokkanFiles/global/en/character/card/" +assetID+"/card_"+assetID+"_circle.png')";
         unitImage.style.backgroundSize = "100% 100%";
@@ -88,11 +107,11 @@ class kiCircleClass{
             
             let rotateOffset=(15 + (i * 30));
             let rotateOffsetRadians=rotateOffset*(Math.PI/180);
-            let xOffset = Math.sin(rotateOffsetRadians)*82 + 56;
-            let yOffset = (1-Math.cos(rotateOffsetRadians))*85-28;
+            let xOffset = Math.sin(rotateOffsetRadians)*81 + 59;
+            let yOffset = (1-Math.cos(rotateOffsetRadians))*74-24;
             circleSegment.style.transform += "translate(" + xOffset + "%, " + yOffset + "%) "
-            circleSegment.style.transform += "rotateZ("+(rotateOffset) + "deg)";
             
+            circleSegment.style.transform += "rotateZ("+(rotateOffset) + "deg)";
             circleSegment.style.zIndex = "2";
         }
         if(this.maxKi==24){
@@ -104,11 +123,11 @@ class kiCircleClass{
 
                 let rotateOffset=(15 + (i * 30));
                 let rotateOffsetRadians=(rotateOffset)*(Math.PI/180);
-                let xOffset = Math.sin(rotateOffsetRadians)*82 + 56;
-                let yOffset = (1-Math.cos(rotateOffsetRadians))*85-28;
+                let xOffset = Math.sin(rotateOffsetRadians)*83 + 59;
+                let yOffset = (1-Math.cos(rotateOffsetRadians))*77-27;
                 circleSegment.style.transform += "translate(" + xOffset + "%, " + yOffset + "%) "
                 circleSegment.style.transform += "rotateZ("+(rotateOffset) + "deg)";
-                circleSegment.style.transform += "scaleY(1.3) scaleX(1)";
+                circleSegment.style.transform += "scaleY(1.3) scaleX(1.1)";
 
 
 
@@ -123,6 +142,8 @@ class kiCircleClass{
         this.KiCircle.appendChild(this.damageText);
         this.damageText.className="ki-damage-text";
         this.damageText.id="ki-damage-text";
+        this.damageText.style.width="300px"
+        this.damageText.style.height="50px"
         this.damageText.style.zIndex = "4";
         
 
@@ -298,6 +319,7 @@ class kiCircleClass{
         })
         this.KiCircle.appendChild(this.performedChanceQuery);
         //this.performedChanceQuery.style.transform = "translate(0px, 200px)";
+
     }
 
     getElement(){
@@ -792,11 +814,9 @@ class kiCircleClass{
         if(this.performedChance!=0 && this.performedChance!=100){
             queryCount++
         }
-        let initialGrid=(230/(230+(queryCount*35)))*100;
-        let remainingGrids=(35/(230+(queryCount*35)))*100;
-        this.KiCircle.style.gridTemplateRows=initialGrid+"%"+((remainingGrids+"%").repeat(queryCount));
+        this.KiCircle.style.gridTemplateRows="230px"+(" 35px".repeat(queryCount));
         let setHeight=230+(queryCount*35);
-        this.KiCircle.style.aspectRatio="150 / "+setHeight;
+        this.KiCircle.style.height=setHeight+"px";
 
         let querySlotsUsed=0;
 
@@ -829,6 +849,7 @@ class kiCircleClass{
             this.superChanceQuery.style.gridRow=querySlotsUsed+2;
             querySlotsUsed++;
         }
+
     }
 
     toggleAttackPerformed(isActivated){
@@ -2613,6 +2634,7 @@ function createLeaderStats(){
       if(seperateOrJoin.classList.contains("SeperateLeader")){
         seperateOrJoin.classList.remove('SeperateLeader');
         seperateOrJoin.classList.add('JointLeader');
+  //      seperateOrJoin.style.width="110px";
         leaderAInputKi.style.display="none";
         leaderBInputKi.style.display="none";
         leaderTotalInputKi.style.display="block";
@@ -2622,6 +2644,7 @@ function createLeaderStats(){
       } else {
         seperateOrJoin.classList.remove('JointLeader');
         seperateOrJoin.classList.add('SeperateLeader');
+  //      seperateOrJoin.style.width="220px";
         leaderAInputKi.style.display="block";
         leaderBInputKi.style.display="block";
         leaderTotalInputKi.style.display="none";
@@ -3819,7 +3842,6 @@ function splitTextByWords(text, words) {
 
     document.body.style.backgroundColor = colorToBackground(typeToColor(currentJson["Type"]));
 }
-
 
 function updateSuperAttackStacks(){
     let superAttacksQuestionsContainer = document.querySelector('#super-attack-questions-container');
