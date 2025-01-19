@@ -2426,6 +2426,10 @@ function activatePassiveLines(previousActiveLineMultipliers,exec_timing_type,act
                     if("Slider" in causality){
                         if(causality["Slider"]["Name"] in causalityLogic){
                             sliderLogic=causalityLogic[causality["Slider"]["Name"]]+causality["Slider"]["Logic"];
+                            sliderLogic=(" "+causality["Slider"]["Logic"]+" ")
+                            .replaceAll(" >",(" "+causalityLogic[causality["Slider"]["Name"]])+" >")
+                            .replaceAll(" <",(" "+causalityLogic[causality["Slider"]["Name"]])+" <")
+                            .replaceAll(" =",(" "+causalityLogic[causality["Slider"]["Name"]])+" =");
                             sliderLogic=evaluate(sliderLogic);
                         }
                     }
