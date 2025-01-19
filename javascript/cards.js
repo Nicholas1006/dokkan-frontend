@@ -841,7 +841,7 @@ class kiCircleClass{
             querySlotsUsed++;
         }
 
-        if(this.superChance==0 || this.passiveLineKey=="0" || this.passiveLineKey=="Active"){
+        if(this.superChance==0 || this.superChance==100 || this.passiveLineKey=="0" || this.passiveLineKey=="Active" ){
             this.superChanceQuery.style.display="none";
         }
         else{
