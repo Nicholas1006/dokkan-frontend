@@ -638,13 +638,13 @@ class kiCircleClass{
     }
 
     updateSuperAttack(superAttackID=this.superAttackID){
-        this.superAttackAssetID=currentJson["Super Attack"][this.superAttackID]["special_name_no"];
         if(superAttackID==-1){
             this.superAttackName.style.display="none";
             this.superAttackWords.style.display="none";
             this.damageText.style.animation="none";
         }
         else{
+            this.superAttackAssetID=currentJson["Super Attack"][this.superAttackID]["special_name_no"];
             this.superAttackName.style.display="block";
             this.superAttackWords.style.display="block";
             const currentOffset=((Date.now()/1000)%5)
