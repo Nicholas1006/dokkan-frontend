@@ -2973,9 +2973,54 @@ function createLinkStats(){
     let linkBuffsDiv = document.createElement('p');
     linkBuffsDiv.innerHTML = "Link Buffs: ";
     linksContainer.appendChild(linkBuffsDiv);
-  ;
+
+    const linkPartnerContainer = document.getElementById('link-partner-container');
+    const linkPartnerButton = document.getElementById('link-partner-button');
+    linkPartnerButton.onclick = function(){
+        let activeLinks={};
+        let linkButtons = document.querySelector('#links-container').querySelectorAll('button');
+
+
+        // Iterate over each link slider and button
+        linkButtons.forEach(
+            (button) => {
+                if(button.textContent.split(' Level')[0]!="All Links"){
+                    activeLinks[button.textContent.split(' Level')[0]]=button.classList.contains('active');
+                }
+            }
+        );
+
+        const linksJsonPromise = getJsonPromise(baseDomain,"/dbManagement/uniqueJsons/unitBasics/Links.json","");
+        linksJsonPromise.then(
+            linksJson => {
+            const allLinkPartners = findLinkPartners(activeLinks,linksJson);
+            updateLinkPartnerDisplay(allLinkPartners);
+            }
+        )
+    }
+
+    const linkPartnerDisplay = document.getElementById('link-partner-display');
 }
 
+function findLinkPartners(activeLinks,linksJson, inactiveNeeded=true){
+    let enabledLinks = Object.keys(activeLinks).filter(key => activeLinks[key]);
+    let allLinkPartners = [];
+    for(const unitID in linksJson){
+        if(linksJson[unitID].every(element => enabledLinks.includes(element))){
+            allLinkPartners.push(unitID);
+        }
+    }
+
+    if(inactiveNeeded){
+        //WIP
+    }
+
+    return(allLinkPartners);
+}
+
+function updateLinkPartnerDisplay(allLinkPartners){
+    //WIP
+}
 
 function updateBaseStats(refreshKi=true){
     let levelSlider=document.getElementById('level-slider');
