@@ -674,7 +674,7 @@ class kiCircleClass{
             else if(currentJson["Super Attack"][this.superAttackID]["superStyle"]=="Condition"){
                 //WIP UPDATE THIS TO USE THE UNIT SUPER IMAGE
                 this.superAttackName.style.backgroundImage = "url('/dbManagement/DokkanFiles/global/en/character/card/"+this.imageUrl+"/en/card_"+this.imageUrl+"_sp0"+this.superAttackAssetID+"_name.png')";
-                this.superAttackWords.image.src="/dbManagement/DokkanFiles/global/en/ingame/battle/effect/battle_140000/en/battle_140000-1.png"
+                this.superAttackWords.image.src="/dbManagement/DokkanFiles/global/en/condition_special/000002/special_cutin_icon_text_image.png"
                 this.superAttackWords.classList.add("unit-super")
             }
         }
