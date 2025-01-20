@@ -67,8 +67,6 @@ class kiCircleClass{
         else if(currentJson.Type=="PHY"){
             circleBase.style.backgroundImage = "url('/dbManagement/DokkanFiles/global/en/layout/en/image/ingame/battle/chara_icon/ing_type_gauge_base_04.png')";
         }
-        circleBase.style.width="220px";
-        circleBase.style.height="220px";
         circleBase.style.backgroundSize = "100% 100%";
         circleBase.style.backgroundPosition = "center";
         circleBase.style.backgroundRepeat = "no-repeat";
@@ -88,8 +86,6 @@ class kiCircleClass{
         unitImage.className = "ki-unit-image";
         this.KiCircle.appendChild(unitImage);
         unitImage.id="unit-circle-image";
-        unitImage.style.width = "220px";
-        unitImage.style.height = "220px";
         let assetID=currentJson["ID"].slice(0, -1)+ "0";
         unitImage.style.backgroundImage = "url('/dbManagement/DokkanFiles/global/en/character/card/" +assetID+"/card_"+assetID+"_circle.png')";
         unitImage.style.backgroundSize = "100% 100%";
@@ -473,7 +469,7 @@ class kiCircleClass{
 
         
         this.updateValue(this.attack,this.superPerformed);
-        this.updateSuperAttack(this.superAttackAssetID)
+        this.updateSuperAttack(this.superAttackID)
 
         return(0)
     }
@@ -641,7 +637,8 @@ class kiCircleClass{
         return this.KiCircle.style.gridRow
     }
 
-    updateSuperAttack(superAttackID=this.superAttackAssetID){
+    updateSuperAttack(superAttackID=this.superAttackID){
+        this.superAttackAssetID=currentJson["Super Attack"][this.superAttackID]["special_name_no"];
         if(superAttackID==-1){
             this.superAttackName.style.display="none";
             this.superAttackWords.style.display="none";
@@ -663,15 +660,22 @@ class kiCircleClass{
             this.damageText.style.animationDelay="-"+currentOffset+"s";
             this.superAttackWords.classList.remove("super");
             this.superAttackWords.classList.remove("ultra-super");
-            if(superAttackID==0){
+            this.superAttackWords.classList.remove("unit-super");
+            if(currentJson["Super Attack"][this.superAttackID]["superStyle"]=="Normal"){
                 this.superAttackName.style.backgroundImage = "url('/dbManagement/DokkanFiles/global/en/character/card/"+this.imageUrl+"/en/card_"+this.imageUrl+"_sp_name.png')";
                 this.superAttackWords.image.src="/dbManagement/DokkanFiles/global/en/ingame/battle/effect/battle_140000/en/battle_140000-0.png"
                 this.superAttackWords.classList.add("super")
             }
-            else{
-                this.superAttackName.style.backgroundImage = "url('/dbManagement/DokkanFiles/global/en/character/card/"+this.imageUrl+"/en/card_"+this.imageUrl+"_sp0"+superAttackID+"_name.png')";
+            else if(currentJson["Super Attack"][this.superAttackID]["superStyle"]=="Hyper"){
+                this.superAttackName.style.backgroundImage = "url('/dbManagement/DokkanFiles/global/en/character/card/"+this.imageUrl+"/en/card_"+this.imageUrl+"_sp0"+this.superAttackAssetID+"_name.png')";
                 this.superAttackWords.image.src="/dbManagement/DokkanFiles/global/en/ingame/battle/effect/battle_140000/en/battle_140000-1.png"
                 this.superAttackWords.classList.add("ultra-super")
+            }
+            else if(currentJson["Super Attack"][this.superAttackID]["superStyle"]=="Condition"){
+                //WIP UPDATE THIS TO USE THE UNIT SUPER IMAGE
+                this.superAttackName.style.backgroundImage = "url('/dbManagement/DokkanFiles/global/en/character/card/"+this.imageUrl+"/en/card_"+this.imageUrl+"_sp0"+this.superAttackAssetID+"_name.png')";
+                this.superAttackWords.image.src="/dbManagement/DokkanFiles/global/en/ingame/battle/effect/battle_140000/en/battle_140000-1.png"
+                this.superAttackWords.classList.add("unit-super")
             }
         }
     }
@@ -1503,7 +1507,6 @@ let additionalAttacks={};
 let kiCircleDictionary=[];
 let passiveQueryList=[];
 let passiveChanceList={};
-let startingCausalityList=[];
 let relevantPassiveEffects=["Ki","ATK","Heals","DEF","Guard","Disable Other Line","Dodge chance","Crit Chance","DR","Additional Attack"]
 
 let attackRecievedTiming="after";
@@ -1561,9 +1564,24 @@ function findSuperAttackID(kiAmount,causalities=null){
         for (const superKey in currentJson["Super Attack"]){
             const superAttack=currentJson["Super Attack"][superKey];
             minKiToSuperAttack=Math.min(superAttack["superMinKi"],minKiToSuperAttack);
-            if(parseInt(superAttack["superMinKi"])<=kiAmount && parseInt(superAttack["superMinKi"])>parseInt(superMinKi)){
-                superMinKi=superAttack["superMinKi"];
-                superAttackId=superKey;
+            if(parseInt(superAttack["superMinKi"])<=kiAmount && parseInt(superAttack["superMinKi"])>=parseInt(superMinKi)){
+                if("superCondition" in superAttack){
+                    let conditionLogic = " "+superAttack.superCondition.Logic+" ";
+                    for (const causalityKey of Object.keys(superAttack.superCondition.Causalities)){
+                        conditionLogic=conditionLogic.replaceAll(causalityKey,superAttack.superCondition.Causalities[causalityKey]["Button"]["Name"])
+                    }
+                    for(const passiveQuery of Object.values(passiveQueryList)){
+                        conditionLogic=conditionLogic.replaceAll(passiveQuery.queryElement.label,passiveQuery.currentValue());
+                    }
+                    if(evaluate(conditionLogic)){
+                        superMinKi=superAttack["superMinKi"];
+                        superAttackId=superKey;
+                    }
+                }
+                else{
+                    superMinKi=superAttack["superMinKi"];
+                    superAttackId=superKey;
+                }
             }
         }
     }
@@ -3314,12 +3332,11 @@ function colorToBackground(color){
     }
 }
 
-function updateQueryList(passiveLine){
+function updateQueryListWithPassiveLine(passiveLine){
     if(passiveLine["Condition"]!=undefined){
         for(const CausalityKey of Object.keys(passiveLine["Condition"]["Causalities"])){
             const Causality = passiveLine["Condition"]["Causalities"][CausalityKey];
             let queryUpdated=false;
-            startingCausalityList.push(CausalityKey);
             if(isEmptyDictionary(Causality.Button)){
                 if(isEmptyDictionary(Causality.Slider)){
                     console.log("EMPTY CONDITION???");
@@ -3459,9 +3476,65 @@ function updateQueryList(passiveLine){
             
             passiveQueryList.push(superHitCheckButton);
         }
-    }
+    }   
+}
 
-    
+function updateQueryListWithUnitSuperLine(unitSuperAttack){
+    for(const CausalityKey of Object.keys(unitSuperAttack["superCondition"]["Causalities"])){
+        const Causality = unitSuperAttack["superCondition"]["Causalities"][CausalityKey];
+        let queryUpdated=false;
+        if(isEmptyDictionary(Causality.Button)){
+            if(isEmptyDictionary(Causality.Slider)){
+                console.log("EMPTY CONDITION???");
+            }
+            else{
+                for (const query of passiveQueryList){
+                    if(query.sliderName==Causality.Slider["Name"]){
+                        query.min=Math.min(Causality.Slider["Min"],query.min);
+                        query.max=Math.max(Causality.Slider["Max"],query.max);
+                        query.changeType("slider");
+                        queryUpdated=true;
+                    }
+                }
+                if(queryUpdated==false){
+                    passiveQueryList.push( new passiveQuery("slider","",Causality.Slider["Name"],Causality.Slider["Min"],Causality.Slider["Max"]) );
+                }
+            }
+        }
+        else{
+            if(isEmptyDictionary(Causality.Slider)){
+                for (const query of passiveQueryList){
+                    if(query.buttonName==Causality.Button["Name"]){
+                        queryUpdated=true;
+                    }
+                }
+                if(queryUpdated==false){
+                    passiveQueryList.push( new passiveQuery("button",Causality.Button["Name"],0,0) );
+                }
+            }
+            //You have a button and a slider
+            else{
+                for (const query of passiveQueryList){
+                    if(query.buttonName==Causality.Button["Name"] && query.type=="button"){
+                        queryUpdated=true;
+                    }
+                }
+                if(queryUpdated==false){
+                    for (const query of passiveQueryList){
+                        if(query.sliderName==Causality.Slider["Name"]){
+                            query.min=(Math.min(Causality.Slider["Min"],query.min)||query.min);
+                            query.max=(Math.max(Causality.Slider["Max"],query.max)||query.max);
+                            query.changeType("slider");
+                            queryUpdated=true;
+                        }
+                    }
+                }
+                if(queryUpdated==false){
+                    passiveQueryList.push( new passiveQuery("button",Causality.Button["Name"],Causality.Slider["Name"],Causality.Slider["Min"],Causality.Slider["Max"]) );
+                }
+            }
+        }
+    }
 }
 
 function updateChanceList(passiveLine){
@@ -3653,14 +3726,18 @@ function createPassiveContainer(){
 
     for (const passiveLineKey of Object.keys(passiveList)) {
         if(arraysHaveOverlap(relevantPassiveEffects, Object.keys(passiveList[passiveLineKey]))){
-            updateQueryList(passiveList[passiveLineKey]);
+            updateQueryListWithPassiveLine(passiveList[passiveLineKey]);
         }
         if(Object.keys(passiveList[passiveLineKey]).includes("Chance") && !(Object.keys(passiveList[passiveLineKey]).includes("Additional Attack"))){
             updateChanceList(passiveList[passiveLineKey]);
         }
     }
 
-    
+    for (const superAttack of Object.values(currentJson["Super Attack"])) {
+        if("superCondition" in superAttack){
+            updateQueryListWithUnitSuperLine(superAttack);
+        }
+    }
 
     for (const query of passiveQueryList) {
         passiveQueryContainer.appendChild(query.getElement());
@@ -3910,7 +3987,6 @@ function updateSuperAttackStacks(){
 function createLinkBuffs(){
     // Select all link sliders and buttons within a specific parent
     let linksContainer = document.querySelector('#links-container');
-    linksContainer.style.width="200px";
     let linkSliders = linksContainer.querySelectorAll('input[type=range]');
     let linkButtons = linksContainer.querySelectorAll('button');
 
