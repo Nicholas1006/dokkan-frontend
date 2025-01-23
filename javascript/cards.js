@@ -1506,7 +1506,7 @@ let passiveChanceList={};
 let relevantPassiveEffects=["Ki","ATK","Heals","DEF","Guard","Disable Other Line","Dodge chance","Crit Chance","DR","Additional Attack"]
 
 let attackRecievedTiming="after";
-let enemyClass="Extreme";
+let enemyClass="Super";
 let enemyTyping="STR";
 let enemyATK=1900000;
 let enemyDEF=2000000;
