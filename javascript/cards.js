@@ -672,7 +672,6 @@ class kiCircleClass{
                 this.superAttackWords.classList.add("ultra-super")
             }
             else if(currentJson["Super Attack"][this.superAttackID]["superStyle"]=="Condition"){
-                //WIP UPDATE THIS TO USE THE UNIT SUPER IMAGE
                 this.superAttackName.style.backgroundImage = "url('/dbManagement/DokkanFiles/global/en/character/card/"+this.imageUrl+"/en/card_"+this.imageUrl+"_sp0"+this.superAttackAssetID+"_name.png')";
                 this.superAttackWords.image.src="/dbManagement/DokkanFiles/global/en/condition_special/000002/special_cutin_icon_text_image.png"
                 this.superAttackWords.classList.add("unit-super")
@@ -693,7 +692,6 @@ class kiCircleClass{
                 if(passiveSlider.nextSibling.innerHTML.startsWith("How much ki is there")){
                     passiveSlider.value=value
                     passiveSlider.nextSibling.innerHTML="How much ki is there: "+value
-                    //WIP TO UPDATE PASSIVE SKILL LOGIC
                 }
             }
         }
@@ -1164,8 +1162,6 @@ class superAttackQueryHolder{
     }
 }
 
-//WIP update this so that the super attack name is instead just the image for it as used in kicirlce
-//Plan is to change parameters to "text" and a replacement dictionary e.g. "How many times has 1023301 performed Kamehameha within the last 99 turns?", {"1023301": "unitDisplay div". "Kamehameha": superAttackImage}
 class pictureDiv{
     constructor(textContent,insertedDivDictionary){
         this.selfContainer=document.createElement("div");
@@ -1497,8 +1493,8 @@ let skillOrbBuffs={"Additional":0,"Crit":0,"Evasion":0,"Attack":0,"Defense":0,"S
 let domainBuffs={"ATK":0,"DEF":0,"Increased damage recieved":0}
 let supportBuffs={"ATK": 0, "DEF":0, "Dodge":0, "Crit": 0}
 let currentKiSphere;
-let currentKiSphereAmount=0;
-let rainbowKiSphereAmount=0;
+let currentKiSphereAmount=3;
+let rainbowKiSphereAmount=1;
 let activeMultipliers={"ATK":0,"DEF":0,"Effective against all":false,"Guard":false,"Dodge Chance":0,"Crit Chance":0,"Redirect attacks to me":false};
 
 let currentDomain=null;
@@ -2853,6 +2849,7 @@ function createLeaderStats(){
 }
 
 function createLinkStats(){
+    //TODO Link buttons are stored at dbManagement/DokkanFiles/global/en/layout/en/image/common/btn/cha_linkskill_label_gold.png
     const linksContainer=document.getElementById('links-container');
     let links =currentJson["Links"];
     let linkNumber=0;
@@ -3597,7 +3594,7 @@ function createDomainContainer(){
     //TODO: DOMAIN IMAGE IS STORED IN C:/Users/horva/OneDrive - Trinity College Dublin/Documents/dokkan/frontend/dbManagement/DokkanFiles/global/en/outgame/extension/dokkan_field/field_thumb_image_3007 and similar
     let domainContainer=document.getElementById('domain-container');
     const domainDropDown=document.createElement('div');
-    domainDropDown.className="dropdown";
+    domainDropDown.className="domain-dropdown";
     domainDropDown.label=document.createElement('label');
     domainDropDown.label.textContent="Domain: ";
     domainDropDown.select=document.createElement('select');
@@ -3622,6 +3619,12 @@ function createDomainContainer(){
         option.textContent = domain["Name"];
         domainDropDown.select.appendChild(option);
     }
+
+    const domainImage=document.createElement('img');
+    domainContainer.appendChild(domainImage);
+    domainImage.className="domain-image";
+    domainImage.id="domain-image";
+    domainImage.style.display="none";
 }
 
 function refreshDomainBuffs(){
@@ -3684,6 +3687,16 @@ function refreshDomainBuffs(){
         }
         
     }
+
+    const domainImage=document.getElementById('domain-image');
+    if(currentDomain=="null"){
+        domainImage.style.display="none";
+    }
+    else{
+        domainImage.style.display="block";
+        domainImage.src="/dbManagement/DokkanFiles/global/en/outgame/extension/dokkan_field/field_thumb_image_"+domainData[currentDomain]["Resource ID"]+"/field_thumb_image_"+domainData[currentDomain]["Resource ID"]+".png"
+    }
+
     updatePassiveStats()
 }
 
@@ -4912,7 +4925,7 @@ function createKiSphereContainer(){
     const rainbowlabel=document.createElement("label");
     rainbowQuery.label=rainbowlabel;
     rainbowQuery.appendChild(rainbowlabel);
-    rainbowlabel.innerHTML="How many rainbow ki spheres have been obtained: 0"
+    rainbowlabel.innerHTML="How many rainbow ki spheres have been obtained: "+rainbowKiSphereAmount;
 
     const rainbowSlider=document.createElement("input");
     rainbowQuery.slider=rainbowSlider;
@@ -4920,7 +4933,7 @@ function createKiSphereContainer(){
     rainbowSlider.type="range";
     rainbowSlider.min=0;
     rainbowSlider.max=5;
-    rainbowSlider.value=0;
+    rainbowSlider.value=rainbowKiSphereAmount;
     rainbowSlider.addEventListener("input", function(){
         rainbowKiSphereAmount=parseInt(this.value);
         if(parseInt(this.value)==5){
@@ -4982,8 +4995,7 @@ function createKiSphereContainer(){
     otherSlider.type="range";
     otherSlider.min=0;
     otherSlider.max=23;
-    otherSlider.value=3;
-    currentKiSphereAmount=3;
+    otherSlider.value=currentKiSphereAmount;
     otherSlider.addEventListener("input", function(){
         if(parseInt(this.value)+parseInt(this.parentElement.parentElement.rainbowQuery.slider.value)>23){
             this.parentElement.parentElement.rainbowQuery.slider.value=23-this.value;
