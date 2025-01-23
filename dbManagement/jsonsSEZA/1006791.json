@@ -1,0 +1,791 @@
+{
+    "ID": "1006791",
+    "Type": "AGL",
+    "Class": "Super",
+    "Name": "Super Vegito",
+    "Rarity": "ur",
+    "Min Level": 120,
+    "Max Level": 140,
+    "Categories": [
+        "Majin Buu Saga",
+        "Potara",
+        "Super Saiyans",
+        "Final Trump Card",
+        "Battle of Wits",
+        "Accelerated Battle",
+        "Fused Fighters"
+    ],
+    "Can EZA": true,
+    "Can SEZA": true,
+    "Links": [
+        "Golden Warrior",
+        "Super Saiyan",
+        "Prepared for Battle",
+        "Power Bestowed by God",
+        "Fused Fighter",
+        "Shocking Speed",
+        "Fierce Battle"
+    ],
+    "Resource ID": 1006790,
+    "Passive": {
+        "4505": {
+            "ID": "4505",
+            "Timing": "Start of turn",
+            "Ki": 2,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "Ki +2 "
+        },
+        "1004505": {
+            "ID": "1004505",
+            "Timing": "Start of turn",
+            "ATK": 200,
+            "DEF": 200,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "ATK and DEF +200% "
+        },
+        "2004505": {
+            "ID": "2004505",
+            "Timing": "Right before attack(MOT stat)",
+            "ATK": 150,
+            "DEF": 150,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "3409",
+                "Causalities": {
+                    "3409": {
+                        "Slider": {
+                            "Name": "How much ki is there on this turn?",
+                            "Logic": ">=12",
+                            "Min": 0,
+                            "Max": 12
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "ATK and DEF +150% when attacking"
+        },
+        "3004505": {
+            "ID": "3004505",
+            "Timing": "Start of turn",
+            "Guard": true,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "3298",
+                "Causalities": {
+                    "3298": {
+                        "Button": {
+                            "Name": "Is HP 50 % or less on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining on this turn?",
+                            "Logic": "<=50",
+                            "Min": 0,
+                            "Max": 100
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "Guards all attacks "
+        },
+        "4004505": {
+            "ID": "4004505",
+            "Timing": "Right after being hit",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 100,
+                "Cause": {
+                    "Cause": "Attacks recieved"
+                },
+                "Slider": "How many attacks has this character recieved?"
+            },
+            "ATK": 25,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Type": "Building Stat",
+            "Brief effect description": "ATK +25% (up to 100%) based on 'How many attacks has this character recieved' after being hit"
+        },
+        "5004505": {
+            "ID": "5004505",
+            "Timing": "Right after being hit",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 100,
+                "Cause": {
+                    "Cause": "Attacks recieved"
+                },
+                "Slider": "How many attacks has this character recieved?"
+            },
+            "DEF": 25,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Type": "Building Stat",
+            "Brief effect description": "DEF +25% (up to 100%) based on 'How many attacks has this character recieved' after being hit"
+        },
+        "6004505": {
+            "ID": "6004505",
+            "Timing": "Right after being hit",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 60,
+                "Cause": {
+                    "Cause": "Attacks recieved"
+                },
+                "Slider": "How many attacks has this character recieved?"
+            },
+            "Crit Chance": 15,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Type": "Building Stat",
+            "Brief effect description": "Chance of performing a critical hit +15% (up to 60%) based on 'How many attacks has this character recieved' after being hit"
+        },
+        "7004505": {
+            "ID": "7004505",
+            "Timing": "Start of turn",
+            "DR": 40,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "Damage recieved -40% "
+        },
+        "8004505": {
+            "ID": "8004505",
+            "Timing": "Right before being hit",
+            "DR": 40,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2324",
+                "Causalities": {
+                    "2324": {
+                        "Button": {
+                            "Name": "Has the character recieved a normal attack on this turn?"
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "Damage recieved -40% right before being hit"
+        },
+        "9004505": {
+            "ID": "9004505",
+            "Disable Other Line": {
+                "Activated": true,
+                "Line": "9004505"
+            },
+            "Timing": "Right after being hit",
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Disable Other Line",
+            "Brief effect description": "Disables a different passive line:9004505 after being hit"
+        },
+        "10004505": {
+            "ID": "10004505",
+            "Counter": {
+                "Activated": true,
+                "Multiplier": "300"
+            },
+            "Timing": "Right before being hit",
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2324",
+                "Causalities": {
+                    "2324": {
+                        "Button": {
+                            "Name": "Has the character recieved a normal attack on this turn?"
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "Counter attacks with a 300% multiplier right before being hit"
+        },
+        "11004505": {
+            "ID": "11004505",
+            "Disable Other Line": {
+                "Activated": true,
+                "Line": "11004505"
+            },
+            "Timing": "Right after being hit",
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Disable Other Line",
+            "Brief effect description": "Disables a different passive line:11004505 after being hit"
+        },
+        "12004505": {
+            "ID": "12004505",
+            "Forsee Super Attack": true,
+            "Timing": "Start of turn",
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "2",
+            "Condition": {
+                "Logic": "3298",
+                "Causalities": {
+                    "3298": {
+                        "Button": {
+                            "Name": "Is HP 50 % or less within the last 2 turns?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining within the last 2 turns?",
+                            "Logic": "<=50",
+                            "Min": 0,
+                            "Max": 100
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": " allies Forsee enemy super attack "
+        },
+        "13004505": {
+            "ID": "13004505",
+            "Timing": "Start of turn",
+            "ATK": 50,
+            "DEF": 50,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2672",
+                "Causalities": {
+                    "2672": {
+                        "Button": {
+                            "Name": "Is there 1 or more Super class enemies on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Super class enemies on this turn?",
+                            "Logic": ">=1",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "ATK and DEF +50% "
+        },
+        "14004505": {
+            "ID": "14004505",
+            "Timing": "Start of turn",
+            "Ki": 2,
+            "Target": {
+                "Target": "Allies(self excluded)"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2672",
+                "Causalities": {
+                    "2672": {
+                        "Button": {
+                            "Name": "Is there 1 or more Super class enemies on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Super class enemies on this turn?",
+                            "Logic": ">=1",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": " allies Ki +2 "
+        },
+        "15004505": {
+            "ID": "15004505",
+            "Timing": "Start of turn",
+            "DEF": 20,
+            "Target": {
+                "Target": "Allies(self excluded)"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2672",
+                "Causalities": {
+                    "2672": {
+                        "Button": {
+                            "Name": "Is there 1 or more Super class enemies on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Super class enemies on this turn?",
+                            "Logic": ">=1",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": " allies DEF +20% "
+        },
+        "16004505": {
+            "ID": "16004505",
+            "Timing": "Start of turn",
+            "ATK": 100,
+            "DEF": 100,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2089",
+                "Causalities": {
+                    "2089": {
+                        "Button": {
+                            "Name": "Is there 1 or more Extreme class enemies on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Extreme class enemies on this turn?",
+                            "Logic": ">=1",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "ATK and DEF +100% "
+        },
+        "17004505": {
+            "ID": "17004505",
+            "Timing": "Start of turn",
+            "Ki": 3,
+            "Target": {
+                "Target": "Allies(self excluded)"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2089",
+                "Causalities": {
+                    "2089": {
+                        "Button": {
+                            "Name": "Is there 1 or more Extreme class enemies on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Extreme class enemies on this turn?",
+                            "Logic": ">=1",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": " allies Ki +3 "
+        },
+        "18004505": {
+            "ID": "18004505",
+            "Timing": "Start of turn",
+            "DEF": 30,
+            "Target": {
+                "Target": "Allies(self excluded)"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2089",
+                "Causalities": {
+                    "2089": {
+                        "Button": {
+                            "Name": "Is there 1 or more Extreme class enemies on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Extreme class enemies on this turn?",
+                            "Logic": ">=1",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": " allies DEF +30% "
+        }
+    },
+    "Max Attacks": 2,
+    "Max Super Attacks": 2,
+    "Stats at levels": {
+        "120": {
+            "HP": 11150,
+            "ATK": 10840,
+            "DEF": 4225
+        },
+        "121": {
+            "HP": 11282,
+            "ATK": 10983,
+            "DEF": 4267
+        },
+        "122": {
+            "HP": 11415,
+            "ATK": 11126,
+            "DEF": 4309
+        },
+        "123": {
+            "HP": 11548,
+            "ATK": 11269,
+            "DEF": 4352
+        },
+        "124": {
+            "HP": 11681,
+            "ATK": 11413,
+            "DEF": 4394
+        },
+        "125": {
+            "HP": 11814,
+            "ATK": 11556,
+            "DEF": 4437
+        },
+        "126": {
+            "HP": 11947,
+            "ATK": 11699,
+            "DEF": 4479
+        },
+        "127": {
+            "HP": 12080,
+            "ATK": 11842,
+            "DEF": 4522
+        },
+        "128": {
+            "HP": 12212,
+            "ATK": 11986,
+            "DEF": 4564
+        },
+        "129": {
+            "HP": 12345,
+            "ATK": 12129,
+            "DEF": 4607
+        },
+        "130": {
+            "HP": 12478,
+            "ATK": 12272,
+            "DEF": 4649
+        },
+        "131": {
+            "HP": 12611,
+            "ATK": 12416,
+            "DEF": 4692
+        },
+        "132": {
+            "HP": 12744,
+            "ATK": 12559,
+            "DEF": 4734
+        },
+        "133": {
+            "HP": 12877,
+            "ATK": 12702,
+            "DEF": 4777
+        },
+        "134": {
+            "HP": 13010,
+            "ATK": 12845,
+            "DEF": 4819
+        },
+        "135": {
+            "HP": 13143,
+            "ATK": 12989,
+            "DEF": 4862
+        },
+        "136": {
+            "HP": 13275,
+            "ATK": 13132,
+            "DEF": 4904
+        },
+        "137": {
+            "HP": 13408,
+            "ATK": 13275,
+            "DEF": 4947
+        },
+        "138": {
+            "HP": 13541,
+            "ATK": 13418,
+            "DEF": 4989
+        },
+        "139": {
+            "HP": 13674,
+            "ATK": 13562,
+            "DEF": 5032
+        },
+        "140": {
+            "HP": 13807,
+            "ATK": 13705,
+            "DEF": 5074
+        }
+    },
+    "Leader Skill": {
+        "Name": "Unparalleled Golden Ki",
+        "7896": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "AGL"
+                ]
+            },
+            "HP": 100,
+            "ATK": 100,
+            "DEF": 100
+        },
+        "7897": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 4
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000,
+            "Additional": 5,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 6,
+            "Type DEF": 5,
+            "Super Attack boost": 6,
+            "Recovery boost": 6
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 1,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 2,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 0,
+            "Type DEF": 2,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "4": {
+            "HP": 1300,
+            "ATK": 1700,
+            "DEF": 2100,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 1,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        }
+    },
+    "Super Attack": {
+        "2150": {
+            "superID": "2150",
+            "Type": "Unarmed",
+            "special_name_no": "0",
+            "superName": "Spirit Sword (Extreme)",
+            "superDescription": "Causes immense damage to enemy and \nraises allies' ATK by 35% for 1 turn",
+            "superMinKi": "12",
+            "superPriority": "0.0",
+            "superStyle": "Normal",
+            "superMinLVL": "14",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superBuffs": {
+                "2150": {
+                    "Type": "NormalEfficacySpecial",
+                    "Chance": "100",
+                    "Duration": "1",
+                    "Buff": {
+                        "Type": "Percentage",
+                        "+ or -": "+"
+                    },
+                    "Target": "Allies",
+                    "ATK": "35"
+                }
+            },
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "0"
+            },
+            "Multiplier": 595
+        }
+    },
+    "Active Skill": null,
+    "Standby Skill": null,
+    "Finish Skill": null,
+    "Transforms from": [],
+    "Transformations": [],
+    "Max Appearances In Form": 50,
+    "Dokkan awakenings": [],
+    "Dokkan Reverse awakenings": [],
+    "Ki Multiplier": {
+        "0": 75.0,
+        "1": 81.25,
+        "2": 87.5,
+        "3": 93.75,
+        "4": 100.0,
+        "5": 106.25,
+        "6": 112.5,
+        "7": 118.75,
+        "8": 125.0,
+        "9": 131.25,
+        "10": 137.5,
+        "11": 143.75,
+        "12": 150.0
+    },
+    "Ki Circle Segments": {
+        "1": "weaker",
+        "2": "weaker",
+        "3": "weaker",
+        "4": "equal",
+        "5": "equal",
+        "6": "equal",
+        "7": "equal",
+        "8": "equal",
+        "9": "equal",
+        "10": "equal",
+        "11": "equal",
+        "12": "super"
+    },
+    "SuperMinKi": 12,
+    "AdditionalSuperID": "2150"
+}

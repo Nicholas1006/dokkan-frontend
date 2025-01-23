@@ -663,12 +663,12 @@ class kiCircleClass{
             this.superAttackWords.classList.remove("unit-super");
             if(currentJson["Super Attack"][this.superAttackID]["superStyle"]=="Normal"){
                 this.superAttackName.style.backgroundImage = "url('/dbManagement/DokkanFiles/global/en/character/card/"+this.imageUrl+"/en/card_"+this.imageUrl+"_sp_name.png')";
-                this.superAttackWords.image.src="/dbManagement/DokkanFiles/global/en/ingame/battle/effect/battle_140000/en/battle_140000-0.png"
+                this.superAttackWords.image.src="/dbManagement/DokkanFiles/global/en/ingame/battle/effect/battle_140000/en/Images_sp_atk_str-1.png"
                 this.superAttackWords.classList.add("super")
             }
             else if(currentJson["Super Attack"][this.superAttackID]["superStyle"]=="Hyper"){
                 this.superAttackName.style.backgroundImage = "url('/dbManagement/DokkanFiles/global/en/character/card/"+this.imageUrl+"/en/card_"+this.imageUrl+"_sp0"+this.superAttackAssetID+"_name.png')";
-                this.superAttackWords.image.src="/dbManagement/DokkanFiles/global/en/ingame/battle/effect/battle_140000/en/battle_140000-1.png"
+                this.superAttackWords.image.src="/dbManagement/DokkanFiles/global/en/ingame/battle/effect/battle_140000/en/Images_sp2_atk_str-1.png"
                 this.superAttackWords.classList.add("ultra-super")
             }
             else if(currentJson["Super Attack"][this.superAttackID]["superStyle"]=="Condition"){
