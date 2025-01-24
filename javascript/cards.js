@@ -638,7 +638,7 @@ class kiCircleClass{
     }
 
     updateSuperAttack(superAttackID=this.superAttackID){
-        if(superAttackID==-1){
+        if(superAttackID==-1 || superAttackID=="Active" || superAttackID=="Finish"){
             this.superAttackName.style.display="none";
             this.superAttackWords.style.display="none";
             this.damageText.style.animation="none";
@@ -1319,7 +1319,9 @@ class passiveButton{
             this.label.startsWith("Is Ki at least ")||
             this.label.includes("Ki Spheres been obtained")||
             this.label.includes("Is a super being performed")||
-            this.label.includes("Has this character performed an attack on this turn")
+            this.label.includes("Has this character performed an attack on this turn")||
+            this.label.includes("Has this character been hit by a ") ||
+            this.label.includes("Has this character been hit on this turn?")
             ){
                 if(HIDEUNNEEDEDPASSIVE){
                     this.parent.selfContainer.style.display="none"
@@ -1476,8 +1478,6 @@ let domainData=null;
 let activeAttackPerformed=false;
 let finishDisplayed=false;
 let finishSkillCharges=0;
-let hitBeforeAttacking=false;
-let superHitBeforeAttacking=false;
 
 let regularAttacksPerformed=true;
 
@@ -1505,6 +1505,7 @@ let passiveQueryList=[];
 let passiveChanceList={};
 let relevantPassiveEffects=["Ki","ATK","Heals","DEF","Guard","Disable Other Line","Dodge chance","Crit Chance","DR","Additional Attack"]
 
+let attackRecievedType="normal";
 let attackRecievedTiming="after";
 let enemyClass="Super";
 let enemyTyping="STR";
@@ -1514,6 +1515,7 @@ let enemyDR=65;
 let enemyATKThreshold=10000000;
 let startingStats={};
 let finalStats={};
+let recievingDamageStats={};
 
 
 function getJsonPromise(prefix,name,suffix) {
@@ -1767,22 +1769,51 @@ function updatePassiveStats(){
 
     //  for(each time that an attack is recieved before we attack){
     //      Right before being hit
-    if(hitBeforeAttacking){
+    if(attackRecievedTiming=="before" && attackRecievedType=="normal"){
         progressCausalityLogic(iteratingCausalityLogic,"Right before being hit by normal");
         currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before being hit","Single activator",iteratingCausalityLogic)
         currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before being hit","Disable Other Line",iteratingCausalityLogic)
-        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after being hit","Single activator",iteratingCausalityLogic)
-        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after being hit","Disable Other Line",iteratingCausalityLogic)
     }
-    else if(superHitBeforeAttacking){
+    else if(attackRecievedTiming=="before" && attackRecievedType=="super"){
         progressCausalityLogic(iteratingCausalityLogic,"Right before being hit by super");
         currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before being hit","Single activator",iteratingCausalityLogic)
         currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before being hit","Disable Other Line",iteratingCausalityLogic)
+    }
+
+    if(attackRecievedTiming=="before" && (attackRecievedType=="normal" || attackRecievedType=="super")){
+        kiCircleDictionary[0].updateDefensiveFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
+        recievingDamageStats={};
+        recievingDamageStats["Defense"]=kiCircleDictionary[0].getDefense();
+        recievingDamageStats["Dodge chance"]=Math.min(kiCircleDictionary[0].getDodgeChance(),100)/100;
+        recievingDamageStats["Dodge chance"]=1 - (1-(recievingDamageStats["Dodge chance"]))*(1-(skillOrbBuffs["Evasion"]/100));
+        recievingDamageStats["Dodge chance"]=Math.round(recievingDamageStats["Dodge chance"]*1000)/10;
+        recievingDamageStats["Damage Reduction"]= Math.min(kiCircleDictionary[0].getDamageReduction(),100);
+        recievingDamageStats["Guard"]= kiCircleDictionary[0].getGuard();
+        let recievingDamageStatsString="";
+        recievingDamageStatsString+="DEF: "+recievingDamageStats["Defense"].toLocaleString()+"\n";
+        if(recievingDamageStats["Dodge chance"]>0){
+            recievingDamageStatsString+="Dodge chance: "+recievingDamageStats["Dodge chance"]+"%\n";
+        }
+        if(recievingDamageStats["Damage Reduction"]>0){
+            recievingDamageStatsString+="Damage Reduction: "+recievingDamageStats["Damage Reduction"]+"%\n";
+        }
+        if(recievingDamageStats["Guard"]==true){
+            recievingDamageStatsString+="Guard against all: "+"\n";
+        }
+    }
+
+    if(attackRecievedTiming=="before" && attackRecievedType=="normal"){
+        progressCausalityLogic(iteratingCausalityLogic,"Right after being hit by normal");
         currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after being hit","Single activator",iteratingCausalityLogic)
         currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after being hit","Disable Other Line",iteratingCausalityLogic)
     }
-    kiCircleDictionary[0].updateDefensiveFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
+    else if(attackRecievedTiming=="before" && attackRecievedType=="super"){
+        progressCausalityLogic(iteratingCausalityLogic,"Right after being hit by super");
+        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after being hit","Single activator",iteratingCausalityLogic)
+        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after being hit","Disable Other Line",iteratingCausalityLogic)
+    }
 
+    kiCircleDictionary[0].updateDefensiveFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
     startingStats={};
     startingStats["Defense"]=kiCircleDictionary[0].getDefense();
     startingStats["Dodge chance"]=Math.min(kiCircleDictionary[0].getDodgeChance(),100)/100;
@@ -1952,8 +1983,54 @@ function updatePassiveStats(){
         }
     }
 
+    if(attackRecievedTiming=="after" && attackRecievedType=="normal"){
+        progressCausalityLogic(iteratingCausalityLogic,"Right before being hit by normal");
+        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before being hit","Single activator",iteratingCausalityLogic)
+        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before being hit","Disable Other Line",iteratingCausalityLogic)
+    }
+    else if(attackRecievedTiming=="after" && attackRecievedType=="super"){
+        progressCausalityLogic(iteratingCausalityLogic,"Right before being hit by super");
+        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before being hit","Single activator",iteratingCausalityLogic)
+        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before being hit","Disable Other Line",iteratingCausalityLogic)
+    }
+
+    if(attackRecievedTiming=="after" && (attackRecievedType=="normal" || attackRecievedType=="super")){
+        kiCircleDictionary[lastAttack].updateDefensiveFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
+        recievingDamageStats["Defense"]=kiCircleDictionary[lastAttack].getDefense();
+        recievingDamageStats["Dodge chance"]=Math.min(kiCircleDictionary[lastAttack].getDodgeChance(),100)/100;
+        recievingDamageStats["Dodge chance"]=1 - (1-(recievingDamageStats["Dodge chance"]))*(1-(skillOrbBuffs["Evasion"]/100));
+        recievingDamageStats["Dodge chance"]=Math.round(recievingDamageStats["Dodge chance"]*1000)/10;
+        recievingDamageStats["Damage Reduction"]= Math.min(kiCircleDictionary[lastAttack].getDamageReduction(),100);
+        recievingDamageStats["Guard"]= kiCircleDictionary[lastAttack].getGuard();
+
+            
+        let recievingDamageStatsString="";
+        recievingDamageStatsString+="DEF: "+recievingDamageStats["Defense"].toLocaleString()+"\n";
+        if(recievingDamageStats["Dodge chance"]>0){
+            recievingDamageStatsString+="Dodge chance: "+recievingDamageStats["Dodge chance"]+"%\n";
+        }
+        if(recievingDamageStats["Damage Reduction"]>0){
+            recievingDamageStatsString+="Damage Reduction: "+recievingDamageStats["Damage Reduction"]+"%\n";
+        }
+        if(recievingDamageStats["Guard"]==true){
+            recievingDamageStatsString+="Guard against all: "+"\n";
+        }
+    }
+
+    if(attackRecievedTiming=="after" && attackRecievedType=="normal"){
+        progressCausalityLogic(iteratingCausalityLogic,"Right after being hit by normal");
+        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after being hit","Single activator",iteratingCausalityLogic)
+        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after being hit","Disable Other Line",iteratingCausalityLogic)
+    }
+    else if(attackRecievedTiming=="after" && attackRecievedType=="super"){
+        progressCausalityLogic(iteratingCausalityLogic,"Right after being hit by super");
+        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after being hit","Single activator",iteratingCausalityLogic)
+        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after being hit","Disable Other Line",iteratingCausalityLogic)
+    }
     currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"All","Building Stat",iteratingCausalityLogic)
     kiCircleDictionary[lastAttack].updateDefensiveFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
+
+    
 
     finalStats={}
     
@@ -1963,7 +2040,7 @@ function updatePassiveStats(){
     finalStats["Dodge chance"]=Math.round(finalStats["Dodge chance"]*1000)/10;
     finalStats["Damage Reduction"]= Math.min(kiCircleDictionary[lastAttack].getDamageReduction(),100);
     finalStats["Guard"]= kiCircleDictionary[lastAttack].getGuard();
-        
+
     let finalStatsString="";
     finalStatsString+="DEF: "+finalStats["Defense"].toLocaleString()+"\n";
     if(finalStats["Dodge chance"]>0){
@@ -1975,6 +2052,8 @@ function updatePassiveStats(){
     if(finalStats["Guard"]==true){
         finalStatsString+="Guard against all: "+"\n";
     }
+
+
     document.getElementById("final-stats").innerText=finalStatsString;
     updateDamageTakenQueryContainer();
 }
@@ -2323,10 +2402,14 @@ function progressCausalityLogic(causalityLogic,progressingDetails){
 
     }
     else if(progressingDetails=="Right before being hit by normal"){
-
+        iterateCausalityThatContains(causalityLogic,"Has this character been hit by a normal attack")
+        iterateCausalityThatContains(causalityLogic,"How many normal attacks has this character recieved")
+        iterateSpecificCausality(causalityLogic,"Has this character been hit on this turn?")
     }
     else if(progressingDetails=="Right before being hit by super"){
+        iterateCausalityThatContains(causalityLogic,"Has this character been hit by a super attack")
         iterateCausalityThatContains(causalityLogic,"How many super attacks has this character recieved")
+        iterateSpecificCausality(causalityLogic,"Has this character been hit on this turn?")
     }
     else if(progressingDetails=="Right after being hit by normal"){
         iterateCausalityThatContains(causalityLogic,"How many attacks has this character recieved")
@@ -3469,56 +3552,6 @@ function updateQueryListWithPassiveLine(passiveLine){
             }
         }
     }
-
-    if(passiveLine["Timing"]=="Right before being hit"|| passiveLine["Timing"]=="Right after being hit"){
-        let hitCheck=false;
-        for (const query of passiveQueryList){
-            if(query.type=="button" && query.buttonName=="Has this character been hit on this turn?"){
-                hitCheck=true;
-            }
-        }
-        if(hitCheck==false){
-            let hitCheckButton = new passiveQuery("button","Has this character been hit on this turn?","How many times Has this character been hit on this turn?",0,0);
-            hitCheckButton.queryElement.element.onclick=function(){
-                if(this.classList.contains('active')){
-                    this.classList.remove('active');
-                    this.style.background="#FF5C35"
-                    hitBeforeAttacking=false
-                }
-                else{
-                    this.classList.add('active');
-                    this.style.background="#00FF00"
-                    hitBeforeAttacking=true
-                }
-                updatePassiveStats();
-            }
-            passiveQueryList.push(hitCheckButton);
-        }
-        let superHitCheck=false;
-        for (const query of passiveQueryList){
-            if(query.type=="button" && query.buttonName=="Has this character been hit by a super attack?"){
-                superHitCheck=true;
-            }
-        }
-        if(superHitCheck==false){
-            let superHitCheckButton = new passiveQuery("button","Has this character been hit by a super attack?","How many times has this character been hit by a super attack",0,0);
-            superHitCheckButton.queryElement.element.onclick=function(){
-                if(this.classList.contains('active')){
-                    this.classList.remove('active');
-                    this.style.background="#FF5C35"
-                    superHitBeforeAttacking=false
-                }
-                else{
-                    this.classList.add('active');
-                    this.style.background="#00FF00"
-                    superHitBeforeAttacking=true
-                }
-                updatePassiveStats();
-            }
-            
-            passiveQueryList.push(superHitCheckButton);
-        }
-    }   
 }
 
 function updateQueryListWithUnitSuperLine(unitSuperAttack){
@@ -4459,7 +4492,7 @@ function createDamageTakenContainer(){
         option.addEventListener(
             "click", function(){
                 enemyTyping=possibleEnemyTyping;
-                updateDamageTakenQueryContainer();
+                updatePassiveStats();
             }
         )
     }
@@ -4482,7 +4515,7 @@ function createDamageTakenContainer(){
         option.addEventListener(
             "click", function(){
                 enemyClass=possibleEnemyClass;
-                updateDamageTakenQueryContainer();
+                updatePassiveStats();
             }
         )
 
@@ -4521,7 +4554,8 @@ function createDamageTakenContainer(){
     
     const drInput = document.getElementById("enemy-DR-input");
     drInput.value=(""+enemyDR).replace(/,/g, "").replace(/\D/g, "");
-    drInput.addEventListener("input", function(){
+    drInput.addEventListener(
+        "input", function(){
         // Remove any non-digit characters (except for commas)
         let value = this.value.replace(/,/g, "").replace(/\D/g, "");
         
@@ -4537,33 +4571,75 @@ function createDamageTakenContainer(){
     
     const atkThresholdInput = document.getElementById("enemy-ATK-threshold-input");
     atkThresholdInput.value=(""+enemyATKThreshold).replace(/,/g, "").replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    atkThresholdInput.addEventListener("input", function(){
-        // Remove any non-digit characters (except for commas)
-        let value = this.value.replace(/,/g, "").replace(/\D/g, "");
+    atkThresholdInput.addEventListener(
+        "input", function(){
+            // Remove any non-digit characters (except for commas)
+            let value = this.value.replace(/,/g, "").replace(/\D/g, "");
 
-        // Format the number with commas
-        const formattedValue = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            // Format the number with commas
+            const formattedValue = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
-        // Update the input's value with the formatted number
-        this.value = formattedValue;
-        enemyATKThreshold=value;
-        updateDamageTakenQueryContainer();
-    });
+            // Update the input's value with the formatted number
+            this.value = formattedValue;
+            enemyATKThreshold=value;
+            updateDamageTakenQueryContainer();
+        }
+    );
     //creating enemy stats input complete
     
     
     const beforeAttackTimnig=document.getElementById("attack-timing-before");
+    if(attackRecievedTiming=="before"){
+        beforeAttackTimnig.checked=true;
+    }
     beforeAttackTimnig.addEventListener(
         "input", function(){
             attackRecievedTiming="before";
-            updateEnemyNumbers();
+            updatePassiveStats();
         }
     )
+
     const afterAttackTimnig=document.getElementById("attack-timing-after");
+    if(attackRecievedTiming=="after"){
+        afterAttackTimnig.checked=true;
+    }
     afterAttackTimnig.addEventListener(
         "input", function(){
             attackRecievedTiming="after";
-            updateEnemyNumbers();
+            updatePassiveStats();
+        }
+    )
+
+    const noneAttackType=document.getElementById("attack-type-none");
+    if(attackRecievedType=="none"){
+        noneAttackType.checked=true;
+    }
+    noneAttackType.addEventListener(
+        "input", function(){
+            attackRecievedType="none";
+            updatePassiveStats();
+        }
+    )
+
+    const normalAttackType=document.getElementById("attack-type-normal");
+    if(attackRecievedType=="normal"){
+        normalAttackType.checked=true;
+    }
+    normalAttackType.addEventListener(
+        "input", function(){
+            attackRecievedType="normal";
+            updatePassiveStats();
+        }
+    )
+
+    const superAttackType=document.getElementById("attack-type-super");
+    if(attackRecievedType=="super"){
+        superAttackType.checked=true;
+    }
+    superAttackType.addEventListener(
+        "input", function(){
+            attackRecievedType="super";
+            updatePassiveStats();
         }
     )
 }
@@ -4747,10 +4823,10 @@ function updateEnemyNumbers(){
     }
     enemyAttackTaken.innerHTML="Damage dealt: "+Math.round(attackDealt,0).toLocaleString('en-US');
 
-
+    const statsOnHit=document.getElementById("stats-on-hit");
     const enemyAttackDealt=document.getElementById("enemy-attack-dealt");
     let attackTaken;
-    if(attackRecievedTiming=="before"){
+    if(attackRecievedType!="none"){
         attackTaken=calculateAttackRecieved(
             enemyATK,
             false,
@@ -4759,35 +4835,29 @@ function updateEnemyNumbers(){
             enemyClass,
             0,
             
-            startingStats.Defense||0,
-            (startingStats["Damage Reduction"]||0)/100,
+            recievingDamageStats.Defense||0,
+            (recievingDamageStats["Damage Reduction"]||0)/100,
             currentJson["Type"],
             currentJson["Class"],
             0,
             skillOrbBuffs["Defense"],
-            startingStats.Guard||false
+            recievingDamageStats.Guard||false
         )
+        enemyAttackDealt.innerHTML="Damage taken: "+Math.round(attackTaken,0).toLocaleString('en-US');
+        enemyAttackDealt.style.display="block";
+        statsOnHit.innerHTML="DEF: "+ recievingDamageStats.Defense.toLocaleString('en-US')+"<br>";
+        if(recievingDamageStats["Damage Reduction"] !=0){
+            statsOnHit.innerHTML+=" DR: "+(recievingDamageStats["Damage Reduction"]||0)+"% <br>";
+        }
+        if(recievingDamageStats.Guard){
+            statsOnHit.innerHTML+="Guard: "+recievingDamageStats.Guard;
+        }
     }
-    else if(attackRecievedTiming=="after"){
-        attackTaken=calculateAttackRecieved(
-            enemyATK,
-            false,
-            false,
-            enemyTyping,
-            enemyClass,
-            0,
-            
-            finalStats.Defense||0,
-            (finalStats["Damage Reduction"]||0)/100,
-            currentJson["Type"],
-            currentJson["Class"],
-            0,
-            skillOrbBuffs["Defense"],
-            finalStats.Guard||false
-        )
+    else{
+        enemyAttackDealt.style.display="none";
+        statsOnHit.style.display="none";
     }
     
-    enemyAttackDealt.innerHTML="Damage taken: "+Math.round(attackTaken,0).toLocaleString('en-US');
 }
 
 function calculateAttackRecieved(
