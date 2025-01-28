@@ -2843,7 +2843,7 @@ function createLeaderStats(){
     leaderAInputStats.id="leader-A-Input-Stats";
     leaderAInputStats.type="number";
     leaderAInputStats.min=0;
-    leaderAInputStats.max=200;
+    leaderAInputStats.max=220;
     leaderAInputStats.step=1;
     leaderAInputStats.value=200;
 
@@ -2855,7 +2855,7 @@ function createLeaderStats(){
     leaderBInputStats.id="leader-B-Input-Stats";
     leaderBInputStats.type="number";
     leaderBInputStats.min=0;
-    leaderBInputStats.max=200;
+    leaderBInputStats.max=220;
     leaderBInputStats.step=1;
     leaderBInputStats.value=200;
 
@@ -2868,7 +2868,7 @@ function createLeaderStats(){
     leaderTotalInputStats.id="leader-total-Input-Stats";
     leaderTotalInputStats.type="number";
     leaderTotalInputStats.min=0;
-    leaderTotalInputStats.max=400;
+    leaderTotalInputStats.max=440;
     leaderTotalInputStats.step=1;
     leaderTotalInputStats.value=400;
 
@@ -2878,8 +2878,8 @@ function createLeaderStats(){
     
 
     leaderAInputStats.addEventListener('input', function(){
-        if(parseInt(leaderAInputStats.value)>200){
-            leaderAInputStats.value=200;
+        if(parseInt(leaderAInputStats.value)>leaderAInputStats.max){
+            leaderAInputStats.value=leaderAInputStats.max;
         }
         else if (parseInt(leaderAInputStats.value)<0){
             leaderAInputStats.value=0;
@@ -2892,8 +2892,8 @@ function createLeaderStats(){
     });
 
     leaderBInputStats.addEventListener('input', function(){
-        if(parseInt(leaderBInputStats.value)>200){
-            leaderBInputStats.value=200;
+        if(parseInt(leaderBInputStats.value)>leaderBInputStats.max){
+            leaderBInputStats.value=leaderBInputStats.max;
         }
         else if (parseInt(leaderBInputStats.value)<0){
             leaderBInputStats.value=0;
@@ -2906,8 +2906,8 @@ function createLeaderStats(){
     });
     
     leaderTotalInputStats.addEventListener('input', function(){
-        if(parseInt(leaderTotalInputStats.value)>400){
-            leaderTotalInputStats.value=400;
+        if(parseInt(leaderTotalInputStats.value)>leaderTotalInputStats.max){
+            leaderTotalInputStats.value=leaderTotalInputStats.max;
         }
         else if (parseInt(leaderTotalInputStats.value)<0){
             leaderTotalInputStats.value=0;
@@ -5134,6 +5134,7 @@ export async function loadPage(firstTime=false){
     isEza=(isEza=="true");
     isSeza = urlParams.get("SEZA") || "false";
     isSeza=(isSeza=="true");
+
     let jsonPromise;
     if(isSeza){
     jsonPromise=getJsonPromise('/dbManagement/jsonsSEZA/',subURL,'.json');
