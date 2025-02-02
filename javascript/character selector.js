@@ -186,7 +186,7 @@ function reSortCards(){
       if(i<sortedUnits.length){
         let otherDisplayedValue=null;
         if(["Cost","HP","Attack","Defense","Sp Atk Lv"].includes(currentSort)){
-          otherDisplayedValue=sortedUnits[i][currentSort];
+          otherDisplayedValue=unitBasicsDetails[currentSort][sortedUnits[i]];
         }
         let ezaLevel = "none";
         if(sortedUnits[i].endsWith("SEZA")){
