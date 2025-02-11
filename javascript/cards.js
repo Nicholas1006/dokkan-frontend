@@ -323,9 +323,9 @@ class kiCircleClass{
     }
 
     updateFromBuffs(buffs,superBuffs){
+        this.superAttackMultiplier=1
         this.superAttackAssetID=-1;
         this.superBuffs={...superBuffs};
-        this.superAttackMultiplier=superBuffs["ATK"]/100 +1;
         this.damageReduction=buffs["Damage Reduction"];
         this.dodgeChance=buffs["Dodge Chance"];
         this.critChance=buffs["Crit Chance"];
@@ -375,7 +375,7 @@ class kiCircleClass{
         this.updateKi(this.Ki);
         if(this.superAttackID!="-1" && this.superAttackID!="Active"){
             const superAttack=currentJson["Super Attack"][this.superAttackID]
-            this.superAttackMultiplier+=superAttack["Multiplier"]/100;
+            this.superAttackMultiplier=superAttack["Multiplier"]/100;
             this.superAttackMultiplier+=skillOrbBuffs["SuperBoost"]*0.05;
             this.superAttackAssetID=superAttack["special_name_no"];
             if("SpecialBonus" in superAttack){
@@ -402,6 +402,7 @@ class kiCircleClass{
             this.superPerformed=true;
         }
         
+        this.superAttackMultiplier+=this.superBuffs["ATK"]/100;
         
 
         this.attack=baseStats["ATK"];
@@ -413,7 +414,7 @@ class kiCircleClass{
         
         this.attack*=1;//Item boost
         
-        this.attack*=1+linkBuffs["ATK"]/100;
+        this.attack*=(1+linkBuffs["ATK"]/100);
         if(this.passiveLineKey=="Active"){
             this.attack*=(this.activeAttackMultiplier+(1+activeMultipliers["ATK"]));
         }
