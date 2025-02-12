@@ -3706,11 +3706,7 @@ function refreshDomainBuffs(updatePassiveStatsBool=true){
     if(currentDomain!="null"){
         domainBuffs={"ATK":0,"DEF":0,"Increased damage recieved":0};
         let domain=domainData[currentDomain];
-        console.log(typeof domain["Efficiacies"]); // Verify it's an object
-        console.log(domain["Efficiacies"]);
-        console.log("A");
         for (const efficiacyKey in domain["Efficiacies"]){
-            console.log(efficiacyKey);
             const efficiacy = domain["Efficiacies"][efficiacyKey];
             let efficiacyActive=false;
             if(efficiacy["superCondition"]!=undefined){
