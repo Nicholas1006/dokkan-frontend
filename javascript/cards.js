@@ -1498,7 +1498,7 @@ let currentKiSphereAmount=3;
 let rainbowKiSphereAmount=1;
 let activeMultipliers={"ATK":0,"DEF":0,"Effective against all":false,"Guard":false,"Dodge Chance":0,"Crit Chance":0,"Redirect attacks to me":false};
 
-let currentDomain=null;
+let currentDomain="null";
 let kiSources={"leader":6,"Support":0,"Links":0,"Active":0,"Domain":0,"Orbs":0};
 let additionalAttacks={};
 let kiCircleDictionary=[];
@@ -3625,6 +3625,7 @@ function updateChanceList(passiveLine){
 }
 
 function createDomainContainer(){
+    
     //TODO: DOMAIN IMAGE IS STORED IN C:/Users/horva/OneDrive - Trinity College Dublin/Documents/dokkan/frontend/dbManagement/DokkanFiles/global/en/outgame/extension/dokkan_field/field_thumb_image_3007 and similar
     let domainContainer=document.getElementById('domain-container');
     const domainDropDown=document.createElement('div');
@@ -3644,14 +3645,38 @@ function createDomainContainer(){
     const nullOption = document.createElement('option');
     nullOption.value = null;
     nullOption.textContent = "No domain";
-    domainDropDown.select.appendChild(nullOption);
-
-    for (const domainKey in domainData){
-        const domain = domainData[domainKey];
+    if(currentJson["Domain"]!=null && currentJson["Domain"]["Locked"]==true){
+        currentDomain=currentJson["Domain"]["ID"];
         const option = document.createElement('option');
-        option.value = domain["ID"];
-        option.textContent = domain["Name"];
+        option.value = currentDomain;
+        option.textContent = domainData[currentDomain]["Name"];
         domainDropDown.select.appendChild(option);
+    }
+    else if(currentJson["Domain"]!=null && currentJson["Domain"]["Locked"]==false){
+        currentDomain=currentJson["Domain"]["ID"];
+        domainDropDown.select.appendChild(nullOption);
+        for (const domainKey in domainData){
+            const domain = domainData[domainKey];
+            const option = document.createElement('option');
+            option.value = domain["ID"];
+            option.textContent = domain["Name"];
+            domainDropDown.select.appendChild(option);
+            if(domain["ID"]==currentDomain){
+                option.selected=true;
+            }
+        }
+        
+    }
+    else if(currentJson["Domain"]==null){
+        currentDomain="null";    
+        domainDropDown.select.appendChild(nullOption);  
+        for (const domainKey in domainData){
+            const domain = domainData[domainKey];
+            const option = document.createElement('option');
+            option.value = domain["ID"];
+            option.textContent = domain["Name"];
+            domainDropDown.select.appendChild(option);
+        }
     }
 
     const domainImage=document.createElement('img');
@@ -3659,9 +3684,10 @@ function createDomainContainer(){
     domainImage.className="domain-image";
     domainImage.id="domain-image";
     domainImage.style.display="none";
+    refreshDomainBuffs(false);
 }
 
-function refreshDomainBuffs(){
+function refreshDomainBuffs(updatePassiveStatsBool=true){
     for(const Query of passiveQueryList){
         if(Query.type=="button"){
             if(Query.buttonName.startsWith("Is the Domain ") && Query.buttonName.includes(" active")){
@@ -3670,19 +3696,21 @@ function refreshDomainBuffs(){
                     Query.updateValue(false)
                 }
                 else{
-                    Query.updateValue(domainData[currentDomain]["Name"]==queryDomain);
+                    Query.updateValue(domainData[currentDomain]["Name"]==queryDomain,false);
                 }
             }
         }
     }
 
-    if(currentDomain=="null"){
-        domainBuffs={"ATK":0,"DEF":0,"Increased damage recieved":0}
-    }
-    else{
-        domainBuffs={"ATK":0,"DEF":0,"Increased damage recieved":0}
-        let domain=domainData[currentDomain]
+    domainBuffs={"ATK":0,"DEF":0,"Increased damage recieved":0}
+    if(currentDomain!="null"){
+        domainBuffs={"ATK":0,"DEF":0,"Increased damage recieved":0};
+        let domain=domainData[currentDomain];
+        console.log(typeof domain["Efficiacies"]); // Verify it's an object
+        console.log(domain["Efficiacies"]);
+        console.log("A");
         for (const efficiacyKey in domain["Efficiacies"]){
+            console.log(efficiacyKey);
             const efficiacy = domain["Efficiacies"][efficiacyKey];
             let efficiacyActive=false;
             if(efficiacy["superCondition"]!=undefined){
@@ -3714,7 +3742,7 @@ function refreshDomainBuffs(){
                 }
                 efficiacyActive=eval(efficiacyLogic);
             }
-            if(efficiacy["Effect"]["Type"]=="ATK & DEF" && efficiacyActive && efficiacy["Timing"] == "On domain Being out"){
+            if(efficiacy["Effect"]["Type"]=="ATK & DEF" && efficiacyActive && (efficiacy["Timing"] == "On domain Being out" || efficiacy["Timing"]=="At the start of turn")){
                 domainBuffs["ATK"]+=efficiacy["Effect"]["ATK"];
                 domainBuffs["DEF"]+=efficiacy["Effect"]["DEF"];
             }
@@ -3731,7 +3759,9 @@ function refreshDomainBuffs(){
         domainImage.src="/dbManagement/DokkanFiles/global/en/outgame/extension/dokkan_field/field_thumb_image_"+domainData[currentDomain]["Resource ID"]+"/field_thumb_image_"+domainData[currentDomain]["Resource ID"]+".png"
     }
 
-    updatePassiveStats()
+    if(updatePassiveStatsBool){
+        updatePassiveStats()
+    }
 }
 
 
