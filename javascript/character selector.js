@@ -1,4 +1,5 @@
 import { unitDisplay } from "./unitDisplay.js";
+import { complexSortFilterContainer } from "./complexSortFilterContainer.js";
 
 // GLOBAL VARIABLES
 let unitsToDisplay = 200;
@@ -12,7 +13,8 @@ let displayBoxes=[];
 
 let unitBasicsDetails={};
 
-
+const COMPLEXSORTFILTERCONTAINERWIDTH=320;
+const COMPLEXSORTFILTERCONTAINERHEIGHT=window.visualViewport.height;
 
 function getJsonPromise(prefix,name,suffix) {
   return fetch(prefix + name + suffix)
@@ -233,6 +235,10 @@ function reSortCards(){
 
 
 function createSortButton(){
+  const sortFilterContainer=new complexSortFilterContainer(COMPLEXSORTFILTERCONTAINERWIDTH,COMPLEXSORTFILTERCONTAINERHEIGHT);
+  document.body.appendChild(sortFilterContainer.getElement());
+  document.body.appendChild(sortFilterContainer.getBackground());
+
   const sortButton = document.getElementById('sort-filter-container');
   sortButton.addEventListener('click', function() {
     if(currentOrder == "Ascending"){
@@ -250,6 +256,15 @@ function createSortButton(){
     }
     reSortCards();
   })
+  sortButton.addEventListener('mouseover', function() {
+    if(currentOrder == "Ascending"){
+      sortFilterContainer.changeWidth(sortFilterContainer.width+10);
+    }
+    else{
+      sortFilterContainer.changeWidth(sortFilterContainer.width-10);
+    }
+  })
+
 }
 
 
