@@ -1,61 +1,8 @@
-export function rarityToInt(rarity){
-    switch(rarity){
-      case "n":
-        return 0;
-      case "r":
-        return 1;
-      case "sr":
-        return 2;
-      case "ssr":
-        return 3;
-      case "ur":
-        return 4;
-      case "lr":
-        return 5;
-    }
-  }
-
-  export function classToInt(Class){
-    switch(Class){
-      case "None":
-        return 0;
-      case "Super":
-        return 1;
-      case "Extreme":
-        return 2;
-    }
-  }
-  
-  export function typeToInt(type,advantageConcern=false){
-    if(advantageConcern){
-      switch(type){
-        case "STR":
-          return 4;
-        case "PHY":
-          return 3;
-        case "INT":
-          return 2;
-        case "TEQ":
-          return 1;
-        case "AGL":
-          return 0;
-      }
-    }
-    else{
-      switch(type){
-        case "AGL":
-          return 0;
-        case "TEQ":
-          return 1;
-        case "INT":
-          return 2;
-        case "STR":
-          return 3;
-        case "PHY":
-          return 4;
-      }
-    }
-  }
+import {
+  typeToInt,
+  classToInt,
+  rarityToInt
+} from "./commonFunctions.js";
   export function getresourceID(unitID){
     if(unitID[unitID.length-1]=="1"){
       unitID=unitID.slice(0,-1)+"0";

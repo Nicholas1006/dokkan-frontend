@@ -1,4 +1,16 @@
-import { unitDisplay, typeToInt, classToInt } from "./unitDisplay.js";
+import { unitDisplay } from "./unitDisplay.js";
+import {extractDigitsFromString,
+       arraysHaveOverlap,
+       getFirstInDictionary,
+       calculateAdditionalChance,
+       LightenColor,
+       isEmptyDictionary,
+       updateQueryStringParameter,
+       splitTextByWords,
+       advantageCalculator,
+       typeToInt,
+       classToInt
+ } from "./commonFunctions.js";
 let baseDomain=window.location.origin;
 
 class kiCircleClass{
@@ -1590,18 +1602,6 @@ function findSuperAttackID(kiAmount,causalities=null){
     return(superAttackId);
 }
 
-function extractDigitsFromString(string){
-    let stringArray=string.split("");
-    let digitArray=[];
-    for(let i=0;i<stringArray.length;i++){
-        if(!isNaN(stringArray[i])){
-            digitArray.push(stringArray[i]);
-        }
-    }
-    let digitInteger=digitArray.join("");
-    return digitInteger
-}
-
 /**
  * Returns a number whose value is limited to the given range.
  *
@@ -1617,23 +1617,10 @@ Number.prototype.clamp = function(min, max) {
     return Math.min(Math.max(this, min), max);
 };
 
-function arraysHaveOverlap(array1,array2){
-    for(let i=0;i<array1.length;i++){
-        if(array2.includes(array1[i])){
-            return true
-        }
-    }
-    return false
-}
+
   
 
-function getFirstInDictionary(originalDictionary,valueList){
-    for (const searchedKey in originalDictionary) {
-        if(valueList.includes(originalDictionary[searchedKey])){
-            return(searchedKey)
-        }
-    }
-}
+
 
 function prepareCausalityLogic(CausalityLogic,KiCircleObject){
     for(const Cause of Object.keys(CausalityLogic)){
@@ -2693,16 +2680,7 @@ function activatePassiveLines(previousActiveLineMultipliers,exec_timing_type,act
     return(updatedPassiveLineMultipliers)
 }
 
-function calculateAdditionalChance(hiPoAdditional, attacksPerformed){
-    let output={};
-    output["Super"]=1-(1-hiPoAdditional/100)**attacksPerformed;
-    output["Neither"]=(1-(2*hiPoAdditional/100))**attacksPerformed;
-    output["Normal"]=1-output["Super"]-output["Neither"];
-    //Other option if the first method doesn't work
-//    output["Normal"]= -((1+  (2*hiPoAdditional)  )**attacksPerformed)    +     (1-hiPoAdditional)**attacksPerformed;    
 
-    return output
-}
 
 
 
@@ -3402,11 +3380,7 @@ function createKiCirclesWithClass(){
 }
 
 
-function updateQueryStringParameter(key, value) {
-    const url = new URL(window.location.href);
-    url.searchParams.set(key, value);
-    window.history.replaceState({ path: url.href}, '', url.href);
-}
+
 
 function typeToColor(type){
     if(type.toLowerCase()=="agl"){
@@ -3428,14 +3402,7 @@ function typeToColor(type){
         return("#FFFFFF")
     }
 }
-function LightenColor(color, percent){
-    var num = parseInt(color.slice(1),16),
-    amt = Math.round(2.55 * percent),
-    R = (num >> 16) + amt,
-    B = (num >> 8 & 0x00FF) + amt,
-    G = (num & 0x0000FF) + amt;
-    return "#" + (0x1000000 + (R<255?R<1?0:R:255)*0x10000 + (B<255?B<1?0:B:255)*0x100 + (G<255?G<1?0:G:255)).toString(16).slice(1);
-}
+
 
 function colorToBackground(color){
     if(color=="#0000FF"){
@@ -3939,21 +3906,7 @@ function createSuperAttackContainer(){
     }
 }
 
-function splitTextByWords(text, words) {
-    // Sort words by length in descending order to handle overlapping words correctly
-    words.sort((a, b) => b.length - a.length);
 
-    // Escape special regex characters in the words
-    const escapedWords = words.map(word => word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
-
-    // Create a regex to match any of the words
-    const regex = new RegExp(`(${escapedWords.join('|')})`, 'g');
-
-    // Split the text using the regex and preserve the matched words as separate elements
-    const result = text.split(regex);
-
-    return result.filter(part => part !== ""); // Remove any empty strings from the result
-}
 
  function updateCharacterIcon(){
     const imageContainer = document.getElementById("character-icon");
@@ -4930,87 +4883,7 @@ function calculateAttackRecieved(
     return(attackDealt);
     }
 
-function advantageCalculator(attackerTyping, attackerClass, defenderTyping, defenderClass,defenderGuard){
-    if(defenderGuard){
-        return([0.8,0.5]);
-    }
-    let attackerTypeAdvantage=(typeToInt(attackerTyping,true)-typeToInt(defenderTyping,true));
-    if(attackerTypeAdvantage<-1){
-        attackerTypeAdvantage+=5;
-    }
-    if(attackerTypeAdvantage==4){
-        attackerTypeAdvantage=-1;
-    }
-    else if(attackerTypeAdvantage==3 || attackerTypeAdvantage==2){
-        attackerTypeAdvantage=0;
-    }
 
-    let attackerClassAdvantage;
-    if(attackerClass=="None"){
-        if(defenderClass=="None"){
-            attackerClassAdvantage=0;
-        }
-        else{
-            attackerClassAdvantage=-1;
-        }
-    }
-    else if(defenderClass=="None"){
-        //if (attackerClass=="None"){
-        //    attackerClassAdvantage=0;
-        //}
-        //else{
-        attackerClassAdvantage=1;
-    }
-    else{
-        if(attackerClass==defenderClass){
-            attackerClassAdvantage=0;
-        }
-        else{
-            attackerClassAdvantage=1;
-        }
-    }
-
-    switch(attackerTypeAdvantage){
-        case -1:
-            switch(attackerClassAdvantage){
-                case -1:
-                    return([0.8,0.5]);
-                case 0:
-                    return([0.8,0.5]);
-                case 1:
-                    return([1,1]);
-            }
-        case 0:
-            switch(attackerClassAdvantage){
-                case -1:
-                    return([0.9,0.5]);
-                case 0:
-                    return([1,1]);
-                case 1:
-                    return([1.25,1]);
-            }
-        case 1:
-            switch(attackerClassAdvantage){
-                case -1:
-                    return([1,0.5]);
-                case 0:
-                    return([1.15,1]);
-                case 1:
-                    return([1.5,1]);
-            }
-    }
-
-
-
-    
-}
-
-
-function dictionaryRemove(dictionary, key){
-    if(key in dictionary){
-        delete dictionary[key];
-    }
-}
 
 function createKiSphereContainer(){
     const kiSphereContainer=document.getElementById("ki-sphere-container");
@@ -5119,12 +4992,7 @@ function createKiSphereContainer(){
 }
 
 
-function isEmptyDictionary(dictionary){
-    if(dictionary==undefined){
-        return(true)
-    }
-    return(Object.keys(dictionary).length==0 );
-}
+
 
 function polishPage(){
     if(document.getElementById("passive-query-container").firstChild==null){
