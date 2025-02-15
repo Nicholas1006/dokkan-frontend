@@ -1,9 +1,10 @@
+import {removePX} from "./commonFunctions.js";
 export class complexSortFilterContainer {
     constructor(width, height){
-        this.width=width;
-        this.height=height;
         this.element=document.createElement("div");
         this.element.className="complex-sort-filter-container";
+        this.element.style.width=width+"px";
+        this.element.style.height=height+"px";
 
         this.background=new complexSortFilterContainerBackground(width, height,this);
         
@@ -66,12 +67,12 @@ export class complexSortFilterContainer {
     }
 
     changeWidth(width){
-        this.width=width;
+        this.element.style.width=width+"px";
         this.background.changeWidth(width);
     }
 
     changeHeight(height){
-        this.height=height;        
+        this.element.style.height=height+"px";        
         this.background.changeHeight(height);
     }
 
@@ -103,7 +104,7 @@ class complexSortFilterContainerBackground {
         
         this.backgroundBottom=document.createElement("div");
         this.backgroundBottom.style.width=width+"px";
-        this.backgroundBottom.style.top=this.backgroundTop.style.height+this.backgroundMiddle.style.height;
+        this.backgroundBottom.style.top=removePX(this.backgroundTop.style.height)+removePX(this.backgroundMiddle.style.height)+"px";
         this.backgroundBottom.style.height=width*(116/640)+"px";
         this.backgroundBottom.style.left= "calc(50% - min("+width/2+"px, 50vw))";
         this.backgroundBottom.className="complex-sort-filter-container-background-bottom";
@@ -117,18 +118,26 @@ class complexSortFilterContainerBackground {
         this.backgroundBottom.style.width=width+"px";
 
         this.backgroundTop.style.height=width*(116/640)+"px";
-        this.backgroundMiddle.style.height=this.parentClass.height-(2*width*(116/640))+"px";
+        this.backgroundMiddle.style.height=removePX(this.parentClass.element.style.height)-(2*width*(116/640))+"px";
         this.backgroundBottom.style.height=width*(116/640)+"px";
 
         this.backgroundTop.style.left= "calc(50% - min("+width/2+"px, 50vw))";
         this.backgroundMiddle.style.left= "calc(50% - min("+width/2+"px, 50vw))";
         this.backgroundBottom.style.left= "calc(50% - min("+width/2+"px, 50vw))";
 
+        
+        this.backgroundMiddle.style.top=this.backgroundTop.style.height;
+        this.backgroundBottom.style.top=removePX(this.backgroundTop.style.height)+removePX(this.backgroundMiddle.style.height)+"px";
+
+
     }
 
     changeHeight(height){
         this.height=height;
         this.backgroundMiddle.style.height=height-(2*width*(116/640))+"px";
+        
+        this.backgroundMiddle.style.top=this.backgroundTop.style.height;
+        this.backgroundBottom.style.top=removePX(this.backgroundTop.style.height)+removePX(this.backgroundMiddle.style.height)+"px";
     }
 
     getElement(){

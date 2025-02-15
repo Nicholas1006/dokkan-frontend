@@ -1,5 +1,6 @@
 import { unitDisplay } from "./unitDisplay.js";
 import { complexSortFilterContainer } from "./complexSortFilterContainer.js";
+import {removePX} from "./commonFunctions.js";
 
 // GLOBAL VARIABLES
 let unitsToDisplay = 200;
@@ -257,11 +258,12 @@ function createSortButton(){
     reSortCards();
   })
   sortButton.addEventListener('mouseover', function() {
+    console.log("changing width from" + sortFilterContainer.element.style.width);
     if(currentOrder == "Ascending"){
-      sortFilterContainer.changeWidth(sortFilterContainer.width+10);
+      sortFilterContainer.changeWidth(removePX(sortFilterContainer.element.style.width)-10);
     }
     else{
-      sortFilterContainer.changeWidth(sortFilterContainer.width-10);
+      sortFilterContainer.changeWidth(removePX(sortFilterContainer.element.style.width)+10);
     }
   })
 
