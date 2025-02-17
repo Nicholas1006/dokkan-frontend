@@ -457,11 +457,11 @@
                 "Causalities": {
                     "2375": {
                         "Button": {
-                            "Name": "Is it on or after the first 4 turns from this characters entry turn on this turn?"
+                            "Name": "Is it on or after the first 5 turns from this characters entry turn on this turn?"
                         },
                         "Slider": {
                             "Name": "How many turns is it since entry turn on this turn?",
-                            "Logic": ">=4",
+                            "Logic": ">=5",
                             "Min": 0,
                             "Max": 5
                         }
@@ -1555,11 +1555,11 @@
             "Causalities": {
                 "10": {
                     "Button": {
-                        "Name": "Is it on or after the first 0 turns from this characters entry turn?"
+                        "Name": "Is it on or after the first 1 turns from this characters entry turn?"
                     },
                     "Slider": {
                         "Name": "How many turns is it since entry turn?",
-                        "Logic": ">=0",
+                        "Logic": ">=1",
                         "Min": 0,
                         "Max": 1
                     }
@@ -1580,7 +1580,9 @@
                     "Buff": "ATK Buff",
                     "Amount": 54
                 },
-                "Target": "All allies other than this character on every turn"
+                "Target": {
+                    "Target": "All allies(self excluded)"
+                }
             },
             "377": {
                 "Duration": "1",
@@ -1591,7 +1593,9 @@
                     "From": "AGL",
                     "To": "RAINBOW"
                 },
-                "Target": "Self"
+                "Target": {
+                    "Target": "Self"
+                }
             },
             "380": {
                 "Duration": "1",
@@ -1601,7 +1605,9 @@
                     "Buff": "DEF Buff",
                     "Amount": 54
                 },
-                "Target": "All allies other than this character on every turn"
+                "Target": {
+                    "Target": "All allies(self excluded)"
+                }
             },
             "381": {
                 "Duration": "1",
@@ -1610,7 +1616,9 @@
                     "+ or -": "+",
                     "Buff": "Effective Against All"
                 },
-                "Target": "All allies other than this character on every turn"
+                "Target": {
+                    "Target": "All allies(self excluded)"
+                }
             }
         }
     },
@@ -1623,7 +1631,7 @@
     "Transformations": [
         "1030481"
     ],
-    "Max Appearances In Form": 2,
+    "Max Appearances In Form": 3,
     "Dokkan awakenings": [],
     "Dokkan Reverse awakenings": [],
     "Ki Multiplier": {

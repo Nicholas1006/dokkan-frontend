@@ -1829,7 +1829,26 @@ function updatePassiveStats(){
         iteratingCausalityLogic["How much ki is there on this turn?"]=kiCircleDictionary[0].updateKiFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
     }
 
-    
+    kiCircleDictionary[0].updateDefensiveFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
+    startingStats={};
+    startingStats["Defense"]=kiCircleDictionary[0].getDefense();
+    startingStats["Dodge chance"]=Math.min(kiCircleDictionary[0].getDodgeChance(),100)/100;
+    startingStats["Dodge chance"]=1 - (1-(startingStats["Dodge chance"]))*(1-(skillOrbBuffs["Evasion"]/100));
+    startingStats["Dodge chance"]=Math.round(startingStats["Dodge chance"]*1000)/10;
+    startingStats["Damage Reduction"]= Math.min(kiCircleDictionary[0].getDamageReduction(),100);
+    startingStats["Guard"]= kiCircleDictionary[0].getGuard();
+    let startingStatsString="";
+    startingStatsString+="DEF: "+startingStats["Defense"].toLocaleString()+"\n";
+    if(startingStats["Dodge chance"]>0){
+        startingStatsString+="Dodge chance: "+startingStats["Dodge chance"]+"%\n";
+    }
+    if(startingStats["Damage Reduction"]>0){
+        startingStatsString+="Damage Reduction: "+startingStats["Damage Reduction"]+"%\n";
+    }
+    if(startingStats["Guard"]==true){
+        startingStatsString+="Guard against all: "+"\n";
+    }
+    document.getElementById("starting-stats").innerText=startingStatsString;
 
     
 
@@ -1879,26 +1898,7 @@ function updatePassiveStats(){
         currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after being hit","Disable Other Line",iteratingCausalityLogic)
     }
 
-    kiCircleDictionary[0].updateDefensiveFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
-    startingStats={};
-    startingStats["Defense"]=kiCircleDictionary[0].getDefense();
-    startingStats["Dodge chance"]=Math.min(kiCircleDictionary[0].getDodgeChance(),100)/100;
-    startingStats["Dodge chance"]=1 - (1-(startingStats["Dodge chance"]))*(1-(skillOrbBuffs["Evasion"]/100));
-    startingStats["Dodge chance"]=Math.round(startingStats["Dodge chance"]*1000)/10;
-    startingStats["Damage Reduction"]= Math.min(kiCircleDictionary[0].getDamageReduction(),100);
-    startingStats["Guard"]= kiCircleDictionary[0].getGuard();
-    let startingStatsString="";
-    startingStatsString+="DEF: "+startingStats["Defense"].toLocaleString()+"\n";
-    if(startingStats["Dodge chance"]>0){
-        startingStatsString+="Dodge chance: "+startingStats["Dodge chance"]+"%\n";
-    }
-    if(startingStats["Damage Reduction"]>0){
-        startingStatsString+="Damage Reduction: "+startingStats["Damage Reduction"]+"%\n";
-    }
-    if(startingStats["Guard"]==true){
-        startingStatsString+="Guard against all: "+"\n";
-    }
-    document.getElementById("starting-stats").innerText=startingStatsString;
+    
 
 
 
@@ -2262,7 +2262,13 @@ function activePassiveMultipliersToPassiveBuffs(activePassiveMultipliers){
                 buffs["Effective Against All"]=true;
             }
             if("Additional Attack" in activatedLine){
-                buffs["Additional Attack"].push(passiveLineKey);
+                if(activatedLine["Additional Attack"]["Chance of another additional"]=="0"){
+                    buffs["Additional Attack"].push(passiveLineKey);
+                }
+                else{
+                    buffs["Additional Attack"].push(passiveLineKey+"0");
+                    buffs["Additional Attack"].push(passiveLineKey+"1");
+                }
             
             }
             if("Heals" in activatedLine){
@@ -3439,11 +3445,16 @@ function createKiCirclesWithClass(){
         if(attack=="0"){        
             kiCircle = new kiCircleClass(attack,queriesToLogic(passiveQueryList),100,100,0);
         }
-        else if(attack=="Hidden potential"||additionalAttacks[attack]=="Predictor" ){
+        else if(attack=="Hidden potential"||additionalAttacks[attack]=="Predictor" ){ //WIP CHECKK IF PREDICTOR IS STILL IMPORTANT
             kiCircle = new kiCircleClass(attack,queriesToLogic(passiveQueryList),0,0,0);
         }
         else{
-            kiCircle = new kiCircleClass(attack,queriesToLogic(passiveQueryList),currentJson["Passive"][attack]["Chance"]||100,currentJson["Passive"][attack]["Additional Attack"]["Chance of super"],0);
+            if(attack in currentJson["Passive"]){
+                kiCircle = new kiCircleClass(attack,queriesToLogic(passiveQueryList),currentJson["Passive"][attack]["Chance"]||100                           ,currentJson["Passive"][attack]["Additional Attack"]["Chance of super"],0);
+            }
+            else{
+                kiCircle = new kiCircleClass(attack,queriesToLogic(passiveQueryList),currentJson["Passive"][attack.slice(0,attack.length-1)]["Chance"]||100,currentJson["Passive"][attack.slice(0,attack.length-1)]["Additional Attack"]["Chance of super"],0);
+            }
         }
         kiCircleDictionary[attack]=(kiCircle);
         if(attack==0){
@@ -3953,7 +3964,13 @@ function initialiseAspects() {
     additionalAttacks={0: "Unactivated"};
     for (const passiveLineKey of Object.keys(currentJson.Passive)) {
         if("Additional Attack" in currentJson.Passive[passiveLineKey]){
-            additionalAttacks[passiveLineKey]="Unactivated";
+            if(currentJson["Passive"][passiveLineKey]["Additional Attack"]["Chance of another additional"]=="0"){
+                additionalAttacks[passiveLineKey]="Unactivated";
+            }
+            else{
+                additionalAttacks[passiveLineKey+"0"]="Unactivated";
+                additionalAttacks[passiveLineKey+"1"]="Unactivated";
+            }
         }
     }
     if(currentJson["Rarity"]=="ur" || currentJson["Rarity"]=="lr"){
@@ -4468,57 +4485,59 @@ function createActiveContainer(){
                 }
                 for(const effectKey of Object.keys(currentJson["Active Skill"]["Effects"])){
                     const effect=currentJson["Active Skill"]["Effects"][effectKey]
-                    if(effect["Effect"]["Buff"]=="Ki Buff"){
-                        if(effect["Effect"]["+ or -"]=="+"){
-                            kiSources["Active"]=effect["Effect"]["Amount"];
+                    if(includedInSupportBuff(effect)){
+                        if(effect["Effect"]["Buff"]=="Ki Buff"){
+                            if(effect["Effect"]["+ or -"]=="+"){
+                                kiSources["Active"]=effect["Effect"]["Amount"];
+                            }
+                            else{
+                                kiSources["Active"]=-effect["Effect"]["Amount"];
+                            }
+                        }
+                        else if(effect["Effect"]["Buff"]=="ATK Buff"){
+                            if(effect["Effect"]["+ or -"]=="+"){
+                                activeMultipliers["ATK"]=(effect["Effect"]["Amount"]/100);
+                            }
+                            else{
+                                activeMultipliers["ATK"]=(effect["Effect"]["Amount"]/100);
+                            }
+                        }
+                        else if(effect["Effect"]["Buff"]=="DEF Buff"){
+                            if(effect["Effect"]["+ or -"]=="+"){
+                                activeMultipliers["DEF"]=(effect["Effect"]["Amount"]/100);
+                            }
+                            else{
+                                activeMultipliers["DEF"]=(effect["Effect"]["Amount"]/100);
+                            }
+                        }
+                        else if(effect["Effect"]["Buff"]=="Dodge Chance"){
+                            if(effect["Effect"]["+ or -"]=="+"){
+                                activeMultipliers["Dodge"]=(effect["Effect"]["Amount"]/100);
+                            }
+                            else{
+                                activeMultipliers["Dodge"]=-(effect["Effect"]["Amount"]/100);
+                            }
+                        }
+                        else if(effect["Effect"]["Buff"]=="Crit Chance"){
+                            if(effect["Effect"]["+ or -"]=="+"){
+                                activeMultipliers["Crit"]=(effect["Effect"]["Amount"]/100);
+                            }
+                            else{
+                                activeMultipliers["Crit"]=-(effect["Effect"]["Amount"]/100);
+                            }
+                        }
+                        else if(effect["Effect"]["Buff"]=="Effective against all"){
+                            activeMultipliers["Effective against all"]=true;
+                        }
+                        else if(effect["Effect"]["Buff"]=="Guard"){
+                            activeMultipliers["Guard"]=true;
+                        }
+                        else if(effect["Effect"]["Buff"]=="Redirect attacks to me"){
+                            activeMultipliers["Redirect attacks to me"]=true;
                         }
                         else{
-                            kiSources["Active"]=-effect["Effect"]["Amount"];
+                            console.log("UNACCOUNTED ACTIVE BUFF",effect["Effect"]["Buff"]);
                         }
-                    }
-                    else if(effect["Effect"]["Buff"]=="ATK Buff"){
-                        if(effect["Effect"]["+ or -"]=="+"){
-                            activeMultipliers["ATK"]=(effect["Effect"]["Amount"]/100);
-                        }
-                        else{
-                            activeMultipliers["ATK"]=(effect["Effect"]["Amount"]/100);
-                        }
-                    }
-                    else if(effect["Effect"]["Buff"]=="DEF Buff"){
-                        if(effect["Effect"]["+ or -"]=="+"){
-                            activeMultipliers["DEF"]=(effect["Effect"]["Amount"]/100);
-                        }
-                        else{
-                            activeMultipliers["DEF"]=(effect["Effect"]["Amount"]/100);
-                        }
-                    }
-                    else if(effect["Effect"]["Buff"]=="Dodge Chance"){
-                        if(effect["Effect"]["+ or -"]=="+"){
-                            activeMultipliers["Dodge"]=(effect["Effect"]["Amount"]/100);
-                        }
-                        else{
-                            activeMultipliers["Dodge"]=-(effect["Effect"]["Amount"]/100);
-                        }
-                    }
-                    else if(effect["Effect"]["Buff"]=="Crit Chance"){
-                        if(effect["Effect"]["+ or -"]=="+"){
-                            activeMultipliers["Crit"]=(effect["Effect"]["Amount"]/100);
-                        }
-                        else{
-                            activeMultipliers["Crit"]=-(effect["Effect"]["Amount"]/100);
-                        }
-                    }
-                    else if(effect["Effect"]["Buff"]=="Effective against all"){
-                        activeMultipliers["Effective against all"]=true;
-                    }
-                    else if(effect["Effect"]["Buff"]=="Guard"){
-                        activeMultipliers["Guard"]=true;
-                    }
-                    else if(effect["Effect"]["Buff"]=="Redirect attacks to me"){
-                        activeMultipliers["Redirect attacks to me"]=true;
-                    }
-                    else{
-                        console.log("UNACCOUNTED ACTIVE BUFF",effect["Effect"]["Buff"]);
                     }
                 }
               }
