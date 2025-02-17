@@ -1675,8 +1675,10 @@ function includedInSupportBuff(passiveLine){
         return (true);
     }
     if(passiveLine["Target"]["Target"]=="Allies"){
+        let categoryQualified=true;
+        let classQualified=true;
+        let typeQualified=true;
         if("Category" in passiveLine["Target"]){
-            let categoryQualified=false;
             for(const key of passiveLine["Target"]["Category"]["Included"]){
                 if(currentJson["Categories"].includes(key)){
                   categoryQualified=true;
@@ -1689,8 +1691,19 @@ function includedInSupportBuff(passiveLine){
             }
             return (categoryQualified);
         }
+        if("Class" in passiveLine["Target"]){
+            classQualified=(passiveLine["Target"]["Class"]==currentJson["Class"]);
+        }
+        if("Typing" in passiveLine["Target"]){
+            typeQualified=false;
+            for(const key of passiveLine["Target"]["Typing"]){
+                if(currentJson["Typing"].includes(key)){
+                  typeQualified=true;
+                }
+            }
+        }
+        return(categoryQualified && classQualified && typeQualified);
     }
-    return(false)
 }
 
 
@@ -2147,170 +2160,172 @@ function activePassiveMultipliersToPassiveBuffs(activePassiveMultipliers){
     for (const passiveLineKey in activePassiveMultipliers){
         const activatedLine=currentJson["Passive"][passiveLineKey];
         if(activatedLine["Type"]=="Single activator"){
-            if("Ki" in activatedLine){
-                //Ki increase
-                if(activatedLine["Buff"]["+ or -"]=="+"){
-                    buffs["Ki"]+=activatedLine["Ki"];
-                }
-                //Ki decrease
-                else{
-                    buffs["Ki"]-=activatedLine["Ki"];
-                }
-            }
-            if("ATK" in activatedLine){
-                if(activatedLine["Buff"]["Type"]=="Percentage"){
+            if(includedInSupportBuff(activatedLine)){
+                if("Ki" in activatedLine){
+                    //Ki increase
                     if(activatedLine["Buff"]["+ or -"]=="+"){
-                        //Start of turn attack % increase
-                        if(SOTTIMINGS.includes(activatedLine["Timing"])){
-                            buffs["SOT ATK %"]+=activatedLine["ATK"];
+                        buffs["Ki"]+=activatedLine["Ki"];
+                    }
+                    //Ki decrease
+                    else{
+                        buffs["Ki"]-=activatedLine["Ki"];
+                    }
+                }
+                if("ATK" in activatedLine){
+                    if(activatedLine["Buff"]["Type"]=="Percentage"){
+                        if(activatedLine["Buff"]["+ or -"]=="+"){
+                            //Start of turn attack % increase
+                            if(SOTTIMINGS.includes(activatedLine["Timing"])){
+                                buffs["SOT ATK %"]+=activatedLine["ATK"];
+                            }
+                            //Middle of turn attack % increase
+                            else{
+                                buffs["MOT ATK %"]+=activatedLine["ATK"]
+                            }
                         }
-                        //Middle of turn attack % increase
                         else{
-                            buffs["MOT ATK %"]+=activatedLine["ATK"]
+                            //Start of turn attack % decrease
+                            if(SOTTIMINGS.includes(activatedLine["Timing"])){
+                                buffs["SOT ATK %"]-=activatedLine["ATK"];
+                            }
+                            //Middle of turn attack % decrease
+                            else{
+                                buffs["MOT ATK %"]-=activatedLine["ATK"]
+                            }
                         }
                     }
                     else{
-                        //Start of turn attack % decrease
-                        if(SOTTIMINGS.includes(activatedLine["Timing"])){
-                            buffs["SOT ATK %"]-=activatedLine["ATK"];
+                        if(activatedLine["Buff"]["+ or -"]=="+"){
+                            //Start of turn attack flat increase
+                            if(SOTTIMINGS.includes(activatedLine["Timing"])){
+                                buffs["SOT ATK flat"]+=activatedLine["ATK"];
+                            }
+                            //Middle of turn attack flat increase
+                            else{
+                                buffs["MOT ATK flat"]+=activatedLine["ATK"]
+                            }
                         }
-                        //Middle of turn attack % decrease
                         else{
-                            buffs["MOT ATK %"]-=activatedLine["ATK"]
+                            //Start of turn attack flat decrease
+                            if(SOTTIMINGS.includes(activatedLine["Timing"])){
+                                buffs["SOT ATK flat"]-=activatedLine["ATK"];
+                            }
+                            //Middle of turn attack flat decrease
+                            else{
+                                buffs["MOT ATK flat"]-=activatedLine["ATK"]
+                            }
                         }
                     }
                 }
-                else{
-                    if(activatedLine["Buff"]["+ or -"]=="+"){
-                        //Start of turn attack flat increase
-                        if(SOTTIMINGS.includes(activatedLine["Timing"])){
-                            buffs["SOT ATK flat"]+=activatedLine["ATK"];
+                if("DEF" in activatedLine){
+                    if(activatedLine["Buff"]["Type"]=="Percentage"){
+                        if(activatedLine["Buff"]["+ or -"]=="+"){
+                            //Start of turn defense % increase
+                            if(SOTTIMINGS.includes(activatedLine["Timing"])){
+                                buffs["SOT DEF %"]+=activatedLine["DEF"];
+                            }
+                            //Middle of turn defense % increase
+                            else{
+                                buffs["MOT DEF %"]+=activatedLine["DEF"]
+                            }
                         }
-                        //Middle of turn attack flat increase
                         else{
-                            buffs["MOT ATK flat"]+=activatedLine["ATK"]
+                            //Start of turn defense % decrease
+                            if(SOTTIMINGS.includes(activatedLine["Timing"])){
+                                buffs["SOT DEF %"]-=activatedLine["DEF"];
+                            }
+                            //Middle of turn defense % decrease
+                            else{
+                                buffs["MOT DEF %"]-=activatedLine["DEF"]
+                            }
                         }
                     }
                     else{
-                        //Start of turn attack flat decrease
-                        if(SOTTIMINGS.includes(activatedLine["Timing"])){
-                            buffs["SOT ATK flat"]-=activatedLine["ATK"];
+                        if(activatedLine["Buff"]["+ or -"]=="+"){
+                            //Start of turn defense flat increase
+                            if(SOTTIMINGS.includes(activatedLine["Timing"])){
+                                buffs["SOT DEF flat"]+=activatedLine["DEF"];
+                            }
+                            //Middle of turn defense flat increase
+                            else{
+                                buffs["MOT DEF flat"]+=activatedLine["DEF"]
+                            }
                         }
-                        //Middle of turn attack flat decrease
                         else{
-                            buffs["MOT ATK flat"]-=activatedLine["ATK"]
+                            //Start of turn defense flat decrease
+                            if(SOTTIMINGS.includes(activatedLine["Timing"])){
+                                buffs["SOT DEF flat"]-=activatedLine["DEF"];
+                            }
+                            //Middle of turn defense flat decrease
+                            else{
+                                buffs["MOT DEF flat"]-=activatedLine["DEF"]
+                            }
                         }
                     }
                 }
-            }
-            if("DEF" in activatedLine){
-                if(activatedLine["Buff"]["Type"]=="Percentage"){
-                    if(activatedLine["Buff"]["+ or -"]=="+"){
-                        //Start of turn defense % increase
-                        if(SOTTIMINGS.includes(activatedLine["Timing"])){
-                            buffs["SOT DEF %"]+=activatedLine["DEF"];
+                if("Forsee Super Attack" in activatedLine){
+                    buffs["Forsee Super Attack"]=true;
+                }
+                if("Guaranteed Hit" in activatedLine){
+                    buffs["Guaranteed Hit"]=true;
+                }
+                if("Dodge Chance" in activatedLine){
+                    buffs["Dodge Chance"]+=activatedLine["Dodge Chance"]
+                }
+                if("Effective Against All" in activatedLine){
+                    buffs["Effective Against All"]=true;
+                }
+                if("Additional Attack" in activatedLine){
+                    if(activatedLine["Additional Attack"]["Chance of another additional"]=="0"){
+                        buffs["Additional Attack"].push(passiveLineKey);
+                    }
+                    else{
+                        buffs["Additional Attack"].push(passiveLineKey+"0");
+                        buffs["Additional Attack"].push(passiveLineKey+"1");
+                    }
+                
+                }
+                if("Heals" in activatedLine){
+                    if(activatedLine["Buff"]["Type"]=="Percentage"){
+                        //Heal percentage
+                        if(activatedLine["Buff"]["+ or -"]=="+"){
+                            buffs["Heal %"]+=activatedLine["Heals"];
                         }
-                        //Middle of turn defense % increase
+                        //Self inflict damage percentage
                         else{
-                            buffs["MOT DEF %"]+=activatedLine["DEF"]
+                            buffs["Heal %"]-=activatedLine["Heals"];
                         }
                     }
                     else{
-                        //Start of turn defense % decrease
-                        if(SOTTIMINGS.includes(activatedLine["Timing"])){
-                            buffs["SOT DEF %"]-=activatedLine["DEF"];
+                        //Heal flat
+                        if(activatedLine["Buff"]["+ or -"]=="+"){
+                            buffs["Heal flat"]+=activatedLine["Heals"];
                         }
-                        //Middle of turn defense % decrease
+                        //Self inflict damage flat
                         else{
-                            buffs["MOT DEF %"]-=activatedLine["DEF"]
+                            buffs["Heal flat"]-=activatedLine["Heals"];
                         }
                     }
                 }
-                else{
+                if("Status" in activatedLine){
+                    buffs["Debuff"]=buffs["Debuff"].concat(activatedLine["Status"]);
+                }
+                if("DR" in activatedLine){
+                    //DR increase
                     if(activatedLine["Buff"]["+ or -"]=="+"){
-                        //Start of turn defense flat increase
-                        if(SOTTIMINGS.includes(activatedLine["Timing"])){
-                            buffs["SOT DEF flat"]+=activatedLine["DEF"];
-                        }
-                        //Middle of turn defense flat increase
-                        else{
-                            buffs["MOT DEF flat"]+=activatedLine["DEF"]
-                        }
+                        buffs["Damage Reduction"]+=activatedLine["DR"];
                     }
+                    //DR decrease
                     else{
-                        //Start of turn defense flat decrease
-                        if(SOTTIMINGS.includes(activatedLine["Timing"])){
-                            buffs["SOT DEF flat"]-=activatedLine["DEF"];
-                        }
-                        //Middle of turn defense flat decrease
-                        else{
-                            buffs["MOT DEF flat"]-=activatedLine["DEF"]
-                        }
+                        buffs["Damage Reduction"]-=activatedLine["DR"];
                     }
                 }
-            }
-            if("Forsee Super Attack" in activatedLine){
-                buffs["Forsee Super Attack"]=true;
-            }
-            if("Guaranteed Hit" in activatedLine){
-                buffs["Guaranteed Hit"]=true;
-            }
-            if("Dodge Chance" in activatedLine){
-                buffs["Dodge Chance"]+=activatedLine["Dodge Chance"]
-            }
-            if("Effective Against All" in activatedLine){
-                buffs["Effective Against All"]=true;
-            }
-            if("Additional Attack" in activatedLine){
-                if(activatedLine["Additional Attack"]["Chance of another additional"]=="0"){
-                    buffs["Additional Attack"].push(passiveLineKey);
+                if("Crit Chance" in activatedLine){
+                    buffs["Crit Chance"]+=activatedLine["Crit Chance"];
                 }
-                else{
-                    buffs["Additional Attack"].push(passiveLineKey+"0");
-                    buffs["Additional Attack"].push(passiveLineKey+"1");
+                if("Guard" in activatedLine){
+                    buffs["Guard"]=activatedLine["Guard"];
                 }
-            
-            }
-            if("Heals" in activatedLine){
-                if(activatedLine["Buff"]["Type"]=="Percentage"){
-                    //Heal percentage
-                    if(activatedLine["Buff"]["+ or -"]=="+"){
-                        buffs["Heal %"]+=activatedLine["Heals"];
-                    }
-                    //Self inflict damage percentage
-                    else{
-                        buffs["Heal %"]-=activatedLine["Heals"];
-                    }
-                }
-                else{
-                    //Heal flat
-                    if(activatedLine["Buff"]["+ or -"]=="+"){
-                        buffs["Heal flat"]+=activatedLine["Heals"];
-                    }
-                    //Self inflict damage flat
-                    else{
-                        buffs["Heal flat"]-=activatedLine["Heals"];
-                    }
-                }
-            }
-            if("Status" in activatedLine){
-                buffs["Debuff"]=buffs["Debuff"].concat(activatedLine["Status"]);
-            }
-            if("DR" in activatedLine){
-                //DR increase
-                if(activatedLine["Buff"]["+ or -"]=="+"){
-                    buffs["Damage Reduction"]+=activatedLine["DR"];
-                }
-                //DR decrease
-                else{
-                    buffs["Damage Reduction"]-=activatedLine["DR"];
-                }
-            }
-            if("Crit Chance" in activatedLine){
-                buffs["Crit Chance"]+=activatedLine["Crit Chance"];
-            }
-            if("Guard" in activatedLine){
-                buffs["Guard"]=activatedLine["Guard"];
             }
         }
         else if(activatedLine["Type"]=="Building Stat"){
