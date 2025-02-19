@@ -5003,6 +5003,7 @@ function updateEnemyNumbers(){
         )
         enemyAttackDealt.innerHTML="Damage taken: "+Math.round(attackTaken,0).toLocaleString('en-US');
         enemyAttackDealt.style.display="block";
+        statsOnHit.style.display="block";
         statsOnHit.innerHTML="DEF: "+ recievingDamageStats.Defense.toLocaleString('en-US')+"<br>";
         if(recievingDamageStats["Damage Reduction"] !=0){
             statsOnHit.innerHTML+=" DR: "+(recievingDamageStats["Damage Reduction"]||0)+"% <br>";
