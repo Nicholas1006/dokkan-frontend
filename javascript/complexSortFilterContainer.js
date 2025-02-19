@@ -1,16 +1,34 @@
 import {removePX} from "./commonFunctions.js";
+import {styledRadio} from "./styledRadio.js";
 export class complexSortFilterContainer {
     constructor(width, height){
+        this.border=25;
         this.element=document.createElement("div");
         this.element.className="complex-sort-filter-container";
-        this.element.style.width=width+"px";
-        this.element.style.height=height+"px";
+        this.element.style.width=width-this.border+"px";
+        this.element.style.height=height-this.border+"px";
+        this.element.style.left=window.visualViewport.width/2-removePX(this.element.style.width)/2+"px";
+        this.element.style.display="none";
 
         this.background=new complexSortFilterContainerBackground(width, height,this);
         
-        this.sortContainer=document.createElement("div");
-        this.sortContainer.className="sort-container";
-        this.element.appendChild(this.sortContainer);
+        let sortContainerOptionsList=[
+            "Favourite",
+            "Type",
+            "Cost",
+            "Rarity",
+            "Cost",
+            "HP",
+            "Attack",
+            "Defense",
+            "Release",
+            "Character",
+            "Sp Atk Lv",
+            "Activation",
+            "Max Level"
+        ];
+        this.sortContainer=new styledRadio(sortContainerOptionsList,3, true);
+        this.element.appendChild(this.sortContainer.getContainer());
 
         this.filterContainer=document.createElement("div");
         this.filterContainer.className="filter-container";
@@ -55,7 +73,6 @@ export class complexSortFilterContainer {
         this.filterContainer.linkContainer=document.createElement("div");
         this.filterContainer.linkContainer.className="filter-link-container";
         this.filterContainer.appendChild(this.filterContainer.linkContainer);
-
     }
 
     getElement(){
@@ -67,7 +84,8 @@ export class complexSortFilterContainer {
     }
 
     changeWidth(width){
-        this.element.style.width=width+"px";
+        this.element.style.width=width-this.border+"px";
+        this.element.style.left="calc(50% - min("+this.element.style.width+", 50vw))";
         this.background.changeWidth(width);
     }
 
@@ -76,6 +94,19 @@ export class complexSortFilterContainer {
         this.background.changeHeight(height);
     }
 
+    setDisplay(displayed){
+        if(displayed){
+            this.element.style.display="block";
+            this.background.setDisplay(true);
+        }
+        else{
+            this.element.style.display="none";
+            this.background.setDisplay(false);
+        }
+    }
+    getDisplay(){
+        return this.element.style.display!="none";
+    }
 }
 
 class complexSortFilterContainerBackground {
@@ -90,7 +121,7 @@ class complexSortFilterContainerBackground {
         this.backgroundTop.style.width=width+"px";
         this.backgroundTop.style.height=width*(116/640)+"px";
         this.backgroundTop.style.top="0px";
-        this.backgroundTop.style.left= "calc(50% - min("+width/2+"px, 50vw))";
+        this.backgroundTop.style.left= window.visualViewport.width/2-removePX(this.backgroundTop.style.width)/2+"px";
         this.backgroundTop.className="complex-sort-filter-container-background-top";
         this.element.appendChild(this.backgroundTop);
         
@@ -98,7 +129,7 @@ class complexSortFilterContainerBackground {
         this.backgroundMiddle.style.width=width+"px";
         this.backgroundMiddle.style.height=height-(2*width*(116/640))+"px";
         this.backgroundMiddle.style.top=this.backgroundTop.style.height;
-        this.backgroundMiddle.style.left= "calc(50% - min("+width/2+"px, 50vw))";
+        this.backgroundMiddle.style.left= window.visualViewport.width/2-removePX(this.backgroundMiddle.style.width)/2+"px";
         this.backgroundMiddle.className="complex-sort-filter-container-background-middle";
         this.element.appendChild(this.backgroundMiddle);
         
@@ -106,7 +137,7 @@ class complexSortFilterContainerBackground {
         this.backgroundBottom.style.width=width+"px";
         this.backgroundBottom.style.top=removePX(this.backgroundTop.style.height)+removePX(this.backgroundMiddle.style.height)+"px";
         this.backgroundBottom.style.height=width*(116/640)+"px";
-        this.backgroundBottom.style.left= "calc(50% - min("+width/2+"px, 50vw))";
+        this.backgroundBottom.style.left= window.visualViewport.width/2-removePX(this.backgroundBottom.style.width)/2+"px";
         this.backgroundBottom.className="complex-sort-filter-container-background-bottom";
         this.element.appendChild(this.backgroundBottom);
     }
@@ -121,9 +152,9 @@ class complexSortFilterContainerBackground {
         this.backgroundMiddle.style.height=removePX(this.parentClass.element.style.height)-(2*width*(116/640))+"px";
         this.backgroundBottom.style.height=width*(116/640)+"px";
 
-        this.backgroundTop.style.left= "calc(50% - min("+width/2+"px, 50vw))";
-        this.backgroundMiddle.style.left= "calc(50% - min("+width/2+"px, 50vw))";
-        this.backgroundBottom.style.left= "calc(50% - min("+width/2+"px, 50vw))";
+        this.backgroundTop.style.left= window.visualViewport.width/2-removePX(this.element.style.width)/2+"px";
+        this.backgroundMiddle.style.left= window.visualViewport.width/2-removePX(this.element.style.width)/2+"px";
+        this.backgroundBottom.style.left= window.visualViewport.width/2-removePX(this.element.style.width)/2+"px";
 
         
         this.backgroundMiddle.style.top=this.backgroundTop.style.height;
@@ -138,6 +169,15 @@ class complexSortFilterContainerBackground {
         
         this.backgroundMiddle.style.top=this.backgroundTop.style.height;
         this.backgroundBottom.style.top=removePX(this.backgroundTop.style.height)+removePX(this.backgroundMiddle.style.height)+"px";
+    }
+
+    setDisplay(displayed){
+        if(displayed){
+            this.element.style.display="block";
+        }
+        else{
+            this.element.style.display="none";
+        }
     }
 
     getElement(){

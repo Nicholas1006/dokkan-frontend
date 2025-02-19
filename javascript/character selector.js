@@ -14,7 +14,7 @@ let displayBoxes=[];
 
 let unitBasicsDetails={};
 
-const COMPLEXSORTFILTERCONTAINERWIDTH=320;
+const COMPLEXSORTFILTERCONTAINERWIDTH=480;
 const COMPLEXSORTFILTERCONTAINERHEIGHT=window.visualViewport.height;
 
 function getJsonPromise(prefix,name,suffix) {
@@ -241,31 +241,11 @@ function createSortButton(){
   document.body.appendChild(sortFilterContainer.getBackground());
 
   const sortButton = document.getElementById('sort-filter-container');
-  sortButton.addEventListener('click', function() {
-    if(currentOrder == "Ascending"){
-      currentOrder = "Descending";
+  sortButton.addEventListener(
+    'click', function() {
+      sortFilterContainer.setDisplay(!sortFilterContainer.getDisplay());
     }
-    else{
-      currentOrder = "Ascending";
-    }
-    const sortDirection = document.getElementById("sort-direction")
-    if(currentOrder == "Ascending"){
-      sortDirection.src = "dbManagement/DokkanFiles/global/en/layout/en/image/common/btn/filter_icon_ascending.png";
-    }
-    else{
-      sortDirection.src = "dbManagement/DokkanFiles/global/en/layout/en/image/common/btn/filter_icon_descending.png";
-    }
-    reSortCards();
-  })
-  sortButton.addEventListener('mouseover', function() {
-    console.log("changing width from" + sortFilterContainer.element.style.width);
-    if(currentOrder == "Ascending"){
-      sortFilterContainer.changeWidth(removePX(sortFilterContainer.element.style.width)-10);
-    }
-    else{
-      sortFilterContainer.changeWidth(removePX(sortFilterContainer.element.style.width)+10);
-    }
-  })
+  )
 
 }
 

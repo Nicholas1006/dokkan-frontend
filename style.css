@@ -7,14 +7,37 @@
   }
 }
 
+.styled-radio-container{
+  display: grid;
+  z-index: 102;
+}
+
+.styled-radio-option{
+  cursor: pointer;
+  display: grid;
+  text-align: center;
+  place-items: center; /* Centers both horizontally & vertically */
+  z-index: 102;
+  aspect-ratio: 200/70;
+  justify-content: center;
+  background-size: contain;
+  background-image: url("/dbManagement/DokkanFiles/global/en/layout/en/image/common/btn/com_btn_04_gray.png");
+}
+
+.styled-radio-option.activeGreen{
+  background-image: url("/dbManagement/DokkanFiles/global/en/layout/en/image/common/btn/com_btn_04_green.png");
+}
+
+
+
 .complex-sort-filter-container{
   top: 0%;
   left: calc(50% - min(250px, 50vw));
-  display: grid;
+  display: none;
   position:fixed;
   justify-content: center;
   align-items: center;
-  pointer-events: none;
+  z-index: 101;
 }
 
 .complex-sort-filter-container-background{
