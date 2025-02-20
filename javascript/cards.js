@@ -5117,6 +5117,7 @@ function createKiSphereContainer(){
     const otherDropdown=document.createElement("select");
     otherQuery.appendChild(otherDropdown)
     otherDropdown.addEventListener("change", function(){
+        currentKiSphere=otherDropdown.value
         otherDropdown.style.backgroundColor=LightenColor(colorToBackground(typeToColor(otherDropdown.value)),50)
         updateKiSphereBuffs()
     })
