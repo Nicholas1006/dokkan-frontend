@@ -1552,7 +1552,7 @@ let additionalAttacks={};
 let kiCircleDictionary=[];
 let passiveQueryList=[];
 let passiveChanceList={};
-let relevantPassiveEffects=["Ki","ATK","Heals","DEF","Guard","Disable Other Line","Dodge chance","Crit Chance","DR","Additional Attack"]
+let relevantPassiveEffects=["Ki","ATK","Heals","DEF","Guard","Disable Other Line","Dodge Chance","Crit Chance","DR","Additional Attack"]
 
 let attackRecievedType="normal";
 let attackRecievedTiming="after";
@@ -1845,15 +1845,15 @@ function updatePassiveStats(){
     kiCircleDictionary[0].updateDefensiveFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
     startingStats={};
     startingStats["Defense"]=kiCircleDictionary[0].getDefense();
-    startingStats["Dodge chance"]=Math.min(kiCircleDictionary[0].getDodgeChance(),100)/100;
-    startingStats["Dodge chance"]=1 - (1-(startingStats["Dodge chance"]))*(1-(skillOrbBuffs["Evasion"]/100));
-    startingStats["Dodge chance"]=Math.round(startingStats["Dodge chance"]*1000)/10;
+    startingStats["Dodge Chance"]=Math.min(kiCircleDictionary[0].getDodgeChance(),100)/100;
+    startingStats["Dodge Chance"]=1 - (1-(startingStats["Dodge Chance"]))*(1-(skillOrbBuffs["Evasion"]/100));
+    startingStats["Dodge Chance"]=Math.round(startingStats["Dodge Chance"]*1000)/10;
     startingStats["Damage Reduction"]= Math.min(kiCircleDictionary[0].getDamageReduction(),100);
     startingStats["Guard"]= kiCircleDictionary[0].getGuard();
     let startingStatsString="";
     startingStatsString+="DEF: "+startingStats["Defense"].toLocaleString()+"\n";
-    if(startingStats["Dodge chance"]>0){
-        startingStatsString+="Dodge chance: "+startingStats["Dodge chance"]+"%\n";
+    if(startingStats["Dodge Chance"]>0){
+        startingStatsString+="Dodge Chance: "+startingStats["Dodge Chance"]+"%\n";
     }
     if(startingStats["Damage Reduction"]>0){
         startingStatsString+="Damage Reduction: "+startingStats["Damage Reduction"]+"%\n";
@@ -1882,15 +1882,15 @@ function updatePassiveStats(){
         kiCircleDictionary[0].updateDefensiveFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
         recievingDamageStats={};
         recievingDamageStats["Defense"]=kiCircleDictionary[0].getDefense();
-        recievingDamageStats["Dodge chance"]=Math.min(kiCircleDictionary[0].getDodgeChance(),100)/100;
-        recievingDamageStats["Dodge chance"]=1 - (1-(recievingDamageStats["Dodge chance"]))*(1-(skillOrbBuffs["Evasion"]/100));
-        recievingDamageStats["Dodge chance"]=Math.round(recievingDamageStats["Dodge chance"]*1000)/10;
+        recievingDamageStats["Dodge Chance"]=Math.min(kiCircleDictionary[0].getDodgeChance(),100)/100;
+        recievingDamageStats["Dodge Chance"]=1 - (1-(recievingDamageStats["Dodge Chance"]))*(1-(skillOrbBuffs["Evasion"]/100));
+        recievingDamageStats["Dodge Chance"]=Math.round(recievingDamageStats["Dodge Chance"]*1000)/10;
         recievingDamageStats["Damage Reduction"]= Math.min(kiCircleDictionary[0].getDamageReduction(),100);
         recievingDamageStats["Guard"]= kiCircleDictionary[0].getGuard();
         let recievingDamageStatsString="";
         recievingDamageStatsString+="DEF: "+recievingDamageStats["Defense"].toLocaleString()+"\n";
-        if(recievingDamageStats["Dodge chance"]>0){
-            recievingDamageStatsString+="Dodge chance: "+recievingDamageStats["Dodge chance"]+"%\n";
+        if(recievingDamageStats["Dodge Chance"]>0){
+            recievingDamageStatsString+="Dodge Chance: "+recievingDamageStats["Dodge Chance"]+"%\n";
         }
         if(recievingDamageStats["Damage Reduction"]>0){
             recievingDamageStatsString+="Damage Reduction: "+recievingDamageStats["Damage Reduction"]+"%\n";
@@ -2076,17 +2076,17 @@ function updatePassiveStats(){
     if(attackRecievedTiming=="after" && (attackRecievedType=="normal" || attackRecievedType=="super")){
         kiCircleDictionary[lastAttack].updateDefensiveFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
         recievingDamageStats["Defense"]=kiCircleDictionary[lastAttack].getDefense();
-        recievingDamageStats["Dodge chance"]=Math.min(kiCircleDictionary[lastAttack].getDodgeChance(),100)/100;
-        recievingDamageStats["Dodge chance"]=1 - (1-(recievingDamageStats["Dodge chance"]))*(1-(skillOrbBuffs["Evasion"]/100));
-        recievingDamageStats["Dodge chance"]=Math.round(recievingDamageStats["Dodge chance"]*1000)/10;
+        recievingDamageStats["Dodge Chance"]=Math.min(kiCircleDictionary[lastAttack].getDodgeChance(),100)/100;
+        recievingDamageStats["Dodge Chance"]=1 - (1-(recievingDamageStats["Dodge Chance"]))*(1-(skillOrbBuffs["Evasion"]/100));
+        recievingDamageStats["Dodge Chance"]=Math.round(recievingDamageStats["Dodge Chance"]*1000)/10;
         recievingDamageStats["Damage Reduction"]= Math.min(kiCircleDictionary[lastAttack].getDamageReduction(),100);
         recievingDamageStats["Guard"]= kiCircleDictionary[lastAttack].getGuard();
 
             
         let recievingDamageStatsString="";
         recievingDamageStatsString+="DEF: "+recievingDamageStats["Defense"].toLocaleString()+"\n";
-        if(recievingDamageStats["Dodge chance"]>0){
-            recievingDamageStatsString+="Dodge chance: "+recievingDamageStats["Dodge chance"]+"%\n";
+        if(recievingDamageStats["Dodge Chance"]>0){
+            recievingDamageStatsString+="Dodge Chance: "+recievingDamageStats["Dodge Chance"]+"%\n";
         }
         if(recievingDamageStats["Damage Reduction"]>0){
             recievingDamageStatsString+="Damage Reduction: "+recievingDamageStats["Damage Reduction"]+"%\n";
@@ -2114,16 +2114,16 @@ function updatePassiveStats(){
     finalStats={}
     
     finalStats["Defense"]= kiCircleDictionary[lastAttack].getDefense();
-    finalStats["Dodge chance"]= Math.min(kiCircleDictionary[lastAttack].getDodgeChance(),100)/100;
-    finalStats["Dodge chance"]=1 - (1-(finalStats["Dodge chance"]))*(1-(skillOrbBuffs["Evasion"]/100));
-    finalStats["Dodge chance"]=Math.round(finalStats["Dodge chance"]*1000)/10;
+    finalStats["Dodge Chance"]= Math.min(kiCircleDictionary[lastAttack].getDodgeChance(),100)/100;
+    finalStats["Dodge Chance"]=1 - (1-(finalStats["Dodge Chance"]))*(1-(skillOrbBuffs["Evasion"]/100));
+    finalStats["Dodge Chance"]=Math.round(finalStats["Dodge Chance"]*1000)/10;
     finalStats["Damage Reduction"]= Math.min(kiCircleDictionary[lastAttack].getDamageReduction(),100);
     finalStats["Guard"]= kiCircleDictionary[lastAttack].getGuard();
 
     let finalStatsString="";
     finalStatsString+="DEF: "+finalStats["Defense"].toLocaleString()+"\n";
-    if(finalStats["Dodge chance"]>0){
-        finalStatsString+="Dodge chance: "+finalStats["Dodge chance"]+"%\n";
+    if(finalStats["Dodge Chance"]>0){
+        finalStatsString+="Dodge Chance: "+finalStats["Dodge Chance"]+"%\n";
     }
     if(finalStats["Damage Reduction"]>0){
         finalStatsString+="Damage Reduction: "+finalStats["Damage Reduction"]+"%\n";
