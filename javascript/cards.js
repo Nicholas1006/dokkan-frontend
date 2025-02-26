@@ -1193,15 +1193,22 @@ class statsContainerClass{
 class superAttackQueryHolder{
 
     constructor(superAttack,maxPerTurn,maxTurns,unitID){
+        this.askedAmounts={};
         this.superAttack=superAttack;
         this.selfContainer=document.createElement("div");
         this.selfContainer.style.display="grid";
         this.selfContainer.id="superAttackQueryHolder";
         for(const key of Object.keys(superAttack["superBuffs"])){
+            let buffs=superAttack["superBuffs"][key];
             if(superAttack["superBuffs"][key]["Duration"]!="1" && superAttack["superBuffs"][key]["Duration"]!="2"){
-                let buffs=superAttack["superBuffs"][key];
-                let buffHolder= new superAttackQuery(buffs,maxPerTurn,maxTurns,unitID,superAttack);
-                this.selfContainer.appendChild(buffHolder.getElement());
+                if((Math.min(Math.floor((buffs["Duration"]-1)/2),maxTurns)*maxPerTurn) in this.askedAmounts){
+
+                    this.askedAmounts[Math.min(Math.floor((buffs["Duration"]-1)/2),maxTurns)*maxPerTurn].addBuffs(buffs);
+                }
+                else{
+                    this.askedAmounts[Math.min(Math.floor((buffs["Duration"]-1)/2),maxTurns)*maxPerTurn]=new superAttackQuery(buffs,maxPerTurn,maxTurns,unitID,superAttack);;
+                    this.selfContainer.appendChild(this.askedAmounts[Math.min(Math.floor((buffs["Duration"]-1)/2),maxTurns)*maxPerTurn].getElement());
+                }
             }
         }
     }
@@ -1328,6 +1335,13 @@ class superAttackQuery{
         });
 
         
+    }
+
+    addBuffs(buffs){
+        this.selfContainer.buffs={
+            ...this.selfContainer.buffs,
+            ...buffs
+        }
     }
 
     getElement(){

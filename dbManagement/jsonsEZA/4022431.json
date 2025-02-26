@@ -1,43 +1,43 @@
 {
-    "ID": "4022391",
-    "Type": "TEQ",
+    "ID": "4022431",
+    "Type": "PHY",
     "Class": "Super",
-    "Name": "Super Saiyan God SS Goku & \nSuper Saiyan God SS Vegeta",
+    "Name": "Super Saiyan 4 Gogeta",
     "Rarity": "lr",
     "Min Level": 150,
     "Max Level": 150,
     "Categories": [
-        "Power Beyond Super Saiyan",
-        "Movie Heroes",
-        "Realm of Gods",
+        "Fused Fighters",
+        "GT Heroes",
+        "Shadow Dragon Saga",
         "Pure Saiyans",
         "Joined Forces",
-        "Fusion",
-        "Transformation Boost",
         "Kamehameha",
+        "Giant Ape Power",
+        "Battle of Fate",
+        "Power Beyond Super Saiyan",
+        "Fusion",
         "Final Trump Card",
         "Time Limit",
-        "Mastered Evolution",
-        "Fused Fighters",
+        "Accelerated Battle",
         "Bond of Parent and Child",
-        "Super Heroes",
         "Earth-Protecting Heroes"
     ],
     "Can EZA": true,
     "Can SEZA": false,
     "Links": [
-        "Kamehameha",
         "Super Saiyan",
-        "Warrior Gods",
-        "Godly Power",
-        "Prepared for Battle",
+        "Kamehameha",
+        "Saiyan Roar",
+        "Shocking Speed",
+        "GT",
         "Fierce Battle",
         "Legendary Power"
     ],
-    "Resource ID": 4022390,
+    "Resource ID": 4022430,
     "Passive": {
-        "4521": {
-            "ID": "4521",
+        "4523": {
+            "ID": "4523",
             "Timing": "Start of turn",
             "ATK": 300,
             "DEF": 300,
@@ -52,8 +52,124 @@
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF +300% "
         },
-        "1004521": {
-            "ID": "1004521",
+        "1004523": {
+            "ID": "1004523",
+            "Nullification": {
+                "Activated": true,
+                "Absorbed": 0
+            },
+            "Timing": "Right before being hit",
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "10045230 && 10045231",
+                "Causalities": {
+                    "10045230": {
+                        "Button": {
+                            "Name": "Was the following true: Is a super being performed and Is the enemy's health 50 % or less and Is there less than 2 enemies "
+                        }
+                    },
+                    "10045231": {
+                        "Button": {
+                            "Name": "Was the following true for the first time on this turn: Is a super being performed and Is the enemy's health 50 % or less and Is there less than 2 enemies "
+                        },
+                        "Slider": {
+                            "Name": "How many turns since the following was true for the first time: Is a super being performed and Is the enemy's health 50 % or less and Is there less than 2 enemies ",
+                            "Logic": "<=1",
+                            "Min": 0,
+                            "Max": 2
+                        }
+                    }
+                }
+            },
+            "Once Only": true,
+            "Type": "Single activator",
+            "Brief effect description": "Nullifies enemy attack right before being hit"
+        },
+        "2004523": {
+            "ID": "2004523",
+            "Counter": {
+                "Activated": true,
+                "Multiplier": "300"
+            },
+            "Timing": "Right before being hit",
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "20045230 && 20045231",
+                "Causalities": {
+                    "20045230": {
+                        "Button": {
+                            "Name": "Was the following true: Is a super being performed and Is the enemy's health 50 % or less and Is there less than 2 enemies "
+                        }
+                    },
+                    "20045231": {
+                        "Button": {
+                            "Name": "Was the following true for the first time on this turn: Is a super being performed and Is the enemy's health 50 % or less and Is there less than 2 enemies "
+                        },
+                        "Slider": {
+                            "Name": "How many turns since the following was true for the first time: Is a super being performed and Is the enemy's health 50 % or less and Is there less than 2 enemies ",
+                            "Logic": "<=1",
+                            "Min": 0,
+                            "Max": 2
+                        }
+                    }
+                }
+            },
+            "Once Only": true,
+            "Type": "Single activator",
+            "Brief effect description": "Counter attacks with a 300% multiplier right before being hit"
+        },
+        "3004523": {
+            "ID": "3004523",
+            "Disable Other Line": {
+                "Activated": true,
+                "Line": "1004523"
+            },
+            "Timing": "Right after being hit",
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Disable Other Line",
+            "Brief effect description": "Disables a different passive line:1004523 after being hit"
+        },
+        "4004523": {
+            "ID": "4004523",
+            "Disable Other Line": {
+                "Activated": true,
+                "Line": "2004523"
+            },
+            "Timing": "Right after being hit",
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Disable Other Line",
+            "Brief effect description": "Disables a different passive line:2004523 after being hit"
+        },
+        "5004523": {
+            "ID": "5004523",
             "Effective Against All": true,
             "Timing": "Start of turn",
             "Target": {
@@ -67,8 +183,8 @@
             "Type": "Single activator",
             "Brief effect description": "Attacks effective against all Types "
         },
-        "2004521": {
-            "ID": "2004521",
+        "6004523": {
+            "ID": "6004523",
             "Timing": "Start of turn",
             "Crit Chance": 50,
             "Target": {
@@ -82,9 +198,13 @@
             "Type": "Single activator",
             "Brief effect description": "Chance of performing a critical hit +50% "
         },
-        "3004521": {
-            "ID": "3004521",
-            "Dodge Chance": 30,
+        "7004523": {
+            "ID": "7004523",
+            "Additional Attack": {
+                "Activated": true,
+                "Chance of super": "100",
+                "Chance of another additional": "0"
+            },
             "Timing": "Start of turn",
             "Target": {
                 "Target": "Self"
@@ -95,10 +215,10 @@
             },
             "Length": "1",
             "Type": "Single activator",
-            "Brief effect description": "Chance of evading enemy attacks +30% "
+            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack "
         },
-        "4004521": {
-            "ID": "4004521",
+        "8004523": {
+            "ID": "8004523",
             "Timing": "Start of turn",
             "Guard": true,
             "Target": {
@@ -112,13 +232,14 @@
             "Type": "Single activator",
             "Brief effect description": "Guards all attacks "
         },
-        "5004521": {
-            "ID": "5004521",
+        "9004523": {
+            "ID": "9004523",
             "Timing": "Start of turn",
             "Ki Change": {
                 "From": [
                     "PHY",
                     "STR",
+                    "INT",
                     "TEQ",
                     "AGL"
                 ],
@@ -152,10 +273,10 @@
                 }
             },
             "Type": "Single activator",
-            "Brief effect description": "Randomly changes Ki Spheres of a certain Type(INT excluded) to Rainbow Ki Spheres "
+            "Brief effect description": "Randomly changes Ki Spheres of a certain Type to Rainbow Ki Spheres "
         },
-        "6004521": {
-            "ID": "6004521",
+        "10004523": {
+            "ID": "10004523",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -185,8 +306,8 @@
             "Type": "Building Stat",
             "Brief effect description": "Ki +2 per Ki Sphere obtained "
         },
-        "7004521": {
-            "ID": "7004521",
+        "11004523": {
+            "ID": "11004523",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -211,9 +332,8 @@
             "Type": "Building Stat",
             "Brief effect description": "Chance of performing a critical hit +10% per Rainbow Ki Spheres obtained "
         },
-        "8004521": {
-            "ID": "8004521",
-            "Dodge Chance": 10,
+        "12004523": {
+            "ID": "12004523",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -226,6 +346,7 @@
                 },
                 "Slider": "How many Rainbow Ki Spheres have been obtained on this turn?"
             },
+            "DR": 10,
             "Target": {
                 "Target": "Self"
             },
@@ -235,79 +356,12 @@
             },
             "Length": "1",
             "Type": "Building Stat",
-            "Brief effect description": "Chance of evading enemy attacks +10% per Rainbow Ki Spheres obtained "
+            "Brief effect description": "Damage recieved -10% per Rainbow Ki Spheres obtained "
         },
-        "9004521": {
-            "ID": "9004521",
-            "Additional Attack": {
-                "Activated": true,
-                "Chance of super": "100",
-                "Chance of another additional": "0"
-            },
-            "Timing": "When ki spheres collected",
-            "Target": {
-                "Target": "Self"
-            },
-            "Buff": {
-                "Type": "Percentage",
-                "+ or -": "+"
-            },
-            "Length": "1",
-            "Condition": {
-                "Logic": "502",
-                "Causalities": {
-                    "502": {
-                        "Button": {
-                            "Name": "Has 7 or more Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres been obtained on this turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres have been obtained on this turn?",
-                            "Logic": ">=7",
-                            "Min": 0,
-                            "Max": 7
-                        }
-                    }
-                }
-            },
-            "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack after this unit collects ki spheres"
-        },
-        "10004521": {
-            "ID": "10004521",
-            "Additional Attack": {
-                "Activated": true,
-                "Chance of super": "100",
-                "Chance of another additional": "0"
-            },
-            "Timing": "Right before attack(MOT stat)",
-            "Target": {
-                "Target": "Self"
-            },
-            "Buff": {
-                "Type": "Percentage",
-                "+ or -": "+"
-            },
-            "Length": "1",
-            "Condition": {
-                "Logic": "1282",
-                "Causalities": {
-                    "1282": {
-                        "Slider": {
-                            "Name": "How much ki is there on this turn?",
-                            "Logic": ">=20",
-                            "Min": 0,
-                            "Max": 24
-                        }
-                    }
-                }
-            },
-            "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking"
-        },
-        "11004521": {
-            "ID": "11004521",
-            "Dodge Chance": 100,
+        "13004523": {
+            "ID": "13004523",
             "Timing": "Right before being hit",
+            "DR": 50,
             "Target": {
                 "Target": "Self"
             },
@@ -317,14 +371,14 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "110045210 && 110045211",
+                "Logic": "130045230 && 130045231",
                 "Causalities": {
-                    "110045210": {
+                    "130045230": {
                         "Button": {
                             "Name": "Was the following true: Is HP 50 % or less "
                         }
                     },
-                    "110045211": {
+                    "130045231": {
                         "Button": {
                             "Name": "Was the following true for the first time on this turn: Is HP 50 % or less "
                         },
@@ -339,88 +393,104 @@
             },
             "Once Only": true,
             "Type": "Single activator",
-            "Brief effect description": "Evades enemy attacks right before being hit"
+            "Brief effect description": "Damage recieved -50% right before being hit"
         },
-        "12004521": {
-            "ID": "12004521",
-            "Timing": "Right before attack(MOT stat)",
-            "Crit Chance": 100,
-            "Target": {
-                "Target": "Self"
-            },
-            "Buff": {
-                "Type": "Percentage",
-                "+ or -": "+"
-            },
-            "Length": "1",
-            "Condition": {
-                "Logic": "120045210 && 120045211",
-                "Causalities": {
-                    "120045210": {
-                        "Button": {
-                            "Name": "Was the following true: Is the enemy's health 50 % or more "
-                        }
-                    },
-                    "120045211": {
-                        "Button": {
-                            "Name": "Was the following true for the first time on this turn: Is the enemy's health 50 % or more "
-                        },
-                        "Slider": {
-                            "Name": "How many turns since the following was true for the first time: Is the enemy's health 50 % or more ",
-                            "Logic": "<=1",
-                            "Min": 0,
-                            "Max": 2
-                        }
-                    }
-                }
-            },
-            "Once Only": true,
-            "Type": "Single activator",
-            "Brief effect description": "Performs a Critical Hit when attacking"
-        },
-        "13004521": {
-            "ID": "13004521",
-            "Additional Attack": {
+        "14004523": {
+            "ID": "14004523",
+            "Nullification": {
                 "Activated": true,
-                "Chance of super": "100",
-                "Chance of another additional": "0"
+                "Absorbed": 0
             },
-            "Timing": "Right before attack(MOT stat)",
+            "Timing": "Right before being hit",
             "Target": {
                 "Target": "Self"
             },
             "Buff": {
-                "Type": "Percentage",
+                "Type": "Raw stats",
                 "+ or -": "+"
             },
+            "Chance": "70",
             "Length": "1",
             "Condition": {
-                "Logic": "130045210 && 130045211",
+                "Logic": "1880",
                 "Causalities": {
-                    "130045210": {
+                    "1880": {
                         "Button": {
-                            "Name": "Was the following true: Is the enemy's health 50 % or more "
-                        }
-                    },
-                    "130045211": {
-                        "Button": {
-                            "Name": "Was the following true for the first time on this turn: Is the enemy's health 50 % or more "
-                        },
-                        "Slider": {
-                            "Name": "How many turns since the following was true for the first time: Is the enemy's health 50 % or more ",
-                            "Logic": "<=1",
-                            "Min": 0,
-                            "Max": 2
+                            "Name": "Has this character been hit by a super attack?"
                         }
                     }
                 }
             },
-            "Once Only": true,
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking"
+            "Brief effect description": "Nullifies enemy attack right before being hit"
         },
-        "14004521": {
-            "ID": "14004521",
+        "15004523": {
+            "ID": "15004523",
+            "Counter": {
+                "Activated": true,
+                "Multiplier": "300"
+            },
+            "Timing": "Right before being hit",
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Chance": "70",
+            "Length": "1",
+            "Condition": {
+                "Logic": "1880",
+                "Causalities": {
+                    "1880": {
+                        "Button": {
+                            "Name": "Has this character been hit by a super attack?"
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "Counter attacks with a 300% multiplier right before being hit"
+        },
+        "16004523": {
+            "ID": "16004523",
+            "Disable Other Line": {
+                "Activated": true,
+                "Line": "14004523"
+            },
+            "Timing": "Right after being hit",
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Disable Other Line",
+            "Brief effect description": "Disables a different passive line:14004523 after being hit"
+        },
+        "17004523": {
+            "ID": "17004523",
+            "Disable Other Line": {
+                "Activated": true,
+                "Line": "15004523"
+            },
+            "Timing": "Right after being hit",
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Disable Other Line",
+            "Brief effect description": "Disables a different passive line:15004523 after being hit"
+        },
+        "18004523": {
+            "ID": "18004523",
             "Timing": "When ki spheres collected",
             "ATK": 10,
             "DEF": 10,
@@ -451,8 +521,8 @@
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF +10% after this unit collects ki spheres"
         },
-        "15004521": {
-            "ID": "15004521",
+        "19004523": {
+            "ID": "19004523",
             "Timing": "When ki spheres collected",
             "ATK": 10,
             "DEF": 10,
@@ -483,8 +553,8 @@
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF +10% after this unit collects ki spheres"
         },
-        "16004521": {
-            "ID": "16004521",
+        "20004523": {
+            "ID": "20004523",
             "Timing": "When ki spheres collected",
             "ATK": 10,
             "DEF": 10,
@@ -515,8 +585,8 @@
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF +10% after this unit collects ki spheres"
         },
-        "17004521": {
-            "ID": "17004521",
+        "21004523": {
+            "ID": "21004523",
             "Timing": "When ki spheres collected",
             "ATK": 10,
             "DEF": 10,
@@ -547,8 +617,8 @@
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF +10% after this unit collects ki spheres"
         },
-        "18004521": {
-            "ID": "18004521",
+        "22004523": {
+            "ID": "22004523",
             "Timing": "When ki spheres collected",
             "ATK": 10,
             "DEF": 10,
@@ -579,8 +649,8 @@
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF +10% after this unit collects ki spheres"
         },
-        "19004521": {
-            "ID": "19004521",
+        "23004523": {
+            "ID": "23004523",
             "Timing": "When ki spheres collected",
             "ATK": 10,
             "DEF": 10,
@@ -611,8 +681,8 @@
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF +10% after this unit collects ki spheres"
         },
-        "20004521": {
-            "ID": "20004521",
+        "24004523": {
+            "ID": "24004523",
             "Timing": "When ki spheres collected",
             "ATK": 10,
             "DEF": 10,
@@ -643,8 +713,8 @@
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF +10% after this unit collects ki spheres"
         },
-        "21004521": {
-            "ID": "21004521",
+        "25004523": {
+            "ID": "25004523",
             "Timing": "When ki spheres collected",
             "ATK": 10,
             "DEF": 10,
@@ -675,8 +745,8 @@
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF +10% after this unit collects ki spheres"
         },
-        "22004521": {
-            "ID": "22004521",
+        "26004523": {
+            "ID": "26004523",
             "Timing": "When ki spheres collected",
             "ATK": 10,
             "DEF": 10,
@@ -707,8 +777,8 @@
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF +10% after this unit collects ki spheres"
         },
-        "23004521": {
-            "ID": "23004521",
+        "27004523": {
+            "ID": "27004523",
             "Timing": "When ki spheres collected",
             "ATK": 10,
             "DEF": 10,
@@ -739,18 +809,10 @@
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF +10% after this unit collects ki spheres"
         },
-        "24004521": {
-            "ID": "24004521",
+        "28004523": {
+            "ID": "28004523",
+            "Forsee Super Attack": true,
             "Timing": "Start of turn",
-            "Ki Change": {
-                "From": [
-                    "INT"
-                ],
-                "To": [
-                    "Rainbow"
-                ],
-                "Style": "Randomly"
-            },
             "Target": {
                 "Target": "Self"
             },
@@ -760,10 +822,10 @@
             },
             "Length": "1",
             "Type": "Single activator",
-            "Brief effect description": "Randomly changes Ki Spheres of a certain Type(AGL excluded) to Rainbow Ki Spheres "
+            "Brief effect description": "Forsee enemy super attack "
         },
-        "25004521": {
-            "ID": "25004521",
+        "29004523": {
+            "ID": "29004523",
             "Timing": "Start of turn",
             "DR": 77,
             "Target": {
@@ -777,9 +839,9 @@
             "Once Only": true,
             "Type": "Single activator",
             "Condition": {
-                "Logic": "25004521",
+                "Logic": "29004523",
                 "Causalities": {
-                    "25004521": {
+                    "29004523": {
                         "Button": {
                             "Name": "Is it within the first 1 turns from entry turn?"
                         },
@@ -794,8 +856,8 @@
             },
             "Brief effect description": "Damage recieved -77% "
         },
-        "26004521": {
-            "ID": "26004521",
+        "30004523": {
+            "ID": "30004523",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 50,
             "Target": {
@@ -823,28 +885,28 @@
             "Brief effect description": "ATK +50% when attacking"
         }
     },
-    "Max Attacks": 5,
-    "Max Super Attacks": 5,
+    "Max Attacks": 3,
+    "Max Super Attacks": 3,
     "Stats at levels": {
         "150": {
-            "HP": 16475,
-            "ATK": 16675,
-            "DEF": 8169
+            "HP": 16688,
+            "ATK": 17185,
+            "DEF": 7425
         }
     },
     "Leader Skill": {
-        "Name": "Divine Warriors with Infinite Power",
-        "102238100": {
+        "Name": "Saiyan Warriors with Ultimate Power",
+        "102242100": {
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Target": {
                 "Category": [
-                    "Power Beyond Super Saiyan"
+                    "Fused Fighters"
                 ],
                 "Excluded Category": [
-                    "Movie Heroes"
+                    "GT Heroes"
                 ],
                 "Allies or enemies": "Allies"
             },
@@ -852,30 +914,30 @@
             "ATK": 170,
             "DEF": 170
         },
-        "102238101": {
+        "102242101": {
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Target": {
                 "Category": [
-                    "Power Beyond Super Saiyan"
+                    "Fused Fighters"
                 ],
                 "Excluded Category": [
-                    "Movie Heroes"
+                    "GT Heroes"
                 ],
                 "Allies or enemies": "Allies"
             },
             "Ki": 3
         },
-        "102238102": {
+        "102242102": {
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Target": {
                 "Category": [
-                    "Movie Heroes"
+                    "GT Heroes"
                 ],
                 "Excluded Category": [],
                 "Allies or enemies": "Allies"
@@ -884,28 +946,28 @@
             "ATK": 170,
             "DEF": 170
         },
-        "102238103": {
+        "102242103": {
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Target": {
                 "Category": [
-                    "Movie Heroes"
+                    "GT Heroes"
                 ],
                 "Excluded Category": [],
                 "Allies or enemies": "Allies"
             },
             "Ki": 3
         },
-        "102238104": {
+        "102242104": {
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Target": {
                 "Category": [
-                    "Power Beyond Super Saiyan",
+                    "Fused Fighters",
                     "Kamehameha"
                 ],
                 "Excluded Category": [],
@@ -915,18 +977,18 @@
             "ATK": 30,
             "DEF": 30
         },
-        "102238105": {
+        "102242105": {
             "Buff": {
                 "Type": "Percentage",
                 "+ or -": "+"
             },
             "Target": {
                 "Category": [
-                    "Movie Heroes",
+                    "GT Heroes",
                     "Kamehameha"
                 ],
                 "Excluded Category": [
-                    "Power Beyond Super Saiyan"
+                    "Fused Fighters"
                 ],
                 "Allies or enemies": "Allies"
             },
@@ -934,14 +996,14 @@
             "ATK": 30,
             "DEF": 30
         },
-        "102238106": {
+        "102242106": {
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Target": {
                 "Category": [
-                    "Power Beyond Super Saiyan",
+                    "Fused Fighters",
                     "Kamehameha"
                 ],
                 "Excluded Category": [],
@@ -949,18 +1011,18 @@
             },
             "Ki": 1
         },
-        "102238107": {
+        "102242107": {
             "Buff": {
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
             "Target": {
                 "Category": [
-                    "Movie Heroes",
+                    "GT Heroes",
                     "Kamehameha"
                 ],
                 "Excluded Category": [
-                    "Power Beyond Super Saiyan"
+                    "Fused Fighters"
                 ],
                 "Allies or enemies": "Allies"
             },
@@ -972,8 +1034,8 @@
             "HP": 2000,
             "ATK": 2000,
             "DEF": 2000,
-            "Additional": 0,
-            "Crit": 5,
+            "Additional": 5,
+            "Crit": 0,
             "Evasion": 0,
             "Type ATK": 6,
             "Type DEF": 5,
@@ -1017,9 +1079,9 @@
             "Recovery boost": 1
         },
         "4": {
-            "HP": 1300,
-            "ATK": 2100,
-            "DEF": 1700,
+            "HP": 2100,
+            "ATK": 1700,
+            "DEF": 1300,
             "Additional": 0,
             "Crit": 0,
             "Evasion": 0,
@@ -1030,11 +1092,11 @@
         }
     },
     "Super Attack": {
-        "7337": {
-            "superID": "7337",
-            "Type": "Unarmed",
+        "7341": {
+            "superID": "7341",
+            "Type": "Other",
             "special_name_no": "0",
-            "superName": "Divine Fang of Azure Light (Extreme)",
+            "superName": "Clone Kamehameha (Extreme)",
             "superDescription": "Massively raises ATK and \ngreatly raises DEF for 1 turn and \ncauses colossal damage to enemy",
             "superMinKi": "12",
             "superPriority": "0.0",
@@ -1043,7 +1105,7 @@
             "superCausality": "",
             "superAimTarget": "0",
             "superBuffs": {
-                "7337": {
+                "7341": {
                     "Type": "NormalEfficacySpecial",
                     "Chance": "100",
                     "Duration": "1",
@@ -1054,7 +1116,7 @@
                     "Target": "Self",
                     "ATK": "100"
                 },
-                "1007337": {
+                "1007341": {
                     "Type": "NormalEfficacySpecial",
                     "Chance": "100",
                     "Duration": "1",
@@ -1077,11 +1139,11 @@
             },
             "Multiplier": 420
         },
-        "7338": {
-            "superID": "7338",
+        "7342": {
+            "superID": "7342",
             "Type": "Other",
             "special_name_no": "2",
-            "superName": "Kamehameha & Galick Gun (Extreme)",
+            "superName": "Big Bang Kamehameha (Extreme)",
             "superDescription": "Massively raises ATK & DEF for 4 turns and \ncauses mega-colossal damage to enemy; \ndisables enemy's action once within the turn",
             "superMinKi": "18",
             "superPriority": "0.0",
@@ -1090,7 +1152,7 @@
             "superCausality": "",
             "superAimTarget": "0",
             "superBuffs": {
-                "7338": {
+                "7342": {
                     "Type": "NormalEfficacySpecial",
                     "Chance": "100",
                     "Duration": "4",
@@ -1102,7 +1164,7 @@
                     "ATK": "100",
                     "DEF": "100"
                 },
-                "1007338": {
+                "1007342": {
                     "Type": "ExtraEfficacySpecial",
                     "Chance": "100",
                     "Duration": "1",
@@ -1127,7 +1189,7 @@
         }
     },
     "Active Skill": {
-        "Name": "Fusion",
+        "Name": "Ultra Big Bang Kamehameha",
         "Effect Description": "Causes ultimate damage to enemy and, \nwithin the turn activated, \nall attacks become critical hits",
         "Condition Description": "Can be activated when HP is 50% or less, \nor when facing only 1 enemy, \nwhose HP is 50% or less (once only)",
         "Condition": {
@@ -1173,7 +1235,7 @@
             "Target": "Enemy"
         },
         "Effects": {
-            "146": {
+            "147": {
                 "Duration": "1",
                 "Effect": {
                     "Type": "Raw stats",
@@ -1190,7 +1252,7 @@
     "Standby Skill": null,
     "Finish Skill": null,
     "Transforms from": [
-        "1022381"
+        "1022421"
     ],
     "Transformations": [],
     "Max Appearances In Form": 50,
@@ -1250,5 +1312,5 @@
         "24": "ultra"
     },
     "SuperMinKi": 12,
-    "AdditionalSuperID": "7337"
+    "AdditionalSuperID": "7341"
 }
