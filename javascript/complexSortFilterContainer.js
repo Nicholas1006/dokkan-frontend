@@ -2,6 +2,20 @@ import {removePX} from "./commonFunctions.js";
 import {styledRadio} from "./styledRadio.js";
 export class complexSortFilterContainer {
     constructor(width, height){
+        this.initialise(width, height);
+        
+        this.createSortHeader();
+        
+        this.createSortOptions();
+
+        this.createSortFilterDivisionLine();
+
+        this.createFilterContainer();
+
+        
+    }
+
+    initialise(width, height){
         this.border=70;
         this.element=document.createElement("div");
         this.element.className="complex-sort-filter-container";
@@ -11,58 +25,6 @@ export class complexSortFilterContainer {
         this.element.style.display="none";
 
         this.background=new complexSortFilterContainerBackground(width, height,this);
-
-        this.createSortHeader();
-        
-        this.createSortOptions();
-
-        this.createSortFilterDivisionLine();
-
-        this.createFilterHeader();
-
-        this.filterContainer=document.createElement("div");
-        this.filterContainer.className="filter-container";
-        this.element.appendChild(this.filterContainer);
-
-        this.filterContainer.categorySkillContainer=document.createElement("div");
-        this.filterContainer.categorySkillContainer.className="filter-category-skill-container";
-        this.filterContainer.appendChild(this.filterContainer.categorySkillContainer);
-
-        this.filterContainer.categorySkillContainer.categoryContainer=document.createElement("div");
-        this.filterContainer.categorySkillContainer.categoryContainer.className="filter-category-container";
-        this.filterContainer.appendChild(this.filterContainer.categorySkillContainer.categoryContainer);
-
-        this.filterContainer.categorySkillContainer.skillContainer=document.createElement("div");
-        this.filterContainer.categorySkillContainer.skillContainer.className="filter-skill-container";
-        this.filterContainer.appendChild(this.filterContainer.categorySkillContainer.skillContainer);
-
-        this.filterContainer.rarityContainer=document.createElement("div");
-        this.filterContainer.rarityContainer.className="filter-rarity-container";
-        this.filterContainer.appendChild(this.filterContainer.rarityContainer);
-        
-        this.filterContainer.typeClassContainer=document.createElement("div");
-        this.filterContainer.typeClassContainer.className="filter-type-class-container";
-        this.filterContainer.appendChild(this.filterContainer.typeClassContainer);
-        
-        this.filterContainer.typeClassContainer.typeContainer=document.createElement("div");
-        this.filterContainer.typeClassContainer.typeContainer.className="filter-type-container";
-        this.filterContainer.typeClassContainer.appendChild(this.filterContainer.typeClassContainer.typeContainer);
-        
-        this.filterContainer.typeClassContainer.classContainer=document.createElement("div");    
-        this.filterContainer.typeClassContainer.classContainer.className="filter-class-container";
-        this.filterContainer.typeClassContainer.appendChild(this.filterContainer.typeClassContainer.classContainer);
-
-        this.filterContainer.awakeningContainer=document.createElement("div");
-        this.filterContainer.awakeningContainer.className="filter-awakening-container";
-        this.filterContainer.appendChild(this.filterContainer.awakeningContainer);
-
-        this.filterContainer.superAttackContainer=document.createElement("div");
-        this.filterContainer.superAttackContainer.className="filter-super-attack-container";
-        this.filterContainer.appendChild(this.filterContainer.superAttackContainer);
-
-        this.filterContainer.linkContainer=document.createElement("div");
-        this.filterContainer.linkContainer.className="filter-link-container";
-        this.filterContainer.appendChild(this.filterContainer.linkContainer);
     }
 
     createSortHeader(){
@@ -114,7 +76,7 @@ export class complexSortFilterContainer {
             "Release",
             "Character",
             "Sp Atk Lv",
-            "Activation",
+            //"Activation",
             "Max Level"
         ];
         this.sortContainer=new styledRadio(sortContainerOptionsList,3, true, function(){
@@ -133,18 +95,87 @@ export class complexSortFilterContainer {
         this.element.appendChild(this.sortFilterDivisionLine);
     }
 
+    
+
+    createFilterContainer(){
+        this.filterContainer=document.createElement("div");
+        this.filterContainer.className="filter-container";
+        this.element.appendChild(this.filterContainer);
+
+        this.createFilterHeader();
+
+        this.createCategorySkillContainer();
+
+        this.filterContainer.rarityContainer=document.createElement("div");
+        this.filterContainer.rarityContainer.className="filter-rarity-container";
+        this.filterContainer.appendChild(this.filterContainer.rarityContainer);
+        
+        this.filterContainer.typeClassContainer=document.createElement("div");
+        this.filterContainer.typeClassContainer.className="filter-type-class-container";
+        this.filterContainer.appendChild(this.filterContainer.typeClassContainer);
+        
+        this.filterContainer.typeClassContainer.typeContainer=document.createElement("div");
+        this.filterContainer.typeClassContainer.typeContainer.className="filter-type-container";
+        this.filterContainer.typeClassContainer.appendChild(this.filterContainer.typeClassContainer.typeContainer);
+        
+        this.filterContainer.typeClassContainer.classContainer=document.createElement("div");    
+        this.filterContainer.typeClassContainer.classContainer.className="filter-class-container";
+        this.filterContainer.typeClassContainer.appendChild(this.filterContainer.typeClassContainer.classContainer);
+
+        this.filterContainer.awakeningContainer=document.createElement("div");
+        this.filterContainer.awakeningContainer.className="filter-awakening-container";
+        this.filterContainer.appendChild(this.filterContainer.awakeningContainer);
+
+        this.filterContainer.superAttackContainer=document.createElement("div");
+        this.filterContainer.superAttackContainer.className="filter-super-attack-container";
+        this.filterContainer.appendChild(this.filterContainer.superAttackContainer);
+
+        this.filterContainer.linkContainer=document.createElement("div");
+        this.filterContainer.linkContainer.className="filter-link-container";
+        this.filterContainer.appendChild(this.filterContainer.linkContainer);
+    }
+
     createFilterHeader(){
 
         this.filterHeader=document.createElement("div");
         this.filterHeader.className="complex-sort-filter-container-header";
         this.filterHeader.innerHTML="Filter Select";
         this.filterHeader.style.gridRow="4";
-        this.element.appendChild(this.filterHeader);
+        this.filterContainer.appendChild(this.filterHeader);
     }
 
+    createCategorySkillContainer(){
+        this.filterContainer.categorySkillContainer=document.createElement("div");
+        this.filterContainer.categorySkillContainer.className="filter-category-skill-container";
+        this.filterContainer.appendChild(this.filterContainer.categorySkillContainer);
 
+        this.createCategoryContainer();
+        this.createSkillContainer();
+    }
 
+    createCategoryContainer(){
+        this.filterContainer.categorySkillContainer.categoryContainer=document.createElement("div");
+        this.filterContainer.categorySkillContainer.categoryContainer.className="filter-category-container";
+        this.filterContainer.categorySkillContainer.categoryContainer.innerHTML="Select Category";
+        this.filterContainer.categorySkillContainer.appendChild(this.filterContainer.categorySkillContainer.categoryContainer);
+        
+        this.filterContainer.categorySkillContainer.categoryContainer.text=document.createElement("div");
+        this.filterContainer.categorySkillContainer.categoryContainer.text.className="filter-category-container-text";
+        this.filterContainer.categorySkillContainer.categoryContainer.text.innerHTML="Category";
+        this.filterContainer.categorySkillContainer.appendChild(this.filterContainer.categorySkillContainer.categoryContainer.text);
+    }
 
+    createSkillContainer(){
+        this.filterContainer.categorySkillContainer.skillContainer=document.createElement("div");
+        this.filterContainer.categorySkillContainer.skillContainer.className="filter-skill-container";
+        this.filterContainer.categorySkillContainer.skillContainer.innerHTML="Select Effect";
+        this.filterContainer.categorySkillContainer.appendChild(this.filterContainer.categorySkillContainer.skillContainer);
+
+        this.filterContainer.categorySkillContainer.skillContainer.text=document.createElement("div");
+        this.filterContainer.categorySkillContainer.skillContainer.text.className="filter-skill-container-text";
+        this.filterContainer.categorySkillContainer.skillContainer.text.innerHTML="Skill Effect";
+        this.filterContainer.categorySkillContainer.appendChild(this.filterContainer.categorySkillContainer.skillContainer.text);
+    }
 
 
 
