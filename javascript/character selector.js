@@ -5,8 +5,8 @@ import {removePX} from "./commonFunctions.js";
 // GLOBAL VARIABLES
 let unitsToDisplay = 200;
 
-let currentSort = "Acquired";
-let currentOrder = "Descending";
+window.currentSort = "Release";
+window.currentOrder = "descending";
 let currentFilter = "Name";
 let currentFilterValue = "";
 let currentFilteredUnits = {};
@@ -150,7 +150,7 @@ function createSortOption(){
     sortSelect.appendChild(optionElement);
   });
   sortSelect.addEventListener('change', function() {
-    currentSort = this.value;
+    window.currentSort = this.value;
     reSortCards();
   })
   sortContainer.appendChild(sortSelect);
@@ -159,18 +159,18 @@ function createSortOption(){
 
 
 function reSortCards(){
-  if(Object.keys(unitBasicsDetails).includes(currentSort)){
+  if(Object.keys(unitBasicsDetails).includes(window.currentSort)){
     const startTime=Date.now();
 
     const unitsContainer = document.getElementById('unit-selection-container');
 
     let sortedUnits = currentFilteredUnits;
-    const order = currentOrder =="Ascending" ? 1 : -1;
+    const order = window.currentOrder =="ascending" ? 1 : -1;
 
     sortedUnits.sort((a, b) => {
-      let valueA = unitBasicsDetails[currentSort][a];
-      let valueB = unitBasicsDetails[currentSort][b];
-      if (currentSort === "Rarity") {
+      let valueA = unitBasicsDetails[window.currentSort][a];
+      let valueB = unitBasicsDetails[window.currentSort][b];
+      if (window.currentSort === "Rarity") {
         valueA = rarityToInt(valueA);
         valueB = rarityToInt(valueB);
       }
@@ -188,8 +188,8 @@ function reSortCards(){
     for (let i = 0; i < unitsToDisplay;i++) {
       if(i<sortedUnits.length){
         let otherDisplayedValue=null;
-        if(["Cost","HP","Attack","Defense","Sp Atk Lv"].includes(currentSort)){
-          otherDisplayedValue=unitBasicsDetails[currentSort][sortedUnits[i]];
+        if(["Cost","HP","Attack","Defense","Sp Atk Lv"].includes(window.currentSort)){
+          otherDisplayedValue=unitBasicsDetails[window.currentSort][sortedUnits[i]];
         }
         let ezaLevel = "none";
         if(sortedUnits[i].endsWith("SEZA")){
@@ -223,17 +223,17 @@ function reSortCards(){
     }
   }
   else{
-    const unitBasicsDetailPromise=getJsonPromise("/dbManagement/uniqueJsons/unitBasics/",currentSort,".json");
+    const unitBasicsDetailPromise=getJsonPromise("/dbManagement/uniqueJsons/unitBasics/",window.currentSort,".json");
     unitBasicsDetailPromise.then(
       unitBasicsDetail =>{
-        unitBasicsDetails[currentSort]=unitBasicsDetail;
+        unitBasicsDetails[window.currentSort]=unitBasicsDetail;
         reFilterCards();
       }
     )
   }
   
 }
-
+window.reSortCards=reSortCards;
 
 function createSortButton(){
   const sortFilterContainer=new complexSortFilterContainer(COMPLEXSORTFILTERCONTAINERWIDTH,COMPLEXSORTFILTERCONTAINERHEIGHT);

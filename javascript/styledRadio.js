@@ -1,11 +1,13 @@
 export class styledRadio{
-    constructor(namesList,optionPerLine,onlyOneSelected){
+    constructor(namesList,optionPerLine,onlyOneSelected,onChangeFunction){
+        this.onChangeFunction=onChangeFunction;
         this.container=document.createElement("div");
         this.container.className="styled-radio-container";
         this.onlyOneSelected=onlyOneSelected;
         this.optionWidth=optionPerLine;
         this.container.style.gridTemplateColumns="repeat("+optionPerLine+",1fr)";
         this.options=[];
+        this.value=namesList[0];
         this.setNamesList(namesList);
     }
 
@@ -51,6 +53,8 @@ export class styledRadio{
                     else{
                         this.classList.toggle("activeGreen");
                     }
+                    this.parentClass.value=this.innerHTML;
+                    this.parentClass.onChangeFunction();
                 }
             );
             this.container.appendChild(option);

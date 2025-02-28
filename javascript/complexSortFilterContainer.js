@@ -2,7 +2,7 @@ import {removePX} from "./commonFunctions.js";
 import {styledRadio} from "./styledRadio.js";
 export class complexSortFilterContainer {
     constructor(width, height){
-        this.border=25;
+        this.border=70;
         this.element=document.createElement("div");
         this.element.className="complex-sort-filter-container";
         this.element.style.width=width-this.border+"px";
@@ -11,24 +11,14 @@ export class complexSortFilterContainer {
         this.element.style.display="none";
 
         this.background=new complexSortFilterContainerBackground(width, height,this);
+
+        this.createSortHeader();
         
-        let sortContainerOptionsList=[
-            "Favourite",
-            "Type",
-            "Cost",
-            "Rarity",
-            "Cost",
-            "HP",
-            "Attack",
-            "Defense",
-            "Release",
-            "Character",
-            "Sp Atk Lv",
-            "Activation",
-            "Max Level"
-        ];
-        this.sortContainer=new styledRadio(sortContainerOptionsList,3, true);
-        this.element.appendChild(this.sortContainer.getContainer());
+        this.createSortOptions();
+
+        this.createSortFilterDivisionLine();
+
+        this.createFilterHeader();
 
         this.filterContainer=document.createElement("div");
         this.filterContainer.className="filter-container";
@@ -75,6 +65,92 @@ export class complexSortFilterContainer {
         this.filterContainer.appendChild(this.filterContainer.linkContainer);
     }
 
+    createSortHeader(){
+        this.displayHeader=document.createElement("div");
+        this.displayHeader.className="complex-sort-filter-container-header";
+        this.displayHeader.innerHTML="Display order";
+        this.displayHeader.style.gridRow="1";
+        this.element.appendChild(this.displayHeader);
+
+        this.directionOptionContainer=document.createElement("div");
+        this.directionOptionContainer.className="direction-option";
+
+        this.directionOptionContainer.text=document.createElement("div");
+        this.directionOptionContainer.text.className="direction-option-text";
+        this.directionOptionContainer.text.classList.add(window.currentOrder);
+        this.directionOptionContainer.appendChild(this.directionOptionContainer.text);
+        this.directionOptionContainer.addEventListener(
+            "click", function(){
+                if(this.text.classList.contains("descending")){
+                    this.text.classList.remove("descending");
+                    this.text.classList.add("ascending");
+                    window.currentOrder="ascending";
+                    window.reSortCards();
+                }
+                else{
+                    this.text.classList.remove("ascending");
+                    this.text.classList.add("descending");
+                    window.currentOrder="descending";
+                    window.reSortCards();
+                }
+            }
+        )
+
+        this.displayHeader.appendChild(this.directionOptionContainer);
+
+        
+    }
+
+    createSortOptions(){
+        let sortContainerOptionsList=[
+            //"Favourite",
+            "Type",
+            //"Level",
+            "Rarity",
+            "Cost",
+            "HP",
+            "Attack",
+            "Defense",
+            "Release",
+            "Character",
+            "Sp Atk Lv",
+            "Activation",
+            "Max Level"
+        ];
+        this.sortContainer=new styledRadio(sortContainerOptionsList,3, true, function(){
+            window.currentSort=this.value;
+            window.reSortCards();
+        });
+        this.sortContainer.getContainer().style.gridRow="2";
+        this.sortContainer.getContainer()
+        this.element.appendChild(this.sortContainer.getContainer());
+    }
+
+    createSortFilterDivisionLine(){
+        this.sortFilterDivisionLine=document.createElement("div");
+        this.sortFilterDivisionLine.className="sort-filter-division-line";
+        this.sortFilterDivisionLine.style.gridRow="3";
+        this.element.appendChild(this.sortFilterDivisionLine);
+    }
+
+    createFilterHeader(){
+
+        this.filterHeader=document.createElement("div");
+        this.filterHeader.className="complex-sort-filter-container-header";
+        this.filterHeader.innerHTML="Filter Select";
+        this.filterHeader.style.gridRow="4";
+        this.element.appendChild(this.filterHeader);
+    }
+
+
+
+
+
+
+
+
+
+
     getElement(){
         return this.element;
     }
@@ -96,7 +172,7 @@ export class complexSortFilterContainer {
 
     setDisplay(displayed){
         if(displayed){
-            this.element.style.display="block";
+            this.element.style.display="grid";
             this.background.setDisplay(true);
         }
         else{
