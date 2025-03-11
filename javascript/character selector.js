@@ -1,4 +1,4 @@
-import { unitDisplay } from "./unitDisplay.js";
+import { unitThumbDisplay } from "./unitDisplay.js";
 import { complexSortFilterContainer } from "./complexSortFilterContainer.js";
 import {removePX} from "./commonFunctions.js";
 
@@ -131,7 +131,7 @@ function reFilterCards() {
 function createCharacterBoxes() {
   const unitsContainer = document.getElementById('unit-selection-container');
   for (let unitCount = 0; unitCount < unitsToDisplay; unitCount++) {
-    displayBoxes[unitCount] = new unitDisplay();
+    displayBoxes[unitCount] = new unitThumbDisplay();
     displayBoxes[unitCount].setExactWidth("164px");
     displayBoxes[unitCount].setExactHeight("150px");
     displayBoxes[unitCount].setDisplayExtraInfo(true);

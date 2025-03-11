@@ -1,4 +1,4 @@
-import { unitDisplay } from "./unitDisplay.js";
+import { unitThumbDisplay, unitLRAnimationDisplay } from "./unitDisplay.js";
 import {extractDigitsFromString,
        arraysHaveOverlap,
        getFirstInDictionary,
@@ -1261,7 +1261,7 @@ class superAttackQuery{
         this.superAttackSlider.value=0;
         this.superAttackQuestion = document.createElement('div');
         this.superAttackQuestion.superAttackName= this.selfContainer.superAttackName;
-        this.insertedUnitDiv=new unitDisplay();
+        this.insertedUnitDiv=new unitThumbDisplay();
 
         const insertedSuperAttackDiv=document.createElement("div");
         insertedSuperAttackDiv.className="super-attack-query-question-super-attack-name";
@@ -3275,7 +3275,7 @@ function createTransformationContainer(){
         for (const transformationID of previousTransformations){
             
             const transformationJsonPromise = getJsonPromise("/dbManagement/jsons/",transformationID,".json");
-            const transformationButton = new unitDisplay();
+            const transformationButton = new unitThumbDisplay();
             transformationButton.setDisplayExtraInfo(false);
             transformationButton.setDisplay(true);
             transformationButton.setWidthFit(true);
@@ -3297,7 +3297,7 @@ function createTransformationContainer(){
     if( Array.isArray(transformations) && transformations.length){
         for (const transformationID of transformations){
             const transformationJsonPromise = getJsonPromise("/dbManagement/jsons/",transformationID,".json");
-            const transformationButton = new unitDisplay();
+            const transformationButton = new unitThumbDisplay();
             transformationButton.setDisplayExtraInfo(false);
             transformationButton.setDisplay(true);
             transformationButton.setWidthFit(true);
@@ -3400,7 +3400,7 @@ function createDokkanAwakenContainer(){
     if( Array.isArray(Awakenings) && Awakenings.length){
     }for (const AwakeningsID of Awakenings){
         const awakeningJsonPromise = getJsonPromise("/dbManagement/jsons/",AwakeningsID,".json");
-        const AwakeningsButton = new unitDisplay();
+        const AwakeningsButton = new unitThumbDisplay();
         AwakeningsButton.setDisplayExtraInfo(false);
         AwakeningsButton.setDisplay(true);
         AwakeningsButton.setWidthFit(true);
@@ -3422,7 +3422,7 @@ function createDokkanAwakenContainer(){
     if( Array.isArray(previousAwakenings) && previousAwakenings.length){
     }for (const AwakeningsID of previousAwakenings){
         const previousAwakeningJsonPromise = getJsonPromise("/dbManagement/jsons/",AwakeningsID,".json");
-        const AwakeningsButton = new unitDisplay();
+        const AwakeningsButton = new unitThumbDisplay();
         AwakeningsButton.setDisplayExtraInfo(false);
         AwakeningsButton.setDisplay(true);
         AwakeningsButton.setWidthFit(true);
@@ -3981,7 +3981,12 @@ function createPassiveContainer(){
 }
 
 function initialiseAspects() {
-    updateCharacterIcon('character-icon', currentJson["Resource ID"], currentJson.Type);
+    if(currentJson.Rarity=="lr"){
+        updateCharacterIcon('character-icon', currentJson["Resource ID"], currentJson.Type);
+    }
+    else{
+        OLDupdateCharacterIcon('character-icon', currentJson["Resource ID"], currentJson.Type);
+    }
     document.getElementById("level-container").style.display="flex";
 
     //change the background of the slider to the type color
@@ -4060,14 +4065,25 @@ function createSuperAttackContainer(){
 }
 
 
-
- function updateCharacterIcon(){
+function updateCharacterIcon(){
     const imageContainer = document.getElementById("character-icon");
     while (imageContainer.firstChild) {
         imageContainer.removeChild(imageContainer.firstChild);
     }
 
-    const cardImage=new unitDisplay();
+    const cardImage=new unitLRAnimationDisplay(currentJson["Resource ID"]);
+    imageContainer.appendChild(cardImage.getElement());
+    document.body.style.backgroundColor = colorToBackground(typeToColor(currentJson["Type"]));
+}
+
+
+ function OLDupdateCharacterIcon(){
+    const imageContainer = document.getElementById("character-icon");
+    while (imageContainer.firstChild) {
+        imageContainer.removeChild(imageContainer.firstChild);
+    }
+
+    const cardImage=new unitThumbDisplay();
     cardImage.setResourceID(currentJson["Resource ID"]);
     cardImage.setClass(currentJson["Class"]);
     cardImage.setType(currentJson["Type"]);
