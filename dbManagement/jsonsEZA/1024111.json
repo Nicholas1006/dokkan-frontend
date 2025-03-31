@@ -1,0 +1,665 @@
+{
+    "ID": "1024111",
+    "Type": "PHY",
+    "Class": "Extreme",
+    "Name": "Para Para Brothers",
+    "Rarity": "ur",
+    "Min Level": 120,
+    "Max Level": 140,
+    "Categories": [
+        "Special Pose",
+        "Dragon Ball Seekers",
+        "Joined Forces"
+    ],
+    "Can EZA": true,
+    "Can SEZA": false,
+    "Links": [
+        "More Than Meets the Eye",
+        "Solid Support",
+        "Flee",
+        "Coward",
+        "Telekinesis",
+        "GT",
+        "Shattering the Limit"
+    ],
+    "Resource ID": 1024110,
+    "Passive": {
+        "4555": {
+            "ID": "4555",
+            "Timing": "Start of turn",
+            "Ki": 1,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "Ki +1 "
+        },
+        "1004555": {
+            "ID": "1004555",
+            "Timing": "Start of turn",
+            "DEF": 333,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "DEF +333% "
+        },
+        "2004555": {
+            "ID": "2004555",
+            "Timing": "Start of turn",
+            "ATK": 33,
+            "DEF": 33,
+            "Target": {
+                "Target": "Allies(self excluded)"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": " allies ATK and DEF +33% "
+        },
+        "3004555": {
+            "ID": "3004555",
+            "Timing": "When ki spheres collected",
+            "Ki": 2,
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1002 || 1003",
+                "Causalities": {
+                    "1002": {
+                        "Button": {
+                            "Name": "Is this the 1st attacker in the turn on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "What position is this character attacking in on this turn?",
+                            "Logic": "==1",
+                            "Min": 1,
+                            "Max": 3
+                        }
+                    },
+                    "1003": {
+                        "Button": {
+                            "Name": "Is this the 2nd attacker in the turn on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "What position is this character attacking in on this turn?",
+                            "Logic": "==2",
+                            "Min": 1,
+                            "Max": 3
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": " allies Ki +2 after this unit collects ki spheres"
+        },
+        "4004555": {
+            "ID": "4004555",
+            "Timing": "When ki spheres collected",
+            "ATK": 25,
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1002 || 1003",
+                "Causalities": {
+                    "1002": {
+                        "Button": {
+                            "Name": "Is this the 1st attacker in the turn on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "What position is this character attacking in on this turn?",
+                            "Logic": "==1",
+                            "Min": 1,
+                            "Max": 3
+                        }
+                    },
+                    "1003": {
+                        "Button": {
+                            "Name": "Is this the 2nd attacker in the turn on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "What position is this character attacking in on this turn?",
+                            "Logic": "==2",
+                            "Min": 1,
+                            "Max": 3
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": " allies ATK +25% after this unit collects ki spheres"
+        },
+        "5004555": {
+            "ID": "5004555",
+            "Timing": "When ki spheres collected",
+            "DEF": 333,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1004",
+                "Causalities": {
+                    "1004": {
+                        "Button": {
+                            "Name": "Is this the 3rd attacker in the turn on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "What position is this character attacking in on this turn?",
+                            "Logic": "==3",
+                            "Min": 1,
+                            "Max": 3
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "DEF +333% after this unit collects ki spheres"
+        },
+        "6004555": {
+            "ID": "6004555",
+            "Timing": "When ki spheres collected",
+            "Ki": 2,
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1004",
+                "Causalities": {
+                    "1004": {
+                        "Button": {
+                            "Name": "Is this the 3rd attacker in the turn on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "What position is this character attacking in on this turn?",
+                            "Logic": "==3",
+                            "Min": 1,
+                            "Max": 3
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": " allies Ki +2 after this unit collects ki spheres"
+        },
+        "7004555": {
+            "ID": "7004555",
+            "Timing": "When ki spheres collected",
+            "DEF": 25,
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1004",
+                "Causalities": {
+                    "1004": {
+                        "Button": {
+                            "Name": "Is this the 3rd attacker in the turn on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "What position is this character attacking in on this turn?",
+                            "Logic": "==3",
+                            "Min": 1,
+                            "Max": 3
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": " allies DEF +25% after this unit collects ki spheres"
+        },
+        "8004555": {
+            "ID": "8004555",
+            "Timing": "Start of turn",
+            "Status": [
+                "Seal"
+            ],
+            "Target": {
+                "Target": "Enemies"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Chance": "70",
+            "Length": "1",
+            "Condition": {
+                "Logic": "865 || 3459",
+                "Causalities": {
+                    "865": {
+                        "Button": {
+                            "Name": "Are there 1 or more GT Heroes category enemies on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many GT Heroes category enemies on this turn?",
+                            "Logic": ">=1",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    },
+                    "3459": {
+                        "Button": {
+                            "Name": "Is there 1 or more INT  type enemies on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many INT  type enemies on this turn?",
+                            "Logic": ">=1",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "All enemies Seal "
+        },
+        "9004555": {
+            "ID": "9004555",
+            "Timing": "Right after attack",
+            "Status": [
+                "Disable action"
+            ],
+            "Target": {
+                "Target": "Enemy"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "3460 && 2038",
+                "Causalities": {
+                    "3460": {
+                        "Button": {
+                            "Name": "Is there 3 or more PHY  type allies on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many PHY  type allies on this turn?",
+                            "Logic": ">=3",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    },
+                    "2038": {
+                        "Button": {
+                            "Name": "Is it within the first 5 turns from entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since entry turn on this turn?",
+                            "Logic": "<=5",
+                            "Min": 0,
+                            "Max": 6
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": " allies Disable action after attacking"
+        }
+    },
+    "Max Attacks": 2,
+    "Max Super Attacks": 2,
+    "Stats at levels": {
+        "120": {
+            "HP": 10529,
+            "ATK": 4859,
+            "DEF": 6468
+        },
+        "121": {
+            "HP": 10706,
+            "ATK": 4940,
+            "DEF": 6577
+        },
+        "122": {
+            "HP": 10884,
+            "ATK": 5022,
+            "DEF": 6686
+        },
+        "123": {
+            "HP": 11061,
+            "ATK": 5104,
+            "DEF": 6795
+        },
+        "124": {
+            "HP": 11239,
+            "ATK": 5186,
+            "DEF": 6904
+        },
+        "125": {
+            "HP": 11417,
+            "ATK": 5268,
+            "DEF": 7013
+        },
+        "126": {
+            "HP": 11594,
+            "ATK": 5350,
+            "DEF": 7122
+        },
+        "127": {
+            "HP": 11772,
+            "ATK": 5432,
+            "DEF": 7231
+        },
+        "128": {
+            "HP": 11949,
+            "ATK": 5514,
+            "DEF": 7340
+        },
+        "129": {
+            "HP": 12127,
+            "ATK": 5596,
+            "DEF": 7449
+        },
+        "130": {
+            "HP": 12305,
+            "ATK": 5678,
+            "DEF": 7559
+        },
+        "131": {
+            "HP": 12482,
+            "ATK": 5760,
+            "DEF": 7668
+        },
+        "132": {
+            "HP": 12660,
+            "ATK": 5842,
+            "DEF": 7777
+        },
+        "133": {
+            "HP": 12838,
+            "ATK": 5924,
+            "DEF": 7886
+        },
+        "134": {
+            "HP": 13015,
+            "ATK": 6006,
+            "DEF": 7995
+        },
+        "135": {
+            "HP": 13193,
+            "ATK": 6088,
+            "DEF": 8104
+        },
+        "136": {
+            "HP": 13370,
+            "ATK": 6170,
+            "DEF": 8213
+        },
+        "137": {
+            "HP": 13548,
+            "ATK": 6252,
+            "DEF": 8322
+        },
+        "138": {
+            "HP": 13726,
+            "ATK": 6334,
+            "DEF": 8431
+        },
+        "139": {
+            "HP": 13903,
+            "ATK": 6416,
+            "DEF": 8540
+        },
+        "140": {
+            "HP": 14081,
+            "ATK": 6498,
+            "DEF": 8650
+        }
+    },
+    "Leader Skill": {
+        "Name": "Captivating Dance",
+        "102411200": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Special Pose"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": []
+            },
+            "HP": 77,
+            "ATK": 77,
+            "DEF": 77
+        },
+        "102411201": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Special Pose"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        },
+        "102411202": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [
+                    "Special Pose"
+                ],
+                "Allies or enemies": "Allies",
+                "Class": [],
+                "Typing": [
+                    "PHY"
+                ]
+            },
+            "HP": 50,
+            "ATK": 50,
+            "DEF": 50
+        },
+        "102411203": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [
+                    "Special Pose"
+                ],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 1200,
+            "ATK": 1200,
+            "DEF": 1200,
+            "Additional": 5,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 6,
+            "Type DEF": 5,
+            "Super Attack boost": 6,
+            "Recovery boost": 6
+        },
+        "1": {
+            "HP": 180,
+            "ATK": 180,
+            "DEF": 180,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 1,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "2": {
+            "HP": 186,
+            "ATK": 420,
+            "DEF": 186,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 2,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "3": {
+            "HP": 414,
+            "ATK": 180,
+            "DEF": 414,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 0,
+            "Type DEF": 2,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "4": {
+            "HP": 1260,
+            "ATK": 1020,
+            "DEF": 780,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 1,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        }
+    },
+    "Super Attack": {
+        "7520": {
+            "superID": "7520",
+            "Type": "Unarmed",
+            "special_name_no": "0",
+            "superName": "Dancing Para Para Attack (Extreme)",
+            "superDescription": "Greatly raises DEF for 6 turns, causes \nsupreme damage to enemy and raises \nallies' ATK by 33% for 2 turns (self excluded)",
+            "superMinKi": "12",
+            "superPriority": "0.0",
+            "superStyle": "Normal",
+            "superMinLVL": "14",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superBuffs": {
+                "7520": {
+                    "Type": "NormalEfficacySpecial",
+                    "Chance": "100",
+                    "Duration": "6",
+                    "Buff": {
+                        "Type": "Percentage",
+                        "+ or -": "+"
+                    },
+                    "Target": "Self",
+                    "DEF": "50"
+                },
+                "1007520": {
+                    "Type": "NormalEfficacySpecial",
+                    "Chance": "100",
+                    "Duration": "2",
+                    "Buff": {
+                        "Type": "Percentage",
+                        "+ or -": "+"
+                    },
+                    "Target": "Allies (self excluded)",
+                    "ATK": "33"
+                }
+            },
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "0"
+            },
+            "Multiplier": 530
+        }
+    },
+    "Active Skill": null,
+    "Standby Skill": null,
+    "Finish Skill": null,
+    "Transforms from": [],
+    "Transformations": [],
+    "Max Appearances In Form": 50,
+    "Dokkan awakenings": [],
+    "Dokkan Reverse awakenings": [
+        "1024100",
+        "1024101"
+    ],
+    "Ki Multiplier": {
+        "0": 70.0,
+        "1": 75.83333333333333,
+        "2": 81.66666666666667,
+        "3": 87.5,
+        "4": 93.33333333333333,
+        "5": 99.16666666666667,
+        "6": 105.0,
+        "7": 110.83333333333334,
+        "8": 116.66666666666666,
+        "9": 122.5,
+        "10": 128.33333333333334,
+        "11": 134.16666666666666,
+        "12": 140.0
+    },
+    "Ki Circle Segments": {
+        "1": "weaker",
+        "2": "weaker",
+        "3": "weaker",
+        "4": "weaker",
+        "5": "weaker",
+        "6": "equal",
+        "7": "equal",
+        "8": "equal",
+        "9": "equal",
+        "10": "equal",
+        "11": "equal",
+        "12": "super"
+    },
+    "SuperMinKi": 12,
+    "AdditionalSuperID": "7520"
+}
