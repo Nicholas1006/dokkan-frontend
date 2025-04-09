@@ -1,0 +1,683 @@
+{
+    "ID": "4021301",
+    "Type": "TEQ",
+    "Class": "Extreme",
+    "Name": "Super Janemba",
+    "Rarity": "ur",
+    "Min Level": 120,
+    "Max Level": 140,
+    "Categories": [
+        "Corroded Body and Mind",
+        "Movie Bosses",
+        "Transformation Boost",
+        "Accelerated Battle",
+        "Uncontrollable Power"
+    ],
+    "Can EZA": true,
+    "Can SEZA": false,
+    "Links": [
+        "Shocking Speed",
+        "Brutal Beatdown",
+        "Metamorphosis",
+        "Fear and Faith",
+        "Nightmare",
+        "Big Bad Bosses",
+        "Fierce Battle"
+    ],
+    "Resource ID": 4021300,
+    "Passive": {
+        "4569": {
+            "ID": "4569",
+            "Timing": "Start of turn",
+            "ATK": 200,
+            "DEF": 200,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "ATK and DEF +200% "
+        },
+        "1004569": {
+            "ID": "1004569",
+            "Timing": "Start of turn",
+            "Ki Change": {
+                "From": [
+                    "PHY",
+                    "STR",
+                    "INT",
+                    "TEQ",
+                    "AGL"
+                ],
+                "To": [
+                    "Rainbow",
+                    "PHY",
+                    "STR",
+                    "INT",
+                    "TEQ",
+                    "AGL"
+                ],
+                "Style": "Randomly"
+            },
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "Randomly changes Ki Spheres of a certain Type to Rainbow Ki Spheres "
+        },
+        "2004569": {
+            "ID": "2004569",
+            "Timing": "Start of turn",
+            "Ki Change": {
+                "From": [
+                    "AGL"
+                ],
+                "To": [
+                    "Rainbow"
+                ],
+                "Style": "Randomly"
+            },
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "Randomly changes Ki Spheres of a certain Type(TEQ excluded) to Rainbow Ki Spheres "
+        },
+        "3004569": {
+            "ID": "3004569",
+            "Timing": "Start of turn",
+            "Guard": true,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "Guards all attacks "
+        },
+        "4004569": {
+            "ID": "4004569",
+            "Dodge Chance": 50,
+            "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "Chance of evading enemy attacks +50% "
+        },
+        "5004569": {
+            "ID": "5004569",
+            "Timing": "When ki spheres collected",
+            "ATK": 100,
+            "DEF": 100,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "787",
+                "Causalities": {
+                    "787": {
+                        "Button": {
+                            "Name": "Has 3 or more PHY or STR or INT or TEQ or AGL Ki Spheres been obtained on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many PHY or STR or INT or TEQ or AGL Ki Spheres have been obtained on this turn?",
+                            "Logic": ">=3",
+                            "Min": 0,
+                            "Max": 3
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "ATK and DEF +100% after this unit collects ki spheres"
+        },
+        "6004569": {
+            "ID": "6004569",
+            "Additional Attack": {
+                "Activated": true,
+                "Chance of super": "100",
+                "Chance of another additional": "0"
+            },
+            "Timing": "When ki spheres collected",
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "787",
+                "Causalities": {
+                    "787": {
+                        "Button": {
+                            "Name": "Has 3 or more PHY or STR or INT or TEQ or AGL Ki Spheres been obtained on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many PHY or STR or INT or TEQ or AGL Ki Spheres have been obtained on this turn?",
+                            "Logic": ">=3",
+                            "Min": 0,
+                            "Max": 3
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack after this unit collects ki spheres"
+        },
+        "7004569": {
+            "ID": "7004569",
+            "Dodge Chance": 30,
+            "Timing": "When ki spheres collected",
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "665",
+                "Causalities": {
+                    "665": {
+                        "Button": {
+                            "Name": "Has 1 or more Rainbow Ki Spheres been obtained on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Rainbow Ki Spheres have been obtained on this turn?",
+                            "Logic": ">=1",
+                            "Min": 0,
+                            "Max": 1
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "Chance of evading enemy attacks +30% after this unit collects ki spheres"
+        },
+        "8004569": {
+            "ID": "8004569",
+            "Timing": "Start of turn",
+            "DR": 30,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "Damage recieved -30% "
+        },
+        "9004569": {
+            "ID": "9004569",
+            "Disable Other Line": {
+                "Activated": true,
+                "Line": "8004569"
+            },
+            "Timing": "Right after being hit",
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "24",
+                "Causalities": {
+                    "24": {
+                        "Button": {
+                            "Name": "Has this character been hit on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many times has this character been hit on this turn?",
+                            "Logic": ">=1",
+                            "Min": 0,
+                            "Max": 1
+                        }
+                    }
+                }
+            },
+            "Type": "Disable Other Line",
+            "Brief effect description": "Disables a different passive line:8004569 after being hit"
+        },
+        "10004569": {
+            "ID": "10004569",
+            "Timing": "Right after being hit",
+            "Crit Chance": 100,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Condition": {
+                "Logic": "601",
+                "Causalities": {
+                    "601": {
+                        "Button": {
+                            "Name": "Has this unit evaded an attack?"
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "Performs a Critical Hit after being hit"
+        },
+        "11004569": {
+            "ID": "11004569",
+            "Disable Other Line": {
+                "Activated": true,
+                "Line": "10004569"
+            },
+            "Timing": "Right after attack",
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Disable Other Line",
+            "Condition": {
+                "LogicLogic": "11004569",
+                "Causalities": {
+                    "11004569": {
+                        "Button": {
+                            "Name": "Has this character performed an attack on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character performed? on this turn",
+                            "Logic": "<=1",
+                            "Max": "2",
+                            "Min": "1"
+                        }
+                    }
+                }
+            },
+            "Brief effect description": "Disables a different passive line:10004569 after attacking"
+        },
+        "12004569": {
+            "ID": "12004569",
+            "Timing": "Right before attack(MOT stat)",
+            "ATK": 250,
+            "DEF": 250,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "3377",
+                "Causalities": {
+                    "3377": {
+                        "Slider": {
+                            "Name": "How much ki is there on this turn?",
+                            "Logic": ">=12",
+                            "Min": 0,
+                            "Max": 12
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "ATK and DEF +250% when attacking"
+        }
+    },
+    "Max Attacks": 3,
+    "Max Super Attacks": 3,
+    "Stats at levels": {
+        "120": {
+            "HP": 13050,
+            "ATK": 11840,
+            "DEF": 6550
+        },
+        "121": {
+            "HP": 13270,
+            "ATK": 12039,
+            "DEF": 6660
+        },
+        "122": {
+            "HP": 13490,
+            "ATK": 12239,
+            "DEF": 6771
+        },
+        "123": {
+            "HP": 13710,
+            "ATK": 12439,
+            "DEF": 6881
+        },
+        "124": {
+            "HP": 13930,
+            "ATK": 12638,
+            "DEF": 6992
+        },
+        "125": {
+            "HP": 14150,
+            "ATK": 12838,
+            "DEF": 7102
+        },
+        "126": {
+            "HP": 14370,
+            "ATK": 13038,
+            "DEF": 7213
+        },
+        "127": {
+            "HP": 14590,
+            "ATK": 13238,
+            "DEF": 7323
+        },
+        "128": {
+            "HP": 14811,
+            "ATK": 13437,
+            "DEF": 7434
+        },
+        "129": {
+            "HP": 15031,
+            "ATK": 13637,
+            "DEF": 7544
+        },
+        "130": {
+            "HP": 15251,
+            "ATK": 13837,
+            "DEF": 7655
+        },
+        "131": {
+            "HP": 15471,
+            "ATK": 14037,
+            "DEF": 7765
+        },
+        "132": {
+            "HP": 15691,
+            "ATK": 14236,
+            "DEF": 7876
+        },
+        "133": {
+            "HP": 15911,
+            "ATK": 14436,
+            "DEF": 7986
+        },
+        "134": {
+            "HP": 16131,
+            "ATK": 14636,
+            "DEF": 8097
+        },
+        "135": {
+            "HP": 16352,
+            "ATK": 14836,
+            "DEF": 8207
+        },
+        "136": {
+            "HP": 16572,
+            "ATK": 15035,
+            "DEF": 8318
+        },
+        "137": {
+            "HP": 16792,
+            "ATK": 15235,
+            "DEF": 8428
+        },
+        "138": {
+            "HP": 17012,
+            "ATK": 15435,
+            "DEF": 8539
+        },
+        "139": {
+            "HP": 17232,
+            "ATK": 15634,
+            "DEF": 8649
+        },
+        "140": {
+            "HP": 17452,
+            "ATK": 15834,
+            "DEF": 8760
+        }
+    },
+    "Leader Skill": {
+        "Name": "Otherworld in Collapse",
+        "102129100": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Corroded Body and Mind"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": []
+            },
+            "HP": 180,
+            "ATK": 180,
+            "DEF": 180
+        },
+        "102129101": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Corroded Body and Mind"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        },
+        "102129102": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [
+                    "Corroded Body and Mind"
+                ],
+                "Allies or enemies": "Allies",
+                "Class": [
+                    "Extreme"
+                ],
+                "Typing": []
+            },
+            "HP": 130,
+            "ATK": 130,
+            "DEF": 130
+        },
+        "102129103": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [],
+                "Excluded Category": [
+                    "Corroded Body and Mind"
+                ],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000,
+            "Additional": 0,
+            "Crit": 5,
+            "Evasion": 0,
+            "Type ATK": 6,
+            "Type DEF": 5,
+            "Super Attack boost": 6,
+            "Recovery boost": 6
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 1,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 2,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 0,
+            "Type DEF": 2,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "4": {
+            "HP": 1300,
+            "ATK": 2100,
+            "DEF": 1700,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 1,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        }
+    },
+    "Super Attack": {
+        "7547": {
+            "superID": "7547",
+            "Type": "Other",
+            "special_name_no": "0",
+            "superName": "Lightning Shower Rain (Extreme)",
+            "superDescription": "Greatly raises ATK and \nraises DEF for 1 turn and \ncauses immense damage to enemy",
+            "superMinKi": "12",
+            "superPriority": "0.0",
+            "superStyle": "Normal",
+            "superMinLVL": "14",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superBuffs": {
+                "7547": {
+                    "Type": "NormalEfficacySpecial",
+                    "Chance": "100",
+                    "Duration": "1",
+                    "Buff": {
+                        "Type": "Percentage",
+                        "+ or -": "+"
+                    },
+                    "Target": "Self",
+                    "ATK": "50",
+                    "DEF": "30"
+                }
+            },
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "0"
+            },
+            "Multiplier": 630,
+            "relevantLua": [
+                "sp2117"
+            ]
+        }
+    },
+    "Active Skill": null,
+    "Standby Skill": null,
+    "Finish Skill": null,
+    "Transforms from": [
+        "1021291"
+    ],
+    "Transformations": [],
+    "Max Appearances In Form": 50,
+    "Dokkan awakenings": [],
+    "Dokkan Reverse awakenings": [],
+    "Ki Multiplier": {
+        "0": 75.0,
+        "1": 81.25,
+        "2": 87.5,
+        "3": 93.75,
+        "4": 100.0,
+        "5": 106.25,
+        "6": 112.5,
+        "7": 118.75,
+        "8": 125.0,
+        "9": 131.25,
+        "10": 137.5,
+        "11": 143.75,
+        "12": 150.0
+    },
+    "Ki Circle Segments": {
+        "1": "weaker",
+        "2": "weaker",
+        "3": "weaker",
+        "4": "equal",
+        "5": "equal",
+        "6": "equal",
+        "7": "equal",
+        "8": "equal",
+        "9": "equal",
+        "10": "equal",
+        "11": "equal",
+        "12": "super"
+    },
+    "SuperMinKi": 12,
+    "AdditionalSuperID": "7547"
+}
