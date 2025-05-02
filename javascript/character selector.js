@@ -203,9 +203,6 @@ function reSortCards(){
             otherDisplayedValue=daysSinceRelease+" days from now";
           }
         }
-        else{
-          otherDisplayedValue=daysSince(unitBasicsDetails["Release"][sortedUnits[i]])+" days ago";
-        }
         let ezaLevel = "none";
         if(sortedUnits[i].endsWith("SEZA")){
           ezaLevel = "seza";
