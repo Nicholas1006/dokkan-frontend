@@ -1,6 +1,12 @@
 
 export function removePX(styleWithPx){
+  
+  if(typeof styleWithPx === "string" && styleWithPx.includes("px")){
     return parseInt(styleWithPx.replace("px",""));
+  }
+  else{
+    return parseInt(styleWithPx);
+  }
 }
 
 export function extractDigitsFromString(string){

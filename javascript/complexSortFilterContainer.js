@@ -221,61 +221,67 @@ class complexSortFilterContainerBackground {
         this.width=width;
         this.height=height;
         this.parentClass=parentClass;
+
         this.element=document.createElement("div");
         this.element.className="complex-sort-filter-container-background";
+        // Calculate heights based on aspect ratio (116/640)
+        const headerFooterHeight = width * (116/640);
 
-        this.backgroundTop=document.createElement("div");
-        this.backgroundTop.style.width=width+"px";
-        this.backgroundTop.style.height=width*(116/640)+"px";
-        this.backgroundTop.style.top="0px";
-        this.backgroundTop.style.left= window.visualViewport.width/2-removePX(this.backgroundTop.style.width)/2+"px";
-        this.backgroundTop.className="complex-sort-filter-container-background-top";
+        // Top element
+        this.backgroundTop = document.createElement("div");
+        this.backgroundTop.className = "complex-sort-filter-container-background-top";
+        this.backgroundTop.style.height = headerFooterHeight+"px";
         this.element.appendChild(this.backgroundTop);
         
-        this.backgroundMiddle=document.createElement("div");
-        this.backgroundMiddle.style.width=width+"px";
-        this.backgroundMiddle.style.height=height-(2*width*(116/640))+"px";
-        this.backgroundMiddle.style.top=this.backgroundTop.style.height;
-        this.backgroundMiddle.style.left= window.visualViewport.width/2-removePX(this.backgroundMiddle.style.width)/2+"px";
-        this.backgroundMiddle.className="complex-sort-filter-container-background-middle";
+        // Middle element
+        this.backgroundMiddle = document.createElement("div");
+        this.backgroundMiddle.className = "complex-sort-filter-container-background-middle";
+        this.backgroundMiddle.style.top = headerFooterHeight+"px";
+        this.backgroundMiddle.style.height = (height - (2 * headerFooterHeight))+"px";
         this.element.appendChild(this.backgroundMiddle);
         
-        this.backgroundBottom=document.createElement("div");
-        this.backgroundBottom.style.width=width+"px";
-        this.backgroundBottom.style.top=removePX(this.backgroundTop.style.height)+removePX(this.backgroundMiddle.style.height)+"px";
-        this.backgroundBottom.style.height=width*(116/640)+"px";
-        this.backgroundBottom.style.left= window.visualViewport.width/2-removePX(this.backgroundBottom.style.width)/2+"px";
-        this.backgroundBottom.className="complex-sort-filter-container-background-bottom";
+        // Bottom element
+        this.backgroundBottom = document.createElement("div");
+        this.backgroundBottom.className = "complex-sort-filter-container-background-bottom";
+        this.backgroundBottom.style.height = headerFooterHeight+"px";
         this.element.appendChild(this.backgroundBottom);
+        
+        // Handle viewport changes
+        this.handleResize();
+        window.addEventListener('resize', this.handleResize.bind(this));
+    }
+
+    handleResize() {
+        const centerPosition = window.visualViewport.width / 2 - this.width / 2;
+        this.backgroundTop.style.left = centerPosition+"px";
+        this.backgroundTop.style.width = this.width+"px";
+
+        this.backgroundMiddle.style.left = centerPosition+"px";
+        this.backgroundMiddle.style.width = this.width+"px";
+        this.backgroundMiddle.style.height = removePX(window.visualViewport.height) - (removePX(this.backgroundTop.style.height) + removePX(this.backgroundBottom.style.height))+"px";
+
+        this.backgroundBottom.style.left = centerPosition+"px";
+        this.backgroundBottom.style.width = this.width+"px";
     }
 
     changeWidth(width){
         this.width=width;
-        this.backgroundTop.style.width=width+"px";
-        this.backgroundMiddle.style.width=width+"px";
-        this.backgroundBottom.style.width=width+"px";
+        const centerPosition = window.visualViewport.width / 2 - this.width / 2;
+        this.backgroundTop.style.left = centerPosition+"px";
+        this.backgroundTop.style.width = this.width+"px";
 
-        this.backgroundTop.style.height=width*(116/640)+"px";
-        this.backgroundMiddle.style.height=removePX(this.parentClass.element.style.height)-(2*width*(116/640))+"px";
-        this.backgroundBottom.style.height=width*(116/640)+"px";
+        this.backgroundMiddle.style.left = centerPosition+"px";
+        this.backgroundMiddle.style.width = this.width+"px";
 
-        this.backgroundTop.style.left= window.visualViewport.width/2-removePX(this.element.style.width)/2+"px";
-        this.backgroundMiddle.style.left= window.visualViewport.width/2-removePX(this.element.style.width)/2+"px";
-        this.backgroundBottom.style.left= window.visualViewport.width/2-removePX(this.element.style.width)/2+"px";
-
-        
-        this.backgroundMiddle.style.top=this.backgroundTop.style.height;
-        this.backgroundBottom.style.top=removePX(this.backgroundTop.style.height)+removePX(this.backgroundMiddle.style.height)+"px";
+        this.backgroundBottom.style.left = centerPosition+"px";
+        this.backgroundBottom.style.width = this.width+"px";
 
 
     }
 
     changeHeight(height){
         this.height=height;
-        this.backgroundMiddle.style.height=height-(2*width*(116/640))+"px";
-        
-        this.backgroundMiddle.style.top=this.backgroundTop.style.height;
-        this.backgroundBottom.style.top=removePX(this.backgroundTop.style.height)+removePX(this.backgroundMiddle.style.height)+"px";
+        this.backgroundMiddle.style.height = removePX(window.visualViewport.height) - (removePX(this.backgroundTop.style.height) + removePX(this.backgroundBottom.style.height))+"px";
     }
 
     setDisplay(displayed){
