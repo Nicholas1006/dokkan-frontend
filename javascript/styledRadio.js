@@ -60,6 +60,8 @@ export class styledRadio {
                         option.changeAssetImage(inactiveImage);
                     }
                 }
+                this.value=option.label;
+                this.onChangeFunction(this.value);
             }
             // Use the new StyledRadioOption if assetPath is provided
             option = new StyledRadioOption(
