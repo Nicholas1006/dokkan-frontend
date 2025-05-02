@@ -1,6 +1,6 @@
 import { unitDisplay } from "./unitDisplay.js";
 import { complexSortFilterContainer } from "./complexSortFilterContainer.js";
-import {removePX} from "./commonFunctions.js";
+import {removePX,daysSince} from "./commonFunctions.js";
 
 // GLOBAL VARIABLES
 let unitsToDisplay = 200;
@@ -190,6 +190,21 @@ function reSortCards(){
         let otherDisplayedValue=null;
         if(["Cost","HP","Attack","Defense","Sp Atk Lv"].includes(window.currentSort)){
           otherDisplayedValue=unitBasicsDetails[window.currentSort][sortedUnits[i]];
+        }
+        else if(window.currentSort=="Release"){
+          const daysSinceRelease=daysSince(unitBasicsDetails["Release"][sortedUnits[i]]);
+          if(daysSinceRelease==1){
+            otherDisplayedValue=daysSinceRelease+" day ago";
+          }
+          else if(daysSinceRelease>1 || daysSinceRelease==0){
+            otherDisplayedValue=daysSinceRelease+" days ago";
+          }
+          else if(daysSinceRelease<0){
+            otherDisplayedValue=daysSinceRelease+" days from now";
+          }
+        }
+        else{
+          otherDisplayedValue=daysSince(unitBasicsDetails["Release"][sortedUnits[i]])+" days ago";
         }
         let ezaLevel = "none";
         if(sortedUnits[i].endsWith("SEZA")){

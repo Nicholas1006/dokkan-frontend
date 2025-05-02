@@ -1,4 +1,11 @@
 
+
+export function daysSince(epochTime){
+  let now = new Date().getTime();
+  let distance = now - (epochTime * 1000);
+  return Math.round(distance / (1000 * 3600 * 24));
+}
+
 export function removePX(styleWithPx){
   
   if(typeof styleWithPx === "string" && styleWithPx.includes("px")){
