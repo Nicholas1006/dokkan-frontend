@@ -17,6 +17,8 @@ export class complexSortFilterContainer {
 
     initialise(width, height){
         this.border=70;
+        this.width=width-this.border;
+        this.height=height-this.border;
         this.element=document.createElement("div");
         this.element.className="complex-sort-filter-container";
         this.element.style.width=width-this.border+"px";
@@ -79,10 +81,12 @@ export class complexSortFilterContainer {
             //"Activation",
             "Max Level"
         ];
-        this.sortContainer=new styledRadio(sortContainerOptionsList,3, true, function(){
+        
+        const onChangeFunction=function(){
             window.currentSort=this.value;
             window.reSortCards();
-        });
+        };
+        this.sortContainer=new styledRadio(this.width,sortContainerOptionsList,3, true, onChangeFunction,"/dbManagement/DokkanFiles/global/en/layout/en/image/common/btn/com_btn_03_yellow.png", 32);
         this.sortContainer.getContainer().style.gridRow="2";
         this.sortContainer.getContainer()
         this.element.appendChild(this.sortContainer.getContainer());
@@ -193,12 +197,12 @@ export class complexSortFilterContainer {
     changeWidth(width){
         this.element.style.width=width-this.border+"px";
         this.element.style.left="calc(50% - min("+this.element.style.width+", 50vw))";
-        this.background.changeWidth(width);
+        this.background.handleResize(width,height);
     }
 
     changeHeight(height){
         this.element.style.height=height+"px";        
-        this.background.changeHeight(height);
+        this.background.handleResize(width,height);
     }
 
     setDisplay(displayed){
@@ -251,37 +255,19 @@ class complexSortFilterContainerBackground {
         window.addEventListener('resize', this.handleResize.bind(this));
     }
 
-    handleResize() {
-        const centerPosition = window.visualViewport.width / 2 - this.width / 2;
-        this.backgroundTop.style.left = centerPosition+"px";
-        this.backgroundTop.style.width = this.width+"px";
-
-        this.backgroundMiddle.style.left = centerPosition+"px";
-        this.backgroundMiddle.style.width = this.width+"px";
-        this.backgroundMiddle.style.height = removePX(window.visualViewport.height) - (removePX(this.backgroundTop.style.height) + removePX(this.backgroundBottom.style.height))+"px";
-
-        this.backgroundBottom.style.left = centerPosition+"px";
-        this.backgroundBottom.style.width = this.width+"px";
-    }
-
-    changeWidth(width){
+    handleResize(width=this.width, height=this.height){
         this.width=width;
+        this.height=height;
         const centerPosition = window.visualViewport.width / 2 - this.width / 2;
         this.backgroundTop.style.left = centerPosition+"px";
         this.backgroundTop.style.width = this.width+"px";
 
         this.backgroundMiddle.style.left = centerPosition+"px";
         this.backgroundMiddle.style.width = this.width+"px";
+        this.backgroundMiddle.style.height = removePX(window.visualViewport.height) - (removePX(this.backgroundTop.style.height) + removePX(this.backgroundBottom.style.height))+"px";
 
         this.backgroundBottom.style.left = centerPosition+"px";
         this.backgroundBottom.style.width = this.width+"px";
-
-
-    }
-
-    changeHeight(height){
-        this.height=height;
-        this.backgroundMiddle.style.height = removePX(window.visualViewport.height) - (removePX(this.backgroundTop.style.height) + removePX(this.backgroundBottom.style.height))+"px";
     }
 
     setDisplay(displayed){
