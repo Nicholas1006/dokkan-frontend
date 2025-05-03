@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="javascript/config.js"></script>
+    <script type="module" src="javascript/character selector.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Website</title>
@@ -20,7 +22,8 @@
 </div>
 
 <div id="sort-filter-container" class="ascending">
-    <img id="sort-direction" class="icon" src="dbManagement/DokkanFiles/global/en/layout/en/image/common/btn/filter_icon_descending.png" alt="Icon">
+    <img id="sort-direction" class="icon" src="" data-asset="global/en/layout/en/image/common/btn/filter_icon_descending.png" 
+    onerror="this.src=assetUrl(this.dataset.asset)" alt="Icon">
     <span id="sort-text" class="text">Release</span>
 </div>
 
@@ -31,6 +34,7 @@
     <div id="unit-filter" class="unit-filter"></div>
     <div id="unit-filter-button" class="unitFilterButton"></div>
     <div id="unit-selection-container" class="unit-selection-container"></div>
-    <script type="module" src="javascript/character selector.js"></script>
+    
+
 </div id="body-container">
 </html>

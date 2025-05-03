@@ -65,19 +65,19 @@ class kiCircleClass{
         let circleBase=document.createElement("div");
         circleBase.id="circle-base";
         if(currentJson.Type=="AGL"){
-            circleBase.style.backgroundImage = "url('"+window.assetConfig.baseUrl+"/global/en/layout/en/image/ingame/battle/chara_icon/ing_type_gauge_base_00.png')";
+            circleBase.style.backgroundImage = "url('"+window.assetBase+"/global/en/layout/en/image/ingame/battle/chara_icon/ing_type_gauge_base_00.png')";
         }
         else if(currentJson.Type=="TEQ"){
-            circleBase.style.backgroundImage = "url('"+window.assetConfig.baseUrl+"/global/en/layout/en/image/ingame/battle/chara_icon/ing_type_gauge_base_01.png')";
+            circleBase.style.backgroundImage = "url('"+window.assetBase+"/global/en/layout/en/image/ingame/battle/chara_icon/ing_type_gauge_base_01.png')";
         }
         else if(currentJson.Type=="INT"){
-            circleBase.style.backgroundImage = "url('"+window.assetConfig.baseUrl+"/global/en/layout/en/image/ingame/battle/chara_icon/ing_type_gauge_base_02.png')";
+            circleBase.style.backgroundImage = "url('"+window.assetBase+"/global/en/layout/en/image/ingame/battle/chara_icon/ing_type_gauge_base_02.png')";
         }
         else if(currentJson.Type=="STR"){
-            circleBase.style.backgroundImage = "url('"+window.assetConfig.baseUrl+"/global/en/layout/en/image/ingame/battle/chara_icon/ing_type_gauge_base_03.png')";
+            circleBase.style.backgroundImage = "url('"+window.assetBase+"/global/en/layout/en/image/ingame/battle/chara_icon/ing_type_gauge_base_03.png')";
         }
         else if(currentJson.Type=="PHY"){
-            circleBase.style.backgroundImage = "url('"+window.assetConfig.baseUrl+"/global/en/layout/en/image/ingame/battle/chara_icon/ing_type_gauge_base_04.png')";
+            circleBase.style.backgroundImage = "url('"+window.assetBase+"/global/en/layout/en/image/ingame/battle/chara_icon/ing_type_gauge_base_04.png')";
         }
         circleBase.style.backgroundSize = "100% 100%";
         circleBase.style.backgroundPosition = "center";
@@ -99,7 +99,7 @@ class kiCircleClass{
         this.KiCircle.appendChild(unitImage);
         unitImage.id="unit-circle-image";
         let assetID=currentJson["ID"].slice(0, -1)+ "0";
-        unitImage.style.backgroundImage = "url('"+window.assetConfig.baseUrl+"/global/en/character/card/" +assetID+"/card_"+assetID+"_circle.png')";
+        unitImage.style.backgroundImage = "url('"+window.assetBase+"/global/en/character/card/" +assetID+"/card_"+assetID+"_circle.png')";
         unitImage.style.backgroundSize = "100% 100%";
         unitImage.style.backgroundPosition = "center";
         unitImage.style.backgroundRepeat = "no-repeat";
@@ -157,7 +157,7 @@ class kiCircleClass{
 
         this.superAttackName=document.createElement("div");
         this.superAttackName.className="super-attack-name";
-        this.superAttackName.style.backgroundImage = "url('"+window.assetConfig.baseUrl+"/global/en/character/card/"+this.imageUrl+"/en/card_"+this.imageUrl+"_sp_name.png')";
+        this.superAttackName.style.backgroundImage = "url('"+window.assetBase+"/global/en/character/card/"+this.imageUrl+"/en/card_"+this.imageUrl+"_sp_name.png')";
         this.superAttackName.style.display="none";
         this.KiCircle.appendChild(this.superAttackName);
 
@@ -263,7 +263,7 @@ class kiCircleClass{
         this.superChanceQuery.style.zIndex = "6";
         this.superChanceQuery.parentClass=this
         this.superChanceQuery.addEventListener(
-            'click', function(){
+            "click", function(){
                 if(this.classList.contains("active")){
                     this.parentClass.toggleSuperPerformed(false)
                 }
@@ -316,7 +316,7 @@ class kiCircleClass{
         this.performedChanceQuery.style.cursor="pointer"
         this.performedChanceQuery.style.zIndex = "6";
         this.performedChanceQuery.parentClass=this
-        this.performedChanceQuery.addEventListener('click', function(){
+        this.performedChanceQuery.addEventListener("click", function(){
             if(this.classList.contains("active")){
                 this.parentClass.toggleAttackPerformed(false)
             }
@@ -664,7 +664,7 @@ class kiCircleClass{
         }
 
         for (let char of value.toString()) {
-            const numDiv = document.createElement('div');
+            const numDiv = document.createElement("div");
             if(this.superPerformed){
                 numDiv.className = "ki-damage-text-numDiv-red";
                 numDiv.classList.add(`num-red-${char}`);
@@ -710,18 +710,18 @@ class kiCircleClass{
             this.superAttackWords.classList.remove("ultra-super");
             this.superAttackWords.classList.remove("unit-super");
             if(currentJson["Super Attack"][this.superAttackID]["superStyle"]=="Normal"){
-                this.superAttackName.style.backgroundImage = "url('"+window.assetConfig.baseUrl+"/global/en/character/card/"+this.imageUrl+"/en/card_"+this.imageUrl+"_sp_name.png')";
-                this.superAttackWords.image.src=""+window.assetConfig.baseUrl+"/global/en/ingame/battle/effect/battle_140000/en/Images_sp_atk_str-1.png"
+                this.superAttackName.style.backgroundImage = "url('"+window.assetBase+"/global/en/character/card/"+this.imageUrl+"/en/card_"+this.imageUrl+"_sp_name.png')";
+                this.superAttackWords.image.src=""+window.assetBase+"/global/en/ingame/battle/effect/battle_140000/en/Images_sp_atk_str-1.png"
                 this.superAttackWords.classList.add("super")
             }
             else if(currentJson["Super Attack"][this.superAttackID]["superStyle"]=="Hyper"){
-                this.superAttackName.style.backgroundImage = "url('"+window.assetConfig.baseUrl+"/global/en/character/card/"+this.imageUrl+"/en/card_"+this.imageUrl+"_sp0"+this.superAttackAssetID+"_name.png')";
-                this.superAttackWords.image.src=""+window.assetConfig.baseUrl+"/global/en/ingame/battle/effect/battle_140000/en/Images_sp2_atk_str-1.png"
+                this.superAttackName.style.backgroundImage = "url('"+window.assetBase+"/global/en/character/card/"+this.imageUrl+"/en/card_"+this.imageUrl+"_sp0"+this.superAttackAssetID+"_name.png')";
+                this.superAttackWords.image.src=""+window.assetBase+"/global/en/ingame/battle/effect/battle_140000/en/Images_sp2_atk_str-1.png"
                 this.superAttackWords.classList.add("ultra-super")
             }
             else if(currentJson["Super Attack"][this.superAttackID]["superStyle"]=="Condition"){
-                this.superAttackName.style.backgroundImage = "url('"+window.assetConfig.baseUrl+"/global/en/character/card/"+this.imageUrl+"/en/card_"+this.imageUrl+"_sp0"+this.superAttackAssetID+"_name.png')";
-                this.superAttackWords.image.src=""+window.assetConfig.baseUrl+"/global/en/condition_special/000002/special_cutin_icon_text_image.png"
+                this.superAttackName.style.backgroundImage = "url('"+window.assetBase+"/global/en/character/card/"+this.imageUrl+"/en/card_"+this.imageUrl+"_sp0"+this.superAttackAssetID+"_name.png')";
+                this.superAttackWords.image.src=""+window.assetBase+"/global/en/condition_special/000002/special_cutin_icon_text_image.png"
                 this.superAttackWords.classList.add("unit-super")
             }
         }
@@ -1011,7 +1011,7 @@ class equipNodeQuery{
         this.numberInput.min=0;
         this.numberInput.max=32;
         this.numberInput.value=0;
-        this.numberInput.addEventListener('input', function(){
+        this.numberInput.addEventListener("input", function(){
             if(this.value<0){
                 this.value=0;
             }
@@ -1256,10 +1256,10 @@ class superAttackQuery{
         this.selfContainer.buffsDuration=buffs["Duration"];
         this.selfContainer.nextToShow=0;
         this.selfContainer.style.display="grid";
-        this.superAttackSlider = document.createElement('input');
+        this.superAttackSlider = document.createElement("input");
         this.superAttackSlider.parentClass=this;
         this.superAttackSlider.value=0;
-        this.superAttackQuestion = document.createElement('div');
+        this.superAttackQuestion = document.createElement("div");
         this.superAttackQuestion.superAttackName= this.selfContainer.superAttackName;
         this.insertedUnitDiv=new unitDisplay();
 
@@ -1274,7 +1274,7 @@ class superAttackQuery{
         this.numberInput.className="super-attack-query-number-input";
         this.numberInput.parentClass=this;
         this.numberInput.addEventListener(
-            'input', function(){
+            "input", function(){
                 if(this.value<0){
                     this.value=0;
                 }
@@ -1308,10 +1308,10 @@ class superAttackQuery{
                 this.insertedUnitDiv.setDisplay(true);
 
                 if(this.selfContainer.superAttack.special_name_no=="0"){
-                    insertedSuperAttackDiv.style.backgroundImage="url('"+window.assetConfig.baseUrl+"/global/en/character/card/"+unit["Resource ID"]+"/en/card_"+unit["Resource ID"]+"_sp_name.png')";
+                    insertedSuperAttackDiv.style.backgroundImage="url('"+window.assetBase+"/global/en/character/card/"+unit["Resource ID"]+"/en/card_"+unit["Resource ID"]+"_sp_name.png')";
                 }
                 else{
-                    insertedSuperAttackDiv.style.backgroundImage="url('"+window.assetConfig.baseUrl+"/global/en/character/card/"+unit["Resource ID"]+"/en/card_"+unit["Resource ID"]+"_sp0"+this.selfContainer.superAttack.special_name_no+"_name.png')"
+                    insertedSuperAttackDiv.style.backgroundImage="url('"+window.assetBase+"/global/en/character/card/"+unit["Resource ID"]+"/en/card_"+unit["Resource ID"]+"_sp0"+this.selfContainer.superAttack.special_name_no+"_name.png')"
                 }
 
             }
@@ -1328,7 +1328,7 @@ class superAttackQuery{
         this.superAttackSlider.style.gridRow = 0;
         this.selfContainer.appendChild(this.superAttackQuestion);
         this.selfContainer.appendChild(this.superAttackSlider);
-        this.superAttackSlider.addEventListener('input', function(){
+        this.superAttackSlider.addEventListener("input", function(){
             this.parentClass.superAttackQuestion.superAttackText.NUMBERINPUT[0].value=parseInt(this.value);
             this.parentClass.currentValue=parseInt(this.value);
             updateSuperAttackStacks();
@@ -1355,21 +1355,21 @@ class passiveButton{
         this.max = max;
         this.label = label;
         this.value = this.max;
-        this.selfContainer = document.createElement('div');
-        this.element = document.createElement('button');
+        this.selfContainer = document.createElement("div");
+        this.element = document.createElement("button");
         this.selfContainer.appendChild(this.element);
-        this.element.classList.add('passive-button');
+        this.element.classList.add("passive-button");
         this.element.innerHTML = this.label;
         this.element.value = this.value;
         this.element.style.background="#FF5C35"
         this.element.style.cursor = "pointer";
         this.element.onclick = function(){
-            if(this.classList.contains('active')){
-                this.classList.remove('active');
+            if(this.classList.contains("active")){
+                this.classList.remove("active");
                 this.style.background="#FF5C35"
             }
             else{
-                this.classList.add('active');
+                this.classList.add("active");
                 this.style.background="#00FF00"
             }
             updatePassiveStats()
@@ -1397,7 +1397,7 @@ class passiveButton{
     }
 
     getValue(){
-        return(this.element.classList.contains('active'))
+        return(this.element.classList.contains("active"))
     }
 
     updateParent(parent){
@@ -1498,7 +1498,7 @@ class passiveQuery{
 
     currentValue(){
         if(this.type=="button"){
-            return(this.queryElement.element.classList.contains('active') )
+            return(this.queryElement.element.classList.contains("active") )
         }
         else if(this.type=="slider"){
             return(this.queryElement.element.value)
@@ -1591,14 +1591,14 @@ function getJsonPromise(prefix,name,suffix) {
                 return(getJsonPromise(prefix,name,suffix))
             }
             else{
-              throw new Error('Network response was not ok' + response.statusText);
+              throw new Error("Network response was not ok" + response.statusText);
             }
           }
           return response.json();
         }
       )
       .catch(error => {
-          console.error('Error fetching JSON:', error);
+          console.error("Error fetching JSON:", error);
           throw error; // Re-throw the error to propagate it to the caller
       }
     );
@@ -2798,9 +2798,9 @@ function activatePassiveLines(previousActiveLineMultipliers,exec_timing_type,act
 
 
 function createLeaderStats(){
-    const leaderContainer=document.getElementById('leader-container');
+    const leaderContainer=document.getElementById("leader-container");
 
-    const kiLabel=document.createElement('div');
+    const kiLabel=document.createElement("div");
     leaderContainer.appendChild(kiLabel);
     kiLabel.id="ki-label";
     kiLabel.style.gridRow="1";
@@ -2808,7 +2808,7 @@ function createLeaderStats(){
     kiLabel.innerText="Ki:"
     kiLabel.style.fontWeight="bold";
 
-    const statsLabel=document.createElement('div');
+    const statsLabel=document.createElement("div");
     leaderContainer.appendChild(statsLabel);
     statsLabel.id="ki-label";
     statsLabel.style.gridRow="1";
@@ -2816,16 +2816,16 @@ function createLeaderStats(){
     statsLabel.innerHTML="HP<br>ATK<br>DEF:"
     statsLabel.style.fontWeight="bold";
 
-    const seperateOrJoin=document.createElement('div');
+    const seperateOrJoin=document.createElement("div");
     leaderContainer.appendChild(seperateOrJoin);
     seperateOrJoin.gridColumn="1";
     seperateOrJoin.id="seperate-or-join-leader";
-    seperateOrJoin.classList.add('JointLeader');
+    seperateOrJoin.classList.add("JointLeader");
     seperateOrJoin.style.cursor="pointer";
-    seperateOrJoin.addEventListener('click', function(){
+    seperateOrJoin.addEventListener("click", function(){
       if(seperateOrJoin.classList.contains("SeperateLeader")){
-        seperateOrJoin.classList.remove('SeperateLeader');
-        seperateOrJoin.classList.add('JointLeader');
+        seperateOrJoin.classList.remove("SeperateLeader");
+        seperateOrJoin.classList.add("JointLeader");
   //      seperateOrJoin.style.width="110px";
         leaderAInputKi.style.display="none";
         leaderBInputKi.style.display="none";
@@ -2834,8 +2834,8 @@ function createLeaderStats(){
         leaderBInputStats.style.display="none";
         leaderTotalInputStats.style.display="block";
       } else {
-        seperateOrJoin.classList.remove('JointLeader');
-        seperateOrJoin.classList.add('SeperateLeader');
+        seperateOrJoin.classList.remove("JointLeader");
+        seperateOrJoin.classList.add("SeperateLeader");
   //      seperateOrJoin.style.width="220px";
         leaderAInputKi.style.display="block";
         leaderBInputKi.style.display="block";
@@ -2846,7 +2846,7 @@ function createLeaderStats(){
       }
     });
 
-    let leaderAInputKi=document.createElement('input');
+    let leaderAInputKi=document.createElement("input");
     leaderAInputKi.id="leader-A-Input-Ki";
     leaderAInputKi.type="number";
     leaderAInputKi.min=0;
@@ -2858,7 +2858,7 @@ function createLeaderStats(){
     leaderAInputKi.style.gridRow="2";
     leaderContainer.appendChild(leaderAInputKi);
     
-    let leaderBInputKi=document.createElement('input');
+    let leaderBInputKi=document.createElement("input");
     leaderBInputKi.id="leader-B-Input-Ki";
     leaderBInputKi.type="number";
     leaderBInputKi.min=0;
@@ -2871,7 +2871,7 @@ function createLeaderStats(){
     leaderContainer.appendChild(leaderBInputKi);
 
 
-    let leaderTotalInputKi=document.createElement('input');
+    let leaderTotalInputKi=document.createElement("input");
     leaderTotalInputKi.id="leader-Total-Input-Ki";
     leaderTotalInputKi.type="number";
     leaderTotalInputKi.min=0;
@@ -2884,7 +2884,7 @@ function createLeaderStats(){
     leaderContainer.appendChild(leaderTotalInputKi);
     
 
-    leaderAInputKi.addEventListener('input', function(){
+    leaderAInputKi.addEventListener("input", function(){
         if(parseInt(leaderAInputKi.value)>200){
             leaderAInputKi.value=200;
         }
@@ -2897,7 +2897,7 @@ function createLeaderStats(){
         updatePassiveStats()
     });
 
-    leaderBInputKi.addEventListener('input', function(){
+    leaderBInputKi.addEventListener("input", function(){
         if(parseInt(leaderBInputKi.value)>200){
             leaderBInputKi.value=200;
         }
@@ -2910,7 +2910,7 @@ function createLeaderStats(){
         updatePassiveStats()
     });
     
-    leaderTotalInputKi.addEventListener('input', function(){
+    leaderTotalInputKi.addEventListener("input", function(){
         if(parseInt(leaderTotalInputKi.value)>400){
             leaderTotalInputKi.value=400;
         }
@@ -2931,7 +2931,7 @@ function createLeaderStats(){
     leaderBInputKi.style.display="none";
     leaderTotalInputKi.style.display="block";
 
-    let leaderAInputStats=document.createElement('input');
+    let leaderAInputStats=document.createElement("input");
     leaderAInputStats.id="leader-A-Input-Stats";
     leaderAInputStats.type="number";
     leaderAInputStats.min=0;
@@ -2943,7 +2943,7 @@ function createLeaderStats(){
     leaderAInputStats.style.gridRow="2"
     leaderContainer.appendChild(leaderAInputStats);
     
-    let leaderBInputStats=document.createElement('input');
+    let leaderBInputStats=document.createElement("input");
     leaderBInputStats.id="leader-B-Input-Stats";
     leaderBInputStats.type="number";
     leaderBInputStats.min=0;
@@ -2956,7 +2956,7 @@ function createLeaderStats(){
     leaderContainer.appendChild(leaderBInputStats);
 
 
-    let leaderTotalInputStats=document.createElement('input');
+    let leaderTotalInputStats=document.createElement("input");
     leaderTotalInputStats.id="leader-total-Input-Stats";
     leaderTotalInputStats.type="number";
     leaderTotalInputStats.min=0;
@@ -2969,7 +2969,7 @@ function createLeaderStats(){
     leaderContainer.appendChild(leaderTotalInputStats);
     
 
-    leaderAInputStats.addEventListener('input', function(){
+    leaderAInputStats.addEventListener("input", function(){
         if(parseInt(leaderAInputStats.value)>leaderAInputStats.max){
             leaderAInputStats.value=leaderAInputStats.max;
         }
@@ -2983,7 +2983,7 @@ function createLeaderStats(){
         updatePassiveStats()
     });
 
-    leaderBInputStats.addEventListener('input', function(){
+    leaderBInputStats.addEventListener("input", function(){
         if(parseInt(leaderBInputStats.value)>leaderBInputStats.max){
             leaderBInputStats.value=leaderBInputStats.max;
         }
@@ -2997,7 +2997,7 @@ function createLeaderStats(){
         updatePassiveStats()
     });
     
-    leaderTotalInputStats.addEventListener('input', function(){
+    leaderTotalInputStats.addEventListener("input", function(){
         if(parseInt(leaderTotalInputStats.value)>leaderTotalInputStats.max){
             leaderTotalInputStats.value=leaderTotalInputStats.max;
         }
@@ -3025,21 +3025,21 @@ function createLeaderStats(){
 
 function createLinkStats(){
     //TODO Link buttons are stored at dbManagement/DokkanFiles/global/en/layout/en/image/common/btn/cha_linkskill_label_gold.png
-    const linksContainer=document.getElementById('links-container');
+    const linksContainer=document.getElementById("links-container");
     let links =currentJson["Links"];
     let linkNumber=0;
     for (const linkid in links){
       let link=links[linkid]
       let linkName = link;
       let linkLevel = 10;
-      let linkButton = document.createElement('button');
+      let linkButton = document.createElement("button");
       linkButton.innerHTML = linkName + " <br>Level: " + linkLevel;
       linkButton.id="links-button";
       linkButton.style.display="block"
       linkButton.style.background="#00FF00"
       linkButton.style.gridRow= linkNumber*2;
-      linkButton.classList.add('active');
-      let linkSlider = document.createElement('input');
+      linkButton.classList.add("active");
+      let linkSlider = document.createElement("input");
       linkSlider.type = "range";
       linkSlider.min = 1;
       linkSlider.max = 10;
@@ -3062,17 +3062,17 @@ function createLinkStats(){
       linksContainer.appendChild(linkSlider);
 
       linkButton.onclick = function(){
-        if(linkButton.classList.contains('active')){
+        if(linkButton.classList.contains("active")){
           linkButton.style.background="#FF5C35"
-          linkButton.classList.remove('active');
+          linkButton.classList.remove("active");
         } else {
-          linkButton.classList.add('active');
+          linkButton.classList.add("active");
           linkButton.style.background="#00FF00"
         }
         createLinkBuffs()
         updatePassiveStats()
       }
-      linkSlider.addEventListener('input', function(){
+      linkSlider.addEventListener("input", function(){
         linkLevel = linkSlider.value;
         linkButton.innerHTML = linkName + " <br>Level: " + linkLevel;
         createLinkBuffs();
@@ -3083,7 +3083,7 @@ function createLinkStats(){
     };
 
     
-    let allLinksSlider = document.createElement('input');
+    let allLinksSlider = document.createElement("input");
     allLinksSlider.type = "range";
     allLinksSlider.min = 1;
     allLinksSlider.max = 10;
@@ -3093,13 +3093,13 @@ function createLinkStats(){
     allLinksSlider.style.gridRowEnd = "3";
     allLinksSlider.style.gridColumnStart = "1";
     allLinksSlider.style.gridColumnEnd = "4";
-    allLinksSlider.addEventListener('input', function(){
-      let linksContainer = document.querySelector('#links-container');
-      let linkSliders = linksContainer.querySelectorAll('input[type=range]');
+    allLinksSlider.addEventListener("input", function(){
+      let linksContainer = document.querySelector("#links-container");
+      let linkSliders = linksContainer.querySelectorAll("input[type=range]");
       linkSliders.forEach((slider, index) => {
         slider.value = allLinksSlider.value;
-        let linkName = linksContainer.querySelectorAll('button')[index].textContent.split(' Level')[0];
-        linksContainer.querySelectorAll('button')[index].innerHTML = linkName + " <br>Level: " + allLinksSlider.value;
+        let linkName = linksContainer.querySelectorAll("button")[index].textContent.split(" Level")[0];
+        linksContainer.querySelectorAll("button")[index].innerHTML = linkName + " <br>Level: " + allLinksSlider.value;
       });
 
       createLinkBuffs();
@@ -3107,7 +3107,7 @@ function createLinkStats(){
     });
     linksContainer.appendChild(allLinksSlider);
 
-    let allLinksButton = document.createElement('button');
+    let allLinksButton = document.createElement("button");
     allLinksButton.innerHTML = "All Links";
     allLinksButton.id="links-button";
     allLinksButton.style.background="#00FF00"
@@ -3115,23 +3115,23 @@ function createLinkStats(){
     allLinksButton.style.gridRowEnd = "3";
     allLinksButton.style.gridColumnStart = "1";
     allLinksButton.style.gridColumnEnd = "4";
-    allLinksButton.classList.add('active');
+    allLinksButton.classList.add("active");
     allLinksButton.onclick = function(){
-      if(allLinksButton.classList.contains('active')){
+      if(allLinksButton.classList.contains("active")){
         allLinksButton.style.background="#FF5C35"
-        allLinksButton.classList.remove('active');
-        let linkButtons = linksContainer.querySelectorAll('button');
+        allLinksButton.classList.remove("active");
+        let linkButtons = linksContainer.querySelectorAll("button");
         linkButtons.forEach((button, index) => {
-          button.classList.remove('active');
+          button.classList.remove("active");
           button.style.background="#FF5C35"
         });
       }
       else{
-        allLinksButton.classList.add('active');
+        allLinksButton.classList.add("active");
         allLinksButton.style.background="#00FF00"
-        let linkButtons = linksContainer.querySelectorAll('button');
+        let linkButtons = linksContainer.querySelectorAll("button");
         linkButtons.forEach((button, index) => {
-          button.classList.add('active');
+          button.classList.add("active");
           button.style.background="#00FF00"
         });
       }
@@ -3142,22 +3142,22 @@ function createLinkStats(){
 
 
     //create an paragraph so that none of the sliders are .lastchild
-    let linkBuffsDiv = document.createElement('p');
+    let linkBuffsDiv = document.createElement("p");
     linkBuffsDiv.innerHTML = "Link Buffs: ";
     linksContainer.appendChild(linkBuffsDiv);
 
-    const linkPartnerContainer = document.getElementById('link-partner-container');
-    const linkPartnerButton = document.getElementById('link-partner-button');
+    const linkPartnerContainer = document.getElementById("link-partner-container");
+    const linkPartnerButton = document.getElementById("link-partner-button");
     linkPartnerButton.onclick = function(){
         let activeLinks={};
-        let linkButtons = document.querySelector('#links-container').querySelectorAll('button');
+        let linkButtons = document.querySelector("#links-container").querySelectorAll("button");
 
 
         // Iterate over each link slider and button
         linkButtons.forEach(
             (button) => {
-                if(button.textContent.split(' Level')[0]!="All Links"){
-                    activeLinks[button.textContent.split(' Level')[0]]=button.classList.contains('active');
+                if(button.textContent.split(" Level")[0]!="All Links"){
+                    activeLinks[button.textContent.split(" Level")[0]]=button.classList.contains("active");
                 }
             }
         );
@@ -3171,7 +3171,7 @@ function createLinkStats(){
         )
     }
 
-    const linkPartnerDisplay = document.getElementById('link-partner-display');
+    const linkPartnerDisplay = document.getElementById("link-partner-display");
 }
 
 function findLinkPartners(activeLinks,linksJson, inactiveNeeded=true){
@@ -3195,14 +3195,14 @@ function updateLinkPartnerDisplay(allLinkPartners){
 }
 
 function updateBaseStats(refreshKi=true){
-    let levelSlider=document.getElementById('level-slider');
+    let levelSlider=document.getElementById("level-slider");
     let ATK = parseInt(currentJson["Stats at levels"][levelSlider.value]["ATK"]);
     let DEF = parseInt(currentJson["Stats at levels"][levelSlider.value]["DEF"]);
     let HP = parseInt((currentJson["Stats at levels"][levelSlider.value]["HP"]));
 
-    const statsContainerObject = document.getElementById('stats-container').firstChild.classConstruction;
-    const starButton=document.getElementById('star-button');
-    const toggleButtons = Array.from(document.querySelectorAll('.toggle-btn1, .toggle-btn2, .toggle-btn3, .toggle-btn4'));
+    const statsContainerObject = document.getElementById("stats-container").firstChild.classConstruction;
+    const starButton=document.getElementById("star-button");
+    const toggleButtons = Array.from(document.querySelectorAll(".toggle-btn1, .toggle-btn2, .toggle-btn3, .toggle-btn4"));
     let Additional=0;
     let Crit=0;
     let Evasion=0;
@@ -3210,8 +3210,8 @@ function updateBaseStats(refreshKi=true){
     let type_def=0;
     let super_attack_boost=0;
     let recovery_boost=0;
-    const skill_orb_container=document.getElementById('all-skill-orb-container');
-    if(starButton.classList.contains('active') || starButton.classList.contains('rainbow')){
+    const skill_orb_container=document.getElementById("all-skill-orb-container");
+    if(starButton.classList.contains("active") || starButton.classList.contains("rainbow")){
         ATK += parseInt(currentJson["Hidden Potential"]["0"]["ATK"])
         DEF += parseInt(currentJson["Hidden Potential"]["0"]["DEF"])
         HP += parseInt(currentJson["Hidden Potential"]["0"]["HP"])
@@ -3227,7 +3227,7 @@ function updateBaseStats(refreshKi=true){
     }
     
     toggleButtons.forEach((button, index) => {
-      if(button.classList.contains('active')){
+      if(button.classList.contains("active")){
         ATK += parseInt(currentJson["Hidden Potential"][index+1]["ATK"])
         DEF += parseInt(currentJson["Hidden Potential"][index+1]["DEF"])
         HP += parseInt(currentJson["Hidden Potential"][index+1]["HP"])
@@ -3241,7 +3241,7 @@ function updateBaseStats(refreshKi=true){
       }
     })
 
-    if((currentJson["Rarity"]=="ur" || currentJson["Rarity"]=="lr") && !(skill_orb_container.classList.contains('Edited'))){
+    if((currentJson["Rarity"]=="ur" || currentJson["Rarity"]=="lr") && !(skill_orb_container.classList.contains("Edited"))){
         skill_orb_container.additionalNode.updateValue(Additional)
         skill_orb_container.critNode.updateValue(Crit)
         skill_orb_container.evasionNode.updateValue(Evasion)
@@ -3269,7 +3269,7 @@ function updateBaseStats(refreshKi=true){
   }
   
 function createTransformationContainer(){
-    let transformationContainer=document.getElementById('awaken-container');
+    let transformationContainer=document.getElementById("awaken-container");
     let previousTransformations = currentJson["Transforms from"]
     if( Array.isArray(previousTransformations) && previousTransformations.length){
         for (const transformationID of previousTransformations){
@@ -3319,8 +3319,8 @@ function createTransformationContainer(){
 }
 
 function createLevelSlider(){
-    let levelSlider=document.getElementById('level-slider');
-    let levelInput=document.getElementById('level-input');
+    let levelSlider=document.getElementById("level-slider");
+    let levelInput=document.getElementById("level-input");
     levelSlider.min=currentJson["Min Level"];
     levelInput.min=currentJson["Min Level"];
     levelSlider.max = currentJson["Max Level"];
@@ -3336,12 +3336,12 @@ function createLevelSlider(){
         levelSlider.style.display = "block";
     }
 
-    levelSlider.addEventListener('input', function(){
+    levelSlider.addEventListener("input", function(){
         levelInput.value=levelSlider.value;
         updateBaseStats();
     });
 
-    levelInput.addEventListener('input', function(){
+    levelInput.addEventListener("input", function(){
       if(levelInput.value>levelSlider.max){
         levelInput.value=levelSlider.max;
       }
@@ -3353,13 +3353,13 @@ function createLevelSlider(){
 }
 
 function createStatsContainer(){
-    const statsContainer=document.getElementById('stats-container');
+    const statsContainer=document.getElementById("stats-container");
     const statsContainerObject= new statsContainerClass(0,0,0);
     statsContainer.appendChild(statsContainerObject.getElement());
 }
 
 function createPathButtons(){
-    const pathButtons = Array.from(document.querySelectorAll('.toggle-btn1, .toggle-btn2, .toggle-btn3, .toggle-btn4'));
+    const pathButtons = Array.from(document.querySelectorAll(".toggle-btn1, .toggle-btn2, .toggle-btn3, .toggle-btn4"));
     pathButtons[0].style.gridColumn = "1"
     pathButtons[0].style.gridRow = "1"
 
@@ -3373,21 +3373,21 @@ function createPathButtons(){
     pathButtons[3].style.gridRow = "3"
     // Add event listeners to toggle buttons
     pathButtons.forEach(button => {
-      button.addEventListener('click', function() {
-        button.classList.toggle('active');
-        const starButton=document.getElementById('star-button');
+      button.addEventListener("click", function() {
+        button.classList.toggle("active");
+        const starButton=document.getElementById("star-button");
         //if 55% is not active, make it active
-        if (!starButton.classList.contains('active')) {
-          starButton.classList.toggle('active');
+        if (!starButton.classList.contains("active")) {
+          starButton.classList.toggle("active");
         }
         //if every button is active, turn on rainbow star
-        if(pathButtons.every(button => button.classList.contains('active'))){
-          starButton.classList.remove('active');
-          starButton.classList.add('rainbow')
+        if(pathButtons.every(button => button.classList.contains("active"))){
+          starButton.classList.remove("active");
+          starButton.classList.add("rainbow")
         }
         //if rainbow star is active, turn it off 
         else{
-          starButton.classList.remove('rainbow');
+          starButton.classList.remove("rainbow");
         }
         updateBaseStats();
       });
@@ -3395,7 +3395,7 @@ function createPathButtons(){
 }
 
 function createDokkanAwakenContainer(){
-    let AwakeningsContainer=document.getElementById('awaken-container');
+    let AwakeningsContainer=document.getElementById("awaken-container");
     let Awakenings =currentJson["Dokkan awakenings"];
     if( Array.isArray(Awakenings) && Awakenings.length){
     }for (const AwakeningsID of Awakenings){
@@ -3443,19 +3443,19 @@ function createDokkanAwakenContainer(){
 }
 
 function createStarButton(){
-    const toggleButtons = Array.from(document.querySelectorAll('.toggle-btn1, .toggle-btn2, .toggle-btn3, .toggle-btn4'));
-    const starButton=document.getElementById('star-button');
-    starButton.classList.add('active');
-    starButton.addEventListener('click', function() {
-      if(starButton.classList.contains('active')){
-        starButton.classList.remove('active');
-        starButton.classList.add('rainbow')
-        toggleButtons.forEach(button => button.classList.add('active'));   
-      } else if(starButton.classList.contains('rainbow')){
-        starButton.classList.remove('rainbow');
-        toggleButtons.forEach(button => button.classList.remove('active'));
+    const toggleButtons = Array.from(document.querySelectorAll(".toggle-btn1, .toggle-btn2, .toggle-btn3, .toggle-btn4"));
+    const starButton=document.getElementById("star-button");
+    starButton.classList.add("active");
+    starButton.addEventListener("click", function() {
+      if(starButton.classList.contains("active")){
+        starButton.classList.remove("active");
+        starButton.classList.add("rainbow")
+        toggleButtons.forEach(button => button.classList.add("active"));   
+      } else if(starButton.classList.contains("rainbow")){
+        starButton.classList.remove("rainbow");
+        toggleButtons.forEach(button => button.classList.remove("active"));
       } else {
-        starButton.classList.add('active');
+        starButton.classList.add("active");
       }
         updateBaseStats();
     });
@@ -3711,13 +3711,13 @@ function updateChanceList(passiveLine){
 
 function createDomainContainer(){
     
-    //TODO: DOMAIN IMAGE IS STORED IN C:/Users/horva/OneDrive - Trinity College Dublin/Documents/dokkan/frontend"+window.assetConfig.baseUrl+"/global/en/outgame/extension/dokkan_field/field_thumb_image_3007 and similar
-    let domainContainer=document.getElementById('domain-container');
-    const domainDropDown=document.createElement('div');
+    //TODO: DOMAIN IMAGE IS STORED IN C:/Users/horva/OneDrive - Trinity College Dublin/Documents/dokkan/frontend"+window.assetBase+"/global/en/outgame/extension/dokkan_field/field_thumb_image_3007 and similar
+    let domainContainer=document.getElementById("domain-container");
+    const domainDropDown=document.createElement("div");
     domainDropDown.className="domain-dropdown";
-    domainDropDown.label=document.createElement('label');
+    domainDropDown.label=document.createElement("label");
     domainDropDown.label.textContent="Domain: ";
-    domainDropDown.select=document.createElement('select');
+    domainDropDown.select=document.createElement("select");
     domainDropDown.appendChild(domainDropDown.label);
     domainDropDown.appendChild(domainDropDown.select);
     domainDropDown.select.addEventListener("change", function(){
@@ -3727,12 +3727,12 @@ function createDomainContainer(){
     domainContainer.domain=domainDropDown;
     domainContainer.appendChild(domainDropDown);
 
-    const nullOption = document.createElement('option');
+    const nullOption = document.createElement("option");
     nullOption.value = null;
     nullOption.textContent = "No domain";
     if(currentJson["Domain"]!=null && currentJson["Domain"]["Locked"]==true){
         currentDomain=currentJson["Domain"]["ID"];
-        const option = document.createElement('option');
+        const option = document.createElement("option");
         option.value = currentDomain;
         option.textContent = domainData[currentDomain]["Name"];
         domainDropDown.select.appendChild(option);
@@ -3742,7 +3742,7 @@ function createDomainContainer(){
         domainDropDown.select.appendChild(nullOption);
         for (const domainKey in domainData){
             const domain = domainData[domainKey];
-            const option = document.createElement('option');
+            const option = document.createElement("option");
             option.value = domain["ID"];
             option.textContent = domain["Name"];
             domainDropDown.select.appendChild(option);
@@ -3757,14 +3757,14 @@ function createDomainContainer(){
         domainDropDown.select.appendChild(nullOption);  
         for (const domainKey in domainData){
             const domain = domainData[domainKey];
-            const option = document.createElement('option');
+            const option = document.createElement("option");
             option.value = domain["ID"];
             option.textContent = domain["Name"];
             domainDropDown.select.appendChild(option);
         }
     }
 
-    const domainImage=document.createElement('img');
+    const domainImage=document.createElement("img");
     domainContainer.appendChild(domainImage);
     domainImage.className="domain-image";
     domainImage.id="domain-image";
@@ -3831,13 +3831,13 @@ function refreshDomainBuffs(updatePassiveStatsBool=true){
         
     }
 
-    const domainImage=document.getElementById('domain-image');
+    const domainImage=document.getElementById("domain-image");
     if(currentDomain=="null"){
         domainImage.style.display="none";
     }
     else{
         domainImage.style.display="block";
-        domainImage.src=""+window.assetConfig.baseUrl+"/global/en/outgame/extension/dokkan_field/field_thumb_image_"+domainData[currentDomain]["Resource ID"]+"/field_thumb_image_"+domainData[currentDomain]["Resource ID"]+".png"
+        domainImage.src=""+window.assetBase+"/global/en/outgame/extension/dokkan_field/field_thumb_image_"+domainData[currentDomain]["Resource ID"]+"/field_thumb_image_"+domainData[currentDomain]["Resource ID"]+".png"
     }
 
     if(updatePassiveStatsBool){
@@ -3849,9 +3849,9 @@ function refreshDomainBuffs(updatePassiveStatsBool=true){
 function createPassiveContainer(){
     passiveQueryList=[]
     passiveChanceList=[]
-    let passiveSupportContainer=document.getElementById('passive-support-container');
-    let passiveQueryContainer = document.getElementById('passive-query-container');
-    let passiveChanceContainer=document.getElementById('passive-chance-container');
+    let passiveSupportContainer=document.getElementById("passive-support-container");
+    let passiveQueryContainer = document.getElementById("passive-query-container");
+    let passiveChanceContainer=document.getElementById("passive-chance-container");
     while (passiveQueryContainer.firstChild) {
         passiveQueryContainer.removeChild(passiveQueryContainer.firstChild);
     }
@@ -3861,12 +3861,12 @@ function createPassiveContainer(){
 
 
     if(!(passiveSupportContainer.firstChild)){
-        const passiveATKSupport=document.createElement('div');
-        passiveATKSupport.label=document.createElement('label');
-        passiveATKSupport.input=document.createElement('input');
+        const passiveATKSupport=document.createElement("div");
+        passiveATKSupport.label=document.createElement("label");
+        passiveATKSupport.input=document.createElement("input");
         passiveATKSupport.input.type="number";
         passiveATKSupport.input.value="0";
-        passiveATKSupport.addEventListener('input', function(){
+        passiveATKSupport.addEventListener("input", function(){
             if(this.input.value==""){
                 supportBuffs["ATK"]=0;
             }
@@ -3882,14 +3882,14 @@ function createPassiveContainer(){
         passiveSupportContainer.appendChild(passiveATKSupport);
         
 
-        const passiveDEFSupport=document.createElement('div');
-        passiveDEFSupport.label=document.createElement('label');
-        passiveDEFSupport.input=document.createElement('input');
+        const passiveDEFSupport=document.createElement("div");
+        passiveDEFSupport.label=document.createElement("label");
+        passiveDEFSupport.input=document.createElement("input");
         passiveDEFSupport.input.type="number";
         passiveDEFSupport.input.value="0";
         passiveDEFSupport.appendChild(passiveDEFSupport.label);
         passiveDEFSupport.appendChild(passiveDEFSupport.input);
-        passiveDEFSupport.addEventListener('input', function(){
+        passiveDEFSupport.addEventListener("input", function(){
             if(this.input.value==""){
                 supportBuffs["DEF"]=0;
             }
@@ -3902,14 +3902,14 @@ function createPassiveContainer(){
         passiveSupportContainer.DEFsupport=passiveDEFSupport;
         passiveSupportContainer.appendChild(passiveDEFSupport);
 
-        const passiveKiSupport=document.createElement('div');
-        passiveKiSupport.label=document.createElement('label');
-        passiveKiSupport.input=document.createElement('input');
+        const passiveKiSupport=document.createElement("div");
+        passiveKiSupport.label=document.createElement("label");
+        passiveKiSupport.input=document.createElement("input");
         passiveKiSupport.input.type="number";
         passiveKiSupport.input.value="0";
         passiveKiSupport.appendChild(passiveKiSupport.label);
         passiveKiSupport.appendChild(passiveKiSupport.input);
-        passiveKiSupport.addEventListener('input', function(){
+        passiveKiSupport.addEventListener("input", function(){
             if(passiveKiSupport.input.value==""){
                 kiSources.Support=0;
             }
@@ -3981,7 +3981,7 @@ function createPassiveContainer(){
 }
 
 function initialiseAspects() {
-    updateCharacterIcon('character-icon', currentJson["Resource ID"], currentJson.Type);
+    updateCharacterIcon("character-icon", currentJson["Resource ID"], currentJson.Type);
     document.getElementById("level-container").style.display="flex";
 
     //change the background of the slider to the type color
@@ -4010,7 +4010,7 @@ function initialiseAspects() {
 
 function createSuperAttackContainer(){
 
-    let superQuestionsContainer= document.getElementById('super-attack-questions-container');
+    let superQuestionsContainer= document.getElementById("super-attack-questions-container");
     while (superQuestionsContainer.firstChild) {
         superQuestionsContainer.removeChild(superQuestionsContainer.firstChild);
     }
@@ -4032,13 +4032,13 @@ function createSuperAttackContainer(){
         let transformPromise;
         const urlParams=new URLSearchParams(window.location.search);
         if(isSeza){
-            transformPromise=getJsonPromise('/dbManagement/jsonsSEZA/',key,'.json');
+            transformPromise=getJsonPromise("/dbManagement/jsonsSEZA/",key,".json");
         }
         else if(isEza){
-            transformPromise=getJsonPromise('/dbManagement/jsonsEZA/',key,'.json');
+            transformPromise=getJsonPromise("/dbManagement/jsonsEZA/",key,".json");
         }
         else{
-            transformPromise=getJsonPromise('/dbManagement/jsons/',key,'.json');
+            transformPromise=getJsonPromise("/dbManagement/jsons/",key,".json");
         }
         transformPromise.then((json)=>{
             let superAttackss=json["Super Attack"];
@@ -4089,13 +4089,13 @@ function createSuperAttackContainer(){
             cardImage.setEzaLevel("none");
         }
         cardImage.addPressableEza(function(){
-            updateQueryStringParameter('EZA', !isEza);
-            updateQueryStringParameter('SEZA', 'false');
+            updateQueryStringParameter("EZA", !isEza);
+            updateQueryStringParameter("SEZA", "false");
             loadPage();
         })
         cardImage.addPressableSeza(function(){
-            updateQueryStringParameter('EZA', 'true');
-            updateQueryStringParameter('SEZA', !isSeza);
+            updateQueryStringParameter("EZA", "true");
+            updateQueryStringParameter("SEZA", !isSeza);
             loadPage();
         })
     }
@@ -4108,7 +4108,7 @@ function createSuperAttackContainer(){
             cardImage.setEzaLevel("none");
         }
         cardImage.addPressableEza(function(){
-            updateQueryStringParameter('EZA', !isEza);
+            updateQueryStringParameter("EZA", !isEza);
             loadPage();
         })
     }
@@ -4148,7 +4148,7 @@ function createSuperAttackContainer(){
 }
 
 function updateSuperAttackStacks(){
-    let superAttacksQuestionsContainer = document.querySelector('#super-attack-questions-container');
+    let superAttacksQuestionsContainer = document.querySelector("#super-attack-questions-container");
     let superAttackStacks = superAttacksQuestionsContainer.children;
     let totalATKBuff = 0;
     let totalDEFBuff = 0;
@@ -4210,9 +4210,9 @@ function updateSuperAttackStacks(){
 
 function createLinkBuffs(){
     // Select all link sliders and buttons within a specific parent
-    let linksContainer = document.querySelector('#links-container');
-    let linkSliders = linksContainer.querySelectorAll('input[type=range]');
-    let linkButtons = linksContainer.querySelectorAll('button');
+    let linksContainer = document.querySelector("#links-container");
+    let linkSliders = linksContainer.querySelectorAll("input[type=range]");
+    let linkButtons = linksContainer.querySelectorAll("button");
 
     // Initialize variables to store the total link buffs
     let totalATKBuff = 0;
@@ -4226,9 +4226,9 @@ function createLinkBuffs(){
 
     // Iterate over each link slider and button
     linkSliders.forEach((slider, index) => {
-      if(linkButtons[index].textContent.split(' Level')[0]=="All Links") return;
-      if(!linkButtons[index].classList.contains('active')) return;
-      let linkName = linkButtons[index].textContent.split(' Level')[0];
+      if(linkButtons[index].textContent.split(" Level")[0]=="All Links") return;
+      if(!linkButtons[index].classList.contains("active")) return;
+      let linkName = linkButtons[index].textContent.split(" Level")[0];
       
       let linkLevel = parseInt(slider.value);
       let linksData = linkData[linkName][linkLevel];
@@ -4247,7 +4247,7 @@ function createLinkBuffs(){
     // Create a paragraph element to display the total link buffs
     linkBuffs={"ATK":totalATKBuff,"DEF":totalDEFBuff,"Enemy DEF":totalEnemyDEFBuff,"Heal":totalHealBuff,"KI":totalKIBuff,"Damage Reduction":totalDamageReductionBuff,"Crit":totalCritBuff,"Evasion":totalEvasionBuff};
     kiSources["Links"] = totalKIBuff;
-    let linkBuffElement = document.createElement('p');
+    let linkBuffElement = document.createElement("p");
     linkBuffElement.style.width=""
     linkBuffElement.id = "link-buffs";
     linkBuffElement.innerHTML = "Link Buffs: ";
@@ -4284,27 +4284,27 @@ function queriesToLogic(queries){
 
 
 function createSkillOrbContainer(){
-    let skillOrbContainer=document.getElementById('all-skill-orb-container');
+    let skillOrbContainer=document.getElementById("all-skill-orb-container");
     skillOrbContainer.style.display="grid";
-    skillOrbContainer.additionalNode=new equipNodeQuery("Additional",""+window.assetConfig.baseUrl+"/global/en/outgame/extension/potential/pot_skill_01_on.png")
+    skillOrbContainer.additionalNode=new equipNodeQuery("Additional",""+window.assetBase+"/global/en/outgame/extension/potential/pot_skill_01_on.png")
     skillOrbContainer.appendChild(skillOrbContainer.additionalNode.getElement());
 
-    skillOrbContainer.critNode=new equipNodeQuery("Crit",""+window.assetConfig.baseUrl+"/global/en/outgame/extension/potential/pot_skill_02_on.png")
+    skillOrbContainer.critNode=new equipNodeQuery("Crit",""+window.assetBase+"/global/en/outgame/extension/potential/pot_skill_02_on.png")
     skillOrbContainer.appendChild(skillOrbContainer.critNode.getElement());
 
-    skillOrbContainer.evasionNode=new equipNodeQuery("Evasion",""+window.assetConfig.baseUrl+"/global/en/outgame/extension/potential/pot_skill_03_on.png")
+    skillOrbContainer.evasionNode=new equipNodeQuery("Evasion",""+window.assetBase+"/global/en/outgame/extension/potential/pot_skill_03_on.png")
     skillOrbContainer.appendChild(skillOrbContainer.evasionNode.getElement());
 
-    skillOrbContainer.typeATKBoostNode=new equipNodeQuery("Attack",""+window.assetConfig.baseUrl+"/global/en/outgame/extension/potential/pot_skill_04_on.png")
+    skillOrbContainer.typeATKBoostNode=new equipNodeQuery("Attack",""+window.assetBase+"/global/en/outgame/extension/potential/pot_skill_04_on.png")
     skillOrbContainer.appendChild(skillOrbContainer.typeATKBoostNode.getElement());
 
-    skillOrbContainer.typeDEFBoostNode=new equipNodeQuery("Defense",""+window.assetConfig.baseUrl+"/global/en/outgame/extension/potential/pot_skill_05_on.png")
+    skillOrbContainer.typeDEFBoostNode=new equipNodeQuery("Defense",""+window.assetBase+"/global/en/outgame/extension/potential/pot_skill_05_on.png")
     skillOrbContainer.appendChild(skillOrbContainer.typeDEFBoostNode.getElement());
 
-    skillOrbContainer.superAttackBoostNode=new equipNodeQuery("SuperBoost",""+window.assetConfig.baseUrl+"/global/en/outgame/extension/potential/pot_skill_06_on.png")
+    skillOrbContainer.superAttackBoostNode=new equipNodeQuery("SuperBoost",""+window.assetBase+"/global/en/outgame/extension/potential/pot_skill_06_on.png")
     skillOrbContainer.appendChild(skillOrbContainer.superAttackBoostNode.getElement());
 
-    skillOrbContainer.recoveryBoostNode=new equipNodeQuery("Recovery",""+window.assetConfig.baseUrl+"/global/en/outgame/extension/potential/pot_skill_07_on.png")
+    skillOrbContainer.recoveryBoostNode=new equipNodeQuery("Recovery",""+window.assetBase+"/global/en/outgame/extension/potential/pot_skill_07_on.png")
     skillOrbContainer.appendChild(skillOrbContainer.recoveryBoostNode.getElement());
 
 
@@ -4407,7 +4407,7 @@ function createFinishContainer(){
             }
             
             finishcontainer.Button=document.createElement("button");
-            finishcontainer.Button = document.createElement('button');
+            finishcontainer.Button = document.createElement("button");
             finishcontainer.Button.innerHTML = "Activate Finish Skill?";
             finishcontainer.Button.style.background="#FF5C35";
             finishcontainer.Button.style.zIndex=10;
@@ -4415,12 +4415,12 @@ function createFinishContainer(){
             finishcontainer.Button.style.position="relative";
             finishcontainer.Button.parentClass=finishcontainer;
             finishcontainer.Button.onclick = function(){
-                if(this.classList.contains('active')){
+                if(this.classList.contains("active")){
                     if(finishType=="revival"){
                         changePassiveButton("Has this character or an ally attacking in the same turn been KO'd on this turn?",false);
                     }
                     this.style.background="#FF5C35"
-                    this.classList.remove('active');
+                    this.classList.remove("active");
                     finishSkillPerformed=false
                     updatePassiveStats();
                 }
@@ -4429,7 +4429,7 @@ function createFinishContainer(){
                         changePassiveButton("Has this character or an ally attacking in the same turn been KO'd on this turn?",true);
                     }
                     finishSkillPerformed=true;
-                    this.classList.add('active');
+                    this.classList.add("active");
                     this.style.background="#00FF00"
                     updatePassiveStats();
                     //CALCULATE BASED ON CHARGES AND SUCH
@@ -4493,21 +4493,21 @@ function createActiveContainer(){
             activecontainer.Condition.innerText=currentJson["Active Skill"]["Condition Description"];
             
             activecontainer.Button=document.createElement("button");
-            activecontainer.Button = document.createElement('button');
+            activecontainer.Button = document.createElement("button");
             activecontainer.Button.innerHTML = "Activate Active Skill?";
             activecontainer.Button.style.background="#FF5C35"
             activecontainer.Button.style.zIndex=10
             activecontainer.Button.style.cursor="pointer"
             activecontainer.Button.onclick = function(){
-              if(activecontainer.Button.classList.contains('active')){
+              if(activecontainer.Button.classList.contains("active")){
                 activecontainer.Button.style.background="#FF5C35"
-                activecontainer.Button.classList.remove('active');
+                activecontainer.Button.classList.remove("active");
                 activeAttackPerformed=false
                 activeMultipliers={"ATK":0,"DEF":0,"Effective against all":false,"Guard":false,"Dodge Chance":0,"Crit Chance":0,"Redirect attacks to me":false}
                 kiSources["Active"]=0
               }
               else{
-                activecontainer.Button.classList.add('active');
+                activecontainer.Button.classList.add("active");
                 activecontainer.Button.style.background="#00FF00"
                 if("Attack" in currentJson["Active Skill"]){
                     activeAttackPerformed=true
@@ -4600,7 +4600,7 @@ function createDamageTakenContainer(){
         const option=document.createElement("div");
         option.referenceTyping=possibleEnemyTyping;
         option.referenceData="Typing";
-        option.style.backgroundImage='url(""+window.assetConfig.baseUrl+"/global/en/layout/en/image/character/cha_type_icon_0'+typeToInt(possibleEnemyTyping)+'.png")';
+        option.style.backgroundImage="url('"+window.assetBase+"/global/en/layout/en/image/character/cha_type_icon_0"+typeToInt(possibleEnemyTyping)+".png')";
         if(possibleEnemyTyping!=enemyTyping){
             option.style.filter="grayscale(90%)";
         }
@@ -4623,7 +4623,7 @@ function createDamageTakenContainer(){
         const option=document.createElement("div");
         option.referenceClass=possibleEnemyClass;
         option.referenceData="Class";
-        option.style.backgroundImage='url(""+window.assetConfig.baseUrl+"/global/en/layout/en/image/character/cha_type_icon_'+classToInt(possibleEnemyClass)+typeToInt(enemyTyping)+'.png")';
+        option.style.backgroundImage="url('"+window.assetBase+"/global/en/layout/en/image/character/cha_type_icon_"+classToInt(possibleEnemyClass)+typeToInt(enemyTyping)+".png')";
         if(possibleEnemyClass!=enemyClass){
             option.style.filter="grayscale(90%)";
         }
@@ -4774,7 +4774,7 @@ function updateDamageTakenQueryContainer(){
             }
         }
         else if(option.referenceData=="Class"){
-            option.style.backgroundImage='url(""+window.assetConfig.baseUrl+"/global/en/layout/en/image/character/cha_type_icon_'+classToInt(option.referenceClass)+typeToInt(enemyTyping)+'.png")';
+            option.style.backgroundImage="url('"+window.assetBase+"/global/en/layout/en/image/character/cha_type_icon_"+classToInt(option.referenceClass)+typeToInt(enemyTyping)+".png')";
             option.style.filter="grayscale(85%)";
             if(option.referenceClass==enemyClass){
                 option.style.filter="grayscale(0%)";
@@ -4790,13 +4790,13 @@ function updateDamageTakenQueryContainer(){
         if(!Array.from(attackPerformedSelector.options).some(o => o.value == "active")){
             const option=document.createElement("option");
             option.id="attack-performed-active";
-            option.textContent="1: Active: " + Math.floor(document.getElementById("active-container").kiCircle.getAttack()).toLocaleString('en-US') ;
+            option.textContent="1: Active: " + Math.floor(document.getElementById("active-container").kiCircle.getAttack()).toLocaleString("en-US") ;
             option.value="active";
             attackPerformedSelector.add(option,attackCount++);
         }
         else{
             const existingOption=Array.from(attackPerformedSelector.options).find(o => o.value == "active");
-            existingOption.textContent="1: Active: " + Math.floor(document.getElementById("active-container").kiCircle.getAttack()).toLocaleString('en-US') ;
+            existingOption.textContent="1: Active: " + Math.floor(document.getElementById("active-container").kiCircle.getAttack()).toLocaleString("en-US") ;
         }
     }
     else{
@@ -4809,13 +4809,13 @@ function updateDamageTakenQueryContainer(){
         if(!Array.from(attackPerformedSelector.options).some(o => o.value == "finish-skill")){
             const option=document.createElement("option");
             option.id="attack-performed-finish-skill";
-            option.textContent="2: Finish Skill: " + Math.floor(document.getElementById("finish-container").kiCircle.getAttack()).toLocaleString('en-US') ;
+            option.textContent="2: Finish Skill: " + Math.floor(document.getElementById("finish-container").kiCircle.getAttack()).toLocaleString("en-US") ;
             option.value="finish-skill";
             attackPerformedSelector.add(option,attackCount++);
         }
         else{
             const existingOption=Array.from(attackPerformedSelector.options).find(o => o.value == "finish-skill");
-            existingOption.textContent="2: Finish Skill: " + Math.floor(document.getElementById("finish-container").kiCircle.getAttack()).toLocaleString('en-US') ;
+            existingOption.textContent="2: Finish Skill: " + Math.floor(document.getElementById("finish-container").kiCircle.getAttack()).toLocaleString("en-US") ;
         }
     }
     else{
@@ -4831,12 +4831,12 @@ function updateDamageTakenQueryContainer(){
                 const option=document.createElement("option");
                 option.id="attack-performed-"+attack.passiveLineKey;
                 option.value=attack.passiveLineKey;
-                option.textContent=attackCount + ": " + Math.floor(attack.getAttack()).toLocaleString('en-US');
+                option.textContent=attackCount + ": " + Math.floor(attack.getAttack()).toLocaleString("en-US");
                 attackPerformedSelector.add(option,attackCount++);
             }
             else{
                 const existingOption=Array.from(attackPerformedSelector.options).find(o => o.value == attack.passiveLineKey);
-                existingOption.textContent=attackCount + ": " + Math.floor(attack.getAttack()).toLocaleString('en-US');
+                existingOption.textContent=attackCount + ": " + Math.floor(attack.getAttack()).toLocaleString("en-US");
                 if(attackPerformedSelector.value == attack.passiveLineKey){
                     attackPerformedSelector.removeChild(existingOption);
                     attackPerformedSelector.add(existingOption,attackCount++);
@@ -4993,7 +4993,7 @@ function updateEnemyNumbers(){
             false
         );
     }
-    enemyAttackTaken.innerHTML="Damage dealt: "+Math.round(attackDealt,0).toLocaleString('en-US');
+    enemyAttackTaken.innerHTML="Damage dealt: "+Math.round(attackDealt,0).toLocaleString("en-US");
 
     const statsOnHit=document.getElementById("stats-on-hit");
     const enemyAttackDealt=document.getElementById("enemy-attack-dealt");
@@ -5015,10 +5015,10 @@ function updateEnemyNumbers(){
             skillOrbBuffs["Defense"],
             recievingDamageStats.Guard||false
         )
-        enemyAttackDealt.innerHTML="Damage taken: "+Math.round(attackTaken,0).toLocaleString('en-US');
+        enemyAttackDealt.innerHTML="Damage taken: "+Math.round(attackTaken,0).toLocaleString("en-US");
         enemyAttackDealt.style.display="block";
         statsOnHit.style.display="block";
-        statsOnHit.innerHTML="DEF: "+ recievingDamageStats.Defense.toLocaleString('en-US')+"<br>";
+        statsOnHit.innerHTML="DEF: "+ recievingDamageStats.Defense.toLocaleString("en-US")+"<br>";
         if(recievingDamageStats["Damage Reduction"] !=0){
             statsOnHit.innerHTML+=" DR: "+(recievingDamageStats["Damage Reduction"]||0)+"% <br>";
         }
@@ -5136,7 +5136,7 @@ function createKiSphereContainer(){
         updateKiSphereBuffs()
     })
     for (const orbType of ["STR","AGL","TEQ","INT","PHY","Candy"]){
-        const option = document.createElement('option');
+        const option = document.createElement("option");
         option.style.backgroundColor=LightenColor(colorToBackground(typeToColor(orbType)),50);
         option.textContent = orbType;
         otherDropdown.appendChild(option);
@@ -5218,7 +5218,7 @@ function polishPage(){
 
 export async function loadPage(firstTime=false){
     const urlParams=new URLSearchParams(window.location.search);
-    let subURL = urlParams.get('id') || "None";
+    let subURL = urlParams.get("id") || "None";
     isEza = urlParams.get("EZA") || "false";
     isEza=(isEza=="true");
     isSeza = urlParams.get("SEZA") || "false";
@@ -5226,13 +5226,13 @@ export async function loadPage(firstTime=false){
 
     let jsonPromise;
     if(isSeza){
-    jsonPromise=getJsonPromise('/dbManagement/jsonsSEZA/',subURL,'.json');
+    jsonPromise=getJsonPromise("/dbManagement/jsonsSEZA/",subURL,".json");
     }
     else if(isEza){
-    jsonPromise=getJsonPromise('/dbManagement/jsonsEZA/',subURL,'.json');
+    jsonPromise=getJsonPromise("/dbManagement/jsonsEZA/",subURL,".json");
     }
     else{
-    jsonPromise=getJsonPromise('/dbManagement/jsons/',subURL,'.json');
+    jsonPromise=getJsonPromise("/dbManagement/jsons/",subURL,".json");
     }
 
     try{
@@ -5263,13 +5263,13 @@ export async function loadPage(firstTime=false){
             createDamageTakenContainer();
         }
         else{
-            //document.getElementById('ki-slider').dispatchEvent(new Event('input'));	
+            //document.getElementById("ki-slider").dispatchEvent(new Event("input"));	
         }
         createLevelSlider();
         createSuperAttackContainer();
         updateBaseStats(false);
         if(currentJson["Rarity"] == "lr" || currentJson["Rarity"] == "ur"){
-            const buttonContainer = document.getElementById('hipo-button-container');
+            const buttonContainer = document.getElementById("hipo-button-container");
             buttonContainer.style.display = "grid";
         }
         

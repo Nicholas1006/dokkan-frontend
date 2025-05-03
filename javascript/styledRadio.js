@@ -41,8 +41,8 @@ export class styledRadio {
             
 
             const onClickFunction = (option) => {
-                const inactiveImage="/dbManagement/DokkanFiles/global/en/layout/en/image/common/btn/com_btn_18_green_gray.png"
-                const activeImage="/dbManagement/DokkanFiles/global/en/layout/en/image/common/btn/com_btn_18_green.png"
+                const inactiveImage=window.assetBase+"/global/en/layout/en/image/common/btn/com_btn_18_green_gray.png"
+                const activeImage=window.assetBase+"/global/en/layout/en/image/common/btn/com_btn_18_green.png"
                 if (this.onlyOneSelected) {
                     for (const optionIterate of this.options) {
                         optionIterate.element.classList.remove("activeGreen");
@@ -77,7 +77,7 @@ export class styledRadio {
             
             if (option.label == this.value) {
                 option.element.classList.add("activeGreen");
-                option.changeAssetImage("/dbManagement/DokkanFiles/global/en/layout/en/image/common/btn/com_btn_18_green.png");
+                option.changeAssetImage(window.assetBase+"/global/en/layout/en/image/common/btn/com_btn_18_green.png");
             }
             
             

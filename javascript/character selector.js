@@ -21,13 +21,13 @@ function getJsonPromise(prefix,name,suffix) {
   return fetch(prefix + name + suffix)
     .then(response => {
         if (!response.ok) {
-          throw new Error('Network response was not ok' + response.statusText);
+          throw new Error("Network response was not ok" + response.statusText);
         }
         return response.json();
       }
     )
     .catch(error => {
-        console.error('Error fetching JSON:', error);
+        console.error("Error fetching JSON:", error);
         throw error; // Re-throw the error to propagate it to the caller
     }
   );
@@ -52,26 +52,26 @@ function rarityToInt(rarity){
 
 
 function createFilterOption(){
-  const filterContainer = document.getElementById('filter-container');
-  const filterSelect = document.createElement('select');
-  const filterOptions = ['Name','Type', 'Rarity', 'Eza', "Seza", "Class","Categories","Super Attack Types", "Links"]; 
+  const filterContainer = document.getElementById("filter-container");
+  const filterSelect = document.createElement("select");
+  const filterOptions = ["Name","Type", "Rarity", "Eza", "Seza", "Class","Categories","Super Attack Types", "Links"]; 
   filterOptions.forEach(option => {
-    const optionElement = document.createElement('option');
+    const optionElement = document.createElement("option");
     optionElement.value = option;
     optionElement.textContent = option;
     filterSelect.appendChild(optionElement);
   });
-  filterSelect.addEventListener('change', function() {
+  filterSelect.addEventListener("change", function() {
     currentFilter = this.value;
     reFilterCards();
   })
 
-  const filterTextInput = document.createElement('input');
+  const filterTextInput = document.createElement("input");
   filterTextInput.type="text";
   filterTextInput.id="currentFilterInput";
   filterTextInput.placeholder="Enter text to filter by";
-  filterTextInput.setAttribute('autocomplete', 'off');
-  filterTextInput.addEventListener('input', function() {
+  filterTextInput.setAttribute("autocomplete", "off");
+  filterTextInput.addEventListener("input", function() {
     currentFilterValue = this.value;
     reFilterCards();
   });
@@ -83,7 +83,7 @@ function createFilterOption(){
 function reFilterCards(sortCutIDBefore=false) {
   if(Object.keys(unitBasicsDetails).includes(currentFilter)){
     currentFilteredUnits = Object.keys(unitBasicsDetails["Max Level"]);
-    if(['Eza',"Seza"].includes(currentFilter)){
+    if(["Eza","Seza"].includes(currentFilter)){
       let currentFilteringUnits = [];
       for (const unit of currentFilteredUnits){
         if(unit.endsWith(currentFilter.toUpperCase())){
@@ -92,7 +92,7 @@ function reFilterCards(sortCutIDBefore=false) {
       }
       currentFilteredUnits=currentFilteringUnits;
     }
-    else if (['Type', 'Name', 'Rarity','Class'].includes(currentFilter) && currentFilterValue !== "") {
+    else if (["Type", "Name", "Rarity","Class"].includes(currentFilter) && currentFilterValue !== "") {
       let currentFilteringUnits = [];
       for (const unit of currentFilteredUnits){
         if(unitBasicsDetails[currentFilter][unit].toLowerCase().includes(currentFilterValue.toLowerCase()) ){
@@ -141,7 +141,7 @@ function reFilterCards(sortCutIDBefore=false) {
 }
 
 function createCharacterBoxes() {
-  const unitsContainer = document.getElementById('unit-selection-container');
+  const unitsContainer = document.getElementById("unit-selection-container");
   for (let unitCount = 0; unitCount < unitsToDisplay; unitCount++) {
     displayBoxes[unitCount] = new unitDisplay();
     displayBoxes[unitCount].setExactWidth("164px");
@@ -152,16 +152,16 @@ function createCharacterBoxes() {
 }
 
 function createSortOption(){
-  const sortContainer = document.getElementById('sort-container');
-  const sortSelect = document.createElement('select');
-  const sortOptions = ["Acquired", 'ID', 'Max Level', 'Rarity', 'Cost', 'HP', 'Attack', "Defense", "Sp Atk Lv"];
+  const sortContainer = document.getElementById("sort-container");
+  const sortSelect = document.createElement("select");
+  const sortOptions = ["Acquired", "ID", "Max Level", "Rarity", "Cost", "HP", "Attack", "Defense", "Sp Atk Lv"];
   sortOptions.forEach(option => {
-    const optionElement = document.createElement('option');
+    const optionElement = document.createElement("option");
     optionElement.value = option;
     optionElement.textContent = option;
     sortSelect.appendChild(optionElement);
   });
-  sortSelect.addEventListener('change', function() {
+  sortSelect.addEventListener("change", function() {
     window.currentSort = this.value;
     reSortCards();
   })
@@ -347,9 +347,9 @@ function createSortButton(){
   document.body.appendChild(sortFilterContainer.getElement());
   document.body.appendChild(sortFilterContainer.getBackground());
 
-  const sortButton = document.getElementById('sort-filter-container');
+  const sortButton = document.getElementById("sort-filter-container");
   sortButton.addEventListener(
-    'click', function() {
+    "click", function() {
       sortFilterContainer.setDisplay(!sortFilterContainer.getDisplay());
     }
   )

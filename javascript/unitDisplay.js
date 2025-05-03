@@ -73,7 +73,7 @@ export class unitDisplay{
       this.container.sezaImage.style.display="none";
       this.container.appendChild(this.container.sezaImage);
       
-      this.container.infoHolder = document.createElement('div');
+      this.container.infoHolder = document.createElement("div");
       this.container.infoHolder.className="unit-info-holder";
       this.container.appendChild(this.container.infoHolder);
 
@@ -89,7 +89,7 @@ export class unitDisplay{
 
       this.container.infoHolder.unitLevel.level=document.createElement("img")
       this.container.infoHolder.unitLevel.level.className="unit-info-holder-level-level";
-      this.container.infoHolder.unitLevel.level.src="/dbManagement/DokkanFiles/global/en/layout/en/image/common/label/com_label_large_lv.png";
+      this.container.infoHolder.unitLevel.level.src=window.assetBase+"/global/en/layout/en/image/common/label/com_label_large_lv.png";
       this.container.infoHolder.unitLevel.level.loading="eager";
       this.container.infoHolder.unitLevel.appendChild(this.container.infoHolder.unitLevel.level);
 
@@ -114,26 +114,26 @@ export class unitDisplay{
         this.container.unitThumbImage.onload = () => {
           this.container.unitThumbImage.style.visibility="visible";
         };
-        this.container.unitThumbImage.src = "/dbManagement/DokkanFiles/global/en/character/thumb/card_"+this.resourceID+"_thumb.png";
+        this.container.unitThumbImage.src = window.assetBase+"/global/en/character/thumb/card_"+this.resourceID+"_thumb.png";
       }
     };
 
     setClass(Class){
       this.ClassInt=classToInt(Class);
-      this.container.unitBackImage.src="/dbManagement/DokkanFiles/global/en/layout/en/image/character/character_thumb_bg/cha_base_0"+this.typeInt+"_0"+rarityToInt(this.rarity)+".png";
-      this.container.unitTypingImage.src="/dbManagement/DokkanFiles/global/en/layout/en/image/character/cha_type_icon_"+this.ClassInt+this.typeInt+".png";
+      this.container.unitBackImage.src=window.assetBase+"/global/en/layout/en/image/character/character_thumb_bg/cha_base_0"+this.typeInt+"_0"+rarityToInt(this.rarity)+".png";
+      this.container.unitTypingImage.src=window.assetBase+"/global/en/layout/en/image/character/cha_type_icon_"+this.ClassInt+this.typeInt+".png";
     };
     setType(type){
       this.typeInt=typeToInt(type);
-      this.container.infoHolder.style.backgroundImage="url('/dbManagement/DokkanFiles/global/en/layout/en/image/character/cha_base_bottom_0"+this.typeInt+".png')";
-      this.container.unitBackImage.src="/dbManagement/DokkanFiles/global/en/layout/en/image/character/character_thumb_bg/cha_base_0"+this.typeInt+"_0"+rarityToInt(this.rarity)+".png";
-      this.container.unitTypingImage.src="/dbManagement/DokkanFiles/global/en/layout/en/image/character/cha_type_icon_"+this.ClassInt+this.typeInt+".png";
+      this.container.infoHolder.style.backgroundImage="url('"+window.assetBase+"/global/en/layout/en/image/character/cha_base_bottom_0"+this.typeInt+".png')";
+      this.container.unitBackImage.src=window.assetBase+"/global/en/layout/en/image/character/character_thumb_bg/cha_base_0"+this.typeInt+"_0"+rarityToInt(this.rarity)+".png";
+      this.container.unitTypingImage.src=window.assetBase+"/global/en/layout/en/image/character/cha_type_icon_"+this.ClassInt+this.typeInt+".png";
     };
     setRarity(rarity){
       this.rarity=rarity;
       this.rarityInt=rarityToInt(rarity);
-      this.container.unitBackImage.src="/dbManagement/DokkanFiles/global/en/layout/en/image/character/character_thumb_bg/cha_base_0"+this.typeInt+"_0"+rarityToInt(this.rarity)+".png";
-      this.container.unitRarityImage.src="/dbManagement/DokkanFiles/global/en/layout/en/image/character/cha_rare_sm_"+this.rarity+".png";
+      this.container.unitBackImage.src=window.assetBase+"/global/en/layout/en/image/character/character_thumb_bg/cha_base_0"+this.typeInt+"_0"+rarityToInt(this.rarity)+".png";
+      this.container.unitRarityImage.src=window.assetBase+"/global/en/layout/en/image/character/cha_rare_sm_"+this.rarity+".png";
       if(this.rarity=="lr"){
         this.container.lrAnimation.style.display="block";
         this.container.lrBackground.style.display="block";
