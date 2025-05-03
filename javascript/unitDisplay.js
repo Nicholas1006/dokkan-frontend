@@ -60,14 +60,14 @@ export class unitDisplay{
       this.ezaLevel="none";
       
       this.container.ezaImage = document.createElement('img');
-      this.container.ezaImage.src = "/dbManagement/DokkanFiles/global/en/layout/en/image/charamenu/dokkan/dok_img_kyokugen.png";
+      this.container.ezaImage.src = window.assetBase+"/global/en/layout/en/image/charamenu/dokkan/dok_img_kyokugen.png";
       this.container.ezaImage.loading="lazy";
       this.container.ezaImage.className="unit-eza-image";
       this.container.ezaImage.style.display="none";
       this.container.appendChild(this.container.ezaImage);
 
       this.container.sezaImage = document.createElement('img');
-      this.container.sezaImage.src = "/dbManagement/DokkanFiles/global/en/layout/en/image/charamenu/dokkan/dok_img_super_optimal.png";
+      this.container.sezaImage.src = window.assetBase+"/global/en/layout/en/image/charamenu/dokkan/dok_img_super_optimal.png";
       this.container.sezaImage.loading="lazy";
       this.container.sezaImage.className="unit-eza-image";
       this.container.sezaImage.style.display="none";
