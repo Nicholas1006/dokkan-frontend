@@ -160,9 +160,6 @@ function createSortOption(){
 
 function reSortCards(){
   if(Object.keys(unitBasicsDetails).includes(window.currentSort)){
-    const startTime=Date.now();
-
-    const unitsContainer = document.getElementById('unit-selection-container');
 
     let sortedUnits = currentFilteredUnits;
     const order = window.currentOrder =="ascending" ? 1 : -1;
@@ -188,19 +185,25 @@ function reSortCards(){
     for (let i = 0; i < unitsToDisplay;i++) {
       if(i<sortedUnits.length){
         let otherDisplayedValue=null;
-        if(["Cost","HP","Attack","Defense","Sp Atk Lv"].includes(window.currentSort)){
+        let otherDisplayedValueColor="white";
+        if(["Cost","HP","Attack","Defense"].includes(window.currentSort)){
           otherDisplayedValue=unitBasicsDetails[window.currentSort][sortedUnits[i]];
         }
+        else if(window.currentSort=="Sp Atk Lv"){
+          otherDisplayedValue=unitBasicsDetails["Sp Atk Lv"][sortedUnits[i]];
+          otherDisplayedValueColor="yellow";
+        }
+          
         else if(window.currentSort=="Release"){
           const daysSinceRelease=daysSince(unitBasicsDetails["Release"][sortedUnits[i]]);
-          if(daysSinceRelease==1){
-            otherDisplayedValue=daysSinceRelease+" day ago";
+          if(Math.abs(daysSinceRelease)==1){
+            otherDisplayedValue=Math.abs(daysSinceRelease)+" day";
           }
-          else if(daysSinceRelease>1 || daysSinceRelease==0){
-            otherDisplayedValue=daysSinceRelease+" days ago";
+          else{
+            otherDisplayedValue=Math.abs(daysSinceRelease)+" days";
           }
-          else if(daysSinceRelease<0){
-            otherDisplayedValue=daysSinceRelease+" days from now";
+          if(daysSinceRelease<0){
+            otherDisplayedValueColor="red";
           }
         }
         let ezaLevel = "none";
@@ -218,6 +221,7 @@ function reSortCards(){
         displayBoxes[i].setRarity(unitBasicsDetails["Rarity"][sortedUnits[i]]);
         displayBoxes[i].setLevel(unitBasicsDetails["Max Level"][sortedUnits[i]]);
         displayBoxes[i].setOtherDisplayedValue(otherDisplayedValue);
+        displayBoxes[i].setOtherDisplayedValueColor(otherDisplayedValueColor);
         displayBoxes[i].setPossibleEzaLevel(ezaLevel);
         displayBoxes[i].setEzaLevel(ezaLevel);
         displayBoxes[i].setUrl(baseDomain+"/cards/index.html?id=" + sortedUnits[i].substring(0,7) + "&EZA="+(sortedUnits[i].endsWith("EZA"))+"&SEZA="+sortedUnits[i].endsWith("SEZA"));

@@ -161,6 +161,12 @@ export class unitDisplay{
         this.container.infoHolder.unitLevel.style.animation="fade 4s infinite";
       }
     }
+
+    setOtherDisplayedValueColor(otherDisplayedValueColor){
+      this.otherDisplayedValueColor=otherDisplayedValueColor;
+      this.container.infoHolder.unitText.style.color=this.otherDisplayedValueColor;
+    }
+
     setEzaLevel(ezaLevel){
       this.ezaLevel=ezaLevel;
       if(this.possibleEzaLevel!="seza" && this.ezaLevel=="seza"){

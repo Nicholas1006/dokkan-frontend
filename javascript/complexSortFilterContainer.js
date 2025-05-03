@@ -49,12 +49,14 @@ export class complexSortFilterContainer {
                     this.text.classList.remove("descending");
                     this.text.classList.add("ascending");
                     window.currentOrder="ascending";
+                    document.getElementById("sort-direction").src="/dbManagement/DokkanFiles/global/en/layout/en/image/common/btn/filter_icon_ascending.png";
                     window.reSortCards();
                 }
                 else{
                     this.text.classList.remove("ascending");
                     this.text.classList.add("descending");
                     window.currentOrder="descending";
+                    document.getElementById("sort-direction").src="/dbManagement/DokkanFiles/global/en/layout/en/image/common/btn/filter_icon_descending.png";
                     window.reSortCards();
                 }
             }
@@ -83,10 +85,11 @@ export class complexSortFilterContainer {
         ];
         
         const onChangeFunction=function(){
+            document.getElementById("sort-text").textContent=this.value;
             window.currentSort=this.value;
             window.reSortCards();
         };
-        this.sortContainer=new styledRadio(this.width,sortContainerOptionsList,3, true, onChangeFunction,"/dbManagement/DokkanFiles/global/en/layout/en/image/common/btn/com_btn_03_yellow.png", 32);
+        this.sortContainer=new styledRadio(this.width,sortContainerOptionsList,"Release",3, true, onChangeFunction,"/dbManagement/DokkanFiles/global/en/layout/en/image/common/btn/com_btn_18_green_gray.png", 32);
         this.sortContainer.getContainer().style.gridRow="2";
         this.sortContainer.getContainer()
         this.element.appendChild(this.sortContainer.getContainer());

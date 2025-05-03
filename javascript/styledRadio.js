@@ -1,6 +1,7 @@
 export class styledRadio {
-    constructor(width, namesList, optionPerLine, onlyOneSelected, onChangeFunction, assetPath, assetSideWidth) {
+    constructor(width, namesList, firstActivated, optionPerLine, onlyOneSelected, onChangeFunction, assetPath, assetSideWidth) {
         this.width = width;
+        this.value=firstActivated;
         this.onChangeFunction = onChangeFunction;
         this.container = document.createElement("div");
         this.container.className = "styled-radio-container";
@@ -10,7 +11,6 @@ export class styledRadio {
         this.assetSideWidth = assetSideWidth;
         this.container.style.gridTemplateColumns = `repeat(${optionPerLine}, 1fr)`;
         this.options = [];
-        this.value = namesList[0];
         this.setNamesList(namesList);
     }
 
@@ -41,8 +41,8 @@ export class styledRadio {
             
 
             const onClickFunction = (option) => {
-                const inactiveImage="/dbManagement/DokkanFiles/global/en/layout/en/image/common/btn/com_btn_03_yellow.png"
-                const activeImage="/dbManagement/DokkanFiles/global/en/layout/en/image/common/btn/com_btn_03_green.png"
+                const inactiveImage="/dbManagement/DokkanFiles/global/en/layout/en/image/common/btn/com_btn_18_green_gray.png"
+                const activeImage="/dbManagement/DokkanFiles/global/en/layout/en/image/common/btn/com_btn_18_green.png"
                 if (this.onlyOneSelected) {
                     for (const optionIterate of this.options) {
                         optionIterate.element.classList.remove("activeGreen");
@@ -75,10 +75,9 @@ export class styledRadio {
             
             option.parentClass = this;
             
-            if (!firstActivated && this.onlyOneSelected) {
+            if (option.label == this.value) {
                 option.element.classList.add("activeGreen");
-                option.changeAssetImage("/dbManagement/DokkanFiles/global/en/layout/en/image/common/btn/com_btn_03_green.png");
-                firstActivated = true;
+                option.changeAssetImage("/dbManagement/DokkanFiles/global/en/layout/en/image/common/btn/com_btn_18_green.png");
             }
             
             
