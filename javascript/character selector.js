@@ -80,7 +80,7 @@ function createFilterOption(){
   filterContainer.appendChild(filterTextInput);
 }
 
-function reFilterCards() {
+function reFilterCards(sortCutIDBefore=false) {
   if(Object.keys(unitBasicsDetails).includes(currentFilter)){
     currentFilteredUnits = Object.keys(unitBasicsDetails["Max Level"]);
     if(['Eza',"Seza"].includes(currentFilter)){
@@ -114,15 +114,27 @@ function reFilterCards() {
         }
       currentFilteredUnits=currentFilteringUnits;
     }
-
-    reSortCards();
+    if(sortCutIDBefore){
+      let unitBasicsDetailPromise;
+      unitBasicsDetailPromise=getJsonPromise("/dbManagement/uniqueJsons/unitBasics/","ID",".json");
+      unitBasicsDetailPromise.then(
+        unitBasicsDetail =>{
+          unitBasicsDetails["ID"]=unitBasicsDetail;
+          sortCutID();
+          reSortCards();
+        }
+      )
+    }
+    else{
+      reSortCards();
+    }
   }
   else{
     const unitBasicsDetailPromise=getJsonPromise("/dbManagement/uniqueJsons/unitBasics/",currentFilter,".json");
     unitBasicsDetailPromise.then(
       unitBasicsDetail =>{
         unitBasicsDetails[currentFilter]=unitBasicsDetail;
-        reFilterCards();
+        reFilterCards(sortCutIDBefore);
       }
     )
   }
@@ -239,17 +251,96 @@ function reSortCards(){
     }
   }
   else{
-    const unitBasicsDetailPromise=getJsonPromise("/dbManagement/uniqueJsons/unitBasics/",window.currentSort,".json");
+    let unitBasicsDetailPromise;
+    unitBasicsDetailPromise=getJsonPromise("/dbManagement/uniqueJsons/unitBasics/",window.currentSort,".json");
     unitBasicsDetailPromise.then(
       unitBasicsDetail =>{
         unitBasicsDetails[window.currentSort]=unitBasicsDetail;
-        reFilterCards();
+        reSortCards();
       }
     )
   }
-  
 }
-window.reSortCards=reSortCards;
+
+function sortCutID(showUpdate=false){
+  let sortedUnits = currentFilteredUnits;
+  const order = window.currentOrder =="ascending" ? 1 : -1;
+
+  sortedUnits.sort((a, b) => {
+    let valueA = unitBasicsDetails["ID"][a]%1000000;
+    let valueB = unitBasicsDetails["ID"][b]%1000000;
+    if (window.currentSort === "Rarity") {
+      valueA = rarityToInt(valueA);
+      valueB = rarityToInt(valueB);
+    }
+
+    if(valueA < valueB) {
+      return -1 * order;
+    }
+    if(valueA > valueB) {
+      return 1 * order;
+    }
+    return 0;
+  });
+  if(showUpdate){
+    for (let i = 0; i < unitsToDisplay;i++) {
+      if(i<sortedUnits.length){
+        let otherDisplayedValue=null;
+        let otherDisplayedValueColor="white";
+        if(["Cost","HP","Attack","Defense"].includes(window.currentSort)){
+          otherDisplayedValue=unitBasicsDetails[window.currentSort][sortedUnits[i]];
+        }
+        else if(window.currentSort=="Sp Atk Lv"){
+          otherDisplayedValue=unitBasicsDetails["Sp Atk Lv"][sortedUnits[i]];
+          otherDisplayedValueColor="yellow";
+        }
+          
+        else if(window.currentSort=="Release"){
+          const daysSinceRelease=daysSince(unitBasicsDetails["Release"][sortedUnits[i]]);
+          if(Math.abs(daysSinceRelease)==1){
+            otherDisplayedValue=Math.abs(daysSinceRelease)+" day";
+          }
+          else{
+            otherDisplayedValue=Math.abs(daysSinceRelease)+" days";
+          }
+          if(daysSinceRelease<0){
+            otherDisplayedValueColor="red";
+          }
+        }
+        let ezaLevel = "none";
+        if(sortedUnits[i].endsWith("SEZA")){
+          ezaLevel = "seza";
+        }
+        else if(sortedUnits[i].endsWith("EZA")){
+          ezaLevel = "eza";
+        }
+        
+
+        displayBoxes[i].setResourceID(unitBasicsDetails["Resource ID"][sortedUnits[i]]);
+        displayBoxes[i].setClass(unitBasicsDetails["Class"][sortedUnits[i]]);
+        displayBoxes[i].setType(unitBasicsDetails["Type"][sortedUnits[i]]);
+        displayBoxes[i].setRarity(unitBasicsDetails["Rarity"][sortedUnits[i]]);
+        displayBoxes[i].setLevel(unitBasicsDetails["Max Level"][sortedUnits[i]]);
+        displayBoxes[i].setOtherDisplayedValue(otherDisplayedValue);
+        displayBoxes[i].setOtherDisplayedValueColor(otherDisplayedValueColor);
+        displayBoxes[i].setPossibleEzaLevel(ezaLevel);
+        displayBoxes[i].setEzaLevel(ezaLevel);
+        displayBoxes[i].setUrl(baseDomain+"/cards/index.html?id=" + sortedUnits[i].substring(0,7) + "&EZA="+(sortedUnits[i].endsWith("EZA"))+"&SEZA="+sortedUnits[i].endsWith("SEZA"));
+        displayBoxes[i].setDisplay(true);
+
+
+
+        //unitButton.style.backgroundImage = "url('dbManagement/DokkanFiles/global/en/character/card/"+getAssetID(sortedUnits[i]["ID"])+"/card_"+getAssetID(sortedUnits[i]["ID"])+"_full_thumb.png')";
+
+
+      }
+      if(i>=sortedUnits.length){
+        displayBoxes[i].setDisplay(false);
+      }
+    }
+  }
+}
+
 
 function createSortButton(){
   const sortFilterContainer=new complexSortFilterContainer(COMPLEXSORTFILTERCONTAINERWIDTH,COMPLEXSORTFILTERCONTAINERHEIGHT);
@@ -282,9 +373,11 @@ function createCharacterSelection(){
           unitBasicsDetails[field] = results[index];
         }
       );
-      reFilterCards();
+      reFilterCards(true);
     }
   )
 };
 let baseDomain=window.location.origin;
 createCharacterSelection();
+
+window.reSortCards=reSortCards;
