@@ -5,7 +5,7 @@ const isLocalDevelopment = window.location.hostname === 'localhost' ||
 const assetConfig = {
   baseUrl: isLocalDevelopment 
     ? '/dbManagement/DokkanFiles' 
-    : 'https://dokkan-calc-assets.s3.eu-west-1.amazonaws.com/latest'
+    : 'https://dokkan-calc-assets.s3.eu-west-1.amazonaws.com'
 };
 
 // Make it globally available
