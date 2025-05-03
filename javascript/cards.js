@@ -65,19 +65,19 @@ class kiCircleClass{
         let circleBase=document.createElement("div");
         circleBase.id="circle-base";
         if(currentJson.Type=="AGL"){
-            circleBase.style.backgroundImage = "url('/dbManagement/DokkanFiles/global/en/layout/en/image/ingame/battle/chara_icon/ing_type_gauge_base_00.png')";
+            circleBase.style.backgroundImage = "url('"+window.assetConfig.baseUrl+"/global/en/layout/en/image/ingame/battle/chara_icon/ing_type_gauge_base_00.png')";
         }
         else if(currentJson.Type=="TEQ"){
-            circleBase.style.backgroundImage = "url('/dbManagement/DokkanFiles/global/en/layout/en/image/ingame/battle/chara_icon/ing_type_gauge_base_01.png')";
+            circleBase.style.backgroundImage = "url('"+window.assetConfig.baseUrl+"/global/en/layout/en/image/ingame/battle/chara_icon/ing_type_gauge_base_01.png')";
         }
         else if(currentJson.Type=="INT"){
-            circleBase.style.backgroundImage = "url('/dbManagement/DokkanFiles/global/en/layout/en/image/ingame/battle/chara_icon/ing_type_gauge_base_02.png')";
+            circleBase.style.backgroundImage = "url('"+window.assetConfig.baseUrl+"/global/en/layout/en/image/ingame/battle/chara_icon/ing_type_gauge_base_02.png')";
         }
         else if(currentJson.Type=="STR"){
-            circleBase.style.backgroundImage = "url('/dbManagement/DokkanFiles/global/en/layout/en/image/ingame/battle/chara_icon/ing_type_gauge_base_03.png')";
+            circleBase.style.backgroundImage = "url('"+window.assetConfig.baseUrl+"/global/en/layout/en/image/ingame/battle/chara_icon/ing_type_gauge_base_03.png')";
         }
         else if(currentJson.Type=="PHY"){
-            circleBase.style.backgroundImage = "url('/dbManagement/DokkanFiles/global/en/layout/en/image/ingame/battle/chara_icon/ing_type_gauge_base_04.png')";
+            circleBase.style.backgroundImage = "url('"+window.assetConfig.baseUrl+"/global/en/layout/en/image/ingame/battle/chara_icon/ing_type_gauge_base_04.png')";
         }
         circleBase.style.backgroundSize = "100% 100%";
         circleBase.style.backgroundPosition = "center";
@@ -99,7 +99,7 @@ class kiCircleClass{
         this.KiCircle.appendChild(unitImage);
         unitImage.id="unit-circle-image";
         let assetID=currentJson["ID"].slice(0, -1)+ "0";
-        unitImage.style.backgroundImage = "url('/dbManagement/DokkanFiles/global/en/character/card/" +assetID+"/card_"+assetID+"_circle.png')";
+        unitImage.style.backgroundImage = "url('"+window.assetConfig.baseUrl+"/global/en/character/card/" +assetID+"/card_"+assetID+"_circle.png')";
         unitImage.style.backgroundSize = "100% 100%";
         unitImage.style.backgroundPosition = "center";
         unitImage.style.backgroundRepeat = "no-repeat";
@@ -157,7 +157,7 @@ class kiCircleClass{
 
         this.superAttackName=document.createElement("div");
         this.superAttackName.className="super-attack-name";
-        this.superAttackName.style.backgroundImage = "url('/dbManagement/DokkanFiles/global/en/character/card/"+this.imageUrl+"/en/card_"+this.imageUrl+"_sp_name.png')";
+        this.superAttackName.style.backgroundImage = "url('"+window.assetConfig.baseUrl+"/global/en/character/card/"+this.imageUrl+"/en/card_"+this.imageUrl+"_sp_name.png')";
         this.superAttackName.style.display="none";
         this.KiCircle.appendChild(this.superAttackName);
 
@@ -710,18 +710,18 @@ class kiCircleClass{
             this.superAttackWords.classList.remove("ultra-super");
             this.superAttackWords.classList.remove("unit-super");
             if(currentJson["Super Attack"][this.superAttackID]["superStyle"]=="Normal"){
-                this.superAttackName.style.backgroundImage = "url('/dbManagement/DokkanFiles/global/en/character/card/"+this.imageUrl+"/en/card_"+this.imageUrl+"_sp_name.png')";
-                this.superAttackWords.image.src="/dbManagement/DokkanFiles/global/en/ingame/battle/effect/battle_140000/en/Images_sp_atk_str-1.png"
+                this.superAttackName.style.backgroundImage = "url('"+window.assetConfig.baseUrl+"/global/en/character/card/"+this.imageUrl+"/en/card_"+this.imageUrl+"_sp_name.png')";
+                this.superAttackWords.image.src=""+window.assetConfig.baseUrl+"/global/en/ingame/battle/effect/battle_140000/en/Images_sp_atk_str-1.png"
                 this.superAttackWords.classList.add("super")
             }
             else if(currentJson["Super Attack"][this.superAttackID]["superStyle"]=="Hyper"){
-                this.superAttackName.style.backgroundImage = "url('/dbManagement/DokkanFiles/global/en/character/card/"+this.imageUrl+"/en/card_"+this.imageUrl+"_sp0"+this.superAttackAssetID+"_name.png')";
-                this.superAttackWords.image.src="/dbManagement/DokkanFiles/global/en/ingame/battle/effect/battle_140000/en/Images_sp2_atk_str-1.png"
+                this.superAttackName.style.backgroundImage = "url('"+window.assetConfig.baseUrl+"/global/en/character/card/"+this.imageUrl+"/en/card_"+this.imageUrl+"_sp0"+this.superAttackAssetID+"_name.png')";
+                this.superAttackWords.image.src=""+window.assetConfig.baseUrl+"/global/en/ingame/battle/effect/battle_140000/en/Images_sp2_atk_str-1.png"
                 this.superAttackWords.classList.add("ultra-super")
             }
             else if(currentJson["Super Attack"][this.superAttackID]["superStyle"]=="Condition"){
-                this.superAttackName.style.backgroundImage = "url('/dbManagement/DokkanFiles/global/en/character/card/"+this.imageUrl+"/en/card_"+this.imageUrl+"_sp0"+this.superAttackAssetID+"_name.png')";
-                this.superAttackWords.image.src="/dbManagement/DokkanFiles/global/en/condition_special/000002/special_cutin_icon_text_image.png"
+                this.superAttackName.style.backgroundImage = "url('"+window.assetConfig.baseUrl+"/global/en/character/card/"+this.imageUrl+"/en/card_"+this.imageUrl+"_sp0"+this.superAttackAssetID+"_name.png')";
+                this.superAttackWords.image.src=""+window.assetConfig.baseUrl+"/global/en/condition_special/000002/special_cutin_icon_text_image.png"
                 this.superAttackWords.classList.add("unit-super")
             }
         }
@@ -1308,10 +1308,10 @@ class superAttackQuery{
                 this.insertedUnitDiv.setDisplay(true);
 
                 if(this.selfContainer.superAttack.special_name_no=="0"){
-                    insertedSuperAttackDiv.style.backgroundImage="url('/dbManagement/DokkanFiles/global/en/character/card/"+unit["Resource ID"]+"/en/card_"+unit["Resource ID"]+"_sp_name.png')";
+                    insertedSuperAttackDiv.style.backgroundImage="url('"+window.assetConfig.baseUrl+"/global/en/character/card/"+unit["Resource ID"]+"/en/card_"+unit["Resource ID"]+"_sp_name.png')";
                 }
                 else{
-                    insertedSuperAttackDiv.style.backgroundImage="url('/dbManagement/DokkanFiles/global/en/character/card/"+unit["Resource ID"]+"/en/card_"+unit["Resource ID"]+"_sp0"+this.selfContainer.superAttack.special_name_no+"_name.png')"
+                    insertedSuperAttackDiv.style.backgroundImage="url('"+window.assetConfig.baseUrl+"/global/en/character/card/"+unit["Resource ID"]+"/en/card_"+unit["Resource ID"]+"_sp0"+this.selfContainer.superAttack.special_name_no+"_name.png')"
                 }
 
             }
@@ -3711,7 +3711,7 @@ function updateChanceList(passiveLine){
 
 function createDomainContainer(){
     
-    //TODO: DOMAIN IMAGE IS STORED IN C:/Users/horva/OneDrive - Trinity College Dublin/Documents/dokkan/frontend/dbManagement/DokkanFiles/global/en/outgame/extension/dokkan_field/field_thumb_image_3007 and similar
+    //TODO: DOMAIN IMAGE IS STORED IN C:/Users/horva/OneDrive - Trinity College Dublin/Documents/dokkan/frontend"+window.assetConfig.baseUrl+"/global/en/outgame/extension/dokkan_field/field_thumb_image_3007 and similar
     let domainContainer=document.getElementById('domain-container');
     const domainDropDown=document.createElement('div');
     domainDropDown.className="domain-dropdown";
@@ -3837,7 +3837,7 @@ function refreshDomainBuffs(updatePassiveStatsBool=true){
     }
     else{
         domainImage.style.display="block";
-        domainImage.src="/dbManagement/DokkanFiles/global/en/outgame/extension/dokkan_field/field_thumb_image_"+domainData[currentDomain]["Resource ID"]+"/field_thumb_image_"+domainData[currentDomain]["Resource ID"]+".png"
+        domainImage.src=""+window.assetConfig.baseUrl+"/global/en/outgame/extension/dokkan_field/field_thumb_image_"+domainData[currentDomain]["Resource ID"]+"/field_thumb_image_"+domainData[currentDomain]["Resource ID"]+".png"
     }
 
     if(updatePassiveStatsBool){
@@ -4286,25 +4286,25 @@ function queriesToLogic(queries){
 function createSkillOrbContainer(){
     let skillOrbContainer=document.getElementById('all-skill-orb-container');
     skillOrbContainer.style.display="grid";
-    skillOrbContainer.additionalNode=new equipNodeQuery("Additional","/dbManagement/DokkanFiles/global/en/outgame/extension/potential/pot_skill_01_on.png")
+    skillOrbContainer.additionalNode=new equipNodeQuery("Additional",""+window.assetConfig.baseUrl+"/global/en/outgame/extension/potential/pot_skill_01_on.png")
     skillOrbContainer.appendChild(skillOrbContainer.additionalNode.getElement());
 
-    skillOrbContainer.critNode=new equipNodeQuery("Crit","/dbManagement/DokkanFiles/global/en/outgame/extension/potential/pot_skill_02_on.png")
+    skillOrbContainer.critNode=new equipNodeQuery("Crit",""+window.assetConfig.baseUrl+"/global/en/outgame/extension/potential/pot_skill_02_on.png")
     skillOrbContainer.appendChild(skillOrbContainer.critNode.getElement());
 
-    skillOrbContainer.evasionNode=new equipNodeQuery("Evasion","/dbManagement/DokkanFiles/global/en/outgame/extension/potential/pot_skill_03_on.png")
+    skillOrbContainer.evasionNode=new equipNodeQuery("Evasion",""+window.assetConfig.baseUrl+"/global/en/outgame/extension/potential/pot_skill_03_on.png")
     skillOrbContainer.appendChild(skillOrbContainer.evasionNode.getElement());
 
-    skillOrbContainer.typeATKBoostNode=new equipNodeQuery("Attack","/dbManagement/DokkanFiles/global/en/outgame/extension/potential/pot_skill_04_on.png")
+    skillOrbContainer.typeATKBoostNode=new equipNodeQuery("Attack",""+window.assetConfig.baseUrl+"/global/en/outgame/extension/potential/pot_skill_04_on.png")
     skillOrbContainer.appendChild(skillOrbContainer.typeATKBoostNode.getElement());
 
-    skillOrbContainer.typeDEFBoostNode=new equipNodeQuery("Defense","/dbManagement/DokkanFiles/global/en/outgame/extension/potential/pot_skill_05_on.png")
+    skillOrbContainer.typeDEFBoostNode=new equipNodeQuery("Defense",""+window.assetConfig.baseUrl+"/global/en/outgame/extension/potential/pot_skill_05_on.png")
     skillOrbContainer.appendChild(skillOrbContainer.typeDEFBoostNode.getElement());
 
-    skillOrbContainer.superAttackBoostNode=new equipNodeQuery("SuperBoost","/dbManagement/DokkanFiles/global/en/outgame/extension/potential/pot_skill_06_on.png")
+    skillOrbContainer.superAttackBoostNode=new equipNodeQuery("SuperBoost",""+window.assetConfig.baseUrl+"/global/en/outgame/extension/potential/pot_skill_06_on.png")
     skillOrbContainer.appendChild(skillOrbContainer.superAttackBoostNode.getElement());
 
-    skillOrbContainer.recoveryBoostNode=new equipNodeQuery("Recovery","/dbManagement/DokkanFiles/global/en/outgame/extension/potential/pot_skill_07_on.png")
+    skillOrbContainer.recoveryBoostNode=new equipNodeQuery("Recovery",""+window.assetConfig.baseUrl+"/global/en/outgame/extension/potential/pot_skill_07_on.png")
     skillOrbContainer.appendChild(skillOrbContainer.recoveryBoostNode.getElement());
 
 
@@ -4600,7 +4600,7 @@ function createDamageTakenContainer(){
         const option=document.createElement("div");
         option.referenceTyping=possibleEnemyTyping;
         option.referenceData="Typing";
-        option.style.backgroundImage='url("/dbManagement/DokkanFiles/global/en/layout/en/image/character/cha_type_icon_0'+typeToInt(possibleEnemyTyping)+'.png")';
+        option.style.backgroundImage='url(""+window.assetConfig.baseUrl+"/global/en/layout/en/image/character/cha_type_icon_0'+typeToInt(possibleEnemyTyping)+'.png")';
         if(possibleEnemyTyping!=enemyTyping){
             option.style.filter="grayscale(90%)";
         }
@@ -4623,7 +4623,7 @@ function createDamageTakenContainer(){
         const option=document.createElement("div");
         option.referenceClass=possibleEnemyClass;
         option.referenceData="Class";
-        option.style.backgroundImage='url("/dbManagement/DokkanFiles/global/en/layout/en/image/character/cha_type_icon_'+classToInt(possibleEnemyClass)+typeToInt(enemyTyping)+'.png")';
+        option.style.backgroundImage='url(""+window.assetConfig.baseUrl+"/global/en/layout/en/image/character/cha_type_icon_'+classToInt(possibleEnemyClass)+typeToInt(enemyTyping)+'.png")';
         if(possibleEnemyClass!=enemyClass){
             option.style.filter="grayscale(90%)";
         }
@@ -4774,7 +4774,7 @@ function updateDamageTakenQueryContainer(){
             }
         }
         else if(option.referenceData=="Class"){
-            option.style.backgroundImage='url("/dbManagement/DokkanFiles/global/en/layout/en/image/character/cha_type_icon_'+classToInt(option.referenceClass)+typeToInt(enemyTyping)+'.png")';
+            option.style.backgroundImage='url(""+window.assetConfig.baseUrl+"/global/en/layout/en/image/character/cha_type_icon_'+classToInt(option.referenceClass)+typeToInt(enemyTyping)+'.png")';
             option.style.filter="grayscale(85%)";
             if(option.referenceClass==enemyClass){
                 option.style.filter="grayscale(0%)";
