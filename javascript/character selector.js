@@ -1,6 +1,6 @@
-import { unitDisplay } from "./unitDisplay.js";
-import { complexSortFilterContainer } from "./complexSortFilterContainer.js";
-import {removePX,daysSince} from "./commonFunctions.js";
+import { unitDisplay } from "./classes/unitDisplay.js";
+import { complexSortFilterContainer } from "./classes/complexSortFilterContainer.js";
+import {removePX,timeSince,getJsonPromise} from "./commonFunctions.js";
 
 // GLOBAL VARIABLES
 let unitsToDisplay = 200;
@@ -15,23 +15,8 @@ let displayBoxes=[];
 let unitBasicsDetails={};
 
 const COMPLEXSORTFILTERCONTAINERWIDTH=480;
-const COMPLEXSORTFILTERCONTAINERHEIGHT=window.visualViewport.height;
+const COMPLEXSORTFILTERCONTAINERHEIGHT="100vh";
 
-function getJsonPromise(prefix,name,suffix) {
-  return fetch(prefix + name + suffix)
-    .then(response => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok" + response.statusText);
-        }
-        return response.json();
-      }
-    )
-    .catch(error => {
-        console.error("Error fetching JSON:", error);
-        throw error; // Re-throw the error to propagate it to the caller
-    }
-  );
-}
 
 function rarityToInt(rarity){
   switch(rarity){
@@ -207,14 +192,9 @@ function reSortCards(){
         }
           
         else if(window.currentSort=="Release"){
-          const daysSinceRelease=daysSince(unitBasicsDetails["Release"][sortedUnits[i]]);
-          if(Math.abs(daysSinceRelease)==1){
-            otherDisplayedValue=Math.abs(daysSinceRelease)+" day";
-          }
-          else{
-            otherDisplayedValue=Math.abs(daysSinceRelease)+" days";
-          }
-          if(daysSinceRelease<0){
+          const [timeSinceRelease,timeMetric]=timeSince(unitBasicsDetails["Release"][sortedUnits[i]]);
+          otherDisplayedValue=Math.abs(timeSinceRelease)+" "+timeMetric;
+          if(timeSinceRelease<0){
             otherDisplayedValueColor="red";
           }
         }
@@ -296,14 +276,9 @@ function sortCutID(showUpdate=false){
         }
           
         else if(window.currentSort=="Release"){
-          const daysSinceRelease=daysSince(unitBasicsDetails["Release"][sortedUnits[i]]);
-          if(Math.abs(daysSinceRelease)==1){
-            otherDisplayedValue=Math.abs(daysSinceRelease)+" day";
-          }
-          else{
-            otherDisplayedValue=Math.abs(daysSinceRelease)+" days";
-          }
-          if(daysSinceRelease<0){
+          const [timeSinceRelease,timeMetric]=timeSince(unitBasicsDetails["Release"][sortedUnits[i]]);
+          otherDisplayedValue=Math.abs(timeSinceRelease)+" "+timeMetric;
+          if(timeSinceRelease<0){
             otherDisplayedValueColor="red";
           }
         }

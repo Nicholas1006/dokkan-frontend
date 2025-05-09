@@ -2,7 +2,7 @@ import {
   typeToInt,
   classToInt,
   rarityToInt
-} from "./commonFunctions.js";
+} from "../commonFunctions.js";
   export function getresourceID(unitID){
     if(unitID[unitID.length-1]=="1"){
       unitID=unitID.slice(0,-1)+"0";

@@ -67,8 +67,6 @@ export class styledRadio {
             option = new StyledRadioOption(
                 this.assetPath,
                 this.assetSideWidth,
-                this.width / this.optionPerLine,
-                50, // Default height, adjust as needed
                 name,
                 onClickFunction
             );
@@ -103,11 +101,9 @@ export class styledRadio {
 }
 
 export class StyledRadioOption {
-    constructor(assetPath, assetSideWidth, width, height, label, onClickFunction) {
+    constructor(assetPath, assetSideWidth, label, onClickFunction) {
         this.assetPath = assetPath;
         this.assetSideWidth = assetSideWidth;
-        this.width = width;
-        this.height = height;
         this.label = label;
         this.onClickFunction = onClickFunction;
 
@@ -115,10 +111,10 @@ export class StyledRadioOption {
         this.element = document.createElement("div");
         this.element.parentClass = this;
         this.element.className = "styled-radio-option";
-        this.element.style.width = width + "px";
-        this.element.style.height = height + "px";
         this.element.style.position = "relative";
         this.element.style.overflow = "hidden";
+
+        
         this.element.addEventListener("click", () => this.onClickFunction(this));
         
         // Left decorative element
@@ -129,10 +125,10 @@ export class StyledRadioOption {
         // Middle content area
         this.middleSection = document.createElement("div");
         this.middleSection.className = "styled-radio-option-middle";
-        this.middleSection.style.left=this.assetSideWidth+"px";
-        this.middleSection.style.width = width - (2 * this.assetSideWidth) + "px";
+        //this.middleSection.style.left=this.assetSideWidth+"px";
+        //this.middleSection.style.width = width - (2 * this.assetSideWidth) + "px";
         this.middleSection.textContent = label;
-        this.middleSection.style.backgroundSize = this.width + "px " + "100%";
+        //this.middleSection.style.backgroundSize = this.width + "px " + "100%";
         this.element.appendChild(this.middleSection);
         
         // Right decorative element
@@ -147,46 +143,34 @@ export class StyledRadioOption {
         // Middle section styling
         this.middleSection.style.backgroundImage = `url(${this.assetPath})`;
         
+        const image = new Image();
+        image.onload = () => {
+            this.element.style.gridTemplateColumns = this.assetSideWidth+"fr "+ (image.width - (2 * this.assetSideWidth))+"fr "+ this.assetSideWidth+"fr"
+            this.middleSection.style.backgroundSize = (100 * (1 / ((image.width- (assetSideWidth*2))/image.width)))+"% 100%"
+        }
+        image.src = this.assetPath;
         // Apply initial styling
-        this.handleResize(width, height);
+        //this.handleResize(width, height);
     }
-
-    handleResize(width, height) {
-        this.width = width;
-        this.height = height;
-        
-        this.element.style.width = width + "px";
-        this.element.style.height = height + "px";
-        
-        // Calculate middle section width
-        const middleWidth = Math.max(0, width - (2 * this.assetSideWidth));
-        
-        // Apply dimensions
-        this.leftSection.style.width = this.assetSideWidth + "px";
-        this.leftSection.style.position = "absolute";
-        this.leftSection.style.left = "0";
-        this.leftSection.style.top = "0";
-        
-        this.middleSection.style.width = middleWidth + "px";
-        this.middleSection.style.position = "absolute";
-        this.middleSection.style.left = this.assetSideWidth + "px";
-        this.middleSection.style.top = "0";
-        this.middleSection.style.display = "flex";
-        this.middleSection.style.alignItems = "center";
-        this.middleSection.style.justifyContent = "center";
-        
-        this.rightSection.style.width = this.assetSideWidth + "px";
-        this.rightSection.style.position = "absolute";
-        this.rightSection.style.right = "0";
-        this.rightSection.style.top = "0";
-        
-        
+    setdisplayed(displayed) {
+        if (displayed) {
+            this.element.style.display = "grid";
+        } else {
+            this.element.style.display = "none";
+        }
     }
-
     changeAssetImage(assetPath) {
         this.assetPath = assetPath;
         this.leftSection.style.backgroundImage = `url(${this.assetPath})`;
         this.rightSection.style.backgroundImage = `url(${this.assetPath})`;
         this.middleSection.style.backgroundImage = `url(${this.assetPath})`;
+    }
+
+    changeCursor(cursor) {
+        this.element.style.cursor = cursor;
+    }
+
+    getElement() {
+        return this.element;
     }
 }

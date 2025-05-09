@@ -1,5 +1,6 @@
-import {removePX} from "./commonFunctions.js";
+import {removePX} from "../commonFunctions.js";
 import {styledRadio} from "./styledRadio.js";
+import {selectionScreen} from "./selectionScreen.js";
 export class complexSortFilterContainer {
     constructor(width, height){
         this.initialise(width, height);
@@ -8,7 +9,7 @@ export class complexSortFilterContainer {
         
         this.createSortOptions();
 
-        this.createSortFilterDivisionLine();
+        this.createSortFilterDivisionLines();
 
         this.createFilterContainer();
 
@@ -17,12 +18,24 @@ export class complexSortFilterContainer {
 
     initialise(width, height){
         this.border=70;
-        this.width=width-this.border;
-        this.height=height-this.border;
+        this.width=width;
+        this.height=height;
         this.element=document.createElement("div");
         this.element.className="complex-sort-filter-container";
-        this.element.style.width=width-this.border+"px";
-        this.element.style.height=height-this.border+"px";
+        if(width.toString().endsWith("px") || width.toString().endsWith("%") || width.toString().endsWith("vh")){
+            this.element.style.width=width;
+        }
+        else{
+            this.width=width-this.border;
+            this.element.style.width=this.width+"px";
+        }
+        if(height.toString().endsWith("px") || height.toString().endsWith("%") || height.toString().endsWith("vh")){
+            this.element.style.height=height;
+        }
+        else{
+            this.height=width-this.border;
+            this.element.style.height=this.height+"px";
+        }
         this.element.style.left=window.visualViewport.width/2-removePX(this.element.style.width)/2+"px";
         this.element.style.display="none";
 
@@ -95,7 +108,7 @@ export class complexSortFilterContainer {
         this.element.appendChild(this.sortContainer.getContainer());
     }
 
-    createSortFilterDivisionLine(){
+    createSortFilterDivisionLines(){
         this.sortFilterDivisionLine=document.createElement("div");
         this.sortFilterDivisionLine.className="sort-filter-division-line";
         this.sortFilterDivisionLine.style.gridRow="3";
@@ -161,14 +174,25 @@ export class complexSortFilterContainer {
     }
 
     createCategoryContainer(){
+
         this.filterContainer.categorySkillContainer.categoryContainer=document.createElement("div");
         this.filterContainer.categorySkillContainer.categoryContainer.className="filter-category-container";
         this.filterContainer.categorySkillContainer.categoryContainer.innerHTML="Select Category";
         this.filterContainer.categorySkillContainer.appendChild(this.filterContainer.categorySkillContainer.categoryContainer);
+
+        this.filterContainer.categorySkillContainer.categoryContainer.categorySelect=new selectionScreen("category",this.width,this.height,this.border,this,function(){
+            this.setDisplay(false);
+        })
+        this.element.appendChild(this.filterContainer.categorySkillContainer.categoryContainer.categorySelect.getElement());
         
         this.filterContainer.categorySkillContainer.categoryContainer.text=document.createElement("div");
         this.filterContainer.categorySkillContainer.categoryContainer.text.className="filter-category-container-text";
         this.filterContainer.categorySkillContainer.categoryContainer.text.innerHTML="Category";
+        this.filterContainer.categorySkillContainer.categoryContainer.parentClass=this.filterContainer.categorySkillContainer;
+        this.filterContainer.categorySkillContainer.categoryContainer.addEventListener("click",function(){
+            this.parentClass.categoryContainer.categorySelect.setDisplay(true);
+        });
+
         this.filterContainer.categorySkillContainer.appendChild(this.filterContainer.categorySkillContainer.categoryContainer.text);
     }
 
@@ -223,7 +247,7 @@ export class complexSortFilterContainer {
     }
 }
 
-class complexSortFilterContainerBackground {
+export class complexSortFilterContainerBackground {
     constructor(width, height,parentClass){
         this.width=width;
         this.height=height;
@@ -261,6 +285,10 @@ class complexSortFilterContainerBackground {
     handleResize(width=this.width, height=this.height){
         this.width=width;
         this.height=height;
+
+        this.element.style.width = this.width+"px";
+        this.element.style.height = this.height+"px";
+
         const centerPosition = window.visualViewport.width / 2 - this.width / 2;
         this.backgroundTop.style.left = centerPosition+"px";
         this.backgroundTop.style.width = this.width+"px";

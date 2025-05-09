@@ -9,7 +9,8 @@ import {extractDigitsFromString,
        splitTextByWords,
        advantageCalculator,
        typeToInt,
-       classToInt
+       classToInt,
+       getJsonPromise
  } from "./commonFunctions.js";
 let baseDomain=window.location.origin;
 
@@ -1581,28 +1582,6 @@ let finalStats={};
 let recievingDamageStats={};
 
 
-function getJsonPromise(prefix,name,suffix) {
-    return fetch(prefix + name + suffix)
-      .then(response => {
-          if (!response.ok) {
-            if(name[6]=="0"){
-                name=name.slice(0, -1)+ "1";
-                updateQueryStringParameter("id",name);
-                return(getJsonPromise(prefix,name,suffix))
-            }
-            else{
-              throw new Error("Network response was not ok" + response.statusText);
-            }
-          }
-          return response.json();
-        }
-      )
-      .catch(error => {
-          console.error("Error fetching JSON:", error);
-          throw error; // Re-throw the error to propagate it to the caller
-      }
-    );
-}
 
 
 
