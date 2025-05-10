@@ -1,4 +1,4 @@
-import { unitDisplay } from "./unitDisplay.js";
+import { unitDisplay } from "./classes/unitDisplay.js";
 import {extractDigitsFromString,
        arraysHaveOverlap,
        getFirstInDictionary,
