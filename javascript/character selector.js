@@ -3,7 +3,7 @@ import { complexSortFilterContainer } from "./classes/complexSortFilterContainer
 import {removePX,timeSince,getJsonPromise} from "./commonFunctions.js";
 
 // GLOBAL VARIABLES
-let unitsToDisplay = 20;
+let unitsToDisplay = 200;
 
 window.currentSort = "Release";
 window.currentOrder = "descending";
@@ -221,7 +221,7 @@ function reSortCards(){
 
 
 
-        //unitButton.style.backgroundImage = "url('dbManagement/DokkanFiles/global/en/character/card/"+getAssetID(sortedUnits[i]["ID"])+"/card_"+getAssetID(sortedUnits[i]["ID"])+"_full_thumb.png')";
+        //unitButton.style.backgroundImage = "url("+window.assetBase+"/global/en/character/card/"+getAssetID(sortedUnits[i]["ID"])+"/card_"+getAssetID(sortedUnits[i]["ID"])+"_full_thumb.png')";
 
 
       }
@@ -305,7 +305,7 @@ function sortCutID(showUpdate=false){
 
 
 
-        //unitButton.style.backgroundImage = "url('dbManagement/DokkanFiles/global/en/character/card/"+getAssetID(sortedUnits[i]["ID"])+"/card_"+getAssetID(sortedUnits[i]["ID"])+"_full_thumb.png')";
+        //unitButton.style.backgroundImage = "url('"+window.assetBase+"/global/en/character/card/"+getAssetID(sortedUnits[i]["ID"])+"/card_"+getAssetID(sortedUnits[i]["ID"])+"_full_thumb.png')";
 
 
       }

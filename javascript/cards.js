@@ -3002,7 +3002,7 @@ function createLeaderStats(){
 }
 
 function createLinkStats(){
-    //TODO Link buttons are stored at dbManagement/DokkanFiles/global/en/layout/en/image/common/btn/cha_linkskill_label_gold.png
+    //TODO Link buttons are stored at global/en/layout/en/image/common/btn/cha_linkskill_label_gold.png
     const linksContainer=document.getElementById("links-container");
     let links =currentJson["Links"];
     let linkNumber=0;
