@@ -3987,10 +3987,10 @@ function createPassiveContainer(){
 
 function initialiseAspects() {
     if(currentJson.Rarity=="lr"){
-        updateCharacterIcon('character-icon', currentJson["Resource ID"], currentJson.Type);
+        updateLRCharacterIcon('character-icon', currentJson["Resource ID"], currentJson.Type);
     }
     else{
-        OLDupdateCharacterIcon('character-icon', currentJson["Resource ID"], currentJson.Type);
+        updateCharacterIcon('character-icon', currentJson["Resource ID"], currentJson.Type);
     }
     document.getElementById("level-container").style.display="flex";
 
@@ -4071,7 +4071,7 @@ function createSuperAttackContainer(){
 
 
 
- function updateCharacterIcon(){
+ function updateLRCharacterIcon(){
     const imageContainer = document.getElementById("character-icon");
     while (imageContainer.firstChild) {
         imageContainer.removeChild(imageContainer.firstChild);
@@ -4083,7 +4083,7 @@ function createSuperAttackContainer(){
 }
 
 
- function OLDupdateCharacterIcon(){
+ function updateCharacterIcon(){
     const imageContainer = document.getElementById("character-icon");
     while (imageContainer.firstChild) {
         imageContainer.removeChild(imageContainer.firstChild);

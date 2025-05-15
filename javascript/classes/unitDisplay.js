@@ -129,19 +129,6 @@ export class unitDisplay{
             this.container.lrAnimation.width/2,
             this.container.lrAnimation.height/1.9);
     }
-    OLDcreateLRAnimation(){
-      this.container.lrAnimation=document.createElement('img');
-      this.container.lrAnimation.className="unit-lr-animation";
-      this.container.lrAnimation.src="/dbManagement/assets/misc/lr_icon_animation.png";
-      this.container.lrAnimation.loading="eager";
-      this.container.appendChild(this.container.lrAnimation);
-
-      this.container.lrBackground=document.createElement('img');
-      this.container.lrBackground.className="unit-lr-background";
-      this.container.lrBackground.src="/dbManagement/assets/misc/lr_background.png";
-      this.container.lrBackground.loading="eager";
-      this.container.appendChild(this.container.lrBackground);
-    }
     setClass(Class){
       this.ClassInt=classToInt(Class);
       this.container.unitBackImage.src=window.assetBase+"/global/en/layout/en/image/character/character_thumb_bg/cha_base_0"+this.typeInt+"_0"+rarityToInt(this.rarity)+".png";
