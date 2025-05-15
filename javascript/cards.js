@@ -1303,8 +1303,8 @@ class superAttackQuery{
                 this.insertedUnitDiv.setRarity(unit["Rarity"]);
                 this.insertedUnitDiv.setUrl(baseDomain+"/cards/index.html?id="+unit["ID"]);
                 this.insertedUnitDiv.setDisplayExtraInfo(false);
-                this.insertedUnitDiv.setExactWidth("60px");
-                this.insertedUnitDiv.setExactHeight("60px");
+                this.insertedUnitDiv.setWidth("60px");
+                this.insertedUnitDiv.setHeight("60px");
                 this.insertedUnitDiv.setDisplay(true);
 
                 if(this.selfContainer.superAttack.special_name_no=="0"){
@@ -3256,8 +3256,8 @@ function createTransformationContainer(){
             const transformationButton = new unitDisplay();
             transformationButton.setDisplayExtraInfo(false);
             transformationButton.setDisplay(true);
-            transformationButton.setWidth(true);
-            transformationButton.setHeight(true);
+            transformationButton.setWidth("100%");
+            transformationButton.setHeight("100%");
             transformationButton.container.style.gridRow="1";
             transformationContainer.appendChild(transformationButton.getElement());
             transformationJsonPromise.then(
@@ -3278,8 +3278,8 @@ function createTransformationContainer(){
             const transformationButton = new unitDisplay();
             transformationButton.setDisplayExtraInfo(false);
             transformationButton.setDisplay(true);
-            transformationButton.setWidth(true);
-            transformationButton.setHeight(true);
+            transformationButton.setWidth("100%");
+            transformationButton.setHeight("100%");
             transformationButton.container.style.gridRow="1";
             transformationContainer.appendChild(transformationButton.getElement());
             transformationJsonPromise.then(
@@ -3381,8 +3381,8 @@ function createDokkanAwakenContainer(){
         const AwakeningsButton = new unitDisplay();
         AwakeningsButton.setDisplayExtraInfo(false);
         AwakeningsButton.setDisplay(true);
-        AwakeningsButton.setWidth(true);
-        AwakeningsButton.setHeight(true);
+        AwakeningsButton.setWidth("100%");
+        AwakeningsButton.setHeight("100%");
         AwakeningsButton.container.style.gridRow="1";
         AwakeningsContainer.appendChild(AwakeningsButton.getElement());
         awakeningJsonPromise.then(
@@ -4096,8 +4096,8 @@ function createSuperAttackContainer(){
     cardImage.setRarity(currentJson["Rarity"]);
     cardImage.setDisplayExtraInfo(false);
     cardImage.setDisplay(true);
-    cardImage.setWidth("100%");
-    cardImage.setHeight("100%");
+    cardImage.setWidth("inherit");
+    cardImage.setHeight("inherit");
 
     if(currentJson["Can SEZA"]){
         cardImage.setPossibleEzaLevel("seza");

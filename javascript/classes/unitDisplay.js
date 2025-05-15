@@ -271,14 +271,6 @@ export class unitDisplay{
     setHeight(height){
       this.container.style.height=height;
     }
-
-    setExactWidth(width){
-      this.container.style.width=width;
-    }
-
-    setExactHeight(height){
-      this.container.style.height=height;
-    }
     addPressableEza(onClickFunction){
       if(this.possibleEzaLevel=="seza"){
         this.container.ezaImage.style.right="33%";
