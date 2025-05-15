@@ -17,7 +17,7 @@ export function getJsonPromise(prefix,name,suffix) {
       }
     )
     .catch(error => {
-        console.error("Error fetching JSON:", error);
+        console.error("Error fetching JSON:",prefix+name+suffix, error);
         throw error; // Re-throw the error to propagate it to the caller
     }
   );

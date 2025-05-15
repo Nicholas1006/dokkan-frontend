@@ -19,6 +19,8 @@ import {
 export class unitDisplay{
     constructor(){
 
+      this.lrAnimationIsSetup=false;
+
       this.container=document.createElement("div");
       this.container.className="unit-container";
       this.container.style.position="relative";
@@ -34,7 +36,7 @@ export class unitDisplay{
       this.container.unitRarityImage.loading="eager";
       this.container.appendChild(this.container.unitRarityImage);
 
-      this.createLRAnimation();
+
 
 
 
@@ -157,12 +159,18 @@ export class unitDisplay{
       this.container.unitBackImage.src=window.assetBase+"/global/en/layout/en/image/character/character_thumb_bg/cha_base_0"+this.typeInt+"_0"+rarityToInt(this.rarity)+".png";
       this.container.unitRarityImage.src=window.assetBase+"/global/en/layout/en/image/character/cha_rare_sm_"+this.rarity+".png";
       if(this.rarity=="lr"){
+        if(!this.lrAnimationIsSetup){
+          this.createLRAnimation();
+          this.lrAnimationIsSetup=true;
+        }
         this.container.lrAnimation.style.display="block";
         //   this.container.lrAnimation.style.display="block";
         //   this.container.lrBackground.style.display="block";
       }
       else{
-        this.container.lrAnimation.style.display="none";
+        if(this.lrAnimationIsSetup){
+          this.container.lrAnimation.style.display="none";
+        }
       //   this.container.lrAnimation.style.display="none";
       //   this.container.lrBackground.style.display="none";
       }
@@ -269,22 +277,12 @@ export class unitDisplay{
       return this.container;
     }
 
-    setWidthFit(fit){
-      if(fit){
-        this.container.style.width="inherit";
-      }
-      else{
-        this.container.style.width="auto";
-      }
+    setWidth(width){
+      this.container.style.width=width;
     }
 
-    setHeightFit(fit){
-      if(fit){
-        this.container.style.height="inherit";
-      }
-      else{
-        this.container.style.height="auto";
-      }
+    setHeight(height){
+      this.container.style.height=height;
     }
 
     setExactWidth(width){

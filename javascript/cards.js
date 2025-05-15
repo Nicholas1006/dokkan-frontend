@@ -3256,8 +3256,8 @@ function createTransformationContainer(){
             const transformationButton = new unitDisplay();
             transformationButton.setDisplayExtraInfo(false);
             transformationButton.setDisplay(true);
-            transformationButton.setWidthFit(true);
-            transformationButton.setHeightFit(true);
+            transformationButton.setWidth(true);
+            transformationButton.setHeight(true);
             transformationButton.container.style.gridRow="1";
             transformationContainer.appendChild(transformationButton.getElement());
             transformationJsonPromise.then(
@@ -3278,8 +3278,8 @@ function createTransformationContainer(){
             const transformationButton = new unitDisplay();
             transformationButton.setDisplayExtraInfo(false);
             transformationButton.setDisplay(true);
-            transformationButton.setWidthFit(true);
-            transformationButton.setHeightFit(true);
+            transformationButton.setWidth(true);
+            transformationButton.setHeight(true);
             transformationButton.container.style.gridRow="1";
             transformationContainer.appendChild(transformationButton.getElement());
             transformationJsonPromise.then(
@@ -3381,8 +3381,8 @@ function createDokkanAwakenContainer(){
         const AwakeningsButton = new unitDisplay();
         AwakeningsButton.setDisplayExtraInfo(false);
         AwakeningsButton.setDisplay(true);
-        AwakeningsButton.setWidthFit(true);
-        AwakeningsButton.setHeightFit(true);
+        AwakeningsButton.setWidth(true);
+        AwakeningsButton.setHeight(true);
         AwakeningsButton.container.style.gridRow="1";
         AwakeningsContainer.appendChild(AwakeningsButton.getElement());
         awakeningJsonPromise.then(
@@ -3403,8 +3403,8 @@ function createDokkanAwakenContainer(){
         const AwakeningsButton = new unitDisplay();
         AwakeningsButton.setDisplayExtraInfo(false);
         AwakeningsButton.setDisplay(true);
-        AwakeningsButton.setWidthFit(true);
-        AwakeningsButton.setHeightFit(true);
+        AwakeningsButton.setWidth("100%");
+        AwakeningsButton.setHeight("100%");
         AwakeningsButton.container.style.gridRow="2";
         AwakeningsContainer.appendChild(AwakeningsButton.getElement());
         previousAwakeningJsonPromise.then(
@@ -4096,8 +4096,8 @@ function createSuperAttackContainer(){
     cardImage.setRarity(currentJson["Rarity"]);
     cardImage.setDisplayExtraInfo(false);
     cardImage.setDisplay(true);
-    cardImage.setWidthFit(true);
-    cardImage.setHeightFit(true);
+    cardImage.setWidth("100%");
+    cardImage.setHeight("100%");
 
     if(currentJson["Can SEZA"]){
         cardImage.setPossibleEzaLevel("seza");
