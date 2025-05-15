@@ -12,6 +12,7 @@ import {extractDigitsFromString,
        classToInt,
        getJsonPromise
  } from "./commonFunctions.js";
+import { LWFPlayer } from "./classes/LWF.js";
 let baseDomain=window.location.origin;
 
 class kiCircleClass{
@@ -3434,8 +3435,35 @@ function createStarButton(){
       } else {
         starButton.classList.add("active");
       }
+      updateStarVisuals();
         updateBaseStats();
     });
+    updateStarVisuals();
+}
+
+function updateStarVisuals(){
+    const starButton = document.getElementById("star-button");
+    const starButtonLWF=document.getElementById("star-button-lwf");
+    if(starButton.classList.contains("rainbow")){
+        starButtonLWF.style.display="block";
+        starButtonLWF.renderer = new LWFPlayer(window.assetBase+"/global/en/outgame/effect/icon_rare_20000/en/icon_rare_20000.lwf", starButtonLWF,"ef_003", 
+            starButtonLWF.width/48,
+            starButtonLWF.width/108,
+            starButtonLWF.width/7,
+            starButtonLWF.height/2);
+    }
+    else if(starButton.classList.contains("active")){
+        starButtonLWF.style.display="block";
+        starButtonLWF.renderer = new LWFPlayer(window.assetBase+"/global/en/outgame/effect/icon_rare_20000/en/icon_rare_20000.lwf", starButtonLWF,"ef_002", 
+            starButtonLWF.width/48,
+            starButtonLWF.width/108,
+            starButtonLWF.width/2,
+            starButtonLWF.height/2);
+    }
+    else{
+        starButtonLWF.style.display="none";
+    }
+
 }
 
 

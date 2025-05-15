@@ -1,6 +1,7 @@
 const canvas = document.getElementById('lwf-stage');
 let lwfUrl;
 const sceneName = 'ef_001';
+import {LWFPlayer} from "./LWF.js";
 
 import {
   typeToInt,
@@ -33,17 +34,9 @@ export class unitDisplay{
       this.container.unitRarityImage.loading="eager";
       this.container.appendChild(this.container.unitRarityImage);
 
-      this.container.lrAnimation=document.createElement('img');
-      this.container.lrAnimation.className="unit-lr-animation";
-      this.container.lrAnimation.src="/dbManagement/assets/misc/lr_icon_animation.png";
-      this.container.lrAnimation.loading="eager";
-      this.container.appendChild(this.container.lrAnimation);
+      this.createLRAnimation();
 
-      this.container.lrBackground=document.createElement('img');
-      this.container.lrBackground.className="unit-lr-background";
-      this.container.lrBackground.src="/dbManagement/assets/misc/lr_background.png";
-      this.container.lrBackground.loading="eager";
-      this.container.appendChild(this.container.lrBackground);
+
 
       this.container.unitThumbImage = document.createElement('img');
       this.container.unitThumbImage.className="unit-thumb-image";
@@ -122,6 +115,31 @@ export class unitDisplay{
       }
     };
 
+
+    createLRAnimation(){
+      this.container.lrAnimation=document.createElement("canvas")
+      this.container.lrAnimation.className="unit-lr-animation-lwf";
+      
+      this.container.appendChild(this.container.lrAnimation);
+      this.container.lrAnimation.animation=new LWFPlayer(window.assetBase+"/global/en/outgame/effect/icon_rare_20000/en/icon_rare_20000.lwf", this.container.lrAnimation,"ef_001", 
+            this.container.lrAnimation.width/300,
+            this.container.lrAnimation.height/300,
+            this.container.lrAnimation.width/2,
+            this.container.lrAnimation.height/1.9);
+    }
+    OLDcreateLRAnimation(){
+      this.container.lrAnimation=document.createElement('img');
+      this.container.lrAnimation.className="unit-lr-animation";
+      this.container.lrAnimation.src="/dbManagement/assets/misc/lr_icon_animation.png";
+      this.container.lrAnimation.loading="eager";
+      this.container.appendChild(this.container.lrAnimation);
+
+      this.container.lrBackground=document.createElement('img');
+      this.container.lrBackground.className="unit-lr-background";
+      this.container.lrBackground.src="/dbManagement/assets/misc/lr_background.png";
+      this.container.lrBackground.loading="eager";
+      this.container.appendChild(this.container.lrBackground);
+    }
     setClass(Class){
       this.ClassInt=classToInt(Class);
       this.container.unitBackImage.src=window.assetBase+"/global/en/layout/en/image/character/character_thumb_bg/cha_base_0"+this.typeInt+"_0"+rarityToInt(this.rarity)+".png";
@@ -140,11 +158,13 @@ export class unitDisplay{
       this.container.unitRarityImage.src=window.assetBase+"/global/en/layout/en/image/character/cha_rare_sm_"+this.rarity+".png";
       if(this.rarity=="lr"){
         this.container.lrAnimation.style.display="block";
-        this.container.lrBackground.style.display="block";
+        //   this.container.lrAnimation.style.display="block";
+        //   this.container.lrBackground.style.display="block";
       }
       else{
         this.container.lrAnimation.style.display="none";
-        this.container.lrBackground.style.display="none";
+      //   this.container.lrAnimation.style.display="none";
+      //   this.container.lrBackground.style.display="none";
       }
     }
 
@@ -251,7 +271,7 @@ export class unitDisplay{
 
     setWidthFit(fit){
       if(fit){
-        this.container.style.width="100%";
+        this.container.style.width="inherit";
       }
       else{
         this.container.style.width="auto";
@@ -260,7 +280,7 @@ export class unitDisplay{
 
     setHeightFit(fit){
       if(fit){
-        this.container.style.height="100%";
+        this.container.style.height="inherit";
       }
       else{
         this.container.style.height="auto";

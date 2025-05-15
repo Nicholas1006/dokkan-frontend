@@ -3,7 +3,7 @@ import { complexSortFilterContainer } from "./classes/complexSortFilterContainer
 import {removePX,timeSince,getJsonPromise} from "./commonFunctions.js";
 
 // GLOBAL VARIABLES
-let unitsToDisplay = 200;
+let unitsToDisplay = 20;
 
 window.currentSort = "Release";
 window.currentOrder = "descending";
