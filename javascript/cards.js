@@ -464,11 +464,9 @@ class kiCircleClass{
         
         this.attack*=(1+linkBuffs["ATK"]/100);
         if(this.passiveLineKey=="Active"){
-            this.attack*=(this.activeAttackMultiplier+(1+activeMultipliers["ATK"]));
+            this.attack*=(this.activeAttackMultiplier);
         }
-        else{
-            this.attack*=(1+activeMultipliers["ATK"]);//Active boost
-        }
+        this.attack*=(1+activeMultipliers["ATK"]);//Active boost
         this.attack*=(currentJson["Ki Multiplier"][this.Ki]/100);
         
         this.attack*=(1+buffs["MOT ATK %"]/100)
