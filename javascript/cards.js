@@ -3447,16 +3447,16 @@ function updateStarVisuals(){
     if(starButton.classList.contains("rainbow")){
         starButtonLWF.style.display="block";
         starButtonLWF.renderer = new LWFPlayer(window.assetBase+"/global/en/outgame/effect/icon_rare_20000/en/icon_rare_20000.lwf", starButtonLWF,"ef_003", 
-            starButtonLWF.width/48,
-            starButtonLWF.width/108,
-            starButtonLWF.width/7,
+            starButtonLWF.width/54,
+            starButtonLWF.height/54,
+            starButtonLWF.width/5,
             starButtonLWF.height/2);
     }
     else if(starButton.classList.contains("active")){
         starButtonLWF.style.display="block";
         starButtonLWF.renderer = new LWFPlayer(window.assetBase+"/global/en/outgame/effect/icon_rare_20000/en/icon_rare_20000.lwf", starButtonLWF,"ef_002", 
-            starButtonLWF.width/48,
-            starButtonLWF.width/108,
+            starButtonLWF.width/54,
+            starButtonLWF.height/54,
             starButtonLWF.width/2,
             starButtonLWF.height/2);
     }
