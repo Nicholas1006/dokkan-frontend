@@ -1,4 +1,4 @@
-import { unitDisplay } from "./classes/unitDisplay.js";
+import { unitLRAnimationDisplay, unitDisplay } from "./classes/unitDisplay.js";
 import {extractDigitsFromString,
        arraysHaveOverlap,
        getFirstInDictionary,
@@ -3958,7 +3958,12 @@ function createPassiveContainer(){
 }
 
 function initialiseAspects() {
-    updateCharacterIcon("character-icon", currentJson["Resource ID"], currentJson.Type);
+    if(currentJson.Rarity=="lr"){
+        updateCharacterIcon('character-icon', currentJson["Resource ID"], currentJson.Type);
+    }
+    else{
+        OLDupdateCharacterIcon('character-icon', currentJson["Resource ID"], currentJson.Type);
+    }
     document.getElementById("level-container").style.display="flex";
 
     //change the background of the slider to the type color
@@ -4039,6 +4044,18 @@ function createSuperAttackContainer(){
 
 
  function updateCharacterIcon(){
+    const imageContainer = document.getElementById("character-icon");
+    while (imageContainer.firstChild) {
+        imageContainer.removeChild(imageContainer.firstChild);
+    }
+
+    const cardImage=new unitLRAnimationDisplay(currentJson["Resource ID"]);
+    imageContainer.appendChild(cardImage.getElement());
+    document.body.style.backgroundColor = colorToBackground(typeToColor(currentJson["Type"]));
+}
+
+
+ function OLDupdateCharacterIcon(){
     const imageContainer = document.getElementById("character-icon");
     while (imageContainer.firstChild) {
         imageContainer.removeChild(imageContainer.firstChild);
