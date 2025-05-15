@@ -316,7 +316,7 @@ export class unitLRAnimationDisplay{
 
   constructor(unitID){
     this.container=canvas;
-    lwfUrl="/dbManagement/DokkanFiles/global/en/character/card_bg/"+unitID+"/card_"+unitID+".lwf";
+    lwfUrl=window.assetBase+"/global/en/character/card_bg/"+unitID+"/card_"+unitID+".lwf";
 
     this.attachLWF(unitID);
   }
