@@ -10,14 +10,15 @@ export class LWFPlayer{
             const scene = lwf.rootMovie.attachMovie(this.sceneName, `${this.sceneName}_1`);
             if (scene) {
               if(scaleX && scaleY && translateX && translateY){
-                //scene.moveTo(translateX, translateY);
-                //scene.scale( scaleX, scaleY);
+                scene.moveTo(translateX, translateY);
+                scene.scale( scaleX, scaleY);
               }
               else{
+                lwf.scaleForHeight(canvas.width, canvas.height);
                 scene.moveTo(lwf.width / 2, lwf.height / 2);
               }
             }
-            lwf.scaleForHeight(canvas.width, canvas.height);
+            
         }
         lwf.active = true;
         startAnimation(lwf);
