@@ -6,6 +6,7 @@ export class LWFPlayer{
     this.sceneName=sceneName;
 
     this.onLwfLoaded = (lwf) => {
+      if(lwf){
         if (lwf.rootMovie) {
             const scene = lwf.rootMovie.attachMovie(this.sceneName, `${this.sceneName}_1`);
             if (scene) {
@@ -22,6 +23,9 @@ export class LWFPlayer{
         }
         lwf.active = true;
         startAnimation(lwf);
+      }
+      
+        
     };
 
     this.attachLWF();
