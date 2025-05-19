@@ -1,0 +1,600 @@
+{
+    "ID": "4022841",
+    "Type": "TEQ",
+    "Class": "Super",
+    "Name": "Super Saiyan 2 Kefla",
+    "Rarity": "ur",
+    "Min Level": 120,
+    "Max Level": 140,
+    "Categories": [
+        "Bond of Friendship",
+        "Rapid Growth",
+        "Peppy Gals",
+        "Universe Survival Saga",
+        "Potara",
+        "Pure Saiyans",
+        "Full Power",
+        "Universe 6",
+        "Joined Forces",
+        "Super Saiyan 2",
+        "Final Trump Card",
+        "Time Limit",
+        "Accelerated Battle",
+        "Fused Fighters",
+        "Power Beyond Super Saiyan",
+        "Tournament Participants",
+        "Super Bosses"
+    ],
+    "Can EZA": true,
+    "Can SEZA": false,
+    "Links": [
+        "Super Saiyan",
+        "Battlefield Diva",
+        "Fused Fighter",
+        "Power Bestowed by God",
+        "Warriors of Universe 6 ",
+        "Tournament of Power",
+        "Fierce Battle"
+    ],
+    "Resource ID": 4022840,
+    "Passive": {
+        "4611": {
+            "ID": "4611",
+            "Timing": "Start of turn",
+            "Heals": 60,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Once Only": true,
+            "Type": "Single activator",
+            "Condition": {
+                "Logic": "4611",
+                "Causalities": {
+                    "4611": {
+                        "Button": {
+                            "Name": "Is it within the first 1 turns from entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since entry turn on this turn?",
+                            "Logic": "<=1",
+                            "Max": "2",
+                            "Min": "1"
+                        }
+                    }
+                }
+            },
+            "Brief effect description": "Heals +60% "
+        },
+        "1004611": {
+            "ID": "1004611",
+            "Timing": "Start of turn",
+            "ATK": 200,
+            "DEF": 200,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "ATK and DEF +200% "
+        },
+        "2004611": {
+            "ID": "2004611",
+            "Dodge Chance": 70,
+            "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "Chance of evading enemy attacks +70% "
+        },
+        "3004611": {
+            "ID": "3004611",
+            "Additional Attack": {
+                "Activated": true,
+                "Chance of super": "100",
+                "Chance of another additional": "0"
+            },
+            "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack "
+        },
+        "4004611": {
+            "ID": "4004611",
+            "Additional Attack": {
+                "Activated": true,
+                "Chance of super": "100",
+                "Chance of another additional": "0"
+            },
+            "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack "
+        },
+        "5004611": {
+            "ID": "5004611",
+            "Timing": "Start of turn",
+            "Ki Change": {
+                "From": [
+                    "PHY",
+                    "STR",
+                    "INT",
+                    "AGL"
+                ],
+                "To": [
+                    "TEQ"
+                ],
+                "Style": "Randomly"
+            },
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "Randomly changes Ki Spheres of a certain Type(TEQ excluded) to TEQ Ki Spheres "
+        },
+        "6004611": {
+            "ID": "6004611",
+            "Timing": "Right before attack(MOT stat)",
+            "ATK": 200,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "ATK +200% when attacking"
+        },
+        "7004611": {
+            "ID": "7004611",
+            "Timing": "Right before being hit",
+            "DEF": 200,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "DEF +200% right before being hit"
+        },
+        "8004611": {
+            "ID": "8004611",
+            "Timing": "Right before attack(MOT stat)",
+            "ATK": 30,
+            "Target": {
+                "Category": {
+                    "Included": [
+                        "Tournament Participants"
+                    ],
+                    "Excluded": []
+                },
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2165",
+                "Causalities": {
+                    "2165": {
+                        "Button": {
+                            "Name": "Has 6 or more Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres been obtained on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres have been obtained on this turn?",
+                            "Logic": ">=6",
+                            "Min": 0,
+                            "Max": 6
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "Tournament Participants category allies ATK +30% when attacking"
+        },
+        "9004611": {
+            "ID": "9004611",
+            "Timing": "Right before attack(MOT stat)",
+            "DEF": 30,
+            "Target": {
+                "Category": {
+                    "Included": [
+                        "Universe 6",
+                        "Tournament Participants"
+                    ],
+                    "Excluded": []
+                },
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "2165",
+                "Causalities": {
+                    "2165": {
+                        "Button": {
+                            "Name": "Has 6 or more Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres been obtained on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres have been obtained on this turn?",
+                            "Logic": ">=6",
+                            "Min": 0,
+                            "Max": 6
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "Universe 6 and Tournament Participants category allies DEF +30% when attacking"
+        }
+    },
+    "Max Attacks": 4,
+    "Max Super Attacks": 4,
+    "Stats at levels": {
+        "120": {
+            "HP": 12640,
+            "ATK": 11156,
+            "DEF": 6860
+        },
+        "121": {
+            "HP": 12853,
+            "ATK": 11344,
+            "DEF": 6975
+        },
+        "122": {
+            "HP": 13066,
+            "ATK": 11532,
+            "DEF": 7091
+        },
+        "123": {
+            "HP": 13279,
+            "ATK": 11720,
+            "DEF": 7207
+        },
+        "124": {
+            "HP": 13492,
+            "ATK": 11908,
+            "DEF": 7322
+        },
+        "125": {
+            "HP": 13706,
+            "ATK": 12096,
+            "DEF": 7438
+        },
+        "126": {
+            "HP": 13919,
+            "ATK": 12285,
+            "DEF": 7554
+        },
+        "127": {
+            "HP": 14132,
+            "ATK": 12473,
+            "DEF": 7670
+        },
+        "128": {
+            "HP": 14345,
+            "ATK": 12661,
+            "DEF": 7785
+        },
+        "129": {
+            "HP": 14558,
+            "ATK": 12849,
+            "DEF": 7901
+        },
+        "130": {
+            "HP": 14772,
+            "ATK": 13037,
+            "DEF": 8017
+        },
+        "131": {
+            "HP": 14985,
+            "ATK": 13226,
+            "DEF": 8133
+        },
+        "132": {
+            "HP": 15198,
+            "ATK": 13414,
+            "DEF": 8248
+        },
+        "133": {
+            "HP": 15411,
+            "ATK": 13602,
+            "DEF": 8364
+        },
+        "134": {
+            "HP": 15625,
+            "ATK": 13790,
+            "DEF": 8480
+        },
+        "135": {
+            "HP": 15838,
+            "ATK": 13978,
+            "DEF": 8595
+        },
+        "136": {
+            "HP": 16051,
+            "ATK": 14167,
+            "DEF": 8711
+        },
+        "137": {
+            "HP": 16264,
+            "ATK": 14355,
+            "DEF": 8827
+        },
+        "138": {
+            "HP": 16477,
+            "ATK": 14543,
+            "DEF": 8943
+        },
+        "139": {
+            "HP": 16691,
+            "ATK": 14731,
+            "DEF": 9058
+        },
+        "140": {
+            "HP": 16904,
+            "ATK": 14919,
+            "DEF": 9174
+        }
+    },
+    "Leader Skill": {
+        "Name": "Miracle of Friendship",
+        "102283100": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Bond of Friendship"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "HP": 170,
+            "ATK": 170,
+            "DEF": 170
+        },
+        "102283101": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Bond of Friendship"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        },
+        "102283102": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Rapid Growth"
+                ],
+                "Excluded Category": [
+                    "Bond of Friendship"
+                ],
+                "Allies or enemies": "Allies"
+            },
+            "HP": 170,
+            "ATK": 170,
+            "DEF": 170
+        },
+        "102283103": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Rapid Growth"
+                ],
+                "Excluded Category": [
+                    "Bond of Friendship"
+                ],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000,
+            "Additional": 0,
+            "Crit": 5,
+            "Evasion": 0,
+            "Type ATK": 6,
+            "Type DEF": 5,
+            "Super Attack boost": 6,
+            "Recovery boost": 6
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 1,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 2,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 0,
+            "Type DEF": 2,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "4": {
+            "HP": 1300,
+            "ATK": 2100,
+            "DEF": 1700,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 1,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        }
+    },
+    "Super Attack": {
+        "7688": {
+            "superID": "7688",
+            "Type": "Ki blast",
+            "special_name_no": "0",
+            "superName": "Gigantic Blast (Extreme)",
+            "superDescription": "Greatly raises ATK, \ngreatly raises DEF for 1 turn and \ncauses immense damage to enemy",
+            "superMinKi": "12",
+            "superPriority": "0.0",
+            "superStyle": "Normal",
+            "superMinLVL": "14",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superBuffs": {
+                "7688": {
+                    "Type": "NormalEfficacySpecial",
+                    "Chance": "100",
+                    "Duration": "99",
+                    "Buff": {
+                        "Type": "Percentage",
+                        "+ or -": "+"
+                    },
+                    "Target": "Self",
+                    "ATK": "50"
+                },
+                "1007688": {
+                    "Type": "NormalEfficacySpecial",
+                    "Chance": "100",
+                    "Duration": "1",
+                    "Buff": {
+                        "Type": "Percentage",
+                        "+ or -": "+"
+                    },
+                    "Target": "Self",
+                    "DEF": "50"
+                }
+            },
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "0"
+            },
+            "Multiplier": 580,
+            "relevantLua": [
+                "sp2267"
+            ]
+        }
+    },
+    "Active Skill": null,
+    "Standby Skill": null,
+    "Finish Skill": null,
+    "Transforms from": [
+        "1022831"
+    ],
+    "Transformations": [],
+    "Max Appearances In Form": 50,
+    "Dokkan awakenings": [],
+    "Dokkan Reverse awakenings": [],
+    "Ki Multiplier": {
+        "0": 75.0,
+        "1": 81.25,
+        "2": 87.5,
+        "3": 93.75,
+        "4": 100.0,
+        "5": 106.25,
+        "6": 112.5,
+        "7": 118.75,
+        "8": 125.0,
+        "9": 131.25,
+        "10": 137.5,
+        "11": 143.75,
+        "12": 150.0
+    },
+    "Ki Circle Segments": {
+        "1": "weaker",
+        "2": "weaker",
+        "3": "weaker",
+        "4": "equal",
+        "5": "equal",
+        "6": "equal",
+        "7": "equal",
+        "8": "equal",
+        "9": "equal",
+        "10": "equal",
+        "11": "equal",
+        "12": "super"
+    },
+    "SuperMinKi": 12,
+    "AdditionalSuperID": "7688"
+}
