@@ -48,22 +48,6 @@
             "Length": "5",
             "Once Only": true,
             "Type": "Single activator",
-            "Condition": {
-                "Logic": "3577",
-                "Causalities": {
-                    "3577": {
-                        "Button": {
-                            "Name": "Is it within the first 5 turns from entry turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
-                            "Logic": "<=5",
-                            "Max": "6",
-                            "Min": "1"
-                        }
-                    }
-                }
-            },
             "Brief effect description": "Ki +5 "
         },
         "1003577": {
@@ -80,22 +64,6 @@
             "Length": "5",
             "Once Only": true,
             "Type": "Single activator",
-            "Condition": {
-                "Logic": "1003577",
-                "Causalities": {
-                    "1003577": {
-                        "Button": {
-                            "Name": "Is it within the first 5 turns from entry turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
-                            "Logic": "<=5",
-                            "Max": "6",
-                            "Min": "1"
-                        }
-                    }
-                }
-            },
             "Brief effect description": "Damage recieved -40% "
         },
         "2003577": {
@@ -318,22 +286,22 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "110035770 && 110035771",
+                "Logic": "2526 && 2648",
                 "Causalities": {
-                    "110035770": {
+                    "2526": {
                         "Button": {
-                            "Name": "Was the following true: Is no domain active and Is it on or after the first 5 turns from this characters entry turn "
+                            "Name": "Is no domain active on this turn?"
                         }
                     },
-                    "110035771": {
+                    "2648": {
                         "Button": {
-                            "Name": "Was the following true for the first time on this turn: Is no domain active and Is it on or after the first 5 turns from this characters entry turn "
+                            "Name": "Is it on or after the first 5 turns from this characters entry turn on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many turns since the following was true for the first time: Is no domain active and Is it on or after the first 5 turns from this characters entry turn ",
-                            "Logic": "<=1",
+                            "Name": "How many turns is it since entry turn on this turn?",
+                            "Logic": ">=5",
                             "Min": 0,
-                            "Max": 2
+                            "Max": 5
                         }
                     }
                 }

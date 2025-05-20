@@ -322,22 +322,39 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "120040550 && 120040551",
+                "Logic": "(643 && 73) || (2222 && 73)",
                 "Causalities": {
-                    "120040550": {
+                    "643": {
                         "Button": {
-                            "Name": "Was the following true: ( Are there 2 or more Universe 6 category units on this turn and Is HP 60 % or less ) or ( Are there 2 or more Realm of Gods category units on this turn and Is HP 60 % or less ) "
-                        }
-                    },
-                    "120040551": {
-                        "Button": {
-                            "Name": "Was the following true for the first time on this turn: ( Are there 2 or more Universe 6 category units on this turn and Is HP 60 % or less ) or ( Are there 2 or more Realm of Gods category units on this turn and Is HP 60 % or less ) "
+                            "Name": "Are there 2 or more Universe 6 category units on this turn "
                         },
                         "Slider": {
-                            "Name": "How many turns since the following was true for the first time:  ( Are there 2 or more Universe 6 category units on this turn and Is HP 60 % or less )  or  ( Are there 2 or more Realm of Gods category units on this turn and Is HP 60 % or less )  ",
-                            "Logic": "<=1",
+                            "Name": "How many Universe 6 category units on this turn ",
+                            "Logic": ">=2",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    },
+                    "73": {
+                        "Button": {
+                            "Name": "Is HP 60 % or less on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining on this turn?",
+                            "Logic": "<=60",
                             "Min": 0,
-                            "Max": 2
+                            "Max": 100
+                        }
+                    },
+                    "2222": {
+                        "Button": {
+                            "Name": "Are there 2 or more Realm of Gods category units on this turn "
+                        },
+                        "Slider": {
+                            "Name": "How many Realm of Gods category units on this turn ",
+                            "Logic": ">=2",
+                            "Max": 3,
+                            "Min": 0
                         }
                     }
                 }

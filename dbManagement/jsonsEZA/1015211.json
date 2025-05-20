@@ -249,22 +249,28 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "80040140 && 80040141",
+                "Logic": "528 && 3050",
                 "Causalities": {
-                    "80040140": {
+                    "528": {
                         "Button": {
-                            "Name": "Was the following true: Is HP 50 % or less and Is there 3 or more Extreme class allies "
-                        }
-                    },
-                    "80040141": {
-                        "Button": {
-                            "Name": "Was the following true for the first time on this turn: Is HP 50 % or less and Is there 3 or more Extreme class allies "
+                            "Name": "Is HP 50 % or less on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many turns since the following was true for the first time: Is HP 50 % or less and Is there 3 or more Extreme class allies ",
-                            "Logic": "<=1",
+                            "Name": "What percentage of HP is remaining on this turn?",
+                            "Logic": "<=50",
                             "Min": 0,
-                            "Max": 2
+                            "Max": 100
+                        }
+                    },
+                    "3050": {
+                        "Button": {
+                            "Name": "Is there 3 or more Extreme class allies on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Extreme class allies on this turn?",
+                            "Logic": ">=3",
+                            "Max": 7,
+                            "Min": 0
                         }
                     }
                 }
@@ -286,22 +292,17 @@
             },
             "Length": "4",
             "Condition": {
-                "Logic": "90040140 && 90040141",
+                "Logic": "3054",
                 "Causalities": {
-                    "90040140": {
+                    "3054": {
                         "Button": {
-                            "Name": "Was the following true: Is there 4 or more STR type allies "
-                        }
-                    },
-                    "90040141": {
-                        "Button": {
-                            "Name": "Was the following true for the first time in the last 4 turns: Is there 4 or more STR type allies "
+                            "Name": "Is there 4 or more STR  type allies within the last 4 turns?"
                         },
                         "Slider": {
-                            "Name": "How many turns since the following was true for the first time: Is there 4 or more STR  type allies ",
-                            "Logic": "<=4",
-                            "Min": 0,
-                            "Max": 5
+                            "Name": "How many STR  type allies within the last 4 turns?",
+                            "Logic": ">=4",
+                            "Max": 7,
+                            "Min": 0
                         }
                     }
                 }

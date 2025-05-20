@@ -58,22 +58,28 @@
             },
             "Length": "4",
             "Condition": {
-                "Logic": "44990 && 44991",
+                "Logic": "3423 || 3424",
                 "Causalities": {
-                    "44990": {
+                    "3423": {
                         "Button": {
-                            "Name": "Was the following true: Are there 2 or more Full Power category units on the team or Are there 2 or more Androids/Cell Saga category units on the team "
-                        }
-                    },
-                    "44991": {
-                        "Button": {
-                            "Name": "Was the following true for the first time in the last 4 turns: Are there 2 or more Full Power category units on the team or Are there 2 or more Androids/Cell Saga category units on the team "
+                            "Name": "Are there 2 or more Full Power category units on the team within the last 4 turns?"
                         },
                         "Slider": {
-                            "Name": "How many turns since the following was true for the first time: Are there 2 or more Full Power category units on the team or Are there 2 or more Androids/Cell Saga category units on the team ",
-                            "Logic": "<=4",
-                            "Min": 0,
-                            "Max": 5
+                            "Name": "How many Full Power category units on the team within the last 4 turns?",
+                            "Logic": ">=2",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    },
+                    "3424": {
+                        "Button": {
+                            "Name": "Are there 2 or more Androids/Cell Saga category units on the team within the last 4 turns?"
+                        },
+                        "Slider": {
+                            "Name": "How many Androids/Cell Saga category units on the team within the last 4 turns?",
+                            "Logic": ">=2",
+                            "Max": 7,
+                            "Min": 0
                         }
                     }
                 }

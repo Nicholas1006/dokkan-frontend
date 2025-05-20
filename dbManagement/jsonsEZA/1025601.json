@@ -77,22 +77,6 @@
             "Length": "1",
             "Once Only": true,
             "Type": "Single activator",
-            "Condition": {
-                "Logic": "2003100",
-                "Causalities": {
-                    "2003100": {
-                        "Button": {
-                            "Name": "Is it within the first 1 turns from entry turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
-                            "Logic": "<=1",
-                            "Max": "2",
-                            "Min": "1"
-                        }
-                    }
-                }
-            },
             "Brief effect description": "Performs a Critical Hit "
         },
         "3003100": {
@@ -113,22 +97,6 @@
             "Length": "1",
             "Once Only": true,
             "Type": "Single activator",
-            "Condition": {
-                "Logic": "3003100",
-                "Causalities": {
-                    "3003100": {
-                        "Button": {
-                            "Name": "Is it within the first 1 turns from entry turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
-                            "Logic": "<=1",
-                            "Max": "2",
-                            "Min": "1"
-                        }
-                    }
-                }
-            },
             "Brief effect description": "Performs an additional attack with a 70% chance of becoming a super attack "
         },
         "4003100": {
@@ -236,11 +204,14 @@
             },
             "Length": "99",
             "Condition": {
-                "Logic": "8003100",
+                "Logic": "2000",
                 "Causalities": {
-                    "8003100": {
-                        "Button": {
-                            "Name": "Was the following true: How many super attacks has this character performed is greater than or equal to 3 "
+                    "2000": {
+                        "Slider": {
+                            "Name": "How many super attacks has this character performed?",
+                            "Logic": ">=3",
+                            "Min": 0,
+                            "Max": 3
                         }
                     }
                 }

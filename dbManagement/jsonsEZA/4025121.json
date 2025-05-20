@@ -45,22 +45,6 @@
             "Length": "1",
             "Once Only": true,
             "Type": "Single activator",
-            "Condition": {
-                "Logic": "2922",
-                "Causalities": {
-                    "2922": {
-                        "Button": {
-                            "Name": "Is it within the first 1 turns from entry turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
-                            "Logic": "<=1",
-                            "Max": "2",
-                            "Min": "1"
-                        }
-                    }
-                }
-            },
             "Brief effect description": "Heals +50% "
         },
         "1002922": {
@@ -157,22 +141,17 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "40029220 && 40029221",
+                "Logic": "1602",
                 "Causalities": {
-                    "40029220": {
+                    "1602": {
                         "Button": {
-                            "Name": "Was the following true: Has this character been hit "
-                        }
-                    },
-                    "40029221": {
-                        "Button": {
-                            "Name": "Was the following true for the first time on this turn: Has this character been hit "
+                            "Name": "Has this character been hit on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many turns since the following was true for the first time: Has this character been hit ",
-                            "Logic": "<=1",
+                            "Name": "How many times has this character been hit on this turn?",
+                            "Logic": ">=1",
                             "Min": 0,
-                            "Max": 2
+                            "Max": 1
                         }
                     }
                 }

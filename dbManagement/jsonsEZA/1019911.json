@@ -124,11 +124,39 @@
             },
             "Length": "99",
             "Condition": {
-                "Logic": "3004194",
+                "Logic": "61 || 2375 && 42",
                 "Causalities": {
-                    "3004194": {
+                    "61": {
                         "Button": {
-                            "Name": "Was the following true: Is HP 40 % or less or Is it on or after the first 5 turns from this characters entry turn and Is HP 80 % or less "
+                            "Name": "Is HP 40 % or less?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining?",
+                            "Logic": "<=40",
+                            "Min": 0,
+                            "Max": 100
+                        }
+                    },
+                    "2375": {
+                        "Button": {
+                            "Name": "Is it on or after the first 5 turns from this characters entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since entry turn?",
+                            "Logic": ">=5",
+                            "Min": 0,
+                            "Max": 5
+                        }
+                    },
+                    "42": {
+                        "Button": {
+                            "Name": "Is HP 80 % or less?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining?",
+                            "Logic": "<=80",
+                            "Min": 0,
+                            "Max": 100
                         }
                     }
                 }
@@ -289,22 +317,6 @@
             "Length": "1",
             "Once Only": true,
             "Type": "Single activator",
-            "Condition": {
-                "Logic": "9004194",
-                "Causalities": {
-                    "9004194": {
-                        "Button": {
-                            "Name": "Is it within the first 1 turns from entry turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
-                            "Logic": "<=1",
-                            "Max": "2",
-                            "Min": "1"
-                        }
-                    }
-                }
-            },
             "Brief effect description": "Damage recieved -30% "
         }
     },

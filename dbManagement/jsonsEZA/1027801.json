@@ -186,22 +186,28 @@
             },
             "Length": "2",
             "Condition": {
-                "Logic": "50043030 && 50043031",
+                "Logic": "1599 && 2882",
                 "Causalities": {
-                    "50043030": {
+                    "1599": {
                         "Button": {
-                            "Name": "Was the following true: Has this character evaded 3rd times in battle and Is there 4 or more Extreme class allies "
-                        }
-                    },
-                    "50043031": {
-                        "Button": {
-                            "Name": "Was the following true for the first time in the last 2 turns: Has this character evaded 3rd times in battle and Is there 4 or more Extreme class allies "
+                            "Name": "Has this character evaded 3rd times in battle within the last 2 turns?"
                         },
                         "Slider": {
-                            "Name": "How many turns since the following was true for the first time: Has this character evaded 3rd times in battle and Is there 4 or more Extreme class allies ",
-                            "Logic": "<=2",
+                            "Name": "How many attacks have been evaded within the last 2 turns?",
+                            "Logic": ">=3",
                             "Min": 0,
                             "Max": 3
+                        }
+                    },
+                    "2882": {
+                        "Button": {
+                            "Name": "Is there 4 or more Extreme class allies within the last 2 turns?"
+                        },
+                        "Slider": {
+                            "Name": "How many Extreme class allies within the last 2 turns?",
+                            "Logic": ">=4",
+                            "Max": 7,
+                            "Min": 0
                         }
                     }
                 }

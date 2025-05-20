@@ -68,22 +68,32 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "10045230 && 10045231",
+                "Logic": "1880 && 1279 && 525",
                 "Causalities": {
-                    "10045230": {
+                    "1880": {
                         "Button": {
-                            "Name": "Was the following true: Is a super being performed and Is the enemy's health 50 % or less and Is there less than 2 enemies "
+                            "Name": "Has this character been hit by a super attack?"
                         }
                     },
-                    "10045231": {
+                    "1279": {
                         "Button": {
-                            "Name": "Was the following true for the first time on this turn: Is a super being performed and Is the enemy's health 50 % or less and Is there less than 2 enemies "
+                            "Name": "Is the enemy's health 50 % or less?"
                         },
                         "Slider": {
-                            "Name": "How many turns since the following was true for the first time: Is a super being performed and Is the enemy's health 50 % or less and Is there less than 2 enemies ",
-                            "Logic": "<=1",
-                            "Min": 0,
-                            "Max": 2
+                            "Name": "What percentage of HP does the enemy have?",
+                            "Logic": "<=50",
+                            "Max": 100
+                        }
+                    },
+                    "525": {
+                        "Button": {
+                            "Name": "Is there less than 2 enemies?"
+                        },
+                        "Slider": {
+                            "Name": "How many enemies are there?",
+                            "Logic": "<2",
+                            "Min": 1,
+                            "Max": 7
                         }
                     }
                 }
@@ -108,22 +118,32 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "20045230 && 20045231",
+                "Logic": "1880 && 1279 && 525",
                 "Causalities": {
-                    "20045230": {
+                    "1880": {
                         "Button": {
-                            "Name": "Was the following true: Is a super being performed and Is the enemy's health 50 % or less and Is there less than 2 enemies "
+                            "Name": "Has this character been hit by a super attack?"
                         }
                     },
-                    "20045231": {
+                    "1279": {
                         "Button": {
-                            "Name": "Was the following true for the first time on this turn: Is a super being performed and Is the enemy's health 50 % or less and Is there less than 2 enemies "
+                            "Name": "Is the enemy's health 50 % or less?"
                         },
                         "Slider": {
-                            "Name": "How many turns since the following was true for the first time: Is a super being performed and Is the enemy's health 50 % or less and Is there less than 2 enemies ",
-                            "Logic": "<=1",
-                            "Min": 0,
-                            "Max": 2
+                            "Name": "What percentage of HP does the enemy have?",
+                            "Logic": "<=50",
+                            "Max": 100
+                        }
+                    },
+                    "525": {
+                        "Button": {
+                            "Name": "Is there less than 2 enemies?"
+                        },
+                        "Slider": {
+                            "Name": "How many enemies are there?",
+                            "Logic": "<2",
+                            "Min": 1,
+                            "Max": 7
                         }
                     }
                 }
@@ -371,22 +391,17 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "130045230 && 130045231",
+                "Logic": "1278",
                 "Causalities": {
-                    "130045230": {
+                    "1278": {
                         "Button": {
-                            "Name": "Was the following true: Is HP 50 % or less "
-                        }
-                    },
-                    "130045231": {
-                        "Button": {
-                            "Name": "Was the following true for the first time on this turn: Is HP 50 % or less "
+                            "Name": "Is HP 50 % or less on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many turns since the following was true for the first time: Is HP 50 % or less ",
-                            "Logic": "<=1",
+                            "Name": "What percentage of HP is remaining on this turn?",
+                            "Logic": "<=50",
                             "Min": 0,
-                            "Max": 2
+                            "Max": 100
                         }
                     }
                 }
@@ -838,22 +853,6 @@
             "Length": "1",
             "Once Only": true,
             "Type": "Single activator",
-            "Condition": {
-                "Logic": "29004523",
-                "Causalities": {
-                    "29004523": {
-                        "Button": {
-                            "Name": "Is it within the first 1 turns from entry turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
-                            "Logic": "<=1",
-                            "Max": "2",
-                            "Min": "1"
-                        }
-                    }
-                }
-            },
             "Brief effect description": "Damage recieved -77% "
         },
         "30004523": {

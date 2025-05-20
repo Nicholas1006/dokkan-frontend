@@ -46,22 +46,28 @@
             },
             "Length": "3",
             "Condition": {
-                "Logic": "40960 && 40961",
+                "Logic": "688 || 841",
                 "Causalities": {
-                    "40960": {
+                    "688": {
                         "Button": {
-                            "Name": "Was the following true: Are there 3 or more Special Pose category units on the team or Are there 3 or more Defenders of Justice category units on the team "
-                        }
-                    },
-                    "40961": {
-                        "Button": {
-                            "Name": "Was the following true for the first time in the last 3 turns: Are there 3 or more Special Pose category units on the team or Are there 3 or more Defenders of Justice category units on the team "
+                            "Name": "Are there 3 or more Special Pose category units on the team within the last 3 turns?"
                         },
                         "Slider": {
-                            "Name": "How many turns since the following was true for the first time: Are there 3 or more Special Pose category units on the team or Are there 3 or more Defenders of Justice category units on the team ",
-                            "Logic": "<=3",
-                            "Min": 0,
-                            "Max": 4
+                            "Name": "How many Special Pose category units on the team within the last 3 turns?",
+                            "Logic": ">=3",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    },
+                    "841": {
+                        "Button": {
+                            "Name": "Are there 3 or more Defenders of Justice category units on the team within the last 3 turns?"
+                        },
+                        "Slider": {
+                            "Name": "How many Defenders of Justice category units on the team within the last 3 turns?",
+                            "Logic": ">=3",
+                            "Max": 7,
+                            "Min": 0
                         }
                     }
                 }
@@ -83,11 +89,28 @@
             },
             "Length": "99",
             "Condition": {
-                "Logic": "1004096",
+                "Logic": "688 || 841",
                 "Causalities": {
-                    "1004096": {
+                    "688": {
                         "Button": {
-                            "Name": "Was the following true: Are there 3 or more Special Pose category units on the team or Are there 3 or more Defenders of Justice category units on the team "
+                            "Name": "Are there 3 or more Special Pose category units on the team "
+                        },
+                        "Slider": {
+                            "Name": "How many Special Pose category units on the team ",
+                            "Logic": ">=3",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    },
+                    "841": {
+                        "Button": {
+                            "Name": "Are there 3 or more Defenders of Justice category units on the team "
+                        },
+                        "Slider": {
+                            "Name": "How many Defenders of Justice category units on the team ",
+                            "Logic": ">=3",
+                            "Max": 7,
+                            "Min": 0
                         }
                     }
                 }

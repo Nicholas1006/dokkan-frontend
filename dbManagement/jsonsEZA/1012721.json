@@ -171,22 +171,14 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "50040030 && 50040031",
+                "Logic": "75",
                 "Causalities": {
-                    "50040030": {
-                        "Button": {
-                            "Name": "Was the following true: How much ki is there is greater than or equal to 18 "
-                        }
-                    },
-                    "50040031": {
-                        "Button": {
-                            "Name": "Was the following true for the first time on this turn: How much ki is there is greater than or equal to 18 "
-                        },
+                    "75": {
                         "Slider": {
-                            "Name": "How many turns since the following was true for the first time: How much ki is there is greater than or equal to 18 ",
-                            "Logic": "<=1",
+                            "Name": "How much ki is there on this turn?",
+                            "Logic": ">=18",
                             "Min": 0,
-                            "Max": 2
+                            "Max": 24
                         }
                     }
                 }
@@ -360,22 +352,39 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "100040030 && 100040031",
+                "Logic": "579 && 9 && 6",
                 "Causalities": {
-                    "100040030": {
+                    "579": {
                         "Button": {
-                            "Name": "Was the following true: Is it on or after the first Is HP 59 % or less turns from this characters entry turn and Is there less than 2 enemies and Is HP 59 % or less "
-                        }
-                    },
-                    "100040031": {
-                        "Button": {
-                            "Name": "Was the following true for the first time on this turn: Is it on or after the first Is HP 59 % or less turns from this characters entry turn and Is there less than 2 enemies and Is HP 59 % or less "
+                            "Name": "Is it on or after the first 6 turns from this characters entry turn on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many turns since the following was true for the first time: Is it on or after the first Is HP 59 % or less turns from this characters entry turn and Is there less than 2 enemies and Is HP 59 % or less ",
-                            "Logic": "<=1",
+                            "Name": "How many turns is it since entry turn on this turn?",
+                            "Logic": ">=6",
                             "Min": 0,
-                            "Max": 2
+                            "Max": 6
+                        }
+                    },
+                    "9": {
+                        "Button": {
+                            "Name": "Is there less than 2 enemies on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many enemies are there on this turn?",
+                            "Logic": "<2",
+                            "Min": 1,
+                            "Max": 7
+                        }
+                    },
+                    "6": {
+                        "Button": {
+                            "Name": "Is HP 59 % or less on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining on this turn?",
+                            "Logic": "<=59",
+                            "Min": 0,
+                            "Max": 100
                         }
                     }
                 }

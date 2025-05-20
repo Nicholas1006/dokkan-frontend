@@ -41,22 +41,6 @@
             "Length": "10",
             "Once Only": true,
             "Type": "Single activator",
-            "Condition": {
-                "Logic": "2941",
-                "Causalities": {
-                    "2941": {
-                        "Button": {
-                            "Name": "Is it within the first 10 turns from entry turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
-                            "Logic": "<=10",
-                            "Max": "11",
-                            "Min": "1"
-                        }
-                    }
-                }
-            },
             "Brief effect description": "Ki +3 "
         },
         "1002941": {
@@ -72,22 +56,17 @@
             },
             "Length": "10",
             "Condition": {
-                "Logic": "10029410 && 10029411",
+                "Logic": "1655",
                 "Causalities": {
-                    "10029410": {
+                    "1655": {
                         "Button": {
-                            "Name": "Was the following true: Is there 1 or more Extreme class enemies "
-                        }
-                    },
-                    "10029411": {
-                        "Button": {
-                            "Name": "Was the following true for the first time in the last 10 turns: Is there 1 or more Extreme class enemies "
+                            "Name": "Is there 1 or more Extreme class enemies within the last 10 turns?"
                         },
                         "Slider": {
-                            "Name": "How many turns since the following was true for the first time: Is there 1 or more Extreme class enemies ",
-                            "Logic": "<=10",
-                            "Min": 0,
-                            "Max": 11
+                            "Name": "How many Extreme class enemies within the last 10 turns?",
+                            "Logic": ">=1",
+                            "Max": 7,
+                            "Min": 0
                         }
                     }
                 }

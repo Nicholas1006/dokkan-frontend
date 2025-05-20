@@ -48,22 +48,6 @@
             "Length": "1",
             "Once Only": true,
             "Type": "Single activator",
-            "Condition": {
-                "Logic": "4461",
-                "Causalities": {
-                    "4461": {
-                        "Button": {
-                            "Name": "Is it within the first 1 turns from entry turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
-                            "Logic": "<=1",
-                            "Max": "2",
-                            "Min": "1"
-                        }
-                    }
-                }
-            },
             "Brief effect description": "Damage recieved -20% "
         },
         "1004461": {
@@ -80,22 +64,6 @@
             "Length": "1",
             "Once Only": true,
             "Type": "Single activator",
-            "Condition": {
-                "Logic": "1004461",
-                "Causalities": {
-                    "1004461": {
-                        "Button": {
-                            "Name": "Is it within the first 1 turns from entry turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
-                            "Logic": "<=1",
-                            "Max": "2",
-                            "Min": "1"
-                        }
-                    }
-                }
-            },
             "Brief effect description": "Chance of evading enemy attacks +20% "
         },
         "2004461": {
@@ -360,11 +328,28 @@
             },
             "Length": "99",
             "Condition": {
-                "Logic": "12004461",
+                "Logic": "3356 || 2729",
                 "Causalities": {
-                    "12004461": {
+                    "3356": {
                         "Button": {
-                            "Name": "Was the following true: Has this character evaded 5th times in battle or Is it on or after the first 6 turns from this characters entry turn "
+                            "Name": "Has this character evaded 5th times in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks have been evaded?",
+                            "Logic": ">=5",
+                            "Min": 0,
+                            "Max": 5
+                        }
+                    },
+                    "2729": {
+                        "Button": {
+                            "Name": "Is it on or after the first 6 turns from this characters entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since entry turn?",
+                            "Logic": ">=6",
+                            "Min": 0,
+                            "Max": 6
                         }
                     }
                 }
@@ -386,11 +371,28 @@
             },
             "Length": "99",
             "Condition": {
-                "Logic": "13004461",
+                "Logic": "3356 || 2729",
                 "Causalities": {
-                    "13004461": {
+                    "3356": {
                         "Button": {
-                            "Name": "Was the following true: Has this character evaded 5th times in battle or Is it on or after the first 6 turns from this characters entry turn "
+                            "Name": "Has this character evaded 5th times in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks have been evaded?",
+                            "Logic": ">=5",
+                            "Min": 0,
+                            "Max": 5
+                        }
+                    },
+                    "2729": {
+                        "Button": {
+                            "Name": "Is it on or after the first 6 turns from this characters entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since entry turn?",
+                            "Logic": ">=6",
+                            "Min": 0,
+                            "Max": 6
                         }
                     }
                 }

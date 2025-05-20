@@ -47,11 +47,28 @@
             },
             "Length": "99",
             "Condition": {
-                "Logic": "4553",
+                "Logic": "2775 || 2817",
                 "Causalities": {
-                    "4553": {
+                    "2775": {
                         "Button": {
-                            "Name": "Was the following true: Are there 2 or more Tournament Participants category units on the team or Are there 1 or more Tournament Participants category enemies "
+                            "Name": "Are there 2 or more Tournament Participants category units on the team "
+                        },
+                        "Slider": {
+                            "Name": "How many Tournament Participants category units on the team ",
+                            "Logic": ">=2",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    },
+                    "2817": {
+                        "Button": {
+                            "Name": "Are there 1 or more Tournament Participants category enemies "
+                        },
+                        "Slider": {
+                            "Name": "How many Tournament Participants category enemies ",
+                            "Logic": ">=1",
+                            "Max": 7,
+                            "Min": 0
                         }
                     }
                 }
@@ -77,11 +94,28 @@
             },
             "Length": "99",
             "Condition": {
-                "Logic": "1004553",
+                "Logic": "2775 || 2817",
                 "Causalities": {
-                    "1004553": {
+                    "2775": {
                         "Button": {
-                            "Name": "Was the following true: Are there 2 or more Tournament Participants category units on the team or Are there 1 or more Tournament Participants category enemies "
+                            "Name": "Are there 2 or more Tournament Participants category units on the team "
+                        },
+                        "Slider": {
+                            "Name": "How many Tournament Participants category units on the team ",
+                            "Logic": ">=2",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    },
+                    "2817": {
+                        "Button": {
+                            "Name": "Are there 1 or more Tournament Participants category enemies "
+                        },
+                        "Slider": {
+                            "Name": "How many Tournament Participants category enemies ",
+                            "Logic": ">=1",
+                            "Max": 7,
+                            "Min": 0
                         }
                     }
                 }
@@ -103,22 +137,33 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "20045530 && 20045531",
+                "Logic": "(2775 || 2817) && 2526",
                 "Causalities": {
-                    "20045530": {
+                    "2775": {
                         "Button": {
-                            "Name": "Was the following true: ( Are there 2 or more Tournament Participants category units on the team or Are there 1 or more Tournament Participants category enemies ) and Is no domain active "
-                        }
-                    },
-                    "20045531": {
-                        "Button": {
-                            "Name": "Was the following true for the first time on this turn: ( Are there 2 or more Tournament Participants category units on the team or Are there 1 or more Tournament Participants category enemies ) and Is no domain active "
+                            "Name": "Are there 2 or more Tournament Participants category units on the team on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many turns since the following was true for the first time:  ( Are there 2 or more Tournament Participants category units on the team or Are there 1 or more Tournament Participants category enemies )  and Is no domain active ",
-                            "Logic": "<=1",
-                            "Min": 0,
-                            "Max": 2
+                            "Name": "How many Tournament Participants category units on the team on this turn?",
+                            "Logic": ">=2",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    },
+                    "2817": {
+                        "Button": {
+                            "Name": "Are there 1 or more Tournament Participants category enemies on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Tournament Participants category enemies on this turn?",
+                            "Logic": ">=1",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    },
+                    "2526": {
+                        "Button": {
+                            "Name": "Is no domain active on this turn?"
                         }
                     }
                 }

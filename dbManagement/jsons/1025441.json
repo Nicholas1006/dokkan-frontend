@@ -317,11 +317,25 @@
             },
             "Length": "99",
             "Condition": {
-                "Logic": "9003070",
+                "Logic": "1935 || 1936",
                 "Causalities": {
-                    "9003070": {
+                    "1935": {
+                        "Slider": {
+                            "Name": "How many attacks has this character performed in battle?",
+                            "Logic": ">=5",
+                            "Min": 0,
+                            "Max": 5
+                        }
+                    },
+                    "1936": {
                         "Button": {
-                            "Name": "Was the following true: How many attacks has this character performed in battle is greater than or equal to 5 or Has this character recieved their 5th attack in battle "
+                            "Name": "Has this character recieved their 5th attack in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character recieved?",
+                            "Logic": ">=5",
+                            "Min": 0,
+                            "Max": 5
                         }
                     }
                 }

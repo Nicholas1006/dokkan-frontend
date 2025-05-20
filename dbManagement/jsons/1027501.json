@@ -473,22 +473,27 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "110038820 && 110038821",
+                "Logic": "2783 && 2784",
                 "Causalities": {
-                    "110038820": {
+                    "2783": {
                         "Button": {
-                            "Name": "Was the following true: Are there 2 or more Tournament Participants category units on this turn and Is the turn count 4 or more "
-                        }
-                    },
-                    "110038821": {
-                        "Button": {
-                            "Name": "Was the following true for the first time on this turn: Are there 2 or more Tournament Participants category units on this turn and Is the turn count 4 or more "
+                            "Name": "Are there 2 or more Tournament Participants category units on this turn "
                         },
                         "Slider": {
-                            "Name": "How many turns since the following was true for the first time: Are there 2 or more Tournament Participants category units on this turn and Is the turn count 4 or more ",
-                            "Logic": "<=1",
-                            "Min": 0,
-                            "Max": 2
+                            "Name": "How many Tournament Participants category units on this turn ",
+                            "Logic": ">=2",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    },
+                    "2784": {
+                        "Button": {
+                            "Name": "Is the turn count 4 or more on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "What turn is it on this turn?",
+                            "Logic": ">=4",
+                            "Min": 1
                         }
                     }
                 }

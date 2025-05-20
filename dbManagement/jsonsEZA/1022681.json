@@ -353,22 +353,28 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "120042150 && 120042151",
+                "Logic": "2207 && 33",
                 "Causalities": {
-                    "120042150": {
+                    "2207": {
                         "Button": {
-                            "Name": "Was the following true: Are there 3 or more Universe 11 category units on this turn and Is this the 3rd attacker in the turn "
-                        }
-                    },
-                    "120042151": {
-                        "Button": {
-                            "Name": "Was the following true for the first time on this turn: Are there 3 or more Universe 11 category units on this turn and Is this the 3rd attacker in the turn "
+                            "Name": "Are there 3 or more Universe 11 category units on this turn "
                         },
                         "Slider": {
-                            "Name": "How many turns since the following was true for the first time: Are there 3 or more Universe 11 category units on this turn and Is this the 3rd attacker in the turn ",
-                            "Logic": "<=1",
-                            "Min": 0,
-                            "Max": 2
+                            "Name": "How many Universe 11 category units on this turn ",
+                            "Logic": ">=3",
+                            "Max": 3,
+                            "Min": 0
+                        }
+                    },
+                    "33": {
+                        "Button": {
+                            "Name": "Is this the 3rd attacker in the turn on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "What position is this character attacking in on this turn?",
+                            "Logic": "==3",
+                            "Min": 1,
+                            "Max": 3
                         }
                     }
                 }

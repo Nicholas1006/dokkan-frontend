@@ -81,22 +81,6 @@
             "Length": "4",
             "Once Only": true,
             "Type": "Single activator",
-            "Condition": {
-                "Logic": "2002842",
-                "Causalities": {
-                    "2002842": {
-                        "Button": {
-                            "Name": "Is it within the first 4 turns from entry turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
-                            "Logic": "<=4",
-                            "Max": "5",
-                            "Min": "1"
-                        }
-                    }
-                }
-            },
             "Brief effect description": "Performs an additional attack with a 0% chance of becoming a super attack "
         },
         "3002842": {
@@ -179,11 +163,14 @@
             },
             "Length": "99",
             "Condition": {
-                "Logic": "5002842",
+                "Logic": "1448",
                 "Causalities": {
-                    "5002842": {
-                        "Button": {
-                            "Name": "Was the following true: How many attacks has this character performed in battle is greater than or equal to 5 "
+                    "1448": {
+                        "Slider": {
+                            "Name": "How many attacks has this character performed in battle?",
+                            "Logic": ">=5",
+                            "Min": 0,
+                            "Max": 5
                         }
                     }
                 }
@@ -205,11 +192,14 @@
             },
             "Length": "99",
             "Condition": {
-                "Logic": "6002842",
+                "Logic": "1453",
                 "Causalities": {
-                    "6002842": {
-                        "Button": {
-                            "Name": "Was the following true: How many attacks has this character performed in battle is greater than or equal to 10 "
+                    "1453": {
+                        "Slider": {
+                            "Name": "How many attacks has this character performed in battle?",
+                            "Logic": ">=10",
+                            "Min": 0,
+                            "Max": 10
                         }
                     }
                 }

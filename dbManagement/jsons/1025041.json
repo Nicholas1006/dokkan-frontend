@@ -39,22 +39,27 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "30050 && 30051",
+                "Logic": "1784 && 1785",
                 "Causalities": {
-                    "30050": {
+                    "1784": {
                         "Button": {
-                            "Name": "Was the following true: Is the turn count 5 or more and Is HP 20 % or less "
-                        }
-                    },
-                    "30051": {
-                        "Button": {
-                            "Name": "Was the following true for the first time on this turn: Is the turn count 5 or more and Is HP 20 % or less "
+                            "Name": "Is the turn count 5 or more on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many turns since the following was true for the first time: Is the turn count 5 or more and Is HP 20 % or less ",
-                            "Logic": "<=1",
+                            "Name": "What turn is it on this turn?",
+                            "Logic": ">=5",
+                            "Min": 1
+                        }
+                    },
+                    "1785": {
+                        "Button": {
+                            "Name": "Is HP 20 % or less on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining on this turn?",
+                            "Logic": "<=20",
                             "Min": 0,
-                            "Max": 2
+                            "Max": 100
                         }
                     }
                 }

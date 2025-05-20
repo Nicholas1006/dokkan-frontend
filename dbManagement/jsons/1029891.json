@@ -516,22 +516,16 @@
             "Chance": "50",
             "Length": "1",
             "Condition": {
-                "Logic": "140043210 && 140043211",
+                "Logic": "200",
                 "Causalities": {
-                    "140043210": {
+                    "200": {
                         "Button": {
-                            "Name": "Was the following true: Is the turn count 5 or more "
-                        }
-                    },
-                    "140043211": {
-                        "Button": {
-                            "Name": "Was the following true for the first time on this turn: Is the turn count 5 or more "
+                            "Name": "Is the turn count 5 or more on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many turns since the following was true for the first time: Is the turn count 5 or more ",
-                            "Logic": "<=1",
-                            "Min": 0,
-                            "Max": 2
+                            "Name": "What turn is it on this turn?",
+                            "Logic": ">=5",
+                            "Min": 1
                         }
                     }
                 }

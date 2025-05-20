@@ -192,22 +192,27 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "50035360 && 50035361",
+                "Logic": "2567 && 2568",
                 "Causalities": {
-                    "50035360": {
+                    "2567": {
                         "Button": {
-                            "Name": "Was the following true: Is HP 50 % or less and Is the turn count 4 or more "
-                        }
-                    },
-                    "50035361": {
-                        "Button": {
-                            "Name": "Was the following true for the first time on this turn: Is HP 50 % or less and Is the turn count 4 or more "
+                            "Name": "Is HP 50 % or less on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many turns since the following was true for the first time: Is HP 50 % or less and Is the turn count 4 or more ",
-                            "Logic": "<=1",
+                            "Name": "What percentage of HP is remaining on this turn?",
+                            "Logic": "<=50",
                             "Min": 0,
-                            "Max": 2
+                            "Max": 100
+                        }
+                    },
+                    "2568": {
+                        "Button": {
+                            "Name": "Is the turn count 4 or more on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "What turn is it on this turn?",
+                            "Logic": ">=4",
+                            "Min": 1
                         }
                     }
                 }

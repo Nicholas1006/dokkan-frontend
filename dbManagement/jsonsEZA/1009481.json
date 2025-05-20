@@ -413,22 +413,28 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "100041170 && 100041171",
+                "Logic": "805 && 15",
                 "Causalities": {
-                    "100041170": {
+                    "805": {
                         "Button": {
-                            "Name": "Was the following true: Is there 1 or more Extreme class enemies and Is HP 30 % or less "
-                        }
-                    },
-                    "100041171": {
-                        "Button": {
-                            "Name": "Was the following true for the first time on this turn: Is there 1 or more Extreme class enemies and Is HP 30 % or less "
+                            "Name": "Is there 1 or more Extreme class enemies on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many turns since the following was true for the first time: Is there 1 or more Extreme class enemies and Is HP 30 % or less ",
-                            "Logic": "<=1",
+                            "Name": "How many Extreme class enemies on this turn?",
+                            "Logic": ">=1",
+                            "Max": 7,
+                            "Min": 0
+                        }
+                    },
+                    "15": {
+                        "Button": {
+                            "Name": "Is HP 30 % or less on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining on this turn?",
+                            "Logic": "<=30",
                             "Min": 0,
-                            "Max": 2
+                            "Max": 100
                         }
                     }
                 }

@@ -239,22 +239,25 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "80027780 && 80027781",
+                "Logic": "1325 && 1326",
                 "Causalities": {
-                    "80027780": {
-                        "Button": {
-                            "Name": "Was the following true: How much ki is there is greater than or equal to 24 and Is there 2 or more enemies "
+                    "1325": {
+                        "Slider": {
+                            "Name": "How much ki is there on this turn?",
+                            "Logic": ">=24",
+                            "Min": 0,
+                            "Max": 24
                         }
                     },
-                    "80027781": {
+                    "1326": {
                         "Button": {
-                            "Name": "Was the following true for the first time on this turn: How much ki is there is greater than or equal to 24 and Is there 2 or more enemies "
+                            "Name": "Is there 2 or more enemies on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many turns since the following was true for the first time: How much ki is there is greater than or equal to 24 and Is there 2 or more enemies ",
-                            "Logic": "<=1",
-                            "Min": 0,
-                            "Max": 2
+                            "Name": "How many enemies are there on this turn?",
+                            "Logic": ">=2",
+                            "Min": 1,
+                            "Max": 7
                         }
                     }
                 }

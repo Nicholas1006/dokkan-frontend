@@ -45,22 +45,6 @@
             "Length": "6",
             "Once Only": true,
             "Type": "Single activator",
-            "Condition": {
-                "Logic": "3335",
-                "Causalities": {
-                    "3335": {
-                        "Button": {
-                            "Name": "Is it within the first 6 turns from entry turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
-                            "Logic": "<=6",
-                            "Max": "7",
-                            "Min": "1"
-                        }
-                    }
-                }
-            },
             "Brief effect description": "Ki +4 "
         },
         "1003335": {
@@ -78,22 +62,6 @@
             "Length": "6",
             "Once Only": true,
             "Type": "Single activator",
-            "Condition": {
-                "Logic": "1003335",
-                "Causalities": {
-                    "1003335": {
-                        "Button": {
-                            "Name": "Is it within the first 6 turns from entry turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
-                            "Logic": "<=6",
-                            "Max": "7",
-                            "Min": "1"
-                        }
-                    }
-                }
-            },
             "Brief effect description": "ATK and DEF +59% "
         },
         "2003335": {
@@ -110,22 +78,6 @@
             "Length": "6",
             "Once Only": true,
             "Type": "Single activator",
-            "Condition": {
-                "Logic": "2003335",
-                "Causalities": {
-                    "2003335": {
-                        "Button": {
-                            "Name": "Is it within the first 6 turns from entry turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
-                            "Logic": "<=6",
-                            "Max": "7",
-                            "Min": "1"
-                        }
-                    }
-                }
-            },
             "Brief effect description": "Guards all attacks "
         },
         "3003335": {
@@ -189,22 +141,17 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "60033350 && 60033351",
+                "Logic": "2139",
                 "Causalities": {
-                    "60033350": {
+                    "2139": {
                         "Button": {
-                            "Name": "Was the following true: Is HP 40 % or less "
-                        }
-                    },
-                    "60033351": {
-                        "Button": {
-                            "Name": "Was the following true for the first time on this turn: Is HP 40 % or less "
+                            "Name": "Is HP 40 % or less on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many turns since the following was true for the first time: Is HP 40 % or less ",
-                            "Logic": "<=1",
+                            "Name": "What percentage of HP is remaining on this turn?",
+                            "Logic": "<=40",
                             "Min": 0,
-                            "Max": 2
+                            "Max": 100
                         }
                     }
                 }
@@ -272,11 +219,17 @@
             },
             "Length": "99",
             "Condition": {
-                "Logic": "9003335",
+                "Logic": "2140",
                 "Causalities": {
-                    "9003335": {
+                    "2140": {
                         "Button": {
-                            "Name": "Was the following true: Has this character recieved their 5th attack in battle "
+                            "Name": "Has this character recieved their 5th attack in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character recieved?",
+                            "Logic": ">=5",
+                            "Min": 0,
+                            "Max": 5
                         }
                     }
                 }
@@ -298,11 +251,17 @@
             },
             "Length": "99",
             "Condition": {
-                "Logic": "10003335",
+                "Logic": "2141",
                 "Causalities": {
-                    "10003335": {
+                    "2141": {
                         "Button": {
-                            "Name": "Was the following true: Has this character recieved their 9th attack in battle "
+                            "Name": "Has this character recieved their 9th attack in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character recieved?",
+                            "Logic": ">=9",
+                            "Min": 0,
+                            "Max": 9
                         }
                     }
                 }

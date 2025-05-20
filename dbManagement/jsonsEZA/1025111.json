@@ -62,22 +62,6 @@
             "Length": "5",
             "Once Only": true,
             "Type": "Single activator",
-            "Condition": {
-                "Logic": "1002920",
-                "Causalities": {
-                    "1002920": {
-                        "Button": {
-                            "Name": "Is it within the first 5 turns from entry turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
-                            "Logic": "<=5",
-                            "Max": "6",
-                            "Min": "1"
-                        }
-                    }
-                }
-            },
             "Brief effect description": "ATK and DEF +30% "
         },
         "2002920": {
@@ -109,22 +93,6 @@
             "Length": "5",
             "Once Only": true,
             "Type": "Single activator",
-            "Condition": {
-                "Logic": "3002920",
-                "Causalities": {
-                    "3002920": {
-                        "Button": {
-                            "Name": "Is it within the first 5 turns from entry turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
-                            "Logic": "<=5",
-                            "Max": "6",
-                            "Min": "1"
-                        }
-                    }
-                }
-            },
             "Brief effect description": "Chance of evading enemy attacks +20% "
         },
         "4002920": {
@@ -173,22 +141,17 @@
             },
             "Length": "3",
             "Condition": {
-                "Logic": "50029200 && 50029201",
+                "Logic": "1600",
                 "Causalities": {
-                    "50029200": {
+                    "1600": {
                         "Button": {
-                            "Name": "Was the following true: Has this character evaded 6th times in battle "
-                        }
-                    },
-                    "50029201": {
-                        "Button": {
-                            "Name": "Was the following true for the first time in the last 3 turns: Has this character evaded 6th times in battle "
+                            "Name": "Has this character evaded 6th times in battle within the last 3 turns?"
                         },
                         "Slider": {
-                            "Name": "How many turns since the following was true for the first time: Has this character evaded 6th times in battle ",
-                            "Logic": "<=3",
+                            "Name": "How many attacks have been evaded within the last 3 turns?",
+                            "Logic": ">=6",
                             "Min": 0,
-                            "Max": 4
+                            "Max": 6
                         }
                     }
                 }

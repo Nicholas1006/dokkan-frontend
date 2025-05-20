@@ -43,11 +43,17 @@
             },
             "Length": "99",
             "Condition": {
-                "Logic": "4148",
+                "Logic": "3154",
                 "Causalities": {
-                    "4148": {
+                    "3154": {
                         "Button": {
-                            "Name": "Was the following true: Is there 7 or more Super class allies "
+                            "Name": "Is there 7 or more Super class allies?"
+                        },
+                        "Slider": {
+                            "Name": "How many Super class allies?",
+                            "Logic": ">=7",
+                            "Max": 7,
+                            "Min": 0
                         }
                     }
                 }
@@ -69,22 +75,17 @@
             },
             "Length": "3",
             "Condition": {
-                "Logic": "10041480 && 10041481",
+                "Logic": "3154",
                 "Causalities": {
-                    "10041480": {
+                    "3154": {
                         "Button": {
-                            "Name": "Was the following true: Is there 7 or more Super class allies "
-                        }
-                    },
-                    "10041481": {
-                        "Button": {
-                            "Name": "Was the following true for the first time in the last 3 turns: Is there 7 or more Super class allies "
+                            "Name": "Is there 7 or more Super class allies within the last 3 turns?"
                         },
                         "Slider": {
-                            "Name": "How many turns since the following was true for the first time: Is there 7 or more Super class allies ",
-                            "Logic": "<=3",
-                            "Min": 0,
-                            "Max": 4
+                            "Name": "How many Super class allies within the last 3 turns?",
+                            "Logic": ">=7",
+                            "Max": 7,
+                            "Min": 0
                         }
                     }
                 }

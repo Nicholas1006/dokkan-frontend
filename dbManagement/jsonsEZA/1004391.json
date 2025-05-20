@@ -166,22 +166,25 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "50022250 && 50022251",
+                "Logic": "48 && 73",
                 "Causalities": {
-                    "50022250": {
-                        "Button": {
-                            "Name": "Was the following true: How much ki is there is greater than or equal to 12 and Is HP 60 % or less "
+                    "48": {
+                        "Slider": {
+                            "Name": "How much ki is there on this turn?",
+                            "Logic": ">=12",
+                            "Min": 0,
+                            "Max": 12
                         }
                     },
-                    "50022251": {
+                    "73": {
                         "Button": {
-                            "Name": "Was the following true for the first time on this turn: How much ki is there is greater than or equal to 12 and Is HP 60 % or less "
+                            "Name": "Is HP 60 % or less on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many turns since the following was true for the first time: How much ki is there is greater than or equal to 12 and Is HP 60 % or less ",
-                            "Logic": "<=1",
+                            "Name": "What percentage of HP is remaining on this turn?",
+                            "Logic": "<=60",
                             "Min": 0,
-                            "Max": 2
+                            "Max": 100
                         }
                     }
                 }
