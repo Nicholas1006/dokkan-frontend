@@ -2806,29 +2806,30 @@ function createLeaderStats(){
     seperateOrJoin.id="seperate-or-join-leader";
     seperateOrJoin.classList.add("JointLeader");
     seperateOrJoin.style.cursor="pointer";
-    seperateOrJoin.addEventListener("click", function(){
-      if(seperateOrJoin.classList.contains("SeperateLeader")){
-        seperateOrJoin.classList.remove("SeperateLeader");
-        seperateOrJoin.classList.add("JointLeader");
-  //      seperateOrJoin.style.width="110px";
-        leaderAInputKi.style.display="none";
-        leaderBInputKi.style.display="none";
-        leaderTotalInputKi.style.display="block";
-        leaderAInputStats.style.display="none";
-        leaderBInputStats.style.display="none";
-        leaderTotalInputStats.style.display="block";
-      } else {
-        seperateOrJoin.classList.remove("JointLeader");
-        seperateOrJoin.classList.add("SeperateLeader");
-  //      seperateOrJoin.style.width="220px";
-        leaderAInputKi.style.display="block";
-        leaderBInputKi.style.display="block";
-        leaderTotalInputKi.style.display="none";
-        leaderAInputStats.style.display="block";
-        leaderBInputStats.style.display="block";
-        leaderTotalInputStats.style.display="none";
-      }
-    });
+    seperateOrJoin.addEventListener(
+        "click", function(){
+            if(seperateOrJoin.classList.contains("SeperateLeader")){
+                seperateOrJoin.classList.remove("SeperateLeader");
+                seperateOrJoin.classList.add("JointLeader");
+                leaderAInputKi.style.display="none";
+                leaderBInputKi.style.display="none";
+                leaderTotalInputKi.style.display="block";
+                leaderAInputStats.style.display="none";
+                leaderBInputStats.style.display="none";
+                leaderTotalInputStats.style.display="block";
+            } 
+            else {
+                seperateOrJoin.classList.remove("JointLeader");
+                seperateOrJoin.classList.add("SeperateLeader");
+                leaderAInputKi.style.display="block";
+                leaderBInputKi.style.display="block";
+                leaderTotalInputKi.style.display="none";
+                leaderAInputStats.style.display="block";
+                leaderBInputStats.style.display="block";
+                leaderTotalInputStats.style.display="none";
+            }
+        }
+    );
 
     let leaderAInputKi=document.createElement("input");
     leaderAInputKi.id="leader-A-Input-Ki";
@@ -2869,12 +2870,6 @@ function createLeaderStats(){
     
 
     leaderAInputKi.addEventListener("input", function(){
-        if(parseInt(leaderAInputKi.value)>200){
-            leaderAInputKi.value=200;
-        }
-        else if (parseInt(leaderAInputKi.value)<0){
-            leaderAInputKi.value=0;
-        }
         leaderTotalInputKi.value=parseInt(leaderAInputKi.value)+parseInt(leaderBInputKi.value);
         leaderBuffs.Ki=leaderTotalInputKi.value;
         kiSources.leader=leaderBuffs.Ki;
@@ -2882,12 +2877,6 @@ function createLeaderStats(){
     });
 
     leaderBInputKi.addEventListener("input", function(){
-        if(parseInt(leaderBInputKi.value)>200){
-            leaderBInputKi.value=200;
-        }
-        else if (parseInt(leaderBInputKi.value)<0){
-            leaderBInputKi.value=0;
-        }
         leaderTotalInputKi.value=parseInt(leaderAInputKi.value)+parseInt(leaderBInputKi.value);
         leaderBuffs.Ki=leaderTotalInputKi.value;
         kiSources.leader=leaderBuffs.Ki;
@@ -2895,12 +2884,6 @@ function createLeaderStats(){
     });
     
     leaderTotalInputKi.addEventListener("input", function(){
-        if(parseInt(leaderTotalInputKi.value)>400){
-            leaderTotalInputKi.value=400;
-        }
-        else if (parseInt(leaderTotalInputKi.value)<0){
-            leaderTotalInputKi.value=0;
-        }
         leaderBuffs.Ki=leaderTotalInputKi.value;
         kiSources.leader=leaderBuffs.Ki;
         updatePassiveStats()
@@ -2920,8 +2903,8 @@ function createLeaderStats(){
     leaderAInputStats.type="number";
     leaderAInputStats.min=0;
     leaderAInputStats.max=220;
-    leaderAInputStats.step=1;
-    leaderAInputStats.value=200;
+    leaderAInputStats.step=10;
+    leaderAInputStats.value=220;
 
     leaderAInputStats.style.gridColumn="3";
     leaderAInputStats.style.gridRow="2"
@@ -2932,8 +2915,8 @@ function createLeaderStats(){
     leaderBInputStats.type="number";
     leaderBInputStats.min=0;
     leaderBInputStats.max=220;
-    leaderBInputStats.step=1;
-    leaderBInputStats.value=200;
+    leaderBInputStats.step=10;
+    leaderBInputStats.value=220;
 
     leaderBInputStats.style.gridColumn="3";
     leaderBInputStats.style.gridRow="3"
@@ -2945,8 +2928,8 @@ function createLeaderStats(){
     leaderTotalInputStats.type="number";
     leaderTotalInputStats.min=0;
     leaderTotalInputStats.max=440;
-    leaderTotalInputStats.step=1;
-    leaderTotalInputStats.value=400;
+    leaderTotalInputStats.step=10;
+    leaderTotalInputStats.value=440;
 
     leaderTotalInputStats.style.gridColumn="3";
     leaderTotalInputStats.style.gridRow="2"
@@ -3356,26 +3339,40 @@ function createPathButtons(){
     pathButtons[3].style.gridColumn = "3"
     pathButtons[3].style.gridRow = "3"
     // Add event listeners to toggle buttons
-    pathButtons.forEach(button => {
-      button.addEventListener("click", function() {
-        button.classList.toggle("active");
-        const starButton=document.getElementById("star-button");
-        //if 55% is not active, make it active
-        if (!starButton.classList.contains("active")) {
-          starButton.classList.toggle("active");
+    pathButtons.forEach(
+        button => {
+            button.addEventListener(
+                "click", function() {
+                    button.classList.toggle("active");
+                    const starButton=document.getElementById("star-button");
+                    //if 55% is not active, make it active
+                    if (!starButton.classList.contains("active")) {
+                        starButton.classList.toggle("active");
+                    }
+                    //if every button is active, turn on rainbow star
+                    if(pathButtons.every(button => button.classList.contains("active"))){
+                        starButton.classList.remove("active");
+                        starButton.classList.add("rainbow")
+                    }
+                    //if rainbow star is active, turn it off 
+                    else{
+                        starButton.classList.remove("rainbow");
+                    }
+                    updateStarVisuals();
+                    updateBaseStats();
+                }
+            );
         }
-        //if every button is active, turn on rainbow star
-        if(pathButtons.every(button => button.classList.contains("active"))){
-          starButton.classList.remove("active");
-          starButton.classList.add("rainbow")
-        }
-        //if rainbow star is active, turn it off 
-        else{
-          starButton.classList.remove("rainbow");
-        }
-        updateBaseStats();
-      });
-    });
+    );
+    if(isEza){
+        pathButtons[0].classList.add("active");
+        pathButtons[3].classList.add("active");
+    }
+    if(isSeza){
+        pathButtons[1].classList.add("active");
+        pathButtons[2].classList.add("active");
+        document.getElementById("star-button").classList.add("rainbow");
+    }
 }
 
 function createDokkanAwakenContainer(){
@@ -3444,7 +3441,6 @@ function createStarButton(){
       updateStarVisuals();
         updateBaseStats();
     });
-    updateStarVisuals();
 }
 
 function updateStarVisuals(){
@@ -5299,6 +5295,7 @@ export async function loadPage(firstTime=false){
                 createSkillOrbContainer();
                 createStarButton();
                 createPathButtons();
+                updateStarVisuals();
             }
             createActiveContainer();
             createFinishContainer();
