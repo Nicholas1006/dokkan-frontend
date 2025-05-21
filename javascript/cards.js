@@ -1079,11 +1079,12 @@ class statsContainerClass{
         this.extraHPQuery.value=0;
         this.extraHPQuery.step=100;
         this.extraHPQuery.min=0;
+        this.extraHPQuery.max=currentJson["Orbs"]["overall"]["HP"];
         this.extraHPQuery.type="number";
         this.extraHPQuery.style.gridRow="1";
         this.extraHPQuery.style.gridColumn="2";
         this.extraHPQuery.addEventListener("input",function(){
-            this.value=parseInt(this.value) || 0;
+            this.value=(parseInt(this.value) || 0).clamp(0, currentJson["Orbs"]["overall"]["HP"]);
             this.parentNode.classConstruction.queryHP=parseInt(this.value);
             this.parentNode.classConstruction.refreshStats();
             updatePassiveStats();
@@ -1095,12 +1096,13 @@ class statsContainerClass{
         this.extraATKQuery.value=0;
         this.extraATKQuery.step=100;
         this.extraATKQuery.min=0;
+        this.extraATKQuery.max=currentJson["Orbs"]["overall"]["ATK"];
         this.extraATKQuery.type="number";
         this.extraATKQuery.style.gridRow="2";
         this.extraATKQuery.style.gridColumn="2";
         this.selfContainer.appendChild(this.extraATKQuery);
         this.extraATKQuery.addEventListener("input",function(){
-            this.value=parseInt(this.value) || 0;
+            this.value=(parseInt(this.value) || 0).clamp(0, currentJson["Orbs"]["overall"]["ATK"])
             this.parentNode.classConstruction.queryATK=parseInt(this.value);
             this.parentNode.classConstruction.refreshStats();
             updatePassiveStats();
@@ -1111,11 +1113,12 @@ class statsContainerClass{
         this.extraDEFQuery.value=0;
         this.extraDEFQuery.step=100;
         this.extraDEFQuery.min=0;
+        this.extraDEFQuery.max=currentJson["Orbs"]["overall"]["DEF"];
         this.extraDEFQuery.type="number";
         this.extraDEFQuery.style.gridRow="3";
         this.extraDEFQuery.style.gridColumn="2";
         this.extraDEFQuery.addEventListener("input",function(){
-            this.value=parseInt(this.value) || 0;
+            this.value=(parseInt(this.value) || 0).clamp(0, currentJson["Orbs"]["overall"]["DEF"]);
             this.parentNode.classConstruction.queryDEF=parseInt(this.value);
             this.parentNode.classConstruction.refreshStats();
             updatePassiveStats();
@@ -1549,7 +1552,7 @@ let isSeza;
 
 let baseStats={"ATK": 0, "DEF": 0, "HP": 0};
 
-let leaderBuffs={"HP": 400, "ATK": 400, "DEF": 400, "Ki": 6};
+let leaderBuffs={"HP": 440, "ATK": 440, "DEF": 440, "Ki": 6};
 let superBuffs={"ATK": 0, "DEF": 0, "Enemy ATK": 0, "Enemy DEF": 0, "Crit": 0, "Evasion": 0};
 let linkBuffs={"ATK":0,"DEF":0,"Enemy DEF":0,"Heal":0,"KI":0,"Damage Reduction":0,"Crit":0,"Evasion":0};
 let skillOrbBuffs={"Additional":0,"Crit":0,"Evasion":0,"Attack":0,"Defense":0,"SuperBoost":0,"Recovery":0}
