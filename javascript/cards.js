@@ -1566,6 +1566,7 @@ let additionalAttacks={};
 let kiCircleDictionary=[];
 let passiveQueryList=[];
 let passiveChanceList={};
+let passiveOnceOnlyList=[];
 let relevantPassiveEffects=["Ki","ATK","Heals","DEF","Guard","Disable Other Line","Dodge Chance","Crit Chance","DR","Additional Attack"]
 
 let attackRecievedType="normal";
@@ -2556,36 +2557,125 @@ function iterateSpecificCausality(causalityLogic,causalityToIterate){
 }
 
 
-/**
- * Activates passive lines based on the given conditions. Returns an object with all the IDs of the passive lines that are active, with the value of the multiplier of that passive line.
- * @param {Object} previousActiveLineMultipliers - An object with the IDs of the passive lines that were previously active, with the value of the multiplier of that passive line.
- * @param {String} exec_timing_type - The type of timing for the passive lines to activate.
- * @param {String} activationType - The type of passive lines to activate. Can be "Single activator", "Disable Other Line", "Building Stat", or "All".
- * @param {Object} causalityLogic - An object with the IDs of the causalities as keys, and the value of the causality as values.
- * @returns {Object} - An object with all the IDs of the passive lines that are active, with the value of the multiplier of that passive line.
- */
-function activatePassiveLines(previousActiveLineMultipliers,exec_timing_type,activationType,causalityLogic,thisTurnActivationCounted=true){
-    let updatedPassiveLineMultipliers={...previousActiveLineMultipliers}
-    let activateablePassiveLines=[];
 
-    if(activationType=="Single activator"){
-        for (const passiveLine of Object.values(currentJson["Passive"])){
-            if(passiveLine["Timing"]==exec_timing_type || exec_timing_type=="All"){
-                if(passiveLine["Type"]=="Single activator" && !(Object.keys(previousActiveLineMultipliers).includes(passiveLine["ID"]))){
-                    if(thisTurnActivationCounted || passiveLine["Length"]!="1"){
-                        if("Additional Attack" in passiveLine || !("Chance" in passiveLine)){
-                            activateablePassiveLines.push(passiveLine)
-                        }
-                        else if(("Chance" in passiveLine && !("Additional Attack" in passiveLine))){
-                            if(passiveChanceList[passiveLine["ID"]].getValue()){
-                                activateablePassiveLines.push(passiveLine)
-                            }
-                        }
-                    }
+function singleActivatorHandler(previousActiveLineMultipliers,exec_timing_type,activationType,causalityLogic,thisTurnActivationCounted,activateablePassiveLines,updatedPassiveLineMultipliers){
+    for (const passiveLine of Object.values(currentJson["Passive"])){
+        if((passiveLine["Timing"]==exec_timing_type || exec_timing_type=="All") && (passiveLine["Type"]=="Single activator" && !(Object.keys(previousActiveLineMultipliers).includes(passiveLine["ID"])) && (thisTurnActivationCounted || passiveLine["Length"]!="1"))){
+            let validLine=true;
+            if("Chance" in passiveLine && !("Additional Attack" in passiveLine)){
+                if(!(passiveChanceList[passiveLine["ID"]].getValue())){
+                    validLine=false;
                 }
             }
+            if("Once Only" in passiveLine){
+                if((passiveOnceOnlyList[passiveLine["ID"]].getValue())){
+                    validLine=false;
+                }
+            }
+            if(validLine){
+                activateablePassiveLines.push(passiveLine)
+            }
         }
-        for(const passiveLine of activateablePassiveLines){
+    }
+    for(const passiveLine of activateablePassiveLines){
+        if("Condition" in passiveLine){
+            let conditionLogic=" "+passiveLine["Condition"]["Logic"]+" ";
+            conditionLogic=conditionLogic.replaceAll("("," ( ").replaceAll(")", " ) ");
+            for (const causalityKey of Object.keys(passiveLine["Condition"]["Causalities"])){
+                const causality=passiveLine["Condition"]["Causalities"][causalityKey];
+                let buttonLogic=false;
+                if("Button" in causality){
+                    if(causality["Button"]["Name"] in causalityLogic){
+                        buttonLogic=causalityLogic[causality["Button"]["Name"]];
+                    }
+                }
+                
+                let sliderLogic=false;
+                if("Slider" in causality){
+                    if(causality["Slider"]["Name"] in causalityLogic){
+                        sliderLogic=causalityLogic[causality["Slider"]["Name"]]+causality["Slider"]["Logic"];
+                        sliderLogic=(" "+causality["Slider"]["Logic"]+" ")
+                        .replaceAll(" >",(" "+causalityLogic[causality["Slider"]["Name"]])+" >")
+                        .replaceAll(" <",(" "+causalityLogic[causality["Slider"]["Name"]])+" <")
+                        .replaceAll(" =",(" "+causalityLogic[causality["Slider"]["Name"]])+" =");
+                        sliderLogic=evaluate(sliderLogic);
+                    }
+                }
+
+                const overallLogic=(buttonLogic||sliderLogic);
+
+                conditionLogic=conditionLogic.replaceAll(" "+causalityKey+" ",    " "+overallLogic+" ");
+            }
+
+            if(evaluate(conditionLogic)){
+                updatedPassiveLineMultipliers[passiveLine["ID"]]=1;
+            }
+        }
+        else{
+            updatedPassiveLineMultipliers[passiveLine["ID"]]=1;
+        }
+    }
+}
+
+function disableOtherLineHandler(previousActiveLineMultipliers,exec_timing_type,activationType,causalityLogic,thisTurnActivationCounted,activateablePassiveLines,updatedPassiveLineMultipliers){
+    for (const passiveLine of Object.values(currentJson["Passive"])){
+        if((passiveLine["Timing"]==exec_timing_type || exec_timing_type=="All") && (passiveLine["Type"]=="Disable Other Line")){
+            let validLine=true;
+            if("Chance" in passiveLine && !("Additional Attack" in passiveLine)){
+                if(!(passiveChanceList[passiveLine["ID"]].getValue())){
+                    validLine=false;
+                }
+            }
+            if("Once Only" in passiveLine){
+                if((passiveOnceOnlyList[passiveLine["ID"]].getValue())){
+                    validLine=false;
+                }
+            }
+            if(validLine){
+                activateablePassiveLines.push(passiveLine)
+            }
+        }
+    }
+    for(const passiveLine of activateablePassiveLines){    
+        if("Condition" in passiveLine){
+            let conditionLogic=" "+passiveLine["Condition"]["Logic"]+" ";
+            for (const causalityKey of Object.keys(passiveLine["Condition"]["Causalities"])){
+                const causality=passiveLine["Condition"]["Causalities"][causalityKey];
+                let buttonLogic=false;
+                if("Button" in causality){
+                    if(causality["Button"]["Name"] in causalityLogic){
+                        buttonLogic=causalityLogic[causality["Button"]["Name"]];
+                    }
+                }
+                
+                let sliderLogic=false;
+                if("Slider" in causality){
+                    if(causality["Slider"]["Name"] in causalityLogic){
+                        sliderLogic=causalityLogic[causality["Slider"]["Name"]]+causality["Slider"]["Logic"];
+                        sliderLogic=evaluate(sliderLogic);
+                    }
+                }
+
+                const overallLogic=(buttonLogic||sliderLogic);
+
+                conditionLogic=conditionLogic.replaceAll(" "+causalityKey+" ",    " "+overallLogic+" ");
+            }
+
+            if(evaluate(conditionLogic)){
+                delete updatedPassiveLineMultipliers[passiveLine["Disable Other Line"]["Line"]]
+            }
+        }
+        else{
+                delete updatedPassiveLineMultipliers[passiveLine["Disable Other Line"]["Line"]]
+        }
+    }
+}
+
+function buildingStatHandler(previousActiveLineMultipliers,exec_timing_type,activationType,causalityLogic,thisTurnActivationCounted,activateablePassiveLines,updatedPassiveLineMultipliers){
+    for (const passiveLine of Object.values(currentJson["Passive"])){
+        if((passiveLine["Timing"]==exec_timing_type || exec_timing_type=="All") && 
+        (passiveLine["Type"]=="Building Stat") &&
+        (thisTurnActivationCounted || passiveLine["Length"]!="1")){
             if("Condition" in passiveLine){
                 let conditionLogic=" "+passiveLine["Condition"]["Logic"]+" ";
                 conditionLogic=conditionLogic.replaceAll("("," ( ").replaceAll(")", " ) ");
@@ -2602,10 +2692,6 @@ function activatePassiveLines(previousActiveLineMultipliers,exec_timing_type,act
                     if("Slider" in causality){
                         if(causality["Slider"]["Name"] in causalityLogic){
                             sliderLogic=causalityLogic[causality["Slider"]["Name"]]+causality["Slider"]["Logic"];
-                            sliderLogic=(" "+causality["Slider"]["Logic"]+" ")
-                            .replaceAll(" >",(" "+causalityLogic[causality["Slider"]["Name"]])+" >")
-                            .replaceAll(" <",(" "+causalityLogic[causality["Slider"]["Name"]])+" <")
-                            .replaceAll(" =",(" "+causalityLogic[causality["Slider"]["Name"]])+" =");
                             sliderLogic=evaluate(sliderLogic);
                         }
                     }
@@ -2616,18 +2702,6 @@ function activatePassiveLines(previousActiveLineMultipliers,exec_timing_type,act
                 }
 
                 if(evaluate(conditionLogic)){
-                    updatedPassiveLineMultipliers[passiveLine["ID"]]=1;
-                }
-            }
-            else{
-                    updatedPassiveLineMultipliers[passiveLine["ID"]]=1;
-            }
-        }
-    }
-    if(activationType=="Disable Other Line"){
-        for (const passiveLine of Object.values(currentJson["Passive"])){
-            if(passiveLine["Timing"]==exec_timing_type || exec_timing_type=="All"){
-                if(passiveLine["Type"]=="Disable Other Line"){
                     if("Additional Attack" in passiveLine || !("Chance" in passiveLine)){
                         activateablePassiveLines.push(passiveLine)
                     }
@@ -2638,136 +2712,68 @@ function activatePassiveLines(previousActiveLineMultipliers,exec_timing_type,act
                     }
                 }
             }
-        }
-        for(const passiveLine of activateablePassiveLines){    
-            if("Condition" in passiveLine){
-                let conditionLogic=" "+passiveLine["Condition"]["Logic"]+" ";
-                for (const causalityKey of Object.keys(passiveLine["Condition"]["Causalities"])){
-                    const causality=passiveLine["Condition"]["Causalities"][causalityKey];
-                    let buttonLogic=false;
-                    if("Button" in causality){
-                        if(causality["Button"]["Name"] in causalityLogic){
-                            buttonLogic=causalityLogic[causality["Button"]["Name"]];
-                        }
-                    }
-                    
-                    let sliderLogic=false;
-                    if("Slider" in causality){
-                        if(causality["Slider"]["Name"] in causalityLogic){
-                            sliderLogic=causalityLogic[causality["Slider"]["Name"]]+causality["Slider"]["Logic"];
-                            sliderLogic=evaluate(sliderLogic);
-                        }
-                    }
-
-                    const overallLogic=(buttonLogic||sliderLogic);
-
-                    conditionLogic=conditionLogic.replaceAll(" "+causalityKey+" ",    " "+overallLogic+" ");
-                }
-
-                if(evaluate(conditionLogic)){
-                    delete updatedPassiveLineMultipliers[passiveLine["Disable Other Line"]["Line"]]
-                }
-            }
             else{
-                    delete updatedPassiveLineMultipliers[passiveLine["Disable Other Line"]["Line"]]
+                if("Additional Attack" in passiveLine || !("Chance" in passiveLine)){
+                    activateablePassiveLines.push(passiveLine)
+                }
+                else if(("Chance" in passiveLine && !("Additional Attack" in passiveLine))){
+                    if(passiveChanceList[passiveLine["ID"]].getValue()){
+                        activateablePassiveLines.push(passiveLine)
+                    }
+                }
             }
         }
     }
-    if(activationType=="Building Stat"){
-        for (const passiveLine of Object.values(currentJson["Passive"])){
-            if(passiveLine["Timing"]==exec_timing_type || exec_timing_type=="All"){
-                if(passiveLine["Type"]=="Building Stat"){
-                    if(thisTurnActivationCounted || passiveLine["Length"]!="1"){
-                        if("Condition" in passiveLine){
-                            let conditionLogic=" "+passiveLine["Condition"]["Logic"]+" ";
-                            conditionLogic=conditionLogic.replaceAll("("," ( ").replaceAll(")", " ) ");
-                            for (const causalityKey of Object.keys(passiveLine["Condition"]["Causalities"])){
-                                const causality=passiveLine["Condition"]["Causalities"][causalityKey];
-                                let buttonLogic=false;
-                                if("Button" in causality){
-                                    if(causality["Button"]["Name"] in causalityLogic){
-                                        buttonLogic=causalityLogic[causality["Button"]["Name"]];
-                                    }
-                                }
-                                
-                                let sliderLogic=false;
-                                if("Slider" in causality){
-                                    if(causality["Slider"]["Name"] in causalityLogic){
-                                        sliderLogic=causalityLogic[causality["Slider"]["Name"]]+causality["Slider"]["Logic"];
-                                        sliderLogic=evaluate(sliderLogic);
-                                    }
-                                }
-            
-                                const overallLogic=(buttonLogic||sliderLogic);
-            
-                                conditionLogic=conditionLogic.replaceAll(" "+causalityKey+" ",    " "+overallLogic+" ");
-                            }
-            
-                            if(evaluate(conditionLogic)){
-                                if("Additional Attack" in passiveLine || !("Chance" in passiveLine)){
-                                    activateablePassiveLines.push(passiveLine)
-                                }
-                                else if(("Chance" in passiveLine && !("Additional Attack" in passiveLine))){
-                                    if(passiveChanceList[passiveLine["ID"]].getValue()){
-                                        activateablePassiveLines.push(passiveLine)
-                                    }
-                                }
-                            }
+    for(const passiveLine of activateablePassiveLines){    
+        if(passiveLine["Timing"]==exec_timing_type || exec_timing_type=="All"){
+            if(passiveLine["Type"]=="Building Stat"){
+                let buffMultiplier=0;
+                if(passiveLine["Building Stat"]["Cause"]["Cause"]=="HP"){
+                    if(passiveLine["Building Stat"]["Cause"]["Type"]=="More HP remaining"){
+                        buffMultiplier=(((passiveLine["Building Stat"]["Max"]-passiveLine["Building Stat"]["Min"])*(causalityLogic[passiveLine["Building Stat"]["Slider"]]/100))+passiveLine["Building Stat"]["Min"])/passiveLine["Building Stat"]["Max"];
+                    }
+                    else if(passiveLine["Building Stat"]["Cause"]["Type"]=="Less HP remaining"){
+                        buffMultiplier=((-(passiveLine["Building Stat"]["Max"]-passiveLine["Building Stat"]["Min"])*(causalityLogic[passiveLine["Building Stat"]["Slider"]]/100))+passiveLine["Building Stat"]["Max"])/passiveLine["Building Stat"]["Max"];
+                    }
+                }
+                else if(passiveLine["Building Stat"]["Cause"]["Cause"]=="Ki sphere obtained"){
+                    let kiSphereCount=0;
+                    for (const type of passiveLine["Building Stat"]["Cause"]["Type"]){
+                        if(type=="Rainbow"){
+                            kiSphereCount+=rainbowKiSphereAmount;
                         }
                         else{
-                            if("Additional Attack" in passiveLine || !("Chance" in passiveLine)){
-                                activateablePassiveLines.push(passiveLine)
-                            }
-                            else if(("Chance" in passiveLine && !("Additional Attack" in passiveLine))){
-                                if(passiveChanceList[passiveLine["ID"]].getValue()){
-                                    activateablePassiveLines.push(passiveLine)
-                                }
+                            if(currentKiSphere==type){
+                                kiSphereCount+=currentKiSphereAmount;
                             }
                         }
                     }
+                    buffMultiplier=kiSphereCount;
                 }
-            }
-        }
-        for(const passiveLine of activateablePassiveLines){    
-            if(passiveLine["Timing"]==exec_timing_type || exec_timing_type=="All"){
-                if(passiveLine["Type"]=="Building Stat"){
-                    let buffMultiplier=0;
-                    if(passiveLine["Building Stat"]["Cause"]["Cause"]=="HP"){
-                        if(passiveLine["Building Stat"]["Cause"]["Type"]=="More HP remaining"){
-                            buffMultiplier=(((passiveLine["Building Stat"]["Max"]-passiveLine["Building Stat"]["Min"])*(causalityLogic[passiveLine["Building Stat"]["Slider"]]/100))+passiveLine["Building Stat"]["Min"])/passiveLine["Building Stat"]["Max"];
-                        }
-                        else if(passiveLine["Building Stat"]["Cause"]["Type"]=="Less HP remaining"){
-                            buffMultiplier=((-(passiveLine["Building Stat"]["Max"]-passiveLine["Building Stat"]["Min"])*(causalityLogic[passiveLine["Building Stat"]["Slider"]]/100))+passiveLine["Building Stat"]["Max"])/passiveLine["Building Stat"]["Max"];
-                        }
-                    }
-                    else if(passiveLine["Building Stat"]["Cause"]["Cause"]=="Ki sphere obtained"){
-                        let kiSphereCount=0;
-                        for (const type of passiveLine["Building Stat"]["Cause"]["Type"]){
-                            if(type=="Rainbow"){
-                                kiSphereCount+=rainbowKiSphereAmount;
-                            }
-                            else{
-                                if(currentKiSphere==type){
-                                    kiSphereCount+=currentKiSphereAmount;
-                                }
-                            }
-                        }
-                        buffMultiplier=kiSphereCount;
-                    }
-                    else{
-                        buffMultiplier=causalityLogic[passiveLine["Building Stat"]["Slider"]];
-                    }
-                    buffMultiplier=Math.min(buffMultiplier,passiveLine["Building Stat"]["Max"]);
-                    if(buffMultiplier!=0){
-                        updatedPassiveLineMultipliers[passiveLine["ID"]]=buffMultiplier;
-                    }
+                else{
+                    buffMultiplier=causalityLogic[passiveLine["Building Stat"]["Slider"]];
+                }
+                buffMultiplier=Math.min(buffMultiplier,passiveLine["Building Stat"]["Max"]);
+                if(buffMultiplier!=0){
+                    updatedPassiveLineMultipliers[passiveLine["ID"]]=buffMultiplier;
                 }
             }
         }
     }
+}
+function activatePassiveLines(previousActiveLineMultipliers,exec_timing_type,activationType,causalityLogic,thisTurnActivationCounted=true){
+    let updatedPassiveLineMultipliers={...previousActiveLineMultipliers}
+    let activateablePassiveLines=[];
 
-
-
+    if(activationType=="Single activator"){
+        singleActivatorHandler(previousActiveLineMultipliers,exec_timing_type,activationType,causalityLogic,thisTurnActivationCounted,activateablePassiveLines,updatedPassiveLineMultipliers);
+    }
+    if(activationType=="Disable Other Line"){
+        disableOtherLineHandler(previousActiveLineMultipliers,exec_timing_type,activationType,causalityLogic,thisTurnActivationCounted,activateablePassiveLines,updatedPassiveLineMultipliers);
+    }
+    if(activationType=="Building Stat"){
+        buildingStatHandler(previousActiveLineMultipliers,exec_timing_type,activationType,causalityLogic,thisTurnActivationCounted,activateablePassiveLines,updatedPassiveLineMultipliers);
+    }
     return(updatedPassiveLineMultipliers)
 }
 
@@ -3714,6 +3720,17 @@ function updateChanceList(passiveLine){
     passiveChanceList[passiveLine["ID"]]=(newChanceQuery);
 }
 
+function updateOnceOnlyList(passiveLine){
+    const newOnceOnlyQuery=new passiveButton(
+        0,
+        0,
+        "Have you previously expended the "+passiveLine["Brief effect description"],
+        null
+    )
+    newOnceOnlyQuery.referenceLine=passiveLine;
+    passiveOnceOnlyList[passiveLine["ID"]]=(newOnceOnlyQuery);
+}
+
 function createDomainContainer(){
     
     //TODO: DOMAIN IMAGE IS STORED IN C:/Users/horva/OneDrive - Trinity College Dublin/Documents/dokkan/frontend"+window.assetBase+"/global/en/outgame/extension/dokkan_field/field_thumb_image_3007 and similar
@@ -3854,9 +3871,11 @@ function refreshDomainBuffs(updatePassiveStatsBool=true){
 function createPassiveContainer(){
     passiveQueryList=[]
     passiveChanceList=[]
+    passiveOnceOnlyList=[]
     let passiveSupportContainer=document.getElementById("passive-support-container");
     let passiveQueryContainer = document.getElementById("passive-query-container");
     let passiveChanceContainer=document.getElementById("passive-chance-container");
+    let passiveOnceOnlyContainer=document.getElementById("passive-once-only-container");
     while (passiveQueryContainer.firstChild) {
         passiveQueryContainer.removeChild(passiveQueryContainer.firstChild);
     }
@@ -3939,13 +3958,18 @@ function createPassiveContainer(){
         if(Object.keys(passiveList[passiveLineKey]).includes("Chance") && !(Object.keys(passiveList[passiveLineKey]).includes("Additional Attack"))){
             updateChanceList(passiveList[passiveLineKey]);
         }
+        if(Object.keys(passiveList[passiveLineKey]).includes("Once Only")){
+            updateOnceOnlyList(passiveList[passiveLineKey]);
+        }
     }
+
 
     for (const superAttack of Object.values(currentJson["Super Attack"])) {
         if("superCondition" in superAttack){
             updateQueryListWithUnitSuperLine(superAttack);
         }
     }
+
 
     if(currentJson["Finish Skill"]!=null){
         if("Multiplier" in Object.values(currentJson["Finish Skill"])[0]){
@@ -3982,6 +4006,10 @@ function createPassiveContainer(){
 
     for (const query of Object.values(passiveChanceList)){
         passiveChanceContainer.appendChild(query.getElement());
+    }
+
+    for (const query of Object.values(passiveOnceOnlyList)){
+        passiveOnceOnlyContainer.appendChild(query.getElement());
     }
 }
 
