@@ -340,9 +340,9 @@ class kiCircleClass{
         this.superAttackMultiplier=1
         this.superAttackAssetID=-1;
         this.superBuffs={...superBuffs};
-        this.damageReduction=buffs["Damage Reduction"];
-        this.dodgeChance=buffs["Dodge Chance"];
-        this.critChance=buffs["Crit Chance"];
+        this.damageReduction=buffs["Damage Reduction"] + overallSupportBuffs["Passive SOT"]["DR"] + overallSupportBuffs["Active"]["DR"] + overallSupportBuffs["Super attack"]["DR"] + overallSupportBuffs["Passive MOT"]["DR"];
+        this.dodgeChance=buffs["Dodge Chance"] + overallSupportBuffs["Passive SOT"]["Dodge"] + overallSupportBuffs["Active"]["Dodge"] + overallSupportBuffs["Super attack"]["Dodge"] + overallSupportBuffs["Passive MOT"]["Dodge"];
+        this.critChance=buffs["Crit Chance"] + overallSupportBuffs["Passive SOT"]["Crit"] + overallSupportBuffs["Active"]["Crit"] + overallSupportBuffs["Super attack"]["Crit"] + overallSupportBuffs["Passive MOT"]["Crit"];
         if(activeMultipliers["Dodge"]!=null){
             this.dodgeChance+=(activeMultipliers["Dodge"]*100);
         }
@@ -519,8 +519,8 @@ class kiCircleClass{
 
     updateDefensiveFromBuffs(buffs,superBuffs){
         this.superBuffs={...superBuffs};
-        this.damageReduction=buffs["Damage Reduction"];
-        this.dodgeChance=buffs["Dodge Chance"];
+        this.damageReduction=buffs["Damage Reduction"] + overallSupportBuffs["Passive SOT"]["DR"] + overallSupportBuffs["Active"]["DR"] + overallSupportBuffs["Super attack"]["DR"] + overallSupportBuffs["Passive MOT"]["DR"];
+        this.dodgeChance=buffs["Dodge Chance"] + overallSupportBuffs["Passive SOT"]["Dodge"] + overallSupportBuffs["Active"]["Dodge"] + overallSupportBuffs["Super attack"]["Dodge"] + overallSupportBuffs["Passive MOT"]["Dodge"];
         if(activeMultipliers["Dodge"]!=null){
             this.dodgeChance+=(activeMultipliers["Dodge"]*100);
         }
@@ -563,7 +563,7 @@ class kiCircleClass{
             for (const kiSourcesKey in kiSources){
                 this.Ki+=parseInt(kiSources[kiSourcesKey]);
             }
-            this.Ki+=buffs["Ki"];
+            this.Ki+=buffs["Ki"] + overallSupportBuffs["Passive SOT"]["Ki"] + overallSupportBuffs["Active"]["Ki"] + overallSupportBuffs["Super attack"]["Ki"] + overallSupportBuffs["Passive MOT"]["Ki"];
             this.superAttackID=findSuperAttackID(this.Ki);
         }
         else if(this.passiveLineKey=="Active" || this.passiveLineKey=="Finish"){
@@ -579,7 +579,7 @@ class kiCircleClass{
                 this.Ki=currentJson["SuperMinKi"];
             }
             else{
-                this.Ki=0;
+                this.Ki=0 + overallSupportBuffs["Passive SOT"]["Ki"] + overallSupportBuffs["Active"]["Ki"] + overallSupportBuffs["Super attack"]["Ki"] + overallSupportBuffs["Passive MOT"]["Ki"];
                 for (const kiSourcesKey in kiSources){
                     this.Ki+=parseInt(kiSources[kiSourcesKey]);
                 }
@@ -1554,10 +1554,10 @@ let skillOrbBuffs={"Additional":0,"Crit":0,"Evasion":0,"Attack":0,"Defense":0,"S
 let domainBuffs={"ATK":0,"DEF":0,"Increased damage recieved":0}
 let supportBuffs=[];
 let overallSupportBuffs={
-    "Passive SOT": {"ATK": 0, "DEF": 0, "Ki": 0, "Crit": 0, "Dodge": 0},
-    "Passive MOT": {"ATK": 0, "DEF": 0, "Ki": 0, "Crit": 0, "Dodge": 0},
-    "Active": {"ATK": 0, "DEF": 0, "Ki": 0, "Crit": 0, "Dodge": 0},
-    "Super attack": {"ATK": 0, "DEF": 0, "Ki": 0, "Crit": 0, "Dodge": 0}
+    "Passive SOT": {"ATK": 0, "DEF": 0, "Ki": 0, "Crit": 0, "Dodge": 0, "DR": 0},
+    "Passive MOT": {"ATK": 0, "DEF": 0, "Ki": 0, "Crit": 0, "Dodge": 0, "DR": 0},
+    "Active": {"ATK": 0, "DEF": 0, "Ki": 0, "Crit": 0, "Dodge": 0, "DR": 0},
+    "Super attack": {"ATK": 0, "DEF": 0, "Ki": 0, "Crit": 0, "Dodge": 0, "DR": 0}
 };
 let currentKiSphere;
 let currentKiSphereAmount=3;
@@ -3874,7 +3874,7 @@ function createPassiveContainer(){
         passiveSupportAdditions.buffType.selector=document.createElement("div");
         passiveSupportAdditions.buffType.selector.id="passive-support-additions-buff-type-selector";
         passiveSupportAdditions.buffType.appendChild(passiveSupportAdditions.buffType.selector);
-        ["Ki","ATK", "DEF", "Dodge", "Crit"].forEach(option => {
+        ["Ki","ATK", "DEF", "Dodge", "Crit", "DR"].forEach(option => {
             const optionContainer = document.createElement("div");
             optionContainer.className = "passive-support-option";
 
@@ -4025,10 +4025,10 @@ function updatePassiveSupportDisplay() {
 
 function fixOverallSupportBuffs(){
     overallSupportBuffs={
-        "Passive SOT": {"ATK": 0, "DEF": 0, "Ki": 0, "Crit": 0, "Dodge": 0},
-        "Passive MOT": {"ATK": 0, "DEF": 0, "Ki": 0, "Crit": 0, "Dodge": 0},
-        "Active": {"ATK": 0, "DEF": 0, "Ki": 0, "Crit": 0, "Dodge": 0},
-        "Super attack": {"ATK": 0, "DEF": 0, "Ki": 0, "Crit": 0, "Dodge": 0}
+        "Passive SOT": {"ATK": 0, "DEF": 0, "Ki": 0, "Crit": 0, "Dodge": 0, "DR": 0},
+        "Passive MOT": {"ATK": 0, "DEF": 0, "Ki": 0, "Crit": 0, "Dodge": 0, "DR": 0},
+        "Active": {"ATK": 0, "DEF": 0, "Ki": 0, "Crit": 0, "Dodge": 0, "DR": 0},
+        "Super attack": {"ATK": 0, "DEF": 0, "Ki": 0, "Crit": 0, "Dodge": 0, "DR": 0}
     };
     for (const buff of supportBuffs){
         if(buff!=undefined){
