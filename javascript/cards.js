@@ -458,7 +458,7 @@ class kiCircleClass{
 
         this.attack*=(1+(leaderBuffs["ATK"]/100));
 
-        this.attack*=(1+(buffs["SOT ATK %"]+supportBuffs["ATK"])/100)
+        this.attack*=(1+(buffs["SOT ATK %"]+overallSupportBuffs["Passive SOT"]["ATK"])/100)
         this.attack+=buffs["SOT ATK flat"]
         
         this.attack*=1;//Item boost
@@ -467,20 +467,20 @@ class kiCircleClass{
         if(this.passiveLineKey=="Active"){
             this.attack*=(this.activeAttackMultiplier);
         }
-        this.attack*=(1+activeMultipliers["ATK"]);//Active boost
+        this.attack*=(1+activeMultipliers["ATK"] + overallSupportBuffs["Active"]["ATK"]/100);//Active boost
         this.attack*=(currentJson["Ki Multiplier"][this.Ki]/100);
         
-        this.attack*=(1+buffs["MOT ATK %"]/100)
+        this.attack*=(1+(buffs["MOT ATK %"]+ overallSupportBuffs["Passive MOT"]["ATK"])/100)
         this.attack+=buffs["MOT ATK flat"]
 
-        this.attack*=this.superAttackMultiplier;
+        this.attack*= (this.superAttackMultiplier + overallSupportBuffs["Super attack"]["ATK"]/100);
 
         this.attack*=(1+domainBuffs["ATK"]/100);
         if(this.passiveLineKey=="Finish"){
             this.attack*=(this.finishBuffs);
         }
 
-        this.critChance=(buffs["Crit Chance"]+superBuffs["Crit"])/100;
+        this.critChance=(buffs["Crit Chance"]+superBuffs["Crit"] + overallSupportBuffs["Passive SOT"]["Crit"] + overallSupportBuffs["Active"]["Crit"] + overallSupportBuffs["Super attack"]["Crit"] + overallSupportBuffs["Passive MOT"]["Crit"])/100;
         this.critChance=(1-this.critChance)*(1-(skillOrbBuffs["Crit"]/100));
         this.critChance=1-this.critChance;
         this.changeCritChance(this.critChance);
@@ -491,23 +491,18 @@ class kiCircleClass{
 
         this.defense*=(1+(leaderBuffs["DEF"]/100));
 
-        this.defense*=(1+(buffs["SOT DEF %"]+supportBuffs["DEF"])/100)
+        this.defense*=(1+(buffs["SOT DEF %"]+overallSupportBuffs["Passive SOT"]["DEF"])/100)
         this.defense+=buffs["SOT DEF flat"]
         
         this.defense*=1;//Item boost
         
         this.defense*=1+linkBuffs["DEF"]/100;
-        if(this.passiveLineKey=="Active"){
-            this.defense*=(this.activeAttackMultiplier+(activeMultipliers["DEF"]));
-        }
-        else{
-            this.defense*=(1+activeMultipliers["DEF"]);//Active boost
-        }
+        this.defense*=(1+activeMultipliers["DEF"] + overallSupportBuffs["Active"]["DEF"]/100);//Active boost
         
-        this.defense*=(1+buffs["MOT DEF %"]/100)
+        this.defense*=(1+(buffs["MOT DEF %"] + overallSupportBuffs["Passive MOT"]["DEF"])/100)
         this.defense+=buffs["MOT DEF flat"]
 
-        this.defense*=(1+(this.superBuffs["DEF"] / 100));
+        this.defense*=(1+((this.superBuffs["DEF"] + overallSupportBuffs["Super attack"]["DEF"]) / 100));
 
         this.defense*=(1+domainBuffs["DEF"]/100);
         if(this.passiveLineKey=="Finish"){
@@ -535,23 +530,23 @@ class kiCircleClass{
 
         this.defense*=(1+(leaderBuffs["DEF"]/100));
 
-        this.defense*=(1+(buffs["SOT DEF %"]+supportBuffs["DEF"])/100)
+        this.defense*=(1+(buffs["SOT DEF %"]+overallSupportBuffs["Passive SOT"]["DEF"])/100)
         this.defense+=buffs["SOT DEF flat"]
         
         this.defense*=1;//Item boost
         
         this.defense*=1+linkBuffs["DEF"]/100;
         if(this.passiveLineKey=="Active"){
-            this.defense*=(this.activeAttackMultiplier+(activeMultipliers["DEF"]));
+            this.defense*=(this.activeAttackMultiplier+(activeMultipliers["DEF"]) + overallSupportBuffs["Active"]["DEF"]/100);
         }
         else{
-            this.defense*=(1+activeMultipliers["DEF"]);//Active boost
+            this.defense*=(1+activeMultipliers["DEF"] + overallSupportBuffs["Active"]["DEF"]/100);//Active boost
         }
         
-        this.defense*=(1+buffs["MOT DEF %"]/100)
+        this.defense*=(1+(buffs["MOT DEF %"] + overallSupportBuffs["Passive MOT"]["DEF"])/100)
         this.defense+=buffs["MOT DEF flat"]
 
-        this.defense*=(1+(this.superBuffs["DEF"] / 100));
+        this.defense*=(1+((this.superBuffs["DEF"]+overallSupportBuffs["Super attack"]["DEF"]) / 100));
 
         this.defense*=(1+domainBuffs["DEF"]/100);
         if(this.passiveLineKey=="Finish"){
@@ -1557,7 +1552,13 @@ let superBuffs={"ATK": 0, "DEF": 0, "Enemy ATK": 0, "Enemy DEF": 0, "Crit": 0, "
 let linkBuffs={"ATK":0,"DEF":0,"Enemy DEF":0,"Heal":0,"KI":0,"Damage Reduction":0,"Crit":0,"Evasion":0};
 let skillOrbBuffs={"Additional":0,"Crit":0,"Evasion":0,"Attack":0,"Defense":0,"SuperBoost":0,"Recovery":0}
 let domainBuffs={"ATK":0,"DEF":0,"Increased damage recieved":0}
-let supportBuffs={"ATK": 0, "DEF":0, "Dodge":0, "Crit": 0}
+let supportBuffs=[];
+let overallSupportBuffs={
+    "Passive SOT": {"ATK": 0, "DEF": 0, "Ki": 0, "Crit": 0, "Dodge": 0},
+    "Passive MOT": {"ATK": 0, "DEF": 0, "Ki": 0, "Crit": 0, "Dodge": 0},
+    "Active": {"ATK": 0, "DEF": 0, "Ki": 0, "Crit": 0, "Dodge": 0},
+    "Super attack": {"ATK": 0, "DEF": 0, "Ki": 0, "Crit": 0, "Dodge": 0}
+};
 let currentKiSphere;
 let currentKiSphereAmount=3;
 let rainbowKiSphereAmount=1;
@@ -1576,10 +1577,10 @@ let attackRecievedType="normal";
 let attackRecievedTiming="after";
 let enemyClass="Super";
 let enemyTyping="STR";
-let enemyATK=1900000;
-let enemyDEF=2000000;
-let enemyDR=65;
-let enemyATKThreshold=10000000;
+let enemyATK=3000000;
+let enemyDEF=0;
+let enemyDR=70;
+let enemyATKThreshold=0;
 let startingStats={};
 let finalStats={};
 let recievingDamageStats={};
@@ -2787,28 +2788,7 @@ function activatePassiveLines(previousActiveLineMultipliers,exec_timing_type,act
 function createLeaderStats(){
     const leaderContainer=document.getElementById("leader-container");
 
-    const kiLabel=document.createElement("div");
-    leaderContainer.appendChild(kiLabel);
-    kiLabel.id="ki-label";
-    kiLabel.style.gridRow="1";
-    kiLabel.style.gridColumn="2";
-    kiLabel.innerText="Ki:"
-    kiLabel.style.fontWeight="bold";
-
-    const statsLabel=document.createElement("div");
-    leaderContainer.appendChild(statsLabel);
-    statsLabel.id="ki-label";
-    statsLabel.style.gridRow="1";
-    statsLabel.style.gridColumn="3";
-    statsLabel.innerHTML="HP<br>ATK<br>DEF:"
-    statsLabel.style.fontWeight="bold";
-
-    const seperateOrJoin=document.createElement("div");
-    leaderContainer.appendChild(seperateOrJoin);
-    seperateOrJoin.gridColumn="1";
-    seperateOrJoin.id="seperate-or-join-leader";
-    seperateOrJoin.classList.add("JointLeader");
-    seperateOrJoin.style.cursor="pointer";
+    const seperateOrJoin=document.getElementById("seperate-or-join-leader");
     seperateOrJoin.addEventListener(
         "click", function(){
             if(seperateOrJoin.classList.contains("SeperateLeader")){
@@ -2834,42 +2814,11 @@ function createLeaderStats(){
         }
     );
 
-    let leaderAInputKi=document.createElement("input");
-    leaderAInputKi.id="leader-A-Input-Ki";
-    leaderAInputKi.type="number";
-    leaderAInputKi.min=0;
-    leaderAInputKi.max=4;
-    leaderAInputKi.step=1;
-    leaderAInputKi.value=3;
-
-    leaderAInputKi.style.gridColumn="2";
-    leaderAInputKi.style.gridRow="2";
-    leaderContainer.appendChild(leaderAInputKi);
+    let leaderAInputKi=document.getElementById("leader-A-Input-Ki");
     
-    let leaderBInputKi=document.createElement("input");
-    leaderBInputKi.id="leader-B-Input-Ki";
-    leaderBInputKi.type="number";
-    leaderBInputKi.min=0;
-    leaderBInputKi.max=4;
-    leaderBInputKi.step=1;
-    leaderBInputKi.value=3;
-    
-    leaderBInputKi.style.gridColumn="2";
-    leaderBInputKi.style.gridRow="3";
-    leaderContainer.appendChild(leaderBInputKi);
+    let leaderBInputKi=document.getElementById("leader-B-Input-Ki");
 
-
-    let leaderTotalInputKi=document.createElement("input");
-    leaderTotalInputKi.id="leader-Total-Input-Ki";
-    leaderTotalInputKi.type="number";
-    leaderTotalInputKi.min=0;
-    leaderTotalInputKi.max=8;
-    leaderTotalInputKi.step=1;
-    leaderTotalInputKi.value=6;
-
-    leaderTotalInputKi.style.gridColumn="2";
-    leaderTotalInputKi.style.gridRow="2";
-    leaderContainer.appendChild(leaderTotalInputKi);
+    let leaderTotalInputKi=document.getElementById("leader-Total-Input-Ki");
     
 
     leaderAInputKi.addEventListener("input", function(){
@@ -2901,42 +2850,12 @@ function createLeaderStats(){
     leaderBInputKi.style.display="none";
     leaderTotalInputKi.style.display="block";
 
-    let leaderAInputStats=document.createElement("input");
-    leaderAInputStats.id="leader-A-Input-Stats";
-    leaderAInputStats.type="number";
-    leaderAInputStats.min=0;
-    leaderAInputStats.max=220;
-    leaderAInputStats.step=10;
-    leaderAInputStats.value=220;
-
-    leaderAInputStats.style.gridColumn="3";
-    leaderAInputStats.style.gridRow="2"
-    leaderContainer.appendChild(leaderAInputStats);
+    let leaderAInputStats=document.getElementById("leader-A-Input-Stats");
     
-    let leaderBInputStats=document.createElement("input");
-    leaderBInputStats.id="leader-B-Input-Stats";
-    leaderBInputStats.type="number";
-    leaderBInputStats.min=0;
-    leaderBInputStats.max=220;
-    leaderBInputStats.step=10;
-    leaderBInputStats.value=220;
-
-    leaderBInputStats.style.gridColumn="3";
-    leaderBInputStats.style.gridRow="3"
-    leaderContainer.appendChild(leaderBInputStats);
+    let leaderBInputStats=document.getElementById("leader-B-Input-Stats");
 
 
-    let leaderTotalInputStats=document.createElement("input");
-    leaderTotalInputStats.id="leader-total-Input-Stats";
-    leaderTotalInputStats.type="number";
-    leaderTotalInputStats.min=0;
-    leaderTotalInputStats.max=440;
-    leaderTotalInputStats.step=10;
-    leaderTotalInputStats.value=440;
-
-    leaderTotalInputStats.style.gridColumn="3";
-    leaderTotalInputStats.style.gridRow="2"
-    leaderContainer.appendChild(leaderTotalInputStats);
+    let leaderTotalInputStats=document.getElementById("leader-total-Input-Stats");
     
 
     leaderAInputStats.addEventListener("input", function(){
@@ -2988,9 +2907,6 @@ function createLeaderStats(){
     leaderAInputStats.style.display="none";
     leaderBInputStats.style.display="none";
     leaderTotalInputStats.style.display="block";
-
-
-    
 }
 
 function createLinkStats(){
@@ -3883,7 +3799,7 @@ function createPassiveContainer(){
     }
 
 
-    if(!(passiveSupportContainer.firstChild)){
+    if(!(passiveSupportContainer.firstChild) && false){
         const passiveATKSupport=document.createElement("div");
         passiveATKSupport.label=document.createElement("label");
         passiveATKSupport.input=document.createElement("input");
@@ -3946,8 +3862,82 @@ function createPassiveContainer(){
         passiveSupportContainer.appendChild(passiveKiSupport);
     }
     
-    
-    
+    if(true){
+        const passiveSupportAdditions=document.createElement("div");
+        passiveSupportAdditions.id="passive-support-additions";
+        passiveSupportContainer.appendChild(passiveSupportAdditions);
+
+        passiveSupportAdditions.buffType=document.createElement("div");
+        passiveSupportAdditions.buffType.id="passive-support-additions-buff-type";
+        passiveSupportAdditions.appendChild(passiveSupportAdditions.buffType);
+
+        passiveSupportAdditions.buffType.selector=document.createElement("div");
+        passiveSupportAdditions.buffType.selector.id="passive-support-additions-buff-type-selector";
+        passiveSupportAdditions.buffType.appendChild(passiveSupportAdditions.buffType.selector);
+        ["Ki","ATK", "DEF", "Dodge", "Crit"].forEach(option => {
+            const optionContainer = document.createElement("div");
+            optionContainer.className = "passive-support-option";
+
+            const checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.id = `passive-support-${option.toLowerCase()}`;
+            checkbox.name = option;
+            checkbox.value = option;
+
+            const label = document.createElement("label");
+            label.htmlFor = checkbox.id;
+            label.textContent = option;
+
+            optionContainer.appendChild(checkbox);
+            optionContainer.appendChild(label);
+            passiveSupportAdditions.buffType.selector.appendChild(optionContainer);
+        });
+
+        passiveSupportAdditions.buffAmount=document.createElement("div");
+        passiveSupportAdditions.buffAmount.id="passive-support-additions-buff-amount";
+        passiveSupportAdditions.appendChild(passiveSupportAdditions.buffAmount);
+
+        passiveSupportAdditions.buffAmount.input=document.createElement("input");
+        passiveSupportAdditions.buffAmount.input.type="number";
+        passiveSupportAdditions.buffAmount.input.value="0";
+        passiveSupportAdditions.buffAmount.appendChild(passiveSupportAdditions.buffAmount.input);
+
+        passiveSupportAdditions.buffSource=document.createElement("div");
+        passiveSupportAdditions.buffSource.id="passive-support-additions-buff-source";
+        passiveSupportAdditions.appendChild(passiveSupportAdditions.buffSource);
+
+        passiveSupportAdditions.buffSource.selector=document.createElement("select");
+        passiveSupportAdditions.buffSource.selector.id="passive-support-additions-buff-source-selector";
+        passiveSupportAdditions.buffSource.appendChild(passiveSupportAdditions.buffSource.selector);
+        ["Passive SOT", "Passive MOT", "Active", "Super attack"].forEach(option => {
+            const optionContainer = document.createElement("option");
+            optionContainer.value = option;
+            optionContainer.textContent = option;
+            passiveSupportAdditions.buffSource.selector.appendChild(optionContainer);
+        });
+        
+        passiveSupportAdditions.confirmSelection=document.createElement("button");
+        passiveSupportAdditions.confirmSelection.id="passive-support-additions-confirm-selection";
+        passiveSupportAdditions.appendChild(passiveSupportAdditions.confirmSelection);
+        passiveSupportAdditions.confirmSelection.textContent="Add support";
+        passiveSupportAdditions.confirmSelection.addEventListener("click", function(){
+            const passiveSupportType=[];
+            for (const passiveSupportOption of passiveSupportAdditions.buffType.selector.children){
+                if(passiveSupportOption.children[0].checked){
+                    passiveSupportType.push(passiveSupportOption.children[0].value);
+                }
+            }
+            supportBuffs.push({Type: passiveSupportType, Amount: passiveSupportAdditions.buffAmount.input.value, Source: passiveSupportAdditions.buffSource.selector.value});
+            fixOverallSupportBuffs();
+            updatePassiveSupportDisplay();
+            updatePassiveStats();
+        })
+
+
+        
+        
+
+    }
     let passiveList=currentJson.Passive;
 
     for (const passiveLineKey of Object.keys(passiveList)) {
@@ -4009,6 +3999,44 @@ function createPassiveContainer(){
 
     for (const query of Object.values(passiveOnceOnlyList)){
         passiveOnceOnlyContainer.appendChild(query.getElement());
+    }
+}
+
+
+function updatePassiveSupportDisplay() {
+    const passiveSupportDisplay=document.getElementById("passive-support-display");
+    passiveSupportDisplay.innerHTML = "";
+
+    for (const [supportKey, passiveSupportEntry] of Object.entries(supportBuffs)) {
+        const passiveSupportElement = document.createElement("div");
+        passiveSupportElement.classList.add("passive-support-entry");
+        passiveSupportElement.innerHTML = passiveSupportEntry.Type.join(", ") + " +" + passiveSupportEntry.Amount + " from " + passiveSupportEntry.Source;
+        passiveSupportDisplay.appendChild(passiveSupportElement);
+        passiveSupportElement.addEventListener("click", () => {
+            delete supportBuffs[supportKey];
+            updatePassiveSupportDisplay();
+            fixOverallSupportBuffs();
+            updatePassiveStats();
+        });
+    }
+}
+
+
+
+function fixOverallSupportBuffs(){
+    overallSupportBuffs={
+        "Passive SOT": {"ATK": 0, "DEF": 0, "Ki": 0, "Crit": 0, "Dodge": 0},
+        "Passive MOT": {"ATK": 0, "DEF": 0, "Ki": 0, "Crit": 0, "Dodge": 0},
+        "Active": {"ATK": 0, "DEF": 0, "Ki": 0, "Crit": 0, "Dodge": 0},
+        "Super attack": {"ATK": 0, "DEF": 0, "Ki": 0, "Crit": 0, "Dodge": 0}
+    };
+    for (const buff of supportBuffs){
+        if(buff!=undefined){
+            for (const buffTypeKey in buff.Type) {
+                const buffType=buff.Type[buffTypeKey];
+                overallSupportBuffs[buff.Source][buffType]+=parseInt(buff.Amount);
+            }
+        }
     }
 }
 
@@ -4419,7 +4447,7 @@ function updateKiSphereBuffs(pageLoad=false){
                         kiProgress+=rainbowKiSphereAmount
                     }
                 }
-                Query.updateValue(kiProgress>=kiNeeded)
+                Query.updateValue(kiProgress>=kiNeeded, false)
             }
         }
     }
