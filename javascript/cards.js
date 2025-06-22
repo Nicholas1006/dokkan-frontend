@@ -3628,7 +3628,7 @@ function updateChanceList(passiveLine){
     const newChanceQuery=new passiveButton(
         0,
         0,
-        "Does the "+passiveLine["Chance"]+" chance of "+passiveLine["Brief effect description"]+" activate?",
+        "Does the "+passiveLine["Chance"]+"% chance of "+passiveLine["Brief effect description"]+" activate?",
         null
     );
     newChanceQuery.referenceLine=passiveLine;
