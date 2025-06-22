@@ -1,0 +1,665 @@
+{
+    "ID": "1023731",
+    "Type": "INT",
+    "Class": "Extreme",
+    "Name": "Jeice & Burter",
+    "Rarity": "ur",
+    "Min Level": 120,
+    "Max Level": 140,
+    "Categories": [
+        "Space-Traveling Warriors",
+        "Planet Namek Saga",
+        "Ginyu Force",
+        "Dragon Ball Seekers",
+        "Joined Forces",
+        "Terrifying Conquerors",
+        "Special Pose",
+        "Mission Execution"
+    ],
+    "Can EZA": true,
+    "Can SEZA": false,
+    "Links": [
+        "Frieza's Army",
+        "Frieza's Minion",
+        "The Ginyu Force",
+        "Tag Team of Terror",
+        "Signature Pose",
+        "Loyalty",
+        "Fierce Battle"
+    ],
+    "Resource ID": 1023730,
+    "Passive": {
+        "4615": {
+            "ID": "4615",
+            "Timing": "Start of turn",
+            "ATK": 200,
+            "DEF": 200,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "ATK and DEF +200% "
+        },
+        "1004615": {
+            "ID": "1004615",
+            "Additional Attack": {
+                "Activated": true,
+                "Chance of super": "50",
+                "Chance of another additional": "0"
+            },
+            "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "Performs an additional attack with a 50% chance of becoming a super attack "
+        },
+        "2004615": {
+            "ID": "2004615",
+            "Dodge Chance": 70,
+            "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "Chance of evading enemy attacks +70% "
+        },
+        "3004615": {
+            "ID": "3004615",
+            "Dodge Chance": 10,
+            "Timing": "Right before being hit",
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "141",
+                "Causalities": {
+                    "141": {
+                        "Button": {
+                            "Name": "Has this character been hit by a super attack?"
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "Chance of evading enemy attacks +10% right before being hit"
+        },
+        "4004615": {
+            "ID": "4004615",
+            "Disable Other Line": {
+                "Activated": true,
+                "Line": "3004615"
+            },
+            "Timing": "Right after being hit",
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Disable Other Line",
+            "Brief effect description": "Disables a different passive line:3004615 after being hit"
+        },
+        "5004615": {
+            "ID": "5004615",
+            "Timing": "Right after attack",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 200,
+                "Cause": {
+                    "Cause": "Attacks performed"
+                },
+                "Slider": "How many attacks has this character performed in battle?"
+            },
+            "ATK": 50,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Type": "Building Stat",
+            "Brief effect description": "ATK +50% (up to 200%) based on 'How many attacks has this character performed in battle' after attacking"
+        },
+        "6004615": {
+            "ID": "6004615",
+            "Timing": "Right after attack",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 200,
+                "Cause": {
+                    "Cause": "Attacks performed"
+                },
+                "Slider": "How many attacks has this character performed in battle?"
+            },
+            "DEF": 50,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "99",
+            "Type": "Building Stat",
+            "Brief effect description": "DEF +50% (up to 200%) based on 'How many attacks has this character performed in battle' after attacking"
+        },
+        "7004615": {
+            "ID": "7004615",
+            "Timing": "Start of turn",
+            "ATK": 40,
+            "DEF": 40,
+            "Target": {
+                "Category": {
+                    "Included": [
+                        "Space-Traveling Warriors"
+                    ],
+                    "Excluded": []
+                },
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "Space-Traveling Warriors category allies ATK and DEF +40% "
+        },
+        "8004615": {
+            "ID": "8004615",
+            "Timing": "Start of turn",
+            "Ki": 3,
+            "Target": {
+                "Category": {
+                    "Included": [
+                        "Space-Traveling Warriors"
+                    ],
+                    "Excluded": []
+                },
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "Space-Traveling Warriors category allies Ki +3 "
+        },
+        "9004615": {
+            "ID": "9004615",
+            "Timing": "Start of turn",
+            "ATK": 40,
+            "DEF": 40,
+            "Target": {
+                "Category": {
+                    "Included": [
+                        "Special Pose"
+                    ],
+                    "Excluded": [
+                        "Space-Traveling Warriors"
+                    ]
+                },
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "Special Pose category allies ATK and DEF +40% "
+        },
+        "10004615": {
+            "ID": "10004615",
+            "Timing": "Start of turn",
+            "Ki": 3,
+            "Target": {
+                "Category": {
+                    "Included": [
+                        "Special Pose"
+                    ],
+                    "Excluded": [
+                        "Space-Traveling Warriors"
+                    ]
+                },
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Type": "Single activator",
+            "Brief effect description": "Special Pose category allies Ki +3 "
+        },
+        "11004615": {
+            "ID": "11004615",
+            "Timing": "Start of turn",
+            "ATK": 30,
+            "DEF": 30,
+            "Target": {
+                "Target": "Allies"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "2",
+            "Condition": {
+                "Logic": "1335",
+                "Causalities": {
+                    "1335": {
+                        "Button": {
+                            "Name": "Is there an ally attacking on this turn whose name includes Ginyu?"
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": " allies ATK and DEF +30% "
+        },
+        "12004615": {
+            "ID": "12004615",
+            "Dodge Chance": 10,
+            "Timing": "Start of turn",
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "1335",
+                "Causalities": {
+                    "1335": {
+                        "Button": {
+                            "Name": "Is there an ally attacking on this turn whose name includes Ginyu?"
+                        }
+                    }
+                }
+            },
+            "Type": "Single activator",
+            "Brief effect description": "Chance of evading enemy attacks +10% "
+        },
+        "13004615": {
+            "ID": "13004615",
+            "Disable Other Line": {
+                "Activated": true,
+                "Line": "12004615"
+            },
+            "Timing": "Right after being hit",
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": "1",
+            "Condition": {
+                "Logic": "24",
+                "Causalities": {
+                    "24": {
+                        "Button": {
+                            "Name": "Has this character been hit on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many times has this character been hit on this turn?",
+                            "Logic": ">=1",
+                            "Min": 0,
+                            "Max": 1
+                        }
+                    }
+                }
+            },
+            "Type": "Disable Other Line",
+            "Brief effect description": "Disables a different passive line:12004615 after being hit"
+        }
+    },
+    "Max Attacks": 3,
+    "Max Super Attacks": 3,
+    "Stats at levels": {
+        "120": {
+            "HP": 13074,
+            "ATK": 7403,
+            "DEF": 4990
+        },
+        "121": {
+            "HP": 13294,
+            "ATK": 7527,
+            "DEF": 5074
+        },
+        "122": {
+            "HP": 13515,
+            "ATK": 7652,
+            "DEF": 5158
+        },
+        "123": {
+            "HP": 13735,
+            "ATK": 7777,
+            "DEF": 5242
+        },
+        "124": {
+            "HP": 13956,
+            "ATK": 7902,
+            "DEF": 5326
+        },
+        "125": {
+            "HP": 14176,
+            "ATK": 8027,
+            "DEF": 5410
+        },
+        "126": {
+            "HP": 14397,
+            "ATK": 8152,
+            "DEF": 5495
+        },
+        "127": {
+            "HP": 14617,
+            "ATK": 8277,
+            "DEF": 5579
+        },
+        "128": {
+            "HP": 14838,
+            "ATK": 8402,
+            "DEF": 5663
+        },
+        "129": {
+            "HP": 15058,
+            "ATK": 8526,
+            "DEF": 5747
+        },
+        "130": {
+            "HP": 15279,
+            "ATK": 8651,
+            "DEF": 5831
+        },
+        "131": {
+            "HP": 15500,
+            "ATK": 8776,
+            "DEF": 5915
+        },
+        "132": {
+            "HP": 15720,
+            "ATK": 8901,
+            "DEF": 6000
+        },
+        "133": {
+            "HP": 15941,
+            "ATK": 9026,
+            "DEF": 6084
+        },
+        "134": {
+            "HP": 16161,
+            "ATK": 9151,
+            "DEF": 6168
+        },
+        "135": {
+            "HP": 16382,
+            "ATK": 9276,
+            "DEF": 6252
+        },
+        "136": {
+            "HP": 16602,
+            "ATK": 9401,
+            "DEF": 6336
+        },
+        "137": {
+            "HP": 16823,
+            "ATK": 9525,
+            "DEF": 6420
+        },
+        "138": {
+            "HP": 17043,
+            "ATK": 9650,
+            "DEF": 6505
+        },
+        "139": {
+            "HP": 17264,
+            "ATK": 9775,
+            "DEF": 6589
+        },
+        "140": {
+            "HP": 17484,
+            "ATK": 9900,
+            "DEF": 6673
+        }
+    },
+    "Leader Skill": {
+        "Name": "Red and Blue Light Orbs",
+        "102373100": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Space-Traveling Warriors"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies",
+                "Class": []
+            },
+            "HP": 150,
+            "ATK": 150,
+            "DEF": 150
+        },
+        "102373101": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Space-Traveling Warriors"
+                ],
+                "Excluded Category": [],
+                "Allies or enemies": "Allies"
+            },
+            "Ki": 3
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 5,
+            "Type ATK": 6,
+            "Type DEF": 5,
+            "Super Attack boost": 6,
+            "Recovery boost": 6
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 1,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 2,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 0,
+            "Type DEF": 2,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "4": {
+            "HP": 1700,
+            "ATK": 1700,
+            "DEF": 1700,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 1,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        }
+    },
+    "Super Attack": {
+        "7696": {
+            "superID": "7696",
+            "Type": "Other",
+            "special_name_no": "0",
+            "superName": "Purple Comet Crash (Extreme)",
+            "superDescription": "Raises ATK & DEF for 1 turn and \ncauses supreme damage to enemy; \nraises allies' ATK & DEF by 20% for 1 turn",
+            "superMinKi": "12",
+            "superPriority": "0.0",
+            "superStyle": "Normal",
+            "superMinLVL": "14",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superBuffs": {
+                "7696": {
+                    "Type": "NormalEfficacySpecial",
+                    "Chance": "100",
+                    "Duration": "1",
+                    "Buff": {
+                        "Type": "Percentage",
+                        "+ or -": "+"
+                    },
+                    "Target": "Self",
+                    "ATK": "30",
+                    "DEF": "30"
+                },
+                "1007696": {
+                    "Type": "NormalEfficacySpecial",
+                    "Chance": "100",
+                    "Duration": "1",
+                    "Buff": {
+                        "Type": "Percentage",
+                        "+ or -": "+"
+                    },
+                    "Target": "Allies",
+                    "ATK": "20",
+                    "DEF": "20"
+                }
+            },
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "0"
+            },
+            "Multiplier": 510,
+            "relevantLua": [
+                "sp2339"
+            ]
+        }
+    },
+    "Active Skill": null,
+    "Standby Skill": null,
+    "Finish Skill": null,
+    "Transforms from": [],
+    "Transformations": [],
+    "Max Appearances In Form": 50,
+    "Dokkan awakenings": [],
+    "Dokkan Reverse awakenings": [
+        "1023720",
+        "1023721"
+    ],
+    "Orbs": {
+        "gold": {
+            "HP": 900,
+            "ATK": 900,
+            "DEF": 600
+        },
+        "silver": {
+            "HP": 200,
+            "ATK": 200,
+            "DEF": 200
+        },
+        "bronze": {
+            "HP": 700,
+            "ATK": 800,
+            "DEF": 800
+        },
+        "overall": {
+            "HP": 1800,
+            "ATK": 1900,
+            "DEF": 1600
+        }
+    },
+    "Ki Multiplier": {
+        "0": 70.0,
+        "1": 75.83333333333333,
+        "2": 81.66666666666667,
+        "3": 87.5,
+        "4": 93.33333333333333,
+        "5": 99.16666666666667,
+        "6": 105.0,
+        "7": 110.83333333333334,
+        "8": 116.66666666666666,
+        "9": 122.5,
+        "10": 128.33333333333334,
+        "11": 134.16666666666666,
+        "12": 140.0
+    },
+    "Ki Circle Segments": {
+        "1": "weaker",
+        "2": "weaker",
+        "3": "weaker",
+        "4": "weaker",
+        "5": "weaker",
+        "6": "equal",
+        "7": "equal",
+        "8": "equal",
+        "9": "equal",
+        "10": "equal",
+        "11": "equal",
+        "12": "super"
+    },
+    "SuperMinKi": 12,
+    "AdditionalSuperID": "7696"
+}
