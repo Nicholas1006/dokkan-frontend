@@ -20,6 +20,7 @@ export class unitDisplay{
     constructor(){
 
       this.lrAnimationIsSetup=false;
+      this.highlightAnimationisSetup=false;
 
       this.container=document.createElement("div");
       this.container.className="unit-container";
@@ -286,6 +287,46 @@ export class unitDisplay{
       this.container.sezaImage.addEventListener("click",onClickFunction);
     }
 
+    setupHighlight(){
+      this.container.highlight=document.createElement("div");
+      this.container.highlight.className="unit-highlight";
+      this.container.appendChild(this.container.highlight);
+
+      this.container.highlight.background=document.createElement("canvas")
+      this.container.highlight.appendChild(this.container.highlight.background);
+      this.container.highlight.background.className="unit-highlight-animation-lwf-background";
+      this.container.highlight.background.animation=new LWFPlayer(
+            window.assetBase+"/global/en/outgame/effect/icon_rare_20000/en/icon_rare_20000.lwf", this.container.highlight.background,"ef_032", 
+            this.container.highlight.background.width/300,
+            this.container.highlight.background.height/300,
+            this.container.highlight.background.width/2,
+            this.container.highlight.background.height/1.9);
+
+      this.container.highlight.arrow=document.createElement("canvas")
+      this.container.highlight.appendChild(this.container.highlight.arrow);
+      this.container.highlight.arrow.className="unit-highlight-animation-lwf-arrow";
+      this.container.highlight.arrow.animation=new LWFPlayer(
+            window.assetBase+"/global/en/outgame/effect/icon_rare_20000/en/icon_rare_20000.lwf", this.container.highlight.arrow,"ef_033", 
+            this.container.highlight.arrow.width/300,
+            this.container.highlight.arrow.height/300,
+            this.container.highlight.arrow.width/2,
+            this.container.highlight.arrow.height/2);
+
+      this.highlightAnimationisSetup=true;
+    }
+
+    setHighlight(highlighted){
+      
+      if(highlighted){
+        if(!this.highlightAnimationisSetup){
+          this.setupHighlight();
+        }
+        this.container.highlight.style.display="block";
+      }
+      else if(this.highlightAnimationisSetup){
+        this.container.highlight.style.display="none";
+      }
+    }
 
 }
 
