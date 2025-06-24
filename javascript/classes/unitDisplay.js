@@ -151,12 +151,12 @@ export class unitDisplay{
           this.createLRAnimation();
           this.lrAnimationIsSetup=true;
         }
+        this.container.lrAnimation.animation.play();
         this.container.lrAnimation.style.display="block";
-        //   this.container.lrAnimation.style.display="block";
-        //   this.container.lrBackground.style.display="block";
       }
       else{
         if(this.lrAnimationIsSetup){
+          this.container.lrAnimation.animation.pause();
           this.container.lrAnimation.style.display="none";
         }
       //   this.container.lrAnimation.style.display="none";
@@ -315,117 +315,51 @@ export class unitDisplay{
       this.highlightAnimationisSetup=true;
     }
 
+    setupSezaBorder(){
+      this.container.sezaBorder=document.createElement("canvas");
+      this.container.sezaBorder.className="unit-seza-border";
+      this.container.appendChild(this.container.sezaBorder);
+      this.container.sezaBorder.sceneName="ef_00"+(this.typeInt+1);
+      this.container.sezaBorder.animation=new LWFPlayer(window.assetBase+"/global/en/outgame/effect/super_optimal_eff/super_optimal_eff.lwf", this.container.sezaBorder,
+            this.container.sezaBorder.sceneName, 
+            this.container.sezaBorder.width/300,
+            this.container.sezaBorder.height/300,
+            this.container.sezaBorder.width/2,
+            this.container.sezaBorder.height/1.9);
+
+    }
+
     setHighlight(highlighted){
       
       if(highlighted){
         if(!this.highlightAnimationisSetup){
           this.setupHighlight();
         }
+        this.container.highlight.background.animation.play();
+        this.container.highlight.arrow.animation.play();
         this.container.highlight.style.display="block";
       }
       else if(this.highlightAnimationisSetup){
+        this.container.highlight.background.animation.pause();
+        this.container.highlight.arrow.animation.pause();
         this.container.highlight.style.display="none";
+      }
+    }
+
+    setSezaBorder(sezaBorder){
+      if(sezaBorder){
+        if(!this.sezaBorderisSetup){
+          this.setupSezaBorder();
+        }
+        this.container.sezaBorder.animation.play();
+        this.container.sezaBorder.style.display="block";
+      }
+      else if(this.sezaBorderisSetup){
+        this.container.sezaBorder.animation.pause();
+        this.container.sezaBorder.style.display="none";
       }
     }
 
 }
 
-export class unitLRAnimationDisplay{
 
-  constructor(unitID){
-    this.container=canvas;
-    lwfUrl=window.assetBase+"/global/en/character/card_bg/"+unitID+"/card_"+unitID+".lwf";
-
-    this.attachLWF(unitID);
-  }
-
-  attachLWF(unitID){
-    const settings = {
-      lwf: lwfUrl,
-      stage: canvas,
-      imageMap: defaultImageMap,
-      setBackgroundColor: 'FF000000', // Fully opaque black (ARGB: Alpha=FF, Red=00, Green=00, Blue=00)
-      additionalParams: {
-          alpha: true,
-          premultipliedAlpha: true
-      },
-      worker: false,
-      onload: onLwfLoaded,
-    };
-    LWF.useCanvasRenderer();
-    LWF.ResourceCache.get().loadLWF(settings);
-
-    
-  }
-
-  getElement(){
-    return this.container;
-  }
-
-}
-
-function defaultImageMap(assetName) {
-  // Extract the directory from the lwfUrl (up to and including the last '/')
-  const directory = lwfUrl.substring(0, lwfUrl.lastIndexOf('/') + 1);
-  return `${directory}${assetName}`;
-}
-
-function onLwfLoaded(lwf) {         
-  if (lwf.rootMovie) {
-      // Attach the desired scene from the LWF file to the root movie.
-      // The second argument is the instance name, which can be referenced later.
-      const scene = lwf.rootMovie.attachMovie(sceneName, `${sceneName}_1`);
-      if (scene) {
-          // Positioning depends on the animation you're loading. For LR arts,
-          // the scene should be centered in the LWF.
-          scene.moveTo(lwf.width / 2, lwf.height / 2);
-      }
-  }
-   
-  // Scale the animation to fit the canvas dimensions.
-  lwf.scaleForHeight(canvas.width, canvas.height);
-   
-  // Activate the animation.
-  lwf.active = true;
-   
-  // Start the animation loop.
-  startAnimation(lwf);
-}
-
-/* 
-  Animation Loop using requestAnimationFrame:
-
-  requestAnimationFrame is a browser API that synchronizes the animation loop with the
-  browser's repaint cycle. It provides a more efficient and smoother animation than 
-  alternatives like setTimeout or setInterval.
-   
-  How it works:
-  - The render function is defined to update (exec) and render the animation.
-  - The first call to requestAnimationFrame (outside the render function) initiates the process.
-  - Inside the render function, requestAnimationFrame is called again to schedule the next frame.
-  This recursive call ensures the render continues running.
-   
-  Note: It might seem like requestAnimationFrame is "called twice" because it is called both 
-  to start the render and then again within the render to maintain continuous animation.
-*/
-function startAnimation(lwf) {
-  let lastTime = performance.now(); // Capture the starting time
-
-  // Define the render function that updates and renders the animation on each frame.
-  function render(currentTime) {
-      if (lwf && lwf.active) {
-          // Calculate the elapsed time (delta) in seconds since the last frame
-          const deltaTime = (currentTime - lastTime) / 1000;
-          lastTime = currentTime;
-          // Update the animation state based on the time elapsed
-          lwf.exec(deltaTime);
-          // Render the current frame of the animation onto the canvas
-          lwf.render();
-      }
-      // Request the next animation frame. This recursive call keeps the loop running.
-      requestAnimationFrame(render);
-  }
-   
-  // Start the animation loop by requesting the first frame.
-  requestAnimationFrame(render);
-}

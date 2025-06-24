@@ -8,6 +8,7 @@ let sceneName = sceneNameInput.value;
 
 
 lwfUrlInput.addEventListener('input', (e) => {
+    lwfUrlInput.value=lwfUrlInput.value.replaceAll("\\","/").replaceAll("//","/");
     document.getElementById('valid-lwf').style.backgroundColor = 'red';
     const url = e.target.value;
     fetch(url, { method: 'HEAD' })
@@ -56,7 +57,7 @@ sceneNameInput.addEventListener('input', (e) => {
      lwf: lwfUrl,
      stage: canvas,
      imageMap: defaultImageMap,
-     setBackgroundColor: 'FF000000', // Fully opaque black (ARGB: Alpha=FF, Red=00, Green=00, Blue=00)
+     setBackgroundColor: '00000000', // Fully opaque black (ARGB: Alpha=FF, Red=00, Green=00, Blue=00)
      additionalParams: {
          alpha: true,
          premultipliedAlpha: true

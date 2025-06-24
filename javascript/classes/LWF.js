@@ -4,7 +4,8 @@ export class LWFPlayer{
     this.container=canvas;
     this.LWFUrl=LWFUrl;
     this.sceneName=sceneName;
-
+    this.active=true;
+    this.needsReset=false;
     this.onLwfLoaded = (lwf) => {
       if(lwf){
         if (lwf.rootMovie) {
@@ -22,6 +23,7 @@ export class LWFPlayer{
             
         }
         lwf.active = true;
+        lwf.parentClass=this;
         startAnimation(lwf);
       }
       
@@ -54,12 +56,34 @@ export class LWFPlayer{
     return `${directory}${assetName}`;
   }
 
+  play(){
+    this.active = true;
+    this.needsReset=true;
+    
+  }
+  pause(){
+    this.active = false;
+  }
+
 }
 
 function startAnimation(lwf) {
   let lastTime = performance.now(); 
   function render(currentTime) {
-      if (lwf && lwf.active) {
+      if(lwf.parentClass.needsReset){
+        Object.keys(lwf.instances[0].attachedMovies).forEach(movieName => {
+          Object.keys(lwf.instances[0].attachedMovies[movieName].displayList).forEach(displayName => {
+            if(lwf.instances[0].attachedMovies[movieName].displayList[displayName]!=null){
+              lwf.instances[0].attachedMovies[movieName].displayList[displayName].currentFrameInternal=0;
+            }
+          });
+          
+          lwf.instances[0].attachedMovies[movieName].gotoFrame(1);
+          lwf.instances[0].attachedMovies[movieName].play();
+        });
+        lwf.parentClass.needsReset=false;
+      }
+      if (lwf && lwf.active && lwf.parentClass.active) {
           const deltaTime = (currentTime - lastTime) / 1000;
           lastTime = currentTime;
           lwf.exec(deltaTime);
@@ -69,3 +93,4 @@ function startAnimation(lwf) {
   }
   requestAnimationFrame(render);
 }
+
