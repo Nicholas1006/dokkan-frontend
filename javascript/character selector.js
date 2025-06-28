@@ -219,6 +219,7 @@ function reSortCards(){
         displayBoxes[i].setUrl(baseDomain+"/cards/index.html?id=" + sortedUnits[i].substring(0,7) + "&EZA="+(sortedUnits[i].endsWith("EZA"))+"&SEZA="+sortedUnits[i].endsWith("SEZA"));
         displayBoxes[i].setDisplay(true);
         displayBoxes[i].setHighlight(Math.random() >= 0.99);
+        displayBoxes[i].setSezaBorder(sortedUnits[i].endsWith("SEZA"));
 
 
 

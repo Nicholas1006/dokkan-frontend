@@ -1,11 +1,12 @@
 export class LWFPlayer{
 
-  constructor(LWFUrl, canvas, sceneName, scaleX=null, scaleY=null,translateX=null,translateY=null){
+  constructor(LWFUrl, canvas, sceneName, scaleX=null, scaleY=null,translateX=null,translateY=null,filterBlack=false){
     this.container=canvas;
     this.LWFUrl=LWFUrl;
     this.sceneName=sceneName;
     this.active=true;
     this.needsReset=false;
+    this.filterBlack=filterBlack;
     this.onLwfLoaded = (lwf) => {
       if(lwf){
         if (lwf.rootMovie) {
@@ -24,12 +25,23 @@ export class LWFPlayer{
         }
         lwf.active = true;
         lwf.parentClass=this;
+        this.lwf=lwf;
         startAnimation(lwf);
       }
       
         
     };
 
+    this.attachLWF();
+  }
+
+  changeScene(sceneName, scaleX=null, scaleY=null,translateX=null,translateY=null){
+    this.sceneName=sceneName;
+    this.needsReset=true;
+    if(this.lwf){
+      this.lwf.active = false;
+      this.lwf=null;
+    }
     this.attachLWF();
   }
 
@@ -69,6 +81,9 @@ export class LWFPlayer{
 
 function startAnimation(lwf) {
   let lastTime = performance.now(); 
+  const canvas = lwf.stage;
+  const ctx = canvas.getContext('2d');
+
   function render(currentTime) {
       if(lwf.parentClass.needsReset){
         Object.keys(lwf.instances[0].attachedMovies).forEach(movieName => {
@@ -88,9 +103,29 @@ function startAnimation(lwf) {
           lastTime = currentTime;
           lwf.exec(deltaTime);
           lwf.render();
+
+          if(lwf.parentClass.filterBlack){  
+            // 🖌️ POST PROCESS: Make black transparent
+           const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+           const data = imageData.data;
+ 
+           for (let i = 0; i < data.length; i += 4) {
+             const r = data[i];
+             const g = data[i + 1];
+             const b = data[i + 2];
+ 
+             // if near black (allow a small threshold)
+             if (r < 128 && g < 128 && b < 128) {
+               data[i + 3] = 0; // set alpha to 0
+             }
+           }
+ 
+           ctx.putImageData(imageData, 0, 0);
+          }
       }
       requestAnimationFrame(render);
   }
   requestAnimationFrame(render);
 }
+
 
