@@ -351,7 +351,7 @@ function reSortCards(){
         if(window.leaderView){
           displayBoxes[i].setHighlight(unitBasicsDetails["Under Lead Buff"][sortedUnits[i]]["ATK"]>=200);
         }
-        displayBoxes[i].setSezaBorder(sortedUnits[i].endsWith("SEZA"));
+        //displayBoxes[i].setSezaBorder(sortedUnits[i].endsWith("SEZA"));
 
 
 
