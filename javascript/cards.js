@@ -1531,6 +1531,7 @@ class passiveQuery{
 
 // CONSTANT GLOBAL VARIABLES
 const HIDEUNNEEDEDPASSIVE=true;
+const MINIMUMVIABLELEADERBUFF=1;
 let finishType;
 let currentJson = null;
 let linkData=null;
@@ -1539,6 +1540,7 @@ let activeAttackPerformed=false;
 let finishDisplayed=false;
 let finishSkillCharges=0;
 let finishSkillPerformed=false;
+
 
 let regularAttacksPerformed=true;
 
@@ -5268,6 +5270,31 @@ function createKiSphereContainer(){
     })
 }
 
+function createLeaderViewContainer(){
+    const leaderViewContainer=document.getElementById("leader-view-container");
+    let viableLead=false;
+    for (const lead in currentJson["Leader Skill"]){
+        if(currentJson["Leader Skill"][lead]["HP"]>MINIMUMVIABLELEADERBUFF ||
+        currentJson["Leader Skill"][lead]["ATK"]>MINIMUMVIABLELEADERBUFF ||
+        currentJson["Leader Skill"][lead]["DEF"]>MINIMUMVIABLELEADERBUFF){
+            viableLead=true;
+            break;
+        }
+    }
+
+    if(viableLead){
+        leaderViewContainer.style.display="block";
+        const leaderViewLink=document.createElement("a");
+        leaderViewContainer.appendChild(leaderViewLink);
+        leaderViewLink.href="/index.html?leaderView="+currentJson["ID"];
+        leaderViewLink.textContent="View Leader Skill";
+        leaderViewLink.style.textDecoration="none";
+        leaderViewLink.style.color="inherit";
+    }
+    else{
+        leaderViewContainer.style.display="none";
+    }
+};
 
 
 
@@ -5350,6 +5377,7 @@ export async function loadPage(firstTime=false){
             //document.getElementById("ki-slider").dispatchEvent(new Event("input"));	
         }
         createLevelSlider();
+        createLeaderViewContainer();
         createSuperAttackContainer();
         updateBaseStats(false);
         if(currentJson["Rarity"] == "lr" || currentJson["Rarity"] == "ur"){

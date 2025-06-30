@@ -107,6 +107,10 @@ export function isEmptyDictionary(dictionary){
     return(Object.keys(dictionary).length==0 );
 }
 
+export function isIdenticalDictionary(dictionary1,dictionary2){
+    return(JSON.stringify(dictionary1)==JSON.stringify(dictionary2))
+}
+
 export function updateQueryStringParameter(key, value) {
     const url = new URL(window.location.href);
     url.searchParams.set(key, value);
