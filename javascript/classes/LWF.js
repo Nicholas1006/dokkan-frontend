@@ -12,7 +12,7 @@ export class LWFPlayer{
         if (lwf.rootMovie) {
             const scene = lwf.rootMovie.attachMovie(this.sceneName, `${this.sceneName}_1`);
             if (scene) {
-              if(scaleX && scaleY && translateX && translateY){
+              if(scaleX!=null && scaleY!=null && translateX!=null && translateY!=null){
                 scene.moveTo(translateX, translateY);
                 scene.scale( scaleX, scaleY);
               }

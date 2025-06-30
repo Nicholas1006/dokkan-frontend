@@ -1,4 +1,4 @@
-import { unitLRAnimationDisplay, unitDisplay } from "./classes/unitDisplay.js";
+import {unitDisplay } from "./classes/unitDisplay.js";
 import {extractDigitsFromString,
        arraysHaveOverlap,
        getFirstInDictionary,
@@ -4131,9 +4131,15 @@ function createSuperAttackContainer(){
     while (imageContainer.firstChild) {
         imageContainer.removeChild(imageContainer.firstChild);
     }
-
-    const cardImage=new unitLRAnimationDisplay(currentJson["Resource ID"]);
-    imageContainer.appendChild(cardImage.getElement());
+    imageContainer.animationCanvas=document.createElement("canvas");
+    imageContainer.animationCanvas.width=234;
+    imageContainer.animationCanvas.height=320;
+    imageContainer.appendChild(imageContainer.animationCanvas);
+    const cardImage=new LWFPlayer(
+        window.assetBase+"/global/en/character/card_bg/"+currentJson["Resource ID"]+"/card_"+currentJson["Resource ID"]+".lwf", 
+        imageContainer.animationCanvas, 
+        "ef_001"
+    );
     document.body.style.backgroundColor = colorToBackground(typeToColor(currentJson["Type"]));
 }
 
