@@ -3,16 +3,16 @@ import { complexSortFilterContainer } from "./classes/complexSortFilterContainer
 import {removePX,timeSince,getJsonPromise,isEmptyDictionary} from "./commonFunctions.js";
 
 // GLOBAL VARIABLES
-let unitsToDisplay = 200;
+let unitsToDisplay = 44;
 
 window.currentSort = "Release";
 window.currentOrder = "descending";
-let currentFilter = "Name";
-let currentFilterValue = "";
-let currentFilteredUnits = {};
-let displayBoxes=[];
+window.currentFilter = "Name";
+window.currentFilterValue = "";
+window.currentFilteredUnits = {};
+window.displayBoxes=[];
 
-let unitBasicsDetails={};
+window.unitBasicsDetails={};
 
 const COMPLEXSORTFILTERCONTAINERWIDTH=480;
 const COMPLEXSORTFILTERCONTAINERHEIGHT="100vh";
@@ -47,7 +47,7 @@ function createFilterOption(){
     filterSelect.appendChild(optionElement);
   });
   filterSelect.addEventListener("change", function() {
-    currentFilter = this.value;
+    window.currentFilter = this.value;
     reFilterCards();
   })
 
@@ -57,7 +57,7 @@ function createFilterOption(){
   filterTextInput.placeholder="Enter text to filter by";
   filterTextInput.setAttribute("autocomplete", "off");
   filterTextInput.addEventListener("input", function() {
-    currentFilterValue = this.value;
+    window.currentFilterValue = this.value;
     reFilterCards();
   });
 
@@ -69,38 +69,38 @@ async function reFilterCards(sortCutIDBefore=false) {
   
 
 
-  if(Object.keys(unitBasicsDetails).includes(currentFilter)){
-      currentFilteredUnits = Object.keys(unitBasicsDetails["Max Level"]);
-      if(["Eza","Seza"].includes(currentFilter)){
+  if(Object.keys(window.unitBasicsDetails).includes(window.currentFilter)){
+      window.currentFilteredUnits = Object.keys(window.unitBasicsDetails["Max Level"]);
+      if(["Eza","Seza"].includes(window.currentFilter)){
         let currentFilteringUnits = [];
-        for (const unit of currentFilteredUnits){
-          if(unit.endsWith(currentFilter.toUpperCase())){
+        for (const unit of window.currentFilteredUnits){
+          if(unit.endsWith(window.currentFilter.toUpperCase())){
             currentFilteringUnits.push(unit)
           }
         }
-        currentFilteredUnits=currentFilteringUnits;
+        window.currentFilteredUnits=currentFilteringUnits;
       }
-      else if (["Type", "Name", "Rarity","Class"].includes(currentFilter) && currentFilterValue !== "") {
+      else if (["Type", "Name", "Rarity","Class"].includes(window.currentFilter) && window.currentFilterValue !== "") {
         let currentFilteringUnits = [];
-        for (const unit of currentFilteredUnits){
-          if(unitBasicsDetails[currentFilter][unit].toLowerCase().includes(currentFilterValue.toLowerCase()) ){
+        for (const unit of window.currentFilteredUnits){
+          if(window.unitBasicsDetails[window.currentFilter][unit].toLowerCase().includes(window.currentFilterValue.toLowerCase()) ){
             currentFilteringUnits.push(unit)
           }
         }
-        currentFilteredUnits=currentFilteringUnits;
+        window.currentFilteredUnits=currentFilteringUnits;
       }
 
-      else if (["Categories","Links","Super Attack Types"].includes(currentFilter) && currentFilterValue !== "") {
+      else if (["Categories","Links","Super Attack Types"].includes(window.currentFilter) && window.currentFilterValue !== "") {
 
         let currentFilteringUnits = [];
-        for (const unit of currentFilteredUnits){
-          if(unitBasicsDetails[currentFilter][unit].some(category => category.toLowerCase().includes(currentFilterValue.toLowerCase()))){
+        for (const unit of window.currentFilteredUnits){
+          if(window.unitBasicsDetails[window.currentFilter][unit].some(category => category.toLowerCase().includes(window.currentFilterValue.toLowerCase()))){
           //reawaken for exact matching rather than .includes
           //if(unitBasicsDetails[currentFilter][unit].includes(currentFilterValue)){
               currentFilteringUnits.push(unit)
             }
           }
-        currentFilteredUnits=currentFilteringUnits;
+        window.currentFilteredUnits=currentFilteringUnits;
       }
 
       if(window.leaderView!=null){
@@ -127,17 +127,17 @@ async function reFilterCards(sortCutIDBefore=false) {
       if(relevantDetails.includes("Class") && !relevantDetails.includes("Class")) {
         let unitBasicsDetailPromise;
         unitBasicsDetailPromise=getJsonPromise("/dbManagement/uniqueJsons/unitBasics/","Class",".json");
-        unitBasicsDetails["Class"]=await unitBasicsDetailPromise;
+        window.unitBasicsDetails["Class"]=await unitBasicsDetailPromise;
       }
       else if(relevantDetails.includes("Category") && !relevantDetails.includes("Categories")){
         let unitBasicsDetailPromise;
         unitBasicsDetailPromise=getJsonPromise("/dbManagement/uniqueJsons/unitBasics/","Categories",".json");
-        unitBasicsDetails["Categories"]=await unitBasicsDetailPromise;
+        window.unitBasicsDetails["Categories"]=await unitBasicsDetailPromise;
       }
       else if(relevantDetails.includes("Typing")  && !relevantDetails.includes("Typing")){
         let unitBasicsDetailPromise;
         unitBasicsDetailPromise=getJsonPromise("/dbManagement/uniqueJsons/unitBasics/","Typing",".json");
-        unitBasicsDetails["Typing"]=await unitBasicsDetailPromise;
+        window.unitBasicsDetails["Typing"]=await unitBasicsDetailPromise;
       }
 
       window.Leadthresholds=[];
@@ -150,17 +150,17 @@ async function reFilterCards(sortCutIDBefore=false) {
 
 
       let currentFilteringUnits=[];
-      for (const unit of currentFilteredUnits){
-        unitBasicsDetails["Under Lead Buff"][unit]=calculateUnitUnderLeadBuff(unit);
-        if (unitBasicsDetails["Under Lead Buff"][unit]["Ki"]>0 ||
-          unitBasicsDetails["Under Lead Buff"][unit]["ATK"]>0 ||
-          unitBasicsDetails["Under Lead Buff"][unit]["DEF"]>0 ||
-          unitBasicsDetails["Under Lead Buff"][unit]["HP"]>0
+      for (const unit of window.currentFilteredUnits){
+        window.unitBasicsDetails["Under Lead Buff"][unit]=calculateUnitUnderLeadBuff(unit);
+        if (window.unitBasicsDetails["Under Lead Buff"][unit]["Ki"]>0 ||
+          window.unitBasicsDetails["Under Lead Buff"][unit]["ATK"]>0 ||
+          window.unitBasicsDetails["Under Lead Buff"][unit]["DEF"]>0 ||
+          window.unitBasicsDetails["Under Lead Buff"][unit]["HP"]>0
         ){
           currentFilteringUnits.push(unit);
         }
       }
-      currentFilteredUnits=currentFilteringUnits;
+      window.currentFilteredUnits=currentFilteringUnits;
     }
 
     if(sortCutIDBefore){
@@ -168,7 +168,7 @@ async function reFilterCards(sortCutIDBefore=false) {
       unitBasicsDetailPromise=getJsonPromise("/dbManagement/uniqueJsons/unitBasics/","ID",".json");
       unitBasicsDetailPromise.then(
         unitBasicsDetail =>{
-          unitBasicsDetails["ID"]=unitBasicsDetail;
+          window.unitBasicsDetails["ID"]=unitBasicsDetail;
           sortCutID();
           reSortCards();
         }
@@ -179,14 +179,15 @@ async function reFilterCards(sortCutIDBefore=false) {
     }
   }
   else{
-    const unitBasicsDetailPromise=getJsonPromise("/dbManagement/uniqueJsons/unitBasics/",currentFilter,".json");
+    const unitBasicsDetailPromise=getJsonPromise("/dbManagement/uniqueJsons/unitBasics/",window.currentFilter,".json");
     unitBasicsDetailPromise.then(
       unitBasicsDetail =>{
-        unitBasicsDetails[currentFilter]=unitBasicsDetail;
+        window.unitBasicsDetails[window.currentFilter]=unitBasicsDetail;
         reFilterCards(sortCutIDBefore);
       }
     )
   }
+  updatePageSelector();
 }
 function calculateLeadPriority(lead){
   return(
@@ -223,23 +224,23 @@ function calculateUnitUnderLeadBuff(unit){
 function unitMeetsLeadConditions(unit,lead){
   if(!isEmptyDictionary(lead["Target"]["Category"])){
     for(const category of lead["Target"]["Category"]){
-      if(!unitBasicsDetails["Categories"][unit].includes(category)){
+      if(!window.unitBasicsDetails["Categories"][unit].includes(category)){
         return(false);
       }
     }
   }
   if(!isEmptyDictionary(lead["Target"]["Excluded Category"])){
-    if(listHasOverlap(unitBasicsDetails["Categories"][unit],lead["Target"]["Excluded Category"])){
+    if(listHasOverlap(window.unitBasicsDetails["Categories"][unit],lead["Target"]["Excluded Category"])){
       return(false);
     }
   }
   if(!isEmptyDictionary(lead["Target"]["Class"])){
-    if(!(lead["Target"]["Class"].includes(unitBasicsDetails["Class"][unit]))){
+    if(!(lead["Target"]["Class"].includes(window.unitBasicsDetails["Class"][unit]))){
       return(false);
     }
   }
   if(!isEmptyDictionary(lead["Target"]["Typing"])){
-    if(!(lead["Target"]["Typing"].includes(unitBasicsDetails["Type"][unit]))){
+    if(!(lead["Target"]["Typing"].includes(window.unitBasicsDetails["Type"][unit]))){
       return(false);
     }
   }
@@ -258,11 +259,11 @@ function listHasOverlap(list1,list2){
 function createCharacterBoxes() {
   const unitsContainer = document.getElementById("unit-selection-container");
   for (let unitCount = 0; unitCount < unitsToDisplay; unitCount++) {
-    displayBoxes[unitCount] = new unitDisplay();
-    displayBoxes[unitCount].setWidth("164px");
-    displayBoxes[unitCount].setHeight("150px");
-    displayBoxes[unitCount].setDisplayExtraInfo(true);
-    unitsContainer.appendChild(displayBoxes[unitCount].container);
+    window.displayBoxes[unitCount] = new unitDisplay();
+    window.displayBoxes[unitCount].setWidth("164px");
+    window.displayBoxes[unitCount].setHeight("150px");
+    window.displayBoxes[unitCount].setDisplayExtraInfo(true);
+    unitsContainer.appendChild(window.displayBoxes[unitCount].container);
   }
 }
 
@@ -286,14 +287,14 @@ function createSortOption(){
 
 
 function reSortCards(){
-  if(Object.keys(unitBasicsDetails).includes(window.currentSort)){
+  if(Object.keys(window.unitBasicsDetails).includes(window.currentSort)){
 
-    let sortedUnits = currentFilteredUnits;
+    let sortedUnits = window.currentFilteredUnits;
     const order = window.currentOrder =="ascending" ? 1 : -1;
 
     sortedUnits.sort((a, b) => {
-      let valueA = unitBasicsDetails[window.currentSort][a];
-      let valueB = unitBasicsDetails[window.currentSort][b];
+      let valueA = window.unitBasicsDetails[window.currentSort][a];
+      let valueB = window.unitBasicsDetails[window.currentSort][b];
       if (window.currentSort === "Rarity") {
         valueA = rarityToInt(valueA);
         valueB = rarityToInt(valueB);
@@ -308,68 +309,15 @@ function reSortCards(){
       return 0;
     });
 
-    
-    for (let i = 0; i < unitsToDisplay;i++) {
-      if(i<sortedUnits.length){
-        let otherDisplayedValue=null;
-        let otherDisplayedValueColor="white";
-        if(["Cost","HP","Attack","Defense"].includes(window.currentSort)){
-          otherDisplayedValue=unitBasicsDetails[window.currentSort][sortedUnits[i]];
-        }
-        else if(window.currentSort=="Sp Atk Lv"){
-          otherDisplayedValue=unitBasicsDetails["Sp Atk Lv"][sortedUnits[i]];
-          otherDisplayedValueColor="yellow";
-        }
-          
-        else if(window.currentSort=="Release"){
-          const [timeSinceRelease,timeMetric]=timeSince(unitBasicsDetails["Release"][sortedUnits[i]]);
-          otherDisplayedValue=Math.abs(timeSinceRelease)+" "+timeMetric;
-          if(timeSinceRelease<0){
-            otherDisplayedValueColor="red";
-          }
-        }
-        let ezaLevel = "none";
-        if(sortedUnits[i].endsWith("SEZA")){
-          ezaLevel = "seza";
-        }
-        else if(sortedUnits[i].endsWith("EZA")){
-          ezaLevel = "eza";
-        }
-        
-
-        displayBoxes[i].setResourceID(unitBasicsDetails["Resource ID"][sortedUnits[i]]);
-        displayBoxes[i].setClass(unitBasicsDetails["Class"][sortedUnits[i]]);
-        displayBoxes[i].setType(unitBasicsDetails["Type"][sortedUnits[i]]);
-        displayBoxes[i].setRarity(unitBasicsDetails["Rarity"][sortedUnits[i]]);
-        displayBoxes[i].setLevel(unitBasicsDetails["Max Level"][sortedUnits[i]]);
-        displayBoxes[i].setOtherDisplayedValue(otherDisplayedValue);
-        displayBoxes[i].setOtherDisplayedValueColor(otherDisplayedValueColor);
-        displayBoxes[i].setPossibleEzaLevel(ezaLevel);
-        displayBoxes[i].setEzaLevel(ezaLevel);
-        displayBoxes[i].setUrl(baseDomain+"/cards/index.html?id=" + sortedUnits[i].substring(0,7) + "&EZA="+(sortedUnits[i].endsWith("EZA"))+"&SEZA="+sortedUnits[i].endsWith("SEZA"));
-        displayBoxes[i].setDisplay(true);
-        if(window.leaderView){
-          displayBoxes[i].setHighlight(unitBasicsDetails["Under Lead Buff"][sortedUnits[i]]["ATK"]>=200);
-        }
-        //displayBoxes[i].setSezaBorder(sortedUnits[i].endsWith("SEZA"));
-
-
-
-        //unitButton.style.backgroundImage = "url("+window.assetBase+"/global/en/character/card/"+getAssetID(sortedUnits[i]["ID"])+"/card_"+getAssetID(sortedUnits[i]["ID"])+"_full_thumb.png')";
-
-
-      }
-      if(i>=sortedUnits.length){
-        displayBoxes[i].setDisplay(false);
-      }
-    }
+    window.currentFilteredUnits = sortedUnits;
+    showUpdatedCardPositions();
   }
   else{
     let unitBasicsDetailPromise;
     unitBasicsDetailPromise=getJsonPromise("/dbManagement/uniqueJsons/unitBasics/",window.currentSort,".json");
     unitBasicsDetailPromise.then(
       unitBasicsDetail =>{
-        unitBasicsDetails[window.currentSort]=unitBasicsDetail;
+        window.unitBasicsDetails[window.currentSort]=unitBasicsDetail;
         reSortCards();
       }
     )
@@ -377,12 +325,12 @@ function reSortCards(){
 }
 
 function sortCutID(showUpdate=false){
-  let sortedUnits = currentFilteredUnits;
+  let sortedUnits = window.currentFilteredUnits;
   const order = window.currentOrder =="ascending" ? 1 : -1;
 
   sortedUnits.sort((a, b) => {
-    let valueA = unitBasicsDetails["ID"][a]%1000000;
-    let valueB = unitBasicsDetails["ID"][b]%1000000;
+    let valueA = window.unitBasicsDetails["ID"][a]%1000000;
+    let valueB = window.unitBasicsDetails["ID"][b]%1000000;
     if (window.currentSort === "Rarity") {
       valueA = rarityToInt(valueA);
       valueB = rarityToInt(valueB);
@@ -397,59 +345,66 @@ function sortCutID(showUpdate=false){
     return 0;
   });
   if(showUpdate){
-    for (let i = 0; i < unitsToDisplay;i++) {
-      if(i<sortedUnits.length){
-        let otherDisplayedValue=null;
-        let otherDisplayedValueColor="white";
-        if(["Cost","HP","Attack","Defense"].includes(window.currentSort)){
-          otherDisplayedValue=unitBasicsDetails[window.currentSort][sortedUnits[i]];
-        }
-        else if(window.currentSort=="Sp Atk Lv"){
-          otherDisplayedValue=unitBasicsDetails["Sp Atk Lv"][sortedUnits[i]];
-          otherDisplayedValueColor="yellow";
-        }
-          
-        else if(window.currentSort=="Release"){
-          const [timeSinceRelease,timeMetric]=timeSince(unitBasicsDetails["Release"][sortedUnits[i]]);
-          otherDisplayedValue=Math.abs(timeSinceRelease)+" "+timeMetric;
-          if(timeSinceRelease<0){
-            otherDisplayedValueColor="red";
-          }
-        }
-        let ezaLevel = "none";
-        if(sortedUnits[i].endsWith("SEZA")){
-          ezaLevel = "seza";
-        }
-        else if(sortedUnits[i].endsWith("EZA")){
-          ezaLevel = "eza";
-        }
-        
-
-        displayBoxes[i].setResourceID(unitBasicsDetails["Resource ID"][sortedUnits[i]]);
-        displayBoxes[i].setClass(unitBasicsDetails["Class"][sortedUnits[i]]);
-        displayBoxes[i].setType(unitBasicsDetails["Type"][sortedUnits[i]]);
-        displayBoxes[i].setRarity(unitBasicsDetails["Rarity"][sortedUnits[i]]);
-        displayBoxes[i].setLevel(unitBasicsDetails["Max Level"][sortedUnits[i]]);
-        displayBoxes[i].setOtherDisplayedValue(otherDisplayedValue);
-        displayBoxes[i].setOtherDisplayedValueColor(otherDisplayedValueColor);
-        displayBoxes[i].setPossibleEzaLevel(ezaLevel);
-        displayBoxes[i].setEzaLevel(ezaLevel);
-        displayBoxes[i].setUrl(baseDomain+"/cards/index.html?id=" + sortedUnits[i].substring(0,7) + "&EZA="+(sortedUnits[i].endsWith("EZA"))+"&SEZA="+sortedUnits[i].endsWith("SEZA"));
-        displayBoxes[i].setDisplay(true);
-
-
-
-        //unitButton.style.backgroundImage = "url('"+window.assetBase+"/global/en/character/card/"+getAssetID(sortedUnits[i]["ID"])+"/card_"+getAssetID(sortedUnits[i]["ID"])+"_full_thumb.png')";
-
-
-      }
-      if(i>=sortedUnits.length){
-        displayBoxes[i].setDisplay(false);
-      }
-    }
+    showUpdatedCardPositions();
   }
 }
 
+function showUpdatedCardPositions(){
+  for (let i = (unitsToDisplay*(window.currentPage-1)); i < (unitsToDisplay*window.currentPage);i++) {
+    if(i<window.currentFilteredUnits.length){
+      let otherDisplayedValue=null;
+      let otherDisplayedValueColor="white";
+      if(["Cost","HP","Attack","Defense"].includes(window.currentSort)){
+        otherDisplayedValue=window.unitBasicsDetails[window.currentSort][sortedUnits[i]];
+      }
+      else if(window.currentSort=="Sp Atk Lv"){
+        otherDisplayedValue=window.unitBasicsDetails["Sp Atk Lv"][sortedUnits[i]];
+        otherDisplayedValueColor="yellow";
+      }
+        
+      else if(window.currentSort=="Release"){
+        const [timeSinceRelease,timeMetric]=timeSince(window.unitBasicsDetails["Release"][window.currentFilteredUnits[i]]);
+        otherDisplayedValue=Math.abs(timeSinceRelease)+" "+timeMetric;
+        if(timeSinceRelease<0){
+          otherDisplayedValueColor="red";
+        }
+      }
+      let ezaLevel = "none";
+      if(window.currentFilteredUnits[i].endsWith("SEZA")){
+        ezaLevel = "seza";
+      }
+      else if(window.currentFilteredUnits[i].endsWith("EZA")){
+        ezaLevel = "eza";
+      }
+      
+
+      window.displayBoxes[i%unitsToDisplay].setResourceID(window.unitBasicsDetails["Resource ID"][window.currentFilteredUnits[i]]);
+      window.displayBoxes[i%unitsToDisplay].setClass(window.unitBasicsDetails["Class"][window.currentFilteredUnits[i]]);
+      window.displayBoxes[i%unitsToDisplay].setType(window.unitBasicsDetails["Type"][window.currentFilteredUnits[i]]);
+      window.displayBoxes[i%unitsToDisplay].setRarity(window.unitBasicsDetails["Rarity"][window.currentFilteredUnits[i]]);
+      window.displayBoxes[i%unitsToDisplay].setLevel(window.unitBasicsDetails["Max Level"][window.currentFilteredUnits[i]]);
+      window.displayBoxes[i%unitsToDisplay].setOtherDisplayedValue(otherDisplayedValue);
+      window.displayBoxes[i%unitsToDisplay].setOtherDisplayedValueColor(otherDisplayedValueColor);
+      window.displayBoxes[i%unitsToDisplay].setPossibleEzaLevel(ezaLevel);
+      window.displayBoxes[i%unitsToDisplay].setEzaLevel(ezaLevel);
+      window.displayBoxes[i%unitsToDisplay].setUrl(baseDomain+"/cards/index.html?id=" + window.currentFilteredUnits[i].substring(0,7) + "&EZA="+(window.currentFilteredUnits[i].endsWith("EZA"))+"&SEZA="+window.currentFilteredUnits[i].endsWith("SEZA"));
+      window.displayBoxes[i%unitsToDisplay].setDisplay(true);
+      if(window.leaderView){
+        window.displayBoxes[i%unitsToDisplay].setHighlight(window.unitBasicsDetails["Under Lead Buff"][window.currentFilteredUnits[i]]["ATK"]>=200);
+      }
+      //displayBoxes[i].setSezaBorder(window.currentFilteredUnits[i].endsWith("SEZA"));
+
+
+
+      //unitButton.style.backgroundImage = "url("+window.assetBase+"/global/en/character/card/"+getAssetID(window.currentFilteredUnits[i]["ID"])+"/card_"+getAssetID(window.currentFilteredUnits[i]["ID"])+"_full_thumb.png')";
+
+
+    }
+    if(i>=window.currentFilteredUnits.length){
+      window.displayBoxes[i%unitsToDisplay].setDisplay(false);
+    }
+  }
+}
 
 function createSortButton(){
   const sortFilterContainer=new complexSortFilterContainer(COMPLEXSORTFILTERCONTAINERWIDTH,COMPLEXSORTFILTERCONTAINERHEIGHT);
@@ -462,9 +417,40 @@ function createSortButton(){
       sortFilterContainer.setDisplay(!sortFilterContainer.getDisplay());
     }
   )
+}
+
+function updatePageSelector(){
+  if(window.currentPage==undefined){
+    window.currentPage=1;
+  }
+  if(window.currentPage>Math.ceil(window.currentFilteredUnits.length/unitsToDisplay)){
+    window.currentPage=Math.ceil(window.currentFilteredUnits.length/unitsToDisplay);
+  }
+  const pageSelectionContainer=document.getElementById("page-selection-container");
+  while (pageSelectionContainer.firstChild) {
+    pageSelectionContainer.removeChild(pageSelectionContainer.firstChild);
+  }
+  const minNumber=Math.max(1,window.currentPage-3);
+  const maxNumber=Math.min(Math.ceil(window.currentFilteredUnits.length/unitsToDisplay),minNumber+7);
+  for(let i=minNumber;i<=maxNumber;i++){
+    const pageButton=document.createElement("button");
+    pageButton.textContent=i;
+    if(i==window.currentPage){
+      pageButton.style.background="grey";
+    }
+    pageButton.addEventListener("click",function(){
+      changeCurrentPage(this.textContent);
+      updatePageSelector();
+    })
+    pageSelectionContainer.appendChild(pageButton);
+  }
 
 }
 
+function changeCurrentPage(currentPage){
+  window.currentPage=parseInt(currentPage);
+  showUpdatedCardPositions();
+}
 
 function createCharacterSelection(){
   
@@ -480,7 +466,7 @@ function createCharacterSelection(){
     results => {
       ["Resource ID", "Class", "Type", "Rarity", "Max Level"].forEach(
         (field, index) => {
-          unitBasicsDetails[field] = results[index];
+          window.unitBasicsDetails[field] = results[index];
         }
       );
       reFilterCards(true);
@@ -506,7 +492,7 @@ function addToLeadList(leadList,lead, newLeadSource){
 
 const urlParams=new URLSearchParams(window.location.search);
 if(urlParams.get("leaderView") !== null) {
-  unitBasicsDetails["Under Lead Buff"]={};
+  window.unitBasicsDetails["Under Lead Buff"]={};
   const json = await getJsonPromise("/dbManagement/jsons/", urlParams.get("leaderView"), ".json");
   window.leaderView = {}
   for (const lead in json["Leader Skill"]){
