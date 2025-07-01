@@ -145,20 +145,22 @@ async function reFilterCards(sortCutIDBefore=false) {
 
       let currentFilteringUnits=[];
       for (const unit of window.currentFilteredUnits){
+
         window.unitBasicsDetails["Under Lead Buff"][unit]=calculateUnitUnderLeadBuff(unit);
-        if ((window.unitBasicsDetails["Under Lead Buff"][unit]["Ki"]>=window.MINIMUMLEADERBUFF ||
-          window.unitBasicsDetails["Under Lead Buff"][unit]["ATK"]>=window.MINIMUMLEADERBUFF ||
-          window.unitBasicsDetails["Under Lead Buff"][unit]["DEF"]>=window.MINIMUMLEADERBUFF ||
-          window.unitBasicsDetails["Under Lead Buff"][unit]["HP"]>=window.MINIMUMLEADERBUFF 
-        ) && 
-        window.unitBasicsDetails["Under Lead Buff"][unit]["BuffType"] == "Percentage"){
+        if ((window.unitBasicsDetails["Under Lead Buff"][unit]["Ki"]>=window.MINIMUMLEADERBUFF ||            window.unitBasicsDetails["Under Lead Buff"][unit]["ATK"]>=window.MINIMUMLEADERBUFF ||            window.unitBasicsDetails["Under Lead Buff"][unit]["DEF"]>=window.MINIMUMLEADERBUFF ||            window.unitBasicsDetails["Under Lead Buff"][unit]["HP"]>=window.MINIMUMLEADERBUFF             ) &&             window.unitBasicsDetails["Under Lead Buff"][unit]["BuffType"] == "Percentage"){
           currentFilteringUnits.push(unit);
         }
+        
       }
       window.currentFilteredUnits=currentFilteringUnits;
     }
 
     else if(window.leadUnit!=null){
+      if(!("Awakening" in window.unitBasicsDetails)) {
+        let unitBasicsDetailPromise;
+        unitBasicsDetailPromise=getJsonPromise("/dbManagement/uniqueJsons/unitBasics/","Awakening",".json");
+        window.unitBasicsDetails["Awakening"]=await unitBasicsDetailPromise;
+      }
       if(!("Class" in window.unitBasicsDetails)) {
         let unitBasicsDetailPromise;
         unitBasicsDetailPromise=getJsonPromise("/dbManagement/uniqueJsons/unitBasics/","Class",".json");
@@ -178,14 +180,20 @@ async function reFilterCards(sortCutIDBefore=false) {
 
       let currentFilteringUnits=[];
       for (const unit of window.currentFilteredUnits){
-        window.unitBasicsDetails["Leading Buff"][unit]=calculateUnitLeadingBuff(unit);
-        if ((window.unitBasicsDetails["Leading Buff"][unit]["Ki"]>=window.MINIMUMLEADERBUFF ||
-          window.unitBasicsDetails["Leading Buff"][unit]["ATK"]>=window.MINIMUMLEADERBUFF ||
-          window.unitBasicsDetails["Leading Buff"][unit]["DEF"]>=window.MINIMUMLEADERBUFF ||
-          window.unitBasicsDetails["Leading Buff"][unit]["HP"]>=window.MINIMUMLEADERBUFF 
-        ) && 
-        window.unitBasicsDetails["Leading Buff"][unit]["BuffType"] == "Percentage"){
-          currentFilteringUnits.push(unit);
+        if(
+          window.unitBasicsDetails["Awakening"][unit]["Dokkan Awakening"]==false &&
+          window.unitBasicsDetails["Awakening"][unit]["Extreme Z-Awakening"]==false &&
+          window.unitBasicsDetails["Awakening"][unit]["Super Extreme Z-Awakening"]==false &&
+          unit.startsWith(1)){
+          window.unitBasicsDetails["Leading Buff"][unit]=calculateUnitLeadingBuff(unit);
+          if ((window.unitBasicsDetails["Leading Buff"][unit]["Ki"]>=window.MINIMUMLEADERBUFF ||
+            window.unitBasicsDetails["Leading Buff"][unit]["ATK"]>=window.MINIMUMLEADERBUFF ||
+            window.unitBasicsDetails["Leading Buff"][unit]["DEF"]>=window.MINIMUMLEADERBUFF ||
+            window.unitBasicsDetails["Leading Buff"][unit]["HP"]>=window.MINIMUMLEADERBUFF 
+          ) && 
+          window.unitBasicsDetails["Leading Buff"][unit]["BuffType"] == "Percentage"){
+            currentFilteringUnits.push(unit);
+          }
         }
       }
       window.currentFilteredUnits=currentFilteringUnits;
@@ -543,8 +551,8 @@ function addToLeadList(leadList,lead, newLeadSource){
       leadList[listedLead]["DEF"]+=newLeadSource[lead]["DEF"];
       leadList[listedLead]["HP"]+=newLeadSource[lead]["HP"];
       leadList[listedLead]["Ki"]+=newLeadSource[lead]["Ki"];
-      if(leadList[listedLead]["ATK"]+leadList[listedLead]["DEF"]+leadList[listedLead]["HP"]>0){
-        leadList[listedLead]["Buff"]["Type"]=newLeadSource[lead]["Buff"]["Type"];
+      if((newLeadSource[listedLead]["ATK"]+newLeadSource[listedLead]["DEF"]+newLeadSource[listedLead]["HP"])>0){
+        leadList[listedLead]["Buff"]["Type"]=newLeadSource[listedLead]["Buff"]["Type"];
       }
       return;
     }
