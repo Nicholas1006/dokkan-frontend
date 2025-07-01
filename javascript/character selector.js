@@ -11,6 +11,7 @@ window.currentFilter = "Name";
 window.currentFilterValue = "";
 window.currentFilteredUnits = {};
 window.displayBoxes=[];
+window.MINIMUMLEADERBUFF=150;
 
 window.unitBasicsDetails={};
 
@@ -70,40 +71,40 @@ async function reFilterCards(sortCutIDBefore=false) {
 
 
   if(Object.keys(window.unitBasicsDetails).includes(window.currentFilter)){
-      window.currentFilteredUnits = Object.keys(window.unitBasicsDetails["Max Level"]);
-      if(["Eza","Seza"].includes(window.currentFilter)){
-        let currentFilteringUnits = [];
-        for (const unit of window.currentFilteredUnits){
-          if(unit.endsWith(window.currentFilter.toUpperCase())){
+    window.currentFilteredUnits = Object.keys(window.unitBasicsDetails["Max Level"]);
+    if(["Eza","Seza"].includes(window.currentFilter)){
+      let currentFilteringUnits = [];
+      for (const unit of window.currentFilteredUnits){
+        if(unit.endsWith(window.currentFilter.toUpperCase())){
+          currentFilteringUnits.push(unit)
+        }
+      }
+      window.currentFilteredUnits=currentFilteringUnits;
+    }
+    else if (["Type", "Name", "Rarity","Class"].includes(window.currentFilter) && window.currentFilterValue !== "") {
+      let currentFilteringUnits = [];
+      for (const unit of window.currentFilteredUnits){
+        if(window.unitBasicsDetails[window.currentFilter][unit].toLowerCase().includes(window.currentFilterValue.toLowerCase()) ){
+          currentFilteringUnits.push(unit)
+        }
+      }
+      window.currentFilteredUnits=currentFilteringUnits;
+    }
+
+    else if (["Categories","Links","Super Attack Types"].includes(window.currentFilter) && window.currentFilterValue !== "") {
+
+      let currentFilteringUnits = [];
+      for (const unit of window.currentFilteredUnits){
+        if(window.unitBasicsDetails[window.currentFilter][unit].some(category => category.toLowerCase().includes(window.currentFilterValue.toLowerCase()))){
+        //reawaken for exact matching rather than .includes
+        //if(unitBasicsDetails[currentFilter][unit].includes(currentFilterValue)){
             currentFilteringUnits.push(unit)
           }
         }
-        window.currentFilteredUnits=currentFilteringUnits;
-      }
-      else if (["Type", "Name", "Rarity","Class"].includes(window.currentFilter) && window.currentFilterValue !== "") {
-        let currentFilteringUnits = [];
-        for (const unit of window.currentFilteredUnits){
-          if(window.unitBasicsDetails[window.currentFilter][unit].toLowerCase().includes(window.currentFilterValue.toLowerCase()) ){
-            currentFilteringUnits.push(unit)
-          }
-        }
-        window.currentFilteredUnits=currentFilteringUnits;
-      }
+      window.currentFilteredUnits=currentFilteringUnits;
+    }
 
-      else if (["Categories","Links","Super Attack Types"].includes(window.currentFilter) && window.currentFilterValue !== "") {
-
-        let currentFilteringUnits = [];
-        for (const unit of window.currentFilteredUnits){
-          if(window.unitBasicsDetails[window.currentFilter][unit].some(category => category.toLowerCase().includes(window.currentFilterValue.toLowerCase()))){
-          //reawaken for exact matching rather than .includes
-          //if(unitBasicsDetails[currentFilter][unit].includes(currentFilterValue)){
-              currentFilteringUnits.push(unit)
-            }
-          }
-        window.currentFilteredUnits=currentFilteringUnits;
-      }
-
-      if(window.leaderView!=null){
+    if(window.leaderView!=null){
       let relevantDetails=[]
       for(const lead in window.leaderView){
         if(lead!="Name"){
@@ -117,34 +118,27 @@ async function reFilterCards(sortCutIDBefore=false) {
               relevantDetails.push("Class");
             }
           }
-          if(window.leaderView[lead]["Target"]["Typing"]!=undefined){
-            if(window.leaderView[lead]["Target"]["Typing"][0]!=undefined){
-              relevantDetails.push("Typing");
+          if(window.leaderView[lead]["Target"]["Type"]!=undefined){
+            if(window.leaderView[lead]["Target"]["Type"][0]!=undefined){
+              relevantDetails.push("Type");
             }
           }
         }
       }
-      if(relevantDetails.includes("Class") && !relevantDetails.includes("Class")) {
+      if(relevantDetails.includes("Class") && !("Class" in window.unitBasicsDetails)) {
         let unitBasicsDetailPromise;
         unitBasicsDetailPromise=getJsonPromise("/dbManagement/uniqueJsons/unitBasics/","Class",".json");
         window.unitBasicsDetails["Class"]=await unitBasicsDetailPromise;
       }
-      else if(relevantDetails.includes("Category") && !relevantDetails.includes("Categories")){
+      if(relevantDetails.includes("Category") && !("Categories" in window.unitBasicsDetails)){
         let unitBasicsDetailPromise;
         unitBasicsDetailPromise=getJsonPromise("/dbManagement/uniqueJsons/unitBasics/","Categories",".json");
         window.unitBasicsDetails["Categories"]=await unitBasicsDetailPromise;
       }
-      else if(relevantDetails.includes("Typing")  && !relevantDetails.includes("Typing")){
+      if(relevantDetails.includes("Type")  && !("Type" in window.unitBasicsDetails)){
         let unitBasicsDetailPromise;
-        unitBasicsDetailPromise=getJsonPromise("/dbManagement/uniqueJsons/unitBasics/","Typing",".json");
-        window.unitBasicsDetails["Typing"]=await unitBasicsDetailPromise;
-      }
-
-      window.Leadthresholds=[];
-      for(const lead in window.leaderView){
-        if(!(window.Leadthresholds.includes(calculateLeadPriority(window.leaderView[lead])))){
-          window.Leadthresholds.push(calculateLeadPriority(window.leaderView[lead])); 
-        }
+        unitBasicsDetailPromise=getJsonPromise("/dbManagement/uniqueJsons/unitBasics/","Type",".json");
+        window.unitBasicsDetails["Type"]=await unitBasicsDetailPromise;
       }
 
 
@@ -152,15 +146,50 @@ async function reFilterCards(sortCutIDBefore=false) {
       let currentFilteringUnits=[];
       for (const unit of window.currentFilteredUnits){
         window.unitBasicsDetails["Under Lead Buff"][unit]=calculateUnitUnderLeadBuff(unit);
-        if (window.unitBasicsDetails["Under Lead Buff"][unit]["Ki"]>0 ||
-          window.unitBasicsDetails["Under Lead Buff"][unit]["ATK"]>0 ||
-          window.unitBasicsDetails["Under Lead Buff"][unit]["DEF"]>0 ||
-          window.unitBasicsDetails["Under Lead Buff"][unit]["HP"]>0
-        ){
+        if ((window.unitBasicsDetails["Under Lead Buff"][unit]["Ki"]>=window.MINIMUMLEADERBUFF ||
+          window.unitBasicsDetails["Under Lead Buff"][unit]["ATK"]>=window.MINIMUMLEADERBUFF ||
+          window.unitBasicsDetails["Under Lead Buff"][unit]["DEF"]>=window.MINIMUMLEADERBUFF ||
+          window.unitBasicsDetails["Under Lead Buff"][unit]["HP"]>=window.MINIMUMLEADERBUFF 
+        ) && 
+        window.unitBasicsDetails["Under Lead Buff"][unit]["BuffType"] == "Percentage"){
           currentFilteringUnits.push(unit);
         }
       }
       window.currentFilteredUnits=currentFilteringUnits;
+    }
+
+    else if(window.leadUnit!=null){
+      if(!("Class" in window.unitBasicsDetails)) {
+        let unitBasicsDetailPromise;
+        unitBasicsDetailPromise=getJsonPromise("/dbManagement/uniqueJsons/unitBasics/","Class",".json");
+        window.unitBasicsDetails["Class"]=await unitBasicsDetailPromise;
+      }
+      if(!("Categories" in window.unitBasicsDetails)){
+        let unitBasicsDetailPromise;
+        unitBasicsDetailPromise=getJsonPromise("/dbManagement/uniqueJsons/unitBasics/","Categories",".json");
+        window.unitBasicsDetails["Categories"]=await unitBasicsDetailPromise;
+      }
+      if(!("Type" in window.unitBasicsDetails)){
+        let unitBasicsDetailPromise;
+        unitBasicsDetailPromise=getJsonPromise("/dbManagement/uniqueJsons/unitBasics/","Type",".json");
+        window.unitBasicsDetails["Type"]=await unitBasicsDetailPromise;
+      }
+
+
+      let currentFilteringUnits=[];
+      for (const unit of window.currentFilteredUnits){
+        window.unitBasicsDetails["Leading Buff"][unit]=calculateUnitLeadingBuff(unit);
+        if ((window.unitBasicsDetails["Leading Buff"][unit]["Ki"]>=window.MINIMUMLEADERBUFF ||
+          window.unitBasicsDetails["Leading Buff"][unit]["ATK"]>=window.MINIMUMLEADERBUFF ||
+          window.unitBasicsDetails["Leading Buff"][unit]["DEF"]>=window.MINIMUMLEADERBUFF ||
+          window.unitBasicsDetails["Leading Buff"][unit]["HP"]>=window.MINIMUMLEADERBUFF 
+        ) && 
+        window.unitBasicsDetails["Leading Buff"][unit]["BuffType"] == "Percentage"){
+          currentFilteringUnits.push(unit);
+        }
+      }
+      window.currentFilteredUnits=currentFilteringUnits;
+
     }
 
     if(sortCutIDBefore){
@@ -189,12 +218,33 @@ async function reFilterCards(sortCutIDBefore=false) {
   }
   updatePageSelector();
 }
-function calculateLeadPriority(lead){
+
+function calculateUnitLeadingBuff(unit){
+  let Ki=0;
+  let ATK=0;
+  let DEF=0;
+  let HP=0;
+  let BuffType="Percentage";
+  for (const lead in window.unitBasicsDetails["Leader Skill"][unit]){
+    if(lead!="Name"){
+      if(unitMeetsLeadConditions(window.leadUnit,window.unitBasicsDetails["Leader Skill"][unit][lead])){
+        Ki+=window.unitBasicsDetails["Leader Skill"][unit][lead]["Ki"];
+        ATK+=window.unitBasicsDetails["Leader Skill"][unit][lead]["ATK"];
+        DEF+=window.unitBasicsDetails["Leader Skill"][unit][lead]["DEF"];
+        HP+=window.unitBasicsDetails["Leader Skill"][unit][lead]["HP"];
+        BuffType=window.unitBasicsDetails["Leader Skill"][unit][lead]["Buff"]["Type"];
+      } 
+    }
+  }
   return(
-    (lead["ATK"]/3)+
-    (lead["DEF"]/3)+
-    (lead["HP"]/3)+
-    (lead["Ki"]));
+    {
+      "Ki":Ki,
+      "ATK":ATK,
+      "DEF":DEF,
+      "HP":HP,
+      "BuffType": BuffType
+    }
+  );
 }
 
 function calculateUnitUnderLeadBuff(unit){
@@ -202,6 +252,7 @@ function calculateUnitUnderLeadBuff(unit){
   let ATK=0;
   let DEF=0;
   let HP=0;
+  let BuffType="Percentage";
 
   for (const lead in window.leaderView){
     if(unitMeetsLeadConditions(unit,window.leaderView[lead])){
@@ -209,6 +260,9 @@ function calculateUnitUnderLeadBuff(unit){
       ATK+=window.leaderView[lead]["ATK"];
       DEF+=window.leaderView[lead]["DEF"];
       HP+=window.leaderView[lead]["HP"];
+      if((window.leaderView[lead]["ATK"] + window.leaderView[lead]["DEF"] + window.leaderView[lead]["HP"])>0 ){
+        BuffType=window.leaderView[lead]["Buff"]["Type"];
+      }
     } 
   }
   return(
@@ -216,10 +270,12 @@ function calculateUnitUnderLeadBuff(unit){
       "Ki":Ki,
       "ATK":ATK,
       "DEF":DEF,
-      "HP":HP
+      "HP":HP,
+      "BuffType": BuffType
     }
   );
 }
+
 
 function unitMeetsLeadConditions(unit,lead){
   if(!isEmptyDictionary(lead["Target"]["Category"])){
@@ -239,8 +295,8 @@ function unitMeetsLeadConditions(unit,lead){
       return(false);
     }
   }
-  if(!isEmptyDictionary(lead["Target"]["Typing"])){
-    if(!(lead["Target"]["Typing"].includes(window.unitBasicsDetails["Type"][unit]))){
+  if(!isEmptyDictionary(lead["Target"]["Type"])){
+    if(!(lead["Target"]["Type"].includes(window.unitBasicsDetails["Type"][unit]))){
       return(false);
     }
   }
@@ -351,7 +407,7 @@ function sortCutID(showUpdate=false){
 
 function showUpdatedCardPositions(){
   for (let i = (unitsToDisplay*(window.currentPage-1)); i < (unitsToDisplay*window.currentPage);i++) {
-    if(i<window.currentFilteredUnits.length){
+    if(i<window.currentFilteredUnits.length && i>=0){
       let otherDisplayedValue=null;
       let otherDisplayedValueColor="white";
       if(["Cost","HP","Attack","Defense"].includes(window.currentSort)){
@@ -391,6 +447,9 @@ function showUpdatedCardPositions(){
       window.displayBoxes[i%unitsToDisplay].setDisplay(true);
       if(window.leaderView){
         window.displayBoxes[i%unitsToDisplay].setHighlight(window.unitBasicsDetails["Under Lead Buff"][window.currentFilteredUnits[i]]["ATK"]>=200);
+      }
+      else if(window.leadUnit){
+        window.displayBoxes[i%unitsToDisplay].setHighlight(window.unitBasicsDetails["Leading Buff"][window.currentFilteredUnits[i]]["ATK"]>=200);
       }
       //displayBoxes[i].setSezaBorder(window.currentFilteredUnits[i].endsWith("SEZA"));
 
@@ -484,6 +543,9 @@ function addToLeadList(leadList,lead, newLeadSource){
       leadList[listedLead]["DEF"]+=newLeadSource[lead]["DEF"];
       leadList[listedLead]["HP"]+=newLeadSource[lead]["HP"];
       leadList[listedLead]["Ki"]+=newLeadSource[lead]["Ki"];
+      if(leadList[listedLead]["ATK"]+leadList[listedLead]["DEF"]+leadList[listedLead]["HP"]>0){
+        leadList[listedLead]["Buff"]["Type"]=newLeadSource[lead]["Buff"]["Type"];
+      }
       return;
     }
   }
@@ -498,6 +560,14 @@ if(urlParams.get("leaderView") !== null) {
   for (const lead in json["Leader Skill"]){
     addToLeadList(window.leaderView,lead,json["Leader Skill"]);
   }
+}
+else if(urlParams.get("leadByView") !== null) {
+  window.unitBasicsDetails["Leading Buff"]={};
+  const json = await getJsonPromise("/dbManagement/jsons/", urlParams.get("leadByView"), ".json");
+  window.leadUnit = urlParams.get("leadByView")
+
+  const json2 = await getJsonPromise("/dbManagement/uniqueJsons/unitBasics/", "Leader Skill", ".json");
+  window.unitBasicsDetails["Leader Skill"] = json2
 }
 
 let baseDomain=window.location.origin;
