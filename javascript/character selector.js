@@ -232,7 +232,7 @@ function calculateUnitLeadingBuff(unit){
   let ATK=0;
   let DEF=0;
   let HP=0;
-  let BuffType="Percentage";
+  let BuffType="Raw Stats";
   for (const lead in window.unitBasicsDetails["Leader Skill"][unit]){
     if(lead!="Name"){
       if(unitMeetsLeadConditions(window.leadUnit,window.unitBasicsDetails["Leader Skill"][unit][lead])){
@@ -240,7 +240,9 @@ function calculateUnitLeadingBuff(unit){
         ATK+=window.unitBasicsDetails["Leader Skill"][unit][lead]["ATK"];
         DEF+=window.unitBasicsDetails["Leader Skill"][unit][lead]["DEF"];
         HP+=window.unitBasicsDetails["Leader Skill"][unit][lead]["HP"];
-        BuffType=window.unitBasicsDetails["Leader Skill"][unit][lead]["Buff"]["Type"];
+        if(window.unitBasicsDetails["Leader Skill"][unit][lead]["Buff"]["Type"] == "Percentage"){
+          BuffType=window.unitBasicsDetails["Leader Skill"][unit][lead]["Buff"]["Type"];
+        }
       } 
     }
   }
@@ -551,8 +553,8 @@ function addToLeadList(leadList,lead, newLeadSource){
       leadList[listedLead]["DEF"]+=newLeadSource[lead]["DEF"];
       leadList[listedLead]["HP"]+=newLeadSource[lead]["HP"];
       leadList[listedLead]["Ki"]+=newLeadSource[lead]["Ki"];
-      if((newLeadSource[listedLead]["ATK"]+newLeadSource[listedLead]["DEF"]+newLeadSource[listedLead]["HP"])>0){
-        leadList[listedLead]["Buff"]["Type"]=newLeadSource[listedLead]["Buff"]["Type"];
+      if(newLeadSource[lead]["Buff"]["Type"]=="Percentage"){
+        leadList[listedLead]["Buff"]["Type"]="Percentage";
       }
       return;
     }
