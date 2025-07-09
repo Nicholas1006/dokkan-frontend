@@ -3,7 +3,7 @@ const isLocalDevelopment = window.location.hostname === '127.0.0.1' || window.lo
 
 const assetConfig = {
   baseUrl: isLocalDevelopment 
-    ? '/dbManagement/DokkanFiles' 
+    ? '/backend_assets' 
     : 'https://dokkan-calc-assets.s3.eu-west-1.amazonaws.com'
   };
 window.assetBase=assetConfig.baseUrl
