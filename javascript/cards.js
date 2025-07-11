@@ -4321,11 +4321,11 @@ function createLinkBuffs(){
     let totalEvasionBuff = 0;
 
     // Iterate over each link slider and button
-    linkButtons.forEach((button, index) => {
-      if(!linkButtons[index].isActive) return;
-      let linkName = linkButtons[index].linkName;
+    linkButtons.forEach((button) => {
+      if(!button.isActive) return;
+      let linkName = button.linkName;
       
-      let linkLevel = linkButtons[index].linkLevel;
+      let linkLevel = button.linkLevel;
       let linksData = linkData[linkName][linkLevel];
 
       // Add the link buffs to the total link buffs
