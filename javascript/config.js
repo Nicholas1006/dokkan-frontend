@@ -1,10 +1,10 @@
 // config.js
-const isLocalDevelopment = window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost';
+const isLocalDevelopment = window.location.hostname === '127.0.0.1' && window.location.hostname === 'localhost';
 
 const assetConfig = {
   baseUrl: isLocalDevelopment 
     ? '/backend_assets' 
-    : 'www.assets.dokkan-calc.com'
+    : 'https://assets.dokkan-calc.com'
   };
 window.assetBase=assetConfig.baseUrl
 
