@@ -2916,117 +2916,128 @@ function createLinkStats(){
     const linksContainer=document.getElementById("links-container");
     let links =currentJson["Links"];
     let linkNumber=0;
-    for (const linkid in links){
-      let link=links[linkid]
-      let linkName = link;
-      let linkLevel = 10;
-      let linkButton = document.createElement("button");
-      linkButton.innerHTML = linkName + " <br>Level: " + linkLevel;
-      linkButton.id="links-button";
-      linkButton.style.display="block"
-      linkButton.style.background="#00FF00"
-      linkButton.style.gridRow= linkNumber*2;
-      linkButton.classList.add("active");
-      let linkSlider = document.createElement("input");
-      linkSlider.type = "range";
-      linkSlider.min = 1;
-      linkSlider.max = 10;
-      linkSlider.value = 10;
-      linkSlider.id="links-slider";
-      if(linkNumber%2==0){
-        linkButton.style.gridRow= linkNumber*2+4;
-        linkSlider.style.gridRow= linkNumber*2+5;
-        linkButton.style.gridColumn=1;
-        linkSlider.style.gridColumn=1;
-      }
-      else{
-        linkButton.style.gridRow= (-1+linkNumber)*2+4;
-        linkSlider.style.gridRow= (-1+linkNumber)*2+5;
-        linkButton.style.gridColumn=3;
-        linkSlider.style.gridColumn=3;
-      }
-      linksContainer.appendChild(linkButton);
-      
-      linksContainer.appendChild(linkSlider);
-
-      linkButton.onclick = function(){
-        if(linkButton.classList.contains("active")){
-          linkButton.style.background="#FF5C35"
-          linkButton.classList.remove("active");
-        } else {
-          linkButton.classList.add("active");
-          linkButton.style.background="#00FF00"
+    for (const linkid in ["All links"].concat(links)){
+        let link=["All links"].concat(links)[linkid];
+        let linkButton = document.createElement("div");
+        linkButton.parentClass=linksContainer;
+        linkButton.linkName = link;
+        linkButton.linkLevel = 10;
+        linkButton.isActive=true;
+        linkButton.id="links-button";
+        linkButton.style.display="block"
+        linkButton.style.gridRow= linkNumber*2;
+        linkButton.classList.add("active");
+        linkButton.updateLink=function(active,level){
+            this.linkButtonBackground.classList.remove("active");
+            this.linkButtonBackground.classList.remove("active10");
+            if(this.linkLevel==10 && this.isActive){
+                this.linkButtonBackground.classList.add("active10")
+            }
+            else if(this.isActive){
+                this.linkButtonBackground.classList.add("active")
+            }
+            this.linkLevelSelection.Value.textContent=this.linkLevel
+            if(this.linkName=="All links"){
+                if(active!=undefined){
+                    this.parentClass.updateAllLinks(this.isActive,undefined);
+                }
+                else if(level!=undefined){
+                    this.parentClass.updateAllLinks(undefined,this.linkLevel);
+                }
+            }
         }
-        createLinkBuffs()
-        updatePassiveStats()
-      }
-      linkSlider.addEventListener("input", function(){
-        linkLevel = linkSlider.value;
-        linkButton.innerHTML = linkName + " <br>Level: " + linkLevel;
-        createLinkBuffs();
-        updatePassiveStats()
+
+        linkButton.linkButtonBackground=document.createElement("div");
+        linkButton.linkButtonBackground.id="links-button-background";
+        linkButton.linkButtonBackground.classList.add("active10");
+        linkButton.appendChild(linkButton.linkButtonBackground);
+
+        linkButton.linkLevelSelection=document.createElement("div");
+        linkButton.linkLevelSelection.id="links-button-level";
+        linkButton.linkLevelSelection.parentClass=linkButton;
+
+        linkButton.linkLevelSelection.LV=document.createElement("text");
+        linkButton.linkLevelSelection.LV.id="links-button-level-lv";
+        linkButton.linkLevelSelection.LV.textContent="Lv.";
+        linkButton.linkLevelSelection.appendChild(linkButton.linkLevelSelection.LV);
+
+        linkButton.linkLevelSelection.Value=document.createElement("text");
+        linkButton.linkLevelSelection.Value.id="links-button-level-value";
+        linkButton.linkLevelSelection.Value.textContent=linkButton.linkLevel;
+        linkButton.linkLevelSelection.appendChild(linkButton.linkLevelSelection.Value);
         
-      });
-      linkNumber+=1;
+        linkButton.appendChild(linkButton.linkLevelSelection);
+
+        linkButton.linkNameDisplay=document.createElement("text");
+        linkButton.linkNameDisplay.id="links-button-name";
+        linkButton.linkNameDisplay.textContent=link;
+        linkButton.appendChild(linkButton.linkNameDisplay);
+        
+        if(linkButton.linkName!="All links"){
+            linkButton.style.gridRow= Math.floor(4+((linkNumber-1)/2));
+            linkButton.style.gridColumn=(linkNumber%2);
+        }
+        else{
+            linkButton.style.gridRow= "2 / span 2";
+            linkButton.style.gridColumn="1 / span 2";
+            linkButton.style.height="64px";
+            linkButton.linkLevelSelection.style.transform="translate(18px,-48px)";
+            linkButton.linkLevelSelection.LV.style.transform="translate(6px,-9px)";
+            linkButton.linkLevelSelection.LV.style.fontSize="18px";
+            linkButton.linkLevelSelection.Value.style.transform="translate(0px,-14px)";
+            linkButton.linkLevelSelection.Value.style.fontSize="30px";
+            linkButton.linkNameDisplay.style.transform="translate(10px,-96px)";
+            linkButton.linkNameDisplay.style.fontSize="22px";
+            linkButton.id="links-button-all";
+
+        }
+
+
+        linksContainer.appendChild(linkButton);
+        
+
+        linkButton.onclick = function(){
+            if(this.isActive){
+                this.isActive=false;
+            } else {
+                this.isActive=true;
+            }
+            this.updateLink(true,undefined);
+            createLinkBuffs();
+        }
+
+        linkButton.addEventListener("wheel", function(e){
+            e.preventDefault();
+            if(e.deltaY < 0){
+                if(this.linkLevel < 10){
+                    this.linkLevel++;
+                }
+            }
+            else if(e.deltaY > 0){
+                if(this.linkLevel > 1){
+                    this.linkLevel--;
+                }
+            }
+            this.updateLink(undefined,true);
+            createLinkBuffs();
+        });
+
+        linkNumber+=1;
     };
-
-    
-    let allLinksSlider = document.createElement("input");
-    allLinksSlider.type = "range";
-    allLinksSlider.min = 1;
-    allLinksSlider.max = 10;
-    allLinksSlider.value = 10;
-    allLinksSlider.id="links-slider";
-    allLinksSlider.style.gridRowStart = "3";
-    allLinksSlider.style.gridRowEnd = "3";
-    allLinksSlider.style.gridColumnStart = "1";
-    allLinksSlider.style.gridColumnEnd = "4";
-    allLinksSlider.addEventListener("input", function(){
-      let linksContainer = document.querySelector("#links-container");
-      let linkSliders = linksContainer.querySelectorAll("input[type=range]");
-      linkSliders.forEach((slider, index) => {
-        slider.value = allLinksSlider.value;
-        let linkName = linksContainer.querySelectorAll("button")[index].textContent.split(" Level")[0];
-        linksContainer.querySelectorAll("button")[index].innerHTML = linkName + " <br>Level: " + allLinksSlider.value;
-      });
-
-      createLinkBuffs();
-      updatePassiveStats()
-    });
-    linksContainer.appendChild(allLinksSlider);
-
-    let allLinksButton = document.createElement("button");
-    allLinksButton.innerHTML = "All Links";
-    allLinksButton.id="links-button";
-    allLinksButton.style.background="#00FF00"
-    allLinksButton.style.gridRowStart = "2";
-    allLinksButton.style.gridRowEnd = "3";
-    allLinksButton.style.gridColumnStart = "1";
-    allLinksButton.style.gridColumnEnd = "4";
-    allLinksButton.classList.add("active");
-    allLinksButton.onclick = function(){
-      if(allLinksButton.classList.contains("active")){
-        allLinksButton.style.background="#FF5C35"
-        allLinksButton.classList.remove("active");
-        let linkButtons = linksContainer.querySelectorAll("button");
-        linkButtons.forEach((button, index) => {
-          button.classList.remove("active");
-          button.style.background="#FF5C35"
-        });
-      }
-      else{
-        allLinksButton.classList.add("active");
-        allLinksButton.style.background="#00FF00"
-        let linkButtons = linksContainer.querySelectorAll("button");
-        linkButtons.forEach((button, index) => {
-          button.classList.add("active");
-          button.style.background="#00FF00"
-        });
-      }
-      createLinkBuffs();
-      updatePassiveStats()
+    linksContainer.updateAllLinks=function(active,level){
+        let linkButtons = document.querySelectorAll("div[id='links-button']");
+        linkButtons.forEach(
+            (button) => {
+                if(active!=undefined){
+                    button.isActive=active;
+                }
+                if(level!=undefined){
+                    button.linkLevel=level;
+                }
+                button.updateLink();
+            }
+        )
     }
-    linksContainer.appendChild(allLinksButton);
 
 
     //create an paragraph so that none of the sliders are .lastchild
@@ -4294,10 +4305,10 @@ function updateSuperAttackStacks(){
 }   
 
 function createLinkBuffs(){
+    
     // Select all link sliders and buttons within a specific parent
     let linksContainer = document.querySelector("#links-container");
-    let linkSliders = linksContainer.querySelectorAll("input[type=range]");
-    let linkButtons = linksContainer.querySelectorAll("button");
+    let linkButtons = linksContainer.querySelectorAll("div[id='links-button']");
 
     // Initialize variables to store the total link buffs
     let totalATKBuff = 0;
@@ -4310,12 +4321,11 @@ function createLinkBuffs(){
     let totalEvasionBuff = 0;
 
     // Iterate over each link slider and button
-    linkSliders.forEach((slider, index) => {
-      if(linkButtons[index].textContent.split(" Level")[0]=="All Links") return;
-      if(!linkButtons[index].classList.contains("active")) return;
-      let linkName = linkButtons[index].textContent.split(" Level")[0];
+    linkButtons.forEach((button, index) => {
+      if(!linkButtons[index].isActive) return;
+      let linkName = linkButtons[index].linkName;
       
-      let linkLevel = parseInt(slider.value);
+      let linkLevel = linkButtons[index].linkLevel;
       let linksData = linkData[linkName][linkLevel];
 
       // Add the link buffs to the total link buffs

@@ -1,10 +1,10 @@
 // config.js
-const isLocalDevelopment = window.location.hostname === '127.0.0.1' && window.location.hostname === 'localhost';
+const isLocalDevelopment = window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost';
 
 const assetConfig = {
   baseUrl: isLocalDevelopment 
     ? '/backend_assets' 
-    : 'https://assets.dokkan-calc.com'
+    : 'www.assets.dokkan-calc.com'
   };
 window.assetBase=assetConfig.baseUrl
 
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
       for (const rule of rules) {
         if (rule.style && rule.style.backgroundImage) {
           rule.style.backgroundImage = rule.style.backgroundImage
-            .replace("/dbManagement/DokkanFiles", window.assetBase);
+            .replace("/backend_assets", window.assetBase);
         }
       }
     } catch (e) {
