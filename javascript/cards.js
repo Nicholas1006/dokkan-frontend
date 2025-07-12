@@ -3156,7 +3156,7 @@ function updateLinkPartnerDisplay(){
                         linkPartnerDisplay.unitDisplays[i].setType(characterJson["Type"]);
                         linkPartnerDisplay.unitDisplays[i].setRarity(characterJson["Rarity"]);
                         linkPartnerDisplay.unitDisplays[i].setResourceID(characterJson["Resource ID"]);
-                        linkPartnerDisplay.unitDisplays[i].setPossibleEzaLevels("Eza Level");
+                        linkPartnerDisplay.unitDisplays[i].setPossibleEzaLevel("Eza Level");
                         linkPartnerDisplay.unitDisplays[i].setUrl(baseDomain+"/cards/index.html?id="+characterJson["ID"].substring(0,7)+"&SEZA="+isSeza+"&EZA="+isEza);
                         let linksMatch=true;
                         for(const link of activeLinks){
