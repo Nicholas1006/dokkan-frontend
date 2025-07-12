@@ -1,5 +1,5 @@
 // config.js
-const isLocalDevelopment = window.location.hostname === '127.0.0.1' && window.location.hostname === 'localhost';
+const isLocalDevelopment = window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost';
 
 const assetConfig = {
   baseUrl: isLocalDevelopment 

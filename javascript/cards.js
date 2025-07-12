@@ -1532,6 +1532,8 @@ class passiveQuery{
 // CONSTANT GLOBAL VARIABLES
 const HIDEUNNEEDEDPASSIVE=true;
 const MINIMUMVIABLELEADERBUFF=1;
+let allLinkPartners;
+let highestLinkers=7;
 let finishType;
 let currentJson = null;
 let linkData=null;
@@ -3004,6 +3006,7 @@ function createLinkStats(){
             }
             this.updateLink(true,undefined);
             createLinkBuffs();
+            updateLinkPartnerDisplay();
         }
 
         linkButton.addEventListener("wheel", function(e){
@@ -3044,53 +3047,133 @@ function createLinkStats(){
     let linkBuffsDiv = document.createElement("p");
     linkBuffsDiv.innerHTML = "Link Buffs: ";
     linksContainer.appendChild(linkBuffsDiv);
-
-    const linkPartnerContainer = document.getElementById("link-partner-container");
-    const linkPartnerButton = document.getElementById("link-partner-button");
-    linkPartnerButton.onclick = function(){
-        let activeLinks={};
-        let linkButtons = document.querySelector("#links-container").querySelectorAll("button");
-
-
-        // Iterate over each link slider and button
-        linkButtons.forEach(
-            (button) => {
-                if(button.textContent.split(" Level")[0]!="All Links"){
-                    activeLinks[button.textContent.split(" Level")[0]]=button.classList.contains("active");
-                }
-            }
-        );
-
-        const linksJsonPromise = getJsonPromise(baseDomain,"/dbManagement/uniqueJsons/unitBasics/Links.json","");
-        linksJsonPromise.then(
-            linksJson => {
-            const allLinkPartners = findLinkPartners(activeLinks,linksJson);
-            updateLinkPartnerDisplay(allLinkPartners);
-            }
-        )
-    }
-
-    const linkPartnerDisplay = document.getElementById("link-partner-display");
 }
 
-function findLinkPartners(activeLinks,linksJson, inactiveNeeded=true){
-    let enabledLinks = Object.keys(activeLinks).filter(key => activeLinks[key]);
-    let allLinkPartners = [];
+function findLinkPartners(linksJson,releaseJson,NameJson){
+    let allLinkPartners = {0:[],1:[], 2:[], 3:[], 4:[], 5:[], 6:[], 7:[]};
     for(const unitID in linksJson){
-        if(linksJson[unitID].every(element => enabledLinks.includes(element))){
-            allLinkPartners.push(unitID);
+        if(!(unitID.startsWith(currentJson["ID"])) && (unitID.startsWith("4") || currentJson["ID"].startsWith("4") || currentJson["Name"]!=NameJson[unitID])){
+            let matchingLinks=0;
+            for (const link of currentJson["Links"]){
+                if(linksJson[unitID].includes(link)){
+                    matchingLinks++;
+                }
+            }
+            allLinkPartners[matchingLinks].push(unitID);
         }
     }
-
-    if(inactiveNeeded){
-        //WIP
+    for (let i=0; i<Object.keys(allLinkPartners).length; i++){
+        allLinkPartners[i] = allLinkPartners[i].filter(
+            unitID => 
+                !allLinkPartners[i].includes(`${unitID}EZA`)&& 
+                !(allLinkPartners[i].includes(`${unitID.substring(0,7)}SEZA`) && !(unitID.includes("SEZA")))
+        );
+        // Sort by release date
+        allLinkPartners[i].sort((a, b) => {
+            return releaseJson[b] - releaseJson[a];
+        });
     }
+
 
     return(allLinkPartners);
 }
 
-function updateLinkPartnerDisplay(allLinkPartners){
-    //WIP
+function updateLinkPartnerDisplay(){
+    if(allLinkPartners==undefined){
+        const linksJsonPromise = getJsonPromise(baseDomain,"/dbManagement/uniqueJsons/unitBasics/Links.json","");
+        const releaseJsonPromise = getJsonPromise(baseDomain,"/dbManagement/uniqueJsons/unitBasics/Release.json","");
+        const NameJsonPromise = getJsonPromise(baseDomain,"/dbManagement/uniqueJsons/unitBasics/Name.json","");
+        Promise.all([linksJsonPromise,releaseJsonPromise,NameJsonPromise]).then(
+            ([linksJson,releaseJson,NameJson]) => {
+            allLinkPartners = findLinkPartners(linksJson,releaseJson,NameJson);
+            updateLinkPartnerDisplay();
+            }
+        )
+    }
+    else{
+        const activeLinks = [];
+        let linkButtons = document.querySelectorAll("div[id='links-button']");
+        // Iterate over each link slider and button
+        linkButtons.forEach(
+            (button) => {
+                if(button.isActive){
+                    activeLinks.push(button.linkName);
+                }
+            }
+        );
+        const linkPartnerDisplay = document.getElementById("link-partner-display");
+        while(allLinkPartners[highestLinkers].length==0){
+            highestLinkers--;
+        }
+        if(highestLinkers<1){
+            highestLinkers=1;
+        }
+        if(linkPartnerDisplay.textDiv==undefined){
+            linkPartnerDisplay.textDiv = document.createElement("div");
+            linkPartnerDisplay.textDiv.id = "link-partner-display-text";
+            linkPartnerDisplay.textDiv.addEventListener("wheel", function(e){            
+                e.preventDefault();
+                if(e.deltaY < 0){
+                    highestLinkers++;
+                }
+                else if(e.deltaY > 0){
+                    highestLinkers--;
+                }
+                updateLinkPartnerDisplay();
+            })
+            linkPartnerDisplay.appendChild(linkPartnerDisplay.textDiv);
+        }
+        linkPartnerDisplay.textDiv.innerHTML = "Link Partners(" + highestLinkers + "): ";
+
+        if(linkPartnerDisplay.unitDisplays==undefined){
+            linkPartnerDisplay.unitDisplays=[];
+        }
+        for (let i=0; i<50; i++){
+            if(Object.keys(linkPartnerDisplay.unitDisplays).length<=i){
+                linkPartnerDisplay.unitDisplays.push(new unitDisplay());
+                linkPartnerDisplay.unitDisplays[i].setDisplayExtraInfo(false);
+                linkPartnerDisplay.unitDisplays[i].setWidth("100%");
+                linkPartnerDisplay.unitDisplays[i].setHeight("100%");
+                linkPartnerDisplay.unitDisplays[i].setResourceID(allLinkPartners[highestLinkers][i]);
+                linkPartnerDisplay.appendChild(linkPartnerDisplay.unitDisplays[i].getElement());
+            }
+            if(i<allLinkPartners[highestLinkers].length){
+                let characterJsonLink;
+                if(allLinkPartners[highestLinkers][i].includes("SEZA")){
+                    characterJsonLink = "/jsonsSEZA/"+allLinkPartners[highestLinkers][i].substring(0,7);
+                }
+                else if(allLinkPartners[highestLinkers][i].includes("EZA")){
+                    characterJsonLink = "/jsonsEZA/"+allLinkPartners[highestLinkers][i].substring(0,7);
+                }
+                else{
+                    characterJsonLink = "/jsons/"+allLinkPartners[highestLinkers][i];
+                }
+                const characterJsonPromise = getJsonPromise("/dbManagement",characterJsonLink,".json");
+                characterJsonPromise.then(
+                    characterJson => {
+                        linkPartnerDisplay.unitDisplays[i].setDisplay(true);
+                        linkPartnerDisplay.unitDisplays[i].setClass(characterJson["Class"]);
+                        linkPartnerDisplay.unitDisplays[i].setType(characterJson["Type"]);
+                        linkPartnerDisplay.unitDisplays[i].setRarity(characterJson["Rarity"]);
+                        linkPartnerDisplay.unitDisplays[i].setResourceID(characterJson["Resource ID"]);
+                        linkPartnerDisplay.unitDisplays[i].setPossibleEzaLevels("Eza Level");
+                        linkPartnerDisplay.unitDisplays[i].setUrl(baseDomain+"/cards/index.html?id="+characterJson["ID"].substring(0,7)+"&SEZA="+isSeza+"&EZA="+isEza);
+                        let linksMatch=true;
+                        for(const link of activeLinks){
+                            if(!(characterJson["Links"].includes(link))){
+                                linksMatch=false;
+                            }
+                        }
+                        linkPartnerDisplay.unitDisplays[i].setHighlight(linksMatch);
+                    }
+                )
+            }
+            else{
+                //if there are extra unitDisplays made than is needed
+                linkPartnerDisplay.unitDisplays[i].setDisplay(false);
+            }
+        }
+    }
 }
 
 function updateBaseStats(refreshKi=true){
@@ -5390,6 +5473,7 @@ export async function loadPage(firstTime=false){
             createStatsContainer();
             createKiSphereContainer();
             createDamageTakenContainer();
+            updateLinkPartnerDisplay()
         }
         else{
             //document.getElementById("ki-slider").dispatchEvent(new Event("input"));	
