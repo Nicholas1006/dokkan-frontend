@@ -3102,6 +3102,9 @@ function updateLinkPartnerDisplay(){
             }
         );
         const linkPartnerDisplay = document.getElementById("link-partner-display");
+        if(highestLinkers>7){
+            highestLinkers=7;
+        }
         while(allLinkPartners[highestLinkers].length==0){
             highestLinkers--;
         }
@@ -3115,9 +3118,15 @@ function updateLinkPartnerDisplay(){
                 e.preventDefault();
                 if(e.deltaY < 0){
                     highestLinkers++;
+                    while(Object.keys(allLinkPartners).length>highestLinkers && allLinkPartners[highestLinkers].length==0){
+                        highestLinkers++;
+                    }
                 }
                 else if(e.deltaY > 0){
                     highestLinkers--;
+                    while(allLinkPartners[highestLinkers].length==0){
+                        highestLinkers--;
+                    }
                 }
                 updateLinkPartnerDisplay();
             })
@@ -3128,7 +3137,7 @@ function updateLinkPartnerDisplay(){
         if(linkPartnerDisplay.unitDisplays==undefined){
             linkPartnerDisplay.unitDisplays=[];
         }
-        for (let i=0; i<50; i++){
+        for (let i=0; i<51; i++){
             if(Object.keys(linkPartnerDisplay.unitDisplays).length<=i){
                 linkPartnerDisplay.unitDisplays.push(new unitDisplay());
                 linkPartnerDisplay.unitDisplays[i].setDisplayExtraInfo(false);
@@ -3156,8 +3165,9 @@ function updateLinkPartnerDisplay(){
                         linkPartnerDisplay.unitDisplays[i].setType(characterJson["Type"]);
                         linkPartnerDisplay.unitDisplays[i].setRarity(characterJson["Rarity"]);
                         linkPartnerDisplay.unitDisplays[i].setResourceID(characterJson["Resource ID"]);
-                        linkPartnerDisplay.unitDisplays[i].setPossibleEzaLevel("Eza Level");
-                        linkPartnerDisplay.unitDisplays[i].setUrl(baseDomain+"/cards/index.html?id="+characterJson["ID"].substring(0,7)+"&SEZA="+isSeza+"&EZA="+isEza);
+                        linkPartnerDisplay.unitDisplays[i].setPossibleEzaLevel(characterJson["Eza Level"]);
+                        linkPartnerDisplay.unitDisplays[i].setEzaLevel(characterJson["Eza Level"]);
+                        linkPartnerDisplay.unitDisplays[i].setUrl(baseDomain+"/cards/index.html?id="+characterJson["ID"].substring(0,7)+"&SEZA="+(characterJson["Eza Level"]=="seza")+"&EZA="+(characterJson["Eza Level"]=="eza"));
                         let linksMatch=true;
                         for(const link of activeLinks){
                             if(!(characterJson["Links"].includes(link))){
