@@ -891,5 +891,171 @@
             }
         },
         "Resource ID": "3009"
+    },
+    "11": {
+        "ID": "11",
+        "Name": "Earth Shrouded in Minus Energy",
+        "Description": "\"Inhuman Deeds\", \"Power Absorption\" or \n\"GT Bosses\" Category enemies' and allies' \nATK +25%; increases damage received \nby Super Class enemies and allies by 20%, \nplus an additional 10% for characters who \nalso belong to the \"Earth-Protecting Heroes\", \n\"Fused Fighters\" or \"GT Heroes\" Category",
+        "Efficiacies": {
+            "11": {
+                "ID": "11",
+                "Timing": "On domain Being out",
+                "Effect": {
+                    "Type": "Closes domain"
+                },
+                "Turn activation": "3"
+            },
+            "1000011": {
+                "ID": "1000011",
+                "Timing": "On domain Being out",
+                "Effect": {
+                    "Type": "ATK & DEF",
+                    "ATK": 25,
+                    "DEF": 0
+                },
+                "Turn activation": "1",
+                "superCondition": {
+                    "Logic": "3512 || 3513 || 3514",
+                    "Causalities": {
+                        "3512": {
+                            "Class": "any",
+                            "Category": "Inhuman Deeds"
+                        },
+                        "3513": {
+                            "Class": "any",
+                            "Category": "Power Absorption"
+                        },
+                        "3514": {
+                            "Class": "any",
+                            "Category": "GT Bosses"
+                        }
+                    }
+                }
+            },
+            "2000011": {
+                "ID": "2000011",
+                "Timing": "On domain Being out",
+                "Effect": {
+                    "Type": "Increases damage recieved",
+                    "Amount": 20
+                },
+                "Turn activation": "1",
+                "superCondition": {
+                    "Logic": "2563",
+                    "Causalities": {
+                        "2563": {
+                            "Class": "super",
+                            "Category": "any"
+                        }
+                    }
+                }
+            },
+            "3000011": {
+                "ID": "3000011",
+                "Timing": "At the start of turn",
+                "Effect": {
+                    "Type": "ATK & DEF",
+                    "ATK": 25,
+                    "DEF": 0
+                },
+                "Turn activation": "1",
+                "superCondition": {
+                    "Logic": "3512 || 3513 || 3514",
+                    "Causalities": {
+                        "3512": {
+                            "Class": "any",
+                            "Category": "Inhuman Deeds"
+                        },
+                        "3513": {
+                            "Class": "any",
+                            "Category": "Power Absorption"
+                        },
+                        "3514": {
+                            "Class": "any",
+                            "Category": "GT Bosses"
+                        }
+                    }
+                }
+            },
+            "4000011": {
+                "ID": "4000011",
+                "Timing": "At the start of turn",
+                "Effect": {
+                    "Type": "Increases damage recieved",
+                    "Amount": 20
+                },
+                "Turn activation": "1",
+                "superCondition": {
+                    "Logic": "2563",
+                    "Causalities": {
+                        "2563": {
+                            "Class": "super",
+                            "Category": "any"
+                        }
+                    }
+                }
+            },
+            "5000011": {
+                "ID": "5000011",
+                "Timing": "On domain Being out",
+                "Effect": {
+                    "Type": "Increases damage recieved",
+                    "Amount": 10
+                },
+                "Turn activation": "1",
+                "superCondition": {
+                    "Logic": "2563 && 3526 || 2563 && 3527 || 2563 && 3528",
+                    "Causalities": {
+                        "2563": {
+                            "Class": "super",
+                            "Category": "any"
+                        },
+                        "3526": {
+                            "Class": "any",
+                            "Category": "Earth-Protecting Heroes"
+                        },
+                        "3527": {
+                            "Class": "any",
+                            "Category": "Fused Fighters"
+                        },
+                        "3528": {
+                            "Class": "any",
+                            "Category": "GT Heroes"
+                        }
+                    }
+                }
+            },
+            "6000011": {
+                "ID": "6000011",
+                "Timing": "At the start of turn",
+                "Effect": {
+                    "Type": "Increases damage recieved",
+                    "Amount": 10
+                },
+                "Turn activation": "1",
+                "superCondition": {
+                    "Logic": "2563 && 3526 || 2563 && 3527 || 2563 && 3528",
+                    "Causalities": {
+                        "2563": {
+                            "Class": "super",
+                            "Category": "any"
+                        },
+                        "3526": {
+                            "Class": "any",
+                            "Category": "Earth-Protecting Heroes"
+                        },
+                        "3527": {
+                            "Class": "any",
+                            "Category": "Fused Fighters"
+                        },
+                        "3528": {
+                            "Class": "any",
+                            "Category": "GT Heroes"
+                        }
+                    }
+                }
+            }
+        },
+        "Resource ID": "3010"
     }
 }
