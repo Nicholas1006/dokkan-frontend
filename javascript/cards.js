@@ -5464,61 +5464,78 @@ export async function loadPage(firstTime=false){
     }
 
     //await all JSON promises so they finish before continuing
-    [currentJson, linkData, domainData] = await Promise.all([
-        jsonPromise.json(),
-        (await fetch("/dbManagement/uniqueJsons/links.json")).json(),
-        (await fetch("/dbManagement/uniqueJsons/domains.json")).json()
-    ]);
-    if(currentJson==undefined){
-        location.href=location.origin;
-    }
-    initialiseAspects();
-    createPassiveContainer();
-    if(firstTime){
-        if(currentJson["Rarity"] == "lr" || currentJson["Rarity"] == "ur"){
-            createSkillOrbContainer();
-            createStarButton();
-            createPathButtons();
-            updateStarVisuals();
+    try{
+
+        [currentJson, linkData, domainData] = await Promise.all([
+            jsonPromise.json(),
+            (await fetch("/dbManagement/uniqueJsons/links.json")).json(),
+            (await fetch("/dbManagement/uniqueJsons/domains.json")).json()
+        ]);
+        if(currentJson==undefined){
+            location.href=location.origin;
         }
-        createActiveContainer();
-        createFinishContainer();
-        createLeaderStats();
-        createLinkStats();
-        createLinkBuffs();
-        createDokkanAwakenContainer();
-        createTransformationContainer();
-        createDomainContainer();
-        createStatsContainer();
-        createKiSphereContainer();
-        createDamageTakenContainer();
-        updateLinkPartnerDisplay()
-    }
-    else{
-        //document.getElementById("ki-slider").dispatchEvent(new Event("input"));	
-    }
-    createLevelSlider();
-    createLeaderViewContainer();
-    createSuperAttackContainer();
-    updateBaseStats(false);
-    if(currentJson["Rarity"] == "lr" || currentJson["Rarity"] == "ur"){
-        const buttonContainer = document.getElementById("hipo-button-container");
-        buttonContainer.style.display = "grid";
-    }
-    
-    createKiCirclesWithClass();
-    updateKiSphereBuffs(true);
-    updatePassiveStats();
-    polishPage();
-    
-    const scale = Math.min(
-        document.body.scrollWidth /window.innerWidth,
-        document.body.scrollHeight/ window.innerHeight
+        initialiseAspects();
+        createPassiveContainer();
+        if(firstTime){
+            if(currentJson["Rarity"] == "lr" || currentJson["Rarity"] == "ur"){
+                createSkillOrbContainer();
+                createStarButton();
+                createPathButtons();
+                updateStarVisuals();
+            }
+            createActiveContainer();
+            createFinishContainer();
+            createLeaderStats();
+            createLinkStats();
+            createLinkBuffs();
+            createDokkanAwakenContainer();
+            createTransformationContainer();
+            createDomainContainer();
+            createStatsContainer();
+            createKiSphereContainer();
+            createDamageTakenContainer();
+            updateLinkPartnerDisplay()
+        }
+        else{
+            //document.getElementById("ki-slider").dispatchEvent(new Event("input"));	
+        }
+        createLevelSlider();
+        createLeaderViewContainer();
+        createSuperAttackContainer();
+        updateBaseStats(false);
+        if(currentJson["Rarity"] == "lr" || currentJson["Rarity"] == "ur"){
+            const buttonContainer = document.getElementById("hipo-button-container");
+            buttonContainer.style.display = "grid";
+        }
+        
+        createKiCirclesWithClass();
+        updateKiSphereBuffs(true);
+        updatePassiveStats();
+        polishPage();
+        
+        const scale = Math.min(
+            document.body.scrollWidth /window.innerWidth,
+            document.body.scrollHeight/ window.innerHeight
         );
+        
+        document.body.style.transform = `scale(${scale})`;
+        document.body.style.transformOrigin = "top left";
+        
+        
+    }
+    catch (_error){
+        if(isSeza){
+            updateQueryStringParameter("SEZA", "false")
+            loadPage(true)
+        }
+        else if(isEza){
+            updateQueryStringParameter("EZA","false")
+            loadPage(true)
+        }
+        else{
+            location.href=location.origin;
+        }
 
-    document.body.style.transform = `scale(${scale})`;
-    document.body.style.transformOrigin = "top left";
-
-    
+    }
 }
 loadPage(true)
