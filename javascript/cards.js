@@ -9,8 +9,7 @@ import {extractDigitsFromString,
        splitTextByWords,
        advantageCalculator,
        typeToInt,
-       classToInt,
-       getJsonPromise
+       classToInt
  } from "./commonFunctions.js";
 import { LWFPlayer } from "./classes/LWF.js";
 let baseDomain=window.location.origin;
@@ -1292,9 +1291,10 @@ class superAttackQuery{
         replacementDictionary["NUMBERINPUT"]=this.numberInput;
         this.superAttackQuestion.superAttackText=new pictureDiv("How many times has"+unitID+"performed "+this.selfContainer.superAttackName+" within the last "+buffs["Duration"]+" turns?NUMBERINPUT",replacementDictionary);
         this.superAttackQuestion.superAttackText.getElement().className="super-attack-query-question";
-        const unitJsonPromise= getJsonPromise("/dbManagement/jsons/",unitID,".json");
+        const unitJsonPromise= fetch("/dbManagement/jsons/"+unitID+".json");
         unitJsonPromise.then(
-            unit => {
+            async unitResponse => {
+                const unit= await unitResponse.json()
                 this.insertedUnitDiv.setResourceID(unit["Resource ID"]);
                 this.insertedUnitDiv.setClass(unit["Class"]);
                 this.insertedUnitDiv.setType(unit["Type"]);
@@ -3080,12 +3080,12 @@ function findLinkPartners(linksJson,releaseJson,NameJson){
 
 function updateLinkPartnerDisplay(){
     if(allLinkPartners==undefined){
-        const linksJsonPromise = getJsonPromise(baseDomain,"/dbManagement/uniqueJsons/unitBasics/Links.json","");
-        const releaseJsonPromise = getJsonPromise(baseDomain,"/dbManagement/uniqueJsons/unitBasics/Release.json","");
-        const NameJsonPromise = getJsonPromise(baseDomain,"/dbManagement/uniqueJsons/unitBasics/Name.json","");
+        const linksJsonPromise = fetch(baseDomain+"/dbManagement/uniqueJsons/unitBasics/Links.json");
+        const releaseJsonPromise = fetch(baseDomain+"/dbManagement/uniqueJsons/unitBasics/Release.json");
+        const NameJsonPromise = fetch(baseDomain+"/dbManagement/uniqueJsons/unitBasics/Name.json");
         Promise.all([linksJsonPromise,releaseJsonPromise,NameJsonPromise]).then(
-            ([linksJson,releaseJson,NameJson]) => {
-            allLinkPartners = findLinkPartners(linksJson,releaseJson,NameJson);
+            async ([linksJson,releaseJson,NameJson]) => {
+            allLinkPartners = findLinkPartners(await linksJson.json(),await releaseJson.json(),await NameJson.json());
             updateLinkPartnerDisplay();
             }
         )
@@ -3157,9 +3157,10 @@ function updateLinkPartnerDisplay(){
                 else{
                     characterJsonLink = "/jsons/"+allLinkPartners[highestLinkers][i];
                 }
-                const characterJsonPromise = getJsonPromise("/dbManagement",characterJsonLink,".json");
+                const characterJsonPromise = fetch("/dbManagement"+characterJsonLink+".json");
                 characterJsonPromise.then(
-                    characterJson => {
+                    async characterJsonResponse => {
+                        const characterJson= await characterJsonResponse.json()
                         linkPartnerDisplay.unitDisplays[i].setDisplay(true);
                         linkPartnerDisplay.unitDisplays[i].setClass(characterJson["Class"]);
                         linkPartnerDisplay.unitDisplays[i].setType(characterJson["Type"]);
@@ -3266,7 +3267,6 @@ function createTransformationContainer(){
     if( Array.isArray(previousTransformations) && previousTransformations.length){
         for (const transformationID of previousTransformations){
             
-            const transformationJsonPromise = getJsonPromise("/dbManagement/jsons/",transformationID,".json");
             const transformationButton = new unitDisplay();
             transformationButton.setDisplayExtraInfo(false);
             transformationButton.setDisplay(true);
@@ -3274,8 +3274,10 @@ function createTransformationContainer(){
             transformationButton.setHeight("100%");
             transformationButton.container.style.gridRow="1";
             transformationContainer.appendChild(transformationButton.getElement());
+            const transformationJsonPromise = fetch("/dbManagement/jsons/"+transformationID+".json");
             transformationJsonPromise.then(
-                transformationJson => {
+                async transformationJsonResponse => {
+                    const transformationJson=await transformationJsonResponse.json()
                     transformationButton.setResourceID(transformationJson["Resource ID"]);
                     transformationButton.setClass(transformationJson["Class"]);
                     transformationButton.setType(transformationJson["Type"]);
@@ -3288,7 +3290,6 @@ function createTransformationContainer(){
     let transformations =currentJson["Transformations"];
     if( Array.isArray(transformations) && transformations.length){
         for (const transformationID of transformations){
-            const transformationJsonPromise = getJsonPromise("/dbManagement/jsons/",transformationID,".json");
             const transformationButton = new unitDisplay();
             transformationButton.setDisplayExtraInfo(false);
             transformationButton.setDisplay(true);
@@ -3296,8 +3297,10 @@ function createTransformationContainer(){
             transformationButton.setHeight("100%");
             transformationButton.container.style.gridRow="1";
             transformationContainer.appendChild(transformationButton.getElement());
+            const transformationJsonPromise = fetch("/dbManagement/jsons/"+transformationID+".json");
             transformationJsonPromise.then(
-                transformationJson => {
+                async transformationJsonResponse => {
+                    const transformationJson=await transformationJsonResponse.json();
                     transformationButton.setResourceID(transformationJson["Resource ID"]);
                     transformationButton.setClass(transformationJson["Class"]);
                     transformationButton.setType(transformationJson["Type"]);
@@ -3405,7 +3408,6 @@ function createDokkanAwakenContainer(){
     let Awakenings =currentJson["Dokkan awakenings"];
     if( Array.isArray(Awakenings) && Awakenings.length){
     }for (const AwakeningsID of Awakenings){
-        const awakeningJsonPromise = getJsonPromise("/dbManagement/jsons/",AwakeningsID,".json");
         const AwakeningsButton = new unitDisplay();
         AwakeningsButton.setDisplayExtraInfo(false);
         AwakeningsButton.setDisplay(true);
@@ -3413,8 +3415,10 @@ function createDokkanAwakenContainer(){
         AwakeningsButton.setHeight("100%");
         AwakeningsButton.container.style.gridRow="1";
         AwakeningsContainer.appendChild(AwakeningsButton.getElement());
+        const awakeningJsonPromise = fetch("/dbManagement/jsons/"+AwakeningsID+".json");
         awakeningJsonPromise.then(
-            awakeningJson => {
+            async awakeningJsonResponse => {
+                const awakeningJson = await awakeningJsonResponse.json()
                 AwakeningsButton.setResourceID(awakeningJson["Resource ID"]);
                 AwakeningsButton.setClass(awakeningJson["Class"]);
                 AwakeningsButton.setType(awakeningJson["Type"]);
@@ -3427,7 +3431,6 @@ function createDokkanAwakenContainer(){
     let previousAwakenings =currentJson["Dokkan Reverse awakenings"];
     if( Array.isArray(previousAwakenings) && previousAwakenings.length){
     }for (const AwakeningsID of previousAwakenings){
-        const previousAwakeningJsonPromise = getJsonPromise("/dbManagement/jsons/",AwakeningsID,".json");
         const AwakeningsButton = new unitDisplay();
         AwakeningsButton.setDisplayExtraInfo(false);
         AwakeningsButton.setDisplay(true);
@@ -3435,8 +3438,10 @@ function createDokkanAwakenContainer(){
         AwakeningsButton.setHeight("100%");
         AwakeningsButton.container.style.gridRow="2";
         AwakeningsContainer.appendChild(AwakeningsButton.getElement());
+        const previousAwakeningJsonPromise = fetch("/dbManagement/jsons/"+AwakeningsID+".json");
         previousAwakeningJsonPromise.then(
-            previousAwakeningJson => {
+            async previousAwakeningJsonResponse => {
+                const previousAwakeningJson=await previousAwakeningJsonResponse.json();
                 AwakeningsButton.setResourceID(previousAwakeningJson["Resource ID"]);
                 AwakeningsButton.setClass(previousAwakeningJson["Class"]);
                 AwakeningsButton.setType(previousAwakeningJson["Type"]);
@@ -4203,28 +4208,30 @@ function createSuperAttackContainer(){
         let transformPromise;
         const urlParams=new URLSearchParams(window.location.search);
         if(isSeza){
-            transformPromise=getJsonPromise("/dbManagement/jsonsSEZA/",key,".json");
+            transformPromise=fetch("/dbManagement/jsonsSEZA/"+key+".json");
         }
         else if(isEza){
-            transformPromise=getJsonPromise("/dbManagement/jsonsEZA/",key,".json");
+            transformPromise=fetch("/dbManagement/jsonsEZA/"+key+".json");
         }
         else{
-            transformPromise=getJsonPromise("/dbManagement/jsons/",key,".json");
+            transformPromise=fetch("/dbManagement/jsons/"+key+".json");
         }
-        transformPromise.then((json)=>{
-            let superAttackss=json["Super Attack"];
-            for (const key of Object.keys(superAttackss)){
-                let superAttack = superAttackss[key];
-                let superAttackObject;
-                if(superAttack["superStyle"]=="Normal"){
-                    superAttackObject = new superAttackQueryHolder(superAttack,json["Max Super Attacks"],json["Max Appearances In Form"],json["ID"]);
+        transformPromise.then(
+            async transformResponse=>{
+                const json = await transformResponse.json();
+                let superAttackss=json["Super Attack"];
+                for (const key of Object.keys(superAttackss)){
+                    let superAttack = superAttackss[key];
+                    let superAttackObject;
+                    if(superAttack["superStyle"]=="Normal"){
+                        superAttackObject = new superAttackQueryHolder(superAttack,json["Max Super Attacks"],json["Max Appearances In Form"],json["ID"]);
+                    }
+                    else{
+                        superAttackObject = new superAttackQueryHolder(superAttack,1,json["Max Appearances In Form"],json["ID"]);
+                    }
+                    if(superAttackObject.getElement().firstChild){
+                    superQuestionsContainer.appendChild(superAttackObject.getElement());
                 }
-                else{
-                    superAttackObject = new superAttackQueryHolder(superAttack,1,json["Max Appearances In Form"],json["ID"]);
-                }
-                if(superAttackObject.getElement().firstChild){
-                superQuestionsContainer.appendChild(superAttackObject.getElement());
-            }
             }
         });
     }
@@ -5447,72 +5454,71 @@ export async function loadPage(firstTime=false){
 
     let jsonPromise;
     if(isSeza){
-    jsonPromise=getJsonPromise("/dbManagement/jsonsSEZA/",subURL,".json");
+        jsonPromise=await fetch("/dbManagement/jsonsSEZA/"+subURL+".json");
     }
     else if(isEza){
-    jsonPromise=getJsonPromise("/dbManagement/jsonsEZA/",subURL,".json");
+        jsonPromise=await fetch("/dbManagement/jsonsEZA/"+subURL+".json");
     }
     else{
-    jsonPromise=getJsonPromise("/dbManagement/jsons/",subURL,".json");
+        jsonPromise=await fetch("/dbManagement/jsons/"+subURL+".json");
     }
 
-    try{
-        //await all JSON promises so they finish before continuing
-        [currentJson, linkData, domainData] = await Promise.all([
-            jsonPromise,
-            getJsonPromise("/dbManagement/uniqueJsons/", "links", ".json"),
-            getJsonPromise("/dbManagement/uniqueJsons/", "domains", ".json")
-        ]);
-        initialiseAspects();
-        createPassiveContainer();
-        if(firstTime){
-            if(currentJson["Rarity"] == "lr" || currentJson["Rarity"] == "ur"){
-                createSkillOrbContainer();
-                createStarButton();
-                createPathButtons();
-                updateStarVisuals();
-            }
-            createActiveContainer();
-            createFinishContainer();
-            createLeaderStats();
-            createLinkStats();
-            createLinkBuffs();
-            createDokkanAwakenContainer();
-            createTransformationContainer();
-            createDomainContainer();
-            createStatsContainer();
-            createKiSphereContainer();
-            createDamageTakenContainer();
-            updateLinkPartnerDisplay()
-        }
-        else{
-            //document.getElementById("ki-slider").dispatchEvent(new Event("input"));	
-        }
-        createLevelSlider();
-        createLeaderViewContainer();
-        createSuperAttackContainer();
-        updateBaseStats(false);
+    //await all JSON promises so they finish before continuing
+    [currentJson, linkData, domainData] = await Promise.all([
+        jsonPromise.json(),
+        (await fetch("/dbManagement/uniqueJsons/links.json")).json(),
+        (await fetch("/dbManagement/uniqueJsons/domains.json")).json()
+    ]);
+    if(currentJson==undefined){
+        location.href=location.origin;
+    }
+    initialiseAspects();
+    createPassiveContainer();
+    if(firstTime){
         if(currentJson["Rarity"] == "lr" || currentJson["Rarity"] == "ur"){
-            const buttonContainer = document.getElementById("hipo-button-container");
-            buttonContainer.style.display = "grid";
+            createSkillOrbContainer();
+            createStarButton();
+            createPathButtons();
+            updateStarVisuals();
         }
-        
-        createKiCirclesWithClass();
-        updateKiSphereBuffs(true);
-        updatePassiveStats();
-        polishPage();
-        
-        const scale = Math.min(
-            document.body.scrollWidth /window.innerWidth,
-            document.body.scrollHeight/ window.innerHeight
-          );
+        createActiveContainer();
+        createFinishContainer();
+        createLeaderStats();
+        createLinkStats();
+        createLinkBuffs();
+        createDokkanAwakenContainer();
+        createTransformationContainer();
+        createDomainContainer();
+        createStatsContainer();
+        createKiSphereContainer();
+        createDamageTakenContainer();
+        updateLinkPartnerDisplay()
+    }
+    else{
+        //document.getElementById("ki-slider").dispatchEvent(new Event("input"));	
+    }
+    createLevelSlider();
+    createLeaderViewContainer();
+    createSuperAttackContainer();
+    updateBaseStats(false);
+    if(currentJson["Rarity"] == "lr" || currentJson["Rarity"] == "ur"){
+        const buttonContainer = document.getElementById("hipo-button-container");
+        buttonContainer.style.display = "grid";
+    }
     
-        document.body.style.transform = `scale(${scale})`;
-        document.body.style.transformOrigin = "top left";
+    createKiCirclesWithClass();
+    updateKiSphereBuffs(true);
+    updatePassiveStats();
+    polishPage();
+    
+    const scale = Math.min(
+        document.body.scrollWidth /window.innerWidth,
+        document.body.scrollHeight/ window.innerHeight
+        );
 
-    }
-    catch(error){
-        console.error("Error loading page data", error);
-    }
+    document.body.style.transform = `scale(${scale})`;
+    document.body.style.transformOrigin = "top left";
+
+    
 }
 loadPage(true)

@@ -1,28 +1,3 @@
-
-
-export function getJsonPromise(prefix,name,suffix) {
-  return fetch(prefix + name + suffix)
-    .then(response => {
-        if (!response.ok) {
-          if(name[6]=="0"){
-              name=name.slice(0, -1)+ "1";
-              updateQueryStringParameter("id",name);
-              return(getJsonPromise(prefix,name,suffix))
-          }
-          else{
-            throw new Error("Network response was not ok" + response.statusText);
-          }
-        }
-        return response.json();
-      }
-    )
-    .catch(error => {
-        console.error("Error fetching JSON:",prefix+name+suffix, error);
-        throw error; // Re-throw the error to propagate it to the caller
-    }
-  );
-}
-
 export function timeSince(epochTime){
   let now = new Date().getTime();
   let distance = now - (epochTime * 1000);

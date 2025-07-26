@@ -1,6 +1,6 @@
 import { unitDisplay } from "./classes/unitDisplay.js";
 import { complexSortFilterContainer } from "./classes/complexSortFilterContainer.js";
-import {removePX,timeSince,getJsonPromise,isEmptyDictionary} from "./commonFunctions.js";
+import {removePX,timeSince,isEmptyDictionary} from "./commonFunctions.js";
 
 // GLOBAL VARIABLES
 let unitsToDisplay = 44;
@@ -126,19 +126,16 @@ async function reFilterCards(sortCutIDBefore=false) {
         }
       }
       if(relevantDetails.includes("Class") && !("Class" in window.unitBasicsDetails)) {
-        let unitBasicsDetailPromise;
-        unitBasicsDetailPromise=getJsonPromise("/dbManagement/uniqueJsons/unitBasics/","Class",".json");
-        window.unitBasicsDetails["Class"]=await unitBasicsDetailPromise;
+        let unitBasicsDetail= await fetch("/dbManagement/uniqueJsons/unitBasics/Class.json");
+        window.unitBasicsDetails["Class"]=await unitBasicsDetail.json();
       }
       if(relevantDetails.includes("Category") && !("Categories" in window.unitBasicsDetails)){
-        let unitBasicsDetailPromise;
-        unitBasicsDetailPromise=getJsonPromise("/dbManagement/uniqueJsons/unitBasics/","Categories",".json");
-        window.unitBasicsDetails["Categories"]=await unitBasicsDetailPromise;
+        let unitBasicsDetail= await fetch("/dbManagement/uniqueJsons/unitBasics/Categories.json");
+        window.unitBasicsDetails["Categories"]=await unitBasicsDetail.json();
       }
       if(relevantDetails.includes("Type")  && !("Type" in window.unitBasicsDetails)){
-        let unitBasicsDetailPromise;
-        unitBasicsDetailPromise=getJsonPromise("/dbManagement/uniqueJsons/unitBasics/","Type",".json");
-        window.unitBasicsDetails["Type"]=await unitBasicsDetailPromise;
+        let unitBasicsDetail= await fetch("/dbManagement/uniqueJsons/unitBasics/Type.json");
+        window.unitBasicsDetails["Type"]=await unitBasicsDetail.json();
       }
 
 
@@ -157,24 +154,21 @@ async function reFilterCards(sortCutIDBefore=false) {
 
     else if(window.leadUnit!=null){
       if(!("Awakening" in window.unitBasicsDetails)) {
-        let unitBasicsDetailPromise;
-        unitBasicsDetailPromise=getJsonPromise("/dbManagement/uniqueJsons/unitBasics/","Awakening",".json");
-        window.unitBasicsDetails["Awakening"]=await unitBasicsDetailPromise;
+        let unitBasicsDetail= await fetch("/dbManagement/uniqueJsons/unitBasics/Awakening.json");
+        window.unitBasicsDetails["Awakening"]=await unitBasicsDetail.json();
       }
       if(!("Class" in window.unitBasicsDetails)) {
-        let unitBasicsDetailPromise;
-        unitBasicsDetailPromise=getJsonPromise("/dbManagement/uniqueJsons/unitBasics/","Class",".json");
-        window.unitBasicsDetails["Class"]=await unitBasicsDetailPromise;
+        let unitBasicsDetail= await fetch("/dbManagement/uniqueJsons/unitBasics/Class.json");
+        window.unitBasicsDetails["Class"]=await unitBasicsDetail.json();
+        
       }
       if(!("Categories" in window.unitBasicsDetails)){
-        let unitBasicsDetailPromise;
-        unitBasicsDetailPromise=getJsonPromise("/dbManagement/uniqueJsons/unitBasics/","Categories",".json");
-        window.unitBasicsDetails["Categories"]=await unitBasicsDetailPromise;
+        let unitBasicsDetail= await fetch("/dbManagement/uniqueJsons/unitBasics/Categories.json");
+        window.unitBasicsDetails["Categories"]=await unitBasicsDetail.json();
       }
       if(!("Type" in window.unitBasicsDetails)){
-        let unitBasicsDetailPromise;
-        unitBasicsDetailPromise=getJsonPromise("/dbManagement/uniqueJsons/unitBasics/","Type",".json");
-        window.unitBasicsDetails["Type"]=await unitBasicsDetailPromise;
+        let unitBasicsDetail= await fetch("/dbManagement/uniqueJsons/unitBasics/Type.json");
+        window.unitBasicsDetails["Type"]=await unitBasicsDetail.json();
       }
 
 
@@ -201,11 +195,9 @@ async function reFilterCards(sortCutIDBefore=false) {
     }
 
     if(sortCutIDBefore){
-      let unitBasicsDetailPromise;
-      unitBasicsDetailPromise=getJsonPromise("/dbManagement/uniqueJsons/unitBasics/","ID",".json");
-      unitBasicsDetailPromise.then(
-        unitBasicsDetail =>{
-          window.unitBasicsDetails["ID"]=unitBasicsDetail;
+      fetch("/dbManagement/uniqueJsons/unitBasics/ID.json").then(
+        async unitBasicsDetail =>{
+          window.unitBasicsDetails["ID"]=await unitBasicsDetail.json();
           sortCutID();
           reSortCards();
         }
@@ -216,10 +208,9 @@ async function reFilterCards(sortCutIDBefore=false) {
     }
   }
   else{
-    const unitBasicsDetailPromise=getJsonPromise("/dbManagement/uniqueJsons/unitBasics/",window.currentFilter,".json");
-    unitBasicsDetailPromise.then(
-      unitBasicsDetail =>{
-        window.unitBasicsDetails[window.currentFilter]=unitBasicsDetail;
+    fetch("/dbManagement/uniqueJsons/unitBasics/"+window.currentFilter+".json").then(
+      async unitBasicsDetail =>{
+        window.unitBasicsDetails[window.currentFilter]=await unitBasicsDetail.json();
         reFilterCards(sortCutIDBefore);
       }
     )
@@ -379,11 +370,9 @@ function reSortCards(){
     showUpdatedCardPositions();
   }
   else{
-    let unitBasicsDetailPromise;
-    unitBasicsDetailPromise=getJsonPromise("/dbManagement/uniqueJsons/unitBasics/",window.currentSort,".json");
-    unitBasicsDetailPromise.then(
-      unitBasicsDetail =>{
-        window.unitBasicsDetails[window.currentSort]=unitBasicsDetail;
+    fetch("/dbManagement/uniqueJsons/unitBasics/"+window.currentSort+".json").then(
+      async unitBasicsDetail =>{
+        window.unitBasicsDetails[window.currentSort]=await unitBasicsDetail.json();
         reSortCards();
       }
     )
@@ -461,7 +450,6 @@ function showUpdatedCardPositions(){
       else if(window.leadUnit){
         window.displayBoxes[i%unitsToDisplay].setHighlight(window.unitBasicsDetails["Leading Buff"][window.currentFilteredUnits[i]]["ATK"]>=200);
       }
-      //displayBoxes[i].setSezaBorder(window.currentFilteredUnits[i].endsWith("SEZA"));
 
 
 
@@ -528,14 +516,14 @@ function createCharacterSelection(){
   createFilterOption();
   createSortButton();
   const jsonPromises = ["Resource ID", "Class", "Type", "Rarity", "Max Level"].map(field => 
-    getJsonPromise("/dbManagement/uniqueJsons/unitBasics/", field, ".json")
+    fetch("/dbManagement/uniqueJsons/unitBasics/"+ field+ ".json")
   );
 
   Promise.all(jsonPromises).then(
     results => {
       ["Resource ID", "Class", "Type", "Rarity", "Max Level"].forEach(
-        (field, index) => {
-          window.unitBasicsDetails[field] = results[index];
+        async (field, index) => {
+          window.unitBasicsDetails[field] = await results[index].json();
         }
       );
       reFilterCards(true);
@@ -565,7 +553,8 @@ function addToLeadList(leadList,lead, newLeadSource){
 const urlParams=new URLSearchParams(window.location.search);
 if(urlParams.get("leaderView") !== null) {
   window.unitBasicsDetails["Under Lead Buff"]={};
-  const json = await getJsonPromise("/dbManagement/jsons/", urlParams.get("leaderView"), ".json");
+  const jsonPromise = await fetch("/dbManagement/jsons/"+ urlParams.get("leaderView")+ ".json");
+  const json=await jsonPromise.json();
   window.leaderView = {}
   for (const lead in json["Leader Skill"]){
     addToLeadList(window.leaderView,lead,json["Leader Skill"]);
@@ -573,11 +562,8 @@ if(urlParams.get("leaderView") !== null) {
 }
 else if(urlParams.get("leadByView") !== null) {
   window.unitBasicsDetails["Leading Buff"]={};
-  const json = await getJsonPromise("/dbManagement/jsons/", urlParams.get("leadByView"), ".json");
-  window.leadUnit = urlParams.get("leadByView")
-
-  const json2 = await getJsonPromise("/dbManagement/uniqueJsons/unitBasics/", "Leader Skill", ".json");
-  window.unitBasicsDetails["Leader Skill"] = json2
+  const json2 = await fetch("/dbManagement/uniqueJsons/unitBasics/Leader Skill.json");
+  window.unitBasicsDetails["Leader Skill"] = await json2.json()
 }
 
 let baseDomain=window.location.origin;

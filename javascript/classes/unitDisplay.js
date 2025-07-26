@@ -140,7 +140,6 @@ export class unitDisplay{
       this.container.infoHolder.style.backgroundImage="url('"+window.assetBase+"/global/en/layout/en/image/character/cha_base_bottom_0"+this.typeInt+".png')";
       this.container.unitBackImage.src=window.assetBase+"/global/en/layout/en/image/character/character_thumb_bg/cha_base_0"+this.typeInt+"_0"+rarityToInt(this.rarity)+".png";
       this.container.unitTypingImage.src=window.assetBase+"/global/en/layout/en/image/character/cha_type_icon_"+this.ClassInt+this.typeInt+".png";
-      this.changeSezaAnimation();
     };
 
     setRarity(rarity){
@@ -317,30 +316,6 @@ export class unitDisplay{
       this.highlightAnimationisSetup=true;
     }
 
-    setupSezaBorder(){
-      this.container.sezaBorder=document.createElement("canvas");
-      this.container.sezaBorder.className="unit-seza-border";
-      this.container.appendChild(this.container.sezaBorder);
-      this.container.sezaBorder.sceneName="ef_00"+(this.typeInt+1);
-      this.container.sezaBorder.animation=new LWFPlayer(window.assetBase+"/global/en/outgame/effect/super_optimal_eff/super_optimal_eff.lwf", this.container.sezaBorder,
-            this.container.sezaBorder.sceneName, 
-            this.container.sezaBorder.width/300,
-            this.container.sezaBorder.height/300,
-            this.container.sezaBorder.width/2,
-            this.container.sezaBorder.height/1.9,
-            true);
-
-      this.sezaBorderisSetup=true;
-
-    }
-
-    changeSezaAnimation(){
-      if(this.sezaBorderisSetup){
-        this.container.sezaBorder.animation.pause();
-        this.container.sezaBorder.animation.changeScene("ef_00"+(this.typeInt+1));
-        this.container.sezaBorder.animation.play();
-      }
-    }
 
     setHighlight(highlighted){
       
@@ -359,19 +334,6 @@ export class unitDisplay{
       }
     }
 
-    setSezaBorder(sezaBorder){
-      if(sezaBorder){
-        if(!this.sezaBorderisSetup){
-          this.setupSezaBorder();
-        }
-        this.container.sezaBorder.animation.play();
-        this.container.sezaBorder.style.display="block";
-      }
-      else if(this.sezaBorderisSetup){
-        this.container.sezaBorder.animation.pause();
-        this.container.sezaBorder.style.display="none";
-      }
-    }
 
 }
 

@@ -1,4 +1,3 @@
-import {getJsonPromise, removePX} from "../commonFunctions.js";
 import {complexSortFilterContainerBackground} from "./complexSortFilterContainer.js";
 import { StyledRadioOption } from "./styledRadio.js";
 export class selectionScreen{
@@ -31,7 +30,11 @@ export class selectionScreen{
         this.element.appendChild(this.background.getElement());
 
         if(type=="category"){
-            getJsonPromise("/dbManagement/uniqueJsons/","categories",".json").then(data=>this.createCategorySelectionScreen(data));
+            fetch("/dbManagement/uniqueJsons/categories.json").then(
+                async response=>{
+                    this.createCategorySelectionScreen(await response.json());
+                }
+            )
         }
     }
 
