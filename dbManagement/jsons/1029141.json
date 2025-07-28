@@ -18,6 +18,7 @@
     ],
     "Can EZA": false,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Turtle School",
         "Infighter",
@@ -41,9 +42,12 @@
                 "+ or -": "+"
             },
             "Length": "7",
+            "CausalityLogic": "",
             "Once Only": true,
             "Type": "Single activator",
-            "Brief effect description": "Damage recieved -30% "
+            "Brief effect description": "Damage recieved -30% ",
+            "Line description": "Damage recieved -30% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1004199": {
             "ID": "1004199",
@@ -58,8 +62,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +150% "
+            "Brief effect description": "ATK and DEF +150% ",
+            "Line description": "ATK and DEF +150% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2004199": {
             "ID": "2004199",
@@ -78,19 +85,23 @@
                 "Causalities": {
                     "801": {
                         "Button": {
-                            "Name": "Are there 3 or more Turtle School category units on the team on this turn?"
+                            "Name": "Are there 3 or more Turtle School category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Turtle School category units on the team on this turn?",
+                            "Name": "How many Turtle School category allies on this turn?",
                             "Logic": ">=3",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 3 or more Turtle School Category allies "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"801\", \"compiled\": 801}",
             "Type": "Single activator",
-            "Brief effect description": "Ki +3 "
+            "Brief effect description": "Ki +3 ",
+            "Line description": "Ki +3 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3004199": {
             "ID": "3004199",
@@ -109,19 +120,23 @@
                 "Causalities": {
                     "801": {
                         "Button": {
-                            "Name": "Are there 3 or more Turtle School category units on the team on this turn?"
+                            "Name": "Are there 3 or more Turtle School category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Turtle School category units on the team on this turn?",
+                            "Name": "How many Turtle School category allies on this turn?",
                             "Logic": ">=3",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 3 or more Turtle School Category allies "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"801\", \"compiled\": 801}",
             "Type": "Single activator",
-            "Brief effect description": "Damage recieved -20% "
+            "Brief effect description": "Damage recieved -20% ",
+            "Line description": "Damage recieved -20% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4004199": {
             "ID": "4004199",
@@ -137,31 +152,39 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "801 && 46",
+                "Logic": "(801&&46)",
                 "Causalities": {
                     "801": {
                         "Button": {
-                            "Name": "Are there 3 or more Turtle School category units on the team on this turn?"
+                            "Name": "Are there 3 or more Turtle School category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Turtle School category units on the team on this turn?",
+                            "Name": "How many Turtle School category allies on this turn?",
                             "Logic": ">=3",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 3 or more Turtle School Category allies "
                     },
                     "46": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"801&46\", \"compiled\": [\"&\", 801, 46]}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +150% when attacking"
+            "Brief effect description": "ATK and DEF +150% when attacking",
+            "Line description": "ATK and DEF +150% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5004199": {
             "ID": "5004199",
@@ -180,31 +203,39 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "801 && 46",
+                "Logic": "(801&&46)",
                 "Causalities": {
                     "801": {
                         "Button": {
-                            "Name": "Are there 3 or more Turtle School category units on the team on this turn?"
+                            "Name": "Are there 3 or more Turtle School category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Turtle School category units on the team on this turn?",
+                            "Name": "How many Turtle School category allies on this turn?",
                             "Logic": ">=3",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 3 or more Turtle School Category allies "
                     },
                     "46": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"801&46\", \"compiled\": [\"&\", 801, 46]}",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking"
+            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking",
+            "Line description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6004199": {
             "ID": "6004199",
@@ -224,19 +255,23 @@
                 "Causalities": {
                     "3197": {
                         "Button": {
-                            "Name": "Are there 1 or more Peppy Gals category units on this turn "
+                            "Name": "Are there 1 or more Peppy Gals category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Peppy Gals category units on this turn ",
+                            "Name": "How many Peppy Gals category allies attacking on this turn",
                             "Logic": ">=1",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 1 or more Peppy Gals Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"3197\", \"compiled\": 3197}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +82% "
+            "Brief effect description": "ATK and DEF +82% ",
+            "Line description": "ATK and DEF +82% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "7004199": {
             "ID": "7004199",
@@ -256,19 +291,23 @@
                 "Causalities": {
                     "3198": {
                         "Button": {
-                            "Name": "Are there 2 or more Peppy Gals category units on this turn "
+                            "Name": "Are there 2 or more Peppy Gals category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Peppy Gals category units on this turn ",
+                            "Name": "How many Peppy Gals category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Peppy Gals Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"3198\", \"compiled\": 3198}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +82% "
+            "Brief effect description": "ATK and DEF +82% ",
+            "Line description": "ATK and DEF +82% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "8004199": {
             "ID": "8004199",
@@ -288,12 +327,16 @@
                     "3274": {
                         "Button": {
                             "Name": "Is there an ally attacking on this turn whose name includes Bulma?"
-                        }
+                        },
+                        "Paragraph Title": "When there is an ally whose name includes \"Bulma\" attacking in the same turn "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"3274\", \"compiled\": 3274}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +82% "
+            "Brief effect description": "ATK +82% ",
+            "Line description": "ATK +82% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "9004199": {
             "ID": "9004199",
@@ -313,12 +356,16 @@
                     "3274": {
                         "Button": {
                             "Name": "Is there an ally attacking on this turn whose name includes Bulma?"
-                        }
+                        },
+                        "Paragraph Title": "When there is an ally whose name includes \"Bulma\" attacking in the same turn "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"3274\", \"compiled\": 3274}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of performing a critical hit +50% "
+            "Brief effect description": "Chance of performing a critical hit +50% ",
+            "Line description": "Chance of performing a critical hit +50% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "10004199": {
             "ID": "10004199",
@@ -338,8 +385,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Peppy Gals category allies Ki +2 "
+            "Brief effect description": "Peppy Gals category allies Ki +2 ",
+            "Line description": "Peppy Gals category allies Ki +2 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "11004199": {
             "ID": "11004199",
@@ -361,8 +411,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Turtle School category allies Ki +2 "
+            "Brief effect description": "Turtle School category allies Ki +2 ",
+            "Line description": "Turtle School category allies Ki +2 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "12004199": {
             "ID": "12004199",
@@ -383,8 +436,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Peppy Gals category allies ATK and DEF +50% "
+            "Brief effect description": "Peppy Gals category allies ATK and DEF +50% ",
+            "Line description": "Peppy Gals category allies ATK and DEF +50% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "13004199": {
             "ID": "13004199",
@@ -407,8 +463,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Turtle School category allies ATK and DEF +50% "
+            "Brief effect description": "Turtle School category allies ATK and DEF +50% ",
+            "Line description": "Turtle School category allies ATK and DEF +50% ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 3,
@@ -1381,17 +1440,19 @@
             },
             "superIsInactive": "0",
             "superCondition": {
-                "Logic": "583 || 3199",
+                "Logic": "(583 || 3199)",
                 "Causalities": {
                     "583": {
                         "Button": {
                             "Name": "Is there an ally attacking on this turn whose name includes Goku (Youth)?"
-                        }
+                        },
+                        "Paragraph Title": "When there is an ally whose name includes \"Goku (Youth)\" attacking in the same turn "
                     },
                     "3199": {
                         "Button": {
                             "Name": "Is there an ally attacking on this turn whose name includes Krillin (Youth)?"
-                        }
+                        },
+                        "Paragraph Title": "When there is an ally whose name includes \"Krillin (Youth)\" attacking in the same turn "
                     }
                 }
             },
@@ -1457,7 +1518,8 @@
                     "3274": {
                         "Button": {
                             "Name": "Is there an ally attacking on this turn whose name includes Bulma?"
-                        }
+                        },
+                        "Paragraph Title": "When there is an ally whose name includes \"Bulma\" attacking in the same turn "
                     }
                 }
             },
@@ -1475,7 +1537,7 @@
         "Effect Description": "Recovers 50% HP and, for 1 turn, \nall allies' Ki +3 and ATK & DEF +30%",
         "Condition Description": "Can be activated when \nHP is 70% or less starting from \nthe 3rd turn from the start of battle, \nor starting from the 5th turn \nfrom the start of battle (once only)",
         "Condition": {
-            "Logic": "4 && 74 || 200",
+            "Logic": "((4&&74) || 200)",
             "Causalities": {
                 "4": {
                     "Button": {
@@ -1485,7 +1547,8 @@
                         "Name": "What turn is it?",
                         "Logic": ">=3",
                         "Min": 1
-                    }
+                    },
+                    "Paragraph Title": "When the turn count is 3"
                 },
                 "74": {
                     "Button": {
@@ -1496,7 +1559,8 @@
                         "Logic": "<=70",
                         "Min": 0,
                         "Max": 100
-                    }
+                    },
+                    "Paragraph Title": "When HP is 70% or less"
                 },
                 "200": {
                     "Button": {
@@ -1506,7 +1570,8 @@
                         "Name": "What turn is it?",
                         "Logic": ">=5",
                         "Min": 1
-                    }
+                    },
+                    "Paragraph Title": "When the turn count is 5"
                 }
             }
         },

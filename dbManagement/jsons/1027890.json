@@ -17,6 +17,7 @@
     ],
     "Can EZA": false,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Demonic Power",
         "Brainiacs",
@@ -40,8 +41,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +120% "
+            "Brief effect description": "ATK and DEF +120% ",
+            "Line description": "ATK and DEF +120% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1003927": {
             "ID": "1003927",
@@ -60,17 +64,24 @@
                 "Logic": "2887",
                 "Causalities": {
                     "2887": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2887\", \"compiled\": 2887}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +70% when attacking"
+            "Brief effect description": "ATK and DEF +70% when attacking",
+            "Line description": "ATK and DEF +70% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2003927": {
             "ID": "2003927",
@@ -86,8 +97,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Extreme class allies ATK and DEF +30% "
+            "Brief effect description": "Extreme class allies ATK and DEF +30% ",
+            "Line description": "Extreme class allies ATK and DEF +30% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3003927": {
             "ID": "3003927",
@@ -117,19 +131,23 @@
                 "Causalities": {
                     "2898": {
                         "Button": {
-                            "Name": "Are there 4 or more Crossover category units on the team on this turn?"
+                            "Name": "Are there 4 or more Crossover category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Crossover category units on the team on this turn?",
+                            "Name": "How many Crossover category allies on this turn?",
                             "Logic": ">=4",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 4 or more Crossover Category allies "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2898\", \"compiled\": 2898}",
             "Type": "Single activator",
-            "Brief effect description": "Randomly changes Ki Spheres of a certain Type(STR excluded) to STR Ki Spheres "
+            "Brief effect description": "Randomly changes Ki Spheres of a certain Type(STR excluded) to STR Ki Spheres ",
+            "Line description": "Randomly changes Ki Spheres of a certain Type(STR excluded) to STR Ki Spheres ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4003927": {
             "ID": "4003927",
@@ -155,12 +173,16 @@
                             "Logic": ">=1",
                             "Min": 0,
                             "Max": 1
-                        }
+                        },
+                        "Paragraph Title": "With 1 or more STR Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2905\", \"compiled\": 2905}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +50% after this unit collects ki spheres"
+            "Brief effect description": "ATK +50% after this unit collects ki spheres",
+            "Line description": "ATK +50% after this unit collects ki spheres",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5003927": {
             "ID": "5003927",
@@ -175,7 +197,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2905 || 2910",
+                "Logic": "(2905 || 2910)",
                 "Causalities": {
                     "2905": {
                         "Button": {
@@ -186,7 +208,8 @@
                             "Logic": ">=1",
                             "Min": 0,
                             "Max": 1
-                        }
+                        },
+                        "Paragraph Title": "With 1 or more STR Ki Spheres obtained"
                     },
                     "2910": {
                         "Button": {
@@ -197,12 +220,16 @@
                             "Logic": ">=1",
                             "Min": 0,
                             "Max": 1
-                        }
+                        },
+                        "Paragraph Title": "With 1 or more Rainbow Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2905|2910\", \"compiled\": [\"|\", 2905, 2910]}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of evading enemy attacks +10% after this unit collects ki spheres"
+            "Brief effect description": "Chance of evading enemy attacks +10% after this unit collects ki spheres",
+            "Line description": "Chance of evading enemy attacks +10% after this unit collects ki spheres",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6003927": {
             "ID": "6003927",
@@ -217,7 +244,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2906 || 2911",
+                "Logic": "(2906 || 2911)",
                 "Causalities": {
                     "2906": {
                         "Button": {
@@ -228,7 +255,8 @@
                             "Logic": ">=2",
                             "Min": 0,
                             "Max": 2
-                        }
+                        },
+                        "Paragraph Title": "With 2 or more STR Ki Spheres obtained"
                     },
                     "2911": {
                         "Button": {
@@ -239,12 +267,16 @@
                             "Logic": ">=2",
                             "Min": 0,
                             "Max": 2
-                        }
+                        },
+                        "Paragraph Title": "With 2 or more Rainbow Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2906|2911\", \"compiled\": [\"|\", 2906, 2911]}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of evading enemy attacks +10% after this unit collects ki spheres"
+            "Brief effect description": "Chance of evading enemy attacks +10% after this unit collects ki spheres",
+            "Line description": "Chance of evading enemy attacks +10% after this unit collects ki spheres",
+            "Paragraph Title": "Basic effects(s)"
         },
         "7003927": {
             "ID": "7003927",
@@ -259,7 +291,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2907 || 2912",
+                "Logic": "(2907 || 2912)",
                 "Causalities": {
                     "2907": {
                         "Button": {
@@ -270,7 +302,8 @@
                             "Logic": ">=3",
                             "Min": 0,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "With 3 or more STR Ki Spheres obtained"
                     },
                     "2912": {
                         "Button": {
@@ -281,12 +314,16 @@
                             "Logic": ">=3",
                             "Min": 0,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "With 3 or more Rainbow Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2907|2912\", \"compiled\": [\"|\", 2907, 2912]}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of evading enemy attacks +10% after this unit collects ki spheres"
+            "Brief effect description": "Chance of evading enemy attacks +10% after this unit collects ki spheres",
+            "Line description": "Chance of evading enemy attacks +10% after this unit collects ki spheres",
+            "Paragraph Title": "Basic effects(s)"
         },
         "8003927": {
             "ID": "8003927",
@@ -302,7 +339,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2905 || 2910",
+                "Logic": "(2905 || 2910)",
                 "Causalities": {
                     "2905": {
                         "Button": {
@@ -313,7 +350,8 @@
                             "Logic": ">=1",
                             "Min": 0,
                             "Max": 1
-                        }
+                        },
+                        "Paragraph Title": "With 1 or more STR Ki Spheres obtained"
                     },
                     "2910": {
                         "Button": {
@@ -324,12 +362,16 @@
                             "Logic": ">=1",
                             "Min": 0,
                             "Max": 1
-                        }
+                        },
+                        "Paragraph Title": "With 1 or more Rainbow Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2905|2910\", \"compiled\": [\"|\", 2905, 2910]}",
             "Type": "Single activator",
-            "Brief effect description": "Extreme class allies Ki +1 after this unit collects ki spheres"
+            "Brief effect description": "Extreme class allies Ki +1 after this unit collects ki spheres",
+            "Line description": "Extreme class allies Ki +1 after this unit collects ki spheres",
+            "Paragraph Title": "Basic effects(s)"
         },
         "9003927": {
             "ID": "9003927",
@@ -345,7 +387,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2906 || 2911",
+                "Logic": "(2906 || 2911)",
                 "Causalities": {
                     "2906": {
                         "Button": {
@@ -356,7 +398,8 @@
                             "Logic": ">=2",
                             "Min": 0,
                             "Max": 2
-                        }
+                        },
+                        "Paragraph Title": "With 2 or more STR Ki Spheres obtained"
                     },
                     "2911": {
                         "Button": {
@@ -367,12 +410,16 @@
                             "Logic": ">=2",
                             "Min": 0,
                             "Max": 2
-                        }
+                        },
+                        "Paragraph Title": "With 2 or more Rainbow Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2906|2911\", \"compiled\": [\"|\", 2906, 2911]}",
             "Type": "Single activator",
-            "Brief effect description": "Extreme class allies Ki +1 after this unit collects ki spheres"
+            "Brief effect description": "Extreme class allies Ki +1 after this unit collects ki spheres",
+            "Line description": "Extreme class allies Ki +1 after this unit collects ki spheres",
+            "Paragraph Title": "Basic effects(s)"
         },
         "10003927": {
             "ID": "10003927",
@@ -388,7 +435,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2907 || 2912",
+                "Logic": "(2907 || 2912)",
                 "Causalities": {
                     "2907": {
                         "Button": {
@@ -399,7 +446,8 @@
                             "Logic": ">=3",
                             "Min": 0,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "With 3 or more STR Ki Spheres obtained"
                     },
                     "2912": {
                         "Button": {
@@ -410,12 +458,16 @@
                             "Logic": ">=3",
                             "Min": 0,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "With 3 or more Rainbow Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2907|2912\", \"compiled\": [\"|\", 2907, 2912]}",
             "Type": "Single activator",
-            "Brief effect description": "Extreme class allies Ki +1 after this unit collects ki spheres"
+            "Brief effect description": "Extreme class allies Ki +1 after this unit collects ki spheres",
+            "Line description": "Extreme class allies Ki +1 after this unit collects ki spheres",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 1,

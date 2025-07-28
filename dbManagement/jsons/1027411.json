@@ -17,6 +17,7 @@
     ],
     "Can EZA": false,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Saiyan Warrior Race",
         "The Saiyan Lineage",
@@ -40,8 +41,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +80% "
+            "Brief effect description": "ATK and DEF +80% ",
+            "Line description": "ATK and DEF +80% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1003552": {
             "ID": "1003552",
@@ -59,8 +63,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 30% chance of becoming a super attack "
+            "Brief effect description": "Performs an additional attack with a 30% chance of becoming a super attack ",
+            "Line description": "Performs an additional attack with a 30% chance of becoming a super attack ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2003552": {
             "ID": "2003552",
@@ -74,8 +81,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Chance of performing a critical hit +30% "
+            "Brief effect description": "Chance of performing a critical hit +30% ",
+            "Line description": "Chance of performing a critical hit +30% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3003552": {
             "ID": "3003552",
@@ -94,17 +104,24 @@
                 "Logic": "2599",
                 "Causalities": {
                     "2599": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2599\", \"compiled\": 2599}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +30% when attacking"
+            "Brief effect description": "ATK and DEF +30% when attacking",
+            "Line description": "ATK and DEF +30% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4003552": {
             "ID": "4003552",
@@ -123,15 +140,19 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2599 && 2600",
+                "Logic": "(2599&&2600)",
                 "Causalities": {
                     "2599": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     },
                     "2600": {
                         "Button": {
@@ -142,12 +163,16 @@
                             "Logic": ">=50",
                             "Min": 0,
                             "Max": 100
-                        }
+                        },
+                        "Paragraph Title": "When HP is 50% or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2599&2600\", \"compiled\": [\"&\", 2599, 2600]}",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 30% chance of becoming a super attack when attacking"
+            "Brief effect description": "Performs an additional attack with a 30% chance of becoming a super attack when attacking",
+            "Line description": "Performs an additional attack with a 30% chance of becoming a super attack when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5003552": {
             "ID": "5003552",
@@ -162,15 +187,19 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2599 && 2601",
+                "Logic": "(2599&&2601)",
                 "Causalities": {
                     "2599": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     },
                     "2601": {
                         "Button": {
@@ -181,12 +210,16 @@
                             "Logic": "<=50",
                             "Min": 0,
                             "Max": 100
-                        }
+                        },
+                        "Paragraph Title": "When HP is 50% or less"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2599&2601\", \"compiled\": [\"&\", 2599, 2601]}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of performing a critical hit +20% when attacking"
+            "Brief effect description": "Chance of performing a critical hit +20% when attacking",
+            "Line description": "Chance of performing a critical hit +20% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6003552": {
             "ID": "6003552",
@@ -208,8 +241,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "{\"source\": \"2598\", \"compiled\": 2598}",
             "Type": "Building Stat",
-            "Brief effect description": "ATK +31% (up to 1000%) based on 'How many super attacks has this character performed on this turn' after attacking"
+            "Brief effect description": "ATK +31% (up to 1000%) based on 'How many super attacks has this character performed on this turn' after attacking",
+            "Line description": "ATK +31% (up to 1000%) based on 'How many super attacks has this character performed on this turn' after attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "7003552": {
             "ID": "7003552",
@@ -231,8 +267,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "{\"source\": \"2598\", \"compiled\": 2598}",
             "Type": "Building Stat",
-            "Brief effect description": "DEF +31% (up to 1000%) based on 'How many super attacks has this character performed on this turn' after attacking"
+            "Brief effect description": "DEF +31% (up to 1000%) based on 'How many super attacks has this character performed on this turn' after attacking",
+            "Line description": "DEF +31% (up to 1000%) based on 'How many super attacks has this character performed on this turn' after attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "8003552": {
             "ID": "8003552",
@@ -254,8 +293,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "{\"source\": \"2598\", \"compiled\": 2598}",
             "Type": "Building Stat",
-            "Brief effect description": "Damage recieved -8% (up to 100%) based on 'How many super attacks has this character performed on this turn' after attacking"
+            "Brief effect description": "Damage recieved -8% (up to 100%) based on 'How many super attacks has this character performed on this turn' after attacking",
+            "Line description": "Damage recieved -8% (up to 100%) based on 'How many super attacks has this character performed on this turn' after attacking",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 4,

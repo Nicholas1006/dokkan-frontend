@@ -26,6 +26,7 @@
     ],
     "Can EZA": false,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Golden Warrior",
         "Royal Lineage",
@@ -48,8 +49,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Ki +3 "
+            "Brief effect description": "Ki +3 ",
+            "Line description": "Ki +3 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1003572": {
             "ID": "1003572",
@@ -64,8 +68,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +120% "
+            "Brief effect description": "ATK and DEF +120% ",
+            "Line description": "ATK and DEF +120% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2003572": {
             "ID": "2003572",
@@ -83,17 +90,24 @@
                 "Logic": "2637",
                 "Causalities": {
                     "2637": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2637\", \"compiled\": 2637}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +70% when attacking"
+            "Brief effect description": "ATK +70% when attacking",
+            "Line description": "ATK +70% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3003572": {
             "ID": "3003572",
@@ -115,8 +129,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
-            "Brief effect description": "DEF +10% (up to 40%) based on 'How many attacks has this character performed in battle' after attacking"
+            "Brief effect description": "DEF +10% (up to 40%) based on 'How many attacks has this character performed in battle' after attacking",
+            "Line description": "DEF +10% (up to 40%) based on 'How many attacks has this character performed in battle' after attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4003572": {
             "ID": "4003572",
@@ -135,7 +152,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2638 || 2639",
+                "Logic": "(2638 || 2639)",
                 "Causalities": {
                     "2638": {
                         "Button": {
@@ -146,7 +163,8 @@
                             "Logic": "==2",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 2nd attacker in the turn"
                     },
                     "2639": {
                         "Button": {
@@ -157,12 +175,16 @@
                             "Logic": "==3",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 3rd attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2638|2639\", \"compiled\": [\"|\", 2638, 2639]}",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 50% chance of becoming a super attack after all ki collected"
+            "Brief effect description": "Performs an additional attack with a 50% chance of becoming a super attack after all ki collected",
+            "Line description": "Performs an additional attack with a 50% chance of becoming a super attack after all ki collected",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 3,

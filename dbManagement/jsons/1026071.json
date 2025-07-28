@@ -22,6 +22,7 @@
     ],
     "Can EZA": false,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Saiyan Warrior Race",
         "The Saiyan Lineage",
@@ -56,8 +57,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Randomly changes Ki Spheres of a certain Type(TEQ excluded) to PHY Ki Spheres "
+            "Brief effect description": "Randomly changes Ki Spheres of a certain Type(TEQ excluded) to PHY Ki Spheres ",
+            "Line description": "Randomly changes Ki Spheres of a certain Type(TEQ excluded) to PHY Ki Spheres ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1003090": {
             "ID": "1003090",
@@ -72,8 +76,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +100% "
+            "Brief effect description": "ATK and DEF +100% ",
+            "Line description": "ATK and DEF +100% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2003090": {
             "ID": "2003090",
@@ -92,17 +99,24 @@
                 "Logic": "2044",
                 "Causalities": {
                     "2044": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2044\", \"compiled\": 2044}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +10% when attacking"
+            "Brief effect description": "ATK and DEF +10% when attacking",
+            "Line description": "ATK and DEF +10% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3003090": {
             "ID": "3003090",
@@ -118,31 +132,39 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2015 && 2044",
+                "Logic": "(2015&&2044)",
                 "Causalities": {
                     "2015": {
                         "Button": {
-                            "Name": "Are there 2 or more Super Heroes category units on the team on this turn?"
+                            "Name": "Are there 2 or more Super Heroes category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Super Heroes category units on the team on this turn?",
+                            "Name": "How many Super Heroes category allies on this turn?",
                             "Logic": ">=2",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Super Heroes Category allies "
                     },
                     "2044": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2015&2044\", \"compiled\": [\"&\", 2015, 2044]}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +10% when attacking"
+            "Brief effect description": "ATK and DEF +10% when attacking",
+            "Line description": "ATK and DEF +10% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4003090": {
             "ID": "4003090",
@@ -158,31 +180,39 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2016 && 2044",
+                "Logic": "(2016&&2044)",
                 "Causalities": {
                     "2016": {
                         "Button": {
-                            "Name": "Are there 3 or more Super Heroes category units on the team on this turn?"
+                            "Name": "Are there 3 or more Super Heroes category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Super Heroes category units on the team on this turn?",
+                            "Name": "How many Super Heroes category allies on this turn?",
                             "Logic": ">=3",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 3 or more Super Heroes Category allies "
                     },
                     "2044": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2016&2044\", \"compiled\": [\"&\", 2016, 2044]}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +10% when attacking"
+            "Brief effect description": "ATK and DEF +10% when attacking",
+            "Line description": "ATK and DEF +10% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5003090": {
             "ID": "5003090",
@@ -198,31 +228,39 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2017 && 2044",
+                "Logic": "(2017&&2044)",
                 "Causalities": {
                     "2017": {
                         "Button": {
-                            "Name": "Are there 4 or more Super Heroes category units on the team on this turn?"
+                            "Name": "Are there 4 or more Super Heroes category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Super Heroes category units on the team on this turn?",
+                            "Name": "How many Super Heroes category allies on this turn?",
                             "Logic": ">=4",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 4 or more Super Heroes Category allies "
                     },
                     "2044": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2017&2044\", \"compiled\": [\"&\", 2017, 2044]}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +10% when attacking"
+            "Brief effect description": "ATK and DEF +10% when attacking",
+            "Line description": "ATK and DEF +10% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6003090": {
             "ID": "6003090",
@@ -238,31 +276,39 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2018 && 2044",
+                "Logic": "(2018&&2044)",
                 "Causalities": {
                     "2018": {
                         "Button": {
-                            "Name": "Are there 5 or more Super Heroes category units on the team on this turn?"
+                            "Name": "Are there 5 or more Super Heroes category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Super Heroes category units on the team on this turn?",
+                            "Name": "How many Super Heroes category allies on this turn?",
                             "Logic": ">=5",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 5 or more Super Heroes Category allies "
                     },
                     "2044": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2018&2044\", \"compiled\": [\"&\", 2018, 2044]}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +10% when attacking"
+            "Brief effect description": "ATK and DEF +10% when attacking",
+            "Line description": "ATK and DEF +10% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "7003090": {
             "ID": "7003090",
@@ -278,31 +324,39 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2019 && 2044",
+                "Logic": "(2019&&2044)",
                 "Causalities": {
                     "2019": {
                         "Button": {
-                            "Name": "Are there 6 or more Super Heroes category units on the team on this turn?"
+                            "Name": "Are there 6 or more Super Heroes category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Super Heroes category units on the team on this turn?",
+                            "Name": "How many Super Heroes category allies on this turn?",
                             "Logic": ">=6",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 6 or more Super Heroes Category allies "
                     },
                     "2044": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2019&2044\", \"compiled\": [\"&\", 2019, 2044]}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +10% when attacking"
+            "Brief effect description": "ATK and DEF +10% when attacking",
+            "Line description": "ATK and DEF +10% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "8003090": {
             "ID": "8003090",
@@ -318,31 +372,39 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2020 && 2044",
+                "Logic": "(2020&&2044)",
                 "Causalities": {
                     "2020": {
                         "Button": {
-                            "Name": "Are there 7 or more Super Heroes category units on the team on this turn?"
+                            "Name": "Are there 7 or more Super Heroes category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Super Heroes category units on the team on this turn?",
+                            "Name": "How many Super Heroes category allies on this turn?",
                             "Logic": ">=7",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 7 or more Super Heroes Category allies "
                     },
                     "2044": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2020&2044\", \"compiled\": [\"&\", 2020, 2044]}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +10% when attacking"
+            "Brief effect description": "ATK and DEF +10% when attacking",
+            "Line description": "ATK and DEF +10% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "9003090": {
             "ID": "9003090",
@@ -369,12 +431,16 @@
                             "Logic": ">=3",
                             "Min": 0,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "With 3 or more Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2012\", \"compiled\": 2012}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +100% after this unit collects ki spheres"
+            "Brief effect description": "ATK and DEF +100% after this unit collects ki spheres",
+            "Line description": "ATK and DEF +100% after this unit collects ki spheres",
+            "Paragraph Title": "Basic effects(s)"
         },
         "10003090": {
             "ID": "10003090",
@@ -400,12 +466,16 @@
                             "Logic": ">=5",
                             "Min": 0,
                             "Max": 5
-                        }
+                        },
+                        "Paragraph Title": "With 5 or more Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2013\", \"compiled\": 2013}",
             "Type": "Single activator",
-            "Brief effect description": "DEF +50% after this unit collects ki spheres"
+            "Brief effect description": "DEF +50% after this unit collects ki spheres",
+            "Line description": "DEF +50% after this unit collects ki spheres",
+            "Paragraph Title": "Basic effects(s)"
         },
         "11003090": {
             "ID": "11003090",
@@ -431,12 +501,16 @@
                             "Logic": ">=5",
                             "Min": 0,
                             "Max": 5
-                        }
+                        },
+                        "Paragraph Title": "With 5 or more Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2013\", \"compiled\": 2013}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of performing a critical hit +50% after this unit collects ki spheres"
+            "Brief effect description": "Chance of performing a critical hit +50% after this unit collects ki spheres",
+            "Line description": "Chance of performing a critical hit +50% after this unit collects ki spheres",
+            "Paragraph Title": "Basic effects(s)"
         },
         "12003090": {
             "ID": "12003090",
@@ -462,12 +536,16 @@
                             "Logic": ">=7",
                             "Min": 0,
                             "Max": 7
-                        }
+                        },
+                        "Paragraph Title": "With 7 or more Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2014\", \"compiled\": 2014}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +50% after this unit collects ki spheres"
+            "Brief effect description": "ATK +50% after this unit collects ki spheres",
+            "Line description": "ATK +50% after this unit collects ki spheres",
+            "Paragraph Title": "Basic effects(s)"
         },
         "13003090": {
             "ID": "13003090",
@@ -498,12 +576,16 @@
                             "Logic": ">=7",
                             "Min": 0,
                             "Max": 7
-                        }
+                        },
+                        "Paragraph Title": "With 7 or more Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2014\", \"compiled\": 2014}",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack after this unit collects ki spheres"
+            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack after this unit collects ki spheres",
+            "Line description": "Performs an additional attack with a 100% chance of becoming a super attack after this unit collects ki spheres",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 3,

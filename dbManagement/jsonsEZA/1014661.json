@@ -20,6 +20,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "seza",
     "Links": [
         "Android Assault",
         "Metamorphosis",
@@ -44,8 +45,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +120% "
+            "Brief effect description": "ATK and DEF +120% ",
+            "Line description": "ATK and DEF +120% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1002631": {
             "ID": "1002631",
@@ -59,8 +63,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Ki +3 "
+            "Brief effect description": "Ki +3 ",
+            "Line description": "Ki +3 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2002631": {
             "ID": "2002631",
@@ -79,17 +86,24 @@
                 "Logic": "1100",
                 "Causalities": {
                     "1100": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"1100\", \"compiled\": 1100}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +21% when attacking"
+            "Brief effect description": "ATK and DEF +21% when attacking",
+            "Line description": "ATK and DEF +21% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3002631": {
             "ID": "3002631",
@@ -105,15 +119,19 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1100 && 1101",
+                "Logic": "(1100&&1101)",
                 "Causalities": {
                     "1100": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     },
                     "1101": {
                         "Button": {
@@ -124,12 +142,16 @@
                             "Logic": ">=80",
                             "Min": 0,
                             "Max": 100
-                        }
+                        },
+                        "Paragraph Title": "When HP is 80% or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"1100&1101\", \"compiled\": [\"&\", 1100, 1101]}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +21% when attacking"
+            "Brief effect description": "ATK and DEF +21% when attacking",
+            "Line description": "ATK and DEF +21% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4002631": {
             "ID": "4002631",
@@ -144,8 +166,11 @@
                 "+ or -": "-"
             },
             "Length": "2",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": " allies ATK and DEF -21% after attacking"
+            "Brief effect description": " allies ATK and DEF -21% after attacking",
+            "Line description": " allies ATK and DEF -21% after attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5002631": {
             "ID": "5002631",
@@ -180,12 +205,16 @@
                             "Logic": ">=40",
                             "Min": 0,
                             "Max": 100
-                        }
+                        },
+                        "Paragraph Title": "When HP is 40% or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"1102\", \"compiled\": 1102}",
             "Type": "Single activator",
-            "Brief effect description": "Transforms into 4014751 "
+            "Brief effect description": "Transforms into 4014751 ",
+            "Line description": "Transforms into 4014751 ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,

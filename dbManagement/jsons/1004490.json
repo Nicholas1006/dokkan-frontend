@@ -15,6 +15,7 @@
     ],
     "Can EZA": false,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Master of Magic",
         "Thirst for Conquest",
@@ -37,8 +38,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +20000 "
+            "Brief effect description": "ATK and DEF +20000 ",
+            "Line description": "ATK and DEF +20000 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1002338": {
             "ID": "1002338",
@@ -53,27 +57,27 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "421 || 422 || 535",
+                "Logic": "(421 || 422)",
                 "Causalities": {
                     "421": {
                         "Button": {
                             "Name": "Is the target enemy in \"ATK down\" status on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "When the target enemy is in \"ATK down\" status"
                     },
                     "422": {
                         "Button": {
                             "Name": "Is the target enemy in \"DEF down\" status on this turn?"
-                        }
-                    },
-                    "535": {
-                        "Button": {
-                            "Name": "Is the target enemy stunned on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "When the target enemy is in \"DEF down\" status"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"421|422|535\", \"compiled\": [\"|\", 421, 422, 535]}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +10000 when attacking"
+            "Brief effect description": "ATK +10000 when attacking",
+            "Line description": "ATK +10000 when attacking",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 1,

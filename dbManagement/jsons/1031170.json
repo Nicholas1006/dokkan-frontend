@@ -27,6 +27,7 @@
     ],
     "Can EZA": false,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Super Saiyan",
         "Warrior Gods",
@@ -49,8 +50,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Ki +2 "
+            "Brief effect description": "Ki +2 ",
+            "Line description": "Ki +2 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1004599": {
             "ID": "1004599",
@@ -65,8 +69,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +150% "
+            "Brief effect description": "ATK and DEF +150% ",
+            "Line description": "ATK and DEF +150% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2004599": {
             "ID": "2004599",
@@ -80,8 +87,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Chance of performing a critical hit +30% "
+            "Brief effect description": "Chance of performing a critical hit +30% ",
+            "Line description": "Chance of performing a critical hit +30% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3004599": {
             "ID": "3004599",
@@ -95,8 +105,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Chance of evading enemy attacks +30% "
+            "Brief effect description": "Chance of evading enemy attacks +30% ",
+            "Line description": "Chance of evading enemy attacks +30% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4004599": {
             "ID": "4004599",
@@ -115,17 +128,24 @@
                 "Logic": "1901",
                 "Causalities": {
                     "1901": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"1901\", \"compiled\": 1901}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +150% when attacking"
+            "Brief effect description": "ATK and DEF +150% when attacking",
+            "Line description": "ATK and DEF +150% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5004599": {
             "ID": "5004599",
@@ -140,15 +160,19 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1901 && 1947",
+                "Logic": "(1901&&1947)",
                 "Causalities": {
                     "1901": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     },
                     "1947": {
                         "Button": {
@@ -159,12 +183,16 @@
                             "Logic": ">=70",
                             "Min": 0,
                             "Max": 100
-                        }
+                        },
+                        "Paragraph Title": "When HP is 70% or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"1901&1947\", \"compiled\": [\"&\", 1901, 1947]}",
             "Type": "Single activator",
-            "Brief effect description": "DEF +70% when attacking"
+            "Brief effect description": "DEF +70% when attacking",
+            "Line description": "DEF +70% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6004599": {
             "ID": "6004599",
@@ -179,15 +207,19 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1901 && 2086",
+                "Logic": "(1901&&2086)",
                 "Causalities": {
                     "1901": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     },
                     "2086": {
                         "Button": {
@@ -198,12 +230,16 @@
                             "Logic": "<=70",
                             "Min": 0,
                             "Max": 100
-                        }
+                        },
+                        "Paragraph Title": "When HP is 70% or less"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"1901&2086\", \"compiled\": [\"&\", 1901, 2086]}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +70% when attacking"
+            "Brief effect description": "ATK +70% when attacking",
+            "Line description": "ATK +70% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "7004599": {
             "ID": "7004599",
@@ -229,12 +265,16 @@
                             "Logic": ">=1",
                             "Min": 0,
                             "Max": 1
-                        }
+                        },
+                        "Paragraph Title": "With 1 or more TEQ Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"792\", \"compiled\": 792}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +70% after this unit collects ki spheres"
+            "Brief effect description": "ATK +70% after this unit collects ki spheres",
+            "Line description": "ATK +70% after this unit collects ki spheres",
+            "Paragraph Title": "Basic effects(s)"
         },
         "8004599": {
             "ID": "8004599",
@@ -264,12 +304,16 @@
                             "Logic": ">=1",
                             "Min": 0,
                             "Max": 1
-                        }
+                        },
+                        "Paragraph Title": "With 1 or more TEQ Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"792\", \"compiled\": 792}",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 50% chance of becoming a super attack after this unit collects ki spheres"
+            "Brief effect description": "Performs an additional attack with a 50% chance of becoming a super attack after this unit collects ki spheres",
+            "Line description": "Performs an additional attack with a 50% chance of becoming a super attack after this unit collects ki spheres",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,

@@ -22,6 +22,7 @@
     ],
     "Can EZA": false,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Saiyan Warrior Race",
         "Super Saiyan",
@@ -45,8 +46,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +140% "
+            "Brief effect description": "ATK and DEF +140% ",
+            "Line description": "ATK and DEF +140% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1002286": {
             "ID": "1002286",
@@ -65,19 +69,23 @@
                 "Causalities": {
                     "744": {
                         "Button": {
-                            "Name": "Are there 5 or more Giant Ape Power category units on the team on this turn?"
+                            "Name": "Are there 5 or more Giant Ape Power category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Giant Ape Power category units on the team on this turn?",
+                            "Name": "How many Giant Ape Power category allies on this turn?",
                             "Logic": ">=5",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 5 or more Giant Ape Power Category allies "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"744\", \"compiled\": 744}",
             "Type": "Single activator",
-            "Brief effect description": "Damage recieved -40% right before being hit"
+            "Brief effect description": "Damage recieved -40% right before being hit",
+            "Line description": "Damage recieved -40% right before being hit",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2002286": {
             "ID": "2002286",
@@ -98,17 +106,24 @@
                 "Logic": "630",
                 "Causalities": {
                     "630": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"630\", \"compiled\": 630}",
             "Type": "Single activator",
-            "Brief effect description": " allies Stun after attacking"
+            "Brief effect description": " allies Stun after attacking",
+            "Line description": " allies Stun after attacking",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 1,

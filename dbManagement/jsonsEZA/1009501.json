@@ -29,6 +29,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "seza",
     "Links": [
         "Golden Warrior",
         "Saiyan Warrior Race",
@@ -52,8 +53,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Ki +3 "
+            "Brief effect description": "Ki +3 ",
+            "Line description": "Ki +3 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1001679": {
             "ID": "1001679",
@@ -68,8 +72,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +77% "
+            "Brief effect description": "ATK and DEF +77% ",
+            "Line description": "ATK and DEF +77% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2001679": {
             "ID": "2001679",
@@ -84,25 +91,33 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "297 && 350",
+                "Logic": "(297&&350)",
                 "Causalities": {
                     "297": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     },
                     "350": {
                         "Button": {
                             "Name": "Is there an ally attacking on this turn whose name includes Super Saiyan Goku?"
-                        }
+                        },
+                        "Paragraph Title": "When there is an ally whose name includes \"Super Saiyan Goku\" attacking in the same turn "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"297&350\", \"compiled\": [\"&\", 297, 350]}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +59% when attacking"
+            "Brief effect description": "ATK +59% when attacking",
+            "Line description": "ATK +59% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,

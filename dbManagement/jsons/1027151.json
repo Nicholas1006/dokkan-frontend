@@ -18,6 +18,7 @@
     ],
     "Can EZA": false,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "The Innocents",
         "Twin Terrors",
@@ -40,8 +41,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Ki +2 "
+            "Brief effect description": "Ki +2 ",
+            "Line description": "Ki +2 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1003539": {
             "ID": "1003539",
@@ -56,8 +60,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +118% "
+            "Brief effect description": "ATK and DEF +118% ",
+            "Line description": "ATK and DEF +118% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2003539": {
             "ID": "2003539",
@@ -76,17 +83,24 @@
                 "Logic": "2570",
                 "Causalities": {
                     "2570": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2570\", \"compiled\": 2570}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +118% when attacking"
+            "Brief effect description": "ATK and DEF +118% when attacking",
+            "Line description": "ATK and DEF +118% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3003539": {
             "ID": "3003539",
@@ -101,18 +115,19 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2571 || 2572",
+                "Logic": "(2571 || 2572)",
                 "Causalities": {
                     "2571": {
                         "Button": {
-                            "Name": "Are there 5 or more Peppy Gals category units on the team on this turn?"
+                            "Name": "Are there 5 or more Peppy Gals category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Peppy Gals category units on the team on this turn?",
+                            "Name": "How many Peppy Gals category allies on this turn?",
                             "Logic": ">=5",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 5 or more Peppy Gals Category allies "
                     },
                     "2572": {
                         "Button": {
@@ -123,12 +138,16 @@
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 1 or more PHY  type enemies"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2571|2572\", \"compiled\": [\"|\", 2571, 2572]}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +118% "
+            "Brief effect description": "ATK +118% ",
+            "Line description": "ATK +118% ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,

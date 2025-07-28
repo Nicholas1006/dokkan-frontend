@@ -21,6 +21,7 @@
     ],
     "Can EZA": false,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "The Innocents",
         "Golden Warrior",
@@ -44,8 +45,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Ki +2 "
+            "Brief effect description": "Ki +2 ",
+            "Line description": "Ki +2 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1003085": {
             "ID": "1003085",
@@ -60,8 +64,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +120% "
+            "Brief effect description": "ATK and DEF +120% ",
+            "Line description": "ATK and DEF +120% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2003085": {
             "ID": "2003085",
@@ -79,17 +86,24 @@
                 "Logic": "1984",
                 "Causalities": {
                     "1984": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"1984\", \"compiled\": 1984}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +70% when attacking"
+            "Brief effect description": "ATK +70% when attacking",
+            "Line description": "ATK +70% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3003085": {
             "ID": "3003085",
@@ -104,7 +118,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1985 || 1986",
+                "Logic": "(1985 || 1986)",
                 "Causalities": {
                     "1985": {
                         "Button": {
@@ -115,7 +129,8 @@
                             "Logic": "==1",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 1st attacker in the turn"
                     },
                     "1986": {
                         "Button": {
@@ -126,12 +141,16 @@
                             "Logic": "==2",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 2nd attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"1985|1986\", \"compiled\": [\"|\", 1985, 1986]}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of evading enemy attacks +30% after all ki collected"
+            "Brief effect description": "Chance of evading enemy attacks +30% after all ki collected",
+            "Line description": "Chance of evading enemy attacks +30% after all ki collected",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4003085": {
             "ID": "4003085",
@@ -151,19 +170,23 @@
                 "Causalities": {
                     "1987": {
                         "Button": {
-                            "Name": "Are there 1 or more Goku's Family category units on the team on this turn?"
+                            "Name": "Are there 1 or more Goku's Family category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Goku's Family category units on the team on this turn?",
+                            "Name": "How many Goku's Family category allies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 1 or more Goku's Family Category allies "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"1987\", \"compiled\": 1987}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +70% "
+            "Brief effect description": "ATK and DEF +70% ",
+            "Line description": "ATK and DEF +70% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5003085": {
             "ID": "5003085",
@@ -184,12 +207,16 @@
                     "1988": {
                         "Button": {
                             "Name": "Is there an ally attacking on this turn whose name includes Goten (Kid)?"
-                        }
+                        },
+                        "Paragraph Title": "When there is an ally whose name includes \"Goten (Kid)\" attacking in the same turn "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"1988\", \"compiled\": 1988}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +70% "
+            "Brief effect description": "ATK and DEF +70% ",
+            "Line description": "ATK and DEF +70% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6003085": {
             "ID": "6003085",
@@ -209,12 +236,16 @@
                     "1988": {
                         "Button": {
                             "Name": "Is there an ally attacking on this turn whose name includes Goten (Kid)?"
-                        }
+                        },
+                        "Paragraph Title": "When there is an ally whose name includes \"Goten (Kid)\" attacking in the same turn "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"1988\", \"compiled\": 1988}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of evading enemy attacks +20% "
+            "Brief effect description": "Chance of evading enemy attacks +20% ",
+            "Line description": "Chance of evading enemy attacks +20% ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,

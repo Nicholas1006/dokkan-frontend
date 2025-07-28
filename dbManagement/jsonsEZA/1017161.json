@@ -21,6 +21,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "seza",
     "Links": [
         "Brutal Beatdown",
         "Strongest Clan in Space",
@@ -45,8 +46,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +60% "
+            "Brief effect description": "ATK and DEF +60% ",
+            "Line description": "ATK and DEF +60% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1001530": {
             "ID": "1001530",
@@ -72,12 +76,16 @@
                             "Logic": ">=2",
                             "Min": 1,
                             "Max": 7
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more enemies"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"22\", \"compiled\": 22}",
             "Type": "Single activator",
-            "Brief effect description": "Ki +6 "
+            "Brief effect description": "Ki +6 ",
+            "Line description": "Ki +6 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2001530": {
             "ID": "2001530",
@@ -104,12 +112,16 @@
                             "Logic": ">=2",
                             "Min": 1,
                             "Max": 7
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more enemies"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"22\", \"compiled\": 22}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +40% "
+            "Brief effect description": "ATK and DEF +40% ",
+            "Line description": "ATK and DEF +40% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3001530": {
             "ID": "3001530",
@@ -129,12 +141,16 @@
                     "206": {
                         "Button": {
                             "Name": "Is the target enemy in \"DEF down\" status on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "When the target enemy is in \"DEF down\" status"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"206\", \"compiled\": 206}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +60% when attacking"
+            "Brief effect description": "ATK +60% when attacking",
+            "Line description": "ATK +60% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,
@@ -437,7 +453,7 @@
         "Effect Description": "Causes supreme damage to enemy and \ngreatly lowers ATK & DEF",
         "Condition Description": "Can be activated when facing 3 or more \nenemies starting from the 3rd turn \nfrom the start of battle (once only)",
         "Condition": {
-            "Logic": "4  &&  18",
+            "Logic": "(4&&18)",
             "Causalities": {
                 "4": {
                     "Button": {
@@ -447,7 +463,8 @@
                         "Name": "What turn is it?",
                         "Logic": ">=3",
                         "Min": 1
-                    }
+                    },
+                    "Paragraph Title": "When the turn count is 3"
                 },
                 "18": {
                     "Button": {
@@ -458,7 +475,8 @@
                         "Logic": ">=3",
                         "Min": 1,
                         "Max": 7
-                    }
+                    },
+                    "Paragraph Title": "When there are 3 or more enemies"
                 }
             }
         },

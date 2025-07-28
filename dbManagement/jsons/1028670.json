@@ -18,6 +18,7 @@
     ],
     "Can EZA": false,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Supreme Warrior",
         "Tough as Nails",
@@ -41,8 +42,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +150% "
+            "Brief effect description": "ATK and DEF +150% ",
+            "Line description": "ATK and DEF +150% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1004095": {
             "ID": "1004095",
@@ -60,17 +64,24 @@
                 "Logic": "47",
                 "Causalities": {
                     "47": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"47\", \"compiled\": 47}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +100% when attacking"
+            "Brief effect description": "ATK +100% when attacking",
+            "Line description": "ATK +100% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2004095": {
             "ID": "2004095",
@@ -84,8 +95,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Damage recieved -11% "
+            "Brief effect description": "Damage recieved -11% ",
+            "Line description": "Damage recieved -11% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3004095": {
             "ID": "3004095",
@@ -106,8 +120,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Special Pose category allies ATK and DEF +20% "
+            "Brief effect description": "Special Pose category allies ATK and DEF +20% ",
+            "Line description": "Special Pose category allies ATK and DEF +20% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4004095": {
             "ID": "4004095",
@@ -128,8 +145,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Defenders of Justice category allies ATK and DEF +20% "
+            "Brief effect description": "Defenders of Justice category allies ATK and DEF +20% ",
+            "Line description": "Defenders of Justice category allies ATK and DEF +20% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5004095": {
             "ID": "5004095",
@@ -155,12 +175,16 @@
                             "Logic": "==1",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 1st attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"25\", \"compiled\": 25}",
             "Type": "Single activator",
-            "Brief effect description": "DEF +100% after all ki collected"
+            "Brief effect description": "DEF +100% after all ki collected",
+            "Line description": "DEF +100% after all ki collected",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6004095": {
             "ID": "6004095",
@@ -176,15 +200,19 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "47 && (26 || 33)",
+                "Logic": "(47&&(26 || 33))",
                 "Causalities": {
                     "47": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     },
                     "26": {
                         "Button": {
@@ -195,7 +223,8 @@
                             "Logic": "==2",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 2nd attacker in the turn"
                     },
                     "33": {
                         "Button": {
@@ -206,12 +235,16 @@
                             "Logic": "==3",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 3rd attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"47&(26|33)\", \"compiled\": [\"&\", 47, [\"|\", 26, 33]]}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +50% when attacking"
+            "Brief effect description": "ATK and DEF +50% when attacking",
+            "Line description": "ATK and DEF +50% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 1,

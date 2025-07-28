@@ -15,6 +15,7 @@
     ],
     "Can EZA": false,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Berserker",
         "Big Bad Bosses",
@@ -38,8 +39,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Ki +3 "
+            "Brief effect description": "Ki +3 ",
+            "Line description": "Ki +3 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1003082": {
             "ID": "1003082",
@@ -54,8 +58,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +80% "
+            "Brief effect description": "ATK and DEF +80% ",
+            "Line description": "ATK and DEF +80% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2003082": {
             "ID": "2003082",
@@ -82,12 +89,16 @@
                             "Logic": ">=1",
                             "Min": 0,
                             "Max": 1
-                        }
+                        },
+                        "Paragraph Title": "After recieving an attack"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"1969\", \"compiled\": 1969}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +100% after being hit"
+            "Brief effect description": "ATK and DEF +100% after being hit",
+            "Line description": "ATK and DEF +100% after being hit",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3003082": {
             "ID": "3003082",
@@ -101,8 +112,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Damage recieved -20% "
+            "Brief effect description": "Damage recieved -20% ",
+            "Line description": "Damage recieved -20% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4003082": {
             "ID": "4003082",
@@ -117,34 +131,39 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1970 || 1971",
+                "Logic": "(1970 || 1971)",
                 "Causalities": {
                     "1970": {
                         "Button": {
-                            "Name": "Are there 1 or more Pure Saiyans category enemies on this turn?"
+                            "Name": "Are there 1 or more Pure Saiyans category enemies  on this turn?"
                         },
                         "Slider": {
                             "Name": "How many Pure Saiyans category enemies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 1 or more Pure Saiyans Category enemies "
                     },
                     "1971": {
                         "Button": {
-                            "Name": "Are there 1 or more Hybrid Saiyans category enemies on this turn?"
+                            "Name": "Are there 1 or more Hybrid Saiyans category enemies  on this turn?"
                         },
                         "Slider": {
                             "Name": "How many Hybrid Saiyans category enemies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 1 or more Hybrid Saiyans Category enemies "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"1970|1971\", \"compiled\": [\"|\", 1970, 1971]}",
             "Type": "Single activator",
-            "Brief effect description": "Damage recieved -20% "
+            "Brief effect description": "Damage recieved -20% ",
+            "Line description": "Damage recieved -20% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5003082": {
             "ID": "5003082",
@@ -160,34 +179,39 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1970 || 1971",
+                "Logic": "(1970 || 1971)",
                 "Causalities": {
                     "1970": {
                         "Button": {
-                            "Name": "Are there 1 or more Pure Saiyans category enemies on this turn?"
+                            "Name": "Are there 1 or more Pure Saiyans category enemies  on this turn?"
                         },
                         "Slider": {
                             "Name": "How many Pure Saiyans category enemies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 1 or more Pure Saiyans Category enemies "
                     },
                     "1971": {
                         "Button": {
-                            "Name": "Are there 1 or more Hybrid Saiyans category enemies on this turn?"
+                            "Name": "Are there 1 or more Hybrid Saiyans category enemies  on this turn?"
                         },
                         "Slider": {
                             "Name": "How many Hybrid Saiyans category enemies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 1 or more Hybrid Saiyans Category enemies "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"1970|1971\", \"compiled\": [\"|\", 1970, 1971]}",
             "Type": "Single activator",
-            "Brief effect description": "Extreme class allies Ki +3 "
+            "Brief effect description": "Extreme class allies Ki +3 ",
+            "Line description": "Extreme class allies Ki +3 ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,
@@ -1155,50 +1179,31 @@
         "Effect Description": "Turns into Giant Form",
         "Condition Description": "Can be activated when there is a \"Pure Saiyans\" \nor \"Hybrid Saiyans\" Category enemy, or when \nHP is 80% or less starting from the 5th turn \nfrom the start of battle (once only)",
         "Condition": {
-            "Logic": "1970 || 1971 || 1972 && 1973",
+            "Logic": "(1970 || 1971)",
             "Causalities": {
                 "1970": {
                     "Button": {
-                        "Name": "Are there 1 or more Pure Saiyans category enemies "
+                        "Name": "Are there 1 or more Pure Saiyans category enemies ?"
                     },
                     "Slider": {
                         "Name": "How many Pure Saiyans category enemies ",
                         "Logic": ">=1",
                         "Max": 7,
                         "Min": 0
-                    }
+                    },
+                    "Paragraph Title": "When there are 1 or more Pure Saiyans Category enemies "
                 },
                 "1971": {
                     "Button": {
-                        "Name": "Are there 1 or more Hybrid Saiyans category enemies "
+                        "Name": "Are there 1 or more Hybrid Saiyans category enemies ?"
                     },
                     "Slider": {
                         "Name": "How many Hybrid Saiyans category enemies ",
                         "Logic": ">=1",
                         "Max": 7,
                         "Min": 0
-                    }
-                },
-                "1972": {
-                    "Button": {
-                        "Name": "Is the turn count 5 or more?"
                     },
-                    "Slider": {
-                        "Name": "What turn is it?",
-                        "Logic": ">=5",
-                        "Min": 1
-                    }
-                },
-                "1973": {
-                    "Button": {
-                        "Name": "Is HP 80 % or less?"
-                    },
-                    "Slider": {
-                        "Name": "What percentage of HP is remaining?",
-                        "Logic": "<=80",
-                        "Min": 0,
-                        "Max": 100
-                    }
+                    "Paragraph Title": "When there are 1 or more Hybrid Saiyans Category enemies "
                 }
             }
         },

@@ -17,6 +17,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "seza",
     "Links": [
         "Flee",
         "Solid Support",
@@ -40,8 +41,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +150% "
+            "Brief effect description": "ATK and DEF +150% ",
+            "Line description": "ATK and DEF +150% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1003473": {
             "ID": "1003473",
@@ -60,17 +64,24 @@
                 "Logic": "2385",
                 "Causalities": {
                     "2385": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2385\", \"compiled\": 2385}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +120% when attacking"
+            "Brief effect description": "ATK and DEF +120% when attacking",
+            "Line description": "ATK and DEF +120% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2003473": {
             "ID": "2003473",
@@ -85,8 +96,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Super class allies Ki +1 "
+            "Brief effect description": "Super class allies Ki +1 ",
+            "Line description": "Super class allies Ki +1 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3003473": {
             "ID": "3003473",
@@ -102,8 +116,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Super class allies ATK and DEF +20% "
+            "Brief effect description": "Super class allies ATK and DEF +20% ",
+            "Line description": "Super class allies ATK and DEF +20% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4003473": {
             "ID": "4003473",
@@ -122,19 +139,23 @@
                 "Causalities": {
                     "2386": {
                         "Button": {
-                            "Name": "Are there 1 or more Peppy Gals category units on the team on this turn?"
+                            "Name": "Are there 1 or more Peppy Gals category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Peppy Gals category units on the team on this turn?",
+                            "Name": "How many Peppy Gals category allies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 1 or more Peppy Gals Category allies "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2386\", \"compiled\": 2386}",
             "Type": "Single activator",
-            "Brief effect description": "DEF +150% "
+            "Brief effect description": "DEF +150% ",
+            "Line description": "DEF +150% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5003473": {
             "ID": "5003473",
@@ -153,18 +174,19 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2386 && 2387",
+                "Logic": "(2386&&2387)",
                 "Causalities": {
                     "2386": {
                         "Button": {
-                            "Name": "Are there 1 or more Peppy Gals category units on the team on this turn?"
+                            "Name": "Are there 1 or more Peppy Gals category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Peppy Gals category units on the team on this turn?",
+                            "Name": "How many Peppy Gals category allies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 1 or more Peppy Gals Category allies "
                     },
                     "2387": {
                         "Button": {
@@ -174,12 +196,16 @@
                             "Name": "What turn is it on this turn?",
                             "Logic": ">=5",
                             "Min": 1
-                        }
+                        },
+                        "Paragraph Title": "When the turn count is 5"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2386&2387\", \"compiled\": [\"&\", 2386, 2387]}",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 70% chance of becoming a super attack "
+            "Brief effect description": "Performs an additional attack with a 70% chance of becoming a super attack ",
+            "Line description": "Performs an additional attack with a 70% chance of becoming a super attack ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6003473": {
             "ID": "6003473",
@@ -195,18 +221,19 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2386 && 2387",
+                "Logic": "(2386&&2387)",
                 "Causalities": {
                     "2386": {
                         "Button": {
-                            "Name": "Are there 1 or more Peppy Gals category units on the team on this turn?"
+                            "Name": "Are there 1 or more Peppy Gals category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Peppy Gals category units on the team on this turn?",
+                            "Name": "How many Peppy Gals category allies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 1 or more Peppy Gals Category allies "
                     },
                     "2387": {
                         "Button": {
@@ -216,12 +243,16 @@
                             "Name": "What turn is it on this turn?",
                             "Logic": ">=5",
                             "Min": 1
-                        }
+                        },
+                        "Paragraph Title": "When the turn count is 5"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2386&2387\", \"compiled\": [\"&\", 2386, 2387]}",
             "Type": "Single activator",
-            "Brief effect description": "Super class allies Ki +2 "
+            "Brief effect description": "Super class allies Ki +2 ",
+            "Line description": "Super class allies Ki +2 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "7003473": {
             "ID": "7003473",
@@ -238,18 +269,19 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2386 && 2387",
+                "Logic": "(2386&&2387)",
                 "Causalities": {
                     "2386": {
                         "Button": {
-                            "Name": "Are there 1 or more Peppy Gals category units on the team on this turn?"
+                            "Name": "Are there 1 or more Peppy Gals category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Peppy Gals category units on the team on this turn?",
+                            "Name": "How many Peppy Gals category allies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 1 or more Peppy Gals Category allies "
                     },
                     "2387": {
                         "Button": {
@@ -259,12 +291,16 @@
                             "Name": "What turn is it on this turn?",
                             "Logic": ">=5",
                             "Min": 1
-                        }
+                        },
+                        "Paragraph Title": "When the turn count is 5"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2386&2387\", \"compiled\": [\"&\", 2386, 2387]}",
             "Type": "Single activator",
-            "Brief effect description": "Super class allies ATK and DEF +30% "
+            "Brief effect description": "Super class allies ATK and DEF +30% ",
+            "Line description": "Super class allies ATK and DEF +30% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "8003473": {
             "ID": "8003473",
@@ -283,19 +319,23 @@
                 "Causalities": {
                     "2388": {
                         "Button": {
-                            "Name": "Are there 1 or more Peppy Gals category units on this turn "
+                            "Name": "Are there 1 or more Peppy Gals category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Peppy Gals category units on this turn ",
+                            "Name": "How many Peppy Gals category allies attacking on this turn",
                             "Logic": ">=1",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 1 or more Peppy Gals Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2388\", \"compiled\": 2388}",
             "Type": "Single activator",
-            "Brief effect description": "Guards all attacks "
+            "Brief effect description": "Guards all attacks ",
+            "Line description": "Guards all attacks ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 3,

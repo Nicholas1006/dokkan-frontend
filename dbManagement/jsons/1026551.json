@@ -24,6 +24,7 @@
     ],
     "Can EZA": false,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Big Bad Bosses",
         "Tough as Nails",
@@ -45,8 +46,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Ki +2 "
+            "Brief effect description": "Ki +2 ",
+            "Line description": "Ki +2 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1003461": {
             "ID": "1003461",
@@ -61,8 +65,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +120% "
+            "Brief effect description": "ATK and DEF +120% ",
+            "Line description": "ATK and DEF +120% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2003461": {
             "ID": "2003461",
@@ -84,8 +91,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "CausalityLogic": "{\"source\": \"2362\", \"compiled\": 2362}",
             "Type": "Building Stat",
-            "Brief effect description": "ATK +10% (up to 50%) based on 'How many super attacks has this character performed' after attacking"
+            "Brief effect description": "ATK +10% (up to 50%) based on 'How many super attacks has this character performed' after attacking",
+            "Line description": "ATK +10% (up to 50%) based on 'How many super attacks has this character performed' after attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3003461": {
             "ID": "3003461",
@@ -107,8 +117,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "CausalityLogic": "{\"source\": \"2362\", \"compiled\": 2362}",
             "Type": "Building Stat",
-            "Brief effect description": "DEF +10% (up to 50%) based on 'How many super attacks has this character performed' after attacking"
+            "Brief effect description": "DEF +10% (up to 50%) based on 'How many super attacks has this character performed' after attacking",
+            "Line description": "DEF +10% (up to 50%) based on 'How many super attacks has this character performed' after attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4003461": {
             "ID": "4003461",
@@ -135,12 +148,16 @@
                             "Logic": "==1",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 1st attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2357\", \"compiled\": 2357}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +50% after all ki collected"
+            "Brief effect description": "ATK and DEF +50% after all ki collected",
+            "Line description": "ATK and DEF +50% after all ki collected",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5003461": {
             "ID": "5003461",
@@ -167,12 +184,16 @@
                             "Logic": "==1",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 1st attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2357\", \"compiled\": 2357}",
             "Type": "Single activator",
-            "Brief effect description": "All enemies ATK and DEF -20% after all ki collected"
+            "Brief effect description": "All enemies ATK and DEF -20% after all ki collected",
+            "Line description": "All enemies ATK and DEF -20% after all ki collected",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6003461": {
             "ID": "6003461",
@@ -192,7 +213,7 @@
             "Chance": "30",
             "Length": "1",
             "Condition": {
-                "Logic": "2358 || 2359",
+                "Logic": "(2358 || 2359)",
                 "Causalities": {
                     "2358": {
                         "Button": {
@@ -203,7 +224,8 @@
                             "Logic": "==2",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 2nd attacker in the turn"
                     },
                     "2359": {
                         "Button": {
@@ -214,12 +236,16 @@
                             "Logic": "==3",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 3rd attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2358|2359\", \"compiled\": [\"|\", 2358, 2359]}",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack after all ki collected"
+            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack after all ki collected",
+            "Line description": "Performs an additional attack with a 100% chance of becoming a super attack after all ki collected",
+            "Paragraph Title": "Basic effects(s)"
         },
         "7003461": {
             "ID": "7003461",
@@ -235,15 +261,19 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2355 && 2358 || 2355 && 2359",
+                "Logic": "((2355&&2358) || (2355&&2359))",
                 "Causalities": {
                     "2355": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     },
                     "2358": {
                         "Button": {
@@ -254,7 +284,8 @@
                             "Logic": "==2",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 2nd attacker in the turn"
                     },
                     "2359": {
                         "Button": {
@@ -265,12 +296,16 @@
                             "Logic": "==3",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 3rd attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2355&2358|2355&2359\", \"compiled\": [\"|\", [\"&\", 2355, 2358], [\"&\", 2355, 2359]]}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +50% when attacking"
+            "Brief effect description": "ATK and DEF +50% when attacking",
+            "Line description": "ATK and DEF +50% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 3,

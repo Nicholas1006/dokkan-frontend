@@ -34,6 +34,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "seza",
     "Links": [
         "Super Saiyan",
         "Saiyan Warrior Race",
@@ -58,8 +59,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +150% "
+            "Brief effect description": "ATK and DEF +150% ",
+            "Line description": "ATK and DEF +150% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1003115": {
             "ID": "1003115",
@@ -81,8 +85,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
-            "Brief effect description": "Ki +2 (up to 8) based on 'How many turns has this character been on' "
+            "Brief effect description": "Ki +2 (up to 8) based on 'How many turns has this character been on' ",
+            "Line description": "Ki +2 (up to 8) based on 'How many turns has this character been on' ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2003115": {
             "ID": "2003115",
@@ -104,8 +111,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
-            "Brief effect description": "ATK +20% (up to 80%) based on 'How many turns has this character been on' "
+            "Brief effect description": "ATK +20% (up to 80%) based on 'How many turns has this character been on' ",
+            "Line description": "ATK +20% (up to 80%) based on 'How many turns has this character been on' ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3003115": {
             "ID": "3003115",
@@ -127,8 +137,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
-            "Brief effect description": "DEF +20% (up to 80%) based on 'How many turns has this character been on' "
+            "Brief effect description": "DEF +20% (up to 80%) based on 'How many turns has this character been on' ",
+            "Line description": "DEF +20% (up to 80%) based on 'How many turns has this character been on' ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4003115": {
             "ID": "4003115",
@@ -154,12 +167,16 @@
                             "Logic": ">=58",
                             "Min": 0,
                             "Max": 100
-                        }
+                        },
+                        "Paragraph Title": "When HP is 58% or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2053\", \"compiled\": 2053}",
             "Type": "Single activator",
-            "Brief effect description": "Guards all attacks "
+            "Brief effect description": "Guards all attacks ",
+            "Line description": "Guards all attacks ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5003115": {
             "ID": "5003115",
@@ -190,12 +207,16 @@
                             "Logic": ">=58",
                             "Min": 0,
                             "Max": 100
-                        }
+                        },
+                        "Paragraph Title": "When HP is 58% or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2053\", \"compiled\": 2053}",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack "
+            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack ",
+            "Line description": "Performs an additional attack with a 100% chance of becoming a super attack ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6003115": {
             "ID": "6003115",
@@ -214,19 +235,23 @@
                 "Causalities": {
                     "2054": {
                         "Button": {
-                            "Name": "Are there 1 or more Androids category enemies on this turn?"
+                            "Name": "Are there 1 or more Androids category enemies  on this turn?"
                         },
                         "Slider": {
                             "Name": "How many Androids category enemies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 1 or more Androids Category enemies "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2054\", \"compiled\": 2054}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of performing a critical hit +50% "
+            "Brief effect description": "Chance of performing a critical hit +50% ",
+            "Line description": "Chance of performing a critical hit +50% ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 3,
@@ -494,7 +519,7 @@
         "Effect Description": "Awakens",
         "Condition Description": "Can be activated when HP is 58% or less \nwith \"Android #16\" on the team, or when \nHP is 58% or less with an existing \"Androids\" \nCategory ally or enemy starting from the 5th turn \nfrom the start of battle (once only)",
         "Condition": {
-            "Logic": "(239 && 354) || (200 && 239 && (93 || 139))",
+            "Logic": "((239&&354) || (200&&239))",
             "Causalities": {
                 "239": {
                     "Button": {
@@ -505,12 +530,14 @@
                         "Logic": "<=58",
                         "Min": 0,
                         "Max": 100
-                    }
+                    },
+                    "Paragraph Title": "When HP is 58% or less"
                 },
                 "354": {
                     "Button": {
                         "Name": "Is there an ally on the team whose name includes Android #16?"
-                    }
+                    },
+                    "Paragraph Title": "When there is an ally whose name includes \"Android #16\""
                 },
                 "200": {
                     "Button": {
@@ -520,29 +547,8 @@
                         "Name": "What turn is it?",
                         "Logic": ">=5",
                         "Min": 1
-                    }
-                },
-                "93": {
-                    "Button": {
-                        "Name": "Are there 1 or more Androids category units on the team "
                     },
-                    "Slider": {
-                        "Name": "How many Androids category units on the team ",
-                        "Logic": ">=1",
-                        "Max": 7,
-                        "Min": 0
-                    }
-                },
-                "139": {
-                    "Button": {
-                        "Name": "Are there 1 or more Androids category enemies "
-                    },
-                    "Slider": {
-                        "Name": "How many Androids category enemies ",
-                        "Logic": ">=1",
-                        "Max": 7,
-                        "Min": 0
-                    }
+                    "Paragraph Title": "When the turn count is 5"
                 }
             }
         },

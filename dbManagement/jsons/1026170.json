@@ -19,6 +19,7 @@
     ],
     "Can EZA": false,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Android Assault",
         "Cold Judgment",
@@ -42,8 +43,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +100% "
+            "Brief effect description": "ATK and DEF +100% ",
+            "Line description": "ATK and DEF +100% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1003101": {
             "ID": "1003101",
@@ -62,17 +66,24 @@
                 "Logic": "2030",
                 "Causalities": {
                     "2030": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2030\", \"compiled\": 2030}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +100% when attacking"
+            "Brief effect description": "ATK and DEF +100% when attacking",
+            "Line description": "ATK and DEF +100% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2003101": {
             "ID": "2003101",
@@ -92,8 +103,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Super Heroes category allies DEF +30% "
+            "Brief effect description": "Super Heroes category allies DEF +30% ",
+            "Line description": "Super Heroes category allies DEF +30% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3003101": {
             "ID": "3003101",
@@ -113,12 +127,16 @@
                     "2031": {
                         "Button": {
                             "Name": "Is there an ally attacking on this turn whose name includes Gamma 2?"
-                        }
+                        },
+                        "Paragraph Title": "When there is an ally whose name includes \"Gamma 2\" attacking in the same turn "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2031\", \"compiled\": 2031}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of performing a critical hit +50% "
+            "Brief effect description": "Chance of performing a critical hit +50% ",
+            "Line description": "Chance of performing a critical hit +50% ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 1,

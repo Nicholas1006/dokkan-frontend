@@ -15,6 +15,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "seza",
     "Links": [
         "RR Army",
         "Android Assault",
@@ -38,8 +39,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK +130% "
+            "Brief effect description": "ATK +130% ",
+            "Line description": "ATK +130% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1002634": {
             "ID": "1002634",
@@ -57,17 +61,24 @@
                 "Logic": "1104",
                 "Causalities": {
                     "1104": {
+                        "Button": {
+                            "Name": "Is Ki at least 8 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=8",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 8 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"1104\", \"compiled\": 1104}",
             "Type": "Single activator",
-            "Brief effect description": "Damage recieved -40% when attacking"
+            "Brief effect description": "Damage recieved -40% when attacking",
+            "Line description": "Damage recieved -40% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2002634": {
             "ID": "2002634",
@@ -83,32 +94,27 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1105 || 1106 || 1107 || 1109",
+                "Logic": "(1105 || 1106)",
                 "Causalities": {
                     "1105": {
                         "Button": {
                             "Name": "Is there an enemy whose name includes Goku on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "\"Goku\""
                     },
                     "1106": {
                         "Button": {
                             "Name": "Is there an enemy whose name includes Vegeta on this turn?"
-                        }
-                    },
-                    "1107": {
-                        "Button": {
-                            "Name": "Is there an enemy whose name includes Trunks (Teen) on this turn?"
-                        }
-                    },
-                    "1109": {
-                        "Button": {
-                            "Name": "Is there an enemy whose name includes Piccolo on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "\"Vegeta\""
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"1105|1106|1107|1109\", \"compiled\": [\"|\", 1105, 1106, 1107, 1109]}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +130% "
+            "Brief effect description": "ATK and DEF +130% ",
+            "Line description": "ATK and DEF +130% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3002634": {
             "ID": "3002634",
@@ -129,12 +135,16 @@
                     "1108": {
                         "Button": {
                             "Name": "Is there an ally attacking on this turn whose name includes Androids #14 & #15?"
-                        }
+                        },
+                        "Paragraph Title": "When there is an ally whose name includes \"Androids #14 & #15\" attacking in the same turn "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"1108\", \"compiled\": 1108}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +70% "
+            "Brief effect description": "ATK and DEF +70% ",
+            "Line description": "ATK and DEF +70% ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,

@@ -14,6 +14,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Android Assault",
         "Infinite Energy",
@@ -38,8 +39,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +70% "
+            "Brief effect description": "ATK and DEF +70% ",
+            "Line description": "ATK and DEF +70% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1002382": {
             "ID": "1002382",
@@ -59,19 +63,23 @@
                 "Causalities": {
                     "812": {
                         "Button": {
-                            "Name": "Are there 5 or more Representatives of Universe 7 category units on the team on this turn?"
+                            "Name": "Are there 5 or more Representatives of Universe 7 category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Representatives of Universe 7 category units on the team on this turn?",
+                            "Name": "How many Representatives of Universe 7 category allies on this turn?",
                             "Logic": ">=5",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 5 or more Representatives of Universe 7 Category allies "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"812\", \"compiled\": 812}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +70% "
+            "Brief effect description": "ATK and DEF +70% ",
+            "Line description": "ATK and DEF +70% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2002382": {
             "ID": "2002382",
@@ -89,17 +97,24 @@
                 "Logic": "813",
                 "Causalities": {
                     "813": {
+                        "Button": {
+                            "Name": "Is Ki at least 22 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=22",
                             "Min": 0,
                             "Max": 24
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 22 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"813\", \"compiled\": 813}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +70% when attacking"
+            "Brief effect description": "ATK +70% when attacking",
+            "Line description": "ATK +70% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3002382": {
             "ID": "3002382",
@@ -124,8 +139,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Building Stat",
-            "Brief effect description": "Ki +2 per Rainbow Ki Spheres obtained "
+            "Brief effect description": "Ki +2 per Rainbow Ki Spheres obtained ",
+            "Line description": "Ki +2 per Rainbow Ki Spheres obtained ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4002382": {
             "ID": "4002382",
@@ -150,8 +168,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Building Stat",
-            "Brief effect description": "Chance of performing a critical hit +7% per Rainbow Ki Spheres obtained "
+            "Brief effect description": "Chance of performing a critical hit +7% per Rainbow Ki Spheres obtained ",
+            "Line description": "Chance of performing a critical hit +7% per Rainbow Ki Spheres obtained ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,
@@ -1164,50 +1185,31 @@
         "Effect Description": "Greatly raises ATK temporarily and \ncauses ultimate damage to enemy; \nall allies' Ki +7 for 1 turn",
         "Condition Description": "Can be activated when facing only 1 enemy, \nwhose HP is 50% or less, if there are 5 or more \n\"Representatives of Universe 7\" Category allies \non the team, with 2 or more of them (self excluded) \nattacking in the same turn (once only)",
         "Condition": {
-            "Logic": "812 && 815 && 476 && 477",
+            "Logic": "(812&&815)",
             "Causalities": {
                 "812": {
                     "Button": {
-                        "Name": "Are there 5 or more Representatives of Universe 7 category units on the team "
+                        "Name": "Are there 5 or more Representatives of Universe 7 category allies ?"
                     },
                     "Slider": {
-                        "Name": "How many Representatives of Universe 7 category units on the team ",
+                        "Name": "How many Representatives of Universe 7 category allies ",
                         "Logic": ">=5",
                         "Max": 7,
                         "Min": 0
-                    }
+                    },
+                    "Paragraph Title": "When there are 5 or more Representatives of Universe 7 Category allies "
                 },
                 "815": {
                     "Button": {
-                        "Name": "Are there 3 or more Representatives of Universe 7 category units on this turn "
+                        "Name": "Are there 3 or more Representatives of Universe 7 category allies attacking on this turn?"
                     },
                     "Slider": {
-                        "Name": "How many Representatives of Universe 7 category units on this turn ",
+                        "Name": "How many Representatives of Universe 7 category allies attacking on this turn",
                         "Logic": ">=3",
                         "Max": 3,
                         "Min": 0
-                    }
-                },
-                "476": {
-                    "Button": {
-                        "Name": "Is there less than 2 enemies?"
                     },
-                    "Slider": {
-                        "Name": "How many enemies are there?",
-                        "Logic": "<2",
-                        "Min": 1,
-                        "Max": 7
-                    }
-                },
-                "477": {
-                    "Button": {
-                        "Name": "Is the enemy's health 50 % or less?"
-                    },
-                    "Slider": {
-                        "Name": "What percentage of HP does the enemy have?",
-                        "Logic": "<=50",
-                        "Max": 100
-                    }
+                    "Paragraph Title": "When there are 3 or more Representatives of Universe 7 Category allies attacking on this turn"
                 }
             }
         },

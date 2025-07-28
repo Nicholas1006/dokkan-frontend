@@ -30,6 +30,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Godly Power",
         "Warrior Gods",
@@ -54,8 +55,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +59% "
+            "Brief effect description": "ATK and DEF +59% ",
+            "Line description": "ATK and DEF +59% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1001941": {
             "ID": "1001941",
@@ -77,8 +81,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "CausalityLogic": "{\"source\": \"24\", \"compiled\": 24}",
             "Type": "Building Stat",
-            "Brief effect description": "ATK +10% (up to 59%) based on 'How many attacks has this character recieved' after being hit"
+            "Brief effect description": "ATK +10% (up to 59%) based on 'How many attacks has this character recieved' after being hit",
+            "Line description": "ATK +10% (up to 59%) based on 'How many attacks has this character recieved' after being hit",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2001941": {
             "ID": "2001941",
@@ -100,8 +107,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "CausalityLogic": "{\"source\": \"24\", \"compiled\": 24}",
             "Type": "Building Stat",
-            "Brief effect description": "DEF +10% (up to 59%) based on 'How many attacks has this character recieved' after being hit"
+            "Brief effect description": "DEF +10% (up to 59%) based on 'How many attacks has this character recieved' after being hit",
+            "Line description": "DEF +10% (up to 59%) based on 'How many attacks has this character recieved' after being hit",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3001941": {
             "ID": "3001941",
@@ -116,7 +126,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "403 && 405",
+                "Logic": "(403&&405)",
                 "Causalities": {
                     "403": {
                         "Button": {
@@ -127,21 +137,29 @@
                             "Logic": "<=59",
                             "Min": 0,
                             "Max": 100
-                        }
+                        },
+                        "Paragraph Title": "When HP is 59% or less"
                     },
                     "405": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"403&405\", \"compiled\": [\"&\", 403, 405]}",
             "Once Only": true,
             "Type": "Single activator",
-            "Brief effect description": "ATK +59% when attacking"
+            "Brief effect description": "ATK +59% when attacking",
+            "Line description": "ATK +59% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4001941": {
             "ID": "4001941",
@@ -156,7 +174,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "403 && 405",
+                "Logic": "(403&&405)",
                 "Causalities": {
                     "403": {
                         "Button": {
@@ -167,21 +185,29 @@
                             "Logic": "<=59",
                             "Min": 0,
                             "Max": 100
-                        }
+                        },
+                        "Paragraph Title": "When HP is 59% or less"
                     },
                     "405": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"403&405\", \"compiled\": [\"&\", 403, 405]}",
             "Once Only": true,
             "Type": "Single activator",
-            "Brief effect description": "Attacks effective against all Types when attacking"
+            "Brief effect description": "Attacks effective against all Types when attacking",
+            "Line description": "Attacks effective against all Types when attacking",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,
@@ -974,7 +1000,7 @@
         "Effect Description": "Causes ultimate damage to enemy and \nraises allies' ATK by 30% for 1 turn",
         "Condition Description": "Can be activated when HP is 59% or less \nwith another 3 or more \"Representatives \nof Universe 7\" Category allies on the team \n(once only)",
         "Condition": {
-            "Logic": "401  &&  402",
+            "Logic": "(401&&402)",
             "Causalities": {
                 "401": {
                     "Button": {
@@ -985,18 +1011,20 @@
                         "Logic": "<=59",
                         "Min": 0,
                         "Max": 100
-                    }
+                    },
+                    "Paragraph Title": "When HP is 59% or less"
                 },
                 "402": {
                     "Button": {
-                        "Name": "Are there 4 or more Representatives of Universe 7 category units on the team "
+                        "Name": "Are there 4 or more Representatives of Universe 7 category allies ?"
                     },
                     "Slider": {
-                        "Name": "How many Representatives of Universe 7 category units on the team ",
+                        "Name": "How many Representatives of Universe 7 category allies ",
                         "Logic": ">=4",
                         "Max": 7,
                         "Min": 0
-                    }
+                    },
+                    "Paragraph Title": "When there are 4 or more Representatives of Universe 7 Category allies "
                 }
             }
         },

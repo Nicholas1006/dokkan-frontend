@@ -21,6 +21,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "seza",
     "Links": [
         "Strongest Clan in Space",
         "Universe\u2019s Most Malevolent",
@@ -45,8 +46,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +50% "
+            "Brief effect description": "ATK and DEF +50% ",
+            "Line description": "ATK and DEF +50% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1002280": {
             "ID": "1002280",
@@ -61,7 +65,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "737 || 738",
+                "Logic": "(737 || 738)",
                 "Causalities": {
                     "737": {
                         "Button": {
@@ -72,7 +76,8 @@
                             "Logic": "==1",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 1st attacker in the turn"
                     },
                     "738": {
                         "Button": {
@@ -83,12 +88,16 @@
                             "Logic": "==3",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 3rd attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"737|738\", \"compiled\": [\"|\", 737, 738]}",
             "Type": "Single activator",
-            "Brief effect description": "Ki +3 when attacking"
+            "Brief effect description": "Ki +3 when attacking",
+            "Line description": "Ki +3 when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2002280": {
             "ID": "2002280",
@@ -103,7 +112,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "737 || 738",
+                "Logic": "(737 || 738)",
                 "Causalities": {
                     "737": {
                         "Button": {
@@ -114,7 +123,8 @@
                             "Logic": "==1",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 1st attacker in the turn"
                     },
                     "738": {
                         "Button": {
@@ -125,12 +135,16 @@
                             "Logic": "==3",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 3rd attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"737|738\", \"compiled\": [\"|\", 737, 738]}",
             "Type": "Single activator",
-            "Brief effect description": "DEF +50% when attacking"
+            "Brief effect description": "DEF +50% when attacking",
+            "Line description": "DEF +50% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3002280": {
             "ID": "3002280",
@@ -148,17 +162,24 @@
                 "Logic": "739",
                 "Causalities": {
                     "739": {
+                        "Button": {
+                            "Name": "Is Ki at least 18 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=18",
                             "Min": 0,
                             "Max": 24
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 18 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"739\", \"compiled\": 739}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +50% when attacking"
+            "Brief effect description": "ATK +50% when attacking",
+            "Line description": "ATK +50% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4002280": {
             "ID": "4002280",
@@ -178,12 +199,16 @@
                     "740": {
                         "Button": {
                             "Name": "Is this unit attacking a super class enemy on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "When the unit is attacking a super class enemy"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"740\", \"compiled\": 740}",
             "Type": "Single activator",
-            "Brief effect description": "Ki +3 when attacking"
+            "Brief effect description": "Ki +3 when attacking",
+            "Line description": "Ki +3 when attacking",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,

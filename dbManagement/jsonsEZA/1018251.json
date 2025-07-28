@@ -26,6 +26,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "seza",
     "Links": [
         "Godly Power",
         "Warrior Gods",
@@ -49,8 +50,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Ki +2 "
+            "Brief effect description": "Ki +2 ",
+            "Line description": "Ki +2 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1003224": {
             "ID": "1003224",
@@ -65,8 +69,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +100% "
+            "Brief effect description": "ATK and DEF +100% ",
+            "Line description": "ATK and DEF +100% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2003224": {
             "ID": "2003224",
@@ -84,17 +91,24 @@
                 "Logic": "2103",
                 "Causalities": {
                     "2103": {
+                        "Button": {
+                            "Name": "Is Ki at least 18 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=18",
                             "Min": 0,
                             "Max": 24
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 18 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2103\", \"compiled\": 2103}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +50% when attacking"
+            "Brief effect description": "ATK +50% when attacking",
+            "Line description": "ATK +50% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3003224": {
             "ID": "3003224",
@@ -109,45 +123,51 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "390 || (389 && 396)",
+                "Logic": "(390 || (389&&396))",
                 "Causalities": {
                     "390": {
                         "Button": {
-                            "Name": "Are there 2 or more Pure Saiyans category units on the team on this turn?"
+                            "Name": "Are there 2 or more Pure Saiyans category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Pure Saiyans category units on the team on this turn?",
+                            "Name": "How many Pure Saiyans category allies on this turn?",
                             "Logic": ">=2",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Pure Saiyans Category allies "
                     },
                     "389": {
                         "Button": {
-                            "Name": "Are there 1 or more Pure Saiyans category units on the team on this turn?"
+                            "Name": "Are there 1 or more Pure Saiyans category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Pure Saiyans category units on the team on this turn?",
+                            "Name": "How many Pure Saiyans category allies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 1 or more Pure Saiyans Category allies "
                     },
                     "396": {
                         "Button": {
-                            "Name": "Are there 1 or more Hybrid Saiyans category units on the team on this turn?"
+                            "Name": "Are there 1 or more Hybrid Saiyans category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Hybrid Saiyans category units on the team on this turn?",
+                            "Name": "How many Hybrid Saiyans category allies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 1 or more Hybrid Saiyans Category allies "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"390|(389&396)\", \"compiled\": [\"|\", 390, [\"&\", 389, 396]]}",
             "Type": "Single activator",
-            "Brief effect description": "Ki +1 "
+            "Brief effect description": "Ki +1 ",
+            "Line description": "Ki +1 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4003224": {
             "ID": "4003224",
@@ -162,67 +182,51 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "391 || (390 && 396) || (389 && 397)",
+                "Logic": "(391 || (390&&396))",
                 "Causalities": {
                     "391": {
                         "Button": {
-                            "Name": "Are there 3 or more Pure Saiyans category units on the team on this turn?"
+                            "Name": "Are there 3 or more Pure Saiyans category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Pure Saiyans category units on the team on this turn?",
+                            "Name": "How many Pure Saiyans category allies on this turn?",
                             "Logic": ">=3",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 3 or more Pure Saiyans Category allies "
                     },
                     "390": {
                         "Button": {
-                            "Name": "Are there 2 or more Pure Saiyans category units on the team on this turn?"
+                            "Name": "Are there 2 or more Pure Saiyans category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Pure Saiyans category units on the team on this turn?",
+                            "Name": "How many Pure Saiyans category allies on this turn?",
                             "Logic": ">=2",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Pure Saiyans Category allies "
                     },
                     "396": {
                         "Button": {
-                            "Name": "Are there 1 or more Hybrid Saiyans category units on the team on this turn?"
+                            "Name": "Are there 1 or more Hybrid Saiyans category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Hybrid Saiyans category units on the team on this turn?",
+                            "Name": "How many Hybrid Saiyans category allies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
-                        }
-                    },
-                    "389": {
-                        "Button": {
-                            "Name": "Are there 1 or more Pure Saiyans category units on the team on this turn?"
                         },
-                        "Slider": {
-                            "Name": "How many Pure Saiyans category units on the team on this turn?",
-                            "Logic": ">=1",
-                            "Max": 7,
-                            "Min": 0
-                        }
-                    },
-                    "397": {
-                        "Button": {
-                            "Name": "Are there 2 or more Hybrid Saiyans category units on the team on this turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many Hybrid Saiyans category units on the team on this turn?",
-                            "Logic": ">=2",
-                            "Max": 7,
-                            "Min": 0
-                        }
+                        "Paragraph Title": "When there are 1 or more Hybrid Saiyans Category allies "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"391|(390&396)|(389&397)\", \"compiled\": [\"|\", 391, [\"&\", 390, 396], [\"&\", 389, 397]]}",
             "Type": "Single activator",
-            "Brief effect description": "Ki +1 "
+            "Brief effect description": "Ki +1 ",
+            "Line description": "Ki +1 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5003224": {
             "ID": "5003224",
@@ -237,89 +241,51 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "392 || (391 && 396) || (390 && 397) || (389 && 398)",
+                "Logic": "(392 || (391&&396))",
                 "Causalities": {
                     "392": {
                         "Button": {
-                            "Name": "Are there 4 or more Pure Saiyans category units on the team on this turn?"
+                            "Name": "Are there 4 or more Pure Saiyans category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Pure Saiyans category units on the team on this turn?",
+                            "Name": "How many Pure Saiyans category allies on this turn?",
                             "Logic": ">=4",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 4 or more Pure Saiyans Category allies "
                     },
                     "391": {
                         "Button": {
-                            "Name": "Are there 3 or more Pure Saiyans category units on the team on this turn?"
+                            "Name": "Are there 3 or more Pure Saiyans category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Pure Saiyans category units on the team on this turn?",
+                            "Name": "How many Pure Saiyans category allies on this turn?",
                             "Logic": ">=3",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 3 or more Pure Saiyans Category allies "
                     },
                     "396": {
                         "Button": {
-                            "Name": "Are there 1 or more Hybrid Saiyans category units on the team on this turn?"
+                            "Name": "Are there 1 or more Hybrid Saiyans category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Hybrid Saiyans category units on the team on this turn?",
+                            "Name": "How many Hybrid Saiyans category allies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
-                        }
-                    },
-                    "390": {
-                        "Button": {
-                            "Name": "Are there 2 or more Pure Saiyans category units on the team on this turn?"
                         },
-                        "Slider": {
-                            "Name": "How many Pure Saiyans category units on the team on this turn?",
-                            "Logic": ">=2",
-                            "Max": 7,
-                            "Min": 0
-                        }
-                    },
-                    "397": {
-                        "Button": {
-                            "Name": "Are there 2 or more Hybrid Saiyans category units on the team on this turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many Hybrid Saiyans category units on the team on this turn?",
-                            "Logic": ">=2",
-                            "Max": 7,
-                            "Min": 0
-                        }
-                    },
-                    "389": {
-                        "Button": {
-                            "Name": "Are there 1 or more Pure Saiyans category units on the team on this turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many Pure Saiyans category units on the team on this turn?",
-                            "Logic": ">=1",
-                            "Max": 7,
-                            "Min": 0
-                        }
-                    },
-                    "398": {
-                        "Button": {
-                            "Name": "Are there 3 or more Hybrid Saiyans category units on the team on this turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many Hybrid Saiyans category units on the team on this turn?",
-                            "Logic": ">=3",
-                            "Max": 7,
-                            "Min": 0
-                        }
+                        "Paragraph Title": "When there are 1 or more Hybrid Saiyans Category allies "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"392|(391&396)|(390&397)|(389&398)\", \"compiled\": [\"|\", 392, [\"&\", 391, 396], [\"&\", 390, 397], [\"&\", 389, 398]]}",
             "Type": "Single activator",
-            "Brief effect description": "Ki +1 "
+            "Brief effect description": "Ki +1 ",
+            "Line description": "Ki +1 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6003224": {
             "ID": "6003224",
@@ -334,111 +300,51 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "393 || (392 && 396) || (391 && 397) || (390 && 398) || (389 && 399)",
+                "Logic": "(393 || (392&&396))",
                 "Causalities": {
                     "393": {
                         "Button": {
-                            "Name": "Are there 5 or more Pure Saiyans category units on the team on this turn?"
+                            "Name": "Are there 5 or more Pure Saiyans category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Pure Saiyans category units on the team on this turn?",
+                            "Name": "How many Pure Saiyans category allies on this turn?",
                             "Logic": ">=5",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 5 or more Pure Saiyans Category allies "
                     },
                     "392": {
                         "Button": {
-                            "Name": "Are there 4 or more Pure Saiyans category units on the team on this turn?"
+                            "Name": "Are there 4 or more Pure Saiyans category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Pure Saiyans category units on the team on this turn?",
+                            "Name": "How many Pure Saiyans category allies on this turn?",
                             "Logic": ">=4",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 4 or more Pure Saiyans Category allies "
                     },
                     "396": {
                         "Button": {
-                            "Name": "Are there 1 or more Hybrid Saiyans category units on the team on this turn?"
+                            "Name": "Are there 1 or more Hybrid Saiyans category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Hybrid Saiyans category units on the team on this turn?",
+                            "Name": "How many Hybrid Saiyans category allies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
-                        }
-                    },
-                    "391": {
-                        "Button": {
-                            "Name": "Are there 3 or more Pure Saiyans category units on the team on this turn?"
                         },
-                        "Slider": {
-                            "Name": "How many Pure Saiyans category units on the team on this turn?",
-                            "Logic": ">=3",
-                            "Max": 7,
-                            "Min": 0
-                        }
-                    },
-                    "397": {
-                        "Button": {
-                            "Name": "Are there 2 or more Hybrid Saiyans category units on the team on this turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many Hybrid Saiyans category units on the team on this turn?",
-                            "Logic": ">=2",
-                            "Max": 7,
-                            "Min": 0
-                        }
-                    },
-                    "390": {
-                        "Button": {
-                            "Name": "Are there 2 or more Pure Saiyans category units on the team on this turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many Pure Saiyans category units on the team on this turn?",
-                            "Logic": ">=2",
-                            "Max": 7,
-                            "Min": 0
-                        }
-                    },
-                    "398": {
-                        "Button": {
-                            "Name": "Are there 3 or more Hybrid Saiyans category units on the team on this turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many Hybrid Saiyans category units on the team on this turn?",
-                            "Logic": ">=3",
-                            "Max": 7,
-                            "Min": 0
-                        }
-                    },
-                    "389": {
-                        "Button": {
-                            "Name": "Are there 1 or more Pure Saiyans category units on the team on this turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many Pure Saiyans category units on the team on this turn?",
-                            "Logic": ">=1",
-                            "Max": 7,
-                            "Min": 0
-                        }
-                    },
-                    "399": {
-                        "Button": {
-                            "Name": "Are there 4 or more Hybrid Saiyans category units on the team on this turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many Hybrid Saiyans category units on the team on this turn?",
-                            "Logic": ">=4",
-                            "Max": 7,
-                            "Min": 0
-                        }
+                        "Paragraph Title": "When there are 1 or more Hybrid Saiyans Category allies "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"393|(392&396)|(391&397)|(390&398)|(389&399)\", \"compiled\": [\"|\", 393, [\"&\", 392, 396], [\"&\", 391, 397], [\"&\", 390, 398], [\"&\", 389, 399]]}",
             "Type": "Single activator",
-            "Brief effect description": "Ki +1 "
+            "Brief effect description": "Ki +1 ",
+            "Line description": "Ki +1 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "7003224": {
             "ID": "7003224",
@@ -453,133 +359,51 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "394 || (393 && 396) || (392 && 397) || (391 && 398) || (390 && 399) || (389 && 400)",
+                "Logic": "(394 || (393&&396))",
                 "Causalities": {
                     "394": {
                         "Button": {
-                            "Name": "Are there 6 or more Pure Saiyans category units on the team on this turn?"
+                            "Name": "Are there 6 or more Pure Saiyans category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Pure Saiyans category units on the team on this turn?",
+                            "Name": "How many Pure Saiyans category allies on this turn?",
                             "Logic": ">=6",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 6 or more Pure Saiyans Category allies "
                     },
                     "393": {
                         "Button": {
-                            "Name": "Are there 5 or more Pure Saiyans category units on the team on this turn?"
+                            "Name": "Are there 5 or more Pure Saiyans category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Pure Saiyans category units on the team on this turn?",
+                            "Name": "How many Pure Saiyans category allies on this turn?",
                             "Logic": ">=5",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 5 or more Pure Saiyans Category allies "
                     },
                     "396": {
                         "Button": {
-                            "Name": "Are there 1 or more Hybrid Saiyans category units on the team on this turn?"
+                            "Name": "Are there 1 or more Hybrid Saiyans category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Hybrid Saiyans category units on the team on this turn?",
+                            "Name": "How many Hybrid Saiyans category allies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
-                        }
-                    },
-                    "392": {
-                        "Button": {
-                            "Name": "Are there 4 or more Pure Saiyans category units on the team on this turn?"
                         },
-                        "Slider": {
-                            "Name": "How many Pure Saiyans category units on the team on this turn?",
-                            "Logic": ">=4",
-                            "Max": 7,
-                            "Min": 0
-                        }
-                    },
-                    "397": {
-                        "Button": {
-                            "Name": "Are there 2 or more Hybrid Saiyans category units on the team on this turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many Hybrid Saiyans category units on the team on this turn?",
-                            "Logic": ">=2",
-                            "Max": 7,
-                            "Min": 0
-                        }
-                    },
-                    "391": {
-                        "Button": {
-                            "Name": "Are there 3 or more Pure Saiyans category units on the team on this turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many Pure Saiyans category units on the team on this turn?",
-                            "Logic": ">=3",
-                            "Max": 7,
-                            "Min": 0
-                        }
-                    },
-                    "398": {
-                        "Button": {
-                            "Name": "Are there 3 or more Hybrid Saiyans category units on the team on this turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many Hybrid Saiyans category units on the team on this turn?",
-                            "Logic": ">=3",
-                            "Max": 7,
-                            "Min": 0
-                        }
-                    },
-                    "390": {
-                        "Button": {
-                            "Name": "Are there 2 or more Pure Saiyans category units on the team on this turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many Pure Saiyans category units on the team on this turn?",
-                            "Logic": ">=2",
-                            "Max": 7,
-                            "Min": 0
-                        }
-                    },
-                    "399": {
-                        "Button": {
-                            "Name": "Are there 4 or more Hybrid Saiyans category units on the team on this turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many Hybrid Saiyans category units on the team on this turn?",
-                            "Logic": ">=4",
-                            "Max": 7,
-                            "Min": 0
-                        }
-                    },
-                    "389": {
-                        "Button": {
-                            "Name": "Are there 1 or more Pure Saiyans category units on the team on this turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many Pure Saiyans category units on the team on this turn?",
-                            "Logic": ">=1",
-                            "Max": 7,
-                            "Min": 0
-                        }
-                    },
-                    "400": {
-                        "Button": {
-                            "Name": "Are there 5 or more Hybrid Saiyans category units on the team on this turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many Hybrid Saiyans category units on the team on this turn?",
-                            "Logic": ">=5",
-                            "Max": 7,
-                            "Min": 0
-                        }
+                        "Paragraph Title": "When there are 1 or more Hybrid Saiyans Category allies "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"394|(393&396)|(392&397)|(391&398)|(390&399)|(389&400)\", \"compiled\": [\"|\", 394, [\"&\", 393, 396], [\"&\", 392, 397], [\"&\", 391, 398], [\"&\", 390, 399], [\"&\", 389, 400]]}",
             "Type": "Single activator",
-            "Brief effect description": "Ki +1 "
+            "Brief effect description": "Ki +1 ",
+            "Line description": "Ki +1 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "8003224": {
             "ID": "8003224",
@@ -595,45 +419,51 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "390 || (389 && 396)",
+                "Logic": "(390 || (389&&396))",
                 "Causalities": {
                     "390": {
                         "Button": {
-                            "Name": "Are there 2 or more Pure Saiyans category units on the team on this turn?"
+                            "Name": "Are there 2 or more Pure Saiyans category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Pure Saiyans category units on the team on this turn?",
+                            "Name": "How many Pure Saiyans category allies on this turn?",
                             "Logic": ">=2",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Pure Saiyans Category allies "
                     },
                     "389": {
                         "Button": {
-                            "Name": "Are there 1 or more Pure Saiyans category units on the team on this turn?"
+                            "Name": "Are there 1 or more Pure Saiyans category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Pure Saiyans category units on the team on this turn?",
+                            "Name": "How many Pure Saiyans category allies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 1 or more Pure Saiyans Category allies "
                     },
                     "396": {
                         "Button": {
-                            "Name": "Are there 1 or more Hybrid Saiyans category units on the team on this turn?"
+                            "Name": "Are there 1 or more Hybrid Saiyans category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Hybrid Saiyans category units on the team on this turn?",
+                            "Name": "How many Hybrid Saiyans category allies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 1 or more Hybrid Saiyans Category allies "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"390|(389&396)\", \"compiled\": [\"|\", 390, [\"&\", 389, 396]]}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +11% "
+            "Brief effect description": "ATK and DEF +11% ",
+            "Line description": "ATK and DEF +11% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "9003224": {
             "ID": "9003224",
@@ -649,67 +479,51 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "391 || (390 && 396) || (389 && 397)",
+                "Logic": "(391 || (390&&396))",
                 "Causalities": {
                     "391": {
                         "Button": {
-                            "Name": "Are there 3 or more Pure Saiyans category units on the team on this turn?"
+                            "Name": "Are there 3 or more Pure Saiyans category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Pure Saiyans category units on the team on this turn?",
+                            "Name": "How many Pure Saiyans category allies on this turn?",
                             "Logic": ">=3",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 3 or more Pure Saiyans Category allies "
                     },
                     "390": {
                         "Button": {
-                            "Name": "Are there 2 or more Pure Saiyans category units on the team on this turn?"
+                            "Name": "Are there 2 or more Pure Saiyans category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Pure Saiyans category units on the team on this turn?",
+                            "Name": "How many Pure Saiyans category allies on this turn?",
                             "Logic": ">=2",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Pure Saiyans Category allies "
                     },
                     "396": {
                         "Button": {
-                            "Name": "Are there 1 or more Hybrid Saiyans category units on the team on this turn?"
+                            "Name": "Are there 1 or more Hybrid Saiyans category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Hybrid Saiyans category units on the team on this turn?",
+                            "Name": "How many Hybrid Saiyans category allies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
-                        }
-                    },
-                    "389": {
-                        "Button": {
-                            "Name": "Are there 1 or more Pure Saiyans category units on the team on this turn?"
                         },
-                        "Slider": {
-                            "Name": "How many Pure Saiyans category units on the team on this turn?",
-                            "Logic": ">=1",
-                            "Max": 7,
-                            "Min": 0
-                        }
-                    },
-                    "397": {
-                        "Button": {
-                            "Name": "Are there 2 or more Hybrid Saiyans category units on the team on this turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many Hybrid Saiyans category units on the team on this turn?",
-                            "Logic": ">=2",
-                            "Max": 7,
-                            "Min": 0
-                        }
+                        "Paragraph Title": "When there are 1 or more Hybrid Saiyans Category allies "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"391|(390&396)|(389&397)\", \"compiled\": [\"|\", 391, [\"&\", 390, 396], [\"&\", 389, 397]]}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +11% "
+            "Brief effect description": "ATK and DEF +11% ",
+            "Line description": "ATK and DEF +11% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "10003224": {
             "ID": "10003224",
@@ -725,89 +539,51 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "392 || (391 && 396) || (390 && 397) || (389 && 398)",
+                "Logic": "(392 || (391&&396))",
                 "Causalities": {
                     "392": {
                         "Button": {
-                            "Name": "Are there 4 or more Pure Saiyans category units on the team on this turn?"
+                            "Name": "Are there 4 or more Pure Saiyans category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Pure Saiyans category units on the team on this turn?",
+                            "Name": "How many Pure Saiyans category allies on this turn?",
                             "Logic": ">=4",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 4 or more Pure Saiyans Category allies "
                     },
                     "391": {
                         "Button": {
-                            "Name": "Are there 3 or more Pure Saiyans category units on the team on this turn?"
+                            "Name": "Are there 3 or more Pure Saiyans category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Pure Saiyans category units on the team on this turn?",
+                            "Name": "How many Pure Saiyans category allies on this turn?",
                             "Logic": ">=3",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 3 or more Pure Saiyans Category allies "
                     },
                     "396": {
                         "Button": {
-                            "Name": "Are there 1 or more Hybrid Saiyans category units on the team on this turn?"
+                            "Name": "Are there 1 or more Hybrid Saiyans category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Hybrid Saiyans category units on the team on this turn?",
+                            "Name": "How many Hybrid Saiyans category allies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
-                        }
-                    },
-                    "390": {
-                        "Button": {
-                            "Name": "Are there 2 or more Pure Saiyans category units on the team on this turn?"
                         },
-                        "Slider": {
-                            "Name": "How many Pure Saiyans category units on the team on this turn?",
-                            "Logic": ">=2",
-                            "Max": 7,
-                            "Min": 0
-                        }
-                    },
-                    "397": {
-                        "Button": {
-                            "Name": "Are there 2 or more Hybrid Saiyans category units on the team on this turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many Hybrid Saiyans category units on the team on this turn?",
-                            "Logic": ">=2",
-                            "Max": 7,
-                            "Min": 0
-                        }
-                    },
-                    "389": {
-                        "Button": {
-                            "Name": "Are there 1 or more Pure Saiyans category units on the team on this turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many Pure Saiyans category units on the team on this turn?",
-                            "Logic": ">=1",
-                            "Max": 7,
-                            "Min": 0
-                        }
-                    },
-                    "398": {
-                        "Button": {
-                            "Name": "Are there 3 or more Hybrid Saiyans category units on the team on this turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many Hybrid Saiyans category units on the team on this turn?",
-                            "Logic": ">=3",
-                            "Max": 7,
-                            "Min": 0
-                        }
+                        "Paragraph Title": "When there are 1 or more Hybrid Saiyans Category allies "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"392|(391&396)|(390&397)|(389&398)\", \"compiled\": [\"|\", 392, [\"&\", 391, 396], [\"&\", 390, 397], [\"&\", 389, 398]]}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +11% "
+            "Brief effect description": "ATK and DEF +11% ",
+            "Line description": "ATK and DEF +11% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "11003224": {
             "ID": "11003224",
@@ -823,111 +599,51 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "393 || (392 && 396) || (391 && 397) || (390 && 398) || (389 && 399)",
+                "Logic": "(393 || (392&&396))",
                 "Causalities": {
                     "393": {
                         "Button": {
-                            "Name": "Are there 5 or more Pure Saiyans category units on the team on this turn?"
+                            "Name": "Are there 5 or more Pure Saiyans category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Pure Saiyans category units on the team on this turn?",
+                            "Name": "How many Pure Saiyans category allies on this turn?",
                             "Logic": ">=5",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 5 or more Pure Saiyans Category allies "
                     },
                     "392": {
                         "Button": {
-                            "Name": "Are there 4 or more Pure Saiyans category units on the team on this turn?"
+                            "Name": "Are there 4 or more Pure Saiyans category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Pure Saiyans category units on the team on this turn?",
+                            "Name": "How many Pure Saiyans category allies on this turn?",
                             "Logic": ">=4",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 4 or more Pure Saiyans Category allies "
                     },
                     "396": {
                         "Button": {
-                            "Name": "Are there 1 or more Hybrid Saiyans category units on the team on this turn?"
+                            "Name": "Are there 1 or more Hybrid Saiyans category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Hybrid Saiyans category units on the team on this turn?",
+                            "Name": "How many Hybrid Saiyans category allies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
-                        }
-                    },
-                    "391": {
-                        "Button": {
-                            "Name": "Are there 3 or more Pure Saiyans category units on the team on this turn?"
                         },
-                        "Slider": {
-                            "Name": "How many Pure Saiyans category units on the team on this turn?",
-                            "Logic": ">=3",
-                            "Max": 7,
-                            "Min": 0
-                        }
-                    },
-                    "397": {
-                        "Button": {
-                            "Name": "Are there 2 or more Hybrid Saiyans category units on the team on this turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many Hybrid Saiyans category units on the team on this turn?",
-                            "Logic": ">=2",
-                            "Max": 7,
-                            "Min": 0
-                        }
-                    },
-                    "390": {
-                        "Button": {
-                            "Name": "Are there 2 or more Pure Saiyans category units on the team on this turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many Pure Saiyans category units on the team on this turn?",
-                            "Logic": ">=2",
-                            "Max": 7,
-                            "Min": 0
-                        }
-                    },
-                    "398": {
-                        "Button": {
-                            "Name": "Are there 3 or more Hybrid Saiyans category units on the team on this turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many Hybrid Saiyans category units on the team on this turn?",
-                            "Logic": ">=3",
-                            "Max": 7,
-                            "Min": 0
-                        }
-                    },
-                    "389": {
-                        "Button": {
-                            "Name": "Are there 1 or more Pure Saiyans category units on the team on this turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many Pure Saiyans category units on the team on this turn?",
-                            "Logic": ">=1",
-                            "Max": 7,
-                            "Min": 0
-                        }
-                    },
-                    "399": {
-                        "Button": {
-                            "Name": "Are there 4 or more Hybrid Saiyans category units on the team on this turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many Hybrid Saiyans category units on the team on this turn?",
-                            "Logic": ">=4",
-                            "Max": 7,
-                            "Min": 0
-                        }
+                        "Paragraph Title": "When there are 1 or more Hybrid Saiyans Category allies "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"393|(392&396)|(391&397)|(390&398)|(389&399)\", \"compiled\": [\"|\", 393, [\"&\", 392, 396], [\"&\", 391, 397], [\"&\", 390, 398], [\"&\", 389, 399]]}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +11% "
+            "Brief effect description": "ATK and DEF +11% ",
+            "Line description": "ATK and DEF +11% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "12003224": {
             "ID": "12003224",
@@ -943,133 +659,51 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "394 || (393 && 396) || (392 && 397) || (391 && 398) || (390 && 399) || (389 && 400)",
+                "Logic": "(394 || (393&&396))",
                 "Causalities": {
                     "394": {
                         "Button": {
-                            "Name": "Are there 6 or more Pure Saiyans category units on the team on this turn?"
+                            "Name": "Are there 6 or more Pure Saiyans category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Pure Saiyans category units on the team on this turn?",
+                            "Name": "How many Pure Saiyans category allies on this turn?",
                             "Logic": ">=6",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 6 or more Pure Saiyans Category allies "
                     },
                     "393": {
                         "Button": {
-                            "Name": "Are there 5 or more Pure Saiyans category units on the team on this turn?"
+                            "Name": "Are there 5 or more Pure Saiyans category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Pure Saiyans category units on the team on this turn?",
+                            "Name": "How many Pure Saiyans category allies on this turn?",
                             "Logic": ">=5",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 5 or more Pure Saiyans Category allies "
                     },
                     "396": {
                         "Button": {
-                            "Name": "Are there 1 or more Hybrid Saiyans category units on the team on this turn?"
+                            "Name": "Are there 1 or more Hybrid Saiyans category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Hybrid Saiyans category units on the team on this turn?",
+                            "Name": "How many Hybrid Saiyans category allies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
-                        }
-                    },
-                    "392": {
-                        "Button": {
-                            "Name": "Are there 4 or more Pure Saiyans category units on the team on this turn?"
                         },
-                        "Slider": {
-                            "Name": "How many Pure Saiyans category units on the team on this turn?",
-                            "Logic": ">=4",
-                            "Max": 7,
-                            "Min": 0
-                        }
-                    },
-                    "397": {
-                        "Button": {
-                            "Name": "Are there 2 or more Hybrid Saiyans category units on the team on this turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many Hybrid Saiyans category units on the team on this turn?",
-                            "Logic": ">=2",
-                            "Max": 7,
-                            "Min": 0
-                        }
-                    },
-                    "391": {
-                        "Button": {
-                            "Name": "Are there 3 or more Pure Saiyans category units on the team on this turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many Pure Saiyans category units on the team on this turn?",
-                            "Logic": ">=3",
-                            "Max": 7,
-                            "Min": 0
-                        }
-                    },
-                    "398": {
-                        "Button": {
-                            "Name": "Are there 3 or more Hybrid Saiyans category units on the team on this turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many Hybrid Saiyans category units on the team on this turn?",
-                            "Logic": ">=3",
-                            "Max": 7,
-                            "Min": 0
-                        }
-                    },
-                    "390": {
-                        "Button": {
-                            "Name": "Are there 2 or more Pure Saiyans category units on the team on this turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many Pure Saiyans category units on the team on this turn?",
-                            "Logic": ">=2",
-                            "Max": 7,
-                            "Min": 0
-                        }
-                    },
-                    "399": {
-                        "Button": {
-                            "Name": "Are there 4 or more Hybrid Saiyans category units on the team on this turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many Hybrid Saiyans category units on the team on this turn?",
-                            "Logic": ">=4",
-                            "Max": 7,
-                            "Min": 0
-                        }
-                    },
-                    "389": {
-                        "Button": {
-                            "Name": "Are there 1 or more Pure Saiyans category units on the team on this turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many Pure Saiyans category units on the team on this turn?",
-                            "Logic": ">=1",
-                            "Max": 7,
-                            "Min": 0
-                        }
-                    },
-                    "400": {
-                        "Button": {
-                            "Name": "Are there 5 or more Hybrid Saiyans category units on the team on this turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many Hybrid Saiyans category units on the team on this turn?",
-                            "Logic": ">=5",
-                            "Max": 7,
-                            "Min": 0
-                        }
+                        "Paragraph Title": "When there are 1 or more Hybrid Saiyans Category allies "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"394|(393&396)|(392&397)|(391&398)|(390&399)|(389&400)\", \"compiled\": [\"|\", 394, [\"&\", 393, 396], [\"&\", 392, 397], [\"&\", 391, 398], [\"&\", 390, 399], [\"&\", 389, 400]]}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +11% "
+            "Brief effect description": "ATK and DEF +11% ",
+            "Line description": "ATK and DEF +11% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "13003224": {
             "ID": "13003224",
@@ -1083,9 +717,12 @@
                 "+ or -": "+"
             },
             "Length": "10",
+            "CausalityLogic": "",
             "Once Only": true,
             "Type": "Single activator",
-            "Brief effect description": "Ki +3 "
+            "Brief effect description": "Ki +3 ",
+            "Line description": "Ki +3 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "14003224": {
             "ID": "14003224",
@@ -1099,9 +736,12 @@
                 "+ or -": "+"
             },
             "Length": "10",
+            "CausalityLogic": "",
             "Once Only": true,
             "Type": "Single activator",
-            "Brief effect description": "DEF +50% "
+            "Brief effect description": "DEF +50% ",
+            "Line description": "DEF +50% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "15003224": {
             "ID": "15003224",
@@ -1115,9 +755,12 @@
                 "+ or -": "+"
             },
             "Length": "10",
+            "CausalityLogic": "",
             "Once Only": true,
             "Type": "Single activator",
-            "Brief effect description": "Chance of evading enemy attacks +20% "
+            "Brief effect description": "Chance of evading enemy attacks +20% ",
+            "Line description": "Chance of evading enemy attacks +20% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "16003224": {
             "ID": "16003224",
@@ -1131,9 +774,12 @@
                 "+ or -": "+"
             },
             "Length": "10",
+            "CausalityLogic": "",
             "Once Only": true,
             "Type": "Single activator",
-            "Brief effect description": "Chance of performing a critical hit +50% "
+            "Brief effect description": "Chance of performing a critical hit +50% ",
+            "Line description": "Chance of performing a critical hit +50% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "17003224": {
             "ID": "17003224",
@@ -1147,8 +793,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Chance of evading enemy attacks +30% "
+            "Brief effect description": "Chance of evading enemy attacks +30% ",
+            "Line description": "Chance of evading enemy attacks +30% ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,

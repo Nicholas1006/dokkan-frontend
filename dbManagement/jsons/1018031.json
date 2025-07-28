@@ -17,6 +17,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Infinite Energy",
         "Android Assault",
@@ -40,8 +41,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Ki +1 "
+            "Brief effect description": "Ki +1 ",
+            "Line description": "Ki +1 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1001686": {
             "ID": "1001686",
@@ -56,8 +60,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +78% "
+            "Brief effect description": "ATK and DEF +78% ",
+            "Line description": "ATK and DEF +78% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2001686": {
             "ID": "2001686",
@@ -83,12 +90,16 @@
                             "Logic": ">=66",
                             "Min": 0,
                             "Max": 100
-                        }
+                        },
+                        "Paragraph Title": "When HP is 66% or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"284\", \"compiled\": 284}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of evading enemy attacks +30% "
+            "Brief effect description": "Chance of evading enemy attacks +30% ",
+            "Line description": "Chance of evading enemy attacks +30% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3001686": {
             "ID": "3001686",
@@ -108,8 +119,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Androids category allies Ki +2 "
+            "Brief effect description": "Androids category allies Ki +2 ",
+            "Line description": "Androids category allies Ki +2 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4001686": {
             "ID": "4001686",
@@ -129,8 +143,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Androids category allies ATK +40% "
+            "Brief effect description": "Androids category allies ATK +40% ",
+            "Line description": "Androids category allies ATK +40% ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,
@@ -1123,7 +1140,7 @@
         "Effect Description": "Exchange with Android #16 for 3 turns",
         "Condition Description": "Can be activated when HP is 66% or less with \nanother 2 or more \"Androids\" Category allies \non the team, or can be activated at any time \nwhen facing an enemy whose name includes \n\"Cell\" (characters such as Cell Jr. excluded) \n(once only)",
         "Condition": {
-            "Logic": "(286 && 287) || 355",
+            "Logic": "((286&&287) || 355)",
             "Causalities": {
                 "286": {
                     "Button": {
@@ -1134,23 +1151,26 @@
                         "Logic": "<=66",
                         "Min": 0,
                         "Max": 100
-                    }
+                    },
+                    "Paragraph Title": "When HP is 66% or less"
                 },
                 "287": {
                     "Button": {
-                        "Name": "Are there 3 or more Androids category units on the team "
+                        "Name": "Are there 3 or more Androids category allies ?"
                     },
                     "Slider": {
-                        "Name": "How many Androids category units on the team ",
+                        "Name": "How many Androids category allies ",
                         "Logic": ">=3",
                         "Max": 7,
                         "Min": 0
-                    }
+                    },
+                    "Paragraph Title": "When there are 3 or more Androids Category allies "
                 },
                 "355": {
                     "Button": {
                         "Name": "Is there an enemy whose name includes Cell?"
-                    }
+                    },
+                    "Paragraph Title": "\"Cell\""
                 }
             }
         },

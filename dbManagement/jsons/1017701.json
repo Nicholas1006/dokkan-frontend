@@ -13,6 +13,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Battlefield Diva",
         "Metamorphosis",
@@ -36,8 +37,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Ki +3 "
+            "Brief effect description": "Ki +3 ",
+            "Line description": "Ki +3 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1002236": {
             "ID": "1002236",
@@ -52,8 +56,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +120% "
+            "Brief effect description": "ATK and DEF +120% ",
+            "Line description": "ATK and DEF +120% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2002236": {
             "ID": "2002236",
@@ -69,22 +76,27 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "421 || 422",
+                "Logic": "(421 || 422)",
                 "Causalities": {
                     "421": {
                         "Button": {
                             "Name": "Is the target enemy in \"ATK down\" status on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "When the target enemy is in \"ATK down\" status"
                     },
                     "422": {
                         "Button": {
                             "Name": "Is the target enemy in \"DEF down\" status on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "When the target enemy is in \"DEF down\" status"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"421|422\", \"compiled\": [\"|\", 421, 422]}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +60% when attacking"
+            "Brief effect description": "ATK and DEF +60% when attacking",
+            "Line description": "ATK and DEF +60% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3002236": {
             "ID": "3002236",
@@ -103,22 +115,27 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "421 || 422",
+                "Logic": "(421 || 422)",
                 "Causalities": {
                     "421": {
                         "Button": {
                             "Name": "Is the target enemy in \"ATK down\" status on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "When the target enemy is in \"ATK down\" status"
                     },
                     "422": {
                         "Button": {
                             "Name": "Is the target enemy in \"DEF down\" status on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "When the target enemy is in \"DEF down\" status"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"421|422\", \"compiled\": [\"|\", 421, 422]}",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking"
+            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking",
+            "Line description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4002236": {
             "ID": "4002236",
@@ -138,12 +155,16 @@
                     "92": {
                         "Button": {
                             "Name": "Is the target enemy sealed on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "When the target enemy is sealed"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"92\", \"compiled\": 92}",
             "Type": "Single activator",
-            "Brief effect description": "Attacks effective against all Types when attacking"
+            "Brief effect description": "Attacks effective against all Types when attacking",
+            "Line description": "Attacks effective against all Types when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5002236": {
             "ID": "5002236",
@@ -166,12 +187,16 @@
                     "92": {
                         "Button": {
                             "Name": "Is the target enemy sealed on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "When the target enemy is sealed"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"92\", \"compiled\": 92}",
             "Type": "Single activator",
-            "Brief effect description": " allies Stun after attacking"
+            "Brief effect description": " allies Stun after attacking",
+            "Line description": " allies Stun after attacking",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 3,

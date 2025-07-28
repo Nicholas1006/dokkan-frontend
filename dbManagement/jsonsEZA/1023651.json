@@ -14,6 +14,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "seza",
     "Links": [
         "Brutal Beatdown",
         "Nightmare",
@@ -38,8 +39,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +120% "
+            "Brief effect description": "ATK and DEF +120% ",
+            "Line description": "ATK and DEF +120% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1002715": {
             "ID": "1002715",
@@ -53,8 +57,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Heals +10% "
+            "Brief effect description": "Heals +10% ",
+            "Line description": "Heals +10% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2002715": {
             "ID": "2002715",
@@ -70,15 +77,19 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1259 && 1269",
+                "Logic": "(1259&&1269)",
                 "Causalities": {
                     "1259": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     },
                     "1269": {
                         "Button": {
@@ -89,12 +100,16 @@
                             "Logic": ">=50",
                             "Min": 0,
                             "Max": 100
-                        }
+                        },
+                        "Paragraph Title": "When HP is 50% or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"1259&1269\", \"compiled\": [\"&\", 1259, 1269]}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +100% when attacking"
+            "Brief effect description": "ATK and DEF +100% when attacking",
+            "Line description": "ATK and DEF +100% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3002715": {
             "ID": "3002715",
@@ -120,12 +135,16 @@
                             "Logic": "<=50",
                             "Min": 0,
                             "Max": 100
-                        }
+                        },
+                        "Paragraph Title": "When HP is 50% or less"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"1261\", \"compiled\": 1261}",
             "Type": "Single activator",
-            "Brief effect description": "Heals +10% "
+            "Brief effect description": "Heals +10% ",
+            "Line description": "Heals +10% ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,

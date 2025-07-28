@@ -14,6 +14,7 @@
     ],
     "Can EZA": false,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Brutal Beatdown",
         "Coward",
@@ -37,8 +38,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Ki +3 "
+            "Brief effect description": "Ki +3 ",
+            "Line description": "Ki +3 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1004265": {
             "ID": "1004265",
@@ -53,8 +57,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +150% "
+            "Brief effect description": "ATK and DEF +150% ",
+            "Line description": "ATK and DEF +150% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2004265": {
             "ID": "2004265",
@@ -68,8 +75,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Chance of evading enemy attacks +50% "
+            "Brief effect description": "Chance of evading enemy attacks +50% ",
+            "Line description": "Chance of evading enemy attacks +50% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3004265": {
             "ID": "3004265",
@@ -95,12 +105,16 @@
                             "Logic": "<=50",
                             "Min": 0,
                             "Max": 100
-                        }
+                        },
+                        "Paragraph Title": "When HP is 50% or less"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"27\", \"compiled\": 27}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of evading enemy attacks +20% right before being hit"
+            "Brief effect description": "Chance of evading enemy attacks +20% right before being hit",
+            "Line description": "Chance of evading enemy attacks +20% right before being hit",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4004265": {
             "ID": "4004265",
@@ -115,8 +129,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +150% when attacking"
+            "Brief effect description": "ATK and DEF +150% when attacking",
+            "Line description": "ATK and DEF +150% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5004265": {
             "ID": "5004265",
@@ -130,8 +147,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Chance of evading enemy attacks +20% when attacking"
+            "Brief effect description": "Chance of evading enemy attacks +20% when attacking",
+            "Line description": "Chance of evading enemy attacks +20% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6004265": {
             "ID": "6004265",
@@ -151,22 +171,27 @@
             "Chance": "70",
             "Length": "1",
             "Condition": {
-                "Logic": "105 || 206",
+                "Logic": "(105 || 206)",
                 "Causalities": {
                     "105": {
                         "Button": {
                             "Name": "Is the target enemy in \"ATK down\" status on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "When the target enemy is in \"ATK down\" status"
                     },
                     "206": {
                         "Button": {
                             "Name": "Is the target enemy in \"DEF down\" status on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "When the target enemy is in \"DEF down\" status"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"105|206\", \"compiled\": [\"|\", 105, 206]}",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking"
+            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking",
+            "Line description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "7004265": {
             "ID": "7004265",
@@ -192,13 +217,17 @@
                             "Logic": "<=50",
                             "Min": 0,
                             "Max": 100
-                        }
+                        },
+                        "Paragraph Title": "When HP is 50% or less"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"27\", \"compiled\": 27}",
             "Once Only": true,
             "Type": "Single activator",
-            "Brief effect description": "Evades enemy attacks "
+            "Brief effect description": "Evades enemy attacks ",
+            "Line description": "Evades enemy attacks ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "8004265": {
             "ID": "8004265",
@@ -224,13 +253,17 @@
                             "Logic": "<=50",
                             "Min": 0,
                             "Max": 100
-                        }
+                        },
+                        "Paragraph Title": "When HP is 50% or less"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"27\", \"compiled\": 27}",
             "Once Only": true,
             "Type": "Single activator",
-            "Brief effect description": "Performs a Critical Hit "
+            "Brief effect description": "Performs a Critical Hit ",
+            "Line description": "Performs a Critical Hit ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "9004265": {
             "ID": "9004265",
@@ -249,19 +282,23 @@
                 "Causalities": {
                     "3290": {
                         "Button": {
-                            "Name": "Are there 2 or more Planet Namek Saga category units on this turn "
+                            "Name": "Are there 2 or more Planet Namek Saga category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Planet Namek Saga category units on this turn ",
+                            "Name": "How many Planet Namek Saga category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Planet Namek Saga Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"3290\", \"compiled\": 3290}",
             "Type": "Single activator",
-            "Brief effect description": "Forsee enemy super attack "
+            "Brief effect description": "Forsee enemy super attack ",
+            "Line description": "Forsee enemy super attack ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 3,

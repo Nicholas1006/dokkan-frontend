@@ -22,6 +22,7 @@
     ],
     "Can EZA": false,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Prodigies",
         "Super Saiyan",
@@ -44,8 +45,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +100% "
+            "Brief effect description": "ATK and DEF +100% ",
+            "Line description": "ATK and DEF +100% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1004472": {
             "ID": "1004472",
@@ -60,8 +64,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK +100% and DEF +50% when attacking"
+            "Brief effect description": "ATK +100% and DEF +50% when attacking",
+            "Line description": "ATK +100% and DEF +50% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2004472": {
             "ID": "2004472",
@@ -86,8 +93,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Building Stat",
-            "Brief effect description": "Ki +2 per Rainbow Ki Spheres obtained "
+            "Brief effect description": "Ki +2 per Rainbow Ki Spheres obtained ",
+            "Line description": "Ki +2 per Rainbow Ki Spheres obtained ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3004472": {
             "ID": "3004472",
@@ -102,7 +112,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "26 || 33",
+                "Logic": "(26 || 33)",
                 "Causalities": {
                     "26": {
                         "Button": {
@@ -113,7 +123,8 @@
                             "Logic": "==2",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 2nd attacker in the turn"
                     },
                     "33": {
                         "Button": {
@@ -124,12 +135,16 @@
                             "Logic": "==3",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 3rd attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"26|33\", \"compiled\": [\"|\", 26, 33]}",
             "Type": "Single activator",
-            "Brief effect description": "Guards all attacks after all ki collected"
+            "Brief effect description": "Guards all attacks after all ki collected",
+            "Line description": "Guards all attacks after all ki collected",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4004472": {
             "ID": "4004472",
@@ -148,7 +163,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "26 || 33",
+                "Logic": "(26 || 33)",
                 "Causalities": {
                     "26": {
                         "Button": {
@@ -159,7 +174,8 @@
                             "Logic": "==2",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 2nd attacker in the turn"
                     },
                     "33": {
                         "Button": {
@@ -170,12 +186,16 @@
                             "Logic": "==3",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 3rd attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"26|33\", \"compiled\": [\"|\", 26, 33]}",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 30% chance of becoming a super attack after all ki collected"
+            "Brief effect description": "Performs an additional attack with a 30% chance of becoming a super attack after all ki collected",
+            "Line description": "Performs an additional attack with a 30% chance of becoming a super attack after all ki collected",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5004472": {
             "ID": "5004472",
@@ -193,17 +213,24 @@
                 "Logic": "63",
                 "Causalities": {
                     "63": {
+                        "Button": {
+                            "Name": "Is Ki at least 10 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=10",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 10 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"63\", \"compiled\": 63}",
             "Type": "Single activator",
-            "Brief effect description": "Attacks effective against all Types when attacking"
+            "Brief effect description": "Attacks effective against all Types when attacking",
+            "Line description": "Attacks effective against all Types when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6004472": {
             "ID": "6004472",
@@ -223,8 +250,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Successors category allies DEF +30% "
+            "Brief effect description": "Successors category allies DEF +30% ",
+            "Line description": "Successors category allies DEF +30% ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 3,

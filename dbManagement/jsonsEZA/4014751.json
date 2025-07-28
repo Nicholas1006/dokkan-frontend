@@ -20,6 +20,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "seza",
     "Links": [
         "Android Assault",
         "Metamorphosis",
@@ -43,8 +44,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Ki +3 "
+            "Brief effect description": "Ki +3 ",
+            "Line description": "Ki +3 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1002632": {
             "ID": "1002632",
@@ -59,8 +63,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +150% "
+            "Brief effect description": "ATK and DEF +150% ",
+            "Line description": "ATK and DEF +150% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2002632": {
             "ID": "2002632",
@@ -74,8 +81,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Heals +15% "
+            "Brief effect description": "Heals +15% ",
+            "Line description": "Heals +15% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3002632": {
             "ID": "3002632",
@@ -94,17 +104,24 @@
                 "Logic": "1100",
                 "Causalities": {
                     "1100": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"1100\", \"compiled\": 1100}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +21% when attacking"
+            "Brief effect description": "ATK and DEF +21% when attacking",
+            "Line description": "ATK and DEF +21% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4002632": {
             "ID": "4002632",
@@ -124,17 +141,24 @@
                 "Logic": "1100",
                 "Causalities": {
                     "1100": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"1100\", \"compiled\": 1100}",
             "Type": "Single activator",
-            "Brief effect description": " allies Disable guard when attacking"
+            "Brief effect description": " allies Disable guard when attacking",
+            "Line description": " allies Disable guard when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5002632": {
             "ID": "5002632",
@@ -150,15 +174,19 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1100 && 1103",
+                "Logic": "(1100&&1103)",
                 "Causalities": {
                     "1100": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     },
                     "1103": {
                         "Button": {
@@ -169,12 +197,16 @@
                             "Logic": ">=60",
                             "Min": 0,
                             "Max": 100
-                        }
+                        },
+                        "Paragraph Title": "When HP is 60% or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"1100&1103\", \"compiled\": [\"&\", 1100, 1103]}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +21% when attacking"
+            "Brief effect description": "ATK and DEF +21% when attacking",
+            "Line description": "ATK and DEF +21% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,

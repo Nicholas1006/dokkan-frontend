@@ -26,6 +26,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "seza",
     "Links": [
         "Kamehameha",
         "The Innocents",
@@ -50,8 +51,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +80% "
+            "Brief effect description": "ATK and DEF +80% ",
+            "Line description": "ATK and DEF +80% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1002600": {
             "ID": "1002600",
@@ -70,17 +74,24 @@
                 "Logic": "1055",
                 "Causalities": {
                     "1055": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"1055\", \"compiled\": 1055}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +80% when attacking"
+            "Brief effect description": "ATK and DEF +80% when attacking",
+            "Line description": "ATK and DEF +80% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2002600": {
             "ID": "2002600",
@@ -111,12 +122,16 @@
                             "Logic": "<=80",
                             "Min": 0,
                             "Max": 100
-                        }
+                        },
+                        "Paragraph Title": "When HP is 80% or less"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"1054\", \"compiled\": 1054}",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack "
+            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack ",
+            "Line description": "Performs an additional attack with a 100% chance of becoming a super attack ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3002600": {
             "ID": "3002600",
@@ -138,8 +153,11 @@
             },
             "Chance": "10",
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Transforms into 4008321 as a giant form for 2 to 3 turns "
+            "Brief effect description": "Transforms into 4008321 as a giant form for 2 to 3 turns ",
+            "Line description": "Transforms into 4008321 as a giant form for 2 to 3 turns ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 3,

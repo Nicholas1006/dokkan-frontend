@@ -23,6 +23,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "seza",
     "Links": [
         "Super Saiyan",
         "Over in a Flash",
@@ -47,8 +48,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +150% "
+            "Brief effect description": "ATK and DEF +150% ",
+            "Line description": "ATK and DEF +150% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1004311": {
             "ID": "1004311",
@@ -66,17 +70,24 @@
                 "Logic": "1150",
                 "Causalities": {
                     "1150": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"1150\", \"compiled\": 1150}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +150% when attacking"
+            "Brief effect description": "ATK +150% when attacking",
+            "Line description": "ATK +150% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2004311": {
             "ID": "2004311",
@@ -98,8 +109,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "CausalityLogic": "{\"source\": \"1170\", \"compiled\": 1170}",
             "Type": "Building Stat",
-            "Brief effect description": "ATK +30% (up to 150%) based on 'How many super attacks has this character performed' after attacking"
+            "Brief effect description": "ATK +30% (up to 150%) based on 'How many super attacks has this character performed' after attacking",
+            "Line description": "ATK +30% (up to 150%) based on 'How many super attacks has this character performed' after attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3004311": {
             "ID": "3004311",
@@ -121,8 +135,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "CausalityLogic": "{\"source\": \"1170\", \"compiled\": 1170}",
             "Type": "Building Stat",
-            "Brief effect description": "DEF +30% (up to 150%) based on 'How many super attacks has this character performed' after attacking"
+            "Brief effect description": "DEF +30% (up to 150%) based on 'How many super attacks has this character performed' after attacking",
+            "Line description": "DEF +30% (up to 150%) based on 'How many super attacks has this character performed' after attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4004311": {
             "ID": "4004311",
@@ -141,28 +158,33 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2891 || 633",
+                "Logic": "(2891 || 633)",
                 "Causalities": {
                     "2891": {
                         "Button": {
-                            "Name": "Are there 2 or more Crossover category units on this turn "
+                            "Name": "Are there 2 or more Crossover category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Crossover category units on this turn ",
+                            "Name": "How many Crossover category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Crossover Category allies attacking on this turn"
                     },
                     "633": {
                         "Button": {
                             "Name": "Is the target enemy stunned or sealed on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "When the target enemy is stunned or sealed"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2891|633\", \"compiled\": [\"|\", 2891, 633]}",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 100% chance of another additional attack each with a 100% chance of becoming a super attack when attacking"
+            "Brief effect description": "Performs an additional attack with a 100% chance of another additional attack each with a 100% chance of becoming a super attack when attacking",
+            "Line description": "Performs an additional attack with a 100% chance of another additional attack each with a 100% chance of becoming a super attack when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5004311": {
             "ID": "5004311",
@@ -181,19 +203,23 @@
                 "Causalities": {
                     "3318": {
                         "Button": {
-                            "Name": "Are there 2 or more Super Saiyan 3 category units on this turn "
+                            "Name": "Are there 2 or more Super Saiyan 3 category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Super Saiyan 3 category units on this turn ",
+                            "Name": "How many Super Saiyan 3 category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Super Saiyan 3 Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"3318\", \"compiled\": 3318}",
             "Type": "Single activator",
-            "Brief effect description": "Performs a Critical Hit "
+            "Brief effect description": "Performs a Critical Hit ",
+            "Line description": "Performs a Critical Hit ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 4,

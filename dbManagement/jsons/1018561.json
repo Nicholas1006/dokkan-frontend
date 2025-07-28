@@ -15,6 +15,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "RR Army",
         "Android Assault",
@@ -42,17 +43,24 @@
                 "Logic": "445",
                 "Causalities": {
                     "445": {
+                        "Button": {
+                            "Name": "Is Ki at least 8 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=8",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 8 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"445\", \"compiled\": 445}",
             "Type": "Single activator",
-            "Brief effect description": "Damage recieved -40% when attacking"
+            "Brief effect description": "Damage recieved -40% when attacking",
+            "Line description": "Damage recieved -40% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1001970": {
             "ID": "1001970",
@@ -68,27 +76,27 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "438 || 439 || 440",
+                "Logic": "(438 || 439)",
                 "Causalities": {
                     "438": {
                         "Button": {
                             "Name": "Is there an enemy whose name includes Goku on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "\"Goku\""
                     },
                     "439": {
                         "Button": {
                             "Name": "Is there an enemy whose name includes Vegeta on this turn?"
-                        }
-                    },
-                    "440": {
-                        "Button": {
-                            "Name": "Is there an enemy whose name includes Trunks (Teen) on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "\"Vegeta\""
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"438|439|440\", \"compiled\": [\"|\", 438, 439, 440]}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +130% "
+            "Brief effect description": "ATK and DEF +130% ",
+            "Line description": "ATK and DEF +130% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2001970": {
             "ID": "2001970",
@@ -109,12 +117,16 @@
                     "441": {
                         "Button": {
                             "Name": "Is there an ally attacking on this turn whose name includes Androids #14 & #15?"
-                        }
+                        },
+                        "Paragraph Title": "When there is an ally whose name includes \"Androids #14 & #15\" attacking in the same turn "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"441\", \"compiled\": 441}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +70% "
+            "Brief effect description": "ATK and DEF +70% ",
+            "Line description": "ATK and DEF +70% ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,

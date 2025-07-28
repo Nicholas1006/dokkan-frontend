@@ -26,6 +26,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "seza",
     "Links": [
         "Golden Warrior",
         "Super Saiyan",
@@ -50,8 +51,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +130% "
+            "Brief effect description": "ATK and DEF +130% ",
+            "Line description": "ATK and DEF +130% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1004125": {
             "ID": "1004125",
@@ -66,8 +70,11 @@
             },
             "Chance": "50",
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK +180% "
+            "Brief effect description": "ATK +180% ",
+            "Line description": "ATK +180% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2004125": {
             "ID": "2004125",
@@ -86,17 +93,24 @@
                 "Logic": "47",
                 "Causalities": {
                     "47": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"47\", \"compiled\": 47}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +130% when attacking"
+            "Brief effect description": "ATK and DEF +130% when attacking",
+            "Line description": "ATK and DEF +130% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3004125": {
             "ID": "3004125",
@@ -110,8 +124,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Chance of evading enemy attacks +30% "
+            "Brief effect description": "Chance of evading enemy attacks +30% ",
+            "Line description": "Chance of evading enemy attacks +30% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4004125": {
             "ID": "4004125",
@@ -137,12 +154,16 @@
                             "Logic": ">=60",
                             "Min": 0,
                             "Max": 100
-                        }
+                        },
+                        "Paragraph Title": "When HP is 60% or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"144\", \"compiled\": 144}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of evading enemy attacks +30% "
+            "Brief effect description": "Chance of evading enemy attacks +30% ",
+            "Line description": "Chance of evading enemy attacks +30% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5004125": {
             "ID": "5004125",
@@ -157,34 +178,39 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "3133 || 2830",
+                "Logic": "(3133 || 2830)",
                 "Causalities": {
                     "3133": {
                         "Button": {
-                            "Name": "Are there 2 or more Kamehameha category units on this turn "
+                            "Name": "Are there 2 or more Kamehameha category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Kamehameha category units on this turn ",
+                            "Name": "How many Kamehameha category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Kamehameha Category allies attacking on this turn"
                     },
                     "2830": {
                         "Button": {
-                            "Name": "Are there 2 or more Majin Buu Saga category units on this turn "
+                            "Name": "Are there 2 or more Majin Buu Saga category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Majin Buu Saga category units on this turn ",
+                            "Name": "How many Majin Buu Saga category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Majin Buu Saga Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"3133|2830\", \"compiled\": [\"|\", 3133, 2830]}",
             "Type": "Single activator",
-            "Brief effect description": "Ki +3 "
+            "Brief effect description": "Ki +3 ",
+            "Line description": "Ki +3 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6004125": {
             "ID": "6004125",
@@ -199,34 +225,39 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "3133 || 2830",
+                "Logic": "(3133 || 2830)",
                 "Causalities": {
                     "3133": {
                         "Button": {
-                            "Name": "Are there 2 or more Kamehameha category units on this turn "
+                            "Name": "Are there 2 or more Kamehameha category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Kamehameha category units on this turn ",
+                            "Name": "How many Kamehameha category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Kamehameha Category allies attacking on this turn"
                     },
                     "2830": {
                         "Button": {
-                            "Name": "Are there 2 or more Majin Buu Saga category units on this turn "
+                            "Name": "Are there 2 or more Majin Buu Saga category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Majin Buu Saga category units on this turn ",
+                            "Name": "How many Majin Buu Saga category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Majin Buu Saga Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"3133|2830\", \"compiled\": [\"|\", 3133, 2830]}",
             "Type": "Single activator",
-            "Brief effect description": "Attacks effective against all Types "
+            "Brief effect description": "Attacks effective against all Types ",
+            "Line description": "Attacks effective against all Types ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,

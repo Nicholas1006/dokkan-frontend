@@ -22,6 +22,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "seza",
     "Links": [
         "All in the Family",
         "Super Saiyan",
@@ -45,8 +46,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Ki +3 "
+            "Brief effect description": "Ki +3 ",
+            "Line description": "Ki +3 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1003579": {
             "ID": "1003579",
@@ -61,8 +65,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +158% "
+            "Brief effect description": "ATK and DEF +158% ",
+            "Line description": "ATK and DEF +158% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2003579": {
             "ID": "2003579",
@@ -81,17 +88,24 @@
                 "Logic": "2652",
                 "Causalities": {
                     "2652": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2652\", \"compiled\": 2652}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +58% when attacking"
+            "Brief effect description": "ATK and DEF +58% when attacking",
+            "Line description": "ATK and DEF +58% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3003579": {
             "ID": "3003579",
@@ -105,8 +119,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Damage recieved -58% right before being hit"
+            "Brief effect description": "Damage recieved -58% right before being hit",
+            "Line description": "Damage recieved -58% right before being hit",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4003579": {
             "ID": "4003579",
@@ -125,19 +142,23 @@
                 "Causalities": {
                     "2735": {
                         "Button": {
-                            "Name": "Are there 1 or more Bond of Master and Disciple category units on this turn "
+                            "Name": "Are there 1 or more Bond of Master and Disciple category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Bond of Master and Disciple category units on this turn ",
+                            "Name": "How many Bond of Master and Disciple category allies attacking on this turn",
                             "Logic": ">=1",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 1 or more Bond of Master and Disciple Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2735\", \"compiled\": 2735}",
             "Type": "Single activator",
-            "Brief effect description": "Ki +1 "
+            "Brief effect description": "Ki +1 ",
+            "Line description": "Ki +1 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5003579": {
             "ID": "5003579",
@@ -157,19 +178,23 @@
                 "Causalities": {
                     "2735": {
                         "Button": {
-                            "Name": "Are there 1 or more Bond of Master and Disciple category units on this turn "
+                            "Name": "Are there 1 or more Bond of Master and Disciple category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Bond of Master and Disciple category units on this turn ",
+                            "Name": "How many Bond of Master and Disciple category allies attacking on this turn",
                             "Logic": ">=1",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 1 or more Bond of Master and Disciple Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2735\", \"compiled\": 2735}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +40% "
+            "Brief effect description": "ATK and DEF +40% ",
+            "Line description": "ATK and DEF +40% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6003579": {
             "ID": "6003579",
@@ -193,12 +218,16 @@
                     "2654": {
                         "Button": {
                             "Name": "Is there an ally attacking on this turn whose name includes Trunks?"
-                        }
+                        },
+                        "Paragraph Title": "When there is an ally whose name includes \"Trunks\" attacking in the same turn "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2654\", \"compiled\": 2654}",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 50% chance of becoming a super attack when attacking"
+            "Brief effect description": "Performs an additional attack with a 50% chance of becoming a super attack when attacking",
+            "Line description": "Performs an additional attack with a 50% chance of becoming a super attack when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "7003579": {
             "ID": "7003579",
@@ -217,34 +246,39 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2658 || 2659",
+                "Logic": "(2658 || 2659)",
                 "Causalities": {
                     "2658": {
                         "Button": {
-                            "Name": "Are there 1 or more Androids category enemies on this turn?"
+                            "Name": "Are there 1 or more Androids category enemies  on this turn?"
                         },
                         "Slider": {
                             "Name": "How many Androids category enemies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 1 or more Androids Category enemies "
                     },
                     "2659": {
                         "Button": {
-                            "Name": "Are there 1 or more Future Saga category enemies on this turn?"
+                            "Name": "Are there 1 or more Future Saga category enemies  on this turn?"
                         },
                         "Slider": {
                             "Name": "How many Future Saga category enemies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 1 or more Future Saga Category enemies "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2658|2659\", \"compiled\": [\"|\", 2658, 2659]}",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking"
+            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking",
+            "Line description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "8003579": {
             "ID": "8003579",
@@ -263,19 +297,23 @@
                 "Causalities": {
                     "2736": {
                         "Button": {
-                            "Name": "Are there 2 or more Bond of Master and Disciple category units on this turn "
+                            "Name": "Are there 2 or more Bond of Master and Disciple category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Bond of Master and Disciple category units on this turn ",
+                            "Name": "How many Bond of Master and Disciple category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Bond of Master and Disciple Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2736\", \"compiled\": 2736}",
             "Type": "Single activator",
-            "Brief effect description": "Ki +1 "
+            "Brief effect description": "Ki +1 ",
+            "Line description": "Ki +1 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "9003579": {
             "ID": "9003579",
@@ -294,19 +332,23 @@
                 "Causalities": {
                     "2737": {
                         "Button": {
-                            "Name": "Are there 3 or more Bond of Master and Disciple category units on this turn "
+                            "Name": "Are there 3 or more Bond of Master and Disciple category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Bond of Master and Disciple category units on this turn ",
+                            "Name": "How many Bond of Master and Disciple category allies attacking on this turn",
                             "Logic": ">=3",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 3 or more Bond of Master and Disciple Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2737\", \"compiled\": 2737}",
             "Type": "Single activator",
-            "Brief effect description": "Ki +1 "
+            "Brief effect description": "Ki +1 ",
+            "Line description": "Ki +1 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "10003579": {
             "ID": "10003579",
@@ -326,19 +368,23 @@
                 "Causalities": {
                     "2736": {
                         "Button": {
-                            "Name": "Are there 2 or more Bond of Master and Disciple category units on this turn "
+                            "Name": "Are there 2 or more Bond of Master and Disciple category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Bond of Master and Disciple category units on this turn ",
+                            "Name": "How many Bond of Master and Disciple category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Bond of Master and Disciple Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2736\", \"compiled\": 2736}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +40% "
+            "Brief effect description": "ATK and DEF +40% ",
+            "Line description": "ATK and DEF +40% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "11003579": {
             "ID": "11003579",
@@ -358,19 +404,23 @@
                 "Causalities": {
                     "2737": {
                         "Button": {
-                            "Name": "Are there 3 or more Bond of Master and Disciple category units on this turn "
+                            "Name": "Are there 3 or more Bond of Master and Disciple category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Bond of Master and Disciple category units on this turn ",
+                            "Name": "How many Bond of Master and Disciple category allies attacking on this turn",
                             "Logic": ">=3",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 3 or more Bond of Master and Disciple Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2737\", \"compiled\": 2737}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +40% "
+            "Brief effect description": "ATK and DEF +40% ",
+            "Line description": "ATK and DEF +40% ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 4,

@@ -22,6 +22,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Messenger from the Future",
         "Cold Judgment",
@@ -45,8 +46,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Ki +2 "
+            "Brief effect description": "Ki +2 ",
+            "Line description": "Ki +2 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1003520": {
             "ID": "1003520",
@@ -61,8 +65,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +80% "
+            "Brief effect description": "ATK and DEF +80% ",
+            "Line description": "ATK and DEF +80% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2003520": {
             "ID": "2003520",
@@ -84,8 +91,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
-            "Brief effect description": "ATK +20% (up to 80%) based on 'How many attacks has this character performed in battle' after attacking"
+            "Brief effect description": "ATK +20% (up to 80%) based on 'How many attacks has this character performed in battle' after attacking",
+            "Line description": "ATK +20% (up to 80%) based on 'How many attacks has this character performed in battle' after attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3003520": {
             "ID": "3003520",
@@ -107,8 +117,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
-            "Brief effect description": "DEF +20% (up to 80%) based on 'How many attacks has this character performed in battle' after attacking"
+            "Brief effect description": "DEF +20% (up to 80%) based on 'How many attacks has this character performed in battle' after attacking",
+            "Line description": "DEF +20% (up to 80%) based on 'How many attacks has this character performed in battle' after attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4003520": {
             "ID": "4003520",
@@ -123,34 +136,39 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2527 || 2528",
+                "Logic": "(2527 || 2528)",
                 "Causalities": {
                     "2527": {
                         "Button": {
-                            "Name": "Are there 1 or more Future Saga category enemies on this turn?"
+                            "Name": "Are there 1 or more Future Saga category enemies  on this turn?"
                         },
                         "Slider": {
                             "Name": "How many Future Saga category enemies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 1 or more Future Saga Category enemies "
                     },
                     "2528": {
                         "Button": {
-                            "Name": "Are there 1 or more Time Travelers category enemies on this turn?"
+                            "Name": "Are there 1 or more Time Travelers category enemies  on this turn?"
                         },
                         "Slider": {
                             "Name": "How many Time Travelers category enemies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 1 or more Time Travelers Category enemies "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2527|2528\", \"compiled\": [\"|\", 2527, 2528]}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of performing a critical hit +30% "
+            "Brief effect description": "Chance of performing a critical hit +30% ",
+            "Line description": "Chance of performing a critical hit +30% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5003520": {
             "ID": "5003520",
@@ -166,31 +184,39 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2524 && 2525",
+                "Logic": "(2524&&2525)",
                 "Causalities": {
                     "2524": {
                         "Button": {
-                            "Name": "Are there 2 or more Future Saga category units on this turn "
+                            "Name": "Are there 2 or more Future Saga category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Future Saga category units on this turn ",
+                            "Name": "How many Future Saga category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Future Saga Category allies attacking on this turn"
                     },
                     "2525": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2524&2525\", \"compiled\": [\"&\", 2524, 2525]}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +40% when attacking"
+            "Brief effect description": "ATK and DEF +40% when attacking",
+            "Line description": "ATK and DEF +40% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,
@@ -942,23 +968,25 @@
         "Effect Description": "Creates the Domain \"Wasteland (Future)\" for 4 turns",
         "Condition Description": "Can be activated when there is a \n\"Time Travelers\" Category enemy, \nor starting from the 5th turn from \nthe character's entry turn (once only)",
         "Condition": {
-            "Logic": "2526 && 2528 || 2526 && 2529",
+            "Logic": "((2526&&2528) || (2526&&2529))",
             "Causalities": {
                 "2526": {
                     "Button": {
                         "Name": "Is no domain active?"
-                    }
+                    },
+                    "Paragraph Title": "When no domain is active"
                 },
                 "2528": {
                     "Button": {
-                        "Name": "Are there 1 or more Time Travelers category enemies "
+                        "Name": "Are there 1 or more Time Travelers category enemies ?"
                     },
                     "Slider": {
                         "Name": "How many Time Travelers category enemies ",
                         "Logic": ">=1",
                         "Max": 7,
                         "Min": 0
-                    }
+                    },
+                    "Paragraph Title": "When there are 1 or more Time Travelers Category enemies "
                 },
                 "2529": {
                     "Button": {
@@ -968,7 +996,8 @@
                         "Name": "What turn is it?",
                         "Logic": ">=5",
                         "Min": 1
-                    }
+                    },
+                    "Paragraph Title": "When the turn count is 5"
                 }
             }
         },

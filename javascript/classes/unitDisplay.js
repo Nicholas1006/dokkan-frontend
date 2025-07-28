@@ -1,6 +1,3 @@
-const canvas = document.getElementById('lwf-stage');
-let lwfUrl;
-const sceneName = 'ef_001';
 import {LWFPlayer} from "./LWF.js";
 
 import {

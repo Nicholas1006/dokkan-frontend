@@ -15,6 +15,7 @@
     ],
     "Can EZA": false,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Battlefield Diva",
         "The Innocents",
@@ -37,8 +38,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Ki +1 "
+            "Brief effect description": "Ki +1 ",
+            "Line description": "Ki +1 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1004559": {
             "ID": "1004559",
@@ -53,8 +57,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +100% "
+            "Brief effect description": "ATK and DEF +100% ",
+            "Line description": "ATK and DEF +100% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2004559": {
             "ID": "2004559",
@@ -72,8 +79,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 30% chance of becoming a super attack "
+            "Brief effect description": "Performs an additional attack with a 30% chance of becoming a super attack ",
+            "Line description": "Performs an additional attack with a 30% chance of becoming a super attack ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3004559": {
             "ID": "3004559",
@@ -89,8 +99,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Super class allies ATK and DEF +20% "
+            "Brief effect description": "Super class allies ATK and DEF +20% ",
+            "Line description": "Super class allies ATK and DEF +20% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4004559": {
             "ID": "4004559",
@@ -112,8 +125,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Super class DB Saga category allies ATK and DEF +20% "
+            "Brief effect description": "Super class DB Saga category allies ATK and DEF +20% ",
+            "Line description": "Super class DB Saga category allies ATK and DEF +20% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5004559": {
             "ID": "5004559",
@@ -131,17 +147,24 @@
                 "Logic": "46",
                 "Causalities": {
                     "46": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"46\", \"compiled\": 46}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +100% when attacking"
+            "Brief effect description": "ATK +100% when attacking",
+            "Line description": "ATK +100% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6004559": {
             "ID": "6004559",
@@ -163,8 +186,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "CausalityLogic": "{\"source\": \"790\", \"compiled\": 790}",
             "Type": "Building Stat",
-            "Brief effect description": "ATK +10% (up to 50%) based on 'How many super attacks has this character performed' after attacking"
+            "Brief effect description": "ATK +10% (up to 50%) based on 'How many super attacks has this character performed' after attacking",
+            "Line description": "ATK +10% (up to 50%) based on 'How many super attacks has this character performed' after attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "7004559": {
             "ID": "7004559",
@@ -186,8 +212,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "CausalityLogic": "{\"source\": \"790\", \"compiled\": 790}",
             "Type": "Building Stat",
-            "Brief effect description": "DEF +10% (up to 50%) based on 'How many super attacks has this character performed' after attacking"
+            "Brief effect description": "DEF +10% (up to 50%) based on 'How many super attacks has this character performed' after attacking",
+            "Line description": "DEF +10% (up to 50%) based on 'How many super attacks has this character performed' after attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "8004559": {
             "ID": "8004559",
@@ -209,8 +238,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "CausalityLogic": "{\"source\": \"790\", \"compiled\": 790}",
             "Type": "Building Stat",
-            "Brief effect description": "Chance of performing a critical hit +10% (up to 50%) based on 'How many super attacks has this character performed' after attacking"
+            "Brief effect description": "Chance of performing a critical hit +10% (up to 50%) based on 'How many super attacks has this character performed' after attacking",
+            "Line description": "Chance of performing a critical hit +10% (up to 50%) based on 'How many super attacks has this character performed' after attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "9004559": {
             "ID": "9004559",
@@ -229,19 +261,23 @@
                 "Causalities": {
                     "247": {
                         "Button": {
-                            "Name": "Are there 2 or more Youth category units on the team on this turn?"
+                            "Name": "Are there 2 or more Youth category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Youth category units on the team on this turn?",
+                            "Name": "How many Youth category allies on this turn?",
                             "Logic": ">=2",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Youth Category allies "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"247\", \"compiled\": 247}",
             "Type": "Single activator",
-            "Brief effect description": "DEF +100% "
+            "Brief effect description": "DEF +100% ",
+            "Line description": "DEF +100% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "10004559": {
             "ID": "10004559",
@@ -260,19 +296,23 @@
                 "Causalities": {
                     "247": {
                         "Button": {
-                            "Name": "Are there 2 or more Youth category units on the team on this turn?"
+                            "Name": "Are there 2 or more Youth category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Youth category units on the team on this turn?",
+                            "Name": "How many Youth category allies on this turn?",
                             "Logic": ">=2",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Youth Category allies "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"247\", \"compiled\": 247}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of evading enemy attacks +30% "
+            "Brief effect description": "Chance of evading enemy attacks +30% ",
+            "Line description": "Chance of evading enemy attacks +30% ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,

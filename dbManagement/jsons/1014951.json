@@ -16,6 +16,7 @@
     ],
     "Can EZA": false,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Over in a Flash",
         "Experienced Fighters",
@@ -38,8 +39,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +50% when attacking"
+            "Brief effect description": "ATK and DEF +50% when attacking",
+            "Line description": "ATK and DEF +50% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1001291": {
             "ID": "1001291",
@@ -57,17 +61,24 @@
                 "Logic": "47",
                 "Causalities": {
                     "47": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"47\", \"compiled\": 47}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +50% when attacking"
+            "Brief effect description": "ATK +50% when attacking",
+            "Line description": "ATK +50% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2001291": {
             "ID": "2001291",
@@ -87,12 +98,16 @@
                     "105": {
                         "Button": {
                             "Name": "Is the target enemy in \"ATK down\" status on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "When the target enemy is in \"ATK down\" status"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"105\", \"compiled\": 105}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +50% when attacking"
+            "Brief effect description": "ATK +50% when attacking",
+            "Line description": "ATK +50% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,

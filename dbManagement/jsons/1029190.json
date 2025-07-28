@@ -17,6 +17,7 @@
     ],
     "Can EZA": false,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Brainiacs",
         "Brutal Beatdown",
@@ -40,8 +41,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +120% "
+            "Brief effect description": "ATK and DEF +120% ",
+            "Line description": "ATK and DEF +120% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1004230": {
             "ID": "1004230",
@@ -56,8 +60,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +120% when attacking"
+            "Brief effect description": "ATK and DEF +120% when attacking",
+            "Line description": "ATK and DEF +120% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2004230": {
             "ID": "2004230",
@@ -71,8 +78,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": " allies Ki +2 "
+            "Brief effect description": " allies Ki +2 ",
+            "Line description": " allies Ki +2 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3004230": {
             "ID": "3004230",
@@ -87,8 +97,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": " allies ATK and DEF +20% "
+            "Brief effect description": " allies ATK and DEF +20% ",
+            "Line description": " allies ATK and DEF +20% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4004230": {
             "ID": "4004230",
@@ -104,45 +117,39 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "996 || 2349 || 3239",
+                "Logic": "(996 || 2349)",
                 "Causalities": {
                     "996": {
                         "Button": {
-                            "Name": "Are there 4 or more Peppy Gals category units on the team on this turn?"
+                            "Name": "Are there 4 or more Peppy Gals category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Peppy Gals category units on the team on this turn?",
+                            "Name": "How many Peppy Gals category allies on this turn?",
                             "Logic": ">=4",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 4 or more Peppy Gals Category allies "
                     },
                     "2349": {
                         "Button": {
-                            "Name": "Are there 4 or more DB Saga category units on the team on this turn?"
+                            "Name": "Are there 4 or more DB Saga category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many DB Saga category units on the team on this turn?",
+                            "Name": "How many DB Saga category allies on this turn?",
                             "Logic": ">=4",
                             "Max": 7,
                             "Min": 0
-                        }
-                    },
-                    "3239": {
-                        "Button": {
-                            "Name": "Is there 1 or more AGL  type enemies on this turn?"
                         },
-                        "Slider": {
-                            "Name": "How many AGL  type enemies on this turn?",
-                            "Logic": ">=1",
-                            "Max": 7,
-                            "Min": 0
-                        }
+                        "Paragraph Title": "When there are 4 or more DB Saga Category allies "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"996|2349|3239\", \"compiled\": [\"|\", 996, 2349, 3239]}",
             "Type": "Single activator",
-            "Brief effect description": " allies ATK and DEF +20% "
+            "Brief effect description": " allies ATK and DEF +20% ",
+            "Line description": " allies ATK and DEF +20% ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 1,

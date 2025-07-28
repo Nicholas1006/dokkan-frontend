@@ -19,6 +19,7 @@
     ],
     "Can EZA": false,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Saiyan Warrior Race",
         "Royal Lineage",
@@ -42,9 +43,12 @@
                 "+ or -": "+"
             },
             "Length": "3",
+            "CausalityLogic": "",
             "Once Only": true,
             "Type": "Single activator",
-            "Brief effect description": "Damage recieved -18% "
+            "Brief effect description": "Damage recieved -18% ",
+            "Line description": "Damage recieved -18% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1004085": {
             "ID": "1004085",
@@ -62,9 +66,12 @@
                 "+ or -": "+"
             },
             "Length": "3",
+            "CausalityLogic": "",
             "Once Only": true,
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack "
+            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack ",
+            "Line description": "Performs an additional attack with a 100% chance of becoming a super attack ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2004085": {
             "ID": "2004085",
@@ -78,8 +85,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Ki +2 "
+            "Brief effect description": "Ki +2 ",
+            "Line description": "Ki +2 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3004085": {
             "ID": "3004085",
@@ -94,8 +104,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +150% "
+            "Brief effect description": "ATK and DEF +150% ",
+            "Line description": "ATK and DEF +150% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4004085": {
             "ID": "4004085",
@@ -109,8 +122,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Guards all attacks "
+            "Brief effect description": "Guards all attacks ",
+            "Line description": "Guards all attacks ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5004085": {
             "ID": "5004085",
@@ -133,8 +149,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Building Stat",
-            "Brief effect description": "ATK +150% (up to 150%) based on 'What percentage of HP is remaining' when attacking"
+            "Brief effect description": "ATK +150% (up to 150%) based on 'What percentage of HP is remaining' when attacking",
+            "Line description": "ATK +150% (up to 150%) based on 'What percentage of HP is remaining' when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6004085": {
             "ID": "6004085",
@@ -157,8 +176,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Building Stat",
-            "Brief effect description": "DEF +150% (up to 150%) based on 'What percentage of HP is remaining' right before being hit"
+            "Brief effect description": "DEF +150% (up to 150%) based on 'What percentage of HP is remaining' right before being hit",
+            "Line description": "DEF +150% (up to 150%) based on 'What percentage of HP is remaining' right before being hit",
+            "Paragraph Title": "Basic effects(s)"
         },
         "7004085": {
             "ID": "7004085",
@@ -180,8 +202,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "CausalityLogic": "{\"source\": \"24\", \"compiled\": 24}",
             "Type": "Building Stat",
-            "Brief effect description": "DEF +31% (up to 80%) based on 'How many attacks has this character recieved' after being hit"
+            "Brief effect description": "DEF +31% (up to 80%) based on 'How many attacks has this character recieved' after being hit",
+            "Line description": "DEF +31% (up to 80%) based on 'How many attacks has this character recieved' after being hit",
+            "Paragraph Title": "Basic effects(s)"
         },
         "8004085": {
             "ID": "8004085",
@@ -200,22 +225,27 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2444 || 2899",
+                "Logic": "(2444 || 2899)",
                 "Causalities": {
                     "2444": {
                         "Button": {
                             "Name": "Is there an ally attacking on this turn whose name includes Goku?"
-                        }
+                        },
+                        "Paragraph Title": "When there is an ally whose name includes \"Goku\" attacking in the same turn "
                     },
                     "2899": {
                         "Button": {
                             "Name": "Is there an enemy whose name includes Goku on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "\"Goku\""
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2444|2899\", \"compiled\": [\"|\", 2444, 2899]}",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 70% chance of becoming a super attack "
+            "Brief effect description": "Performs an additional attack with a 70% chance of becoming a super attack ",
+            "Line description": "Performs an additional attack with a 70% chance of becoming a super attack ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 4,
@@ -1154,7 +1184,7 @@
         "Effect Description": "Transforms",
         "Condition Description": "Can be activated when HP is 18% or more \nstarting from the 3rd turn from \nthe start of battle (once only)",
         "Condition": {
-            "Logic": "4 && 3083",
+            "Logic": "(4&&3083)",
             "Causalities": {
                 "4": {
                     "Button": {
@@ -1164,7 +1194,8 @@
                         "Name": "What turn is it?",
                         "Logic": ">=3",
                         "Min": 1
-                    }
+                    },
+                    "Paragraph Title": "When the turn count is 3"
                 },
                 "3083": {
                     "Button": {
@@ -1175,7 +1206,8 @@
                         "Logic": ">=18",
                         "Min": 0,
                         "Max": 100
-                    }
+                    },
+                    "Paragraph Title": "When HP is 18% or more"
                 }
             }
         },

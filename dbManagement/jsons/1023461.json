@@ -26,6 +26,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Saiyan Warrior Race",
         "Super Saiyan",
@@ -49,8 +50,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Ki +2 "
+            "Brief effect description": "Ki +2 ",
+            "Line description": "Ki +2 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1002694": {
             "ID": "1002694",
@@ -65,8 +69,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +180% "
+            "Brief effect description": "ATK and DEF +180% ",
+            "Line description": "ATK and DEF +180% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2002694": {
             "ID": "2002694",
@@ -84,8 +91,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 30% chance of becoming a super attack when attacking"
+            "Brief effect description": "Performs an additional attack with a 30% chance of becoming a super attack when attacking",
+            "Line description": "Performs an additional attack with a 30% chance of becoming a super attack when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3002694": {
             "ID": "3002694",
@@ -104,17 +114,24 @@
                 "Logic": "1229",
                 "Causalities": {
                     "1229": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"1229\", \"compiled\": 1229}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +50% when attacking"
+            "Brief effect description": "ATK and DEF +50% when attacking",
+            "Line description": "ATK and DEF +50% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4002694": {
             "ID": "4002694",
@@ -128,8 +145,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Chance of performing a critical hit +50% "
+            "Brief effect description": "Chance of performing a critical hit +50% ",
+            "Line description": "Chance of performing a critical hit +50% ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 3,
@@ -934,7 +954,7 @@
         "Effect Description": "Transforms",
         "Condition Description": "Can be activated when HP is 77% or less \nstarting from the 3rd turn from \nthe start of battle (once only)",
         "Condition": {
-            "Logic": "1231 && 1232",
+            "Logic": "(1231&&1232)",
             "Causalities": {
                 "1231": {
                     "Button": {
@@ -945,7 +965,8 @@
                         "Logic": "<=77",
                         "Min": 0,
                         "Max": 100
-                    }
+                    },
+                    "Paragraph Title": "When HP is 77% or less"
                 },
                 "1232": {
                     "Button": {
@@ -955,7 +976,8 @@
                         "Name": "What turn is it?",
                         "Logic": ">=3",
                         "Min": 1
-                    }
+                    },
+                    "Paragraph Title": "When the turn count is 3"
                 }
             }
         },

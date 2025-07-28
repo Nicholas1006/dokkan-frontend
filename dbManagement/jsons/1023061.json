@@ -19,6 +19,7 @@
     ],
     "Can EZA": false,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Saiyan Warrior Race",
         "The Saiyan Lineage",
@@ -43,8 +44,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +100% "
+            "Brief effect description": "ATK and DEF +100% ",
+            "Line description": "ATK and DEF +100% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1002628": {
             "ID": "1002628",
@@ -68,8 +72,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Building Stat",
-            "Brief effect description": "ATK and DEF +200% (up to 200%) based on 'What percentage of HP is remaining' "
+            "Brief effect description": "ATK and DEF +200% (up to 200%) based on 'What percentage of HP is remaining' ",
+            "Line description": "ATK and DEF +200% (up to 200%) based on 'What percentage of HP is remaining' ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2002628": {
             "ID": "2002628",
@@ -83,9 +90,12 @@
                 "+ or -": "+"
             },
             "Length": "5",
+            "CausalityLogic": "",
             "Once Only": true,
             "Type": "Single activator",
-            "Brief effect description": "Ki +5 "
+            "Brief effect description": "Ki +5 ",
+            "Line description": "Ki +5 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3002628": {
             "ID": "3002628",
@@ -99,9 +109,12 @@
                 "+ or -": "+"
             },
             "Length": "5",
+            "CausalityLogic": "",
             "Once Only": true,
             "Type": "Single activator",
-            "Brief effect description": "Chance of performing a critical hit +59% "
+            "Brief effect description": "Chance of performing a critical hit +59% ",
+            "Line description": "Chance of performing a critical hit +59% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4002628": {
             "ID": "4002628",
@@ -115,9 +128,12 @@
                 "+ or -": "+"
             },
             "Length": "5",
+            "CausalityLogic": "",
             "Once Only": true,
             "Type": "Single activator",
-            "Brief effect description": "Damage recieved -59% "
+            "Brief effect description": "Damage recieved -59% ",
+            "Line description": "Damage recieved -59% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5002628": {
             "ID": "5002628",
@@ -136,9 +152,12 @@
             },
             "Chance": "59",
             "Length": "5",
+            "CausalityLogic": "",
             "Once Only": true,
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack "
+            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack ",
+            "Line description": "Performs an additional attack with a 100% chance of becoming a super attack ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6002628": {
             "ID": "6002628",
@@ -163,12 +182,16 @@
                             "Name": "What turn is it on this turn?",
                             "Logic": ">=6",
                             "Min": 1
-                        }
+                        },
+                        "Paragraph Title": "When the turn count is 6"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"1093\", \"compiled\": 1093}",
             "Type": "Single activator",
-            "Brief effect description": "DEF +59% "
+            "Brief effect description": "DEF +59% ",
+            "Line description": "DEF +59% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "7002628": {
             "ID": "7002628",
@@ -183,7 +206,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1093 && 1092",
+                "Logic": "(1093&&1092)",
                 "Causalities": {
                     "1093": {
                         "Button": {
@@ -193,7 +216,8 @@
                             "Name": "What turn is it on this turn?",
                             "Logic": ">=6",
                             "Min": 1
-                        }
+                        },
+                        "Paragraph Title": "When the turn count is 6"
                     },
                     "1092": {
                         "Button": {
@@ -204,12 +228,16 @@
                             "Logic": "<=59",
                             "Min": 0,
                             "Max": 100
-                        }
+                        },
+                        "Paragraph Title": "When HP is 59% or less"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"1093&1092\", \"compiled\": [\"&\", 1093, 1092]}",
             "Type": "Single activator",
-            "Brief effect description": "Damage recieved -59% "
+            "Brief effect description": "Damage recieved -59% ",
+            "Line description": "Damage recieved -59% ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 3,

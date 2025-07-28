@@ -16,6 +16,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Saiyan Warrior Race",
         "The Saiyan Lineage",
@@ -40,8 +41,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +100% "
+            "Brief effect description": "ATK and DEF +100% ",
+            "Line description": "ATK and DEF +100% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1002031": {
             "ID": "1002031",
@@ -61,12 +65,16 @@
                     "486": {
                         "Button": {
                             "Name": "Is there an ally on the team whose name includes Goku on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "When there is an ally whose name includes \"Goku\""
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"486\", \"compiled\": 486}",
             "Type": "Single activator",
-            "Brief effect description": "Ki +3 "
+            "Brief effect description": "Ki +3 ",
+            "Line description": "Ki +3 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2002031": {
             "ID": "2002031",
@@ -87,12 +95,16 @@
                     "486": {
                         "Button": {
                             "Name": "Is there an ally on the team whose name includes Goku on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "When there is an ally whose name includes \"Goku\""
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"486\", \"compiled\": 486}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +100% "
+            "Brief effect description": "ATK and DEF +100% ",
+            "Line description": "ATK and DEF +100% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3002031": {
             "ID": "3002031",
@@ -111,19 +123,23 @@
                 "Causalities": {
                     "487": {
                         "Button": {
-                            "Name": "Are there 1 or more Movie Bosses category enemies on this turn?"
+                            "Name": "Are there 1 or more Movie Bosses category enemies  on this turn?"
                         },
                         "Slider": {
                             "Name": "How many Movie Bosses category enemies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 1 or more Movie Bosses Category enemies "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"487\", \"compiled\": 487}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +100% "
+            "Brief effect description": "ATK +100% ",
+            "Line description": "ATK +100% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4002031": {
             "ID": "4002031",
@@ -143,12 +159,16 @@
                     "488": {
                         "Button": {
                             "Name": "Is there an enemy whose name includes Frieza on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "\"Frieza\""
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"488\", \"compiled\": 488}",
             "Type": "Single activator",
-            "Brief effect description": "Ki +3 "
+            "Brief effect description": "Ki +3 ",
+            "Line description": "Ki +3 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5002031": {
             "ID": "5002031",
@@ -168,12 +188,16 @@
                     "488": {
                         "Button": {
                             "Name": "Is there an enemy whose name includes Frieza on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "\"Frieza\""
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"488\", \"compiled\": 488}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +100% "
+            "Brief effect description": "ATK +100% ",
+            "Line description": "ATK +100% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6002031": {
             "ID": "6002031",
@@ -193,12 +217,16 @@
                     "488": {
                         "Button": {
                             "Name": "Is there an enemy whose name includes Frieza on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "\"Frieza\""
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"488\", \"compiled\": 488}",
             "Type": "Single activator",
-            "Brief effect description": "Performs a Critical Hit "
+            "Brief effect description": "Performs a Critical Hit ",
+            "Line description": "Performs a Critical Hit ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,
@@ -992,7 +1020,7 @@
         "Effect Description": "Removes all allies' status effects and \nraises all allies' ATK by 22% for 2 turns",
         "Condition Description": "Can be activated when HP is 80% or less starting \nfrom the 4th turn from the start of battle (once only)",
         "Condition": {
-            "Logic": "492 && 493",
+            "Logic": "(492&&493)",
             "Causalities": {
                 "492": {
                     "Button": {
@@ -1002,7 +1030,8 @@
                         "Name": "What turn is it?",
                         "Logic": ">=4",
                         "Min": 1
-                    }
+                    },
+                    "Paragraph Title": "When the turn count is 4"
                 },
                 "493": {
                     "Button": {
@@ -1013,7 +1042,8 @@
                         "Logic": "<=80",
                         "Min": 0,
                         "Max": 100
-                    }
+                    },
+                    "Paragraph Title": "When HP is 80% or less"
                 }
             }
         },

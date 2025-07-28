@@ -18,6 +18,7 @@
     ],
     "Can EZA": false,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Android Assault",
         "Battlefield Diva",
@@ -41,8 +42,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +100% "
+            "Brief effect description": "ATK and DEF +100% ",
+            "Line description": "ATK and DEF +100% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1004582": {
             "ID": "1004582",
@@ -68,8 +72,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Randomly changes Ki Spheres of a certain Type to Rainbow Ki Spheres "
+            "Brief effect description": "Randomly changes Ki Spheres of a certain Type to Rainbow Ki Spheres ",
+            "Line description": "Randomly changes Ki Spheres of a certain Type to Rainbow Ki Spheres ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2004582": {
             "ID": "2004582",
@@ -83,8 +90,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": " allies Ki +1 "
+            "Brief effect description": " allies Ki +1 ",
+            "Line description": " allies Ki +1 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3004582": {
             "ID": "3004582",
@@ -99,8 +109,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": " allies ATK and DEF +20% "
+            "Brief effect description": " allies ATK and DEF +20% ",
+            "Line description": " allies ATK and DEF +20% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4004582": {
             "ID": "4004582",
@@ -121,8 +134,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Tournament Participants category allies ATK and DEF +10% "
+            "Brief effect description": "Tournament Participants category allies ATK and DEF +10% ",
+            "Line description": "Tournament Participants category allies ATK and DEF +10% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5004582": {
             "ID": "5004582",
@@ -141,17 +157,24 @@
                 "Logic": "46",
                 "Causalities": {
                     "46": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"46\", \"compiled\": 46}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +100% when attacking"
+            "Brief effect description": "ATK and DEF +100% when attacking",
+            "Line description": "ATK and DEF +100% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6004582": {
             "ID": "6004582",
@@ -166,7 +189,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2358 || 2359",
+                "Logic": "(2358 || 2359)",
                 "Causalities": {
                     "2358": {
                         "Button": {
@@ -177,7 +200,8 @@
                             "Logic": "==2",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 2nd attacker in the turn"
                     },
                     "2359": {
                         "Button": {
@@ -188,12 +212,16 @@
                             "Logic": "==3",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 3rd attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2358|2359\", \"compiled\": [\"|\", 2358, 2359]}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of evading enemy attacks +50% after all ki collected"
+            "Brief effect description": "Chance of evading enemy attacks +50% after all ki collected",
+            "Line description": "Chance of evading enemy attacks +50% after all ki collected",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 1,

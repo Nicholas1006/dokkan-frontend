@@ -18,6 +18,7 @@
     ],
     "Can EZA": false,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Metamorphosis",
         "Coward",
@@ -40,8 +41,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Ki +2 "
+            "Brief effect description": "Ki +2 ",
+            "Line description": "Ki +2 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1003509": {
             "ID": "1003509",
@@ -56,8 +60,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +100% "
+            "Brief effect description": "ATK and DEF +100% ",
+            "Line description": "ATK and DEF +100% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2003509": {
             "ID": "2003509",
@@ -76,17 +83,24 @@
                 "Logic": "2496",
                 "Causalities": {
                     "2496": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2496\", \"compiled\": 2496}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +50% when attacking"
+            "Brief effect description": "ATK and DEF +50% when attacking",
+            "Line description": "ATK and DEF +50% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3003509": {
             "ID": "3003509",
@@ -101,34 +115,39 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2497 || 2498",
+                "Logic": "(2497 || 2498)",
                 "Causalities": {
                     "2497": {
                         "Button": {
-                            "Name": "Are there 1 or more Pure Saiyans category enemies on this turn?"
+                            "Name": "Are there 1 or more Pure Saiyans category enemies  on this turn?"
                         },
                         "Slider": {
                             "Name": "How many Pure Saiyans category enemies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 1 or more Pure Saiyans Category enemies "
                     },
                     "2498": {
                         "Button": {
-                            "Name": "Are there 1 or more Hybrid Saiyans category enemies on this turn?"
+                            "Name": "Are there 1 or more Hybrid Saiyans category enemies  on this turn?"
                         },
                         "Slider": {
                             "Name": "How many Hybrid Saiyans category enemies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 1 or more Hybrid Saiyans Category enemies "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2497|2498\", \"compiled\": [\"|\", 2497, 2498]}",
             "Type": "Single activator",
-            "Brief effect description": "DEF +100% "
+            "Brief effect description": "DEF +100% ",
+            "Line description": "DEF +100% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4003509": {
             "ID": "4003509",
@@ -147,19 +166,23 @@
                 "Causalities": {
                     "2497": {
                         "Button": {
-                            "Name": "Are there 1 or more Pure Saiyans category enemies on this turn?"
+                            "Name": "Are there 1 or more Pure Saiyans category enemies  on this turn?"
                         },
                         "Slider": {
                             "Name": "How many Pure Saiyans category enemies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 1 or more Pure Saiyans Category enemies "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2497\", \"compiled\": 2497}",
             "Type": "Single activator",
-            "Brief effect description": "Ki +2 "
+            "Brief effect description": "Ki +2 ",
+            "Line description": "Ki +2 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5003509": {
             "ID": "5003509",
@@ -178,19 +201,23 @@
                 "Causalities": {
                     "2497": {
                         "Button": {
-                            "Name": "Are there 1 or more Pure Saiyans category enemies on this turn?"
+                            "Name": "Are there 1 or more Pure Saiyans category enemies  on this turn?"
                         },
                         "Slider": {
                             "Name": "How many Pure Saiyans category enemies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 1 or more Pure Saiyans Category enemies "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2497\", \"compiled\": 2497}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +100% "
+            "Brief effect description": "ATK +100% ",
+            "Line description": "ATK +100% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6003509": {
             "ID": "6003509",
@@ -209,19 +236,23 @@
                 "Causalities": {
                     "2498": {
                         "Button": {
-                            "Name": "Are there 1 or more Hybrid Saiyans category enemies on this turn?"
+                            "Name": "Are there 1 or more Hybrid Saiyans category enemies  on this turn?"
                         },
                         "Slider": {
                             "Name": "How many Hybrid Saiyans category enemies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 1 or more Hybrid Saiyans Category enemies "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2498\", \"compiled\": 2498}",
             "Type": "Single activator",
-            "Brief effect description": "Ki +2 "
+            "Brief effect description": "Ki +2 ",
+            "Line description": "Ki +2 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "7003509": {
             "ID": "7003509",
@@ -240,19 +271,23 @@
                 "Causalities": {
                     "2498": {
                         "Button": {
-                            "Name": "Are there 1 or more Hybrid Saiyans category enemies on this turn?"
+                            "Name": "Are there 1 or more Hybrid Saiyans category enemies  on this turn?"
                         },
                         "Slider": {
                             "Name": "How many Hybrid Saiyans category enemies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 1 or more Hybrid Saiyans Category enemies "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2498\", \"compiled\": 2498}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +100% "
+            "Brief effect description": "ATK +100% ",
+            "Line description": "ATK +100% ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,

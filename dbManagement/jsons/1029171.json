@@ -17,6 +17,7 @@
     ],
     "Can EZA": false,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Supreme Warrior",
         "Signature Pose",
@@ -40,8 +41,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +120% "
+            "Brief effect description": "ATK and DEF +120% ",
+            "Line description": "ATK and DEF +120% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1004228": {
             "ID": "1004228",
@@ -56,8 +60,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +120% when attacking"
+            "Brief effect description": "ATK and DEF +120% when attacking",
+            "Line description": "ATK and DEF +120% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2004228": {
             "ID": "2004228",
@@ -71,8 +78,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Damage recieved -11% "
+            "Brief effect description": "Damage recieved -11% ",
+            "Line description": "Damage recieved -11% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3004228": {
             "ID": "3004228",
@@ -87,45 +97,39 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "996 || 3237 || 3238",
+                "Logic": "(996 || 3237)",
                 "Causalities": {
                     "996": {
                         "Button": {
-                            "Name": "Are there 4 or more Peppy Gals category units on the team on this turn?"
+                            "Name": "Are there 4 or more Peppy Gals category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Peppy Gals category units on the team on this turn?",
+                            "Name": "How many Peppy Gals category allies on this turn?",
                             "Logic": ">=4",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 4 or more Peppy Gals Category allies "
                     },
                     "3237": {
                         "Button": {
-                            "Name": "Are there 4 or more Universe 11 category units on the team on this turn?"
+                            "Name": "Are there 4 or more Universe 11 category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Universe 11 category units on the team on this turn?",
+                            "Name": "How many Universe 11 category allies on this turn?",
                             "Logic": ">=4",
                             "Max": 7,
                             "Min": 0
-                        }
-                    },
-                    "3238": {
-                        "Button": {
-                            "Name": "Is there 1 or more TEQ  type enemies on this turn?"
                         },
-                        "Slider": {
-                            "Name": "How many TEQ  type enemies on this turn?",
-                            "Logic": ">=1",
-                            "Max": 7,
-                            "Min": 0
-                        }
+                        "Paragraph Title": "When there are 4 or more Universe 11 Category allies "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"996|3237|3238\", \"compiled\": [\"|\", 996, 3237, 3238]}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +150% when attacking"
+            "Brief effect description": "ATK +150% when attacking",
+            "Line description": "ATK +150% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,

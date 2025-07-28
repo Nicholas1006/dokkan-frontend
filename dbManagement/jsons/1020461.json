@@ -21,6 +21,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Saiyan Warrior Race",
         "Experienced Fighters",
@@ -45,8 +46,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +120% "
+            "Brief effect description": "ATK and DEF +120% ",
+            "Line description": "ATK and DEF +120% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1002178": {
             "ID": "1002178",
@@ -60,8 +64,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Damage recieved -30% right before being hit"
+            "Brief effect description": "Damage recieved -30% right before being hit",
+            "Line description": "Damage recieved -30% right before being hit",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2002178": {
             "ID": "2002178",
@@ -90,8 +97,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Building Stat",
-            "Brief effect description": "Ki +1 per Type Ki Sphere obtained "
+            "Brief effect description": "Ki +1 per Type Ki Sphere obtained ",
+            "Line description": "Ki +1 per Type Ki Sphere obtained ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3002178": {
             "ID": "3002178",
@@ -110,8 +120,11 @@
             },
             "Chance": "30",
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack "
+            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack ",
+            "Line description": "Performs an additional attack with a 100% chance of becoming a super attack ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 3,
@@ -1100,7 +1113,7 @@
         "Effect Description": "Performs Potara Fusion",
         "Condition Description": "Can be activated when HP is 77% or less \nstarting from the 4th turn from \nthe start of battle (once only)",
         "Condition": {
-            "Logic": "713 && 684",
+            "Logic": "(713&&684)",
             "Causalities": {
                 "713": {
                     "Button": {
@@ -1110,7 +1123,8 @@
                         "Name": "What turn is it?",
                         "Logic": ">=4",
                         "Min": 1
-                    }
+                    },
+                    "Paragraph Title": "When the turn count is 4"
                 },
                 "684": {
                     "Button": {
@@ -1121,7 +1135,8 @@
                         "Logic": "<=77",
                         "Min": 0,
                         "Max": 100
-                    }
+                    },
+                    "Paragraph Title": "When HP is 77% or less"
                 }
             }
         },

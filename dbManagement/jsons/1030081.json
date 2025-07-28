@@ -15,6 +15,7 @@
     ],
     "Can EZA": false,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Z Fighters",
         "Solid Support",
@@ -38,8 +39,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Ki +1 "
+            "Brief effect description": "Ki +1 ",
+            "Line description": "Ki +1 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1004284": {
             "ID": "1004284",
@@ -54,8 +58,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +180% "
+            "Brief effect description": "ATK and DEF +180% ",
+            "Line description": "ATK and DEF +180% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2004284": {
             "ID": "2004284",
@@ -74,17 +81,24 @@
                 "Logic": "3295",
                 "Causalities": {
                     "3295": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"3295\", \"compiled\": 3295}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +180% when attacking"
+            "Brief effect description": "ATK and DEF +180% when attacking",
+            "Line description": "ATK and DEF +180% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3004284": {
             "ID": "3004284",
@@ -102,8 +116,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 70% chance of becoming a super attack "
+            "Brief effect description": "Performs an additional attack with a 70% chance of becoming a super attack ",
+            "Line description": "Performs an additional attack with a 70% chance of becoming a super attack ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4004284": {
             "ID": "4004284",
@@ -122,7 +139,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "3296 || 3297",
+                "Logic": "(3296 || 3297)",
                 "Causalities": {
                     "3296": {
                         "Button": {
@@ -133,7 +150,8 @@
                             "Logic": "==2",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 2nd attacker in the turn"
                     },
                     "3297": {
                         "Button": {
@@ -144,12 +162,16 @@
                             "Logic": "==3",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 3rd attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"3296|3297\", \"compiled\": [\"|\", 3296, 3297]}",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack after all ki collected"
+            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack after all ki collected",
+            "Line description": "Performs an additional attack with a 100% chance of becoming a super attack after all ki collected",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5004284": {
             "ID": "5004284",
@@ -175,12 +197,16 @@
                             "Logic": "<=50",
                             "Min": 0,
                             "Max": 100
-                        }
+                        },
+                        "Paragraph Title": "When HP is 50% or less"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"3298\", \"compiled\": 3298}",
             "Type": "Single activator",
-            "Brief effect description": "Performs a Critical Hit "
+            "Brief effect description": "Performs a Critical Hit ",
+            "Line description": "Performs a Critical Hit ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6004284": {
             "ID": "6004284",
@@ -206,13 +232,17 @@
                             "Logic": "<=50",
                             "Min": 0,
                             "Max": 100
-                        }
+                        },
+                        "Paragraph Title": "When HP is 50% or less"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"3298\", \"compiled\": 3298}",
             "Once Only": true,
             "Type": "Single activator",
-            "Brief effect description": "Damage recieved -70% "
+            "Brief effect description": "Damage recieved -70% ",
+            "Line description": "Damage recieved -70% ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 4,

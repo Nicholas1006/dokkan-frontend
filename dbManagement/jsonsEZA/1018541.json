@@ -30,6 +30,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "seza",
     "Links": [
         "Godly Power",
         "Warrior Gods",
@@ -54,8 +55,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +159% "
+            "Brief effect description": "ATK and DEF +159% ",
+            "Line description": "ATK and DEF +159% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1003363": {
             "ID": "1003363",
@@ -70,7 +74,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(2145 && 2146) || (2145 && 2147)",
+                "Logic": "((2145&&2146) || (2145&&2147))",
                 "Causalities": {
                     "2145": {
                         "Button": {
@@ -81,34 +85,40 @@
                             "Logic": "<=5",
                             "Min": 0,
                             "Max": 6
-                        }
+                        },
+                        "Paragraph Title": "For 5 turns from the chraracter's entry turn"
                     },
                     "2146": {
                         "Button": {
-                            "Name": "Are there 1 or more Universe Survival Saga category enemies on this turn?"
+                            "Name": "Are there 1 or more Universe Survival Saga category enemies  on this turn?"
                         },
                         "Slider": {
                             "Name": "How many Universe Survival Saga category enemies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 1 or more Universe Survival Saga Category enemies "
                     },
                     "2147": {
                         "Button": {
-                            "Name": "Are there 2 or more Universe Survival Saga category units on this turn "
+                            "Name": "Are there 2 or more Universe Survival Saga category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Universe Survival Saga category units on this turn ",
+                            "Name": "How many Universe Survival Saga category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Universe Survival Saga Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"(2145&2146)|(2145&2147)\", \"compiled\": [\"|\", [\"&\", 2145, 2146], [\"&\", 2145, 2147]]}",
             "Type": "Single activator",
-            "Brief effect description": "Guards all attacks "
+            "Brief effect description": "Guards all attacks ",
+            "Line description": "Guards all attacks ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2003363": {
             "ID": "2003363",
@@ -127,7 +137,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(2145 && 2146) || (2145 && 2147)",
+                "Logic": "((2145&&2146) || (2145&&2147))",
                 "Causalities": {
                     "2145": {
                         "Button": {
@@ -138,34 +148,40 @@
                             "Logic": "<=5",
                             "Min": 0,
                             "Max": 6
-                        }
+                        },
+                        "Paragraph Title": "For 5 turns from the chraracter's entry turn"
                     },
                     "2146": {
                         "Button": {
-                            "Name": "Are there 1 or more Universe Survival Saga category enemies on this turn?"
+                            "Name": "Are there 1 or more Universe Survival Saga category enemies  on this turn?"
                         },
                         "Slider": {
                             "Name": "How many Universe Survival Saga category enemies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 1 or more Universe Survival Saga Category enemies "
                     },
                     "2147": {
                         "Button": {
-                            "Name": "Are there 2 or more Universe Survival Saga category units on this turn "
+                            "Name": "Are there 2 or more Universe Survival Saga category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Universe Survival Saga category units on this turn ",
+                            "Name": "How many Universe Survival Saga category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Universe Survival Saga Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"(2145&2146)|(2145&2147)\", \"compiled\": [\"|\", [\"&\", 2145, 2146], [\"&\", 2145, 2147]]}",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 50% chance of becoming a super attack "
+            "Brief effect description": "Performs an additional attack with a 50% chance of becoming a super attack ",
+            "Line description": "Performs an additional attack with a 50% chance of becoming a super attack ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3003363": {
             "ID": "3003363",
@@ -187,8 +203,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "CausalityLogic": "{\"source\": \"2150\", \"compiled\": 2150}",
             "Type": "Building Stat",
-            "Brief effect description": "ATK +10% (up to 59%) based on 'How many attacks has this character recieved' after being hit"
+            "Brief effect description": "ATK +10% (up to 59%) based on 'How many attacks has this character recieved' after being hit",
+            "Line description": "ATK +10% (up to 59%) based on 'How many attacks has this character recieved' after being hit",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4003363": {
             "ID": "4003363",
@@ -210,8 +229,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "CausalityLogic": "{\"source\": \"2150\", \"compiled\": 2150}",
             "Type": "Building Stat",
-            "Brief effect description": "DEF +10% (up to 59%) based on 'How many attacks has this character recieved' after being hit"
+            "Brief effect description": "DEF +10% (up to 59%) based on 'How many attacks has this character recieved' after being hit",
+            "Line description": "DEF +10% (up to 59%) based on 'How many attacks has this character recieved' after being hit",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5003363": {
             "ID": "5003363",
@@ -229,17 +251,24 @@
                 "Logic": "2148",
                 "Causalities": {
                     "2148": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2148\", \"compiled\": 2148}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +59% when attacking"
+            "Brief effect description": "ATK +59% when attacking",
+            "Line description": "ATK +59% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6003363": {
             "ID": "6003363",
@@ -254,15 +283,19 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2148 && 2149",
+                "Logic": "(2148&&2149)",
                 "Causalities": {
                     "2148": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     },
                     "2149": {
                         "Button": {
@@ -273,13 +306,17 @@
                             "Logic": "<=59",
                             "Min": 0,
                             "Max": 100
-                        }
+                        },
+                        "Paragraph Title": "When HP is 59% or less"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2148&2149\", \"compiled\": [\"&\", 2148, 2149]}",
             "Once Only": true,
             "Type": "Single activator",
-            "Brief effect description": "ATK +59% when attacking"
+            "Brief effect description": "ATK +59% when attacking",
+            "Line description": "ATK +59% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "7003363": {
             "ID": "7003363",
@@ -294,15 +331,19 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2148 && 2149",
+                "Logic": "(2148&&2149)",
                 "Causalities": {
                     "2148": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     },
                     "2149": {
                         "Button": {
@@ -313,13 +354,17 @@
                             "Logic": "<=59",
                             "Min": 0,
                             "Max": 100
-                        }
+                        },
+                        "Paragraph Title": "When HP is 59% or less"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2148&2149\", \"compiled\": [\"&\", 2148, 2149]}",
             "Once Only": true,
             "Type": "Single activator",
-            "Brief effect description": "Attacks effective against all Types when attacking"
+            "Brief effect description": "Attacks effective against all Types when attacking",
+            "Line description": "Attacks effective against all Types when attacking",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 3,
@@ -628,7 +673,7 @@
         "Effect Description": "Causes ultimate damage to enemy and \nraises allies' ATK by 30% for 1 turn",
         "Condition Description": "Can be activated when HP is 59% or less \nwith another 3 or more \"Representatives \nof Universe 7\" Category allies on the team \n(once only)",
         "Condition": {
-            "Logic": "401  &&  402",
+            "Logic": "(401&&402)",
             "Causalities": {
                 "401": {
                     "Button": {
@@ -639,18 +684,20 @@
                         "Logic": "<=59",
                         "Min": 0,
                         "Max": 100
-                    }
+                    },
+                    "Paragraph Title": "When HP is 59% or less"
                 },
                 "402": {
                     "Button": {
-                        "Name": "Are there 4 or more Representatives of Universe 7 category units on the team "
+                        "Name": "Are there 4 or more Representatives of Universe 7 category allies ?"
                     },
                     "Slider": {
-                        "Name": "How many Representatives of Universe 7 category units on the team ",
+                        "Name": "How many Representatives of Universe 7 category allies ",
                         "Logic": ">=4",
                         "Max": 7,
                         "Min": 0
-                    }
+                    },
+                    "Paragraph Title": "When there are 4 or more Representatives of Universe 7 Category allies "
                 }
             }
         },

@@ -17,6 +17,7 @@
     ],
     "Can EZA": false,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Saiyan Warrior Race",
         "Royal Lineage",
@@ -39,8 +40,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Ki +2 "
+            "Brief effect description": "Ki +2 ",
+            "Line description": "Ki +2 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1004087": {
             "ID": "1004087",
@@ -55,8 +59,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +100% "
+            "Brief effect description": "ATK and DEF +100% ",
+            "Line description": "ATK and DEF +100% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2004087": {
             "ID": "2004087",
@@ -71,8 +78,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +50% when attacking"
+            "Brief effect description": "ATK and DEF +50% when attacking",
+            "Line description": "ATK and DEF +50% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3004087": {
             "ID": "3004087",
@@ -94,8 +104,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Randomly changes Ki Spheres of a certain Type(AGL excluded) to AGL Ki Spheres "
+            "Brief effect description": "Randomly changes Ki Spheres of a certain Type(AGL excluded) to AGL Ki Spheres ",
+            "Line description": "Randomly changes Ki Spheres of a certain Type(AGL excluded) to AGL Ki Spheres ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4004087": {
             "ID": "4004087",
@@ -121,12 +134,16 @@
                             "Logic": ">=3",
                             "Min": 0,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "With 3 or more Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"301\", \"compiled\": 301}",
             "Type": "Single activator",
-            "Brief effect description": "Damage recieved -18% after this unit collects ki spheres"
+            "Brief effect description": "Damage recieved -18% after this unit collects ki spheres",
+            "Line description": "Damage recieved -18% after this unit collects ki spheres",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5004087": {
             "ID": "5004087",
@@ -147,8 +164,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Pure Saiyans category allies ATK and DEF +20% "
+            "Brief effect description": "Pure Saiyans category allies ATK and DEF +20% ",
+            "Line description": "Pure Saiyans category allies ATK and DEF +20% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6004087": {
             "ID": "6004087",
@@ -169,8 +189,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Vegeta's Family category allies ATK and DEF +20% "
+            "Brief effect description": "Vegeta's Family category allies ATK and DEF +20% ",
+            "Line description": "Vegeta's Family category allies ATK and DEF +20% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "7004087": {
             "ID": "7004087",
@@ -186,25 +209,33 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "3092 && 47",
+                "Logic": "(3092&&47)",
                 "Causalities": {
                     "3092": {
                         "Button": {
                             "Name": "Is there an ally attacking on this turn whose name includes Vegeta?"
-                        }
+                        },
+                        "Paragraph Title": "When there is an ally whose name includes \"Vegeta\" attacking in the same turn "
                     },
                     "47": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"3092&47\", \"compiled\": [\"&\", 3092, 47]}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +50% when attacking"
+            "Brief effect description": "ATK and DEF +50% when attacking",
+            "Line description": "ATK and DEF +50% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,

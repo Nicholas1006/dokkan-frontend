@@ -23,6 +23,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "seza",
     "Links": [
         "Majin",
         "Over in a Flash",
@@ -46,8 +47,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Heals +10% "
+            "Brief effect description": "Heals +10% ",
+            "Line description": "Heals +10% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1003349": {
             "ID": "1003349",
@@ -61,8 +65,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Ki +1 "
+            "Brief effect description": "Ki +1 ",
+            "Line description": "Ki +1 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2003349": {
             "ID": "2003349",
@@ -77,8 +84,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK +180% and DEF +140% "
+            "Brief effect description": "ATK +180% and DEF +140% ",
+            "Line description": "ATK +180% and DEF +140% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3003349": {
             "ID": "3003349",
@@ -93,8 +103,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +80% when attacking"
+            "Brief effect description": "ATK and DEF +80% when attacking",
+            "Line description": "ATK and DEF +80% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4003349": {
             "ID": "4003349",
@@ -110,22 +123,27 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2110 || 2111",
+                "Logic": "(2110 || 2111)",
                 "Causalities": {
                     "2110": {
                         "Button": {
                             "Name": "Is the target enemy in \"ATK down\" status on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "When the target enemy is in \"ATK down\" status"
                     },
                     "2111": {
                         "Button": {
                             "Name": "Is the target enemy in \"DEF down\" status on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "When the target enemy is in \"DEF down\" status"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2110|2111\", \"compiled\": [\"|\", 2110, 2111]}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +80% when attacking"
+            "Brief effect description": "ATK and DEF +80% when attacking",
+            "Line description": "ATK and DEF +80% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5003349": {
             "ID": "5003349",
@@ -151,12 +169,16 @@
                             "Logic": "<=6",
                             "Min": 0,
                             "Max": 7
-                        }
+                        },
+                        "Paragraph Title": "For 6 turns from the chraracter's entry turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2119\", \"compiled\": 2119}",
             "Type": "Single activator",
-            "Brief effect description": "Ki +1 "
+            "Brief effect description": "Ki +1 ",
+            "Line description": "Ki +1 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6003349": {
             "ID": "6003349",
@@ -182,12 +204,16 @@
                             "Logic": "<=6",
                             "Min": 0,
                             "Max": 7
-                        }
+                        },
+                        "Paragraph Title": "For 6 turns from the chraracter's entry turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2119\", \"compiled\": 2119}",
             "Type": "Single activator",
-            "Brief effect description": "DEF +80% "
+            "Brief effect description": "DEF +80% ",
+            "Line description": "DEF +80% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "7003349": {
             "ID": "7003349",
@@ -218,12 +244,16 @@
                             "Logic": "<=6",
                             "Min": 0,
                             "Max": 7
-                        }
+                        },
+                        "Paragraph Title": "For 6 turns from the chraracter's entry turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2119\", \"compiled\": 2119}",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack "
+            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack ",
+            "Line description": "Performs an additional attack with a 100% chance of becoming a super attack ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 3,

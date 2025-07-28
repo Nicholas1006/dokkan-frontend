@@ -18,6 +18,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "seza",
     "Links": [
         "Infighter",
         "Hero of Justice",
@@ -42,8 +43,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +150% "
+            "Brief effect description": "ATK and DEF +150% ",
+            "Line description": "ATK and DEF +150% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1002703": {
             "ID": "1002703",
@@ -57,8 +61,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Chance of evading enemy attacks +50% "
+            "Brief effect description": "Chance of evading enemy attacks +50% ",
+            "Line description": "Chance of evading enemy attacks +50% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2002703": {
             "ID": "2002703",
@@ -76,17 +83,24 @@
                 "Logic": "1245",
                 "Causalities": {
                     "1245": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"1245\", \"compiled\": 1245}",
             "Type": "Single activator",
-            "Brief effect description": "DEF +50% when attacking"
+            "Brief effect description": "DEF +50% when attacking",
+            "Line description": "DEF +50% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3002703": {
             "ID": "3002703",
@@ -101,8 +115,11 @@
                 "+ or -": "-"
             },
             "Length": "2",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": " allies ATK and DEF -20% after attacking"
+            "Brief effect description": " allies ATK and DEF -20% after attacking",
+            "Line description": " allies ATK and DEF -20% after attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4002703": {
             "ID": "4002703",
@@ -123,8 +140,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Special Pose category allies ATK and DEF +30% "
+            "Brief effect description": "Special Pose category allies ATK and DEF +30% ",
+            "Line description": "Special Pose category allies ATK and DEF +30% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5002703": {
             "ID": "5002703",
@@ -144,8 +164,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Special Pose category allies Ki +3 "
+            "Brief effect description": "Special Pose category allies Ki +3 ",
+            "Line description": "Special Pose category allies Ki +3 ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,
@@ -444,7 +467,7 @@
         "Effect Description": "Exchanges with another character",
         "Condition Description": "Can be activated when facing only 1 enemy, \nwhose HP is 58% or more, starting from \nthe 3rd turn from the start of battle (once only)",
         "Condition": {
-            "Logic": "4 && 476 && 693",
+            "Logic": "(4&&476)",
             "Causalities": {
                 "4": {
                     "Button": {
@@ -454,7 +477,8 @@
                         "Name": "What turn is it?",
                         "Logic": ">=3",
                         "Min": 1
-                    }
+                    },
+                    "Paragraph Title": "When the turn count is 3"
                 },
                 "476": {
                     "Button": {
@@ -465,17 +489,8 @@
                         "Logic": "<2",
                         "Min": 1,
                         "Max": 7
-                    }
-                },
-                "693": {
-                    "Button": {
-                        "Name": "Is the enemy's health 58 % or more?"
                     },
-                    "Slider": {
-                        "Name": "What percentage of HP does the enemy have?",
-                        "Logic": ">=58",
-                        "Max": 100
-                    }
+                    "Paragraph Title": "When there are less than 2 enemies"
                 }
             }
         },

@@ -23,6 +23,7 @@
     ],
     "Can EZA": false,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Golden Warrior",
         "Saiyan Warrior Race",
@@ -46,8 +47,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +159% "
+            "Brief effect description": "ATK and DEF +159% ",
+            "Line description": "ATK and DEF +159% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1003416": {
             "ID": "1003416",
@@ -66,17 +70,24 @@
                 "Logic": "2249",
                 "Causalities": {
                     "2249": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2249\", \"compiled\": 2249}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +41% when attacking"
+            "Brief effect description": "ATK and DEF +41% when attacking",
+            "Line description": "ATK and DEF +41% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2003416": {
             "ID": "2003416",
@@ -102,12 +113,16 @@
                             "Logic": "<=90",
                             "Min": 0,
                             "Max": 100
-                        }
+                        },
+                        "Paragraph Title": "When HP is 90% or less"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2250\", \"compiled\": 2250}",
             "Type": "Single activator",
-            "Brief effect description": "Heals +5% "
+            "Brief effect description": "Heals +5% ",
+            "Line description": "Heals +5% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3003416": {
             "ID": "3003416",
@@ -134,12 +149,16 @@
                             "Logic": "<=60",
                             "Min": 0,
                             "Max": 100
-                        }
+                        },
+                        "Paragraph Title": "When HP is 60% or less"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2251\", \"compiled\": 2251}",
             "Type": "Single activator",
-            "Brief effect description": "Guards all attacks "
+            "Brief effect description": "Guards all attacks ",
+            "Line description": "Guards all attacks ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4003416": {
             "ID": "4003416",
@@ -165,12 +184,16 @@
                             "Logic": "<=30",
                             "Min": 0,
                             "Max": 100
-                        }
+                        },
+                        "Paragraph Title": "When HP is 30% or less"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2252\", \"compiled\": 2252}",
             "Type": "Single activator",
-            "Brief effect description": "Heals +10% "
+            "Brief effect description": "Heals +10% ",
+            "Line description": "Heals +10% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5003416": {
             "ID": "5003416",
@@ -190,8 +213,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Bond of Parent and Child category allies Ki +1 "
+            "Brief effect description": "Bond of Parent and Child category allies Ki +1 ",
+            "Line description": "Bond of Parent and Child category allies Ki +1 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6003416": {
             "ID": "6003416",
@@ -212,8 +238,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Bond of Parent and Child category allies ATK and DEF +20% "
+            "Brief effect description": "Bond of Parent and Child category allies ATK and DEF +20% ",
+            "Line description": "Bond of Parent and Child category allies ATK and DEF +20% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "7003416": {
             "ID": "7003416",
@@ -228,28 +257,33 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2253 && 2254",
+                "Logic": "(2253&&2254)",
                 "Causalities": {
                     "2253": {
                         "Button": {
-                            "Name": "Are there 2 or more Goku's Family category units on this turn "
+                            "Name": "Are there 2 or more Goku's Family category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Goku's Family category units on this turn ",
+                            "Name": "How many Goku's Family category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Goku's Family Category allies attacking on this turn"
                     },
                     "2254": {
                         "Button": {
                             "Name": "Has guard been activated on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "After guard is activated"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2253&2254\", \"compiled\": [\"&\", 2253, 2254]}",
             "Type": "Single activator",
-            "Brief effect description": "Damage recieved -30% right before being hit"
+            "Brief effect description": "Damage recieved -30% right before being hit",
+            "Line description": "Damage recieved -30% right before being hit",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 1,

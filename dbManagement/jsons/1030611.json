@@ -27,6 +27,7 @@
     ],
     "Can EZA": false,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Prodigies",
         "The Innocents",
@@ -50,8 +51,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Ki +2 "
+            "Brief effect description": "Ki +2 ",
+            "Line description": "Ki +2 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1004481": {
             "ID": "1004481",
@@ -66,8 +70,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +150% "
+            "Brief effect description": "ATK and DEF +150% ",
+            "Line description": "ATK and DEF +150% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2004481": {
             "ID": "2004481",
@@ -81,9 +88,12 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Once Only": true,
             "Type": "Single activator",
-            "Brief effect description": "Damage recieved -30 "
+            "Brief effect description": "Damage recieved -30 ",
+            "Line description": "Damage recieved -30 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3004481": {
             "ID": "3004481",
@@ -97,8 +107,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK +150% when attacking"
+            "Brief effect description": "ATK +150% when attacking",
+            "Line description": "ATK +150% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4004481": {
             "ID": "4004481",
@@ -123,8 +136,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Building Stat",
-            "Brief effect description": "ATK +40% per PHY Ki Spheres obtained "
+            "Brief effect description": "ATK +40% per PHY Ki Spheres obtained ",
+            "Line description": "ATK +40% per PHY Ki Spheres obtained ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5004481": {
             "ID": "5004481",
@@ -149,8 +165,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Building Stat",
-            "Brief effect description": "DEF +20% per PHY Ki Spheres obtained "
+            "Brief effect description": "DEF +20% per PHY Ki Spheres obtained ",
+            "Line description": "DEF +20% per PHY Ki Spheres obtained ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6004481": {
             "ID": "6004481",
@@ -180,12 +199,16 @@
                             "Logic": ">=1",
                             "Min": 0,
                             "Max": 1
-                        }
+                        },
+                        "Paragraph Title": "With 1 or more PHY Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"796\", \"compiled\": 796}",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 70% chance of becoming a super attack after this unit collects ki spheres"
+            "Brief effect description": "Performs an additional attack with a 70% chance of becoming a super attack after this unit collects ki spheres",
+            "Line description": "Performs an additional attack with a 70% chance of becoming a super attack after this unit collects ki spheres",
+            "Paragraph Title": "Basic effects(s)"
         },
         "7004481": {
             "ID": "7004481",
@@ -211,12 +234,16 @@
                             "Logic": ">=2",
                             "Min": 0,
                             "Max": 2
-                        }
+                        },
+                        "Paragraph Title": "With 2 or more PHY Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"499\", \"compiled\": 499}",
             "Type": "Single activator",
-            "Brief effect description": "DEF +150% when attacking"
+            "Brief effect description": "DEF +150% when attacking",
+            "Line description": "DEF +150% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "8004481": {
             "ID": "8004481",
@@ -242,12 +269,16 @@
                             "Logic": ">=3",
                             "Min": 0,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "With 3 or more PHY Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"551\", \"compiled\": 551}",
             "Type": "Single activator",
-            "Brief effect description": "Guards all attacks after this unit collects ki spheres"
+            "Brief effect description": "Guards all attacks after this unit collects ki spheres",
+            "Line description": "Guards all attacks after this unit collects ki spheres",
+            "Paragraph Title": "Basic effects(s)"
         },
         "9004481": {
             "ID": "9004481",
@@ -275,12 +306,16 @@
                             "Name": "What turn is it on this turn?",
                             "Logic": ">=4",
                             "Min": 1
-                        }
+                        },
+                        "Paragraph Title": "When the turn count is 4"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"5\", \"compiled\": 5}",
             "Type": "Single activator",
-            "Brief effect description": "None"
+            "Brief effect description": "None",
+            "Line description": "None",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 3,
@@ -1043,7 +1078,7 @@
         "Effect Description": "Greatly raises ATK temporarily and \ncauses ultimate damage to enemy; \nATK +30% and changes INT Ki Spheres \nto PHY Ki Spheres for 1 turn",
         "Condition Description": "Can be activated starting from the 4th turn \nfrom the start of battle (once only, be it \nbefore or after Reversible Exchange)",
         "Condition": {
-            "Logic": "5 && 3410",
+            "Logic": "(5&&3410)",
             "Causalities": {
                 "5": {
                     "Button": {
@@ -1053,12 +1088,14 @@
                         "Name": "What turn is it?",
                         "Logic": ">=4",
                         "Min": 1
-                    }
+                    },
+                    "Paragraph Title": "When the turn count is 4"
                 },
                 "3410": {
                     "Button": {
                         "Name": "Has this character's reversible exchange not yet been performed?"
-                    }
+                    },
+                    "Paragraph Title": "When this character's reversible exchange has not yet been performed"
                 }
             }
         },

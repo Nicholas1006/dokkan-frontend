@@ -22,6 +22,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "seza",
     "Links": [
         "Saiyan Warrior Race",
         "Prodigies",
@@ -46,8 +47,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +120% "
+            "Brief effect description": "ATK and DEF +120% ",
+            "Line description": "ATK and DEF +120% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1003536": {
             "ID": "1003536",
@@ -66,17 +70,24 @@
                 "Logic": "2564",
                 "Causalities": {
                     "2564": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2564\", \"compiled\": 2564}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +50% when attacking"
+            "Brief effect description": "ATK and DEF +50% when attacking",
+            "Line description": "ATK and DEF +50% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2003536": {
             "ID": "2003536",
@@ -96,19 +107,23 @@
                 "Causalities": {
                     "2565": {
                         "Button": {
-                            "Name": "Are there 2 or more Giant Ape Power category units on the team on this turn?"
+                            "Name": "Are there 2 or more Giant Ape Power category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Giant Ape Power category units on the team on this turn?",
+                            "Name": "How many Giant Ape Power category allies on this turn?",
                             "Logic": ">=2",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Giant Ape Power Category allies "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2565\", \"compiled\": 2565}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +120% "
+            "Brief effect description": "ATK and DEF +120% ",
+            "Line description": "ATK and DEF +120% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3003536": {
             "ID": "3003536",
@@ -127,19 +142,23 @@
                 "Causalities": {
                     "2566": {
                         "Button": {
-                            "Name": "Are there 1 or more Shadow Dragon Saga category enemies on this turn?"
+                            "Name": "Are there 1 or more Shadow Dragon Saga category enemies  on this turn?"
                         },
                         "Slider": {
                             "Name": "How many Shadow Dragon Saga category enemies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 1 or more Shadow Dragon Saga Category enemies "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2566\", \"compiled\": 2566}",
             "Type": "Single activator",
-            "Brief effect description": "DEF +50% "
+            "Brief effect description": "DEF +50% ",
+            "Line description": "DEF +50% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4003536": {
             "ID": "4003536",
@@ -158,19 +177,23 @@
                 "Causalities": {
                     "2566": {
                         "Button": {
-                            "Name": "Are there 1 or more Shadow Dragon Saga category enemies on this turn?"
+                            "Name": "Are there 1 or more Shadow Dragon Saga category enemies  on this turn?"
                         },
                         "Slider": {
                             "Name": "How many Shadow Dragon Saga category enemies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 1 or more Shadow Dragon Saga Category enemies "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2566\", \"compiled\": 2566}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of performing a critical hit +50% "
+            "Brief effect description": "Chance of performing a critical hit +50% ",
+            "Line description": "Chance of performing a critical hit +50% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5003536": {
             "ID": "5003536",
@@ -192,7 +215,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2567 && 2568",
+                "Logic": "(2567&&2568)",
                 "Causalities": {
                     "2567": {
                         "Button": {
@@ -203,7 +226,8 @@
                             "Logic": "<=50",
                             "Min": 0,
                             "Max": 100
-                        }
+                        },
+                        "Paragraph Title": "When HP is 50% or less"
                     },
                     "2568": {
                         "Button": {
@@ -213,13 +237,17 @@
                             "Name": "What turn is it on this turn?",
                             "Logic": ">=4",
                             "Min": 1
-                        }
+                        },
+                        "Paragraph Title": "When the turn count is 4"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2567&2568\", \"compiled\": [\"&\", 2567, 2568]}",
             "Once Only": true,
             "Type": "Single activator",
-            "Brief effect description": "Transforms into 4021391 as a giant form for 2 to 3 turns "
+            "Brief effect description": "Transforms into 4021391 as a giant form for 2 to 3 turns ",
+            "Line description": "Transforms into 4021391 as a giant form for 2 to 3 turns ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6003536": {
             "ID": "6003536",
@@ -245,12 +273,16 @@
                             "Logic": ">=50",
                             "Min": 0,
                             "Max": 100
-                        }
+                        },
+                        "Paragraph Title": "When HP is 50% or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2569\", \"compiled\": 2569}",
             "Type": "Single activator",
-            "Brief effect description": "Guards all attacks "
+            "Brief effect description": "Guards all attacks ",
+            "Line description": "Guards all attacks ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,

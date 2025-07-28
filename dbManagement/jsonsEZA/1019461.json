@@ -23,6 +23,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "seza",
     "Links": [
         "Golden Warrior",
         "Super Saiyan",
@@ -47,8 +48,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +180% "
+            "Brief effect description": "ATK and DEF +180% ",
+            "Line description": "ATK and DEF +180% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1004127": {
             "ID": "1004127",
@@ -62,8 +66,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Damage recieved -50% "
+            "Brief effect description": "Damage recieved -50% ",
+            "Line description": "Damage recieved -50% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2004127": {
             "ID": "2004127",
@@ -78,30 +85,39 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "630 && (623 || 625)",
+                "Logic": "(630&&(623 || 625))",
                 "Causalities": {
                     "630": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     },
                     "623": {
                         "Button": {
                             "Name": "Is there an ally attacking on this turn whose name includes Trunks (Kid)?"
-                        }
+                        },
+                        "Paragraph Title": "When there is an ally whose name includes \"Trunks (Kid)\" attacking in the same turn "
                     },
                     "625": {
                         "Button": {
                             "Name": "Is there an ally attacking on this turn whose name includes Krillin?"
-                        }
+                        },
+                        "Paragraph Title": "When there is an ally whose name includes \"Krillin\" attacking in the same turn "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"630&(623|625)\", \"compiled\": [\"&\", 630, [\"|\", 623, 625]]}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +120% when attacking"
+            "Brief effect description": "ATK +120% when attacking",
+            "Line description": "ATK +120% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3004127": {
             "ID": "3004127",
@@ -116,30 +132,39 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "630 && (623 || 625)",
+                "Logic": "(630&&(623 || 625))",
                 "Causalities": {
                     "630": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     },
                     "623": {
                         "Button": {
                             "Name": "Is there an ally attacking on this turn whose name includes Trunks (Kid)?"
-                        }
+                        },
+                        "Paragraph Title": "When there is an ally whose name includes \"Trunks (Kid)\" attacking in the same turn "
                     },
                     "625": {
                         "Button": {
                             "Name": "Is there an ally attacking on this turn whose name includes Krillin?"
-                        }
+                        },
+                        "Paragraph Title": "When there is an ally whose name includes \"Krillin\" attacking in the same turn "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"630&(623|625)\", \"compiled\": [\"&\", 630, [\"|\", 623, 625]]}",
             "Type": "Single activator",
-            "Brief effect description": "Damage recieved -30% when attacking"
+            "Brief effect description": "Damage recieved -30% when attacking",
+            "Line description": "Damage recieved -30% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4004127": {
             "ID": "4004127",
@@ -171,12 +196,16 @@
                             "Logic": "==1",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 1st attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"25\", \"compiled\": 25}",
             "Type": "Single activator",
-            "Brief effect description": "Kamehameha category allies Ki +1 when attacking"
+            "Brief effect description": "Kamehameha category allies Ki +1 when attacking",
+            "Line description": "Kamehameha category allies Ki +1 when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5004127": {
             "ID": "5004127",
@@ -208,12 +237,16 @@
                             "Logic": "==1",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 1st attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"25\", \"compiled\": 25}",
             "Type": "Single activator",
-            "Brief effect description": "Kamehameha category allies ATK +50% when attacking"
+            "Brief effect description": "Kamehameha category allies ATK +50% when attacking",
+            "Line description": "Kamehameha category allies ATK +50% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6004127": {
             "ID": "6004127",
@@ -245,12 +278,16 @@
                             "Logic": "==1",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 1st attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"25\", \"compiled\": 25}",
             "Type": "Single activator",
-            "Brief effect description": "Kamehameha category allies Chance of performing a critical hit +20% when attacking"
+            "Brief effect description": "Kamehameha category allies Chance of performing a critical hit +20% when attacking",
+            "Line description": "Kamehameha category allies Chance of performing a critical hit +20% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "7004127": {
             "ID": "7004127",
@@ -282,12 +319,16 @@
                             "Logic": "==2",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 2nd attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"26\", \"compiled\": 26}",
             "Type": "Single activator",
-            "Brief effect description": "Kamehameha category allies Ki +2 when attacking"
+            "Brief effect description": "Kamehameha category allies Ki +2 when attacking",
+            "Line description": "Kamehameha category allies Ki +2 when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "8004127": {
             "ID": "8004127",
@@ -319,12 +360,16 @@
                             "Logic": "==2",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 2nd attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"26\", \"compiled\": 26}",
             "Type": "Single activator",
-            "Brief effect description": "Kamehameha category allies ATK +70% when attacking"
+            "Brief effect description": "Kamehameha category allies ATK +70% when attacking",
+            "Line description": "Kamehameha category allies ATK +70% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "9004127": {
             "ID": "9004127",
@@ -356,12 +401,16 @@
                             "Logic": "==2",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 2nd attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"26\", \"compiled\": 26}",
             "Type": "Single activator",
-            "Brief effect description": "Kamehameha category allies Chance of performing a critical hit +30% when attacking"
+            "Brief effect description": "Kamehameha category allies Chance of performing a critical hit +30% when attacking",
+            "Line description": "Kamehameha category allies Chance of performing a critical hit +30% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "10004127": {
             "ID": "10004127",
@@ -387,12 +436,16 @@
                             "Logic": "==3",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 3rd attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"33\", \"compiled\": 33}",
             "Type": "Single activator",
-            "Brief effect description": "Ki +3 when attacking"
+            "Brief effect description": "Ki +3 when attacking",
+            "Line description": "Ki +3 when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "11004127": {
             "ID": "11004127",
@@ -407,7 +460,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "33 && 630",
+                "Logic": "(33&&630)",
                 "Causalities": {
                     "33": {
                         "Button": {
@@ -418,20 +471,28 @@
                             "Logic": "==3",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 3rd attacker in the turn"
                     },
                     "630": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"33&630\", \"compiled\": [\"&\", 33, 630]}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +120% when attacking"
+            "Brief effect description": "ATK +120% when attacking",
+            "Line description": "ATK +120% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "12004127": {
             "ID": "12004127",
@@ -446,7 +507,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "33 && 630",
+                "Logic": "(33&&630)",
                 "Causalities": {
                     "33": {
                         "Button": {
@@ -457,20 +518,28 @@
                             "Logic": "==3",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 3rd attacker in the turn"
                     },
                     "630": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"33&630\", \"compiled\": [\"&\", 33, 630]}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of performing a critical hit +50% when attacking"
+            "Brief effect description": "Chance of performing a critical hit +50% when attacking",
+            "Line description": "Chance of performing a critical hit +50% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,

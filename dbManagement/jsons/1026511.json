@@ -14,6 +14,7 @@
     ],
     "Can EZA": false,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Brutal Beatdown",
         "Metamorphosis",
@@ -38,8 +39,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +80% "
+            "Brief effect description": "ATK and DEF +80% ",
+            "Line description": "ATK and DEF +80% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1003443": {
             "ID": "1003443",
@@ -58,17 +62,24 @@
                 "Logic": "2315",
                 "Causalities": {
                     "2315": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2315\", \"compiled\": 2315}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +160% when attacking"
+            "Brief effect description": "ATK and DEF +160% when attacking",
+            "Line description": "ATK and DEF +160% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2003443": {
             "ID": "2003443",
@@ -88,8 +99,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Transformation Boost category allies Ki +1 "
+            "Brief effect description": "Transformation Boost category allies Ki +1 ",
+            "Line description": "Transformation Boost category allies Ki +1 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3003443": {
             "ID": "3003443",
@@ -110,8 +124,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Transformation Boost category allies ATK and DEF +30% "
+            "Brief effect description": "Transformation Boost category allies ATK and DEF +30% ",
+            "Line description": "Transformation Boost category allies ATK and DEF +30% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4003443": {
             "ID": "4003443",
@@ -133,8 +150,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Transformation Boost and Universe Survival Saga category allies ATK and DEF +10% "
+            "Brief effect description": "Transformation Boost and Universe Survival Saga category allies ATK and DEF +10% ",
+            "Line description": "Transformation Boost and Universe Survival Saga category allies ATK and DEF +10% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5003443": {
             "ID": "5003443",
@@ -155,8 +175,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Transformation Boost and Universe Survival Saga category allies Chance of performing a critical hit +10% "
+            "Brief effect description": "Transformation Boost and Universe Survival Saga category allies Chance of performing a critical hit +10% ",
+            "Line description": "Transformation Boost and Universe Survival Saga category allies Chance of performing a critical hit +10% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6003443": {
             "ID": "6003443",
@@ -179,19 +202,23 @@
                 "Causalities": {
                     "2319": {
                         "Button": {
-                            "Name": "Are there 2 or more Transformation Boost category units on this turn "
+                            "Name": "Are there 2 or more Transformation Boost category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Transformation Boost category units on this turn ",
+                            "Name": "How many Transformation Boost category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Transformation Boost Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2319\", \"compiled\": 2319}",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 50% chance of becoming a super attack "
+            "Brief effect description": "Performs an additional attack with a 50% chance of becoming a super attack ",
+            "Line description": "Performs an additional attack with a 50% chance of becoming a super attack ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "7003443": {
             "ID": "7003443",
@@ -210,19 +237,23 @@
                 "Causalities": {
                     "2319": {
                         "Button": {
-                            "Name": "Are there 2 or more Transformation Boost category units on this turn "
+                            "Name": "Are there 2 or more Transformation Boost category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Transformation Boost category units on this turn ",
+                            "Name": "How many Transformation Boost category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Transformation Boost Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2319\", \"compiled\": 2319}",
             "Type": "Single activator",
-            "Brief effect description": " allies ATK -20% after attacking"
+            "Brief effect description": " allies ATK -20% after attacking",
+            "Line description": " allies ATK -20% after attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "8003443": {
             "ID": "8003443",
@@ -237,32 +268,27 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2320 || 2321 || 2322 || 2323",
+                "Logic": "(2320 || 2321)",
                 "Causalities": {
                     "2320": {
                         "Button": {
                             "Name": "Is the target enemy in \"ATK down\" status on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "When the target enemy is in \"ATK down\" status"
                     },
                     "2321": {
                         "Button": {
                             "Name": "Is the target enemy in \"DEF down\" status on this turn?"
-                        }
-                    },
-                    "2322": {
-                        "Button": {
-                            "Name": "Is the target enemy stunned on this turn?"
-                        }
-                    },
-                    "2323": {
-                        "Button": {
-                            "Name": "Is the target enemy sealed on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "When the target enemy is in \"DEF down\" status"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2320|2321|2322|2323\", \"compiled\": [\"|\", 2320, 2321, 2322, 2323]}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +160% when attacking"
+            "Brief effect description": "ATK +160% when attacking",
+            "Line description": "ATK +160% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 3,
@@ -1063,7 +1089,8 @@
                     "2313": {
                         "Button": {
                             "Name": "Is there an ally attacking on this turn whose name includes Frieza?"
-                        }
+                        },
+                        "Paragraph Title": "When there is an ally whose name includes \"Frieza\" attacking in the same turn "
                     }
                 }
             },

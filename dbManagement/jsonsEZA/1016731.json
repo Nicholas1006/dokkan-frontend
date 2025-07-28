@@ -16,6 +16,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "seza",
     "Links": [
         "Thirst for Conquest",
         "Shocking Speed",
@@ -39,8 +40,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Heals +12% "
+            "Brief effect description": "Heals +12% ",
+            "Line description": "Heals +12% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1002639": {
             "ID": "1002639",
@@ -55,8 +59,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +120% "
+            "Brief effect description": "ATK and DEF +120% ",
+            "Line description": "ATK and DEF +120% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2002639": {
             "ID": "2002639",
@@ -70,8 +77,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Chance of evading enemy attacks +50% "
+            "Brief effect description": "Chance of evading enemy attacks +50% ",
+            "Line description": "Chance of evading enemy attacks +50% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3002639": {
             "ID": "3002639",
@@ -93,8 +103,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "{\"source\": \"1118\", \"compiled\": 1118}",
             "Type": "Building Stat",
-            "Brief effect description": "Chance of evading enemy attacks +12% (up to 100%) based on 'How many attacks have been evaded' after being hit"
+            "Brief effect description": "Chance of evading enemy attacks +12% (up to 100%) based on 'How many attacks have been evaded' after being hit",
+            "Line description": "Chance of evading enemy attacks +12% (up to 100%) based on 'How many attacks have been evaded' after being hit",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4002639": {
             "ID": "4002639",
@@ -110,15 +123,19 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1219 && 1119",
+                "Logic": "(1219&&1119)",
                 "Causalities": {
                     "1219": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     },
                     "1119": {
                         "Button": {
@@ -129,12 +146,16 @@
                             "Logic": ">=60",
                             "Min": 0,
                             "Max": 100
-                        }
+                        },
+                        "Paragraph Title": "When HP is 60% or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"1219&1119\", \"compiled\": [\"&\", 1219, 1119]}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +120% when attacking"
+            "Brief effect description": "ATK and DEF +120% when attacking",
+            "Line description": "ATK and DEF +120% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,

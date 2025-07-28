@@ -15,6 +15,7 @@
     ],
     "Can EZA": false,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Courage",
         "Solid Support",
@@ -38,8 +39,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +120% "
+            "Brief effect description": "ATK and DEF +120% ",
+            "Line description": "ATK and DEF +120% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1002574": {
             "ID": "1002574",
@@ -69,8 +73,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Building Stat",
-            "Brief effect description": "Ki +1 per Ki Sphere obtained "
+            "Brief effect description": "Ki +1 per Ki Sphere obtained ",
+            "Line description": "Ki +1 per Ki Sphere obtained ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2002574": {
             "ID": "2002574",
@@ -88,17 +95,24 @@
                 "Logic": "1023",
                 "Causalities": {
                     "1023": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"1023\", \"compiled\": 1023}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +40% when attacking"
+            "Brief effect description": "ATK +40% when attacking",
+            "Line description": "ATK +40% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,

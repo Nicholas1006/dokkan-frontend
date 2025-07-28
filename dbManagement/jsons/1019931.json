@@ -17,6 +17,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "The Innocents",
         "Battlefield Diva",
@@ -41,8 +42,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +120% "
+            "Brief effect description": "ATK and DEF +120% ",
+            "Line description": "ATK and DEF +120% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1002263": {
             "ID": "1002263",
@@ -57,8 +61,11 @@
                 "+ or -": "-"
             },
             "Length": "2",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": " allies ATK and DEF -20% after attacking"
+            "Brief effect description": " allies ATK and DEF -20% after attacking",
+            "Line description": " allies ATK and DEF -20% after attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2002263": {
             "ID": "2002263",
@@ -84,12 +91,16 @@
                             "Logic": ">=50",
                             "Min": 0,
                             "Max": 100
-                        }
+                        },
+                        "Paragraph Title": "When HP is 50% or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"21\", \"compiled\": 21}",
             "Type": "Single activator",
-            "Brief effect description": "Ki +3 "
+            "Brief effect description": "Ki +3 ",
+            "Line description": "Ki +3 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3002263": {
             "ID": "3002263",
@@ -116,12 +127,16 @@
                             "Logic": ">=50",
                             "Min": 0,
                             "Max": 100
-                        }
+                        },
+                        "Paragraph Title": "When HP is 50% or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"21\", \"compiled\": 21}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +120% "
+            "Brief effect description": "ATK and DEF +120% ",
+            "Line description": "ATK and DEF +120% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4002263": {
             "ID": "4002263",
@@ -147,12 +162,16 @@
                             "Logic": "<=50",
                             "Min": 0,
                             "Max": 100
-                        }
+                        },
+                        "Paragraph Title": "When HP is 50% or less"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"27\", \"compiled\": 27}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of evading enemy attacks +50% "
+            "Brief effect description": "Chance of evading enemy attacks +50% ",
+            "Line description": "Chance of evading enemy attacks +50% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5002263": {
             "ID": "5002263",
@@ -167,22 +186,27 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "723 || 724",
+                "Logic": "(723 || 724)",
                 "Causalities": {
                     "723": {
                         "Button": {
                             "Name": "Is there an enemy whose name includes Goku on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "\"Goku\""
                     },
                     "724": {
                         "Button": {
                             "Name": "Is there an ally attacking on this turn whose name includes Goku?"
-                        }
+                        },
+                        "Paragraph Title": "When there is an ally whose name includes \"Goku\" attacking in the same turn "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"723|724\", \"compiled\": [\"|\", 723, 724]}",
             "Type": "Single activator",
-            "Brief effect description": "Attacks effective against all Types "
+            "Brief effect description": "Attacks effective against all Types ",
+            "Line description": "Attacks effective against all Types ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,

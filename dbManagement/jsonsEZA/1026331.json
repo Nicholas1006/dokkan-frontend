@@ -19,6 +19,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "seza",
     "Links": [
         "Money Money Money",
         "Hero",
@@ -42,8 +43,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "DEF +200% "
+            "Brief effect description": "DEF +200% ",
+            "Line description": "DEF +200% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1003223": {
             "ID": "1003223",
@@ -59,8 +63,11 @@
             },
             "Chance": "50",
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "All enemies ATK and DEF -20% "
+            "Brief effect description": "All enemies ATK and DEF -20% ",
+            "Line description": "All enemies ATK and DEF -20% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2003223": {
             "ID": "2003223",
@@ -78,17 +85,24 @@
                 "Logic": "2071",
                 "Causalities": {
                     "2071": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2071\", \"compiled\": 2071}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +150% when attacking"
+            "Brief effect description": "ATK +150% when attacking",
+            "Line description": "ATK +150% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3003223": {
             "ID": "3003223",
@@ -103,34 +117,39 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2072 || 2073",
+                "Logic": "(2072 || 2073)",
                 "Causalities": {
                     "2072": {
                         "Button": {
-                            "Name": "Are there 1 or more World Tournament category enemies on this turn?"
+                            "Name": "Are there 1 or more World Tournament category enemies  on this turn?"
                         },
                         "Slider": {
                             "Name": "How many World Tournament category enemies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 1 or more World Tournament Category enemies "
                     },
                     "2073": {
                         "Button": {
-                            "Name": "Are there 2 or more World Tournament category units on this turn "
+                            "Name": "Are there 2 or more World Tournament category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many World Tournament category units on this turn ",
+                            "Name": "How many World Tournament category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more World Tournament Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2072|2073\", \"compiled\": [\"|\", 2072, 2073]}",
             "Type": "Single activator",
-            "Brief effect description": "Ki +3 "
+            "Brief effect description": "Ki +3 ",
+            "Line description": "Ki +3 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4003223": {
             "ID": "4003223",
@@ -146,34 +165,39 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2072 || 2073",
+                "Logic": "(2072 || 2073)",
                 "Causalities": {
                     "2072": {
                         "Button": {
-                            "Name": "Are there 1 or more World Tournament category enemies on this turn?"
+                            "Name": "Are there 1 or more World Tournament category enemies  on this turn?"
                         },
                         "Slider": {
                             "Name": "How many World Tournament category enemies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 1 or more World Tournament Category enemies "
                     },
                     "2073": {
                         "Button": {
-                            "Name": "Are there 2 or more World Tournament category units on this turn "
+                            "Name": "Are there 2 or more World Tournament category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many World Tournament category units on this turn ",
+                            "Name": "How many World Tournament category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more World Tournament Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2072|2073\", \"compiled\": [\"|\", 2072, 2073]}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +50% "
+            "Brief effect description": "ATK and DEF +50% ",
+            "Line description": "ATK and DEF +50% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5003223": {
             "ID": "5003223",
@@ -190,34 +214,39 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2072 || 2073",
+                "Logic": "(2072 || 2073)",
                 "Causalities": {
                     "2072": {
                         "Button": {
-                            "Name": "Are there 1 or more World Tournament category enemies on this turn?"
+                            "Name": "Are there 1 or more World Tournament category enemies  on this turn?"
                         },
                         "Slider": {
                             "Name": "How many World Tournament category enemies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 1 or more World Tournament Category enemies "
                     },
                     "2073": {
                         "Button": {
-                            "Name": "Are there 2 or more World Tournament category units on this turn "
+                            "Name": "Are there 2 or more World Tournament category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many World Tournament category units on this turn ",
+                            "Name": "How many World Tournament category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more World Tournament Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2072|2073\", \"compiled\": [\"|\", 2072, 2073]}",
             "Type": "Single activator",
-            "Brief effect description": " allies Seal after attacking"
+            "Brief effect description": " allies Seal after attacking",
+            "Line description": " allies Seal after attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6003223": {
             "ID": "6003223",
@@ -242,12 +271,16 @@
                     "2074": {
                         "Button": {
                             "Name": "Is the target enemy in \"ATK down\" status or in \"DEF down\" status on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "When the target enemy is in \"ATK down\" status or in \"DEF down\" status"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2074\", \"compiled\": 2074}",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking"
+            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking",
+            "Line description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "7003223": {
             "ID": "7003223",
@@ -267,12 +300,16 @@
                     "2076": {
                         "Button": {
                             "Name": "Is the target enemy sealed on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "When the target enemy is sealed"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2076\", \"compiled\": 2076}",
             "Type": "Single activator",
-            "Brief effect description": "Performs a Critical Hit when attacking"
+            "Brief effect description": "Performs a Critical Hit when attacking",
+            "Line description": "Performs a Critical Hit when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "8003223": {
             "ID": "8003223",
@@ -301,12 +338,16 @@
                             "Name": "What turn is it on this turn?",
                             "Logic": ">=6",
                             "Min": 1
-                        }
+                        },
+                        "Paragraph Title": "When the turn count is 6"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2075\", \"compiled\": 2075}",
             "Type": "Single activator",
-            "Brief effect description": "Revives with 50% HP "
+            "Brief effect description": "Revives with 50% HP ",
+            "Line description": "Revives with 50% HP ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 3,

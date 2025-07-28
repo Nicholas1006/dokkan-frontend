@@ -32,6 +32,7 @@
     ],
     "Can EZA": false,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Prodigies",
         "Super Saiyan",
@@ -56,8 +57,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +200% "
+            "Brief effect description": "ATK and DEF +200% ",
+            "Line description": "ATK and DEF +200% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1004337": {
             "ID": "1004337",
@@ -72,8 +76,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK +200% and DEF +100% when attacking"
+            "Brief effect description": "ATK +200% and DEF +100% when attacking",
+            "Line description": "ATK +200% and DEF +100% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2004337": {
             "ID": "2004337",
@@ -87,9 +94,12 @@
                 "+ or -": "+"
             },
             "Length": "3",
+            "CausalityLogic": "",
             "Once Only": true,
             "Type": "Single activator",
-            "Brief effect description": "DEF +300% "
+            "Brief effect description": "DEF +300% ",
+            "Line description": "DEF +300% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3004337": {
             "ID": "3004337",
@@ -114,8 +124,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Building Stat",
-            "Brief effect description": "Ki +3 per Rainbow Ki Spheres obtained "
+            "Brief effect description": "Ki +3 per Rainbow Ki Spheres obtained ",
+            "Line description": "Ki +3 per Rainbow Ki Spheres obtained ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4004337": {
             "ID": "4004337",
@@ -130,7 +143,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "26 || 33",
+                "Logic": "(26 || 33)",
                 "Causalities": {
                     "26": {
                         "Button": {
@@ -141,7 +154,8 @@
                             "Logic": "==2",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 2nd attacker in the turn"
                     },
                     "33": {
                         "Button": {
@@ -152,12 +166,16 @@
                             "Logic": "==3",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 3rd attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"26|33\", \"compiled\": [\"|\", 26, 33]}",
             "Type": "Single activator",
-            "Brief effect description": "Guards all attacks after all ki collected"
+            "Brief effect description": "Guards all attacks after all ki collected",
+            "Line description": "Guards all attacks after all ki collected",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5004337": {
             "ID": "5004337",
@@ -176,7 +194,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "26 || 33",
+                "Logic": "(26 || 33)",
                 "Causalities": {
                     "26": {
                         "Button": {
@@ -187,7 +205,8 @@
                             "Logic": "==2",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 2nd attacker in the turn"
                     },
                     "33": {
                         "Button": {
@@ -198,12 +217,16 @@
                             "Logic": "==3",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 3rd attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"26|33\", \"compiled\": [\"|\", 26, 33]}",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 70% chance of becoming a super attack after all ki collected"
+            "Brief effect description": "Performs an additional attack with a 70% chance of becoming a super attack after all ki collected",
+            "Line description": "Performs an additional attack with a 70% chance of becoming a super attack after all ki collected",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6004337": {
             "ID": "6004337",
@@ -221,17 +244,24 @@
                 "Logic": "69",
                 "Causalities": {
                     "69": {
+                        "Button": {
+                            "Name": "Is Ki at least 10 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=10",
                             "Min": 0,
                             "Max": 24
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 10 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"69\", \"compiled\": 69}",
             "Type": "Single activator",
-            "Brief effect description": "Attacks effective against all Types when attacking"
+            "Brief effect description": "Attacks effective against all Types when attacking",
+            "Line description": "Attacks effective against all Types when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "7004337": {
             "ID": "7004337",
@@ -253,17 +283,24 @@
                 "Logic": "522",
                 "Causalities": {
                     "522": {
+                        "Button": {
+                            "Name": "Is Ki at least 20 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=20",
                             "Min": 0,
                             "Max": 24
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 20 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"522\", \"compiled\": 522}",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking"
+            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking",
+            "Line description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "8004337": {
             "ID": "8004337",
@@ -283,8 +320,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Successors category allies Ki +1 "
+            "Brief effect description": "Successors category allies Ki +1 ",
+            "Line description": "Successors category allies Ki +1 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "9004337": {
             "ID": "9004337",
@@ -304,8 +344,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Successors category allies DEF +40% "
+            "Brief effect description": "Successors category allies DEF +40% ",
+            "Line description": "Successors category allies DEF +40% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "10004337": {
             "ID": "10004337",
@@ -327,8 +370,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Fusion category allies Ki +1 "
+            "Brief effect description": "Fusion category allies Ki +1 ",
+            "Line description": "Fusion category allies Ki +1 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "11004337": {
             "ID": "11004337",
@@ -350,8 +396,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Fusion category allies DEF +40% "
+            "Brief effect description": "Fusion category allies DEF +40% ",
+            "Line description": "Fusion category allies DEF +40% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "12004337": {
             "ID": "12004337",
@@ -379,12 +428,16 @@
                             "Name": "What turn is it on this turn?",
                             "Logic": ">=4",
                             "Min": 1
-                        }
+                        },
+                        "Paragraph Title": "When the turn count is 4"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"5\", \"compiled\": 5}",
             "Type": "Single activator",
-            "Brief effect description": "None"
+            "Brief effect description": "None",
+            "Line description": "None",
+            "Paragraph Title": "Basic effects(s)"
         },
         "13004337": {
             "ID": "13004337",
@@ -398,8 +451,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Ki +5 "
+            "Brief effect description": "Ki +5 ",
+            "Line description": "Ki +5 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "14004337": {
             "ID": "14004337",
@@ -413,9 +469,12 @@
                 "+ or -": "+"
             },
             "Length": "3",
+            "CausalityLogic": "",
             "Once Only": true,
             "Type": "Single activator",
-            "Brief effect description": "Guards all attacks "
+            "Brief effect description": "Guards all attacks ",
+            "Line description": "Guards all attacks ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 4,
@@ -1602,7 +1661,7 @@
         "Effect Description": "Performs a fusion that lasts for 4 turns",
         "Condition Description": "Can be activated starting from \nthe 5th turn from the start of battle \n(once only, be it before or \nafter Reversible Exchange)",
         "Condition": {
-            "Logic": "200 && 3410",
+            "Logic": "(200&&3410)",
             "Causalities": {
                 "200": {
                     "Button": {
@@ -1612,12 +1671,14 @@
                         "Name": "What turn is it?",
                         "Logic": ">=5",
                         "Min": 1
-                    }
+                    },
+                    "Paragraph Title": "When the turn count is 5"
                 },
                 "3410": {
                     "Button": {
                         "Name": "Has this character's reversible exchange not yet been performed?"
-                    }
+                    },
+                    "Paragraph Title": "When this character's reversible exchange has not yet been performed"
                 }
             }
         },

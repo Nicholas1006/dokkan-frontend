@@ -13,6 +13,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "The Innocents",
         "Flee",
@@ -37,8 +38,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +140% "
+            "Brief effect description": "ATK and DEF +140% ",
+            "Line description": "ATK and DEF +140% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1002489": {
             "ID": "1002489",
@@ -57,17 +61,24 @@
                 "Logic": "914",
                 "Causalities": {
                     "914": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"914\", \"compiled\": 914}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +40% when attacking"
+            "Brief effect description": "ATK and DEF +40% when attacking",
+            "Line description": "ATK and DEF +40% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2002489": {
             "ID": "2002489",
@@ -84,8 +95,11 @@
             },
             "Chance": "50",
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": " allies Stun after attacking"
+            "Brief effect description": " allies Stun after attacking",
+            "Line description": " allies Stun after attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3002489": {
             "ID": "3002489",
@@ -99,8 +113,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Ki +2 "
+            "Brief effect description": "Ki +2 ",
+            "Line description": "Ki +2 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4002489": {
             "ID": "4002489",
@@ -115,8 +132,11 @@
             },
             "Chance": "30",
             "Length": "1",
+            "CausalityLogic": "{\"source\": \"915\", \"compiled\": 915}",
             "Type": "Single activator",
-            "Brief effect description": "Ki +2 "
+            "Brief effect description": "Ki +2 ",
+            "Line description": "Ki +2 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5002489": {
             "ID": "5002489",
@@ -135,8 +155,11 @@
             },
             "Chance": "30",
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack "
+            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack ",
+            "Line description": "Performs an additional attack with a 100% chance of becoming a super attack ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6002489": {
             "ID": "6002489",
@@ -150,8 +173,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Chance of evading enemy attacks +30% "
+            "Brief effect description": "Chance of evading enemy attacks +30% ",
+            "Line description": "Chance of evading enemy attacks +30% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "7002489": {
             "ID": "7002489",
@@ -166,25 +192,33 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "914 && 916",
+                "Logic": "(914&&916)",
                 "Causalities": {
                     "914": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     },
                     "916": {
                         "Button": {
                             "Name": "Is the target enemy in \"ATK down\" status or sealed on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "When the target enemy is in \"ATK down\" status or sealed"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"914&916\", \"compiled\": [\"&\", 914, 916]}",
             "Type": "Single activator",
-            "Brief effect description": "Attacks effective against all Types when attacking"
+            "Brief effect description": "Attacks effective against all Types when attacking",
+            "Line description": "Attacks effective against all Types when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "8002489": {
             "ID": "8002489",
@@ -199,25 +233,33 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "914 && 917",
+                "Logic": "(914&&917)",
                 "Causalities": {
                     "914": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     },
                     "917": {
                         "Button": {
                             "Name": "Is the target enemy stunned on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "When the target enemy is stunned"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"914&917\", \"compiled\": [\"&\", 914, 917]}",
             "Type": "Single activator",
-            "Brief effect description": "Performs a Critical Hit when attacking"
+            "Brief effect description": "Performs a Critical Hit when attacking",
+            "Line description": "Performs a Critical Hit when attacking",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 3,

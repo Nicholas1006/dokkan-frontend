@@ -25,6 +25,7 @@
     ],
     "Can EZA": false,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "The Saiyan Lineage",
         "Berserker",
@@ -49,8 +50,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +160% "
+            "Brief effect description": "ATK and DEF +160% ",
+            "Line description": "ATK and DEF +160% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1003440": {
             "ID": "1003440",
@@ -69,17 +73,24 @@
                 "Logic": "2315",
                 "Causalities": {
                     "2315": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2315\", \"compiled\": 2315}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +60% when attacking"
+            "Brief effect description": "ATK and DEF +60% when attacking",
+            "Line description": "ATK and DEF +60% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2003440": {
             "ID": "2003440",
@@ -102,17 +113,24 @@
                 "Logic": "2315",
                 "Causalities": {
                     "2315": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2315\", \"compiled\": 2315}",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking"
+            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking",
+            "Line description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3003440": {
             "ID": "3003440",
@@ -134,8 +152,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "{\"source\": \"2317\", \"compiled\": 2317}",
             "Type": "Building Stat",
-            "Brief effect description": "Damage recieved -20% (up to 60%) based on 'How many super attacks has this character performed on this turn' after attacking"
+            "Brief effect description": "Damage recieved -20% (up to 60%) based on 'How many super attacks has this character performed on this turn' after attacking",
+            "Line description": "Damage recieved -20% (up to 60%) based on 'How many super attacks has this character performed on this turn' after attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4003440": {
             "ID": "4003440",
@@ -155,19 +176,23 @@
                 "Causalities": {
                     "2316": {
                         "Button": {
-                            "Name": "Are there 2 or more Universe 6 category units on this turn "
+                            "Name": "Are there 2 or more Universe 6 category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Universe 6 category units on this turn ",
+                            "Name": "How many Universe 6 category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Universe 6 Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2316\", \"compiled\": 2316}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +160% "
+            "Brief effect description": "ATK and DEF +160% ",
+            "Line description": "ATK and DEF +160% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5003440": {
             "ID": "5003440",
@@ -191,19 +216,23 @@
                 "Causalities": {
                     "2316": {
                         "Button": {
-                            "Name": "Are there 2 or more Universe 6 category units on this turn "
+                            "Name": "Are there 2 or more Universe 6 category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Universe 6 category units on this turn ",
+                            "Name": "How many Universe 6 category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Universe 6 Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2316\", \"compiled\": 2316}",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack "
+            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack ",
+            "Line description": "Performs an additional attack with a 100% chance of becoming a super attack ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 4,
@@ -1083,7 +1112,7 @@
         "Effect Description": "Transforms",
         "Condition Description": "Can be activated when there is an ally \nwhose name includes \"Caulifla\" on the team \nstarting from the 4th turn from the start of battle, \nor after the character performs 6 or more \nSuper Attacks in battle (once only)",
         "Condition": {
-            "Logic": "2310 && 2311 || 2312",
+            "Logic": "((2310&&2311) || 2312)",
             "Causalities": {
                 "2310": {
                     "Button": {
@@ -1093,12 +1122,14 @@
                         "Name": "What turn is it?",
                         "Logic": ">=4",
                         "Min": 1
-                    }
+                    },
+                    "Paragraph Title": "When the turn count is 4"
                 },
                 "2311": {
                     "Button": {
                         "Name": "Is there an ally on the team whose name includes Caulifla?"
-                    }
+                    },
+                    "Paragraph Title": "When there is an ally whose name includes \"Caulifla\""
                 },
                 "2312": {
                     "Slider": {
@@ -1106,7 +1137,8 @@
                         "Logic": ">=6",
                         "Min": 0,
                         "Max": 6
-                    }
+                    },
+                    "Paragraph Title": "When the character has performed6 or more super attacks"
                 }
             }
         },

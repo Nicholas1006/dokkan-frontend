@@ -23,6 +23,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Super Saiyan",
         "Golden Warrior",
@@ -47,8 +48,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +100% "
+            "Brief effect description": "ATK and DEF +100% ",
+            "Line description": "ATK and DEF +100% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1003567": {
             "ID": "1003567",
@@ -67,17 +71,24 @@
                 "Logic": "2630",
                 "Causalities": {
                     "2630": {
+                        "Button": {
+                            "Name": "Is Ki at least 9 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=9",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 9 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2630\", \"compiled\": 2630}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +50% when attacking"
+            "Brief effect description": "ATK and DEF +50% when attacking",
+            "Line description": "ATK and DEF +50% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2003567": {
             "ID": "2003567",
@@ -92,9 +103,12 @@
                 "+ or -": "+"
             },
             "Length": "7",
+            "CausalityLogic": "",
             "Once Only": true,
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +50% "
+            "Brief effect description": "ATK and DEF +50% ",
+            "Line description": "ATK and DEF +50% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3003567": {
             "ID": "3003567",
@@ -108,9 +122,12 @@
                 "+ or -": "+"
             },
             "Length": "7",
+            "CausalityLogic": "",
             "Once Only": true,
             "Type": "Single activator",
-            "Brief effect description": " allies DEF +20% "
+            "Brief effect description": " allies DEF +20% ",
+            "Line description": " allies DEF +20% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4003567": {
             "ID": "4003567",
@@ -136,12 +153,16 @@
                             "Logic": ">=8",
                             "Min": 0,
                             "Max": 8
-                        }
+                        },
+                        "Paragraph Title": "Starting from the 8 turn from the character's entry turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2631\", \"compiled\": 2631}",
             "Type": "Single activator",
-            "Brief effect description": "DEF +100% "
+            "Brief effect description": "DEF +100% ",
+            "Line description": "DEF +100% ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,

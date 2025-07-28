@@ -21,6 +21,7 @@
     ],
     "Can EZA": false,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Cold Judgment",
         "Brainiacs",
@@ -52,8 +53,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
-            "Brief effect description": "ATK +20% (up to 80%) based on 'How many turns has this character been on' "
+            "Brief effect description": "ATK +20% (up to 80%) based on 'How many turns has this character been on' ",
+            "Line description": "ATK +20% (up to 80%) based on 'How many turns has this character been on' ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1002349": {
             "ID": "1002349",
@@ -75,8 +79,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
-            "Brief effect description": "DEF +20% (up to 80%) based on 'How many turns has this character been on' "
+            "Brief effect description": "DEF +20% (up to 80%) based on 'How many turns has this character been on' ",
+            "Line description": "DEF +20% (up to 80%) based on 'How many turns has this character been on' ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2002349": {
             "ID": "2002349",
@@ -95,17 +102,24 @@
                 "Logic": "799",
                 "Causalities": {
                     "799": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"799\", \"compiled\": 799}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +120% when attacking"
+            "Brief effect description": "ATK and DEF +120% when attacking",
+            "Line description": "ATK and DEF +120% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3002349": {
             "ID": "3002349",
@@ -126,17 +140,24 @@
                 "Logic": "799",
                 "Causalities": {
                     "799": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"799\", \"compiled\": 799}",
             "Type": "Single activator",
-            "Brief effect description": " allies Stun after attacking"
+            "Brief effect description": " allies Stun after attacking",
+            "Line description": " allies Stun after attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4002349": {
             "ID": "4002349",
@@ -156,12 +177,16 @@
                     "91": {
                         "Button": {
                             "Name": "Is the target enemy stunned on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "When the target enemy is stunned"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"91\", \"compiled\": 91}",
             "Type": "Single activator",
-            "Brief effect description": "Performs a Critical Hit when attacking"
+            "Brief effect description": "Performs a Critical Hit when attacking",
+            "Line description": "Performs a Critical Hit when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5002349": {
             "ID": "5002349",
@@ -178,31 +203,39 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "799 && 789",
+                "Logic": "(799&&789)",
                 "Causalities": {
                     "799": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     },
                     "789": {
                         "Button": {
-                            "Name": "Are there 2 or more Representatives of Universe 7 category units on this turn "
+                            "Name": "Are there 2 or more Representatives of Universe 7 category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Representatives of Universe 7 category units on this turn ",
+                            "Name": "How many Representatives of Universe 7 category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Representatives of Universe 7 Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"799&789\", \"compiled\": [\"&\", 799, 789]}",
             "Type": "Single activator",
-            "Brief effect description": " allies Disable guard when attacking"
+            "Brief effect description": " allies Disable guard when attacking",
+            "Line description": " allies Disable guard when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6002349": {
             "ID": "6002349",
@@ -227,19 +260,23 @@
                 "Causalities": {
                     "789": {
                         "Button": {
-                            "Name": "Are there 2 or more Representatives of Universe 7 category units on this turn "
+                            "Name": "Are there 2 or more Representatives of Universe 7 category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Representatives of Universe 7 category units on this turn ",
+                            "Name": "How many Representatives of Universe 7 category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Representatives of Universe 7 Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"789\", \"compiled\": 789}",
             "Type": "Single activator",
-            "Brief effect description": "Representatives of Universe 7 category allies Ki +2 "
+            "Brief effect description": "Representatives of Universe 7 category allies Ki +2 ",
+            "Line description": "Representatives of Universe 7 category allies Ki +2 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "7002349": {
             "ID": "7002349",
@@ -265,19 +302,23 @@
                 "Causalities": {
                     "789": {
                         "Button": {
-                            "Name": "Are there 2 or more Representatives of Universe 7 category units on this turn "
+                            "Name": "Are there 2 or more Representatives of Universe 7 category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Representatives of Universe 7 category units on this turn ",
+                            "Name": "How many Representatives of Universe 7 category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Representatives of Universe 7 Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"789\", \"compiled\": 789}",
             "Type": "Single activator",
-            "Brief effect description": "Representatives of Universe 7 category allies ATK and DEF +20% "
+            "Brief effect description": "Representatives of Universe 7 category allies ATK and DEF +20% ",
+            "Line description": "Representatives of Universe 7 category allies ATK and DEF +20% ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,

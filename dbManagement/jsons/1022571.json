@@ -15,6 +15,7 @@
     ],
     "Can EZA": false,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Big Bad Bosses",
         "Shocking Speed",
@@ -37,8 +38,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +80% "
+            "Brief effect description": "ATK and DEF +80% ",
+            "Line description": "ATK and DEF +80% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1002468": {
             "ID": "1002468",
@@ -53,7 +57,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "733 || 735",
+                "Logic": "(733 || 735)",
                 "Causalities": {
                     "733": {
                         "Button": {
@@ -64,7 +68,8 @@
                             "Logic": "==1",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 1st attacker in the turn"
                     },
                     "735": {
                         "Button": {
@@ -75,12 +80,16 @@
                             "Logic": "==2",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 2nd attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"733|735\", \"compiled\": [\"|\", 733, 735]}",
             "Type": "Single activator",
-            "Brief effect description": "Guards all attacks after all ki collected"
+            "Brief effect description": "Guards all attacks after all ki collected",
+            "Line description": "Guards all attacks after all ki collected",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,

@@ -14,6 +14,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "seza",
     "Links": [
         "Big Bad Bosses",
         "The Saiyan Lineage",
@@ -46,20 +47,24 @@
                 "Causalities": {
                     "3276": {
                         "Button": {
-                            "Name": "Are there 2 or more Uncontrollable Power category units on the team within the last 4 turns?"
+                            "Name": "Are there 2 or more Uncontrollable Power category allies  within the last 4 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Uncontrollable Power category units on the team within the last 4 turns?",
+                            "Name": "How many Uncontrollable Power category allies within the last 4 turns?",
                             "Logic": ">=2",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Uncontrollable Power Category allies "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"3276\", \"compiled\": 3276}",
             "Once Only": true,
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack "
+            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack ",
+            "Line description": "Performs an additional attack with a 100% chance of becoming a super attack ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1004247": {
             "ID": "1004247",
@@ -74,18 +79,19 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "3276 && 1380",
+                "Logic": "(3276&&1380)",
                 "Causalities": {
                     "3276": {
                         "Button": {
-                            "Name": "Are there 2 or more Uncontrollable Power category units on the team on this turn?"
+                            "Name": "Are there 2 or more Uncontrollable Power category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Uncontrollable Power category units on the team on this turn?",
+                            "Name": "How many Uncontrollable Power category allies on this turn?",
                             "Logic": ">=2",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Uncontrollable Power Category allies "
                     },
                     "1380": {
                         "Button": {
@@ -96,12 +102,16 @@
                             "Logic": "<=4",
                             "Min": 0,
                             "Max": 5
-                        }
+                        },
+                        "Paragraph Title": "For 4 turns from the chraracter's entry turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"3276&1380\", \"compiled\": [\"&\", 3276, 1380]}",
             "Type": "Single activator",
-            "Brief effect description": "Ki +8 "
+            "Brief effect description": "Ki +8 ",
+            "Line description": "Ki +8 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2004247": {
             "ID": "2004247",
@@ -116,18 +126,19 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "3276 && 1380",
+                "Logic": "(3276&&1380)",
                 "Causalities": {
                     "3276": {
                         "Button": {
-                            "Name": "Are there 2 or more Uncontrollable Power category units on the team on this turn?"
+                            "Name": "Are there 2 or more Uncontrollable Power category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Uncontrollable Power category units on the team on this turn?",
+                            "Name": "How many Uncontrollable Power category allies on this turn?",
                             "Logic": ">=2",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Uncontrollable Power Category allies "
                     },
                     "1380": {
                         "Button": {
@@ -138,12 +149,16 @@
                             "Logic": "<=4",
                             "Min": 0,
                             "Max": 5
-                        }
+                        },
+                        "Paragraph Title": "For 4 turns from the chraracter's entry turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"3276&1380\", \"compiled\": [\"&\", 3276, 1380]}",
             "Type": "Single activator",
-            "Brief effect description": "Heals +26% at the end of turn"
+            "Brief effect description": "Heals +26% at the end of turn",
+            "Line description": "Heals +26% at the end of turn",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3004247": {
             "ID": "3004247",
@@ -157,8 +172,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Ki +3 "
+            "Brief effect description": "Ki +3 ",
+            "Line description": "Ki +3 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4004247": {
             "ID": "4004247",
@@ -172,8 +190,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Chance of performing a critical hit +50% "
+            "Brief effect description": "Chance of performing a critical hit +50% ",
+            "Line description": "Chance of performing a critical hit +50% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5004247": {
             "ID": "5004247",
@@ -192,17 +213,24 @@
                 "Logic": "46",
                 "Causalities": {
                     "46": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 24
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"46\", \"compiled\": 46}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +180% when attacking"
+            "Brief effect description": "ATK and DEF +180% when attacking",
+            "Line description": "ATK and DEF +180% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6004247": {
             "ID": "6004247",
@@ -220,17 +248,24 @@
                 "Logic": "46",
                 "Causalities": {
                     "46": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 24
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"46\", \"compiled\": 46}",
             "Type": "Single activator",
-            "Brief effect description": "Damage recieved -30% when attacking"
+            "Brief effect description": "Damage recieved -30% when attacking",
+            "Line description": "Damage recieved -30% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "7004247": {
             "ID": "7004247",
@@ -249,19 +284,23 @@
                 "Causalities": {
                     "3275": {
                         "Button": {
-                            "Name": "Are there 3 or more Uncontrollable Power category units on this turn "
+                            "Name": "Are there 3 or more Uncontrollable Power category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Uncontrollable Power category units on this turn ",
+                            "Name": "How many Uncontrollable Power category allies attacking on this turn",
                             "Logic": ">=3",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 3 or more Uncontrollable Power Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"3275\", \"compiled\": 3275}",
             "Type": "Single activator",
-            "Brief effect description": "Damage recieved -30% "
+            "Brief effect description": "Damage recieved -30% ",
+            "Line description": "Damage recieved -30% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "8004247": {
             "ID": "8004247",
@@ -276,7 +315,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "11 && 1651",
+                "Logic": "(11&&1651)",
                 "Causalities": {
                     "11": {
                         "Button": {
@@ -287,7 +326,8 @@
                             "Logic": ">=2",
                             "Min": 0,
                             "Max": 2
-                        }
+                        },
+                        "Paragraph Title": "Starting from the 2 turn from the character's entry turn"
                     },
                     "1651": {
                         "Button": {
@@ -298,12 +338,16 @@
                             "Logic": "<=7",
                             "Min": 0,
                             "Max": 8
-                        }
+                        },
+                        "Paragraph Title": "For 7 turns from the chraracter's entry turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"11&1651\", \"compiled\": [\"&\", 11, 1651]}",
             "Type": "Single activator",
-            "Brief effect description": "Damage recieved -6% "
+            "Brief effect description": "Damage recieved -6% ",
+            "Line description": "Damage recieved -6% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "9004247": {
             "ID": "9004247",
@@ -318,7 +362,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "296 && 2259",
+                "Logic": "(296&&2259)",
                 "Causalities": {
                     "296": {
                         "Button": {
@@ -329,7 +373,8 @@
                             "Logic": ">=3",
                             "Min": 0,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "Starting from the 3 turn from the character's entry turn"
                     },
                     "2259": {
                         "Button": {
@@ -340,12 +385,16 @@
                             "Logic": "<=8",
                             "Min": 0,
                             "Max": 9
-                        }
+                        },
+                        "Paragraph Title": "For 8 turns from the chraracter's entry turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"296&2259\", \"compiled\": [\"&\", 296, 2259]}",
             "Type": "Single activator",
-            "Brief effect description": "Damage recieved -6% "
+            "Brief effect description": "Damage recieved -6% ",
+            "Line description": "Damage recieved -6% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "10004247": {
             "ID": "10004247",
@@ -360,7 +409,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "626 && 2258",
+                "Logic": "(626&&2258)",
                 "Causalities": {
                     "626": {
                         "Button": {
@@ -371,7 +420,8 @@
                             "Logic": ">=4",
                             "Min": 0,
                             "Max": 4
-                        }
+                        },
+                        "Paragraph Title": "Starting from the 4 turn from the character's entry turn"
                     },
                     "2258": {
                         "Button": {
@@ -382,12 +432,16 @@
                             "Logic": "<=9",
                             "Min": 0,
                             "Max": 10
-                        }
+                        },
+                        "Paragraph Title": "For 9 turns from the chraracter's entry turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"626&2258\", \"compiled\": [\"&\", 626, 2258]}",
             "Type": "Single activator",
-            "Brief effect description": "Damage recieved -6% "
+            "Brief effect description": "Damage recieved -6% ",
+            "Line description": "Damage recieved -6% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "11004247": {
             "ID": "11004247",
@@ -402,7 +456,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2375 && 2257",
+                "Logic": "(2375&&2257)",
                 "Causalities": {
                     "2375": {
                         "Button": {
@@ -413,7 +467,8 @@
                             "Logic": ">=5",
                             "Min": 0,
                             "Max": 5
-                        }
+                        },
+                        "Paragraph Title": "Starting from the 5 turn from the character's entry turn"
                     },
                     "2257": {
                         "Button": {
@@ -424,12 +479,16 @@
                             "Logic": "<=10",
                             "Min": 0,
                             "Max": 11
-                        }
+                        },
+                        "Paragraph Title": "For 10 turns from the chraracter's entry turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2375&2257\", \"compiled\": [\"&\", 2375, 2257]}",
             "Type": "Single activator",
-            "Brief effect description": "Damage recieved -6% "
+            "Brief effect description": "Damage recieved -6% ",
+            "Line description": "Damage recieved -6% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "12004247": {
             "ID": "12004247",
@@ -444,7 +503,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "579 && 3289",
+                "Logic": "(579&&3289)",
                 "Causalities": {
                     "579": {
                         "Button": {
@@ -455,7 +514,8 @@
                             "Logic": ">=6",
                             "Min": 0,
                             "Max": 6
-                        }
+                        },
+                        "Paragraph Title": "Starting from the 6 turn from the character's entry turn"
                     },
                     "3289": {
                         "Button": {
@@ -466,12 +526,16 @@
                             "Logic": "<=11",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "For 11 turns from the chraracter's entry turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"579&3289\", \"compiled\": [\"&\", 579, 3289]}",
             "Type": "Single activator",
-            "Brief effect description": "Damage recieved -6% "
+            "Brief effect description": "Damage recieved -6% ",
+            "Line description": "Damage recieved -6% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "13004247": {
             "ID": "13004247",
@@ -497,12 +561,16 @@
                             "Logic": ">=2",
                             "Min": 0,
                             "Max": 2
-                        }
+                        },
+                        "Paragraph Title": "Starting from the 2 turn from the character's entry turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"11\", \"compiled\": 11}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of performing a critical hit +6% "
+            "Brief effect description": "Chance of performing a critical hit +6% ",
+            "Line description": "Chance of performing a critical hit +6% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "14004247": {
             "ID": "14004247",
@@ -528,12 +596,16 @@
                             "Logic": ">=3",
                             "Min": 0,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "Starting from the 3 turn from the character's entry turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"296\", \"compiled\": 296}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of performing a critical hit +6% "
+            "Brief effect description": "Chance of performing a critical hit +6% ",
+            "Line description": "Chance of performing a critical hit +6% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "15004247": {
             "ID": "15004247",
@@ -559,12 +631,16 @@
                             "Logic": ">=4",
                             "Min": 0,
                             "Max": 4
-                        }
+                        },
+                        "Paragraph Title": "Starting from the 4 turn from the character's entry turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"626\", \"compiled\": 626}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of performing a critical hit +6% "
+            "Brief effect description": "Chance of performing a critical hit +6% ",
+            "Line description": "Chance of performing a critical hit +6% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "16004247": {
             "ID": "16004247",
@@ -590,12 +666,16 @@
                             "Logic": ">=5",
                             "Min": 0,
                             "Max": 5
-                        }
+                        },
+                        "Paragraph Title": "Starting from the 5 turn from the character's entry turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2375\", \"compiled\": 2375}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of performing a critical hit +6% "
+            "Brief effect description": "Chance of performing a critical hit +6% ",
+            "Line description": "Chance of performing a critical hit +6% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "17004247": {
             "ID": "17004247",
@@ -621,12 +701,16 @@
                             "Logic": ">=6",
                             "Min": 0,
                             "Max": 6
-                        }
+                        },
+                        "Paragraph Title": "Starting from the 6 turn from the character's entry turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"579\", \"compiled\": 579}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of performing a critical hit +6% "
+            "Brief effect description": "Chance of performing a critical hit +6% ",
+            "Line description": "Chance of performing a critical hit +6% ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 3,
@@ -838,7 +922,7 @@
         "Effect Description": "Massively raises ATK temporarily and \ncauses ultimate damage to enemy; \nguards all attacks and directs enemy's attack \ntowards the character for 1 turn",
         "Condition Description": "Can be activated when all allies attacking \nin the same turn are \"Uncontrollable Power\" \nCategory characters starting from the 6th turn \nfrom the character's entry turn (once only)",
         "Condition": {
-            "Logic": "579 && 3275",
+            "Logic": "(579&&3275)",
             "Causalities": {
                 "579": {
                     "Button": {
@@ -849,18 +933,20 @@
                         "Logic": ">=6",
                         "Min": 0,
                         "Max": 6
-                    }
+                    },
+                    "Paragraph Title": "Starting from the 6 turn from the character's entry turn"
                 },
                 "3275": {
                     "Button": {
-                        "Name": "Are there 3 or more Uncontrollable Power category units on this turn "
+                        "Name": "Are there 3 or more Uncontrollable Power category allies attacking on this turn?"
                     },
                     "Slider": {
-                        "Name": "How many Uncontrollable Power category units on this turn ",
+                        "Name": "How many Uncontrollable Power category allies attacking on this turn",
                         "Logic": ">=3",
                         "Max": 3,
                         "Min": 0
-                    }
+                    },
+                    "Paragraph Title": "When there are 3 or more Uncontrollable Power Category allies attacking on this turn"
                 }
             }
         },

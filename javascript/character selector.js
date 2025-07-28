@@ -1,6 +1,6 @@
 import { unitDisplay } from "./classes/unitDisplay.js";
 import { complexSortFilterContainer } from "./classes/complexSortFilterContainer.js";
-import {removePX,timeSince,isEmptyDictionary} from "./commonFunctions.js";
+import {timeSince,isEmptyDictionary} from "./commonFunctions.js";
 
 // GLOBAL VARIABLES
 let unitsToDisplay = 44;

@@ -20,6 +20,7 @@
     ],
     "Can EZA": false,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Supreme Warrior",
         "Experienced Fighters",
@@ -47,17 +48,24 @@
                 "Logic": "46",
                 "Causalities": {
                     "46": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"46\", \"compiled\": 46}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +60% when attacking"
+            "Brief effect description": "ATK and DEF +60% when attacking",
+            "Line description": "ATK and DEF +60% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1001221": {
             "ID": "1001221",
@@ -86,12 +94,16 @@
                             "Logic": "==1",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 1st attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"25\", \"compiled\": 25}",
             "Type": "Single activator",
-            "Brief effect description": " allies Stun after attacking"
+            "Brief effect description": " allies Stun after attacking",
+            "Line description": " allies Stun after attacking",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,

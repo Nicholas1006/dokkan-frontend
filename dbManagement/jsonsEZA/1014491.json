@@ -23,6 +23,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "seza",
     "Links": [
         "All in the Family",
         "The Saiyan Lineage",
@@ -47,8 +48,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +100% "
+            "Brief effect description": "ATK and DEF +100% ",
+            "Line description": "ATK and DEF +100% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1003563": {
             "ID": "1003563",
@@ -67,17 +71,24 @@
                 "Logic": "2610",
                 "Causalities": {
                     "2610": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2610\", \"compiled\": 2610}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +180% and DEF +80% when attacking"
+            "Brief effect description": "ATK +180% and DEF +80% when attacking",
+            "Line description": "ATK +180% and DEF +80% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2003563": {
             "ID": "2003563",
@@ -91,8 +102,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Chance of performing a critical hit +50% "
+            "Brief effect description": "Chance of performing a critical hit +50% ",
+            "Line description": "Chance of performing a critical hit +50% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3003563": {
             "ID": "3003563",
@@ -106,9 +120,12 @@
                 "+ or -": "+"
             },
             "Length": "3",
+            "CausalityLogic": "",
             "Once Only": true,
             "Type": "Single activator",
-            "Brief effect description": "Guards all attacks "
+            "Brief effect description": "Guards all attacks ",
+            "Line description": "Guards all attacks ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4003563": {
             "ID": "4003563",
@@ -134,12 +151,16 @@
                             "Logic": "<2",
                             "Min": 1,
                             "Max": 7
-                        }
+                        },
+                        "Paragraph Title": "When there are less than 2 enemies"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2611\", \"compiled\": 2611}",
             "Type": "Single activator",
-            "Brief effect description": "Ki +3 "
+            "Brief effect description": "Ki +3 ",
+            "Line description": "Ki +3 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5003563": {
             "ID": "5003563",
@@ -165,12 +186,16 @@
                             "Logic": "<2",
                             "Min": 1,
                             "Max": 7
-                        }
+                        },
+                        "Paragraph Title": "When there are less than 2 enemies"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2611\", \"compiled\": 2611}",
             "Type": "Single activator",
-            "Brief effect description": "Attacks guaranteed to hit "
+            "Brief effect description": "Attacks guaranteed to hit ",
+            "Line description": "Attacks guaranteed to hit ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6003563": {
             "ID": "6003563",
@@ -185,7 +210,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2611 && 2612",
+                "Logic": "(2611&&2612)",
                 "Causalities": {
                     "2611": {
                         "Button": {
@@ -196,23 +221,28 @@
                             "Logic": "<2",
                             "Min": 1,
                             "Max": 7
-                        }
+                        },
+                        "Paragraph Title": "When there are less than 2 enemies"
                     },
                     "2612": {
                         "Button": {
-                            "Name": "Are there 1 or more GT Bosses category enemies on this turn?"
+                            "Name": "Are there 1 or more GT Bosses category enemies  on this turn?"
                         },
                         "Slider": {
                             "Name": "How many GT Bosses category enemies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 1 or more GT Bosses Category enemies "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2611&2612\", \"compiled\": [\"&\", 2611, 2612]}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of performing a critical hit +50% "
+            "Brief effect description": "Chance of performing a critical hit +50% ",
+            "Line description": "Chance of performing a critical hit +50% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "7003563": {
             "ID": "7003563",
@@ -228,7 +258,7 @@
             "Chance": "50",
             "Length": "1",
             "Condition": {
-                "Logic": "2611 && 2612",
+                "Logic": "(2611&&2612)",
                 "Causalities": {
                     "2611": {
                         "Button": {
@@ -239,23 +269,28 @@
                             "Logic": "<2",
                             "Min": 1,
                             "Max": 7
-                        }
+                        },
+                        "Paragraph Title": "When there are less than 2 enemies"
                     },
                     "2612": {
                         "Button": {
-                            "Name": "Are there 1 or more GT Bosses category enemies on this turn?"
+                            "Name": "Are there 1 or more GT Bosses category enemies  on this turn?"
                         },
                         "Slider": {
                             "Name": "How many GT Bosses category enemies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 1 or more GT Bosses Category enemies "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2611&2612\", \"compiled\": [\"&\", 2611, 2612]}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +100% "
+            "Brief effect description": "ATK +100% ",
+            "Line description": "ATK +100% ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,

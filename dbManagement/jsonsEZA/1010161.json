@@ -24,6 +24,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "seza",
     "Links": [
         "Super Saiyan",
         "Saiyan Warrior Race",
@@ -47,8 +48,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "DEF +150% "
+            "Brief effect description": "DEF +150% ",
+            "Line description": "DEF +150% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1002481": {
             "ID": "1002481",
@@ -66,17 +70,24 @@
                 "Logic": "909",
                 "Causalities": {
                     "909": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 24
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"909\", \"compiled\": 909}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +180% when attacking"
+            "Brief effect description": "ATK +180% when attacking",
+            "Line description": "ATK +180% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2002481": {
             "ID": "2002481",
@@ -96,12 +107,16 @@
                     "908": {
                         "Button": {
                             "Name": "Is there an ally on the team whose name includes Bulma on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "When there is an ally whose name includes \"Bulma\""
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"908\", \"compiled\": 908}",
             "Type": "Single activator",
-            "Brief effect description": "Ki +2 "
+            "Brief effect description": "Ki +2 ",
+            "Line description": "Ki +2 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3002481": {
             "ID": "3002481",
@@ -121,12 +136,16 @@
                     "908": {
                         "Button": {
                             "Name": "Is there an ally on the team whose name includes Bulma on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "When there is an ally whose name includes \"Bulma\""
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"908\", \"compiled\": 908}",
             "Type": "Single activator",
-            "Brief effect description": "Damage recieved -20% right before being hit"
+            "Brief effect description": "Damage recieved -20% right before being hit",
+            "Line description": "Damage recieved -20% right before being hit",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4002481": {
             "ID": "4002481",
@@ -146,12 +165,16 @@
                     "910": {
                         "Button": {
                             "Name": "Is there an ally on the team whose name includes Trunks (Kid) on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "When there is an ally whose name includes \"Trunks (Kid)\""
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"910\", \"compiled\": 910}",
             "Type": "Single activator",
-            "Brief effect description": "Ki +2 "
+            "Brief effect description": "Ki +2 ",
+            "Line description": "Ki +2 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5002481": {
             "ID": "5002481",
@@ -172,12 +195,16 @@
                     "910": {
                         "Button": {
                             "Name": "Is there an ally on the team whose name includes Trunks (Kid) on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "When there is an ally whose name includes \"Trunks (Kid)\""
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"910\", \"compiled\": 910}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +20% "
+            "Brief effect description": "ATK and DEF +20% ",
+            "Line description": "ATK and DEF +20% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6002481": {
             "ID": "6002481",
@@ -192,22 +219,27 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "911 || 912",
+                "Logic": "(911 || 912)",
                 "Causalities": {
                     "911": {
                         "Button": {
                             "Name": "Is there an enemy whose name includes Goku on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "\"Goku\""
                     },
                     "912": {
                         "Button": {
                             "Name": "Is there an ally attacking on this turn whose name includes Goku?"
-                        }
+                        },
+                        "Paragraph Title": "When there is an ally whose name includes \"Goku\" attacking in the same turn "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"911|912\", \"compiled\": [\"|\", 911, 912]}",
             "Type": "Single activator",
-            "Brief effect description": "Ki +2 "
+            "Brief effect description": "Ki +2 ",
+            "Line description": "Ki +2 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "7002481": {
             "ID": "7002481",
@@ -222,22 +254,27 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "911 || 912",
+                "Logic": "(911 || 912)",
                 "Causalities": {
                     "911": {
                         "Button": {
                             "Name": "Is there an enemy whose name includes Goku on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "\"Goku\""
                     },
                     "912": {
                         "Button": {
                             "Name": "Is there an ally attacking on this turn whose name includes Goku?"
-                        }
+                        },
+                        "Paragraph Title": "When there is an ally whose name includes \"Goku\" attacking in the same turn "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"911|912\", \"compiled\": [\"|\", 911, 912]}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of performing a critical hit +20% "
+            "Brief effect description": "Chance of performing a critical hit +20% ",
+            "Line description": "Chance of performing a critical hit +20% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "8002481": {
             "ID": "8002481",
@@ -263,13 +300,17 @@
                             "Logic": "<=30",
                             "Min": 0,
                             "Max": 100
-                        }
+                        },
+                        "Paragraph Title": "When HP is 30% or less"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"913\", \"compiled\": 913}",
             "Once Only": true,
             "Type": "Single activator",
-            "Brief effect description": "Ki +12 "
+            "Brief effect description": "Ki +12 ",
+            "Line description": "Ki +12 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "9002481": {
             "ID": "9002481",
@@ -295,13 +336,17 @@
                             "Logic": "<=30",
                             "Min": 0,
                             "Max": 100
-                        }
+                        },
+                        "Paragraph Title": "When HP is 30% or less"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"913\", \"compiled\": 913}",
             "Once Only": true,
             "Type": "Single activator",
-            "Brief effect description": "Performs a Critical Hit "
+            "Brief effect description": "Performs a Critical Hit ",
+            "Line description": "Performs a Critical Hit ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,

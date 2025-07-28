@@ -17,6 +17,7 @@
     ],
     "Can EZA": false,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Supreme Warrior",
         "Experienced Fighters",
@@ -40,8 +41,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Ki +3 "
+            "Brief effect description": "Ki +3 ",
+            "Line description": "Ki +3 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1004585": {
             "ID": "1004585",
@@ -56,8 +60,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +250% "
+            "Brief effect description": "ATK and DEF +250% ",
+            "Line description": "ATK and DEF +250% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2004585": {
             "ID": "2004585",
@@ -71,8 +78,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Chance of evading enemy attacks +50% "
+            "Brief effect description": "Chance of evading enemy attacks +50% ",
+            "Line description": "Chance of evading enemy attacks +50% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3004585": {
             "ID": "3004585",
@@ -97,8 +107,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Randomly changes Ki Spheres of a certain Type(PHY excluded) to Rainbow Ki Spheres "
+            "Brief effect description": "Randomly changes Ki Spheres of a certain Type(PHY excluded) to Rainbow Ki Spheres ",
+            "Line description": "Randomly changes Ki Spheres of a certain Type(PHY excluded) to Rainbow Ki Spheres ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4004585": {
             "ID": "4004585",
@@ -113,34 +126,39 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2783 || 2852",
+                "Logic": "(2783 || 2852)",
                 "Causalities": {
                     "2783": {
                         "Button": {
-                            "Name": "Are there 2 or more Tournament Participants category units on this turn "
+                            "Name": "Are there 2 or more Tournament Participants category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Tournament Participants category units on this turn ",
+                            "Name": "How many Tournament Participants category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Tournament Participants Category allies attacking on this turn"
                     },
                     "2852": {
                         "Button": {
-                            "Name": "Are there 2 or more Otherworld Warriors category units on this turn "
+                            "Name": "Are there 2 or more Otherworld Warriors category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Otherworld Warriors category units on this turn ",
+                            "Name": "How many Otherworld Warriors category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Otherworld Warriors Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2783|2852\", \"compiled\": [\"|\", 2783, 2852]}",
             "Type": "Single activator",
-            "Brief effect description": " allies Ki +3 "
+            "Brief effect description": " allies Ki +3 ",
+            "Line description": " allies Ki +3 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5004585": {
             "ID": "5004585",
@@ -156,34 +174,39 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2783 || 2852",
+                "Logic": "(2783 || 2852)",
                 "Causalities": {
                     "2783": {
                         "Button": {
-                            "Name": "Are there 2 or more Tournament Participants category units on this turn "
+                            "Name": "Are there 2 or more Tournament Participants category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Tournament Participants category units on this turn ",
+                            "Name": "How many Tournament Participants category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Tournament Participants Category allies attacking on this turn"
                     },
                     "2852": {
                         "Button": {
-                            "Name": "Are there 2 or more Otherworld Warriors category units on this turn "
+                            "Name": "Are there 2 or more Otherworld Warriors category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Otherworld Warriors category units on this turn ",
+                            "Name": "How many Otherworld Warriors category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Otherworld Warriors Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2783|2852\", \"compiled\": [\"|\", 2783, 2852]}",
             "Type": "Single activator",
-            "Brief effect description": " allies ATK and DEF +40% "
+            "Brief effect description": " allies ATK and DEF +40% ",
+            "Line description": " allies ATK and DEF +40% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6004585": {
             "ID": "6004585",
@@ -215,13 +238,17 @@
                             "Logic": "==2",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 2nd attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"26\", \"compiled\": 26}",
             "Once Only": true,
             "Type": "Single activator",
-            "Brief effect description": "Otherworld Warriors category allies Damage recieved -10% after all ki collected"
+            "Brief effect description": "Otherworld Warriors category allies Damage recieved -10% after all ki collected",
+            "Line description": "Otherworld Warriors category allies Damage recieved -10% after all ki collected",
+            "Paragraph Title": "Basic effects(s)"
         },
         "7004585": {
             "ID": "7004585",
@@ -255,13 +282,17 @@
                             "Logic": "==2",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 2nd attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"26\", \"compiled\": 26}",
             "Once Only": true,
             "Type": "Single activator",
-            "Brief effect description": "Tournament Participants category allies Damage recieved -10% after all ki collected"
+            "Brief effect description": "Tournament Participants category allies Damage recieved -10% after all ki collected",
+            "Line description": "Tournament Participants category allies Damage recieved -10% after all ki collected",
+            "Paragraph Title": "Basic effects(s)"
         },
         "8004585": {
             "ID": "8004585",
@@ -276,7 +307,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "26 || 33",
+                "Logic": "(26 || 33)",
                 "Causalities": {
                     "26": {
                         "Button": {
@@ -287,7 +318,8 @@
                             "Logic": "==2",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 2nd attacker in the turn"
                     },
                     "33": {
                         "Button": {
@@ -298,12 +330,16 @@
                             "Logic": "==3",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 3rd attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"26|33\", \"compiled\": [\"|\", 26, 33]}",
             "Type": "Single activator",
-            "Brief effect description": "Guards all attacks after all ki collected"
+            "Brief effect description": "Guards all attacks after all ki collected",
+            "Line description": "Guards all attacks after all ki collected",
+            "Paragraph Title": "Basic effects(s)"
         },
         "9004585": {
             "ID": "9004585",
@@ -318,7 +354,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "26 || 33",
+                "Logic": "(26 || 33)",
                 "Causalities": {
                     "26": {
                         "Button": {
@@ -329,7 +365,8 @@
                             "Logic": "==2",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 2nd attacker in the turn"
                     },
                     "33": {
                         "Button": {
@@ -340,12 +377,16 @@
                             "Logic": "==3",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 3rd attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"26|33\", \"compiled\": [\"|\", 26, 33]}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of performing a critical hit +50% after all ki collected"
+            "Brief effect description": "Chance of performing a critical hit +50% after all ki collected",
+            "Line description": "Chance of performing a critical hit +50% after all ki collected",
+            "Paragraph Title": "Basic effects(s)"
         },
         "10004585": {
             "ID": "10004585",
@@ -360,7 +401,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "26 || 33",
+                "Logic": "(26 || 33)",
                 "Causalities": {
                     "26": {
                         "Button": {
@@ -371,7 +412,8 @@
                             "Logic": "==2",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 2nd attacker in the turn"
                     },
                     "33": {
                         "Button": {
@@ -382,12 +424,16 @@
                             "Logic": "==3",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 3rd attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"26|33\", \"compiled\": [\"|\", 26, 33]}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of evading enemy attacks +20% after all ki collected"
+            "Brief effect description": "Chance of evading enemy attacks +20% after all ki collected",
+            "Line description": "Chance of evading enemy attacks +20% after all ki collected",
+            "Paragraph Title": "Basic effects(s)"
         },
         "11004585": {
             "ID": "11004585",
@@ -406,7 +452,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "26 || 33",
+                "Logic": "(26 || 33)",
                 "Causalities": {
                     "26": {
                         "Button": {
@@ -417,7 +463,8 @@
                             "Logic": "==2",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 2nd attacker in the turn"
                     },
                     "33": {
                         "Button": {
@@ -428,12 +475,16 @@
                             "Logic": "==3",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 3rd attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"26|33\", \"compiled\": [\"|\", 26, 33]}",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 50% chance of becoming a super attack after all ki collected"
+            "Brief effect description": "Performs an additional attack with a 50% chance of becoming a super attack after all ki collected",
+            "Line description": "Performs an additional attack with a 50% chance of becoming a super attack after all ki collected",
+            "Paragraph Title": "Basic effects(s)"
         },
         "12004585": {
             "ID": "12004585",
@@ -452,17 +503,24 @@
                 "Logic": "75",
                 "Causalities": {
                     "75": {
+                        "Button": {
+                            "Name": "Is Ki at least 18 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=18",
                             "Min": 0,
                             "Max": 24
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 18 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"75\", \"compiled\": 75}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +150% when attacking"
+            "Brief effect description": "ATK and DEF +150% when attacking",
+            "Line description": "ATK and DEF +150% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 3,
@@ -1483,7 +1541,8 @@
                         "Name": "What turn is it?",
                         "Logic": ">=4",
                         "Min": 1
-                    }
+                    },
+                    "Paragraph Title": "When the turn count is 4"
                 }
             }
         },

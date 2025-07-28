@@ -16,6 +16,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "seza",
     "Links": [
         "Android Assault",
         "Fear and Faith",
@@ -40,8 +41,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +120% "
+            "Brief effect description": "ATK and DEF +120% ",
+            "Line description": "ATK and DEF +120% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1002674": {
             "ID": "1002674",
@@ -59,17 +63,24 @@
                 "Logic": "1195",
                 "Causalities": {
                     "1195": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"1195\", \"compiled\": 1195}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +120% when attacking"
+            "Brief effect description": "ATK +120% when attacking",
+            "Line description": "ATK +120% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2002674": {
             "ID": "2002674",
@@ -83,8 +94,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": " allies Ki +2 "
+            "Brief effect description": " allies Ki +2 ",
+            "Line description": " allies Ki +2 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3002674": {
             "ID": "3002674",
@@ -99,8 +113,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": " allies ATK and DEF +25% "
+            "Brief effect description": " allies ATK and DEF +25% ",
+            "Line description": " allies ATK and DEF +25% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4002674": {
             "ID": "4002674",
@@ -120,12 +137,16 @@
                     "1197": {
                         "Button": {
                             "Name": "Is there an ally attacking on this turn whose name includes  #17?"
-                        }
+                        },
+                        "Paragraph Title": "When there is an ally whose name includes \" #17\" attacking in the same turn "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"1197\", \"compiled\": 1197}",
             "Type": "Single activator",
-            "Brief effect description": "DEF +170% "
+            "Brief effect description": "DEF +170% ",
+            "Line description": "DEF +170% ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,

@@ -23,6 +23,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Z Fighters",
         "Experienced Fighters",
@@ -47,8 +48,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +100% "
+            "Brief effect description": "ATK and DEF +100% ",
+            "Line description": "ATK and DEF +100% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1001595": {
             "ID": "1001595",
@@ -74,12 +78,16 @@
                             "Logic": "<=77",
                             "Min": 0,
                             "Max": 100
-                        }
+                        },
+                        "Paragraph Title": "When HP is 77% or less"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"97\", \"compiled\": 97}",
             "Type": "Single activator",
-            "Brief effect description": "Heals +7% "
+            "Brief effect description": "Heals +7% ",
+            "Line description": "Heals +7% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2001595": {
             "ID": "2001595",
@@ -93,8 +101,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": " allies Forsee enemy super attack "
+            "Brief effect description": " allies Forsee enemy super attack ",
+            "Line description": " allies Forsee enemy super attack ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,
@@ -887,7 +898,7 @@
         "Effect Description": "Fuses with Kami",
         "Condition Description": "Can be activated when HP is 70% or more \nwith another \"Namekians\" Category ally \non the team starting from the 4th turn \nfrom the start of battle (once only)",
         "Condition": {
-            "Logic": "5 && 252 && 165",
+            "Logic": "(5&&252)",
             "Causalities": {
                 "5": {
                     "Button": {
@@ -897,7 +908,8 @@
                         "Name": "What turn is it?",
                         "Logic": ">=4",
                         "Min": 1
-                    }
+                    },
+                    "Paragraph Title": "When the turn count is 4"
                 },
                 "252": {
                     "Button": {
@@ -908,18 +920,8 @@
                         "Logic": ">=70",
                         "Min": 0,
                         "Max": 100
-                    }
-                },
-                "165": {
-                    "Button": {
-                        "Name": "Are there 2 or more Namekians category units on the team "
                     },
-                    "Slider": {
-                        "Name": "How many Namekians category units on the team ",
-                        "Logic": ">=2",
-                        "Max": 7,
-                        "Min": 0
-                    }
+                    "Paragraph Title": "When HP is 70% or more"
                 }
             }
         },

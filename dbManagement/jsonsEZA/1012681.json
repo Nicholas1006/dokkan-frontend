@@ -21,6 +21,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "seza",
     "Links": [
         "Godly Power",
         "Prodigies",
@@ -49,17 +50,24 @@
                 "Logic": "2216",
                 "Causalities": {
                     "2216": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2216\", \"compiled\": 2216}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +150% when attacking"
+            "Brief effect description": "ATK and DEF +150% when attacking",
+            "Line description": "ATK and DEF +150% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1003398": {
             "ID": "1003398",
@@ -81,8 +89,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
-            "Brief effect description": "ATK +30% (up to 150%) based on 'How many attacks has this character performed in battle' after attacking"
+            "Brief effect description": "ATK +30% (up to 150%) based on 'How many attacks has this character performed in battle' after attacking",
+            "Line description": "ATK +30% (up to 150%) based on 'How many attacks has this character performed in battle' after attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2003398": {
             "ID": "2003398",
@@ -101,19 +112,23 @@
                 "Causalities": {
                     "2217": {
                         "Button": {
-                            "Name": "Are there 2 or more Bond of Master and Disciple category units on this turn "
+                            "Name": "Are there 2 or more Bond of Master and Disciple category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Bond of Master and Disciple category units on this turn ",
+                            "Name": "How many Bond of Master and Disciple category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Bond of Master and Disciple Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2217\", \"compiled\": 2217}",
             "Type": "Single activator",
-            "Brief effect description": "Ki +1 "
+            "Brief effect description": "Ki +1 ",
+            "Line description": "Ki +1 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3003398": {
             "ID": "3003398",
@@ -136,19 +151,23 @@
                 "Causalities": {
                     "2217": {
                         "Button": {
-                            "Name": "Are there 2 or more Bond of Master and Disciple category units on this turn "
+                            "Name": "Are there 2 or more Bond of Master and Disciple category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Bond of Master and Disciple category units on this turn ",
+                            "Name": "How many Bond of Master and Disciple category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Bond of Master and Disciple Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2217\", \"compiled\": 2217}",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 50% chance of becoming a super attack "
+            "Brief effect description": "Performs an additional attack with a 50% chance of becoming a super attack ",
+            "Line description": "Performs an additional attack with a 50% chance of becoming a super attack ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4003398": {
             "ID": "4003398",
@@ -163,32 +182,27 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2218 || 2219 || 2220 || 2221",
+                "Logic": "(2218 || 2219)",
                 "Causalities": {
                     "2218": {
                         "Button": {
                             "Name": "Is the target enemy in \"ATK down\" status on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "When the target enemy is in \"ATK down\" status"
                     },
                     "2219": {
                         "Button": {
                             "Name": "Is the target enemy in \"DEF down\" status on this turn?"
-                        }
-                    },
-                    "2220": {
-                        "Button": {
-                            "Name": "Is the target enemy stunned on this turn?"
-                        }
-                    },
-                    "2221": {
-                        "Button": {
-                            "Name": "Is the target enemy sealed on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "When the target enemy is in \"DEF down\" status"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2218|2219|2220|2221\", \"compiled\": [\"|\", 2218, 2219, 2220, 2221]}",
             "Type": "Single activator",
-            "Brief effect description": "Attacks effective against all Types when attacking"
+            "Brief effect description": "Attacks effective against all Types when attacking",
+            "Line description": "Attacks effective against all Types when attacking",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 3,

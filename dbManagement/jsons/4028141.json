@@ -18,6 +18,7 @@
     ],
     "Can EZA": false,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Gaze of Respect",
         "Demonic Ways",
@@ -41,8 +42,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Ki +2 "
+            "Brief effect description": "Ki +2 ",
+            "Line description": "Ki +2 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1003941": {
             "ID": "1003941",
@@ -57,8 +61,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +150% "
+            "Brief effect description": "ATK and DEF +150% ",
+            "Line description": "ATK and DEF +150% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2003941": {
             "ID": "2003941",
@@ -77,17 +84,24 @@
                 "Logic": "2925",
                 "Causalities": {
                     "2925": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2925\", \"compiled\": 2925}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +100% when attacking"
+            "Brief effect description": "ATK and DEF +100% when attacking",
+            "Line description": "ATK and DEF +100% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3003941": {
             "ID": "3003941",
@@ -102,15 +116,19 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2925 && 2928",
+                "Logic": "(2925&&2928)",
                 "Causalities": {
                     "2925": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     },
                     "2928": {
                         "Button": {
@@ -121,12 +139,16 @@
                             "Logic": ">=58",
                             "Min": 0,
                             "Max": 100
-                        }
+                        },
+                        "Paragraph Title": "When HP is 58% or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2925&2928\", \"compiled\": [\"&\", 2925, 2928]}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +100% when attacking"
+            "Brief effect description": "ATK +100% when attacking",
+            "Line description": "ATK +100% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4003941": {
             "ID": "4003941",
@@ -152,12 +174,16 @@
                             "Logic": "<=1",
                             "Min": 0,
                             "Max": 2
-                        }
+                        },
+                        "Paragraph Title": "For 1 turns from the chraracter's entry turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2929\", \"compiled\": 2929}",
             "Type": "Single activator",
-            "Brief effect description": "Ki +12 "
+            "Brief effect description": "Ki +12 ",
+            "Line description": "Ki +12 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5003941": {
             "ID": "5003941",
@@ -173,7 +199,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2929 && 2925",
+                "Logic": "(2929&&2925)",
                 "Causalities": {
                     "2929": {
                         "Button": {
@@ -184,20 +210,28 @@
                             "Logic": "<=1",
                             "Min": 0,
                             "Max": 2
-                        }
+                        },
+                        "Paragraph Title": "For 1 turns from the chraracter's entry turn"
                     },
                     "2925": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2929&2925\", \"compiled\": [\"&\", 2929, 2925]}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +300% when attacking"
+            "Brief effect description": "ATK and DEF +300% when attacking",
+            "Line description": "ATK and DEF +300% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6003941": {
             "ID": "6003941",
@@ -212,7 +246,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2929 && 2925",
+                "Logic": "(2929&&2925)",
                 "Causalities": {
                     "2929": {
                         "Button": {
@@ -223,20 +257,28 @@
                             "Logic": "<=1",
                             "Min": 0,
                             "Max": 2
-                        }
+                        },
+                        "Paragraph Title": "For 1 turns from the chraracter's entry turn"
                     },
                     "2925": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2929&2925\", \"compiled\": [\"&\", 2929, 2925]}",
             "Type": "Single activator",
-            "Brief effect description": "Performs a Critical Hit when attacking"
+            "Brief effect description": "Performs a Critical Hit when attacking",
+            "Line description": "Performs a Critical Hit when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "7003941": {
             "ID": "7003941",
@@ -262,12 +304,16 @@
                             "Logic": ">=3",
                             "Min": 0,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "Starting from the 3 turn from the character's entry turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2930\", \"compiled\": 2930}",
             "Type": "Single activator",
-            "Brief effect description": "Attacks effective against all Types "
+            "Brief effect description": "Attacks effective against all Types ",
+            "Line description": "Attacks effective against all Types ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "8003941": {
             "ID": "8003941",
@@ -282,8 +328,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Super class allies Ki +2 "
+            "Brief effect description": "Super class allies Ki +2 ",
+            "Line description": "Super class allies Ki +2 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "9003941": {
             "ID": "9003941",
@@ -302,19 +351,23 @@
                 "Causalities": {
                     "2931": {
                         "Button": {
-                            "Name": "Are there 1 or more Pure Saiyans category enemies on this turn?"
+                            "Name": "Are there 1 or more Pure Saiyans category enemies  on this turn?"
                         },
                         "Slider": {
                             "Name": "How many Pure Saiyans category enemies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 1 or more Pure Saiyans Category enemies "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2931\", \"compiled\": 2931}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of performing a critical hit +70% "
+            "Brief effect description": "Chance of performing a critical hit +70% ",
+            "Line description": "Chance of performing a critical hit +70% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "10003941": {
             "ID": "10003941",
@@ -329,12 +382,13 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2932 && 2929",
+                "Logic": "(2932&&2929)",
                 "Causalities": {
                     "2932": {
                         "Button": {
                             "Name": "Is there an ally on the team whose name includes Goku on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "When there is an ally whose name includes \"Goku\""
                     },
                     "2929": {
                         "Button": {
@@ -345,12 +399,16 @@
                             "Logic": "<=1",
                             "Min": 0,
                             "Max": 2
-                        }
+                        },
+                        "Paragraph Title": "For 1 turns from the chraracter's entry turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2932&2929\", \"compiled\": [\"&\", 2932, 2929]}",
             "Type": "Single activator",
-            "Brief effect description": "Evades enemy attacks "
+            "Brief effect description": "Evades enemy attacks ",
+            "Line description": "Evades enemy attacks ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "11003941": {
             "ID": "11003941",
@@ -365,12 +423,13 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2932 && 2930",
+                "Logic": "(2932&&2930)",
                 "Causalities": {
                     "2932": {
                         "Button": {
                             "Name": "Is there an ally on the team whose name includes Goku on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "When there is an ally whose name includes \"Goku\""
                     },
                     "2930": {
                         "Button": {
@@ -381,12 +440,16 @@
                             "Logic": ">=3",
                             "Min": 0,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "Starting from the 3 turn from the character's entry turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2932&2930\", \"compiled\": [\"&\", 2932, 2930]}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of evading enemy attacks +50% "
+            "Brief effect description": "Chance of evading enemy attacks +50% ",
+            "Line description": "Chance of evading enemy attacks +50% ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,

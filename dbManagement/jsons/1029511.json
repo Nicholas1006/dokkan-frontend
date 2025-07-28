@@ -21,6 +21,7 @@
     ],
     "Can EZA": false,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Turtle School",
         "Kamehameha",
@@ -45,23 +46,28 @@
             },
             "Length": "99",
             "Condition": {
-                "Logic": "723 || 486",
+                "Logic": "(723 || 486)",
                 "Causalities": {
                     "723": {
                         "Button": {
                             "Name": "Is there an enemy whose name includes Goku?"
-                        }
+                        },
+                        "Paragraph Title": "\"Goku\""
                     },
                     "486": {
                         "Button": {
                             "Name": "Is there an ally on the team whose name includes Goku?"
-                        }
+                        },
+                        "Paragraph Title": "When there is an ally whose name includes \"Goku\""
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"723|486\", \"compiled\": [\"|\", 723, 486]}",
             "Once Only": true,
             "Type": "Single activator",
-            "Brief effect description": " allies Ki +1 "
+            "Brief effect description": " allies Ki +1 ",
+            "Line description": " allies Ki +1 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1004272": {
             "ID": "1004272",
@@ -76,23 +82,28 @@
             },
             "Length": "99",
             "Condition": {
-                "Logic": "723 || 486",
+                "Logic": "(723 || 486)",
                 "Causalities": {
                     "723": {
                         "Button": {
                             "Name": "Is there an enemy whose name includes Goku?"
-                        }
+                        },
+                        "Paragraph Title": "\"Goku\""
                     },
                     "486": {
                         "Button": {
                             "Name": "Is there an ally on the team whose name includes Goku?"
-                        }
+                        },
+                        "Paragraph Title": "When there is an ally whose name includes \"Goku\""
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"723|486\", \"compiled\": [\"|\", 723, 486]}",
             "Once Only": true,
             "Type": "Single activator",
-            "Brief effect description": " allies ATK +20% "
+            "Brief effect description": " allies ATK +20% ",
+            "Line description": " allies ATK +20% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2004272": {
             "ID": "2004272",
@@ -106,8 +117,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Ki +3 "
+            "Brief effect description": "Ki +3 ",
+            "Line description": "Ki +3 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3004272": {
             "ID": "3004272",
@@ -122,8 +136,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +150% "
+            "Brief effect description": "ATK and DEF +150% ",
+            "Line description": "ATK and DEF +150% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4004272": {
             "ID": "4004272",
@@ -142,17 +159,24 @@
                 "Logic": "46",
                 "Causalities": {
                     "46": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 24
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"46\", \"compiled\": 46}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +150% when attacking"
+            "Brief effect description": "ATK and DEF +150% when attacking",
+            "Line description": "ATK and DEF +150% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5004272": {
             "ID": "5004272",
@@ -171,17 +195,24 @@
                 "Logic": "75",
                 "Causalities": {
                     "75": {
+                        "Button": {
+                            "Name": "Is Ki at least 18 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=18",
                             "Min": 0,
                             "Max": 24
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 18 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"75\", \"compiled\": 75}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +150% when attacking"
+            "Brief effect description": "ATK and DEF +150% when attacking",
+            "Line description": "ATK and DEF +150% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6004272": {
             "ID": "6004272",
@@ -200,19 +231,23 @@
                 "Causalities": {
                     "3133": {
                         "Button": {
-                            "Name": "Are there 2 or more Kamehameha category units on this turn "
+                            "Name": "Are there 2 or more Kamehameha category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Kamehameha category units on this turn ",
+                            "Name": "How many Kamehameha category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Kamehameha Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"3133\", \"compiled\": 3133}",
             "Type": "Single activator",
-            "Brief effect description": "Ki +2 "
+            "Brief effect description": "Ki +2 ",
+            "Line description": "Ki +2 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "7004272": {
             "ID": "7004272",
@@ -231,19 +266,23 @@
                 "Causalities": {
                     "3291": {
                         "Button": {
-                            "Name": "Are there 3 or more Kamehameha category units on this turn "
+                            "Name": "Are there 3 or more Kamehameha category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Kamehameha category units on this turn ",
+                            "Name": "How many Kamehameha category allies attacking on this turn",
                             "Logic": ">=3",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 3 or more Kamehameha Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"3291\", \"compiled\": 3291}",
             "Type": "Single activator",
-            "Brief effect description": "Ki +2 "
+            "Brief effect description": "Ki +2 ",
+            "Line description": "Ki +2 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "8004272": {
             "ID": "8004272",
@@ -262,19 +301,23 @@
                 "Causalities": {
                     "802": {
                         "Button": {
-                            "Name": "Are there 2 or more Turtle School category units on this turn "
+                            "Name": "Are there 2 or more Turtle School category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Turtle School category units on this turn ",
+                            "Name": "How many Turtle School category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Turtle School Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"802\", \"compiled\": 802}",
             "Type": "Single activator",
-            "Brief effect description": "Ki +2 "
+            "Brief effect description": "Ki +2 ",
+            "Line description": "Ki +2 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "9004272": {
             "ID": "9004272",
@@ -293,19 +336,23 @@
                 "Causalities": {
                     "3196": {
                         "Button": {
-                            "Name": "Are there 3 or more Turtle School category units on this turn "
+                            "Name": "Are there 3 or more Turtle School category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Turtle School category units on this turn ",
+                            "Name": "How many Turtle School category allies attacking on this turn",
                             "Logic": ">=3",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 3 or more Turtle School Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"3196\", \"compiled\": 3196}",
             "Type": "Single activator",
-            "Brief effect description": "Ki +2 "
+            "Brief effect description": "Ki +2 ",
+            "Line description": "Ki +2 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "10004272": {
             "ID": "10004272",
@@ -320,22 +367,27 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "723 || 724",
+                "Logic": "(723 || 724)",
                 "Causalities": {
                     "723": {
                         "Button": {
                             "Name": "Is there an enemy whose name includes Goku on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "\"Goku\""
                     },
                     "724": {
                         "Button": {
                             "Name": "Is there an ally attacking on this turn whose name includes Goku?"
-                        }
+                        },
+                        "Paragraph Title": "When there is an ally whose name includes \"Goku\" attacking in the same turn "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"723|724\", \"compiled\": [\"|\", 723, 724]}",
             "Type": "Single activator",
-            "Brief effect description": "Ki +2 "
+            "Brief effect description": "Ki +2 ",
+            "Line description": "Ki +2 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "11004272": {
             "ID": "11004272",
@@ -354,22 +406,27 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "723 || 724",
+                "Logic": "(723 || 724)",
                 "Causalities": {
                     "723": {
                         "Button": {
                             "Name": "Is there an enemy whose name includes Goku on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "\"Goku\""
                     },
                     "724": {
                         "Button": {
                             "Name": "Is there an ally attacking on this turn whose name includes Goku?"
-                        }
+                        },
+                        "Paragraph Title": "When there is an ally whose name includes \"Goku\" attacking in the same turn "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"723|724\", \"compiled\": [\"|\", 723, 724]}",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack "
+            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack ",
+            "Line description": "Performs an additional attack with a 100% chance of becoming a super attack ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 3,

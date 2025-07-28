@@ -14,6 +14,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "seza",
     "Links": [
         "Master of Magic",
         "Majin Resurrection Plan",
@@ -37,8 +38,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Ki +8 "
+            "Brief effect description": "Ki +8 ",
+            "Line description": "Ki +8 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1004147": {
             "ID": "1004147",
@@ -53,8 +57,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +188% "
+            "Brief effect description": "ATK and DEF +188% ",
+            "Line description": "ATK and DEF +188% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2004147": {
             "ID": "2004147",
@@ -73,17 +80,24 @@
                 "Logic": "47",
                 "Causalities": {
                     "47": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 24
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"47\", \"compiled\": 47}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +88% when attacking"
+            "Brief effect description": "ATK and DEF +88% when attacking",
+            "Line description": "ATK and DEF +88% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3004147": {
             "ID": "3004147",
@@ -102,31 +116,39 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "3156 && 2830",
+                "Logic": "(3156&&2830)",
                 "Causalities": {
                     "3156": {
+                        "Button": {
+                            "Name": "Is Ki at least 22 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=22",
                             "Min": 0,
                             "Max": 24
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 22 or more"
                     },
                     "2830": {
                         "Button": {
-                            "Name": "Are there 2 or more Majin Buu Saga category units on this turn "
+                            "Name": "Are there 2 or more Majin Buu Saga category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Majin Buu Saga category units on this turn ",
+                            "Name": "How many Majin Buu Saga category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Majin Buu Saga Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"3156&2830\", \"compiled\": [\"&\", 3156, 2830]}",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking"
+            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking",
+            "Line description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4004147": {
             "ID": "4004147",
@@ -145,19 +167,23 @@
                 "Causalities": {
                     "3150": {
                         "Button": {
-                            "Name": "Are there 1 or more Majin Buu Saga category units on this turn "
+                            "Name": "Are there 1 or more Majin Buu Saga category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Majin Buu Saga category units on this turn ",
+                            "Name": "How many Majin Buu Saga category allies attacking on this turn",
                             "Logic": ">=1",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 1 or more Majin Buu Saga Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"3150\", \"compiled\": 3150}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of evading enemy attacks +20% "
+            "Brief effect description": "Chance of evading enemy attacks +20% ",
+            "Line description": "Chance of evading enemy attacks +20% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5004147": {
             "ID": "5004147",
@@ -176,19 +202,23 @@
                 "Causalities": {
                     "3151": {
                         "Button": {
-                            "Name": "Are there 2 or more Majin Buu Saga category units on this turn "
+                            "Name": "Are there 2 or more Majin Buu Saga category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Majin Buu Saga category units on this turn ",
+                            "Name": "How many Majin Buu Saga category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Majin Buu Saga Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"3151\", \"compiled\": 3151}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of evading enemy attacks +20% "
+            "Brief effect description": "Chance of evading enemy attacks +20% ",
+            "Line description": "Chance of evading enemy attacks +20% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6004147": {
             "ID": "6004147",
@@ -207,19 +237,23 @@
                 "Causalities": {
                     "3114": {
                         "Button": {
-                            "Name": "Are there 3 or more Majin Buu Saga category units on this turn "
+                            "Name": "Are there 3 or more Majin Buu Saga category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Majin Buu Saga category units on this turn ",
+                            "Name": "How many Majin Buu Saga category allies attacking on this turn",
                             "Logic": ">=3",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 3 or more Majin Buu Saga Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"3114\", \"compiled\": 3114}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of evading enemy attacks +20% "
+            "Brief effect description": "Chance of evading enemy attacks +20% ",
+            "Line description": "Chance of evading enemy attacks +20% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "7004147": {
             "ID": "7004147",
@@ -238,19 +272,23 @@
                 "Causalities": {
                     "3114": {
                         "Button": {
-                            "Name": "Are there 3 or more Majin Buu Saga category units on this turn "
+                            "Name": "Are there 3 or more Majin Buu Saga category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Majin Buu Saga category units on this turn ",
+                            "Name": "How many Majin Buu Saga category allies attacking on this turn",
                             "Logic": ">=3",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 3 or more Majin Buu Saga Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"3114\", \"compiled\": 3114}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of evading enemy attacks +10% "
+            "Brief effect description": "Chance of evading enemy attacks +10% ",
+            "Line description": "Chance of evading enemy attacks +10% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "8004147": {
             "ID": "8004147",
@@ -265,32 +303,27 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "421 || 422 || 535 || 420",
+                "Logic": "(421 || 422)",
                 "Causalities": {
                     "421": {
                         "Button": {
                             "Name": "Is the target enemy in \"ATK down\" status on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "When the target enemy is in \"ATK down\" status"
                     },
                     "422": {
                         "Button": {
                             "Name": "Is the target enemy in \"DEF down\" status on this turn?"
-                        }
-                    },
-                    "535": {
-                        "Button": {
-                            "Name": "Is the target enemy stunned on this turn?"
-                        }
-                    },
-                    "420": {
-                        "Button": {
-                            "Name": "Is the target enemy sealed on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "When the target enemy is in \"DEF down\" status"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"421|422|535|420\", \"compiled\": [\"|\", 421, 422, 535, 420]}",
             "Type": "Single activator",
-            "Brief effect description": "Ki +6 when attacking"
+            "Brief effect description": "Ki +6 when attacking",
+            "Line description": "Ki +6 when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "9004147": {
             "ID": "9004147",
@@ -306,32 +339,27 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "421 || 422 || 535 || 420",
+                "Logic": "(421 || 422)",
                 "Causalities": {
                     "421": {
                         "Button": {
                             "Name": "Is the target enemy in \"ATK down\" status on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "When the target enemy is in \"ATK down\" status"
                     },
                     "422": {
                         "Button": {
                             "Name": "Is the target enemy in \"DEF down\" status on this turn?"
-                        }
-                    },
-                    "535": {
-                        "Button": {
-                            "Name": "Is the target enemy stunned on this turn?"
-                        }
-                    },
-                    "420": {
-                        "Button": {
-                            "Name": "Is the target enemy sealed on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "When the target enemy is in \"DEF down\" status"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"421|422|535|420\", \"compiled\": [\"|\", 421, 422, 535, 420]}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +66% when attacking"
+            "Brief effect description": "ATK and DEF +66% when attacking",
+            "Line description": "ATK and DEF +66% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "10004147": {
             "ID": "10004147",
@@ -346,32 +374,27 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "421 || 422 || 535 || 420",
+                "Logic": "(421 || 422)",
                 "Causalities": {
                     "421": {
                         "Button": {
                             "Name": "Is the target enemy in \"ATK down\" status on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "When the target enemy is in \"ATK down\" status"
                     },
                     "422": {
                         "Button": {
                             "Name": "Is the target enemy in \"DEF down\" status on this turn?"
-                        }
-                    },
-                    "535": {
-                        "Button": {
-                            "Name": "Is the target enemy stunned on this turn?"
-                        }
-                    },
-                    "420": {
-                        "Button": {
-                            "Name": "Is the target enemy sealed on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "When the target enemy is in \"DEF down\" status"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"421|422|535|420\", \"compiled\": [\"|\", 421, 422, 535, 420]}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of performing a critical hit +70% when attacking"
+            "Brief effect description": "Chance of performing a critical hit +70% when attacking",
+            "Line description": "Chance of performing a critical hit +70% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "11004147": {
             "ID": "11004147",
@@ -391,8 +414,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Majin Power category allies Ki +3 "
+            "Brief effect description": "Majin Power category allies Ki +3 ",
+            "Line description": "Majin Power category allies Ki +3 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "12004147": {
             "ID": "12004147",
@@ -413,8 +439,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Majin Power category allies ATK and DEF +30% "
+            "Brief effect description": "Majin Power category allies ATK and DEF +30% ",
+            "Line description": "Majin Power category allies ATK and DEF +30% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "13004147": {
             "ID": "13004147",
@@ -436,8 +465,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Extreme class Majin Power category allies ATK and DEF +10% "
+            "Brief effect description": "Extreme class Majin Power category allies ATK and DEF +10% ",
+            "Line description": "Extreme class Majin Power category allies ATK and DEF +10% ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 3,

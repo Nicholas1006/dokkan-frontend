@@ -15,6 +15,7 @@
     ],
     "Can EZA": false,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Loyalty",
         "Destroyer of the Universe",
@@ -38,8 +39,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Ki +2 "
+            "Brief effect description": "Ki +2 ",
+            "Line description": "Ki +2 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1003493": {
             "ID": "1003493",
@@ -54,8 +58,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +150% "
+            "Brief effect description": "ATK and DEF +150% ",
+            "Line description": "ATK and DEF +150% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2003493": {
             "ID": "2003493",
@@ -74,19 +81,23 @@
                 "Causalities": {
                     "2433": {
                         "Button": {
-                            "Name": "Are there 2 or more Space-Traveling Warriors category units on this turn "
+                            "Name": "Are there 2 or more Space-Traveling Warriors category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Space-Traveling Warriors category units on this turn ",
+                            "Name": "How many Space-Traveling Warriors category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Space-Traveling Warriors Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2433\", \"compiled\": 2433}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of performing a critical hit +10% "
+            "Brief effect description": "Chance of performing a critical hit +10% ",
+            "Line description": "Chance of performing a critical hit +10% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3003493": {
             "ID": "3003493",
@@ -105,19 +116,23 @@
                 "Causalities": {
                     "2434": {
                         "Button": {
-                            "Name": "Are there 3 or more Space-Traveling Warriors category units on this turn "
+                            "Name": "Are there 3 or more Space-Traveling Warriors category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Space-Traveling Warriors category units on this turn ",
+                            "Name": "How many Space-Traveling Warriors category allies attacking on this turn",
                             "Logic": ">=3",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 3 or more Space-Traveling Warriors Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2434\", \"compiled\": 2434}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of performing a critical hit +10% "
+            "Brief effect description": "Chance of performing a critical hit +10% ",
+            "Line description": "Chance of performing a critical hit +10% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4003493": {
             "ID": "4003493",
@@ -136,19 +151,23 @@
                 "Causalities": {
                     "2433": {
                         "Button": {
-                            "Name": "Are there 2 or more Space-Traveling Warriors category units on this turn "
+                            "Name": "Are there 2 or more Space-Traveling Warriors category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Space-Traveling Warriors category units on this turn ",
+                            "Name": "How many Space-Traveling Warriors category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Space-Traveling Warriors Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2433\", \"compiled\": 2433}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of evading enemy attacks +10% "
+            "Brief effect description": "Chance of evading enemy attacks +10% ",
+            "Line description": "Chance of evading enemy attacks +10% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5003493": {
             "ID": "5003493",
@@ -167,19 +186,23 @@
                 "Causalities": {
                     "2434": {
                         "Button": {
-                            "Name": "Are there 3 or more Space-Traveling Warriors category units on this turn "
+                            "Name": "Are there 3 or more Space-Traveling Warriors category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Space-Traveling Warriors category units on this turn ",
+                            "Name": "How many Space-Traveling Warriors category allies attacking on this turn",
                             "Logic": ">=3",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 3 or more Space-Traveling Warriors Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2434\", \"compiled\": 2434}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of evading enemy attacks +10% "
+            "Brief effect description": "Chance of evading enemy attacks +10% ",
+            "Line description": "Chance of evading enemy attacks +10% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6003493": {
             "ID": "6003493",
@@ -194,7 +217,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2431 || 2432",
+                "Logic": "(2431 || 2432)",
                 "Causalities": {
                     "2431": {
                         "Button": {
@@ -205,7 +228,8 @@
                             "Logic": "==2",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 2nd attacker in the turn"
                     },
                     "2432": {
                         "Button": {
@@ -216,12 +240,16 @@
                             "Logic": "==3",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 3rd attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2431|2432\", \"compiled\": [\"|\", 2431, 2432]}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +150% after all ki collected"
+            "Brief effect description": "ATK +150% after all ki collected",
+            "Line description": "ATK +150% after all ki collected",
+            "Paragraph Title": "Basic effects(s)"
         },
         "7003493": {
             "ID": "7003493",
@@ -236,7 +264,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2431 || 2432",
+                "Logic": "(2431 || 2432)",
                 "Causalities": {
                     "2431": {
                         "Button": {
@@ -247,7 +275,8 @@
                             "Logic": "==2",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 2nd attacker in the turn"
                     },
                     "2432": {
                         "Button": {
@@ -258,12 +287,16 @@
                             "Logic": "==3",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 3rd attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2431|2432\", \"compiled\": [\"|\", 2431, 2432]}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of performing a critical hit +30% after all ki collected"
+            "Brief effect description": "Chance of performing a critical hit +30% after all ki collected",
+            "Line description": "Chance of performing a critical hit +30% after all ki collected",
+            "Paragraph Title": "Basic effects(s)"
         },
         "8003493": {
             "ID": "8003493",
@@ -278,7 +311,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2431 || 2432",
+                "Logic": "(2431 || 2432)",
                 "Causalities": {
                     "2431": {
                         "Button": {
@@ -289,7 +322,8 @@
                             "Logic": "==2",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 2nd attacker in the turn"
                     },
                     "2432": {
                         "Button": {
@@ -300,12 +334,16 @@
                             "Logic": "==3",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 3rd attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2431|2432\", \"compiled\": [\"|\", 2431, 2432]}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of evading enemy attacks +30% after all ki collected"
+            "Brief effect description": "Chance of evading enemy attacks +30% after all ki collected",
+            "Line description": "Chance of evading enemy attacks +30% after all ki collected",
+            "Paragraph Title": "Basic effects(s)"
         },
         "9003493": {
             "ID": "9003493",
@@ -327,8 +365,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "CausalityLogic": "{\"source\": \"2435\", \"compiled\": 2435}",
             "Type": "Building Stat",
-            "Brief effect description": "ATK +30% (up to 150%) based on 'How many super attacks has this character performed' after attacking"
+            "Brief effect description": "ATK +30% (up to 150%) based on 'How many super attacks has this character performed' after attacking",
+            "Line description": "ATK +30% (up to 150%) based on 'How many super attacks has this character performed' after attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "10003493": {
             "ID": "10003493",
@@ -350,8 +391,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "CausalityLogic": "{\"source\": \"2435\", \"compiled\": 2435}",
             "Type": "Building Stat",
-            "Brief effect description": "DEF +30% (up to 150%) based on 'How many super attacks has this character performed' after attacking"
+            "Brief effect description": "DEF +30% (up to 150%) based on 'How many super attacks has this character performed' after attacking",
+            "Line description": "DEF +30% (up to 150%) based on 'How many super attacks has this character performed' after attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "11003493": {
             "ID": "11003493",
@@ -369,8 +413,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 50% chance of becoming a super attack "
+            "Brief effect description": "Performs an additional attack with a 50% chance of becoming a super attack ",
+            "Line description": "Performs an additional attack with a 50% chance of becoming a super attack ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 3,

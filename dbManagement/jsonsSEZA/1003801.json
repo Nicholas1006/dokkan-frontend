@@ -20,6 +20,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": true,
+    "Eza Level": "eza",
     "Links": [
         "Hardened Grudge",
         "Saiyan Warrior Race",
@@ -42,8 +43,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Ki +2 "
+            "Brief effect description": "Ki +2 ",
+            "Line description": "Ki +2 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1004252": {
             "ID": "1004252",
@@ -58,8 +62,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +200% "
+            "Brief effect description": "ATK and DEF +200% ",
+            "Line description": "ATK and DEF +200% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2004252": {
             "ID": "2004252",
@@ -74,8 +81,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +150% when attacking"
+            "Brief effect description": "ATK and DEF +150% when attacking",
+            "Line description": "ATK and DEF +150% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3004252": {
             "ID": "3004252",
@@ -97,8 +107,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "CausalityLogic": "{\"source\": \"141\", \"compiled\": 141}",
             "Type": "Building Stat",
-            "Brief effect description": "ATK +30% (up to 150%) based on 'How many super attacks has this character performed' after attacking"
+            "Brief effect description": "ATK +30% (up to 150%) based on 'How many super attacks has this character performed' after attacking",
+            "Line description": "ATK +30% (up to 150%) based on 'How many super attacks has this character performed' after attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4004252": {
             "ID": "4004252",
@@ -120,8 +133,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "CausalityLogic": "{\"source\": \"141\", \"compiled\": 141}",
             "Type": "Building Stat",
-            "Brief effect description": "DEF +30% (up to 150%) based on 'How many super attacks has this character performed' after attacking"
+            "Brief effect description": "DEF +30% (up to 150%) based on 'How many super attacks has this character performed' after attacking",
+            "Line description": "DEF +30% (up to 150%) based on 'How many super attacks has this character performed' after attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5004252": {
             "ID": "5004252",
@@ -143,8 +159,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "CausalityLogic": "{\"source\": \"141\", \"compiled\": 141}",
             "Type": "Building Stat",
-            "Brief effect description": "Damage recieved -10% (up to 50%) based on 'How many super attacks has this character performed' after attacking"
+            "Brief effect description": "Damage recieved -10% (up to 50%) based on 'How many super attacks has this character performed' after attacking",
+            "Line description": "Damage recieved -10% (up to 50%) based on 'How many super attacks has this character performed' after attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6004252": {
             "ID": "6004252",
@@ -171,34 +190,39 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2442 || 490",
+                "Logic": "(2442 || 490)",
                 "Causalities": {
                     "2442": {
                         "Button": {
-                            "Name": "Are there 2 or more Planetary Destruction category units on this turn "
+                            "Name": "Are there 2 or more Planetary Destruction category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Planetary Destruction category units on this turn ",
+                            "Name": "How many Planetary Destruction category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Planetary Destruction Category allies attacking on this turn"
                     },
                     "490": {
                         "Button": {
-                            "Name": "Are there 2 or more Pure Saiyans category units on this turn "
+                            "Name": "Are there 2 or more Pure Saiyans category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Pure Saiyans category units on this turn ",
+                            "Name": "How many Pure Saiyans category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Pure Saiyans Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2442|490\", \"compiled\": [\"|\", 2442, 490]}",
             "Type": "Single activator",
-            "Brief effect description": "Randomly changes Ki Spheres of a certain Type to Rainbow Ki Spheres "
+            "Brief effect description": "Randomly changes Ki Spheres of a certain Type to Rainbow Ki Spheres ",
+            "Line description": "Randomly changes Ki Spheres of a certain Type to Rainbow Ki Spheres ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "7004252": {
             "ID": "7004252",
@@ -224,12 +248,16 @@
                             "Logic": ">=1",
                             "Min": 0,
                             "Max": 1
-                        }
+                        },
+                        "Paragraph Title": "With 1 or more Rainbow Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2061\", \"compiled\": 2061}",
             "Type": "Single activator",
-            "Brief effect description": " allies Ki +1 after this unit collects ki spheres"
+            "Brief effect description": " allies Ki +1 after this unit collects ki spheres",
+            "Line description": " allies Ki +1 after this unit collects ki spheres",
+            "Paragraph Title": "Basic effects(s)"
         },
         "8004252": {
             "ID": "8004252",
@@ -255,12 +283,16 @@
                             "Logic": ">=2",
                             "Min": 0,
                             "Max": 2
-                        }
+                        },
+                        "Paragraph Title": "With 2 or more Rainbow Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2062\", \"compiled\": 2062}",
             "Type": "Single activator",
-            "Brief effect description": " allies Ki +1 after this unit collects ki spheres"
+            "Brief effect description": " allies Ki +1 after this unit collects ki spheres",
+            "Line description": " allies Ki +1 after this unit collects ki spheres",
+            "Paragraph Title": "Basic effects(s)"
         },
         "9004252": {
             "ID": "9004252",
@@ -286,12 +318,16 @@
                             "Logic": ">=3",
                             "Min": 0,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "With 3 or more Rainbow Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2063\", \"compiled\": 2063}",
             "Type": "Single activator",
-            "Brief effect description": " allies Ki +1 after this unit collects ki spheres"
+            "Brief effect description": " allies Ki +1 after this unit collects ki spheres",
+            "Line description": " allies Ki +1 after this unit collects ki spheres",
+            "Paragraph Title": "Basic effects(s)"
         },
         "10004252": {
             "ID": "10004252",
@@ -317,12 +353,16 @@
                             "Logic": ">=4",
                             "Min": 0,
                             "Max": 4
-                        }
+                        },
+                        "Paragraph Title": "With 4 or more Rainbow Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2064\", \"compiled\": 2064}",
             "Type": "Single activator",
-            "Brief effect description": " allies Ki +1 after this unit collects ki spheres"
+            "Brief effect description": " allies Ki +1 after this unit collects ki spheres",
+            "Line description": " allies Ki +1 after this unit collects ki spheres",
+            "Paragraph Title": "Basic effects(s)"
         },
         "11004252": {
             "ID": "11004252",
@@ -348,12 +388,16 @@
                             "Logic": ">=5",
                             "Min": 0,
                             "Max": 5
-                        }
+                        },
+                        "Paragraph Title": "With 5 or more Rainbow Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2065\", \"compiled\": 2065}",
             "Type": "Single activator",
-            "Brief effect description": " allies Ki +1 after this unit collects ki spheres"
+            "Brief effect description": " allies Ki +1 after this unit collects ki spheres",
+            "Line description": " allies Ki +1 after this unit collects ki spheres",
+            "Paragraph Title": "Basic effects(s)"
         },
         "12004252": {
             "ID": "12004252",
@@ -380,12 +424,16 @@
                             "Logic": ">=1",
                             "Min": 0,
                             "Max": 1
-                        }
+                        },
+                        "Paragraph Title": "With 1 or more Rainbow Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2061\", \"compiled\": 2061}",
             "Type": "Single activator",
-            "Brief effect description": "Super class allies ATK +10% after this unit collects ki spheres"
+            "Brief effect description": "Super class allies ATK +10% after this unit collects ki spheres",
+            "Line description": "Super class allies ATK +10% after this unit collects ki spheres",
+            "Paragraph Title": "Basic effects(s)"
         },
         "13004252": {
             "ID": "13004252",
@@ -412,12 +460,16 @@
                             "Logic": ">=2",
                             "Min": 0,
                             "Max": 2
-                        }
+                        },
+                        "Paragraph Title": "With 2 or more Rainbow Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2062\", \"compiled\": 2062}",
             "Type": "Single activator",
-            "Brief effect description": "Super class allies ATK +10% after this unit collects ki spheres"
+            "Brief effect description": "Super class allies ATK +10% after this unit collects ki spheres",
+            "Line description": "Super class allies ATK +10% after this unit collects ki spheres",
+            "Paragraph Title": "Basic effects(s)"
         },
         "14004252": {
             "ID": "14004252",
@@ -444,12 +496,16 @@
                             "Logic": ">=3",
                             "Min": 0,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "With 3 or more Rainbow Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2063\", \"compiled\": 2063}",
             "Type": "Single activator",
-            "Brief effect description": "Super class allies ATK +10% after this unit collects ki spheres"
+            "Brief effect description": "Super class allies ATK +10% after this unit collects ki spheres",
+            "Line description": "Super class allies ATK +10% after this unit collects ki spheres",
+            "Paragraph Title": "Basic effects(s)"
         },
         "15004252": {
             "ID": "15004252",
@@ -476,12 +532,16 @@
                             "Logic": ">=4",
                             "Min": 0,
                             "Max": 4
-                        }
+                        },
+                        "Paragraph Title": "With 4 or more Rainbow Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2064\", \"compiled\": 2064}",
             "Type": "Single activator",
-            "Brief effect description": "Super class allies ATK +10% after this unit collects ki spheres"
+            "Brief effect description": "Super class allies ATK +10% after this unit collects ki spheres",
+            "Line description": "Super class allies ATK +10% after this unit collects ki spheres",
+            "Paragraph Title": "Basic effects(s)"
         },
         "16004252": {
             "ID": "16004252",
@@ -508,12 +568,16 @@
                             "Logic": ">=5",
                             "Min": 0,
                             "Max": 5
-                        }
+                        },
+                        "Paragraph Title": "With 5 or more Rainbow Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2065\", \"compiled\": 2065}",
             "Type": "Single activator",
-            "Brief effect description": "Super class allies ATK +10% after this unit collects ki spheres"
+            "Brief effect description": "Super class allies ATK +10% after this unit collects ki spheres",
+            "Line description": "Super class allies ATK +10% after this unit collects ki spheres",
+            "Paragraph Title": "Basic effects(s)"
         },
         "17004252": {
             "ID": "17004252",
@@ -541,12 +605,16 @@
                             "Logic": ">=1",
                             "Min": 0,
                             "Max": 1
-                        }
+                        },
+                        "Paragraph Title": "With 1 or more Rainbow Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2061\", \"compiled\": 2061}",
             "Type": "Single activator",
-            "Brief effect description": "Extreme class allies ATK and DEF +20% after this unit collects ki spheres"
+            "Brief effect description": "Extreme class allies ATK and DEF +20% after this unit collects ki spheres",
+            "Line description": "Extreme class allies ATK and DEF +20% after this unit collects ki spheres",
+            "Paragraph Title": "Basic effects(s)"
         },
         "18004252": {
             "ID": "18004252",
@@ -574,12 +642,16 @@
                             "Logic": ">=2",
                             "Min": 0,
                             "Max": 2
-                        }
+                        },
+                        "Paragraph Title": "With 2 or more Rainbow Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2062\", \"compiled\": 2062}",
             "Type": "Single activator",
-            "Brief effect description": "Extreme class allies ATK and DEF +20% after this unit collects ki spheres"
+            "Brief effect description": "Extreme class allies ATK and DEF +20% after this unit collects ki spheres",
+            "Line description": "Extreme class allies ATK and DEF +20% after this unit collects ki spheres",
+            "Paragraph Title": "Basic effects(s)"
         },
         "19004252": {
             "ID": "19004252",
@@ -607,12 +679,16 @@
                             "Logic": ">=3",
                             "Min": 0,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "With 3 or more Rainbow Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2063\", \"compiled\": 2063}",
             "Type": "Single activator",
-            "Brief effect description": "Extreme class allies ATK and DEF +20% after this unit collects ki spheres"
+            "Brief effect description": "Extreme class allies ATK and DEF +20% after this unit collects ki spheres",
+            "Line description": "Extreme class allies ATK and DEF +20% after this unit collects ki spheres",
+            "Paragraph Title": "Basic effects(s)"
         },
         "20004252": {
             "ID": "20004252",
@@ -640,12 +716,16 @@
                             "Logic": ">=4",
                             "Min": 0,
                             "Max": 4
-                        }
+                        },
+                        "Paragraph Title": "With 4 or more Rainbow Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2064\", \"compiled\": 2064}",
             "Type": "Single activator",
-            "Brief effect description": "Extreme class allies ATK and DEF +20% after this unit collects ki spheres"
+            "Brief effect description": "Extreme class allies ATK and DEF +20% after this unit collects ki spheres",
+            "Line description": "Extreme class allies ATK and DEF +20% after this unit collects ki spheres",
+            "Paragraph Title": "Basic effects(s)"
         },
         "21004252": {
             "ID": "21004252",
@@ -673,12 +753,16 @@
                             "Logic": ">=5",
                             "Min": 0,
                             "Max": 5
-                        }
+                        },
+                        "Paragraph Title": "With 5 or more Rainbow Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2065\", \"compiled\": 2065}",
             "Type": "Single activator",
-            "Brief effect description": "Extreme class allies ATK and DEF +20% after this unit collects ki spheres"
+            "Brief effect description": "Extreme class allies ATK and DEF +20% after this unit collects ki spheres",
+            "Line description": "Extreme class allies ATK and DEF +20% after this unit collects ki spheres",
+            "Paragraph Title": "Basic effects(s)"
         },
         "22004252": {
             "ID": "22004252",
@@ -704,12 +788,16 @@
                             "Logic": ">=2",
                             "Min": 0,
                             "Max": 2
-                        }
+                        },
+                        "Paragraph Title": "With 2 or more Rainbow Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2062\", \"compiled\": 2062}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of performing a critical hit +50% after this unit collects ki spheres"
+            "Brief effect description": "Chance of performing a critical hit +50% after this unit collects ki spheres",
+            "Line description": "Chance of performing a critical hit +50% after this unit collects ki spheres",
+            "Paragraph Title": "Basic effects(s)"
         },
         "23004252": {
             "ID": "23004252",
@@ -735,12 +823,16 @@
                             "Logic": ">=4",
                             "Min": 0,
                             "Max": 4
-                        }
+                        },
+                        "Paragraph Title": "With 4 or more Rainbow Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2064\", \"compiled\": 2064}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of performing a critical hit +50% after this unit collects ki spheres"
+            "Brief effect description": "Chance of performing a critical hit +50% after this unit collects ki spheres",
+            "Line description": "Chance of performing a critical hit +50% after this unit collects ki spheres",
+            "Paragraph Title": "Basic effects(s)"
         },
         "24004252": {
             "ID": "24004252",
@@ -770,12 +862,16 @@
                             "Logic": ">=2",
                             "Min": 0,
                             "Max": 2
-                        }
+                        },
+                        "Paragraph Title": "With 2 or more Rainbow Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2062\", \"compiled\": 2062}",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack after this unit collects ki spheres"
+            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack after this unit collects ki spheres",
+            "Line description": "Performs an additional attack with a 100% chance of becoming a super attack after this unit collects ki spheres",
+            "Paragraph Title": "Basic effects(s)"
         },
         "25004252": {
             "ID": "25004252",
@@ -805,12 +901,16 @@
                             "Logic": ">=4",
                             "Min": 0,
                             "Max": 4
-                        }
+                        },
+                        "Paragraph Title": "With 4 or more Rainbow Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2064\", \"compiled\": 2064}",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack after this unit collects ki spheres"
+            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack after this unit collects ki spheres",
+            "Line description": "Performs an additional attack with a 100% chance of becoming a super attack after this unit collects ki spheres",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 4,

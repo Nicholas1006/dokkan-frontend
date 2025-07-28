@@ -16,6 +16,7 @@
     ],
     "Can EZA": false,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Android Assault",
         "Tough as Nails",
@@ -40,17 +41,24 @@
                 "Logic": "19",
                 "Causalities": {
                     "19": {
+                        "Button": {
+                            "Name": "Is Ki at least 5 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=5",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 5 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"19\", \"compiled\": 19}",
             "Type": "Single activator",
-            "Brief effect description": "Heals +15 after attacking"
+            "Brief effect description": "Heals +15 after attacking",
+            "Line description": "Heals +15 after attacking",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 1,
@@ -387,7 +395,8 @@
                             "Logic": ">=50",
                             "Min": 0,
                             "Max": 100
-                        }
+                        },
+                        "Paragraph Title": "When HP is 50% or more"
                     }
                 }
             }

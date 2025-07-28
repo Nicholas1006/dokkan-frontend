@@ -23,6 +23,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "seza",
     "Links": [
         "The Innocents",
         "Saiyan Warrior Race",
@@ -47,8 +48,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +180% "
+            "Brief effect description": "ATK and DEF +180% ",
+            "Line description": "ATK and DEF +180% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1004489": {
             "ID": "1004489",
@@ -70,8 +74,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
-            "Brief effect description": "DEF +20% (up to 100%) based on 'How many attacks has this character performed in battle' after attacking"
+            "Brief effect description": "DEF +20% (up to 100%) based on 'How many attacks has this character performed in battle' after attacking",
+            "Line description": "DEF +20% (up to 100%) based on 'How many attacks has this character performed in battle' after attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2004489": {
             "ID": "2004489",
@@ -93,8 +100,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
-            "Brief effect description": "ATK +20% (up to 100%) based on 'How many attacks has this character performed in battle' after attacking"
+            "Brief effect description": "ATK +20% (up to 100%) based on 'How many attacks has this character performed in battle' after attacking",
+            "Line description": "ATK +20% (up to 100%) based on 'How many attacks has this character performed in battle' after attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3004489": {
             "ID": "3004489",
@@ -110,34 +120,39 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "3381 || 3382",
+                "Logic": "(3381 || 3382)",
                 "Causalities": {
                     "3381": {
                         "Button": {
-                            "Name": "Are there 2 or more Gifted Warriors category units on this turn "
+                            "Name": "Are there 2 or more Gifted Warriors category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Gifted Warriors category units on this turn ",
+                            "Name": "How many Gifted Warriors category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Gifted Warriors Category allies attacking on this turn"
                     },
                     "3382": {
                         "Button": {
-                            "Name": "Are there 2 or more Siblings' Bond category units on this turn "
+                            "Name": "Are there 2 or more Siblings' Bond category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Siblings' Bond category units on this turn ",
+                            "Name": "How many Siblings' Bond category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Siblings' Bond Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"3381|3382\", \"compiled\": [\"|\", 3381, 3382]}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +100% "
+            "Brief effect description": "ATK and DEF +100% ",
+            "Line description": "ATK and DEF +100% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4004489": {
             "ID": "4004489",
@@ -152,34 +167,39 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "3381 || 3382",
+                "Logic": "(3381 || 3382)",
                 "Causalities": {
                     "3381": {
                         "Button": {
-                            "Name": "Are there 2 or more Gifted Warriors category units on this turn "
+                            "Name": "Are there 2 or more Gifted Warriors category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Gifted Warriors category units on this turn ",
+                            "Name": "How many Gifted Warriors category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Gifted Warriors Category allies attacking on this turn"
                     },
                     "3382": {
                         "Button": {
-                            "Name": "Are there 2 or more Siblings' Bond category units on this turn "
+                            "Name": "Are there 2 or more Siblings' Bond category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Siblings' Bond category units on this turn ",
+                            "Name": "How many Siblings' Bond category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Siblings' Bond Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"3381|3382\", \"compiled\": [\"|\", 3381, 3382]}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of evading enemy attacks +50% "
+            "Brief effect description": "Chance of evading enemy attacks +50% ",
+            "Line description": "Chance of evading enemy attacks +50% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5004489": {
             "ID": "5004489",
@@ -194,7 +214,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1489 || 1490",
+                "Logic": "(1489 || 1490)",
                 "Causalities": {
                     "1489": {
                         "Button": {
@@ -205,7 +225,8 @@
                             "Logic": "==2",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 2nd attacker in the turn"
                     },
                     "1490": {
                         "Button": {
@@ -216,12 +237,16 @@
                             "Logic": "==3",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 3rd attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"1489|1490\", \"compiled\": [\"|\", 1489, 1490]}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of evading enemy attacks +20% after all ki collected"
+            "Brief effect description": "Chance of evading enemy attacks +20% after all ki collected",
+            "Line description": "Chance of evading enemy attacks +20% after all ki collected",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6004489": {
             "ID": "6004489",
@@ -241,7 +266,7 @@
             "Chance": "50",
             "Length": "1",
             "Condition": {
-                "Logic": "1489 || 1490",
+                "Logic": "(1489 || 1490)",
                 "Causalities": {
                     "1489": {
                         "Button": {
@@ -252,7 +277,8 @@
                             "Logic": "==2",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 2nd attacker in the turn"
                     },
                     "1490": {
                         "Button": {
@@ -263,12 +289,16 @@
                             "Logic": "==3",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 3rd attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"1489|1490\", \"compiled\": [\"|\", 1489, 1490]}",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack after all ki collected"
+            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack after all ki collected",
+            "Line description": "Performs an additional attack with a 100% chance of becoming a super attack after all ki collected",
+            "Paragraph Title": "Basic effects(s)"
         },
         "7004489": {
             "ID": "7004489",
@@ -288,8 +318,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Gifted Warriors category allies Ki +3 "
+            "Brief effect description": "Gifted Warriors category allies Ki +3 ",
+            "Line description": "Gifted Warriors category allies Ki +3 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "8004489": {
             "ID": "8004489",
@@ -311,8 +344,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Siblings' Bond category allies Ki +3 "
+            "Brief effect description": "Siblings' Bond category allies Ki +3 ",
+            "Line description": "Siblings' Bond category allies Ki +3 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "9004489": {
             "ID": "9004489",
@@ -333,8 +369,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Gifted Warriors category allies ATK and DEF +60% "
+            "Brief effect description": "Gifted Warriors category allies ATK and DEF +60% ",
+            "Line description": "Gifted Warriors category allies ATK and DEF +60% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "10004489": {
             "ID": "10004489",
@@ -357,8 +396,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Siblings' Bond category allies ATK and DEF +60% "
+            "Brief effect description": "Siblings' Bond category allies ATK and DEF +60% ",
+            "Line description": "Siblings' Bond category allies ATK and DEF +60% ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 3,

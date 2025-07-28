@@ -19,6 +19,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Supreme Warrior",
         "Gentleman",
@@ -43,8 +44,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +150% "
+            "Brief effect description": "ATK and DEF +150% ",
+            "Line description": "ATK and DEF +150% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1002334": {
             "ID": "1002334",
@@ -71,12 +75,16 @@
                             "Logic": ">=3",
                             "Min": 0,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "With 3 or more PHY or STR or INT or TEQ or AGL Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"787\", \"compiled\": 787}",
             "Type": "Single activator",
-            "Brief effect description": "Super class allies Ki +2 after this unit collects ki spheres"
+            "Brief effect description": "Super class allies Ki +2 after this unit collects ki spheres",
+            "Line description": "Super class allies Ki +2 after this unit collects ki spheres",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2002334": {
             "ID": "2002334",
@@ -104,12 +112,16 @@
                             "Logic": ">=3",
                             "Min": 0,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "With 3 or more PHY or STR or INT or TEQ or AGL Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"787\", \"compiled\": 787}",
             "Type": "Single activator",
-            "Brief effect description": "Super class allies ATK and DEF +30% after this unit collects ki spheres"
+            "Brief effect description": "Super class allies ATK and DEF +30% after this unit collects ki spheres",
+            "Line description": "Super class allies ATK and DEF +30% after this unit collects ki spheres",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3002334": {
             "ID": "3002334",
@@ -135,12 +147,16 @@
                             "Logic": ">=1",
                             "Min": 0,
                             "Max": 1
-                        }
+                        },
+                        "Paragraph Title": "With 1 or more Rainbow Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"665\", \"compiled\": 665}",
             "Type": "Single activator",
-            "Brief effect description": "Ki +4 after this unit collects ki spheres"
+            "Brief effect description": "Ki +4 after this unit collects ki spheres",
+            "Line description": "Ki +4 after this unit collects ki spheres",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4002334": {
             "ID": "4002334",
@@ -166,12 +182,16 @@
                             "Logic": ">=1",
                             "Min": 0,
                             "Max": 1
-                        }
+                        },
+                        "Paragraph Title": "With 1 or more Rainbow Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"665\", \"compiled\": 665}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of evading enemy attacks +50% after this unit collects ki spheres"
+            "Brief effect description": "Chance of evading enemy attacks +50% after this unit collects ki spheres",
+            "Line description": "Chance of evading enemy attacks +50% after this unit collects ki spheres",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5002334": {
             "ID": "5002334",
@@ -199,12 +219,16 @@
                             "Logic": ">=1",
                             "Min": 0,
                             "Max": 1
-                        }
+                        },
+                        "Paragraph Title": "With 1 or more Rainbow Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"665\", \"compiled\": 665}",
             "Type": "Single activator",
-            "Brief effect description": " allies Seal after attacking"
+            "Brief effect description": " allies Seal after attacking",
+            "Line description": " allies Seal after attacking",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,
@@ -1051,17 +1075,19 @@
             },
             "superIsInactive": "0",
             "superCondition": {
-                "Logic": "783 || 784",
+                "Logic": "(783 || 784)",
                 "Causalities": {
                     "783": {
                         "Button": {
                             "Name": "Is there an ally attacking on this turn whose name includes Goku (Angel)?"
-                        }
+                        },
+                        "Paragraph Title": "When there is an ally whose name includes \"Goku (Angel)\" attacking in the same turn "
                     },
                     "784": {
                         "Button": {
                             "Name": "Is there an ally attacking on this turn whose name includes Vegeta (Angel)?"
-                        }
+                        },
+                        "Paragraph Title": "When there is an ally whose name includes \"Vegeta (Angel)\" attacking in the same turn "
                     }
                 }
             },
@@ -1079,7 +1105,7 @@
         "Effect Description": "Delays a single targeted enemy's attack for 1 turn",
         "Condition Description": "Can be activated when facing only 1 enemy, \nwhose HP is 50% or more, starting from \nthe 4th turn from the start of battle (once only)",
         "Condition": {
-            "Logic": "713 && 525 && 788",
+            "Logic": "(713&&525)",
             "Causalities": {
                 "713": {
                     "Button": {
@@ -1089,7 +1115,8 @@
                         "Name": "What turn is it?",
                         "Logic": ">=4",
                         "Min": 1
-                    }
+                    },
+                    "Paragraph Title": "When the turn count is 4"
                 },
                 "525": {
                     "Button": {
@@ -1100,17 +1127,8 @@
                         "Logic": "<2",
                         "Min": 1,
                         "Max": 7
-                    }
-                },
-                "788": {
-                    "Button": {
-                        "Name": "Is the enemy's health 50 % or more?"
                     },
-                    "Slider": {
-                        "Name": "What percentage of HP does the enemy have?",
-                        "Logic": ">=50",
-                        "Max": 100
-                    }
+                    "Paragraph Title": "When there are less than 2 enemies"
                 }
             }
         },

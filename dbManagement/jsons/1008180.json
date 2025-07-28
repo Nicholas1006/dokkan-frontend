@@ -18,6 +18,7 @@
     ],
     "Can EZA": false,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Super Saiyan",
         "The Saiyan Lineage",
@@ -41,8 +42,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +60% "
+            "Brief effect description": "ATK and DEF +60% ",
+            "Line description": "ATK and DEF +60% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1001027": {
             "ID": "1001027",
@@ -60,17 +64,24 @@
                 "Logic": "47",
                 "Causalities": {
                     "47": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"47\", \"compiled\": 47}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +60% when attacking"
+            "Brief effect description": "ATK +60% when attacking",
+            "Line description": "ATK +60% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 1,

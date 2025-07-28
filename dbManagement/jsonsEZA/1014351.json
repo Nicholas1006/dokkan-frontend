@@ -19,6 +19,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "seza",
     "Links": [
         "Gentleman",
         "Brainiacs",
@@ -42,8 +43,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Ki +2 "
+            "Brief effect description": "Ki +2 ",
+            "Line description": "Ki +2 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1003565": {
             "ID": "1003565",
@@ -58,8 +62,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +150% "
+            "Brief effect description": "ATK and DEF +150% ",
+            "Line description": "ATK and DEF +150% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2003565": {
             "ID": "2003565",
@@ -75,53 +82,51 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(2613 || 2614 || 2615) && 2616",
+                "Logic": "((2613 || 2614)&&2616)",
                 "Causalities": {
                     "2613": {
                         "Button": {
-                            "Name": "Are there 3 or more Revenge category units on this turn "
+                            "Name": "Are there 3 or more Revenge category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Revenge category units on this turn ",
+                            "Name": "How many Revenge category allies attacking on this turn",
                             "Logic": ">=3",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 3 or more Revenge Category allies attacking on this turn"
                     },
                     "2614": {
                         "Button": {
-                            "Name": "Are there 3 or more GT Bosses category units on this turn "
+                            "Name": "Are there 3 or more GT Bosses category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many GT Bosses category units on this turn ",
+                            "Name": "How many GT Bosses category allies attacking on this turn",
                             "Logic": ">=3",
                             "Max": 3,
                             "Min": 0
-                        }
-                    },
-                    "2615": {
-                        "Button": {
-                            "Name": "Are there 3 or more Sworn Enemies category units on this turn "
                         },
-                        "Slider": {
-                            "Name": "How many Sworn Enemies category units on this turn ",
-                            "Logic": ">=3",
-                            "Max": 3,
-                            "Min": 0
-                        }
+                        "Paragraph Title": "When there are 3 or more GT Bosses Category allies attacking on this turn"
                     },
                     "2616": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"(2613|2614|2615)&2616\", \"compiled\": [\"&\", [\"|\", 2613, 2614, 2615], 2616]}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +100% when attacking"
+            "Brief effect description": "ATK and DEF +100% when attacking",
+            "Line description": "ATK and DEF +100% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3003565": {
             "ID": "3003565",
@@ -140,53 +145,51 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(2613 || 2614 || 2615) && 2616",
+                "Logic": "((2613 || 2614)&&2616)",
                 "Causalities": {
                     "2613": {
                         "Button": {
-                            "Name": "Are there 3 or more Revenge category units on this turn "
+                            "Name": "Are there 3 or more Revenge category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Revenge category units on this turn ",
+                            "Name": "How many Revenge category allies attacking on this turn",
                             "Logic": ">=3",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 3 or more Revenge Category allies attacking on this turn"
                     },
                     "2614": {
                         "Button": {
-                            "Name": "Are there 3 or more GT Bosses category units on this turn "
+                            "Name": "Are there 3 or more GT Bosses category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many GT Bosses category units on this turn ",
+                            "Name": "How many GT Bosses category allies attacking on this turn",
                             "Logic": ">=3",
                             "Max": 3,
                             "Min": 0
-                        }
-                    },
-                    "2615": {
-                        "Button": {
-                            "Name": "Are there 3 or more Sworn Enemies category units on this turn "
                         },
-                        "Slider": {
-                            "Name": "How many Sworn Enemies category units on this turn ",
-                            "Logic": ">=3",
-                            "Max": 3,
-                            "Min": 0
-                        }
+                        "Paragraph Title": "When there are 3 or more GT Bosses Category allies attacking on this turn"
                     },
                     "2616": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"(2613|2614|2615)&2616\", \"compiled\": [\"&\", [\"|\", 2613, 2614, 2615], 2616]}",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking"
+            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking",
+            "Line description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4003565": {
             "ID": "4003565",
@@ -206,12 +209,16 @@
                     "2618": {
                         "Button": {
                             "Name": "Is the target enemy stunned on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "When the target enemy is stunned"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2618\", \"compiled\": 2618}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +150% when attacking"
+            "Brief effect description": "ATK +150% when attacking",
+            "Line description": "ATK +150% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5003565": {
             "ID": "5003565",
@@ -231,12 +238,16 @@
                     "2618": {
                         "Button": {
                             "Name": "Is the target enemy stunned on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "When the target enemy is stunned"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2618\", \"compiled\": 2618}",
             "Type": "Single activator",
-            "Brief effect description": "Attacks effective against all Types when attacking"
+            "Brief effect description": "Attacks effective against all Types when attacking",
+            "Line description": "Attacks effective against all Types when attacking",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 3,

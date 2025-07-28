@@ -23,6 +23,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "seza",
     "Links": [
         "Golden Warrior",
         "Super Saiyan",
@@ -47,8 +48,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +250% "
+            "Brief effect description": "ATK and DEF +250% ",
+            "Line description": "ATK and DEF +250% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1004530": {
             "ID": "1004530",
@@ -74,8 +78,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Randomly changes Ki Spheres of a certain Type to Rainbow Ki Spheres "
+            "Brief effect description": "Randomly changes Ki Spheres of a certain Type to Rainbow Ki Spheres ",
+            "Line description": "Randomly changes Ki Spheres of a certain Type to Rainbow Ki Spheres ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2004530": {
             "ID": "2004530",
@@ -110,17 +117,24 @@
                 "Logic": "810",
                 "Causalities": {
                     "810": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"810\", \"compiled\": 810}",
             "Type": "Building Stat",
-            "Brief effect description": "ATK +30% per Ki Sphere obtained when attacking"
+            "Brief effect description": "ATK +30% per Ki Sphere obtained when attacking",
+            "Line description": "ATK +30% per Ki Sphere obtained when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3004530": {
             "ID": "3004530",
@@ -154,17 +168,24 @@
                 "Logic": "810",
                 "Causalities": {
                     "810": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"810\", \"compiled\": 810}",
             "Type": "Building Stat",
-            "Brief effect description": "DEF +20% per Ki Sphere obtained when attacking"
+            "Brief effect description": "DEF +20% per Ki Sphere obtained when attacking",
+            "Line description": "DEF +20% per Ki Sphere obtained when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4004530": {
             "ID": "4004530",
@@ -198,17 +219,24 @@
                 "Logic": "810",
                 "Causalities": {
                     "810": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"810\", \"compiled\": 810}",
             "Type": "Building Stat",
-            "Brief effect description": "Chance of performing a critical hit +10% per Ki Sphere obtained when attacking"
+            "Brief effect description": "Chance of performing a critical hit +10% per Ki Sphere obtained when attacking",
+            "Line description": "Chance of performing a critical hit +10% per Ki Sphere obtained when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5004530": {
             "ID": "5004530",
@@ -234,12 +262,16 @@
                             "Logic": ">=3",
                             "Min": 0,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "With 3 or more Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"301\", \"compiled\": 301}",
             "Type": "Single activator",
-            "Brief effect description": "Attacks effective against all Types after this unit collects ki spheres"
+            "Brief effect description": "Attacks effective against all Types after this unit collects ki spheres",
+            "Line description": "Attacks effective against all Types after this unit collects ki spheres",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6004530": {
             "ID": "6004530",
@@ -269,12 +301,16 @@
                             "Logic": ">=5",
                             "Min": 0,
                             "Max": 5
-                        }
+                        },
+                        "Paragraph Title": "With 5 or more Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"302\", \"compiled\": 302}",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack after this unit collects ki spheres"
+            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack after this unit collects ki spheres",
+            "Line description": "Performs an additional attack with a 100% chance of becoming a super attack after this unit collects ki spheres",
+            "Paragraph Title": "Basic effects(s)"
         },
         "7004530": {
             "ID": "7004530",
@@ -289,34 +325,39 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "862 || 3450",
+                "Logic": "(862 || 3450)",
                 "Causalities": {
                     "862": {
                         "Button": {
-                            "Name": "Are there 2 or more GT Heroes category units on this turn "
+                            "Name": "Are there 2 or more GT Heroes category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many GT Heroes category units on this turn ",
+                            "Name": "How many GT Heroes category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more GT Heroes Category allies attacking on this turn"
                     },
                     "3450": {
                         "Button": {
-                            "Name": "Are there 2 or more Giant Ape Power category units on this turn "
+                            "Name": "Are there 2 or more Giant Ape Power category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Giant Ape Power category units on this turn ",
+                            "Name": "How many Giant Ape Power category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Giant Ape Power Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"862|3450\", \"compiled\": [\"|\", 862, 3450]}",
             "Type": "Single activator",
-            "Brief effect description": "DEF +77% "
+            "Brief effect description": "DEF +77% ",
+            "Line description": "DEF +77% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "8004530": {
             "ID": "8004530",
@@ -331,34 +372,39 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "863 || 3451",
+                "Logic": "(863 || 3451)",
                 "Causalities": {
                     "863": {
                         "Button": {
-                            "Name": "Are there 3 or more GT Heroes category units on this turn "
+                            "Name": "Are there 3 or more GT Heroes category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many GT Heroes category units on this turn ",
+                            "Name": "How many GT Heroes category allies attacking on this turn",
                             "Logic": ">=3",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 3 or more GT Heroes Category allies attacking on this turn"
                     },
                     "3451": {
                         "Button": {
-                            "Name": "Are there 3 or more Giant Ape Power category units on this turn "
+                            "Name": "Are there 3 or more Giant Ape Power category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Giant Ape Power category units on this turn ",
+                            "Name": "How many Giant Ape Power category allies attacking on this turn",
                             "Logic": ">=3",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 3 or more Giant Ape Power Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"863|3451\", \"compiled\": [\"|\", 863, 3451]}",
             "Type": "Single activator",
-            "Brief effect description": "DEF +77% "
+            "Brief effect description": "DEF +77% ",
+            "Line description": "DEF +77% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "9004530": {
             "ID": "9004530",
@@ -373,34 +419,39 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "862 || 3450",
+                "Logic": "(862 || 3450)",
                 "Causalities": {
                     "862": {
                         "Button": {
-                            "Name": "Are there 2 or more GT Heroes category units on this turn "
+                            "Name": "Are there 2 or more GT Heroes category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many GT Heroes category units on this turn ",
+                            "Name": "How many GT Heroes category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more GT Heroes Category allies attacking on this turn"
                     },
                     "3450": {
                         "Button": {
-                            "Name": "Are there 2 or more Giant Ape Power category units on this turn "
+                            "Name": "Are there 2 or more Giant Ape Power category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Giant Ape Power category units on this turn ",
+                            "Name": "How many Giant Ape Power category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Giant Ape Power Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"862|3450\", \"compiled\": [\"|\", 862, 3450]}",
             "Type": "Single activator",
-            "Brief effect description": "Damage recieved -20% "
+            "Brief effect description": "Damage recieved -20% ",
+            "Line description": "Damage recieved -20% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "10004530": {
             "ID": "10004530",
@@ -415,34 +466,39 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "863 || 3451",
+                "Logic": "(863 || 3451)",
                 "Causalities": {
                     "863": {
                         "Button": {
-                            "Name": "Are there 3 or more GT Heroes category units on this turn "
+                            "Name": "Are there 3 or more GT Heroes category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many GT Heroes category units on this turn ",
+                            "Name": "How many GT Heroes category allies attacking on this turn",
                             "Logic": ">=3",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 3 or more GT Heroes Category allies attacking on this turn"
                     },
                     "3451": {
                         "Button": {
-                            "Name": "Are there 3 or more Giant Ape Power category units on this turn "
+                            "Name": "Are there 3 or more Giant Ape Power category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Giant Ape Power category units on this turn ",
+                            "Name": "How many Giant Ape Power category allies attacking on this turn",
                             "Logic": ">=3",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 3 or more Giant Ape Power Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"863|3451\", \"compiled\": [\"|\", 863, 3451]}",
             "Type": "Single activator",
-            "Brief effect description": "Damage recieved -20% "
+            "Brief effect description": "Damage recieved -20% ",
+            "Line description": "Damage recieved -20% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "11004530": {
             "ID": "11004530",
@@ -460,9 +516,12 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Once Only": true,
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack "
+            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack ",
+            "Line description": "Performs an additional attack with a 100% chance of becoming a super attack ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "12004530": {
             "ID": "12004530",
@@ -476,8 +535,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK +350% when attacking"
+            "Brief effect description": "ATK +350% when attacking",
+            "Line description": "ATK +350% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "13004530": {
             "ID": "13004530",
@@ -491,8 +553,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Performs a Critical Hit when attacking"
+            "Brief effect description": "Performs a Critical Hit when attacking",
+            "Line description": "Performs a Critical Hit when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "14004530": {
             "ID": "14004530",
@@ -509,24 +574,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Disable Other Line",
-            "Condition": {
-                "LogicLogic": "14004530",
-                "Causalities": {
-                    "14004530": {
-                        "Button": {
-                            "Name": "Has this character performed an attack on this turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many attacks has this character performed? on this turn",
-                            "Logic": "<=1",
-                            "Max": "2",
-                            "Min": "1"
-                        }
-                    }
-                }
-            },
-            "Brief effect description": "Disables a different passive line:12004530 after attacking"
+            "Brief effect description": "Disables a different passive line:12004530 after attacking",
+            "Line description": "Disables a different passive line:12004530 after attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "15004530": {
             "ID": "15004530",
@@ -543,24 +595,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Disable Other Line",
-            "Condition": {
-                "LogicLogic": "15004530",
-                "Causalities": {
-                    "15004530": {
-                        "Button": {
-                            "Name": "Has this character performed an attack on this turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many attacks has this character performed? on this turn",
-                            "Logic": "<=1",
-                            "Max": "2",
-                            "Min": "1"
-                        }
-                    }
-                }
-            },
-            "Brief effect description": "Disables a different passive line:13004530 after attacking"
+            "Brief effect description": "Disables a different passive line:13004530 after attacking",
+            "Line description": "Disables a different passive line:13004530 after attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "16004530": {
             "ID": "16004530",
@@ -589,12 +628,16 @@
                             "Logic": ">=1",
                             "Min": 0,
                             "Max": 1
-                        }
+                        },
+                        "Paragraph Title": "With 1 or more Cookies or Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"3464\", \"compiled\": 3464}",
             "Type": "Disable Other Line",
-            "Brief effect description": "Disables a different passive line:12004530 when attacking"
+            "Brief effect description": "Disables a different passive line:12004530 when attacking",
+            "Line description": "Disables a different passive line:12004530 when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "17004530": {
             "ID": "17004530",
@@ -623,12 +666,16 @@
                             "Logic": ">=1",
                             "Min": 0,
                             "Max": 1
-                        }
+                        },
+                        "Paragraph Title": "With 1 or more Cookies or Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"3464\", \"compiled\": 3464}",
             "Type": "Disable Other Line",
-            "Brief effect description": "Disables a different passive line:13004530 when attacking"
+            "Brief effect description": "Disables a different passive line:13004530 when attacking",
+            "Line description": "Disables a different passive line:13004530 when attacking",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 4,
@@ -946,7 +993,8 @@
                         "Logic": ">=4",
                         "Min": 0,
                         "Max": 4
-                    }
+                    },
+                    "Paragraph Title": "When the character has performed4 or more super attacks"
                 }
             }
         },

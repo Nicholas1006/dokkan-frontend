@@ -2914,7 +2914,6 @@ function createLeaderStats(){
 }
 
 function createLinkStats(){
-    //TODO Link buttons are stored at global/en/layout/en/image/common/btn/cha_linkskill_label_gold.png
     const linksContainer=document.getElementById("links-container");
     let links =currentJson["Links"];
     let linkNumber=0;
@@ -3007,6 +3006,7 @@ function createLinkStats(){
             this.updateLink(true,undefined);
             createLinkBuffs();
             updateLinkPartnerDisplay();
+            updatePassiveStats();
         }
 
         linkButton.addEventListener("wheel", function(e){
@@ -3023,6 +3023,7 @@ function createLinkStats(){
             }
             this.updateLink(undefined,true);
             createLinkBuffs();
+            updatePassiveStats();
         });
 
         linkNumber+=1;
@@ -3759,7 +3760,6 @@ function updateOnceOnlyList(passiveLine){
 
 function createDomainContainer(){
     
-    //TODO: DOMAIN IMAGE IS STORED IN C:/Users/horva/OneDrive - Trinity College Dublin/Documents/dokkan/frontend"+window.assetBase+"/global/en/outgame/extension/dokkan_field/field_thumb_image_3007 and similar
     let domainContainer=document.getElementById("domain-container");
     const domainDropDown=document.createElement("div");
     domainDropDown.className="domain-dropdown";

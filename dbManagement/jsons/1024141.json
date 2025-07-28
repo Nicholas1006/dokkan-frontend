@@ -18,6 +18,7 @@
     ],
     "Can EZA": false,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Experienced Fighters",
         "Solid Support",
@@ -42,8 +43,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +100% "
+            "Brief effect description": "ATK and DEF +100% ",
+            "Line description": "ATK and DEF +100% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1002830": {
             "ID": "1002830",
@@ -69,12 +73,16 @@
                             "Logic": ">=50",
                             "Min": 0,
                             "Max": 100
-                        }
+                        },
+                        "Paragraph Title": "When HP is 50% or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"1417\", \"compiled\": 1417}",
             "Type": "Single activator",
-            "Brief effect description": "DEF +200% "
+            "Brief effect description": "DEF +200% ",
+            "Line description": "DEF +200% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2002830": {
             "ID": "2002830",
@@ -88,9 +96,12 @@
                 "+ or -": "+"
             },
             "Length": "5",
+            "CausalityLogic": "",
             "Once Only": true,
             "Type": "Single activator",
-            "Brief effect description": "Ki +5 "
+            "Brief effect description": "Ki +5 ",
+            "Line description": "Ki +5 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3002830": {
             "ID": "3002830",
@@ -104,9 +115,12 @@
                 "+ or -": "+"
             },
             "Length": "5",
+            "CausalityLogic": "",
             "Once Only": true,
             "Type": "Single activator",
-            "Brief effect description": "ATK +90% "
+            "Brief effect description": "ATK +90% ",
+            "Line description": "ATK +90% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4002830": {
             "ID": "4002830",
@@ -120,9 +134,12 @@
                 "+ or -": "+"
             },
             "Length": "5",
+            "CausalityLogic": "",
             "Once Only": true,
             "Type": "Single activator",
-            "Brief effect description": "Guards all attacks "
+            "Brief effect description": "Guards all attacks ",
+            "Line description": "Guards all attacks ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5002830": {
             "ID": "5002830",
@@ -141,7 +158,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1418 && 1419",
+                "Logic": "(1418&&1419)",
                 "Causalities": {
                     "1418": {
                         "Button": {
@@ -152,7 +169,8 @@
                             "Logic": "==1",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 1st attacker in the turn"
                     },
                     "1419": {
                         "Button": {
@@ -163,12 +181,16 @@
                             "Logic": ">=1",
                             "Min": 0,
                             "Max": 1
-                        }
+                        },
+                        "Paragraph Title": "After recieving an attack"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"1418&1419\", \"compiled\": [\"&\", 1418, 1419]}",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack after being hit"
+            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack after being hit",
+            "Line description": "Performs an additional attack with a 100% chance of becoming a super attack after being hit",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6002830": {
             "ID": "6002830",
@@ -186,17 +208,24 @@
                 "Logic": "1420",
                 "Causalities": {
                     "1420": {
+                        "Button": {
+                            "Name": "Is Ki at least 18 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=18",
                             "Min": 0,
                             "Max": 24
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 18 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"1420\", \"compiled\": 1420}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +30% when attacking"
+            "Brief effect description": "ATK +30% when attacking",
+            "Line description": "ATK +30% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "7002830": {
             "ID": "7002830",
@@ -214,17 +243,24 @@
                 "Logic": "1421",
                 "Causalities": {
                     "1421": {
+                        "Button": {
+                            "Name": "Is Ki at least 24 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=24",
                             "Min": 0,
                             "Max": 24
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 24 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"1421\", \"compiled\": 1421}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +70% when attacking"
+            "Brief effect description": "ATK +70% when attacking",
+            "Line description": "ATK +70% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 3,
@@ -1211,7 +1247,7 @@
         "Effect Description": "Greatly raises ATK temporarily and \ncauses ultimate damage to enemy; \ndisables enemy's action once within the turn; \nExchanges with Piccolo",
         "Condition Description": "Can be activated after the character receives \nan attack 7 or more times in battle, or when \nHP is 50% or less starting from the 4th turn \nfrom the start of battle (once only)",
         "Condition": {
-            "Logic": "1414 || 1415 && 1416",
+            "Logic": "(1414 || (1415&&1416))",
             "Causalities": {
                 "1414": {
                     "Button": {
@@ -1222,7 +1258,8 @@
                         "Logic": ">=7",
                         "Min": 0,
                         "Max": 7
-                    }
+                    },
+                    "Paragraph Title": "After recieving 7 attacks"
                 },
                 "1415": {
                     "Button": {
@@ -1232,7 +1269,8 @@
                         "Name": "What turn is it?",
                         "Logic": ">=4",
                         "Min": 1
-                    }
+                    },
+                    "Paragraph Title": "When the turn count is 4"
                 },
                 "1416": {
                     "Button": {
@@ -1243,7 +1281,8 @@
                         "Logic": "<=50",
                         "Min": 0,
                         "Max": 100
-                    }
+                    },
+                    "Paragraph Title": "When HP is 50% or less"
                 }
             }
         },

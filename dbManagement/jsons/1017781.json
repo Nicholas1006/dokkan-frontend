@@ -27,6 +27,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Revival",
         "Demonic Ways",
@@ -61,8 +62,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Building Stat",
-            "Brief effect description": "ATK +6000 per TEQ Ki Spheres obtained "
+            "Brief effect description": "ATK +6000 per TEQ Ki Spheres obtained ",
+            "Line description": "ATK +6000 per TEQ Ki Spheres obtained ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1002077": {
             "ID": "1002077",
@@ -88,12 +92,16 @@
                             "Logic": ">=5",
                             "Min": 0,
                             "Max": 5
-                        }
+                        },
+                        "Paragraph Title": "With 5 or more Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"575\", \"compiled\": 575}",
             "Type": "Single activator",
-            "Brief effect description": "Damage recieved -50% after this unit collects ki spheres"
+            "Brief effect description": "Damage recieved -50% after this unit collects ki spheres",
+            "Line description": "Damage recieved -50% after this unit collects ki spheres",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2002077": {
             "ID": "2002077",
@@ -118,8 +126,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Randomly changes Ki Spheres of a certain Type(TEQ excluded) to TEQ Ki Spheres "
+            "Brief effect description": "Randomly changes Ki Spheres of a certain Type(TEQ excluded) to TEQ Ki Spheres ",
+            "Line description": "Randomly changes Ki Spheres of a certain Type(TEQ excluded) to TEQ Ki Spheres ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3002077": {
             "ID": "3002077",
@@ -142,7 +153,7 @@
             "Length": "1",
             "First Turn To Activate": 1,
             "Condition": {
-                "Logic": "580 || 576 || 577 || 578",
+                "Logic": "(580 || 576)",
                 "Causalities": {
                     "580": {
                         "Button": {
@@ -152,45 +163,28 @@
                             "Name": "What turn is it on this turn?",
                             "Logic": ">=7",
                             "Min": 1
-                        }
+                        },
+                        "Paragraph Title": "When the turn count is 7"
                     },
                     "576": {
                         "Button": {
-                            "Name": "Are there 1 or more DB Saga category enemies on this turn?"
+                            "Name": "Are there 1 or more DB Saga category enemies  on this turn?"
                         },
                         "Slider": {
                             "Name": "How many DB Saga category enemies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
-                        }
-                    },
-                    "577": {
-                        "Button": {
-                            "Name": "Are there 1 or more World Tournament category enemies on this turn?"
                         },
-                        "Slider": {
-                            "Name": "How many World Tournament category enemies on this turn?",
-                            "Logic": ">=1",
-                            "Max": 7,
-                            "Min": 0
-                        }
-                    },
-                    "578": {
-                        "Button": {
-                            "Name": "Are there 1 or more Dragon Ball Seekers category enemies on this turn?"
-                        },
-                        "Slider": {
-                            "Name": "How many Dragon Ball Seekers category enemies on this turn?",
-                            "Logic": ">=1",
-                            "Max": 7,
-                            "Min": 0
-                        }
+                        "Paragraph Title": "When there are 1 or more DB Saga Category enemies "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"580|576|577|578\", \"compiled\": [\"|\", 580, 576, 577, 578]}",
             "Type": "Single activator",
-            "Brief effect description": "Transforms into 4017791 "
+            "Brief effect description": "Transforms into 4017791 ",
+            "Line description": "Transforms into 4017791 ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,

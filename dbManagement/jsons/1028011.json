@@ -20,6 +20,7 @@
     ],
     "Can EZA": false,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Prodigies",
         "Super Saiyan",
@@ -43,8 +44,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +140% "
+            "Brief effect description": "ATK and DEF +140% ",
+            "Line description": "ATK and DEF +140% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1004007": {
             "ID": "1004007",
@@ -58,8 +62,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Guards all attacks "
+            "Brief effect description": "Guards all attacks ",
+            "Line description": "Guards all attacks ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2004007": {
             "ID": "2004007",
@@ -77,17 +84,24 @@
                 "Logic": "46",
                 "Causalities": {
                     "46": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"46\", \"compiled\": 46}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +40% when attacking"
+            "Brief effect description": "ATK +40% when attacking",
+            "Line description": "ATK +40% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3004007": {
             "ID": "3004007",
@@ -102,7 +116,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "25 || 26",
+                "Logic": "(25 || 26)",
                 "Causalities": {
                     "25": {
                         "Button": {
@@ -113,7 +127,8 @@
                             "Logic": "==1",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 1st attacker in the turn"
                     },
                     "26": {
                         "Button": {
@@ -124,12 +139,16 @@
                             "Logic": "==2",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 2nd attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"25|26\", \"compiled\": [\"|\", 25, 26]}",
             "Type": "Single activator",
-            "Brief effect description": "Ki +2 when attacking"
+            "Brief effect description": "Ki +2 when attacking",
+            "Line description": "Ki +2 when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4004007": {
             "ID": "4004007",
@@ -149,7 +168,7 @@
             "Chance": "50",
             "Length": "1",
             "Condition": {
-                "Logic": "25 || 26",
+                "Logic": "(25 || 26)",
                 "Causalities": {
                     "25": {
                         "Button": {
@@ -160,7 +179,8 @@
                             "Logic": "==1",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 1st attacker in the turn"
                     },
                     "26": {
                         "Button": {
@@ -171,12 +191,16 @@
                             "Logic": "==2",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 2nd attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"25|26\", \"compiled\": [\"|\", 25, 26]}",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking"
+            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking",
+            "Line description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5004007": {
             "ID": "5004007",
@@ -202,12 +226,16 @@
                             "Logic": "==3",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 3rd attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"33\", \"compiled\": 33}",
             "Type": "Single activator",
-            "Brief effect description": "Ki +4 when attacking"
+            "Brief effect description": "Ki +4 when attacking",
+            "Line description": "Ki +4 when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6004007": {
             "ID": "6004007",
@@ -237,12 +265,16 @@
                             "Logic": "==3",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 3rd attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"33\", \"compiled\": 33}",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking"
+            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking",
+            "Line description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 4,

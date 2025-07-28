@@ -15,6 +15,7 @@
     ],
     "Can EZA": false,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Hero",
         "Experienced Fighters",
@@ -39,8 +40,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +130% "
+            "Brief effect description": "ATK and DEF +130% ",
+            "Line description": "ATK and DEF +130% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1002422": {
             "ID": "1002422",
@@ -60,8 +64,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Storied Figures category allies Ki +2 "
+            "Brief effect description": "Storied Figures category allies Ki +2 ",
+            "Line description": "Storied Figures category allies Ki +2 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2002422": {
             "ID": "2002422",
@@ -82,8 +89,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Storied Figures category allies ATK and DEF +20% "
+            "Brief effect description": "Storied Figures category allies ATK and DEF +20% ",
+            "Line description": "Storied Figures category allies ATK and DEF +20% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3002422": {
             "ID": "3002422",
@@ -103,8 +113,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Siblings' Bond category allies Ki +2 "
+            "Brief effect description": "Siblings' Bond category allies Ki +2 ",
+            "Line description": "Siblings' Bond category allies Ki +2 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4002422": {
             "ID": "4002422",
@@ -125,8 +138,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Siblings' Bond category allies ATK and DEF +20% "
+            "Brief effect description": "Siblings' Bond category allies ATK and DEF +20% ",
+            "Line description": "Siblings' Bond category allies ATK and DEF +20% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5002422": {
             "ID": "5002422",
@@ -149,17 +165,24 @@
                 "Logic": "726",
                 "Causalities": {
                     "726": {
+                        "Button": {
+                            "Name": "Is Ki at least 18 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=18",
                             "Min": 0,
                             "Max": 24
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 18 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"726\", \"compiled\": 726}",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking"
+            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking",
+            "Line description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6002422": {
             "ID": "6002422",
@@ -181,8 +204,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "{\"source\": \"790\", \"compiled\": 790}",
             "Type": "Building Stat",
-            "Brief effect description": "Damage recieved -13% (up to 100%) based on 'How many super attacks has this character performed on this turn' when attacking"
+            "Brief effect description": "Damage recieved -13% (up to 100%) based on 'How many super attacks has this character performed on this turn' when attacking",
+            "Line description": "Damage recieved -13% (up to 100%) based on 'How many super attacks has this character performed on this turn' when attacking",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 3,
@@ -1181,7 +1207,7 @@
         "Effect Description": "Removes all allies' negative effects; \nall allies' Ki +3 and ATK & DEF +20% for 2 turns",
         "Condition Description": "Can be activated when there is \na \"Storied Figures\" Category ally and \na \"Siblings' Bond\" Category ally (self excluded) \non the team starting from the 4th turn \nfrom the start of battle (once only)",
         "Condition": {
-            "Logic": "713 && 851 && 852",
+            "Logic": "(713&&851)",
             "Causalities": {
                 "713": {
                     "Button": {
@@ -1191,29 +1217,20 @@
                         "Name": "What turn is it?",
                         "Logic": ">=4",
                         "Min": 1
-                    }
+                    },
+                    "Paragraph Title": "When the turn count is 4"
                 },
                 "851": {
                     "Button": {
-                        "Name": "Are there 2 or more Storied Figures category units on the team "
+                        "Name": "Are there 2 or more Storied Figures category allies ?"
                     },
                     "Slider": {
-                        "Name": "How many Storied Figures category units on the team ",
+                        "Name": "How many Storied Figures category allies ",
                         "Logic": ">=2",
                         "Max": 7,
                         "Min": 0
-                    }
-                },
-                "852": {
-                    "Button": {
-                        "Name": "Are there 2 or more Siblings' Bond category units on the team "
                     },
-                    "Slider": {
-                        "Name": "How many Siblings' Bond category units on the team ",
-                        "Logic": ">=2",
-                        "Max": 7,
-                        "Min": 0
-                    }
+                    "Paragraph Title": "When there are 2 or more Storied Figures Category allies "
                 }
             }
         },

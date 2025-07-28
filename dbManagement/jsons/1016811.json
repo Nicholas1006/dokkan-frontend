@@ -23,6 +23,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "All in the Family",
         "Super Saiyan",
@@ -47,8 +48,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +58% "
+            "Brief effect description": "ATK and DEF +58% ",
+            "Line description": "ATK and DEF +58% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1001489": {
             "ID": "1001489",
@@ -66,8 +70,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 30% chance of becoming a super attack "
+            "Brief effect description": "Performs an additional attack with a 30% chance of becoming a super attack ",
+            "Line description": "Performs an additional attack with a 30% chance of becoming a super attack ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2001489": {
             "ID": "2001489",
@@ -89,8 +96,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
-            "Brief effect description": "Ki +1 (up to 5) based on 'How many attacks has this character performed in battle' after attacking"
+            "Brief effect description": "Ki +1 (up to 5) based on 'How many attacks has this character performed in battle' after attacking",
+            "Line description": "Ki +1 (up to 5) based on 'How many attacks has this character performed in battle' after attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3001489": {
             "ID": "3001489",
@@ -112,8 +122,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
-            "Brief effect description": "ATK +10% (up to 100%) based on 'How many attacks has this character performed in battle' after attacking"
+            "Brief effect description": "ATK +10% (up to 100%) based on 'How many attacks has this character performed in battle' after attacking",
+            "Line description": "ATK +10% (up to 100%) based on 'How many attacks has this character performed in battle' after attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4001489": {
             "ID": "4001489",
@@ -135,8 +148,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
-            "Brief effect description": "DEF +10% (up to 100%) based on 'How many attacks has this character performed in battle' after attacking"
+            "Brief effect description": "DEF +10% (up to 100%) based on 'How many attacks has this character performed in battle' after attacking",
+            "Line description": "DEF +10% (up to 100%) based on 'How many attacks has this character performed in battle' after attacking",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 3,
@@ -1123,7 +1139,7 @@
         "Effect Description": "Massively raises ATK temporarily \nand causes ultimate damage to enemy",
         "Condition Description": "Can be activated when HP is 59% or less and \nfacing only 1 enemy starting from the 3rd turn \nfrom start of battle (once only)",
         "Condition": {
-            "Logic": "4  && 6  && 9",
+            "Logic": "(4&&6)",
             "Causalities": {
                 "4": {
                     "Button": {
@@ -1133,7 +1149,8 @@
                         "Name": "What turn is it?",
                         "Logic": ">=3",
                         "Min": 1
-                    }
+                    },
+                    "Paragraph Title": "When the turn count is 3"
                 },
                 "6": {
                     "Button": {
@@ -1144,18 +1161,8 @@
                         "Logic": "<=59",
                         "Min": 0,
                         "Max": 100
-                    }
-                },
-                "9": {
-                    "Button": {
-                        "Name": "Is there less than 2 enemies?"
                     },
-                    "Slider": {
-                        "Name": "How many enemies are there?",
-                        "Logic": "<2",
-                        "Min": 1,
-                        "Max": 7
-                    }
+                    "Paragraph Title": "When HP is 59% or less"
                 }
             }
         },

@@ -30,6 +30,7 @@
     ],
     "Can EZA": false,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Super Saiyan",
         "Saiyan Warrior Race",
@@ -58,35 +59,40 @@
             },
             "Length": "4",
             "Condition": {
-                "Logic": "3423 || 3424",
+                "Logic": "(3423 || 3424)",
                 "Causalities": {
                     "3423": {
                         "Button": {
-                            "Name": "Are there 2 or more Full Power category units on the team within the last 4 turns?"
+                            "Name": "Are there 2 or more Full Power category allies  within the last 4 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Full Power category units on the team within the last 4 turns?",
+                            "Name": "How many Full Power category allies within the last 4 turns?",
                             "Logic": ">=2",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Full Power Category allies "
                     },
                     "3424": {
                         "Button": {
-                            "Name": "Are there 2 or more Androids/Cell Saga category units on the team within the last 4 turns?"
+                            "Name": "Are there 2 or more Androids/Cell Saga category allies  within the last 4 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Androids/Cell Saga category units on the team within the last 4 turns?",
+                            "Name": "How many Androids/Cell Saga category allies within the last 4 turns?",
                             "Logic": ">=2",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Androids/Cell Saga Category allies "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"3423|3424\", \"compiled\": [\"|\", 3423, 3424]}",
             "Once Only": true,
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 100% chance of another additional attack each with a 100% chance of becoming a super attack "
+            "Brief effect description": "Performs an additional attack with a 100% chance of another additional attack each with a 100% chance of becoming a super attack ",
+            "Line description": "Performs an additional attack with a 100% chance of another additional attack each with a 100% chance of becoming a super attack ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1004499": {
             "ID": "1004499",
@@ -105,29 +111,31 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(3423 || 3424) && 2204",
+                "Logic": "((3423 || 3424)&&2204)",
                 "Causalities": {
                     "3423": {
                         "Button": {
-                            "Name": "Are there 2 or more Full Power category units on the team on this turn?"
+                            "Name": "Are there 2 or more Full Power category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Full Power category units on the team on this turn?",
+                            "Name": "How many Full Power category allies on this turn?",
                             "Logic": ">=2",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Full Power Category allies "
                     },
                     "3424": {
                         "Button": {
-                            "Name": "Are there 2 or more Androids/Cell Saga category units on the team on this turn?"
+                            "Name": "Are there 2 or more Androids/Cell Saga category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Androids/Cell Saga category units on the team on this turn?",
+                            "Name": "How many Androids/Cell Saga category allies on this turn?",
                             "Logic": ">=2",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Androids/Cell Saga Category allies "
                     },
                     "2204": {
                         "Button": {
@@ -138,12 +146,16 @@
                             "Logic": "<=4",
                             "Min": 0,
                             "Max": 5
-                        }
+                        },
+                        "Paragraph Title": "For 4 turns from the chraracter's entry turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"(3423|3424)&2204\", \"compiled\": [\"&\", [\"|\", 3423, 3424], 2204]}",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 30% chance of becoming a super attack "
+            "Brief effect description": "Performs an additional attack with a 30% chance of becoming a super attack ",
+            "Line description": "Performs an additional attack with a 30% chance of becoming a super attack ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2004499": {
             "ID": "2004499",
@@ -162,29 +174,31 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(3423 || 3424) && 2393 && 2204",
+                "Logic": "((3423 || 3424)&&2393)",
                 "Causalities": {
                     "3423": {
                         "Button": {
-                            "Name": "Are there 2 or more Full Power category units on the team on this turn?"
+                            "Name": "Are there 2 or more Full Power category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Full Power category units on the team on this turn?",
+                            "Name": "How many Full Power category allies on this turn?",
                             "Logic": ">=2",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Full Power Category allies "
                     },
                     "3424": {
                         "Button": {
-                            "Name": "Are there 2 or more Androids/Cell Saga category units on the team on this turn?"
+                            "Name": "Are there 2 or more Androids/Cell Saga category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Androids/Cell Saga category units on the team on this turn?",
+                            "Name": "How many Androids/Cell Saga category allies on this turn?",
                             "Logic": ">=2",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Androids/Cell Saga Category allies "
                     },
                     "2393": {
                         "Button": {
@@ -195,23 +209,16 @@
                             "Logic": ">=2",
                             "Min": 1,
                             "Max": 7
-                        }
-                    },
-                    "2204": {
-                        "Button": {
-                            "Name": "Is it within the first 4 turns from entry turn?"
                         },
-                        "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
-                            "Logic": "<=4",
-                            "Min": 0,
-                            "Max": 5
-                        }
+                        "Paragraph Title": "When there are 2 or more enemies"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"(3423|3424)&2393&2204\", \"compiled\": [\"&\", [\"|\", 3423, 3424], 2393, 2204]}",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 30% chance of becoming a super attack "
+            "Brief effect description": "Performs an additional attack with a 30% chance of becoming a super attack ",
+            "Line description": "Performs an additional attack with a 30% chance of becoming a super attack ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3004499": {
             "ID": "3004499",
@@ -230,29 +237,31 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(3423 || 3424) && 2394 && 2204",
+                "Logic": "((3423 || 3424)&&2394)",
                 "Causalities": {
                     "3423": {
                         "Button": {
-                            "Name": "Are there 2 or more Full Power category units on the team on this turn?"
+                            "Name": "Are there 2 or more Full Power category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Full Power category units on the team on this turn?",
+                            "Name": "How many Full Power category allies on this turn?",
                             "Logic": ">=2",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Full Power Category allies "
                     },
                     "3424": {
                         "Button": {
-                            "Name": "Are there 2 or more Androids/Cell Saga category units on the team on this turn?"
+                            "Name": "Are there 2 or more Androids/Cell Saga category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Androids/Cell Saga category units on the team on this turn?",
+                            "Name": "How many Androids/Cell Saga category allies on this turn?",
                             "Logic": ">=2",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Androids/Cell Saga Category allies "
                     },
                     "2394": {
                         "Button": {
@@ -263,23 +272,16 @@
                             "Logic": ">=3",
                             "Min": 1,
                             "Max": 7
-                        }
-                    },
-                    "2204": {
-                        "Button": {
-                            "Name": "Is it within the first 4 turns from entry turn?"
                         },
-                        "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
-                            "Logic": "<=4",
-                            "Min": 0,
-                            "Max": 5
-                        }
+                        "Paragraph Title": "When there are 3 or more enemies"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"(3423|3424)&2394&2204\", \"compiled\": [\"&\", [\"|\", 3423, 3424], 2394, 2204]}",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 30% chance of becoming a super attack "
+            "Brief effect description": "Performs an additional attack with a 30% chance of becoming a super attack ",
+            "Line description": "Performs an additional attack with a 30% chance of becoming a super attack ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4004499": {
             "ID": "4004499",
@@ -298,29 +300,31 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(3423 || 3424) && 2395 && 2204",
+                "Logic": "((3423 || 3424)&&2395)",
                 "Causalities": {
                     "3423": {
                         "Button": {
-                            "Name": "Are there 2 or more Full Power category units on the team on this turn?"
+                            "Name": "Are there 2 or more Full Power category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Full Power category units on the team on this turn?",
+                            "Name": "How many Full Power category allies on this turn?",
                             "Logic": ">=2",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Full Power Category allies "
                     },
                     "3424": {
                         "Button": {
-                            "Name": "Are there 2 or more Androids/Cell Saga category units on the team on this turn?"
+                            "Name": "Are there 2 or more Androids/Cell Saga category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Androids/Cell Saga category units on the team on this turn?",
+                            "Name": "How many Androids/Cell Saga category allies on this turn?",
                             "Logic": ">=2",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Androids/Cell Saga Category allies "
                     },
                     "2395": {
                         "Button": {
@@ -331,23 +335,16 @@
                             "Logic": ">=4",
                             "Min": 1,
                             "Max": 7
-                        }
-                    },
-                    "2204": {
-                        "Button": {
-                            "Name": "Is it within the first 4 turns from entry turn?"
                         },
-                        "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
-                            "Logic": "<=4",
-                            "Min": 0,
-                            "Max": 5
-                        }
+                        "Paragraph Title": "When there are 4 or more enemies"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"(3423|3424)&2395&2204\", \"compiled\": [\"&\", [\"|\", 3423, 3424], 2395, 2204]}",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 30% chance of becoming a super attack "
+            "Brief effect description": "Performs an additional attack with a 30% chance of becoming a super attack ",
+            "Line description": "Performs an additional attack with a 30% chance of becoming a super attack ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5004499": {
             "ID": "5004499",
@@ -366,29 +363,31 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(3423 || 3424) && 2396 && 2204",
+                "Logic": "((3423 || 3424)&&2396)",
                 "Causalities": {
                     "3423": {
                         "Button": {
-                            "Name": "Are there 2 or more Full Power category units on the team on this turn?"
+                            "Name": "Are there 2 or more Full Power category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Full Power category units on the team on this turn?",
+                            "Name": "How many Full Power category allies on this turn?",
                             "Logic": ">=2",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Full Power Category allies "
                     },
                     "3424": {
                         "Button": {
-                            "Name": "Are there 2 or more Androids/Cell Saga category units on the team on this turn?"
+                            "Name": "Are there 2 or more Androids/Cell Saga category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Androids/Cell Saga category units on the team on this turn?",
+                            "Name": "How many Androids/Cell Saga category allies on this turn?",
                             "Logic": ">=2",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Androids/Cell Saga Category allies "
                     },
                     "2396": {
                         "Button": {
@@ -399,23 +398,16 @@
                             "Logic": ">=5",
                             "Min": 1,
                             "Max": 7
-                        }
-                    },
-                    "2204": {
-                        "Button": {
-                            "Name": "Is it within the first 4 turns from entry turn?"
                         },
-                        "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
-                            "Logic": "<=4",
-                            "Min": 0,
-                            "Max": 5
-                        }
+                        "Paragraph Title": "When there are 5 or more enemies"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"(3423|3424)&2396&2204\", \"compiled\": [\"&\", [\"|\", 3423, 3424], 2396, 2204]}",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 30% chance of becoming a super attack "
+            "Brief effect description": "Performs an additional attack with a 30% chance of becoming a super attack ",
+            "Line description": "Performs an additional attack with a 30% chance of becoming a super attack ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6004499": {
             "ID": "6004499",
@@ -429,8 +421,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Ki +5 "
+            "Brief effect description": "Ki +5 ",
+            "Line description": "Ki +5 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "7004499": {
             "ID": "7004499",
@@ -445,8 +440,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +258% "
+            "Brief effect description": "ATK and DEF +258% ",
+            "Line description": "ATK and DEF +258% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "8004499": {
             "ID": "8004499",
@@ -460,8 +458,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Guards all attacks "
+            "Brief effect description": "Guards all attacks ",
+            "Line description": "Guards all attacks ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "9004499": {
             "ID": "9004499",
@@ -475,8 +476,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Damage recieved -20% "
+            "Brief effect description": "Damage recieved -20% ",
+            "Line description": "Damage recieved -20% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "10004499": {
             "ID": "10004499",
@@ -506,8 +510,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Building Stat",
-            "Brief effect description": "Ki +1 per Ki Sphere obtained "
+            "Brief effect description": "Ki +1 per Ki Sphere obtained ",
+            "Line description": "Ki +1 per Ki Sphere obtained ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "11004499": {
             "ID": "11004499",
@@ -521,8 +528,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK +158% when attacking"
+            "Brief effect description": "ATK +158% when attacking",
+            "Line description": "ATK +158% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "12004499": {
             "ID": "12004499",
@@ -544,8 +554,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
-            "Brief effect description": "Ki +1 (up to 5) based on 'How many attacks has this character performed in battle' after attacking"
+            "Brief effect description": "Ki +1 (up to 5) based on 'How many attacks has this character performed in battle' after attacking",
+            "Line description": "Ki +1 (up to 5) based on 'How many attacks has this character performed in battle' after attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "13004499": {
             "ID": "13004499",
@@ -567,8 +580,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
-            "Brief effect description": "ATK +10% (up to 80%) based on 'How many attacks has this character performed in battle' after attacking"
+            "Brief effect description": "ATK +10% (up to 80%) based on 'How many attacks has this character performed in battle' after attacking",
+            "Line description": "ATK +10% (up to 80%) based on 'How many attacks has this character performed in battle' after attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "14004499": {
             "ID": "14004499",
@@ -590,8 +606,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
-            "Brief effect description": "DEF +10% (up to 80%) based on 'How many attacks has this character performed in battle' after attacking"
+            "Brief effect description": "DEF +10% (up to 80%) based on 'How many attacks has this character performed in battle' after attacking",
+            "Line description": "DEF +10% (up to 80%) based on 'How many attacks has this character performed in battle' after attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "15004499": {
             "ID": "15004499",
@@ -605,8 +624,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "DEF +158% right before being hit"
+            "Brief effect description": "DEF +158% right before being hit",
+            "Line description": "DEF +158% right before being hit",
+            "Paragraph Title": "Basic effects(s)"
         },
         "16004499": {
             "ID": "16004499",
@@ -622,7 +644,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2557 && 3230",
+                "Logic": "(2557&&3230)",
                 "Causalities": {
                     "2557": {
                         "Button": {
@@ -633,20 +655,28 @@
                             "Logic": ">=5",
                             "Min": 0,
                             "Max": 5
-                        }
+                        },
+                        "Paragraph Title": "Starting from the 5 turn from the character's entry turn"
                     },
                     "3230": {
+                        "Button": {
+                            "Name": "Is Ki at least 18 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=18",
                             "Min": 0,
                             "Max": 24
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 18 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2557&3230\", \"compiled\": [\"&\", 2557, 3230]}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +158% and DEF +58% when attacking"
+            "Brief effect description": "ATK +158% and DEF +58% when attacking",
+            "Line description": "ATK +158% and DEF +58% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "17004499": {
             "ID": "17004499",
@@ -661,7 +691,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2557 && 3232",
+                "Logic": "(2557&&3232)",
                 "Causalities": {
                     "2557": {
                         "Button": {
@@ -672,20 +702,28 @@
                             "Logic": ">=5",
                             "Min": 0,
                             "Max": 5
-                        }
+                        },
+                        "Paragraph Title": "Starting from the 5 turn from the character's entry turn"
                     },
                     "3232": {
+                        "Button": {
+                            "Name": "Is Ki at least 24 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=24",
                             "Min": 0,
                             "Max": 24
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 24 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2557&3232\", \"compiled\": [\"&\", 2557, 3232]}",
             "Type": "Single activator",
-            "Brief effect description": "Performs a Critical Hit when attacking"
+            "Brief effect description": "Performs a Critical Hit when attacking",
+            "Line description": "Performs a Critical Hit when attacking",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 9,
@@ -1654,7 +1692,7 @@
         "Effect Description": "Massively raises ATK temporarily and \ncauses ultimate damage to enemy; \nKi +24 and ATK +58% for 1 turn",
         "Condition Description": "Can be activated when there is another \n\"Kamehameha\" Category ally on the team \nstarting from the 5th turn from the character's \nentry turn, or when facing only 1 enemy, whose \nHP is 89% or less, starting from the 5th turn \nfrom the character's entry turn (once only)",
         "Condition": {
-            "Logic": "(2819 && 3426) || (2819 && 2875 && 3427)",
+            "Logic": "((2819&&3426) || (2819&&2875))",
             "Causalities": {
                 "2819": {
                     "Button": {
@@ -1665,18 +1703,20 @@
                         "Logic": ">=5",
                         "Min": 0,
                         "Max": 5
-                    }
+                    },
+                    "Paragraph Title": "Starting from the 5 turn from the character's entry turn"
                 },
                 "3426": {
                     "Button": {
-                        "Name": "Are there 2 or more Kamehameha category units on the team "
+                        "Name": "Are there 2 or more Kamehameha category allies ?"
                     },
                     "Slider": {
-                        "Name": "How many Kamehameha category units on the team ",
+                        "Name": "How many Kamehameha category allies ",
                         "Logic": ">=2",
                         "Max": 7,
                         "Min": 0
-                    }
+                    },
+                    "Paragraph Title": "When there are 2 or more Kamehameha Category allies "
                 },
                 "2875": {
                     "Button": {
@@ -1687,17 +1727,8 @@
                         "Logic": "<2",
                         "Min": 1,
                         "Max": 7
-                    }
-                },
-                "3427": {
-                    "Button": {
-                        "Name": "Is the enemy's health 89 % or less?"
                     },
-                    "Slider": {
-                        "Name": "What percentage of HP does the enemy have?",
-                        "Logic": "<=89",
-                        "Max": 100
-                    }
+                    "Paragraph Title": "When there are less than 2 enemies"
                 }
             }
         },

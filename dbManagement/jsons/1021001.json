@@ -16,6 +16,7 @@
     ],
     "Can EZA": false,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Master of Magic",
         "Thirst for Conquest",
@@ -38,8 +39,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Ki +2 "
+            "Brief effect description": "Ki +2 ",
+            "Line description": "Ki +2 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1002339": {
             "ID": "1002339",
@@ -54,8 +58,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +30000 "
+            "Brief effect description": "ATK and DEF +30000 ",
+            "Line description": "ATK and DEF +30000 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2002339": {
             "ID": "2002339",
@@ -70,32 +77,27 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "421 || 422 || 535 || 420",
+                "Logic": "(421 || 422)",
                 "Causalities": {
                     "421": {
                         "Button": {
                             "Name": "Is the target enemy in \"ATK down\" status on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "When the target enemy is in \"ATK down\" status"
                     },
                     "422": {
                         "Button": {
                             "Name": "Is the target enemy in \"DEF down\" status on this turn?"
-                        }
-                    },
-                    "535": {
-                        "Button": {
-                            "Name": "Is the target enemy stunned on this turn?"
-                        }
-                    },
-                    "420": {
-                        "Button": {
-                            "Name": "Is the target enemy sealed on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "When the target enemy is in \"DEF down\" status"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"421|422|535|420\", \"compiled\": [\"|\", 421, 422, 535, 420]}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +20000 when attacking"
+            "Brief effect description": "ATK +20000 when attacking",
+            "Line description": "ATK +20000 when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3002339": {
             "ID": "3002339",
@@ -115,12 +117,16 @@
                     "2739": {
                         "Button": {
                             "Name": "Has this character been hit on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "When this character has been hit on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2739\", \"compiled\": 2739}",
             "Type": "Single activator",
-            "Brief effect description": "Heals +5% at the end of turn"
+            "Brief effect description": "Heals +5% at the end of turn",
+            "Line description": "Heals +5% at the end of turn",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,

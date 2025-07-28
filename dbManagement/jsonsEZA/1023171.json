@@ -20,6 +20,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "seza",
     "Links": [
         "Supreme Warrior",
         "Experienced Fighters",
@@ -43,8 +44,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Ki +2 "
+            "Brief effect description": "Ki +2 ",
+            "Line description": "Ki +2 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1004276": {
             "ID": "1004276",
@@ -59,8 +63,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +160% "
+            "Brief effect description": "ATK and DEF +160% ",
+            "Line description": "ATK and DEF +160% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2004276": {
             "ID": "2004276",
@@ -79,17 +86,24 @@
                 "Logic": "2709",
                 "Causalities": {
                     "2709": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2709\", \"compiled\": 2709}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +120% when attacking"
+            "Brief effect description": "ATK and DEF +120% when attacking",
+            "Line description": "ATK and DEF +120% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3004276": {
             "ID": "3004276",
@@ -111,8 +125,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "CausalityLogic": "{\"source\": \"2435\", \"compiled\": 2435}",
             "Type": "Building Stat",
-            "Brief effect description": "ATK +20% (up to 80%) based on 'How many super attacks has this character performed' after attacking"
+            "Brief effect description": "ATK +20% (up to 80%) based on 'How many super attacks has this character performed' after attacking",
+            "Line description": "ATK +20% (up to 80%) based on 'How many super attacks has this character performed' after attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4004276": {
             "ID": "4004276",
@@ -134,8 +151,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "CausalityLogic": "{\"source\": \"2435\", \"compiled\": 2435}",
             "Type": "Building Stat",
-            "Brief effect description": "DEF +20% (up to 80%) based on 'How many super attacks has this character performed' after attacking"
+            "Brief effect description": "DEF +20% (up to 80%) based on 'How many super attacks has this character performed' after attacking",
+            "Line description": "DEF +20% (up to 80%) based on 'How many super attacks has this character performed' after attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5004276": {
             "ID": "5004276",
@@ -161,12 +181,16 @@
                             "Logic": "==1",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 1st attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2326\", \"compiled\": 2326}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +100% when attacking"
+            "Brief effect description": "ATK +100% when attacking",
+            "Line description": "ATK +100% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6004276": {
             "ID": "6004276",
@@ -196,12 +220,16 @@
                             "Logic": "==1",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 1st attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2326\", \"compiled\": 2326}",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 50% chance of becoming a super attack when attacking"
+            "Brief effect description": "Performs an additional attack with a 50% chance of becoming a super attack when attacking",
+            "Line description": "Performs an additional attack with a 50% chance of becoming a super attack when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "7004276": {
             "ID": "7004276",
@@ -230,12 +258,16 @@
                             "Logic": "==1",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 1st attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2326\", \"compiled\": 2326}",
             "Type": "Single activator",
-            "Brief effect description": " allies Stun after attacking"
+            "Brief effect description": " allies Stun after attacking",
+            "Line description": " allies Stun after attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "8004276": {
             "ID": "8004276",
@@ -250,7 +282,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2541 || 2542",
+                "Logic": "(2541 || 2542)",
                 "Causalities": {
                     "2541": {
                         "Button": {
@@ -261,7 +293,8 @@
                             "Logic": "==2",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 2nd attacker in the turn"
                     },
                     "2542": {
                         "Button": {
@@ -272,12 +305,16 @@
                             "Logic": "==3",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 3rd attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2541|2542\", \"compiled\": [\"|\", 2541, 2542]}",
             "Type": "Single activator",
-            "Brief effect description": "Ki +2 when attacking"
+            "Brief effect description": "Ki +2 when attacking",
+            "Line description": "Ki +2 when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "9004276": {
             "ID": "9004276",
@@ -292,7 +329,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2541 || 2542",
+                "Logic": "(2541 || 2542)",
                 "Causalities": {
                     "2541": {
                         "Button": {
@@ -303,7 +340,8 @@
                             "Logic": "==2",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 2nd attacker in the turn"
                     },
                     "2542": {
                         "Button": {
@@ -314,12 +352,16 @@
                             "Logic": "==3",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 3rd attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2541|2542\", \"compiled\": [\"|\", 2541, 2542]}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of evading enemy attacks +50% when attacking"
+            "Brief effect description": "Chance of evading enemy attacks +50% when attacking",
+            "Line description": "Chance of evading enemy attacks +50% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "10004276": {
             "ID": "10004276",
@@ -334,7 +376,7 @@
             },
             "Length": "3",
             "Condition": {
-                "Logic": "2541 || 2542",
+                "Logic": "(2541 || 2542)",
                 "Causalities": {
                     "2541": {
                         "Button": {
@@ -345,7 +387,8 @@
                             "Logic": "==2",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 2nd attacker in the turn"
                     },
                     "2542": {
                         "Button": {
@@ -356,12 +399,16 @@
                             "Logic": "==3",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 3rd attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2541|2542\", \"compiled\": [\"|\", 2541, 2542]}",
             "Type": "Single activator",
-            "Brief effect description": " allies ATK -30% after attacking"
+            "Brief effect description": " allies ATK -30% after attacking",
+            "Line description": " allies ATK -30% after attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "11004276": {
             "ID": "11004276",
@@ -381,12 +428,16 @@
                     "3294": {
                         "Button": {
                             "Name": "Is the target enemy in \"ATK down\" status or stunned on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "When the target enemy is in \"ATK down\" status or stunned"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"3294\", \"compiled\": 3294}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of performing a critical hit +70% when attacking"
+            "Brief effect description": "Chance of performing a critical hit +70% when attacking",
+            "Line description": "Chance of performing a critical hit +70% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "12004276": {
             "ID": "12004276",
@@ -410,12 +461,16 @@
                     "2189": {
                         "Button": {
                             "Name": "Is there an enemy whose name includes Goku on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "\"Goku\""
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2189\", \"compiled\": 2189}",
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack "
+            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack ",
+            "Line description": "Performs an additional attack with a 100% chance of becoming a super attack ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 4,

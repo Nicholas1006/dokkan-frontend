@@ -18,6 +18,7 @@
     ],
     "Can EZA": false,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Crane School",
         "Supreme Warrior",
@@ -58,8 +59,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Building Stat",
-            "Brief effect description": "ATK and DEF +5648 per Ki Sphere obtained "
+            "Brief effect description": "ATK and DEF +5648 per Ki Sphere obtained ",
+            "Line description": "ATK and DEF +5648 per Ki Sphere obtained ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1002483": {
             "ID": "1002483",
@@ -103,12 +107,16 @@
                             "Logic": ">=3",
                             "Min": 0,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "With 3 or more Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"303\", \"compiled\": 303}",
             "Type": "Building Stat",
-            "Brief effect description": "ATK and DEF +7564 per Ki Sphere obtained after this unit collects ki spheres"
+            "Brief effect description": "ATK and DEF +7564 per Ki Sphere obtained after this unit collects ki spheres",
+            "Line description": "ATK and DEF +7564 per Ki Sphere obtained after this unit collects ki spheres",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2002483": {
             "ID": "2002483",
@@ -127,17 +135,24 @@
                 "Logic": "810",
                 "Causalities": {
                     "810": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"810\", \"compiled\": 810}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +10108 when attacking"
+            "Brief effect description": "ATK and DEF +10108 when attacking",
+            "Line description": "ATK and DEF +10108 when attacking",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,

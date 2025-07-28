@@ -24,6 +24,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "seza",
     "Links": [
         "Golden Warrior",
         "Super Saiyan",
@@ -48,8 +49,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +60% "
+            "Brief effect description": "ATK and DEF +60% ",
+            "Line description": "ATK and DEF +60% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1002225": {
             "ID": "1002225",
@@ -73,8 +77,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Building Stat",
-            "Brief effect description": "ATK and DEF +60% (up to 60%) based on 'What percentage of HP is remaining' "
+            "Brief effect description": "ATK and DEF +60% (up to 60%) based on 'What percentage of HP is remaining' ",
+            "Line description": "ATK and DEF +60% (up to 60%) based on 'What percentage of HP is remaining' ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2002225": {
             "ID": "2002225",
@@ -88,8 +95,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Ki +1 "
+            "Brief effect description": "Ki +1 ",
+            "Line description": "Ki +1 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3002225": {
             "ID": "3002225",
@@ -115,12 +125,16 @@
                             "Logic": ">=40",
                             "Min": 0,
                             "Max": 100
-                        }
+                        },
+                        "Paragraph Title": "When HP is 40% or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"68\", \"compiled\": 68}",
             "Type": "Single activator",
-            "Brief effect description": "Ki +1 "
+            "Brief effect description": "Ki +1 ",
+            "Line description": "Ki +1 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4002225": {
             "ID": "4002225",
@@ -146,12 +160,16 @@
                             "Logic": ">=80",
                             "Min": 0,
                             "Max": 100
-                        }
+                        },
+                        "Paragraph Title": "When HP is 80% or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"50\", \"compiled\": 50}",
             "Type": "Single activator",
-            "Brief effect description": "Ki +1 "
+            "Brief effect description": "Ki +1 ",
+            "Line description": "Ki +1 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5002225": {
             "ID": "5002225",
@@ -166,15 +184,19 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "48 && 73",
+                "Logic": "(48&&73)",
                 "Causalities": {
                     "48": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     },
                     "73": {
                         "Button": {
@@ -185,13 +207,17 @@
                             "Logic": "<=60",
                             "Min": 0,
                             "Max": 100
-                        }
+                        },
+                        "Paragraph Title": "When HP is 60% or less"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"48&73\", \"compiled\": [\"&\", 48, 73]}",
             "Once Only": true,
             "Type": "Single activator",
-            "Brief effect description": "ATK +88% when attacking"
+            "Brief effect description": "ATK +88% when attacking",
+            "Line description": "ATK +88% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,

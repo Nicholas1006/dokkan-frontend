@@ -18,6 +18,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "seza",
     "Links": [
         "Infighter",
         "Tough as Nails",
@@ -49,8 +50,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
-            "Brief effect description": "Ki +1 (up to 4) based on 'How many turns has this character been on' "
+            "Brief effect description": "Ki +1 (up to 4) based on 'How many turns has this character been on' ",
+            "Line description": "Ki +1 (up to 4) based on 'How many turns has this character been on' ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1002244": {
             "ID": "1002244",
@@ -72,8 +76,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
-            "Brief effect description": "ATK +30% (up to 120%) based on 'How many turns has this character been on' "
+            "Brief effect description": "ATK +30% (up to 120%) based on 'How many turns has this character been on' ",
+            "Line description": "ATK +30% (up to 120%) based on 'How many turns has this character been on' ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2002244": {
             "ID": "2002244",
@@ -95,8 +102,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
-            "Brief effect description": "DEF +30% (up to 120%) based on 'How many turns has this character been on' "
+            "Brief effect description": "DEF +30% (up to 120%) based on 'How many turns has this character been on' ",
+            "Line description": "DEF +30% (up to 120%) based on 'How many turns has this character been on' ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3002244": {
             "ID": "3002244",
@@ -122,12 +132,16 @@
                             "Logic": ">=1",
                             "Min": 0,
                             "Max": 1
-                        }
+                        },
+                        "Paragraph Title": "After recieving an attack"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"24\", \"compiled\": 24}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +100% after being hit"
+            "Brief effect description": "ATK +100% after being hit",
+            "Line description": "ATK +100% after being hit",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4002244": {
             "ID": "4002244",
@@ -142,28 +156,33 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "577 || 438",
+                "Logic": "(577 || 438)",
                 "Causalities": {
                     "577": {
                         "Button": {
-                            "Name": "Are there 1 or more World Tournament category enemies on this turn?"
+                            "Name": "Are there 1 or more World Tournament category enemies  on this turn?"
                         },
                         "Slider": {
                             "Name": "How many World Tournament category enemies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 1 or more World Tournament Category enemies "
                     },
                     "438": {
                         "Button": {
                             "Name": "Is there an enemy whose name includes Goku on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "\"Goku\""
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"577|438\", \"compiled\": [\"|\", 577, 438]}",
             "Type": "Single activator",
-            "Brief effect description": "Guards all attacks "
+            "Brief effect description": "Guards all attacks ",
+            "Line description": "Guards all attacks ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,

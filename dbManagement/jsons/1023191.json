@@ -19,6 +19,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Fear and Faith",
         "Brainiacs",
@@ -43,8 +44,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +150% "
+            "Brief effect description": "ATK and DEF +150% ",
+            "Line description": "ATK and DEF +150% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1002653": {
             "ID": "1002653",
@@ -63,17 +67,24 @@
                 "Logic": "1150",
                 "Causalities": {
                     "1150": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"1150\", \"compiled\": 1150}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +80% when attacking"
+            "Brief effect description": "ATK and DEF +80% when attacking",
+            "Line description": "ATK and DEF +80% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2002653": {
             "ID": "2002653",
@@ -105,8 +116,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Building Stat",
-            "Brief effect description": "ATK and DEF +20% per Ki Sphere obtained "
+            "Brief effect description": "ATK and DEF +20% per Ki Sphere obtained ",
+            "Line description": "ATK and DEF +20% per Ki Sphere obtained ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3002653": {
             "ID": "3002653",
@@ -133,12 +147,16 @@
                             "Logic": ">=2",
                             "Min": 0,
                             "Max": 2
-                        }
+                        },
+                        "Paragraph Title": "With 2 or more AGL Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"1155\", \"compiled\": 1155}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +80% after this unit collects ki spheres"
+            "Brief effect description": "ATK and DEF +80% after this unit collects ki spheres",
+            "Line description": "ATK and DEF +80% after this unit collects ki spheres",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4002653": {
             "ID": "4002653",
@@ -153,7 +171,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1156 || 1157",
+                "Logic": "(1156 || 1157)",
                 "Causalities": {
                     "1156": {
                         "Button": {
@@ -164,7 +182,8 @@
                             "Logic": ">=2",
                             "Min": 0,
                             "Max": 2
-                        }
+                        },
+                        "Paragraph Title": "With 2 or more TEQ Ki Spheres obtained"
                     },
                     "1157": {
                         "Button": {
@@ -175,12 +194,16 @@
                             "Logic": ">=2",
                             "Min": 0,
                             "Max": 2
-                        }
+                        },
+                        "Paragraph Title": "With 2 or more INT Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"1156|1157\", \"compiled\": [\"|\", 1156, 1157]}",
             "Type": "Single activator",
-            "Brief effect description": "DEF +80% after this unit collects ki spheres"
+            "Brief effect description": "DEF +80% after this unit collects ki spheres",
+            "Line description": "DEF +80% after this unit collects ki spheres",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5002653": {
             "ID": "5002653",
@@ -195,7 +218,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "1158 || 1159",
+                "Logic": "(1158 || 1159)",
                 "Causalities": {
                     "1158": {
                         "Button": {
@@ -206,7 +229,8 @@
                             "Logic": ">=2",
                             "Min": 0,
                             "Max": 2
-                        }
+                        },
+                        "Paragraph Title": "With 2 or more STR Ki Spheres obtained"
                     },
                     "1159": {
                         "Button": {
@@ -217,12 +241,16 @@
                             "Logic": ">=2",
                             "Min": 0,
                             "Max": 2
-                        }
+                        },
+                        "Paragraph Title": "With 2 or more PHY Ki Spheres obtained"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"1158|1159\", \"compiled\": [\"|\", 1158, 1159]}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +80% after this unit collects ki spheres"
+            "Brief effect description": "ATK +80% after this unit collects ki spheres",
+            "Line description": "ATK +80% after this unit collects ki spheres",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6002653": {
             "ID": "6002653",
@@ -247,8 +275,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Building Stat",
-            "Brief effect description": "Heals +8% per Rainbow Ki Spheres obtained "
+            "Brief effect description": "Heals +8% per Rainbow Ki Spheres obtained ",
+            "Line description": "Heals +8% per Rainbow Ki Spheres obtained ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,

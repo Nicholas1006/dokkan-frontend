@@ -16,6 +16,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "seza",
     "Links": [
         "The Innocents",
         "Brainiacs",
@@ -40,8 +41,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +110% "
+            "Brief effect description": "ATK and DEF +110% ",
+            "Line description": "ATK and DEF +110% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1004215": {
             "ID": "1004215",
@@ -55,8 +59,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Chance of evading enemy attacks +50% "
+            "Brief effect description": "Chance of evading enemy attacks +50% ",
+            "Line description": "Chance of evading enemy attacks +50% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2004215": {
             "ID": "2004215",
@@ -78,8 +85,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
-            "Brief effect description": "ATK +55% (up to 110%) based on 'How many attacks has this character performed in battle' after attacking"
+            "Brief effect description": "ATK +55% (up to 110%) based on 'How many attacks has this character performed in battle' after attacking",
+            "Line description": "ATK +55% (up to 110%) based on 'How many attacks has this character performed in battle' after attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3004215": {
             "ID": "3004215",
@@ -101,8 +111,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
-            "Brief effect description": "DEF +55% (up to 110%) based on 'How many attacks has this character performed in battle' after attacking"
+            "Brief effect description": "DEF +55% (up to 110%) based on 'How many attacks has this character performed in battle' after attacking",
+            "Line description": "DEF +55% (up to 110%) based on 'How many attacks has this character performed in battle' after attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4004215": {
             "ID": "4004215",
@@ -122,8 +135,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Universe 11 category allies Ki +3 "
+            "Brief effect description": "Universe 11 category allies Ki +3 ",
+            "Line description": "Universe 11 category allies Ki +3 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5004215": {
             "ID": "5004215",
@@ -144,8 +160,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Universe 11 category allies ATK and DEF +50% "
+            "Brief effect description": "Universe 11 category allies ATK and DEF +50% ",
+            "Line description": "Universe 11 category allies ATK and DEF +50% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6004215": {
             "ID": "6004215",
@@ -166,8 +185,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Realm of Gods category allies ATK and DEF +20% "
+            "Brief effect description": "Realm of Gods category allies ATK and DEF +20% ",
+            "Line description": "Realm of Gods category allies ATK and DEF +20% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "7004215": {
             "ID": "7004215",
@@ -188,8 +210,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Siblings' Bond category allies ATK and DEF +20% "
+            "Brief effect description": "Siblings' Bond category allies ATK and DEF +20% ",
+            "Line description": "Siblings' Bond category allies ATK and DEF +20% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "8004215": {
             "ID": "8004215",
@@ -210,8 +235,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Bond of Master and Disciple category allies ATK and DEF +20% "
+            "Brief effect description": "Bond of Master and Disciple category allies ATK and DEF +20% ",
+            "Line description": "Bond of Master and Disciple category allies ATK and DEF +20% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "9004215": {
             "ID": "9004215",
@@ -226,34 +254,39 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "678 || 2217",
+                "Logic": "(678 || 2217)",
                 "Causalities": {
                     "678": {
                         "Button": {
-                            "Name": "Are there 2 or more Universe 11 category units on this turn "
+                            "Name": "Are there 2 or more Universe 11 category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Universe 11 category units on this turn ",
+                            "Name": "How many Universe 11 category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Universe 11 Category allies attacking on this turn"
                     },
                     "2217": {
                         "Button": {
-                            "Name": "Are there 2 or more Bond of Master and Disciple category units on this turn "
+                            "Name": "Are there 2 or more Bond of Master and Disciple category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Bond of Master and Disciple category units on this turn ",
+                            "Name": "How many Bond of Master and Disciple category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Bond of Master and Disciple Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"678|2217\", \"compiled\": [\"|\", 678, 2217]}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of evading enemy attacks +20% "
+            "Brief effect description": "Chance of evading enemy attacks +20% ",
+            "Line description": "Chance of evading enemy attacks +20% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "10004215": {
             "ID": "10004215",
@@ -280,34 +313,39 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "678 || 2217",
+                "Logic": "(678 || 2217)",
                 "Causalities": {
                     "678": {
                         "Button": {
-                            "Name": "Are there 2 or more Universe 11 category units on this turn "
+                            "Name": "Are there 2 or more Universe 11 category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Universe 11 category units on this turn ",
+                            "Name": "How many Universe 11 category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Universe 11 Category allies attacking on this turn"
                     },
                     "2217": {
                         "Button": {
-                            "Name": "Are there 2 or more Bond of Master and Disciple category units on this turn "
+                            "Name": "Are there 2 or more Bond of Master and Disciple category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Bond of Master and Disciple category units on this turn ",
+                            "Name": "How many Bond of Master and Disciple category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Bond of Master and Disciple Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"678|2217\", \"compiled\": [\"|\", 678, 2217]}",
             "Type": "Single activator",
-            "Brief effect description": "Randomly changes Ki Spheres of a certain Type to Rainbow Ki Spheres "
+            "Brief effect description": "Randomly changes Ki Spheres of a certain Type to Rainbow Ki Spheres ",
+            "Line description": "Randomly changes Ki Spheres of a certain Type to Rainbow Ki Spheres ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "11004215": {
             "ID": "11004215",
@@ -326,19 +364,23 @@
                 "Causalities": {
                     "2207": {
                         "Button": {
-                            "Name": "Are there 3 or more Universe 11 category units on this turn "
+                            "Name": "Are there 3 or more Universe 11 category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Universe 11 category units on this turn ",
+                            "Name": "How many Universe 11 category allies attacking on this turn",
                             "Logic": ">=3",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 3 or more Universe 11 Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2207\", \"compiled\": 2207}",
             "Type": "Single activator",
-            "Brief effect description": "Damage recieved -30% "
+            "Brief effect description": "Damage recieved -30% ",
+            "Line description": "Damage recieved -30% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "12004215": {
             "ID": "12004215",
@@ -353,18 +395,19 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2207 && 33",
+                "Logic": "(2207&&33)",
                 "Causalities": {
                     "2207": {
                         "Button": {
-                            "Name": "Are there 3 or more Universe 11 category units on this turn "
+                            "Name": "Are there 3 or more Universe 11 category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Universe 11 category units on this turn ",
+                            "Name": "How many Universe 11 category allies attacking on this turn",
                             "Logic": ">=3",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 3 or more Universe 11 Category allies attacking on this turn"
                     },
                     "33": {
                         "Button": {
@@ -375,13 +418,17 @@
                             "Logic": "==3",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 3rd attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2207&33\", \"compiled\": [\"&\", 2207, 33]}",
             "Once Only": true,
             "Type": "Single activator",
-            "Brief effect description": " allies Damage recieved -11% after all ki collected"
+            "Brief effect description": " allies Damage recieved -11% after all ki collected",
+            "Line description": " allies Damage recieved -11% after all ki collected",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,

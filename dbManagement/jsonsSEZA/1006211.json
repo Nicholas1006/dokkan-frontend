@@ -28,6 +28,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": true,
+    "Eza Level": "eza",
     "Links": [
         "Super Saiyan",
         "Fused Fighter",
@@ -51,8 +52,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +150% "
+            "Brief effect description": "ATK and DEF +150% ",
+            "Line description": "ATK and DEF +150% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1004140": {
             "ID": "1004140",
@@ -71,17 +75,24 @@
                 "Logic": "64",
                 "Causalities": {
                     "64": {
+                        "Button": {
+                            "Name": "Is Ki at least 9 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=9",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 9 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"64\", \"compiled\": 64}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +200% and DEF +100% when attacking"
+            "Brief effect description": "ATK +200% and DEF +100% when attacking",
+            "Line description": "ATK +200% and DEF +100% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2004140": {
             "ID": "2004140",
@@ -96,9 +107,12 @@
                 "+ or -": "+"
             },
             "Length": "3",
+            "CausalityLogic": "",
             "Once Only": true,
             "Type": "Single activator",
-            "Brief effect description": "Super class allies DEF +33% "
+            "Brief effect description": "Super class allies DEF +33% ",
+            "Line description": "Super class allies DEF +33% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3004140": {
             "ID": "3004140",
@@ -113,9 +127,12 @@
                 "+ or -": "+"
             },
             "Length": "3",
+            "CausalityLogic": "",
             "Once Only": true,
             "Type": "Single activator",
-            "Brief effect description": "Extreme class allies ATK +33% "
+            "Brief effect description": "Extreme class allies ATK +33% ",
+            "Line description": "Extreme class allies ATK +33% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4004140": {
             "ID": "4004140",
@@ -139,12 +156,16 @@
                             "Logic": "<=11",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When ki is 11 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"156\", \"compiled\": 156}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +100% when attacking"
+            "Brief effect description": "ATK and DEF +100% when attacking",
+            "Line description": "ATK and DEF +100% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5004140": {
             "ID": "5004140",
@@ -166,8 +187,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
-            "Brief effect description": "ATK +50% (up to 150%) based on 'How many attacks has this character performed in battle' after attacking"
+            "Brief effect description": "ATK +50% (up to 150%) based on 'How many attacks has this character performed in battle' after attacking",
+            "Line description": "ATK +50% (up to 150%) based on 'How many attacks has this character performed in battle' after attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6004140": {
             "ID": "6004140",
@@ -189,8 +213,11 @@
                 "+ or -": "+"
             },
             "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
-            "Brief effect description": "DEF +50% (up to 150%) based on 'How many attacks has this character performed in battle' after attacking"
+            "Brief effect description": "DEF +50% (up to 150%) based on 'How many attacks has this character performed in battle' after attacking",
+            "Line description": "DEF +50% (up to 150%) based on 'How many attacks has this character performed in battle' after attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "7004140": {
             "ID": "7004140",
@@ -205,15 +232,19 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "3135 && 3169",
+                "Logic": "(3135&&3169)",
                 "Causalities": {
                     "3135": {
+                        "Button": {
+                            "Name": "Is Ki at least 10 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=10",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 10 or more"
                     },
                     "3169": {
                         "Slider": {
@@ -221,12 +252,16 @@
                             "Logic": "<=11",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When ki is 11 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"3135&3169\", \"compiled\": [\"&\", 3135, 3169]}",
             "Type": "Single activator",
-            "Brief effect description": "Damage recieved -50% after all ki collected"
+            "Brief effect description": "Damage recieved -50% after all ki collected",
+            "Line description": "Damage recieved -50% after all ki collected",
+            "Paragraph Title": "Basic effects(s)"
         },
         "8004140": {
             "ID": "8004140",
@@ -241,15 +276,19 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "3135 && 3169",
+                "Logic": "(3135&&3169)",
                 "Causalities": {
                     "3135": {
+                        "Button": {
+                            "Name": "Is Ki at least 10 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=10",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 10 or more"
                     },
                     "3169": {
                         "Slider": {
@@ -257,12 +296,16 @@
                             "Logic": "<=11",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When ki is 11 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"3135&3169\", \"compiled\": [\"&\", 3135, 3169]}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of performing a critical hit +50% after all ki collected"
+            "Brief effect description": "Chance of performing a critical hit +50% after all ki collected",
+            "Line description": "Chance of performing a critical hit +50% after all ki collected",
+            "Paragraph Title": "Basic effects(s)"
         },
         "9004140": {
             "ID": "9004140",
@@ -276,8 +319,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Chance of evading enemy attacks +50% "
+            "Brief effect description": "Chance of evading enemy attacks +50% ",
+            "Line description": "Chance of evading enemy attacks +50% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "10004140": {
             "ID": "10004140",
@@ -295,17 +341,24 @@
                 "Logic": "46",
                 "Causalities": {
                     "46": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"46\", \"compiled\": 46}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of evading enemy attacks +33% right before being hit"
+            "Brief effect description": "Chance of evading enemy attacks +33% right before being hit",
+            "Line description": "Chance of evading enemy attacks +33% right before being hit",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,

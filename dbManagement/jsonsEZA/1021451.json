@@ -16,6 +16,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "seza",
     "Links": [
         "Z Fighters",
         "Turtle School",
@@ -40,8 +41,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +70% "
+            "Brief effect description": "ATK and DEF +70% ",
+            "Line description": "ATK and DEF +70% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1002272": {
             "ID": "1002272",
@@ -68,12 +72,16 @@
                             "Logic": "==1",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 1st attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"733\", \"compiled\": 733}",
             "Type": "Single activator",
-            "Brief effect description": "Guards all attacks after all ki collected"
+            "Brief effect description": "Guards all attacks after all ki collected",
+            "Line description": "Guards all attacks after all ki collected",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2002272": {
             "ID": "2002272",
@@ -89,7 +97,7 @@
             "Chance": "30",
             "Length": "1",
             "Condition": {
-                "Logic": "735 || 736",
+                "Logic": "(735 || 736)",
                 "Causalities": {
                     "735": {
                         "Button": {
@@ -100,7 +108,8 @@
                             "Logic": "==2",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 2nd attacker in the turn"
                     },
                     "736": {
                         "Button": {
@@ -111,12 +120,16 @@
                             "Logic": "==3",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 3rd attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"735|736\", \"compiled\": [\"|\", 735, 736]}",
             "Type": "Single activator",
-            "Brief effect description": "Guards all attacks after all ki collected"
+            "Brief effect description": "Guards all attacks after all ki collected",
+            "Line description": "Guards all attacks after all ki collected",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3002272": {
             "ID": "3002272",
@@ -136,12 +149,16 @@
                     "29": {
                         "Button": {
                             "Name": "Has guard been activated on this turn?"
-                        }
+                        },
+                        "Paragraph Title": "After guard is activated"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"29\", \"compiled\": 29}",
             "Type": "Single activator",
-            "Brief effect description": "Damage recieved -50% right before being hit"
+            "Brief effect description": "Damage recieved -50% right before being hit",
+            "Line description": "Damage recieved -50% right before being hit",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,

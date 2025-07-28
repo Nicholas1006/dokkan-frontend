@@ -27,6 +27,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "seza",
     "Links": [
         "Majin",
         "Brutal Beatdown",
@@ -50,8 +51,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Ki +3 "
+            "Brief effect description": "Ki +3 ",
+            "Line description": "Ki +3 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1004144": {
             "ID": "1004144",
@@ -66,8 +70,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK +200% and DEF +150% "
+            "Brief effect description": "ATK +200% and DEF +150% ",
+            "Line description": "ATK +200% and DEF +150% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2004144": {
             "ID": "2004144",
@@ -85,17 +92,24 @@
                 "Logic": "46",
                 "Causalities": {
                     "46": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"46\", \"compiled\": 46}",
             "Type": "Single activator",
-            "Brief effect description": "ATK +70% when attacking"
+            "Brief effect description": "ATK +70% when attacking",
+            "Line description": "ATK +70% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3004144": {
             "ID": "3004144",
@@ -109,8 +123,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Damage recieved -40% right before being hit"
+            "Brief effect description": "Damage recieved -40% right before being hit",
+            "Line description": "Damage recieved -40% right before being hit",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4004144": {
             "ID": "4004144",
@@ -129,19 +146,23 @@
                 "Causalities": {
                     "1606": {
                         "Button": {
-                            "Name": "Are there 2 or more Majin Power category units on this turn "
+                            "Name": "Are there 2 or more Majin Power category allies attacking on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Majin Power category units on this turn ",
+                            "Name": "How many Majin Power category allies attacking on this turn",
                             "Logic": ">=2",
                             "Max": 3,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 2 or more Majin Power Category allies attacking on this turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"1606\", \"compiled\": 1606}",
             "Type": "Single activator",
-            "Brief effect description": "Damage recieved -30% right before being hit"
+            "Brief effect description": "Damage recieved -30% right before being hit",
+            "Line description": "Damage recieved -30% right before being hit",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5004144": {
             "ID": "5004144",
@@ -156,8 +177,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +50% "
+            "Brief effect description": "ATK and DEF +50% ",
+            "Line description": "ATK and DEF +50% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6004144": {
             "ID": "6004144",
@@ -179,19 +203,23 @@
                 "Causalities": {
                     "3149": {
                         "Button": {
-                            "Name": "Are there 1 or more Majin Power category enemies on this turn?"
+                            "Name": "Are there 1 or more Majin Power category enemies  on this turn?"
                         },
                         "Slider": {
                             "Name": "How many Majin Power category enemies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 1 or more Majin Power Category enemies "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"3149\", \"compiled\": 3149}",
             "Type": "Disable Other Line",
-            "Brief effect description": "Disables a different passive line:5004144 "
+            "Brief effect description": "Disables a different passive line:5004144 ",
+            "Line description": "Disables a different passive line:5004144 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "7004144": {
             "ID": "7004144",
@@ -208,8 +236,11 @@
             },
             "Chance": "70",
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": " allies Stun after attacking"
+            "Brief effect description": " allies Stun after attacking",
+            "Line description": " allies Stun after attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "8004144": {
             "ID": "8004144",
@@ -223,8 +254,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "Chance of evading enemy attacks +50% "
+            "Brief effect description": "Chance of evading enemy attacks +50% ",
+            "Line description": "Chance of evading enemy attacks +50% ",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,
@@ -544,7 +578,7 @@
         "Effect Description": "Absorbs Majin Buu (Good)",
         "Condition Description": "Can be activated when HP is 70% or more starting \nfrom the 4th turn after Exchange (once only)",
         "Condition": {
-            "Logic": "628 && 629",
+            "Logic": "(628&&629)",
             "Causalities": {
                 "628": {
                     "Button": {
@@ -555,7 +589,8 @@
                         "Logic": ">=4",
                         "Min": 0,
                         "Max": 4
-                    }
+                    },
+                    "Paragraph Title": "Starting from the 4 turn from the character's entry turn"
                 },
                 "629": {
                     "Button": {
@@ -566,7 +601,8 @@
                         "Logic": ">=70",
                         "Min": 0,
                         "Max": 100
-                    }
+                    },
+                    "Paragraph Title": "When HP is 70% or more"
                 }
             }
         },

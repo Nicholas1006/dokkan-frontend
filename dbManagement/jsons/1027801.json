@@ -19,6 +19,7 @@
     ],
     "Can EZA": true,
     "Can SEZA": false,
+    "Eza Level": "none",
     "Links": [
         "Demonic Power",
         "Solid Support",
@@ -43,8 +44,11 @@
                 "+ or -": "+"
             },
             "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +150% "
+            "Brief effect description": "ATK and DEF +150% ",
+            "Line description": "ATK and DEF +150% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "1003936": {
             "ID": "1003936",
@@ -63,17 +67,24 @@
                 "Logic": "2884",
                 "Causalities": {
                     "2884": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2884\", \"compiled\": 2884}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +100% when attacking"
+            "Brief effect description": "ATK and DEF +100% when attacking",
+            "Line description": "ATK and DEF +100% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         },
         "2003936": {
             "ID": "2003936",
@@ -88,7 +99,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2885 || 2886",
+                "Logic": "(2885 || 2886)",
                 "Causalities": {
                     "2885": {
                         "Button": {
@@ -99,7 +110,8 @@
                             "Logic": "==2",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 2nd attacker in the turn"
                     },
                     "2886": {
                         "Button": {
@@ -110,12 +122,16 @@
                             "Logic": "==3",
                             "Min": 1,
                             "Max": 3
-                        }
+                        },
+                        "Paragraph Title": "As the 3rd attacker in the turn"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2885|2886\", \"compiled\": [\"|\", 2885, 2886]}",
             "Type": "Single activator",
-            "Brief effect description": "Chance of evading enemy attacks +30% after all ki collected"
+            "Brief effect description": "Chance of evading enemy attacks +30% after all ki collected",
+            "Line description": "Chance of evading enemy attacks +30% after all ki collected",
+            "Paragraph Title": "Basic effects(s)"
         },
         "3003936": {
             "ID": "3003936",
@@ -142,12 +158,16 @@
                             "Logic": ">=4",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 4 or more Extreme class allies"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2882\", \"compiled\": 2882}",
             "Type": "Single activator",
-            "Brief effect description": " allies ATK and DEF +20% "
+            "Brief effect description": " allies ATK and DEF +20% ",
+            "Line description": " allies ATK and DEF +20% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "4003936": {
             "ID": "4003936",
@@ -170,19 +190,23 @@
                 "Causalities": {
                     "2883": {
                         "Button": {
-                            "Name": "Are there 7 or more Dragon Ball Heroes category units on the team on this turn?"
+                            "Name": "Are there 7 or more Dragon Ball Heroes category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Dragon Ball Heroes category units on the team on this turn?",
+                            "Name": "How many Dragon Ball Heroes category allies on this turn?",
                             "Logic": ">=7",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 7 or more Dragon Ball Heroes Category allies "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2883\", \"compiled\": 2883}",
             "Type": "Single activator",
-            "Brief effect description": "Changes AGL Ki Spheres to STR Ki Spheres "
+            "Brief effect description": "Changes AGL Ki Spheres to STR Ki Spheres ",
+            "Line description": "Changes AGL Ki Spheres to STR Ki Spheres ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "5003936": {
             "ID": "5003936",
@@ -201,19 +225,23 @@
                 "Causalities": {
                     "2883": {
                         "Button": {
-                            "Name": "Are there 7 or more Dragon Ball Heroes category units on the team on this turn?"
+                            "Name": "Are there 7 or more Dragon Ball Heroes category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Dragon Ball Heroes category units on the team on this turn?",
+                            "Name": "How many Dragon Ball Heroes category allies on this turn?",
                             "Logic": ">=7",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 7 or more Dragon Ball Heroes Category allies "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2883\", \"compiled\": 2883}",
             "Type": "Single activator",
-            "Brief effect description": " allies Ki +1 "
+            "Brief effect description": " allies Ki +1 ",
+            "Line description": " allies Ki +1 ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "6003936": {
             "ID": "6003936",
@@ -233,19 +261,23 @@
                 "Causalities": {
                     "2883": {
                         "Button": {
-                            "Name": "Are there 7 or more Dragon Ball Heroes category units on the team on this turn?"
+                            "Name": "Are there 7 or more Dragon Ball Heroes category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Dragon Ball Heroes category units on the team on this turn?",
+                            "Name": "How many Dragon Ball Heroes category allies on this turn?",
                             "Logic": ">=7",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 7 or more Dragon Ball Heroes Category allies "
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2883\", \"compiled\": 2883}",
             "Type": "Single activator",
-            "Brief effect description": " allies ATK and DEF +10% "
+            "Brief effect description": " allies ATK and DEF +10% ",
+            "Line description": " allies ATK and DEF +10% ",
+            "Paragraph Title": "Basic effects(s)"
         },
         "7003936": {
             "ID": "7003936",
@@ -261,31 +293,39 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "2883 && 2884",
+                "Logic": "(2883&&2884)",
                 "Causalities": {
                     "2883": {
                         "Button": {
-                            "Name": "Are there 7 or more Dragon Ball Heroes category units on the team on this turn?"
+                            "Name": "Are there 7 or more Dragon Ball Heroes category allies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many Dragon Ball Heroes category units on the team on this turn?",
+                            "Name": "How many Dragon Ball Heroes category allies on this turn?",
                             "Logic": ">=7",
                             "Max": 7,
                             "Min": 0
-                        }
+                        },
+                        "Paragraph Title": "When there are 7 or more Dragon Ball Heroes Category allies "
                     },
                     "2884": {
+                        "Button": {
+                            "Name": "Is Ki at least 12 on this turn?"
+                        },
                         "Slider": {
                             "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
-                        }
+                        },
+                        "Paragraph Title": "When Ki is 12 or more"
                     }
                 }
             },
+            "CausalityLogic": "{\"source\": \"2883&2884\", \"compiled\": [\"&\", 2883, 2884]}",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF +50% when attacking"
+            "Brief effect description": "ATK and DEF +50% when attacking",
+            "Line description": "ATK and DEF +50% when attacking",
+            "Paragraph Title": "Basic effects(s)"
         }
     },
     "Max Attacks": 2,
