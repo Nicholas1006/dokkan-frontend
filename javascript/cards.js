@@ -9,7 +9,8 @@ import {extractDigitsFromString,
        splitTextByWords,
        advantageCalculator,
        typeToInt,
-       classToInt
+       classToInt,
+       timeSince
  } from "./commonFunctions.js";
 import { LWFPlayer } from "./classes/LWF.js";
 let baseDomain=window.location.origin;
@@ -3212,27 +3213,37 @@ function updateLinkPartnerDisplay(){
         if(highestLinkers<1){
             highestLinkers=1;
         }
-        if(linkPartnerDisplay.textDiv==undefined){
-            linkPartnerDisplay.textDiv = document.createElement("div");
-            linkPartnerDisplay.textDiv.id = "link-partner-display-text";
-            linkPartnerDisplay.textDiv.addEventListener("wheel", function(e){            
-                e.preventDefault();
-                if(e.deltaY < 0){
-                    highestLinkers++;
-                    while(Object.keys(allLinkPartners).length>highestLinkers && allLinkPartners[highestLinkers].length==0){
-                        highestLinkers++;
+        linkPartnerDisplay.textDiv = document.getElementById("link-partner-display-text");
+
+        setTimeout(
+            function(){
+                linkPartnerDisplay.textDiv.isInScrollFunction=false
+                linkPartnerDisplay.textDiv.addEventListener(
+                    "wheel", function(e){     
+                        if(!(this.isInScrollFunction)){
+                            this.isInScrollFunction=true;
+                            e.preventDefault();
+                            if(e.deltaY < 0){
+                                highestLinkers++;
+                                while(Object.keys(allLinkPartners).length>highestLinkers && allLinkPartners[highestLinkers].length==0){
+                                    highestLinkers++;
+                                }
+                            }
+                            else if(e.deltaY > 0){
+                                highestLinkers--;
+                                while(allLinkPartners[highestLinkers].length==0){
+                                    highestLinkers--;
+                                }
+                            }
+                            updateLinkPartnerDisplay();
+                        }
                     }
-                }
-                else if(e.deltaY > 0){
-                    highestLinkers--;
-                    while(allLinkPartners[highestLinkers].length==0){
-                        highestLinkers--;
-                    }
-                }
-                updateLinkPartnerDisplay();
-            })
-            linkPartnerDisplay.appendChild(linkPartnerDisplay.textDiv);
-        }
+                )
+            }
+            ,1000
+        )
+        
+        
         linkPartnerDisplay.textDiv.innerHTML = "Link Partners(" + highestLinkers + "): ";
 
         if(linkPartnerDisplay.unitDisplays==undefined){
@@ -3258,27 +3269,35 @@ function updateLinkPartnerDisplay(){
                 else{
                     characterJsonLink = "/jsons/"+allLinkPartners[highestLinkers][i];
                 }
-                const characterJsonPromise = fetch("/dbManagement"+characterJsonLink+".json");
-                characterJsonPromise.then(
-                    async characterJsonResponse => {
-                        const characterJson= await characterJsonResponse.json()
-                        linkPartnerDisplay.unitDisplays[i].setDisplay(true);
-                        linkPartnerDisplay.unitDisplays[i].setClass(characterJson["Class"]);
-                        linkPartnerDisplay.unitDisplays[i].setType(characterJson["Type"]);
-                        linkPartnerDisplay.unitDisplays[i].setRarity(characterJson["Rarity"]);
-                        linkPartnerDisplay.unitDisplays[i].setResourceID(characterJson["Resource ID"]);
-                        linkPartnerDisplay.unitDisplays[i].setPossibleEzaLevel(characterJson["Eza Level"]);
-                        linkPartnerDisplay.unitDisplays[i].setEzaLevel(characterJson["Eza Level"]);
-                        linkPartnerDisplay.unitDisplays[i].setUrl(baseDomain+"/cards/index.html?id="+characterJson["ID"].substring(0,7)+"&SEZA="+(characterJson["Eza Level"]=="seza")+"&EZA="+(characterJson["Eza Level"]=="eza"));
-                        let linksMatch=true;
-                        for(const link of activeLinks){
-                            if(!(characterJson["Links"].includes(link))){
-                                linksMatch=false;
+                linkPartnerDisplay.unitDisplays[i].unitID=allLinkPartners[highestLinkers][i];
+                linkPartnerDisplay.unitDisplays[i].setDisplay(true);
+                try{
+                    const characterJsonPromise = fetch("/dbManagement"+characterJsonLink+".json");
+                    characterJsonPromise.then(
+                        async characterJsonResponse => {
+                            const characterJson= await characterJsonResponse.json()
+                            if(linkPartnerDisplay.unitDisplays[i].unitID.startsWith(characterJson["ID"])){
+                                linkPartnerDisplay.unitDisplays[i].setClass(characterJson["Class"]);
+                                linkPartnerDisplay.unitDisplays[i].setType(characterJson["Type"]);
+                                linkPartnerDisplay.unitDisplays[i].setRarity(characterJson["Rarity"]);
+                                linkPartnerDisplay.unitDisplays[i].setResourceID(characterJson["Resource ID"]);
+                                linkPartnerDisplay.unitDisplays[i].setPossibleEzaLevel(characterJson["Eza Level"]);
+                                linkPartnerDisplay.unitDisplays[i].setEzaLevel(characterJson["Eza Level"]);
+                                linkPartnerDisplay.unitDisplays[i].setUrl(baseDomain+"/cards/index.html?id="+characterJson["ID"].substring(0,7)+"&SEZA="+(characterJson["Eza Level"]=="seza")+"&EZA="+(characterJson["Eza Level"]=="eza"));
+                                let linksMatch=true;
+                                for(const link of activeLinks){
+                                    if(!(characterJson["Links"].includes(link))){
+                                        linksMatch=false;
+                                    }
+                                }
+                                linkPartnerDisplay.unitDisplays[i].setHighlight(linksMatch);
                             }
                         }
-                        linkPartnerDisplay.unitDisplays[i].setHighlight(linksMatch);
-                    }
-                )
+                    )
+                }
+                catch (_error){
+                    console.log(_error)
+                }
             }
             else{
                 //if there are extra unitDisplays made than is needed
