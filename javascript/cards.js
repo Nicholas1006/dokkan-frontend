@@ -1958,9 +1958,13 @@ function updatePassiveStats(){
         currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after attack","Disable Other Line",iteratingCausalityLogic,false)
         
         currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"All","Building Stat",iteratingCausalityLogic)
+        kiCircleDictionary[0].display(true);
+        kiCircleDictionary[0].updateKiFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
     }    
-    kiCircleDictionary[0].display(true);
-    kiCircleDictionary[0].updateKiFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
+    else{
+        kiCircleDictionary[0].display(true);
+        kiCircleDictionary[0].updateKiFromBuffs(activePassiveLinesToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
+    }
     attacksPerformed+=1;
 
     if(!USEPASSIVELIST){
@@ -3700,6 +3704,7 @@ function updatePassiveListWithPassiveLine(passiveLine){
         }
     )
     const passiveListContainer=document.getElementById("passive-list-container")
+    //WIP add sliders for the building stats
     if(!(passiveLine["Paragraph Title"] in passiveListContainer["Paragraph Titles"])){
         const paragraphContainer=document.createElement("div");
         paragraphContainer.id="passive-paragraph-container";
