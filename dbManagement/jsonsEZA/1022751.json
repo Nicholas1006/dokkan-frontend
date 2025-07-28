@@ -277,7 +277,7 @@
             "Type": "Single activator",
             "Brief effect description": "Damage recieved -30% after all ki collected",
             "Line description": "Damage recieved -30% after all ki collected",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "As the 1st attacker in the turn"
         },
         "9004519": {
             "ID": "9004519",
@@ -292,7 +292,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(971 || 972)",
+                "Logic": "(971||972)",
                 "Causalities": {
                     "971": {
                         "Button": {
@@ -344,7 +344,7 @@
             "Chance": "70",
             "Length": "1",
             "Condition": {
-                "Logic": "(971 || 972)",
+                "Logic": "(971||972)",
                 "Causalities": {
                     "971": {
                         "Button": {
@@ -450,7 +450,7 @@
             "Type": "Single activator",
             "Brief effect description": "ATK +100% ",
             "Line description": "ATK +100% ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "Starting from the 7 turn from the character's entry turn"
         },
         "14004519": {
             "ID": "14004519",
@@ -539,7 +539,7 @@
                 "Causalities": {
                     "977": {
                         "Button": {
-                            "Name": "Is there an enemy whose name includes Goku on this turn?"
+                            "Name": "Is there 1 or more enemies whose name includes Goku on this turn?"
                         },
                         "Paragraph Title": "\"Goku\""
                     }
@@ -549,7 +549,7 @@
             "Type": "Single activator",
             "Brief effect description": "Performs a Critical Hit ",
             "Line description": "Performs a Critical Hit ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "\"Goku\""
         }
     },
     "Max Attacks": 4,
@@ -803,7 +803,7 @@
         "Effect Description": "Greatly raises ATK temporarily and \ncauses ultimate damage to enemy",
         "Condition Description": "Can be activated when facing only 1 enemy, \nwhose Class is Super Class and \nHP is 30% or less (once only)",
         "Condition": {
-            "Logic": "(962&&964)",
+            "Logic": "(962&&964&&965)",
             "Causalities": {
                 "962": {
                     "Button": {
@@ -827,6 +827,12 @@
                         "Max": 100
                     },
                     "Paragraph Title": "When enemy health is 30% or less"
+                },
+                "965": {
+                    "Button": {
+                        "Name": "Is this unit attacking a super class enemy?"
+                    },
+                    "Paragraph Title": "When the unit is attacking a super class enemy"
                 }
             }
         },

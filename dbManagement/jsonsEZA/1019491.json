@@ -467,7 +467,7 @@
         "Effect Description": "Exchanges with another character",
         "Condition Description": "Can be activated when facing only 1 enemy, \nwhose HP is 58% or more, starting from \nthe 3rd turn from the start of battle (once only)",
         "Condition": {
-            "Logic": "(4&&476)",
+            "Logic": "(4&&476&&693)",
             "Causalities": {
                 "4": {
                     "Button": {
@@ -491,6 +491,17 @@
                         "Max": 7
                     },
                     "Paragraph Title": "When there are less than 2 enemies"
+                },
+                "693": {
+                    "Button": {
+                        "Name": "Is the enemy's health 58 % or more?"
+                    },
+                    "Slider": {
+                        "Name": "What percentage of HP does the enemy have?",
+                        "Logic": ">=58",
+                        "Max": 100
+                    },
+                    "Paragraph Title": "When enemy health is 58% or more"
                 }
             }
         },

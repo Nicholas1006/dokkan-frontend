@@ -1185,7 +1185,7 @@
         "Effect Description": "Greatly raises ATK temporarily and \ncauses ultimate damage to enemy; \nall allies' Ki +7 for 1 turn",
         "Condition Description": "Can be activated when facing only 1 enemy, \nwhose HP is 50% or less, if there are 5 or more \n\"Representatives of Universe 7\" Category allies \non the team, with 2 or more of them (self excluded) \nattacking in the same turn (once only)",
         "Condition": {
-            "Logic": "(812&&815)",
+            "Logic": "(812&&815&&476&&477)",
             "Causalities": {
                 "812": {
                     "Button": {
@@ -1210,6 +1210,29 @@
                         "Min": 0
                     },
                     "Paragraph Title": "When there are 3 or more Representatives of Universe 7 Category allies attacking on this turn"
+                },
+                "476": {
+                    "Button": {
+                        "Name": "Is there less than 2 enemies?"
+                    },
+                    "Slider": {
+                        "Name": "How many enemies are there?",
+                        "Logic": "<2",
+                        "Min": 1,
+                        "Max": 7
+                    },
+                    "Paragraph Title": "When there are less than 2 enemies"
+                },
+                "477": {
+                    "Button": {
+                        "Name": "Is the enemy's health 50 % or less?"
+                    },
+                    "Slider": {
+                        "Name": "What percentage of HP does the enemy have?",
+                        "Logic": "<=50",
+                        "Max": 100
+                    },
+                    "Paragraph Title": "When enemy health is 50% or less"
                 }
             }
         },

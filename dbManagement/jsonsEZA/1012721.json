@@ -91,7 +91,7 @@
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF +120% when attacking",
             "Line description": "ATK and DEF +120% when attacking",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When Ki is 12 or more"
         },
         "2004003": {
             "ID": "2004003",
@@ -287,7 +287,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(579&&9)",
+                "Logic": "(579&&9&&6)",
                 "Causalities": {
                     "579": {
                         "Button": {
@@ -312,13 +312,25 @@
                             "Max": 7
                         },
                         "Paragraph Title": "When there are less than 2 enemies"
+                    },
+                    "6": {
+                        "Button": {
+                            "Name": "Is HP 59 % or less on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining on this turn?",
+                            "Logic": "<=59",
+                            "Min": 0,
+                            "Max": 100
+                        },
+                        "Paragraph Title": "When HP is 59% or less"
                     }
                 }
             },
             "CausalityLogic": "{\"source\": \"579&9&6\", \"compiled\": [\"&\", 579, 9, 6]}",
             "Type": "Single activator",
             "Brief effect description": "Ki +7 ",
-            "Line description": "Ki +7  When there are less than 2 enemies",
+            "Line description": "Ki +7  Starting from the When HP is 59% or less turn from the character's entry turn and When there are less than 2 enemies",
             "Paragraph Title": "Starting from the 6 turn from the character's entry turn"
         },
         "9004003": {
@@ -334,7 +346,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(579&&9)",
+                "Logic": "(579&&9&&6)",
                 "Causalities": {
                     "579": {
                         "Button": {
@@ -359,13 +371,25 @@
                             "Max": 7
                         },
                         "Paragraph Title": "When there are less than 2 enemies"
+                    },
+                    "6": {
+                        "Button": {
+                            "Name": "Is HP 59 % or less on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining on this turn?",
+                            "Logic": "<=59",
+                            "Min": 0,
+                            "Max": 100
+                        },
+                        "Paragraph Title": "When HP is 59% or less"
                     }
                 }
             },
             "CausalityLogic": "{\"source\": \"579&9&6\", \"compiled\": [\"&\", 579, 9, 6]}",
             "Type": "Single activator",
             "Brief effect description": "ATK +59% ",
-            "Line description": "ATK +59%  When there are less than 2 enemies",
+            "Line description": "ATK +59%  Starting from the When HP is 59% or less turn from the character's entry turn and When there are less than 2 enemies",
             "Paragraph Title": "Starting from the 6 turn from the character's entry turn"
         },
         "10004003": {
@@ -381,7 +405,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(579&&9)",
+                "Logic": "(579&&9&&6)",
                 "Causalities": {
                     "579": {
                         "Button": {
@@ -406,6 +430,18 @@
                             "Max": 7
                         },
                         "Paragraph Title": "When there are less than 2 enemies"
+                    },
+                    "6": {
+                        "Button": {
+                            "Name": "Is HP 59 % or less on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining on this turn?",
+                            "Logic": "<=59",
+                            "Min": 0,
+                            "Max": 100
+                        },
+                        "Paragraph Title": "When HP is 59% or less"
                     }
                 }
             },
@@ -413,7 +449,7 @@
             "Once Only": true,
             "Type": "Single activator",
             "Brief effect description": "Performs a Critical Hit ",
-            "Line description": "Performs a Critical Hit  When there are less than 2 enemies",
+            "Line description": "Performs a Critical Hit  Starting from the When HP is 59% or less turn from the character's entry turn and When there are less than 2 enemies",
             "Paragraph Title": "Starting from the 6 turn from the character's entry turn"
         }
     },

@@ -67,7 +67,7 @@
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF +150% when attacking",
             "Line description": "ATK and DEF +150% when attacking",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When Ki is 12 or more"
         },
         "1003398": {
             "ID": "1003398",
@@ -182,7 +182,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(2218 || 2219)",
+                "Logic": "(2218||2219||2220||2221)",
                 "Causalities": {
                     "2218": {
                         "Button": {
@@ -195,6 +195,18 @@
                             "Name": "Is the target enemy in \"DEF down\" status on this turn?"
                         },
                         "Paragraph Title": "When the target enemy is in \"DEF down\" status"
+                    },
+                    "2220": {
+                        "Button": {
+                            "Name": "Is the target enemy stunned on this turn?"
+                        },
+                        "Paragraph Title": "When the target enemy is stunned"
+                    },
+                    "2221": {
+                        "Button": {
+                            "Name": "Is the target enemy sealed on this turn?"
+                        },
+                        "Paragraph Title": "When the target enemy is sealed"
                     }
                 }
             },
@@ -202,7 +214,7 @@
             "Type": "Single activator",
             "Brief effect description": "Attacks effective against all Types when attacking",
             "Line description": "Attacks effective against all Types when attacking",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When the target enemy is in \"ATK down\" status"
         }
     },
     "Max Attacks": 3,

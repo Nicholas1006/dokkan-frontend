@@ -108,7 +108,7 @@
             "Type": "Single activator",
             "Brief effect description": "ATK +50% when attacking",
             "Line description": "ATK +50% when attacking",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When Ki is 18 or more"
         },
         "3003224": {
             "ID": "3003224",
@@ -123,7 +123,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(390 || (389&&396))",
+                "Logic": "(390||(389&&396))",
                 "Causalities": {
                     "390": {
                         "Button": {
@@ -167,7 +167,7 @@
             "Type": "Single activator",
             "Brief effect description": "Ki +1 ",
             "Line description": "Ki +1  When there are 2 or more Pure Saiyans Category allies or When there are 1 or more Pure Saiyans Category allies ",
-            "Paragraph Title": "When there are 1 or more Hybrid Saiyans Category allies "
+            "Paragraph Title": "When there are 2 or more Pure Saiyans Category allies "
         },
         "4003224": {
             "ID": "4003224",
@@ -182,7 +182,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(391 || (390&&396))",
+                "Logic": "(391||(390&&396)||(389&&397))",
                 "Causalities": {
                     "391": {
                         "Button": {
@@ -219,14 +219,38 @@
                             "Min": 0
                         },
                         "Paragraph Title": "When there are 1 or more Hybrid Saiyans Category allies "
+                    },
+                    "389": {
+                        "Button": {
+                            "Name": "Are there 1 or more Pure Saiyans category allies  on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Pure Saiyans category allies on this turn?",
+                            "Logic": ">=1",
+                            "Max": 7,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 1 or more Pure Saiyans Category allies "
+                    },
+                    "397": {
+                        "Button": {
+                            "Name": "Are there 2 or more Hybrid Saiyans category allies  on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Hybrid Saiyans category allies on this turn?",
+                            "Logic": ">=2",
+                            "Max": 7,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 2 or more Hybrid Saiyans Category allies "
                     }
                 }
             },
             "CausalityLogic": "{\"source\": \"391|(390&396)|(389&397)\", \"compiled\": [\"|\", 391, [\"&\", 390, 396], [\"&\", 389, 397]]}",
             "Type": "Single activator",
             "Brief effect description": "Ki +1 ",
-            "Line description": "Ki +1  When there are 3 or more Pure Saiyans Category allies or When there are 2 or more Pure Saiyans Category allies ",
-            "Paragraph Title": "When there are 1 or more Hybrid Saiyans Category allies "
+            "Line description": "Ki +1  When there are 3 or more Pure Saiyans Category allies or When there are 2 or more Pure Saiyans Category allies and When there are 1 or more Hybrid Saiyans Category allies or When there are 1 or more Pure Saiyans Category allies ",
+            "Paragraph Title": "When there are 2 or more Pure Saiyans Category allies "
         },
         "5003224": {
             "ID": "5003224",
@@ -241,7 +265,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(392 || (391&&396))",
+                "Logic": "(392||(391&&396)||(390&&397)||(389&&398))",
                 "Causalities": {
                     "392": {
                         "Button": {
@@ -278,14 +302,62 @@
                             "Min": 0
                         },
                         "Paragraph Title": "When there are 1 or more Hybrid Saiyans Category allies "
+                    },
+                    "390": {
+                        "Button": {
+                            "Name": "Are there 2 or more Pure Saiyans category allies  on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Pure Saiyans category allies on this turn?",
+                            "Logic": ">=2",
+                            "Max": 7,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 2 or more Pure Saiyans Category allies "
+                    },
+                    "397": {
+                        "Button": {
+                            "Name": "Are there 2 or more Hybrid Saiyans category allies  on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Hybrid Saiyans category allies on this turn?",
+                            "Logic": ">=2",
+                            "Max": 7,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 2 or more Hybrid Saiyans Category allies "
+                    },
+                    "389": {
+                        "Button": {
+                            "Name": "Are there 1 or more Pure Saiyans category allies  on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Pure Saiyans category allies on this turn?",
+                            "Logic": ">=1",
+                            "Max": 7,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 1 or more Pure Saiyans Category allies "
+                    },
+                    "398": {
+                        "Button": {
+                            "Name": "Are there 3 or more Hybrid Saiyans category allies  on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Hybrid Saiyans category allies on this turn?",
+                            "Logic": ">=3",
+                            "Max": 7,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 3 or more Hybrid Saiyans Category allies "
                     }
                 }
             },
             "CausalityLogic": "{\"source\": \"392|(391&396)|(390&397)|(389&398)\", \"compiled\": [\"|\", 392, [\"&\", 391, 396], [\"&\", 390, 397], [\"&\", 389, 398]]}",
             "Type": "Single activator",
             "Brief effect description": "Ki +1 ",
-            "Line description": "Ki +1  When there are 4 or more Pure Saiyans Category allies or When there are 3 or more Pure Saiyans Category allies ",
-            "Paragraph Title": "When there are 1 or more Hybrid Saiyans Category allies "
+            "Line description": "Ki +1  When there are 4 or more Pure Saiyans Category allies or When there are 3 or more Pure Saiyans Category allies and When there are 1 or more Hybrid Saiyans Category allies or When there are 2 or more Pure Saiyans Category allies and When there are 2 or more Hybrid Saiyans Category allies or When there are 1 or more Pure Saiyans Category allies ",
+            "Paragraph Title": "When there are 2 or more Pure Saiyans Category allies "
         },
         "6003224": {
             "ID": "6003224",
@@ -300,7 +372,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(393 || (392&&396))",
+                "Logic": "(393||(392&&396)||(391&&397)||(390&&398)||(389&&399))",
                 "Causalities": {
                     "393": {
                         "Button": {
@@ -337,14 +409,86 @@
                             "Min": 0
                         },
                         "Paragraph Title": "When there are 1 or more Hybrid Saiyans Category allies "
+                    },
+                    "391": {
+                        "Button": {
+                            "Name": "Are there 3 or more Pure Saiyans category allies  on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Pure Saiyans category allies on this turn?",
+                            "Logic": ">=3",
+                            "Max": 7,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 3 or more Pure Saiyans Category allies "
+                    },
+                    "397": {
+                        "Button": {
+                            "Name": "Are there 2 or more Hybrid Saiyans category allies  on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Hybrid Saiyans category allies on this turn?",
+                            "Logic": ">=2",
+                            "Max": 7,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 2 or more Hybrid Saiyans Category allies "
+                    },
+                    "390": {
+                        "Button": {
+                            "Name": "Are there 2 or more Pure Saiyans category allies  on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Pure Saiyans category allies on this turn?",
+                            "Logic": ">=2",
+                            "Max": 7,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 2 or more Pure Saiyans Category allies "
+                    },
+                    "398": {
+                        "Button": {
+                            "Name": "Are there 3 or more Hybrid Saiyans category allies  on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Hybrid Saiyans category allies on this turn?",
+                            "Logic": ">=3",
+                            "Max": 7,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 3 or more Hybrid Saiyans Category allies "
+                    },
+                    "389": {
+                        "Button": {
+                            "Name": "Are there 1 or more Pure Saiyans category allies  on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Pure Saiyans category allies on this turn?",
+                            "Logic": ">=1",
+                            "Max": 7,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 1 or more Pure Saiyans Category allies "
+                    },
+                    "399": {
+                        "Button": {
+                            "Name": "Are there 4 or more Hybrid Saiyans category allies  on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Hybrid Saiyans category allies on this turn?",
+                            "Logic": ">=4",
+                            "Max": 7,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 4 or more Hybrid Saiyans Category allies "
                     }
                 }
             },
             "CausalityLogic": "{\"source\": \"393|(392&396)|(391&397)|(390&398)|(389&399)\", \"compiled\": [\"|\", 393, [\"&\", 392, 396], [\"&\", 391, 397], [\"&\", 390, 398], [\"&\", 389, 399]]}",
             "Type": "Single activator",
             "Brief effect description": "Ki +1 ",
-            "Line description": "Ki +1  When there are 5 or more Pure Saiyans Category allies or When there are 4 or more Pure Saiyans Category allies ",
-            "Paragraph Title": "When there are 1 or more Hybrid Saiyans Category allies "
+            "Line description": "Ki +1  When there are 5 or more Pure Saiyans Category allies or When there are 4 or more Pure Saiyans Category allies and When there are 1 or more Hybrid Saiyans Category allies or When there are 3 or more Pure Saiyans Category allies and When there are 2 or more Hybrid Saiyans Category allies or When there are 2 or more Pure Saiyans Category allies and When there are 3 or more Hybrid Saiyans Category allies or When there are 1 or more Pure Saiyans Category allies ",
+            "Paragraph Title": "When there are 2 or more Pure Saiyans Category allies "
         },
         "7003224": {
             "ID": "7003224",
@@ -359,7 +503,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(394 || (393&&396))",
+                "Logic": "(394||(393&&396)||(392&&397)||(391&&398)||(390&&399)||(389&&400))",
                 "Causalities": {
                     "394": {
                         "Button": {
@@ -396,14 +540,110 @@
                             "Min": 0
                         },
                         "Paragraph Title": "When there are 1 or more Hybrid Saiyans Category allies "
+                    },
+                    "392": {
+                        "Button": {
+                            "Name": "Are there 4 or more Pure Saiyans category allies  on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Pure Saiyans category allies on this turn?",
+                            "Logic": ">=4",
+                            "Max": 7,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 4 or more Pure Saiyans Category allies "
+                    },
+                    "397": {
+                        "Button": {
+                            "Name": "Are there 2 or more Hybrid Saiyans category allies  on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Hybrid Saiyans category allies on this turn?",
+                            "Logic": ">=2",
+                            "Max": 7,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 2 or more Hybrid Saiyans Category allies "
+                    },
+                    "391": {
+                        "Button": {
+                            "Name": "Are there 3 or more Pure Saiyans category allies  on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Pure Saiyans category allies on this turn?",
+                            "Logic": ">=3",
+                            "Max": 7,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 3 or more Pure Saiyans Category allies "
+                    },
+                    "398": {
+                        "Button": {
+                            "Name": "Are there 3 or more Hybrid Saiyans category allies  on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Hybrid Saiyans category allies on this turn?",
+                            "Logic": ">=3",
+                            "Max": 7,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 3 or more Hybrid Saiyans Category allies "
+                    },
+                    "390": {
+                        "Button": {
+                            "Name": "Are there 2 or more Pure Saiyans category allies  on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Pure Saiyans category allies on this turn?",
+                            "Logic": ">=2",
+                            "Max": 7,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 2 or more Pure Saiyans Category allies "
+                    },
+                    "399": {
+                        "Button": {
+                            "Name": "Are there 4 or more Hybrid Saiyans category allies  on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Hybrid Saiyans category allies on this turn?",
+                            "Logic": ">=4",
+                            "Max": 7,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 4 or more Hybrid Saiyans Category allies "
+                    },
+                    "389": {
+                        "Button": {
+                            "Name": "Are there 1 or more Pure Saiyans category allies  on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Pure Saiyans category allies on this turn?",
+                            "Logic": ">=1",
+                            "Max": 7,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 1 or more Pure Saiyans Category allies "
+                    },
+                    "400": {
+                        "Button": {
+                            "Name": "Are there 5 or more Hybrid Saiyans category allies  on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Hybrid Saiyans category allies on this turn?",
+                            "Logic": ">=5",
+                            "Max": 7,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 5 or more Hybrid Saiyans Category allies "
                     }
                 }
             },
             "CausalityLogic": "{\"source\": \"394|(393&396)|(392&397)|(391&398)|(390&399)|(389&400)\", \"compiled\": [\"|\", 394, [\"&\", 393, 396], [\"&\", 392, 397], [\"&\", 391, 398], [\"&\", 390, 399], [\"&\", 389, 400]]}",
             "Type": "Single activator",
             "Brief effect description": "Ki +1 ",
-            "Line description": "Ki +1  When there are 6 or more Pure Saiyans Category allies or When there are 5 or more Pure Saiyans Category allies ",
-            "Paragraph Title": "When there are 1 or more Hybrid Saiyans Category allies "
+            "Line description": "Ki +1  When there are 6 or more Pure Saiyans Category allies or When there are 5 or more Pure Saiyans Category allies and When there are 1 or more Hybrid Saiyans Category allies or When there are 4 or more Pure Saiyans Category allies and When there are 2 or more Hybrid Saiyans Category allies or When there are 3 or more Pure Saiyans Category allies and When there are 3 or more Hybrid Saiyans Category allies or When there are 2 or more Pure Saiyans Category allies and When there are 4 or more Hybrid Saiyans Category allies or When there are 1 or more Pure Saiyans Category allies ",
+            "Paragraph Title": "When there are 2 or more Pure Saiyans Category allies "
         },
         "8003224": {
             "ID": "8003224",
@@ -419,7 +659,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(390 || (389&&396))",
+                "Logic": "(390||(389&&396))",
                 "Causalities": {
                     "390": {
                         "Button": {
@@ -463,7 +703,7 @@
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF +11% ",
             "Line description": "ATK and DEF +11%  When there are 2 or more Pure Saiyans Category allies or When there are 1 or more Pure Saiyans Category allies ",
-            "Paragraph Title": "When there are 1 or more Hybrid Saiyans Category allies "
+            "Paragraph Title": "When there are 2 or more Pure Saiyans Category allies "
         },
         "9003224": {
             "ID": "9003224",
@@ -479,7 +719,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(391 || (390&&396))",
+                "Logic": "(391||(390&&396)||(389&&397))",
                 "Causalities": {
                     "391": {
                         "Button": {
@@ -516,14 +756,38 @@
                             "Min": 0
                         },
                         "Paragraph Title": "When there are 1 or more Hybrid Saiyans Category allies "
+                    },
+                    "389": {
+                        "Button": {
+                            "Name": "Are there 1 or more Pure Saiyans category allies  on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Pure Saiyans category allies on this turn?",
+                            "Logic": ">=1",
+                            "Max": 7,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 1 or more Pure Saiyans Category allies "
+                    },
+                    "397": {
+                        "Button": {
+                            "Name": "Are there 2 or more Hybrid Saiyans category allies  on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Hybrid Saiyans category allies on this turn?",
+                            "Logic": ">=2",
+                            "Max": 7,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 2 or more Hybrid Saiyans Category allies "
                     }
                 }
             },
             "CausalityLogic": "{\"source\": \"391|(390&396)|(389&397)\", \"compiled\": [\"|\", 391, [\"&\", 390, 396], [\"&\", 389, 397]]}",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF +11% ",
-            "Line description": "ATK and DEF +11%  When there are 3 or more Pure Saiyans Category allies or When there are 2 or more Pure Saiyans Category allies ",
-            "Paragraph Title": "When there are 1 or more Hybrid Saiyans Category allies "
+            "Line description": "ATK and DEF +11%  When there are 3 or more Pure Saiyans Category allies or When there are 2 or more Pure Saiyans Category allies and When there are 1 or more Hybrid Saiyans Category allies or When there are 1 or more Pure Saiyans Category allies ",
+            "Paragraph Title": "When there are 2 or more Pure Saiyans Category allies "
         },
         "10003224": {
             "ID": "10003224",
@@ -539,7 +803,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(392 || (391&&396))",
+                "Logic": "(392||(391&&396)||(390&&397)||(389&&398))",
                 "Causalities": {
                     "392": {
                         "Button": {
@@ -576,14 +840,62 @@
                             "Min": 0
                         },
                         "Paragraph Title": "When there are 1 or more Hybrid Saiyans Category allies "
+                    },
+                    "390": {
+                        "Button": {
+                            "Name": "Are there 2 or more Pure Saiyans category allies  on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Pure Saiyans category allies on this turn?",
+                            "Logic": ">=2",
+                            "Max": 7,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 2 or more Pure Saiyans Category allies "
+                    },
+                    "397": {
+                        "Button": {
+                            "Name": "Are there 2 or more Hybrid Saiyans category allies  on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Hybrid Saiyans category allies on this turn?",
+                            "Logic": ">=2",
+                            "Max": 7,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 2 or more Hybrid Saiyans Category allies "
+                    },
+                    "389": {
+                        "Button": {
+                            "Name": "Are there 1 or more Pure Saiyans category allies  on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Pure Saiyans category allies on this turn?",
+                            "Logic": ">=1",
+                            "Max": 7,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 1 or more Pure Saiyans Category allies "
+                    },
+                    "398": {
+                        "Button": {
+                            "Name": "Are there 3 or more Hybrid Saiyans category allies  on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Hybrid Saiyans category allies on this turn?",
+                            "Logic": ">=3",
+                            "Max": 7,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 3 or more Hybrid Saiyans Category allies "
                     }
                 }
             },
             "CausalityLogic": "{\"source\": \"392|(391&396)|(390&397)|(389&398)\", \"compiled\": [\"|\", 392, [\"&\", 391, 396], [\"&\", 390, 397], [\"&\", 389, 398]]}",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF +11% ",
-            "Line description": "ATK and DEF +11%  When there are 4 or more Pure Saiyans Category allies or When there are 3 or more Pure Saiyans Category allies ",
-            "Paragraph Title": "When there are 1 or more Hybrid Saiyans Category allies "
+            "Line description": "ATK and DEF +11%  When there are 4 or more Pure Saiyans Category allies or When there are 3 or more Pure Saiyans Category allies and When there are 1 or more Hybrid Saiyans Category allies or When there are 2 or more Pure Saiyans Category allies and When there are 2 or more Hybrid Saiyans Category allies or When there are 1 or more Pure Saiyans Category allies ",
+            "Paragraph Title": "When there are 2 or more Pure Saiyans Category allies "
         },
         "11003224": {
             "ID": "11003224",
@@ -599,7 +911,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(393 || (392&&396))",
+                "Logic": "(393||(392&&396)||(391&&397)||(390&&398)||(389&&399))",
                 "Causalities": {
                     "393": {
                         "Button": {
@@ -636,14 +948,86 @@
                             "Min": 0
                         },
                         "Paragraph Title": "When there are 1 or more Hybrid Saiyans Category allies "
+                    },
+                    "391": {
+                        "Button": {
+                            "Name": "Are there 3 or more Pure Saiyans category allies  on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Pure Saiyans category allies on this turn?",
+                            "Logic": ">=3",
+                            "Max": 7,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 3 or more Pure Saiyans Category allies "
+                    },
+                    "397": {
+                        "Button": {
+                            "Name": "Are there 2 or more Hybrid Saiyans category allies  on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Hybrid Saiyans category allies on this turn?",
+                            "Logic": ">=2",
+                            "Max": 7,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 2 or more Hybrid Saiyans Category allies "
+                    },
+                    "390": {
+                        "Button": {
+                            "Name": "Are there 2 or more Pure Saiyans category allies  on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Pure Saiyans category allies on this turn?",
+                            "Logic": ">=2",
+                            "Max": 7,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 2 or more Pure Saiyans Category allies "
+                    },
+                    "398": {
+                        "Button": {
+                            "Name": "Are there 3 or more Hybrid Saiyans category allies  on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Hybrid Saiyans category allies on this turn?",
+                            "Logic": ">=3",
+                            "Max": 7,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 3 or more Hybrid Saiyans Category allies "
+                    },
+                    "389": {
+                        "Button": {
+                            "Name": "Are there 1 or more Pure Saiyans category allies  on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Pure Saiyans category allies on this turn?",
+                            "Logic": ">=1",
+                            "Max": 7,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 1 or more Pure Saiyans Category allies "
+                    },
+                    "399": {
+                        "Button": {
+                            "Name": "Are there 4 or more Hybrid Saiyans category allies  on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Hybrid Saiyans category allies on this turn?",
+                            "Logic": ">=4",
+                            "Max": 7,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 4 or more Hybrid Saiyans Category allies "
                     }
                 }
             },
             "CausalityLogic": "{\"source\": \"393|(392&396)|(391&397)|(390&398)|(389&399)\", \"compiled\": [\"|\", 393, [\"&\", 392, 396], [\"&\", 391, 397], [\"&\", 390, 398], [\"&\", 389, 399]]}",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF +11% ",
-            "Line description": "ATK and DEF +11%  When there are 5 or more Pure Saiyans Category allies or When there are 4 or more Pure Saiyans Category allies ",
-            "Paragraph Title": "When there are 1 or more Hybrid Saiyans Category allies "
+            "Line description": "ATK and DEF +11%  When there are 5 or more Pure Saiyans Category allies or When there are 4 or more Pure Saiyans Category allies and When there are 1 or more Hybrid Saiyans Category allies or When there are 3 or more Pure Saiyans Category allies and When there are 2 or more Hybrid Saiyans Category allies or When there are 2 or more Pure Saiyans Category allies and When there are 3 or more Hybrid Saiyans Category allies or When there are 1 or more Pure Saiyans Category allies ",
+            "Paragraph Title": "When there are 2 or more Pure Saiyans Category allies "
         },
         "12003224": {
             "ID": "12003224",
@@ -659,7 +1043,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(394 || (393&&396))",
+                "Logic": "(394||(393&&396)||(392&&397)||(391&&398)||(390&&399)||(389&&400))",
                 "Causalities": {
                     "394": {
                         "Button": {
@@ -696,14 +1080,110 @@
                             "Min": 0
                         },
                         "Paragraph Title": "When there are 1 or more Hybrid Saiyans Category allies "
+                    },
+                    "392": {
+                        "Button": {
+                            "Name": "Are there 4 or more Pure Saiyans category allies  on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Pure Saiyans category allies on this turn?",
+                            "Logic": ">=4",
+                            "Max": 7,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 4 or more Pure Saiyans Category allies "
+                    },
+                    "397": {
+                        "Button": {
+                            "Name": "Are there 2 or more Hybrid Saiyans category allies  on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Hybrid Saiyans category allies on this turn?",
+                            "Logic": ">=2",
+                            "Max": 7,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 2 or more Hybrid Saiyans Category allies "
+                    },
+                    "391": {
+                        "Button": {
+                            "Name": "Are there 3 or more Pure Saiyans category allies  on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Pure Saiyans category allies on this turn?",
+                            "Logic": ">=3",
+                            "Max": 7,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 3 or more Pure Saiyans Category allies "
+                    },
+                    "398": {
+                        "Button": {
+                            "Name": "Are there 3 or more Hybrid Saiyans category allies  on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Hybrid Saiyans category allies on this turn?",
+                            "Logic": ">=3",
+                            "Max": 7,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 3 or more Hybrid Saiyans Category allies "
+                    },
+                    "390": {
+                        "Button": {
+                            "Name": "Are there 2 or more Pure Saiyans category allies  on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Pure Saiyans category allies on this turn?",
+                            "Logic": ">=2",
+                            "Max": 7,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 2 or more Pure Saiyans Category allies "
+                    },
+                    "399": {
+                        "Button": {
+                            "Name": "Are there 4 or more Hybrid Saiyans category allies  on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Hybrid Saiyans category allies on this turn?",
+                            "Logic": ">=4",
+                            "Max": 7,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 4 or more Hybrid Saiyans Category allies "
+                    },
+                    "389": {
+                        "Button": {
+                            "Name": "Are there 1 or more Pure Saiyans category allies  on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Pure Saiyans category allies on this turn?",
+                            "Logic": ">=1",
+                            "Max": 7,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 1 or more Pure Saiyans Category allies "
+                    },
+                    "400": {
+                        "Button": {
+                            "Name": "Are there 5 or more Hybrid Saiyans category allies  on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Hybrid Saiyans category allies on this turn?",
+                            "Logic": ">=5",
+                            "Max": 7,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 5 or more Hybrid Saiyans Category allies "
                     }
                 }
             },
             "CausalityLogic": "{\"source\": \"394|(393&396)|(392&397)|(391&398)|(390&399)|(389&400)\", \"compiled\": [\"|\", 394, [\"&\", 393, 396], [\"&\", 392, 397], [\"&\", 391, 398], [\"&\", 390, 399], [\"&\", 389, 400]]}",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF +11% ",
-            "Line description": "ATK and DEF +11%  When there are 6 or more Pure Saiyans Category allies or When there are 5 or more Pure Saiyans Category allies ",
-            "Paragraph Title": "When there are 1 or more Hybrid Saiyans Category allies "
+            "Line description": "ATK and DEF +11%  When there are 6 or more Pure Saiyans Category allies or When there are 5 or more Pure Saiyans Category allies and When there are 1 or more Hybrid Saiyans Category allies or When there are 4 or more Pure Saiyans Category allies and When there are 2 or more Hybrid Saiyans Category allies or When there are 3 or more Pure Saiyans Category allies and When there are 3 or more Hybrid Saiyans Category allies or When there are 2 or more Pure Saiyans Category allies and When there are 4 or more Hybrid Saiyans Category allies or When there are 1 or more Pure Saiyans Category allies ",
+            "Paragraph Title": "When there are 2 or more Pure Saiyans Category allies "
         },
         "13003224": {
             "ID": "13003224",

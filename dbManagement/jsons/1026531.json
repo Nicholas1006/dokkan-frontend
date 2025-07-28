@@ -125,7 +125,7 @@
             "Type": "Single activator",
             "Brief effect description": "Nullifies enemy attack right before being hit",
             "Line description": "Nullifies enemy attack right before being hit",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When this character has been hit by a ki blast super attack?"
         },
         "4003451": {
             "ID": "4003451",
@@ -270,7 +270,7 @@
             "Type": "Single activator",
             "Brief effect description": "Attacks effective against all Types ",
             "Line description": "Attacks effective against all Types ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When there are less than 2 enemies"
         },
         "10003451": {
             "ID": "10003451",
@@ -322,7 +322,7 @@
             "Type": "Single activator",
             "Brief effect description": "Performs an additional attack with a 70% chance of becoming a super attack right before being hit",
             "Line description": "Performs an additional attack with a 70% chance of becoming a super attack right before being hit",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "After guard is activated"
         },
         "12003451": {
             "ID": "12003451",
@@ -1331,7 +1331,7 @@
         "ID": "8",
         "Exec limit": "1",
         "Condition": {
-            "Logic": "(3206&&3207)",
+            "Logic": "(3206&&3207&&579&&6)",
             "Causalities": {
                 "3206": {
                     "Button": {
@@ -1344,6 +1344,30 @@
                         "Name": "Has this character or an ally's revival skill been activated?"
                     },
                     "Paragraph Title": "When this character or an ally's revival skill has been activated"
+                },
+                "579": {
+                    "Button": {
+                        "Name": "Is it on or after the first 6 turns from this characters entry turn?"
+                    },
+                    "Slider": {
+                        "Name": "How many turns is it since entry turn?",
+                        "Logic": ">=6",
+                        "Min": 0,
+                        "Max": 6
+                    },
+                    "Paragraph Title": "Starting from the 6 turn from the character's entry turn"
+                },
+                "6": {
+                    "Button": {
+                        "Name": "Is HP 59 % or less?"
+                    },
+                    "Slider": {
+                        "Name": "What percentage of HP is remaining?",
+                        "Logic": "<=59",
+                        "Min": 0,
+                        "Max": 100
+                    },
+                    "Paragraph Title": "When HP is 59% or less"
                 }
             }
         },

@@ -87,7 +87,7 @@
             "Type": "Single activator",
             "Brief effect description": "Randomly changes Ki Spheres of a certain Type(AGL excluded) to AGL Ki Spheres ",
             "Line description": "Randomly changes Ki Spheres of a certain Type(AGL excluded) to AGL Ki Spheres ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "For 4 turns from the chraracter's entry turn"
         },
         "1003116": {
             "ID": "1003116",
@@ -221,7 +221,7 @@
             "Type": "Single activator",
             "Brief effect description": "Randomly changes Ki Spheres of a certain Type(AGL excluded) to Rainbow Ki Spheres ",
             "Line description": "Randomly changes Ki Spheres of a certain Type(AGL excluded) to Rainbow Ki Spheres ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When there are less than 2 enemies"
         },
         "5003116": {
             "ID": "5003116",
@@ -260,7 +260,7 @@
             "Type": "Single activator",
             "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking",
             "Line description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When there are 2 or more enemies"
         },
         "6003116": {
             "ID": "6003116",
@@ -366,16 +366,16 @@
                     },
                     "350": {
                         "Button": {
-                            "Name": "Is there an ally attacking on this turn whose name includes Super Saiyan Goku?"
+                            "Name": "Is there 1 or more allies attacking on this turn whose name includes Super Saiyan Goku?"
                         },
-                        "Paragraph Title": "When there is an ally whose name includes \"Super Saiyan Goku\" attacking in the same turn "
+                        "Paragraph Title": "When there are 1or more allies whose name includes \"Super Saiyan Goku\" attacking in the same turn "
                     }
                 }
             },
             "CausalityLogic": "{\"source\": \"204&350\", \"compiled\": [\"&\", 204, 350]}",
             "Type": "Single activator",
             "Brief effect description": "ATK +59% when attacking",
-            "Line description": "ATK +59% when attacking When there is an ally whose name includes \"Super Saiyan Goku\" attacking in the same turn ",
+            "Line description": "ATK +59% when attacking When Ki is 18 or more",
             "Paragraph Title": "When Ki is 18 or more"
         },
         "9003116": {
@@ -395,7 +395,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(204&&350)",
+                "Logic": "(204&&350&&2057)",
                 "Causalities": {
                     "204": {
                         "Button": {
@@ -411,16 +411,28 @@
                     },
                     "350": {
                         "Button": {
-                            "Name": "Is there an ally attacking on this turn whose name includes Super Saiyan Goku?"
+                            "Name": "Is there 1 or more allies attacking on this turn whose name includes Super Saiyan Goku?"
                         },
-                        "Paragraph Title": "When there is an ally whose name includes \"Super Saiyan Goku\" attacking in the same turn "
+                        "Paragraph Title": "When there are 1or more allies whose name includes \"Super Saiyan Goku\" attacking in the same turn "
+                    },
+                    "2057": {
+                        "Button": {
+                            "Name": "Is HP 59 % or more on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining on this turn?",
+                            "Logic": ">=59",
+                            "Min": 0,
+                            "Max": 100
+                        },
+                        "Paragraph Title": "When HP is 59% or more"
                     }
                 }
             },
             "CausalityLogic": "{\"source\": \"204&350&2057\", \"compiled\": [\"&\", 204, 350, 2057]}",
             "Type": "Single activator",
             "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking",
-            "Line description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking When there is an ally whose name includes \"Super Saiyan Goku\" attacking in the same turn ",
+            "Line description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking When Ki is 18 or more and When there are 1or more allies whose name includes \"Super Saiyan Goku\" attacking in the same turn ",
             "Paragraph Title": "When Ki is 18 or more"
         }
     },

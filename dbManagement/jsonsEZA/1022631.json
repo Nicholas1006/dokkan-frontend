@@ -157,7 +157,7 @@
             "Type": "Single activator",
             "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack after being hit",
             "Line description": "Performs an additional attack with a 100% chance of becoming a super attack after being hit",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "After recieving an attack"
         },
         "5004518": {
             "ID": "5004518",
@@ -320,7 +320,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(971 || 972)",
+                "Logic": "(971||972)",
                 "Causalities": {
                     "971": {
                         "Button": {
@@ -371,7 +371,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(971 || 972)",
+                "Logic": "(971||972)",
                 "Causalities": {
                     "971": {
                         "Button": {
@@ -511,7 +511,7 @@
                 "Causalities": {
                     "975": {
                         "Button": {
-                            "Name": "Is there an enemy whose name includes Frieza on this turn?"
+                            "Name": "Is there 1 or more enemies whose name includes Frieza on this turn?"
                         },
                         "Paragraph Title": "\"Frieza\""
                     }
@@ -521,7 +521,7 @@
             "Type": "Single activator",
             "Brief effect description": "Performs a Critical Hit ",
             "Line description": "Performs a Critical Hit ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "\"Frieza\""
         }
     },
     "Max Attacks": 4,
@@ -775,7 +775,7 @@
         "Effect Description": "Greatly raises ATK temporarily and \ncauses ultimate damage to enemy",
         "Condition Description": "Can be activated when facing only 1 enemy, \nwhose Class is Extreme Class and \nHP is 30% or less (once only)",
         "Condition": {
-            "Logic": "(962&&963)",
+            "Logic": "(962&&963&&964)",
             "Causalities": {
                 "962": {
                     "Button": {
@@ -794,6 +794,17 @@
                         "Name": "Is this unit attacking an extreme class enemy?"
                     },
                     "Paragraph Title": "When the unit is attacking an extreme class enemy"
+                },
+                "964": {
+                    "Button": {
+                        "Name": "Is the enemy's health 30 % or less?"
+                    },
+                    "Slider": {
+                        "Name": "What percentage of HP does the enemy have?",
+                        "Logic": "<=30",
+                        "Max": 100
+                    },
+                    "Paragraph Title": "When enemy health is 30% or less"
                 }
             }
         },

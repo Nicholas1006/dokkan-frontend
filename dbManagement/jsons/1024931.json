@@ -84,7 +84,7 @@
             "Type": "Single activator",
             "Brief effect description": "Heals +10% ",
             "Line description": "Heals +10% ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When HP is 50% or less"
         },
         "2002969": {
             "ID": "2002969",
@@ -280,16 +280,16 @@
                     },
                     "1753": {
                         "Button": {
-                            "Name": "Is there an ally attacking on this turn whose name includes Metal Cooler?"
+                            "Name": "Is there 2 or more allies attacking on this turn whose name includes Metal Cooler?"
                         },
-                        "Paragraph Title": "When there is an ally whose name includes \"Metal Cooler\" attacking in the same turn "
+                        "Paragraph Title": "When there are 2or more allies whose name includes \"Metal Cooler\" attacking in the same turn "
                     }
                 }
             },
             "CausalityLogic": "{\"source\": \"2739&1753\", \"compiled\": [\"&\", 2739, 1753]}",
             "Type": "Single activator",
             "Brief effect description": "Heals +5% at the end of turn",
-            "Line description": "Heals +5% at the end of turn When there is an ally whose name includes \"Metal Cooler\" attacking in the same turn ",
+            "Line description": "Heals +5% at the end of turn When this character has been hit on this turn",
             "Paragraph Title": "When this character has been hit on this turn"
         },
         "10002969": {
@@ -323,7 +323,7 @@
             "Type": "Single activator",
             "Brief effect description": "Nullifies enemy attack right before being hit",
             "Line description": "Nullifies enemy attack right before being hit",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When this character has been hit by an unarmed super attack?"
         },
         "11002969": {
             "ID": "11002969",
@@ -1343,7 +1343,7 @@
         "Effect Description": "Greatly raises ATK temporarily, \ncauses ultimate damage to enemy \nand recovers 30% HP",
         "Condition Description": "Can be activated starting from the 5th turn \nfrom the start of battle if the character \nreceives an attack 7 or more times in battle, \nor after the Revival Skill is activated (once only)",
         "Condition": {
-            "Logic": "((1754&&1755) || 1756)",
+            "Logic": "((1754&&1755)||1756)",
             "Causalities": {
                 "1754": {
                     "Button": {

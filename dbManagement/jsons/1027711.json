@@ -145,7 +145,7 @@
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF +150% when attacking",
             "Line description": "ATK and DEF +150% when attacking",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When Ki is 12 or more"
         },
         "5003918": {
             "ID": "5003918",
@@ -161,7 +161,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(2888 || 2889)",
+                "Logic": "(2888||2889||2890||2891)",
                 "Causalities": {
                     "2888": {
                         "Button": {
@@ -186,6 +186,30 @@
                             "Min": 0
                         },
                         "Paragraph Title": "When there are 1 or more Crossover Category enemies "
+                    },
+                    "2890": {
+                        "Button": {
+                            "Name": "Are there 2 or more Giant Ape Power category allies attacking on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Giant Ape Power category allies attacking on this turn",
+                            "Logic": ">=2",
+                            "Max": 3,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 2 or more Giant Ape Power Category allies attacking on this turn"
+                    },
+                    "2891": {
+                        "Button": {
+                            "Name": "Are there 2 or more Crossover category allies attacking on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Crossover category allies attacking on this turn",
+                            "Logic": ">=2",
+                            "Max": 3,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 2 or more Crossover Category allies attacking on this turn"
                     }
                 }
             },
@@ -213,7 +237,7 @@
             "Chance": "70",
             "Length": "1",
             "Condition": {
-                "Logic": "(2888 || 2889)",
+                "Logic": "(2888||2889||2890||2891)",
                 "Causalities": {
                     "2888": {
                         "Button": {
@@ -238,6 +262,30 @@
                             "Min": 0
                         },
                         "Paragraph Title": "When there are 1 or more Crossover Category enemies "
+                    },
+                    "2890": {
+                        "Button": {
+                            "Name": "Are there 2 or more Giant Ape Power category allies attacking on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Giant Ape Power category allies attacking on this turn",
+                            "Logic": ">=2",
+                            "Max": 3,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 2 or more Giant Ape Power Category allies attacking on this turn"
+                    },
+                    "2891": {
+                        "Button": {
+                            "Name": "Are there 2 or more Crossover category allies attacking on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Crossover category allies attacking on this turn",
+                            "Logic": ">=2",
+                            "Max": 3,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 2 or more Crossover Category allies attacking on this turn"
                     }
                 }
             },
@@ -260,7 +308,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(2892 || 2893)",
+                "Logic": "(2892||2893)",
                 "Causalities": {
                     "2892": {
                         "Button": {
@@ -307,7 +355,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(2892 || 2893)",
+                "Logic": "(2892||2893)",
                 "Causalities": {
                     "2892": {
                         "Button": {
@@ -1241,7 +1289,7 @@
         "Effect Description": "Greatly raises ATK temporarily, \ncauses ultimate damage to enemy \nand, within the turn activated, \nall attacks become critical hits",
         "Condition Description": "Can be activated when all allies \nattacking in the same turn are \n\"Crossover\" Category characters starting \nfrom the 3rd turn from the start of battle, \nor starting from the 6th turn from \nthe start of battle (once only)",
         "Condition": {
-            "Logic": "((2894&&2893) || 2895)",
+            "Logic": "((2894&&2893)||2895)",
             "Causalities": {
                 "2894": {
                     "Button": {

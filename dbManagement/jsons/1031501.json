@@ -65,8 +65,8 @@
             "CausalityLogic": "{\"source\": \"1793&141\", \"compiled\": [\"&\", 1793, 141]}",
             "Type": "Single activator",
             "Brief effect description": "Nullifies enemy attack right before being hit",
-            "Line description": "Nullifies enemy attack right before being hit",
-            "Paragraph Title": "Basic effect(s)"
+            "Line description": "Nullifies enemy attack right before being hit When this character has been hit by an unarmed super attack?",
+            "Paragraph Title": "When this character has been hit by an unarmed super attack?"
         },
         "1004637": {
             "ID": "1004637",
@@ -104,8 +104,8 @@
             "CausalityLogic": "{\"source\": \"1793&141\", \"compiled\": [\"&\", 1793, 141]}",
             "Type": "Single activator",
             "Brief effect description": "Counter attacks with a 300% multiplier right before being hit",
-            "Line description": "Counter attacks with a 300% multiplier right before being hit",
-            "Paragraph Title": "Basic effect(s)"
+            "Line description": "Counter attacks with a 300% multiplier right before being hit When this character has been hit by an unarmed super attack?",
+            "Paragraph Title": "When this character has been hit by an unarmed super attack?"
         },
         "2004637": {
             "ID": "2004637",
@@ -165,7 +165,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(1793&&141)",
+                "Logic": "(1793&&141&&537)",
                 "Causalities": {
                     "1793": {
                         "Button": {
@@ -178,14 +178,26 @@
                             "Name": "Is a super being performed on this turn?"
                         },
                         "Paragraph Title": "When a super is being performed"
+                    },
+                    "537": {
+                        "Button": {
+                            "Name": "Is HP 70 % or less on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining on this turn?",
+                            "Logic": "<=70",
+                            "Min": 0,
+                            "Max": 100
+                        },
+                        "Paragraph Title": "When HP is 70% or less"
                     }
                 }
             },
             "CausalityLogic": "{\"source\": \"1793&141&537\", \"compiled\": [\"&\", 1793, 141, 537]}",
             "Type": "Single activator",
             "Brief effect description": "Nullifies enemy attack right before being hit",
-            "Line description": "Nullifies enemy attack right before being hit",
-            "Paragraph Title": "Basic effect(s)"
+            "Line description": "Nullifies enemy attack right before being hit When this character has been hit by an unarmed super attack? and When a super is being performed",
+            "Paragraph Title": "When this character has been hit by an unarmed super attack?"
         },
         "5004637": {
             "ID": "5004637",
@@ -203,7 +215,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(1793&&141)",
+                "Logic": "(1793&&141&&537)",
                 "Causalities": {
                     "1793": {
                         "Button": {
@@ -216,14 +228,26 @@
                             "Name": "Is a super being performed on this turn?"
                         },
                         "Paragraph Title": "When a super is being performed"
+                    },
+                    "537": {
+                        "Button": {
+                            "Name": "Is HP 70 % or less on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining on this turn?",
+                            "Logic": "<=70",
+                            "Min": 0,
+                            "Max": 100
+                        },
+                        "Paragraph Title": "When HP is 70% or less"
                     }
                 }
             },
             "CausalityLogic": "{\"source\": \"1793&141&537\", \"compiled\": [\"&\", 1793, 141, 537]}",
             "Type": "Single activator",
             "Brief effect description": "Counter attacks with a 300% multiplier right before being hit",
-            "Line description": "Counter attacks with a 300% multiplier right before being hit",
-            "Paragraph Title": "Basic effect(s)"
+            "Line description": "Counter attacks with a 300% multiplier right before being hit When this character has been hit by an unarmed super attack? and When a super is being performed",
+            "Paragraph Title": "When this character has been hit by an unarmed super attack?"
         },
         "6004637": {
             "ID": "6004637",
@@ -613,7 +637,7 @@
             "Type": "Single activator",
             "Brief effect description": "DEF +70% after this unit collects ki spheres for all Extreme class allies ",
             "Line description": "DEF +70% after this unit collects ki spheres for all Extreme class allies ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "With 1 or more Rainbow Ki Spheres obtained"
         },
         "19004637": {
             "ID": "19004637",
@@ -655,7 +679,7 @@
             "Type": "Single activator",
             "Brief effect description": "Damage recieved -10 after this unit collects ki spheres for all Extreme class GT Bosses category allies ",
             "Line description": "Damage recieved -10 after this unit collects ki spheres for all Extreme class GT Bosses category allies ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "With 1 or more Rainbow Ki Spheres obtained"
         },
         "20004637": {
             "ID": "20004637",
@@ -708,7 +732,7 @@
             "Type": "Single activator",
             "Brief effect description": "ATK +150% when attacking",
             "Line description": "ATK +150% when attacking",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When Ki is 18 or more"
         },
         "22004637": {
             "ID": "22004637",
@@ -743,7 +767,7 @@
             "Type": "Single activator",
             "Brief effect description": "DEF +150% right before being hit",
             "Line description": "DEF +150% right before being hit",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When Ki is 18 or more"
         },
         "23004637": {
             "ID": "23004637",
@@ -778,7 +802,7 @@
             "Type": "Single activator",
             "Brief effect description": "Performs a Critical Hit when attacking",
             "Line description": "Performs a Critical Hit when attacking",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When Ki is 24 or more"
         },
         "24004637": {
             "ID": "24004637",
@@ -812,7 +836,7 @@
             "Type": "Single activator",
             "Brief effect description": "Ki +2 after attacking for all Extreme class allies ",
             "Line description": "Ki +2 after attacking for all Extreme class allies ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When the character has performed5 or more attacks"
         },
         "25004637": {
             "ID": "25004637",
@@ -846,7 +870,7 @@
             "Type": "Single activator",
             "Brief effect description": "Chance of performing a critical hit +20% after attacking for all Extreme class allies ",
             "Line description": "Chance of performing a critical hit +20% after attacking for all Extreme class allies ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When the character has performed5 or more attacks"
         },
         "26004637": {
             "ID": "26004637",
@@ -888,7 +912,7 @@
             "Type": "Single activator",
             "Brief effect description": "Randomly changes Ki Spheres of a certain Type(INT excluded) to Rainbow Ki Spheres ",
             "Line description": "Randomly changes Ki Spheres of a certain Type(INT excluded) to Rainbow Ki Spheres ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When the character has performed5 or more attacks"
         }
     },
     "Max Attacks": 3,
@@ -2148,7 +2172,7 @@
         "Effect Description": "Creates the Domain \n\"Earth Shrouded in Minus Energy\" \nfor 3 turns",
         "Condition Description": "Can be activated when there is another \n\"Inhuman Deeds\", \"Power Absorption\" or \n\"GT Bosses\" Category ally attacking in the \nsame turn, or after the character performs \n5 or more attacks in battle (once only)",
         "Condition": {
-            "Logic": "(2526&&(3510 || 3011))",
+            "Logic": "(2526&&(3510||3011||3511||1637))",
             "Causalities": {
                 "2526": {
                     "Button": {
@@ -2179,6 +2203,27 @@
                         "Min": 0
                     },
                     "Paragraph Title": "When there are 2 or more Power Absorption Category allies attacking on this turn"
+                },
+                "3511": {
+                    "Button": {
+                        "Name": "Are there 2 or more GT Bosses category allies attacking on this turn?"
+                    },
+                    "Slider": {
+                        "Name": "How many GT Bosses category allies attacking on this turn",
+                        "Logic": ">=2",
+                        "Max": 3,
+                        "Min": 0
+                    },
+                    "Paragraph Title": "When there are 2 or more GT Bosses Category allies attacking on this turn"
+                },
+                "1637": {
+                    "Slider": {
+                        "Name": "How many attacks has this character performed in battle?",
+                        "Logic": ">=5",
+                        "Min": 0,
+                        "Max": 5
+                    },
+                    "Paragraph Title": "When the character has performed5 or more attacks"
                 }
             }
         },

@@ -1251,7 +1251,7 @@
         "Effect Description": "Massively raises ATK temporarily, \ncauses ultimate damage to enemy and, \nwithin the turn activated, \nall attacks become critical hits",
         "Condition Description": "Can be activated when facing only 1 enemy, \nwhose HP is 59% or less, starting from \nthe 5th turn from the start of battle, \nor when HP is 58% or more starting from \nthe 7th turn from the start of battle (once only)",
         "Condition": {
-            "Logic": "((1469&&1470) || (1471&&1472))",
+            "Logic": "((1469&&1470)||(1471&&1472&&1473))",
             "Causalities": {
                 "1469": {
                     "Button": {
@@ -1298,6 +1298,17 @@
                         "Max": 7
                     },
                     "Paragraph Title": "When there are less than 2 enemies"
+                },
+                "1473": {
+                    "Button": {
+                        "Name": "Is the enemy's health 59 % or less?"
+                    },
+                    "Slider": {
+                        "Name": "What percentage of HP does the enemy have?",
+                        "Logic": "<=59",
+                        "Max": 100
+                    },
+                    "Paragraph Title": "When enemy health is 59% or less"
                 }
             }
         },

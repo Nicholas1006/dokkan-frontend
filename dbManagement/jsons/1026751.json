@@ -43,11 +43,11 @@
             },
             "Length": "99",
             "Condition": {
-                "Logic": "(2425 || 2426)",
+                "Logic": "(2425||2426)",
                 "Causalities": {
                     "2425": {
                         "Button": {
-                            "Name": "Is there an enemy whose name includes Gohan (Kid)?"
+                            "Name": "Is there 1 or more enemies whose name includes Gohan (Kid)?"
                         },
                         "Paragraph Title": "\"Gohan (Kid)\""
                     },
@@ -85,11 +85,11 @@
             },
             "Length": "99",
             "Condition": {
-                "Logic": "(2425 || 2426)",
+                "Logic": "(2425||2426)",
                 "Causalities": {
                     "2425": {
                         "Button": {
-                            "Name": "Is there an enemy whose name includes Gohan (Kid)?"
+                            "Name": "Is there 1 or more enemies whose name includes Gohan (Kid)?"
                         },
                         "Paragraph Title": "\"Gohan (Kid)\""
                     },
@@ -239,7 +239,7 @@
             "Type": "Single activator",
             "Brief effect description": "ATK +100% when attacking",
             "Line description": "ATK +100% when attacking",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When Ki is 12 or more"
         },
         "6003489": {
             "ID": "6003489",
@@ -1276,7 +1276,7 @@
         "Effect Description": "Greatly raises ATK temporarily and \ncauses ultimate damage to enemy",
         "Condition Description": "Can be activated when there is \na \"Goku's Family\" Category enemy or \nan enemy whose name includes \"Gohan (Kid)\" \nstarting from the 3rd turn from the start of battle, \nor starting from the 6th turn from \nthe start of battle (once only)",
         "Condition": {
-            "Logic": "(2436 || (2437&&2425))",
+            "Logic": "(2436||(2437&&2425)||(2437&&2426))",
             "Causalities": {
                 "2436": {
                     "Button": {
@@ -1302,9 +1302,21 @@
                 },
                 "2425": {
                     "Button": {
-                        "Name": "Is there an enemy whose name includes Gohan (Kid)?"
+                        "Name": "Is there 1 or more enemies whose name includes Gohan (Kid)?"
                     },
                     "Paragraph Title": "\"Gohan (Kid)\""
+                },
+                "2426": {
+                    "Button": {
+                        "Name": "Are there 1 or more Goku's Family category enemies ?"
+                    },
+                    "Slider": {
+                        "Name": "How many Goku's Family category enemies ",
+                        "Logic": ">=1",
+                        "Max": 7,
+                        "Min": 0
+                    },
+                    "Paragraph Title": "When there are 1 or more Goku's Family Category enemies "
                 }
             }
         },

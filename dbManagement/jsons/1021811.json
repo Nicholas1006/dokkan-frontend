@@ -128,7 +128,7 @@
             "Type": "Single activator",
             "Brief effect description": "Attacks effective against all Types after being hit",
             "Line description": "Attacks effective against all Types after being hit",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "After evading an attack"
         },
         "5002407": {
             "ID": "5002407",
@@ -163,7 +163,7 @@
             "Type": "Single activator",
             "Brief effect description": "ATK +58% after being hit",
             "Line description": "ATK +58% after being hit",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "After recieving an attack"
         },
         "6002407": {
             "ID": "6002407",
@@ -182,7 +182,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(733 || 735)",
+                "Logic": "(733||735)",
                 "Causalities": {
                     "733": {
                         "Button": {
@@ -214,7 +214,7 @@
             "Type": "Single activator",
             "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking",
             "Line description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "As the 1st attacker in the turn"
         },
         "7002407": {
             "ID": "7002407",
@@ -1131,19 +1131,25 @@
             },
             "superIsInactive": "0",
             "superCondition": {
-                "Logic": "(846 || 847)",
+                "Logic": "(846||847||848)",
                 "Causalities": {
                     "846": {
                         "Button": {
-                            "Name": "Is there an ally on the team whose name includes Gohan (Teen)?"
+                            "Name": "Is there 1 or more allies on the team whose name includes Gohan (Teen)?"
                         },
-                        "Paragraph Title": "When there is an ally whose name includes \"Gohan (Teen)\""
+                        "Paragraph Title": "When there are 1 or more allies whose name includes \"Gohan (Teen)\""
                     },
                     "847": {
                         "Button": {
-                            "Name": "Is there an ally on the team whose name includes Ultimate Gohan?"
+                            "Name": "Is there 1 or more allies on the team whose name includes Ultimate Gohan?"
                         },
-                        "Paragraph Title": "When there is an ally whose name includes \"Ultimate Gohan\""
+                        "Paragraph Title": "When there are 1 or more allies whose name includes \"Ultimate Gohan\""
+                    },
+                    "848": {
+                        "Button": {
+                            "Name": "Is there 1 or more allies on the team whose name includes Great Saiyaman?"
+                        },
+                        "Paragraph Title": "When there are 1 or more allies whose name includes \"Great Saiyaman\""
                     }
                 }
             },
@@ -1249,19 +1255,25 @@
             },
             "superIsInactive": "0",
             "superCondition": {
-                "Logic": "(846 || 847)",
+                "Logic": "(846||847||848)",
                 "Causalities": {
                     "846": {
                         "Button": {
-                            "Name": "Is there an ally on the team whose name includes Gohan (Teen)?"
+                            "Name": "Is there 1 or more allies on the team whose name includes Gohan (Teen)?"
                         },
-                        "Paragraph Title": "When there is an ally whose name includes \"Gohan (Teen)\""
+                        "Paragraph Title": "When there are 1 or more allies whose name includes \"Gohan (Teen)\""
                     },
                     "847": {
                         "Button": {
-                            "Name": "Is there an ally on the team whose name includes Ultimate Gohan?"
+                            "Name": "Is there 1 or more allies on the team whose name includes Ultimate Gohan?"
                         },
-                        "Paragraph Title": "When there is an ally whose name includes \"Ultimate Gohan\""
+                        "Paragraph Title": "When there are 1 or more allies whose name includes \"Ultimate Gohan\""
+                    },
+                    "848": {
+                        "Button": {
+                            "Name": "Is there 1 or more allies on the team whose name includes Great Saiyaman?"
+                        },
+                        "Paragraph Title": "When there are 1 or more allies whose name includes \"Great Saiyaman\""
                     }
                 }
             },
@@ -1279,7 +1291,7 @@
         "Effect Description": "ATK +20% and DEF -20% in battle",
         "Condition Description": "Can be activated when there is an ally \nwhose name includes \"Gohan (Teen)\", \n\"Ultimate Gohan\" (Majin Buu excluded) or \n\"Great Saiyaman\" (Great Saiyaman other than \nGohan excluded) on the team starting from \nthe 4th turn from the start of battle (once only)",
         "Condition": {
-            "Logic": "(713&&(846 || 847))",
+            "Logic": "(713&&(846||847||848))",
             "Causalities": {
                 "713": {
                     "Button": {
@@ -1294,15 +1306,21 @@
                 },
                 "846": {
                     "Button": {
-                        "Name": "Is there an ally on the team whose name includes Gohan (Teen)?"
+                        "Name": "Is there 1 or more allies on the team whose name includes Gohan (Teen)?"
                     },
-                    "Paragraph Title": "When there is an ally whose name includes \"Gohan (Teen)\""
+                    "Paragraph Title": "When there are 1 or more allies whose name includes \"Gohan (Teen)\""
                 },
                 "847": {
                     "Button": {
-                        "Name": "Is there an ally on the team whose name includes Ultimate Gohan?"
+                        "Name": "Is there 1 or more allies on the team whose name includes Ultimate Gohan?"
                     },
-                    "Paragraph Title": "When there is an ally whose name includes \"Ultimate Gohan\""
+                    "Paragraph Title": "When there are 1 or more allies whose name includes \"Ultimate Gohan\""
+                },
+                "848": {
+                    "Button": {
+                        "Name": "Is there 1 or more allies on the team whose name includes Great Saiyaman?"
+                    },
+                    "Paragraph Title": "When there are 1 or more allies whose name includes \"Great Saiyaman\""
                 }
             }
         },

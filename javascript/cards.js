@@ -1754,8 +1754,8 @@ function updatePassiveStats(){
     }
     
     if(activeAttackPerformed){
+        const activecontainer=document.getElementById("active-container");
         if(!USEPASSIVELIST){
-            const activecontainer=document.getElementById("active-container");
 
             
             progressCausalityLogic(iteratingCausalityLogic,"Right before super attack");

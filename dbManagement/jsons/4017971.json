@@ -356,7 +356,7 @@
             "Type": "Single activator",
             "Brief effect description": "Chance of evading enemy attacks +50% when attacking",
             "Line description": "Chance of evading enemy attacks +50% when attacking",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "As the 3rd attacker in the turn"
         },
         "10002027": {
             "ID": "10002027",
@@ -395,7 +395,7 @@
             "Type": "Single activator",
             "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking",
             "Line description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "As the 3rd attacker in the turn"
         }
     },
     "Max Attacks": 5,
@@ -1383,7 +1383,7 @@
         "Effect Description": "Greatly raises ATK temporarily and \ncauses ultimate damage to enemy",
         "Condition Description": "Can be activated when facing only 1 enemy, \nwhose HP is 50% or less, starting from \nnext attacking turn (once only)",
         "Condition": {
-            "Logic": "(11&&476)",
+            "Logic": "(11&&476&&477)",
             "Causalities": {
                 "11": {
                     "Button": {
@@ -1408,6 +1408,17 @@
                         "Max": 7
                     },
                     "Paragraph Title": "When there are less than 2 enemies"
+                },
+                "477": {
+                    "Button": {
+                        "Name": "Is the enemy's health 50 % or less?"
+                    },
+                    "Slider": {
+                        "Name": "What percentage of HP does the enemy have?",
+                        "Logic": "<=50",
+                        "Max": 100
+                    },
+                    "Paragraph Title": "When enemy health is 50% or less"
                 }
             }
         },

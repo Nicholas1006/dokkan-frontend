@@ -53,7 +53,7 @@
             },
             "Length": "3",
             "Condition": {
-                "Logic": "(2776 || 3179)",
+                "Logic": "(2776||3179)",
                 "Causalities": {
                     "2776": {
                         "Button": {
@@ -86,7 +86,7 @@
             "Type": "Single activator",
             "Brief effect description": "Guards all attacks ",
             "Line description": "Guards all attacks ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When there are 3 or more Tournament Participants Category allies "
         },
         "1004572": {
             "ID": "1004572",
@@ -101,7 +101,7 @@
             },
             "Length": "3",
             "Condition": {
-                "Logic": "(2776 || 3179)",
+                "Logic": "(2776||3179)",
                 "Causalities": {
                     "2776": {
                         "Button": {
@@ -134,7 +134,7 @@
             "Type": "Single activator",
             "Brief effect description": "DEF +170% ",
             "Line description": "DEF +170% ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When there are 3 or more Tournament Participants Category allies "
         },
         "2004572": {
             "ID": "2004572",
@@ -153,7 +153,7 @@
             },
             "Length": "3",
             "Condition": {
-                "Logic": "(2776 || 3179)",
+                "Logic": "(2776||3179)",
                 "Causalities": {
                     "2776": {
                         "Button": {
@@ -186,7 +186,7 @@
             "Type": "Single activator",
             "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack ",
             "Line description": "Performs an additional attack with a 100% chance of becoming a super attack ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When there are 3 or more Tournament Participants Category allies "
         },
         "3004572": {
             "ID": "3004572",
@@ -324,7 +324,7 @@
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF +200% when attacking",
             "Line description": "ATK and DEF +200% when attacking",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When Ki is 12 or more"
         },
         "9004572": {
             "ID": "9004572",
@@ -370,8 +370,8 @@
             "CausalityLogic": "{\"source\": \"1899&1947\", \"compiled\": [\"&\", 1899, 1947]}",
             "Type": "Single activator",
             "Brief effect description": "DEF +100% when attacking",
-            "Line description": "DEF +100% when attacking",
-            "Paragraph Title": "Basic effect(s)"
+            "Line description": "DEF +100% when attacking When Ki is 12 or more",
+            "Paragraph Title": "When Ki is 12 or more"
         },
         "10004572": {
             "ID": "10004572",
@@ -417,8 +417,8 @@
             "CausalityLogic": "{\"source\": \"1899&2086\", \"compiled\": [\"&\", 1899, 2086]}",
             "Type": "Single activator",
             "Brief effect description": "ATK +100% when attacking",
-            "Line description": "ATK +100% when attacking",
-            "Paragraph Title": "Basic effect(s)"
+            "Line description": "ATK +100% when attacking When Ki is 12 or more",
+            "Paragraph Title": "When Ki is 12 or more"
         },
         "11004572": {
             "ID": "11004572",
@@ -453,7 +453,7 @@
             "Type": "Single activator",
             "Brief effect description": "ATK +100% after this unit collects ki spheres",
             "Line description": "ATK +100% after this unit collects ki spheres",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "With 1 or more TEQ Ki Spheres obtained"
         },
         "12004572": {
             "ID": "12004572",
@@ -492,7 +492,7 @@
             "Type": "Single activator",
             "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack after this unit collects ki spheres",
             "Line description": "Performs an additional attack with a 100% chance of becoming a super attack after this unit collects ki spheres",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "With 1 or more TEQ Ki Spheres obtained"
         },
         "13004572": {
             "ID": "13004572",
@@ -527,7 +527,7 @@
             "Type": "Single activator",
             "Brief effect description": "ATK +70% ",
             "Line description": "ATK +70% ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When there are 3 or more Representatives of Universe 7 Category allies attacking on this turn"
         },
         "14004572": {
             "ID": "14004572",
@@ -562,7 +562,7 @@
             "Type": "Single activator",
             "Brief effect description": "Chance of performing a critical hit +30% ",
             "Line description": "Chance of performing a critical hit +30% ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When there are 3 or more Representatives of Universe 7 Category allies attacking on this turn"
         },
         "15004572": {
             "ID": "15004572",
@@ -1603,7 +1603,7 @@
         "ID": "28",
         "Exec limit": "1",
         "Condition": {
-            "Logic": "(3206&&3207)",
+            "Logic": "(3206&&3207&&2744)",
             "Causalities": {
                 "3206": {
                     "Button": {
@@ -1616,6 +1616,18 @@
                         "Name": "Has this character or an ally's revival skill been activated?"
                     },
                     "Paragraph Title": "When this character or an ally's revival skill has been activated"
+                },
+                "2744": {
+                    "Button": {
+                        "Name": "Is it on or after the first 4 turns from this characters entry turn?"
+                    },
+                    "Slider": {
+                        "Name": "How many turns is it since entry turn?",
+                        "Logic": ">=4",
+                        "Min": 0,
+                        "Max": 4
+                    },
+                    "Paragraph Title": "Starting from the 4 turn from the character's entry turn"
                 }
             }
         },

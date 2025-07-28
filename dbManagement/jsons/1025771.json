@@ -87,7 +87,7 @@
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF +50% ",
             "Line description": "ATK and DEF +50% ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When HP is 50% or more"
         },
         "2003357": {
             "ID": "2003357",
@@ -188,7 +188,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(2123 || 2124)",
+                "Logic": "(2123||2124)",
                 "Causalities": {
                     "2123": {
                         "Button": {
@@ -251,7 +251,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(2123 || 2124)",
+                "Logic": "(2123||2124)",
                 "Causalities": {
                     "2123": {
                         "Button": {
@@ -322,7 +322,7 @@
             "Type": "Single activator",
             "Brief effect description": "Performs an additional attack with a 70% chance of becoming a super attack when attacking",
             "Line description": "Performs an additional attack with a 70% chance of becoming a super attack when attacking",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When Ki is 18 or more"
         },
         "7003357": {
             "ID": "7003357",
@@ -361,7 +361,7 @@
             "Type": "Single activator",
             "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking",
             "Line description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When Ki is 24 or more"
         },
         "8003357": {
             "ID": "8003357",
@@ -1509,7 +1509,7 @@
         "ID": "6",
         "Exec limit": "1",
         "Condition": {
-            "Logic": "(3206&&3207)",
+            "Logic": "(3206&&3207&&(27||(5&&746)))",
             "Causalities": {
                 "3206": {
                     "Button": {
@@ -1522,6 +1522,41 @@
                         "Name": "Has this character or an ally's revival skill been activated?"
                     },
                     "Paragraph Title": "When this character or an ally's revival skill has been activated"
+                },
+                "27": {
+                    "Button": {
+                        "Name": "Is HP 50 % or less?"
+                    },
+                    "Slider": {
+                        "Name": "What percentage of HP is remaining?",
+                        "Logic": "<=50",
+                        "Min": 0,
+                        "Max": 100
+                    },
+                    "Paragraph Title": "When HP is 50% or less"
+                },
+                "5": {
+                    "Button": {
+                        "Name": "Is the turn count 4 or more?"
+                    },
+                    "Slider": {
+                        "Name": "What turn is it?",
+                        "Logic": ">=4",
+                        "Min": 1
+                    },
+                    "Paragraph Title": "When the turn count is 4"
+                },
+                "746": {
+                    "Button": {
+                        "Name": "Has this character recieved their 4th attack in battle?"
+                    },
+                    "Slider": {
+                        "Name": "How many attacks has this character recieved?",
+                        "Logic": ">=4",
+                        "Min": 0,
+                        "Max": 4
+                    },
+                    "Paragraph Title": "After recieving 4 attacks"
                 }
             }
         },

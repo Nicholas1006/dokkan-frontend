@@ -243,7 +243,7 @@
             "Chance": "70",
             "Length": "1",
             "Condition": {
-                "Logic": "(535 || 536)",
+                "Logic": "(535||536||3344)",
                 "Causalities": {
                     "535": {
                         "Button": {
@@ -256,6 +256,18 @@
                             "Name": "Is the target enemy sealed on this turn?"
                         },
                         "Paragraph Title": "When the target enemy is sealed"
+                    },
+                    "3344": {
+                        "Button": {
+                            "Name": "Are there 1 or more Earth-Bred Fighters category enemies  on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Earth-Bred Fighters category enemies on this turn?",
+                            "Logic": ">=1",
+                            "Max": 7,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 1 or more Earth-Bred Fighters Category enemies "
                     }
                 }
             },

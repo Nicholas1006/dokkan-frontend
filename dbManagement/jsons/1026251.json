@@ -101,7 +101,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(2167&&2166)",
+                "Logic": "(2167&&2166&&2205)",
                 "Causalities": {
                     "2167": {
                         "Button": {
@@ -126,13 +126,25 @@
                             "Min": 0
                         },
                         "Paragraph Title": "When there are 6 or more Super class allies"
+                    },
+                    "2205": {
+                        "Button": {
+                            "Name": "Is it within the first 6 turns from entry turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many turns is it since entry turn on this turn?",
+                            "Logic": "<=6",
+                            "Min": 0,
+                            "Max": 7
+                        },
+                        "Paragraph Title": "For 6 turns from the chraracter's entry turn"
                     }
                 }
             },
             "CausalityLogic": "{\"source\": \"2167&2166&2205\", \"compiled\": [\"&\", 2167, 2166, 2205]}",
             "Type": "Single activator",
             "Brief effect description": "ATK +100% when attacking",
-            "Line description": "ATK +100% when attacking When Ki is 12 or more",
+            "Line description": "ATK +100% when attacking When Ki is 12 or more and When there are 6 or more Super class allies",
             "Paragraph Title": "When there are 6 or more Super class allies"
         },
         "2003367": {
@@ -385,7 +397,7 @@
             "Type": "Single activator",
             "Brief effect description": "ATK +50% after attacking",
             "Line description": "ATK +50% after attacking",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When the character has performed4 or more super attacks"
         }
     },
     "Max Attacks": 3,

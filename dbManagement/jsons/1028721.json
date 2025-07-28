@@ -250,7 +250,7 @@
             "Type": "Single activator",
             "Brief effect description": "Guards all attacks ",
             "Line description": "Guards all attacks ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When there are 3 or more Special Pose Category allies attacking on this turn"
         },
         "7004123": {
             "ID": "7004123",
@@ -285,7 +285,7 @@
             "Type": "Single activator",
             "Brief effect description": "Attacks effective against all Types ",
             "Line description": "Attacks effective against all Types ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When there are 3 or more Special Pose Category allies attacking on this turn"
         },
         "8004123": {
             "ID": "8004123",
@@ -320,7 +320,7 @@
             "Type": "Single activator",
             "Brief effect description": "Damage recieved -7% ",
             "Line description": "Damage recieved -7% ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When there are 1 or more Special Pose Category allies "
         },
         "9004123": {
             "ID": "9004123",
@@ -355,7 +355,7 @@
             "Type": "Single activator",
             "Brief effect description": "Damage recieved -7% ",
             "Line description": "Damage recieved -7% ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When there are 2 or more Special Pose Category allies "
         },
         "10004123": {
             "ID": "10004123",
@@ -390,7 +390,7 @@
             "Type": "Single activator",
             "Brief effect description": "Damage recieved -7% ",
             "Line description": "Damage recieved -7% ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When there are 3 or more Special Pose Category allies "
         },
         "11004123": {
             "ID": "11004123",
@@ -425,7 +425,7 @@
             "Type": "Single activator",
             "Brief effect description": "Damage recieved -7% ",
             "Line description": "Damage recieved -7% ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When there are 4 or more Special Pose Category allies "
         },
         "12004123": {
             "ID": "12004123",
@@ -600,7 +600,7 @@
             "Type": "Single activator",
             "Brief effect description": "Chance of performing a critical hit +7% when attacking",
             "Line description": "Chance of performing a critical hit +7% when attacking",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When there are 1 or more Special Pose Category allies "
         },
         "19004123": {
             "ID": "19004123",
@@ -635,7 +635,7 @@
             "Type": "Single activator",
             "Brief effect description": "Chance of performing a critical hit +7% when attacking",
             "Line description": "Chance of performing a critical hit +7% when attacking",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When there are 2 or more Special Pose Category allies "
         },
         "20004123": {
             "ID": "20004123",
@@ -670,7 +670,7 @@
             "Type": "Single activator",
             "Brief effect description": "Chance of performing a critical hit +7% when attacking",
             "Line description": "Chance of performing a critical hit +7% when attacking",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When there are 3 or more Special Pose Category allies "
         },
         "21004123": {
             "ID": "21004123",
@@ -705,7 +705,7 @@
             "Type": "Single activator",
             "Brief effect description": "Chance of performing a critical hit +7% when attacking",
             "Line description": "Chance of performing a critical hit +7% when attacking",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When there are 4 or more Special Pose Category allies "
         },
         "22004123": {
             "ID": "22004123",
@@ -762,7 +762,7 @@
             },
             "Length": "2",
             "Condition": {
-                "Logic": "(3049 || 665)",
+                "Logic": "(3049||665)",
                 "Causalities": {
                     "3049": {
                         "Button": {
@@ -794,7 +794,7 @@
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF +25% after this unit collects ki spheres for all Special Pose category allies(self excluded) ",
             "Line description": "ATK and DEF +25% after this unit collects ki spheres for all Special Pose category allies(self excluded) ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "With 1 or more INT Ki Spheres obtained"
         },
         "24004123": {
             "ID": "24004123",
@@ -810,7 +810,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(2756 || 792)",
+                "Logic": "(2756||792||2761||796)",
                 "Causalities": {
                     "2756": {
                         "Button": {
@@ -835,6 +835,30 @@
                             "Max": 1
                         },
                         "Paragraph Title": "With 1 or more TEQ Ki Spheres obtained"
+                    },
+                    "2761": {
+                        "Button": {
+                            "Name": "Has 1 or more STR Ki Spheres been obtained on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many STR Ki Spheres have been obtained on this turn?",
+                            "Logic": ">=1",
+                            "Min": 0,
+                            "Max": 1
+                        },
+                        "Paragraph Title": "With 1 or more STR Ki Spheres obtained"
+                    },
+                    "796": {
+                        "Button": {
+                            "Name": "Has 1 or more PHY Ki Spheres been obtained on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many PHY Ki Spheres have been obtained on this turn?",
+                            "Logic": ">=1",
+                            "Min": 0,
+                            "Max": 1
+                        },
+                        "Paragraph Title": "With 1 or more PHY Ki Spheres obtained"
                     }
                 }
             },
@@ -842,7 +866,7 @@
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF +50% after this unit collects ki spheres",
             "Line description": "ATK and DEF +50% after this unit collects ki spheres",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "With 1 or more AGL Ki Spheres obtained"
         }
     },
     "Max Attacks": 3,
@@ -1892,7 +1916,7 @@
         "Effect Description": "ATK & DEF +25% in battle; \nall allies' ATK & DEF +15% \n(self excluded) in battle",
         "Condition Description": "Can be activated when all allies are \n\"Ginyu Force\" Category characters starting from \nthe 3rd turn from the character's entry turn, \nor when all allies are \"Special Pose\" Category \ncharacters starting from the 5th turn from \nthe character's entry turn (once only)",
         "Condition": {
-            "Logic": "((296&&3134) || (2375&&692))",
+            "Logic": "((296&&3134)||(2375&&692))",
             "Causalities": {
                 "296": {
                     "Button": {

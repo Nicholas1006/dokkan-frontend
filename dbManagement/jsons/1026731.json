@@ -62,7 +62,7 @@
             "Type": "Single activator",
             "Brief effect description": "Ki +4 ",
             "Line description": "Ki +4 ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When there are 2 or more Revenge Category allies "
         },
         "1003485": {
             "ID": "1003485",
@@ -98,7 +98,7 @@
             "Type": "Single activator",
             "Brief effect description": "DEF +80000 ",
             "Line description": "DEF +80000 ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When there are 2 or more Revenge Category allies "
         },
         "2003485": {
             "ID": "2003485",
@@ -251,7 +251,7 @@
             "CausalityLogic": "{\"source\": \"2412&2414\", \"compiled\": [\"&\", 2412, 2414]}",
             "Type": "Single activator",
             "Brief effect description": "ATK +60000 ",
-            "Line description": "ATK +60000  When enemy health is 60% or more",
+            "Line description": "ATK +60000  When there are less than 2 enemies",
             "Paragraph Title": "When there are less than 2 enemies"
         },
         "7003485": {
@@ -297,7 +297,7 @@
             "CausalityLogic": "{\"source\": \"2412&2414\", \"compiled\": [\"&\", 2412, 2414]}",
             "Type": "Single activator",
             "Brief effect description": "Chance of performing a critical hit +30% ",
-            "Line description": "Chance of performing a critical hit +30%  When enemy health is 60% or more",
+            "Line description": "Chance of performing a critical hit +30%  When there are less than 2 enemies",
             "Paragraph Title": "When there are less than 2 enemies"
         },
         "8003485": {
@@ -333,7 +333,7 @@
             "Type": "Single activator",
             "Brief effect description": "Ki +2 ",
             "Line description": "Ki +2 ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When there are 2 or more enemies"
         },
         "9003485": {
             "ID": "9003485",
@@ -369,7 +369,7 @@
             "Type": "Single activator",
             "Brief effect description": "ATK +40000 and DEF +100000 ",
             "Line description": "ATK +40000 and DEF +100000 ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When there are 2 or more enemies"
         },
         "10003485": {
             "ID": "10003485",
@@ -405,7 +405,7 @@
             "Type": "Single activator",
             "Brief effect description": "Guards all attacks ",
             "Line description": "Guards all attacks ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When there are 2 or more enemies"
         },
         "11003485": {
             "ID": "11003485",
@@ -441,7 +441,7 @@
             "Type": "Single activator",
             "Brief effect description": "ATK +60000 ",
             "Line description": "ATK +60000 ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When HP is 40% or less"
         },
         "12003485": {
             "ID": "12003485",
@@ -477,7 +477,7 @@
             "Type": "Single activator",
             "Brief effect description": "Performs a Critical Hit ",
             "Line description": "Performs a Critical Hit ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When HP is 40% or less"
         }
     },
     "Max Attacks": 2,
@@ -1445,7 +1445,7 @@
         "Effect Description": "Massively raises ATK temporarily and \ncauses ultimate damage to enemy",
         "Condition Description": "Can be activated when HP is 40% or less, \nor when facing only 1 enemy, \nwhose HP is 60% or more, starting from \nthe 5th turn from the start of battle (once only)",
         "Condition": {
-            "Logic": "(2416 || (2417&&2412))",
+            "Logic": "(2416||(2417&&2412&&2414))",
             "Causalities": {
                 "2416": {
                     "Button": {
@@ -1481,6 +1481,17 @@
                         "Max": 7
                     },
                     "Paragraph Title": "When there are less than 2 enemies"
+                },
+                "2414": {
+                    "Button": {
+                        "Name": "Is the enemy's health 60 % or more?"
+                    },
+                    "Slider": {
+                        "Name": "What percentage of HP does the enemy have?",
+                        "Logic": ">=60",
+                        "Max": 100
+                    },
+                    "Paragraph Title": "When enemy health is 60% or more"
                 }
             }
         },

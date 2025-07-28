@@ -93,7 +93,7 @@
             "CausalityLogic": "{\"source\": \"1388&1387\", \"compiled\": [\"&\", 1388, 1387]}",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF +50% when attacking",
-            "Line description": "ATK and DEF +50% when attacking When there are less than 2 enemies",
+            "Line description": "ATK and DEF +50% when attacking When Ki is 12 or more",
             "Paragraph Title": "When Ki is 12 or more"
         },
         "2002808": {
@@ -109,7 +109,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(1388&&1387)",
+                "Logic": "(1388&&1387&&1389)",
                 "Causalities": {
                     "1388": {
                         "Button": {
@@ -134,13 +134,24 @@
                             "Max": 7
                         },
                         "Paragraph Title": "When there are less than 2 enemies"
+                    },
+                    "1389": {
+                        "Button": {
+                            "Name": "Is the enemy's health 50 % or less on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP does the enemy have on this turn?",
+                            "Logic": "<=50",
+                            "Max": 100
+                        },
+                        "Paragraph Title": "When enemy health is 50% or less"
                     }
                 }
             },
             "CausalityLogic": "{\"source\": \"1388&1387&1389\", \"compiled\": [\"&\", 1388, 1387, 1389]}",
             "Type": "Single activator",
             "Brief effect description": "ATK +100% when attacking",
-            "Line description": "ATK +100% when attacking When there are less than 2 enemies",
+            "Line description": "ATK +100% when attacking When Ki is 12 or more and When there are less than 2 enemies",
             "Paragraph Title": "When Ki is 12 or more"
         },
         "3002808": {
@@ -156,7 +167,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(1388&&1387)",
+                "Logic": "(1388&&1387&&1389)",
                 "Causalities": {
                     "1388": {
                         "Button": {
@@ -181,13 +192,24 @@
                             "Max": 7
                         },
                         "Paragraph Title": "When there are less than 2 enemies"
+                    },
+                    "1389": {
+                        "Button": {
+                            "Name": "Is the enemy's health 50 % or less on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP does the enemy have on this turn?",
+                            "Logic": "<=50",
+                            "Max": 100
+                        },
+                        "Paragraph Title": "When enemy health is 50% or less"
                     }
                 }
             },
             "CausalityLogic": "{\"source\": \"1388&1387&1389\", \"compiled\": [\"&\", 1388, 1387, 1389]}",
             "Type": "Single activator",
             "Brief effect description": "Chance of performing a critical hit +50% when attacking",
-            "Line description": "Chance of performing a critical hit +50% when attacking When there are less than 2 enemies",
+            "Line description": "Chance of performing a critical hit +50% when attacking When Ki is 12 or more and When there are less than 2 enemies",
             "Paragraph Title": "When Ki is 12 or more"
         },
         "4002808": {
@@ -223,7 +245,7 @@
             "Type": "Single activator",
             "Brief effect description": "DEF +150% ",
             "Line description": "DEF +150% ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When there are 2 or more enemies"
         },
         "5002808": {
             "ID": "5002808",
@@ -269,8 +291,8 @@
             "CausalityLogic": "{\"source\": \"1391&1390\", \"compiled\": [\"&\", 1391, 1390]}",
             "Type": "Single activator",
             "Brief effect description": "Performs a Critical Hit after being hit",
-            "Line description": "Performs a Critical Hit after being hit",
-            "Paragraph Title": "Basic effect(s)"
+            "Line description": "Performs a Critical Hit after being hit After recieving an attack",
+            "Paragraph Title": "When there are 2 or more enemies"
         },
         "6002808": {
             "ID": "6002808",
@@ -299,7 +321,7 @@
             "Type": "Single activator",
             "Brief effect description": "Ki +2 after the final blow is delivered",
             "Line description": "Ki +2 after the final blow is delivered",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When this character has delivered the final blow"
         }
     },
     "Max Attacks": 2,

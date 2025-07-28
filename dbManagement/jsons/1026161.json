@@ -181,7 +181,7 @@
             "Type": "Single activator",
             "Brief effect description": "Heals +59% at the end of turn",
             "Line description": "Heals +59% at the end of turn",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When HP is 40% or less"
         },
         "7003335": {
             "ID": "7003335",
@@ -269,7 +269,7 @@
             "Type": "Single activator",
             "Brief effect description": "DEF +59% after being hit",
             "Line description": "DEF +59% after being hit",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "After recieving 5 attacks"
         },
         "10003335": {
             "ID": "10003335",
@@ -305,7 +305,7 @@
             "Type": "Single activator",
             "Brief effect description": "ATK +120% after being hit",
             "Line description": "ATK +120% after being hit",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "After recieving 9 attacks"
         },
         "11003335": {
             "ID": "11003335",
@@ -343,7 +343,7 @@
             "CausalityLogic": "{\"source\": \"2144&141\", \"compiled\": [\"&\", 2144, 141]}",
             "Type": "Single activator",
             "Brief effect description": "Nullifies enemy attack right before being hit",
-            "Line description": "Nullifies enemy attack right before being hit When a super is being performed",
+            "Line description": "Nullifies enemy attack right before being hit When this character has been hit by a ki blast super attack?",
             "Paragraph Title": "When this character has been hit by a ki blast super attack?"
         },
         "12003335": {
@@ -382,7 +382,7 @@
             "CausalityLogic": "{\"source\": \"2144&141\", \"compiled\": [\"&\", 2144, 141]}",
             "Type": "Single activator",
             "Brief effect description": "Counter attacks with a 300% multiplier right before being hit",
-            "Line description": "Counter attacks with a 300% multiplier right before being hit When a super is being performed",
+            "Line description": "Counter attacks with a 300% multiplier right before being hit When this character has been hit by a ki blast super attack?",
             "Paragraph Title": "When this character has been hit by a ki blast super attack?"
         },
         "13003335": {
@@ -1382,7 +1382,7 @@
         "Effect Description": "Massively raises ATK temporarily, \ncauses ultimate damage to enemy and, \nwithin the turn activated, \nall attacks become critical hits",
         "Condition Description": "Can be activated when HP is 59% or less, \nor when there is another \"Earth-Bred Fighters\" \nCategory ally attacking in the same turn starting \nfrom the 5th turn from the start of battle (once only)",
         "Condition": {
-            "Logic": "(2136 || (2137&&2138))",
+            "Logic": "(2136||(2137&&2138))",
             "Causalities": {
                 "2136": {
                     "Button": {

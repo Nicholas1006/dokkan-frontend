@@ -119,7 +119,7 @@
             "Type": "Single activator",
             "Brief effect description": "Damage recieved -12% ",
             "Line description": "Damage recieved -12% ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When there are less than 2 enemies"
         },
         "4003962": {
             "ID": "4003962",
@@ -154,7 +154,7 @@
             "Type": "Single activator",
             "Brief effect description": "Chance of performing a critical hit +50% ",
             "Line description": "Chance of performing a critical hit +50% ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When there are 2 or more enemies"
         },
         "5003962": {
             "ID": "5003962",
@@ -169,7 +169,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(1286&&3041)",
+                "Logic": "(1286&&3041&&3042)",
                 "Causalities": {
                     "1286": {
                         "Button": {
@@ -188,13 +188,25 @@
                             "Max": 7
                         },
                         "Paragraph Title": "When there are 0 or more enemies"
+                    },
+                    "3042": {
+                        "Button": {
+                            "Name": "Is there less than 1 enemies on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many enemies are there on this turn?",
+                            "Logic": "<1",
+                            "Min": 1,
+                            "Max": 7
+                        },
+                        "Paragraph Title": "When there are less than 1 enemies"
                     }
                 }
             },
             "CausalityLogic": "{\"source\": \"1286&3041&3042\", \"compiled\": [\"&\", 1286, 3041, 3042]}",
             "Type": "Single activator",
             "Brief effect description": "Heals +21% after the final blow is delivered",
-            "Line description": "Heals +21% after the final blow is delivered When there are 0 or more enemies",
+            "Line description": "Heals +21% after the final blow is delivered When this character has delivered the final blow and When there are 0 or more enemies",
             "Paragraph Title": "When this character has delivered the final blow"
         },
         "6003962": {
@@ -210,7 +222,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(1286&&602)",
+                "Logic": "(1286&&602&&9)",
                 "Causalities": {
                     "1286": {
                         "Button": {
@@ -229,13 +241,25 @@
                             "Max": 7
                         },
                         "Paragraph Title": "When there are 1 or more enemies"
+                    },
+                    "9": {
+                        "Button": {
+                            "Name": "Is there less than 2 enemies on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many enemies are there on this turn?",
+                            "Logic": "<2",
+                            "Min": 1,
+                            "Max": 7
+                        },
+                        "Paragraph Title": "When there are less than 2 enemies"
                     }
                 }
             },
             "CausalityLogic": "{\"source\": \"1286&602&9\", \"compiled\": [\"&\", 1286, 602, 9]}",
             "Type": "Single activator",
             "Brief effect description": "Heals +21% after the final blow is delivered",
-            "Line description": "Heals +21% after the final blow is delivered When there are 1 or more enemies",
+            "Line description": "Heals +21% after the final blow is delivered When this character has delivered the final blow and When there are 1 or more enemies",
             "Paragraph Title": "When this character has delivered the final blow"
         },
         "7003962": {
@@ -251,7 +275,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(1286&&22)",
+                "Logic": "(1286&&22&&67)",
                 "Causalities": {
                     "1286": {
                         "Button": {
@@ -270,13 +294,25 @@
                             "Max": 7
                         },
                         "Paragraph Title": "When there are 2 or more enemies"
+                    },
+                    "67": {
+                        "Button": {
+                            "Name": "Is there less than 3 enemies on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many enemies are there on this turn?",
+                            "Logic": "<3",
+                            "Min": 1,
+                            "Max": 7
+                        },
+                        "Paragraph Title": "When there are less than 3 enemies"
                     }
                 }
             },
             "CausalityLogic": "{\"source\": \"1286&22&67\", \"compiled\": [\"&\", 1286, 22, 67]}",
             "Type": "Single activator",
             "Brief effect description": "Heals +21% after the final blow is delivered",
-            "Line description": "Heals +21% after the final blow is delivered When there are 2 or more enemies",
+            "Line description": "Heals +21% after the final blow is delivered When this character has delivered the final blow and When there are 2 or more enemies",
             "Paragraph Title": "When this character has delivered the final blow"
         },
         "8003962": {
@@ -292,7 +328,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(1286&&18)",
+                "Logic": "(1286&&18&&66)",
                 "Causalities": {
                     "1286": {
                         "Button": {
@@ -311,13 +347,25 @@
                             "Max": 7
                         },
                         "Paragraph Title": "When there are 3 or more enemies"
+                    },
+                    "66": {
+                        "Button": {
+                            "Name": "Is there less than 4 enemies on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many enemies are there on this turn?",
+                            "Logic": "<4",
+                            "Min": 1,
+                            "Max": 7
+                        },
+                        "Paragraph Title": "When there are less than 4 enemies"
                     }
                 }
             },
             "CausalityLogic": "{\"source\": \"1286&18&66\", \"compiled\": [\"&\", 1286, 18, 66]}",
             "Type": "Single activator",
             "Brief effect description": "Heals +21% after the final blow is delivered",
-            "Line description": "Heals +21% after the final blow is delivered When there are 3 or more enemies",
+            "Line description": "Heals +21% after the final blow is delivered When this character has delivered the final blow and When there are 3 or more enemies",
             "Paragraph Title": "When this character has delivered the final blow"
         },
         "9003962": {
@@ -333,7 +381,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(1286&&101)",
+                "Logic": "(1286&&101&&3043)",
                 "Causalities": {
                     "1286": {
                         "Button": {
@@ -352,13 +400,25 @@
                             "Max": 7
                         },
                         "Paragraph Title": "When there are 4 or more enemies"
+                    },
+                    "3043": {
+                        "Button": {
+                            "Name": "Is there less than 5 enemies on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many enemies are there on this turn?",
+                            "Logic": "<5",
+                            "Min": 1,
+                            "Max": 7
+                        },
+                        "Paragraph Title": "When there are less than 5 enemies"
                     }
                 }
             },
             "CausalityLogic": "{\"source\": \"1286&101&3043\", \"compiled\": [\"&\", 1286, 101, 3043]}",
             "Type": "Single activator",
             "Brief effect description": "Heals +21% after the final blow is delivered",
-            "Line description": "Heals +21% after the final blow is delivered When there are 4 or more enemies",
+            "Line description": "Heals +21% after the final blow is delivered When this character has delivered the final blow and When there are 4 or more enemies",
             "Paragraph Title": "When this character has delivered the final blow"
         },
         "10003962": {
@@ -374,7 +434,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(1286&&102)",
+                "Logic": "(1286&&102&&3044)",
                 "Causalities": {
                     "1286": {
                         "Button": {
@@ -393,13 +453,25 @@
                             "Max": 7
                         },
                         "Paragraph Title": "When there are 5 or more enemies"
+                    },
+                    "3044": {
+                        "Button": {
+                            "Name": "Is there less than 6 enemies on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many enemies are there on this turn?",
+                            "Logic": "<6",
+                            "Min": 1,
+                            "Max": 7
+                        },
+                        "Paragraph Title": "When there are less than 6 enemies"
                     }
                 }
             },
             "CausalityLogic": "{\"source\": \"1286&102&3044\", \"compiled\": [\"&\", 1286, 102, 3044]}",
             "Type": "Single activator",
             "Brief effect description": "Heals +21% after the final blow is delivered",
-            "Line description": "Heals +21% after the final blow is delivered When there are 5 or more enemies",
+            "Line description": "Heals +21% after the final blow is delivered When this character has delivered the final blow and When there are 5 or more enemies",
             "Paragraph Title": "When this character has delivered the final blow"
         },
         "11003962": {
@@ -415,7 +487,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(1286&&103)",
+                "Logic": "(1286&&103&&3045)",
                 "Causalities": {
                     "1286": {
                         "Button": {
@@ -434,13 +506,25 @@
                             "Max": 7
                         },
                         "Paragraph Title": "When there are 6 or more enemies"
+                    },
+                    "3045": {
+                        "Button": {
+                            "Name": "Is there less than 7 enemies on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many enemies are there on this turn?",
+                            "Logic": "<7",
+                            "Min": 1,
+                            "Max": 7
+                        },
+                        "Paragraph Title": "When there are less than 7 enemies"
                     }
                 }
             },
             "CausalityLogic": "{\"source\": \"1286&103&3045\", \"compiled\": [\"&\", 1286, 103, 3045]}",
             "Type": "Single activator",
             "Brief effect description": "Heals +21% after the final blow is delivered",
-            "Line description": "Heals +21% after the final blow is delivered When there are 6 or more enemies",
+            "Line description": "Heals +21% after the final blow is delivered When this character has delivered the final blow and When there are 6 or more enemies",
             "Paragraph Title": "When this character has delivered the final blow"
         },
         "12003962": {

@@ -144,19 +144,19 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(2161 || 2162)",
+                "Logic": "(2161||2162)",
                 "Causalities": {
                     "2161": {
                         "Button": {
-                            "Name": "When the enemy has been hit by the characters super attack on this turn?"
+                            "Name": "Has the enemy been hit by the characters super attack on this turn?"
                         },
-                        "Paragraph Title": ""
+                        "Paragraph Title": "When the enemy has been hit by the characters super attack?"
                     },
                     "2162": {
                         "Button": {
-                            "Name": "When the enemy has been hit by the characters super attack on this turn?"
+                            "Name": "Has the enemy been hit by the characters ultra super attack on this turn?"
                         },
-                        "Paragraph Title": ""
+                        "Paragraph Title": "When the enemy has been hit by the characters ultra super attack?"
                     }
                 }
             },
@@ -164,7 +164,7 @@
             "Type": "Single activator",
             "Brief effect description": "Damage recieved -30% right before being hit",
             "Line description": "Damage recieved -30% right before being hit",
-            "Paragraph Title": ""
+            "Paragraph Title": "When the enemy has been hit by the characters super attack?"
         },
         "6003334": {
             "ID": "6003334",
@@ -252,7 +252,7 @@
             "Type": "Single activator",
             "Brief effect description": "ATK +58% after being hit",
             "Line description": "ATK +58% after being hit",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "After recieving 5 attacks"
         },
         "9003334": {
             "ID": "9003334",
@@ -292,7 +292,7 @@
             "Type": "Single activator",
             "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack after being hit",
             "Line description": "Performs an additional attack with a 100% chance of becoming a super attack after being hit",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "After recieving 8 attacks"
         },
         "10003334": {
             "ID": "10003334",
@@ -1281,7 +1281,7 @@
             },
             "superIsInactive": "0",
             "superCondition": {
-                "Logic": "(2151&&(2152 || 2153))",
+                "Logic": "(2151&&(2152||2153||2154||2155))",
                 "Causalities": {
                     "2151": {
                         "Button": {
@@ -1297,15 +1297,27 @@
                     },
                     "2152": {
                         "Button": {
-                            "Name": "Is there an ally attacking on this turn whose name includes Goku?"
+                            "Name": "Is there 1 or more allies attacking on this turn whose name includes Goku?"
                         },
-                        "Paragraph Title": "When there is an ally whose name includes \"Goku\" attacking in the same turn "
+                        "Paragraph Title": "When there are 1or more allies whose name includes \"Goku\" attacking in the same turn "
                     },
                     "2153": {
                         "Button": {
-                            "Name": "Is there an ally attacking on this turn whose name includes Krillin?"
+                            "Name": "Is there 1 or more allies attacking on this turn whose name includes Krillin?"
                         },
-                        "Paragraph Title": "When there is an ally whose name includes \"Krillin\" attacking in the same turn "
+                        "Paragraph Title": "When there are 1or more allies whose name includes \"Krillin\" attacking in the same turn "
+                    },
+                    "2154": {
+                        "Button": {
+                            "Name": "Is there 1 or more allies attacking on this turn whose name includes Yamcha?"
+                        },
+                        "Paragraph Title": "When there are 1or more allies whose name includes \"Yamcha\" attacking in the same turn "
+                    },
+                    "2155": {
+                        "Button": {
+                            "Name": "Is there 1 or more allies attacking on this turn whose name includes Tien?"
+                        },
+                        "Paragraph Title": "When there are 1or more allies whose name includes \"Tien\" attacking in the same turn "
                     }
                 }
             },
@@ -1366,9 +1378,9 @@
                     },
                     "2156": {
                         "Button": {
-                            "Name": "Is there an ally attacking on this turn whose name includes Piccolo?"
+                            "Name": "Is there 1 or more allies attacking on this turn whose name includes Piccolo?"
                         },
-                        "Paragraph Title": "When there is an ally whose name includes \"Piccolo\" attacking in the same turn "
+                        "Paragraph Title": "When there are 1or more allies whose name includes \"Piccolo\" attacking in the same turn "
                     }
                 }
             },
@@ -1391,7 +1403,7 @@
         "Effect Description": "Massively raises ATK temporarily, \ncauses ultimate damage to enemy and, \nwithin the turn activated, \nattacks effective against all Types",
         "Condition Description": "Can be activated when HP is 58% or less, \nor when there is another \"Bond of Master and Disciple\" \nCategory ally attacking in the same turn starting from \nthe 5th turn from the start of battle (once only)",
         "Condition": {
-            "Logic": "(2157 || (2158&&2159))",
+            "Logic": "(2157||(2158&&2159))",
             "Causalities": {
                 "2157": {
                     "Button": {

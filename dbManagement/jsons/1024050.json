@@ -92,7 +92,7 @@
             "CausalityLogic": "{\"source\": \"1388&1387\", \"compiled\": [\"&\", 1388, 1387]}",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF +50% when attacking",
-            "Line description": "ATK and DEF +50% when attacking When there are less than 2 enemies",
+            "Line description": "ATK and DEF +50% when attacking When Ki is 12 or more",
             "Paragraph Title": "When Ki is 12 or more"
         },
         "2002807": {
@@ -108,7 +108,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(1388&&1387)",
+                "Logic": "(1388&&1387&&1389)",
                 "Causalities": {
                     "1388": {
                         "Button": {
@@ -133,13 +133,24 @@
                             "Max": 7
                         },
                         "Paragraph Title": "When there are less than 2 enemies"
+                    },
+                    "1389": {
+                        "Button": {
+                            "Name": "Is the enemy's health 50 % or less on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP does the enemy have on this turn?",
+                            "Logic": "<=50",
+                            "Max": 100
+                        },
+                        "Paragraph Title": "When enemy health is 50% or less"
                     }
                 }
             },
             "CausalityLogic": "{\"source\": \"1388&1387&1389\", \"compiled\": [\"&\", 1388, 1387, 1389]}",
             "Type": "Single activator",
             "Brief effect description": "ATK +50% when attacking",
-            "Line description": "ATK +50% when attacking When there are less than 2 enemies",
+            "Line description": "ATK +50% when attacking When Ki is 12 or more and When there are less than 2 enemies",
             "Paragraph Title": "When Ki is 12 or more"
         },
         "3002807": {
@@ -155,7 +166,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(1388&&1387)",
+                "Logic": "(1388&&1387&&1389)",
                 "Causalities": {
                     "1388": {
                         "Button": {
@@ -180,13 +191,24 @@
                             "Max": 7
                         },
                         "Paragraph Title": "When there are less than 2 enemies"
+                    },
+                    "1389": {
+                        "Button": {
+                            "Name": "Is the enemy's health 50 % or less on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP does the enemy have on this turn?",
+                            "Logic": "<=50",
+                            "Max": 100
+                        },
+                        "Paragraph Title": "When enemy health is 50% or less"
                     }
                 }
             },
             "CausalityLogic": "{\"source\": \"1388&1387&1389\", \"compiled\": [\"&\", 1388, 1387, 1389]}",
             "Type": "Single activator",
             "Brief effect description": "Chance of performing a critical hit +30% when attacking",
-            "Line description": "Chance of performing a critical hit +30% when attacking When there are less than 2 enemies",
+            "Line description": "Chance of performing a critical hit +30% when attacking When Ki is 12 or more and When there are less than 2 enemies",
             "Paragraph Title": "When Ki is 12 or more"
         },
         "4002807": {
@@ -222,7 +244,7 @@
             "Type": "Single activator",
             "Brief effect description": "DEF +100% ",
             "Line description": "DEF +100% ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When there are 2 or more enemies"
         }
     },
     "Max Attacks": 1,

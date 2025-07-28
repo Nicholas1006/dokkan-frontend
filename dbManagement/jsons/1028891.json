@@ -189,7 +189,7 @@
             "Type": "Single activator",
             "Brief effect description": "Randomly changes Ki Spheres of a certain Type(AGL excluded) to AGL Ki Spheres ",
             "Line description": "Randomly changes Ki Spheres of a certain Type(AGL excluded) to AGL Ki Spheres ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When there are 3 or more Majin Buu Saga Category allies attacking on this turn"
         },
         "5004139": {
             "ID": "5004139",
@@ -225,7 +225,7 @@
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF +58% when attacking",
             "Line description": "ATK and DEF +58% when attacking",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When Ki is 12 or more"
         },
         "6004139": {
             "ID": "6004139",
@@ -425,8 +425,8 @@
             "CausalityLogic": "{\"source\": \"9&693\", \"compiled\": [\"&\", 9, 693]}",
             "Type": "Single activator",
             "Brief effect description": "Performs an additional attack with a 100% chance of another additional attack each with a 30% chance of becoming a super attack ",
-            "Line description": "Performs an additional attack with a 100% chance of another additional attack each with a 30% chance of becoming a super attack ",
-            "Paragraph Title": "Basic effect(s)"
+            "Line description": "Performs an additional attack with a 100% chance of another additional attack each with a 30% chance of becoming a super attack  When there are less than 2 enemies",
+            "Paragraph Title": "When there are less than 2 enemies"
         },
         "11004139": {
             "ID": "11004139",
@@ -1496,19 +1496,25 @@
             },
             "superIsInactive": "0",
             "superCondition": {
-                "Logic": "(617 || 620)",
+                "Logic": "(617||620||3136)",
                 "Causalities": {
                     "617": {
                         "Button": {
-                            "Name": "Is there an ally attacking on this turn whose name includes Goten (Kid)?"
+                            "Name": "Is there 1 or more allies attacking on this turn whose name includes Goten (Kid)?"
                         },
-                        "Paragraph Title": "When there is an ally whose name includes \"Goten (Kid)\" attacking in the same turn "
+                        "Paragraph Title": "When there are 1or more allies whose name includes \"Goten (Kid)\" attacking in the same turn "
                     },
                     "620": {
                         "Button": {
-                            "Name": "Is there an ally attacking on this turn whose name includes Trunks (Kid)?"
+                            "Name": "Is there 1 or more allies attacking on this turn whose name includes Trunks (Kid)?"
                         },
-                        "Paragraph Title": "When there is an ally whose name includes \"Trunks (Kid)\" attacking in the same turn "
+                        "Paragraph Title": "When there are 1or more allies whose name includes \"Trunks (Kid)\" attacking in the same turn "
+                    },
+                    "3136": {
+                        "Button": {
+                            "Name": "Is there 1 or more allies attacking on this turn whose name includes Gotenks?"
+                        },
+                        "Paragraph Title": "When there are 1or more allies whose name includes \"Gotenks\" attacking in the same turn "
                     }
                 }
             },
@@ -1531,7 +1537,7 @@
         "Effect Description": "Causes ultimate damage to enemy; \nKi +24 and DEF +58% for 1 turn",
         "Condition Description": "Can be activated when facing only 1 enemy, \nwhose HP is 58% or less, or when there is \nanother \"Majin Buu Saga\" Category ally \nattacking in the same turn starting from the 6th turn \nfrom the character's entry turn (once only)",
         "Condition": {
-            "Logic": "((9&&3137) || (579&&2830))",
+            "Logic": "((9&&3137)||(579&&2830))",
             "Causalities": {
                 "9": {
                     "Button": {

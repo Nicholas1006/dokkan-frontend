@@ -87,7 +87,7 @@
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF +159% when attacking",
             "Line description": "ATK and DEF +159% when attacking",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When Ki is 12 or more"
         },
         "2004560": {
             "ID": "2004560",
@@ -383,7 +383,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(1780 || (1992&&33))",
+                "Logic": "(1780||(1992&&33))",
                 "Causalities": {
                     "1780": {
                         "Button": {
@@ -446,7 +446,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(1781 || (1780&&33))",
+                "Logic": "(1781||(1780&&33))",
                 "Causalities": {
                     "1781": {
                         "Button": {
@@ -505,7 +505,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(1782 || (1781&&33))",
+                "Logic": "(1782||(1781&&33))",
                 "Causalities": {
                     "1782": {
                         "Button": {
@@ -564,7 +564,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(1782 || (1781&&33))",
+                "Logic": "(1782||(1781&&33))",
                 "Causalities": {
                     "1782": {
                         "Button": {
@@ -624,7 +624,7 @@
             },
             "Length": "2",
             "Condition": {
-                "Logic": "(1782 || (1781&&33))",
+                "Logic": "(1782||(1781&&33))",
                 "Causalities": {
                     "1782": {
                         "Button": {
@@ -1312,19 +1312,37 @@
             },
             "superIsInactive": "0",
             "superCondition": {
-                "Logic": "(1771 || 1772)",
+                "Logic": "(1771||1772||1773||1774||1809)",
                 "Causalities": {
                     "1771": {
                         "Button": {
-                            "Name": "Is there an ally attacking on this turn whose name includes Yamcha?"
+                            "Name": "Is there 1 or more allies attacking on this turn whose name includes Yamcha?"
                         },
-                        "Paragraph Title": "When there is an ally whose name includes \"Yamcha\" attacking in the same turn "
+                        "Paragraph Title": "When there are 1or more allies whose name includes \"Yamcha\" attacking in the same turn "
                     },
                     "1772": {
                         "Button": {
-                            "Name": "Is there an ally attacking on this turn whose name includes Master Roshi?"
+                            "Name": "Is there 1 or more allies attacking on this turn whose name includes Master Roshi?"
                         },
-                        "Paragraph Title": "When there is an ally whose name includes \"Master Roshi\" attacking in the same turn "
+                        "Paragraph Title": "When there are 1or more allies whose name includes \"Master Roshi\" attacking in the same turn "
+                    },
+                    "1773": {
+                        "Button": {
+                            "Name": "Is there 1 or more allies attacking on this turn whose name includes Oolong?"
+                        },
+                        "Paragraph Title": "When there are 1or more allies whose name includes \"Oolong\" attacking in the same turn "
+                    },
+                    "1774": {
+                        "Button": {
+                            "Name": "Is there 1 or more allies attacking on this turn whose name includes Bulma (Youth)?"
+                        },
+                        "Paragraph Title": "When there are 1or more allies whose name includes \"Bulma (Youth)\" attacking in the same turn "
+                    },
+                    "1809": {
+                        "Button": {
+                            "Name": "Is there 1 or more allies attacking on this turn whose name includes Bulma (Bunny)?"
+                        },
+                        "Paragraph Title": "When there are 1or more allies whose name includes \"Bulma (Bunny)\" attacking in the same turn "
                     }
                 }
             },
@@ -1379,9 +1397,9 @@
                 "Causalities": {
                     "1775": {
                         "Button": {
-                            "Name": "Is there an ally attacking on this turn whose name includes Hacchan?"
+                            "Name": "Is there 1 or more allies attacking on this turn whose name includes Hacchan?"
                         },
-                        "Paragraph Title": "When there is an ally whose name includes \"Hacchan\" attacking in the same turn "
+                        "Paragraph Title": "When there are 1or more allies whose name includes \"Hacchan\" attacking in the same turn "
                     }
                 }
             },
@@ -1399,7 +1417,7 @@
         "Effect Description": "Raises ATK by 800% temporarily \nthen causes damage to enemy and, \nwithin the turn activated, attacks have \na 59% chance of becoming critical hits",
         "Condition Description": "Can be activated after the character \nreceives an attack 8 or more times in battle, \nor when HP is 59% or less (once only)",
         "Condition": {
-            "Logic": "(1786 || 1787)",
+            "Logic": "(1786||1787)",
             "Causalities": {
                 "1786": {
                     "Button": {

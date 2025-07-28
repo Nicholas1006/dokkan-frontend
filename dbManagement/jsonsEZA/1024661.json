@@ -83,7 +83,7 @@
             "Type": "Building Stat",
             "Brief effect description": "Ki +1 per Ki Sphere obtained ",
             "Line description": "Ki +1 per Ki Sphere obtained ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When there are 2 or more Potara Category allies "
         },
         "1004646": {
             "ID": "1004646",
@@ -123,7 +123,7 @@
             "Type": "Single activator",
             "Brief effect description": "Changes TEQ Ki Spheres to RAINBOW Ki Spheres ",
             "Line description": "Changes TEQ Ki Spheres to RAINBOW Ki Spheres ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When there are 2 or more Potara Category allies "
         },
         "2004646": {
             "ID": "2004646",
@@ -258,7 +258,7 @@
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF +50% when attacking",
             "Line description": "ATK and DEF +50% when attacking",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When Ki is 12 or more"
         },
         "7004646": {
             "ID": "7004646",
@@ -297,7 +297,7 @@
             "Type": "Single activator",
             "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking",
             "Line description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When Ki is 12 or more"
         },
         "8004646": {
             "ID": "8004646",
@@ -336,7 +336,7 @@
             "Type": "Single activator",
             "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking",
             "Line description": "Performs an additional attack with a 100% chance of becoming a super attack when attacking",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When Ki is 18 or more"
         },
         "9004646": {
             "ID": "9004646",
@@ -372,7 +372,7 @@
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF +50% when attacking",
             "Line description": "ATK and DEF +50% when attacking",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When Ki is 18 or more"
         },
         "10004646": {
             "ID": "10004646",
@@ -407,7 +407,7 @@
             "Type": "Single activator",
             "Brief effect description": "Attacks effective against all Types when attacking",
             "Line description": "Attacks effective against all Types when attacking",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When Ki is 18 or more"
         },
         "11004646": {
             "ID": "11004646",
@@ -442,7 +442,7 @@
             "Type": "Single activator",
             "Brief effect description": "Performs a Critical Hit when attacking",
             "Line description": "Performs a Critical Hit when attacking",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When Ki is 24 or more"
         },
         "12004646": {
             "ID": "12004646",
@@ -478,7 +478,7 @@
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF +100% when attacking",
             "Line description": "ATK and DEF +100% when attacking",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When Ki is 24 or more"
         },
         "13004646": {
             "ID": "13004646",
@@ -545,7 +545,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(2171 || 1676)",
+                "Logic": "(2171||1676)",
                 "Causalities": {
                     "2171": {
                         "Button": {
@@ -577,7 +577,7 @@
             "Type": "Single activator",
             "Brief effect description": "Heals +10% at the end of turn",
             "Line description": "Heals +10% at the end of turn",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "After recieving 3 attacks"
         },
         "16004646": {
             "ID": "16004646",
@@ -615,7 +615,7 @@
             "CausalityLogic": "{\"source\": \"1595&141\", \"compiled\": [\"&\", 1595, 141]}",
             "Type": "Single activator",
             "Brief effect description": "Nullifies enemy attack right before being hit",
-            "Line description": "Nullifies enemy attack right before being hit When a super is being performed",
+            "Line description": "Nullifies enemy attack right before being hit When this character has been hit by an unarmed super attack?",
             "Paragraph Title": "When this character has been hit by an unarmed super attack?"
         },
         "17004646": {
@@ -654,7 +654,7 @@
             "CausalityLogic": "{\"source\": \"1595&141\", \"compiled\": [\"&\", 1595, 141]}",
             "Type": "Single activator",
             "Brief effect description": "Counter attacks with a 300% multiplier right before being hit",
-            "Line description": "Counter attacks with a 300% multiplier right before being hit When a super is being performed",
+            "Line description": "Counter attacks with a 300% multiplier right before being hit When this character has been hit by an unarmed super attack?",
             "Paragraph Title": "When this character has been hit by an unarmed super attack?"
         },
         "18004646": {
@@ -673,7 +673,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(1595&&141)",
+                "Logic": "(1595&&141&&3406)",
                 "Causalities": {
                     "1595": {
                         "Button": {
@@ -686,13 +686,25 @@
                             "Name": "Is a super being performed on this turn?"
                         },
                         "Paragraph Title": "When a super is being performed"
+                    },
+                    "3406": {
+                        "Button": {
+                            "Name": "Has 10 or more Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres been obtained on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres have been obtained on this turn?",
+                            "Logic": ">=10",
+                            "Min": 0,
+                            "Max": 10
+                        },
+                        "Paragraph Title": "With 10 or more Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres obtained"
                     }
                 }
             },
             "CausalityLogic": "{\"source\": \"1595&141&3406\", \"compiled\": [\"&\", 1595, 141, 3406]}",
             "Type": "Single activator",
             "Brief effect description": "Nullifies enemy attack right before being hit",
-            "Line description": "Nullifies enemy attack right before being hit When a super is being performed",
+            "Line description": "Nullifies enemy attack right before being hit When this character has been hit by an unarmed super attack? and When a super is being performed",
             "Paragraph Title": "When this character has been hit by an unarmed super attack?"
         },
         "19004646": {
@@ -711,7 +723,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(1595&&141)",
+                "Logic": "(1595&&141&&3406)",
                 "Causalities": {
                     "1595": {
                         "Button": {
@@ -724,13 +736,25 @@
                             "Name": "Is a super being performed on this turn?"
                         },
                         "Paragraph Title": "When a super is being performed"
+                    },
+                    "3406": {
+                        "Button": {
+                            "Name": "Has 10 or more Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres been obtained on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres have been obtained on this turn?",
+                            "Logic": ">=10",
+                            "Min": 0,
+                            "Max": 10
+                        },
+                        "Paragraph Title": "With 10 or more Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres obtained"
                     }
                 }
             },
             "CausalityLogic": "{\"source\": \"1595&141&3406\", \"compiled\": [\"&\", 1595, 141, 3406]}",
             "Type": "Single activator",
             "Brief effect description": "Counter attacks with a 300% multiplier right before being hit",
-            "Line description": "Counter attacks with a 300% multiplier right before being hit When a super is being performed",
+            "Line description": "Counter attacks with a 300% multiplier right before being hit When this character has been hit by an unarmed super attack? and When a super is being performed",
             "Paragraph Title": "When this character has been hit by an unarmed super attack?"
         },
         "20004646": {

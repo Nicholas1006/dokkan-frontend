@@ -84,7 +84,7 @@
             "Type": "Single activator",
             "Brief effect description": "Ki +2 after this unit collects ki spheres for all Super class allies ",
             "Line description": "Ki +2 after this unit collects ki spheres for all Super class allies ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "With 3 or more PHY or STR or INT or TEQ or AGL Ki Spheres obtained"
         },
         "2002334": {
             "ID": "2002334",
@@ -121,7 +121,7 @@
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF +30% after this unit collects ki spheres for all Super class allies ",
             "Line description": "ATK and DEF +30% after this unit collects ki spheres for all Super class allies ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "With 3 or more PHY or STR or INT or TEQ or AGL Ki Spheres obtained"
         },
         "3002334": {
             "ID": "3002334",
@@ -1075,19 +1075,19 @@
             },
             "superIsInactive": "0",
             "superCondition": {
-                "Logic": "(783 || 784)",
+                "Logic": "(783||784)",
                 "Causalities": {
                     "783": {
                         "Button": {
-                            "Name": "Is there an ally attacking on this turn whose name includes Goku (Angel)?"
+                            "Name": "Is there 1 or more allies attacking on this turn whose name includes Goku (Angel)?"
                         },
-                        "Paragraph Title": "When there is an ally whose name includes \"Goku (Angel)\" attacking in the same turn "
+                        "Paragraph Title": "When there are 1or more allies whose name includes \"Goku (Angel)\" attacking in the same turn "
                     },
                     "784": {
                         "Button": {
-                            "Name": "Is there an ally attacking on this turn whose name includes Vegeta (Angel)?"
+                            "Name": "Is there 1 or more allies attacking on this turn whose name includes Vegeta (Angel)?"
                         },
-                        "Paragraph Title": "When there is an ally whose name includes \"Vegeta (Angel)\" attacking in the same turn "
+                        "Paragraph Title": "When there are 1or more allies whose name includes \"Vegeta (Angel)\" attacking in the same turn "
                     }
                 }
             },
@@ -1105,7 +1105,7 @@
         "Effect Description": "Delays a single targeted enemy's attack for 1 turn",
         "Condition Description": "Can be activated when facing only 1 enemy, \nwhose HP is 50% or more, starting from \nthe 4th turn from the start of battle (once only)",
         "Condition": {
-            "Logic": "(713&&525)",
+            "Logic": "(713&&525&&788)",
             "Causalities": {
                 "713": {
                     "Button": {
@@ -1129,6 +1129,17 @@
                         "Max": 7
                     },
                     "Paragraph Title": "When there are less than 2 enemies"
+                },
+                "788": {
+                    "Button": {
+                        "Name": "Is the enemy's health 50 % or more?"
+                    },
+                    "Slider": {
+                        "Name": "What percentage of HP does the enemy have?",
+                        "Logic": ">=50",
+                        "Max": 100
+                    },
+                    "Paragraph Title": "When enemy health is 50% or more"
                 }
             }
         },

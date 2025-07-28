@@ -251,7 +251,7 @@
             "Type": "Single activator",
             "Brief effect description": "Chance of performing a critical hit +50% ",
             "Line description": "Chance of performing a critical hit +50% ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When there are 1 or more Androids Category enemies "
         }
     },
     "Max Attacks": 3,
@@ -519,7 +519,7 @@
         "Effect Description": "Awakens",
         "Condition Description": "Can be activated when HP is 58% or less \nwith \"Android #16\" on the team, or when \nHP is 58% or less with an existing \"Androids\" \nCategory ally or enemy starting from the 5th turn \nfrom the start of battle (once only)",
         "Condition": {
-            "Logic": "((239&&354) || (200&&239))",
+            "Logic": "((239&&354)||(200&&239&&(93||139)))",
             "Causalities": {
                 "239": {
                     "Button": {
@@ -535,9 +535,9 @@
                 },
                 "354": {
                     "Button": {
-                        "Name": "Is there an ally on the team whose name includes Android #16?"
+                        "Name": "Is there 1 or more allies on the team whose name includes Android #16?"
                     },
-                    "Paragraph Title": "When there is an ally whose name includes \"Android #16\""
+                    "Paragraph Title": "When there are 1 or more allies whose name includes \"Android #16\""
                 },
                 "200": {
                     "Button": {
@@ -549,6 +549,30 @@
                         "Min": 1
                     },
                     "Paragraph Title": "When the turn count is 5"
+                },
+                "93": {
+                    "Button": {
+                        "Name": "Are there 1 or more Androids category allies ?"
+                    },
+                    "Slider": {
+                        "Name": "How many Androids category allies ",
+                        "Logic": ">=1",
+                        "Max": 7,
+                        "Min": 0
+                    },
+                    "Paragraph Title": "When there are 1 or more Androids Category allies "
+                },
+                "139": {
+                    "Button": {
+                        "Name": "Are there 1 or more Androids category enemies ?"
+                    },
+                    "Slider": {
+                        "Name": "How many Androids category enemies ",
+                        "Logic": ">=1",
+                        "Max": 7,
+                        "Min": 0
+                    },
+                    "Paragraph Title": "When there are 1 or more Androids Category enemies "
                 }
             }
         },

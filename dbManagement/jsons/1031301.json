@@ -328,7 +328,7 @@
             "Type": "Single activator",
             "Brief effect description": "ATK +200% when attacking",
             "Line description": "ATK +200% when attacking",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When Ki is 12 or more"
         },
         "10004594": {
             "ID": "10004594",
@@ -413,8 +413,8 @@
             "CausalityLogic": "{\"source\": \"1793&141\", \"compiled\": [\"&\", 1793, 141]}",
             "Type": "Single activator",
             "Brief effect description": "Nullifies enemy attack right before being hit",
-            "Line description": "Nullifies enemy attack right before being hit",
-            "Paragraph Title": "Basic effect(s)"
+            "Line description": "Nullifies enemy attack right before being hit When this character has been hit by an unarmed super attack?",
+            "Paragraph Title": "When this character has been hit by an unarmed super attack?"
         },
         "13004594": {
             "ID": "13004594",
@@ -452,8 +452,8 @@
             "CausalityLogic": "{\"source\": \"1793&141\", \"compiled\": [\"&\", 1793, 141]}",
             "Type": "Single activator",
             "Brief effect description": "Counter attacks with a 300% multiplier right before being hit",
-            "Line description": "Counter attacks with a 300% multiplier right before being hit",
-            "Paragraph Title": "Basic effect(s)"
+            "Line description": "Counter attacks with a 300% multiplier right before being hit When this character has been hit by an unarmed super attack?",
+            "Paragraph Title": "When this character has been hit by an unarmed super attack?"
         },
         "14004594": {
             "ID": "14004594",
@@ -524,7 +524,7 @@
             "Type": "Single activator",
             "Brief effect description": "ATK +500% when attacking",
             "Line description": "ATK +500% when attacking",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When the target enemy is stunned"
         },
         "17004594": {
             "ID": "17004594",
@@ -553,7 +553,7 @@
             "Type": "Single activator",
             "Brief effect description": "Performs a Critical Hit when attacking",
             "Line description": "Performs a Critical Hit when attacking",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When the target enemy is stunned"
         },
         "18004594": {
             "ID": "18004594",
@@ -593,8 +593,8 @@
             "CausalityLogic": "{\"source\": \"2618&537\", \"compiled\": [\"&\", 2618, 537]}",
             "Type": "Single activator",
             "Brief effect description": "ATK +500% when attacking",
-            "Line description": "ATK +500% when attacking",
-            "Paragraph Title": "Basic effect(s)"
+            "Line description": "ATK +500% when attacking When the target enemy is stunned",
+            "Paragraph Title": "When the target enemy is stunned"
         }
     },
     "Max Attacks": 2,
@@ -1486,7 +1486,7 @@
         "Effect Description": "Causes ultimate damage and \nstuns the enemy for 1 turn; \nchanges STR & INT Ki Spheres \nto Rainbow Ki Spheres",
         "Condition Description": "Can be activated when there \nis a \"Dragon Ball Seekers\" or \n\"Kamehameha\" Category enemy, \nor when all allies attacking in the \nsame turn are \"Mission Execution\" \nCategory characters (once only)",
         "Condition": {
-            "Logic": "(578 || 3488)",
+            "Logic": "(578||3488||3489)",
             "Causalities": {
                 "578": {
                     "Button": {
@@ -1511,6 +1511,18 @@
                         "Min": 0
                     },
                     "Paragraph Title": "When there are 1 or more Kamehameha Category enemies "
+                },
+                "3489": {
+                    "Button": {
+                        "Name": "Are there 3 or more Mission Execution category allies attacking on this turn?"
+                    },
+                    "Slider": {
+                        "Name": "How many Mission Execution category allies attacking on this turn",
+                        "Logic": ">=3",
+                        "Max": 3,
+                        "Min": 0
+                    },
+                    "Paragraph Title": "When there are 3 or more Mission Execution Category allies attacking on this turn"
                 }
             }
         },

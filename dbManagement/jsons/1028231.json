@@ -68,7 +68,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(24 || 365)",
+                "Logic": "(24||365)",
                 "Causalities": {
                     "24": {
                         "Button": {
@@ -110,7 +110,7 @@
             },
             "Length": "3",
             "Condition": {
-                "Logic": "(24 || 365)",
+                "Logic": "(24||365)",
                 "Causalities": {
                     "24": {
                         "Button": {
@@ -171,7 +171,7 @@
             "Type": "Single activator",
             "Brief effect description": "Damage recieved -60% ",
             "Line description": "Damage recieved -60% ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "For 1 turns from the chraracter's entry turn"
         },
         "4004046": {
             "ID": "4004046",
@@ -186,7 +186,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(11&&1380)",
+                "Logic": "(11&&1380&&301)",
                 "Causalities": {
                     "11": {
                         "Button": {
@@ -211,14 +211,26 @@
                             "Max": 5
                         },
                         "Paragraph Title": "For 4 turns from the chraracter's entry turn"
+                    },
+                    "301": {
+                        "Button": {
+                            "Name": "Has 3 or more Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres been obtained on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres have been obtained on this turn?",
+                            "Logic": ">=3",
+                            "Min": 0,
+                            "Max": 3
+                        },
+                        "Paragraph Title": "With 3 or more Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres obtained"
                     }
                 }
             },
             "CausalityLogic": "{\"source\": \"11&1380&301\", \"compiled\": [\"&\", 11, 1380, 301]}",
             "Type": "Single activator",
             "Brief effect description": "Damage recieved -50% after this unit collects ki spheres",
-            "Line description": "Damage recieved -50% after this unit collects ki spheres",
-            "Paragraph Title": "Basic effect(s)"
+            "Line description": "Damage recieved -50% after this unit collects ki spheres Starting from the 2 turn from the character's entry turn and For 4 turns from the chraracter's entry turn",
+            "Paragraph Title": "With 3 or more Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres obtained"
         },
         "5004046": {
             "ID": "5004046",
@@ -264,8 +276,8 @@
             "CausalityLogic": "{\"source\": \"2375&301\", \"compiled\": [\"&\", 2375, 301]}",
             "Type": "Single activator",
             "Brief effect description": "Damage recieved -40% after this unit collects ki spheres",
-            "Line description": "Damage recieved -40% after this unit collects ki spheres",
-            "Paragraph Title": "Basic effect(s)"
+            "Line description": "Damage recieved -40% after this unit collects ki spheres Starting from the 5 turn from the character's entry turn",
+            "Paragraph Title": "With 3 or more Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres obtained"
         },
         "6004046": {
             "ID": "6004046",
@@ -300,7 +312,7 @@
             "Type": "Single activator",
             "Brief effect description": "Damage recieved -20% ",
             "Line description": "Damage recieved -20% ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When there are 2 or more Super Bosses Category allies attacking on this turn"
         },
         "7004046": {
             "ID": "7004046",

@@ -168,7 +168,7 @@
             "Chance": "30",
             "Length": "1",
             "Condition": {
-                "Logic": "(1013 || 1014)",
+                "Logic": "(1013||1014)",
                 "Causalities": {
                     "1013": {
                         "Button": {
@@ -298,7 +298,7 @@
                 "Causalities": {
                     "977": {
                         "Button": {
-                            "Name": "Is there an enemy whose name includes Goku on this turn?"
+                            "Name": "Is there 1 or more enemies whose name includes Goku on this turn?"
                         },
                         "Paragraph Title": "\"Goku\""
                     }
@@ -1295,7 +1295,7 @@
         "Effect Description": "Greatly raises ATK temporarily and \ncauses ultimate damage to enemy",
         "Condition Description": "Can be activated when facing only 1 enemy, \nwhose Class is Super Class and \nHP is 30% or less (once only)",
         "Condition": {
-            "Logic": "(962&&964)",
+            "Logic": "(962&&964&&965)",
             "Causalities": {
                 "962": {
                     "Button": {
@@ -1319,6 +1319,12 @@
                         "Max": 100
                     },
                     "Paragraph Title": "When enemy health is 30% or less"
+                },
+                "965": {
+                    "Button": {
+                        "Name": "Is this unit attacking a super class enemy?"
+                    },
+                    "Paragraph Title": "When the unit is attacking a super class enemy"
                 }
             }
         },

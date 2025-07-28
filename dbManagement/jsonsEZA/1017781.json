@@ -200,7 +200,7 @@
             "Type": "Single activator",
             "Brief effect description": "Chance of performing a critical hit +50% after this unit collects ki spheres",
             "Line description": "Chance of performing a critical hit +50% after this unit collects ki spheres",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "With 4 or more TEQ Ki Spheres obtained"
         },
         "5004273": {
             "ID": "5004273",
@@ -274,7 +274,7 @@
             "Type": "Single activator",
             "Brief effect description": "DEF +100% after all ki collected",
             "Line description": "DEF +100% after all ki collected",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "As the 1st attacker in the turn"
         },
         "8004273": {
             "ID": "8004273",
@@ -293,7 +293,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(2922 || 2923)",
+                "Logic": "(2922||2923)",
                 "Causalities": {
                     "2922": {
                         "Button": {
@@ -340,7 +340,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(2922 || 2923)",
+                "Logic": "(2922||2923)",
                 "Causalities": {
                     "2922": {
                         "Button": {
@@ -465,7 +465,7 @@
             "Length": "1",
             "First Turn To Activate": 1,
             "Condition": {
-                "Logic": "(580 || 576)",
+                "Logic": "(580||576||577||578)",
                 "Causalities": {
                     "580": {
                         "Button": {
@@ -489,6 +489,30 @@
                             "Min": 0
                         },
                         "Paragraph Title": "When there are 1 or more DB Saga Category enemies "
+                    },
+                    "577": {
+                        "Button": {
+                            "Name": "Are there 1 or more World Tournament category enemies  on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many World Tournament category enemies on this turn?",
+                            "Logic": ">=1",
+                            "Max": 7,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 1 or more World Tournament Category enemies "
+                    },
+                    "578": {
+                        "Button": {
+                            "Name": "Are there 1 or more Dragon Ball Seekers category enemies  on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Dragon Ball Seekers category enemies on this turn?",
+                            "Logic": ">=1",
+                            "Max": 7,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 1 or more Dragon Ball Seekers Category enemies "
                     }
                 }
             },
@@ -496,7 +520,7 @@
             "Type": "Single activator",
             "Brief effect description": "Transforms into 4017791 ",
             "Line description": "Transforms into 4017791 ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When the turn count is 7"
         }
     },
     "Max Attacks": 3,

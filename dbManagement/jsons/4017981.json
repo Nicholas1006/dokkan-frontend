@@ -1341,7 +1341,7 @@
         "Effect Description": "Greatly raises ATK temporarily and \ncauses ultimate damage to enemy",
         "Condition Description": "Can be activated when facing only 1 enemy, \nwhose HP is 50% or less, starting from \nnext attacking turn (once only)",
         "Condition": {
-            "Logic": "(11&&476)",
+            "Logic": "(11&&476&&477)",
             "Causalities": {
                 "11": {
                     "Button": {
@@ -1366,6 +1366,17 @@
                         "Max": 7
                     },
                     "Paragraph Title": "When there are less than 2 enemies"
+                },
+                "477": {
+                    "Button": {
+                        "Name": "Is the enemy's health 50 % or less?"
+                    },
+                    "Slider": {
+                        "Name": "What percentage of HP does the enemy have?",
+                        "Logic": "<=50",
+                        "Max": 100
+                    },
+                    "Paragraph Title": "When enemy health is 50% or less"
                 }
             }
         },

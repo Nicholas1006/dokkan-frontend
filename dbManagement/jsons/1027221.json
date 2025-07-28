@@ -301,7 +301,7 @@
             "Type": "Single activator",
             "Brief effect description": "DEF +50% right before being hit",
             "Line description": "DEF +50% right before being hit",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When HP is 70% or less"
         },
         "10003529": {
             "ID": "10003529",
@@ -340,7 +340,7 @@
             "Type": "Single activator",
             "Brief effect description": "Performs an additional attack with a 50% chance of becoming a super attack after being hit",
             "Line description": "Performs an additional attack with a 50% chance of becoming a super attack after being hit",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "After recieving an attack"
         },
         "11003529": {
             "ID": "11003529",
@@ -1601,7 +1601,7 @@
         "Effect Description": "Creates the Domain \"Infinite Zamasu\", \nraises Extreme Class allies' Ki by 3 and \nbecomes omnipresent for 5 turns",
         "Condition Description": "Can be activated when HP is 70% or less \nstarting from the 5th turn from the \ncharacter's entry turn, or when there is \nanother \"Future Saga\" Category ally attacking \nin the same turn or a \"Future Saga\" Category \nenemy starting from the 7th turn from \nthe character's entry turn (once only)",
         "Condition": {
-            "Logic": "((2557&&2547) || (2526&&2558))",
+            "Logic": "((2557&&2547&&2526)||(2526&&2558&&(2559||2560)))",
             "Causalities": {
                 "2557": {
                     "Button": {
@@ -1644,6 +1644,30 @@
                         "Max": 7
                     },
                     "Paragraph Title": "Starting from the 7 turn from the character's entry turn"
+                },
+                "2559": {
+                    "Button": {
+                        "Name": "Are there 1 or more Future Saga category enemies ?"
+                    },
+                    "Slider": {
+                        "Name": "How many Future Saga category enemies ",
+                        "Logic": ">=1",
+                        "Max": 7,
+                        "Min": 0
+                    },
+                    "Paragraph Title": "When there are 1 or more Future Saga Category enemies "
+                },
+                "2560": {
+                    "Button": {
+                        "Name": "Are there 2 or more Future Saga category allies attacking on this turn?"
+                    },
+                    "Slider": {
+                        "Name": "How many Future Saga category allies attacking on this turn",
+                        "Logic": ">=2",
+                        "Max": 3,
+                        "Min": 0
+                    },
+                    "Paragraph Title": "When there are 2 or more Future Saga Category allies attacking on this turn"
                 }
             }
         },

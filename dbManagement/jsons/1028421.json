@@ -82,7 +82,7 @@
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF +20% ",
             "Line description": "ATK and DEF +20% ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "Starting from the 2 turn from the character's entry turn"
         },
         "2003992": {
             "ID": "2003992",
@@ -154,7 +154,7 @@
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF +20% ",
             "Line description": "ATK and DEF +20% ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "Starting from the 4 turn from the character's entry turn"
         },
         "4003992": {
             "ID": "4003992",
@@ -190,7 +190,7 @@
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF +20% ",
             "Line description": "ATK and DEF +20% ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "Starting from the 5 turn from the character's entry turn"
         },
         "5003992": {
             "ID": "5003992",
@@ -226,7 +226,7 @@
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF +20% ",
             "Line description": "ATK and DEF +20% ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "Starting from the 6 turn from the character's entry turn"
         },
         "6003992": {
             "ID": "6003992",
@@ -262,7 +262,7 @@
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF +50% when attacking",
             "Line description": "ATK and DEF +50% when attacking",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When Ki is 12 or more"
         },
         "7003992": {
             "ID": "7003992",
@@ -278,7 +278,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(139 || 868)",
+                "Logic": "(139||868||2889||1173)",
                 "Causalities": {
                     "139": {
                         "Button": {
@@ -303,6 +303,30 @@
                             "Min": 0
                         },
                         "Paragraph Title": "When there are 2 or more Androids Category allies attacking on this turn"
+                    },
+                    "2889": {
+                        "Button": {
+                            "Name": "Are there 1 or more Crossover category enemies  on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Crossover category enemies on this turn?",
+                            "Logic": ">=1",
+                            "Max": 7,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 1 or more Crossover Category enemies "
+                    },
+                    "1173": {
+                        "Button": {
+                            "Name": "Are there 2 or more Crossover category allies attacking on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Crossover category allies attacking on this turn",
+                            "Logic": ">=2",
+                            "Max": 3,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 2 or more Crossover Category allies attacking on this turn"
                     }
                 }
             },
@@ -310,7 +334,7 @@
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF +100% ",
             "Line description": "ATK and DEF +100% ",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When there are 1 or more Androids Category enemies "
         },
         "8003992": {
             "ID": "8003992",
@@ -456,7 +480,7 @@
             "Once Only": true,
             "Type": "Single activator",
             "Brief effect description": "Heals +18% ",
-            "Line description": "Heals +18%  When HP is 80% or less",
+            "Line description": "Heals +18%  Starting from the 3 turn from the character's entry turn",
             "Paragraph Title": "Starting from the 3 turn from the character's entry turn"
         },
         "13003992": {
@@ -504,7 +528,7 @@
             "Once Only": true,
             "Type": "Single activator",
             "Brief effect description": "Ki +2 ",
-            "Line description": "Ki +2  When HP is 80% or less",
+            "Line description": "Ki +2  Starting from the 3 turn from the character's entry turn",
             "Paragraph Title": "Starting from the 3 turn from the character's entry turn"
         },
         "14003992": {
@@ -552,7 +576,7 @@
             "Once Only": true,
             "Type": "Single activator",
             "Brief effect description": "ATK +180% ",
-            "Line description": "ATK +180%  When HP is 80% or less",
+            "Line description": "ATK +180%  Starting from the 3 turn from the character's entry turn",
             "Paragraph Title": "Starting from the 3 turn from the character's entry turn"
         }
     },

@@ -122,7 +122,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(1160 || 1161)",
+                "Logic": "(1160||1161||1153)",
                 "Causalities": {
                     "1160": {
                         "Button": {
@@ -135,6 +135,18 @@
                             "Name": "Is the target enemy in \"DEF down\" status on this turn?"
                         },
                         "Paragraph Title": "When the target enemy is in \"DEF down\" status"
+                    },
+                    "1153": {
+                        "Button": {
+                            "Name": "Are there 2 or more Dragon Ball Heroes category allies attacking on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Dragon Ball Heroes category allies attacking on this turn",
+                            "Logic": ">=2",
+                            "Max": 3,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 2 or more Dragon Ball Heroes Category allies attacking on this turn"
                     }
                 }
             },

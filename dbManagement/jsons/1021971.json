@@ -1207,7 +1207,7 @@
         "Effect Description": "Removes all allies' negative effects; \nall allies' Ki +3 and ATK & DEF +20% for 2 turns",
         "Condition Description": "Can be activated when there is \na \"Storied Figures\" Category ally and \na \"Siblings' Bond\" Category ally (self excluded) \non the team starting from the 4th turn \nfrom the start of battle (once only)",
         "Condition": {
-            "Logic": "(713&&851)",
+            "Logic": "(713&&851&&852)",
             "Causalities": {
                 "713": {
                     "Button": {
@@ -1231,6 +1231,18 @@
                         "Min": 0
                     },
                     "Paragraph Title": "When there are 2 or more Storied Figures Category allies "
+                },
+                "852": {
+                    "Button": {
+                        "Name": "Are there 2 or more Siblings' Bond category allies ?"
+                    },
+                    "Slider": {
+                        "Name": "How many Siblings' Bond category allies ",
+                        "Logic": ">=2",
+                        "Max": 7,
+                        "Min": 0
+                    },
+                    "Paragraph Title": "When there are 2 or more Siblings' Bond Category allies "
                 }
             }
         },

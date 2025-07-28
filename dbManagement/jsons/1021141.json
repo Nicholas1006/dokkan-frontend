@@ -162,7 +162,7 @@
             "Type": "Single activator",
             "Brief effect description": "ATK +58% when attacking",
             "Line description": "ATK +58% when attacking",
-            "Paragraph Title": "Basic effect(s)"
+            "Paragraph Title": "When Ki is 18 or more"
         },
         "4002325": {
             "ID": "4002325",
@@ -200,7 +200,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(766&&767)",
+                "Logic": "(766&&767&&581&&726)",
                 "Causalities": {
                     "766": {
                         "Button": {
@@ -218,6 +218,30 @@
                             "Name": "Is there a Movie Heroes Category ally whose name includes Goku on the team on this turn?"
                         },
                         "Paragraph Title": "When there is a Movie Heroes Category ally whose name includes Goku on the team"
+                    },
+                    "581": {
+                        "Button": {
+                            "Name": "Is HP 58 % or less on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining on this turn?",
+                            "Logic": "<=58",
+                            "Min": 0,
+                            "Max": 100
+                        },
+                        "Paragraph Title": "When HP is 58% or less"
+                    },
+                    "726": {
+                        "Button": {
+                            "Name": "Is Ki at least 18 on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there on this turn?",
+                            "Logic": ">=18",
+                            "Min": 0,
+                            "Max": 24
+                        },
+                        "Paragraph Title": "When Ki is 18 or more"
                     }
                 }
             },
@@ -225,8 +249,8 @@
             "Once Only": true,
             "Type": "Single activator",
             "Brief effect description": "ATK +59% when attacking",
-            "Line description": "ATK +59% when attacking When there is a Movie Heroes Category ally whose name includes Goku on the team",
-            "Paragraph Title": "When the turn count is 5"
+            "Line description": "ATK +59% when attacking When the turn count is 5 and When there is a Movie Heroes Category ally whose name includes Goku on the team and When HP is 58% or less",
+            "Paragraph Title": "When Ki is 18 or more"
         },
         "6002325": {
             "ID": "6002325",
@@ -241,7 +265,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(766&&767)",
+                "Logic": "(766&&767&&581&&726)",
                 "Causalities": {
                     "766": {
                         "Button": {
@@ -259,6 +283,30 @@
                             "Name": "Is there a Movie Heroes Category ally whose name includes Goku on the team on this turn?"
                         },
                         "Paragraph Title": "When there is a Movie Heroes Category ally whose name includes Goku on the team"
+                    },
+                    "581": {
+                        "Button": {
+                            "Name": "Is HP 58 % or less on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "What percentage of HP is remaining on this turn?",
+                            "Logic": "<=58",
+                            "Min": 0,
+                            "Max": 100
+                        },
+                        "Paragraph Title": "When HP is 58% or less"
+                    },
+                    "726": {
+                        "Button": {
+                            "Name": "Is Ki at least 18 on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How much ki is there on this turn?",
+                            "Logic": ">=18",
+                            "Min": 0,
+                            "Max": 24
+                        },
+                        "Paragraph Title": "When Ki is 18 or more"
                     }
                 }
             },
@@ -266,8 +314,8 @@
             "Once Only": true,
             "Type": "Single activator",
             "Brief effect description": "Performs a Critical Hit when attacking",
-            "Line description": "Performs a Critical Hit when attacking When there is a Movie Heroes Category ally whose name includes Goku on the team",
-            "Paragraph Title": "When the turn count is 5"
+            "Line description": "Performs a Critical Hit when attacking When the turn count is 5 and When there is a Movie Heroes Category ally whose name includes Goku on the team and When HP is 58% or less",
+            "Paragraph Title": "When Ki is 18 or more"
         }
     },
     "Max Attacks": 3,
@@ -1281,7 +1329,7 @@
         "Effect Description": "Ki +12 and ATK +59% for 1 turn",
         "Condition Description": "Can be activated when HP is 58% or less \nwith a \"Movie Heroes\" Category ally whose \nname includes \"Goku\" (Youth excluded) \non the team starting from the 5th turn \nfrom the start of battle (once only)",
         "Condition": {
-            "Logic": "(766&&767)",
+            "Logic": "(766&&767&&581)",
             "Causalities": {
                 "766": {
                     "Button": {
@@ -1299,6 +1347,18 @@
                         "Name": "Is there a Movie Heroes Category ally whose name includes Goku on the team?"
                     },
                     "Paragraph Title": "When there is a Movie Heroes Category ally whose name includes Goku on the team"
+                },
+                "581": {
+                    "Button": {
+                        "Name": "Is HP 58 % or less?"
+                    },
+                    "Slider": {
+                        "Name": "What percentage of HP is remaining?",
+                        "Logic": "<=58",
+                        "Min": 0,
+                        "Max": 100
+                    },
+                    "Paragraph Title": "When HP is 58% or less"
                 }
             }
         },

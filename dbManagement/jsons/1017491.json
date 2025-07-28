@@ -898,7 +898,7 @@
         "Effect Description": "Fuses with Kami",
         "Condition Description": "Can be activated when HP is 70% or more \nwith another \"Namekians\" Category ally \non the team starting from the 4th turn \nfrom the start of battle (once only)",
         "Condition": {
-            "Logic": "(5&&252)",
+            "Logic": "(5&&252&&165)",
             "Causalities": {
                 "5": {
                     "Button": {
@@ -922,6 +922,18 @@
                         "Max": 100
                     },
                     "Paragraph Title": "When HP is 70% or more"
+                },
+                "165": {
+                    "Button": {
+                        "Name": "Are there 2 or more Namekians category allies ?"
+                    },
+                    "Slider": {
+                        "Name": "How many Namekians category allies ",
+                        "Logic": ">=2",
+                        "Max": 7,
+                        "Min": 0
+                    },
+                    "Paragraph Title": "When there are 2 or more Namekians Category allies "
                 }
             }
         },
