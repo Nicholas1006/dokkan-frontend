@@ -4,6 +4,7 @@ import {timeSince,isEmptyDictionary} from "./commonFunctions.js";
 
 // GLOBAL VARIABLES
 let unitsToDisplay = 44;
+let includeOnlyOwnableUnits = true;
 
 window.currentSort = "Release";
 window.currentOrder = "descending";
@@ -102,6 +103,11 @@ async function reFilterCards(sortCutIDBefore=false) {
           }
         }
       window.currentFilteredUnits=currentFilteringUnits;
+    }
+    if(includeOnlyOwnableUnits){
+      window.currentFilteredUnits = window.currentFilteredUnits.filter(unit => {
+        return window.unitBasicsDetails["Ownable"][unit] === true;
+      });
     }
 
     if(window.leaderView!=null){
@@ -515,13 +521,13 @@ function createCharacterSelection(){
   createSortOption();
   createFilterOption();
   createSortButton();
-  const jsonPromises = ["Resource ID", "Class", "Type", "Rarity", "Max Level"].map(field => 
+  const jsonPromises = ["Resource ID", "Class", "Type", "Rarity", "Max Level","Ownable"].map(field => 
     fetch("/dbManagement/uniqueJsons/unitBasics/"+ field+ ".json")
   );
 
   Promise.all(jsonPromises).then(
     results => {
-      ["Resource ID", "Class", "Type", "Rarity", "Max Level"].forEach(
+      ["Resource ID", "Class", "Type", "Rarity", "Max Level","Ownable"].forEach(
         async (field, index) => {
           window.unitBasicsDetails[field] = await results[index].json();
         }
