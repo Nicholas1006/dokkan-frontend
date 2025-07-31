@@ -1534,7 +1534,7 @@ class passiveQuery{
 let activePassiveLines=[]
 const HIDEUNNEEDEDPASSIVE=true;
 const MINIMUMVIABLELEADERBUFF=1;
-const USEPASSIVELIST=true;
+const USEPASSIVELIST=false;
 let allLinkPartners;
 let highestLinkers=7;
 let finishType;
