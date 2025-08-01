@@ -1534,7 +1534,7 @@ class passiveQuery{
 let activePassiveLines=[]
 const HIDEUNNEEDEDPASSIVE=true;
 const MINIMUMVIABLELEADERBUFF=1;
-const USEPASSIVELIST=false;
+let usePassiveList=true;
 let allLinkPartners;
 let highestLinkers=7;
 let finishType;
@@ -1730,11 +1730,11 @@ function updatePassiveStats(){
     
 
     let currentActivePassiveMultipliers={};
-    if(USEPASSIVELIST){
+    if(usePassiveList){
         currentActivePassiveMultipliers=activePassiveLines;
     }
     let iteratingCausalityLogic;
-    if(!USEPASSIVELIST){
+    if(!usePassiveList){
         iteratingCausalityLogic=queriesToLogic(passiveQueryList);
     }
     let iteratingPassiveBuffs;
@@ -1747,7 +1747,7 @@ function updatePassiveStats(){
     //Account for previously built stats
     
     //  Start of turn
-    if(!USEPASSIVELIST){
+    if(!usePassiveList){
         progressCausalityLogic(iteratingCausalityLogic,"Start of turn");
         currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Start of turn","Single activator",iteratingCausalityLogic)
         currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Start of turn","Disable Other Line",iteratingCausalityLogic)
@@ -1756,7 +1756,7 @@ function updatePassiveStats(){
     
     if(activeAttackPerformed){
         const activecontainer=document.getElementById("active-container");
-        if(!USEPASSIVELIST){
+        if(!usePassiveList){
 
             
             progressCausalityLogic(iteratingCausalityLogic,"Right before super attack");
@@ -1852,7 +1852,7 @@ function updatePassiveStats(){
         //      *record the stats at this point and save them to be displayed
         //  }
     //  When ki spheres collected
-    if(!USEPASSIVELIST){
+    if(!usePassiveList){
         progressCausalityLogic(iteratingCausalityLogic,"When ki spheres collected");
         currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"When ki spheres collected","Single activator",iteratingCausalityLogic)
         currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"When ki spheres collected","Disable Other Line",iteratingCausalityLogic)
@@ -1894,7 +1894,7 @@ function updatePassiveStats(){
 
     //  for(each time that an attack is recieved before we attack){
     //      Right before being hit
-    if(!USEPASSIVELIST){
+    if(!usePassiveList){
         if(attackRecievedTiming=="before" && attackRecievedType=="normal"){
             progressCausalityLogic(iteratingCausalityLogic,"Right before being hit by normal");
             currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before being hit","Single activator",iteratingCausalityLogic)
@@ -1968,7 +1968,7 @@ function updatePassiveStats(){
     }
     attacksPerformed+=1;
 
-    if(!USEPASSIVELIST){
+    if(!usePassiveList){
         iteratingCausalityLogic=prepareCausalityLogic(iteratingCausalityLogic,kiCircleDictionary[0]);
         currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(SOT stat)","Single activator",iteratingCausalityLogic)
         currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(SOT stat)","Disable Other Line",iteratingCausalityLogic)
@@ -1980,13 +1980,13 @@ function updatePassiveStats(){
         kiCircleDictionary[0].updateFromBuffs(activePassiveLinesToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
     }
     
-    if(!USEPASSIVELIST){    
+    if(!usePassiveList){    
         currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after attack","Single activator",iteratingCausalityLogic)
         currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after attack","Disable Other Line",iteratingCausalityLogic)
     }
     iteratingSuperAttackBuffs=kiCircleDictionary[0].superBuffs;
 
-    if(!USEPASSIVELIST){
+    if(!usePassiveList){
         //      Right after attack
         if(kiCircleDictionary[0]["superPerformed"]){
             progressCausalityLogic(iteratingCausalityLogic,"Right after super attack");
@@ -2048,7 +2048,7 @@ function updatePassiveStats(){
             //currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(SOT stat)",iteratingCausalityLogic)
             //currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before attack(MOT stat)",iteratingCausalityLogic)
             
-            if(!USEPASSIVELIST){
+            if(!usePassiveList){
                 currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"All","Building Stat",iteratingCausalityLogic)
                 kiCircleDictionary[nextLineToActivate].updateKiFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
                 iteratingCausalityLogic=prepareCausalityLogic(iteratingCausalityLogic,kiCircleDictionary[0]);
@@ -2069,7 +2069,7 @@ function updatePassiveStats(){
         else{
         }
         
-        if(!USEPASSIVELIST){
+        if(!usePassiveList){
             //if super is actually performed
             if(kiCircleDictionary[nextLineToActivate]["superPerformed"]){
                 progressCausalityLogic(iteratingCausalityLogic,"Right after super attack");
@@ -2097,7 +2097,7 @@ function updatePassiveStats(){
 
 
     }
-    if(!USEPASSIVELIST){
+    if(!usePassiveList){
         currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after attack","Single activator",iteratingCausalityLogic)
         currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after attack","Disable Other Line",iteratingCausalityLogic)
     }
@@ -2116,7 +2116,7 @@ function updatePassiveStats(){
         }
     }
 
-    if(!USEPASSIVELIST){
+    if(!usePassiveList){
         if(attackRecievedTiming=="after" && attackRecievedType=="normal"){
             progressCausalityLogic(iteratingCausalityLogic,"Right before being hit by normal");
             currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right before being hit","Single activator",iteratingCausalityLogic)
@@ -2130,7 +2130,7 @@ function updatePassiveStats(){
     }
 
     if(attackRecievedTiming=="after" && (attackRecievedType=="normal" || attackRecievedType=="super")){
-        if(!USEPASSIVELIST){ 
+        if(!usePassiveList){ 
             kiCircleDictionary[lastAttack].updateDefensiveFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
         }
         else{
@@ -2157,7 +2157,7 @@ function updatePassiveStats(){
         }
     }
 
-    if(!USEPASSIVELIST){
+    if(!usePassiveList){
         if(attackRecievedTiming=="after" && attackRecievedType=="normal"){
             progressCausalityLogic(iteratingCausalityLogic,"Right after being hit by normal");
             currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Right after being hit","Single activator",iteratingCausalityLogic)
@@ -2689,7 +2689,7 @@ function singleActivatorHandler(previousActiveLineMultipliers,exec_timing_type,a
     for(const passiveLine of activateablePassiveLines){
         if("Condition" in passiveLine){
             let conditionLogic=" "+passiveLine["Condition"]["Logic"]+" ";
-            conditionLogic=conditionLogic.replaceAll("("," ( ").replaceAll(")", " ) ");
+            conditionLogic=conditionLogic.replaceAll("("," ( ").replaceAll(")"," ) ").replaceAll("&&"," && ").replaceAll("||"," || ");
             for (const causalityKey of Object.keys(passiveLine["Condition"]["Causalities"])){
                 const causality=passiveLine["Condition"]["Causalities"][causalityKey];
                 let buttonLogic=false;
@@ -2787,7 +2787,7 @@ function buildingStatHandler(previousActiveLineMultipliers,exec_timing_type,acti
         (thisTurnActivationCounted || passiveLine["Length"]!="1")){
             if("Condition" in passiveLine){
                 let conditionLogic=" "+passiveLine["Condition"]["Logic"]+" ";
-                conditionLogic=conditionLogic.replaceAll("("," ( ").replaceAll(")", " ) ");
+                conditionLogic=conditionLogic.replaceAll("("," ( ").replaceAll(")"," ) ").replaceAll("&&"," && ").replaceAll("||"," || ");
                 for (const causalityKey of Object.keys(passiveLine["Condition"]["Causalities"])){
                     const causality=passiveLine["Condition"]["Causalities"][causalityKey];
                     let buttonLogic=false;
@@ -3998,7 +3998,7 @@ function refreshDomainBuffs(updatePassiveStatsBool=true){
             if(efficiacy["superCondition"]!=undefined){
                 let efficiacyLogic=efficiacy["superCondition"]["Logic"];
                 efficiacyLogic=" "+efficiacyLogic+" ";
-                efficiacyLogic=efficiacyLogic.replaceAll("("," ( ").replaceAll(")"," ) ");
+                efficiacyLogic=efficiacyLogic.replaceAll("("," ( ").replaceAll(")"," ) ").replaceAll("&&"," && ").replaceAll("||"," || ");
                 for (const causalityKey of Object.keys(efficiacy["superCondition"]["Causalities"])){
                     const causality = efficiacy["superCondition"]["Causalities"][causalityKey];
                     let categoryMatch= false;
@@ -4047,7 +4047,23 @@ function refreshDomainBuffs(updatePassiveStatsBool=true){
 }
 
 
-function createPassiveQueryContainer(){
+function createPassiveContainer(){
+    document.getElementById("passive-style-query").addEventListener("click", function(){
+        usePassiveList=false;
+        passiveQueryContainer.style.display="block"
+        passiveChanceContainer.style.display="block"
+        passiveListContainer.style.display="none"
+        updatePassiveStats();
+    });
+    
+    document.getElementById("passive-style-list").addEventListener("click", function(){
+        usePassiveList=true;
+        passiveQueryContainer.style.display="none"
+        passiveChanceContainer.style.display="none"
+        passiveListContainer.style.display="block"
+        updatePassiveStats();
+    });
+
     passiveQueryList=[]
     passiveChanceList=[]
     passiveOnceOnlyList=[]
@@ -4055,158 +4071,99 @@ function createPassiveQueryContainer(){
     let passiveQueryContainer = document.getElementById("passive-query-container");
     let passiveChanceContainer=document.getElementById("passive-chance-container");
     let passiveOnceOnlyContainer=document.getElementById("passive-once-only-container");
+    let passiveListContainer = document.getElementById("passive-list-container");
+    while (passiveListContainer.firstChild) {
+        passiveListContainer.removeChild(passiveQueryContainer.firstChild);
+    }
+    passiveListContainer["Paragraph Titles"]={};
     while (passiveQueryContainer.firstChild) {
         passiveQueryContainer.removeChild(passiveQueryContainer.firstChild);
     }
     while (passiveChanceContainer.firstChild) {
         passiveChanceContainer.removeChild(passiveChanceContainer.firstChild);
     }
-
-
-    if(!(passiveSupportContainer.firstChild) && false){
-        const passiveATKSupport=document.createElement("div");
-        passiveATKSupport.label=document.createElement("label");
-        passiveATKSupport.input=document.createElement("input");
-        passiveATKSupport.input.type="number";
-        passiveATKSupport.input.value="0";
-        passiveATKSupport.addEventListener("input", function(){
-            if(this.input.value==""){
-                supportBuffs["ATK"]=0;
-            }
-            else{
-                supportBuffs["ATK"]=parseInt(this.input.value);
-            }
-            updatePassiveStats();
-        });
-        passiveATKSupport.appendChild(passiveATKSupport.label);
-        passiveATKSupport.appendChild(passiveATKSupport.input);
-        passiveATKSupport.label.textContent="ATK Support: ";
-        passiveSupportContainer.ATKsupport=passiveATKSupport;
-        passiveSupportContainer.appendChild(passiveATKSupport);
-        
-
-        const passiveDEFSupport=document.createElement("div");
-        passiveDEFSupport.label=document.createElement("label");
-        passiveDEFSupport.input=document.createElement("input");
-        passiveDEFSupport.input.type="number";
-        passiveDEFSupport.input.value="0";
-        passiveDEFSupport.appendChild(passiveDEFSupport.label);
-        passiveDEFSupport.appendChild(passiveDEFSupport.input);
-        passiveDEFSupport.addEventListener("input", function(){
-            if(this.input.value==""){
-                supportBuffs["DEF"]=0;
-            }
-            else{
-                supportBuffs["DEF"]=parseInt(this.input.value);
-            }
-            updatePassiveStats();
-        });
-        passiveDEFSupport.label.textContent="DEF Support: ";
-        passiveSupportContainer.DEFsupport=passiveDEFSupport;
-        passiveSupportContainer.appendChild(passiveDEFSupport);
-
-        const passiveKiSupport=document.createElement("div");
-        passiveKiSupport.label=document.createElement("label");
-        passiveKiSupport.input=document.createElement("input");
-        passiveKiSupport.input.type="number";
-        passiveKiSupport.input.value="0";
-        passiveKiSupport.appendChild(passiveKiSupport.label);
-        passiveKiSupport.appendChild(passiveKiSupport.input);
-        passiveKiSupport.addEventListener("input", function(){
-            if(passiveKiSupport.input.value==""){
-                kiSources.Support=0;
-            }
-            else{
-                kiSources.Support=parseInt(passiveKiSupport.input.value);
-            }
-            updatePassiveStats();
-        });
-        passiveKiSupport.label.textContent="Ki Support: ";
-        passiveSupportContainer.Kisupport=passiveKiSupport;
-        passiveSupportContainer.appendChild(passiveKiSupport);
-    }
     
-    if(true){
-        const passiveSupportAdditions=document.createElement("div");
-        passiveSupportAdditions.id="passive-support-additions";
-        passiveSupportContainer.appendChild(passiveSupportAdditions);
+    const passiveSupportAdditions=document.createElement("div");
+    passiveSupportAdditions.id="passive-support-additions";
+    passiveSupportContainer.appendChild(passiveSupportAdditions);
 
-        passiveSupportAdditions.buffType=document.createElement("div");
-        passiveSupportAdditions.buffType.id="passive-support-additions-buff-type";
-        passiveSupportAdditions.appendChild(passiveSupportAdditions.buffType);
+    passiveSupportAdditions.buffType=document.createElement("div");
+    passiveSupportAdditions.buffType.id="passive-support-additions-buff-type";
+    passiveSupportAdditions.appendChild(passiveSupportAdditions.buffType);
 
-        passiveSupportAdditions.buffType.selector=document.createElement("div");
-        passiveSupportAdditions.buffType.selector.id="passive-support-additions-buff-type-selector";
-        passiveSupportAdditions.buffType.appendChild(passiveSupportAdditions.buffType.selector);
-        ["Ki","ATK", "DEF", "Dodge", "Crit", "DR"].forEach(option => {
-            const optionContainer = document.createElement("div");
-            optionContainer.className = "passive-support-option";
+    passiveSupportAdditions.buffType.selector=document.createElement("div");
+    passiveSupportAdditions.buffType.selector.id="passive-support-additions-buff-type-selector";
+    passiveSupportAdditions.buffType.appendChild(passiveSupportAdditions.buffType.selector);
+    ["Ki","ATK", "DEF", "Dodge", "Crit", "DR"].forEach(option => {
+        const optionContainer = document.createElement("div");
+        optionContainer.className = "passive-support-option";
 
-            const checkbox = document.createElement("input");
-            checkbox.type = "checkbox";
-            checkbox.id = `passive-support-${option.toLowerCase()}`;
-            checkbox.name = option;
-            checkbox.value = option;
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.id = `passive-support-${option.toLowerCase()}`;
+        checkbox.name = option;
+        checkbox.value = option;
 
-            const label = document.createElement("label");
-            label.htmlFor = checkbox.id;
-            label.textContent = option;
+        const label = document.createElement("label");
+        label.htmlFor = checkbox.id;
+        label.textContent = option;
 
-            optionContainer.appendChild(checkbox);
-            optionContainer.appendChild(label);
-            passiveSupportAdditions.buffType.selector.appendChild(optionContainer);
-        });
+        optionContainer.appendChild(checkbox);
+        optionContainer.appendChild(label);
+        passiveSupportAdditions.buffType.selector.appendChild(optionContainer);
+    });
 
-        passiveSupportAdditions.buffAmount=document.createElement("div");
-        passiveSupportAdditions.buffAmount.id="passive-support-additions-buff-amount";
-        passiveSupportAdditions.appendChild(passiveSupportAdditions.buffAmount);
+    passiveSupportAdditions.buffAmount=document.createElement("div");
+    passiveSupportAdditions.buffAmount.id="passive-support-additions-buff-amount";
+    passiveSupportAdditions.appendChild(passiveSupportAdditions.buffAmount);
 
-        passiveSupportAdditions.buffAmount.input=document.createElement("input");
-        passiveSupportAdditions.buffAmount.input.type="number";
-        passiveSupportAdditions.buffAmount.input.value="0";
-        passiveSupportAdditions.buffAmount.appendChild(passiveSupportAdditions.buffAmount.input);
+    passiveSupportAdditions.buffAmount.input=document.createElement("input");
+    passiveSupportAdditions.buffAmount.input.type="number";
+    passiveSupportAdditions.buffAmount.input.value="0";
+    passiveSupportAdditions.buffAmount.appendChild(passiveSupportAdditions.buffAmount.input);
 
-        passiveSupportAdditions.buffSource=document.createElement("div");
-        passiveSupportAdditions.buffSource.id="passive-support-additions-buff-source";
-        passiveSupportAdditions.appendChild(passiveSupportAdditions.buffSource);
+    passiveSupportAdditions.buffSource=document.createElement("div");
+    passiveSupportAdditions.buffSource.id="passive-support-additions-buff-source";
+    passiveSupportAdditions.appendChild(passiveSupportAdditions.buffSource);
 
-        passiveSupportAdditions.buffSource.selector=document.createElement("select");
-        passiveSupportAdditions.buffSource.selector.id="passive-support-additions-buff-source-selector";
-        passiveSupportAdditions.buffSource.appendChild(passiveSupportAdditions.buffSource.selector);
-        ["Passive SOT", "Passive MOT", "Active", "Super attack"].forEach(option => {
-            const optionContainer = document.createElement("option");
-            optionContainer.value = option;
-            optionContainer.textContent = option;
-            passiveSupportAdditions.buffSource.selector.appendChild(optionContainer);
-        });
-        
-        passiveSupportAdditions.confirmSelection=document.createElement("button");
-        passiveSupportAdditions.confirmSelection.id="passive-support-additions-confirm-selection";
-        passiveSupportAdditions.appendChild(passiveSupportAdditions.confirmSelection);
-        passiveSupportAdditions.confirmSelection.textContent="Add support";
-        passiveSupportAdditions.confirmSelection.addEventListener("click", function(){
-            const passiveSupportType=[];
-            for (const passiveSupportOption of passiveSupportAdditions.buffType.selector.children){
-                if(passiveSupportOption.children[0].checked){
-                    passiveSupportType.push(passiveSupportOption.children[0].value);
-                }
+    passiveSupportAdditions.buffSource.selector=document.createElement("select");
+    passiveSupportAdditions.buffSource.selector.id="passive-support-additions-buff-source-selector";
+    passiveSupportAdditions.buffSource.appendChild(passiveSupportAdditions.buffSource.selector);
+    ["Passive SOT", "Passive MOT", "Active", "Super attack"].forEach(option => {
+        const optionContainer = document.createElement("option");
+        optionContainer.value = option;
+        optionContainer.textContent = option;
+        passiveSupportAdditions.buffSource.selector.appendChild(optionContainer);
+    });
+    
+    passiveSupportAdditions.confirmSelection=document.createElement("button");
+    passiveSupportAdditions.confirmSelection.id="passive-support-additions-confirm-selection";
+    passiveSupportAdditions.appendChild(passiveSupportAdditions.confirmSelection);
+    passiveSupportAdditions.confirmSelection.textContent="Add support";
+    passiveSupportAdditions.confirmSelection.addEventListener("click", function(){
+        const passiveSupportType=[];
+        for (const passiveSupportOption of passiveSupportAdditions.buffType.selector.children){
+            if(passiveSupportOption.children[0].checked){
+                passiveSupportType.push(passiveSupportOption.children[0].value);
             }
-            supportBuffs.push({Type: passiveSupportType, Amount: passiveSupportAdditions.buffAmount.input.value, Source: passiveSupportAdditions.buffSource.selector.value});
-            fixOverallSupportBuffs();
-            updatePassiveSupportDisplay();
-            updatePassiveStats();
-        })
+        }
+        supportBuffs.push({Type: passiveSupportType, Amount: passiveSupportAdditions.buffAmount.input.value, Source: passiveSupportAdditions.buffSource.selector.value});
+        fixOverallSupportBuffs();
+        updatePassiveSupportDisplay();
+        updatePassiveStats();
+    })
 
 
         
         
 
-    }
+    
     let passiveList=currentJson.Passive;
 
     for (const passiveLineKey of Object.keys(passiveList)) {
         if(arraysHaveOverlap(relevantPassiveEffects, Object.keys(passiveList[passiveLineKey]))){
             updateQueryListWithPassiveLine(passiveList[passiveLineKey]);
+            updatePassiveListWithPassiveLine(passiveList[passiveLineKey]);
         }
         if(Object.keys(passiveList[passiveLineKey]).includes("Chance") && !(Object.keys(passiveList[passiveLineKey]).includes("Additional Attack"))){
             updateChanceList(passiveList[passiveLineKey]);
@@ -4264,6 +4221,17 @@ function createPassiveQueryContainer(){
     for (const query of Object.values(passiveOnceOnlyList)){
         passiveOnceOnlyContainer.appendChild(query.getElement());
     }
+
+    if(usePassiveList){
+        passiveQueryContainer.style.display="none"
+        passiveChanceContainer.style.display="none"
+        passiveListContainer.style.display="block"
+    }
+    else{
+        passiveQueryContainer.style.display="block"
+        passiveChanceContainer.style.display="block"
+        passiveListContainer.style.display="none"
+    }
 }
 
 function createPassiveListContainer(){
@@ -4273,7 +4241,7 @@ function createPassiveListContainer(){
     let passiveSupportContainer=document.getElementById("passive-support-container");
     let passiveListContainer = document.getElementById("passive-list-container");
     while (passiveListContainer.firstChild) {
-        passiveListContainer.removeChild(passiveQueryContainer.firstChild);
+        passiveListContainer.removeChild(passiveListContainer.firstChild);
     }
     passiveListContainer["Paragraph Titles"]={};
 
@@ -5699,9 +5667,16 @@ function polishPage(){
     if(document.getElementById("passive-query-container").firstChild==null){
         document.getElementById("passive-query-container").style.display="none";
     }
-    else{
-        document.getElementById("passive-query-container").style.display="block";
+
+    if(document.getElementById("passive-list-container").firstChild==null){
+        document.getElementById("passive-list-container").style.display="none";
     }
+
+    if(document.getElementById("passive-chance-container").firstChild==null){
+        document.getElementById("passive-chance-container").style.display="none";
+    }
+
+
 
     if(document.getElementById("active-container").firstChild==null){
         document.getElementById("active-container").style.display="none";
@@ -5754,12 +5729,7 @@ export async function loadPage(firstTime=false){
             location.href=location.origin;
         }
         initialiseAspects();
-        if(USEPASSIVELIST){
-            createPassiveListContainer();
-        }
-        else{
-            createPassiveQueryContainer();
-        }
+        createPassiveContainer();
         if(firstTime){
             if(currentJson["Rarity"] == "lr" || currentJson["Rarity"] == "ur"){
                 createSkillOrbContainer();
