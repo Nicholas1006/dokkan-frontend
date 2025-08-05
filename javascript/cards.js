@@ -1578,7 +1578,8 @@ let kiCircleDictionary=[];
 let passiveQueryList=[];
 let passiveChanceList={};
 let passiveOnceOnlyList=[];
-let relevantPassiveEffects=["Ki","ATK","Heals","DEF","Guard","Disable Other Line","Dodge Chance","Crit Chance","DR","Additional Attack"]
+let relevantPassiveQueryEffects=["Ki","ATK","Heals","DEF","Guard","Disable Other Line","Dodge Chance","Crit Chance","DR","Additional Attack"]
+let relevantPassivLineEffects=["Ki",,"ATK","Heals","DEF","Guard","Dodge Chance","Crit Chance","DR","Additional Attack","Ki Change","Effective Against All","Nullification","Counter","Status","Transformation","Forsee Super Attack"]
 
 let attackRecievedType="normal";
 let attackRecievedTiming="after";
@@ -3719,8 +3720,6 @@ function updatePassiveListWithPassiveLine(passiveLine){
         lineDescription = lineDescription.replaceAll(keyword, imgTag);
     }
     passiveLineDiv.innerHTML = "• "+lineDescription;
-    console.log(passiveLineDiv.innerHTML);
-    console.log(lineDescription)
     passiveLineDiv.active=true
     passiveLineDiv.classList.add("active");
     activePassiveLines[passiveLine["ID"]]=(passiveLine);
@@ -4180,9 +4179,14 @@ function createPassiveContainer(){
     let passiveList=currentJson.Passive;
 
     for (const passiveLineKey of Object.keys(passiveList)) {
-        if(arraysHaveOverlap(relevantPassiveEffects, Object.keys(passiveList[passiveLineKey]))){
+        if(arraysHaveOverlap(relevantPassiveQueryEffects, Object.keys(passiveList[passiveLineKey]))){
             updateQueryListWithPassiveLine(passiveList[passiveLineKey]);
+        }
+        if(arraysHaveOverlap(relevantPassivLineEffects, Object.keys(passiveList[passiveLineKey]))){   
             updatePassiveListWithPassiveLine(passiveList[passiveLineKey]);
+        }
+        else{
+            console.log(Object.keys(passiveList[passiveLineKey]))
         }
         if(Object.keys(passiveList[passiveLineKey]).includes("Chance") && !(Object.keys(passiveList[passiveLineKey]).includes("Additional Attack"))){
             updateChanceList(passiveList[passiveLineKey]);
@@ -4338,7 +4342,7 @@ function createPassiveListContainer(){
     let passiveList=currentJson.Passive;
 
     for (const passiveLineKey of Object.keys(passiveList)) {
-        if(arraysHaveOverlap(relevantPassiveEffects, Object.keys(passiveList[passiveLineKey]))){
+        if(arraysHaveOverlap(relevantPassiveQueryEffects, Object.keys(passiveList[passiveLineKey]))){
             updatePassiveListWithPassiveLine(passiveList[passiveLineKey]);
         }
     }
