@@ -3702,9 +3702,25 @@ function colorToBackground(color){
 }
 
 function updatePassiveListWithPassiveLine(passiveLine){
+    const iconMap = {
+    "[Up-Arrow]": window.assetBase+"/global/en/layout/en/image/ingame/battle/skill_dialog/passive_skill_dialog_arrow01.png",
+    "[Down-Arrow]": window.assetBase+"/global/en/layout/en/image/ingame/battle/skill_dialog/passive_skill_dialog_arrow02.png",
+    "[Infinite]": window.assetBase+"/global/en/layout/en/image/ingame/battle/skill_dialog/passive_skill_dialog_icon_02.png",
+    "[Once Only]": window.assetBase+"/global/en/layout/en/image/ingame/battle/skill_dialog/passive_skill_dialog_icon_01.png"
+    };
+
     const passiveLineDiv=document.createElement("div");
     passiveLineDiv.id="passive-line-div"
-    passiveLineDiv.innerHTML = "• "+passiveLine["Line description"];
+    let lineDescription = passiveLine["Line description"];
+    // Replace all keywords with corresponding icons
+    for (let keyword in iconMap) {
+        const iconPath = iconMap[keyword];
+        const imgTag = `<img src="${iconPath}" style="height: 1em; vertical-align: middle;">`;
+        lineDescription = lineDescription.replaceAll(keyword, imgTag);
+    }
+    passiveLineDiv.innerHTML = "• "+lineDescription;
+    console.log(passiveLineDiv.innerHTML);
+    console.log(lineDescription)
     passiveLineDiv.active=true
     passiveLineDiv.classList.add("active");
     activePassiveLines[passiveLine["ID"]]=(passiveLine);
