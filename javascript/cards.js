@@ -2431,7 +2431,8 @@ function activePassiveMultipliersToPassiveBuffs(activePassiveMultipliers){
             }
         }
         else if(activatedLine["Type"]=="Building Stat"){
-            const buffMultiplier=activePassiveMultipliers[passiveLineKey];
+            let buffMultiplier;
+            if(passiveLineKey in activePassiveMultipliers) buffMultiplier=1000000; //WIP PLACEHOLDER UNTIL WE GET SLIDERS FOR BUILDING STATS
             if(includedInSupportBuff(activatedLine)){
                 if("Ki" in activatedLine){
                     //Ki increase
