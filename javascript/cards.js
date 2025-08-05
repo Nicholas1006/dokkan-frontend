@@ -3704,7 +3704,7 @@ function colorToBackground(color){
 function updatePassiveListWithPassiveLine(passiveLine){
     const passiveLineDiv=document.createElement("div");
     passiveLineDiv.id="passive-line-div"
-    passiveLineDiv.innerHTML=passiveLine["Line description"]
+    passiveLineDiv.innerHTML = "• "+passiveLine["Line description"];
     passiveLineDiv.active=true
     passiveLineDiv.classList.add("active");
     activePassiveLines[passiveLine["ID"]]=(passiveLine);
