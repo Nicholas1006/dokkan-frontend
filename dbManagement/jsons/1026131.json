@@ -48,7 +48,7 @@
             "Once Only": true,
             "Type": "Single activator",
             "Brief effect description": "Ki +4 ",
-            "Line description": "Ki +4 ",
+            "Line description": "Ki +4 for 6 turns [Once Only]",
             "Paragraph Title": "Basic effect(s)"
         },
         "1003334": {
@@ -68,14 +68,14 @@
             "Once Only": true,
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF +58% ",
-            "Line description": "ATK and DEF +58% ",
+            "Line description": "ATK and DEF +58% for 6 turns [Once Only]",
             "Paragraph Title": "Basic effect(s)"
         },
         "2003334": {
             "ID": "2003334",
             "Additional Attack": {
                 "Activated": true,
-                "Chance of super": "70",
+                "Chance of super": 70,
                 "Chance of another additional": "0"
             },
             "Timing": "Start of turn",
@@ -91,7 +91,7 @@
             "Once Only": true,
             "Type": "Single activator",
             "Brief effect description": "Performs an additional attack with a 70% chance of becoming a super attack ",
-            "Line description": "Performs an additional attack with a 70% chance of becoming a super attack ",
+            "Line description": "Performs an additional attack with a 70% chance of becoming a super attack for 6 turns [Once Only]",
             "Paragraph Title": "Basic effect(s)"
         },
         "3003334": {
@@ -144,7 +144,7 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": "(2161||2162)",
+                "Logic": "( 2161 || 2162 )",
                 "Causalities": {
                     "2161": {
                         "Button": {
@@ -163,8 +163,8 @@
             "CausalityLogic": "{\"source\": \"2161|2162\", \"compiled\": [\"|\", 2161, 2162]}",
             "Type": "Single activator",
             "Brief effect description": "Damage recieved -30% right before being hit",
-            "Line description": "Damage recieved -30% right before being hit",
-            "Paragraph Title": "When the enemy has been hit by the characters super attack?"
+            "Line description": "Damage recieved -30% right before being hit When the enemy has been hit by the characters super attack? or When the enemy has been hit by the characters ultra super attack? ",
+            "Paragraph Title": "Basic effect(s)"
         },
         "6003334": {
             "ID": "6003334",
@@ -189,7 +189,7 @@
             "CausalityLogic": "{\"source\": \"24\", \"compiled\": 24}",
             "Type": "Building Stat",
             "Brief effect description": "Ki +1 (up to 5) based on 'How many attacks has this character recieved' after being hit",
-            "Line description": "Ki +1 (up to 5) based on 'How many attacks has this character recieved' after being hit",
+            "Line description": "Ki +1 (up to 5) based on 'How many attacks has this character recieved' after being hit for 99 turns[Infinite]",
             "Paragraph Title": "Basic effect(s)"
         },
         "7003334": {
@@ -215,7 +215,7 @@
             "CausalityLogic": "{\"source\": \"24\", \"compiled\": 24}",
             "Type": "Building Stat",
             "Brief effect description": "DEF +8% (up to 58%) based on 'How many attacks has this character recieved' after being hit",
-            "Line description": "DEF +8% (up to 58%) based on 'How many attacks has this character recieved' after being hit",
+            "Line description": "DEF +8% (up to 58%) based on 'How many attacks has this character recieved' after being hit for 99 turns[Infinite]",
             "Paragraph Title": "Basic effect(s)"
         },
         "8003334": {
@@ -231,7 +231,7 @@
             },
             "Length": "99",
             "Condition": {
-                "Logic": "2160",
+                "Logic": " 2160 ",
                 "Causalities": {
                     "2160": {
                         "Button": {
@@ -251,14 +251,14 @@
             "Once Only": true,
             "Type": "Single activator",
             "Brief effect description": "ATK +58% after being hit",
-            "Line description": "ATK +58% after being hit",
+            "Line description": "ATK +58% after being hit [Once Only]",
             "Paragraph Title": "After recieving 5 attacks"
         },
         "9003334": {
             "ID": "9003334",
             "Additional Attack": {
                 "Activated": true,
-                "Chance of super": "100",
+                "Chance of super": 100,
                 "Chance of another additional": "0"
             },
             "Timing": "Right after being hit",
@@ -271,7 +271,7 @@
             },
             "Length": "99",
             "Condition": {
-                "Logic": "2163",
+                "Logic": " 2163 ",
                 "Causalities": {
                     "2163": {
                         "Button": {
@@ -290,8 +290,8 @@
             "CausalityLogic": "{\"source\": \"2163\", \"compiled\": 2163}",
             "Once Only": true,
             "Type": "Single activator",
-            "Brief effect description": "Performs an additional attack with a 100% chance of becoming a super attack after being hit",
-            "Line description": "Performs an additional attack with a 100% chance of becoming a super attack after being hit",
+            "Brief effect description": "Performs an additional super attack after being hit",
+            "Line description": "Performs an additional super attack after being hit [Once Only]",
             "Paragraph Title": "After recieving 8 attacks"
         },
         "10003334": {
@@ -1281,7 +1281,7 @@
             },
             "superIsInactive": "0",
             "superCondition": {
-                "Logic": "(2151&&(2152||2153||2154||2155))",
+                "Logic": "( 2151 && ( 2152 || 2153 || 2154 || 2155 ) )",
                 "Causalities": {
                     "2151": {
                         "Button": {
@@ -1362,7 +1362,7 @@
             },
             "superIsInactive": "0",
             "superCondition": {
-                "Logic": "(2151&&2156)",
+                "Logic": "( 2151 && 2156 )",
                 "Causalities": {
                     "2151": {
                         "Button": {
@@ -1403,7 +1403,7 @@
         "Effect Description": "Massively raises ATK temporarily, \ncauses ultimate damage to enemy and, \nwithin the turn activated, \nattacks effective against all Types",
         "Condition Description": "Can be activated when HP is 58% or less, \nor when there is another \"Bond of Master and Disciple\" \nCategory ally attacking in the same turn starting from \nthe 5th turn from the start of battle (once only)",
         "Condition": {
-            "Logic": "(2157||(2158&&2159))",
+            "Logic": "( 2157 || ( 2158 && 2159 ) )",
             "Causalities": {
                 "2157": {
                     "Button": {

@@ -4052,6 +4052,7 @@ function createPassiveContainer(){
         usePassiveList=false;
         passiveQueryContainer.style.display="block"
         passiveChanceContainer.style.display="block"
+        passiveOnceOnlyContainer.style.display="block"
         passiveListContainer.style.display="none"
         updatePassiveStats();
     });
@@ -4060,6 +4061,7 @@ function createPassiveContainer(){
         usePassiveList=true;
         passiveQueryContainer.style.display="none"
         passiveChanceContainer.style.display="none"
+        passiveOnceOnlyContainer.style.display="none"
         passiveListContainer.style.display="block"
         updatePassiveStats();
     });
@@ -4225,11 +4227,13 @@ function createPassiveContainer(){
     if(usePassiveList){
         passiveQueryContainer.style.display="none"
         passiveChanceContainer.style.display="none"
+        passiveOnceOnlyContainer.style.display="none"
         passiveListContainer.style.display="block"
     }
     else{
         passiveQueryContainer.style.display="block"
         passiveChanceContainer.style.display="block"
+        passiveOnceOnlyContainer.style.display="block"
         passiveListContainer.style.display="none"
     }
 }
