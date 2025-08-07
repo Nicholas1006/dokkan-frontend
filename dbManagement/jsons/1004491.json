@@ -40,8 +40,8 @@
             "Length": "1",
             "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF 20000[Up-Arrow] ",
-            "Line description": "ATK and DEF 20000[Up-Arrow] ",
+            "Brief effect description": "ATK and DEF 20000{{passiveImg:up_g}} ",
+            "Line description": "ATK and DEF 20000{{passiveImg:up_g}} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "1002338": {
@@ -57,23 +57,36 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": " 53500000 ",
+                "Logic": "( 421 || 422 || 535 )",
                 "Causalities": {
-                    "53500000": {
+                    "421": {
                         "Button": {
-                            "Name": "Is the target enemy is :[ATK Down] or [DEF Down]"
+                            "Name": "Is the target enemy in ATK Down on this turn?"
                         },
-                        "Paragraph Title": "When the target enemy is in the following status :[ATK Down] or [DEF Down]"
+                        "Paragraph Title": "When the target enemy is in the following status{passiveImg:atk_down}"
+                    },
+                    "422": {
+                        "Button": {
+                            "Name": "Is the target enemy in DEF Down on this turn?"
+                        },
+                        "Paragraph Title": "When the target enemy is in the following status{passiveImg:def_down}"
+                    },
+                    "535": {
+                        "Button": {
+                            "Name": "Is the target enemy in Stunned on this turn?"
+                        },
+                        "Paragraph Title": "When the target enemy is in the following status{passiveImg:stun}"
                     }
                 }
             },
-            "CausalityLogic": "{\"source\": \"53500000\", \"compiled\": 53500000}",
+            "CausalityLogic": "{\"source\": \"421|422|535\", \"compiled\": [\"|\", 421, 422, 535]}",
             "Type": "Single activator",
-            "Brief effect description": "ATK 10000[Up-Arrow] when attacking",
-            "Line description": "ATK 10000[Up-Arrow] when attacking",
-            "Paragraph Title": "When the target enemy is in the following status :[ATK Down] or [DEF Down]"
+            "Brief effect description": "ATK 10000{{passiveImg:up_g}} when attacking",
+            "Line description": "ATK 10000{{passiveImg:up_g}} when attacking When the target enemy is in the following status{passiveImg:atk_down} or When the target enemy is in the following status{passiveImg:def_down} or When the target enemy is in the following status{passiveImg:stun} ",
+            "Paragraph Title": "Basic effect(s)"
         }
     },
+    "Itemized Passive Description": "*Basic effect(s)*\n- ATK & DEF 20000{passiveImg:up_g}\n*When the target enemy is in the following status: {passiveImg:atk_down}, {passiveImg:def_down}\nor {passiveImg:stun}*\n- ATK 10000{passiveImg:up_g}",
     "Max Attacks": 2,
     "Max Super Attacks": 2,
     "Stats at levels": {

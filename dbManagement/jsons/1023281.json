@@ -50,8 +50,8 @@
             "Length": "1",
             "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF 120%[Up-Arrow] ",
-            "Line description": "ATK and DEF 120%[Up-Arrow] ",
+            "Brief effect description": "ATK and DEF 120%{{passiveImg:up_g}} ",
+            "Line description": "ATK and DEF 120%{{passiveImg:up_g}} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "1002660": {
@@ -76,8 +76,8 @@
             "Length": "99",
             "CausalityLogic": "{\"source\": \"1170\", \"compiled\": 1170}",
             "Type": "Building Stat",
-            "Brief effect description": "ATK 30%[Up-Arrow] (up to 120%) based on 'How many super attacks has this character performed' after attacking",
-            "Line description": "ATK 30%[Up-Arrow] (up to 120%) based on 'How many super attacks has this character performed' after attacking[Infinite]",
+            "Brief effect description": "ATK 30%{{passiveImg:up_g}} (up to 120%) based on 'How many super attacks has this character performed' after attacking",
+            "Line description": "ATK 30%{{passiveImg:up_g}} (up to 120%) based on 'How many super attacks has this character performed' after attacking{passiveImg:forever}",
             "Paragraph Title": "Basic effect(s)"
         },
         "2002660": {
@@ -102,8 +102,8 @@
             "Length": "99",
             "CausalityLogic": "{\"source\": \"1170\", \"compiled\": 1170}",
             "Type": "Building Stat",
-            "Brief effect description": "DEF 30%[Up-Arrow] (up to 120%) based on 'How many super attacks has this character performed' after attacking",
-            "Line description": "DEF 30%[Up-Arrow] (up to 120%) based on 'How many super attacks has this character performed' after attacking[Infinite]",
+            "Brief effect description": "DEF 30%{{passiveImg:up_g}} (up to 120%) based on 'How many super attacks has this character performed' after attacking",
+            "Line description": "DEF 30%{{passiveImg:up_g}} (up to 120%) based on 'How many super attacks has this character performed' after attacking{passiveImg:forever}",
             "Paragraph Title": "Basic effect(s)"
         },
         "3002660": {
@@ -123,23 +123,42 @@
             },
             "Length": "1",
             "Condition": {
-                "Logic": " 116300000 ",
+                "Logic": "( 1153 || 1162 || 1163 )",
                 "Causalities": {
-                    "116300000": {
+                    "1153": {
                         "Button": {
-                            "Name": "Is the target enemy is :[Sealed]"
+                            "Name": "Are there 2 or more Dragon Ball Heroes category allies attacking on this turn?"
                         },
-                        "Paragraph Title": "When the target enemy is in the following status :[Sealed]"
+                        "Slider": {
+                            "Name": "How many Dragon Ball Heroes category allies attacking on this turn",
+                            "Logic": ">=2",
+                            "Max": 3,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 2 or more Dragon Ball Heroes Category allies attacking on this turn"
+                    },
+                    "1162": {
+                        "Button": {
+                            "Name": "Is the target enemy in Sealed on this turn?"
+                        },
+                        "Paragraph Title": "When the target enemy is in the following status{passiveImg:astute}"
+                    },
+                    "1163": {
+                        "Button": {
+                            "Name": "Is the target enemy in Stunned on this turn?"
+                        },
+                        "Paragraph Title": "When the target enemy is in the following status{passiveImg:stun}"
                     }
                 }
             },
-            "CausalityLogic": "{\"source\": \"116300000\", \"compiled\": 116300000}",
+            "CausalityLogic": "{\"source\": \"1153|1162|1163\", \"compiled\": [\"|\", 1153, 1162, 1163]}",
             "Type": "Single activator",
             "Brief effect description": "Performs an additional super attack when attacking",
-            "Line description": "Performs an additional super attack when attacking",
-            "Paragraph Title": "When the target enemy is in the following status :[Sealed]"
+            "Line description": "Performs an additional super attack when attacking When there are 2 or more Dragon Ball Heroes Category allies attacking on this turn or When the target enemy is in the following status{passiveImg:astute} or When the target enemy is in the following status{passiveImg:stun} ",
+            "Paragraph Title": "Basic effect(s)"
         }
     },
+    "Itemized Passive Description": "*Basic effect(s)*\n- ATK & DEF 120%{passiveImg:up_g}\n*For every Super Attack performed*\n- {passiveImg:forever}ATK & DEF 30%{passiveImg:up_g} (up to 120%)\n*When there is another \"Dragon Ball Heroes\" Category ally\nattacking in the same turn, or when the target enemy is in the\nfollowing status: {passiveImg:stun} or {passiveImg:astute}*\n- Launches an additional Super Attack",
     "Max Attacks": 3,
     "Max Super Attacks": 3,
     "Stats at levels": {

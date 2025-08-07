@@ -1533,14 +1533,16 @@ class passiveQuery{
 // CONSTANT GLOBAL VARIABLES
 let activePassiveLines=[]
 const iconMap = {
-    "[Up-Arrow]": window.assetBase+"/global/en/layout/en/image/ingame/battle/skill_dialog/passive_skill_dialog_arrow01.png",
-    "[Down-Arrow]": window.assetBase+"/global/en/layout/en/image/ingame/battle/skill_dialog/passive_skill_dialog_arrow02.png",
-    "[Infinite]": window.assetBase+"/global/en/layout/en/image/ingame/battle/skill_dialog/passive_skill_dialog_icon_02.png",
-    "[Once Only]": window.assetBase+"/global/en/layout/en/image/ingame/battle/skill_dialog/passive_skill_dialog_icon_01.png",
-    "[ATK Down]": window.assetBase+"/global/en/layout/en/image/ingame/battle/skill_dialog/passive_icon_st_0011.png",
-    "[DEF Down]": window.assetBase+"/global/en/layout/en/image/ingame/battle/skill_dialog/passive_icon_st_0012.png",
-    "[Stunned]": window.assetBase+"/global/en/layout/en/image/ingame/battle/skill_dialog/passive_icon_st_0100.png",
-    "[Sealed]": window.assetBase+"/global/en/layout/en/image/ingame/battle/skill_dialog/passive_icon_st_0102.png",
+    "{passiveImg:up_g}": window.assetBase+"/global/en/layout/en/image/ingame/battle/skill_dialog/passive_skill_dialog_arrow01.png",
+    "{passiveImg:down_r}": window.assetBase+"/global/en/layout/en/image/ingame/battle/skill_dialog/passive_skill_dialog_arrow02.png",
+    "{passiveImg:down_y}": window.assetBase+"/global/en/layout/en/image/ingame/battle/skill_dialog/passive_skill_dialog_arrow03.png",
+    "{passiveImg:down_g}": window.assetBase+"/global/en/layout/en/image/ingame/battle/skill_dialog/passive_skill_dialog_arrow04.png",
+    "{passiveImg:forever}": window.assetBase+"/global/en/layout/en/image/ingame/battle/skill_dialog/passive_skill_dialog_icon_02.png",
+    "{passiveImg:once}": window.assetBase+"/global/en/layout/en/image/ingame/battle/skill_dialog/passive_skill_dialog_icon_01.png",
+    "{passiveImg:atk_down}": window.assetBase+"/global/en/layout/en/image/ingame/battle/skill_dialog/passive_icon_st_0011.png",
+    "{passiveImg:def_down}": window.assetBase+"/global/en/layout/en/image/ingame/battle/skill_dialog/passive_icon_st_0012.png",
+    "{passiveImg:stun}": window.assetBase+"/global/en/layout/en/image/ingame/battle/skill_dialog/passive_icon_st_0100.png",
+    "{passiveImg:astute}": window.assetBase+"/global/en/layout/en/image/ingame/battle/skill_dialog/passive_icon_st_0102.png",
     };
 const HIDEUNNEEDEDPASSIVE=true;
 const MINIMUMVIABLELEADERBUFF=1;

@@ -59,8 +59,8 @@
             "Length": "1",
             "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF 100%[Up-Arrow] ",
-            "Line description": "ATK and DEF 100%[Up-Arrow] ",
+            "Brief effect description": "ATK and DEF 100%{{passiveImg:up_g}} ",
+            "Line description": "ATK and DEF 100%{{passiveImg:up_g}} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "2004316": {
@@ -143,8 +143,8 @@
             "Length": "1",
             "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "DEF 20%[Up-Arrow] for all Extreme class allies ",
-            "Line description": "DEF 20%[Up-Arrow] for all Extreme class allies ",
+            "Brief effect description": "DEF 20%{{passiveImg:up_g}} for all Extreme class allies ",
+            "Line description": "DEF 20%{{passiveImg:up_g}} for all Extreme class allies ",
             "Paragraph Title": "Basic effect(s)"
         },
         "6004316": {
@@ -169,8 +169,8 @@
             "Length": "1",
             "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "ATK and DEF 20%[Up-Arrow] for all Extreme class Demonic Power category allies ",
-            "Line description": "ATK and DEF 20%[Up-Arrow] for all Extreme class Demonic Power category allies ",
+            "Brief effect description": "ATK and DEF 20%{{passiveImg:up_g}} for all Extreme class Demonic Power category allies ",
+            "Line description": "ATK and DEF 20%{{passiveImg:up_g}} for all Extreme class Demonic Power category allies ",
             "Paragraph Title": "Basic effect(s)"
         },
         "7004316": {
@@ -195,8 +195,8 @@
             "Length": "99",
             "CausalityLogic": "",
             "Type": "Building Stat",
-            "Brief effect description": "ATK 20%[Up-Arrow] (up to 100%) based on 'How many attacks has this character performed in battle' after attacking",
-            "Line description": "ATK 20%[Up-Arrow] (up to 100%) based on 'How many attacks has this character performed in battle' after attacking[Infinite]",
+            "Brief effect description": "ATK 20%{{passiveImg:up_g}} (up to 100%) based on 'How many attacks has this character performed in battle' after attacking",
+            "Line description": "ATK 20%{{passiveImg:up_g}} (up to 100%) based on 'How many attacks has this character performed in battle' after attacking{passiveImg:forever}",
             "Paragraph Title": "Basic effect(s)"
         },
         "8004316": {
@@ -221,8 +221,8 @@
             "Length": "99",
             "CausalityLogic": "",
             "Type": "Building Stat",
-            "Brief effect description": "DEF 20%[Up-Arrow] (up to 100%) based on 'How many attacks has this character performed in battle' after attacking",
-            "Line description": "DEF 20%[Up-Arrow] (up to 100%) based on 'How many attacks has this character performed in battle' after attacking[Infinite]",
+            "Brief effect description": "DEF 20%{{passiveImg:up_g}} (up to 100%) based on 'How many attacks has this character performed in battle' after attacking",
+            "Line description": "DEF 20%{{passiveImg:up_g}} (up to 100%) based on 'How many attacks has this character performed in battle' after attacking{passiveImg:forever}",
             "Paragraph Title": "Basic effect(s)"
         },
         "9004316": {
@@ -243,23 +243,42 @@
             "Chance": "70",
             "Length": "1",
             "Condition": {
-                "Logic": " 334400000 ",
+                "Logic": "( 535 || 536 || 3344 )",
                 "Causalities": {
-                    "334400000": {
+                    "535": {
                         "Button": {
-                            "Name": "Is the target enemy is :[Sealed]"
+                            "Name": "Is the target enemy in Stunned on this turn?"
                         },
-                        "Paragraph Title": "When the target enemy is in the following status :[Sealed]"
+                        "Paragraph Title": "When the target enemy is in the following status{passiveImg:stun}"
+                    },
+                    "536": {
+                        "Button": {
+                            "Name": "Is the target enemy in Sealed on this turn?"
+                        },
+                        "Paragraph Title": "When the target enemy is in the following status{passiveImg:astute}"
+                    },
+                    "3344": {
+                        "Button": {
+                            "Name": "Are there 1 or more Earth-Bred Fighters category enemies  on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Earth-Bred Fighters category enemies on this turn?",
+                            "Logic": ">=1",
+                            "Max": 7,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 1 or more Earth-Bred Fighters Category enemies "
                     }
                 }
             },
-            "CausalityLogic": "{\"source\": \"334400000\", \"compiled\": 334400000}",
+            "CausalityLogic": "{\"source\": \"535|536|3344\", \"compiled\": [\"|\", 535, 536, 3344]}",
             "Type": "Single activator",
             "Brief effect description": "Performs an additional super attack when attacking",
-            "Line description": "Performs an additional super attack when attacking",
-            "Paragraph Title": "When the target enemy is in the following status :[Sealed]"
+            "Line description": "Performs an additional super attack when attacking When the target enemy is in the following status{passiveImg:stun} or When the target enemy is in the following status{passiveImg:astute} or When there are 1 or more Earth-Bred Fighters Category enemies ",
+            "Paragraph Title": "Basic effect(s)"
         }
     },
+    "Itemized Passive Description": "*Basic effect(s)*\n- Ki +1\n- ATK & DEF 100%{passiveImg:up_g}\n- High chance of evading enemy's attack\n- Launches an additional attack that has a medium chance of\nbecoming a Super Attack\n- Extreme Class allies' DEF 20%{passiveImg:up_g}, plus an additional Ki +1 and\nATK & DEF 20%{passiveImg:up_g} for characters who also belong to the\n\"Demonic Power\" Category\n*For every attack performed*\n- {passiveImg:forever}ATK & DEF 20%{passiveImg:up_g} (up to 100%)\n*When the target enemy is in the following status: {passiveImg:stun} or {passiveImg:astute},\nor if there is an \"Earth-Bred Fighters\" Category enemy when\nattacking*\n- Great chance of launching an additional Super Attack",
     "Max Attacks": 4,
     "Max Super Attacks": 4,
     "Stats at levels": {
