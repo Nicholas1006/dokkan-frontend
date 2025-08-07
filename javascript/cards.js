@@ -3743,9 +3743,9 @@ function updatePassiveListWithPassiveLine(passiveLine){
             updatePassiveStats();
         }
     )
-    const passiveListContainer=document.getElementById("passive-list-container")
+    const passiveFunctionalListContainer=document.getElementById("passive-functional-list-container")
     //WIP add sliders for the building stats
-    if(!(passiveLine["Paragraph Title"] in passiveListContainer["Paragraph Titles"])){
+    if(!(passiveLine["Paragraph Title"] in passiveFunctionalListContainer["Paragraph Titles"])){
         const paragraphContainer=document.createElement("div");
         paragraphContainer.id="passive-paragraph-container";
         let paragraphText=passiveLine["Paragraph Title"]
@@ -3755,10 +3755,10 @@ function updatePassiveListWithPassiveLine(passiveLine){
             paragraphText = paragraphText.replaceAll(keyword, imgTag);
         }
         paragraphContainer.innerHTML=paragraphText;
-        passiveListContainer["Paragraph Titles"][passiveLine["Paragraph Title"]]=paragraphContainer;
-        passiveListContainer.appendChild(paragraphContainer);
+        passiveFunctionalListContainer["Paragraph Titles"][passiveLine["Paragraph Title"]]=paragraphContainer;
+        passiveFunctionalListContainer.appendChild(paragraphContainer);
     }
-    passiveListContainer["Paragraph Titles"][passiveLine["Paragraph Title"]].appendChild(passiveLineDiv)
+    passiveFunctionalListContainer["Paragraph Titles"][passiveLine["Paragraph Title"]].appendChild(passiveLineDiv)
 }
 
 function updateQueryListWithPassiveLine(passiveLine){
@@ -4081,15 +4081,26 @@ function createPassiveContainer(){
         passiveChanceContainer.style.display="block"
         passiveOnceOnlyContainer.style.display="block"
         passiveListContainer.style.display="none"
+        passiveFunctionalListContainer.style.display="none"
         updatePassiveStats();
     });
     
-    document.getElementById("passive-style-list").addEventListener("click", function(){
+    document.getElementById("passive-style-functional-list").addEventListener("click", function(){
         usePassiveList=true;
         passiveQueryContainer.style.display="none"
         passiveChanceContainer.style.display="none"
         passiveOnceOnlyContainer.style.display="none"
+        passiveListContainer.style.display="none"
+        passiveFunctionalListContainer.style.display="block"
+        updatePassiveStats();
+    });
+
+    document.getElementById("passive-style-list").addEventListener("click", function(){
+        passiveQueryContainer.style.display="none"
+        passiveChanceContainer.style.display="none"
+        passiveOnceOnlyContainer.style.display="none"
         passiveListContainer.style.display="block"
+        passiveFunctionalListContainer.style.display="none"
         updatePassiveStats();
     });
 
@@ -4100,17 +4111,52 @@ function createPassiveContainer(){
     let passiveQueryContainer = document.getElementById("passive-query-container");
     let passiveChanceContainer=document.getElementById("passive-chance-container");
     let passiveOnceOnlyContainer=document.getElementById("passive-once-only-container");
+    let passiveFunctionalListContainer = document.getElementById("passive-functional-list-container");
     let passiveListContainer = document.getElementById("passive-list-container");
-    while (passiveListContainer.firstChild) {
-        passiveListContainer.removeChild(passiveQueryContainer.firstChild);
+    let passiveListText = currentJson["Itemized Passive Description"];
+
+    // Replace icons first
+    for (let keyword in iconMap) {
+        const iconPath = iconMap[keyword];
+        const imgTag = `<img src="${iconPath}" style="height: 1em; vertical-align: middle;">`;
+        passiveListText = passiveListText.replaceAll(keyword, imgTag);
     }
-    passiveListContainer["Paragraph Titles"]={};
+
+    // Split by newlines
+    const lines = passiveListText.split("\n");
+    let formattedLines = [];
+
+    for (let line of lines) {
+        if (line.startsWith("*") && line.endsWith("*")) {
+            // Strong line
+            formattedLines.push("<br>");
+            const innerText = line.slice(1, -1).trim(); // remove leading/trailing '*'
+            formattedLines.push(`<strong>${innerText}</strong>`);
+        } else {
+            // Indented line
+            formattedLines.push(`<div style="margin-left: 1em">${line}</div>`);
+        }
+    }
+
+    // Join back with <br> for line breaks
+    passiveListText = formattedLines.join("");
+    passiveListContainer.innerHTML = passiveListText;
+    passiveListContainer.style.display="none"
+    while (passiveFunctionalListContainer.firstChild) {
+        passiveFunctionalListContainer.removeChild(passiveQueryContainer.firstChild);
+    }
+    passiveFunctionalListContainer["Paragraph Titles"]={};
     while (passiveQueryContainer.firstChild) {
         passiveQueryContainer.removeChild(passiveQueryContainer.firstChild);
     }
     while (passiveChanceContainer.firstChild) {
         passiveChanceContainer.removeChild(passiveChanceContainer.firstChild);
     }
+
+    while (passiveOnceOnlyContainer.firstChild) {
+        passiveOnceOnlyContainer.removeChild(passiveOnceOnlyContainer.firstChild);
+    }
+
     
     const passiveSupportAdditions=document.createElement("div");
     passiveSupportAdditions.id="passive-support-additions";
@@ -4260,13 +4306,13 @@ function createPassiveContainer(){
         passiveQueryContainer.style.display="none"
         passiveChanceContainer.style.display="none"
         passiveOnceOnlyContainer.style.display="none"
-        passiveListContainer.style.display="block"
+        passiveFunctionalListContainer.style.display="block"
     }
     else{
         passiveQueryContainer.style.display="block"
         passiveChanceContainer.style.display="block"
         passiveOnceOnlyContainer.style.display="block"
-        passiveListContainer.style.display="none"
+        passiveFunctionalListContainer.style.display="none"
     }
 }
 
@@ -4275,7 +4321,7 @@ function createPassiveListContainer(){
     passiveChanceList=[]
     passiveOnceOnlyList=[]
     let passiveSupportContainer=document.getElementById("passive-support-container");
-    let passiveListContainer = document.getElementById("passive-list-container");
+    let passiveListContainer = document.getElementById("passive-functional-list-container");
     while (passiveListContainer.firstChild) {
         passiveListContainer.removeChild(passiveListContainer.firstChild);
     }
@@ -5704,8 +5750,8 @@ function polishPage(){
         document.getElementById("passive-query-container").style.display="none";
     }
 
-    if(document.getElementById("passive-list-container").firstChild==null){
-        document.getElementById("passive-list-container").style.display="none";
+    if(document.getElementById("passive-functional-list-container").firstChild==null){
+        document.getElementById("passive-functional-list-container").style.display="none";
     }
 
     if(document.getElementById("passive-chance-container").firstChild==null){
