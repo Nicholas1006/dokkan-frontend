@@ -1532,6 +1532,16 @@ class passiveQuery{
 
 // CONSTANT GLOBAL VARIABLES
 let activePassiveLines=[]
+const iconMap = {
+    "[Up-Arrow]": window.assetBase+"/global/en/layout/en/image/ingame/battle/skill_dialog/passive_skill_dialog_arrow01.png",
+    "[Down-Arrow]": window.assetBase+"/global/en/layout/en/image/ingame/battle/skill_dialog/passive_skill_dialog_arrow02.png",
+    "[Infinite]": window.assetBase+"/global/en/layout/en/image/ingame/battle/skill_dialog/passive_skill_dialog_icon_02.png",
+    "[Once Only]": window.assetBase+"/global/en/layout/en/image/ingame/battle/skill_dialog/passive_skill_dialog_icon_01.png",
+    "[ATK Down]": window.assetBase+"/global/en/layout/en/image/ingame/battle/skill_dialog/passive_icon_st_0011.png",
+    "[DEF Down]": window.assetBase+"/global/en/layout/en/image/ingame/battle/skill_dialog/passive_icon_st_0012.png",
+    "[Stunned]": window.assetBase+"/global/en/layout/en/image/ingame/battle/skill_dialog/passive_icon_st_0100.png",
+    "[Sealed]": window.assetBase+"/global/en/layout/en/image/ingame/battle/skill_dialog/passive_icon_st_0102.png",
+    };
 const HIDEUNNEEDEDPASSIVE=true;
 const MINIMUMVIABLELEADERBUFF=1;
 let usePassiveList=true;
@@ -3703,13 +3713,6 @@ function colorToBackground(color){
 }
 
 function updatePassiveListWithPassiveLine(passiveLine){
-    const iconMap = {
-    "[Up-Arrow]": window.assetBase+"/global/en/layout/en/image/ingame/battle/skill_dialog/passive_skill_dialog_arrow01.png",
-    "[Down-Arrow]": window.assetBase+"/global/en/layout/en/image/ingame/battle/skill_dialog/passive_skill_dialog_arrow02.png",
-    "[Infinite]": window.assetBase+"/global/en/layout/en/image/ingame/battle/skill_dialog/passive_skill_dialog_icon_02.png",
-    "[Once Only]": window.assetBase+"/global/en/layout/en/image/ingame/battle/skill_dialog/passive_skill_dialog_icon_01.png"
-    };
-
     const passiveLineDiv=document.createElement("div");
     passiveLineDiv.id="passive-line-div"
     let lineDescription = passiveLine["Line description"];
@@ -3743,7 +3746,13 @@ function updatePassiveListWithPassiveLine(passiveLine){
     if(!(passiveLine["Paragraph Title"] in passiveListContainer["Paragraph Titles"])){
         const paragraphContainer=document.createElement("div");
         paragraphContainer.id="passive-paragraph-container";
-        paragraphContainer.innerHTML=passiveLine["Paragraph Title"];
+        let paragraphText=passiveLine["Paragraph Title"]
+        for (let keyword in iconMap) {
+            const iconPath = iconMap[keyword];
+            const imgTag = `<img src="${iconPath}" style="height: 1em; vertical-align: middle;">`;
+            paragraphText = paragraphText.replaceAll(keyword, imgTag);
+        }
+        paragraphContainer.innerHTML=paragraphText;
         passiveListContainer["Paragraph Titles"][passiveLine["Paragraph Title"]]=paragraphContainer;
         passiveListContainer.appendChild(paragraphContainer);
     }
