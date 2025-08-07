@@ -4242,7 +4242,7 @@ function createPassiveContainer(){
         if(arraysHaveOverlap(relevantPassivLineEffects, Object.keys(passiveList[passiveLineKey]))){   
             updatePassiveListWithPassiveLine(passiveList[passiveLineKey]);
         }
-        else{
+        else if (!("Disable Other Line" in passiveList[passiveLineKey])){
             console.log(Object.keys(passiveList[passiveLineKey]))
         }
         if(Object.keys(passiveList[passiveLineKey]).includes("Chance") && !(Object.keys(passiveList[passiveLineKey]).includes("Additional Attack"))){
