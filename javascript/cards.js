@@ -4115,32 +4115,55 @@ function createPassiveContainer(){
     let passiveListContainer = document.getElementById("passive-list-container");
     let passiveListText = currentJson["Itemized Passive Description"];
 
-    // Replace icons first
+    // Replace icons
     for (let keyword in iconMap) {
         const iconPath = iconMap[keyword];
         const imgTag = `<img src="${iconPath}" style="height: 1em; vertical-align: middle;">`;
         passiveListText = passiveListText.replaceAll(keyword, imgTag);
     }
 
-    // Split by newlines
-    const lines = passiveListText.split("\n");
-    let formattedLines = [];
+    // Normalize newlines for safety
+    passiveListText = passiveListText.replace(/\r\n/g, '\n');
 
-    for (let line of lines) {
-        if (line.startsWith("*") && line.endsWith("*")) {
-            // Strong line
-            formattedLines.push("<br>");
-            const innerText = line.slice(1, -1).trim(); // remove leading/trailing '*'
-            formattedLines.push(`<strong>${innerText}</strong>`);
-        } else {
-            // Indented line
-            formattedLines.push(`<div style="margin-left: 1em">${line}</div>`);
+    // Regex to find *...* including multiline, non-greedy match
+    const regex = /\*(.+?)\*/gs;
+
+    let formattedText = '';
+    let lastIndex = 0;
+
+    let match;
+    while ((match = regex.exec(passiveListText)) !== null) {
+        const [fullMatch, boldText] = match;
+        const start = match.index;
+        const end = regex.lastIndex;
+
+        // Add indented normal text before the bold block
+        const before = passiveListText.slice(lastIndex, start).trim();
+        if (before) {
+            const indentedLines = before.split('\n').map(
+                line => `<div style="margin-left: 1em">${line}</div>`
+            ).join('<br>');
+            formattedText += indentedLines + '<br>';
         }
+
+        // Add bold block
+        const cleanBold = boldText.trim().replaceAll('\n', ' ');
+        formattedText += `<strong>${cleanBold}</strong><br>`;
+
+        lastIndex = end;
     }
 
-    // Join back with <br> for line breaks
-    passiveListText = formattedLines.join("");
-    passiveListContainer.innerHTML = passiveListText;
+    // Handle any trailing text after the last bold block
+    const after = passiveListText.slice(lastIndex).trim();
+    if (after) {
+        const indentedLines = after.split('\n').map(
+            line => `<div style="margin-left: 1em">${line}</div>`
+        ).join('<br>');
+        formattedText += indentedLines;
+    }
+
+    passiveListContainer.innerHTML = formattedText;
+
     passiveListContainer.style.display="none"
     while (passiveFunctionalListContainer.firstChild) {
         passiveFunctionalListContainer.removeChild(passiveQueryContainer.firstChild);
