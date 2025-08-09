@@ -5742,7 +5742,7 @@ function createLeaderViewContainer(){
     }
     const leadByViewLink=document.createElement("a");
         leadByViewContainer.appendChild(leadByViewLink);
-        leadByViewLink.href="/index.html?leadByView="+currentJson["ID"]+"&eza="+isEza;
+        leadByViewLink.href="/index.html?leadByView="+currentJson["ID"];
         leadByViewLink.textContent="View who leads this unit";
         leadByViewLink.style.textDecoration="none";
         leadByViewLink.style.color="inherit";

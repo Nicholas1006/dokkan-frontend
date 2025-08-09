@@ -452,9 +452,19 @@ function showUpdatedCardPositions(){
       window.displayBoxes[i%unitsToDisplay].setDisplay(true);
       if(window.leaderView){
         window.displayBoxes[i%unitsToDisplay].setHighlight(window.unitBasicsDetails["Under Lead Buff"][window.currentFilteredUnits[i]]["ATK"]>=200);
+        window.displayBoxes[i%unitsToDisplay].setOtherDisplayedValue(
+          Math.floor((window.unitBasicsDetails["Under Lead Buff"][window.currentFilteredUnits[i]]["ATK"]+
+          window.unitBasicsDetails["Under Lead Buff"][window.currentFilteredUnits[i]]["DEF"]+
+          window.unitBasicsDetails["Under Lead Buff"][window.currentFilteredUnits[i]]["HP"])/3)+"%"
+        )
       }
       else if(window.leadUnit){
         window.displayBoxes[i%unitsToDisplay].setHighlight(window.unitBasicsDetails["Leading Buff"][window.currentFilteredUnits[i]]["ATK"]>=200);
+        window.displayBoxes[i%unitsToDisplay].setOtherDisplayedValue(
+          Math.floor((window.unitBasicsDetails["Leading Buff"][window.currentFilteredUnits[i]]["ATK"]+
+          window.unitBasicsDetails["Leading Buff"][window.currentFilteredUnits[i]]["DEF"]+
+          window.unitBasicsDetails["Leading Buff"][window.currentFilteredUnits[i]]["HP"])/3)+"%"
+        )
       }
 
 
@@ -568,8 +578,10 @@ if(urlParams.get("leaderView") !== null) {
 }
 else if(urlParams.get("leadByView") !== null) {
   window.unitBasicsDetails["Leading Buff"]={};
-  const json2 = await fetch("/dbManagement/uniqueJsons/unitBasics/Leader Skill.json");
-  window.unitBasicsDetails["Leader Skill"] = await json2.json()
+  window.leadUnit = urlParams.get("leadByView")
+  const jsonPromise = await fetch("/dbManagement/uniqueJsons/unitBasics/"+ "Leader Skill"+ ".json");
+  const json=await jsonPromise.json();
+  window.unitBasicsDetails["Leader Skill"] = json;
 }
 
 let baseDomain=window.location.origin;
