@@ -1,4 +1,4 @@
-import { unitDisplay } from "./classes/unitDisplay.js";
+import { squareUnitDisplay } from "./classes/squareUnitDisplay.js";
 import { complexSortFilterContainer } from "./classes/complexSortFilterContainer.js";
 import {timeSince,isEmptyDictionary} from "./commonFunctions.js";
 
@@ -322,7 +322,7 @@ function listHasOverlap(list1,list2){
 function createCharacterBoxes() {
   const unitsContainer = document.getElementById("unit-selection-container");
   for (let unitCount = 0; unitCount < unitsToDisplay; unitCount++) {
-    window.displayBoxes[unitCount] = new unitDisplay();
+    window.displayBoxes[unitCount] = new squareUnitDisplay();
     window.displayBoxes[unitCount].setWidth("164px");
     window.displayBoxes[unitCount].setHeight("150px");
     window.displayBoxes[unitCount].setDisplayExtraInfo(true);

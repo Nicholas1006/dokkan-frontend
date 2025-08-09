@@ -1,4 +1,4 @@
-import {unitDisplay } from "./classes/unitDisplay.js";
+import {squareUnitDisplay } from "./classes/squareUnitDisplay.js";
 import {extractDigitsFromString,
        arraysHaveOverlap,
        getFirstInDictionary,
@@ -1259,7 +1259,7 @@ class superAttackQuery{
         this.superAttackSlider.value=0;
         this.superAttackQuestion = document.createElement("div");
         this.superAttackQuestion.superAttackName= this.selfContainer.superAttackName;
-        this.insertedUnitDiv=new unitDisplay();
+        this.insertedUnitDiv=new squareUnitDisplay();
 
         const insertedSuperAttackDiv=document.createElement("div");
         insertedSuperAttackDiv.className="super-attack-query-question-super-attack-name";
@@ -3260,17 +3260,17 @@ function updateLinkPartnerDisplay(){
         
         linkPartnerDisplay.textDiv.innerHTML = "Link Partners(" + highestLinkers + "): ";
 
-        if(linkPartnerDisplay.unitDisplays==undefined){
-            linkPartnerDisplay.unitDisplays=[];
+        if(linkPartnerDisplay.squareUnitDisplays==undefined){
+            linkPartnerDisplay.squareUnitDisplays=[];
         }
         for (let i=0; i<51; i++){
-            if(Object.keys(linkPartnerDisplay.unitDisplays).length<=i){
-                linkPartnerDisplay.unitDisplays.push(new unitDisplay());
-                linkPartnerDisplay.unitDisplays[i].setDisplayExtraInfo(false);
-                linkPartnerDisplay.unitDisplays[i].setWidth("100%");
-                linkPartnerDisplay.unitDisplays[i].setHeight("100%");
-                linkPartnerDisplay.unitDisplays[i].setResourceID(allLinkPartners[highestLinkers][i]);
-                linkPartnerDisplay.appendChild(linkPartnerDisplay.unitDisplays[i].getElement());
+            if(Object.keys(linkPartnerDisplay.squareUnitDisplays).length<=i){
+                linkPartnerDisplay.squareUnitDisplays.push(new squareUnitDisplay());
+                linkPartnerDisplay.squareUnitDisplays[i].setDisplayExtraInfo(false);
+                linkPartnerDisplay.squareUnitDisplays[i].setWidth("100%");
+                linkPartnerDisplay.squareUnitDisplays[i].setHeight("100%");
+                linkPartnerDisplay.squareUnitDisplays[i].setResourceID(allLinkPartners[highestLinkers][i]);
+                linkPartnerDisplay.appendChild(linkPartnerDisplay.squareUnitDisplays[i].getElement());
             }
             if(i<allLinkPartners[highestLinkers].length){
                 let characterJsonLink;
@@ -3283,28 +3283,28 @@ function updateLinkPartnerDisplay(){
                 else{
                     characterJsonLink = "/jsons/"+allLinkPartners[highestLinkers][i];
                 }
-                linkPartnerDisplay.unitDisplays[i].unitID=allLinkPartners[highestLinkers][i];
-                linkPartnerDisplay.unitDisplays[i].setDisplay(true);
+                linkPartnerDisplay.squareUnitDisplays[i].unitID=allLinkPartners[highestLinkers][i];
+                linkPartnerDisplay.squareUnitDisplays[i].setDisplay(true);
                 try{
                     const characterJsonPromise = fetch("/dbManagement"+characterJsonLink+".json");
                     characterJsonPromise.then(
                         async characterJsonResponse => {
                             const characterJson= await characterJsonResponse.json()
-                            if(linkPartnerDisplay.unitDisplays[i].unitID.startsWith(characterJson["ID"])){
-                                linkPartnerDisplay.unitDisplays[i].setClass(characterJson["Class"]);
-                                linkPartnerDisplay.unitDisplays[i].setType(characterJson["Type"]);
-                                linkPartnerDisplay.unitDisplays[i].setRarity(characterJson["Rarity"]);
-                                linkPartnerDisplay.unitDisplays[i].setResourceID(characterJson["Resource ID"]);
-                                linkPartnerDisplay.unitDisplays[i].setPossibleEzaLevel(characterJson["Eza Level"]);
-                                linkPartnerDisplay.unitDisplays[i].setEzaLevel(characterJson["Eza Level"]);
-                                linkPartnerDisplay.unitDisplays[i].setUrl(baseDomain+"/cards/index.html?id="+characterJson["ID"].substring(0,7)+"&SEZA="+(characterJson["Eza Level"]=="seza")+"&EZA="+(characterJson["Eza Level"]=="eza"));
+                            if(linkPartnerDisplay.squareUnitDisplays[i].unitID.startsWith(characterJson["ID"])){
+                                linkPartnerDisplay.squareUnitDisplays[i].setClass(characterJson["Class"]);
+                                linkPartnerDisplay.squareUnitDisplays[i].setType(characterJson["Type"]);
+                                linkPartnerDisplay.squareUnitDisplays[i].setRarity(characterJson["Rarity"]);
+                                linkPartnerDisplay.squareUnitDisplays[i].setResourceID(characterJson["Resource ID"]);
+                                linkPartnerDisplay.squareUnitDisplays[i].setPossibleEzaLevel(characterJson["Eza Level"]);
+                                linkPartnerDisplay.squareUnitDisplays[i].setEzaLevel(characterJson["Eza Level"]);
+                                linkPartnerDisplay.squareUnitDisplays[i].setUrl(baseDomain+"/cards/index.html?id="+characterJson["ID"].substring(0,7)+"&SEZA="+(characterJson["Eza Level"]=="seza")+"&EZA="+(characterJson["Eza Level"]=="eza"));
                                 let linksMatch=true;
                                 for(const link of activeLinks){
                                     if(!(characterJson["Links"].includes(link))){
                                         linksMatch=false;
                                     }
                                 }
-                                linkPartnerDisplay.unitDisplays[i].setHighlight(linksMatch);
+                                linkPartnerDisplay.squareUnitDisplays[i].setHighlight(linksMatch);
                             }
                         }
                     )
@@ -3314,8 +3314,8 @@ function updateLinkPartnerDisplay(){
                 }
             }
             else{
-                //if there are extra unitDisplays made than is needed
-                linkPartnerDisplay.unitDisplays[i].setDisplay(false);
+                //if there are extra squareUnitDisplays made than is needed
+                linkPartnerDisplay.squareUnitDisplays[i].setDisplay(false);
             }
         }
     }
@@ -3401,7 +3401,7 @@ function createTransformationContainer(){
     if( Array.isArray(previousTransformations) && previousTransformations.length){
         for (const transformationID of previousTransformations){
             
-            const transformationButton = new unitDisplay();
+            const transformationButton = new squareUnitDisplay();
             transformationButton.setDisplayExtraInfo(false);
             transformationButton.setDisplay(true);
             transformationButton.setWidth("100%");
@@ -3424,7 +3424,7 @@ function createTransformationContainer(){
     let transformations =currentJson["Transformations"];
     if( Array.isArray(transformations) && transformations.length){
         for (const transformationID of transformations){
-            const transformationButton = new unitDisplay();
+            const transformationButton = new squareUnitDisplay();
             transformationButton.setDisplayExtraInfo(false);
             transformationButton.setDisplay(true);
             transformationButton.setWidth("100%");
@@ -3542,7 +3542,7 @@ function createDokkanAwakenContainer(){
     let Awakenings =currentJson["Dokkan awakenings"];
     if( Array.isArray(Awakenings) && Awakenings.length){
     }for (const AwakeningsID of Awakenings){
-        const AwakeningsButton = new unitDisplay();
+        const AwakeningsButton = new squareUnitDisplay();
         AwakeningsButton.setDisplayExtraInfo(false);
         AwakeningsButton.setDisplay(true);
         AwakeningsButton.setWidth("100%");
@@ -3565,7 +3565,7 @@ function createDokkanAwakenContainer(){
     let previousAwakenings =currentJson["Dokkan Reverse awakenings"];
     if( Array.isArray(previousAwakenings) && previousAwakenings.length){
     }for (const AwakeningsID of previousAwakenings){
-        const AwakeningsButton = new unitDisplay();
+        const AwakeningsButton = new squareUnitDisplay();
         AwakeningsButton.setDisplayExtraInfo(false);
         AwakeningsButton.setDisplay(true);
         AwakeningsButton.setWidth("100%");
@@ -4618,7 +4618,7 @@ function createSuperAttackContainer(){
         imageContainer.removeChild(imageContainer.firstChild);
     }
 
-    const cardImage=new unitDisplay();
+    const cardImage=new squareUnitDisplay();
     cardImage.setResourceID(currentJson["Resource ID"]);
     cardImage.setClass(currentJson["Class"]);
     cardImage.setType(currentJson["Type"]);

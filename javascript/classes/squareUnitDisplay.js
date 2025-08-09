@@ -13,7 +13,7 @@ import {
   }
 
   
-export class unitDisplay{
+export class squareUnitDisplay{
     constructor(){
 
       this.lrAnimationIsSetup=false;
