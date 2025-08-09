@@ -1,4 +1,5 @@
 import {squareUnitDisplay } from "./classes/squareUnitDisplay.js";
+import {portraitUnitDisplay } from "./classes/portraitUnitDisplay.js";
 import {extractDigitsFromString,
        arraysHaveOverlap,
        getFirstInDictionary,
@@ -4599,15 +4600,81 @@ function createSuperAttackContainer(){
     while (imageContainer.firstChild) {
         imageContainer.removeChild(imageContainer.firstChild);
     }
-    imageContainer.animationCanvas=document.createElement("canvas");
-    imageContainer.animationCanvas.width=234;
-    imageContainer.animationCanvas.height=320;
-    imageContainer.appendChild(imageContainer.animationCanvas);
-    const cardImage=new LWFPlayer(
-        window.assetBase+"/global/en/character/card_bg/"+currentJson["Resource ID"]+"/card_"+currentJson["Resource ID"]+".lwf", 
-        imageContainer.animationCanvas, 
-        "ef_001"
+    const cardImage=new portraitUnitDisplay(
+        234,320
     );
+    cardImage.setResourceID(currentJson["Resource ID"]);
+    cardImage.setClass(currentJson["Class"]);
+    cardImage.setType(currentJson["Type"]);
+    cardImage.setRarity(currentJson["Rarity"]);
+    cardImage.setDisplayExtraInfo(false);
+    cardImage.setDisplay(true);
+    cardImage.setWidth("inherit");
+    cardImage.setHeight("inherit");
+    if(currentJson["Can SEZA"]){
+        cardImage.setPossibleEzaLevel("seza");
+        if(isSeza){
+            cardImage.setEzaLevel("seza");
+        }
+        else if(isEza){
+            cardImage.setEzaLevel("eza");
+        }
+        else{
+            cardImage.setEzaLevel("none");
+        }
+        cardImage.addPressableEza(function(){
+            updateQueryStringParameter("EZA", !isEza);
+            updateQueryStringParameter("SEZA", "false");
+            loadPage();
+        })
+        cardImage.addPressableSeza(function(){
+            updateQueryStringParameter("EZA", "true");
+            updateQueryStringParameter("SEZA", !isSeza);
+            loadPage();
+        })
+    }
+    else if(currentJson["Can EZA"]){
+        cardImage.setPossibleEzaLevel("eza");
+        if(isEza){
+            cardImage.setEzaLevel("eza");
+        }
+        else{
+            cardImage.setEzaLevel("none");
+        }
+        cardImage.addPressableEza(function(){
+            updateQueryStringParameter("EZA", !isEza);
+            loadPage();
+        })
+    }
+
+
+
+    if(isSeza){
+        cardImage.setEzaLevel("seza");
+    }
+    else if(isEza){
+        cardImage.setEzaLevel("eza");
+    }
+    else{
+        cardImage.setEzaLevel("none");
+    }
+    if(currentJson["Can SEZA"]){
+        cardImage.setPossibleEzaLevel("seza");
+        cardImage.addPressableEza(function(){
+
+        })
+    }
+    else if(currentJson["Can EZA"]){
+        cardImage.setPossibleEzaLevel("eza");
+        cardImage.addPressableSeza(function(){
+            
+        })
+    }
+    else{
+        cardImage.setPossibleEzaLevel("none");
+    }
+
+    imageContainer.appendChild(cardImage.getElement());
     document.body.style.backgroundColor = colorToBackground(typeToColor(currentJson["Type"]));
 }
 
@@ -5849,7 +5916,7 @@ export async function loadPage(firstTime=false){
                 createSkillOrbContainer();
                 createStarButton();
                 createPathButtons();
-                updateStarVisuals();
+                //updateStarVisuals();
             }
             createActiveContainer();
             createFinishContainer();
@@ -5862,7 +5929,7 @@ export async function loadPage(firstTime=false){
             createStatsContainer();
             createKiSphereContainer();
             createDamageTakenContainer();
-            updateLinkPartnerDisplay()
+            //updateLinkPartnerDisplay()
         }
         else{
             //document.getElementById("ki-slider").dispatchEvent(new Event("input"));	
