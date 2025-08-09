@@ -4074,7 +4074,7 @@ function refreshDomainBuffs(updatePassiveStatsBool=true){
 }
 
 
-function createPassiveContainer(){
+function createPassiveContainer(firstTime=true){
     document.getElementById("passive-style-query").addEventListener("click", function(){
         usePassiveList=false;
         passiveQueryContainer.style.display="block"
@@ -4123,7 +4123,7 @@ function createPassiveContainer(){
     }
 
     // Normalize newlines for safety
-    passiveListText = passiveListText.replace(/\r\n/g, '\n');
+    passiveListText = passiveListText.replace(/\r\n-/g, '\n-');
 
     // Regex to find *...* including multiline, non-greedy match
     const regex = /\*(.+?)\*/gs;
@@ -4140,14 +4140,14 @@ function createPassiveContainer(){
         // Add indented normal text before the bold block
         const before = passiveListText.slice(lastIndex, start).trim();
         if (before) {
-            const indentedLines = before.split('\n').map(
+            const indentedLines = before.split('\n-').map(
                 line => `<div style="margin-left: 1em">${line}</div>`
             ).join('<br>');
             formattedText += indentedLines + '<br>';
         }
 
         // Add bold block
-        const cleanBold = boldText.trim().replaceAll('\n', ' ');
+        const cleanBold = boldText.trim().replaceAll('\n-', ' ');
         formattedText += `<strong>${cleanBold}</strong><br>`;
 
         lastIndex = end;
@@ -4156,7 +4156,7 @@ function createPassiveContainer(){
     // Handle any trailing text after the last bold block
     const after = passiveListText.slice(lastIndex).trim();
     if (after) {
-        const indentedLines = after.split('\n').map(
+        const indentedLines = after.split('\n-').map(
             line => `<div style="margin-left: 1em">${line}</div>`
         ).join('<br>');
         formattedText += indentedLines;
@@ -4166,8 +4166,9 @@ function createPassiveContainer(){
 
     passiveListContainer.style.display="none"
     while (passiveFunctionalListContainer.firstChild) {
-        passiveFunctionalListContainer.removeChild(passiveQueryContainer.firstChild);
+        passiveFunctionalListContainer.removeChild(passiveFunctionalListContainer.firstChild);
     }
+
     passiveFunctionalListContainer["Paragraph Titles"]={};
     while (passiveQueryContainer.firstChild) {
         passiveQueryContainer.removeChild(passiveQueryContainer.firstChild);
@@ -4180,76 +4181,77 @@ function createPassiveContainer(){
         passiveOnceOnlyContainer.removeChild(passiveOnceOnlyContainer.firstChild);
     }
 
-    
-    const passiveSupportAdditions=document.createElement("div");
-    passiveSupportAdditions.id="passive-support-additions";
-    passiveSupportContainer.appendChild(passiveSupportAdditions);
+    if(firstTime){
+        const passiveSupportAdditions=document.createElement("div");
+        passiveSupportAdditions.id="passive-support-additions";
+        passiveSupportContainer.appendChild(passiveSupportAdditions);
 
-    passiveSupportAdditions.buffType=document.createElement("div");
-    passiveSupportAdditions.buffType.id="passive-support-additions-buff-type";
-    passiveSupportAdditions.appendChild(passiveSupportAdditions.buffType);
+        passiveSupportAdditions.buffType=document.createElement("div");
+        passiveSupportAdditions.buffType.id="passive-support-additions-buff-type";
+        passiveSupportAdditions.appendChild(passiveSupportAdditions.buffType);
 
-    passiveSupportAdditions.buffType.selector=document.createElement("div");
-    passiveSupportAdditions.buffType.selector.id="passive-support-additions-buff-type-selector";
-    passiveSupportAdditions.buffType.appendChild(passiveSupportAdditions.buffType.selector);
-    ["Ki","ATK", "DEF", "Dodge", "Crit", "DR"].forEach(option => {
-        const optionContainer = document.createElement("div");
-        optionContainer.className = "passive-support-option";
+        passiveSupportAdditions.buffType.selector=document.createElement("div");
+        passiveSupportAdditions.buffType.selector.id="passive-support-additions-buff-type-selector";
+        passiveSupportAdditions.buffType.appendChild(passiveSupportAdditions.buffType.selector);
+        ["Ki","ATK", "DEF", "Dodge", "Crit", "DR"].forEach(option => {
+            const optionContainer = document.createElement("div");
+            optionContainer.className = "passive-support-option";
 
-        const checkbox = document.createElement("input");
-        checkbox.type = "checkbox";
-        checkbox.id = `passive-support-${option.toLowerCase()}`;
-        checkbox.name = option;
-        checkbox.value = option;
+            const checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.id = `passive-support-${option.toLowerCase()}`;
+            checkbox.name = option;
+            checkbox.value = option;
 
-        const label = document.createElement("label");
-        label.htmlFor = checkbox.id;
-        label.textContent = option;
+            const label = document.createElement("label");
+            label.htmlFor = checkbox.id;
+            label.textContent = option;
 
-        optionContainer.appendChild(checkbox);
-        optionContainer.appendChild(label);
-        passiveSupportAdditions.buffType.selector.appendChild(optionContainer);
-    });
+            optionContainer.appendChild(checkbox);
+            optionContainer.appendChild(label);
+            passiveSupportAdditions.buffType.selector.appendChild(optionContainer);
+        });
 
-    passiveSupportAdditions.buffAmount=document.createElement("div");
-    passiveSupportAdditions.buffAmount.id="passive-support-additions-buff-amount";
-    passiveSupportAdditions.appendChild(passiveSupportAdditions.buffAmount);
+        passiveSupportAdditions.buffAmount=document.createElement("div");
+        passiveSupportAdditions.buffAmount.id="passive-support-additions-buff-amount";
+        passiveSupportAdditions.appendChild(passiveSupportAdditions.buffAmount);
 
-    passiveSupportAdditions.buffAmount.input=document.createElement("input");
-    passiveSupportAdditions.buffAmount.input.type="number";
-    passiveSupportAdditions.buffAmount.input.value="0";
-    passiveSupportAdditions.buffAmount.appendChild(passiveSupportAdditions.buffAmount.input);
+        passiveSupportAdditions.buffAmount.input=document.createElement("input");
+        passiveSupportAdditions.buffAmount.input.type="number";
+        passiveSupportAdditions.buffAmount.input.value="0";
+        passiveSupportAdditions.buffAmount.appendChild(passiveSupportAdditions.buffAmount.input);
 
-    passiveSupportAdditions.buffSource=document.createElement("div");
-    passiveSupportAdditions.buffSource.id="passive-support-additions-buff-source";
-    passiveSupportAdditions.appendChild(passiveSupportAdditions.buffSource);
+        passiveSupportAdditions.buffSource=document.createElement("div");
+        passiveSupportAdditions.buffSource.id="passive-support-additions-buff-source";
+        passiveSupportAdditions.appendChild(passiveSupportAdditions.buffSource);
 
-    passiveSupportAdditions.buffSource.selector=document.createElement("select");
-    passiveSupportAdditions.buffSource.selector.id="passive-support-additions-buff-source-selector";
-    passiveSupportAdditions.buffSource.appendChild(passiveSupportAdditions.buffSource.selector);
-    ["Passive SOT", "Passive MOT", "Active", "Super attack"].forEach(option => {
-        const optionContainer = document.createElement("option");
-        optionContainer.value = option;
-        optionContainer.textContent = option;
-        passiveSupportAdditions.buffSource.selector.appendChild(optionContainer);
-    });
-    
-    passiveSupportAdditions.confirmSelection=document.createElement("button");
-    passiveSupportAdditions.confirmSelection.id="passive-support-additions-confirm-selection";
-    passiveSupportAdditions.appendChild(passiveSupportAdditions.confirmSelection);
-    passiveSupportAdditions.confirmSelection.textContent="Add support";
-    passiveSupportAdditions.confirmSelection.addEventListener("click", function(){
-        const passiveSupportType=[];
-        for (const passiveSupportOption of passiveSupportAdditions.buffType.selector.children){
-            if(passiveSupportOption.children[0].checked){
-                passiveSupportType.push(passiveSupportOption.children[0].value);
+        passiveSupportAdditions.buffSource.selector=document.createElement("select");
+        passiveSupportAdditions.buffSource.selector.id="passive-support-additions-buff-source-selector";
+        passiveSupportAdditions.buffSource.appendChild(passiveSupportAdditions.buffSource.selector);
+        ["Passive SOT", "Passive MOT", "Active", "Super attack"].forEach(option => {
+            const optionContainer = document.createElement("option");
+            optionContainer.value = option;
+            optionContainer.textContent = option;
+            passiveSupportAdditions.buffSource.selector.appendChild(optionContainer);
+        });
+        
+        passiveSupportAdditions.confirmSelection=document.createElement("button");
+        passiveSupportAdditions.confirmSelection.id="passive-support-additions-confirm-selection";
+        passiveSupportAdditions.appendChild(passiveSupportAdditions.confirmSelection);
+        passiveSupportAdditions.confirmSelection.textContent="Add support";
+        passiveSupportAdditions.confirmSelection.addEventListener("click", function(){
+            const passiveSupportType=[];
+            for (const passiveSupportOption of passiveSupportAdditions.buffType.selector.children){
+                if(passiveSupportOption.children[0].checked){
+                    passiveSupportType.push(passiveSupportOption.children[0].value);
+                }
             }
-        }
-        supportBuffs.push({Type: passiveSupportType, Amount: passiveSupportAdditions.buffAmount.input.value, Source: passiveSupportAdditions.buffSource.selector.value});
-        fixOverallSupportBuffs();
-        updatePassiveSupportDisplay();
-        updatePassiveStats();
-    })
+            supportBuffs.push({Type: passiveSupportType, Amount: passiveSupportAdditions.buffAmount.input.value, Source: passiveSupportAdditions.buffSource.selector.value});
+            fixOverallSupportBuffs();
+            updatePassiveSupportDisplay();
+            updatePassiveStats();
+        })
+    }
 
 
         
@@ -4257,6 +4259,7 @@ function createPassiveContainer(){
 
     
     let passiveList=currentJson.Passive;
+    activePassiveLines={};
 
     for (const passiveLineKey of Object.keys(passiveList)) {
         if(arraysHaveOverlap(relevantPassiveQueryEffects, Object.keys(passiveList[passiveLineKey]))){
@@ -5734,14 +5737,20 @@ function createKiSphereContainer(){
 
 function createLeaderViewContainer(){
     const leadByViewContainer=document.getElementById("lead-by-view-container");
+    while (leadByViewContainer.firstChild){
+        leadByViewContainer.removeChild(leadByViewContainer.firstChild);
+    }
     const leadByViewLink=document.createElement("a");
         leadByViewContainer.appendChild(leadByViewLink);
-        leadByViewLink.href="/index.html?leadByView="+currentJson["ID"];
+        leadByViewLink.href="/index.html?leadByView="+currentJson["ID"]+"&eza="+isEza;
         leadByViewLink.textContent="View who leads this unit";
         leadByViewLink.style.textDecoration="none";
         leadByViewLink.style.color="inherit";
 
     const leaderViewContainer=document.getElementById("leader-view-container");
+    while (leaderViewContainer.firstChild){
+        leaderViewContainer.removeChild(leaderViewContainer.firstChild);
+    }
     let viableLead=false;
     for (const lead in currentJson["Leader Skill"]){
         if(currentJson["Leader Skill"][lead]["HP"]>MINIMUMVIABLELEADERBUFF ||
@@ -5756,7 +5765,7 @@ function createLeaderViewContainer(){
         leaderViewContainer.style.display="block";
         const leaderViewLink=document.createElement("a");
         leaderViewContainer.appendChild(leaderViewLink);
-        leaderViewLink.href="/index.html?leaderView="+currentJson["ID"];
+        leaderViewLink.href="/index.html?leaderView="+currentJson["ID"]+"&eza="+isEza;
         leaderViewLink.textContent="View Leader Skill";
         leaderViewLink.style.textDecoration="none";
         leaderViewLink.style.color="inherit";
@@ -5834,7 +5843,7 @@ export async function loadPage(firstTime=false){
             location.href=location.origin;
         }
         initialiseAspects();
-        createPassiveContainer();
+        createPassiveContainer(firstTime);
         if(firstTime){
             if(currentJson["Rarity"] == "lr" || currentJson["Rarity"] == "ur"){
                 createSkillOrbContainer();
