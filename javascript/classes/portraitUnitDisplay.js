@@ -22,7 +22,7 @@ export class portraitUnitDisplay{
     this.container=document.createElement("div");
     this.container.width=width;
     this.container.height=height;
-    this.container.className="unit-container";
+    this.container.className="portrait-unit-container";
     this.container.style.position="relative";
     this.container.style.display="none";
     
@@ -58,53 +58,62 @@ export class portraitUnitDisplay{
     this.container.sezaImage.style.display="none";
     this.container.appendChild(this.container.sezaImage);
     
-    this.container.infoHolder = document.createElement("div");
-    this.container.infoHolder.className="unit-info-holder";
-    this.container.appendChild(this.container.infoHolder);
-
-    this.container.infoHolder.unitLevel=document.createElement("div");
-    this.container.infoHolder.unitLevel.className="unit-info-holder-level";
-    this.container.infoHolder.appendChild(this.container.infoHolder.unitLevel);
-    if(this.otherDisplayedValue!=null){
-        this.container.infoHolder.unitLevel.style.animation="fade 4s infinite";
-    }
-    else{
-        this.container.infoHolder.unitLevel.style.animation="none";
-    }
-
-    this.container.infoHolder.unitLevel.level=document.createElement("img")
-    this.container.infoHolder.unitLevel.level.className="unit-info-holder-level-level";
-    this.container.infoHolder.unitLevel.level.src=window.assetBase+"/global/en/layout/en/image/common/label/com_label_large_lv.png";
-    this.container.infoHolder.unitLevel.level.loading="eager";
-    this.container.infoHolder.unitLevel.appendChild(this.container.infoHolder.unitLevel.level);
-
-    this.container.infoHolder.unitLevel.number=document.createElement("div");
-    this.container.infoHolder.unitLevel.number.className="unit-info-holder-level-number";
-    this.container.infoHolder.unitLevel.number.innerHTML=this.level;
-    this.container.infoHolder.unitLevel.appendChild(this.container.infoHolder.unitLevel.number);
-
-    this.container.infoHolder.unitText=document.createElement("div");
-    this.container.infoHolder.unitText.className="unit-info-holder-text";
-    this.container.infoHolder.unitText.style.animation="fade 4s infinite";
-    this.container.infoHolder.unitText.style.animationDelay="-2s";
-    this.container.infoHolder.unitText.innerHTML=this.otherDisplayedValue;
-    this.container.infoHolder.appendChild(this.container.infoHolder.unitText);
-
+    this.createNonLrDisplay();
   }
 
   setResourceID(resourceID){
     if(resourceID!=this.resourceID){
       this.resourceID = resourceID;
-      this.createLRAnimation();
+      if(this.rarity=="lr"){
+        this.createLRAnimation();
+      }
+      this.updateNonLrDisplay()
     }
   };
 
+  updateNonLrDisplay(){
+    this.container.nonLrDisplay.backgroundImage.src=window.assetBase+"/global/en/character/card/"+this.resourceID+"/card_"+this.resourceID+"_bg.png";
+    this.container.nonLrDisplay.unitImage.src=window.assetBase+"/global/en/character/card/"+this.resourceID+"/card_"+this.resourceID+"_character.png";
+    this.container.nonLrDisplay.effect.src=window.assetBase+"/global/en/character/card/"+this.resourceID+"/card_"+this.resourceID+"_effect.png";
+  }
+
+  createNonLrDisplay(){
+    this.container.nonLrDisplay=document.createElement("div");
+    this.container.nonLrDisplay.className="portraitUnitDisplay-non-lr-display";
+    this.container.appendChild(this.container.nonLrDisplay);
+
+    this.container.nonLrDisplay.backgroundImage=document.createElement("img");
+    this.container.nonLrDisplay.backgroundImage.className="portraitUnitDisplay-non-lr-background-image";
+    this.container.nonLrDisplay.backgroundImage.src=window.assetBase+"/global/en/character/card/"+this.resourceID+"/card_"+this.resourceID+"_bg.png";
+    this.container.nonLrDisplay.appendChild(this.container.nonLrDisplay.backgroundImage);
+
+    this.container.nonLrDisplay.unitImage=document.createElement("img");
+    this.container.nonLrDisplay.unitImage.className="portraitUnitDisplay-non-lr-unit-image";
+    this.container.nonLrDisplay.unitImage.src=window.assetBase+"/global/en/character/card/"+this.resourceID+"/card_"+this.resourceID+"_character.png";
+    this.container.nonLrDisplay.appendChild(this.container.nonLrDisplay.unitImage);
+
+    this.container.nonLrDisplay.effect=document.createElement("img");
+    this.container.nonLrDisplay.effect.className="portraitUnitDisplay-non-lr-unit-image";
+    this.container.nonLrDisplay.effect.src=window.assetBase+"/global/en/character/card/"+this.resourceID+"/card_"+this.resourceID+"effect.png";
+    this.container.nonLrDisplay.appendChild(this.container.nonLrDisplay.effect);
+  }
+
+  updateLRAnimation(){
+    if(this.lrAnimationIsSetup){
+      this.container.lrAnimation.animation.pause();
+      this.container.lrAnimation.animation=null;
+      this.container.lrAnimation.remove();
+      this.container.lrAnimation=null;
+    }
+    this.createLRAnimation();
+  }
 
   createLRAnimation(){
-    //WIP FIX THIS
     this.lrAnimationIsSetup=true;
     this.container.lrAnimation=document.createElement("canvas")
     this.container.lrAnimation.className="portraitUnitDisplay-lr-animation-lwf";
+    this.container.lrAnimation.width=234;
+    this.container.lrAnimation.height=320;
     
     this.container.appendChild(this.container.lrAnimation);
     this.container.lrAnimation.animation=new LWFPlayer(
@@ -115,7 +124,7 @@ export class portraitUnitDisplay{
   }
 
   createStickerAnimation(){
-    //WIP
+    //TODO: Implement sticker animation
   }
 
 
@@ -126,7 +135,6 @@ export class portraitUnitDisplay{
   };
   setType(type){
     this.typeInt=typeToInt(type);
-    this.container.infoHolder.style.backgroundImage="url('"+window.assetBase+"/global/en/layout/en/image/character/cha_base_bottom_0"+this.typeInt+".png')";
     this.container.unitTypingImage.src=window.assetBase+"/global/en/layout/en/image/character/cha_type_icon_"+this.ClassInt+this.typeInt+".png";
   };
 
@@ -135,43 +143,24 @@ export class portraitUnitDisplay{
     this.rarityInt=rarityToInt(rarity);
     this.container.unitRarityImage.src=window.assetBase+"/global/en/layout/en/image/character/cha_rare_sm_"+this.rarity+".png";
     if(this.rarity=="lr"){
-      if(!this.lrAnimationIsSetup){
+      if(!this.lrAnimationIsSetup && this.lrAnimationIsSetup==false){
         this.createLRAnimation();
       }
       this.container.lrAnimation.animation.play();
       this.container.lrAnimation.style.display="block";
+      this.container.nonLrDisplay.style.display="none";
     }
     else{
       if(this.lrAnimationIsSetup){
         this.container.lrAnimation.animation.pause();
         this.container.lrAnimation.style.display="none";
       }
-    //   this.container.lrAnimation.style.display="none";
-    //   this.container.lrBackground.style.display="none";
+      this.container.nonLrDisplay.style.display="block";
     }
   }
 
   setLevel(level){
     this.level=level;
-    this.container.infoHolder.unitLevel.number.innerHTML=this.level;
-  }
-
-  setOtherDisplayedValue(otherDisplayedValue){
-    this.otherDisplayedValue=otherDisplayedValue;
-    this.container.infoHolder.unitText.innerHTML=this.otherDisplayedValue;
-    if(this.otherDisplayedValue==null){
-      this.container.infoHolder.unitText.style.display="none";
-      this.container.infoHolder.unitLevel.style.animation="none";
-    }
-    else{
-      this.container.infoHolder.unitText.style.display="block";
-      this.container.infoHolder.unitLevel.style.animation="fade 4s infinite";
-    }
-  }
-
-  setOtherDisplayedValueColor(otherDisplayedValueColor){
-    this.otherDisplayedValueColor=otherDisplayedValueColor;
-    this.container.infoHolder.unitText.style.color=this.otherDisplayedValueColor;
   }
 
   setEzaLevel(ezaLevel){
@@ -225,18 +214,6 @@ export class portraitUnitDisplay{
       }
   }
 
-  setDisplayExtraInfo(displayed){
-    this.displayedExtraInfo=displayed;
-    if(displayed){
-      this.container.style.marginBottom="24px";
-      this.container.infoHolder.style.display="block";
-    }
-    else{
-      this.container.style.marginBottom="0px";
-      this.container.infoHolder.style.display="none";
-    }
-  }
-
   setDisplay(displayed){
     this.displayed=displayed;
     if(displayed){
@@ -261,7 +238,7 @@ export class portraitUnitDisplay{
   }
   addPressableEza(onClickFunction){
     if(this.possibleEzaLevel=="seza"){
-      this.container.ezaImage.style.right="33%";
+      this.container.ezaImage.style.bottom="47px";
     }
     this.container.ezaImage.style.cursor="pointer";
     this.container.ezaImage.style.pointerEvents="auto";

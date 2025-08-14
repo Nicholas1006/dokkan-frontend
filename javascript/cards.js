@@ -1544,6 +1544,11 @@ const iconMap = {
     "{passiveImg:def_down}": window.assetBase+"/global/en/layout/en/image/ingame/battle/skill_dialog/passive_icon_st_0012.png",
     "{passiveImg:stun}": window.assetBase+"/global/en/layout/en/image/ingame/battle/skill_dialog/passive_icon_st_0100.png",
     "{passiveImg:astute}": window.assetBase+"/global/en/layout/en/image/ingame/battle/skill_dialog/passive_icon_st_0102.png",
+    "{AGL}": window.assetBase+"/global/en/layout/en/image/character/cha_type_icon_sup_00.png",
+    "{TEQ}": window.assetBase+"/global/en/layout/en/image/character/cha_type_icon_sup_01.png",
+    "{INT}": window.assetBase+"/global/en/layout/en/image/character/cha_type_icon_sup_02.png",
+    "{STR}": window.assetBase+"/global/en/layout/en/image/character/cha_type_icon_sup_03.png",
+    "{PHY}": window.assetBase+"/global/en/layout/en/image/character/cha_type_icon_sup_04.png",
     };
 const HIDEUNNEEDEDPASSIVE=true;
 const MINIMUMVIABLELEADERBUFF=1;
@@ -4508,11 +4513,11 @@ function fixOverallSupportBuffs(){
 }
 
 function initialiseAspects() {
-    if(currentJson.Rarity=="lr"){
+    if(currentJson.Rarity=="lr" || true){
         updateLRCharacterIcon('character-icon', currentJson["Resource ID"], currentJson.Type);
     }
     else{
-        updateCharacterIcon('character-icon', currentJson["Resource ID"], currentJson.Type);
+        updateNonLrCharacterIcon('character-icon', currentJson["Resource ID"], currentJson.Type);
     }
     document.getElementById("level-container").style.display="flex";
 
@@ -4607,7 +4612,6 @@ function createSuperAttackContainer(){
     cardImage.setClass(currentJson["Class"]);
     cardImage.setType(currentJson["Type"]);
     cardImage.setRarity(currentJson["Rarity"]);
-    cardImage.setDisplayExtraInfo(false);
     cardImage.setDisplay(true);
     cardImage.setWidth("inherit");
     cardImage.setHeight("inherit");
@@ -4679,7 +4683,7 @@ function createSuperAttackContainer(){
 }
 
 
- function updateCharacterIcon(){
+ function updateNonLrCharacterIcon(){
     const imageContainer = document.getElementById("character-icon");
     while (imageContainer.firstChild) {
         imageContainer.removeChild(imageContainer.firstChild);
@@ -5916,7 +5920,7 @@ export async function loadPage(firstTime=false){
                 createSkillOrbContainer();
                 createStarButton();
                 createPathButtons();
-                //updateStarVisuals();
+                updateStarVisuals();
             }
             createActiveContainer();
             createFinishContainer();
@@ -5929,7 +5933,7 @@ export async function loadPage(firstTime=false){
             createStatsContainer();
             createKiSphereContainer();
             createDamageTakenContainer();
-            //updateLinkPartnerDisplay()
+            updateLinkPartnerDisplay()
         }
         else{
             //document.getElementById("ki-slider").dispatchEvent(new Event("input"));	

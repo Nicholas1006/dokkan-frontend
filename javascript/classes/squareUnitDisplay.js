@@ -20,7 +20,7 @@ export class squareUnitDisplay{
       this.highlightAnimationisSetup=false;
 
       this.container=document.createElement("div");
-      this.container.className="unit-container";
+      this.container.className="square-unit-container";
       this.container.style.position="relative";
       this.container.style.display="none";
       
