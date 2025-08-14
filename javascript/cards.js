@@ -1,4 +1,5 @@
 import {squareUnitDisplay } from "./classes/squareUnitDisplay.js";
+import {portraitUnitDisplay } from "./classes/portraitUnitDisplay.js";
 import {extractDigitsFromString,
        arraysHaveOverlap,
        getFirstInDictionary,
@@ -1543,6 +1544,11 @@ const iconMap = {
     "{passiveImg:def_down}": window.assetBase+"/global/en/layout/en/image/ingame/battle/skill_dialog/passive_icon_st_0012.png",
     "{passiveImg:stun}": window.assetBase+"/global/en/layout/en/image/ingame/battle/skill_dialog/passive_icon_st_0100.png",
     "{passiveImg:astute}": window.assetBase+"/global/en/layout/en/image/ingame/battle/skill_dialog/passive_icon_st_0102.png",
+    "{AGL}": window.assetBase+"/global/en/layout/en/image/character/cha_type_icon_sup_00.png",
+    "{TEQ}": window.assetBase+"/global/en/layout/en/image/character/cha_type_icon_sup_01.png",
+    "{INT}": window.assetBase+"/global/en/layout/en/image/character/cha_type_icon_sup_02.png",
+    "{STR}": window.assetBase+"/global/en/layout/en/image/character/cha_type_icon_sup_03.png",
+    "{PHY}": window.assetBase+"/global/en/layout/en/image/character/cha_type_icon_sup_04.png",
     };
 const HIDEUNNEEDEDPASSIVE=true;
 const MINIMUMVIABLELEADERBUFF=1;
@@ -4507,11 +4513,11 @@ function fixOverallSupportBuffs(){
 }
 
 function initialiseAspects() {
-    if(currentJson.Rarity=="lr"){
+    if(currentJson.Rarity=="lr" || true){
         updateLRCharacterIcon('character-icon', currentJson["Resource ID"], currentJson.Type);
     }
     else{
-        updateCharacterIcon('character-icon', currentJson["Resource ID"], currentJson.Type);
+        updateNonLrCharacterIcon('character-icon', currentJson["Resource ID"], currentJson.Type);
     }
     document.getElementById("level-container").style.display="flex";
 
@@ -4599,20 +4605,85 @@ function createSuperAttackContainer(){
     while (imageContainer.firstChild) {
         imageContainer.removeChild(imageContainer.firstChild);
     }
-    imageContainer.animationCanvas=document.createElement("canvas");
-    imageContainer.animationCanvas.width=234;
-    imageContainer.animationCanvas.height=320;
-    imageContainer.appendChild(imageContainer.animationCanvas);
-    const cardImage=new LWFPlayer(
-        window.assetBase+"/global/en/character/card_bg/"+currentJson["Resource ID"]+"/card_"+currentJson["Resource ID"]+".lwf", 
-        imageContainer.animationCanvas, 
-        "ef_001"
+    const cardImage=new portraitUnitDisplay(
+        234,320
     );
+    cardImage.setResourceID(currentJson["Resource ID"]);
+    cardImage.setClass(currentJson["Class"]);
+    cardImage.setType(currentJson["Type"]);
+    cardImage.setRarity(currentJson["Rarity"]);
+    cardImage.setDisplay(true);
+    cardImage.setWidth("inherit");
+    cardImage.setHeight("inherit");
+    if(currentJson["Can SEZA"]){
+        cardImage.setPossibleEzaLevel("seza");
+        if(isSeza){
+            cardImage.setEzaLevel("seza");
+        }
+        else if(isEza){
+            cardImage.setEzaLevel("eza");
+        }
+        else{
+            cardImage.setEzaLevel("none");
+        }
+        cardImage.addPressableEza(function(){
+            updateQueryStringParameter("EZA", !isEza);
+            updateQueryStringParameter("SEZA", "false");
+            loadPage();
+        })
+        cardImage.addPressableSeza(function(){
+            updateQueryStringParameter("EZA", "true");
+            updateQueryStringParameter("SEZA", !isSeza);
+            loadPage();
+        })
+    }
+    else if(currentJson["Can EZA"]){
+        cardImage.setPossibleEzaLevel("eza");
+        if(isEza){
+            cardImage.setEzaLevel("eza");
+        }
+        else{
+            cardImage.setEzaLevel("none");
+        }
+        cardImage.addPressableEza(function(){
+            updateQueryStringParameter("EZA", !isEza);
+            loadPage();
+        })
+    }
+
+
+
+    if(isSeza){
+        cardImage.setEzaLevel("seza");
+    }
+    else if(isEza){
+        cardImage.setEzaLevel("eza");
+    }
+    else{
+        cardImage.setEzaLevel("none");
+    }
+    if(currentJson["Can SEZA"]){
+        cardImage.setPossibleEzaLevel("seza");
+        cardImage.addPressableEza(function(){
+
+        })
+    }
+    else if(currentJson["Can EZA"]){
+        cardImage.setPossibleEzaLevel("eza");
+        cardImage.addPressableSeza(function(){
+            
+        })
+    }
+    else{
+        cardImage.setPossibleEzaLevel("none");
+    }
+
+    imageContainer.appendChild(cardImage.getElement());
     document.body.style.backgroundColor = colorToBackground(typeToColor(currentJson["Type"]));
 }
 
 
- function updateCharacterIcon(){
+ function updateNonLrCharacterIcon(){
     const imageContainer = document.getElementById("character-icon");
     while (imageContainer.firstChild) {
         imageContainer.removeChild(imageContainer.firstChild);
