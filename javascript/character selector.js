@@ -499,6 +499,9 @@ function updatePageSelector(){
   if(window.currentPage>Math.ceil(window.currentFilteredUnits.length/unitsToDisplay)){
     window.currentPage=Math.ceil(window.currentFilteredUnits.length/unitsToDisplay);
   }
+  if(window.currentPage<1){
+    window.currentPage=1;
+  }
   const pageSelectionContainer=document.getElementById("page-selection-container");
   while (pageSelectionContainer.firstChild) {
     pageSelectionContainer.removeChild(pageSelectionContainer.firstChild);
