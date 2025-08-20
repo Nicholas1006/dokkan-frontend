@@ -1074,13 +1074,17 @@ class statsContainerClass{
         this.extraHPQuery.id="extra-HP-input";
         this.extraHPQuery.value=0;
         this.extraHPQuery.step=100;
-        this.extraHPQuery.min=0;
-        this.extraHPQuery.max=currentJson["Orbs"]["overall"]["HP"];
         this.extraHPQuery.type="number";
         this.extraHPQuery.style.gridRow="1";
         this.extraHPQuery.style.gridColumn="2";
         this.extraHPQuery.addEventListener("input",function(){
-            this.value=(parseInt(this.value) || 0).clamp(0, currentJson["Orbs"]["overall"]["HP"]);
+            if(this.value>currentJson["Orbs"]["overall"]["HP"] ||
+            this.value<0){
+                this.style.backgroundColor="#FF5C35";
+            }
+            else{
+                this.style.backgroundColor="#FFFFFF";
+            }
             this.parentNode.classConstruction.queryHP=parseInt(this.value);
             this.parentNode.classConstruction.refreshStats();
             updatePassiveStats();
@@ -1091,14 +1095,18 @@ class statsContainerClass{
         this.extraATKQuery.id="extra-ATK-input";
         this.extraATKQuery.value=0;
         this.extraATKQuery.step=100;
-        this.extraATKQuery.min=0;
-        this.extraATKQuery.max=currentJson["Orbs"]["overall"]["ATK"];
         this.extraATKQuery.type="number";
         this.extraATKQuery.style.gridRow="2";
         this.extraATKQuery.style.gridColumn="2";
         this.selfContainer.appendChild(this.extraATKQuery);
         this.extraATKQuery.addEventListener("input",function(){
-            this.value=(parseInt(this.value) || 0).clamp(0, currentJson["Orbs"]["overall"]["ATK"])
+            if(this.value>currentJson["Orbs"]["overall"]["ATK"] ||
+            this.value<0){
+                this.style.backgroundColor="#FF5C35";
+            }
+            else{
+                this.style.backgroundColor="#FFFFFF";
+            }
             this.parentNode.classConstruction.queryATK=parseInt(this.value);
             this.parentNode.classConstruction.refreshStats();
             updatePassiveStats();
@@ -1108,13 +1116,17 @@ class statsContainerClass{
         this.extraDEFQuery.id="extra-DEF-input";
         this.extraDEFQuery.value=0;
         this.extraDEFQuery.step=100;
-        this.extraDEFQuery.min=0;
-        this.extraDEFQuery.max=currentJson["Orbs"]["overall"]["DEF"];
         this.extraDEFQuery.type="number";
         this.extraDEFQuery.style.gridRow="3";
         this.extraDEFQuery.style.gridColumn="2";
         this.extraDEFQuery.addEventListener("input",function(){
-            this.value=(parseInt(this.value) || 0).clamp(0, currentJson["Orbs"]["overall"]["DEF"]);
+            if(this.value>currentJson["Orbs"]["overall"]["DEF"] ||
+            this.value<0){
+                this.style.backgroundColor="#FF5C35";
+            }
+            else{
+                this.style.backgroundColor="#FFFFFF";
+            }
             this.parentNode.classConstruction.queryDEF=parseInt(this.value);
             this.parentNode.classConstruction.refreshStats();
             updatePassiveStats();
