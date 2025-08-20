@@ -1552,6 +1552,7 @@ const iconMap = {
     };
 const HIDEUNNEEDEDPASSIVE=true;
 const MINIMUMVIABLELEADERBUFF=1;
+let activeFunctionalListLines={};
 let usePassiveList=true;
 let allLinkPartners;
 let highestLinkers=7;
@@ -1730,6 +1731,7 @@ function includedInSupportBuff(passiveLine){
 }
 
 
+
 function updatePassiveStats(){
     for(const attack of Object.values(kiCircleDictionary)){
         attack.display(false);
@@ -1750,7 +1752,7 @@ function updatePassiveStats(){
 
     let currentActivePassiveMultipliers={};
     if(usePassiveList){
-        currentActivePassiveMultipliers=activePassiveLines;
+        currentActivePassiveMultipliers=activeFunctionalListLines;
     }
     let iteratingCausalityLogic;
     if(!usePassiveList){
@@ -1810,7 +1812,7 @@ function updatePassiveStats(){
         else{
             activecontainer.kiCircle.display(true);
             activecontainer.kiCircle.updateKi(24);
-            activecontainer.kiCircle.updateFromBuffs(activePassiveLinesToPassiveBuffs(activePassiveLines),iteratingSuperAttackBuffs);
+            activecontainer.kiCircle.updateFromBuffs(activePassiveMultipliersToPassiveBuffs(activePassiveLines),iteratingSuperAttackBuffs);
             iteratingSuperAttackBuffs=activecontainer.kiCircle.superBuffs;
         }
         
@@ -1885,7 +1887,7 @@ function updatePassiveStats(){
         kiCircleDictionary[0].updateDefensiveFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
     }
     else{
-        kiCircleDictionary[0].updateDefensiveFromBuffs(activePassiveLinesToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
+        kiCircleDictionary[0].updateDefensiveFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
         
     }
 
@@ -1983,7 +1985,7 @@ function updatePassiveStats(){
     }    
     else{
         kiCircleDictionary[0].display(true);
-        kiCircleDictionary[0].updateKiFromBuffs(activePassiveLinesToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
+        kiCircleDictionary[0].updateKiFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
     }
     attacksPerformed+=1;
 
@@ -1996,7 +1998,7 @@ function updatePassiveStats(){
         kiCircleDictionary[0].updateFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
     }
     else{
-        kiCircleDictionary[0].updateFromBuffs(activePassiveLinesToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
+        kiCircleDictionary[0].updateFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
     }
     
     if(!usePassiveList){    
@@ -2016,7 +2018,7 @@ function updatePassiveStats(){
         iteratingPassiveBuffs =(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers));
     }
     else{
-        iteratingPassiveBuffs =(activePassiveLinesToPassiveBuffs(currentActivePassiveMultipliers));
+        iteratingPassiveBuffs =(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers));
     }
 
     for (const additionalAttack of iteratingPassiveBuffs["Additional Attack"]){
@@ -2078,8 +2080,8 @@ function updatePassiveStats(){
                 kiCircleDictionary[nextLineToActivate].updateFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
             }
             else{
-                kiCircleDictionary[nextLineToActivate].updateKiFromBuffs(activePassiveLinesToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
-                kiCircleDictionary[nextLineToActivate].updateFromBuffs(activePassiveLinesToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
+                kiCircleDictionary[nextLineToActivate].updateKiFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
+                kiCircleDictionary[nextLineToActivate].updateFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
             }
             attacksPerformed+=1;
             
@@ -2153,7 +2155,7 @@ function updatePassiveStats(){
             kiCircleDictionary[lastAttack].updateDefensiveFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
         }
         else{
-            kiCircleDictionary[lastAttack].updateDefensiveFromBuffs(activePassiveLinesToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
+            kiCircleDictionary[lastAttack].updateDefensiveFromBuffs(activePassiveMultipliersToPassiveBuffs(currentActivePassiveMultipliers),iteratingSuperAttackBuffs);
         }
         recievingDamageStats["Defense"]=kiCircleDictionary[lastAttack].getDefense();
         recievingDamageStats["Dodge Chance"]=Math.min(kiCircleDictionary[lastAttack].getDodgeChance(),100)/100;
@@ -2222,42 +2224,6 @@ function updatePassiveStats(){
     updateDamageTakenQueryContainer();
 }
 
-function activePassiveLinesToPassiveBuffs(activePassiveLines){
-    let passiveBuffMultipliers={};
-    for (const passiveLineKey in activePassiveLines){
-        const passiveLine=activePassiveLines[passiveLineKey];
-        if(passiveLine["Type"]=="Single activator"){
-            passiveBuffMultipliers[passiveLine["ID"]]=1
-        }
-        else if(passiveLine["Type"]=="Building Stat"){
-            let quickestRisingStat=0;
-            if("Ki" in passiveLine){
-                quickestRisingStat=Math.max(quickestRisingStat,passiveLine["Ki"]);
-            }
-            if("ATK" in passiveLine){
-                quickestRisingStat=Math.max(quickestRisingStat,passiveLine["ATK"]);
-            }
-            if("DEF" in passiveLine){
-                quickestRisingStat=Math.max(quickestRisingStat,passiveLine["DEF"]);
-            }
-            if("Dodge Chance" in passiveLine){
-                quickestRisingStat=Math.max(quickestRisingStat,passiveLine["Dodge Chance"]);
-            }
-            if("DR" in passiveLine){
-                quickestRisingStat=Math.max(quickestRisingStat,passiveLine["Damage Reduction"]);
-            }
-            if("Crit Chance" in passiveLine){
-                quickestRisingStat=Math.max(quickestRisingStat,passiveLine["Crit Chance"]);
-            }
-            passiveBuffMultipliers[passiveLine["ID"]] = Math.ceil(passiveLine["Building Stat"]["Max"] / quickestRisingStat);
-        }
-        else if(passiveLine["Type"]=="Disable Other Line"){
-            //This is a line that disables other lines, so we don't need to do anything with it
-            continue;
-        }
-    }
-    return(activePassiveMultipliersToPassiveBuffs(passiveBuffMultipliers))
-}
 
 function activePassiveMultipliersToPassiveBuffs(activePassiveMultipliers){
     let buffs={
@@ -2453,7 +2419,7 @@ function activePassiveMultipliersToPassiveBuffs(activePassiveMultipliers){
             let buffMultiplier;
             if(usePassiveList){
                 if(passiveLineKey in activePassiveMultipliers) {
-                    buffMultiplier=1000000; //WIP PLACEHOLDER UNTIL WE GET SLIDERS FOR BUILDING STATS
+                    buffMultiplier=activePassiveMultipliers[passiveLineKey]; //WIP PLACEHOLDER UNTIL WE GET SLIDERS FOR BUILDING STATS
                 }
             }
             else{
@@ -3731,32 +3697,110 @@ function colorToBackground(color){
 function updatePassiveListWithPassiveLine(passiveLine){
     const passiveLineDiv=document.createElement("div");
     passiveLineDiv.id="passive-line-div"
-    let lineDescription = passiveLine["Line description"];
+    passiveLineDiv.lineDescription = passiveLine["Line description"];
+    passiveLineDiv.passiveLine = passiveLine;
     // Replace all keywords with corresponding icons
     for (let keyword in iconMap) {
         const iconPath = iconMap[keyword];
         const imgTag = `<img src="${iconPath}" style="height: 1em; vertical-align: middle;">`;
-        lineDescription = lineDescription.replaceAll(keyword, imgTag);
+        passiveLineDiv.lineDescription = passiveLineDiv.lineDescription.replaceAll(keyword, imgTag);
     }
-    passiveLineDiv.innerHTML = "• "+lineDescription;
     passiveLineDiv.active=true
     passiveLineDiv.classList.add("active");
-    activePassiveLines[passiveLine["ID"]]=(passiveLine);
-    passiveLineDiv.addEventListener(
-        "click", function(){
-            if(this.active){
-                this.active=false
-                this.classList.remove("active")
-                delete activePassiveLines[passiveLine["ID"]];
+    passiveLineDiv.value=1;
+    
+    if(passiveLineDiv.lineDescription.includes("{currentValue}")){
+        passiveLineDiv.value=0;
+        passiveLineDiv.increaseButton = document.createElement("img");
+        passiveLineDiv.increaseButton.parent=passiveLineDiv;
+        passiveLineDiv.increaseButton.id="passive-increase-button";
+        passiveLineDiv.increaseButton.src = window.assetBase+"/global/en/layout/en/image/common/btn/com_btn_amount_plus_yellow.png";
+        passiveLineDiv.increaseButton.onclick = function(){
+            this.parent.value++;
+            if(this.parent.value*this.parent.passiveLine["Building Stat"]["Stat Per Proc"]>this.parent.passiveLine["Building Stat"].Max){
+                this.parent.value=Math.ceil(this.parent.passiveLine["Building Stat"].Max/this.parent.passiveLine["Building Stat"]["Stat Per Proc"]);
             }
-            else{
-                this.active=true
-                this.classList.add("active")
-                activePassiveLines[passiveLine["ID"]]=(passiveLine)
-            }
+            activeFunctionalListLines[passiveLine["ID"]]=(this.parent.value);
             updatePassiveStats();
+            this.parent.reassemble();
         }
-    )
+        
+        passiveLineDiv.lowerButton = document.createElement("img");
+        passiveLineDiv.lowerButton.parent=passiveLineDiv;
+        passiveLineDiv.lowerButton.id="passive-lower-button";
+        passiveLineDiv.lowerButton.src = window.assetBase+"/global/en/layout/en/image/common/btn/com_btn_amount_minus_yellow.png";
+        passiveLineDiv.lowerButton.onclick = function(){
+            this.parent.value--;
+            if(this.parent.value<0){
+                this.parent.value=0;
+            }
+            activeFunctionalListLines[passiveLine["ID"]]=(this.parent.value);
+            updatePassiveStats();
+            this.parent.reassemble();
+        }
+    }
+    passiveLineDiv.reassemble = function(){
+        // clear children
+        while (this.firstChild) {
+            this.removeChild(this.firstChild);
+        }
+
+        if(this.lineDescription.includes("{currentValue}")){
+            let [beforeButtons, afterButtons] = this.lineDescription.split("{currentValue}");
+
+            // Add "• " text + beforeButtons (which may contain HTML)
+            let beforeSpan = document.createElement("span");
+            beforeSpan.innerHTML = "• " + beforeButtons;
+            this.appendChild(beforeSpan);
+
+            // Add lower button
+            this.appendChild(this.lowerButton);
+
+            // Add numeric value
+            let valueSpan = document.createElement("span");
+            valueSpan.textContent = Math.min(this.value*this.passiveLine["Building Stat"]["Stat Per Proc"],this.passiveLine["Building Stat"].Max);
+            this.appendChild(valueSpan);
+
+            // Add increase button
+            this.appendChild(this.increaseButton);
+
+            // Add afterButtons (which may contain HTML)
+            let afterSpan = document.createElement("span");
+            afterSpan.innerHTML = afterButtons;
+            this.appendChild(afterSpan);
+        }
+        else {
+            let textSpan = document.createElement("span");
+            textSpan.innerHTML = "• " + this.lineDescription;
+            this.appendChild(textSpan);
+        }
+        
+        for (const child of passiveLineDiv.children) {
+        if (child.tagName === "SPAN") {
+            child.addEventListener(
+                "click", function(){
+                    if(passiveLineDiv.active){
+                        passiveLineDiv.active=false
+                        passiveLineDiv.classList.remove("active")
+                        delete activeFunctionalListLines[passiveLine["ID"]];
+                    }
+                    else{
+                        passiveLineDiv.active=true
+                        passiveLineDiv.classList.add("active")
+                        activeFunctionalListLines[passiveLine["ID"]]=(passiveLineDiv.value || 1)
+                    }
+                    updatePassiveStats();
+                }
+            )
+        }
+    }
+    }
+
+    passiveLineDiv.reassemble();
+
+    
+    activeFunctionalListLines[passiveLine["ID"]]=passiveLineDiv.value;
+    
     const passiveFunctionalListContainer=document.getElementById("passive-functional-list-container")
     //WIP add sliders for the building stats
     if(!(passiveLine["Paragraph Title"] in passiveFunctionalListContainer["Paragraph Titles"])){
@@ -4136,6 +4180,10 @@ function createPassiveContainer(firstTime=true){
         passiveListText = passiveListText.replaceAll(keyword, imgTag);
     }
 
+    //WIP Add sliders for the building stats
+    //Minus symbol: /global/en/layout/en/image/common/btn/com_btn_amount_minus_yellow.png
+    //Minus symbol: /global/en/layout/en/image/common/btn/com_btn_amount_plus_yellow.png
+
     // Normalize newlines for safety
     passiveListText = passiveListText.replace(/\r\n-/g, '\n-');
 
@@ -4273,7 +4321,6 @@ function createPassiveContainer(firstTime=true){
 
     
     let passiveList=currentJson.Passive;
-    activePassiveLines={};
 
     for (const passiveLineKey of Object.keys(passiveList)) {
         if(arraysHaveOverlap(relevantPassiveQueryEffects, Object.keys(passiveList[passiveLineKey]))){
