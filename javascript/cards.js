@@ -4145,6 +4145,7 @@ function refreshDomainBuffs(updatePassiveStatsBool=true){
 
 
 function createPassiveContainer(firstTime=true){
+    activeFunctionalListLines={};
     document.getElementById("passive-style-query").addEventListener("click", function(){
         usePassiveList=false;
         passiveQueryContainer.style.display="block"
