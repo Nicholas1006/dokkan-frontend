@@ -2926,27 +2926,82 @@ function createLeaderStats(){
     );
 
     let leaderAInputKi=document.getElementById("leader-A-Input-Ki");
+    leaderAInputKi.value=currentJson["Max Leader Skill"]["Ki"];
     
     let leaderBInputKi=document.getElementById("leader-B-Input-Ki");
-
+    leaderBInputKi.value=currentJson["Max Leader Skill"]["Ki"];
+    
     let leaderTotalInputKi=document.getElementById("leader-Total-Input-Ki");
+    leaderTotalInputKi.value=currentJson["Max Leader Skill"]["Ki"]*2;
     
 
     leaderAInputKi.addEventListener("input", function(){
-        leaderTotalInputKi.value=parseInt(leaderAInputKi.value)+parseInt(leaderBInputKi.value);
+        if(parseInt(leaderAInputKi.value)>currentJson["Max Leader Skill"]["Ki"] || parseInt(leaderAInputKi.value)<0){
+            leaderAInputKi.style.background="red";
+        }
+        else {
+            leaderAInputKi.style.background="white";
+        }
+        leaderTotalInputStats.value=parseInt(leaderAInputKi.value)+parseInt(leaderBInputKi.value);
+        if(parseInt(leaderTotalInputKi.value)>currentJson["Max Leader Skill"]["Ki"]*2 || parseInt(leaderTotalInputKi.value)<0){
+            leaderTotalInputKi.style.background="red";
+        }
+        else {
+            leaderTotalInputKi.style.background="white";
+        }
         leaderBuffs.Ki=leaderTotalInputKi.value;
         kiSources.leader=leaderBuffs.Ki;
         updatePassiveStats()
     });
 
     leaderBInputKi.addEventListener("input", function(){
-        leaderTotalInputKi.value=parseInt(leaderAInputKi.value)+parseInt(leaderBInputKi.value);
+        if(parseInt(leaderBInputKi.value)>currentJson["Max Leader Skill"]["Ki"] || parseInt(leaderBInputKi.value)<0){
+            leaderBInputKi.style.background="red";
+        }
+        else {
+            leaderBInputKi.style.background="white";
+        }
+        leaderTotalInputStats.value=parseInt(leaderAInputKi.value)+parseInt(leaderBInputKi.value);
+        if(parseInt(leaderTotalInputKi.value)>currentJson["Max Leader Skill"]["Ki"]*2 || parseInt(leaderTotalInputKi.value)<0){
+            leaderTotalInputKi.style.background="red";
+        }
+        else {
+            leaderTotalInputKi.style.background="white";
+        }
         leaderBuffs.Ki=leaderTotalInputKi.value;
         kiSources.leader=leaderBuffs.Ki;
         updatePassiveStats()
     });
     
     leaderTotalInputKi.addEventListener("input", function(){
+        if(parseInt(leaderTotalInputKi.value)>currentJson["Max Leader Skill"]["Ki"]*2 || parseInt(leaderTotalInputKi.value)<0){
+            leaderTotalInputKi.style.background="red";
+        }
+        else {
+            leaderTotalInputKi.style.background="white";
+        }
+
+        leaderAInputKi.value=Math.floor(parseInt(leaderTotalInputKi.value)/2);
+        if(parseInt(leaderTotalInputKi.value)%2==0){
+            leaderBInputKi.value=Math.floor(parseInt(leaderTotalInputKi.value)/2);
+        } else {
+            leaderBInputKi.value=Math.floor(parseInt(leaderTotalInputKi.value)/2)+1;
+        }
+
+        if(parseInt(leaderAInputKi.value)>currentJson["Max Leader Skill"]["Ki"] || parseInt(leaderAInputKi.value)<0){
+            leaderAInputKi.style.background="red";
+        }
+        else {
+            leaderAInputKi.style.background="white";
+        }
+
+        if(parseInt(leaderBInputKi.value)>currentJson["Max Leader Skill"]["Ki"] || parseInt(leaderBInputKi.value)<0){
+            leaderBInputKi.style.background="red";
+        }
+        else {
+            leaderBInputKi.style.background="white";
+        }
+
         leaderBuffs.Ki=leaderTotalInputKi.value;
         kiSources.leader=leaderBuffs.Ki;
         updatePassiveStats()
@@ -2962,21 +3017,29 @@ function createLeaderStats(){
     leaderTotalInputKi.style.display="block";
 
     let leaderAInputStats=document.getElementById("leader-A-Input-Stats");
+    leaderAInputStats.value=currentJson["Max Leader Skill"]["ATK"]
     
     let leaderBInputStats=document.getElementById("leader-B-Input-Stats");
-
+    leaderBInputStats.value=currentJson["Max Leader Skill"]["ATK"]
 
     let leaderTotalInputStats=document.getElementById("leader-total-Input-Stats");
+    leaderTotalInputStats.value=currentJson["Max Leader Skill"]["ATK"]*2
     
 
     leaderAInputStats.addEventListener("input", function(){
-        if(parseInt(leaderAInputStats.value)>leaderAInputStats.max){
-            leaderAInputStats.value=leaderAInputStats.max;
+        if(parseInt(leaderAInputStats.value)>currentJson["Max Leader Skill"]["ATK"] || parseInt(leaderAInputStats.value)<0){
+            leaderAInputStats.style.background="red";
         }
-        else if (parseInt(leaderAInputStats.value)<0){
-            leaderAInputStats.value=0;
+        else {
+            leaderAInputStats.style.background="white";
         }
         leaderTotalInputStats.value=parseInt(leaderAInputStats.value)+parseInt(leaderBInputStats.value);
+        if(parseInt(leaderTotalInputStats.value)>currentJson["Max Leader Skill"]["ATK"]*2 || parseInt(leaderTotalInputStats.value)<0){
+            leaderTotalInputStats.style.background="red";
+        }
+        else {
+            leaderTotalInputStats.style.background="white";
+        }
         leaderBuffs.HP=leaderTotalInputStats.value;
         leaderBuffs.ATK=leaderTotalInputStats.value;
         leaderBuffs.DEF=leaderTotalInputStats.value;
@@ -2984,13 +3047,19 @@ function createLeaderStats(){
     });
 
     leaderBInputStats.addEventListener("input", function(){
-        if(parseInt(leaderBInputStats.value)>leaderBInputStats.max){
-            leaderBInputStats.value=leaderBInputStats.max;
+        if(parseInt(leaderBInputStats.value)>currentJson["Max Leader Skill"]["ATK"] || parseInt(leaderBInputStats.value)<0){
+            leaderBInputStats.style.background="red";
         }
-        else if (parseInt(leaderBInputStats.value)<0){
-            leaderBInputStats.value=0;
+        else {
+            leaderBInputStats.style.background="white";
         }
         leaderTotalInputStats.value=parseInt(leaderAInputStats.value)+parseInt(leaderBInputStats.value);
+        if(parseInt(leaderTotalInputStats.value)>currentJson["Max Leader Skill"]["ATK"]*2 || parseInt(leaderTotalInputStats.value)<0){
+            leaderTotalInputStats.style.background="red";
+        }
+        else {
+            leaderTotalInputStats.style.background="white";
+        }
         leaderBuffs.HP=leaderTotalInputStats.value;
         leaderBuffs.ATK=leaderTotalInputStats.value;
         leaderBuffs.DEF=leaderTotalInputStats.value;
@@ -2998,22 +3067,39 @@ function createLeaderStats(){
     });
     
     leaderTotalInputStats.addEventListener("input", function(){
-        if(parseInt(leaderTotalInputStats.value)>leaderTotalInputStats.max){
-            leaderTotalInputStats.value=leaderTotalInputStats.max;
+        if(parseInt(leaderTotalInputStats.value)>currentJson["Max Leader Skill"]["ATK"]*2 || parseInt(leaderTotalInputStats.value)<0){
+            leaderTotalInputStats.style.background="red";
         }
-        else if (parseInt(leaderTotalInputStats.value)<0){
-            leaderTotalInputStats.value=0;
+        else {
+            leaderTotalInputStats.style.background="white";
         }
-        leaderBuffs.HP=leaderTotalInputStats.value;
-        leaderBuffs.ATK=leaderTotalInputStats.value;
-        leaderBuffs.DEF=leaderTotalInputStats.value;
-        updatePassiveStats()
+
         leaderAInputStats.value=Math.floor(parseInt(leaderTotalInputStats.value)/2);
         if(parseInt(leaderTotalInputStats.value)%2==0){
             leaderBInputStats.value=Math.floor(parseInt(leaderTotalInputStats.value)/2);
         } else {
             leaderBInputStats.value=Math.floor(parseInt(leaderTotalInputStats.value)/2)+1;
         }
+
+        if(parseInt(leaderAInputStats.value)>currentJson["Max Leader Skill"]["ATK"] || parseInt(leaderAInputStats.value)<0){
+            leaderAInputStats.style.background="red";
+        }
+        else {
+            leaderAInputStats.style.background="white";
+        }
+
+        if(parseInt(leaderBInputStats.value)>currentJson["Max Leader Skill"]["ATK"] || parseInt(leaderBInputStats.value)<0){
+            leaderBInputStats.style.background="red";
+        }
+        else {
+            leaderBInputStats.style.background="white";
+        }
+
+        leaderBuffs.HP=leaderTotalInputStats.value;
+        leaderBuffs.ATK=leaderTotalInputStats.value;
+        leaderBuffs.DEF=leaderTotalInputStats.value;
+        
+        updatePassiveStats()
     });
     leaderAInputStats.style.display="none";
     leaderBInputStats.style.display="none";
