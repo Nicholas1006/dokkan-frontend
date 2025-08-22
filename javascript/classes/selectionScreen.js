@@ -86,6 +86,7 @@ export class selectionScreen{
             this.classList.add("active");
             this.parentClass.selectionTypeChoice.partialMatch.classList.remove("active");
             this.parentClass.matchType="full";
+            window.currentFilter["Category Match"]="full";
         })
         this.selectionTypeChoice.appendChild(this.selectionTypeChoice.fullMatch);
 
@@ -99,6 +100,7 @@ export class selectionScreen{
             this.classList.add("active");
             this.parentClass.selectionTypeChoice.fullMatch.classList.remove("active");
             this.parentClass.matchType="partial";
+            window.currentFilter["Category Match"]="partial";
         })
         
         
@@ -131,10 +133,12 @@ export class selectionScreen{
                 if(this.Class.enabled){
                     this.style.backgroundImage="url('"+window.assetBase+"/global/en/card_category/label/card_category_label_"+("00000"+category.ID).slice(-4)+"_b_off.png')"
                     this.Class.enabled=false;
+                    window.currentFilter["Categories"].splice(window.currentFilter["Categories"].indexOf(category.Name), 1);
                 }
                 else if(!this.Class.enabled){
                     this.style.backgroundImage="url('"+window.assetBase+"/global/en/card_category/label/card_category_label_"+("00000"+category.ID).slice(-4)+"_b_on.png')"
                     this.Class.enabled=true;
+                    window.currentFilter["Categories"].push(category.Name);
                 }
             });
         }
@@ -142,6 +146,10 @@ export class selectionScreen{
             for(let i=0; i<this.children.length; i++){
                 this.children[i].style.backgroundImage="url('"+window.assetBase+"/global/en/card_category/label/card_category_label_"+("00000"+this.children[i].Class.ID).slice(-4)+"_b_off.png')"
                 this.children[i].Class.enabled=false;
+                window.currentFilter["Categories"]=[];
+                window.currentFilter["Category Match"]="full";
+                this.children[i].Class.parentClass.selectionTypeChoice.fullMatch.classList.add("active");
+                this.children[i].Class.parentClass.selectionTypeChoice.partialMatch.classList.remove("active");
             }
         }
 
@@ -200,5 +208,9 @@ export class selectionScreen{
 
     completedSelection(){
         this.completedFunction();
+    }
+
+    cancelSelection(){
+        this.categoryGrid.cancelSelection();
     }
 }

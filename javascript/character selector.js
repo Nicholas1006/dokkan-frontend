@@ -1,6 +1,6 @@
 import { squareUnitDisplay } from "./classes/squareUnitDisplay.js";
 import { complexSortFilterContainer } from "./classes/complexSortFilterContainer.js";
-import {timeSince,isEmptyDictionary} from "./commonFunctions.js";
+import {timeSince,isEmptyDictionary,arrayIsSubArrayOf, arraysHaveOverlap} from "./commonFunctions.js";
 
 // GLOBAL VARIABLES
 let unitsToDisplay = 44;
@@ -8,8 +8,10 @@ let includeOnlyOwnableUnits = true;
 
 window.currentSort = "Release";
 window.currentOrder = "descending";
-window.currentFilter = "Name";
-window.currentFilterValue = "";
+window.currentFilter = {
+  "Categories": [],
+  "Category Match":"full"        
+};
 window.currentFilteredUnits = {};
 window.displayBoxes=[];
 window.MINIMUMLEADERBUFF=150;
@@ -68,158 +70,175 @@ function createFilterOption(){
 }
 
 async function reFilterCards(sortCutIDBefore=false) {
-  
-
-
-  if(Object.keys(window.unitBasicsDetails).includes(window.currentFilter)){
-    window.currentFilteredUnits = Object.keys(window.unitBasicsDetails["Max Level"]);
-    if(["Eza","Seza"].includes(window.currentFilter)){
+  window.currentFilteredUnits = Object.keys(window.unitBasicsDetails["Max Level"])
+  for (const filter in window.currentFilter){
+    if(Object.keys(window.unitBasicsDetails).includes(filter)){
       let currentFilteringUnits = [];
-      for (const unit of window.currentFilteredUnits){
-        if(unit.endsWith(window.currentFilter.toUpperCase())){
-          currentFilteringUnits.push(unit)
-        }
-      }
-      window.currentFilteredUnits=currentFilteringUnits;
-    }
-    else if (["Type", "Name", "Rarity","Class"].includes(window.currentFilter) && window.currentFilterValue !== "") {
-      let currentFilteringUnits = [];
-      for (const unit of window.currentFilteredUnits){
-        if(window.unitBasicsDetails[window.currentFilter][unit].toLowerCase().includes(window.currentFilterValue.toLowerCase()) ){
-          currentFilteringUnits.push(unit)
-        }
-      }
-      window.currentFilteredUnits=currentFilteringUnits;
-    }
-
-    else if (["Categories","Links","Super Attack Types"].includes(window.currentFilter) && window.currentFilterValue !== "") {
-
-      let currentFilteringUnits = [];
-      for (const unit of window.currentFilteredUnits){
-        if(window.unitBasicsDetails[window.currentFilter][unit].some(category => category.toLowerCase().includes(window.currentFilterValue.toLowerCase()))){
-        //reawaken for exact matching rather than .includes
-        //if(unitBasicsDetails[currentFilter][unit].includes(currentFilterValue)){
+      if(["Eza","Seza"].includes(filter)){
+        for (const unit of window.currentFilteredUnits){
+          if(unit.endsWith(filter.toUpperCase())){
             currentFilteringUnits.push(unit)
           }
         }
-      window.currentFilteredUnits=currentFilteringUnits;
-    }
-    if(includeOnlyOwnableUnits){
-      window.currentFilteredUnits = window.currentFilteredUnits.filter(unit => {
-        return window.unitBasicsDetails["Ownable"][unit] === true;
-      });
-    }
-
-    if(window.leaderView!=null){
-      let relevantDetails=[]
-      for(const lead in window.leaderView){
-        if(lead!="Name"){
-          if(window.leaderView[lead]["Target"]["Category"]!=undefined){
-            if(window.leaderView[lead]["Target"]["Category"][0]!=undefined){
-              relevantDetails.push("Category");
-            }
-          }
-          if(window.leaderView[lead]["Target"]["Class"]!=undefined){
-            if(window.leaderView[lead]["Target"]["Class"][0]!=undefined){
-              relevantDetails.push("Class");
-            }
-          }
-          if(window.leaderView[lead]["Target"]["Type"]!=undefined){
-            if(window.leaderView[lead]["Target"]["Type"][0]!=undefined){
-              relevantDetails.push("Type");
-            }
+        window.currentFilteredUnits=currentFilteringUnits;
+      }
+      else if (["Type", "Name", "Rarity","Class"].includes(filter) && window.currentFilter[filter] !== "") {
+        let currentFilteringUnits = [];
+        for (const unit of window.currentFilteredUnits){
+          if(window.unitBasicsDetails[filter][unit].toLowerCase().includes(window.currentFilter[filter].toLowerCase()) ){
+            currentFilteringUnits.push(unit)
           }
         }
-      }
-      if(relevantDetails.includes("Class") && !("Class" in window.unitBasicsDetails)) {
-        let unitBasicsDetail= await fetch("/dbManagement/uniqueJsons/unitBasics/Class.json");
-        window.unitBasicsDetails["Class"]=await unitBasicsDetail.json();
-      }
-      if(relevantDetails.includes("Category") && !("Categories" in window.unitBasicsDetails)){
-        let unitBasicsDetail= await fetch("/dbManagement/uniqueJsons/unitBasics/Categories.json");
-        window.unitBasicsDetails["Categories"]=await unitBasicsDetail.json();
-      }
-      if(relevantDetails.includes("Type")  && !("Type" in window.unitBasicsDetails)){
-        let unitBasicsDetail= await fetch("/dbManagement/uniqueJsons/unitBasics/Type.json");
-        window.unitBasicsDetails["Type"]=await unitBasicsDetail.json();
+        window.currentFilteredUnits=currentFilteringUnits;
       }
 
-
-
-      let currentFilteringUnits=[];
-      for (const unit of window.currentFilteredUnits){
-
-        window.unitBasicsDetails["Under Lead Buff"][unit]=calculateUnitUnderLeadBuff(unit);
-        if ((window.unitBasicsDetails["Under Lead Buff"][unit]["Ki"]>=window.MINIMUMLEADERBUFF ||            window.unitBasicsDetails["Under Lead Buff"][unit]["ATK"]>=window.MINIMUMLEADERBUFF ||            window.unitBasicsDetails["Under Lead Buff"][unit]["DEF"]>=window.MINIMUMLEADERBUFF ||            window.unitBasicsDetails["Under Lead Buff"][unit]["HP"]>=window.MINIMUMLEADERBUFF             ) &&             window.unitBasicsDetails["Under Lead Buff"][unit]["BuffType"] == "Percentage"){
-          currentFilteringUnits.push(unit);
+      else if (["Categories"].includes(filter) && window.currentFilter[filter].length!=0) {
+        if(window.currentFilter["Category Match"]=="full"){
+          window.currentFilteredUnits = window.currentFilteredUnits.filter(unit => arrayIsSubArrayOf(window.currentFilter[filter], window.unitBasicsDetails[filter][unit]));
         }
-        
-      }
-      window.currentFilteredUnits=currentFilteringUnits;
-    }
-
-    else if(window.leadUnit!=null){
-      if(!("Awakening" in window.unitBasicsDetails)) {
-        let unitBasicsDetail= await fetch("/dbManagement/uniqueJsons/unitBasics/Awakening.json");
-        window.unitBasicsDetails["Awakening"]=await unitBasicsDetail.json();
-      }
-      if(!("Class" in window.unitBasicsDetails)) {
-        let unitBasicsDetail= await fetch("/dbManagement/uniqueJsons/unitBasics/Class.json");
-        window.unitBasicsDetails["Class"]=await unitBasicsDetail.json();
-        
-      }
-      if(!("Categories" in window.unitBasicsDetails)){
-        let unitBasicsDetail= await fetch("/dbManagement/uniqueJsons/unitBasics/Categories.json");
-        window.unitBasicsDetails["Categories"]=await unitBasicsDetail.json();
-      }
-      if(!("Type" in window.unitBasicsDetails)){
-        let unitBasicsDetail= await fetch("/dbManagement/uniqueJsons/unitBasics/Type.json");
-        window.unitBasicsDetails["Type"]=await unitBasicsDetail.json();
-      }
-
-
-      let currentFilteringUnits=[];
-      for (const unit of window.currentFilteredUnits){
-        if(
-          window.unitBasicsDetails["Awakening"][unit]["Dokkan Awakening"]==false &&
-          window.unitBasicsDetails["Awakening"][unit]["Extreme Z-Awakening"]==false &&
-          window.unitBasicsDetails["Awakening"][unit]["Super Extreme Z-Awakening"]==false &&
-          unit.startsWith(1)){
-          window.unitBasicsDetails["Leading Buff"][unit]=calculateUnitLeadingBuff(unit);
-          if ((window.unitBasicsDetails["Leading Buff"][unit]["Ki"]>=window.MINIMUMLEADERBUFF ||
-            window.unitBasicsDetails["Leading Buff"][unit]["ATK"]>=window.MINIMUMLEADERBUFF ||
-            window.unitBasicsDetails["Leading Buff"][unit]["DEF"]>=window.MINIMUMLEADERBUFF ||
-            window.unitBasicsDetails["Leading Buff"][unit]["HP"]>=window.MINIMUMLEADERBUFF 
-          ) && 
-          window.unitBasicsDetails["Leading Buff"][unit]["BuffType"] == "Percentage"){
-            currentFilteringUnits.push(unit);
+        else if(window.currentFilter["Category Match"]=="partial"){
+          let currentFilteringUnits = [];
+          for (const unit of window.currentFilteredUnits){
+            if(arraysHaveOverlap(window.currentFilter[filter], window.unitBasicsDetails[filter][unit])){
+              //reawaken for exact matching rather than .includes
+              //if(unitBasicsDetails[currentFilter][unit].includes(currentFilterValue)){
+              currentFilteringUnits.push(unit)
+            }
           }
+          window.currentFilteredUnits=currentFilteringUnits;
         }
+
       }
-      window.currentFilteredUnits=currentFilteringUnits;
-
+      else if (["Links","Super Attack Types"].includes(filter) && window.currentFilter[filter] !== "") {
+        let currentFilteringUnits = [];
+        for (const unit of window.currentFilteredUnits){
+          if(window.unitBasicsDetails[filter][unit].some(category => category.toLowerCase().includes(window.currentFilter[filter].toLowerCase()))){
+          //reawaken for exact matching rather than .includes
+          //if(unitBasicsDetails[currentFilter][unit].includes(currentFilterValue)){
+              currentFilteringUnits.push(unit)
+            }
+          }
+        window.currentFilteredUnits=currentFilteringUnits;
+      }
     }
-
-    if(sortCutIDBefore){
-      fetch("/dbManagement/uniqueJsons/unitBasics/ID.json").then(
+    else if (!(filter.includes("Match"))){
+      fetch("/dbManagement/uniqueJsons/unitBasics/"+filter+".json").then(
         async unitBasicsDetail =>{
-          window.unitBasicsDetails["ID"]=await unitBasicsDetail.json();
-          sortCutID();
-          reSortCards();
+          window.unitBasicsDetails[filter]=await unitBasicsDetail.json();
+          reFilterCards(sortCutIDBefore);
         }
       )
     }
-    else{
-      reSortCards();
-    }
   }
-  else{
-    fetch("/dbManagement/uniqueJsons/unitBasics/"+window.currentFilter+".json").then(
+  if(includeOnlyOwnableUnits){
+    window.currentFilteredUnits = window.currentFilteredUnits.filter(
+      unit => {
+      return window.unitBasicsDetails["Ownable"][unit] === true;
+      }
+    );
+  }
+  
+  if(window.leaderView!=null){
+    let relevantDetails=[]
+    for(const lead in window.leaderView){
+      if(lead!="Name"){
+        if(window.leaderView[lead]["Target"]["Category"]!=undefined){
+          if(window.leaderView[lead]["Target"]["Category"][0]!=undefined){
+            relevantDetails.push("Category");
+          }
+        }
+        if(window.leaderView[lead]["Target"]["Class"]!=undefined){
+          if(window.leaderView[lead]["Target"]["Class"][0]!=undefined){
+            relevantDetails.push("Class");
+          }
+        }
+        if(window.leaderView[lead]["Target"]["Type"]!=undefined){
+          if(window.leaderView[lead]["Target"]["Type"][0]!=undefined){
+            relevantDetails.push("Type");
+          }
+        }
+      }
+    }
+    if(relevantDetails.includes("Class") && !("Class" in window.unitBasicsDetails)) {
+      let unitBasicsDetail= await fetch("/dbManagement/uniqueJsons/unitBasics/Class.json");
+      window.unitBasicsDetails["Class"]=await unitBasicsDetail.json();
+    }
+    if(relevantDetails.includes("Category") && !("Categories" in window.unitBasicsDetails)){
+      let unitBasicsDetail= await fetch("/dbManagement/uniqueJsons/unitBasics/Categories.json");
+      window.unitBasicsDetails["Categories"]=await unitBasicsDetail.json();
+    }
+    if(relevantDetails.includes("Type")  && !("Type" in window.unitBasicsDetails)){
+      let unitBasicsDetail= await fetch("/dbManagement/uniqueJsons/unitBasics/Type.json");
+      window.unitBasicsDetails["Type"]=await unitBasicsDetail.json();
+    }
+    
+    
+    
+    let currentFilteringUnits=[];
+    for (const unit of window.currentFilteredUnits){
+      
+      window.unitBasicsDetails["Under Lead Buff"][unit]=calculateUnitUnderLeadBuff(unit);
+      if ((window.unitBasicsDetails["Under Lead Buff"][unit]["Ki"]>=window.MINIMUMLEADERBUFF ||            window.unitBasicsDetails["Under Lead Buff"][unit]["ATK"]>=window.MINIMUMLEADERBUFF ||            window.unitBasicsDetails["Under Lead Buff"][unit]["DEF"]>=window.MINIMUMLEADERBUFF ||            window.unitBasicsDetails["Under Lead Buff"][unit]["HP"]>=window.MINIMUMLEADERBUFF             ) &&             window.unitBasicsDetails["Under Lead Buff"][unit]["BuffType"] == "Percentage"){
+        currentFilteringUnits.push(unit);
+      }
+      
+    }
+    window.currentFilteredUnits=currentFilteringUnits;
+  }
+  
+  else if(window.leadUnit!=null){
+    if(!("Awakening" in window.unitBasicsDetails)) {
+      let unitBasicsDetail= await fetch("/dbManagement/uniqueJsons/unitBasics/Awakening.json");
+      window.unitBasicsDetails["Awakening"]=await unitBasicsDetail.json();
+    }
+    if(!("Class" in window.unitBasicsDetails)) {
+      let unitBasicsDetail= await fetch("/dbManagement/uniqueJsons/unitBasics/Class.json");
+      window.unitBasicsDetails["Class"]=await unitBasicsDetail.json();
+      
+    }
+    if(!("Categories" in window.unitBasicsDetails)){
+      let unitBasicsDetail= await fetch("/dbManagement/uniqueJsons/unitBasics/Categories.json");
+      window.unitBasicsDetails["Categories"]=await unitBasicsDetail.json();
+    }
+    if(!("Type" in window.unitBasicsDetails)){
+      let unitBasicsDetail= await fetch("/dbManagement/uniqueJsons/unitBasics/Type.json");
+      window.unitBasicsDetails["Type"]=await unitBasicsDetail.json();
+    }
+    
+    
+    let currentFilteringUnits=[];
+    for (const unit of window.currentFilteredUnits){
+      if(
+        window.unitBasicsDetails["Awakening"][unit]["Dokkan Awakening"]==false &&
+        window.unitBasicsDetails["Awakening"][unit]["Extreme Z-Awakening"]==false &&
+        window.unitBasicsDetails["Awakening"][unit]["Super Extreme Z-Awakening"]==false &&
+        unit.startsWith(1)){
+        window.unitBasicsDetails["Leading Buff"][unit]=calculateUnitLeadingBuff(unit);
+        if ((window.unitBasicsDetails["Leading Buff"][unit]["Ki"]>=window.MINIMUMLEADERBUFF ||
+          window.unitBasicsDetails["Leading Buff"][unit]["ATK"]>=window.MINIMUMLEADERBUFF ||
+          window.unitBasicsDetails["Leading Buff"][unit]["DEF"]>=window.MINIMUMLEADERBUFF ||
+          window.unitBasicsDetails["Leading Buff"][unit]["HP"]>=window.MINIMUMLEADERBUFF 
+        ) && 
+        window.unitBasicsDetails["Leading Buff"][unit]["BuffType"] == "Percentage"){
+          currentFilteringUnits.push(unit);
+        }
+      }
+    }
+    window.currentFilteredUnits=currentFilteringUnits;
+    
+  }
+  
+  if(sortCutIDBefore){
+    fetch("/dbManagement/uniqueJsons/unitBasics/ID.json").then(
       async unitBasicsDetail =>{
-        window.unitBasicsDetails[window.currentFilter]=await unitBasicsDetail.json();
-        reFilterCards(sortCutIDBefore);
+        window.unitBasicsDetails["ID"]=await unitBasicsDetail.json();
+        sortCutID();
+        reSortCards();
       }
     )
+  }
+  else{
+    reSortCards();
   }
   updatePageSelector();
 }
@@ -293,7 +312,7 @@ function unitMeetsLeadConditions(unit,lead){
     }
   }
   if(!isEmptyDictionary(lead["Target"]["Excluded Category"])){
-    if(listHasOverlap(window.unitBasicsDetails["Categories"][unit],lead["Target"]["Excluded Category"])){
+    if(arraysHaveOverlap(window.unitBasicsDetails["Categories"][unit],lead["Target"]["Excluded Category"])){
       return(false);
     }
   }
@@ -308,15 +327,6 @@ function unitMeetsLeadConditions(unit,lead){
     }
   }
   return(true);
-}
-
-function listHasOverlap(list1,list2){
-  for(const item of list1){
-    if(list2.includes(item)){
-      return(true);
-    }
-  }
-  return(false);
 }
 
 function createCharacterBoxes() {
@@ -411,6 +421,7 @@ function sortCutID(showUpdate=false){
 }
 
 function showUpdatedCardPositions(){
+  let sortedUnits = window.currentFilteredUnits;
   for (let i = (unitsToDisplay*(window.currentPage-1)); i < (unitsToDisplay*window.currentPage);i++) {
     if(i<window.currentFilteredUnits.length && i>=0){
       let otherDisplayedValue=null;
@@ -480,7 +491,8 @@ function showUpdatedCardPositions(){
 }
 
 function createSortButton(){
-  const sortFilterContainer=new complexSortFilterContainer(COMPLEXSORTFILTERCONTAINERWIDTH,COMPLEXSORTFILTERCONTAINERHEIGHT);
+  document.getElementById("sort-direction").src=window.assetBase+"/global/en/layout/en/image/common/btn/filter_icon_descending.png";
+  const sortFilterContainer=new complexSortFilterContainer(COMPLEXSORTFILTERCONTAINERWIDTH,COMPLEXSORTFILTERCONTAINERHEIGHT,reFilterCards);
   document.body.appendChild(sortFilterContainer.getElement());
   document.body.appendChild(sortFilterContainer.getBackground());
 
@@ -539,12 +551,13 @@ function createCharacterSelection(){
   );
 
   Promise.all(jsonPromises).then(
-    results => {
-      ["Resource ID", "Class", "Type", "Rarity", "Max Level","Ownable"].forEach(
+    async (results) => {
+      const promises=["Resource ID", "Class", "Type", "Rarity", "Max Level","Ownable"].map(
         async (field, index) => {
           window.unitBasicsDetails[field] = await results[index].json();
         }
       );
+      await Promise.all(promises);
       reFilterCards(true);
     }
   )
@@ -592,3 +605,4 @@ let baseDomain=window.location.origin;
 createCharacterSelection();
 
 window.reSortCards=reSortCards;
+window.reFilterCards=reFilterCards;

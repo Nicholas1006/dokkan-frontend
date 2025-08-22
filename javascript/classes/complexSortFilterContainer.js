@@ -13,6 +13,8 @@ export class complexSortFilterContainer {
 
         this.createFilterContainer();
 
+        this.createOkButton();
+
         
     }
 
@@ -63,14 +65,12 @@ export class complexSortFilterContainer {
                     this.text.classList.add("ascending");
                     window.currentOrder="ascending";
                     document.getElementById("sort-direction").src=window.assetBase+"/global/en/layout/en/image/common/btn/filter_icon_ascending.png";
-                    window.reSortCards();
                 }
                 else{
                     this.text.classList.remove("ascending");
                     this.text.classList.add("descending");
                     window.currentOrder="descending";
                     document.getElementById("sort-direction").src=window.assetBase+"/global/en/layout/en/image/common/btn/filter_icon_descending.png";
-                    window.reSortCards();
                 }
             }
         )
@@ -100,7 +100,6 @@ export class complexSortFilterContainer {
         const onChangeFunction=function(){
             document.getElementById("sort-text").textContent=this.value;
             window.currentSort=this.value;
-            window.reSortCards();
         };
         this.sortContainer=new styledRadio(this.width,sortContainerOptionsList,"Release",3, true, onChangeFunction,window.assetBase+"/global/en/layout/en/image/common/btn/com_btn_18_green_gray.png", 32);
         this.sortContainer.getContainer().style.gridRow="2";
@@ -114,8 +113,6 @@ export class complexSortFilterContainer {
         this.sortFilterDivisionLine.style.gridRow="3";
         this.element.appendChild(this.sortFilterDivisionLine);
     }
-
-    
 
     createFilterContainer(){
         this.filterContainer=document.createElement("div");
@@ -164,6 +161,45 @@ export class complexSortFilterContainer {
         this.filterContainer.appendChild(this.filterHeader);
     }
 
+    createOkButton(){
+        this.OKCancelContainer=document.createElement("div");
+        this.OKCancelContainer.parentClass = this;
+        this.OKCancelContainer.className="OKCancelContainer";
+        this.OKCancelContainer.style.gridRow="6";
+        this.OKCancelContainer.style.display="grid";
+        this.element.appendChild(this.OKCancelContainer);
+
+        this.OKCancelContainer.OKButton=document.createElement("div");
+        this.OKCancelContainer.OKButton.parentClass = this.OKCancelContainer;
+        this.OKCancelContainer.OKButton.className="OKCancelContainer-button";
+        this.OKCancelContainer.OKButton.style.backgroundImage="url('"+window.assetBase+"/global/en/layout/en/image/common/btn/com_btn_04_orange.png')";
+        this.OKCancelContainer.OKButton.style.gridColumn="2"
+        this.OKCancelContainer.OKButton.style.lineHeight="274%";
+        this.OKCancelContainer.OKButton.style.fontSize="30px";
+        this.OKCancelContainer.OKButton.textDiv=document.createElement("div");
+        this.OKCancelContainer.OKButton.textDiv.textContent="OK";
+        this.OKCancelContainer.OKButton.appendChild(this.OKCancelContainer.OKButton.textDiv);
+        this.OKCancelContainer.appendChild(this.OKCancelContainer.OKButton);
+        this.OKCancelContainer.OKButton.addEventListener("click", function(){
+            this.parentClass.parentClass.completedSelection();
+        });
+
+        this.OKCancelContainer.CancelButton=document.createElement("div");
+        this.OKCancelContainer.CancelButton.parentClass = this.OKCancelContainer;
+        this.OKCancelContainer.CancelButton.className="OKCancelContainer-button";
+        this.OKCancelContainer.CancelButton.style.backgroundImage="url('"+window.assetBase+"/global/en/layout/en/image/common/btn/com_btn_17_yellow.png')";
+        this.OKCancelContainer.CancelButton.style.gridColumn="3";
+        this.OKCancelContainer.CancelButton.textDiv=document.createElement("div");
+        this.OKCancelContainer.CancelButton.textDiv.style.position="relative";
+        this.OKCancelContainer.CancelButton.textDiv.style.top="50%";
+        this.OKCancelContainer.CancelButton.textDiv.textContent="Cancel";
+        this.OKCancelContainer.CancelButton.appendChild(this.OKCancelContainer.CancelButton.textDiv);
+        this.OKCancelContainer.appendChild(this.OKCancelContainer.CancelButton);
+        this.OKCancelContainer.CancelButton.addEventListener("click", function(){
+            this.parentClass.parentClass.cancelSelection();
+        });
+    }
+
     createCategorySkillContainer(){
         this.filterContainer.categorySkillContainer=document.createElement("div");
         this.filterContainer.categorySkillContainer.className="filter-category-skill-container";
@@ -208,11 +244,6 @@ export class complexSortFilterContainer {
         this.filterContainer.categorySkillContainer.appendChild(this.filterContainer.categorySkillContainer.skillContainer.text);
     }
 
-
-
-
-
-
     getElement(){
         return this.element;
     }
@@ -242,8 +273,18 @@ export class complexSortFilterContainer {
             this.background.setDisplay(false);
         }
     }
+
     getDisplay(){
         return this.element.style.display!="none";
+    }
+
+    completedSelection(){
+        this.setDisplay(false);
+        window.reFilterCards();
+    }
+
+    cancelSelection(){
+        this.filterContainer.categorySkillContainer.categoryContainer.categorySelect.cancelSelection();
     }
 }
 
