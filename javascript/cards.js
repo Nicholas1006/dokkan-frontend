@@ -4721,7 +4721,6 @@ function createSuperAttackContainer(){
     }
     for(const key of currentJson["Transforms from"]){
         let transformPromise;
-        const urlParams=new URLSearchParams(window.location.search);
         if(isSeza){
             transformPromise=fetch("/dbManagement/jsonsSEZA/"+key+".json");
         }
@@ -6040,22 +6039,36 @@ function polishPage(){
 export async function loadPage(firstTime=false){
     const urlParams=new URLSearchParams(window.location.search);
     let subURL = urlParams.get("id") || "None";
-    isEza = urlParams.get("EZA") || "false";
+    isEza = (urlParams.get("EZA")=="true") || "false";
     isEza=(isEza=="true");
-    isSeza = urlParams.get("SEZA") || "false";
+    isSeza = (urlParams.get("SEZA")=="true") || "false";
     isSeza=(isSeza=="true");
+    let jsonOpener=urlParams.get("json") || "None";
+    jsonOpener=(jsonOpener=="true");
 
     let jsonPromise;
     if(isSeza){
+        if(jsonOpener){
+            window.location.href="/dbManagement/jsonsSEZA/"+subURL+".json";
+            return;
+        }
         jsonPromise=await fetch("/dbManagement/jsonsSEZA/"+subURL+".json");
     }
     else if(isEza){
+        if(jsonOpener){
+            window.location.href="/dbManagement/jsonsEZA/"+subURL+".json";
+            return;
+        }
         jsonPromise=await fetch("/dbManagement/jsonsEZA/"+subURL+".json");
     }
     else{
+        if(jsonOpener){
+            window.location.href="/dbManagement/jsons/"+subURL+".json";
+            return;
+        }
         jsonPromise=await fetch("/dbManagement/jsons/"+subURL+".json");
     }
-
+    
     //await all JSON promises so they finish before continuing
     try{
 
