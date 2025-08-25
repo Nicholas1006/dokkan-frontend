@@ -6039,12 +6039,9 @@ function polishPage(){
 export async function loadPage(firstTime=false){
     const urlParams=new URLSearchParams(window.location.search);
     let subURL = urlParams.get("id") || "None";
-    isEza = (urlParams.get("EZA")=="true") || "false";
-    isEza=(isEza=="true");
-    isSeza = (urlParams.get("SEZA")=="true") || "false";
-    isSeza=(isSeza=="true");
-    let jsonOpener=urlParams.get("json") || "None";
-    jsonOpener=(jsonOpener=="true");
+    isEza = (urlParams.get("EZA")=="true") || false;
+    isSeza = (urlParams.get("SEZA")=="true") || false;
+    let jsonOpener=(urlParams.get("json")=="true") || false;
 
     let jsonPromise;
     if(isSeza){
