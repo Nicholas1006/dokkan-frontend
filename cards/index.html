@@ -40,7 +40,7 @@
             <div id="all-skill-orb-container" class="skill-orb-container"></div>
             <div id="awaken-container" class="awaken-container"></div>
         </div id="base-stats">
-    </div>
+    </div id="column1">
     
     <div id="column2">
         <div id="links-and-leads" class="links-and-leads">
@@ -48,22 +48,21 @@
                 <div id="ki-label" style="grid-area: 1 / 2; font-weight: bold;">Ki:</div>
                 <div id="stats-label" style="grid-area: 1 / 3; font-weight: bold;">HP<br>ATK<br>DEF:</div>
                 <div id="seperate-or-join-leader" class="JointLeader" style="cursor: pointer; grid-column: 1;"></div>
-                <input id="leader-A-Input-Ki" type="number" step="1" style="grid-area: 2 / 2; display: none;">
-                <input id="leader-B-Input-Ki" type="number" step="1" style="grid-area: 3 / 2; display: none;">
-                <input id="leader-Total-Input-Ki" type="number" step="1" style="grid-area: 2 / 2; display: block;">
-                <input id="leader-A-Input-Stats" type="number" step="10" style="grid-area: 2 / 3; display: none;">
-                <input id="leader-B-Input-Stats" type="number" step="10" style="grid-area: 3 / 3; display: none;">
-                <input id="leader-total-Input-Stats" type="number" step="10" style="grid-area: 2 / 3; display: block;">
-            </div>
+                <input id="leader-A-Input-Ki" type="number" step="1" style="grid-area: 2 / 2; display: none;"></input>
+                <input id="leader-B-Input-Ki" type="number" step="1" style="grid-area: 3 / 2; display: none;"></input>
+                <input id="leader-Total-Input-Ki" type="number" step="1" style="grid-area: 2 / 2; display: block;"></input>
+                <input id="leader-A-Input-Stats" type="number" step="10" style="grid-area: 2 / 3; display: none;"></input>
+                <input id="leader-B-Input-Stats" type="number" step="10" style="grid-area: 3 / 3; display: none;"></input>
+                <input id="leader-total-Input-Stats" type="number" step="10" style="grid-area: 2 / 3; display: block;"></input>
+            </div id="leader-container">
             <div id="links-container" class="links-container"></div>
             <div id="link-partner-container" class="link-partner-container">
                 <div id="link-partner-display" class="link-partner-display">
-                    <div id="link-partner-display-text" class="link-partner-display-text">
-
-                </div>
-            </div>
+                    <div id="link-partner-display-text" class="link-partner-display-text"> </div>
+                </div id="link-partner-display">
+            </div id="link-partner-container">
         </div id="links-and-leads" class=links-and-leads>
-    </div>
+    </div id="column2">
     
     <div id="column3">
         <div id="domain-container" class="domain-container"></div>
@@ -72,31 +71,30 @@
             <div id="ki-sphere-container" class="ki-sphere-container">
                 <div id="rainbow-sphere-query" class="rainbow-sphere-query"></div>
                 <div id="other-sphere-query" class="other-sphere-query"></div>
-            </div>
+            </div id="ki-sphere-container">
     
             <div id="passive-container" class="passive-container">
                 <div id="passive-support-container" class="passive-support-container">
                     <div id="passive-support-display" class="passive-support-display"></div>
-                </div>
+                </div id="passive-support-container">
                 <div id="passive-style-selector" class="passive-style-selector">
                     <input type="radio" name="passive-style" id="passive-style-functional-list" class="passive-style" checked>Functional List</input>
                     <input type="radio" name="passive-style" id="passive-style-list" class="passive-style">List</input>
                     <input type="radio" name="passive-style" id="passive-style-query" class="passive-style">Query</input>
-                </div>
+                </div id="passive-style-selector">
                 <div id="passive-query-container" class="passive-query-container"></div>
                 <div id="passive-list-container" class="passive-list-container"></div>
                 <div id="passive-functional-list-container" class="passive-functional-list-container"></div>
                 <div id="passive-chance-container" class="passive-chance-container"></div>
                 <div id="passive-once-only-container" class="passive-once-only-container"></div>
-                
-            </div>
+            </div id="passive-container">
             
             <div id="super-container" class="super-container">
                 <div id="super-attack-questions-container" class="super-attack-questions-container"></div>
             </div id="super-container" class="super-container">
-        </div>
+        </div id="super-passive-container">
 
-    </div>
+    </div id="column3">
     
     <div id="column4">
         <div id="starting-stats"></div>
@@ -104,7 +102,7 @@
         <div id="ki-container" class="ki-container"></div>
 
         <div id="final-stats"></div>
-    </div>
+    </div id="column4">
 
     <div id="column5">
         <div id="active-container" class="active-container"></div>
@@ -122,8 +120,8 @@
                     <input type="text" id="enemy-DR-input" class="enemy-DR-input" placeholder="DR" autocomplete="off" >
                     <label for="enemy-ATK-threshold-input">ATK Threshold:</label>
                     <input text="text" id="enemy-ATK-threshold-input" class="enemy-ATK-threshold-input" placeholder="ATK Threshold" autocomplete="off" >
-                </div>
-            </div>
+                </div id="enemy-stats-input">
+            </div id="enemy-details-selection">
             <div id="specific-moment-details-selection" class="specific-moment-details-selection">
                 <text>Which attack do you want to see the damage of?</text>
                 <select id="attack-performed-selector" class="attack-performed-selector"></select>
@@ -131,12 +129,12 @@
                 <div id="before-or-after-attack-selector" class="before-or-after-attack-selector">
                     <input type="radio" name="attack-timing" id="attack-timing-before" class="attack-timing">Before</option>
                     <input type="radio" name="attack-timing" id="attack-timing-after" class="attack-timing" checked>After</option>
-                </div>
+                </div id="before-or-after-attack-selector">
                 <div id="normal-or-super-attack-selector" class="normal-or-super-attack-selector">
                     <input type="radio" name="attack-type" id="attack-type-none" class="attack-type">None</option>
                     <input type="radio" name="attack-type" id="attack-type-normal" class="attack-type">Normal</option>
                     <input type="radio" name="attack-type" id="attack-type-super" class="attack-type" checked>Super</option>
-                </div>
+                </div id="normal-or-super-attack-selector">
                 
                 <div id="enemy-final-numbers" class="enemy-final-numbers">
                     <label id="enemy-attack-taken" class="enemy-attack-taken"></label>
@@ -144,9 +142,9 @@
                     <label id="enemy-attack-dealt" class="enemy-attack-dealt"></label>
                     <label id="stats-on-hit" class="stats-on-hit"></label>
 
-                </div>
-            </div>
-        </div>
-    </div>
+                </div id="enemy-final-numbers">
+            </div id="specific-moment-details-selection">
+        </div id="enemy-interaction-container">
+    </div id="column5">
 </div id="cards-body-container">
 </html>

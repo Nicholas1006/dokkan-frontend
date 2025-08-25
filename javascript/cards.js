@@ -3332,7 +3332,7 @@ function updateLinkPartnerDisplay(){
                     }
                 )
             }
-            ,1000
+            ,200
         )
         
         
@@ -3345,9 +3345,8 @@ function updateLinkPartnerDisplay(){
             if(Object.keys(linkPartnerDisplay.squareUnitDisplays).length<=i){
                 linkPartnerDisplay.squareUnitDisplays.push(new squareUnitDisplay());
                 linkPartnerDisplay.squareUnitDisplays[i].setDisplayExtraInfo(false);
-                linkPartnerDisplay.squareUnitDisplays[i].setWidth("100%");
+                linkPartnerDisplay.squareUnitDisplays[i].setWidth("64px");
                 linkPartnerDisplay.squareUnitDisplays[i].setHeight("100%");
-                linkPartnerDisplay.squareUnitDisplays[i].setResourceID(allLinkPartners[highestLinkers][i]);
                 linkPartnerDisplay.appendChild(linkPartnerDisplay.squareUnitDisplays[i].getElement());
             }
             if(i<allLinkPartners[highestLinkers].length){
@@ -3818,7 +3817,9 @@ function updatePassiveListWithPassiveLine(passiveLine){
             if(this.parent.value*this.parent.passiveLine["Building Stat"]["Stat Per Proc"]>this.parent.passiveLine["Building Stat"].Max){
                 this.parent.value=Math.ceil(this.parent.passiveLine["Building Stat"].Max/this.parent.passiveLine["Building Stat"]["Stat Per Proc"]);
             }
-            activeFunctionalListLines[passiveLine["ID"]]=(this.parent.value);
+            if(passiveLineDiv.active){
+                activeFunctionalListLines[passiveLine["ID"]]=(this.parent.value);
+            }
             updatePassiveStats();
             this.parent.reassemble();
         }
@@ -3832,7 +3833,9 @@ function updatePassiveListWithPassiveLine(passiveLine){
             if(this.parent.value<0){
                 this.parent.value=0;
             }
-            activeFunctionalListLines[passiveLine["ID"]]=(this.parent.value);
+            if(passiveLineDiv.active){
+                activeFunctionalListLines[passiveLine["ID"]]=(this.parent.value);
+            }
             updatePassiveStats();
             this.parent.reassemble();
         }
@@ -3885,7 +3888,8 @@ function updatePassiveListWithPassiveLine(passiveLine){
                     else{
                         passiveLineDiv.active=true
                         passiveLineDiv.classList.add("active")
-                        activeFunctionalListLines[passiveLine["ID"]]=(passiveLineDiv.value || 1)
+
+                        activeFunctionalListLines[passiveLine["ID"]]=passiveLineDiv.value
                     }
                     updatePassiveStats();
                 }
