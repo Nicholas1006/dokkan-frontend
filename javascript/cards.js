@@ -4671,12 +4671,7 @@ function fixOverallSupportBuffs(){
 }
 
 function initialiseAspects() {
-    if(currentJson.Rarity=="lr" || true){
-        updateLRCharacterIcon('character-icon', currentJson["Resource ID"], currentJson.Type);
-    }
-    else{
-        updateNonLrCharacterIcon('character-icon', currentJson["Resource ID"], currentJson.Type);
-    }
+    updateCharacterIcon();
     document.getElementById("level-container").style.display="flex";
 
     //change the background of the slider to the type color
@@ -4757,7 +4752,7 @@ function createSuperAttackContainer(){
 
 
 
- function updateLRCharacterIcon(){
+ function updateCharacterIcon(){
     const imageContainer = document.getElementById("character-icon");
     while (imageContainer.firstChild) {
         imageContainer.removeChild(imageContainer.firstChild);
