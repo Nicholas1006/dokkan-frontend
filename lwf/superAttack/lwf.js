@@ -2,7 +2,7 @@ console.log("???");
 import {LWFPlayer} from "/javascript/classes/LWF.js";
 
 let lwfUrl;
-lwfUrl = "/dbManagement/DokkanFiles/global/en/ingame/battle/effect/battle_116001/battle_116001.lwf";
+lwfUrl = "/backend_assets/global/en/ingame/battle/effect/battle_116001/battle_116001.lwf";
 // Get the canvas element where the animation will be rendered
 const canvasA = document.getElementById('lwf-stage-a');
 canvasA.renderer= new LWFPlayer(lwfUrl, canvasA, "ef_001_a");
@@ -14,7 +14,7 @@ const canvasD = document.getElementById('lwf-stage-d');
 canvasD.renderer= new LWFPlayer(lwfUrl, canvasD, "ef_001_d");
 
 const canvasE = document.getElementById('lwf-stage-e');
-canvasE.renderer= new LWFPlayer("/dbManagement/DokkanFiles/global/en/ingame/battle/sp_effect/sp_effect_a1_00341/en/sp_effect_a1_00341.lwf", canvasE, "placeholder");
+canvasE.renderer= new LWFPlayer("/backend_assets/global/en/ingame/battle/sp_effect/sp_effect_a1_00341/en/sp_effect_a1_00341.lwf", canvasE, "placeholder");
 
 document.getElementById("unit-id").addEventListener('input', async (e) => {
     if (e.target.value.length == 7 && e.target.value[6] != "0") {

@@ -3,9 +3,10 @@
  
  let lwfUrl;
  // Specify the path to your LWF file. This URL is used to load the animation data.
- lwfUrl = '/dbManagement/DokkanFiles/global/en/ingame/battle/sp_effect/sp_effect_b4_00204/en/sp_effect_b4_00204.lwf';
- lwfUrl = '/dbManagement/DokkanFiles/global/en/ingame/battle/sp_effect/sp_effect_b4_00376/en/sp_effect_b4_00376.lwf';
- lwfUrl = '/dbManagement/DokkanFiles/global/en/ingame/battle/sp_effect/sp_effect_a1_00336/en/sp_effect_a1_00336.lwf';
+ lwfUrl = '/backend_assets/global/en/ingame/battle/sp_effect/sp_effect_b4_00204/en/sp_effect_b4_00204.lwf';
+ lwfUrl = '/backend_assets/global/en/ingame/battle/sp_effect/sp_effect_b4_00376/en/sp_effect_b4_00376.lwf';
+ lwfUrl = '/backend_assets/global/en/ingame/battle/sp_effect/sp_effect_a1_00336/en/sp_effect_a1_00336.lwf';
+ lwfUrl = '/backend_assets/global/en/ingame/battle/sp_effect/sp_effect_b4_00336/en/sp_effect_b4_00336.lwf';
 
  // The name of the scene to attach from your LWF file.
  const sceneName = 'ef_001';
