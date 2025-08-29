@@ -133,7 +133,7 @@ async function reFilterCards(sortCutIDBefore=false) {
   if(includeOnlyOwnableUnits){
     window.currentFilteredUnits = window.currentFilteredUnits.filter(
       unit => {
-      return window.unitBasicsDetails["Ownable"][unit] === true;
+      return window.unitBasicsDetails["Maxed"][unit] === true;
       }
     );
   }
@@ -546,13 +546,13 @@ function createCharacterSelection(){
   createSortOption();
   createFilterOption();
   createSortButton();
-  const jsonPromises = ["Resource ID", "Class", "Type", "Rarity", "Max Level","Ownable"].map(field => 
+  const jsonPromises = ["Resource ID", "Class", "Type", "Rarity", "Max Level","Maxed"].map(field => 
     fetch("/dbManagement/uniqueJsons/unitBasics/"+ field+ ".json")
   );
 
   Promise.all(jsonPromises).then(
     async (results) => {
-      const promises=["Resource ID", "Class", "Type", "Rarity", "Max Level","Ownable"].map(
+      const promises=["Resource ID", "Class", "Type", "Rarity", "Max Level","Maxed"].map(
         async (field, index) => {
           window.unitBasicsDetails[field] = await results[index].json();
         }
