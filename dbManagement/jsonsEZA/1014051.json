@@ -36,7 +36,7 @@
     "Resource ID": 1014050,
     "Passive": {
         "2623": {
-            "ID": "2623",
+            "ID": 2623,
             "Timing": "Start of turn",
             "ATK": 40,
             "DEF": 40,
@@ -47,16 +47,15 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "1",
-            "CausalityLogic": "",
+            "Length": 1,
+            "CausalityLogic": null,
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 40%{passiveImg:up_g} ",
             "Line description": "ATK and DEF 40%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "1002623": {
-            "ID": "1002623",
+            "ID": 1002623,
             "Timing": "Right before attack(MOT stat)",
             "ATK": 40,
             "DEF": 40,
@@ -67,17 +66,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "1",
+            "Length": 1,
             "Condition": {
                 "Logic": " 1081 ",
                 "Causalities": {
                     "1081": {
                         "Button": {
-                            "Name": "Is Ki at least 12 within the last 1 turns?"
+                            "Name": "Is Ki at least 12 on this turn?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there within the last 1 turns?",
+                            "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 24
@@ -93,7 +91,7 @@
             "Paragraph Title": "When Ki is 12 or more"
         },
         "2002623": {
-            "ID": "2002623",
+            "ID": 2002623,
             "Timing": "Start of turn",
             "Ki": 3,
             "Target": {
@@ -103,17 +101,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "1",
+            "Length": 1,
             "Condition": {
                 "Logic": " 1082 ",
                 "Causalities": {
                     "1082": {
                         "Button": {
-                            "Name": "Is there less than 2 enemies within the last 1 turns?"
+                            "Name": "Is there less than 2 enemies on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many enemies are there within the last 1 turns?",
+                            "Name": "How many enemies are there on this turn?",
                             "Logic": "<2",
                             "Min": 1,
                             "Max": 7
@@ -129,7 +126,7 @@
             "Paragraph Title": "When there are less than 2 enemies"
         },
         "3002623": {
-            "ID": "3002623",
+            "ID": 3002623,
             "Timing": "Start of turn",
             "Ki": 8,
             "Target": {
@@ -139,17 +136,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "1",
+            "Length": 1,
             "Condition": {
                 "Logic": " 1083 ",
                 "Causalities": {
                     "1083": {
                         "Button": {
-                            "Name": "Is there 2 or more enemies within the last 1 turns?"
+                            "Name": "Is there 2 or more enemies on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many enemies are there within the last 1 turns?",
+                            "Name": "How many enemies are there on this turn?",
                             "Logic": ">=2",
                             "Min": 1,
                             "Max": 7
@@ -165,7 +161,7 @@
             "Paragraph Title": "When there are 2 or more enemies"
         },
         "4002623": {
-            "ID": "4002623",
+            "ID": 4002623,
             "Timing": "Start of turn",
             "ATK": 40,
             "DEF": 40,
@@ -176,17 +172,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "1",
+            "Length": 1,
             "Condition": {
                 "Logic": " 1083 ",
                 "Causalities": {
                     "1083": {
                         "Button": {
-                            "Name": "Is there 2 or more enemies within the last 1 turns?"
+                            "Name": "Is there 2 or more enemies on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many enemies are there within the last 1 turns?",
+                            "Name": "How many enemies are there on this turn?",
                             "Logic": ">=2",
                             "Min": 1,
                             "Max": 7
@@ -202,7 +197,7 @@
             "Paragraph Title": "When there are 2 or more enemies"
         },
         "5002623": {
-            "ID": "5002623",
+            "ID": 5002623,
             "Timing": "When final blow delivered",
             "ATK": 40,
             "DEF": 40,
@@ -213,14 +208,13 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "99",
+            "Length": 99,
             "Condition": {
                 "Logic": " 1084 ",
                 "Causalities": {
                     "1084": {
                         "Button": {
-                            "Name": "Has this character delivered the final blow within the last 99 turns?"
+                            "Name": "Has this character delivered the final blow?"
                         },
                         "Paragraph Title": "When this character has delivered the final blow"
                     }
@@ -229,11 +223,11 @@
             "CausalityLogic": "{\"source\": \"1084\", \"compiled\": 1084}",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 40%{passiveImg:up_g} after the final blow is delivered",
-            "Line description": "ATK and DEF 40%{passiveImg:up_g} after the final blow is delivered{passiveImg:forever}",
+            "Line description": "ATK and DEF 40%{passiveImg:up_g} after the final blow is delivered",
             "Paragraph Title": "When this character has delivered the final blow"
         },
         "6002623": {
-            "ID": "6002623",
+            "ID": 6002623,
             "Timing": "When final blow delivered",
             "Ki": 3,
             "Target": {
@@ -243,14 +237,13 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "99",
+            "Length": 99,
             "Condition": {
                 "Logic": " 1084 ",
                 "Causalities": {
                     "1084": {
                         "Button": {
-                            "Name": "Has this character delivered the final blow within the last 99 turns?"
+                            "Name": "Has this character delivered the final blow?"
                         },
                         "Paragraph Title": "When this character has delivered the final blow"
                     }
@@ -259,7 +252,7 @@
             "CausalityLogic": "{\"source\": \"1084\", \"compiled\": 1084}",
             "Type": "Single activator",
             "Brief effect description": "Ki +3 after the final blow is delivered",
-            "Line description": "Ki +3 after the final blow is delivered{passiveImg:forever}",
+            "Line description": "Ki +3 after the final blow is delivered",
             "Paragraph Title": "When this character has delivered the final blow"
         }
     },

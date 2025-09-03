@@ -32,7 +32,7 @@
     "Resource ID": 1026330,
     "Passive": {
         "3221": {
-            "ID": "3221",
+            "ID": 3221,
             "Timing": "Start of turn",
             "DEF": 120,
             "Target": {
@@ -42,16 +42,15 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "1",
-            "CausalityLogic": "",
+            "Length": 1,
+            "CausalityLogic": null,
             "Type": "Single activator",
             "Brief effect description": "DEF 120%{passiveImg:up_g} ",
             "Line description": "DEF 120%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "1003221": {
-            "ID": "1003221",
+            "ID": 1003221,
             "Timing": "Start of turn",
             "ATK": 20,
             "DEF": 20,
@@ -62,16 +61,16 @@
                 "Type": "Percentage",
                 "+ or -": "-"
             },
-            "Chance": "30",
-            "Length": "1",
-            "CausalityLogic": "",
+            "Chance": 30,
+            "Length": 1,
+            "CausalityLogic": null,
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 20%{passiveImg:down_r} ",
             "Line description": "ATK and DEF 20%{passiveImg:down_r} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "2003221": {
-            "ID": "2003221",
+            "ID": 2003221,
             "Timing": "Right before attack(MOT stat)",
             "ATK": 70,
             "Target": {
@@ -81,17 +80,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "1",
+            "Length": 1,
             "Condition": {
                 "Logic": " 2071 ",
                 "Causalities": {
                     "2071": {
                         "Button": {
-                            "Name": "Is Ki at least 12 within the last 1 turns?"
+                            "Name": "Is Ki at least 12 on this turn?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there within the last 1 turns?",
+                            "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
@@ -107,7 +105,7 @@
             "Paragraph Title": "When Ki is 12 or more"
         },
         "3003221": {
-            "ID": "3003221",
+            "ID": 3003221,
             "Timing": "Start of turn",
             "Ki": 2,
             "Target": {
@@ -117,17 +115,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "1",
+            "Length": 1,
             "Condition": {
                 "Logic": "( 2072 || 2073 )",
                 "Causalities": {
                     "2072": {
                         "Button": {
-                            "Name": "Are there 1 or more World Tournament category enemies  within the last 1 turns?"
+                            "Name": "Are there 1 or more World Tournament category enemies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many World Tournament category enemies within the last 1 turns?",
+                            "Name": "How many World Tournament category enemies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
@@ -155,7 +152,7 @@
             "Paragraph Title": "When there are 1 or more World Tournament Category enemies or there are 2 or more World Tournament Category allies attacking on this turn"
         },
         "4003221": {
-            "ID": "4003221",
+            "ID": 4003221,
             "Timing": "Start of turn",
             "ATK": 30,
             "DEF": 30,
@@ -166,17 +163,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "1",
+            "Length": 1,
             "Condition": {
                 "Logic": "( 2072 || 2073 )",
                 "Causalities": {
                     "2072": {
                         "Button": {
-                            "Name": "Are there 1 or more World Tournament category enemies  within the last 1 turns?"
+                            "Name": "Are there 1 or more World Tournament category enemies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many World Tournament category enemies within the last 1 turns?",
+                            "Name": "How many World Tournament category enemies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
@@ -204,7 +200,7 @@
             "Paragraph Title": "When there are 1 or more World Tournament Category enemies or there are 2 or more World Tournament Category allies attacking on this turn"
         },
         "5003221": {
-            "ID": "5003221",
+            "ID": 5003221,
             "Additional Attack": {
                 "Activated": true,
                 "Chance of super": 100,
@@ -218,14 +214,14 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Chance": "30",
-            "Length": "1",
+            "Chance": 30,
+            "Length": 1,
             "Condition": {
                 "Logic": " 2074 ",
                 "Causalities": {
                     "2074": {
                         "Button": {
-                            "Name": "Is the target enemy in ATK Down or DEF Down within the last 1 turns?"
+                            "Name": "Is the target enemy in ATK Down or DEF Down on this turn?"
                         },
                         "Paragraph Title": "When the target enemy is in the following status{passiveImg:atk_down} or {passiveImg:def_down}"
                     }
@@ -238,7 +234,7 @@
             "Paragraph Title": "When the target enemy is in the following status{passiveImg:atk_down} or {passiveImg:def_down}"
         },
         "6003221": {
-            "ID": "6003221",
+            "ID": 6003221,
             "Revive": {
                 "Activated": true,
                 "HP recovered": 30
@@ -251,17 +247,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Chance": "50",
-            "Length": "1",
+            "Chance": 50,
+            "Length": 1,
             "Condition": {
                 "Logic": " 2075 ",
                 "Causalities": {
                     "2075": {
                         "Button": {
-                            "Name": "Is the turn count 6 or more within the last 1 turns?"
+                            "Name": "Is the turn count 6 or more on this turn?"
                         },
                         "Slider": {
-                            "Name": "What turn is it within the last 1 turns?",
+                            "Name": "What turn is it on this turn?",
                             "Logic": ">=6",
                             "Min": 1
                         },

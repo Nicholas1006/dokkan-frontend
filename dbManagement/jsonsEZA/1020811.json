@@ -31,7 +31,7 @@
     "Resource ID": 1020810,
     "Passive": {
         "2244": {
-            "ID": "2244",
+            "ID": 2244,
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -50,16 +50,15 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "99",
-            "CausalityLogic": "",
+            "Length": 99,
+            "CausalityLogic": null,
             "Type": "Building Stat",
             "Brief effect description": "Ki +1 ({currentValue} / 4) based on 'How many turns has this character been on' ",
-            "Line description": "Ki +1 ({currentValue} / 4) based on 'How many turns has this character been on' {passiveImg:forever}",
+            "Line description": "Ki +1 ({currentValue} / 4) based on 'How many turns has this character been on' ",
             "Paragraph Title": "Basic effect(s)"
         },
         "1002244": {
-            "ID": "1002244",
+            "ID": 1002244,
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -78,16 +77,15 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "99",
-            "CausalityLogic": "",
+            "Length": 99,
+            "CausalityLogic": null,
             "Type": "Building Stat",
             "Brief effect description": "ATK 30%{passiveImg:up_g} ({currentValue} / 120%) based on 'How many turns has this character been on' ",
-            "Line description": "ATK 30%{passiveImg:up_g} ({currentValue} / 120%) based on 'How many turns has this character been on' {passiveImg:forever}",
+            "Line description": "ATK 30%{passiveImg:up_g} ({currentValue} / 120%) based on 'How many turns has this character been on' ",
             "Paragraph Title": "Basic effect(s)"
         },
         "2002244": {
-            "ID": "2002244",
+            "ID": 2002244,
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -106,16 +104,15 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "99",
-            "CausalityLogic": "",
+            "Length": 99,
+            "CausalityLogic": null,
             "Type": "Building Stat",
             "Brief effect description": "DEF 30%{passiveImg:up_g} ({currentValue} / 120%) based on 'How many turns has this character been on' ",
-            "Line description": "DEF 30%{passiveImg:up_g} ({currentValue} / 120%) based on 'How many turns has this character been on' {passiveImg:forever}",
+            "Line description": "DEF 30%{passiveImg:up_g} ({currentValue} / 120%) based on 'How many turns has this character been on' ",
             "Paragraph Title": "Basic effect(s)"
         },
         "3002244": {
-            "ID": "3002244",
+            "ID": 3002244,
             "Timing": "Right after being hit",
             "ATK": 100,
             "Target": {
@@ -125,17 +122,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "1",
+            "Length": 1,
             "Condition": {
                 "Logic": " 24 ",
                 "Causalities": {
                     "24": {
                         "Button": {
-                            "Name": "Has this character been hit within the last 1 turns?"
+                            "Name": "Has this character been hit on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many times has this character been hit within the last 1 turns?",
+                            "Name": "How many times has this character been hit on this turn?",
                             "Logic": ">=1",
                             "Min": 0,
                             "Max": 1
@@ -151,7 +147,7 @@
             "Paragraph Title": "After recieving an attack"
         },
         "4002244": {
-            "ID": "4002244",
+            "ID": 4002244,
             "Timing": "Start of turn",
             "Guard": true,
             "Target": {
@@ -161,17 +157,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "1",
+            "Length": 1,
             "Condition": {
                 "Logic": "( 577 || 438 )",
                 "Causalities": {
                     "577": {
                         "Button": {
-                            "Name": "Are there 1 or more World Tournament category enemies  within the last 1 turns?"
+                            "Name": "Are there 1 or more World Tournament category enemies  on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many World Tournament category enemies within the last 1 turns?",
+                            "Name": "How many World Tournament category enemies on this turn?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
@@ -180,7 +175,7 @@
                     },
                     "438": {
                         "Button": {
-                            "Name": "Is there 1 or more enemies whose name includes Goku within the last 1 turns?"
+                            "Name": "Is there 1 or more enemies whose name includes Goku on this turn?"
                         },
                         "Paragraph Title": "\"Goku\""
                     }

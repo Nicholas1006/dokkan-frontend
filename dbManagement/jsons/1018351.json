@@ -30,7 +30,7 @@
     "Resource ID": 1018350,
     "Passive": {
         "1955": {
-            "ID": "1955",
+            "ID": 1955,
             "Timing": "Right before attack(MOT stat)",
             "ATK": 70,
             "DEF": 70,
@@ -41,17 +41,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "1",
+            "Length": 1,
             "Condition": {
                 "Logic": " 416 ",
                 "Causalities": {
                     "416": {
                         "Button": {
-                            "Name": "Is Ki at least 12 within the last 1 turns?"
+                            "Name": "Is Ki at least 12 on this turn?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there within the last 1 turns?",
+                            "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
@@ -67,7 +66,7 @@
             "Paragraph Title": "When Ki is 12 or more"
         },
         "1001955": {
-            "ID": "1001955",
+            "ID": 1001955,
             "Timing": "Right after attack",
             "Building Stat": {
                 "Min": 0,
@@ -86,16 +85,15 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "99",
+            "Length": 99,
             "CausalityLogic": "{\"source\": \"435\", \"compiled\": 435}",
             "Type": "Building Stat",
             "Brief effect description": "Chance of performing a critical hit +7%{passiveImg:up_g} ({currentValue} / 35%) based on 'How many super attacks has this character performed' after attacking",
-            "Line description": "Chance of performing a critical hit +7%{passiveImg:up_g} ({currentValue} / 35%) based on 'How many super attacks has this character performed' after attacking{passiveImg:forever}",
+            "Line description": "Chance of performing a critical hit +7%{passiveImg:up_g} ({currentValue} / 35%) based on 'How many super attacks has this character performed' after attacking",
             "Paragraph Title": "Basic effect(s)"
         },
         "2001955": {
-            "ID": "2001955",
+            "ID": 2001955,
             "Additional Attack": {
                 "Activated": true,
                 "Chance of super": 100,
@@ -109,20 +107,19 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "1",
+            "Length": 1,
             "Condition": {
                 "Logic": "( 421 || 422 )",
                 "Causalities": {
                     "421": {
                         "Button": {
-                            "Name": "Is the target enemy in ATK Down within the last 1 turns?"
+                            "Name": "Is the target enemy in ATK Down on this turn?"
                         },
                         "Paragraph Title": "When the target enemy is in the following status{passiveImg:atk_down}"
                     },
                     "422": {
                         "Button": {
-                            "Name": "Is the target enemy in DEF Down within the last 1 turns?"
+                            "Name": "Is the target enemy in DEF Down on this turn?"
                         },
                         "Paragraph Title": "When the target enemy is in the following status{passiveImg:def_down}"
                     }

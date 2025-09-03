@@ -32,7 +32,7 @@
     "Resource ID": 1010030,
     "Passive": {
         "3480": {
-            "ID": "3480",
+            "ID": 3480,
             "Timing": "Start of turn",
             "ATK": 120,
             "DEF": 120,
@@ -43,16 +43,15 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "1",
-            "CausalityLogic": "",
+            "Length": 1,
+            "CausalityLogic": null,
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 120%{passiveImg:up_g} ",
             "Line description": "ATK and DEF 120%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "1003480": {
-            "ID": "1003480",
+            "ID": 1003480,
             "Timing": "Right before attack(MOT stat)",
             "ATK": 60,
             "DEF": 60,
@@ -63,17 +62,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "1",
+            "Length": 1,
             "Condition": {
                 "Logic": " 2400 ",
                 "Causalities": {
                     "2400": {
                         "Button": {
-                            "Name": "Is Ki at least 12 within the last 1 turns?"
+                            "Name": "Is Ki at least 12 on this turn?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there within the last 1 turns?",
+                            "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
@@ -89,7 +87,7 @@
             "Paragraph Title": "When Ki is 12 or more"
         },
         "2003480": {
-            "ID": "2003480",
+            "ID": 2003480,
             "Timing": "Start of turn",
             "Guard": true,
             "Target": {
@@ -99,8 +97,7 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "1",
+            "Length": 1,
             "CausalityLogic": "{\"source\": \"1000000000000\", \"compiled\": 1000000000000}",
             "Once Only": true,
             "Type": "Single activator",
@@ -116,11 +113,11 @@
                 }
             },
             "Brief effect description": "Guards all attacks ",
-            "Line description": " {passiveImg:once}Guards all attacks for 1 turn ",
+            "Line description": " {passiveImg:once}Guards all attacks ",
             "Paragraph Title": "For 1 turn(s) from the character's entry turn"
         },
         "3003480": {
-            "ID": "3003480",
+            "ID": 3003480,
             "Timing": "After all ki collected",
             "DEF": 80,
             "Target": {
@@ -130,17 +127,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "1",
+            "Length": 1,
             "Condition": {
                 "Logic": " 2409 ",
                 "Causalities": {
                     "2409": {
                         "Button": {
-                            "Name": "Is this the 1st attacker in the turn within the last 1 turns?"
+                            "Name": "Is this the 1st attacker in the turn on this turn?"
                         },
                         "Slider": {
-                            "Name": "What position is this character attacking in within the last 1 turns?",
+                            "Name": "What position is this character attacking in on this turn?",
                             "Logic": "==1",
                             "Min": 1,
                             "Max": 3
@@ -156,7 +152,7 @@
             "Paragraph Title": "As the 1st attacker in the turn"
         },
         "4003480": {
-            "ID": "4003480",
+            "ID": 4003480,
             "Timing": "After all ki collected",
             "Guard": true,
             "Target": {
@@ -166,17 +162,17 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Chance": "50",
-            "Length": "1",
+            "Chance": 50,
+            "Length": 1,
             "Condition": {
                 "Logic": " 2409 ",
                 "Causalities": {
                     "2409": {
                         "Button": {
-                            "Name": "Is this the 1st attacker in the turn within the last 1 turns?"
+                            "Name": "Is this the 1st attacker in the turn on this turn?"
                         },
                         "Slider": {
-                            "Name": "What position is this character attacking in within the last 1 turns?",
+                            "Name": "What position is this character attacking in on this turn?",
                             "Logic": "==1",
                             "Min": 1,
                             "Max": 3
@@ -192,7 +188,7 @@
             "Paragraph Title": "As the 1st attacker in the turn"
         },
         "5003480": {
-            "ID": "5003480",
+            "ID": 5003480,
             "Timing": "After all ki collected",
             "ATK": 40,
             "Target": {
@@ -202,8 +198,7 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "1",
+            "Length": 1,
             "Condition": {
                 "Logic": " 241100000 ",
                 "Causalities": {
@@ -222,7 +217,7 @@
             "Paragraph Title": "As the 2nd or 3rd attacker in a turn"
         },
         "6003480": {
-            "ID": "6003480",
+            "ID": 6003480,
             "Timing": "Right before attack(MOT stat)",
             "ATK": 80,
             "Target": {
@@ -232,17 +227,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "1",
+            "Length": 1,
             "Condition": {
                 "Logic": "( 2400 && 2408 )",
                 "Causalities": {
                     "2400": {
                         "Button": {
-                            "Name": "Is Ki at least 12 within the last 1 turns?"
+                            "Name": "Is Ki at least 12 on this turn?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there within the last 1 turns?",
+                            "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
@@ -270,7 +264,7 @@
             "Paragraph Title": "Basic effect(s)"
         },
         "7003480": {
-            "ID": "7003480",
+            "ID": 7003480,
             "Timing": "Right before attack(MOT stat)",
             "Crit Chance": 30,
             "Target": {
@@ -280,17 +274,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "1",
+            "Length": 1,
             "Condition": {
                 "Logic": "( 2400 && 2408 )",
                 "Causalities": {
                     "2400": {
                         "Button": {
-                            "Name": "Is Ki at least 12 within the last 1 turns?"
+                            "Name": "Is Ki at least 12 on this turn?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there within the last 1 turns?",
+                            "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12

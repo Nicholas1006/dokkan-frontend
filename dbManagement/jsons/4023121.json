@@ -36,7 +36,7 @@
     "Resource ID": 4023120,
     "Passive": {
         "2626": {
-            "ID": "2626",
+            "ID": 2626,
             "Timing": "Start of turn",
             "ATK": 100,
             "DEF": 100,
@@ -47,16 +47,15 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "1",
-            "CausalityLogic": "",
+            "Length": 1,
+            "CausalityLogic": null,
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 100%{passiveImg:up_g} ",
             "Line description": "ATK and DEF 100%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "1002626": {
-            "ID": "1002626",
+            "ID": 1002626,
             "Timing": "Start of turn",
             "Crit Chance": 70,
             "Target": {
@@ -66,16 +65,15 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "1",
-            "CausalityLogic": "",
+            "Length": 1,
+            "CausalityLogic": null,
             "Type": "Single activator",
             "Brief effect description": "Chance of performing a critical hit +70%{passiveImg:up_g} ",
             "Line description": "Chance of performing a critical hit +70%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "2002626": {
-            "ID": "2002626",
+            "ID": 2002626,
             "Timing": "Right before attack(MOT stat)",
             "ATK": 100,
             "DEF": 100,
@@ -86,17 +84,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "1",
+            "Length": 1,
             "Condition": {
                 "Logic": " 1086 ",
                 "Causalities": {
                     "1086": {
                         "Button": {
-                            "Name": "Is Ki at least 12 within the last 1 turns?"
+                            "Name": "Is Ki at least 12 on this turn?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there within the last 1 turns?",
+                            "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
@@ -112,7 +109,7 @@
             "Paragraph Title": "When Ki is 12 or more"
         },
         "3002626": {
-            "ID": "3002626",
+            "ID": 3002626,
             "Timing": "Right before attack(MOT stat)",
             "Crit Chance": 100,
             "Target": {
@@ -122,17 +119,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "1",
+            "Length": 1,
             "Condition": {
                 "Logic": " 1086 ",
                 "Causalities": {
                     "1086": {
                         "Button": {
-                            "Name": "Is Ki at least 12 within the last 1 turns?"
+                            "Name": "Is Ki at least 12 on this turn?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there within the last 1 turns?",
+                            "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
@@ -145,11 +141,11 @@
             "Once Only": true,
             "Type": "Single activator",
             "Brief effect description": "Performs a Critical Hit when attacking",
-            "Line description": " {passiveImg:once}Performs a Critical Hit when attacking for 1 turn ",
+            "Line description": " {passiveImg:once}Performs a Critical Hit when attacking",
             "Paragraph Title": "When Ki is 12 or more"
         },
         "4002626": {
-            "ID": "4002626",
+            "ID": 4002626,
             "Timing": "Right before attack(MOT stat)",
             "ATK": 50,
             "Target": {
@@ -159,20 +155,19 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "1",
+            "Length": 1,
             "Condition": {
                 "Logic": "( 1087 || 1088 )",
                 "Causalities": {
                     "1087": {
                         "Button": {
-                            "Name": "Is the target enemy in ATK Down within the last 1 turns?"
+                            "Name": "Is the target enemy in ATK Down on this turn?"
                         },
                         "Paragraph Title": "When the target enemy is in the following status{passiveImg:atk_down}"
                     },
                     "1088": {
                         "Button": {
-                            "Name": "Is the target enemy in DEF Down within the last 1 turns?"
+                            "Name": "Is the target enemy in DEF Down on this turn?"
                         },
                         "Paragraph Title": "When the target enemy is in the following status{passiveImg:def_down}"
                     }
@@ -185,7 +180,7 @@
             "Paragraph Title": "When the target enemy is in the following status{passiveImg:atk_down} or the target enemy is in the following status{passiveImg:def_down}"
         },
         "5002626": {
-            "ID": "5002626",
+            "ID": 5002626,
             "Timing": "Right before attack(MOT stat)",
             "ATK": 50,
             "Target": {
@@ -195,20 +190,19 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "1",
+            "Length": 1,
             "Condition": {
                 "Logic": "( 1089 || 1090 )",
                 "Causalities": {
                     "1089": {
                         "Button": {
-                            "Name": "Is the target enemy in Stunned within the last 1 turns?"
+                            "Name": "Is the target enemy in Stunned on this turn?"
                         },
                         "Paragraph Title": "When the target enemy is in the following status{passiveImg:stun}"
                     },
                     "1090": {
                         "Button": {
-                            "Name": "Is the target enemy in Sealed within the last 1 turns?"
+                            "Name": "Is the target enemy in Sealed on this turn?"
                         },
                         "Paragraph Title": "When the target enemy is in the following status{passiveImg:astute}"
                     }
@@ -221,7 +215,7 @@
             "Paragraph Title": "When the target enemy is in the following status{passiveImg:stun} or the target enemy is in the following status{passiveImg:astute}"
         },
         "6002626": {
-            "ID": "6002626",
+            "ID": 6002626,
             "Timing": "Right after attack",
             "Status": [
                 "Stun"
@@ -233,8 +227,8 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Chance": "50",
-            "Length": "2",
+            "Chance": 50,
+            "Length": 2,
             "Condition": {
                 "Logic": " 1091 ",
                 "Causalities": {

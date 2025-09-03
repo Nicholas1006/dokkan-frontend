@@ -29,7 +29,7 @@
     "Resource ID": 1021010,
     "Passive": {
         "4120": {
-            "ID": "4120",
+            "ID": 4120,
             "Timing": "Start of turn",
             "Ki": 5,
             "Target": {
@@ -39,16 +39,15 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "1",
-            "CausalityLogic": "",
+            "Length": 1,
+            "CausalityLogic": null,
             "Type": "Single activator",
             "Brief effect description": "Ki +5 ",
             "Line description": "Ki +5 ",
             "Paragraph Title": "Basic effect(s)"
         },
         "1004120": {
-            "ID": "1004120",
+            "ID": 1004120,
             "Timing": "Start of turn",
             "ATK": 150,
             "DEF": 150,
@@ -59,16 +58,15 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "1",
-            "CausalityLogic": "",
+            "Length": 1,
+            "CausalityLogic": null,
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 150%{passiveImg:up_g} ",
             "Line description": "ATK and DEF 150%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "2004120": {
-            "ID": "2004120",
+            "ID": 2004120,
             "Timing": "Right before attack(MOT stat)",
             "ATK": 50,
             "DEF": 50,
@@ -79,17 +77,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "1",
+            "Length": 1,
             "Condition": {
                 "Logic": " 47 ",
                 "Causalities": {
                     "47": {
                         "Button": {
-                            "Name": "Is Ki at least 12 within the last 1 turns?"
+                            "Name": "Is Ki at least 12 on this turn?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there within the last 1 turns?",
+                            "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 24
@@ -105,7 +102,7 @@
             "Paragraph Title": "When Ki is 12 or more"
         },
         "3004120": {
-            "ID": "3004120",
+            "ID": 3004120,
             "Dodge Chance": 50,
             "Timing": "Start of turn",
             "Target": {
@@ -115,16 +112,15 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "1",
-            "CausalityLogic": "",
+            "Length": 1,
+            "CausalityLogic": null,
             "Type": "Single activator",
             "Brief effect description": "Chance of evading enemy attacks +50% ",
             "Line description": "Chance of evading enemy attacks +50% ",
             "Paragraph Title": "Basic effect(s)"
         },
         "4004120": {
-            "ID": "4004120",
+            "ID": 4004120,
             "Timing": "Right after being hit",
             "Ki": 3,
             "Target": {
@@ -134,8 +130,7 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "4",
+            "Length": 4,
             "Condition": {
                 "Logic": " 365 ",
                 "Causalities": {
@@ -154,7 +149,7 @@
             "Paragraph Title": "After evading an attack"
         },
         "5004120": {
-            "ID": "5004120",
+            "ID": 5004120,
             "Timing": "Right after being hit",
             "ATK": 20,
             "DEF": 20,
@@ -165,8 +160,7 @@
                 "Type": "Percentage",
                 "+ or -": "-"
             },
-            "Chance": "100",
-            "Length": "4",
+            "Length": 4,
             "Condition": {
                 "Logic": " 365 ",
                 "Causalities": {
@@ -185,7 +179,7 @@
             "Paragraph Title": "After evading an attack"
         },
         "6004120": {
-            "ID": "6004120",
+            "ID": 6004120,
             "Additional Attack": {
                 "Activated": true,
                 "Chance of super": 50,
@@ -199,16 +193,15 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "1",
-            "CausalityLogic": "",
+            "Length": 1,
+            "CausalityLogic": null,
             "Type": "Single activator",
             "Brief effect description": "Performs an additional attack with a 50% chance of becoming a super attack ",
             "Line description": "Performs an additional attack with a 50% chance of becoming a super attack ",
             "Paragraph Title": "Basic effect(s)"
         },
         "7004120": {
-            "ID": "7004120",
+            "ID": 7004120,
             "Timing": "Right before attack(SOT stat)",
             "Ki": 3,
             "Target": {
@@ -218,32 +211,31 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "1",
+            "Length": 1,
             "Condition": {
                 "Logic": "( 421 || 422 || 535 || 420 )",
                 "Causalities": {
                     "421": {
                         "Button": {
-                            "Name": "Is the target enemy in ATK Down within the last 1 turns?"
+                            "Name": "Is the target enemy in ATK Down on this turn?"
                         },
                         "Paragraph Title": "When the target enemy is in the following status{passiveImg:atk_down}"
                     },
                     "422": {
                         "Button": {
-                            "Name": "Is the target enemy in DEF Down within the last 1 turns?"
+                            "Name": "Is the target enemy in DEF Down on this turn?"
                         },
                         "Paragraph Title": "When the target enemy is in the following status{passiveImg:def_down}"
                     },
                     "535": {
                         "Button": {
-                            "Name": "Is the target enemy in Stunned within the last 1 turns?"
+                            "Name": "Is the target enemy in Stunned on this turn?"
                         },
                         "Paragraph Title": "When the target enemy is in the following status{passiveImg:stun}"
                     },
                     "420": {
                         "Button": {
-                            "Name": "Is the target enemy in Sealed within the last 1 turns?"
+                            "Name": "Is the target enemy in Sealed on this turn?"
                         },
                         "Paragraph Title": "When the target enemy is in the following status{passiveImg:astute}"
                     }
@@ -256,7 +248,7 @@
             "Paragraph Title": "When the target enemy is in the following status{passiveImg:atk_down} or the target enemy is in the following status{passiveImg:def_down} or the target enemy is in the following status{passiveImg:stun} or the target enemy is in the following status{passiveImg:astute}"
         },
         "8004120": {
-            "ID": "8004120",
+            "ID": 8004120,
             "Timing": "Right before attack(MOT stat)",
             "ATK": 50,
             "DEF": 50,
@@ -267,32 +259,31 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "1",
+            "Length": 1,
             "Condition": {
                 "Logic": "( 421 || 422 || 535 || 420 )",
                 "Causalities": {
                     "421": {
                         "Button": {
-                            "Name": "Is the target enemy in ATK Down within the last 1 turns?"
+                            "Name": "Is the target enemy in ATK Down on this turn?"
                         },
                         "Paragraph Title": "When the target enemy is in the following status{passiveImg:atk_down}"
                     },
                     "422": {
                         "Button": {
-                            "Name": "Is the target enemy in DEF Down within the last 1 turns?"
+                            "Name": "Is the target enemy in DEF Down on this turn?"
                         },
                         "Paragraph Title": "When the target enemy is in the following status{passiveImg:def_down}"
                     },
                     "535": {
                         "Button": {
-                            "Name": "Is the target enemy in Stunned within the last 1 turns?"
+                            "Name": "Is the target enemy in Stunned on this turn?"
                         },
                         "Paragraph Title": "When the target enemy is in the following status{passiveImg:stun}"
                     },
                     "420": {
                         "Button": {
-                            "Name": "Is the target enemy in Sealed within the last 1 turns?"
+                            "Name": "Is the target enemy in Sealed on this turn?"
                         },
                         "Paragraph Title": "When the target enemy is in the following status{passiveImg:astute}"
                     }
@@ -305,7 +296,7 @@
             "Paragraph Title": "When the target enemy is in the following status{passiveImg:atk_down} or the target enemy is in the following status{passiveImg:def_down} or the target enemy is in the following status{passiveImg:stun} or the target enemy is in the following status{passiveImg:astute}"
         },
         "9004120": {
-            "ID": "9004120",
+            "ID": 9004120,
             "Additional Attack": {
                 "Activated": true,
                 "Chance of super": 100,
@@ -319,32 +310,31 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "1",
+            "Length": 1,
             "Condition": {
                 "Logic": "( 421 || 422 || 535 || 420 )",
                 "Causalities": {
                     "421": {
                         "Button": {
-                            "Name": "Is the target enemy in ATK Down within the last 1 turns?"
+                            "Name": "Is the target enemy in ATK Down on this turn?"
                         },
                         "Paragraph Title": "When the target enemy is in the following status{passiveImg:atk_down}"
                     },
                     "422": {
                         "Button": {
-                            "Name": "Is the target enemy in DEF Down within the last 1 turns?"
+                            "Name": "Is the target enemy in DEF Down on this turn?"
                         },
                         "Paragraph Title": "When the target enemy is in the following status{passiveImg:def_down}"
                     },
                     "535": {
                         "Button": {
-                            "Name": "Is the target enemy in Stunned within the last 1 turns?"
+                            "Name": "Is the target enemy in Stunned on this turn?"
                         },
                         "Paragraph Title": "When the target enemy is in the following status{passiveImg:stun}"
                     },
                     "420": {
                         "Button": {
-                            "Name": "Is the target enemy in Sealed within the last 1 turns?"
+                            "Name": "Is the target enemy in Sealed on this turn?"
                         },
                         "Paragraph Title": "When the target enemy is in the following status{passiveImg:astute}"
                     }
@@ -357,7 +347,7 @@
             "Paragraph Title": "When the target enemy is in the following status{passiveImg:atk_down} or the target enemy is in the following status{passiveImg:def_down} or the target enemy is in the following status{passiveImg:stun} or the target enemy is in the following status{passiveImg:astute}"
         },
         "10004120": {
-            "ID": "10004120",
+            "ID": 10004120,
             "Timing": "End of turn",
             "Heals": 10,
             "Target": {
@@ -367,8 +357,7 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "1",
+            "Length": 1,
             "Condition": {
                 "Logic": " 2739 ",
                 "Causalities": {

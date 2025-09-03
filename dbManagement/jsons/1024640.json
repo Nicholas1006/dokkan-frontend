@@ -32,7 +32,7 @@
     "Resource ID": 1024640,
     "Passive": {
         "2909": {
-            "ID": "2909",
+            "ID": 2909,
             "Timing": "Start of turn",
             "Ki Change": {
                 "From": [
@@ -53,16 +53,15 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "1",
-            "CausalityLogic": "",
+            "Length": 1,
+            "CausalityLogic": null,
             "Type": "Single activator",
             "Brief effect description": "Randomly changes Ki Spheres of a certain Type(INT excluded) to INT Ki Spheres ",
             "Line description": "Randomly changes Ki Spheres of a certain Type(INT excluded) to INT Ki Spheres ",
             "Paragraph Title": "Basic effect(s)"
         },
         "1002909": {
-            "ID": "1002909",
+            "ID": 1002909,
             "Timing": "Start of turn",
             "ATK": 60,
             "DEF": 60,
@@ -73,16 +72,15 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "1",
-            "CausalityLogic": "",
+            "Length": 1,
+            "CausalityLogic": null,
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 60%{passiveImg:up_g} ",
             "Line description": "ATK and DEF 60%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "2002909": {
-            "ID": "2002909",
+            "ID": 2002909,
             "Timing": "Start of turn",
             "DR": 10,
             "Target": {
@@ -92,16 +90,15 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "1",
-            "CausalityLogic": "",
+            "Length": 1,
+            "CausalityLogic": null,
             "Type": "Single activator",
             "Brief effect description": "Damage Reduction Rate 10%{passiveImg:up_g} ",
             "Line description": "Damage Reduction Rate 10%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "3002909": {
-            "ID": "3002909",
+            "ID": 3002909,
             "Timing": "Right before attack(MOT stat)",
             "ATK": 30,
             "DEF": 30,
@@ -112,17 +109,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "1",
+            "Length": 1,
             "Condition": {
                 "Logic": " 1583 ",
                 "Causalities": {
                     "1583": {
                         "Button": {
-                            "Name": "Is Ki at least 12 within the last 1 turns?"
+                            "Name": "Is Ki at least 12 on this turn?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there within the last 1 turns?",
+                            "Name": "How much ki is there on this turn?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
@@ -138,7 +134,7 @@
             "Paragraph Title": "When Ki is 12 or more"
         },
         "4002909": {
-            "ID": "4002909",
+            "ID": 4002909,
             "Timing": "Right after being hit",
             "Building Stat": {
                 "Min": 0,
@@ -157,8 +153,7 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "1",
+            "Length": 1,
             "CausalityLogic": "{\"source\": \"1584\", \"compiled\": 1584}",
             "Type": "Building Stat",
             "Brief effect description": "Damage Reduction Rate 1%{passiveImg:up_g} ({currentValue} / 5%) based on 'How many attacks has this character recieved' after being hit",
@@ -166,7 +161,7 @@
             "Paragraph Title": "Basic effect(s)"
         },
         "5002909": {
-            "ID": "5002909",
+            "ID": 5002909,
             "Timing": "End of turn",
             "Heals": 5,
             "Target": {
@@ -176,17 +171,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Chance": "100",
-            "Length": "1",
+            "Length": 1,
             "Condition": {
                 "Logic": " 1585 ",
                 "Causalities": {
                     "1585": {
                         "Button": {
-                            "Name": "Has this character recieved their 5th attack in battle within the last 1 turns?"
+                            "Name": "Has this character recieved their 5th attack in battle on this turn?"
                         },
                         "Slider": {
-                            "Name": "How many attacks has this character recieved within the last 1 turns?",
+                            "Name": "How many attacks has this character recieved on this turn?",
                             "Logic": ">=5",
                             "Min": 0,
                             "Max": 5
