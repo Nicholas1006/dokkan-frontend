@@ -42,7 +42,7 @@
     "Resource ID": 1010070,
     "Passive": {
         "2454": {
-            "ID": 2454,
+            "ID": "2454",
             "Timing": "Start of turn",
             "DEF": 58,
             "Target": {
@@ -52,15 +52,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "DEF 58%{passiveImg:up_g} ",
             "Line description": "DEF 58%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "1002454": {
-            "ID": 1002454,
+            "ID": "1002454",
             "Timing": "Right before attack(MOT stat)",
             "DEF": 58,
             "Target": {
@@ -70,16 +71,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 838 ",
                 "Causalities": {
                     "838": {
                         "Button": {
-                            "Name": "Is Ki at least 12 on this turn?"
+                            "Name": "Is Ki at least 12 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 24
@@ -95,7 +97,7 @@
             "Paragraph Title": "When Ki is 12 or more"
         },
         "2002454": {
-            "ID": 2002454,
+            "ID": "2002454",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -113,7 +115,7 @@
                         "Sweet treats"
                     ]
                 },
-                "Slider": "How many Ki Spheres have been obtained?"
+                "Slider": "How many Ki Spheres have been obtained on this turn?"
             },
             "ATK": 18,
             "Target": {
@@ -123,15 +125,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Building Stat",
             "Brief effect description": "ATK 18%{passiveImg:up_g} per Ki Sphere obtained{currentValue} / 414 ",
             "Line description": "ATK 18%{passiveImg:up_g} per Ki Sphere obtained{currentValue} / 414 ",
             "Paragraph Title": "Basic effect(s)"
         },
         "3002454": {
-            "ID": 3002454,
+            "ID": "3002454",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -148,7 +151,7 @@
                         "AGL"
                     ]
                 },
-                "Slider": "How many Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres have been obtained?"
+                "Slider": "How many Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres have been obtained on this turn?"
             },
             "Ki": 1,
             "Target": {
@@ -158,8 +161,9 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Building Stat",
             "Brief effect description": "Ki +1 per Ki Sphere obtained{currentValue} / 23 ",
             "Line description": "Ki +1 per Ki Sphere obtained{currentValue} / 23 ",

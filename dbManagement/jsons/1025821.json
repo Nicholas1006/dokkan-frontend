@@ -32,7 +32,7 @@
     "Resource ID": 1025820,
     "Passive": {
         "3344": {
-            "ID": 3344,
+            "ID": "3344",
             "Timing": "Start of turn",
             "ATK": 100,
             "DEF": 100,
@@ -43,15 +43,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 100%{passiveImg:up_g} ",
             "Line description": "ATK and DEF 100%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "1003344": {
-            "ID": 1003344,
+            "ID": "1003344",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 150,
             "DEF": 150,
@@ -62,16 +63,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": "( 2095 || 2096 )",
                 "Causalities": {
                     "2095": {
                         "Button": {
-                            "Name": "Is Ki at least 9 on this turn?"
+                            "Name": "Is Ki at least 9 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=9",
                             "Min": 0,
                             "Max": 12
@@ -80,10 +82,10 @@
                     },
                     "2096": {
                         "Button": {
-                            "Name": "Is Ki at least 12 on this turn?"
+                            "Name": "Is Ki at least 12 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
@@ -99,7 +101,7 @@
             "Paragraph Title": "When Ki is 9 or more or Ki is 12 or more"
         },
         "2003344": {
-            "ID": 2003344,
+            "ID": "2003344",
             "Timing": "Start of turn",
             "Ki Change": {
                 "From": [
@@ -121,16 +123,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Chance": 50,
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "50",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Randomly changes Ki Spheres of a certain Type to Rainbow Ki Spheres ",
             "Line description": "Randomly changes Ki Spheres of a certain Type to Rainbow Ki Spheres ",
             "Paragraph Title": "Basic effect(s)"
         },
         "3003344": {
-            "ID": 3003344,
+            "ID": "3003344",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -142,7 +144,7 @@
                         "Rainbow"
                     ]
                 },
-                "Slider": "How many Rainbow Ki Spheres have been obtained?"
+                "Slider": "How many Rainbow Ki Spheres have been obtained on this turn?"
             },
             "Heals": 5,
             "Target": {
@@ -152,15 +154,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Building Stat",
             "Brief effect description": "Heals +5% per Rainbow Ki Spheres obtained{currentValue} / 25 ",
             "Line description": "Heals +5% per Rainbow Ki Spheres obtained{currentValue} / 25 ",
             "Paragraph Title": "Basic effect(s)"
         },
         "4003344": {
-            "ID": 4003344,
+            "ID": "4003344",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 50,
             "Target": {
@@ -170,13 +173,14 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2097 ",
                 "Causalities": {
                     "2097": {
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": "<=12",
                             "Min": 0,
                             "Max": 12
@@ -192,7 +196,7 @@
             "Paragraph Title": "When ki is 12 or more"
         },
         "5003344": {
-            "ID": 5003344,
+            "ID": "5003344",
             "Additional Attack": {
                 "Activated": true,
                 "Chance of super": 50,
@@ -206,13 +210,14 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2097 ",
                 "Causalities": {
                     "2097": {
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": "<=12",
                             "Min": 0,
                             "Max": 12
@@ -228,7 +233,7 @@
             "Paragraph Title": "When ki is 12 or more"
         },
         "6003344": {
-            "ID": 6003344,
+            "ID": "6003344",
             "Dodge Chance": 30,
             "Timing": "Right before being hit",
             "Target": {
@@ -238,16 +243,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2098 ",
                 "Causalities": {
                     "2098": {
                         "Button": {
-                            "Name": "Is Ki at least 12 on this turn?"
+                            "Name": "Is Ki at least 12 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12

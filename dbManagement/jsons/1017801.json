@@ -32,7 +32,7 @@
     "Resource ID": 1017800,
     "Passive": {
         "1982": {
-            "ID": 1982,
+            "ID": "1982",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 120,
             "DEF": 120,
@@ -43,16 +43,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 457 ",
                 "Causalities": {
                     "457": {
                         "Button": {
-                            "Name": "Is Ki at least 12 on this turn?"
+                            "Name": "Is Ki at least 12 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
@@ -68,7 +69,7 @@
             "Paragraph Title": "When Ki is 12 or more"
         },
         "1001982": {
-            "ID": 1001982,
+            "ID": "1001982",
             "Guaranteed Hit": true,
             "Timing": "Right before attack(MOT stat)",
             "Target": {
@@ -78,16 +79,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 457 ",
                 "Causalities": {
                     "457": {
                         "Button": {
-                            "Name": "Is Ki at least 12 on this turn?"
+                            "Name": "Is Ki at least 12 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
@@ -103,7 +105,7 @@
             "Paragraph Title": "When Ki is 12 or more"
         },
         "2001982": {
-            "ID": 2001982,
+            "ID": "2001982",
             "Timing": "Right after being hit",
             "Building Stat": {
                 "Min": 0,
@@ -122,15 +124,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 99,
+            "Chance": "100",
+            "Length": "99",
             "CausalityLogic": "{\"source\": \"24\", \"compiled\": 24}",
             "Type": "Building Stat",
             "Brief effect description": "ATK 20%{passiveImg:up_g} ({currentValue} / 80%) based on 'How many attacks has this character recieved' after being hit",
-            "Line description": "ATK 20%{passiveImg:up_g} ({currentValue} / 80%) based on 'How many attacks has this character recieved' after being hit",
+            "Line description": "ATK 20%{passiveImg:up_g} ({currentValue} / 80%) based on 'How many attacks has this character recieved' after being hit{passiveImg:forever}",
             "Paragraph Title": "Basic effect(s)"
         },
         "3001982": {
-            "ID": 3001982,
+            "ID": "3001982",
             "Timing": "Right after being hit",
             "Building Stat": {
                 "Min": 0,
@@ -149,11 +152,12 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 99,
+            "Chance": "100",
+            "Length": "99",
             "CausalityLogic": "{\"source\": \"24\", \"compiled\": 24}",
             "Type": "Building Stat",
             "Brief effect description": "DEF 20%{passiveImg:up_g} ({currentValue} / 80%) based on 'How many attacks has this character recieved' after being hit",
-            "Line description": "DEF 20%{passiveImg:up_g} ({currentValue} / 80%) based on 'How many attacks has this character recieved' after being hit",
+            "Line description": "DEF 20%{passiveImg:up_g} ({currentValue} / 80%) based on 'How many attacks has this character recieved' after being hit{passiveImg:forever}",
             "Paragraph Title": "Basic effect(s)"
         }
     },

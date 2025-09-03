@@ -26,7 +26,7 @@
     "Resource ID": 1012070,
     "Passive": {
         "1335": {
-            "ID": 1335,
+            "ID": "1335",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 180,
             "Target": {
@@ -36,16 +36,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 47 ",
                 "Causalities": {
                     "47": {
                         "Button": {
-                            "Name": "Is Ki at least 12 on this turn?"
+                            "Name": "Is Ki at least 12 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
@@ -61,7 +62,7 @@
             "Paragraph Title": "When Ki is 12 or more"
         },
         "1001335": {
-            "ID": 1001335,
+            "ID": "1001335",
             "Timing": "Right after being hit",
             "ATK": 60,
             "Target": {
@@ -71,7 +72,8 @@
                 "Type": "Percentage",
                 "+ or -": "-"
             },
-            "Length": 3,
+            "Chance": "100",
+            "Length": "3",
             "Condition": {
                 "Logic": " 24 ",
                 "Causalities": {

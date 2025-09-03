@@ -29,7 +29,7 @@
     "Resource ID": 2000140,
     "Passive": {
         "171": {
-            "ID": 171,
+            "ID": "171",
             "Timing": "Start of turn",
             "ATK": 40,
             "Target": {
@@ -39,16 +39,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 22 ",
                 "Causalities": {
                     "22": {
                         "Button": {
-                            "Name": "Is there 2 or more enemies on this turn?"
+                            "Name": "Is there 2 or more enemies within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many enemies are there on this turn?",
+                            "Name": "How many enemies are there within the last 1 turns?",
                             "Logic": ">=2",
                             "Min": 1,
                             "Max": 7

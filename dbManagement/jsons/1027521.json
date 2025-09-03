@@ -27,7 +27,7 @@
     "Resource ID": 1027520,
     "Passive": {
         "3886": {
-            "ID": 3886,
+            "ID": "3886",
             "Timing": "Start of turn",
             "ATK": 100,
             "DEF": 100,
@@ -38,15 +38,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 100%{passiveImg:up_g} ",
             "Line description": "ATK and DEF 100%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "1003886": {
-            "ID": 1003886,
+            "ID": "1003886",
             "Timing": "After all ki collected",
             "DEF": 50,
             "Target": {
@@ -56,7 +57,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 274300000 ",
                 "Causalities": {
@@ -75,7 +77,7 @@
             "Paragraph Title": "As the 2nd or 3rd attacker in a turn"
         },
         "2003886": {
-            "ID": 2003886,
+            "ID": "2003886",
             "Dodge Chance": 50,
             "Timing": "Start of turn",
             "Target": {
@@ -85,15 +87,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Chance of evading enemy attacks +50% ",
             "Line description": "Chance of evading enemy attacks +50% ",
             "Paragraph Title": "Basic effect(s)"
         },
         "3003886": {
-            "ID": 3003886,
+            "ID": "3003886",
             "Timing": "Start of turn",
             "Ki": 1,
             "Target": {
@@ -103,16 +106,17 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2744 ",
                 "Causalities": {
                     "2744": {
                         "Button": {
-                            "Name": "Is it on or after the first 4 turns from this characters entry turn on this turn?"
+                            "Name": "Is it on or after the first 4 turns from this characters entry turn within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
+                            "Name": "How many turns is it since entry turn within the last 1 turns?",
                             "Logic": ">=4",
                             "Min": 0,
                             "Max": 4
@@ -128,7 +132,7 @@
             "Paragraph Title": "Starting from the 4 turn from the character's entry turn"
         },
         "4003886": {
-            "ID": 4003886,
+            "ID": "4003886",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 50,
             "Target": {
@@ -138,16 +142,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": "( 2744 && 2745 )",
                 "Causalities": {
                     "2744": {
                         "Button": {
-                            "Name": "Is it on or after the first 4 turns from this characters entry turn on this turn?"
+                            "Name": "Is it on or after the first 4 turns from this characters entry turn within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
+                            "Name": "How many turns is it since entry turn within the last 1 turns?",
                             "Logic": ">=4",
                             "Min": 0,
                             "Max": 4
@@ -156,10 +161,10 @@
                     },
                     "2745": {
                         "Button": {
-                            "Name": "Is Ki at least 12 on this turn?"
+                            "Name": "Is Ki at least 12 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12

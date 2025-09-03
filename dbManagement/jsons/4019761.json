@@ -39,7 +39,7 @@
     "Resource ID": 4019760,
     "Passive": {
         "2130": {
-            "ID": 2130,
+            "ID": "2130",
             "Timing": "Start of turn",
             "Ki": 2,
             "Target": {
@@ -49,15 +49,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Ki +2 ",
             "Line description": "Ki +2 ",
             "Paragraph Title": "Basic effect(s)"
         },
         "1002130": {
-            "ID": 1002130,
+            "ID": "1002130",
             "Timing": "Start of turn",
             "DEF": 160,
             "Target": {
@@ -67,15 +68,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "DEF 160%{passiveImg:up_g} ",
             "Line description": "DEF 160%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "2002130": {
-            "ID": 2002130,
+            "ID": "2002130",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 160,
             "Target": {
@@ -85,16 +87,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 644 ",
                 "Causalities": {
                     "644": {
                         "Button": {
-                            "Name": "Is Ki at least 12 on this turn?"
+                            "Name": "Is Ki at least 12 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
@@ -110,7 +113,7 @@
             "Paragraph Title": "When Ki is 12 or more"
         },
         "3002130": {
-            "ID": 3002130,
+            "ID": "3002130",
             "Dodge Chance": 50,
             "Timing": "Start of turn",
             "Target": {
@@ -120,15 +123,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Chance of evading enemy attacks +50% ",
             "Line description": "Chance of evading enemy attacks +50% ",
             "Paragraph Title": "Basic effect(s)"
         },
         "4002130": {
-            "ID": 4002130,
+            "ID": "4002130",
             "Additional Attack": {
                 "Activated": true,
                 "Chance of super": 100,
@@ -142,16 +146,17 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 641 ",
                 "Causalities": {
                     "641": {
                         "Button": {
-                            "Name": "Has 6 or more Ki Spheres been obtained on this turn?"
+                            "Name": "Has 6 or more Ki Spheres been obtained within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Ki Spheres have been obtained on this turn?",
+                            "Name": "How many Ki Spheres have been obtained within the last 1 turns?",
                             "Logic": ">=6",
                             "Min": 0,
                             "Max": 6
@@ -1027,7 +1032,10 @@
     },
     "Standby Skill": null,
     "Finish Skill": null,
-    "Transforms from": [],
+    "Transforms from": [
+        "1019741",
+        "4019751"
+    ],
     "Transformations": [],
     "Max Appearances In Form": 50,
     "Dokkan awakenings": [],

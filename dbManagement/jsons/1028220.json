@@ -37,7 +37,7 @@
     "Resource ID": 1028220,
     "Passive": {
         "4045": {
-            "ID": 4045,
+            "ID": "4045",
             "Timing": "Start of turn",
             "ATK": 130,
             "DEF": 100,
@@ -48,15 +48,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "ATK 130% and DEF 100%{passiveImg:up_g} ",
             "Line description": "ATK 130% and DEF 100%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "1004045": {
-            "ID": 1004045,
+            "ID": "1004045",
             "Timing": "Right after being hit",
             "Crit Chance": 70,
             "Target": {
@@ -66,16 +67,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": "( 24 || 365 )",
                 "Causalities": {
                     "24": {
                         "Button": {
-                            "Name": "Has this character been hit on this turn?"
+                            "Name": "Has this character been hit within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many times has this character been hit on this turn?",
+                            "Name": "How many times has this character been hit within the last 1 turns?",
                             "Logic": ">=1",
                             "Min": 0,
                             "Max": 1
@@ -84,7 +86,7 @@
                     },
                     "365": {
                         "Button": {
-                            "Name": "Has this unit evaded an attack on this turn?"
+                            "Name": "Has this unit evaded an attack within the last 1 turns?"
                         },
                         "Paragraph Title": "After evading an attack"
                     }
@@ -97,7 +99,7 @@
             "Paragraph Title": "After recieving an attack or After evading an attack"
         },
         "2004045": {
-            "ID": 2004045,
+            "ID": "2004045",
             "Timing": "Start of turn",
             "DR": 50,
             "Target": {
@@ -107,7 +109,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2266 ",
                 "Causalities": {
@@ -116,7 +119,7 @@
                             "Name": "Is it within the first 1 turn(s) from the character's entry turn?"
                         },
                         "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
+                            "Name": "How many turns is it since entry turn within the last 1 turns?",
                             "Logic": "<=1",
                             "Min": 0,
                             "Max": 2
@@ -132,7 +135,7 @@
             "Paragraph Title": "For 1 turns from the chraracter's entry turn"
         },
         "3004045": {
-            "ID": 3004045,
+            "ID": "3004045",
             "Timing": "When ki spheres collected",
             "DR": 40,
             "Target": {
@@ -142,16 +145,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": "( 11 && 1380 && 301 )",
                 "Causalities": {
                     "11": {
                         "Button": {
-                            "Name": "Is it on or after the first 2 turns from this characters entry turn on this turn?"
+                            "Name": "Is it on or after the first 2 turns from this characters entry turn within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
+                            "Name": "How many turns is it since entry turn within the last 1 turns?",
                             "Logic": ">=2",
                             "Min": 0,
                             "Max": 2
@@ -163,7 +167,7 @@
                             "Name": "Is it within the first 4 turn(s) from the character's entry turn?"
                         },
                         "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
+                            "Name": "How many turns is it since entry turn within the last 1 turns?",
                             "Logic": "<=4",
                             "Min": 0,
                             "Max": 5
@@ -172,10 +176,10 @@
                     },
                     "301": {
                         "Button": {
-                            "Name": "Has 3 or more Ki Spheres been obtained on this turn?"
+                            "Name": "Has 3 or more Ki Spheres been obtained within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Ki Spheres have been obtained on this turn?",
+                            "Name": "How many Ki Spheres have been obtained within the last 1 turns?",
                             "Logic": ">=3",
                             "Min": 0,
                             "Max": 3
@@ -191,7 +195,7 @@
             "Paragraph Title": "Basic effect(s)"
         },
         "4004045": {
-            "ID": 4004045,
+            "ID": "4004045",
             "Timing": "When ki spheres collected",
             "DR": 30,
             "Target": {
@@ -201,16 +205,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": "( 2375 && 301 )",
                 "Causalities": {
                     "2375": {
                         "Button": {
-                            "Name": "Is it on or after the first 5 turns from this characters entry turn on this turn?"
+                            "Name": "Is it on or after the first 5 turns from this characters entry turn within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
+                            "Name": "How many turns is it since entry turn within the last 1 turns?",
                             "Logic": ">=5",
                             "Min": 0,
                             "Max": 5
@@ -219,10 +224,10 @@
                     },
                     "301": {
                         "Button": {
-                            "Name": "Has 3 or more Ki Spheres been obtained on this turn?"
+                            "Name": "Has 3 or more Ki Spheres been obtained within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Ki Spheres have been obtained on this turn?",
+                            "Name": "How many Ki Spheres have been obtained within the last 1 turns?",
                             "Logic": ">=3",
                             "Min": 0,
                             "Max": 3
@@ -238,7 +243,7 @@
             "Paragraph Title": "Basic effect(s)"
         },
         "5004045": {
-            "ID": 5004045,
+            "ID": "5004045",
             "Timing": "Start of turn",
             "Ki": 1,
             "Target": {
@@ -254,15 +259,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Ki +1 for all Super Bosses category allies ",
             "Line description": "Ki +1 for all Super Bosses category allies ",
             "Paragraph Title": "Basic effect(s)"
         },
         "6004045": {
-            "ID": 6004045,
+            "ID": "6004045",
             "Timing": "Start of turn",
             "ATK": 40,
             "DEF": 20,
@@ -279,8 +285,9 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "ATK 40% and DEF 20%{passiveImg:up_g} for all Super Bosses category allies ",
             "Line description": "ATK 40% and DEF 20%{passiveImg:up_g} for all Super Bosses category allies ",

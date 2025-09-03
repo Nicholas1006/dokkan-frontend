@@ -27,7 +27,7 @@
     "Resource ID": 1027180,
     "Passive": {
         "3542": {
-            "ID": 3542,
+            "ID": "3542",
             "Timing": "Start of turn",
             "Ki": 2,
             "Target": {
@@ -37,15 +37,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Ki +2 ",
             "Line description": "Ki +2 ",
             "Paragraph Title": "Basic effect(s)"
         },
         "1003542": {
-            "ID": 1003542,
+            "ID": "1003542",
             "Timing": "Start of turn",
             "ATK": 150,
             "DEF": 150,
@@ -56,15 +57,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 150%{passiveImg:up_g} ",
             "Line description": "ATK and DEF 150%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "2003542": {
-            "ID": 2003542,
+            "ID": "2003542",
             "Timing": "Right before attack(MOT stat)",
             "DEF": 100,
             "Target": {
@@ -74,16 +76,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2574 ",
                 "Causalities": {
                     "2574": {
                         "Button": {
-                            "Name": "Is Ki at least 12 on this turn?"
+                            "Name": "Is Ki at least 12 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
@@ -99,7 +102,7 @@
             "Paragraph Title": "When Ki is 12 or more"
         },
         "3003542": {
-            "ID": 3003542,
+            "ID": "3003542",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 500,
             "Target": {
@@ -109,16 +112,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": "( ( 2574 && 2575 ) || ( 2574 && 2576 ) || ( 2574 && 2577 ) || ( 2574 && 2578 ) )",
                 "Causalities": {
                     "2574": {
                         "Button": {
-                            "Name": "Is Ki at least 12 on this turn?"
+                            "Name": "Is Ki at least 12 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
@@ -127,25 +131,25 @@
                     },
                     "2575": {
                         "Button": {
-                            "Name": "Is the target enemy in ATK Down on this turn?"
+                            "Name": "Is the target enemy in ATK Down within the last 1 turns?"
                         },
                         "Paragraph Title": "When the target enemy is in the following status{passiveImg:atk_down}"
                     },
                     "2576": {
                         "Button": {
-                            "Name": "Is the target enemy in DEF Down on this turn?"
+                            "Name": "Is the target enemy in DEF Down within the last 1 turns?"
                         },
                         "Paragraph Title": "When the target enemy is in the following status{passiveImg:def_down}"
                     },
                     "2577": {
                         "Button": {
-                            "Name": "Is the target enemy in Stunned on this turn?"
+                            "Name": "Is the target enemy in Stunned within the last 1 turns?"
                         },
                         "Paragraph Title": "When the target enemy is in the following status{passiveImg:stun}"
                     },
                     "2578": {
                         "Button": {
-                            "Name": "Is the target enemy in Sealed on this turn?"
+                            "Name": "Is the target enemy in Sealed within the last 1 turns?"
                         },
                         "Paragraph Title": "When the target enemy is in the following status{passiveImg:astute}"
                     }
@@ -158,7 +162,7 @@
             "Paragraph Title": "Basic effect(s)"
         },
         "4003542": {
-            "ID": 4003542,
+            "ID": "4003542",
             "Timing": "Right before attack(MOT stat)",
             "Crit Chance": 100,
             "Target": {
@@ -168,16 +172,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": "( ( 2574 && 2575 ) || ( 2574 && 2576 ) || ( 2574 && 2577 ) || ( 2574 && 2578 ) )",
                 "Causalities": {
                     "2574": {
                         "Button": {
-                            "Name": "Is Ki at least 12 on this turn?"
+                            "Name": "Is Ki at least 12 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
@@ -186,25 +191,25 @@
                     },
                     "2575": {
                         "Button": {
-                            "Name": "Is the target enemy in ATK Down on this turn?"
+                            "Name": "Is the target enemy in ATK Down within the last 1 turns?"
                         },
                         "Paragraph Title": "When the target enemy is in the following status{passiveImg:atk_down}"
                     },
                     "2576": {
                         "Button": {
-                            "Name": "Is the target enemy in DEF Down on this turn?"
+                            "Name": "Is the target enemy in DEF Down within the last 1 turns?"
                         },
                         "Paragraph Title": "When the target enemy is in the following status{passiveImg:def_down}"
                     },
                     "2577": {
                         "Button": {
-                            "Name": "Is the target enemy in Stunned on this turn?"
+                            "Name": "Is the target enemy in Stunned within the last 1 turns?"
                         },
                         "Paragraph Title": "When the target enemy is in the following status{passiveImg:stun}"
                     },
                     "2578": {
                         "Button": {
-                            "Name": "Is the target enemy in Sealed on this turn?"
+                            "Name": "Is the target enemy in Sealed within the last 1 turns?"
                         },
                         "Paragraph Title": "When the target enemy is in the following status{passiveImg:astute}"
                     }
@@ -217,7 +222,7 @@
             "Paragraph Title": "Basic effect(s)"
         },
         "5003542": {
-            "ID": 5003542,
+            "ID": "5003542",
             "Timing": "Right after attack",
             "Status": [
                 "Disable action"
@@ -229,16 +234,17 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": "( ( 2574 && 2575 ) || ( 2574 && 2576 ) || ( 2574 && 2577 ) || ( 2574 && 2578 ) )",
                 "Causalities": {
                     "2574": {
                         "Button": {
-                            "Name": "Is Ki at least 12 on this turn?"
+                            "Name": "Is Ki at least 12 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
@@ -247,25 +253,25 @@
                     },
                     "2575": {
                         "Button": {
-                            "Name": "Is the target enemy in ATK Down on this turn?"
+                            "Name": "Is the target enemy in ATK Down within the last 1 turns?"
                         },
                         "Paragraph Title": "When the target enemy is in the following status{passiveImg:atk_down}"
                     },
                     "2576": {
                         "Button": {
-                            "Name": "Is the target enemy in DEF Down on this turn?"
+                            "Name": "Is the target enemy in DEF Down within the last 1 turns?"
                         },
                         "Paragraph Title": "When the target enemy is in the following status{passiveImg:def_down}"
                     },
                     "2577": {
                         "Button": {
-                            "Name": "Is the target enemy in Stunned on this turn?"
+                            "Name": "Is the target enemy in Stunned within the last 1 turns?"
                         },
                         "Paragraph Title": "When the target enemy is in the following status{passiveImg:stun}"
                     },
                     "2578": {
                         "Button": {
-                            "Name": "Is the target enemy in Sealed on this turn?"
+                            "Name": "Is the target enemy in Sealed within the last 1 turns?"
                         },
                         "Paragraph Title": "When the target enemy is in the following status{passiveImg:astute}"
                     }
@@ -278,7 +284,7 @@
             "Paragraph Title": "Basic effect(s)"
         },
         "6003542": {
-            "ID": 6003542,
+            "ID": "6003542",
             "Timing": "Start of turn",
             "ATK": 40,
             "Target": {
@@ -288,16 +294,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": "( 2579 || 2580 )",
                 "Causalities": {
                     "2579": {
                         "Button": {
-                            "Name": "Are there 5 or more Peppy Gals category allies  on this turn?"
+                            "Name": "Are there 5 or more Peppy Gals category allies  within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Peppy Gals category allies on this turn?",
+                            "Name": "How many Peppy Gals category allies within the last 1 turns?",
                             "Logic": ">=5",
                             "Max": 7,
                             "Min": 0
@@ -306,10 +313,10 @@
                     },
                     "2580": {
                         "Button": {
-                            "Name": "Is there 1 or more STR  type enemies on this turn?"
+                            "Name": "Is there 1 or more STR  type enemies within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many STR  type enemies on this turn?",
+                            "Name": "How many STR  type enemies within the last 1 turns?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
@@ -325,7 +332,7 @@
             "Paragraph Title": "When there are 5 or more Peppy Gals Category allies or there are 1 or more STR type enemies"
         },
         "7003542": {
-            "ID": 7003542,
+            "ID": "7003542",
             "Timing": "Start of turn",
             "ATK": 20,
             "Target": {
@@ -335,17 +342,17 @@
                 "Type": "Percentage",
                 "+ or -": "-"
             },
-            "Chance": 50,
-            "Length": 1,
+            "Chance": "50",
+            "Length": "1",
             "Condition": {
                 "Logic": "( 2579 || 2580 )",
                 "Causalities": {
                     "2579": {
                         "Button": {
-                            "Name": "Are there 5 or more Peppy Gals category allies  on this turn?"
+                            "Name": "Are there 5 or more Peppy Gals category allies  within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Peppy Gals category allies on this turn?",
+                            "Name": "How many Peppy Gals category allies within the last 1 turns?",
                             "Logic": ">=5",
                             "Max": 7,
                             "Min": 0
@@ -354,10 +361,10 @@
                     },
                     "2580": {
                         "Button": {
-                            "Name": "Is there 1 or more STR  type enemies on this turn?"
+                            "Name": "Is there 1 or more STR  type enemies within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many STR  type enemies on this turn?",
+                            "Name": "How many STR  type enemies within the last 1 turns?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0

@@ -31,7 +31,7 @@
     "Resource ID": 1021340,
     "Passive": {
         "2348": {
-            "ID": 2348,
+            "ID": "2348",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -50,15 +50,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 99,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
             "Brief effect description": "ATK 15%{passiveImg:up_g} ({currentValue} / 60%) based on 'How many turns has this character been on' ",
-            "Line description": "ATK 15%{passiveImg:up_g} ({currentValue} / 60%) based on 'How many turns has this character been on' ",
+            "Line description": "ATK 15%{passiveImg:up_g} ({currentValue} / 60%) based on 'How many turns has this character been on' {passiveImg:forever}",
             "Paragraph Title": "Basic effect(s)"
         },
         "1002348": {
-            "ID": 1002348,
+            "ID": "1002348",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -77,15 +78,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 99,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
             "Brief effect description": "DEF 15%{passiveImg:up_g} ({currentValue} / 60%) based on 'How many turns has this character been on' ",
-            "Line description": "DEF 15%{passiveImg:up_g} ({currentValue} / 60%) based on 'How many turns has this character been on' ",
+            "Line description": "DEF 15%{passiveImg:up_g} ({currentValue} / 60%) based on 'How many turns has this character been on' {passiveImg:forever}",
             "Paragraph Title": "Basic effect(s)"
         },
         "2002348": {
-            "ID": 2002348,
+            "ID": "2002348",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 80,
             "DEF": 80,
@@ -96,16 +98,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 786 ",
                 "Causalities": {
                     "786": {
                         "Button": {
-                            "Name": "Is Ki at least 12 on this turn?"
+                            "Name": "Is Ki at least 12 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
@@ -121,7 +124,7 @@
             "Paragraph Title": "When Ki is 12 or more"
         },
         "3002348": {
-            "ID": 3002348,
+            "ID": "3002348",
             "Timing": "Right after attack",
             "Status": [
                 "Stun"
@@ -133,17 +136,17 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Chance": 30,
-            "Length": 1,
+            "Chance": "30",
+            "Length": "1",
             "Condition": {
                 "Logic": " 786 ",
                 "Causalities": {
                     "786": {
                         "Button": {
-                            "Name": "Is Ki at least 12 on this turn?"
+                            "Name": "Is Ki at least 12 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
@@ -159,7 +162,7 @@
             "Paragraph Title": "When Ki is 12 or more"
         },
         "4002348": {
-            "ID": 4002348,
+            "ID": "4002348",
             "Timing": "Start of turn",
             "ATK": 20,
             "DEF": 20,
@@ -176,7 +179,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 789 ",
                 "Causalities": {

@@ -33,7 +33,7 @@
     "Resource ID": 1020490,
     "Passive": {
         "2250": {
-            "ID": 2250,
+            "ID": "2250",
             "Timing": "Start of turn",
             "ATK": 80,
             "DEF": 80,
@@ -44,15 +44,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 80%{passiveImg:up_g} ",
             "Line description": "ATK and DEF 80%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "1002250": {
-            "ID": 1002250,
+            "ID": "1002250",
             "Timing": "Right after being hit",
             "ATK": 40,
             "DEF": 40,
@@ -63,7 +64,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 4,
+            "Chance": "100",
+            "Length": "4",
             "Condition": {
                 "Logic": " 24 ",
                 "Causalities": {
@@ -88,7 +90,7 @@
             "Paragraph Title": "After recieving an attack"
         },
         "2002250": {
-            "ID": 2002250,
+            "ID": "2002250",
             "Dodge Chance": 30,
             "Timing": "Right after being hit",
             "Target": {
@@ -98,16 +100,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 24 ",
                 "Causalities": {
                     "24": {
                         "Button": {
-                            "Name": "Has this character been hit on this turn?"
+                            "Name": "Has this character been hit within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many times has this character been hit on this turn?",
+                            "Name": "How many times has this character been hit within the last 1 turns?",
                             "Logic": ">=1",
                             "Min": 0,
                             "Max": 1
@@ -123,7 +126,7 @@
             "Paragraph Title": "After recieving an attack"
         },
         "3002250": {
-            "ID": 3002250,
+            "ID": "3002250",
             "Timing": "Right after attack",
             "ATK": 20,
             "DEF": 20,
@@ -134,8 +137,9 @@
                 "Type": "Percentage",
                 "+ or -": "-"
             },
-            "Length": 2,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "2",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 20%{passiveImg:down_r} after attacking",
             "Line description": "ATK and DEF 20%{passiveImg:down_r} after attacking for 2 turns",

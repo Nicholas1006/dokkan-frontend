@@ -21,7 +21,7 @@
     "Resource ID": 1010510,
     "Passive": {
         "861": {
-            "ID": 861,
+            "ID": "861",
             "Timing": "Start of turn",
             "ATK": 81,
             "DEF": 81,
@@ -32,16 +32,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 66 ",
                 "Causalities": {
                     "66": {
                         "Button": {
-                            "Name": "Is there less than 4 enemies on this turn?"
+                            "Name": "Is there less than 4 enemies within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many enemies are there on this turn?",
+                            "Name": "How many enemies are there within the last 1 turns?",
                             "Logic": "<4",
                             "Min": 1,
                             "Max": 7
@@ -54,7 +55,7 @@
             "Once Only": true,
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 81%{passiveImg:up_g} ",
-            "Line description": " {passiveImg:once}ATK and DEF 81%{passiveImg:up_g} ",
+            "Line description": " {passiveImg:once}ATK and DEF 81%{passiveImg:up_g} for 1 turn ",
             "Paragraph Title": "When there are less than 4 enemies"
         }
     },

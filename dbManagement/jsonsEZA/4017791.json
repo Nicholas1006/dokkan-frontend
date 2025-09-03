@@ -40,7 +40,7 @@
     "Resource ID": 4017790,
     "Passive": {
         "4274": {
-            "ID": 4274,
+            "ID": "4274",
             "Timing": "Start of turn",
             "Heals": 59,
             "Target": {
@@ -50,7 +50,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "CausalityLogic": "{\"source\": \"1000000000000\", \"compiled\": 1000000000000}",
             "Once Only": true,
             "Type": "Single activator",
@@ -66,11 +67,11 @@
                 }
             },
             "Brief effect description": "Heals +59% ",
-            "Line description": " {passiveImg:once}Heals +59% ",
+            "Line description": " {passiveImg:once}Heals +59% for 1 turn ",
             "Paragraph Title": "For 1 turn(s) from the character's entry turn"
         },
         "1004274": {
-            "ID": 1004274,
+            "ID": "1004274",
             "Timing": "Start of turn",
             "Ki": 6,
             "Target": {
@@ -80,15 +81,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Ki +6 ",
             "Line description": "Ki +6 ",
             "Paragraph Title": "Basic effect(s)"
         },
         "2004274": {
-            "ID": 2004274,
+            "ID": "2004274",
             "Timing": "Start of turn",
             "DEF": 100,
             "Target": {
@@ -98,15 +100,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "DEF 100%{passiveImg:up_g} ",
             "Line description": "DEF 100%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "3004274": {
-            "ID": 3004274,
+            "ID": "3004274",
             "Timing": "Start of turn",
             "Ki Change": {
                 "From": [
@@ -127,15 +130,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Randomly changes Ki Spheres of a certain Type(TEQ excluded) to TEQ Ki Spheres ",
             "Line description": "Randomly changes Ki Spheres of a certain Type(TEQ excluded) to TEQ Ki Spheres ",
             "Paragraph Title": "Basic effect(s)"
         },
         "4004274": {
-            "ID": 4004274,
+            "ID": "4004274",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -152,7 +156,7 @@
                         "AGL"
                     ]
                 },
-                "Slider": "How many Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres have been obtained?"
+                "Slider": "How many Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres have been obtained on this turn?"
             },
             "ATK": 66,
             "Target": {
@@ -162,15 +166,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Building Stat",
             "Brief effect description": "ATK 66%{passiveImg:up_g} per Ki Sphere obtained{currentValue} / 1518 ",
             "Line description": "ATK 66%{passiveImg:up_g} per Ki Sphere obtained{currentValue} / 1518 ",
             "Paragraph Title": "Basic effect(s)"
         },
         "5004274": {
-            "ID": 5004274,
+            "ID": "5004274",
             "Timing": "When ki spheres collected",
             "Crit Chance": 50,
             "Target": {
@@ -180,16 +185,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 1866 ",
                 "Causalities": {
                     "1866": {
                         "Button": {
-                            "Name": "Has 3 or more TEQ Ki Spheres been obtained on this turn?"
+                            "Name": "Has 3 or more TEQ Ki Spheres been obtained within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many TEQ Ki Spheres have been obtained on this turn?",
+                            "Name": "How many TEQ Ki Spheres have been obtained within the last 1 turns?",
                             "Logic": ">=3",
                             "Min": 0,
                             "Max": 3
@@ -205,7 +211,7 @@
             "Paragraph Title": "With 3 or more TEQ Ki Spheres obtained"
         },
         "6004274": {
-            "ID": 6004274,
+            "ID": "6004274",
             "Timing": "When ki spheres collected",
             "Crit Chance": 6,
             "Target": {
@@ -215,16 +221,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2548 ",
                 "Causalities": {
                     "2548": {
                         "Button": {
-                            "Name": "Has 4 or more TEQ Ki Spheres been obtained on this turn?"
+                            "Name": "Has 4 or more TEQ Ki Spheres been obtained within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many TEQ Ki Spheres have been obtained on this turn?",
+                            "Name": "How many TEQ Ki Spheres have been obtained within the last 1 turns?",
                             "Logic": ">=4",
                             "Min": 0,
                             "Max": 4
@@ -240,7 +247,7 @@
             "Paragraph Title": "With 4 or more TEQ Ki Spheres obtained"
         },
         "7004274": {
-            "ID": 7004274,
+            "ID": "7004274",
             "Timing": "When ki spheres collected",
             "Crit Chance": 6,
             "Target": {
@@ -250,16 +257,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 1867 ",
                 "Causalities": {
                     "1867": {
                         "Button": {
-                            "Name": "Has 5 or more TEQ Ki Spheres been obtained on this turn?"
+                            "Name": "Has 5 or more TEQ Ki Spheres been obtained within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many TEQ Ki Spheres have been obtained on this turn?",
+                            "Name": "How many TEQ Ki Spheres have been obtained within the last 1 turns?",
                             "Logic": ">=5",
                             "Min": 0,
                             "Max": 5
@@ -275,7 +283,7 @@
             "Paragraph Title": "With 5 or more TEQ Ki Spheres obtained"
         },
         "8004274": {
-            "ID": 8004274,
+            "ID": "8004274",
             "Timing": "When ki spheres collected",
             "Crit Chance": 6,
             "Target": {
@@ -285,16 +293,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 3099 ",
                 "Causalities": {
                     "3099": {
                         "Button": {
-                            "Name": "Has 6 or more TEQ Ki Spheres been obtained on this turn?"
+                            "Name": "Has 6 or more TEQ Ki Spheres been obtained within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many TEQ Ki Spheres have been obtained on this turn?",
+                            "Name": "How many TEQ Ki Spheres have been obtained within the last 1 turns?",
                             "Logic": ">=6",
                             "Min": 0,
                             "Max": 6
@@ -310,7 +319,7 @@
             "Paragraph Title": "With 6 or more TEQ Ki Spheres obtained"
         },
         "9004274": {
-            "ID": 9004274,
+            "ID": "9004274",
             "Timing": "When ki spheres collected",
             "Crit Chance": 6,
             "Target": {
@@ -320,16 +329,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2101 ",
                 "Causalities": {
                     "2101": {
                         "Button": {
-                            "Name": "Has 7 or more TEQ Ki Spheres been obtained on this turn?"
+                            "Name": "Has 7 or more TEQ Ki Spheres been obtained within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many TEQ Ki Spheres have been obtained on this turn?",
+                            "Name": "How many TEQ Ki Spheres have been obtained within the last 1 turns?",
                             "Logic": ">=7",
                             "Min": 0,
                             "Max": 7
@@ -345,7 +355,7 @@
             "Paragraph Title": "With 7 or more TEQ Ki Spheres obtained"
         },
         "10004274": {
-            "ID": 10004274,
+            "ID": "10004274",
             "Timing": "When ki spheres collected",
             "Crit Chance": 6,
             "Target": {
@@ -355,16 +365,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 3100 ",
                 "Causalities": {
                     "3100": {
                         "Button": {
-                            "Name": "Has 8 or more TEQ Ki Spheres been obtained on this turn?"
+                            "Name": "Has 8 or more TEQ Ki Spheres been obtained within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many TEQ Ki Spheres have been obtained on this turn?",
+                            "Name": "How many TEQ Ki Spheres have been obtained within the last 1 turns?",
                             "Logic": ">=8",
                             "Min": 0,
                             "Max": 8
@@ -380,7 +391,7 @@
             "Paragraph Title": "With 8 or more TEQ Ki Spheres obtained"
         },
         "11004274": {
-            "ID": 11004274,
+            "ID": "11004274",
             "Timing": "When ki spheres collected",
             "Crit Chance": 6,
             "Target": {
@@ -390,16 +401,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 3101 ",
                 "Causalities": {
                     "3101": {
                         "Button": {
-                            "Name": "Has 9 or more TEQ Ki Spheres been obtained on this turn?"
+                            "Name": "Has 9 or more TEQ Ki Spheres been obtained within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many TEQ Ki Spheres have been obtained on this turn?",
+                            "Name": "How many TEQ Ki Spheres have been obtained within the last 1 turns?",
                             "Logic": ">=9",
                             "Min": 0,
                             "Max": 9
@@ -415,7 +427,7 @@
             "Paragraph Title": "With 9 or more TEQ Ki Spheres obtained"
         },
         "12004274": {
-            "ID": 12004274,
+            "ID": "12004274",
             "Timing": "When ki spheres collected",
             "Crit Chance": 6,
             "Target": {
@@ -425,16 +437,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 3102 ",
                 "Causalities": {
                     "3102": {
                         "Button": {
-                            "Name": "Has 10 or more TEQ Ki Spheres been obtained on this turn?"
+                            "Name": "Has 10 or more TEQ Ki Spheres been obtained within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many TEQ Ki Spheres have been obtained on this turn?",
+                            "Name": "How many TEQ Ki Spheres have been obtained within the last 1 turns?",
                             "Logic": ">=10",
                             "Min": 0,
                             "Max": 10
@@ -450,7 +463,7 @@
             "Paragraph Title": "With 10 or more TEQ Ki Spheres obtained"
         },
         "13004274": {
-            "ID": 13004274,
+            "ID": "13004274",
             "Timing": "When ki spheres collected",
             "Crit Chance": 6,
             "Target": {
@@ -460,16 +473,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 3292 ",
                 "Causalities": {
                     "3292": {
                         "Button": {
-                            "Name": "Has 11 or more TEQ Ki Spheres been obtained on this turn?"
+                            "Name": "Has 11 or more TEQ Ki Spheres been obtained within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many TEQ Ki Spheres have been obtained on this turn?",
+                            "Name": "How many TEQ Ki Spheres have been obtained within the last 1 turns?",
                             "Logic": ">=11",
                             "Min": 0,
                             "Max": 11
@@ -485,7 +499,7 @@
             "Paragraph Title": "With 11 or more TEQ Ki Spheres obtained"
         },
         "14004274": {
-            "ID": 14004274,
+            "ID": "14004274",
             "Timing": "When ki spheres collected",
             "Crit Chance": 2,
             "Target": {
@@ -495,16 +509,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 3293 ",
                 "Causalities": {
                     "3293": {
                         "Button": {
-                            "Name": "Has 12 or more TEQ Ki Spheres been obtained on this turn?"
+                            "Name": "Has 12 or more TEQ Ki Spheres been obtained within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many TEQ Ki Spheres have been obtained on this turn?",
+                            "Name": "How many TEQ Ki Spheres have been obtained within the last 1 turns?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
@@ -520,7 +535,7 @@
             "Paragraph Title": "With 12 or more TEQ Ki Spheres obtained"
         },
         "15004274": {
-            "ID": 15004274,
+            "ID": "15004274",
             "Timing": "Start of turn",
             "DR": 66,
             "Target": {
@@ -530,7 +545,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 6,
+            "Chance": "100",
+            "Length": "6",
             "CausalityLogic": "{\"source\": \"6000000000000\", \"compiled\": 6000000000000}",
             "Once Only": true,
             "Type": "Single activator",
@@ -550,7 +566,7 @@
             "Paragraph Title": "For 6 turn(s) from the character's entry turn"
         },
         "16004274": {
-            "ID": 16004274,
+            "ID": "16004274",
             "Timing": "When ki spheres collected",
             "DR": 10,
             "Target": {
@@ -560,16 +576,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": "( 2558 && 1992 )",
                 "Causalities": {
                     "2558": {
                         "Button": {
-                            "Name": "Is it on or after the first 7 turns from this characters entry turn on this turn?"
+                            "Name": "Is it on or after the first 7 turns from this characters entry turn within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
+                            "Name": "How many turns is it since entry turn within the last 1 turns?",
                             "Logic": ">=7",
                             "Min": 0,
                             "Max": 7
@@ -578,10 +595,10 @@
                     },
                     "1992": {
                         "Button": {
-                            "Name": "Has 1 or more Ki Spheres been obtained on this turn?"
+                            "Name": "Has 1 or more Ki Spheres been obtained within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Ki Spheres have been obtained on this turn?",
+                            "Name": "How many Ki Spheres have been obtained within the last 1 turns?",
                             "Logic": ">=1",
                             "Min": 0,
                             "Max": 1
@@ -597,7 +614,7 @@
             "Paragraph Title": "Basic effect(s)"
         },
         "17004274": {
-            "ID": 17004274,
+            "ID": "17004274",
             "Timing": "When ki spheres collected",
             "DR": 10,
             "Target": {
@@ -607,16 +624,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": "( 2558 && 2805 )",
                 "Causalities": {
                     "2558": {
                         "Button": {
-                            "Name": "Is it on or after the first 7 turns from this characters entry turn on this turn?"
+                            "Name": "Is it on or after the first 7 turns from this characters entry turn within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
+                            "Name": "How many turns is it since entry turn within the last 1 turns?",
                             "Logic": ">=7",
                             "Min": 0,
                             "Max": 7
@@ -625,10 +643,10 @@
                     },
                     "2805": {
                         "Button": {
-                            "Name": "Has 2 or more Ki Spheres been obtained on this turn?"
+                            "Name": "Has 2 or more Ki Spheres been obtained within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Ki Spheres have been obtained on this turn?",
+                            "Name": "How many Ki Spheres have been obtained within the last 1 turns?",
                             "Logic": ">=2",
                             "Min": 0,
                             "Max": 2
@@ -644,7 +662,7 @@
             "Paragraph Title": "Basic effect(s)"
         },
         "18004274": {
-            "ID": 18004274,
+            "ID": "18004274",
             "Timing": "When ki spheres collected",
             "DR": 10,
             "Target": {
@@ -654,16 +672,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": "( 2558 && 2701 )",
                 "Causalities": {
                     "2558": {
                         "Button": {
-                            "Name": "Is it on or after the first 7 turns from this characters entry turn on this turn?"
+                            "Name": "Is it on or after the first 7 turns from this characters entry turn within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
+                            "Name": "How many turns is it since entry turn within the last 1 turns?",
                             "Logic": ">=7",
                             "Min": 0,
                             "Max": 7
@@ -672,10 +691,10 @@
                     },
                     "2701": {
                         "Button": {
-                            "Name": "Has 3 or more Ki Spheres been obtained on this turn?"
+                            "Name": "Has 3 or more Ki Spheres been obtained within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Ki Spheres have been obtained on this turn?",
+                            "Name": "How many Ki Spheres have been obtained within the last 1 turns?",
                             "Logic": ">=3",
                             "Min": 0,
                             "Max": 3
@@ -691,7 +710,7 @@
             "Paragraph Title": "Basic effect(s)"
         },
         "19004274": {
-            "ID": 19004274,
+            "ID": "19004274",
             "Timing": "When ki spheres collected",
             "DR": 10,
             "Target": {
@@ -701,16 +720,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": "( 2558 && 2806 )",
                 "Causalities": {
                     "2558": {
                         "Button": {
-                            "Name": "Is it on or after the first 7 turns from this characters entry turn on this turn?"
+                            "Name": "Is it on or after the first 7 turns from this characters entry turn within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
+                            "Name": "How many turns is it since entry turn within the last 1 turns?",
                             "Logic": ">=7",
                             "Min": 0,
                             "Max": 7
@@ -719,10 +739,10 @@
                     },
                     "2806": {
                         "Button": {
-                            "Name": "Has 4 or more Ki Spheres been obtained on this turn?"
+                            "Name": "Has 4 or more Ki Spheres been obtained within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Ki Spheres have been obtained on this turn?",
+                            "Name": "How many Ki Spheres have been obtained within the last 1 turns?",
                             "Logic": ">=4",
                             "Min": 0,
                             "Max": 4
@@ -738,7 +758,7 @@
             "Paragraph Title": "Basic effect(s)"
         },
         "20004274": {
-            "ID": 20004274,
+            "ID": "20004274",
             "Timing": "When ki spheres collected",
             "DR": 10,
             "Target": {
@@ -748,16 +768,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": "( 2558 && 2700 )",
                 "Causalities": {
                     "2558": {
                         "Button": {
-                            "Name": "Is it on or after the first 7 turns from this characters entry turn on this turn?"
+                            "Name": "Is it on or after the first 7 turns from this characters entry turn within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
+                            "Name": "How many turns is it since entry turn within the last 1 turns?",
                             "Logic": ">=7",
                             "Min": 0,
                             "Max": 7
@@ -766,10 +787,10 @@
                     },
                     "2700": {
                         "Button": {
-                            "Name": "Has 5 or more Ki Spheres been obtained on this turn?"
+                            "Name": "Has 5 or more Ki Spheres been obtained within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Ki Spheres have been obtained on this turn?",
+                            "Name": "How many Ki Spheres have been obtained within the last 1 turns?",
                             "Logic": ">=5",
                             "Min": 0,
                             "Max": 5
@@ -785,7 +806,7 @@
             "Paragraph Title": "Basic effect(s)"
         },
         "21004274": {
-            "ID": 21004274,
+            "ID": "21004274",
             "Timing": "When ki spheres collected",
             "DR": 10,
             "Target": {
@@ -795,16 +816,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": "( 2558 && 2807 )",
                 "Causalities": {
                     "2558": {
                         "Button": {
-                            "Name": "Is it on or after the first 7 turns from this characters entry turn on this turn?"
+                            "Name": "Is it on or after the first 7 turns from this characters entry turn within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
+                            "Name": "How many turns is it since entry turn within the last 1 turns?",
                             "Logic": ">=7",
                             "Min": 0,
                             "Max": 7
@@ -813,10 +835,10 @@
                     },
                     "2807": {
                         "Button": {
-                            "Name": "Has 6 or more Ki Spheres been obtained on this turn?"
+                            "Name": "Has 6 or more Ki Spheres been obtained within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Ki Spheres have been obtained on this turn?",
+                            "Name": "How many Ki Spheres have been obtained within the last 1 turns?",
                             "Logic": ">=6",
                             "Min": 0,
                             "Max": 6
@@ -832,7 +854,7 @@
             "Paragraph Title": "Basic effect(s)"
         },
         "22004274": {
-            "ID": 22004274,
+            "ID": "22004274",
             "Timing": "When ki spheres collected",
             "DR": 6,
             "Target": {
@@ -842,16 +864,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": "( 2558 && 2766 )",
                 "Causalities": {
                     "2558": {
                         "Button": {
-                            "Name": "Is it on or after the first 7 turns from this characters entry turn on this turn?"
+                            "Name": "Is it on or after the first 7 turns from this characters entry turn within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
+                            "Name": "How many turns is it since entry turn within the last 1 turns?",
                             "Logic": ">=7",
                             "Min": 0,
                             "Max": 7
@@ -860,10 +883,10 @@
                     },
                     "2766": {
                         "Button": {
-                            "Name": "Has 7 or more Ki Spheres been obtained on this turn?"
+                            "Name": "Has 7 or more Ki Spheres been obtained within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Ki Spheres have been obtained on this turn?",
+                            "Name": "How many Ki Spheres have been obtained within the last 1 turns?",
                             "Logic": ">=7",
                             "Min": 0,
                             "Max": 7
@@ -879,7 +902,7 @@
             "Paragraph Title": "Basic effect(s)"
         },
         "23004274": {
-            "ID": 23004274,
+            "ID": "23004274",
             "Timing": "After all ki collected",
             "DEF": 100,
             "Target": {
@@ -889,16 +912,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2921 ",
                 "Causalities": {
                     "2921": {
                         "Button": {
-                            "Name": "Is this the 1st attacker in the turn on this turn?"
+                            "Name": "Is this the 1st attacker in the turn within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "What position is this character attacking in on this turn?",
+                            "Name": "What position is this character attacking in within the last 1 turns?",
                             "Logic": "==1",
                             "Min": 1,
                             "Max": 3
@@ -914,7 +938,7 @@
             "Paragraph Title": "As the 1st attacker in the turn"
         },
         "24004274": {
-            "ID": 24004274,
+            "ID": "24004274",
             "Additional Attack": {
                 "Activated": true,
                 "Chance of super": 50,
@@ -928,7 +952,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 292300000 ",
                 "Causalities": {
@@ -947,7 +972,7 @@
             "Paragraph Title": "As the 2nd or 3rd attacker in a turn"
         },
         "25004274": {
-            "ID": 25004274,
+            "ID": "25004274",
             "Dodge Chance": 30,
             "Timing": "After all ki collected",
             "Target": {
@@ -957,7 +982,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 292300000 ",
                 "Causalities": {
@@ -976,7 +1002,7 @@
             "Paragraph Title": "As the 2nd or 3rd attacker in a turn"
         },
         "26004274": {
-            "ID": 26004274,
+            "ID": "26004274",
             "Timing": "Start of turn",
             "DEF": 66,
             "Target": {
@@ -986,7 +1012,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2473 ",
                 "Causalities": {
@@ -1011,7 +1038,7 @@
             "Paragraph Title": "When there are 3 or more Extreme class allies attacking on this turn"
         },
         "27004274": {
-            "ID": 27004274,
+            "ID": "27004274",
             "Dodge Chance": 30,
             "Timing": "Start of turn",
             "Target": {
@@ -1021,7 +1048,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2473 ",
                 "Causalities": {
@@ -1255,7 +1283,9 @@
     "Active Skill": null,
     "Standby Skill": null,
     "Finish Skill": null,
-    "Transforms from": [],
+    "Transforms from": [
+        "1017781"
+    ],
     "Transformations": [],
     "Max Appearances In Form": 50,
     "Dokkan awakenings": [],

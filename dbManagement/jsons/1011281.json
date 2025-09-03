@@ -32,7 +32,7 @@
     "Resource ID": 1011280,
     "Passive": {
         "1037": {
-            "ID": 1037,
+            "ID": "1037",
             "Timing": "Start of turn",
             "Ki": 3,
             "Target": {
@@ -42,15 +42,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Ki +3 ",
             "Line description": "Ki +3 ",
             "Paragraph Title": "Basic effect(s)"
         },
         "1001037": {
-            "ID": 1001037,
+            "ID": "1001037",
             "Timing": "Start of turn",
             "ATK": 60,
             "DEF": 60,
@@ -61,16 +62,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 67 ",
                 "Causalities": {
                     "67": {
                         "Button": {
-                            "Name": "Is there less than 3 enemies on this turn?"
+                            "Name": "Is there less than 3 enemies within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many enemies are there on this turn?",
+                            "Name": "How many enemies are there within the last 1 turns?",
                             "Logic": "<3",
                             "Min": 1,
                             "Max": 7

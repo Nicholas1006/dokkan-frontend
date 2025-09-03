@@ -36,7 +36,7 @@
     "Resource ID": 1029030,
     "Passive": {
         "4164": {
-            "ID": 4164,
+            "ID": "4164",
             "Timing": "Start of turn",
             "Ki": 2,
             "Target": {
@@ -46,15 +46,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Ki +2 ",
             "Line description": "Ki +2 ",
             "Paragraph Title": "Basic effect(s)"
         },
         "1004164": {
-            "ID": 1004164,
+            "ID": "1004164",
             "Timing": "Start of turn",
             "ATK": 150,
             "DEF": 150,
@@ -65,15 +66,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 150%{passiveImg:up_g} ",
             "Line description": "ATK and DEF 150%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "2004164": {
-            "ID": 2004164,
+            "ID": "2004164",
             "Timing": "Start of turn",
             "Crit Chance": 50,
             "Target": {
@@ -83,15 +85,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Chance of performing a critical hit +50%{passiveImg:up_g} ",
             "Line description": "Chance of performing a critical hit +50%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "3004164": {
-            "ID": 3004164,
+            "ID": "3004164",
             "Dodge Chance": 50,
             "Timing": "Start of turn",
             "Target": {
@@ -101,15 +104,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Chance of evading enemy attacks +50% ",
             "Line description": "Chance of evading enemy attacks +50% ",
             "Paragraph Title": "Basic effect(s)"
         },
         "4004164": {
-            "ID": 4004164,
+            "ID": "4004164",
             "Timing": "Start of turn",
             "DR": 25,
             "Target": {
@@ -119,18 +123,19 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Damage Reduction Rate 25%{passiveImg:up_g} ",
             "Line description": "Damage Reduction Rate 25%{passiveImg:up_g} until after being hit",
             "Paragraph Title": "Basic effect(s)"
         },
         "5004164": {
-            "ID": 5004164,
+            "ID": "5004164",
             "Disable Other Line": {
                 "Activated": true,
-                "Line": 4004164
+                "Line": "4004164"
             },
             "Timing": "Right after being hit",
             "Target": {
@@ -140,16 +145,17 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 24 ",
                 "Causalities": {
                     "24": {
                         "Button": {
-                            "Name": "Has this character been hit on this turn?"
+                            "Name": "Has this character been hit within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many times has this character been hit on this turn?",
+                            "Name": "How many times has this character been hit within the last 1 turns?",
                             "Logic": ">=1",
                             "Min": 0,
                             "Max": 1
@@ -165,7 +171,7 @@
             "Paragraph Title": "After recieving an attack"
         },
         "6004164": {
-            "ID": 6004164,
+            "ID": "6004164",
             "Additional Attack": {
                 "Activated": true,
                 "Chance of super": 50,
@@ -179,13 +185,14 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 365 ",
                 "Causalities": {
                     "365": {
                         "Button": {
-                            "Name": "Has this unit evaded an attack on this turn?"
+                            "Name": "Has this unit evaded an attack within the last 1 turns?"
                         },
                         "Paragraph Title": "After evading an attack"
                     }

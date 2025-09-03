@@ -43,7 +43,7 @@
     "Resource ID": 4019650,
     "Passive": {
         "4111": {
-            "ID": 4111,
+            "ID": "4111",
             "Timing": "Start of turn",
             "Ki": 3,
             "Target": {
@@ -53,15 +53,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Ki +3 ",
             "Line description": "Ki +3 ",
             "Paragraph Title": "Basic effect(s)"
         },
         "1004111": {
-            "ID": 1004111,
+            "ID": "1004111",
             "Timing": "Start of turn",
             "ATK": 300,
             "DEF": 300,
@@ -72,15 +73,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 300%{passiveImg:up_g} ",
             "Line description": "ATK and DEF 300%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "2004111": {
-            "ID": 2004111,
+            "ID": "2004111",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 100,
             "Target": {
@@ -90,16 +92,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 46 ",
                 "Causalities": {
                     "46": {
                         "Button": {
-                            "Name": "Is Ki at least 12 on this turn?"
+                            "Name": "Is Ki at least 12 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
@@ -115,7 +118,7 @@
             "Paragraph Title": "When Ki is 12 or more"
         },
         "3004111": {
-            "ID": 3004111,
+            "ID": "3004111",
             "Timing": "Right before attack(MOT stat)",
             "Crit Chance": 50,
             "Target": {
@@ -125,16 +128,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 46 ",
                 "Causalities": {
                     "46": {
                         "Button": {
-                            "Name": "Is Ki at least 12 on this turn?"
+                            "Name": "Is Ki at least 12 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
@@ -150,7 +154,7 @@
             "Paragraph Title": "When Ki is 12 or more"
         },
         "4004111": {
-            "ID": 4004111,
+            "ID": "4004111",
             "Additional Attack": {
                 "Activated": true,
                 "Chance of super": 100,
@@ -164,15 +168,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Performs an additional super attack ",
             "Line description": "Performs an additional super attack ",
             "Paragraph Title": "Basic effect(s)"
         },
         "5004111": {
-            "ID": 5004111,
+            "ID": "5004111",
             "Dodge Chance": 70,
             "Timing": "Start of turn",
             "Target": {
@@ -182,15 +187,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Chance of evading enemy attacks +70% ",
             "Line description": "Chance of evading enemy attacks +70% ",
             "Paragraph Title": "Basic effect(s)"
         },
         "6004111": {
-            "ID": 6004111,
+            "ID": "6004111",
             "Dodge Chance": 20,
             "Timing": "Right after being hit",
             "Target": {
@@ -200,13 +206,14 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 365 ",
                 "Causalities": {
                     "365": {
                         "Button": {
-                            "Name": "Has this unit evaded an attack on this turn?"
+                            "Name": "Has this unit evaded an attack within the last 1 turns?"
                         },
                         "Paragraph Title": "After evading an attack"
                     }
@@ -219,7 +226,7 @@
             "Paragraph Title": "After evading an attack"
         },
         "7004111": {
-            "ID": 7004111,
+            "ID": "7004111",
             "Timing": "Start of turn",
             "Crit Chance": 100,
             "Target": {
@@ -229,7 +236,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2266 ",
                 "Causalities": {
@@ -238,7 +246,7 @@
                             "Name": "Is it within the first 1 turn(s) from the character's entry turn?"
                         },
                         "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
+                            "Name": "How many turns is it since entry turn within the last 1 turns?",
                             "Logic": "<=1",
                             "Min": 0,
                             "Max": 2
@@ -561,6 +569,7 @@
     "Standby Skill": null,
     "Finish Skill": null,
     "Transforms from": [
+        "1019631",
         "4019641"
     ],
     "Transformations": [],

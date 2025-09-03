@@ -40,7 +40,7 @@
     "Resource ID": 4022840,
     "Passive": {
         "2591": {
-            "ID": 2591,
+            "ID": "2591",
             "Timing": "Start of turn",
             "Heals": 60,
             "Target": {
@@ -50,7 +50,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "CausalityLogic": "{\"source\": \"1000000000000\", \"compiled\": 1000000000000}",
             "Once Only": true,
             "Type": "Single activator",
@@ -66,11 +67,11 @@
                 }
             },
             "Brief effect description": "Heals +60% ",
-            "Line description": " {passiveImg:once}Heals +60% ",
+            "Line description": " {passiveImg:once}Heals +60% for 1 turn ",
             "Paragraph Title": "For 1 turn(s) from the character's entry turn"
         },
         "1002591": {
-            "ID": 1002591,
+            "ID": "1002591",
             "Timing": "Start of turn",
             "ATK": 160,
             "DEF": 160,
@@ -81,15 +82,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 160%{passiveImg:up_g} ",
             "Line description": "ATK and DEF 160%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "2002591": {
-            "ID": 2002591,
+            "ID": "2002591",
             "Dodge Chance": 50,
             "Timing": "Start of turn",
             "Target": {
@@ -99,15 +101,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Chance of evading enemy attacks +50% ",
             "Line description": "Chance of evading enemy attacks +50% ",
             "Paragraph Title": "Basic effect(s)"
         },
         "3002591": {
-            "ID": 3002591,
+            "ID": "3002591",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 60,
             "DEF": 60,
@@ -118,15 +121,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 60%{passiveImg:up_g} when attacking",
             "Line description": "ATK and DEF 60%{passiveImg:up_g} when attacking",
             "Paragraph Title": "Basic effect(s)"
         },
         "4002591": {
-            "ID": 4002591,
+            "ID": "4002591",
             "Additional Attack": {
                 "Activated": true,
                 "Chance of super": 30,
@@ -140,15 +144,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Performs an additional attack with a 30% chance of becoming a super attack when attacking",
             "Line description": "Performs an additional attack with a 30% chance of becoming a super attack when attacking",
             "Paragraph Title": "Basic effect(s)"
         },
         "5002591": {
-            "ID": 5002591,
+            "ID": "5002591",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 60,
             "Target": {
@@ -158,16 +163,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 1030 ",
                 "Causalities": {
                     "1030": {
                         "Button": {
-                            "Name": "Has 6 or more Ki Spheres been obtained on this turn?"
+                            "Name": "Has 6 or more Ki Spheres been obtained within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Ki Spheres have been obtained on this turn?",
+                            "Name": "How many Ki Spheres have been obtained within the last 1 turns?",
                             "Logic": ">=6",
                             "Min": 0,
                             "Max": 6

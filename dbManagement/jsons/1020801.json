@@ -30,7 +30,7 @@
     "Resource ID": 1020800,
     "Passive": {
         "2241": {
-            "ID": 2241,
+            "ID": "2241",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -49,15 +49,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 99,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
             "Brief effect description": "Ki +1 ({currentValue} / 2) based on 'How many turns has this character been on' ",
-            "Line description": "Ki +1 ({currentValue} / 2) based on 'How many turns has this character been on' ",
+            "Line description": "Ki +1 ({currentValue} / 2) based on 'How many turns has this character been on' {passiveImg:forever}",
             "Paragraph Title": "Basic effect(s)"
         },
         "1002241": {
-            "ID": 1002241,
+            "ID": "1002241",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -76,15 +77,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 99,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
             "Brief effect description": "ATK 20%{passiveImg:up_g} ({currentValue} / 40%) based on 'How many turns has this character been on' ",
-            "Line description": "ATK 20%{passiveImg:up_g} ({currentValue} / 40%) based on 'How many turns has this character been on' ",
+            "Line description": "ATK 20%{passiveImg:up_g} ({currentValue} / 40%) based on 'How many turns has this character been on' {passiveImg:forever}",
             "Paragraph Title": "Basic effect(s)"
         },
         "2002241": {
-            "ID": 2002241,
+            "ID": "2002241",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -103,15 +105,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 99,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
             "Brief effect description": "DEF 20%{passiveImg:up_g} ({currentValue} / 40%) based on 'How many turns has this character been on' ",
-            "Line description": "DEF 20%{passiveImg:up_g} ({currentValue} / 40%) based on 'How many turns has this character been on' ",
+            "Line description": "DEF 20%{passiveImg:up_g} ({currentValue} / 40%) based on 'How many turns has this character been on' {passiveImg:forever}",
             "Paragraph Title": "Basic effect(s)"
         },
         "3002241": {
-            "ID": 3002241,
+            "ID": "3002241",
             "Timing": "Right after being hit",
             "ATK": 50,
             "Target": {
@@ -121,16 +124,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 24 ",
                 "Causalities": {
                     "24": {
                         "Button": {
-                            "Name": "Has this character been hit on this turn?"
+                            "Name": "Has this character been hit within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many times has this character been hit on this turn?",
+                            "Name": "How many times has this character been hit within the last 1 turns?",
                             "Logic": ">=1",
                             "Min": 0,
                             "Max": 1

@@ -48,10 +48,10 @@
     "Resource ID": 1031720,
     "Passive": {
         "4684": {
-            "ID": 4684,
+            "ID": "4684",
             "Reversible exchange": {
                 "Activated": true,
-                "Unit": 4031731
+                "Unit": "4031731"
             },
             "Timing": "Start of turn",
             "Target": {
@@ -61,16 +61,17 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": "( 930 || ( 296 && 3537 ) )",
                 "Causalities": {
                     "930": {
                         "Button": {
-                            "Name": "Is the turn count 5 or more on this turn?"
+                            "Name": "Is the turn count 5 or more within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "What turn is it on this turn?",
+                            "Name": "What turn is it within the last 1 turns?",
                             "Logic": ">=5",
                             "Min": 1
                         },
@@ -78,10 +79,10 @@
                     },
                     "296": {
                         "Button": {
-                            "Name": "Is it on or after the first 3 turns from this characters entry turn on this turn?"
+                            "Name": "Is it on or after the first 3 turns from this characters entry turn within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
+                            "Name": "How many turns is it since entry turn within the last 1 turns?",
                             "Logic": ">=3",
                             "Min": 0,
                             "Max": 3
@@ -90,10 +91,10 @@
                     },
                     "3537": {
                         "Button": {
-                            "Name": "Is there 3 or more Super class allies on the team on this turn?"
+                            "Name": "Is there 3 or more Super class allies on the team within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Super class allies on the team on this turn?",
+                            "Name": "How many Super class allies on the team within the last 1 turns?",
                             "Logic": ">=3",
                             "Max": 7,
                             "Min": 0
@@ -110,7 +111,7 @@
             "Paragraph Title": "Basic effect(s)"
         },
         "1004684": {
-            "ID": 1004684,
+            "ID": "1004684",
             "Timing": "Start of turn",
             "ATK": 250,
             "DEF": 250,
@@ -121,15 +122,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 250%{passiveImg:up_g} ",
             "Line description": "ATK and DEF 250%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "2004684": {
-            "ID": 2004684,
+            "ID": "2004684",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -146,7 +148,7 @@
                         "AGL"
                     ]
                 },
-                "Slider": "How many Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres have been obtained?"
+                "Slider": "How many Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres have been obtained on this turn?"
             },
             "Ki": 2,
             "Target": {
@@ -156,15 +158,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Building Stat",
             "Brief effect description": "Ki +2 per Ki Sphere obtained{currentValue} / 46 ",
             "Line description": "Ki +2 per Ki Sphere obtained{currentValue} / 46 ",
             "Paragraph Title": "Basic effect(s)"
         },
         "3004684": {
-            "ID": 3004684,
+            "ID": "3004684",
             "Timing": "Start of turn",
             "DR": 70,
             "Target": {
@@ -174,15 +177,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Damage Reduction Rate 70%{passiveImg:up_g} ",
             "Line description": "Damage Reduction Rate 70%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "4004684": {
-            "ID": 4004684,
+            "ID": "4004684",
             "Timing": "Start of turn",
             "Guard": true,
             "Target": {
@@ -192,7 +196,8 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 5,
+            "Chance": "100",
+            "Length": "5",
             "CausalityLogic": "{\"source\": \"5000000000000\", \"compiled\": 5000000000000}",
             "Once Only": true,
             "Type": "Single activator",
@@ -212,7 +217,7 @@
             "Paragraph Title": "For 5 turn(s) from the character's entry turn"
         },
         "5004684": {
-            "ID": 5004684,
+            "ID": "5004684",
             "Timing": "Start of turn",
             "Guard": true,
             "Target": {
@@ -222,17 +227,17 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Chance": 70,
-            "Length": 1,
+            "Chance": "70",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2729 ",
                 "Causalities": {
                     "2729": {
                         "Button": {
-                            "Name": "Is it on or after the first 6 turns from this characters entry turn on this turn?"
+                            "Name": "Is it on or after the first 6 turns from this characters entry turn within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
+                            "Name": "How many turns is it since entry turn within the last 1 turns?",
                             "Logic": ">=6",
                             "Min": 0,
                             "Max": 6
@@ -248,7 +253,7 @@
             "Paragraph Title": "Starting from the 6 turn from the character's entry turn"
         },
         "6004684": {
-            "ID": 6004684,
+            "ID": "6004684",
             "Additional Attack": {
                 "Activated": true,
                 "Chance of super": 100,
@@ -262,7 +267,8 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": "( 3037 || 3336 || 761 )",
                 "Causalities": {
@@ -292,10 +298,10 @@
                     },
                     "761": {
                         "Button": {
-                            "Name": "Is there 4 or more Extreme class allies on the team on this turn?"
+                            "Name": "Is there 4 or more Extreme class allies on the team within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Extreme class allies on the team on this turn?",
+                            "Name": "How many Extreme class allies on the team within the last 1 turns?",
                             "Logic": ">=4",
                             "Max": 7,
                             "Min": 0
@@ -311,7 +317,7 @@
             "Paragraph Title": "When there are 2 or more Movie Heroes Category allies attacking on this turn or there are 2 or more Movie Bosses Category allies attacking on this turn or there are 4 or more Extreme class allies on the team"
         },
         "7004684": {
-            "ID": 7004684,
+            "ID": "7004684",
             "Timing": "Right after being hit",
             "Building Stat": {
                 "Min": 0,
@@ -330,7 +336,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "CausalityLogic": "{\"source\": \"24\", \"compiled\": 24}",
             "Type": "Building Stat",
             "Brief effect description": "ATK 150%{passiveImg:up_g} ({currentValue} / 99999%) based on 'How many attacks has this character recieved' after being hit",
@@ -338,7 +345,7 @@
             "Paragraph Title": "Basic effect(s)"
         },
         "8004684": {
-            "ID": 8004684,
+            "ID": "8004684",
             "Timing": "Right after being hit",
             "Building Stat": {
                 "Min": 0,
@@ -357,7 +364,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "CausalityLogic": "{\"source\": \"24\", \"compiled\": 24}",
             "Type": "Building Stat",
             "Brief effect description": "Chance of performing a critical hit +10%{passiveImg:up_g} ({currentValue} / 100%) based on 'How many attacks has this character recieved' after being hit",
@@ -365,7 +373,7 @@
             "Paragraph Title": "Basic effect(s)"
         },
         "9004684": {
-            "ID": 9004684,
+            "ID": "9004684",
             "Timing": "Right before being hit",
             "Building Stat": {
                 "Min": 0,
@@ -384,15 +392,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 99,
+            "Chance": "100",
+            "Length": "99",
             "CausalityLogic": "{\"source\": \"1099\", \"compiled\": 1099}",
             "Type": "Building Stat",
             "Brief effect description": "DEF 20%{passiveImg:up_g} ({currentValue} / 100%) based on 'How many times has this character's guard been activated' right before being hit",
-            "Line description": "DEF 20%{passiveImg:up_g} ({currentValue} / 100%) based on 'How many times has this character's guard been activated' right before being hit",
+            "Line description": "DEF 20%{passiveImg:up_g} ({currentValue} / 100%) based on 'How many times has this character's guard been activated' right before being hit{passiveImg:forever}",
             "Paragraph Title": "Basic effect(s)"
         },
         "10004684": {
-            "ID": 10004684,
+            "ID": "10004684",
             "Timing": "Start of turn",
             "Ki Change": {
                 "From": "AGL",
@@ -406,16 +415,17 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": "( 930 || ( 296 && 3537 ) )",
                 "Causalities": {
                     "930": {
                         "Button": {
-                            "Name": "Is the turn count 5 or more on this turn?"
+                            "Name": "Is the turn count 5 or more within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "What turn is it on this turn?",
+                            "Name": "What turn is it within the last 1 turns?",
                             "Logic": ">=5",
                             "Min": 1
                         },
@@ -423,10 +433,10 @@
                     },
                     "296": {
                         "Button": {
-                            "Name": "Is it on or after the first 3 turns from this characters entry turn on this turn?"
+                            "Name": "Is it on or after the first 3 turns from this characters entry turn within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
+                            "Name": "How many turns is it since entry turn within the last 1 turns?",
                             "Logic": ">=3",
                             "Min": 0,
                             "Max": 3
@@ -435,10 +445,10 @@
                     },
                     "3537": {
                         "Button": {
-                            "Name": "Is there 3 or more Super class allies on the team on this turn?"
+                            "Name": "Is there 3 or more Super class allies on the team within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Super class allies on the team on this turn?",
+                            "Name": "How many Super class allies on the team within the last 1 turns?",
                             "Logic": ">=3",
                             "Max": 7,
                             "Min": 0
@@ -451,11 +461,11 @@
             "Once Only": true,
             "Type": "Single activator",
             "Brief effect description": "Changes AGL Ki Spheres to TEQ Ki Spheres ",
-            "Line description": " {passiveImg:once}Changes AGL Ki Spheres to TEQ Ki Spheres When the turn count is 5 or Starting from the 3 turn from the character's entry turn and When there are 3 or more Super class allies on the team ",
+            "Line description": " {passiveImg:once}Changes AGL Ki Spheres to TEQ Ki Spheres When the turn count is 5 or Starting from the 3 turn from the character's entry turn and When there are 3 or more Super class allies on the team for 1 turn ",
             "Paragraph Title": "Basic effect(s)"
         },
         "11004684": {
-            "ID": 11004684,
+            "ID": "11004684",
             "Timing": "Start of turn",
             "Ki Change": {
                 "From": "STR",
@@ -469,16 +479,17 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": "( 930 || ( 296 && 3537 ) )",
                 "Causalities": {
                     "930": {
                         "Button": {
-                            "Name": "Is the turn count 5 or more on this turn?"
+                            "Name": "Is the turn count 5 or more within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "What turn is it on this turn?",
+                            "Name": "What turn is it within the last 1 turns?",
                             "Logic": ">=5",
                             "Min": 1
                         },
@@ -486,10 +497,10 @@
                     },
                     "296": {
                         "Button": {
-                            "Name": "Is it on or after the first 3 turns from this characters entry turn on this turn?"
+                            "Name": "Is it on or after the first 3 turns from this characters entry turn within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
+                            "Name": "How many turns is it since entry turn within the last 1 turns?",
                             "Logic": ">=3",
                             "Min": 0,
                             "Max": 3
@@ -498,10 +509,10 @@
                     },
                     "3537": {
                         "Button": {
-                            "Name": "Is there 3 or more Super class allies on the team on this turn?"
+                            "Name": "Is there 3 or more Super class allies on the team within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Super class allies on the team on this turn?",
+                            "Name": "How many Super class allies on the team within the last 1 turns?",
                             "Logic": ">=3",
                             "Max": 7,
                             "Min": 0
@@ -514,11 +525,11 @@
             "Once Only": true,
             "Type": "Single activator",
             "Brief effect description": "Changes STR Ki Spheres to TEQ Ki Spheres ",
-            "Line description": " {passiveImg:once}Changes STR Ki Spheres to TEQ Ki Spheres When the turn count is 5 or Starting from the 3 turn from the character's entry turn and When there are 3 or more Super class allies on the team ",
+            "Line description": " {passiveImg:once}Changes STR Ki Spheres to TEQ Ki Spheres When the turn count is 5 or Starting from the 3 turn from the character's entry turn and When there are 3 or more Super class allies on the team for 1 turn ",
             "Paragraph Title": "Basic effect(s)"
         },
         "12004684": {
-            "ID": 12004684,
+            "ID": "12004684",
             "Timing": "Start of turn",
             "Ki Change": {
                 "From": [
@@ -537,16 +548,17 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": "( 930 || ( 296 && 3537 ) )",
                 "Causalities": {
                     "930": {
                         "Button": {
-                            "Name": "Is the turn count 5 or more on this turn?"
+                            "Name": "Is the turn count 5 or more within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "What turn is it on this turn?",
+                            "Name": "What turn is it within the last 1 turns?",
                             "Logic": ">=5",
                             "Min": 1
                         },
@@ -554,10 +566,10 @@
                     },
                     "296": {
                         "Button": {
-                            "Name": "Is it on or after the first 3 turns from this characters entry turn on this turn?"
+                            "Name": "Is it on or after the first 3 turns from this characters entry turn within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
+                            "Name": "How many turns is it since entry turn within the last 1 turns?",
                             "Logic": ">=3",
                             "Min": 0,
                             "Max": 3
@@ -566,10 +578,10 @@
                     },
                     "3537": {
                         "Button": {
-                            "Name": "Is there 3 or more Super class allies on the team on this turn?"
+                            "Name": "Is there 3 or more Super class allies on the team within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Super class allies on the team on this turn?",
+                            "Name": "How many Super class allies on the team within the last 1 turns?",
                             "Logic": ">=3",
                             "Max": 7,
                             "Min": 0
@@ -582,7 +594,7 @@
             "Once Only": true,
             "Type": "Single activator",
             "Brief effect description": "Randomly changes Ki Spheres of a certain Type(AGL excluded) to Rainbow Ki Spheres ",
-            "Line description": " {passiveImg:once}Randomly changes Ki Spheres of a certain Type(AGL excluded) to Rainbow Ki Spheres When the turn count is 5 or Starting from the 3 turn from the character's entry turn and When there are 3 or more Super class allies on the team ",
+            "Line description": " {passiveImg:once}Randomly changes Ki Spheres of a certain Type(AGL excluded) to Rainbow Ki Spheres When the turn count is 5 or Starting from the 3 turn from the character's entry turn and When there are 3 or more Super class allies on the team for 1 turn ",
             "Paragraph Title": "Basic effect(s)"
         }
     },
@@ -1803,7 +1815,9 @@
     },
     "Standby Skill": null,
     "Finish Skill": null,
-    "Transforms from": [],
+    "Transforms from": [
+        "4031731"
+    ],
     "Transformations": [
         "4031731"
     ],

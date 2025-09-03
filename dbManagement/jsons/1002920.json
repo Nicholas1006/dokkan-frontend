@@ -26,7 +26,7 @@
     "Resource ID": 1002920,
     "Passive": {
         "499": {
-            "ID": 499,
+            "ID": "499",
             "Timing": "Start of turn",
             "Ki": 8,
             "Target": {
@@ -36,16 +36,17 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 42 ",
                 "Causalities": {
                     "42": {
                         "Button": {
-                            "Name": "Is HP 80 % or less on this turn?"
+                            "Name": "Is HP 80 % or less within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "What percentage of HP is remaining on this turn?",
+                            "Name": "What percentage of HP is remaining within the last 1 turns?",
                             "Logic": "<=80",
                             "Min": 0,
                             "Max": 100
@@ -58,7 +59,7 @@
             "Once Only": true,
             "Type": "Single activator",
             "Brief effect description": "Ki +8 ",
-            "Line description": " {passiveImg:once}Ki +8 ",
+            "Line description": " {passiveImg:once}Ki +8 for 1 turn ",
             "Paragraph Title": "When HP is 80% or less"
         }
     },

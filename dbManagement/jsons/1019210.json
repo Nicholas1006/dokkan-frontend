@@ -28,7 +28,7 @@
     "Resource ID": 1019210,
     "Passive": {
         "2055": {
-            "ID": 2055,
+            "ID": "2055",
             "Timing": "Start of turn",
             "ATK": 70,
             "DEF": 70,
@@ -39,15 +39,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 70%{passiveImg:up_g} ",
             "Line description": "ATK and DEF 70%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "1002055": {
-            "ID": 1002055,
+            "ID": "1002055",
             "Timing": "Right before attack(MOT stat)",
             "Crit Chance": 100,
             "Target": {
@@ -57,13 +58,14 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 535 ",
                 "Causalities": {
                     "535": {
                         "Button": {
-                            "Name": "Is the target enemy in Stunned on this turn?"
+                            "Name": "Is the target enemy in Stunned within the last 1 turns?"
                         },
                         "Paragraph Title": "When the target enemy is in the following status{passiveImg:stun}"
                     }

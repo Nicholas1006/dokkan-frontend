@@ -26,7 +26,7 @@
     "Resource ID": 1011580,
     "Passive": {
         "996": {
-            "ID": 996,
+            "ID": "996",
             "Timing": "Right after being hit",
             "Building Stat": {
                 "Min": 0,
@@ -45,18 +45,19 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 99,
+            "Chance": "100",
+            "Length": "99",
             "CausalityLogic": "{\"source\": \"24\", \"compiled\": 24}",
             "Type": "Building Stat",
             "Brief effect description": "ATK 20%{passiveImg:up_g} ({currentValue} / 120%) based on 'How many attacks has this character recieved' after being hit",
-            "Line description": "ATK 20%{passiveImg:up_g} ({currentValue} / 120%) based on 'How many attacks has this character recieved' after being hit",
+            "Line description": "ATK 20%{passiveImg:up_g} ({currentValue} / 120%) based on 'How many attacks has this character recieved' after being hit{passiveImg:forever}",
             "Paragraph Title": "Basic effect(s)"
         },
         "1000996": {
-            "ID": 1000996,
+            "ID": "1000996",
             "Transformation": {
                 "Activated": true,
-                "Unit": 4011580,
+                "Unit": "4011580",
                 "Giant/Rage": true,
                 "Min Turns": "2",
                 "Max Turns": "3",
@@ -70,17 +71,17 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Chance": 10,
-            "Length": 1,
+            "Chance": "10",
+            "Length": "1",
             "Condition": {
                 "Logic": " 42 ",
                 "Causalities": {
                     "42": {
                         "Button": {
-                            "Name": "Is HP 80 % or less on this turn?"
+                            "Name": "Is HP 80 % or less within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "What percentage of HP is remaining on this turn?",
+                            "Name": "What percentage of HP is remaining within the last 1 turns?",
                             "Logic": "<=80",
                             "Min": 0,
                             "Max": 100

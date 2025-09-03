@@ -32,7 +32,7 @@
     "Resource ID": 1028160,
     "Passive": {
         "3989": {
-            "ID": 3989,
+            "ID": "3989",
             "Timing": "Start of turn",
             "Ki": 3,
             "Target": {
@@ -42,7 +42,8 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 5,
+            "Chance": "100",
+            "Length": "5",
             "CausalityLogic": "{\"source\": \"5000000000000\", \"compiled\": 5000000000000}",
             "Once Only": true,
             "Has Animation": true,
@@ -63,7 +64,7 @@
             "Paragraph Title": "Activates the Entrance Animation For 5 turn(s) from the character's entry turn"
         },
         "1003989": {
-            "ID": 1003989,
+            "ID": "1003989",
             "Timing": "Start of turn",
             "ATK": 100,
             "DEF": 100,
@@ -74,7 +75,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 5,
+            "Chance": "100",
+            "Length": "5",
             "CausalityLogic": "{\"source\": \"5000000000000\", \"compiled\": 5000000000000}",
             "Once Only": true,
             "Type": "Single activator",
@@ -94,7 +96,7 @@
             "Paragraph Title": "Activates the Entrance Animation For 5 turn(s) from the character's entry turn"
         },
         "2003989": {
-            "ID": 2003989,
+            "ID": "2003989",
             "Timing": "Start of turn",
             "Crit Chance": 50,
             "Target": {
@@ -104,7 +106,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 5,
+            "Chance": "100",
+            "Length": "5",
             "CausalityLogic": "{\"source\": \"5000000000000\", \"compiled\": 5000000000000}",
             "Once Only": true,
             "Type": "Single activator",
@@ -124,7 +127,7 @@
             "Paragraph Title": "Activates the Entrance Animation For 5 turn(s) from the character's entry turn"
         },
         "3003989": {
-            "ID": 3003989,
+            "ID": "3003989",
             "Timing": "Start of turn",
             "ATK": 200,
             "DEF": 200,
@@ -135,15 +138,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 200%{passiveImg:up_g} ",
             "Line description": "ATK and DEF 200%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "4003989": {
-            "ID": 4003989,
+            "ID": "4003989",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 100,
             "Target": {
@@ -153,15 +157,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "ATK 100%{passiveImg:up_g} when attacking",
             "Line description": "ATK 100%{passiveImg:up_g} when attacking",
             "Paragraph Title": "Basic effect(s)"
         },
         "5003989": {
-            "ID": 5003989,
+            "ID": "5003989",
             "Dodge Chance": 70,
             "Timing": "Start of turn",
             "Target": {
@@ -171,15 +176,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Chance of evading enemy attacks +70% ",
             "Line description": "Chance of evading enemy attacks +70% ",
             "Paragraph Title": "Basic effect(s)"
         },
         "6003989": {
-            "ID": 6003989,
+            "ID": "6003989",
             "Additional Attack": {
                 "Activated": true,
                 "Chance of super": 70,
@@ -193,13 +199,14 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 365 ",
                 "Causalities": {
                     "365": {
                         "Button": {
-                            "Name": "Has this unit evaded an attack on this turn?"
+                            "Name": "Has this unit evaded an attack within the last 1 turns?"
                         },
                         "Paragraph Title": "After evading an attack"
                     }
@@ -212,7 +219,7 @@
             "Paragraph Title": "After evading an attack"
         },
         "7003989": {
-            "ID": 7003989,
+            "ID": "7003989",
             "Timing": "Right after being hit",
             "Building Stat": {
                 "Min": 0,
@@ -231,11 +238,12 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 99,
+            "Chance": "100",
+            "Length": "99",
             "CausalityLogic": "{\"source\": \"365\", \"compiled\": 365}",
             "Type": "Building Stat",
             "Brief effect description": "DEF 10%{passiveImg:up_g} ({currentValue} / 50%) based on 'How many attacks have been evaded' after being hit",
-            "Line description": "DEF 10%{passiveImg:up_g} ({currentValue} / 50%) based on 'How many attacks have been evaded' after being hit",
+            "Line description": "DEF 10%{passiveImg:up_g} ({currentValue} / 50%) based on 'How many attacks have been evaded' after being hit{passiveImg:forever}",
             "Paragraph Title": "Basic effect(s)"
         }
     },

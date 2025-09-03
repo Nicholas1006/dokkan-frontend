@@ -32,7 +32,7 @@
     "Resource ID": 1024310,
     "Passive": {
         "2841": {
-            "ID": 2841,
+            "ID": "2841",
             "Timing": "Start of turn",
             "ATK": 70,
             "DEF": 70,
@@ -43,15 +43,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 70%{passiveImg:up_g} ",
             "Line description": "ATK and DEF 70%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "1002841": {
-            "ID": 1002841,
+            "ID": "1002841",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 70,
             "DEF": 70,
@@ -62,15 +63,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 70%{passiveImg:up_g} when attacking",
             "Line description": "ATK and DEF 70%{passiveImg:up_g} when attacking",
             "Paragraph Title": "Basic effect(s)"
         },
         "2002841": {
-            "ID": 2002841,
+            "ID": "2002841",
             "Additional Attack": {
                 "Activated": true,
                 "Chance of super": 0,
@@ -84,7 +86,8 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 4,
+            "Chance": "100",
+            "Length": "4",
             "CausalityLogic": "{\"source\": \"4000000000000\", \"compiled\": 4000000000000}",
             "Once Only": true,
             "Type": "Single activator",
@@ -104,7 +107,7 @@
             "Paragraph Title": "For 4 turn(s) from the character's entry turn"
         },
         "3002841": {
-            "ID": 3002841,
+            "ID": "3002841",
             "Timing": "Right after attack",
             "ATK": 70,
             "DEF": 70,
@@ -115,13 +118,14 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 99,
+            "Chance": "100",
+            "Length": "99",
             "Condition": {
                 "Logic": " 1448 ",
                 "Causalities": {
                     "1448": {
                         "Slider": {
-                            "Name": "How many attacks has this character performed in battle?",
+                            "Name": "How many attacks has this character performed in battle within the last 99 turns?",
                             "Logic": ">=5",
                             "Min": 0,
                             "Max": 5
@@ -134,7 +138,7 @@
             "Once Only": true,
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 70%{passiveImg:up_g} after attacking",
-            "Line description": " {passiveImg:once}ATK and DEF 70%{passiveImg:up_g} after attacking",
+            "Line description": "ATK and DEF 70%{passiveImg:up_g} after attacking{passiveImg:forever}",
             "Paragraph Title": "When the character has performed 5 or more attacks"
         }
     },

@@ -26,7 +26,7 @@
     "Resource ID": 1016080,
     "Passive": {
         "4024": {
-            "ID": 4024,
+            "ID": "4024",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 150,
             "DEF": 150,
@@ -37,16 +37,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 46 ",
                 "Causalities": {
                     "46": {
                         "Button": {
-                            "Name": "Is Ki at least 12 on this turn?"
+                            "Name": "Is Ki at least 12 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
@@ -62,7 +63,7 @@
             "Paragraph Title": "When Ki is 12 or more"
         },
         "1004024": {
-            "ID": 1004024,
+            "ID": "1004024",
             "Additional Attack": {
                 "Activated": true,
                 "Chance of super": 100,
@@ -76,17 +77,17 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Chance": 50,
-            "Length": 1,
+            "Chance": "50",
+            "Length": "1",
             "Condition": {
                 "Logic": " 46 ",
                 "Causalities": {
                     "46": {
                         "Button": {
-                            "Name": "Is Ki at least 12 on this turn?"
+                            "Name": "Is Ki at least 12 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
@@ -102,7 +103,7 @@
             "Paragraph Title": "When Ki is 12 or more"
         },
         "2004024": {
-            "ID": 2004024,
+            "ID": "2004024",
             "Timing": "Right after attack",
             "Building Stat": {
                 "Min": 0,
@@ -111,7 +112,7 @@
                 "Cause": {
                     "Cause": "Super being performed"
                 },
-                "Slider": "How many super attacks has this character performed?"
+                "Slider": "How many super attacks has this character performed on this turn?"
             },
             "DR": 26,
             "Target": {
@@ -121,15 +122,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "CausalityLogic": "{\"source\": \"141\", \"compiled\": 141}",
             "Type": "Building Stat",
-            "Brief effect description": "Damage Reduction Rate 26%{passiveImg:up_g} ({currentValue} / 100%) based on 'How many super attacks has this character performed' after attacking",
-            "Line description": "Damage Reduction Rate 26%{passiveImg:up_g} ({currentValue} / 100%) based on 'How many super attacks has this character performed' after attacking",
+            "Brief effect description": "Damage Reduction Rate 26%{passiveImg:up_g} ({currentValue} / 100%) based on 'How many super attacks has this character performed on this turn' after attacking",
+            "Line description": "Damage Reduction Rate 26%{passiveImg:up_g} ({currentValue} / 100%) based on 'How many super attacks has this character performed on this turn' after attacking",
             "Paragraph Title": "Basic effect(s)"
         },
         "3004024": {
-            "ID": 3004024,
+            "ID": "3004024",
             "Timing": "Start of turn",
             "Ki": 3,
             "Target": {
@@ -145,15 +147,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Ki +3 for all Pure Saiyans category allies ",
             "Line description": "Ki +3 for all Pure Saiyans category allies ",
             "Paragraph Title": "Basic effect(s)"
         },
         "4004024": {
-            "ID": 4004024,
+            "ID": "4004024",
             "Timing": "Start of turn",
             "Ki": 3,
             "Target": {
@@ -171,15 +174,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Ki +3 for all Joined Forces category allies ",
             "Line description": "Ki +3 for all Joined Forces category allies ",
             "Paragraph Title": "Basic effect(s)"
         },
         "5004024": {
-            "ID": 5004024,
+            "ID": "5004024",
             "Timing": "Start of turn",
             "ATK": 50,
             "DEF": 50,
@@ -196,15 +200,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 50%{passiveImg:up_g} for all Pure Saiyans category allies ",
             "Line description": "ATK and DEF 50%{passiveImg:up_g} for all Pure Saiyans category allies ",
             "Paragraph Title": "Basic effect(s)"
         },
         "6004024": {
-            "ID": 6004024,
+            "ID": "6004024",
             "Timing": "Start of turn",
             "ATK": 50,
             "DEF": 50,
@@ -223,15 +228,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 50%{passiveImg:up_g} for all Joined Forces category allies ",
             "Line description": "ATK and DEF 50%{passiveImg:up_g} for all Joined Forces category allies ",
             "Paragraph Title": "Basic effect(s)"
         },
         "7004024": {
-            "ID": 7004024,
+            "ID": "7004024",
             "Timing": "Start of turn",
             "Ki": 3,
             "Target": {
@@ -241,16 +247,17 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": "( 137 || 3058 )",
                 "Causalities": {
                     "137": {
                         "Button": {
-                            "Name": "Are there 1 or more Pure Saiyans category enemies  on this turn?"
+                            "Name": "Are there 1 or more Pure Saiyans category enemies  within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Pure Saiyans category enemies on this turn?",
+                            "Name": "How many Pure Saiyans category enemies within the last 1 turns?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
@@ -259,10 +266,10 @@
                     },
                     "3058": {
                         "Button": {
-                            "Name": "Are there 1 or more Super Heroes category enemies  on this turn?"
+                            "Name": "Are there 1 or more Super Heroes category enemies  within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Super Heroes category enemies on this turn?",
+                            "Name": "How many Super Heroes category enemies within the last 1 turns?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
@@ -278,7 +285,7 @@
             "Paragraph Title": "When there are 1 or more Pure Saiyans Category enemies or there are 1 or more Super Heroes Category enemies "
         },
         "8004024": {
-            "ID": 8004024,
+            "ID": "8004024",
             "Timing": "Start of turn",
             "ATK": 180,
             "Target": {
@@ -288,16 +295,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": "( 137 || 3058 )",
                 "Causalities": {
                     "137": {
                         "Button": {
-                            "Name": "Are there 1 or more Pure Saiyans category enemies  on this turn?"
+                            "Name": "Are there 1 or more Pure Saiyans category enemies  within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Pure Saiyans category enemies on this turn?",
+                            "Name": "How many Pure Saiyans category enemies within the last 1 turns?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
@@ -306,10 +314,10 @@
                     },
                     "3058": {
                         "Button": {
-                            "Name": "Are there 1 or more Super Heroes category enemies  on this turn?"
+                            "Name": "Are there 1 or more Super Heroes category enemies  within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Super Heroes category enemies on this turn?",
+                            "Name": "How many Super Heroes category enemies within the last 1 turns?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
@@ -325,7 +333,7 @@
             "Paragraph Title": "When there are 1 or more Pure Saiyans Category enemies or there are 1 or more Super Heroes Category enemies "
         },
         "9004024": {
-            "ID": 9004024,
+            "ID": "9004024",
             "Additional Attack": {
                 "Activated": true,
                 "Chance of super": 100,
@@ -339,17 +347,17 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Chance": 50,
-            "Length": 1,
+            "Chance": "50",
+            "Length": "1",
             "Condition": {
                 "Logic": "( 137 || 3058 )",
                 "Causalities": {
                     "137": {
                         "Button": {
-                            "Name": "Are there 1 or more Pure Saiyans category enemies  on this turn?"
+                            "Name": "Are there 1 or more Pure Saiyans category enemies  within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Pure Saiyans category enemies on this turn?",
+                            "Name": "How many Pure Saiyans category enemies within the last 1 turns?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
@@ -358,10 +366,10 @@
                     },
                     "3058": {
                         "Button": {
-                            "Name": "Are there 1 or more Super Heroes category enemies  on this turn?"
+                            "Name": "Are there 1 or more Super Heroes category enemies  within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Super Heroes category enemies on this turn?",
+                            "Name": "How many Super Heroes category enemies within the last 1 turns?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0

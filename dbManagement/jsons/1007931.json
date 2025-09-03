@@ -39,7 +39,7 @@
     "Resource ID": 1007930,
     "Passive": {
         "624": {
-            "ID": 624,
+            "ID": "624",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 100,
             "Target": {
@@ -49,16 +49,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 64 ",
                 "Causalities": {
                     "64": {
                         "Button": {
-                            "Name": "Is Ki at least 9 on this turn?"
+                            "Name": "Is Ki at least 9 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=9",
                             "Min": 0,
                             "Max": 12

@@ -33,7 +33,7 @@
     "Resource ID": 1025090,
     "Passive": {
         "3028": {
-            "ID": 3028,
+            "ID": "3028",
             "Timing": "Start of turn",
             "ATK": 70,
             "Target": {
@@ -43,7 +43,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 5,
+            "Chance": "100",
+            "Length": "5",
             "Condition": {
                 "Logic": "( 1831 || 1832 )",
                 "Causalities": {
@@ -70,7 +71,7 @@
             "Paragraph Title": "Activates the Entrance Animation when there are 1 or more allies whose name includes \"\" or \"Frieza\""
         },
         "1003028": {
-            "ID": 1003028,
+            "ID": "1003028",
             "Timing": "Start of turn",
             "Ki Change": {
                 "From": [
@@ -92,7 +93,8 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 5,
+            "Chance": "100",
+            "Length": "5",
             "Condition": {
                 "Logic": "( 1831 || 1832 )",
                 "Causalities": {
@@ -118,7 +120,7 @@
             "Paragraph Title": "Activates the Entrance Animation when there are 1 or more allies whose name includes \"\" or \"Frieza\""
         },
         "2003028": {
-            "ID": 2003028,
+            "ID": "2003028",
             "Forsee Super Attack": true,
             "Timing": "Start of turn",
             "Target": {
@@ -128,7 +130,8 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 5,
+            "Chance": "100",
+            "Length": "5",
             "Condition": {
                 "Logic": "( 1831 || 1832 )",
                 "Causalities": {
@@ -154,7 +157,7 @@
             "Paragraph Title": "Activates the Entrance Animation when there are 1 or more allies whose name includes \"\" or \"Frieza\""
         },
         "3003028": {
-            "ID": 3003028,
+            "ID": "3003028",
             "Timing": "Start of turn",
             "Ki": 2,
             "Target": {
@@ -164,15 +167,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Ki +2 ",
             "Line description": "Ki +2 ",
             "Paragraph Title": "Basic effect(s)"
         },
         "4003028": {
-            "ID": 4003028,
+            "ID": "4003028",
             "Timing": "Start of turn",
             "ATK": 150,
             "DEF": 150,
@@ -183,15 +187,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 150%{passiveImg:up_g} ",
             "Line description": "ATK and DEF 150%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "5003028": {
-            "ID": 5003028,
+            "ID": "5003028",
             "Timing": "Right after attack",
             "Building Stat": {
                 "Min": 0,
@@ -210,15 +215,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 99,
+            "Chance": "100",
+            "Length": "99",
             "CausalityLogic": "{\"source\": \"1834\", \"compiled\": 1834}",
             "Type": "Building Stat",
             "Brief effect description": "ATK 40%{passiveImg:up_g} ({currentValue} / 120%) based on 'How many super attacks has this character performed' after attacking",
-            "Line description": "ATK 40%{passiveImg:up_g} ({currentValue} / 120%) based on 'How many super attacks has this character performed' after attacking",
+            "Line description": "ATK 40%{passiveImg:up_g} ({currentValue} / 120%) based on 'How many super attacks has this character performed' after attacking{passiveImg:forever}",
             "Paragraph Title": "Basic effect(s)"
         },
         "6003028": {
-            "ID": 6003028,
+            "ID": "6003028",
             "Timing": "Right after attack",
             "Building Stat": {
                 "Min": 0,
@@ -237,15 +243,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 99,
+            "Chance": "100",
+            "Length": "99",
             "CausalityLogic": "{\"source\": \"1834\", \"compiled\": 1834}",
             "Type": "Building Stat",
             "Brief effect description": "DEF 40%{passiveImg:up_g} ({currentValue} / 120%) based on 'How many super attacks has this character performed' after attacking",
-            "Line description": "DEF 40%{passiveImg:up_g} ({currentValue} / 120%) based on 'How many super attacks has this character performed' after attacking",
+            "Line description": "DEF 40%{passiveImg:up_g} ({currentValue} / 120%) based on 'How many super attacks has this character performed' after attacking{passiveImg:forever}",
             "Paragraph Title": "Basic effect(s)"
         },
         "7003028": {
-            "ID": 7003028,
+            "ID": "7003028",
             "Effective Against All": true,
             "Timing": "When ki spheres collected",
             "Target": {
@@ -255,16 +262,17 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 1835 ",
                 "Causalities": {
                     "1835": {
                         "Button": {
-                            "Name": "Has 1 or more Rainbow Ki Spheres been obtained on this turn?"
+                            "Name": "Has 1 or more Rainbow Ki Spheres been obtained within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Rainbow Ki Spheres have been obtained on this turn?",
+                            "Name": "How many Rainbow Ki Spheres have been obtained within the last 1 turns?",
                             "Logic": ">=1",
                             "Min": 0,
                             "Max": 1
@@ -280,7 +288,7 @@
             "Paragraph Title": "With 1 or more Rainbow Ki Spheres obtained"
         },
         "8003028": {
-            "ID": 8003028,
+            "ID": "8003028",
             "Timing": "When ki spheres collected",
             "ATK": 50,
             "DEF": 50,
@@ -291,16 +299,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 1836 ",
                 "Causalities": {
                     "1836": {
                         "Button": {
-                            "Name": "Has 2 or more Rainbow Ki Spheres been obtained on this turn?"
+                            "Name": "Has 2 or more Rainbow Ki Spheres been obtained within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Rainbow Ki Spheres have been obtained on this turn?",
+                            "Name": "How many Rainbow Ki Spheres have been obtained within the last 1 turns?",
                             "Logic": ">=2",
                             "Min": 0,
                             "Max": 2
@@ -316,7 +325,7 @@
             "Paragraph Title": "With 2 or more Rainbow Ki Spheres obtained"
         },
         "9003028": {
-            "ID": 9003028,
+            "ID": "9003028",
             "Timing": "When ki spheres collected",
             "Crit Chance": 100,
             "Target": {
@@ -326,16 +335,17 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 1837 ",
                 "Causalities": {
                     "1837": {
                         "Button": {
-                            "Name": "Has 3 or more Rainbow Ki Spheres been obtained on this turn?"
+                            "Name": "Has 3 or more Rainbow Ki Spheres been obtained within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Rainbow Ki Spheres have been obtained on this turn?",
+                            "Name": "How many Rainbow Ki Spheres have been obtained within the last 1 turns?",
                             "Logic": ">=3",
                             "Min": 0,
                             "Max": 3

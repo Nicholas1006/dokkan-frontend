@@ -31,7 +31,7 @@
     "Resource ID": 4022890,
     "Passive": {
         "2533": {
-            "ID": 2533,
+            "ID": "2533",
             "Timing": "Start of turn",
             "Heals": 20,
             "Target": {
@@ -41,7 +41,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "CausalityLogic": "{\"source\": \"1000000000000\", \"compiled\": 1000000000000}",
             "Once Only": true,
             "Type": "Single activator",
@@ -57,11 +58,11 @@
                 }
             },
             "Brief effect description": "Heals +20% ",
-            "Line description": " {passiveImg:once}Heals +20% ",
+            "Line description": " {passiveImg:once}Heals +20% for 1 turn ",
             "Paragraph Title": "For 1 turn(s) from the character's entry turn"
         },
         "1002533": {
-            "ID": 1002533,
+            "ID": "1002533",
             "Timing": "Start of turn",
             "ATK": 100,
             "DEF": 100,
@@ -72,15 +73,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 100%{passiveImg:up_g} ",
             "Line description": "ATK and DEF 100%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "2002533": {
-            "ID": 2002533,
+            "ID": "2002533",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 50,
             "DEF": 50,
@@ -91,16 +93,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 958 ",
                 "Causalities": {
                     "958": {
                         "Button": {
-                            "Name": "Is Ki at least 12 on this turn?"
+                            "Name": "Is Ki at least 12 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12

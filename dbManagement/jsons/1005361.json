@@ -29,7 +29,7 @@
     "Resource ID": 1005360,
     "Passive": {
         "599": {
-            "ID": 599,
+            "ID": "599",
             "Timing": "Start of turn",
             "ATK": 2500,
             "Target": {
@@ -39,16 +39,17 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 9 ",
                 "Causalities": {
                     "9": {
                         "Button": {
-                            "Name": "Is there less than 2 enemies on this turn?"
+                            "Name": "Is there less than 2 enemies within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many enemies are there on this turn?",
+                            "Name": "How many enemies are there within the last 1 turns?",
                             "Logic": "<2",
                             "Min": 1,
                             "Max": 7

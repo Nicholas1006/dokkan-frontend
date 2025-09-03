@@ -41,7 +41,7 @@
     "Resource ID": 1020340,
     "Passive": {
         "2373": {
-            "ID": 2373,
+            "ID": "2373",
             "Timing": "Start of turn",
             "ATK": 150,
             "DEF": 150,
@@ -52,15 +52,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 150%{passiveImg:up_g} ",
             "Line description": "ATK and DEF 150%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "1002373": {
-            "ID": 1002373,
+            "ID": "1002373",
             "Timing": "Right before being hit",
             "DR": 10,
             "Target": {
@@ -70,15 +71,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Damage Reduction Rate 10%{passiveImg:up_g} right before being hit",
             "Line description": "Damage Reduction Rate 10%{passiveImg:up_g} right before being hit",
             "Paragraph Title": "Basic effect(s)"
         },
         "2002373": {
-            "ID": 2002373,
+            "ID": "2002373",
             "Timing": "Right after being hit",
             "Building Stat": {
                 "Min": 0,
@@ -97,7 +99,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "CausalityLogic": "{\"source\": \"24\", \"compiled\": 24}",
             "Type": "Building Stat",
             "Brief effect description": "Damage Reduction Rate 10%{passiveImg:up_g} ({currentValue} / 30%) based on 'How many attacks has this character recieved' after being hit",
@@ -105,7 +108,7 @@
             "Paragraph Title": "Basic effect(s)"
         },
         "3002373": {
-            "ID": 3002373,
+            "ID": "3002373",
             "Timing": "Right after attack",
             "Building Stat": {
                 "Min": 0,
@@ -124,15 +127,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 99,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
             "Brief effect description": "Ki +1 ({currentValue} / 5) based on 'How many attacks has this character performed in battle' after attacking",
-            "Line description": "Ki +1 ({currentValue} / 5) based on 'How many attacks has this character performed in battle' after attacking",
+            "Line description": "Ki +1 ({currentValue} / 5) based on 'How many attacks has this character performed in battle' after attacking{passiveImg:forever}",
             "Paragraph Title": "Basic effect(s)"
         },
         "4002373": {
-            "ID": 4002373,
+            "ID": "4002373",
             "Additional Attack": {
                 "Activated": true,
                 "Chance of super": 100,
@@ -146,16 +150,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Chance": 30,
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "30",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Performs an additional super attack ",
             "Line description": "Performs an additional super attack ",
             "Paragraph Title": "Basic effect(s)"
         },
         "5002373": {
-            "ID": 5002373,
+            "ID": "5002373",
             "Revive": {
                 "Activated": true,
                 "HP recovered": 70
@@ -168,16 +172,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": "( 731 && 809 )",
                 "Causalities": {
                     "731": {
                         "Button": {
-                            "Name": "Is HP 50 % or less on this turn?"
+                            "Name": "Is HP 50 % or less within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "What percentage of HP is remaining on this turn?",
+                            "Name": "What percentage of HP is remaining within the last 1 turns?",
                             "Logic": "<=50",
                             "Min": 0,
                             "Max": 100
@@ -186,10 +191,10 @@
                     },
                     "809": {
                         "Button": {
-                            "Name": "Has this character recieved their 7th attack in battle on this turn?"
+                            "Name": "Has this character recieved their 7th attack in battle within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many attacks has this character recieved on this turn?",
+                            "Name": "How many attacks has this character recieved within the last 1 turns?",
                             "Logic": ">=7",
                             "Min": 0,
                             "Max": 7

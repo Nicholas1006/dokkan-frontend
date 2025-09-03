@@ -34,7 +34,7 @@
     "Resource ID": 1008090,
     "Passive": {
         "1538": {
-            "ID": 1538,
+            "ID": "1538",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -52,7 +52,7 @@
                         "Sweet treats"
                     ]
                 },
-                "Slider": "How many Ki Spheres have been obtained?"
+                "Slider": "How many Ki Spheres have been obtained on this turn?"
             },
             "ATK": 17,
             "DEF": 17,
@@ -63,15 +63,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Building Stat",
             "Brief effect description": "ATK and DEF 17%{passiveImg:up_g} per Ki Sphere obtained{currentValue} / 391 ",
             "Line description": "ATK and DEF 17%{passiveImg:up_g} per Ki Sphere obtained{currentValue} / 391 ",
             "Paragraph Title": "Basic effect(s)"
         },
         "1001538": {
-            "ID": 1001538,
+            "ID": "1001538",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -88,7 +89,7 @@
                         "AGL"
                     ]
                 },
-                "Slider": "How many Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres have been obtained?"
+                "Slider": "How many Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres have been obtained on this turn?"
             },
             "Heals": 10000,
             "Target": {
@@ -98,15 +99,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Building Stat",
             "Brief effect description": "Heals +10000 per Ki Sphere obtained{currentValue} / 230000 ",
             "Line description": "Heals +10000 per Ki Sphere obtained{currentValue} / 230000 ",
             "Paragraph Title": "Basic effect(s)"
         },
         "2001538": {
-            "ID": 2001538,
+            "ID": "2001538",
             "Timing": "End of turn",
             "Heals": 15,
             "Target": {
@@ -116,13 +118,14 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 13 ",
                 "Causalities": {
                     "13": {
                         "Button": {
-                            "Name": "Has this character delivered the final blow on this turn?"
+                            "Name": "Has this character delivered the final blow within the last 1 turns?"
                         },
                         "Paragraph Title": "When this character has delivered the final blow"
                     }

@@ -33,7 +33,7 @@
     "Resource ID": 4023050,
     "Passive": {
         "2582": {
-            "ID": 2582,
+            "ID": "2582",
             "Timing": "Start of turn",
             "Ki": 3,
             "Target": {
@@ -43,15 +43,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Ki +3 ",
             "Line description": "Ki +3 ",
             "Paragraph Title": "Basic effect(s)"
         },
         "1002582": {
-            "ID": 1002582,
+            "ID": "1002582",
             "Timing": "Start of turn",
             "ATK": 159,
             "DEF": 159,
@@ -62,15 +63,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 159%{passiveImg:up_g} ",
             "Line description": "ATK and DEF 159%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "2002582": {
-            "ID": 2002582,
+            "ID": "2002582",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 59,
             "DEF": 59,
@@ -81,16 +83,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 1020 ",
                 "Causalities": {
                     "1020": {
                         "Button": {
-                            "Name": "Is Ki at least 12 on this turn?"
+                            "Name": "Is Ki at least 12 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 24
@@ -106,7 +109,7 @@
             "Paragraph Title": "When Ki is 12 or more"
         },
         "3002582": {
-            "ID": 3002582,
+            "ID": "3002582",
             "Timing": "Start of turn",
             "Ki": 3,
             "Target": {
@@ -116,16 +119,17 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 1021 ",
                 "Causalities": {
                     "1021": {
                         "Button": {
-                            "Name": "Is there 1 or more Extreme class enemies on this turn?"
+                            "Name": "Is there 1 or more Extreme class enemies within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Extreme class enemies on this turn?",
+                            "Name": "How many Extreme class enemies within the last 1 turns?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
@@ -141,7 +145,7 @@
             "Paragraph Title": "When there are 1 or more Extreme class enemies"
         },
         "4002582": {
-            "ID": 4002582,
+            "ID": "4002582",
             "Timing": "Right before being hit",
             "DR": 30,
             "Target": {
@@ -151,16 +155,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 1021 ",
                 "Causalities": {
                     "1021": {
                         "Button": {
-                            "Name": "Is there 1 or more Extreme class enemies on this turn?"
+                            "Name": "Is there 1 or more Extreme class enemies within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Extreme class enemies on this turn?",
+                            "Name": "How many Extreme class enemies within the last 1 turns?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
@@ -176,7 +181,7 @@
             "Paragraph Title": "When there are 1 or more Extreme class enemies"
         },
         "5002582": {
-            "ID": 5002582,
+            "ID": "5002582",
             "Timing": "Start of turn",
             "Crit Chance": 50,
             "Target": {
@@ -186,16 +191,17 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 1022 ",
                 "Causalities": {
                     "1022": {
                         "Button": {
-                            "Name": "Are there 1 or more Planet Namek Saga category enemies  on this turn?"
+                            "Name": "Are there 1 or more Planet Namek Saga category enemies  within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Planet Namek Saga category enemies on this turn?",
+                            "Name": "How many Planet Namek Saga category enemies within the last 1 turns?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
@@ -1196,7 +1202,9 @@
     "Active Skill": null,
     "Standby Skill": null,
     "Finish Skill": null,
-    "Transforms from": [],
+    "Transforms from": [
+        "1023041"
+    ],
     "Transformations": [],
     "Max Appearances In Form": 50,
     "Dokkan awakenings": [],

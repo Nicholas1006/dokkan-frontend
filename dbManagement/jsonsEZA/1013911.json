@@ -30,7 +30,7 @@
     "Resource ID": 1013910,
     "Passive": {
         "2173": {
-            "ID": 2173,
+            "ID": "2173",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -49,15 +49,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 99,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
             "Brief effect description": "ATK 20%{passiveImg:up_g} ({currentValue} / 10000%) based on 'How many turns has this character been on' ",
-            "Line description": "ATK 20%{passiveImg:up_g} ({currentValue} / 10000%) based on 'How many turns has this character been on' ",
+            "Line description": "ATK 20%{passiveImg:up_g} ({currentValue} / 10000%) based on 'How many turns has this character been on' {passiveImg:forever}",
             "Paragraph Title": "Basic effect(s)"
         },
         "1002173": {
-            "ID": 1002173,
+            "ID": "1002173",
             "Dodge Chance": 20,
             "Timing": "Start of turn",
             "Building Stat": {
@@ -76,15 +77,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 99,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
             "Brief effect description": "Chance of evading enemy attacks +20% ({currentValue} / 60%) based on 'How many turns has this character been on' ",
-            "Line description": "Chance of evading enemy attacks +20% ({currentValue} / 60%) based on 'How many turns has this character been on' ",
+            "Line description": "Chance of evading enemy attacks +20% ({currentValue} / 60%) based on 'How many turns has this character been on' {passiveImg:forever}",
             "Paragraph Title": "Basic effect(s)"
         },
         "2002173": {
-            "ID": 2002173,
+            "ID": "2002173",
             "Timing": "Right after being hit",
             "ATK": 20,
             "Target": {
@@ -94,13 +96,14 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 601 ",
                 "Causalities": {
                     "601": {
                         "Button": {
-                            "Name": "Has this unit evaded an attack on this turn?"
+                            "Name": "Has this unit evaded an attack within the last 1 turns?"
                         },
                         "Paragraph Title": "After evading an attack"
                     }

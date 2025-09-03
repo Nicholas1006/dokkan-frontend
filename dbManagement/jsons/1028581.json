@@ -26,7 +26,7 @@
     "Resource ID": 1028580,
     "Passive": {
         "4079": {
-            "ID": 4079,
+            "ID": "4079",
             "Timing": "Start of turn",
             "Ki": 1,
             "Target": {
@@ -36,15 +36,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Ki +1 ",
             "Line description": "Ki +1 ",
             "Paragraph Title": "Basic effect(s)"
         },
         "1004079": {
-            "ID": 1004079,
+            "ID": "1004079",
             "Timing": "Start of turn",
             "ATK": 100,
             "DEF": 100,
@@ -55,15 +56,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 100%{passiveImg:up_g} ",
             "Line description": "ATK and DEF 100%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "2004079": {
-            "ID": 2004079,
+            "ID": "2004079",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 50,
             "DEF": 50,
@@ -74,16 +76,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 47 ",
                 "Causalities": {
                     "47": {
                         "Button": {
-                            "Name": "Is Ki at least 12 on this turn?"
+                            "Name": "Is Ki at least 12 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
@@ -99,7 +102,7 @@
             "Paragraph Title": "When Ki is 12 or more"
         },
         "3004079": {
-            "ID": 3004079,
+            "ID": "3004079",
             "Timing": "Right after attack",
             "Building Stat": {
                 "Min": 0,
@@ -118,15 +121,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 99,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
             "Brief effect description": "ATK 10%{passiveImg:up_g} ({currentValue} / 50%) based on 'How many attacks has this character performed in battle' after attacking",
-            "Line description": "ATK 10%{passiveImg:up_g} ({currentValue} / 50%) based on 'How many attacks has this character performed in battle' after attacking",
+            "Line description": "ATK 10%{passiveImg:up_g} ({currentValue} / 50%) based on 'How many attacks has this character performed in battle' after attacking{passiveImg:forever}",
             "Paragraph Title": "Basic effect(s)"
         },
         "4004079": {
-            "ID": 4004079,
+            "ID": "4004079",
             "Timing": "Start of turn",
             "Ki": 1,
             "Target": {
@@ -142,15 +146,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Ki +1 for all Inhuman Deeds category allies ",
             "Line description": "Ki +1 for all Inhuman Deeds category allies ",
             "Paragraph Title": "Basic effect(s)"
         },
         "5004079": {
-            "ID": 5004079,
+            "ID": "5004079",
             "Timing": "Start of turn",
             "ATK": 30,
             "DEF": 30,
@@ -167,15 +172,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 30%{passiveImg:up_g} for all Inhuman Deeds category allies ",
             "Line description": "ATK and DEF 30%{passiveImg:up_g} for all Inhuman Deeds category allies ",
             "Paragraph Title": "Basic effect(s)"
         },
         "6004079": {
-            "ID": 6004079,
+            "ID": "6004079",
             "Additional Attack": {
                 "Activated": true,
                 "Chance of super": 50,
@@ -189,13 +195,14 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 3078 ",
                 "Causalities": {
                     "3078": {
                         "Button": {
-                            "Name": "Is there 1 or more allies on the team whose name includes Frieza on this turn?"
+                            "Name": "Is there 1 or more allies on the team whose name includes Frieza within the last 1 turns?"
                         },
                         "Paragraph Title": "When there are 1 or more allies whose name includes \"Frieza\""
                     }

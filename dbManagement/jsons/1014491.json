@@ -36,7 +36,7 @@
     "Resource ID": 1014490,
     "Passive": {
         "1214": {
-            "ID": 1214,
+            "ID": "1214",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 120,
             "DEF": 30,
@@ -47,16 +47,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 47 ",
                 "Causalities": {
                     "47": {
                         "Button": {
-                            "Name": "Is Ki at least 12 on this turn?"
+                            "Name": "Is Ki at least 12 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
@@ -72,7 +73,7 @@
             "Paragraph Title": "When Ki is 12 or more"
         },
         "1001214": {
-            "ID": 1001214,
+            "ID": "1001214",
             "Timing": "Start of turn",
             "Ki": 3,
             "Target": {
@@ -82,16 +83,17 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 9 ",
                 "Causalities": {
                     "9": {
                         "Button": {
-                            "Name": "Is there less than 2 enemies on this turn?"
+                            "Name": "Is there less than 2 enemies within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many enemies are there on this turn?",
+                            "Name": "How many enemies are there within the last 1 turns?",
                             "Logic": "<2",
                             "Min": 1,
                             "Max": 7

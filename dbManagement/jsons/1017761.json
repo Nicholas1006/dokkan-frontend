@@ -34,7 +34,7 @@
     "Resource ID": 1017760,
     "Passive": {
         "2074": {
-            "ID": 2074,
+            "ID": "2074",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -46,7 +46,7 @@
                         "TEQ"
                     ]
                 },
-                "Slider": "How many TEQ Ki Spheres have been obtained?"
+                "Slider": "How many TEQ Ki Spheres have been obtained on this turn?"
             },
             "ATK": 4000,
             "Target": {
@@ -56,15 +56,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Building Stat",
             "Brief effect description": "ATK 4000{passiveImg:up_g} per TEQ Ki Spheres obtained{currentValue} / 92000 ",
             "Line description": "ATK 4000{passiveImg:up_g} per TEQ Ki Spheres obtained{currentValue} / 92000 ",
             "Paragraph Title": "Basic effect(s)"
         },
         "1002074": {
-            "ID": 1002074,
+            "ID": "1002074",
             "Timing": "When ki spheres collected",
             "DR": 30,
             "Target": {
@@ -74,16 +75,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 575 ",
                 "Causalities": {
                     "575": {
                         "Button": {
-                            "Name": "Has 5 or more Ki Spheres been obtained on this turn?"
+                            "Name": "Has 5 or more Ki Spheres been obtained within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Ki Spheres have been obtained on this turn?",
+                            "Name": "How many Ki Spheres have been obtained within the last 1 turns?",
                             "Logic": ">=5",
                             "Min": 0,
                             "Max": 5
@@ -99,7 +101,7 @@
             "Paragraph Title": "With 5 or more Ki Spheres obtained"
         },
         "2002074": {
-            "ID": 2002074,
+            "ID": "2002074",
             "Timing": "Start of turn",
             "Ki Change": {
                 "From": [
@@ -120,8 +122,9 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Randomly changes Ki Spheres of a certain Type(TEQ excluded) to TEQ Ki Spheres ",
             "Line description": "Randomly changes Ki Spheres of a certain Type(TEQ excluded) to TEQ Ki Spheres ",

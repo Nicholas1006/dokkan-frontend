@@ -31,7 +31,7 @@
     "Resource ID": 1013420,
     "Passive": {
         "2147": {
-            "ID": 2147,
+            "ID": "2147",
             "Timing": "Start of turn",
             "ATK": 160,
             "Target": {
@@ -41,15 +41,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "ATK 160%{passiveImg:up_g} ",
             "Line description": "ATK 160%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "1002147": {
-            "ID": 1002147,
+            "ID": "1002147",
             "Additional Attack": {
                 "Activated": true,
                 "Chance of super": 70,
@@ -63,15 +64,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Performs an additional attack with a 70% chance of becoming a super attack ",
             "Line description": "Performs an additional attack with a 70% chance of becoming a super attack ",
             "Paragraph Title": "Basic effect(s)"
         },
         "2002147": {
-            "ID": 2002147,
+            "ID": "2002147",
             "Timing": "Start of turn",
             "DR": 60,
             "Target": {
@@ -81,7 +83,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 6,
+            "Chance": "100",
+            "Length": "6",
             "CausalityLogic": "{\"source\": \"6000000000000\", \"compiled\": 6000000000000}",
             "Once Only": true,
             "Type": "Single activator",
@@ -101,7 +104,7 @@
             "Paragraph Title": "For 6 turn(s) from the character's entry turn"
         },
         "3002147": {
-            "ID": 3002147,
+            "ID": "3002147",
             "Timing": "When ki spheres collected",
             "DR": 60,
             "Target": {
@@ -111,16 +114,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": "( 663 && 664 )",
                 "Causalities": {
                     "663": {
                         "Button": {
-                            "Name": "Is the turn count 7 or more on this turn?"
+                            "Name": "Is the turn count 7 or more within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "What turn is it on this turn?",
+                            "Name": "What turn is it within the last 1 turns?",
                             "Logic": ">=7",
                             "Min": 1
                         },
@@ -128,10 +132,10 @@
                     },
                     "664": {
                         "Button": {
-                            "Name": "Has 6 or more PHY Ki Spheres been obtained on this turn?"
+                            "Name": "Has 6 or more PHY Ki Spheres been obtained within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many PHY Ki Spheres have been obtained on this turn?",
+                            "Name": "How many PHY Ki Spheres have been obtained within the last 1 turns?",
                             "Logic": ">=6",
                             "Min": 0,
                             "Max": 6

@@ -27,7 +27,7 @@
     "Resource ID": 1019680,
     "Passive": {
         "4278": {
-            "ID": 4278,
+            "ID": "4278",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 100,
             "Target": {
@@ -37,16 +37,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2621 ",
                 "Causalities": {
                     "2621": {
                         "Button": {
-                            "Name": "Is Ki at least 12 on this turn?"
+                            "Name": "Is Ki at least 12 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
@@ -62,7 +63,7 @@
             "Paragraph Title": "When Ki is 12 or more"
         },
         "1004278": {
-            "ID": 1004278,
+            "ID": "1004278",
             "Timing": "Start of turn",
             "DR": 30,
             "Target": {
@@ -72,7 +73,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2266 ",
                 "Causalities": {
@@ -81,7 +83,7 @@
                             "Name": "Is it within the first 1 turn(s) from the character's entry turn?"
                         },
                         "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
+                            "Name": "How many turns is it since entry turn within the last 1 turns?",
                             "Logic": "<=1",
                             "Min": 0,
                             "Max": 2
@@ -97,7 +99,7 @@
             "Paragraph Title": "For 1 turns from the chraracter's entry turn"
         },
         "2004278": {
-            "ID": 2004278,
+            "ID": "2004278",
             "Timing": "Right after being hit",
             "Ki": 3,
             "Target": {
@@ -107,7 +109,8 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 5,
+            "Chance": "100",
+            "Length": "5",
             "Condition": {
                 "Logic": " 24 ",
                 "Causalities": {
@@ -132,7 +135,7 @@
             "Paragraph Title": "After recieving an attack"
         },
         "3004278": {
-            "ID": 3004278,
+            "ID": "3004278",
             "Timing": "Right after being hit",
             "ATK": 180,
             "Target": {
@@ -142,7 +145,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 5,
+            "Chance": "100",
+            "Length": "5",
             "Condition": {
                 "Logic": " 24 ",
                 "Causalities": {
@@ -167,7 +171,7 @@
             "Paragraph Title": "After recieving an attack"
         },
         "4004278": {
-            "ID": 4004278,
+            "ID": "4004278",
             "Timing": "Right after being hit",
             "Guard": true,
             "Target": {
@@ -177,7 +181,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 5,
+            "Chance": "100",
+            "Length": "5",
             "Condition": {
                 "Logic": " 24 ",
                 "Causalities": {
@@ -202,7 +207,7 @@
             "Paragraph Title": "After recieving an attack"
         },
         "5004278": {
-            "ID": 5004278,
+            "ID": "5004278",
             "Timing": "Right after being hit",
             "Building Stat": {
                 "Min": 0,
@@ -221,15 +226,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 99,
+            "Chance": "100",
+            "Length": "99",
             "CausalityLogic": "{\"source\": \"24\", \"compiled\": 24}",
             "Type": "Building Stat",
             "Brief effect description": "Damage Reduction Rate 10%{passiveImg:up_g} ({currentValue} / 40%) based on 'How many attacks has this character recieved' after being hit",
-            "Line description": "Damage Reduction Rate 10%{passiveImg:up_g} ({currentValue} / 40%) based on 'How many attacks has this character recieved' after being hit",
+            "Line description": "Damage Reduction Rate 10%{passiveImg:up_g} ({currentValue} / 40%) based on 'How many attacks has this character recieved' after being hit{passiveImg:forever}",
             "Paragraph Title": "Basic effect(s)"
         },
         "6004278": {
-            "ID": 6004278,
+            "ID": "6004278",
             "Timing": "Right after being hit",
             "Building Stat": {
                 "Min": 0,
@@ -248,15 +254,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 99,
+            "Chance": "100",
+            "Length": "99",
             "CausalityLogic": "{\"source\": \"24\", \"compiled\": 24}",
             "Type": "Building Stat",
             "Brief effect description": "DEF 20%{passiveImg:up_g} ({currentValue} / 80%) based on 'How many attacks has this character recieved' after being hit",
-            "Line description": "DEF 20%{passiveImg:up_g} ({currentValue} / 80%) based on 'How many attacks has this character recieved' after being hit",
+            "Line description": "DEF 20%{passiveImg:up_g} ({currentValue} / 80%) based on 'How many attacks has this character recieved' after being hit{passiveImg:forever}",
             "Paragraph Title": "Basic effect(s)"
         },
         "7004278": {
-            "ID": 7004278,
+            "ID": "7004278",
             "Timing": "Start of turn",
             "DEF": 180,
             "Target": {
@@ -266,7 +273,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 99,
+            "Chance": "100",
+            "Length": "99",
             "CausalityLogic": "{\"source\": \"99000000000000\", \"compiled\": 99000000000000}",
             "Once Only": true,
             "Type": "Single activator",
@@ -282,14 +290,14 @@
                 }
             },
             "Brief effect description": "DEF 180%{passiveImg:up_g} ",
-            "Line description": " {passiveImg:once}DEF 180%{passiveImg:up_g} until after being hit",
+            "Line description": "DEF 180%{passiveImg:up_g} {passiveImg:forever} until after being hit",
             "Paragraph Title": "For 99 turn(s) from the character's entry turn"
         },
         "8004278": {
-            "ID": 8004278,
+            "ID": "8004278",
             "Disable Other Line": {
                 "Activated": true,
-                "Line": 7004278
+                "Line": "7004278"
             },
             "Timing": "Right after being hit",
             "Target": {
@@ -299,16 +307,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 1786 ",
                 "Causalities": {
                     "1786": {
                         "Button": {
-                            "Name": "Has this character recieved their 8th attack in battle on this turn?"
+                            "Name": "Has this character recieved their 8th attack in battle within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many attacks has this character recieved on this turn?",
+                            "Name": "How many attacks has this character recieved within the last 1 turns?",
                             "Logic": ">=8",
                             "Min": 0,
                             "Max": 8
@@ -324,7 +333,7 @@
             "Paragraph Title": "After recieving 8 attacks"
         },
         "9004278": {
-            "ID": 9004278,
+            "ID": "9004278",
             "Timing": "Start of turn",
             "ATK": 20,
             "DEF": 20,
@@ -341,16 +350,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 99,
+            "Chance": "100",
+            "Length": "99",
             "Condition": {
                 "Logic": " 1786 ",
                 "Causalities": {
                     "1786": {
                         "Button": {
-                            "Name": "Has this character recieved their 8th attack in battle?"
+                            "Name": "Has this character recieved their 8th attack in battle within the last 99 turns?"
                         },
                         "Slider": {
-                            "Name": "How many attacks has this character recieved?",
+                            "Name": "How many attacks has this character recieved within the last 99 turns?",
                             "Logic": ">=8",
                             "Min": 0,
                             "Max": 8
@@ -362,11 +372,11 @@
             "CausalityLogic": "{\"source\": \"1786\", \"compiled\": 1786}",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 20%{passiveImg:up_g} for all DB Saga category allies ",
-            "Line description": "ATK and DEF 20%{passiveImg:up_g} for all DB Saga category allies ",
+            "Line description": "ATK and DEF 20%{passiveImg:up_g} for all DB Saga category allies {passiveImg:forever}",
             "Paragraph Title": "After recieving 8 attacks"
         },
         "10004278": {
-            "ID": 10004278,
+            "ID": "10004278",
             "Timing": "Start of turn",
             "Ki": 2,
             "Target": {
@@ -388,16 +398,17 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 99,
+            "Chance": "100",
+            "Length": "99",
             "Condition": {
                 "Logic": " 1786 ",
                 "Causalities": {
                     "1786": {
                         "Button": {
-                            "Name": "Has this character recieved their 8th attack in battle?"
+                            "Name": "Has this character recieved their 8th attack in battle within the last 99 turns?"
                         },
                         "Slider": {
-                            "Name": "How many attacks has this character recieved?",
+                            "Name": "How many attacks has this character recieved within the last 99 turns?",
                             "Logic": ">=8",
                             "Min": 0,
                             "Max": 8
@@ -409,11 +420,11 @@
             "CausalityLogic": "{\"source\": \"1786\", \"compiled\": 1786}",
             "Type": "Single activator",
             "Brief effect description": "Ki +2 for all DB Saga category allies whose name includes Goku (Youth)",
-            "Line description": "Ki +2 for all DB Saga category allies whose name includes Goku (Youth)",
+            "Line description": "Ki +2 for all DB Saga category allies whose name includes Goku (Youth){passiveImg:forever}",
             "Paragraph Title": "After recieving 8 attacks"
         },
         "11004278": {
-            "ID": 11004278,
+            "ID": "11004278",
             "Timing": "Start of turn",
             "ATK": 20,
             "DEF": 20,
@@ -436,16 +447,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 99,
+            "Chance": "100",
+            "Length": "99",
             "Condition": {
                 "Logic": " 1786 ",
                 "Causalities": {
                     "1786": {
                         "Button": {
-                            "Name": "Has this character recieved their 8th attack in battle?"
+                            "Name": "Has this character recieved their 8th attack in battle within the last 99 turns?"
                         },
                         "Slider": {
-                            "Name": "How many attacks has this character recieved?",
+                            "Name": "How many attacks has this character recieved within the last 99 turns?",
                             "Logic": ">=8",
                             "Min": 0,
                             "Max": 8
@@ -457,11 +469,11 @@
             "CausalityLogic": "{\"source\": \"1786\", \"compiled\": 1786}",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 20%{passiveImg:up_g} for all DB Saga category allies whose name includes Goku (Youth)",
-            "Line description": "ATK and DEF 20%{passiveImg:up_g} for all DB Saga category allies whose name includes Goku (Youth)",
+            "Line description": "ATK and DEF 20%{passiveImg:up_g} for all DB Saga category allies whose name includes Goku (Youth){passiveImg:forever}",
             "Paragraph Title": "After recieving 8 attacks"
         },
         "12004278": {
-            "ID": 12004278,
+            "ID": "12004278",
             "Timing": "Start of turn",
             "ATK": 180,
             "DEF": 180,
@@ -472,16 +484,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 1987 ",
                 "Causalities": {
                     "1987": {
                         "Button": {
-                            "Name": "Are there 1 or more Goku's Family category allies  on this turn?"
+                            "Name": "Are there 1 or more Goku's Family category allies  within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Goku's Family category allies on this turn?",
+                            "Name": "How many Goku's Family category allies within the last 1 turns?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0

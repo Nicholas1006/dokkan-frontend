@@ -40,7 +40,7 @@
     "Resource ID": 1006210,
     "Passive": {
         "1476": {
-            "ID": 1476,
+            "ID": "1476",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 140,
             "Target": {
@@ -50,16 +50,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 64 ",
                 "Causalities": {
                     "64": {
                         "Button": {
-                            "Name": "Is Ki at least 9 on this turn?"
+                            "Name": "Is Ki at least 9 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=9",
                             "Min": 0,
                             "Max": 12
@@ -75,7 +76,7 @@
             "Paragraph Title": "When Ki is 9 or more"
         },
         "1001476": {
-            "ID": 1001476,
+            "ID": "1001476",
             "Timing": "Right before attack(SOT stat)",
             "DEF": 70,
             "Target": {
@@ -85,13 +86,14 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 156 ",
                 "Causalities": {
                     "156": {
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": "<=11",
                             "Min": 0,
                             "Max": 12

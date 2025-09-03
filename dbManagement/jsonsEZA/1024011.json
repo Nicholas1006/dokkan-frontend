@@ -31,7 +31,7 @@
     "Resource ID": 1024010,
     "Passive": {
         "2827": {
-            "ID": 2827,
+            "ID": "2827",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 100,
             "DEF": 100,
@@ -42,16 +42,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 47 ",
                 "Causalities": {
                     "47": {
                         "Button": {
-                            "Name": "Is Ki at least 12 on this turn?"
+                            "Name": "Is Ki at least 12 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
@@ -67,7 +68,7 @@
             "Paragraph Title": "When Ki is 12 or more"
         },
         "1002827": {
-            "ID": 1002827,
+            "ID": "1002827",
             "Timing": "Right after attack",
             "Building Stat": {
                 "Min": 0,
@@ -86,15 +87,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 99,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
             "Brief effect description": "ATK 20%{passiveImg:up_g} ({currentValue} / 100%) based on 'How many attacks has this character performed in battle' after attacking",
-            "Line description": "ATK 20%{passiveImg:up_g} ({currentValue} / 100%) based on 'How many attacks has this character performed in battle' after attacking",
+            "Line description": "ATK 20%{passiveImg:up_g} ({currentValue} / 100%) based on 'How many attacks has this character performed in battle' after attacking{passiveImg:forever}",
             "Paragraph Title": "Basic effect(s)"
         },
         "2002827": {
-            "ID": 2002827,
+            "ID": "2002827",
             "Timing": "Right after attack",
             "Building Stat": {
                 "Min": 0,
@@ -113,15 +115,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 99,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
             "Brief effect description": "DEF 20%{passiveImg:up_g} ({currentValue} / 100%) based on 'How many attacks has this character performed in battle' after attacking",
-            "Line description": "DEF 20%{passiveImg:up_g} ({currentValue} / 100%) based on 'How many attacks has this character performed in battle' after attacking",
+            "Line description": "DEF 20%{passiveImg:up_g} ({currentValue} / 100%) based on 'How many attacks has this character performed in battle' after attacking{passiveImg:forever}",
             "Paragraph Title": "Basic effect(s)"
         },
         "3002827": {
-            "ID": 3002827,
+            "ID": "3002827",
             "Timing": "Right after attack",
             "Building Stat": {
                 "Min": 0,
@@ -140,15 +143,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 99,
+            "Chance": "100",
+            "Length": "99",
             "CausalityLogic": "{\"source\": \"1309\", \"compiled\": 1309}",
             "Type": "Building Stat",
             "Brief effect description": "ATK 20%{passiveImg:up_g} ({currentValue} / 100%) based on 'How many super attacks has this character performed' after attacking",
-            "Line description": "ATK 20%{passiveImg:up_g} ({currentValue} / 100%) based on 'How many super attacks has this character performed' after attacking",
+            "Line description": "ATK 20%{passiveImg:up_g} ({currentValue} / 100%) based on 'How many super attacks has this character performed' after attacking{passiveImg:forever}",
             "Paragraph Title": "Basic effect(s)"
         },
         "4002827": {
-            "ID": 4002827,
+            "ID": "4002827",
             "Timing": "Start of turn",
             "DEF": 50,
             "Target": {
@@ -158,7 +162,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 1411 ",
                 "Causalities": {
@@ -183,7 +188,7 @@
             "Paragraph Title": "When there are 2 or more Youth Category allies attacking on this turn"
         },
         "5002827": {
-            "ID": 5002827,
+            "ID": "5002827",
             "Timing": "Start of turn",
             "DEF": 50,
             "Target": {
@@ -193,7 +198,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 1412 ",
                 "Causalities": {
@@ -218,7 +224,7 @@
             "Paragraph Title": "When there are 2 or more Gifted Warriors Category allies attacking on this turn"
         },
         "6002827": {
-            "ID": 6002827,
+            "ID": "6002827",
             "Additional Attack": {
                 "Activated": true,
                 "Chance of super": 30,
@@ -232,16 +238,17 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 1413 ",
                 "Causalities": {
                     "1413": {
                         "Button": {
-                            "Name": "Has 3 or more Ki Spheres been obtained on this turn?"
+                            "Name": "Has 3 or more Ki Spheres been obtained within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Ki Spheres have been obtained on this turn?",
+                            "Name": "How many Ki Spheres have been obtained within the last 1 turns?",
                             "Logic": ">=3",
                             "Min": 0,
                             "Max": 3

@@ -28,7 +28,7 @@
     "Resource ID": 1022110,
     "Passive": {
         "2456": {
-            "ID": 2456,
+            "ID": "2456",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 100,
             "DEF": 100,
@@ -39,16 +39,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 810 ",
                 "Causalities": {
                     "810": {
                         "Button": {
-                            "Name": "Is Ki at least 12 on this turn?"
+                            "Name": "Is Ki at least 12 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
@@ -64,7 +65,7 @@
             "Paragraph Title": "When Ki is 12 or more"
         },
         "1002456": {
-            "ID": 1002456,
+            "ID": "1002456",
             "Additional Attack": {
                 "Activated": true,
                 "Chance of super": 0,
@@ -78,16 +79,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Chance": 50,
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "50",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Performs an additional attack ",
             "Line description": "Performs an additional attack ",
             "Paragraph Title": "Basic effect(s)"
         },
         "2002456": {
-            "ID": 2002456,
+            "ID": "2002456",
             "Timing": "Right after attack",
             "Building Stat": {
                 "Min": 0,
@@ -106,15 +107,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 99,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
             "Brief effect description": "Ki +1 ({currentValue} / 4) based on 'How many attacks has this character performed in battle' after attacking",
-            "Line description": "Ki +1 ({currentValue} / 4) based on 'How many attacks has this character performed in battle' after attacking",
+            "Line description": "Ki +1 ({currentValue} / 4) based on 'How many attacks has this character performed in battle' after attacking{passiveImg:forever}",
             "Paragraph Title": "Basic effect(s)"
         },
         "3002456": {
-            "ID": 3002456,
+            "ID": "3002456",
             "Timing": "Right after attack",
             "Building Stat": {
                 "Min": 0,
@@ -133,15 +135,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 99,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
             "Brief effect description": "ATK 10%{passiveImg:up_g} ({currentValue} / 40%) based on 'How many attacks has this character performed in battle' after attacking",
-            "Line description": "ATK 10%{passiveImg:up_g} ({currentValue} / 40%) based on 'How many attacks has this character performed in battle' after attacking",
+            "Line description": "ATK 10%{passiveImg:up_g} ({currentValue} / 40%) based on 'How many attacks has this character performed in battle' after attacking{passiveImg:forever}",
             "Paragraph Title": "Basic effect(s)"
         },
         "4002456": {
-            "ID": 4002456,
+            "ID": "4002456",
             "Timing": "Right after attack",
             "Building Stat": {
                 "Min": 0,
@@ -160,11 +163,12 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 99,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
             "Brief effect description": "DEF 10%{passiveImg:up_g} ({currentValue} / 40%) based on 'How many attacks has this character performed in battle' after attacking",
-            "Line description": "DEF 10%{passiveImg:up_g} ({currentValue} / 40%) based on 'How many attacks has this character performed in battle' after attacking",
+            "Line description": "DEF 10%{passiveImg:up_g} ({currentValue} / 40%) based on 'How many attacks has this character performed in battle' after attacking{passiveImg:forever}",
             "Paragraph Title": "Basic effect(s)"
         }
     },

@@ -31,7 +31,7 @@
     "Resource ID": 1025060,
     "Passive": {
         "3002": {
-            "ID": 3002,
+            "ID": "3002",
             "Timing": "Start of turn",
             "ATK": 100,
             "DEF": 100,
@@ -42,15 +42,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 100%{passiveImg:up_g} ",
             "Line description": "ATK and DEF 100%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "1003002": {
-            "ID": 1003002,
+            "ID": "1003002",
             "Timing": "Start of turn",
             "Ki Change": {
                 "From": [
@@ -72,15 +73,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Randomly changes Ki Spheres of a certain Type to Rainbow Ki Spheres ",
             "Line description": "Randomly changes Ki Spheres of a certain Type to Rainbow Ki Spheres ",
             "Paragraph Title": "Basic effect(s)"
         },
         "2003002": {
-            "ID": 2003002,
+            "ID": "2003002",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -98,7 +100,7 @@
                         "Sweet treats"
                     ]
                 },
-                "Slider": "How many Ki Spheres have been obtained?"
+                "Slider": "How many Ki Spheres have been obtained on this turn?"
             },
             "ATK": 20,
             "DEF": 20,
@@ -109,15 +111,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Building Stat",
             "Brief effect description": "ATK and DEF 20%{passiveImg:up_g} per Ki Sphere obtained{currentValue} / 460 ",
             "Line description": "ATK and DEF 20%{passiveImg:up_g} per Ki Sphere obtained{currentValue} / 460 ",
             "Paragraph Title": "Basic effect(s)"
         },
         "3003002": {
-            "ID": 3003002,
+            "ID": "3003002",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -129,7 +132,7 @@
                         "Rainbow"
                     ]
                 },
-                "Slider": "How many Rainbow Ki Spheres have been obtained?"
+                "Slider": "How many Rainbow Ki Spheres have been obtained on this turn?"
             },
             "Crit Chance": 7,
             "Target": {
@@ -139,15 +142,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Building Stat",
             "Brief effect description": "Chance of performing a critical hit +7%{passiveImg:up_g} per Rainbow Ki Spheres obtained{currentValue} / 35 ",
             "Line description": "Chance of performing a critical hit +7%{passiveImg:up_g} per Rainbow Ki Spheres obtained{currentValue} / 35 ",
             "Paragraph Title": "Basic effect(s)"
         },
         "4003002": {
-            "ID": 4003002,
+            "ID": "4003002",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -159,7 +163,7 @@
                         "Rainbow"
                     ]
                 },
-                "Slider": "How many Rainbow Ki Spheres have been obtained?"
+                "Slider": "How many Rainbow Ki Spheres have been obtained on this turn?"
             },
             "DR": 7,
             "Target": {
@@ -169,15 +173,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Building Stat",
             "Brief effect description": "Damage Reduction Rate 7%{passiveImg:up_g} per Rainbow Ki Spheres obtained{currentValue} / 35 ",
             "Line description": "Damage Reduction Rate 7%{passiveImg:up_g} per Rainbow Ki Spheres obtained{currentValue} / 35 ",
             "Paragraph Title": "Basic effect(s)"
         },
         "5003002": {
-            "ID": 5003002,
+            "ID": "5003002",
             "Timing": "When ki spheres collected",
             "DEF": 59,
             "Target": {
@@ -187,16 +192,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 1780 ",
                 "Causalities": {
                     "1780": {
                         "Button": {
-                            "Name": "Has 3 or more Ki Spheres been obtained on this turn?"
+                            "Name": "Has 3 or more Ki Spheres been obtained within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Ki Spheres have been obtained on this turn?",
+                            "Name": "How many Ki Spheres have been obtained within the last 1 turns?",
                             "Logic": ">=3",
                             "Min": 0,
                             "Max": 3
@@ -212,7 +218,7 @@
             "Paragraph Title": "With 3 or more Ki Spheres obtained"
         },
         "6003002": {
-            "ID": 6003002,
+            "ID": "6003002",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 59,
             "DEF": 59,
@@ -223,16 +229,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 1779 ",
                 "Causalities": {
                     "1779": {
                         "Button": {
-                            "Name": "Is Ki at least 12 on this turn?"
+                            "Name": "Is Ki at least 12 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12

@@ -36,7 +36,7 @@
     "Resource ID": 4020510,
     "Passive": {
         "2252": {
-            "ID": 2252,
+            "ID": "2252",
             "Timing": "Start of turn",
             "ATK": 120,
             "DEF": 120,
@@ -47,15 +47,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 120%{passiveImg:up_g} ",
             "Line description": "ATK and DEF 120%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "1002252": {
-            "ID": 1002252,
+            "ID": "1002252",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 80,
             "DEF": 80,
@@ -66,16 +67,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 47 ",
                 "Causalities": {
                     "47": {
                         "Button": {
-                            "Name": "Is Ki at least 12 on this turn?"
+                            "Name": "Is Ki at least 12 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
@@ -91,7 +93,7 @@
             "Paragraph Title": "When Ki is 12 or more"
         },
         "2002252": {
-            "ID": 2002252,
+            "ID": "2002252",
             "Timing": "Start of turn",
             "DR": 50,
             "Target": {
@@ -101,16 +103,17 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 722 ",
                 "Causalities": {
                     "722": {
                         "Button": {
-                            "Name": "Is HP 49 % or less on this turn?"
+                            "Name": "Is HP 49 % or less within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "What percentage of HP is remaining on this turn?",
+                            "Name": "What percentage of HP is remaining within the last 1 turns?",
                             "Logic": "<=49",
                             "Min": 0,
                             "Max": 100
@@ -126,7 +129,7 @@
             "Paragraph Title": "When HP is 49% or less"
         },
         "3002252": {
-            "ID": 3002252,
+            "ID": "3002252",
             "Timing": "Right after attack",
             "Status": [
                 "Stun"
@@ -138,17 +141,17 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Chance": 70,
-            "Length": 1,
+            "Chance": "70",
+            "Length": "1",
             "Condition": {
                 "Logic": " 47 ",
                 "Causalities": {
                     "47": {
                         "Button": {
-                            "Name": "Is Ki at least 12 on this turn?"
+                            "Name": "Is Ki at least 12 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12

@@ -36,7 +36,7 @@
     "Resource ID": 4015070,
     "Passive": {
         "3349": {
-            "ID": 3349,
+            "ID": "3349",
             "Timing": "Start of turn",
             "Heals": 10,
             "Target": {
@@ -46,15 +46,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Heals +10% ",
             "Line description": "Heals +10% ",
             "Paragraph Title": "Basic effect(s)"
         },
         "1003349": {
-            "ID": 1003349,
+            "ID": "1003349",
             "Timing": "Start of turn",
             "Ki": 1,
             "Target": {
@@ -64,15 +65,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Ki +1 ",
             "Line description": "Ki +1 ",
             "Paragraph Title": "Basic effect(s)"
         },
         "2003349": {
-            "ID": 2003349,
+            "ID": "2003349",
             "Timing": "Start of turn",
             "ATK": 180,
             "DEF": 140,
@@ -83,15 +85,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "ATK 180% and DEF 140%{passiveImg:up_g} ",
             "Line description": "ATK 180% and DEF 140%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "3003349": {
-            "ID": 3003349,
+            "ID": "3003349",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 80,
             "DEF": 80,
@@ -102,15 +105,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 80%{passiveImg:up_g} when attacking",
             "Line description": "ATK and DEF 80%{passiveImg:up_g} when attacking",
             "Paragraph Title": "Basic effect(s)"
         },
         "4003349": {
-            "ID": 4003349,
+            "ID": "4003349",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 80,
             "DEF": 80,
@@ -121,19 +125,20 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": "( 2110 || 2111 )",
                 "Causalities": {
                     "2110": {
                         "Button": {
-                            "Name": "Is the target enemy in ATK Down on this turn?"
+                            "Name": "Is the target enemy in ATK Down within the last 1 turns?"
                         },
                         "Paragraph Title": "When the target enemy is in the following status{passiveImg:atk_down}"
                     },
                     "2111": {
                         "Button": {
-                            "Name": "Is the target enemy in DEF Down on this turn?"
+                            "Name": "Is the target enemy in DEF Down within the last 1 turns?"
                         },
                         "Paragraph Title": "When the target enemy is in the following status{passiveImg:def_down}"
                     }
@@ -146,7 +151,7 @@
             "Paragraph Title": "When the target enemy is in the following status{passiveImg:atk_down} or the target enemy is in the following status{passiveImg:def_down}"
         },
         "5003349": {
-            "ID": 5003349,
+            "ID": "5003349",
             "Timing": "Start of turn",
             "Ki": 1,
             "Target": {
@@ -156,7 +161,8 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2119 ",
                 "Causalities": {
@@ -165,7 +171,7 @@
                             "Name": "Is it within the first 6 turn(s) from the character's entry turn?"
                         },
                         "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
+                            "Name": "How many turns is it since entry turn within the last 1 turns?",
                             "Logic": "<=6",
                             "Min": 0,
                             "Max": 7
@@ -181,7 +187,7 @@
             "Paragraph Title": "For 6 turns from the chraracter's entry turn"
         },
         "6003349": {
-            "ID": 6003349,
+            "ID": "6003349",
             "Timing": "Start of turn",
             "DEF": 80,
             "Target": {
@@ -191,7 +197,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2119 ",
                 "Causalities": {
@@ -200,7 +207,7 @@
                             "Name": "Is it within the first 6 turn(s) from the character's entry turn?"
                         },
                         "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
+                            "Name": "How many turns is it since entry turn within the last 1 turns?",
                             "Logic": "<=6",
                             "Min": 0,
                             "Max": 7
@@ -216,7 +223,7 @@
             "Paragraph Title": "For 6 turns from the chraracter's entry turn"
         },
         "7003349": {
-            "ID": 7003349,
+            "ID": "7003349",
             "Additional Attack": {
                 "Activated": true,
                 "Chance of super": 100,
@@ -230,8 +237,8 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Chance": 70,
-            "Length": 1,
+            "Chance": "70",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2119 ",
                 "Causalities": {
@@ -240,7 +247,7 @@
                             "Name": "Is it within the first 6 turn(s) from the character's entry turn?"
                         },
                         "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
+                            "Name": "How many turns is it since entry turn within the last 1 turns?",
                             "Logic": "<=6",
                             "Min": 0,
                             "Max": 7
@@ -566,7 +573,9 @@
     "Active Skill": null,
     "Standby Skill": null,
     "Finish Skill": null,
-    "Transforms from": [],
+    "Transforms from": [
+        "1015051"
+    ],
     "Transformations": [],
     "Max Appearances In Form": 50,
     "Dokkan awakenings": [],

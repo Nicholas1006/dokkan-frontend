@@ -29,7 +29,7 @@
     "Resource ID": 1022320,
     "Passive": {
         "2482": {
-            "ID": 2482,
+            "ID": "2482",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -47,7 +47,7 @@
                         "Sweet treats"
                     ]
                 },
-                "Slider": "How many Ki Spheres have been obtained?"
+                "Slider": "How many Ki Spheres have been obtained on this turn?"
             },
             "ATK": 5648,
             "DEF": 5648,
@@ -58,15 +58,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Building Stat",
             "Brief effect description": "ATK and DEF 5648{passiveImg:up_g} per Ki Sphere obtained{currentValue} / 129904 ",
             "Line description": "ATK and DEF 5648{passiveImg:up_g} per Ki Sphere obtained{currentValue} / 129904 ",
             "Paragraph Title": "Basic effect(s)"
         },
         "1002482": {
-            "ID": 1002482,
+            "ID": "1002482",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 10108,
             "DEF": 10108,
@@ -77,16 +78,17 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 810 ",
                 "Causalities": {
                     "810": {
                         "Button": {
-                            "Name": "Is Ki at least 12 on this turn?"
+                            "Name": "Is Ki at least 12 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12

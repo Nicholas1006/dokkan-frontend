@@ -32,7 +32,7 @@
     "Resource ID": 1008600,
     "Passive": {
         "700": {
-            "ID": 700,
+            "ID": "700",
             "Timing": "After all ki collected",
             "ATK": 30,
             "DEF": 30,
@@ -43,16 +43,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 52 ",
                 "Causalities": {
                     "52": {
                         "Button": {
-                            "Name": "Is Ki at least 7 on this turn?"
+                            "Name": "Is Ki at least 7 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=7",
                             "Min": 0,
                             "Max": 12

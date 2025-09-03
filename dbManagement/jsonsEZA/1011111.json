@@ -37,7 +37,7 @@
     "Resource ID": 1011110,
     "Passive": {
         "3905": {
-            "ID": 3905,
+            "ID": "3905",
             "Timing": "Start of turn",
             "ATK": 100,
             "DEF": 100,
@@ -48,15 +48,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 100%{passiveImg:up_g} ",
             "Line description": "ATK and DEF 100%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "1003905": {
-            "ID": 1003905,
+            "ID": "1003905",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -75,15 +76,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 99,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
             "Brief effect description": "Ki +1 ({currentValue} / 3) based on 'How many turns has this character been on' ",
-            "Line description": "Ki +1 ({currentValue} / 3) based on 'How many turns has this character been on' ",
+            "Line description": "Ki +1 ({currentValue} / 3) based on 'How many turns has this character been on' {passiveImg:forever}",
             "Paragraph Title": "Basic effect(s)"
         },
         "2003905": {
-            "ID": 2003905,
+            "ID": "2003905",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -102,15 +104,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 99,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
             "Brief effect description": "ATK 59%{passiveImg:up_g} ({currentValue} / 159%) based on 'How many turns has this character been on' ",
-            "Line description": "ATK 59%{passiveImg:up_g} ({currentValue} / 159%) based on 'How many turns has this character been on' ",
+            "Line description": "ATK 59%{passiveImg:up_g} ({currentValue} / 159%) based on 'How many turns has this character been on' {passiveImg:forever}",
             "Paragraph Title": "Basic effect(s)"
         },
         "3003905": {
-            "ID": 3003905,
+            "ID": "3003905",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -129,15 +132,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 99,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
             "Brief effect description": "DEF 59%{passiveImg:up_g} ({currentValue} / 159%) based on 'How many turns has this character been on' ",
-            "Line description": "DEF 59%{passiveImg:up_g} ({currentValue} / 159%) based on 'How many turns has this character been on' ",
+            "Line description": "DEF 59%{passiveImg:up_g} ({currentValue} / 159%) based on 'How many turns has this character been on' {passiveImg:forever}",
             "Paragraph Title": "Basic effect(s)"
         },
         "4003905": {
-            "ID": 4003905,
+            "ID": "4003905",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 59,
             "DEF": 59,
@@ -148,16 +152,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2824 ",
                 "Causalities": {
                     "2824": {
                         "Button": {
-                            "Name": "Is Ki at least 12 on this turn?"
+                            "Name": "Is Ki at least 12 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
@@ -173,7 +178,7 @@
             "Paragraph Title": "When Ki is 12 or more"
         },
         "5003905": {
-            "ID": 5003905,
+            "ID": "5003905",
             "Timing": "Start of turn",
             "ATK": 59,
             "Target": {
@@ -183,7 +188,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2825 ",
                 "Causalities": {
@@ -208,7 +214,7 @@
             "Paragraph Title": "When there are 3 or more Giant Ape Power Category allies attacking on this turn"
         },
         "6003905": {
-            "ID": 6003905,
+            "ID": "6003905",
             "Effective Against All": true,
             "Timing": "Start of turn",
             "Target": {
@@ -218,7 +224,8 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2825 ",
                 "Causalities": {
@@ -243,10 +250,10 @@
             "Paragraph Title": "When there are 3 or more Giant Ape Power Category allies attacking on this turn"
         },
         "7003905": {
-            "ID": 7003905,
+            "ID": "7003905",
             "Transformation": {
                 "Activated": true,
-                "Unit": 4011111,
+                "Unit": "4011111",
                 "Giant/Rage": true,
                 "Min Turns": "2",
                 "Max Turns": "3",
@@ -260,9 +267,9 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Chance": 15,
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "15",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Transforms into 4011111 as a giant form for 2 to 3 turns ",
             "Line description": "Transforms into 4011111 as a giant form for 2 to 3 turns ",

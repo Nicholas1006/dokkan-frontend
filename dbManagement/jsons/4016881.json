@@ -37,7 +37,7 @@
     "Resource ID": 4016880,
     "Passive": {
         "1498": {
-            "ID": 1498,
+            "ID": "1498",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 100,
             "DEF": 100,
@@ -48,16 +48,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 47 ",
                 "Causalities": {
                     "47": {
                         "Button": {
-                            "Name": "Is Ki at least 12 on this turn?"
+                            "Name": "Is Ki at least 12 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 24
@@ -73,7 +74,7 @@
             "Paragraph Title": "When Ki is 12 or more"
         },
         "1001498": {
-            "ID": 1001498,
+            "ID": "1001498",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 88,
             "Target": {
@@ -83,16 +84,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 204 ",
                 "Causalities": {
                     "204": {
                         "Button": {
-                            "Name": "Is Ki at least 18 on this turn?"
+                            "Name": "Is Ki at least 18 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=18",
                             "Min": 0,
                             "Max": 24
@@ -108,7 +110,7 @@
             "Paragraph Title": "When Ki is 18 or more"
         },
         "2001498": {
-            "ID": 2001498,
+            "ID": "2001498",
             "Additional Attack": {
                 "Activated": true,
                 "Chance of super": 30,
@@ -122,16 +124,17 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 9 ",
                 "Causalities": {
                     "9": {
                         "Button": {
-                            "Name": "Is there less than 2 enemies on this turn?"
+                            "Name": "Is there less than 2 enemies within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many enemies are there on this turn?",
+                            "Name": "How many enemies are there within the last 1 turns?",
                             "Logic": "<2",
                             "Min": 1,
                             "Max": 7
@@ -147,7 +150,7 @@
             "Paragraph Title": "When there are less than 2 enemies"
         },
         "3001498": {
-            "ID": 3001498,
+            "ID": "3001498",
             "Additional Attack": {
                 "Activated": true,
                 "Chance of super": 100,
@@ -161,16 +164,17 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 22 ",
                 "Causalities": {
                     "22": {
                         "Button": {
-                            "Name": "Is there 2 or more enemies on this turn?"
+                            "Name": "Is there 2 or more enemies within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many enemies are there on this turn?",
+                            "Name": "How many enemies are there within the last 1 turns?",
                             "Logic": ">=2",
                             "Min": 1,
                             "Max": 7
@@ -1221,7 +1225,9 @@
     },
     "Standby Skill": null,
     "Finish Skill": null,
-    "Transforms from": [],
+    "Transforms from": [
+        "1016871"
+    ],
     "Transformations": [],
     "Max Appearances In Form": 50,
     "Dokkan awakenings": [],

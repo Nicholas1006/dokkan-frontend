@@ -40,7 +40,7 @@
     "Resource ID": 1022630,
     "Passive": {
         "2542": {
-            "ID": 2542,
+            "ID": "2542",
             "Timing": "Start of turn",
             "Ki": 2,
             "Target": {
@@ -50,15 +50,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Ki +2 ",
             "Line description": "Ki +2 ",
             "Paragraph Title": "Basic effect(s)"
         },
         "1002542": {
-            "ID": 1002542,
+            "ID": "1002542",
             "Timing": "Start of turn",
             "ATK": 159,
             "DEF": 159,
@@ -69,15 +70,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 159%{passiveImg:up_g} ",
             "Line description": "ATK and DEF 159%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "2002542": {
-            "ID": 2002542,
+            "ID": "2002542",
             "Additional Attack": {
                 "Activated": true,
                 "Chance of super": 100,
@@ -91,16 +93,17 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 974 ",
                 "Causalities": {
                     "974": {
                         "Button": {
-                            "Name": "Has this character been hit on this turn?"
+                            "Name": "Has this character been hit within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many times has this character been hit on this turn?",
+                            "Name": "How many times has this character been hit within the last 1 turns?",
                             "Logic": ">=1",
                             "Min": 0,
                             "Max": 1
@@ -116,7 +119,7 @@
             "Paragraph Title": "After recieving an attack"
         },
         "3002542": {
-            "ID": 3002542,
+            "ID": "3002542",
             "Timing": "Right before attack(SOT stat)",
             "ATK": 59,
             "Target": {
@@ -126,7 +129,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 97200000 ",
                 "Causalities": {
@@ -145,7 +149,7 @@
             "Paragraph Title": "As the 2nd or 3rd attacker in a turn"
         },
         "4002542": {
-            "ID": 4002542,
+            "ID": "4002542",
             "Additional Attack": {
                 "Activated": true,
                 "Chance of super": 100,
@@ -159,8 +163,8 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Chance": 30,
-            "Length": 1,
+            "Chance": "30",
+            "Length": "1",
             "Condition": {
                 "Logic": " 97200000 ",
                 "Causalities": {
@@ -179,7 +183,7 @@
             "Paragraph Title": "As the 2nd or 3rd attacker in a turn"
         },
         "5002542": {
-            "ID": 5002542,
+            "ID": "5002542",
             "Timing": "Start of turn",
             "ATK": 59,
             "Target": {
@@ -189,16 +193,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 973 ",
                 "Causalities": {
                     "973": {
                         "Button": {
-                            "Name": "Is there 1 or more Extreme class enemies on this turn?"
+                            "Name": "Is there 1 or more Extreme class enemies within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Extreme class enemies on this turn?",
+                            "Name": "How many Extreme class enemies within the last 1 turns?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
@@ -214,7 +219,7 @@
             "Paragraph Title": "When there are 1 or more Extreme class enemies"
         },
         "6002542": {
-            "ID": 6002542,
+            "ID": "6002542",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -233,15 +238,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 99,
+            "Chance": "100",
+            "Length": "99",
             "CausalityLogic": "{\"source\": \"973\", \"compiled\": 973}",
             "Type": "Building Stat",
             "Brief effect description": "Ki +1 ({currentValue} / 3) based on 'How many turns has this character been on with a Extreme class enemy' ",
-            "Line description": "Ki +1 ({currentValue} / 3) based on 'How many turns has this character been on with a Extreme class enemy' ",
+            "Line description": "Ki +1 ({currentValue} / 3) based on 'How many turns has this character been on with a Extreme class enemy' {passiveImg:forever}",
             "Paragraph Title": "Basic effect(s)"
         },
         "7002542": {
-            "ID": 7002542,
+            "ID": "7002542",
             "Timing": "Start of turn",
             "Crit Chance": 100,
             "Target": {
@@ -251,13 +257,14 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 975 ",
                 "Causalities": {
                     "975": {
                         "Button": {
-                            "Name": "Is there 1 or more enemies whose name includes Frieza on this turn?"
+                            "Name": "Is there 1 or more enemies whose name includes Frieza within the last 1 turns?"
                         },
                         "Paragraph Title": "\"Frieza\""
                     }

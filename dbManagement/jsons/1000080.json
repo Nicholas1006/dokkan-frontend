@@ -32,7 +32,7 @@
     "Resource ID": 1000080,
     "Passive": {
         "64": {
-            "ID": 64,
+            "ID": "64",
             "Timing": "Right after attack",
             "Heals": 25,
             "Target": {
@@ -42,16 +42,17 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 20 ",
                 "Causalities": {
                     "20": {
                         "Button": {
-                            "Name": "Is Ki at least 8 on this turn?"
+                            "Name": "Is Ki at least 8 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=8",
                             "Min": 0,
                             "Max": 12

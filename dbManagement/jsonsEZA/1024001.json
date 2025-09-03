@@ -35,7 +35,7 @@
     "Resource ID": 1024000,
     "Passive": {
         "3555": {
-            "ID": 3555,
+            "ID": "3555",
             "Timing": "Start of turn",
             "ATK": 100,
             "DEF": 100,
@@ -46,15 +46,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 100%{passiveImg:up_g} ",
             "Line description": "ATK and DEF 100%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "1003555": {
-            "ID": 1003555,
+            "ID": "1003555",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 100,
             "DEF": 100,
@@ -65,16 +66,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2602 ",
                 "Causalities": {
                     "2602": {
                         "Button": {
-                            "Name": "Is Ki at least 9 on this turn?"
+                            "Name": "Is Ki at least 9 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=9",
                             "Min": 0,
                             "Max": 12
@@ -90,7 +92,7 @@
             "Paragraph Title": "When Ki is 9 or more"
         },
         "2003555": {
-            "ID": 2003555,
+            "ID": "2003555",
             "Timing": "Start of turn",
             "ATK": 20,
             "DEF": 20,
@@ -101,15 +103,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 20%{passiveImg:up_g} for all allies ",
             "Line description": "ATK and DEF 20%{passiveImg:up_g} for all allies ",
             "Paragraph Title": "Basic effect(s)"
         },
         "3003555": {
-            "ID": 3003555,
+            "ID": "3003555",
             "Timing": "Start of turn",
             "Ki Change": {
                 "From": [
@@ -130,15 +133,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Randomly changes Ki Spheres of a certain Type(TEQ excluded) to TEQ Ki Spheres ",
             "Line description": "Randomly changes Ki Spheres of a certain Type(TEQ excluded) to TEQ Ki Spheres ",
             "Paragraph Title": "Basic effect(s)"
         },
         "4003555": {
-            "ID": 4003555,
+            "ID": "4003555",
             "Timing": "When ki spheres collected",
             "ATK": 20,
             "Target": {
@@ -148,16 +152,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2603 ",
                 "Causalities": {
                     "2603": {
                         "Button": {
-                            "Name": "Has 4 or more Ki Spheres been obtained on this turn?"
+                            "Name": "Has 4 or more Ki Spheres been obtained within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Ki Spheres have been obtained on this turn?",
+                            "Name": "How many Ki Spheres have been obtained within the last 1 turns?",
                             "Logic": ">=4",
                             "Min": 0,
                             "Max": 4
@@ -173,7 +178,7 @@
             "Paragraph Title": "With 4 or more Ki Spheres obtained"
         },
         "5003555": {
-            "ID": 5003555,
+            "ID": "5003555",
             "Timing": "When ki spheres collected",
             "ATK": 20,
             "Target": {
@@ -183,16 +188,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2604 ",
                 "Causalities": {
                     "2604": {
                         "Button": {
-                            "Name": "Has 5 or more Ki Spheres been obtained on this turn?"
+                            "Name": "Has 5 or more Ki Spheres been obtained within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Ki Spheres have been obtained on this turn?",
+                            "Name": "How many Ki Spheres have been obtained within the last 1 turns?",
                             "Logic": ">=5",
                             "Min": 0,
                             "Max": 5
@@ -208,7 +214,7 @@
             "Paragraph Title": "With 5 or more Ki Spheres obtained"
         },
         "6003555": {
-            "ID": 6003555,
+            "ID": "6003555",
             "Timing": "When ki spheres collected",
             "ATK": 20,
             "Target": {
@@ -218,16 +224,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2605 ",
                 "Causalities": {
                     "2605": {
                         "Button": {
-                            "Name": "Has 6 or more Ki Spheres been obtained on this turn?"
+                            "Name": "Has 6 or more Ki Spheres been obtained within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Ki Spheres have been obtained on this turn?",
+                            "Name": "How many Ki Spheres have been obtained within the last 1 turns?",
                             "Logic": ">=6",
                             "Min": 0,
                             "Max": 6
@@ -243,7 +250,7 @@
             "Paragraph Title": "With 6 or more Ki Spheres obtained"
         },
         "7003555": {
-            "ID": 7003555,
+            "ID": "7003555",
             "Timing": "When ki spheres collected",
             "Crit Chance": 20,
             "Target": {
@@ -253,16 +260,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2603 ",
                 "Causalities": {
                     "2603": {
                         "Button": {
-                            "Name": "Has 4 or more Ki Spheres been obtained on this turn?"
+                            "Name": "Has 4 or more Ki Spheres been obtained within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Ki Spheres have been obtained on this turn?",
+                            "Name": "How many Ki Spheres have been obtained within the last 1 turns?",
                             "Logic": ">=4",
                             "Min": 0,
                             "Max": 4
@@ -278,7 +286,7 @@
             "Paragraph Title": "With 4 or more Ki Spheres obtained"
         },
         "8003555": {
-            "ID": 8003555,
+            "ID": "8003555",
             "Timing": "When ki spheres collected",
             "Crit Chance": 20,
             "Target": {
@@ -288,16 +296,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2604 ",
                 "Causalities": {
                     "2604": {
                         "Button": {
-                            "Name": "Has 5 or more Ki Spheres been obtained on this turn?"
+                            "Name": "Has 5 or more Ki Spheres been obtained within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Ki Spheres have been obtained on this turn?",
+                            "Name": "How many Ki Spheres have been obtained within the last 1 turns?",
                             "Logic": ">=5",
                             "Min": 0,
                             "Max": 5
@@ -313,7 +322,7 @@
             "Paragraph Title": "With 5 or more Ki Spheres obtained"
         },
         "9003555": {
-            "ID": 9003555,
+            "ID": "9003555",
             "Timing": "When ki spheres collected",
             "Crit Chance": 20,
             "Target": {
@@ -323,16 +332,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2605 ",
                 "Causalities": {
                     "2605": {
                         "Button": {
-                            "Name": "Has 6 or more Ki Spheres been obtained on this turn?"
+                            "Name": "Has 6 or more Ki Spheres been obtained within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Ki Spheres have been obtained on this turn?",
+                            "Name": "How many Ki Spheres have been obtained within the last 1 turns?",
                             "Logic": ">=6",
                             "Min": 0,
                             "Max": 6
@@ -348,7 +358,7 @@
             "Paragraph Title": "With 6 or more Ki Spheres obtained"
         },
         "10003555": {
-            "ID": 10003555,
+            "ID": "10003555",
             "Timing": "When ki spheres collected",
             "Ki": 1,
             "Target": {
@@ -358,16 +368,17 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2603 ",
                 "Causalities": {
                     "2603": {
                         "Button": {
-                            "Name": "Has 4 or more Ki Spheres been obtained on this turn?"
+                            "Name": "Has 4 or more Ki Spheres been obtained within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Ki Spheres have been obtained on this turn?",
+                            "Name": "How many Ki Spheres have been obtained within the last 1 turns?",
                             "Logic": ">=4",
                             "Min": 0,
                             "Max": 4
@@ -383,7 +394,7 @@
             "Paragraph Title": "With 4 or more Ki Spheres obtained"
         },
         "11003555": {
-            "ID": 11003555,
+            "ID": "11003555",
             "Timing": "When ki spheres collected",
             "Ki": 1,
             "Target": {
@@ -393,16 +404,17 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2604 ",
                 "Causalities": {
                     "2604": {
                         "Button": {
-                            "Name": "Has 5 or more Ki Spheres been obtained on this turn?"
+                            "Name": "Has 5 or more Ki Spheres been obtained within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Ki Spheres have been obtained on this turn?",
+                            "Name": "How many Ki Spheres have been obtained within the last 1 turns?",
                             "Logic": ">=5",
                             "Min": 0,
                             "Max": 5
@@ -418,7 +430,7 @@
             "Paragraph Title": "With 5 or more Ki Spheres obtained"
         },
         "12003555": {
-            "ID": 12003555,
+            "ID": "12003555",
             "Timing": "When ki spheres collected",
             "Ki": 1,
             "Target": {
@@ -428,16 +440,17 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2605 ",
                 "Causalities": {
                     "2605": {
                         "Button": {
-                            "Name": "Has 6 or more Ki Spheres been obtained on this turn?"
+                            "Name": "Has 6 or more Ki Spheres been obtained within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Ki Spheres have been obtained on this turn?",
+                            "Name": "How many Ki Spheres have been obtained within the last 1 turns?",
                             "Logic": ">=6",
                             "Min": 0,
                             "Max": 6
@@ -453,7 +466,7 @@
             "Paragraph Title": "With 6 or more Ki Spheres obtained"
         },
         "13003555": {
-            "ID": 13003555,
+            "ID": "13003555",
             "Timing": "When ki spheres collected",
             "ATK": 10,
             "DEF": 10,
@@ -464,16 +477,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2603 ",
                 "Causalities": {
                     "2603": {
                         "Button": {
-                            "Name": "Has 4 or more Ki Spheres been obtained on this turn?"
+                            "Name": "Has 4 or more Ki Spheres been obtained within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Ki Spheres have been obtained on this turn?",
+                            "Name": "How many Ki Spheres have been obtained within the last 1 turns?",
                             "Logic": ">=4",
                             "Min": 0,
                             "Max": 4
@@ -489,7 +503,7 @@
             "Paragraph Title": "With 4 or more Ki Spheres obtained"
         },
         "14003555": {
-            "ID": 14003555,
+            "ID": "14003555",
             "Timing": "When ki spheres collected",
             "ATK": 10,
             "DEF": 10,
@@ -500,16 +514,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2604 ",
                 "Causalities": {
                     "2604": {
                         "Button": {
-                            "Name": "Has 5 or more Ki Spheres been obtained on this turn?"
+                            "Name": "Has 5 or more Ki Spheres been obtained within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Ki Spheres have been obtained on this turn?",
+                            "Name": "How many Ki Spheres have been obtained within the last 1 turns?",
                             "Logic": ">=5",
                             "Min": 0,
                             "Max": 5
@@ -525,7 +540,7 @@
             "Paragraph Title": "With 5 or more Ki Spheres obtained"
         },
         "15003555": {
-            "ID": 15003555,
+            "ID": "15003555",
             "Timing": "When ki spheres collected",
             "ATK": 10,
             "DEF": 10,
@@ -536,16 +551,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2605 ",
                 "Causalities": {
                     "2605": {
                         "Button": {
-                            "Name": "Has 6 or more Ki Spheres been obtained on this turn?"
+                            "Name": "Has 6 or more Ki Spheres been obtained within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Ki Spheres have been obtained on this turn?",
+                            "Name": "How many Ki Spheres have been obtained within the last 1 turns?",
                             "Logic": ">=6",
                             "Min": 0,
                             "Max": 6

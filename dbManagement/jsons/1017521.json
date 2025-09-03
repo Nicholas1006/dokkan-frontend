@@ -32,7 +32,7 @@
     "Resource ID": 1017520,
     "Passive": {
         "1562": {
-            "ID": 1562,
+            "ID": "1562",
             "Timing": "Start of turn",
             "DEF": 30,
             "Target": {
@@ -42,16 +42,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 9 ",
                 "Causalities": {
                     "9": {
                         "Button": {
-                            "Name": "Is there less than 2 enemies on this turn?"
+                            "Name": "Is there less than 2 enemies within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many enemies are there on this turn?",
+                            "Name": "How many enemies are there within the last 1 turns?",
                             "Logic": "<2",
                             "Min": 1,
                             "Max": 7

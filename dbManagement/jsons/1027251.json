@@ -35,7 +35,7 @@
     "Resource ID": 1027250,
     "Passive": {
         "3520": {
-            "ID": 3520,
+            "ID": "3520",
             "Timing": "Start of turn",
             "Ki": 2,
             "Target": {
@@ -45,15 +45,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Ki +2 ",
             "Line description": "Ki +2 ",
             "Paragraph Title": "Basic effect(s)"
         },
         "1003520": {
-            "ID": 1003520,
+            "ID": "1003520",
             "Timing": "Start of turn",
             "ATK": 80,
             "DEF": 80,
@@ -64,15 +65,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 80%{passiveImg:up_g} ",
             "Line description": "ATK and DEF 80%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "2003520": {
-            "ID": 2003520,
+            "ID": "2003520",
             "Timing": "Right after attack",
             "Building Stat": {
                 "Min": 0,
@@ -91,15 +93,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 99,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
             "Brief effect description": "ATK 20%{passiveImg:up_g} ({currentValue} / 80%) based on 'How many attacks has this character performed in battle' after attacking",
-            "Line description": "ATK 20%{passiveImg:up_g} ({currentValue} / 80%) based on 'How many attacks has this character performed in battle' after attacking",
+            "Line description": "ATK 20%{passiveImg:up_g} ({currentValue} / 80%) based on 'How many attacks has this character performed in battle' after attacking{passiveImg:forever}",
             "Paragraph Title": "Basic effect(s)"
         },
         "3003520": {
-            "ID": 3003520,
+            "ID": "3003520",
             "Timing": "Right after attack",
             "Building Stat": {
                 "Min": 0,
@@ -118,15 +121,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 99,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
             "Brief effect description": "DEF 20%{passiveImg:up_g} ({currentValue} / 80%) based on 'How many attacks has this character performed in battle' after attacking",
-            "Line description": "DEF 20%{passiveImg:up_g} ({currentValue} / 80%) based on 'How many attacks has this character performed in battle' after attacking",
+            "Line description": "DEF 20%{passiveImg:up_g} ({currentValue} / 80%) based on 'How many attacks has this character performed in battle' after attacking{passiveImg:forever}",
             "Paragraph Title": "Basic effect(s)"
         },
         "4003520": {
-            "ID": 4003520,
+            "ID": "4003520",
             "Timing": "Start of turn",
             "Crit Chance": 30,
             "Target": {
@@ -136,16 +140,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": "( 2527 || 2528 )",
                 "Causalities": {
                     "2527": {
                         "Button": {
-                            "Name": "Are there 1 or more Future Saga category enemies  on this turn?"
+                            "Name": "Are there 1 or more Future Saga category enemies  within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Future Saga category enemies on this turn?",
+                            "Name": "How many Future Saga category enemies within the last 1 turns?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
@@ -154,10 +159,10 @@
                     },
                     "2528": {
                         "Button": {
-                            "Name": "Are there 1 or more Time Travelers category enemies  on this turn?"
+                            "Name": "Are there 1 or more Time Travelers category enemies  within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Time Travelers category enemies on this turn?",
+                            "Name": "How many Time Travelers category enemies within the last 1 turns?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
@@ -173,7 +178,7 @@
             "Paragraph Title": "When there are 1 or more Future Saga Category enemies or there are 1 or more Time Travelers Category enemies "
         },
         "5003520": {
-            "ID": 5003520,
+            "ID": "5003520",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 40,
             "DEF": 40,
@@ -184,7 +189,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": "( 2524 && 2525 )",
                 "Causalities": {
@@ -202,10 +208,10 @@
                     },
                     "2525": {
                         "Button": {
-                            "Name": "Is Ki at least 12 on this turn?"
+                            "Name": "Is Ki at least 12 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12

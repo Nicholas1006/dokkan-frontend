@@ -24,7 +24,7 @@
     "Resource ID": 1029380,
     "Passive": {
         "4212": {
-            "ID": 4212,
+            "ID": "4212",
             "Timing": "Start of turn",
             "ATK": 120,
             "DEF": 120,
@@ -35,15 +35,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 120%{passiveImg:up_g} ",
             "Line description": "ATK and DEF 120%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "1004212": {
-            "ID": 1004212,
+            "ID": "1004212",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 80,
             "DEF": 80,
@@ -54,16 +55,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 47 ",
                 "Causalities": {
                     "47": {
                         "Button": {
-                            "Name": "Is Ki at least 12 on this turn?"
+                            "Name": "Is Ki at least 12 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
@@ -79,7 +81,7 @@
             "Paragraph Title": "When Ki is 12 or more"
         },
         "2004212": {
-            "ID": 2004212,
+            "ID": "2004212",
             "Timing": "Right after attack",
             "Building Stat": {
                 "Min": 0,
@@ -98,15 +100,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 99,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
             "Brief effect description": "Ki +1 ({currentValue} / 3) based on 'How many attacks has this character performed in battle' after attacking",
-            "Line description": "Ki +1 ({currentValue} / 3) based on 'How many attacks has this character performed in battle' after attacking",
+            "Line description": "Ki +1 ({currentValue} / 3) based on 'How many attacks has this character performed in battle' after attacking{passiveImg:forever}",
             "Paragraph Title": "Basic effect(s)"
         },
         "3004212": {
-            "ID": 3004212,
+            "ID": "3004212",
             "Timing": "After all ki collected",
             "DEF": 80,
             "Target": {
@@ -116,16 +119,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 25 ",
                 "Causalities": {
                     "25": {
                         "Button": {
-                            "Name": "Is this the 1st attacker in the turn on this turn?"
+                            "Name": "Is this the 1st attacker in the turn within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "What position is this character attacking in on this turn?",
+                            "Name": "What position is this character attacking in within the last 1 turns?",
                             "Logic": "==1",
                             "Min": 1,
                             "Max": 3
@@ -141,10 +145,10 @@
             "Paragraph Title": "As the 1st attacker in the turn"
         },
         "4004212": {
-            "ID": 4004212,
+            "ID": "4004212",
             "Disable Other Line": {
                 "Activated": true,
-                "Line": 3004212
+                "Line": "3004212"
             },
             "Timing": "Right before attack(MOT stat)",
             "Target": {
@@ -154,15 +158,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Disable Other Line",
             "Brief effect description": "Disables a different passive line:3004212 when attacking",
             "Line description": "Disables a different passive line:3004212 when attacking",
             "Paragraph Title": "Basic effect(s)"
         },
         "5004212": {
-            "ID": 5004212,
+            "ID": "5004212",
             "Additional Attack": {
                 "Activated": true,
                 "Chance of super": 50,
@@ -176,7 +181,8 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 3300000 ",
                 "Causalities": {

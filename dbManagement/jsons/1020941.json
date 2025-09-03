@@ -34,7 +34,7 @@
     "Resource ID": 1020940,
     "Passive": {
         "2309": {
-            "ID": 2309,
+            "ID": "2309",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 100,
             "DEF": 100,
@@ -45,16 +45,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 47 ",
                 "Causalities": {
                     "47": {
                         "Button": {
-                            "Name": "Is Ki at least 12 on this turn?"
+                            "Name": "Is Ki at least 12 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
@@ -70,7 +71,7 @@
             "Paragraph Title": "When Ki is 12 or more"
         },
         "1002309": {
-            "ID": 1002309,
+            "ID": "1002309",
             "Timing": "Start of turn",
             "ATK": 30,
             "Target": {
@@ -80,7 +81,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 757 ",
                 "Causalities": {
@@ -105,7 +107,7 @@
             "Paragraph Title": "When there are 3 or more Extreme class allies attacking on this turn"
         },
         "2002309": {
-            "ID": 2002309,
+            "ID": "2002309",
             "Timing": "Right after attack",
             "Building Stat": {
                 "Min": 0,
@@ -124,18 +126,19 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 99,
+            "Chance": "100",
+            "Length": "99",
             "CausalityLogic": "{\"source\": \"435\", \"compiled\": 435}",
             "Type": "Building Stat",
             "Brief effect description": "Ki +1 ({currentValue} / 3) based on 'How many super attacks has this character performed' after attacking",
-            "Line description": "Ki +1 ({currentValue} / 3) based on 'How many super attacks has this character performed' after attacking",
+            "Line description": "Ki +1 ({currentValue} / 3) based on 'How many super attacks has this character performed' after attacking{passiveImg:forever}",
             "Paragraph Title": "Basic effect(s)"
         },
         "3002309": {
-            "ID": 3002309,
+            "ID": "3002309",
             "Transformation": {
                 "Activated": true,
-                "Unit": 4020951,
+                "Unit": "4020951",
                 "Giant/Rage": false,
                 "Min Turns": null,
                 "Max Turns": null,
@@ -149,17 +152,18 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "First Turn To Activate": 4,
             "Condition": {
                 "Logic": " 728 ",
                 "Causalities": {
                     "728": {
                         "Button": {
-                            "Name": "Is HP 60 % or less on this turn?"
+                            "Name": "Is HP 60 % or less within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "What percentage of HP is remaining on this turn?",
+                            "Name": "What percentage of HP is remaining within the last 1 turns?",
                             "Logic": "<=60",
                             "Min": 0,
                             "Max": 100

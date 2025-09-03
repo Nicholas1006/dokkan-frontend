@@ -29,7 +29,7 @@
     "Resource ID": 1002030,
     "Passive": {
         "262": {
-            "ID": 262,
+            "ID": "262",
             "Timing": "Start of turn",
             "ATK": 25,
             "DEF": 25,
@@ -40,16 +40,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 42 ",
                 "Causalities": {
                     "42": {
                         "Button": {
-                            "Name": "Is HP 80 % or less on this turn?"
+                            "Name": "Is HP 80 % or less within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "What percentage of HP is remaining on this turn?",
+                            "Name": "What percentage of HP is remaining within the last 1 turns?",
                             "Logic": "<=80",
                             "Min": 0,
                             "Max": 100

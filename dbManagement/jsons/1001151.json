@@ -28,7 +28,7 @@
     "Resource ID": 1001150,
     "Passive": {
         "42": {
-            "ID": 42,
+            "ID": "42",
             "Timing": "Right before attack(SOT stat)",
             "ATK": 1500,
             "Target": {
@@ -38,16 +38,17 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 31 ",
                 "Causalities": {
                     "31": {
                         "Button": {
-                            "Name": "Is Ki at least 10 on this turn?"
+                            "Name": "Is Ki at least 10 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=10",
                             "Min": 0,
                             "Max": 12

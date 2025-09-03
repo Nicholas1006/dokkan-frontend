@@ -41,7 +41,7 @@
     "Resource ID": 4018760,
     "Passive": {
         "1988": {
-            "ID": 1988,
+            "ID": "1988",
             "Timing": "Start of turn",
             "ATK": 120,
             "DEF": 120,
@@ -52,15 +52,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 120%{passiveImg:up_g} ",
             "Line description": "ATK and DEF 120%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "1001988": {
-            "ID": 1001988,
+            "ID": "1001988",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 10,
@@ -80,15 +81,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Building Stat",
             "Brief effect description": "DEF 77%{passiveImg:up_g} ({currentValue} / 77%) based on 'What percentage of HP is remaining' ",
             "Line description": "DEF 77%{passiveImg:up_g} ({currentValue} / 77%) based on 'What percentage of HP is remaining' ",
             "Paragraph Title": "Basic effect(s)"
         },
         "2001988": {
-            "ID": 2001988,
+            "ID": "2001988",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 20,
@@ -108,15 +110,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Building Stat",
             "Brief effect description": "ATK 77%{passiveImg:up_g} ({currentValue} / 77%) based on 'What percentage of HP is remaining' ",
             "Line description": "ATK 77%{passiveImg:up_g} ({currentValue} / 77%) based on 'What percentage of HP is remaining' ",
             "Paragraph Title": "Basic effect(s)"
         },
         "3001988": {
-            "ID": 3001988,
+            "ID": "3001988",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 33,
             "DEF": 33,
@@ -127,16 +130,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 461 ",
                 "Causalities": {
                     "461": {
                         "Button": {
-                            "Name": "Has 3 or more Ki Spheres been obtained on this turn?"
+                            "Name": "Has 3 or more Ki Spheres been obtained within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Ki Spheres have been obtained on this turn?",
+                            "Name": "How many Ki Spheres have been obtained within the last 1 turns?",
                             "Logic": ">=3",
                             "Min": 0,
                             "Max": 3
@@ -152,7 +156,7 @@
             "Paragraph Title": "With 3 or more Ki Spheres obtained"
         },
         "4001988": {
-            "ID": 4001988,
+            "ID": "4001988",
             "Dodge Chance": 33,
             "Timing": "When ki spheres collected",
             "Target": {
@@ -162,16 +166,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 461 ",
                 "Causalities": {
                     "461": {
                         "Button": {
-                            "Name": "Has 3 or more Ki Spheres been obtained on this turn?"
+                            "Name": "Has 3 or more Ki Spheres been obtained within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Ki Spheres have been obtained on this turn?",
+                            "Name": "How many Ki Spheres have been obtained within the last 1 turns?",
                             "Logic": ">=3",
                             "Min": 0,
                             "Max": 3
@@ -187,7 +192,7 @@
             "Paragraph Title": "With 3 or more Ki Spheres obtained"
         },
         "5001988": {
-            "ID": 5001988,
+            "ID": "5001988",
             "Effective Against All": true,
             "Timing": "When ki spheres collected",
             "Target": {
@@ -197,16 +202,17 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 462 ",
                 "Causalities": {
                     "462": {
                         "Button": {
-                            "Name": "Has 6 or more Ki Spheres been obtained on this turn?"
+                            "Name": "Has 6 or more Ki Spheres been obtained within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Ki Spheres have been obtained on this turn?",
+                            "Name": "How many Ki Spheres have been obtained within the last 1 turns?",
                             "Logic": ">=6",
                             "Min": 0,
                             "Max": 6
@@ -1022,7 +1028,9 @@
     "Active Skill": null,
     "Standby Skill": null,
     "Finish Skill": null,
-    "Transforms from": [],
+    "Transforms from": [
+        "1017411"
+    ],
     "Transformations": [],
     "Max Appearances In Form": 50,
     "Dokkan awakenings": [],

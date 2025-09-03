@@ -39,7 +39,7 @@
     "Resource ID": 4023470,
     "Passive": {
         "4492": {
-            "ID": 4492,
+            "ID": "4492",
             "Timing": "Start of turn",
             "Ki": 3,
             "Target": {
@@ -49,15 +49,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Ki +3 ",
             "Line description": "Ki +3 ",
             "Paragraph Title": "Basic effect(s)"
         },
         "1004492": {
-            "ID": 1004492,
+            "ID": "1004492",
             "Timing": "Start of turn",
             "ATK": 300,
             "DEF": 300,
@@ -68,15 +69,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 300%{passiveImg:up_g} ",
             "Line description": "ATK and DEF 300%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "2004492": {
-            "ID": 2004492,
+            "ID": "2004492",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 200,
             "DEF": 200,
@@ -87,16 +89,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 1229 ",
                 "Causalities": {
                     "1229": {
                         "Button": {
-                            "Name": "Is Ki at least 12 on this turn?"
+                            "Name": "Is Ki at least 12 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
@@ -112,11 +115,11 @@
             "Paragraph Title": "When Ki is 12 or more"
         },
         "3004492": {
-            "ID": 3004492,
+            "ID": "3004492",
             "Additional Attack": {
                 "Activated": true,
                 "Chance of super": 50,
-                "Chance of another additional": 100
+                "Chance of another additional": "100"
             },
             "Timing": "Start of turn",
             "Target": {
@@ -126,15 +129,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
-            "Brief effect description": "None",
-            "Line description": "None",
+            "Brief effect description": "Performs an additional attack with a 100% chance of another additional attack each with a 50% chance of becoming a super attack ",
+            "Line description": "Performs an additional attack with a 100% chance of another additional attack each with a 50% chance of becoming a super attack ",
             "Paragraph Title": "Basic effect(s)"
         },
         "4004492": {
-            "ID": 4004492,
+            "ID": "4004492",
             "Timing": "Start of turn",
             "Guard": true,
             "Target": {
@@ -144,7 +148,8 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "CausalityLogic": "{\"source\": \"1000000000000\", \"compiled\": 1000000000000}",
             "Once Only": true,
             "Type": "Single activator",
@@ -160,11 +165,11 @@
                 }
             },
             "Brief effect description": "Guards all attacks ",
-            "Line description": " {passiveImg:once}Guards all attacks ",
+            "Line description": " {passiveImg:once}Guards all attacks for 1 turn ",
             "Paragraph Title": "For 1 turn(s) from the character's entry turn"
         },
         "5004492": {
-            "ID": 5004492,
+            "ID": "5004492",
             "Timing": "Right before attack(SOT stat)",
             "Ki": 3,
             "Target": {
@@ -174,7 +179,8 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2119 ",
                 "Causalities": {
@@ -183,7 +189,7 @@
                             "Name": "Is it within the first 6 turn(s) from the character's entry turn?"
                         },
                         "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
+                            "Name": "How many turns is it since entry turn within the last 1 turns?",
                             "Logic": "<=6",
                             "Min": 0,
                             "Max": 7
@@ -199,7 +205,7 @@
             "Paragraph Title": "For 6 turns from the chraracter's entry turn"
         },
         "6004492": {
-            "ID": 6004492,
+            "ID": "6004492",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 50,
             "DEF": 200,
@@ -210,7 +216,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2119 ",
                 "Causalities": {
@@ -219,7 +226,7 @@
                             "Name": "Is it within the first 6 turn(s) from the character's entry turn?"
                         },
                         "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
+                            "Name": "How many turns is it since entry turn within the last 1 turns?",
                             "Logic": "<=6",
                             "Min": 0,
                             "Max": 7
@@ -235,7 +242,7 @@
             "Paragraph Title": "For 6 turns from the chraracter's entry turn"
         },
         "7004492": {
-            "ID": 7004492,
+            "ID": "7004492",
             "Timing": "Start of turn",
             "Crit Chance": 20,
             "Target": {
@@ -245,7 +252,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2119 ",
                 "Causalities": {
@@ -254,7 +262,7 @@
                             "Name": "Is it within the first 6 turn(s) from the character's entry turn?"
                         },
                         "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
+                            "Name": "How many turns is it since entry turn within the last 1 turns?",
                             "Logic": "<=6",
                             "Min": 0,
                             "Max": 7
@@ -270,7 +278,7 @@
             "Paragraph Title": "For 6 turns from the chraracter's entry turn"
         },
         "8004492": {
-            "ID": 8004492,
+            "ID": "8004492",
             "Timing": "Start of turn",
             "Crit Chance": 50,
             "Target": {
@@ -280,15 +288,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Chance of performing a critical hit +50%{passiveImg:up_g} ",
             "Line description": "Chance of performing a critical hit +50%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "9004492": {
-            "ID": 9004492,
+            "ID": "9004492",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 50,
             "Target": {
@@ -298,15 +307,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "ATK 50%{passiveImg:up_g} when attacking",
             "Line description": "ATK 50%{passiveImg:up_g} when attacking",
             "Paragraph Title": "Basic effect(s)"
         },
         "10004492": {
-            "ID": 10004492,
+            "ID": "10004492",
             "Dodge Chance": 5,
             "Timing": "Right after attack",
             "Building Stat": {
@@ -325,15 +335,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 99,
+            "Chance": "100",
+            "Length": "99",
             "CausalityLogic": "{\"source\": \"141\", \"compiled\": 141}",
             "Type": "Building Stat",
             "Brief effect description": "Chance of evading enemy attacks +5% ({currentValue} / 25%) based on 'How many super attacks has this character performed' after attacking",
-            "Line description": "Chance of evading enemy attacks +5% ({currentValue} / 25%) based on 'How many super attacks has this character performed' after attacking",
+            "Line description": "Chance of evading enemy attacks +5% ({currentValue} / 25%) based on 'How many super attacks has this character performed' after attacking{passiveImg:forever}",
             "Paragraph Title": "Basic effect(s)"
         },
         "11004492": {
-            "ID": 11004492,
+            "ID": "11004492",
             "Timing": "Right after attack",
             "Building Stat": {
                 "Min": 0,
@@ -352,15 +363,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 99,
+            "Chance": "100",
+            "Length": "99",
             "CausalityLogic": "{\"source\": \"141\", \"compiled\": 141}",
             "Type": "Building Stat",
             "Brief effect description": "Damage Reduction Rate 5%{passiveImg:up_g} ({currentValue} / 25%) based on 'How many super attacks has this character performed' after attacking",
-            "Line description": "Damage Reduction Rate 5%{passiveImg:up_g} ({currentValue} / 25%) based on 'How many super attacks has this character performed' after attacking",
+            "Line description": "Damage Reduction Rate 5%{passiveImg:up_g} ({currentValue} / 25%) based on 'How many super attacks has this character performed' after attacking{passiveImg:forever}",
             "Paragraph Title": "Basic effect(s)"
         },
         "12004492": {
-            "ID": 12004492,
+            "ID": "12004492",
             "Timing": "Start of turn",
             "DR": 5,
             "Target": {
@@ -370,16 +382,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 11 ",
                 "Causalities": {
                     "11": {
                         "Button": {
-                            "Name": "Is it on or after the first 2 turns from this characters entry turn on this turn?"
+                            "Name": "Is it on or after the first 2 turns from this characters entry turn within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
+                            "Name": "How many turns is it since entry turn within the last 1 turns?",
                             "Logic": ">=2",
                             "Min": 0,
                             "Max": 2
@@ -395,7 +408,7 @@
             "Paragraph Title": "Starting from the 2 turn from the character's entry turn"
         },
         "13004492": {
-            "ID": 13004492,
+            "ID": "13004492",
             "Timing": "Start of turn",
             "DR": 5,
             "Target": {
@@ -405,16 +418,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 296 ",
                 "Causalities": {
                     "296": {
                         "Button": {
-                            "Name": "Is it on or after the first 3 turns from this characters entry turn on this turn?"
+                            "Name": "Is it on or after the first 3 turns from this characters entry turn within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
+                            "Name": "How many turns is it since entry turn within the last 1 turns?",
                             "Logic": ">=3",
                             "Min": 0,
                             "Max": 3
@@ -430,7 +444,7 @@
             "Paragraph Title": "Starting from the 3 turn from the character's entry turn"
         },
         "14004492": {
-            "ID": 14004492,
+            "ID": "14004492",
             "Timing": "Start of turn",
             "DR": 5,
             "Target": {
@@ -440,16 +454,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 626 ",
                 "Causalities": {
                     "626": {
                         "Button": {
-                            "Name": "Is it on or after the first 4 turns from this characters entry turn on this turn?"
+                            "Name": "Is it on or after the first 4 turns from this characters entry turn within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
+                            "Name": "How many turns is it since entry turn within the last 1 turns?",
                             "Logic": ">=4",
                             "Min": 0,
                             "Max": 4
@@ -465,7 +480,7 @@
             "Paragraph Title": "Starting from the 4 turn from the character's entry turn"
         },
         "15004492": {
-            "ID": 15004492,
+            "ID": "15004492",
             "Timing": "Start of turn",
             "DR": 5,
             "Target": {
@@ -475,16 +490,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2375 ",
                 "Causalities": {
                     "2375": {
                         "Button": {
-                            "Name": "Is it on or after the first 5 turns from this characters entry turn on this turn?"
+                            "Name": "Is it on or after the first 5 turns from this characters entry turn within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
+                            "Name": "How many turns is it since entry turn within the last 1 turns?",
                             "Logic": ">=5",
                             "Min": 0,
                             "Max": 5
@@ -500,7 +516,7 @@
             "Paragraph Title": "Starting from the 5 turn from the character's entry turn"
         },
         "16004492": {
-            "ID": 16004492,
+            "ID": "16004492",
             "Timing": "Start of turn",
             "DR": 5,
             "Target": {
@@ -510,16 +526,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 579 ",
                 "Causalities": {
                     "579": {
                         "Button": {
-                            "Name": "Is it on or after the first 6 turns from this characters entry turn on this turn?"
+                            "Name": "Is it on or after the first 6 turns from this characters entry turn within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
+                            "Name": "How many turns is it since entry turn within the last 1 turns?",
                             "Logic": ">=6",
                             "Min": 0,
                             "Max": 6
@@ -535,7 +552,7 @@
             "Paragraph Title": "Starting from the 6 turn from the character's entry turn"
         },
         "17004492": {
-            "ID": 17004492,
+            "ID": "17004492",
             "Dodge Chance": 5,
             "Timing": "Start of turn",
             "Target": {
@@ -545,16 +562,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 11 ",
                 "Causalities": {
                     "11": {
                         "Button": {
-                            "Name": "Is it on or after the first 2 turns from this characters entry turn on this turn?"
+                            "Name": "Is it on or after the first 2 turns from this characters entry turn within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
+                            "Name": "How many turns is it since entry turn within the last 1 turns?",
                             "Logic": ">=2",
                             "Min": 0,
                             "Max": 2
@@ -570,7 +588,7 @@
             "Paragraph Title": "Starting from the 2 turn from the character's entry turn"
         },
         "18004492": {
-            "ID": 18004492,
+            "ID": "18004492",
             "Dodge Chance": 5,
             "Timing": "Start of turn",
             "Target": {
@@ -580,16 +598,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 296 ",
                 "Causalities": {
                     "296": {
                         "Button": {
-                            "Name": "Is it on or after the first 3 turns from this characters entry turn on this turn?"
+                            "Name": "Is it on or after the first 3 turns from this characters entry turn within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
+                            "Name": "How many turns is it since entry turn within the last 1 turns?",
                             "Logic": ">=3",
                             "Min": 0,
                             "Max": 3
@@ -605,7 +624,7 @@
             "Paragraph Title": "Starting from the 3 turn from the character's entry turn"
         },
         "19004492": {
-            "ID": 19004492,
+            "ID": "19004492",
             "Dodge Chance": 5,
             "Timing": "Start of turn",
             "Target": {
@@ -615,16 +634,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 626 ",
                 "Causalities": {
                     "626": {
                         "Button": {
-                            "Name": "Is it on or after the first 4 turns from this characters entry turn on this turn?"
+                            "Name": "Is it on or after the first 4 turns from this characters entry turn within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
+                            "Name": "How many turns is it since entry turn within the last 1 turns?",
                             "Logic": ">=4",
                             "Min": 0,
                             "Max": 4
@@ -640,7 +660,7 @@
             "Paragraph Title": "Starting from the 4 turn from the character's entry turn"
         },
         "20004492": {
-            "ID": 20004492,
+            "ID": "20004492",
             "Dodge Chance": 5,
             "Timing": "Start of turn",
             "Target": {
@@ -650,16 +670,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2375 ",
                 "Causalities": {
                     "2375": {
                         "Button": {
-                            "Name": "Is it on or after the first 5 turns from this characters entry turn on this turn?"
+                            "Name": "Is it on or after the first 5 turns from this characters entry turn within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
+                            "Name": "How many turns is it since entry turn within the last 1 turns?",
                             "Logic": ">=5",
                             "Min": 0,
                             "Max": 5
@@ -675,7 +696,7 @@
             "Paragraph Title": "Starting from the 5 turn from the character's entry turn"
         },
         "21004492": {
-            "ID": 21004492,
+            "ID": "21004492",
             "Dodge Chance": 5,
             "Timing": "Start of turn",
             "Target": {
@@ -685,16 +706,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 579 ",
                 "Causalities": {
                     "579": {
                         "Button": {
-                            "Name": "Is it on or after the first 6 turns from this characters entry turn on this turn?"
+                            "Name": "Is it on or after the first 6 turns from this characters entry turn within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
+                            "Name": "How many turns is it since entry turn within the last 1 turns?",
                             "Logic": ">=6",
                             "Min": 0,
                             "Max": 6

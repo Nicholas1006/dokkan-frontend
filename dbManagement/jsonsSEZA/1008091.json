@@ -34,7 +34,7 @@
     "Resource ID": 1008090,
     "Passive": {
         "4506": {
-            "ID": 4506,
+            "ID": "4506",
             "Timing": "Start of turn",
             "ATK": 200,
             "DEF": 200,
@@ -45,15 +45,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 200%{passiveImg:up_g} ",
             "Line description": "ATK and DEF 200%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "1004506": {
-            "ID": 1004506,
+            "ID": "1004506",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 200,
             "DEF": 200,
@@ -64,16 +65,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 3409 ",
                 "Causalities": {
                     "3409": {
                         "Button": {
-                            "Name": "Is Ki at least 12 on this turn?"
+                            "Name": "Is Ki at least 12 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
@@ -89,7 +91,7 @@
             "Paragraph Title": "When Ki is 12 or more"
         },
         "2004506": {
-            "ID": 2004506,
+            "ID": "2004506",
             "Additional Attack": {
                 "Activated": true,
                 "Chance of super": 100,
@@ -103,15 +105,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Performs an additional super attack ",
             "Line description": "Performs an additional super attack ",
             "Paragraph Title": "Basic effect(s)"
         },
         "3004506": {
-            "ID": 3004506,
+            "ID": "3004506",
             "Timing": "Start of turn",
             "Ki Change": {
                 "From": [
@@ -129,15 +132,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Randomly changes Ki Spheres of a certain Type(AGL excluded) to Rainbow Ki Spheres ",
             "Line description": "Randomly changes Ki Spheres of a certain Type(AGL excluded) to Rainbow Ki Spheres ",
             "Paragraph Title": "Basic effect(s)"
         },
         "4004506": {
-            "ID": 4004506,
+            "ID": "4004506",
             "Timing": "Start of turn",
             "Ki Change": {
                 "From": [
@@ -157,16 +161,17 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2641 ",
                 "Causalities": {
                     "2641": {
                         "Button": {
-                            "Name": "Is the turn count 5 or more on this turn?"
+                            "Name": "Is the turn count 5 or more within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "What turn is it on this turn?",
+                            "Name": "What turn is it within the last 1 turns?",
                             "Logic": ">=5",
                             "Min": 1
                         },
@@ -181,7 +186,7 @@
             "Paragraph Title": "When the turn count is 5"
         },
         "5004506": {
-            "ID": 5004506,
+            "ID": "5004506",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -199,7 +204,7 @@
                         "Sweet treats"
                     ]
                 },
-                "Slider": "How many Ki Spheres have been obtained?"
+                "Slider": "How many Ki Spheres have been obtained on this turn?"
             },
             "ATK": 40,
             "DEF": 40,
@@ -210,15 +215,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Building Stat",
             "Brief effect description": "ATK and DEF 40%{passiveImg:up_g} per Ki Sphere obtained{currentValue} / 920 ",
             "Line description": "ATK and DEF 40%{passiveImg:up_g} per Ki Sphere obtained{currentValue} / 920 ",
             "Paragraph Title": "Basic effect(s)"
         },
         "6004506": {
-            "ID": 6004506,
+            "ID": "6004506",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -235,7 +241,7 @@
                         "AGL"
                     ]
                 },
-                "Slider": "How many Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres have been obtained?"
+                "Slider": "How many Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres have been obtained on this turn?"
             },
             "Heals": 12000,
             "Target": {
@@ -245,15 +251,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Building Stat",
             "Brief effect description": "Heals +12000 per Ki Sphere obtained{currentValue} / 276000 ",
             "Line description": "Heals +12000 per Ki Sphere obtained{currentValue} / 276000 ",
             "Paragraph Title": "Basic effect(s)"
         },
         "7004506": {
-            "ID": 7004506,
+            "ID": "7004506",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -265,7 +272,7 @@
                         "Rainbow"
                     ]
                 },
-                "Slider": "How many Rainbow Ki Spheres have been obtained?"
+                "Slider": "How many Rainbow Ki Spheres have been obtained on this turn?"
             },
             "Crit Chance": 33,
             "Target": {
@@ -275,15 +282,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Building Stat",
             "Brief effect description": "Chance of performing a critical hit +33%{passiveImg:up_g} per Rainbow Ki Spheres obtained{currentValue} / 165 ",
             "Line description": "Chance of performing a critical hit +33%{passiveImg:up_g} per Rainbow Ki Spheres obtained{currentValue} / 165 ",
             "Paragraph Title": "Basic effect(s)"
         },
         "8004506": {
-            "ID": 8004506,
+            "ID": "8004506",
             "Timing": "When ki spheres collected",
             "DR": 22,
             "Target": {
@@ -293,16 +301,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 1835 ",
                 "Causalities": {
                     "1835": {
                         "Button": {
-                            "Name": "Has 1 or more Rainbow Ki Spheres been obtained on this turn?"
+                            "Name": "Has 1 or more Rainbow Ki Spheres been obtained within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Rainbow Ki Spheres have been obtained on this turn?",
+                            "Name": "How many Rainbow Ki Spheres have been obtained within the last 1 turns?",
                             "Logic": ">=1",
                             "Min": 0,
                             "Max": 1
@@ -318,7 +327,7 @@
             "Paragraph Title": "With 1 or more Rainbow Ki Spheres obtained"
         },
         "9004506": {
-            "ID": 9004506,
+            "ID": "9004506",
             "Timing": "When ki spheres collected",
             "DR": 22,
             "Target": {
@@ -328,16 +337,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 1836 ",
                 "Causalities": {
                     "1836": {
                         "Button": {
-                            "Name": "Has 2 or more Rainbow Ki Spheres been obtained on this turn?"
+                            "Name": "Has 2 or more Rainbow Ki Spheres been obtained within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Rainbow Ki Spheres have been obtained on this turn?",
+                            "Name": "How many Rainbow Ki Spheres have been obtained within the last 1 turns?",
                             "Logic": ">=2",
                             "Min": 0,
                             "Max": 2
@@ -353,7 +363,7 @@
             "Paragraph Title": "With 2 or more Rainbow Ki Spheres obtained"
         },
         "10004506": {
-            "ID": 10004506,
+            "ID": "10004506",
             "Timing": "When ki spheres collected",
             "DR": 22,
             "Target": {
@@ -363,16 +373,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 1837 ",
                 "Causalities": {
                     "1837": {
                         "Button": {
-                            "Name": "Has 3 or more Rainbow Ki Spheres been obtained on this turn?"
+                            "Name": "Has 3 or more Rainbow Ki Spheres been obtained within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Rainbow Ki Spheres have been obtained on this turn?",
+                            "Name": "How many Rainbow Ki Spheres have been obtained within the last 1 turns?",
                             "Logic": ">=3",
                             "Min": 0,
                             "Max": 3
@@ -388,7 +399,7 @@
             "Paragraph Title": "With 3 or more Rainbow Ki Spheres obtained"
         },
         "11004506": {
-            "ID": 11004506,
+            "ID": "11004506",
             "Timing": "End of turn",
             "Heals": 15,
             "Target": {
@@ -398,15 +409,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Heals +15% at the end of turn",
             "Line description": "Heals +15% at the end of turn",
             "Paragraph Title": "Basic effect(s)"
         },
         "12004506": {
-            "ID": 12004506,
+            "ID": "12004506",
             "Timing": "Start of turn",
             "ATK": 100,
             "DEF": 100,
@@ -417,16 +429,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2672 ",
                 "Causalities": {
                     "2672": {
                         "Button": {
-                            "Name": "Is there 1 or more Super class enemies on this turn?"
+                            "Name": "Is there 1 or more Super class enemies within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Super class enemies on this turn?",
+                            "Name": "How many Super class enemies within the last 1 turns?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
@@ -442,7 +455,7 @@
             "Paragraph Title": "When there are 1 or more Super class enemies"
         },
         "13004506": {
-            "ID": 13004506,
+            "ID": "13004506",
             "Timing": "Start of turn",
             "Ki": 3,
             "Target": {
@@ -452,16 +465,17 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2672 ",
                 "Causalities": {
                     "2672": {
                         "Button": {
-                            "Name": "Is there 1 or more Super class enemies on this turn?"
+                            "Name": "Is there 1 or more Super class enemies within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Super class enemies on this turn?",
+                            "Name": "How many Super class enemies within the last 1 turns?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
@@ -477,7 +491,7 @@
             "Paragraph Title": "When there are 1 or more Super class enemies"
         },
         "14004506": {
-            "ID": 14004506,
+            "ID": "14004506",
             "Timing": "Start of turn",
             "ATK": 30,
             "Target": {
@@ -487,16 +501,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2672 ",
                 "Causalities": {
                     "2672": {
                         "Button": {
-                            "Name": "Is there 1 or more Super class enemies on this turn?"
+                            "Name": "Is there 1 or more Super class enemies within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Super class enemies on this turn?",
+                            "Name": "How many Super class enemies within the last 1 turns?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
@@ -512,7 +527,7 @@
             "Paragraph Title": "When there are 1 or more Super class enemies"
         },
         "15004506": {
-            "ID": 15004506,
+            "ID": "15004506",
             "Timing": "Start of turn",
             "ATK": 50,
             "DEF": 50,
@@ -523,16 +538,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2089 ",
                 "Causalities": {
                     "2089": {
                         "Button": {
-                            "Name": "Is there 1 or more Extreme class enemies on this turn?"
+                            "Name": "Is there 1 or more Extreme class enemies within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Extreme class enemies on this turn?",
+                            "Name": "How many Extreme class enemies within the last 1 turns?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
@@ -548,7 +564,7 @@
             "Paragraph Title": "When there are 1 or more Extreme class enemies"
         },
         "16004506": {
-            "ID": 16004506,
+            "ID": "16004506",
             "Timing": "Start of turn",
             "Ki": 2,
             "Target": {
@@ -558,16 +574,17 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2089 ",
                 "Causalities": {
                     "2089": {
                         "Button": {
-                            "Name": "Is there 1 or more Extreme class enemies on this turn?"
+                            "Name": "Is there 1 or more Extreme class enemies within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Extreme class enemies on this turn?",
+                            "Name": "How many Extreme class enemies within the last 1 turns?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
@@ -583,7 +600,7 @@
             "Paragraph Title": "When there are 1 or more Extreme class enemies"
         },
         "17004506": {
-            "ID": 17004506,
+            "ID": "17004506",
             "Timing": "Start of turn",
             "ATK": 20,
             "Target": {
@@ -593,16 +610,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2089 ",
                 "Causalities": {
                     "2089": {
                         "Button": {
-                            "Name": "Is there 1 or more Extreme class enemies on this turn?"
+                            "Name": "Is there 1 or more Extreme class enemies within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Extreme class enemies on this turn?",
+                            "Name": "How many Extreme class enemies within the last 1 turns?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0

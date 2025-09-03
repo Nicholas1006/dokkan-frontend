@@ -26,7 +26,7 @@
     "Resource ID": 1028630,
     "Passive": {
         "4072": {
-            "ID": 4072,
+            "ID": "4072",
             "Timing": "Start of turn",
             "Ki": 2,
             "Target": {
@@ -36,15 +36,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Ki +2 ",
             "Line description": "Ki +2 ",
             "Paragraph Title": "Basic effect(s)"
         },
         "1004072": {
-            "ID": 1004072,
+            "ID": "1004072",
             "Timing": "Start of turn",
             "ATK": 240,
             "DEF": 240,
@@ -55,15 +56,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 240%{passiveImg:up_g} ",
             "Line description": "ATK and DEF 240%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "2004072": {
-            "ID": 2004072,
+            "ID": "2004072",
             "Timing": "Start of turn",
             "DR": 30,
             "Target": {
@@ -73,15 +75,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Damage Reduction Rate 30%{passiveImg:up_g} ",
             "Line description": "Damage Reduction Rate 30%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "3004072": {
-            "ID": 3004072,
+            "ID": "3004072",
             "Timing": "Start of turn",
             "DR": 20,
             "Target": {
@@ -91,7 +94,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 99,
+            "Chance": "100",
+            "Length": "99",
             "CausalityLogic": "{\"source\": \"99000000000000\", \"compiled\": 99000000000000}",
             "Once Only": true,
             "Type": "Single activator",
@@ -107,11 +111,11 @@
                 }
             },
             "Brief effect description": "Damage Reduction Rate 20%{passiveImg:up_g} ",
-            "Line description": " {passiveImg:once}Damage Reduction Rate 20%{passiveImg:up_g} until ",
+            "Line description": "Damage Reduction Rate 20%{passiveImg:up_g} {passiveImg:forever} until ",
             "Paragraph Title": "For 99 turn(s) from the character's entry turn"
         },
         "4004072": {
-            "ID": 4004072,
+            "ID": "4004072",
             "Timing": "Right after being hit",
             "ATK": 240,
             "Target": {
@@ -121,16 +125,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 24 ",
                 "Causalities": {
                     "24": {
                         "Button": {
-                            "Name": "Has this character been hit on this turn?"
+                            "Name": "Has this character been hit within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many times has this character been hit on this turn?",
+                            "Name": "How many times has this character been hit within the last 1 turns?",
                             "Logic": ">=1",
                             "Min": 0,
                             "Max": 1
@@ -146,7 +151,7 @@
             "Paragraph Title": "After recieving an attack"
         },
         "5004072": {
-            "ID": 5004072,
+            "ID": "5004072",
             "Timing": "Right after being hit",
             "ATK": 24,
             "DEF": 24,
@@ -157,16 +162,17 @@
                 "Type": "Percentage",
                 "+ or -": "-"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 24 ",
                 "Causalities": {
                     "24": {
                         "Button": {
-                            "Name": "Has this character been hit on this turn?"
+                            "Name": "Has this character been hit within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many times has this character been hit on this turn?",
+                            "Name": "How many times has this character been hit within the last 1 turns?",
                             "Logic": ">=1",
                             "Min": 0,
                             "Max": 1
@@ -182,7 +188,7 @@
             "Paragraph Title": "After recieving an attack"
         },
         "6004072": {
-            "ID": 6004072,
+            "ID": "6004072",
             "Timing": "Start of turn",
             "Status": [
                 "Seal"
@@ -194,16 +200,17 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 803 ",
                 "Causalities": {
                     "803": {
                         "Button": {
-                            "Name": "Has this character recieved their 7th attack in battle on this turn?"
+                            "Name": "Has this character recieved their 7th attack in battle within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many attacks has this character recieved on this turn?",
+                            "Name": "How many attacks has this character recieved within the last 1 turns?",
                             "Logic": ">=7",
                             "Min": 0,
                             "Max": 7
@@ -216,14 +223,14 @@
             "Once Only": true,
             "Type": "Single activator",
             "Brief effect description": "Seal ",
-            "Line description": " {passiveImg:once}Seal ",
+            "Line description": " {passiveImg:once}Seal for 1 turn ",
             "Paragraph Title": "After recieving 7 attacks"
         },
         "7004072": {
-            "ID": 7004072,
+            "ID": "7004072",
             "Disable Other Line": {
                 "Activated": true,
-                "Line": 3004072
+                "Line": "3004072"
             },
             "Timing": "Start of turn",
             "Target": {
@@ -233,16 +240,17 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 803 ",
                 "Causalities": {
                     "803": {
                         "Button": {
-                            "Name": "Has this character recieved their 7th attack in battle on this turn?"
+                            "Name": "Has this character recieved their 7th attack in battle within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many attacks has this character recieved on this turn?",
+                            "Name": "How many attacks has this character recieved within the last 1 turns?",
                             "Logic": ">=7",
                             "Min": 0,
                             "Max": 7
@@ -258,7 +266,7 @@
             "Paragraph Title": "After recieving 7 attacks"
         },
         "8004072": {
-            "ID": 8004072,
+            "ID": "8004072",
             "Timing": "Start of turn",
             "Status": [
                 "Stun"
@@ -270,16 +278,17 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2042 ",
                 "Causalities": {
                     "2042": {
                         "Button": {
-                            "Name": "Has this character recieved their 10th attack in battle on this turn?"
+                            "Name": "Has this character recieved their 10th attack in battle within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many attacks has this character recieved on this turn?",
+                            "Name": "How many attacks has this character recieved within the last 1 turns?",
                             "Logic": ">=10",
                             "Min": 0,
                             "Max": 10
@@ -292,11 +301,11 @@
             "Once Only": true,
             "Type": "Single activator",
             "Brief effect description": "Stun ",
-            "Line description": " {passiveImg:once}Stun ",
+            "Line description": " {passiveImg:once}Stun for 1 turn ",
             "Paragraph Title": "After recieving 10 attacks"
         },
         "9004072": {
-            "ID": 9004072,
+            "ID": "9004072",
             "Nullification": {
                 "Activated": true,
                 "Absorbed": 0
@@ -309,16 +318,17 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": "( 21 && 1410 )",
                 "Causalities": {
                     "21": {
                         "Button": {
-                            "Name": "Is HP 50 % or more on this turn?"
+                            "Name": "Is HP 50 % or more within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "What percentage of HP is remaining on this turn?",
+                            "Name": "What percentage of HP is remaining within the last 1 turns?",
                             "Logic": ">=50",
                             "Min": 0,
                             "Max": 100
@@ -327,7 +337,7 @@
                     },
                     "1410": {
                         "Button": {
-                            "Name": "Has this character been hit by a ki blast super attack on this turn?"
+                            "Name": "Has this character been hit by a ki blast super attack within the last 1 turns?"
                         },
                         "Paragraph Title": "When this character has been hit by a ki blast super attack?"
                     }
@@ -340,10 +350,10 @@
             "Paragraph Title": "Basic effect(s)"
         },
         "10004072": {
-            "ID": 10004072,
+            "ID": "10004072",
             "Disable Other Line": {
                 "Activated": true,
-                "Line": 9004072
+                "Line": "9004072"
             },
             "Timing": "Right after being hit",
             "Target": {
@@ -353,8 +363,9 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Disable Other Line",
             "Brief effect description": "Disables a different passive line:9004072 after being hit",
             "Line description": "Disables a different passive line:9004072 after being hit",

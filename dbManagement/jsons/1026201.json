@@ -34,7 +34,7 @@
     "Resource ID": 1026200,
     "Passive": {
         "3377": {
-            "ID": 3377,
+            "ID": "3377",
             "Timing": "Start of turn",
             "Ki": 2,
             "Target": {
@@ -44,15 +44,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Ki +2 ",
             "Line description": "Ki +2 ",
             "Paragraph Title": "Basic effect(s)"
         },
         "1003377": {
-            "ID": 1003377,
+            "ID": "1003377",
             "Timing": "Start of turn",
             "ATK": 100,
             "DEF": 100,
@@ -63,15 +64,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 100%{passiveImg:up_g} ",
             "Line description": "ATK and DEF 100%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "2003377": {
-            "ID": 2003377,
+            "ID": "2003377",
             "Timing": "Start of turn",
             "Ki": 1,
             "Target": {
@@ -81,7 +83,8 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2182 ",
                 "Causalities": {
@@ -106,7 +109,7 @@
             "Paragraph Title": "When there are 3 or more Extreme class allies attacking on this turn"
         },
         "3003377": {
-            "ID": 3003377,
+            "ID": "3003377",
             "Timing": "Start of turn",
             "ATK": 70,
             "DEF": 70,
@@ -117,7 +120,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2182 ",
                 "Causalities": {
@@ -142,7 +146,7 @@
             "Paragraph Title": "When there are 3 or more Extreme class allies attacking on this turn"
         },
         "4003377": {
-            "ID": 4003377,
+            "ID": "4003377",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 70,
             "DEF": 70,
@@ -153,16 +157,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2183 ",
                 "Causalities": {
                     "2183": {
                         "Button": {
-                            "Name": "Is Ki at least 12 on this turn?"
+                            "Name": "Is Ki at least 12 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
@@ -178,7 +183,7 @@
             "Paragraph Title": "When Ki is 12 or more"
         },
         "5003377": {
-            "ID": 5003377,
+            "ID": "5003377",
             "Additional Attack": {
                 "Activated": true,
                 "Chance of super": 30,
@@ -192,15 +197,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Performs an additional attack with a 30% chance of becoming a super attack ",
             "Line description": "Performs an additional attack with a 30% chance of becoming a super attack ",
             "Paragraph Title": "Basic effect(s)"
         },
         "6003377": {
-            "ID": 6003377,
+            "ID": "6003377",
             "Additional Attack": {
                 "Activated": true,
                 "Chance of super": 100,
@@ -214,7 +220,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": "( 2204 && 2184 )",
                 "Causalities": {
@@ -223,7 +230,7 @@
                             "Name": "Is it within the first 4 turn(s) from the character's entry turn?"
                         },
                         "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
+                            "Name": "How many turns is it since entry turn within the last 1 turns?",
                             "Logic": "<=4",
                             "Min": 0,
                             "Max": 5
@@ -232,10 +239,10 @@
                     },
                     "2184": {
                         "Button": {
-                            "Name": "Is there 1 or more Super class enemies on this turn?"
+                            "Name": "Is there 1 or more Super class enemies within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Super class enemies on this turn?",
+                            "Name": "How many Super class enemies within the last 1 turns?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
@@ -251,7 +258,7 @@
             "Paragraph Title": "Basic effect(s)"
         },
         "7003377": {
-            "ID": 7003377,
+            "ID": "7003377",
             "Timing": "Right after attack",
             "Building Stat": {
                 "Min": 0,
@@ -260,7 +267,7 @@
                 "Cause": {
                     "Cause": "Attacks performed"
                 },
-                "Slider": "How many attacks has this character performed in battle?"
+                "Slider": "How many attacks has this character performed on this turn?"
             },
             "Crit Chance": 17,
             "Target": {
@@ -270,15 +277,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Building Stat",
-            "Brief effect description": "Chance of performing a critical hit +17%{passiveImg:up_g} ({currentValue} / 100%) based on 'How many attacks has this character performed in battle' after attacking",
-            "Line description": "Chance of performing a critical hit +17%{passiveImg:up_g} ({currentValue} / 100%) based on 'How many attacks has this character performed in battle' after attacking",
+            "Brief effect description": "Chance of performing a critical hit +17%{passiveImg:up_g} ({currentValue} / 100%) based on 'How many attacks has this character performed on this turn' after attacking",
+            "Line description": "Chance of performing a critical hit +17%{passiveImg:up_g} ({currentValue} / 100%) based on 'How many attacks has this character performed on this turn' after attacking",
             "Paragraph Title": "Basic effect(s)"
         },
         "8003377": {
-            "ID": 8003377,
+            "ID": "8003377",
             "Dodge Chance": 17,
             "Timing": "Right after attack",
             "Building Stat": {
@@ -288,7 +296,7 @@
                 "Cause": {
                     "Cause": "Attacks performed"
                 },
-                "Slider": "How many attacks has this character performed in battle?"
+                "Slider": "How many attacks has this character performed on this turn?"
             },
             "Target": {
                 "Target": "Self"
@@ -297,11 +305,12 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Building Stat",
-            "Brief effect description": "Chance of evading enemy attacks +17% ({currentValue} / 100%) based on 'How many attacks has this character performed in battle' after attacking",
-            "Line description": "Chance of evading enemy attacks +17% ({currentValue} / 100%) based on 'How many attacks has this character performed in battle' after attacking",
+            "Brief effect description": "Chance of evading enemy attacks +17% ({currentValue} / 100%) based on 'How many attacks has this character performed on this turn' after attacking",
+            "Line description": "Chance of evading enemy attacks +17% ({currentValue} / 100%) based on 'How many attacks has this character performed on this turn' after attacking",
             "Paragraph Title": "Basic effect(s)"
         }
     },

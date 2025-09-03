@@ -29,7 +29,7 @@
     "Resource ID": 1022960,
     "Passive": {
         "2550": {
-            "ID": 2550,
+            "ID": "2550",
             "Timing": "Start of turn",
             "ATK": 50,
             "DEF": 50,
@@ -40,15 +40,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 50%{passiveImg:up_g} ",
             "Line description": "ATK and DEF 50%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "1002550": {
-            "ID": 1002550,
+            "ID": "1002550",
             "Timing": "Start of turn",
             "ATK": 50,
             "Target": {
@@ -58,16 +59,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 978 ",
                 "Causalities": {
                     "978": {
                         "Button": {
-                            "Name": "Is HP 50 % or more on this turn?"
+                            "Name": "Is HP 50 % or more within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "What percentage of HP is remaining on this turn?",
+                            "Name": "What percentage of HP is remaining within the last 1 turns?",
                             "Logic": ">=50",
                             "Min": 0,
                             "Max": 100
@@ -83,7 +85,7 @@
             "Paragraph Title": "When HP is 50% or more"
         },
         "2002550": {
-            "ID": 2002550,
+            "ID": "2002550",
             "Timing": "Start of turn",
             "DEF": 50,
             "Target": {
@@ -93,7 +95,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 5,
+            "Chance": "100",
+            "Length": "5",
             "CausalityLogic": "{\"source\": \"5000000000000\", \"compiled\": 5000000000000}",
             "Once Only": true,
             "Type": "Single activator",
@@ -113,7 +116,7 @@
             "Paragraph Title": "For 5 turn(s) from the character's entry turn"
         },
         "3002550": {
-            "ID": 3002550,
+            "ID": "3002550",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 50,
             "DEF": 50,
@@ -124,16 +127,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 979 ",
                 "Causalities": {
                     "979": {
                         "Button": {
-                            "Name": "Is Ki at least 12 on this turn?"
+                            "Name": "Is Ki at least 12 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
@@ -149,7 +153,7 @@
             "Paragraph Title": "When Ki is 12 or more"
         },
         "4002550": {
-            "ID": 4002550,
+            "ID": "4002550",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 50,
             "DEF": 50,
@@ -160,16 +164,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 980 ",
                 "Causalities": {
                     "980": {
                         "Button": {
-                            "Name": "Is Ki at least 5 on this turn?"
+                            "Name": "Is Ki at least 5 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=5",
                             "Min": 0,
                             "Max": 12
@@ -185,7 +190,7 @@
             "Paragraph Title": "When Ki is 5 or more"
         },
         "5002550": {
-            "ID": 5002550,
+            "ID": "5002550",
             "Timing": "Right after attack",
             "Building Stat": {
                 "Min": 0,
@@ -204,15 +209,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 99,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
             "Brief effect description": "ATK 10%{passiveImg:up_g} ({currentValue} / 50%) based on 'How many attacks has this character performed in battle' after attacking",
-            "Line description": "ATK 10%{passiveImg:up_g} ({currentValue} / 50%) based on 'How many attacks has this character performed in battle' after attacking",
+            "Line description": "ATK 10%{passiveImg:up_g} ({currentValue} / 50%) based on 'How many attacks has this character performed in battle' after attacking{passiveImg:forever}",
             "Paragraph Title": "Basic effect(s)"
         },
         "6002550": {
-            "ID": 6002550,
+            "ID": "6002550",
             "Timing": "Right after attack",
             "Building Stat": {
                 "Min": 0,
@@ -231,11 +237,12 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 99,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
             "Brief effect description": "DEF 10%{passiveImg:up_g} ({currentValue} / 50%) based on 'How many attacks has this character performed in battle' after attacking",
-            "Line description": "DEF 10%{passiveImg:up_g} ({currentValue} / 50%) based on 'How many attacks has this character performed in battle' after attacking",
+            "Line description": "DEF 10%{passiveImg:up_g} ({currentValue} / 50%) based on 'How many attacks has this character performed in battle' after attacking{passiveImg:forever}",
             "Paragraph Title": "Basic effect(s)"
         }
     },

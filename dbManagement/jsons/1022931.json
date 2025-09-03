@@ -27,7 +27,7 @@
     "Resource ID": 1022930,
     "Passive": {
         "2574": {
-            "ID": 2574,
+            "ID": "2574",
             "Timing": "Start of turn",
             "ATK": 120,
             "DEF": 120,
@@ -38,15 +38,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 120%{passiveImg:up_g} ",
             "Line description": "ATK and DEF 120%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "1002574": {
-            "ID": 1002574,
+            "ID": "1002574",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -63,7 +64,7 @@
                         "AGL"
                     ]
                 },
-                "Slider": "How many Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres have been obtained?"
+                "Slider": "How many Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres have been obtained on this turn?"
             },
             "Ki": 1,
             "Target": {
@@ -73,15 +74,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Building Stat",
             "Brief effect description": "Ki +1 per Ki Sphere obtained{currentValue} / 23 ",
             "Line description": "Ki +1 per Ki Sphere obtained{currentValue} / 23 ",
             "Paragraph Title": "Basic effect(s)"
         },
         "2002574": {
-            "ID": 2002574,
+            "ID": "2002574",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 40,
             "Target": {
@@ -91,16 +93,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 1023 ",
                 "Causalities": {
                     "1023": {
                         "Button": {
-                            "Name": "Is Ki at least 12 on this turn?"
+                            "Name": "Is Ki at least 12 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12

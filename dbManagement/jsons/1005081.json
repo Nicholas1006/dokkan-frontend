@@ -36,7 +36,7 @@
     "Resource ID": 1005080,
     "Passive": {
         "541": {
-            "ID": 541,
+            "ID": "541",
             "Timing": "Start of turn",
             "ATK": 50,
             "DEF": 50,
@@ -47,16 +47,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 27 ",
                 "Causalities": {
                     "27": {
                         "Button": {
-                            "Name": "Is HP 50 % or less on this turn?"
+                            "Name": "Is HP 50 % or less within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "What percentage of HP is remaining on this turn?",
+                            "Name": "What percentage of HP is remaining within the last 1 turns?",
                             "Logic": "<=50",
                             "Min": 0,
                             "Max": 100

@@ -40,7 +40,7 @@
     "Resource ID": 1022830,
     "Passive": {
         "4610": {
-            "ID": 4610,
+            "ID": "4610",
             "Timing": "Start of turn",
             "ATK": 200,
             "DEF": 200,
@@ -51,15 +51,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 200%{passiveImg:up_g} ",
             "Line description": "ATK and DEF 200%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "1004610": {
-            "ID": 1004610,
+            "ID": "1004610",
             "Additional Attack": {
                 "Activated": true,
                 "Chance of super": 50,
@@ -73,15 +74,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Performs an additional attack with a 50% chance of becoming a super attack ",
             "Line description": "Performs an additional attack with a 50% chance of becoming a super attack ",
             "Paragraph Title": "Basic effect(s)"
         },
         "2004610": {
-            "ID": 2004610,
+            "ID": "2004610",
             "Dodge Chance": 50,
             "Timing": "Start of turn",
             "Target": {
@@ -91,15 +93,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Chance of evading enemy attacks +50% ",
             "Line description": "Chance of evading enemy attacks +50% ",
             "Paragraph Title": "Basic effect(s)"
         },
         "3004610": {
-            "ID": 3004610,
+            "ID": "3004610",
             "Dodge Chance": 20,
             "Timing": "Start of turn",
             "Target": {
@@ -109,7 +112,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2204 ",
                 "Causalities": {
@@ -118,7 +122,7 @@
                             "Name": "Is it within the first 4 turn(s) from the character's entry turn?"
                         },
                         "Slider": {
-                            "Name": "How many turns is it since entry turn on this turn?",
+                            "Name": "How many turns is it since entry turn within the last 1 turns?",
                             "Logic": "<=4",
                             "Min": 0,
                             "Max": 5
@@ -134,7 +138,7 @@
             "Paragraph Title": "For 4 turns from the chraracter's entry turn"
         },
         "4004610": {
-            "ID": 4004610,
+            "ID": "4004610",
             "Timing": "Right after attack",
             "Building Stat": {
                 "Min": 0,
@@ -153,15 +157,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 99,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
             "Brief effect description": "ATK 40%{passiveImg:up_g} ({currentValue} / 160%) based on 'How many attacks has this character performed in battle' after attacking",
-            "Line description": "ATK 40%{passiveImg:up_g} ({currentValue} / 160%) based on 'How many attacks has this character performed in battle' after attacking",
+            "Line description": "ATK 40%{passiveImg:up_g} ({currentValue} / 160%) based on 'How many attacks has this character performed in battle' after attacking{passiveImg:forever}",
             "Paragraph Title": "Basic effect(s)"
         },
         "5004610": {
-            "ID": 5004610,
+            "ID": "5004610",
             "Timing": "Right after attack",
             "Building Stat": {
                 "Min": 0,
@@ -180,15 +185,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 99,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "99",
+            "CausalityLogic": "",
             "Type": "Building Stat",
             "Brief effect description": "DEF 40%{passiveImg:up_g} ({currentValue} / 160%) based on 'How many attacks has this character performed in battle' after attacking",
-            "Line description": "DEF 40%{passiveImg:up_g} ({currentValue} / 160%) based on 'How many attacks has this character performed in battle' after attacking",
+            "Line description": "DEF 40%{passiveImg:up_g} ({currentValue} / 160%) based on 'How many attacks has this character performed in battle' after attacking{passiveImg:forever}",
             "Paragraph Title": "Basic effect(s)"
         },
         "6004610": {
-            "ID": 6004610,
+            "ID": "6004610",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 60,
             "Target": {
@@ -198,16 +204,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": "( 1029 || 2801 )",
                 "Causalities": {
                     "1029": {
                         "Button": {
-                            "Name": "Are there 1 or more Universe Survival Saga category enemies  on this turn?"
+                            "Name": "Are there 1 or more Universe Survival Saga category enemies  within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Universe Survival Saga category enemies on this turn?",
+                            "Name": "How many Universe Survival Saga category enemies within the last 1 turns?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
@@ -235,7 +242,7 @@
             "Paragraph Title": "When there are 1 or more Universe Survival Saga Category enemies or there are 2 or more Universe Survival Saga Category allies attacking on this turn"
         },
         "7004610": {
-            "ID": 7004610,
+            "ID": "7004610",
             "Additional Attack": {
                 "Activated": true,
                 "Chance of super": 100,
@@ -249,16 +256,17 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": "( 1029 || 2801 )",
                 "Causalities": {
                     "1029": {
                         "Button": {
-                            "Name": "Are there 1 or more Universe Survival Saga category enemies  on this turn?"
+                            "Name": "Are there 1 or more Universe Survival Saga category enemies  within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How many Universe Survival Saga category enemies on this turn?",
+                            "Name": "How many Universe Survival Saga category enemies within the last 1 turns?",
                             "Logic": ">=1",
                             "Max": 7,
                             "Min": 0
@@ -286,7 +294,7 @@
             "Paragraph Title": "When there are 1 or more Universe Survival Saga Category enemies or there are 2 or more Universe Survival Saga Category allies attacking on this turn"
         },
         "8004610": {
-            "ID": 8004610,
+            "ID": "8004610",
             "Dodge Chance": 20,
             "Timing": "Start of turn",
             "Target": {
@@ -296,13 +304,14 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 1747 ",
                 "Causalities": {
                     "1747": {
                         "Slider": {
-                            "Name": "How many attacks has this character performed in battle on this turn?",
+                            "Name": "How many attacks has this character performed in battle within the last 1 turns?",
                             "Logic": ">=3",
                             "Min": 0,
                             "Max": 3

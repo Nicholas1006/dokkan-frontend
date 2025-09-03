@@ -38,7 +38,7 @@
     "Resource ID": 1023520,
     "Passive": {
         "4525": {
-            "ID": 4525,
+            "ID": "4525",
             "Timing": "Start of turn",
             "ATK": 100,
             "Target": {
@@ -48,13 +48,14 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 99,
+            "Chance": "100",
+            "Length": "99",
             "Condition": {
                 "Logic": " 1317 ",
                 "Causalities": {
                     "1317": {
                         "Button": {
-                            "Name": "Is there 1 or more enemies whose name includes Goku?"
+                            "Name": "Is there 1 or more enemies whose name includes Goku within the last 99 turns?"
                         },
                         "Paragraph Title": "\"Goku\""
                     }
@@ -65,11 +66,11 @@
             "Has Animation": true,
             "Type": "Single activator",
             "Brief effect description": "ATK 100%{passiveImg:up_g} ",
-            "Line description": " {passiveImg:once}ATK 100%{passiveImg:up_g} ",
+            "Line description": "ATK 100%{passiveImg:up_g} {passiveImg:forever}",
             "Paragraph Title": "Activates the Entrance Animation \"Goku\""
         },
         "1004525": {
-            "ID": 1004525,
+            "ID": "1004525",
             "Timing": "Start of turn",
             "Ki": 3,
             "Target": {
@@ -79,13 +80,14 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 99,
+            "Chance": "100",
+            "Length": "99",
             "Condition": {
                 "Logic": " 1317 ",
                 "Causalities": {
                     "1317": {
                         "Button": {
-                            "Name": "Is there 1 or more enemies whose name includes Goku?"
+                            "Name": "Is there 1 or more enemies whose name includes Goku within the last 99 turns?"
                         },
                         "Paragraph Title": "\"Goku\""
                     }
@@ -95,11 +97,11 @@
             "Once Only": true,
             "Type": "Single activator",
             "Brief effect description": "Ki +3 ",
-            "Line description": " {passiveImg:once}Ki +3 ",
+            "Line description": "Ki +3 {passiveImg:forever}",
             "Paragraph Title": "Activates the Entrance Animation \"Goku\""
         },
         "2004525": {
-            "ID": 2004525,
+            "ID": "2004525",
             "Timing": "Start of turn",
             "ATK": 200,
             "DEF": 200,
@@ -110,15 +112,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 200%{passiveImg:up_g} ",
             "Line description": "ATK and DEF 200%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "3004525": {
-            "ID": 3004525,
+            "ID": "3004525",
             "Timing": "Start of turn",
             "Ki": 3,
             "Target": {
@@ -128,15 +131,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Ki +3 ",
             "Line description": "Ki +3 ",
             "Paragraph Title": "Basic effect(s)"
         },
         "4004525": {
-            "ID": 4004525,
+            "ID": "4004525",
             "Timing": "Start of turn",
             "DR": 20,
             "Target": {
@@ -146,15 +150,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Damage Reduction Rate 20%{passiveImg:up_g} ",
             "Line description": "Damage Reduction Rate 20%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "5004525": {
-            "ID": 5004525,
+            "ID": "5004525",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 160,
             "DEF": 160,
@@ -165,16 +170,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 1313 ",
                 "Causalities": {
                     "1313": {
                         "Button": {
-                            "Name": "Is Ki at least 12 on this turn?"
+                            "Name": "Is Ki at least 12 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 24
@@ -190,7 +196,7 @@
             "Paragraph Title": "When Ki is 12 or more"
         },
         "6004525": {
-            "ID": 6004525,
+            "ID": "6004525",
             "Timing": "Right before attack(MOT stat)",
             "DEF": 160,
             "Target": {
@@ -200,16 +206,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 1315 ",
                 "Causalities": {
                     "1315": {
                         "Button": {
-                            "Name": "Is Ki at least 18 on this turn?"
+                            "Name": "Is Ki at least 18 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=18",
                             "Min": 0,
                             "Max": 24
@@ -225,7 +232,7 @@
             "Paragraph Title": "When Ki is 18 or more"
         },
         "7004525": {
-            "ID": 7004525,
+            "ID": "7004525",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -242,7 +249,7 @@
                         "AGL"
                     ]
                 },
-                "Slider": "How many Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres have been obtained?"
+                "Slider": "How many Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres have been obtained on this turn?"
             },
             "Ki": 1,
             "Target": {
@@ -252,15 +259,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Building Stat",
             "Brief effect description": "Ki +1 per Ki Sphere obtained{currentValue} / 23 ",
             "Line description": "Ki +1 per Ki Sphere obtained{currentValue} / 23 ",
             "Paragraph Title": "Basic effect(s)"
         },
         "8004525": {
-            "ID": 8004525,
+            "ID": "8004525",
             "Timing": "Start of turn",
             "Guard": true,
             "Target": {
@@ -270,15 +278,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Guards all attacks ",
             "Line description": "Guards all attacks ",
             "Paragraph Title": "Basic effect(s)"
         },
         "9004525": {
-            "ID": 9004525,
+            "ID": "9004525",
             "Timing": "Right before being hit",
             "ATK": 60,
             "DEF": 60,
@@ -289,7 +298,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 3,
+            "Chance": "100",
+            "Length": "3",
             "Condition": {
                 "Logic": " 1318 ",
                 "Causalities": {
@@ -308,7 +318,7 @@
             "Paragraph Title": "After guard is activated"
         },
         "10004525": {
-            "ID": 10004525,
+            "ID": "10004525",
             "Timing": "Right before being hit",
             "Ki": 3,
             "Target": {
@@ -318,7 +328,8 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 3,
+            "Chance": "100",
+            "Length": "3",
             "Condition": {
                 "Logic": " 1318 ",
                 "Causalities": {
@@ -337,7 +348,7 @@
             "Paragraph Title": "After guard is activated"
         },
         "11004525": {
-            "ID": 11004525,
+            "ID": "11004525",
             "Timing": "After all ki collected",
             "DEF": 60,
             "Target": {
@@ -347,16 +358,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 733 ",
                 "Causalities": {
                     "733": {
                         "Button": {
-                            "Name": "Is this the 1st attacker in the turn on this turn?"
+                            "Name": "Is this the 1st attacker in the turn within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "What position is this character attacking in on this turn?",
+                            "Name": "What position is this character attacking in within the last 1 turns?",
                             "Logic": "==1",
                             "Min": 1,
                             "Max": 3
@@ -372,7 +384,7 @@
             "Paragraph Title": "As the 1st attacker in the turn"
         },
         "12004525": {
-            "ID": 12004525,
+            "ID": "12004525",
             "Timing": "After all ki collected",
             "DR": 40,
             "Target": {
@@ -382,16 +394,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 733 ",
                 "Causalities": {
                     "733": {
                         "Button": {
-                            "Name": "Is this the 1st attacker in the turn on this turn?"
+                            "Name": "Is this the 1st attacker in the turn within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "What position is this character attacking in on this turn?",
+                            "Name": "What position is this character attacking in within the last 1 turns?",
                             "Logic": "==1",
                             "Min": 1,
                             "Max": 3
@@ -407,7 +420,7 @@
             "Paragraph Title": "As the 1st attacker in the turn"
         },
         "13004525": {
-            "ID": 13004525,
+            "ID": "13004525",
             "Timing": "After all ki collected",
             "ATK": 60,
             "Target": {
@@ -417,7 +430,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 73600000 ",
                 "Causalities": {
@@ -436,7 +450,7 @@
             "Paragraph Title": "As the 2nd or 3rd attacker in a turn"
         },
         "14004525": {
-            "ID": 14004525,
+            "ID": "14004525",
             "Additional Attack": {
                 "Activated": true,
                 "Chance of super": 70,
@@ -450,7 +464,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 73600000 ",
                 "Causalities": {
@@ -469,7 +484,7 @@
             "Paragraph Title": "As the 2nd or 3rd attacker in a turn"
         },
         "15004525": {
-            "ID": 15004525,
+            "ID": "15004525",
             "Effective Against All": true,
             "Timing": "Right before attack(MOT stat)",
             "Target": {
@@ -479,16 +494,17 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 2463 ",
                 "Causalities": {
                     "2463": {
                         "Button": {
-                            "Name": "Is Ki at least 24 on this turn?"
+                            "Name": "Is Ki at least 24 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=24",
                             "Min": 0,
                             "Max": 24

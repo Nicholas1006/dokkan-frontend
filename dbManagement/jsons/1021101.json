@@ -27,7 +27,7 @@
     "Resource ID": 1021100,
     "Passive": {
         "2249": {
-            "ID": 2249,
+            "ID": "2249",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 80,
             "Target": {
@@ -37,16 +37,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 47 ",
                 "Causalities": {
                     "47": {
                         "Button": {
-                            "Name": "Is Ki at least 12 on this turn?"
+                            "Name": "Is Ki at least 12 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
@@ -62,7 +63,7 @@
             "Paragraph Title": "When Ki is 12 or more"
         },
         "1002249": {
-            "ID": 1002249,
+            "ID": "1002249",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 80,
             "Target": {
@@ -72,17 +73,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Chance": 70,
-            "Length": 1,
+            "Chance": "70",
+            "Length": "1",
             "Condition": {
                 "Logic": " 47 ",
                 "Causalities": {
                     "47": {
                         "Button": {
-                            "Name": "Is Ki at least 12 on this turn?"
+                            "Name": "Is Ki at least 12 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
@@ -98,7 +99,7 @@
             "Paragraph Title": "When Ki is 12 or more"
         },
         "2002249": {
-            "ID": 2002249,
+            "ID": "2002249",
             "Timing": "Right after attack",
             "Building Stat": {
                 "Min": 0,
@@ -117,15 +118,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 99,
+            "Chance": "100",
+            "Length": "99",
             "CausalityLogic": "{\"source\": \"435\", \"compiled\": 435}",
             "Type": "Building Stat",
             "Brief effect description": "DEF 20%{passiveImg:up_g} ({currentValue} / 80%) based on 'How many super attacks has this character performed' after attacking",
-            "Line description": "DEF 20%{passiveImg:up_g} ({currentValue} / 80%) based on 'How many super attacks has this character performed' after attacking",
+            "Line description": "DEF 20%{passiveImg:up_g} ({currentValue} / 80%) based on 'How many super attacks has this character performed' after attacking{passiveImg:forever}",
             "Paragraph Title": "Basic effect(s)"
         },
         "3002249": {
-            "ID": 3002249,
+            "ID": "3002249",
             "Timing": "Start of turn",
             "Ki": 2,
             "Target": {
@@ -135,7 +137,8 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 621 ",
                 "Causalities": {
@@ -160,7 +163,7 @@
             "Paragraph Title": "When there are 2 or more Goku's Family Category allies attacking on this turn"
         },
         "4002249": {
-            "ID": 4002249,
+            "ID": "4002249",
             "Timing": "Start of turn",
             "ATK": 40,
             "DEF": 40,
@@ -171,7 +174,8 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 621 ",
                 "Causalities": {
@@ -196,7 +200,7 @@
             "Paragraph Title": "When there are 2 or more Goku's Family Category allies attacking on this turn"
         },
         "5002249": {
-            "ID": 5002249,
+            "ID": "5002249",
             "Timing": "Start of turn",
             "Building Stat": {
                 "Min": 0,
@@ -209,7 +213,7 @@
                         "Cookies"
                     ]
                 },
-                "Slider": "How many Sweet treats or Cookies Ki Spheres have been obtained?"
+                "Slider": "How many Sweet treats or Cookies Ki Spheres have been obtained on this turn?"
             },
             "Heals": 2,
             "Target": {
@@ -219,8 +223,9 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Building Stat",
             "Brief effect description": "Heals +2% per Sweet treats and Cookies Ki Spheres obtained{currentValue} / 46 ",
             "Line description": "Heals +2% per Sweet treats and Cookies Ki Spheres obtained{currentValue} / 46 ",

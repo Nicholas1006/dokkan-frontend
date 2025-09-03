@@ -29,7 +29,7 @@
     "Resource ID": 1023710,
     "Passive": {
         "2706": {
-            "ID": 2706,
+            "ID": "2706",
             "Timing": "Right before attack(MOT stat)",
             "ATK": 100,
             "DEF": 100,
@@ -40,16 +40,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 1253 ",
                 "Causalities": {
                     "1253": {
                         "Button": {
-                            "Name": "Is Ki at least 12 on this turn?"
+                            "Name": "Is Ki at least 12 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
@@ -65,7 +66,7 @@
             "Paragraph Title": "When Ki is 12 or more"
         },
         "1002706": {
-            "ID": 1002706,
+            "ID": "1002706",
             "Additional Attack": {
                 "Activated": true,
                 "Chance of super": 100,
@@ -79,16 +80,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Chance": 30,
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "30",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Performs an additional super attack ",
             "Line description": "Performs an additional super attack ",
             "Paragraph Title": "Basic effect(s)"
         },
         "2002706": {
-            "ID": 2002706,
+            "ID": "2002706",
             "Timing": "Right after attack",
             "Building Stat": {
                 "Min": 0,
@@ -107,11 +108,12 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 99,
+            "Chance": "100",
+            "Length": "99",
             "CausalityLogic": "{\"source\": \"435\", \"compiled\": 435}",
             "Type": "Building Stat",
             "Brief effect description": "Chance of performing a critical hit +10%{passiveImg:up_g} ({currentValue} / 30%) based on 'How many super attacks has this character performed' after attacking",
-            "Line description": "Chance of performing a critical hit +10%{passiveImg:up_g} ({currentValue} / 30%) based on 'How many super attacks has this character performed' after attacking",
+            "Line description": "Chance of performing a critical hit +10%{passiveImg:up_g} ({currentValue} / 30%) based on 'How many super attacks has this character performed' after attacking{passiveImg:forever}",
             "Paragraph Title": "Basic effect(s)"
         }
     },

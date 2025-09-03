@@ -34,7 +34,7 @@
     "Resource ID": 1015650,
     "Passive": {
         "1479": {
-            "ID": 1479,
+            "ID": "1479",
             "Timing": "Start of turn",
             "Ki": 2,
             "Target": {
@@ -44,15 +44,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "Ki +2 ",
             "Line description": "Ki +2 ",
             "Paragraph Title": "Basic effect(s)"
         },
         "1001479": {
-            "ID": 1001479,
+            "ID": "1001479",
             "Timing": "Start of turn",
             "ATK": 100,
             "Target": {
@@ -62,15 +63,16 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
-            "CausalityLogic": null,
+            "Chance": "100",
+            "Length": "1",
+            "CausalityLogic": "",
             "Type": "Single activator",
             "Brief effect description": "ATK 100%{passiveImg:up_g} ",
             "Line description": "ATK 100%{passiveImg:up_g} ",
             "Paragraph Title": "Basic effect(s)"
         },
         "2001479": {
-            "ID": 2001479,
+            "ID": "2001479",
             "Timing": "Right before attack(MOT stat)",
             "DEF": 100,
             "Target": {
@@ -80,16 +82,17 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 1,
+            "Chance": "100",
+            "Length": "1",
             "Condition": {
                 "Logic": " 46 ",
                 "Causalities": {
                     "46": {
                         "Button": {
-                            "Name": "Is Ki at least 12 on this turn?"
+                            "Name": "Is Ki at least 12 within the last 1 turns?"
                         },
                         "Slider": {
-                            "Name": "How much ki is there on this turn?",
+                            "Name": "How much ki is there within the last 1 turns?",
                             "Logic": ">=12",
                             "Min": 0,
                             "Max": 12
