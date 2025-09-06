@@ -69,7 +69,7 @@ function createFilterOption(){
   filterContainer.appendChild(filterTextInput);
 }
 
-async function reFilterCards(sortCutIDBefore=false) {
+async function reFilterCards() {
   window.currentFilteredUnits = Object.keys(window.unitBasicsDetails["Max Level"])
   for (const filter in window.currentFilter){
     if(Object.keys(window.unitBasicsDetails).includes(filter)){
@@ -125,7 +125,7 @@ async function reFilterCards(sortCutIDBefore=false) {
       fetch("/dbManagement/uniqueJsons/unitBasics/"+filter+".json").then(
         async unitBasicsDetail =>{
           window.unitBasicsDetails[filter]=await unitBasicsDetail.json();
-          reFilterCards(sortCutIDBefore);
+          reFilterCards();
         }
       )
     }
@@ -228,18 +228,8 @@ async function reFilterCards(sortCutIDBefore=false) {
     
   }
   
-  if(sortCutIDBefore){
-    fetch("/dbManagement/uniqueJsons/unitBasics/ID.json").then(
-      async unitBasicsDetail =>{
-        window.unitBasicsDetails["ID"]=await unitBasicsDetail.json();
-        sortCutID();
-        reSortCards();
-      }
-    )
-  }
-  else{
-    reSortCards();
-  }
+  
+  reSortCards();
   updatePageSelector();
 }
 
@@ -395,30 +385,6 @@ function reSortCards(){
   }
 }
 
-function sortCutID(showUpdate=false){
-  let sortedUnits = window.currentFilteredUnits;
-  const order = window.currentOrder =="ascending" ? 1 : -1;
-
-  sortedUnits.sort((a, b) => {
-    let valueA = window.unitBasicsDetails["ID"][a]%1000000;
-    let valueB = window.unitBasicsDetails["ID"][b]%1000000;
-    if (window.currentSort === "Rarity") {
-      valueA = rarityToInt(valueA);
-      valueB = rarityToInt(valueB);
-    }
-
-    if(valueA < valueB) {
-      return -1 * order;
-    }
-    if(valueA > valueB) {
-      return 1 * order;
-    }
-    return 0;
-  });
-  if(showUpdate){
-    showUpdatedCardPositions();
-  }
-}
 
 function showUpdatedCardPositions(){
   let sortedUnits = window.currentFilteredUnits;
