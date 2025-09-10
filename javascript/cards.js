@@ -1784,7 +1784,9 @@ function updatePassiveStats(){
         progressCausalityLogic(iteratingCausalityLogic,"Start of turn");
         currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Start of turn","Single activator",iteratingCausalityLogic)
         currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"Start of turn","Disable Other Line",iteratingCausalityLogic)
-        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"All","Building Stat",iteratingCausalityLogic)
+        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"All","Building Stat",iteratingCausalityLogic,false)
+        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"All","Single activator",iteratingCausalityLogic,false)
+        currentActivePassiveMultipliers=activatePassiveLines(currentActivePassiveMultipliers,"All","Disable Other Line",iteratingCausalityLogic,false)
     }
     
     if(activeAttackPerformed){
@@ -2788,35 +2790,48 @@ function disableOtherLineHandler(previousActiveLineMultipliers,exec_timing_type,
 
 function buildingStatHandler(previousActiveLineMultipliers,exec_timing_type,activationType,causalityLogic,thisTurnActivationCounted,activateablePassiveLines,updatedPassiveLineMultipliers){
     for (const passiveLine of Object.values(currentJson["Passive"])){
-        if((passiveLine["Timing"]==exec_timing_type || exec_timing_type=="All") && 
-        (passiveLine["Type"]=="Building Stat") &&
-        (thisTurnActivationCounted || passiveLine["Length"]!="1")){
-            if("Condition" in passiveLine){
-                let conditionLogic=" "+passiveLine["Condition"]["Logic"]+" ";
-                conditionLogic=conditionLogic.replaceAll("("," ( ").replaceAll(")"," ) ").replaceAll("&&"," && ").replaceAll("||"," || ");
-                for (const causalityKey of Object.keys(passiveLine["Condition"]["Causalities"])){
-                    const causality=passiveLine["Condition"]["Causalities"][causalityKey];
-                    let buttonLogic=false;
-                    if("Button" in causality){
-                        if(causality["Button"]["Name"] in causalityLogic){
-                            buttonLogic=causalityLogic[causality["Button"]["Name"]];
+        if(thisTurnActivationCounted || passiveLine["Length"]!="1"){
+            
+            if((passiveLine["Timing"]==exec_timing_type || exec_timing_type=="All") && 
+            (passiveLine["Type"]=="Building Stat") &&
+            (thisTurnActivationCounted || passiveLine["Length"]!="1")){
+                if("Condition" in passiveLine){
+                    let conditionLogic=" "+passiveLine["Condition"]["Logic"]+" ";
+                    conditionLogic=conditionLogic.replaceAll("("," ( ").replaceAll(")"," ) ").replaceAll("&&"," && ").replaceAll("||"," || ");
+                    for (const causalityKey of Object.keys(passiveLine["Condition"]["Causalities"])){
+                        const causality=passiveLine["Condition"]["Causalities"][causalityKey];
+                        let buttonLogic=false;
+                        if("Button" in causality){
+                            if(causality["Button"]["Name"] in causalityLogic){
+                                buttonLogic=causalityLogic[causality["Button"]["Name"]];
+                            }
                         }
+                        
+                        let sliderLogic=false;
+                        if("Slider" in causality){
+                            if(causality["Slider"]["Name"] in causalityLogic){
+                                sliderLogic=causalityLogic[causality["Slider"]["Name"]]+causality["Slider"]["Logic"];
+                                sliderLogic=evaluate(sliderLogic);
+                            }
+                        }
+                        
+                        const overallLogic=(buttonLogic||sliderLogic);
+                        
+                        conditionLogic=conditionLogic.replaceAll(" "+causalityKey+" ",    " "+overallLogic+" ");
                     }
                     
-                    let sliderLogic=false;
-                    if("Slider" in causality){
-                        if(causality["Slider"]["Name"] in causalityLogic){
-                            sliderLogic=causalityLogic[causality["Slider"]["Name"]]+causality["Slider"]["Logic"];
-                            sliderLogic=evaluate(sliderLogic);
+                    if(evaluate(conditionLogic)){
+                        if("Additional Attack" in passiveLine || !("Chance" in passiveLine)){
+                            activateablePassiveLines.push(passiveLine)
+                        }
+                        else if(("Chance" in passiveLine && !("Additional Attack" in passiveLine))){
+                            if(passiveChanceList[passiveLine["ID"]].getValue()){
+                                activateablePassiveLines.push(passiveLine)
+                            }
                         }
                     }
-
-                    const overallLogic=(buttonLogic||sliderLogic);
-
-                    conditionLogic=conditionLogic.replaceAll(" "+causalityKey+" ",    " "+overallLogic+" ");
                 }
-
-                if(evaluate(conditionLogic)){
+                else{
                     if("Additional Attack" in passiveLine || !("Chance" in passiveLine)){
                         activateablePassiveLines.push(passiveLine)
                     }
@@ -2824,16 +2839,6 @@ function buildingStatHandler(previousActiveLineMultipliers,exec_timing_type,acti
                         if(passiveChanceList[passiveLine["ID"]].getValue()){
                             activateablePassiveLines.push(passiveLine)
                         }
-                    }
-                }
-            }
-            else{
-                if("Additional Attack" in passiveLine || !("Chance" in passiveLine)){
-                    activateablePassiveLines.push(passiveLine)
-                }
-                else if(("Chance" in passiveLine && !("Additional Attack" in passiveLine))){
-                    if(passiveChanceList[passiveLine["ID"]].getValue()){
-                        activateablePassiveLines.push(passiveLine)
                     }
                 }
             }
