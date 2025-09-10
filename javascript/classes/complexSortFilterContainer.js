@@ -280,7 +280,7 @@ export class complexSortFilterContainer {
 
     completedSelection(){
         this.setDisplay(false);
-        window.reFilterCards();
+        window.reSortCards(true);
     }
 
     cancelSelection(){

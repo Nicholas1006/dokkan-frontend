@@ -3243,10 +3243,10 @@ function createLinkStats(){
     linksContainer.appendChild(linkBuffsDiv);
 }
 
-function findLinkPartners(linksJson,releaseJson,NameJson){
+function findLinkPartners(linksJson,releaseJson,nameJson){
     let allLinkPartners = {0:[],1:[], 2:[], 3:[], 4:[], 5:[], 6:[], 7:[]};
     for(const unitID in linksJson){
-        if(!(unitID.startsWith(currentJson["ID"])) && (unitID.startsWith("4") || currentJson["ID"].startsWith("4") || currentJson["Name"]!=NameJson[unitID])){
+        if(!(unitID.startsWith(currentJson["ID"])) && (unitID.startsWith("4") || currentJson["ID"].startsWith("4") || currentJson["Name"]!=nameJson[unitID]) && unitID.endsWith("1")){
             let matchingLinks=0;
             for (const link of currentJson["Links"]){
                 if(linksJson[unitID].includes(link)){

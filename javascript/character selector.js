@@ -42,35 +42,21 @@ function rarityToInt(rarity){
 
 function createFilterOption(){
   const filterContainer = document.getElementById("filter-container");
-  const filterSelect = document.createElement("select");
-  const filterOptions = ["Name","Type", "Rarity", "Eza", "Seza", "Class","Categories","Super Attack Types", "Links"]; 
-  filterOptions.forEach(option => {
-    const optionElement = document.createElement("option");
-    optionElement.value = option;
-    optionElement.textContent = option;
-    filterSelect.appendChild(optionElement);
-  });
-  filterSelect.addEventListener("change", function() {
-    window.currentFilter = this.value;
-    reFilterCards();
-  })
-
   const filterTextInput = document.createElement("input");
   filterTextInput.type="text";
   filterTextInput.id="currentFilterInput";
-  filterTextInput.placeholder="Enter text to filter by";
+  filterTextInput.placeholder="Enter Name";
   filterTextInput.setAttribute("autocomplete", "off");
   filterTextInput.addEventListener("input", function() {
-    window.currentFilterValue = this.value;
+    window.currentFilter["Name"]= this.value;
     reFilterCards();
   });
 
-  filterContainer.appendChild(filterSelect);
   filterContainer.appendChild(filterTextInput);
 }
 
 async function reFilterCards() {
-  window.currentFilteredUnits = Object.keys(window.unitBasicsDetails["Max Level"])
+  window.currentFilteredUnits = window.sortedCardsOrder;
   for (const filter in window.currentFilter){
     if(Object.keys(window.unitBasicsDetails).includes(filter)){
       let currentFilteringUnits = [];
@@ -129,13 +115,6 @@ async function reFilterCards() {
         }
       )
     }
-  }
-  if(includeOnlyOwnableUnits){
-    window.currentFilteredUnits = window.currentFilteredUnits.filter(
-      unit => {
-      return window.unitBasicsDetails["Maxed"][unit] === true;
-      }
-    );
   }
   
   if(window.leaderView!=null){
@@ -227,10 +206,8 @@ async function reFilterCards() {
     window.currentFilteredUnits=currentFilteringUnits;
     
   }
-  
-  
-  reSortCards();
   updatePageSelector();
+  showUpdatedCardPositions()
 }
 
 function calculateUnitLeadingBuff(unit){
@@ -330,32 +307,13 @@ function createCharacterBoxes() {
   }
 }
 
-function createSortOption(){
-  const sortContainer = document.getElementById("sort-container");
-  const sortSelect = document.createElement("select");
-  const sortOptions = ["Acquired", "ID", "Max Level", "Rarity", "Cost", "HP", "Attack", "Defense", "Sp Atk Lv"];
-  sortOptions.forEach(option => {
-    const optionElement = document.createElement("option");
-    optionElement.value = option;
-    optionElement.textContent = option;
-    sortSelect.appendChild(optionElement);
-  });
-  sortSelect.addEventListener("change", function() {
-    window.currentSort = this.value;
-    reSortCards();
-  })
-  sortContainer.appendChild(sortSelect);
-
-}
 
 
-function reSortCards(){
+function reSortCards(reFilter=false){
   if(Object.keys(window.unitBasicsDetails).includes(window.currentSort)){
-
-    let sortedUnits = window.currentFilteredUnits;
     const order = window.currentOrder =="ascending" ? 1 : -1;
 
-    sortedUnits.sort((a, b) => {
+    window.sortedCardsOrder.sort((a, b) => {
       let valueA = window.unitBasicsDetails[window.currentSort][a];
       let valueB = window.unitBasicsDetails[window.currentSort][b];
       if (window.currentSort === "Rarity") {
@@ -371,15 +329,15 @@ function reSortCards(){
       }
       return 0;
     });
-
-    window.currentFilteredUnits = sortedUnits;
-    showUpdatedCardPositions();
+    if(reFilter){
+      reFilterCards();
+    }
   }
   else{
     fetch("/dbManagement/uniqueJsons/unitBasics/"+window.currentSort+".json").then(
       async unitBasicsDetail =>{
         window.unitBasicsDetails[window.currentSort]=await unitBasicsDetail.json();
-        reSortCards();
+        reSortCards(reFilter);
       }
     )
   }
@@ -458,7 +416,7 @@ function showUpdatedCardPositions(){
 
 function createSortButton(){
   document.getElementById("sort-direction").src=window.assetBase+"/global/en/layout/en/image/common/btn/filter_icon_descending.png";
-  const sortFilterContainer=new complexSortFilterContainer(COMPLEXSORTFILTERCONTAINERWIDTH,COMPLEXSORTFILTERCONTAINERHEIGHT,reFilterCards);
+  const sortFilterContainer=new complexSortFilterContainer(COMPLEXSORTFILTERCONTAINERWIDTH,COMPLEXSORTFILTERCONTAINERHEIGHT,reSortCards);
   document.body.appendChild(sortFilterContainer.getElement());
   document.body.appendChild(sortFilterContainer.getBackground());
 
@@ -509,7 +467,6 @@ function changeCurrentPage(currentPage){
 function createCharacterSelection(){
   
   createCharacterBoxes();
-  createSortOption();
   createFilterOption();
   createSortButton();
   const jsonPromises = ["Resource ID", "Class", "Type", "Rarity", "Max Level","Maxed"].map(field => 
@@ -524,7 +481,10 @@ function createCharacterSelection(){
         }
       );
       await Promise.all(promises);
-      reFilterCards(true);
+      window.sortedCardsOrder=Object.entries(window.unitBasicsDetails["Maxed"])     
+                              .filter(([key, value]) => value === true)     
+                              .map(([key]) => key);
+      reSortCards(true);
     }
   )
 };
