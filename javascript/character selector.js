@@ -20,6 +20,7 @@ window.unitBasicsDetails={};
 
 const COMPLEXSORTFILTERCONTAINERWIDTH=480;
 const COMPLEXSORTFILTERCONTAINERHEIGHT="100vh";
+const PAGESTOLIST=70;
 
 
 function rarityToInt(rarity){
@@ -442,10 +443,11 @@ function updatePageSelector(){
   while (pageSelectionContainer.firstChild) {
     pageSelectionContainer.removeChild(pageSelectionContainer.firstChild);
   }
-  const minNumber=Math.max(1,window.currentPage-3);
-  const maxNumber=Math.min(Math.ceil(window.currentFilteredUnits.length/unitsToDisplay),minNumber+7);
+  const minNumber=Math.max(1,window.currentPage-Math.floor(PAGESTOLIST/2));
+  const maxNumber=Math.min(Math.ceil(window.currentFilteredUnits.length/unitsToDisplay),minNumber+PAGESTOLIST);
   for(let i=minNumber;i<=maxNumber;i++){
     const pageButton=document.createElement("button");
+    pageButton.className="page-button";
     pageButton.textContent=i;
     if(i==window.currentPage){
       pageButton.style.background="grey";
