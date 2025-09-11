@@ -4177,15 +4177,15 @@ function createDomainContainer(){
 
 
 function affectedByDomain(domain){
-    for (const efficiacyKey in domain["Efficiacies"]){
-        const efficiacy = domain["Efficiacies"][efficiacyKey];
-        let efficiacyActive=false;
-        if(efficiacy["superCondition"]!=undefined){
-            let efficiacyLogic=efficiacy["superCondition"]["Logic"];
-            efficiacyLogic=" "+efficiacyLogic+" ";
-            efficiacyLogic=efficiacyLogic.replaceAll("("," ( ").replaceAll(")"," ) ").replaceAll("&&"," && ").replaceAll("||"," || ");
-            for (const causalityKey of Object.keys(efficiacy["superCondition"]["Causalities"])){
-                const causality = efficiacy["superCondition"]["Causalities"][causalityKey];
+    for (const efficacyKey in domain["efficacies"]){
+        const efficacy = domain["efficacies"][efficacyKey];
+        let efficacyActive=false;
+        if(efficacy["superCondition"]!=undefined){
+            let efficacyLogic=efficacy["superCondition"]["Logic"];
+            efficacyLogic=" "+efficacyLogic+" ";
+            efficacyLogic=efficacyLogic.replaceAll("("," ( ").replaceAll(")"," ) ").replaceAll("&&"," && ").replaceAll("||"," || ");
+            for (const causalityKey of Object.keys(efficacy["superCondition"]["Causalities"])){
+                const causality = efficacy["superCondition"]["Causalities"][causalityKey];
                 let categoryMatch= false;
                 if(causality["Category"]=="any"){
                     categoryMatch=true;
@@ -4201,15 +4201,15 @@ function affectedByDomain(domain){
                     classMatch=currentJson.Class.toUpperCase()==(causality["Class"]).toUpperCase();
                 }
                 if(categoryMatch && classMatch){
-                    efficiacyLogic=efficiacyLogic.replaceAll(" "+causalityKey+" "      ,      " true ");
+                    efficacyLogic=efficacyLogic.replaceAll(" "+causalityKey+" "      ,      " true ");
                 }
                 else{
-                    efficiacyLogic=efficiacyLogic.replaceAll(" "+causalityKey+" "      ,      " false ");
+                    efficacyLogic=efficacyLogic.replaceAll(" "+causalityKey+" "      ,      " false ");
                 }
             }
-            efficiacyActive=evaluate(efficiacyLogic);
+            efficacyActive=evaluate(efficacyLogic);
         }
-        if(efficiacyActive && efficiacy["Target"]=="All allies" ){
+        if(efficacyActive && efficacy["Target"]=="All allies" ){
             return(true);
         }
     }
@@ -4235,15 +4235,15 @@ function refreshDomainBuffs(updatePassiveStatsBool=true){
     if(currentDomain!="null"){
         domainBuffs={"ATK":0,"DEF":0,"Increased damage recieved":0};
         let domain=domainData[currentDomain];
-        for (const efficiacyKey in domain["Efficiacies"]){
-            const efficiacy = domain["Efficiacies"][efficiacyKey];
-            let efficiacyActive=false;
-            if(efficiacy["superCondition"]!=undefined){
-                let efficiacyLogic=efficiacy["superCondition"]["Logic"];
-                efficiacyLogic=" "+efficiacyLogic+" ";
-                efficiacyLogic=efficiacyLogic.replaceAll("("," ( ").replaceAll(")"," ) ").replaceAll("&&"," && ").replaceAll("||"," || ");
-                for (const causalityKey of Object.keys(efficiacy["superCondition"]["Causalities"])){
-                    const causality = efficiacy["superCondition"]["Causalities"][causalityKey];
+        for (const efficacyKey in domain["efficacies"]){
+            const efficacy = domain["efficacies"][efficacyKey];
+            let efficacyActive=false;
+            if(efficacy["superCondition"]!=undefined){
+                let efficacyLogic=efficacy["superCondition"]["Logic"];
+                efficacyLogic=" "+efficacyLogic+" ";
+                efficacyLogic=efficacyLogic.replaceAll("("," ( ").replaceAll(")"," ) ").replaceAll("&&"," && ").replaceAll("||"," || ");
+                for (const causalityKey of Object.keys(efficacy["superCondition"]["Causalities"])){
+                    const causality = efficacy["superCondition"]["Causalities"][causalityKey];
                     let categoryMatch= false;
                     if(causality["Category"]=="any"){
                         categoryMatch=true;
@@ -4259,17 +4259,17 @@ function refreshDomainBuffs(updatePassiveStatsBool=true){
                         classMatch=currentJson.Class.toUpperCase()==(causality["Class"]).toUpperCase();
                     }
                     if(categoryMatch && classMatch){
-                        efficiacyLogic=efficiacyLogic.replaceAll(" "+causalityKey+" "      ,      " true ");
+                        efficacyLogic=efficacyLogic.replaceAll(" "+causalityKey+" "      ,      " true ");
                     }
                     else{
-                        efficiacyLogic=efficiacyLogic.replaceAll(" "+causalityKey+" "      ,      " false ");
+                        efficacyLogic=efficacyLogic.replaceAll(" "+causalityKey+" "      ,      " false ");
                     }
                 }
-                efficiacyActive=evaluate(efficiacyLogic);
+                efficacyActive=evaluate(efficacyLogic);
             }
-            if(efficiacy["Target"]=="All allies" && efficiacy["Effect"]["Type"]=="ATK & DEF" && efficiacyActive && (efficiacy["Timing"] == "On domain Being out" || efficiacy["Timing"]=="At the start of turn")){
-                domainBuffs["ATK"]+=efficiacy["Effect"]["ATK"];
-                domainBuffs["DEF"]+=efficiacy["Effect"]["DEF"];
+            if(efficacy["Target"]=="All allies" && efficacy["Effect"]["Type"]=="ATK & DEF" && efficacyActive && (efficacy["Timing"] == "On domain Being out" || efficacy["Timing"]=="At the start of turn")){
+                domainBuffs["ATK"]+=efficacy["Effect"]["ATK"];
+                domainBuffs["DEF"]+=efficacy["Effect"]["DEF"];
             }
         }
         
