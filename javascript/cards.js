@@ -3387,6 +3387,37 @@ function updateLinkPartnerDisplay(){
                                     }
                                 }
                                 linkPartnerDisplay.squareUnitDisplays[i].setHighlight(linksMatch);
+                                linkPartnerDisplay.squareUnitDisplays[i].getElement().removeEventListener("mouseenter",function(e){});
+                                linkPartnerDisplay.squareUnitDisplays[i].getElement().removeEventListener("mouseleave",function(e){});
+                                
+                                linkPartnerDisplay.squareUnitDisplays[i].getElement().addEventListener(
+                                    "mouseenter", function(e){
+                                        let linkButtons = document.querySelectorAll("div[id='links-button']");
+                                        for (const button of linkButtons) {
+                                            button.linkButtonBackground.classList.remove("active");
+                                            button.linkButtonBackground.classList.remove("active10");
+                                            if(characterJson["Links"].includes(button.linkName)){
+                                                if(button.linkLevel==10){
+                                                    button.linkButtonBackground.classList.add("active10");
+                                                }
+                                                else{
+                                                    button.linkButtonBackground.classList.add("active")
+                                                }
+                                            }
+                                        }
+                                    }
+                                )
+
+                                linkPartnerDisplay.squareUnitDisplays[i].getElement().addEventListener(
+                                    "mouseleave", function(e){
+                                        let linkButtons = document.querySelectorAll("div[id='links-button']");
+                                        for (const button of linkButtons) {
+                                            button.updateLink(undefined,undefined);
+                                        }
+                                    }
+                                )
+
+
                             }
                         }
                     )
