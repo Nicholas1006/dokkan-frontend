@@ -5877,23 +5877,15 @@ function createKiSphereContainer(){
     rainbowSlider.value=rainbowKiSphereAmount;
     rainbowSlider.addEventListener("input", function(){
         rainbowKiSphereAmount=parseInt(this.value);
-        if(parseInt(this.value)==5){
-            this.parentElement.parentElement.otherQuery.otherSlider.value=0;
-            this.parentElement.parentElement.otherQuery.sufffixLabel.innerHTML="ki spheres have been obtained: "
-            this.parentElement.parentElement.otherQuery.sufffixLabel.innerHTML+=0;
-            currentKiSphereAmount=0;
+        if((parseInt(this.value)==5 && parseInt(this.parentElement.parentElement.otherQuery.otherSlider.value)>0) ||
+        (parseInt(this.value)==0 && parseInt(this.parentElement.parentElement.otherQuery.otherSlider.value)==0) ||
+        (parseInt(this.value)>0 && parseInt(this.parentElement.parentElement.otherQuery.otherSlider.value)==23) ||
+        (parseInt(this.value) + parseInt(this.parentElement.parentElement.otherQuery.otherSlider.value)>23)
+        ){
+            this.parentElement.parentElement.style.backgroundColor="#ff0000";
         }
-        else if(parseInt(this.value)+parseInt(this.parentElement.parentElement.otherQuery.otherSlider.value)>23){
-            this.parentElement.parentElement.otherQuery.otherSlider.value=23-this.value;
-            this.parentElement.parentElement.otherQuery.sufffixLabel.innerHTML="ki spheres have been obtained: "
-            this.parentElement.parentElement.otherQuery.sufffixLabel.innerHTML+=23-this.value;
-            currentKiSphereAmount=23-this.value;
-        }
-        else if(parseInt(this.parentElement.parentElement.otherQuery.otherSlider.value)==0 && parseInt(this.value)<5){
-            this.parentElement.parentElement.otherQuery.otherSlider.value=1;
-            this.parentElement.parentElement.otherQuery.sufffixLabel.innerHTML="ki spheres have been obtained: "
-            this.parentElement.parentElement.otherQuery.sufffixLabel.innerHTML+=1;
-            currentKiSphereAmount=1;
+        else{
+            this.parentElement.parentElement.style.backgroundColor="transparent";
         }
         updateKiSphereBuffs()
         this.parentElement.label.innerHTML="How many rainbow ki spheres have been obtained: "+this.value;
@@ -5939,23 +5931,15 @@ function createKiSphereContainer(){
     otherSlider.max=23;
     otherSlider.value=currentKiSphereAmount;
     otherSlider.addEventListener("input", function(){
-        if(parseInt(this.value)+parseInt(this.parentElement.parentElement.rainbowQuery.slider.value)>23){
-            this.parentElement.parentElement.rainbowQuery.slider.value=23-this.value;
-            this.parentElement.parentElement.rainbowQuery.label.innerHTML="How many rainbow ki spheres have been obtained: "
-            this.parentElement.parentElement.rainbowQuery.label.innerHTML+=23-parseInt(this.value);
-            rainbowKiSphereAmount=23-this.value
+        if((parseInt(this.value)==23 && parseInt(this.parentElement.parentElement.rainbowQuery.slider.value)>0) || 
+           (parseInt(this.value)==0 && parseInt(this.parentElement.parentElement.rainbowQuery.slider.value)==0) || 
+           (parseInt(this.value)>0 && parseInt(this.parentElement.parentElement.rainbowQuery.slider.value)==5) ||
+           (parseInt(this.value) + parseInt(this.parentElement.parentElement.rainbowQuery.slider.value)>23)
+        ){
+            this.parentElement.parentElement.style.backgroundColor="#ff0000";
         }
-        else if(parseInt(this.value)>0 && parseInt(this.parentElement.parentElement.rainbowQuery.slider.value)==5){
-            this.parentElement.parentElement.rainbowQuery.slider.value=4;
-            this.parentElement.parentElement.rainbowQuery.label.innerHTML="How many rainbow ki spheres have been obtained: "
-            this.parentElement.parentElement.rainbowQuery.label.innerHTML+=4;
-            rainbowKiSphereAmount=4
-        }
-        else if(parseInt(this.value)==0){
-            this.parentElement.parentElement.rainbowQuery.slider.value=5;
-            this.parentElement.parentElement.rainbowQuery.label.innerHTML="How many rainbow ki spheres have been obtained: "
-            this.parentElement.parentElement.rainbowQuery.label.innerHTML+=5;
-            rainbowKiSphereAmount=5
+        else{
+            this.parentElement.parentElement.style.backgroundColor="transparent";
         }
         currentKiSphereAmount=parseInt(this.value)
         updateKiSphereBuffs();
