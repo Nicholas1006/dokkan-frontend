@@ -1589,7 +1589,7 @@ let leaderBuffs={"HP": 440, "ATK": 440, "DEF": 440, "Ki": 6};
 let superBuffs={"ATK": 0, "DEF": 0, "Enemy ATK": 0, "Enemy DEF": 0, "Crit": 0, "Evasion": 0};
 let linkBuffs={"ATK":0,"DEF":0,"Enemy DEF":0,"Heal":0,"KI":0,"Damage Reduction":0,"Crit":0,"Evasion":0};
 let skillOrbBuffs={"Additional":0,"Crit":0,"Evasion":0,"Attack":0,"Defense":0,"SuperBoost":0,"Recovery":0}
-let domainBuffs={"ATK":0,"DEF":0,"Increased damage recieved":0}
+let domainBuffs={"ATK":0,"DEF":0,"Increases damage recieved":0}
 let supportBuffs=[];
 let overallSupportBuffs={
     "Passive SOT": {"ATK": 0, "DEF": 0, "Ki": 0, "Crit": 0, "Dodge": 0, "DR": 0},
@@ -4231,9 +4231,8 @@ function refreshDomainBuffs(updatePassiveStatsBool=true){
         }
     }
 
-    domainBuffs={"ATK":0,"DEF":0,"Increased damage recieved":0}
+    domainBuffs={"ATK":0,"DEF":0,"Increases damage recieved":0}
     if(currentDomain!="null"){
-        domainBuffs={"ATK":0,"DEF":0,"Increased damage recieved":0};
         let domain=domainData[currentDomain];
         for (const efficacyKey in domain["efficacies"]){
             const efficacy = domain["efficacies"][efficacyKey];
@@ -4267,9 +4266,10 @@ function refreshDomainBuffs(updatePassiveStatsBool=true){
                 }
                 efficacyActive=evaluate(efficacyLogic);
             }
-            if(efficacy["Target"]=="All allies" && efficacy["Effect"]["Type"]=="ATK & DEF" && efficacyActive && (efficacy["Timing"] == "On domain Being out" || efficacy["Timing"]=="At the start of turn")){
-                domainBuffs["ATK"]+=efficacy["Effect"]["ATK"];
-                domainBuffs["DEF"]+=efficacy["Effect"]["DEF"];
+            if(efficacy["Target"]=="All allies" && ["ATK & DEF","Increases damage recieved"].includes(efficacy["Effect"]["Type"]) && efficacyActive && (efficacy["Timing"] == "On domain Being out" || efficacy["Timing"]=="At the start of turn")){
+                domainBuffs["ATK"]+=efficacy["Effect"]["ATK"] || 0;
+                domainBuffs["DEF"]+=efficacy["Effect"]["DEF"] || 0;
+                domainBuffs["Increases damage recieved"]+=efficacy["Effect"]["Increases damage recieved"] || 0;
             }
         }
         
@@ -4293,8 +4293,8 @@ function refreshDomainBuffs(updatePassiveStatsBool=true){
         if(domainBuffs["DEF"]!=0){
             domainBuffsDisplay.innerHTML+="DEF: +"+domainBuffs["DEF"]+"% <br>";
         }
-        if(domainBuffs["Increased damage recieved"]!=0){
-            domainBuffsDisplay.innerHTML+="Increased damage recieved: "+domainBuffs["Increased damage recieved"]+"%<br>";
+        if(domainBuffs["Increases damage recieved"]!=0){
+            domainBuffsDisplay.innerHTML+="Increases damage recieved: "+domainBuffs["Increases damage recieved"]+"%<br>";
         }
     }
 
@@ -5740,7 +5740,9 @@ function updateEnemyNumbers(){
                 enemyTyping,
                 enemyClass,
                 enemyATKThreshold,
-                0//skillOrbBuffs["Defense"],
+                0,//skillOrbBuffs["Defense"],
+                false,
+                0
             );
         }
         if(finishSkillPerformed){
@@ -5777,7 +5779,9 @@ function updateEnemyNumbers(){
                     enemyTyping,
                     enemyClass,
                     enemyATKThreshold,
-                    0//skillOrbBuffs["Defense"],
+                    0,//skillOrbBuffs["Defense"],
+                    false,
+                    0
                 );
             }
         }
@@ -5797,7 +5801,9 @@ function updateEnemyNumbers(){
             enemyTyping,
             enemyClass,
             enemyATKThreshold,
-            0//skillOrbBuffs["Defense"],
+            0,//skillOrbBuffs["Defense"],
+            false,
+            0
         );
     }
     else if(document.getElementById("attack-performed-selector").value=="finish-skill"){
@@ -5815,7 +5821,9 @@ function updateEnemyNumbers(){
             enemyTyping,
             enemyClass,
             enemyATKThreshold,
-            0//skillOrbBuffs["Defense"],
+            0,//skillOrbBuffs["Defense"],
+            false,
+            0
         );
     }
     else{
@@ -5834,7 +5842,8 @@ function updateEnemyNumbers(){
             enemyClass,
             enemyATKThreshold,
             0,//skillOrbBuffs["Defense"],
-            false
+            false,
+            0
         );
     }
     enemyAttackTaken.innerHTML="Damage dealt: "+Math.round(attackDealt,0).toLocaleString("en-US");
@@ -5857,7 +5866,8 @@ function updateEnemyNumbers(){
             currentJson["Class"],
             0,
             skillOrbBuffs["Defense"],
-            recievingDamageStats.Guard||false
+            recievingDamageStats.Guard||false,
+            domainBuffs["Increases damage recieved"]/100
         )
         enemyAttackDealt.innerHTML="Damage taken: "+Math.round(attackTaken,0).toLocaleString("en-US");
         enemyAttackDealt.style.display="block";
@@ -5890,7 +5900,9 @@ function calculateAttackRecieved(
     defenderClass,
     defenderATKThreshold,
     defenderSkillOrbBuffDefense,
-    defenderPassiveGuard){
+    defenderPassiveGuard,
+    defenderDomainDamageRecievedIncrease
+    ){
 
 
     let [advantageMultiplier,guardMultiplier]=advantageCalculator(attackerTyping, attackerClass, defenderTyping, defenderClass,defenderPassiveGuard);
@@ -5913,7 +5925,7 @@ function calculateAttackRecieved(
 
     let variance=1;
     let DRToNormals=0;
-    let attackDealt=(attackerAttack  * (1 - defenderDR) * (1 - DRToNormals) * advantageMultiplier * variance - defenderDEF) * guardMultiplier;
+    let attackDealt=(attackerAttack  * (1 - defenderDR) * (1 - DRToNormals) * advantageMultiplier * variance - defenderDEF) * guardMultiplier * (1 + defenderDomainDamageRecievedIncrease);
     if(attackDealt<defenderATKThreshold){
         attackDealt=0;
     }
