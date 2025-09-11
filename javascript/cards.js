@@ -4135,12 +4135,14 @@ function createDomainContainer(){
         domainDropDown.select.appendChild(nullOption);
         for (const domainKey in domainData){
             const domain = domainData[domainKey];
-            const option = document.createElement("option");
-            option.value = domain["ID"];
-            option.textContent = domain["Name"];
-            domainDropDown.select.appendChild(option);
-            if(domain["ID"]==currentDomain){
-                option.selected=true;
+            if(affectedByDomain(domain)){
+                const option = document.createElement("option");
+                option.value = domain["ID"];
+                option.textContent = domain["Name"];
+                domainDropDown.select.appendChild(option);
+                if(domain["ID"]==currentDomain){
+                    option.selected=true;
+                }
             }
         }
         
@@ -4150,10 +4152,12 @@ function createDomainContainer(){
         domainDropDown.select.appendChild(nullOption);  
         for (const domainKey in domainData){
             const domain = domainData[domainKey];
-            const option = document.createElement("option");
-            option.value = domain["ID"];
-            option.textContent = domain["Name"];
-            domainDropDown.select.appendChild(option);
+            if(affectedByDomain(domain)){
+                const option = document.createElement("option");
+                option.value = domain["ID"];
+                option.textContent = domain["Name"];
+                domainDropDown.select.appendChild(option);
+            }
         }
     }
 
@@ -4162,7 +4166,54 @@ function createDomainContainer(){
     domainImage.className="domain-image";
     domainImage.id="domain-image";
     domainImage.style.display="none";
+    
+    const domainBuffsDisplay=document.createElement("div");
+    domainBuffsDisplay.id="domain-buffs-display";
+    domainBuffsDisplay.className="domain-buffs-display";
+    domainContainer.appendChild(domainBuffsDisplay);
+
     refreshDomainBuffs(false);
+}
+
+
+function affectedByDomain(domain){
+    for (const efficiacyKey in domain["Efficiacies"]){
+        const efficiacy = domain["Efficiacies"][efficiacyKey];
+        let efficiacyActive=false;
+        if(efficiacy["superCondition"]!=undefined){
+            let efficiacyLogic=efficiacy["superCondition"]["Logic"];
+            efficiacyLogic=" "+efficiacyLogic+" ";
+            efficiacyLogic=efficiacyLogic.replaceAll("("," ( ").replaceAll(")"," ) ").replaceAll("&&"," && ").replaceAll("||"," || ");
+            for (const causalityKey of Object.keys(efficiacy["superCondition"]["Causalities"])){
+                const causality = efficiacy["superCondition"]["Causalities"][causalityKey];
+                let categoryMatch= false;
+                if(causality["Category"]=="any"){
+                    categoryMatch=true;
+                }
+                else{
+                    categoryMatch=currentJson.Categories.includes(causality["Category"]);
+                }
+                let classMatch=false;
+                if(causality["Class"]=="any"){
+                    classMatch=true;
+                }
+                else{
+                    classMatch=currentJson.Class.toUpperCase()==(causality["Class"]).toUpperCase();
+                }
+                if(categoryMatch && classMatch){
+                    efficiacyLogic=efficiacyLogic.replaceAll(" "+causalityKey+" "      ,      " true ");
+                }
+                else{
+                    efficiacyLogic=efficiacyLogic.replaceAll(" "+causalityKey+" "      ,      " false ");
+                }
+            }
+            efficiacyActive=evaluate(efficiacyLogic);
+        }
+        if(efficiacyActive && efficiacy["Target"]=="All allies" ){
+            return(true);
+        }
+    }
+    return(false);
 }
 
 function refreshDomainBuffs(updatePassiveStatsBool=true){
@@ -4216,7 +4267,7 @@ function refreshDomainBuffs(updatePassiveStatsBool=true){
                 }
                 efficiacyActive=evaluate(efficiacyLogic);
             }
-            if(efficiacy["Effect"]["Type"]=="ATK & DEF" && efficiacyActive && (efficiacy["Timing"] == "On domain Being out" || efficiacy["Timing"]=="At the start of turn")){
+            if(efficiacy["Target"]=="All allies" && efficiacy["Effect"]["Type"]=="ATK & DEF" && efficiacyActive && (efficiacy["Timing"] == "On domain Being out" || efficiacy["Timing"]=="At the start of turn")){
                 domainBuffs["ATK"]+=efficiacy["Effect"]["ATK"];
                 domainBuffs["DEF"]+=efficiacy["Effect"]["DEF"];
             }
@@ -4232,6 +4283,21 @@ function refreshDomainBuffs(updatePassiveStatsBool=true){
         domainImage.style.display="block";
         domainImage.src=""+window.assetBase+"/global/en/outgame/extension/dokkan_field/field_thumb_image_"+domainData[currentDomain]["Resource ID"]+"/field_thumb_image_"+domainData[currentDomain]["Resource ID"]+".png"
     }
+
+    const domainBuffsDisplay=document.getElementById("domain-buffs-display");
+    domainBuffsDisplay.innerHTML=""
+    if(currentDomain!="null"){
+        if(domainBuffs["ATK"]!=0){
+            domainBuffsDisplay.innerHTML+="ATK: +"+domainBuffs["ATK"]+"% <br>";
+        }
+        if(domainBuffs["DEF"]!=0){
+            domainBuffsDisplay.innerHTML+="DEF: +"+domainBuffs["DEF"]+"% <br>";
+        }
+        if(domainBuffs["Increased damage recieved"]!=0){
+            domainBuffsDisplay.innerHTML+="Increased damage recieved: "+domainBuffs["Increased damage recieved"]+"%<br>";
+        }
+    }
+
 
     if(updatePassiveStatsBool){
         updatePassiveStats()
