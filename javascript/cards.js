@@ -3123,17 +3123,21 @@ function createLinkStats(){
         linkButton.linkLevel = 10;
         linkButton.isActive=true;
         linkButton.id="links-button";
+        linkButton.classList.add("active");
         linkButton.style.display="block"
         linkButton.style.gridRow= linkNumber*2;
         linkButton.classList.add("active");
         linkButton.updateLink=function(active,level){
             this.linkButtonBackground.classList.remove("active");
             this.linkButtonBackground.classList.remove("active10");
+            this.classList.remove("active");
             if(this.linkLevel==10 && this.isActive){
                 this.linkButtonBackground.classList.add("active10")
+                this.classList.add("active")
             }
             else if(this.isActive){
                 this.linkButtonBackground.classList.add("active")
+                this.classList.add("active")
             }
             this.linkLevelSelection.Value.textContent=this.linkLevel
             if(this.linkName=="All links"){
@@ -3396,13 +3400,17 @@ function updateLinkPartnerDisplay(){
                                         for (const button of linkButtons) {
                                             button.linkButtonBackground.classList.remove("active");
                                             button.linkButtonBackground.classList.remove("active10");
+                                            button.classList.remove("active");
                                             if(characterJson["Links"].includes(button.linkName)){
                                                 if(button.linkLevel==10){
                                                     button.linkButtonBackground.classList.add("active10");
+                                                    button.classList.add("active");
                                                 }
                                                 else{
                                                     button.linkButtonBackground.classList.add("active")
+                                                    button.classList.add("active");
                                                 }
+                                                button
                                             }
                                         }
                                     }
