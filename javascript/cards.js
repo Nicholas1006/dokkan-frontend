@@ -419,36 +419,41 @@ class kiCircleClass{
 
         else if(this.superAttackID=="Finish"){
             const finish = currentJson["Finish Skill"];
-            for (const finishAttack of Object.keys(finish)){
-                let finishLogic=" "+finish[finishAttack]["Condition"]["Logic"]+" "
-                for (const finishCausalitiesKey of Object.keys(finish[finishAttack]["Condition"]["Causalities"])){
-                    if("Button" in finish[finishAttack]["Condition"]["Causalities"][finishCausalitiesKey]){
-                        if(iteratingCausalityLogic[finish[finishAttack]["Condition"]["Causalities"][finishCausalitiesKey]["Button"]["Name"]]){
-                            finishLogic=finishLogic.replaceAll(" "+finishCausalitiesKey+" "," true ");
+            if(!usePassiveList){
+                for (const finishAttack of Object.keys(finish)){
+                    let finishLogic=" "+finish[finishAttack]["Condition"]["Logic"]+" "
+                    for (const finishCausalitiesKey of Object.keys(finish[finishAttack]["Condition"]["Causalities"])){
+                        if("Button" in finish[finishAttack]["Condition"]["Causalities"][finishCausalitiesKey]){
+                            if(iteratingCausalityLogic[finish[finishAttack]["Condition"]["Causalities"][finishCausalitiesKey]["Button"]["Name"]]){
+                                finishLogic=finishLogic.replaceAll(" "+finishCausalitiesKey+" "," true ");
+                            }
                         }
-                    }
-                    if("Slider" in finish[finishAttack]["Condition"]["Causalities"][finishCausalitiesKey]){
-                        let sliderLogic=finish[finishAttack]["Condition"]["Causalities"][finishCausalitiesKey]["Slider"]["Logic"];
-                        sliderLogic=  iteratingCausalityLogic[finish[finishAttack]["Condition"]["Causalities"][finishCausalitiesKey]["Slider"]["Name"]]+sliderLogic
-                        if(evaluate(sliderLogic)){
-                            finishLogic=finishLogic.replaceAll(" "+finishCausalitiesKey+" "," true ");
+                        if("Slider" in finish[finishAttack]["Condition"]["Causalities"][finishCausalitiesKey]){
+                            let sliderLogic=finish[finishAttack]["Condition"]["Causalities"][finishCausalitiesKey]["Slider"]["Logic"];
+                            sliderLogic=  iteratingCausalityLogic[finish[finishAttack]["Condition"]["Causalities"][finishCausalitiesKey]["Slider"]["Name"]]+sliderLogic
+                            if(evaluate(sliderLogic)){
+                                finishLogic=finishLogic.replaceAll(" "+finishCausalitiesKey+" "," true ");
+                            }
                         }
+                        finishLogic=finishLogic.replaceAll(" "+finishCausalitiesKey+" "," false ");
                     }
-                    finishLogic=finishLogic.replaceAll(" "+finishCausalitiesKey+" "," false ");
+                    if(evaluate(finishLogic)){
+                        this.finishPerformed=finish[finishAttack];
+                    }
                 }
-                if(evaluate(finishLogic)){
-                    this.finishPerformed=finish[finishAttack];
+                if(this.finishPerformed==undefined){
+                    this.finishBuffs=0;
+                    this.superPerformed=false;
                 }
-            }
-            if(this.finishPerformed==undefined){
-                this.finishBuffs=0;
-                this.superPerformed=false;
+                else{
+                    this.finishBuffs=this.finishPerformed["Multiplier"]/100;
+                    this.finishBuffs+=(this.finishPerformed["Multiplier per charge"]/100)*iteratingCausalityLogic["What is the charge count at?"];
+                    this.finishBuffs+=skillOrbBuffs["SuperBoost"]*0.05;
+                    this.superPerformed=true;
+                }
             }
             else{
-                this.finishBuffs=this.finishPerformed["Multiplier"]/100;
-                this.finishBuffs+=(this.finishPerformed["Multiplier per charge"]/100)*iteratingCausalityLogic["What is the charge count at?"];
-                this.finishBuffs+=skillOrbBuffs["SuperBoost"]*0.05;
-                this.superPerformed=true;
+                
             }
         }
         
@@ -5280,6 +5285,7 @@ function createFinishContainer(){
         finishcontainer.style.display="none";
     }
     else{
+        let finishQueries = {};
         finishType=Object.values(currentJson["Finish Skill"])[0]["Standby Exclusivity"]
         for (const possibleFinish of Object.values(currentJson["Finish Skill"])){
             if("Multiplier" in possibleFinish){
@@ -5288,6 +5294,13 @@ function createFinishContainer(){
             if(possibleFinish["Standby Exclusivity"]=="charge"){
                 maxChargeCount=Math.ceil((possibleFinish["Max multiplier"]-possibleFinish["Multiplier"])/possibleFinish["Multipler per charge"]);
             }
+            for (const causalityKey of Object.keys(possibleFinish["Condition"]["Causalities"])){
+                //If every condition has this as a causality
+                if(!Object.values(currentJson["Finish Skill"]).every(possibleFinish => possibleFinish["Condition"]["Causalities"].hasOwnProperty.call(possibleFinish["Condition"]["Causalities"], causalityKey)) &&
+                possibleFinish["Condition"]["Causalities"][causalityKey]["Button"]["Name"]!="Is it on or after the first 2 turns from this characters entry turn?") {
+                    finishQueries[causalityKey]=possibleFinish["Condition"]["Causalities"][causalityKey];
+                }
+            }
         }
         if(finishDisplayed){
             finishcontainer.titleLabel=document.createElement("label");
@@ -5295,6 +5308,59 @@ function createFinishContainer(){
             for(const possibleFinish of Object.values(currentJson["Finish Skill"])){
                 finishcontainer.titleLabel.innerText+=possibleFinish["Name"];
                 finishcontainer.titleLabel.innerText+="/n";
+            }
+
+            finishcontainer.queryContainer=document.createElement("div");
+            finishcontainer.appendChild(finishcontainer.queryContainer);
+            finishcontainer.queryContainer.id="finish-query-container";
+
+            const chargeCountSlider = document.createElement("input");
+            chargeCountSlider.id="finish-slider"
+            chargeCountSlider.sliderName="What is the charge count at?";
+            chargeCountSlider.innerHTML = "What is the charge count at?";
+            chargeCountSlider.type = "range";
+            chargeCountSlider.min = 0;
+            chargeCountSlider.max = maxChargeCount;
+            chargeCountSlider.value = 0;
+            finishcontainer.queryContainer.appendChild(chargeCountSlider);
+
+            for(const causalityKey of Object.keys(finishQueries)){
+                if("Slider" in finishQueries[causalityKey]){
+                    const sliders = finishcontainer.queryContainer.querySelectorAll("input");
+                    let foundSlider = null;
+                    for (const slider of sliders) {
+                        if (slider.name === finishQueries[causalityKey]["Slider"]["Name"]) {
+                            foundSlider = slider;
+                            break;
+                        }
+                    }
+                    if (foundSlider==null) {
+                        const slider = document.createElement("input");
+                        slider.id="finish-slider"
+                        slider.sliderName=finishQueries[causalityKey]["Slider"]["Name"];
+                        slider.innerHTML = finishQueries[causalityKey]["Slider"]["Name"];
+                        slider.type = "range";
+                        slider.min = finishQueries[causalityKey]["Slider"]["Min"];
+                        slider.max = finishQueries[causalityKey]["Slider"]["Max"];
+                        slider.value = 0;
+                        finishcontainer.queryContainer.appendChild(slider);
+                    }
+                    else{
+                        foundSlider.min=Math.min(foundSlider.min,finishQueries[causalityKey]["Slider"]["Min"]);
+                        foundSlider.max=Math.max(foundSlider.max,finishQueries[causalityKey]["Slider"]["Max"]);
+                    }
+                }
+                else{
+                    const button = document.createElement("input");
+                    button.id="finish-button"
+                    button.buttonName=finishQueries[causalityKey]["button"]["Name"];
+                    button.innerHTML = finishQueries[causalityKey]["button"]["Name"];
+                    button.type = "range";
+                    button.min = finishQueries[causalityKey]["button"]["Min"];
+                    button.max = finishQueries[causalityKey]["button"]["Max"];
+                    button.value = 0;
+                    finishcontainer.queryContainer.appendChild(button);
+                }
             }
             
             finishcontainer.Button=document.createElement("button");
