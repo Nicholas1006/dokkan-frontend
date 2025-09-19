@@ -395,7 +395,7 @@ class kiCircleClass{
             this.superAttackAssetID=superAttack["special_name_no"];
             if("SpecialBonus" in superAttack){
                 if(superAttack["SpecialBonus"]["Type"]=="SA multiplier increase"){
-                    this.superBuffs["ATK"]+=superAttack["SpecialBonus"]["Amount"]/100
+                    this.superBuffs["ATK"]+=parseInt(superAttack["SpecialBonus"]["Amount"])
                 }
             }
             if("superBuffs" in superAttack){
@@ -1715,7 +1715,7 @@ function includedInSupportBuff(passiveLine){
     if(passiveLine["Target"]["Target"]=="Self"){
         return (true);
     }
-    if(passiveLine["Target"]["Target"]=="Allies"){
+    if(passiveLine["Target"]["Target"]=="allies"){
         let categoryQualified=true;
         let classQualified=true;
         let typeQualified=true;
