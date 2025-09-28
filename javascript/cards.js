@@ -3906,9 +3906,9 @@ function updatePassiveListWithPassiveLine(passiveLine){
         if(this.lineDescription.includes("{currentValue}")){
             let [beforeButtons, afterButtons] = this.lineDescription.split("{currentValue}");
 
-            // Add "• " text + beforeButtons (which may contain HTML)
+            // Add "- " text + beforeButtons (which may contain HTML)
             let beforeSpan = document.createElement("span");
-            beforeSpan.innerHTML = "• " + beforeButtons;
+            beforeSpan.innerHTML = "- " + beforeButtons;
             this.appendChild(beforeSpan);
 
             // Add lower button
@@ -3929,7 +3929,7 @@ function updatePassiveListWithPassiveLine(passiveLine){
         }
         else {
             let textSpan = document.createElement("span");
-            textSpan.innerHTML = "• " + this.lineDescription;
+            textSpan.innerHTML = "- " + this.lineDescription;
             this.appendChild(textSpan);
         }
         
@@ -3972,6 +3972,12 @@ function updatePassiveListWithPassiveLine(passiveLine){
             paragraphText = paragraphText.replaceAll(keyword, imgTag);
         }
         paragraphContainer.innerHTML=paragraphText;
+        if(currentJson["Type"]=="PHY"){
+            paragraphContainer.style.color="orange";
+        }
+        else{
+            paragraphContainer.style.color="#DB7F3A";
+        }
         passiveFunctionalListContainer["Paragraph Titles"][passiveLine["Paragraph Title"]]=paragraphContainer;
         passiveFunctionalListContainer.appendChild(paragraphContainer);
     }
@@ -4436,7 +4442,12 @@ function createPassiveContainer(firstTime=true){
 
         // Add bold block
         const cleanBold = boldText.trim().replaceAll('\n-', ' ');
-        formattedText += `<strong>${cleanBold}</strong><br>`;
+        if(currentJson["Type"]=="PHY"){
+            formattedText += `<strong style="color:orange">${cleanBold}</strong><br>`;
+        }
+        else{
+            formattedText += `<strong style="color:#DB7F3A">${cleanBold}</strong><br>`;
+        }
 
         lastIndex = end;
     }
