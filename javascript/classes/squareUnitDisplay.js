@@ -111,7 +111,7 @@ export class squareUnitDisplay{
         this.container.unitThumbImage.onload = () => {
           this.container.unitThumbImage.style.visibility="visible";
         };
-        this.container.unitThumbImage.src = window.assetBase+"/global/en/character/thumb/card_"+this.resourceID+"_thumb.png";
+        this.container.unitThumbImage.src = window.assetBase+"/global/en/character/thumb/card_"+this.resourceID+"_thumb/card_"+this.resourceID+"_thumb.png";
       }
     };
 
