@@ -4052,11 +4052,16 @@ function updateQueryListWithPassiveLine(passiveLine){
                 slowestStatAmount=Math.min(slowestStatAmount,passiveLine[param]);
             }
         }
-        if(sliderName.includes("Ki Spheres have been obtained")){
-            slowestStatAmount=1;
-        }
         let min=Math.floor(passiveLine["Building Stat"]["Min"]/slowestStatAmount);
         let max=Math.ceil(passiveLine["Building Stat"]["Max"]/slowestStatAmount);
+        if("Cause" in passiveLine["Building Stat"] && "Cause" in passiveLine["Building Stat"]["Cause"]){
+            if(passiveLine["Building Stat"]["Cause"]["Cause"]=="Ki sphere obtained" && passiveLine["Building Stat"]["Cause"]["Type"]==["Rainbow"]){
+                max=5;
+            }
+            else{
+                max=23;
+            }
+        }
 
         
         for (const query of passiveQueryList){

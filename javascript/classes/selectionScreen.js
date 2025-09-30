@@ -32,7 +32,8 @@ export class selectionScreen{
         if(type=="category"){
             fetch("/dbManagement/uniqueJsons/categories.json").then(
                 async response=>{
-                    this.createCategorySelectionScreen(await response.json());
+                    window.categoriesData=await response.json();
+                    this.createCategorySelectionScreen(window.categoriesData);
                 }
             )
         }
@@ -128,18 +129,26 @@ export class selectionScreen{
             category.element.Class=category;
             category.element.style.backgroundImage="url('"+window.assetBase+"/global/en/card_category/label/card_category_label_"+("00000"+category.ID).slice(-4)+"_b_off.png')";
             category.element.className="category-button";
+
+            category.element.check=document.createElement("div");
+            category.element.check.className="category-check";
+            category.element.appendChild(category.element.check);
+
             this.categoryGrid.appendChild(category.element);
             category.element.addEventListener("click", function(){
                 if(this.Class.enabled){
                     this.style.backgroundImage="url('"+window.assetBase+"/global/en/card_category/label/card_category_label_"+("00000"+category.ID).slice(-4)+"_b_off.png')"
+                    this.check.style.display="none";
                     this.Class.enabled=false;
                     window.currentFilter["Categories"].splice(window.currentFilter["Categories"].indexOf(category.Name), 1);
                 }
                 else if(!this.Class.enabled){
                     this.style.backgroundImage="url('"+window.assetBase+"/global/en/card_category/label/card_category_label_"+("00000"+category.ID).slice(-4)+"_b_on.png')"
+                    this.check.style.display="block";
                     this.Class.enabled=true;
                     window.currentFilter["Categories"].push(category.Name);
                 }
+                this.Class.parentClass["OKCancelContainer"]["CancelButton"].restyle();
             });
         }
         this.categoryGrid.cancelSelection=function(){
@@ -173,6 +182,8 @@ export class selectionScreen{
         this.OKCancelContainer.appendChild(this.OKCancelContainer.OKButton);
         this.OKCancelContainer.OKButton.addEventListener("click", function(){
             this.parentClass.parentClass.completedSelection();
+            this.parentClass.parentClass.parentClass.filterContainer["filter-category-skill-container"]["filter-category-container"].restyle();
+            this.parentClass.parentClass.parentClass["OKCancelContainer"]["CancelButton"].restyle();
         });
 
         this.OKCancelContainer.CancelButton=document.createElement("div");
@@ -180,6 +191,15 @@ export class selectionScreen{
         this.OKCancelContainer.CancelButton.className="OKCancelContainer-button";
         this.OKCancelContainer.CancelButton.style.backgroundImage="url('"+window.assetBase+"/global/en/layout/en/image/common/btn/com_btn_17_yellow.png')";
         this.OKCancelContainer.CancelButton.style.gridColumn="3";
+        this.OKCancelContainer.CancelButton.style.filter="brightness(50%)";
+        this.OKCancelContainer.CancelButton.restyle = function(){
+            if(currentFilter["Categories"].length>0){
+                this.style.filter="brightness(100%)";
+            }
+            else{
+                this.style.filter="brightness(50%)";
+            }
+        }
         this.OKCancelContainer.CancelButton.textDiv=document.createElement("div");
         this.OKCancelContainer.CancelButton.textDiv.style.position="relative";
         this.OKCancelContainer.CancelButton.textDiv.style.top="50%";
@@ -188,6 +208,8 @@ export class selectionScreen{
         this.OKCancelContainer.appendChild(this.OKCancelContainer.CancelButton);
         this.OKCancelContainer.CancelButton.addEventListener("click", function(){
             this.parentClass.parentClass.categoryGrid.cancelSelection();
+            this.restyle();
+            this.parentClass.parentClass.parentClass.restyle();
         });
 
     }

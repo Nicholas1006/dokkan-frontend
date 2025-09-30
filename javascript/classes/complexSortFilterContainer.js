@@ -167,6 +167,7 @@ export class complexSortFilterContainer {
         this.OKCancelContainer.className="OKCancelContainer";
         this.OKCancelContainer.style.gridRow="6";
         this.OKCancelContainer.style.display="grid";
+        this.element["OkCancelContainer"] = this.OKCancelContainer;
         this.element.appendChild(this.OKCancelContainer);
 
         this.OKCancelContainer.OKButton=document.createElement("div");
@@ -179,6 +180,7 @@ export class complexSortFilterContainer {
         this.OKCancelContainer.OKButton.textDiv=document.createElement("div");
         this.OKCancelContainer.OKButton.textDiv.textContent="OK";
         this.OKCancelContainer.OKButton.appendChild(this.OKCancelContainer.OKButton.textDiv);
+        this.OKCancelContainer["OKButton"] = this.OKCancelContainer.OKButton;
         this.OKCancelContainer.appendChild(this.OKCancelContainer.OKButton);
         this.OKCancelContainer.OKButton.addEventListener("click", function(){
             this.parentClass.parentClass.completedSelection();
@@ -188,11 +190,32 @@ export class complexSortFilterContainer {
         this.OKCancelContainer.CancelButton.parentClass = this.OKCancelContainer;
         this.OKCancelContainer.CancelButton.className="OKCancelContainer-button";
         this.OKCancelContainer.CancelButton.style.backgroundImage="url('"+window.assetBase+"/global/en/layout/en/image/common/btn/com_btn_17_yellow.png')";
+        this.OKCancelContainer.CancelButton.style.filter="brightness(50%)";
         this.OKCancelContainer.CancelButton.style.gridColumn="3";
         this.OKCancelContainer.CancelButton.textDiv=document.createElement("div");
         this.OKCancelContainer.CancelButton.textDiv.style.position="relative";
         this.OKCancelContainer.CancelButton.textDiv.style.top="50%";
-        this.OKCancelContainer.CancelButton.textDiv.textContent="Cancel";
+        this.OKCancelContainer.CancelButton.textDiv.textContent="Remove All";
+        this.OKCancelContainer.CancelButton.restyle=function(){
+            this.active=false;
+            for (const filter of Object.values(currentFilter)) {
+                if(Array.isArray(filter)){
+                    if(filter.length>0){
+                        this.active=true;
+                    }
+                }
+                else{
+                    console.log("NEW FILTER TYPE");
+                }
+            }
+            if(this.active){
+                this.style.filter="brightness(100%)";
+            }
+            else{
+                this.style.filter="brightness(50%)";
+            }
+        }
+        this.OKCancelContainer["CancelButton"] = this.OKCancelContainer.CancelButton;
         this.OKCancelContainer.CancelButton.appendChild(this.OKCancelContainer.CancelButton.textDiv);
         this.OKCancelContainer.appendChild(this.OKCancelContainer.CancelButton);
         this.OKCancelContainer.CancelButton.addEventListener("click", function(){
@@ -203,6 +226,7 @@ export class complexSortFilterContainer {
     createCategorySkillContainer(){
         this.filterContainer.categorySkillContainer=document.createElement("div");
         this.filterContainer.categorySkillContainer.className="filter-category-skill-container";
+        this.filterContainer["filter-category-skill-container"]=this.filterContainer.categorySkillContainer;
         this.filterContainer.appendChild(this.filterContainer.categorySkillContainer);
 
         this.createCategoryContainer();
@@ -213,7 +237,29 @@ export class complexSortFilterContainer {
 
         this.filterContainer.categorySkillContainer.categoryContainer=document.createElement("div");
         this.filterContainer.categorySkillContainer.categoryContainer.className="filter-category-container";
-        this.filterContainer.categorySkillContainer.categoryContainer.innerHTML="Select Category";
+        this.filterContainer.categorySkillContainer.categoryContainer.restyle=function(){
+            if(window.currentFilter["Categories"].length==0){
+                this.innerHTML="";
+                this.style.backgroundImage="";
+            }
+            else if(window.currentFilter["Categories"].length==1){
+                this.innerHTML="";
+                let categoryID;
+                for (const category of Object.values(categoriesData)){
+                    if(category["Name"]==window.currentFilter["Categories"][0]){
+                        categoryID=category["ID"];
+                    }
+                }
+                this.style.backgroundImage="url('"+window.assetBase+"/global/en/card_category/label/card_category_label_"+("00000"+categoryID).slice(-4)+"_b_on.png')";
+            }
+            else if(window.currentFilter["Categories"].length>1){
+                this.innerHTML="Selected: <span style='color:gold;font-weight:bold' >"+window.currentFilter["Categories"].length+"</span>";
+                this.style.backgroundImage="url('"+window.assetBase+"/global/en/card_category/label/card_category_base.png')";
+            }
+
+        }
+        this.filterContainer.categorySkillContainer.categoryContainer.innerHTML="";
+        this.filterContainer.categorySkillContainer["filter-category-container"]=this.filterContainer.categorySkillContainer.categoryContainer;
         this.filterContainer.categorySkillContainer.appendChild(this.filterContainer.categorySkillContainer.categoryContainer);
 
         this.filterContainer.categorySkillContainer.categoryContainer.categorySelect=new selectionScreen("category",this.width,this.height,this.border,this,function(){
@@ -285,6 +331,13 @@ export class complexSortFilterContainer {
 
     cancelSelection(){
         this.filterContainer.categorySkillContainer.categoryContainer.categorySelect.cancelSelection();
+        this.restyle();
+    }
+
+    restyle(){
+        this["OKCancelContainer"]["CancelButton"].restyle()
+        this.filterContainer["filter-category-skill-container"]["filter-category-container"].restyle();
+        this.filterContainer.categorySkillContainer.categoryContainer.categorySelect["OKCancelContainer"]["CancelButton"].restyle();
     }
 }
 
@@ -354,4 +407,6 @@ export class complexSortFilterContainerBackground {
     getElement(){
         return this.element;
     }
+
+    
 }
