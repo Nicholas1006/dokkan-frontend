@@ -1266,7 +1266,7 @@ class superAttackQuery{
     constructor(buffs,maxPerTurn,maxTurns,unitID,superAttack){
         document.getElementById("super-container").style.display="grid";
         this.selfContainer=document.createElement("div");
-        this.selfContainer.buffs=buffs;
+        this.selfContainer.buffs=[buffs];
         this.selfContainer.superAttack=superAttack;
         this.selfContainer.superAttackName=superAttack["superName"];
         this.selfContainer.buffsDuration=buffs["Duration"];
@@ -1355,10 +1355,7 @@ class superAttackQuery{
     }
 
     addBuffs(buffs){
-        this.selfContainer.buffs={
-            ...this.selfContainer.buffs,
-            ...buffs
-        }
+        this.selfContainer.buffs.push(buffs);
     }
 
     getElement(){
@@ -4054,8 +4051,8 @@ function updateQueryListWithPassiveLine(passiveLine){
         }
         let min=Math.floor(passiveLine["Building Stat"]["Min"]/slowestStatAmount);
         let max=Math.ceil(passiveLine["Building Stat"]["Max"]/slowestStatAmount);
-        if("Cause" in passiveLine["Building Stat"] && "Cause" in passiveLine["Building Stat"]["Cause"]){
-            if(passiveLine["Building Stat"]["Cause"]["Cause"]=="Ki sphere obtained" && passiveLine["Building Stat"]["Cause"]["Type"]==["Rainbow"]){
+        if("Cause" in passiveLine["Building Stat"] && "Cause" in passiveLine["Building Stat"]["Cause"] && passiveLine["Building Stat"]["Cause"]["Cause"]=="Ki sphere obtained"){
+            if(passiveLine["Building Stat"]["Cause"]["Type"]==["Rainbow"]){
                 max=5;
             }
             else{
@@ -5080,35 +5077,38 @@ function updateSuperAttackStacks(){
                         superAttacksPerformed = parseInt(div.value);
                     }
                 }
-                for (const buffKey in buffs){
-                    const buff=buffs[buffKey];
-                    if(buffKey=="ATK"){
-                        if(buffs["Target"] == "Self"){
-                            totalATKBuff += buff*superAttacksPerformed;
+                for (const buffEntryKey in buffs){
+                    const buffEntry = buffs[buffEntryKey];
+                    for (const buffKey in buffEntry){
+                        const buff=buffEntry[buffKey];
+                        if(buffKey=="ATK"){
+                            if(buffEntry["Target"] == "Self"){
+                                totalATKBuff += buff*superAttacksPerformed;
+                            }
+                            else if(buffEntry["Target"] == "Enemy"){
+                                totalEnemyATKBuff += buff*superAttacksPerformed;
+                            }
+                            else{
+                                console.log("UNKNOWN TARGET");
+                            }
                         }
-                        else if(buffs["Target"] == "Enemy"){
-                            totalEnemyATKBuff += buff*superAttacksPerformed;
+                        if(buffKey=="DEF"){
+                            if(buffEntry["Target"] == "Self"){
+                                totalDEFBuff += buff*superAttacksPerformed;
+                            }
+                            else if(buffEntry["Target"] == "Enemy"){
+                                totalEnemyDEFBuff += buff*superAttacksPerformed;
+                            }
+                            else{
+                                console.log("UNKNOWN TARGET");
+                            }
                         }
-                        else{
-                            console.log("UNKNOWN TARGET");
+                        if(buffKey=="Crit"){
+                            totalCritBuff += buff*staAmount*superAttacksPerformed;
                         }
-                    }
-                    if(buffKey=="DEF"){
-                        if(buffs["Target"] == "Self"){
-                            totalDEFBuff += buff*superAttacksPerformed;
+                        if(buffKey=="Evasion"){
+                            totalEvasionBuff += buff*superAttacksPerformed;
                         }
-                        else if(buffs["Target"] == "Enemy"){
-                            totalEnemyDEFBuff += buff*superAttacksPerformed;
-                        }
-                        else{
-                            console.log("UNKNOWN TARGET");
-                        }
-                    }
-                    if(buffKey=="Crit"){
-                        totalCritBuff += buff*staAmount*superAttacksPerformed;
-                    }
-                    if(buffKey=="Evasion"){
-                        totalEvasionBuff += buff*superAttacksPerformed;
                     }
                 }
             }
