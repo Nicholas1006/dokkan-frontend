@@ -175,7 +175,7 @@
             "CausalityLogic": null,
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 60%{passiveImg:up_g} ",
-            "Line description": "ATK and DEF 60%{passiveImg:up_g} ",
+            "Line description": "ATK and DEF 60%{passiveImg:up_g} until ",
             "Paragraph Title": "Basic effect(s)"
         },
         "5003948": {
@@ -198,15 +198,17 @@
         },
         "6003948": {
             "ID": 6003948,
+            "Disable Other Line": {
+                "Activated": true,
+                "Line": 4003948
+            },
             "Timing": "Start of turn",
-            "ATK": 60,
-            "DEF": 60,
             "Target": {
                 "Target": "Self"
             },
             "Buff": {
-                "Type": "Percentage",
-                "+ or -": "-"
+                "Type": "Raw stats",
+                "+ or -": "+"
             },
             "Length": 1,
             "Condition": {
@@ -227,9 +229,9 @@
                 }
             },
             "CausalityLogic": "{\"source\": \"2968\", \"compiled\": 2968}",
-            "Type": "Single activator",
-            "Brief effect description": "ATK and DEF 60%{passiveImg:down_r} ",
-            "Line description": "ATK and DEF 60%{passiveImg:down_r} ",
+            "Type": "Disable Other Line",
+            "Brief effect description": "Disables a different passive line:4003948 ",
+            "Line description": "Disables a different passive line:4003948 ",
             "Paragraph Title": "When there are 2 or more Defenders of Justice Category allies "
         },
         "7003948": {

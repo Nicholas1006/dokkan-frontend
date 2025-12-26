@@ -191,20 +191,22 @@
             "CausalityLogic": null,
             "Type": "Single activator",
             "Brief effect description": "ATK and DEF 150%{passiveImg:up_g} ",
-            "Line description": "ATK and DEF 150%{passiveImg:up_g} ",
+            "Line description": "ATK and DEF 150%{passiveImg:up_g} until ",
             "Paragraph Title": "Basic effect(s)"
         },
         "7004294": {
             "ID": 7004294,
+            "Disable Other Line": {
+                "Activated": true,
+                "Line": 6004294
+            },
             "Timing": "Start of turn",
-            "ATK": 150,
-            "DEF": 150,
             "Target": {
                 "Target": "Self"
             },
             "Buff": {
-                "Type": "Percentage",
-                "+ or -": "-"
+                "Type": "Raw stats",
+                "+ or -": "+"
             },
             "Length": 1,
             "Condition": {
@@ -225,9 +227,9 @@
                 }
             },
             "CausalityLogic": "{\"source\": \"1928\", \"compiled\": 1928}",
-            "Type": "Single activator",
-            "Brief effect description": "ATK and DEF 150%{passiveImg:down_r} ",
-            "Line description": "ATK and DEF 150%{passiveImg:down_r} ",
+            "Type": "Disable Other Line",
+            "Brief effect description": "Disables a different passive line:6004294 ",
+            "Line description": "Disables a different passive line:6004294 ",
             "Paragraph Title": "When there are 2 or more Crossover Category allies "
         },
         "8004294": {
