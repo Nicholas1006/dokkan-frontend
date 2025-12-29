@@ -4893,6 +4893,9 @@ function createSuperAttackContainer(){
     while (imageContainer.firstChild) {
         imageContainer.removeChild(imageContainer.firstChild);
     }
+    imageContainer.addEventListener("click",function(){
+        window.location.href="/dbManagement/jsons/"+currentJson["ID"]+".json";
+    });
     const cardImage=new portraitUnitDisplay(
         234,320
     );
