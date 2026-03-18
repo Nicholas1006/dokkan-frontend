@@ -870,7 +870,7 @@
             "Paragraph Title": "When ( with 1 or more AGL Ki Spheres obtained or with 1 or more TEQ Ki Spheres obtained or with 1 or more STR Ki Spheres obtained or with 1 or more PHY Ki Spheres obtained )"
         }
     },
-    "Itemized Passive Description": "*Activates the Entrance Animation when 5 or more \"Special\nPose\" Category allies are on the team*\n- {passiveImg:once}{passiveImg:forever}Ki +3 and ATK & DEF 150%{passiveImg:up_g}\n- {passiveImg:once}{passiveImg:forever}Launches an additional Super Attack\n- {passiveImg:once}All allies' ATK & DEF 25%{passiveImg:up_g} for 3 turn(s) (self excluded)\n*Basic effect(s)*\n- Ki +2 and ATK & DEF 150%{passiveImg:up_g}\n*When all allies attacking in the same turn are \"Special Pose\"\nCategory characters*\n- Guards all attacks\n- Attacks are effective against all Types\n*Per \"Special Pose\" Category ally on the team*\n- Damage reduction rate 7%{passiveImg:up_g} before attacking (up to 35%)\n- Chance of performing a critical hit 7%{passiveImg:up_g} when attacking (up\nto 35%)\n*With an INT or Rainbow Ki Sphere obtained*\n- \"Special Pose\" Category allies' ATK & DEF 25%{passiveImg:up_g} for 2\nturn(s) (self excluded)\n*With a Type Ki Sphere obtained (INT excluded)*\n- ATK & DEF 50%{passiveImg:up_g}",
+    "Itemized Passive Description": "*Activates the Entrance Animation when 5 or more \"Special Pose\"\nCategory allies are on the team*\n- {passiveImg:once}{passiveImg:forever}Ki +3 and ATK & DEF 150%{passiveImg:up_g}\n- {passiveImg:once}{passiveImg:forever}Launches an additional Super Attack\n- {passiveImg:once}All allies' ATK & DEF 25%{passiveImg:up_g} for 3 turns (self excluded)\n*Basic effect(s)*\n- Ki +2 and ATK & DEF 150%{passiveImg:up_g}\n*When there are 3 \"Special Pose\" Category allies attacking in the\nsame turn*\n- Guards all attacks\n- Attacks are effective against all Types\n*Per \"Special Pose\" Category ally on the team*\n- Damage reduction rate 7%{passiveImg:up_g} before attacking (up to 35%)\n- Chance of performing a critical hit 7%{passiveImg:up_g} when attacking\n(up to 35%)\n*With an INT or Rainbow Ki Sphere obtained*\n- \"Special Pose\" Category allies' ATK & DEF 25%{passiveImg:up_g} for 2 turns\n(self excluded)\n*With a Type Ki Sphere obtained (INT excluded)*\n- ATK & DEF 50%{passiveImg:up_g}",
     "Max Attacks": 3,
     "Max Super Attacks": 3,
     "Stats at levels": {
@@ -1918,7 +1918,7 @@
         "Effect Description": "ATK & DEF +25% in battle; \nall allies' ATK & DEF +15% \n(self excluded) in battle",
         "Condition Description": "Can be activated when all allies are \n\"Ginyu Force\" Category characters starting from \nthe 3rd turn from the character's entry turn, \nor when all allies are \"Special Pose\" Category \ncharacters starting from the 5th turn from \nthe character's entry turn (once only)",
         "Condition": {
-            "Logic": "( ( 296 && 3134 ) || ( 2375 && 692 ) )",
+            "Logic": "( ( 296 && 3703 ) || ( 2375 && 3692 ) )",
             "Causalities": {
                 "296": {
                     "Button": {
@@ -1932,17 +1932,15 @@
                     },
                     "Paragraph Title": "Starting from the 3 turn from the character's entry turn"
                 },
-                "3134": {
+                "3703": {
                     "Button": {
-                        "Name": "Are there 7 or more Ginyu Force category allies ?"
+                        "Name": "Are all allies \"Ginyu Force\" Category characters?"
                     },
                     "Slider": {
-                        "Name": "How many Ginyu Force category allies ",
-                        "Logic": ">=7",
-                        "Max": 7,
-                        "Min": 0
+                        "Name": "How many \"Ginyu Force\" characters allies are there?",
+                        "Logic": null
                     },
-                    "Paragraph Title": "When there are 7 or more Ginyu Force Category allies "
+                    "Paragraph Title": "When all allies are \"Ginyu Force\" Category characters"
                 },
                 "2375": {
                     "Button": {
@@ -1956,17 +1954,15 @@
                     },
                     "Paragraph Title": "Starting from the 5 turn from the character's entry turn"
                 },
-                "692": {
+                "3692": {
                     "Button": {
-                        "Name": "Are there 7 or more Special Pose category allies ?"
+                        "Name": "Are all allies \"Special Pose\" Category characters?"
                     },
                     "Slider": {
-                        "Name": "How many Special Pose category allies ",
-                        "Logic": ">=7",
-                        "Max": 7,
-                        "Min": 0
+                        "Name": "How many \"Special Pose\" characters allies are there?",
+                        "Logic": null
                     },
-                    "Paragraph Title": "When there are 7 or more Special Pose Category allies "
+                    "Paragraph Title": "When all allies are \"Special Pose\" Category characters"
                 }
             }
         },
