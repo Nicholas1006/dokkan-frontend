@@ -1349,16 +1349,8 @@
         "33004966": {
             "ID": 33004966,
             "Timing": "Right after being hit",
-            "Building Stat": {
-                "Min": 0,
-                "Max": 25,
-                "Stat Per Proc": 5,
-                "Cause": {
-                    "Cause": "Attacks recieved or evaded"
-                },
-                "Slider": "How many attacks has this unit recieved or evaded?"
-            },
             "ATK": 5,
+            "DEF": 5,
             "Target": {
                 "Target": "allies",
                 "Name": {
@@ -1373,24 +1365,45 @@
                 "+ or -": "+"
             },
             "Length": 99,
-            "CausalityLogic": "{\"source\": \"24|365\", \"compiled\": [\"|\", 24, 365]}",
-            "Type": "Building Stat",
-            "Brief effect description": "ATK 5%{passiveImg:up_g} ({currentValue} / 25%) based on 'How many attacks has this unit recieved or evaded' after being hit for all allies whose name includes Cooler",
-            "Line description": "{passiveImg:forever}ATK 5%{passiveImg:up_g} ({currentValue} / 25%) based on 'How many attacks has this unit recieved or evaded' after being hit for all allies whose name includes Cooler",
-            "Paragraph Title": "Basic effect(s)"
+            "Condition": {
+                "Logic": "( 933 || 3590 )",
+                "Causalities": {
+                    "933": {
+                        "Button": {
+                            "Name": "Has this character recieved their 1st attack in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character recieved?",
+                            "Logic": ">=1",
+                            "Min": 0,
+                            "Max": 1
+                        },
+                        "Paragraph Title": "After recieving an attack"
+                    },
+                    "3590": {
+                        "Button": {
+                            "Name": "Has this character evaded 1st times in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks have been evaded?",
+                            "Logic": ">=1",
+                            "Min": 0,
+                            "Max": 1
+                        },
+                        "Paragraph Title": "When the character has evaded 1 or more attacks"
+                    }
+                }
+            },
+            "CausalityLogic": "{\"source\": \"933|3590\", \"compiled\": [\"|\", 933, 3590]}",
+            "Type": "Single activator",
+            "Brief effect description": "ATK and DEF 5%{passiveImg:up_g} after being hit for all allies whose name includes Cooler",
+            "Line description": "{passiveImg:forever}ATK and DEF 5%{passiveImg:up_g} after being hit for all allies whose name includes Cooler",
+            "Paragraph Title": "When after recieving an attack or the character has evaded 1 or more attacks"
         },
         "34004966": {
             "ID": 34004966,
             "Timing": "Right after being hit",
-            "Building Stat": {
-                "Min": 0,
-                "Max": 25,
-                "Stat Per Proc": 5,
-                "Cause": {
-                    "Cause": "Attacks recieved or evaded"
-                },
-                "Slider": "How many attacks has this unit recieved or evaded?"
-            },
+            "ATK": 5,
             "DEF": 5,
             "Target": {
                 "Target": "allies",
@@ -1406,63 +1419,75 @@
                 "+ or -": "+"
             },
             "Length": 99,
-            "CausalityLogic": "{\"source\": \"24|365\", \"compiled\": [\"|\", 24, 365]}",
-            "Type": "Building Stat",
-            "Brief effect description": "DEF 5%{passiveImg:up_g} ({currentValue} / 25%) based on 'How many attacks has this unit recieved or evaded' after being hit for all allies whose name includes Cooler",
-            "Line description": "{passiveImg:forever}DEF 5%{passiveImg:up_g} ({currentValue} / 25%) based on 'How many attacks has this unit recieved or evaded' after being hit for all allies whose name includes Cooler",
-            "Paragraph Title": "Basic effect(s)"
+            "Condition": {
+                "Logic": "( ( 933 && 3590 ) || 2403 || 3785 )",
+                "Causalities": {
+                    "933": {
+                        "Button": {
+                            "Name": "Has this character recieved their 1st attack in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character recieved?",
+                            "Logic": ">=1",
+                            "Min": 0,
+                            "Max": 1
+                        },
+                        "Paragraph Title": "After recieving an attack"
+                    },
+                    "3590": {
+                        "Button": {
+                            "Name": "Has this character evaded 1st times in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks have been evaded?",
+                            "Logic": ">=1",
+                            "Min": 0,
+                            "Max": 1
+                        },
+                        "Paragraph Title": "When the character has evaded 1 or more attacks"
+                    },
+                    "2403": {
+                        "Button": {
+                            "Name": "Has this character recieved their 2nd attack in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character recieved?",
+                            "Logic": ">=2",
+                            "Min": 0,
+                            "Max": 2
+                        },
+                        "Paragraph Title": "After recieving 2 attacks"
+                    },
+                    "3785": {
+                        "Button": {
+                            "Name": "Has this character evaded 2nd times in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks have been evaded?",
+                            "Logic": ">=2",
+                            "Min": 0,
+                            "Max": 2
+                        },
+                        "Paragraph Title": "When the character has evaded 2 or more attacks"
+                    }
+                }
+            },
+            "CausalityLogic": "{\"source\": \"(933&3590)|2403|3785\", \"compiled\": [\"|\", [\"&\", 933, 3590], 2403, 3785]}",
+            "Type": "Single activator",
+            "Brief effect description": "ATK and DEF 5%{passiveImg:up_g} after being hit for all allies whose name includes Cooler",
+            "Line description": "{passiveImg:forever}ATK and DEF 5%{passiveImg:up_g} after being hit for all allies whose name includes Cooler or after recieving 2 attacks or 378 ",
+            "Paragraph Title": "When after recieving an attack or the character has evaded 1 or more attacks"
         },
         "35004966": {
             "ID": 35004966,
             "Timing": "Right after being hit",
-            "Building Stat": {
-                "Min": 0,
-                "Max": 25,
-                "Stat Per Proc": 5,
-                "Cause": {
-                    "Cause": "Attacks recieved or evaded"
-                },
-                "Slider": "How many attacks has this unit recieved or evaded?"
-            },
             "ATK": 5,
-            "Target": {
-                "Target": "allies",
-                "Name": {
-                    "Included": [
-                        "Metal Cooler"
-                    ],
-                    "Excluded": []
-                }
-            },
-            "Buff": {
-                "Type": "Percentage",
-                "+ or -": "+"
-            },
-            "Length": 99,
-            "CausalityLogic": "{\"source\": \"24|365\", \"compiled\": [\"|\", 24, 365]}",
-            "Type": "Building Stat",
-            "Brief effect description": "ATK 5%{passiveImg:up_g} ({currentValue} / 25%) based on 'How many attacks has this unit recieved or evaded' after being hit for all allies whose name includes Metal Cooler",
-            "Line description": "{passiveImg:forever}ATK 5%{passiveImg:up_g} ({currentValue} / 25%) based on 'How many attacks has this unit recieved or evaded' after being hit for all allies whose name includes Metal Cooler",
-            "Paragraph Title": "Basic effect(s)"
-        },
-        "36004966": {
-            "ID": 36004966,
-            "Timing": "Right after being hit",
-            "Building Stat": {
-                "Min": 0,
-                "Max": 25,
-                "Stat Per Proc": 5,
-                "Cause": {
-                    "Cause": "Attacks recieved or evaded"
-                },
-                "Slider": "How many attacks has this unit recieved or evaded?"
-            },
             "DEF": 5,
             "Target": {
                 "Target": "allies",
                 "Name": {
                     "Included": [
-                        "Metal Cooler"
+                        "Cooler"
                     ],
                     "Excluded": []
                 }
@@ -1472,11 +1497,214 @@
                 "+ or -": "+"
             },
             "Length": 99,
-            "CausalityLogic": "{\"source\": \"24|365\", \"compiled\": [\"|\", 24, 365]}",
-            "Type": "Building Stat",
-            "Brief effect description": "DEF 5%{passiveImg:up_g} ({currentValue} / 25%) based on 'How many attacks has this unit recieved or evaded' after being hit for all allies whose name includes Metal Cooler",
-            "Line description": "{passiveImg:forever}DEF 5%{passiveImg:up_g} ({currentValue} / 25%) based on 'How many attacks has this unit recieved or evaded' after being hit for all allies whose name includes Metal Cooler",
-            "Paragraph Title": "Basic effect(s)"
+            "Condition": {
+                "Logic": "( ( 933 && 3785 ) || ( 3590 && 2403 ) || 791 || 1676 )",
+                "Causalities": {
+                    "933": {
+                        "Button": {
+                            "Name": "Has this character recieved their 1st attack in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character recieved?",
+                            "Logic": ">=1",
+                            "Min": 0,
+                            "Max": 1
+                        },
+                        "Paragraph Title": "After recieving an attack"
+                    },
+                    "3785": {
+                        "Button": {
+                            "Name": "Has this character evaded 2nd times in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks have been evaded?",
+                            "Logic": ">=2",
+                            "Min": 0,
+                            "Max": 2
+                        },
+                        "Paragraph Title": "When the character has evaded 2 or more attacks"
+                    },
+                    "3590": {
+                        "Button": {
+                            "Name": "Has this character evaded 1st times in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks have been evaded?",
+                            "Logic": ">=1",
+                            "Min": 0,
+                            "Max": 1
+                        },
+                        "Paragraph Title": "When the character has evaded 1 or more attacks"
+                    },
+                    "2403": {
+                        "Button": {
+                            "Name": "Has this character recieved their 2nd attack in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character recieved?",
+                            "Logic": ">=2",
+                            "Min": 0,
+                            "Max": 2
+                        },
+                        "Paragraph Title": "After recieving 2 attacks"
+                    },
+                    "791": {
+                        "Button": {
+                            "Name": "Has this character recieved their 3rd attack in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character recieved?",
+                            "Logic": ">=3",
+                            "Min": 0,
+                            "Max": 3
+                        },
+                        "Paragraph Title": "After recieving 3 attacks"
+                    },
+                    "1676": {
+                        "Button": {
+                            "Name": "Has this character evaded 3rd times in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks have been evaded?",
+                            "Logic": ">=3",
+                            "Min": 0,
+                            "Max": 3
+                        },
+                        "Paragraph Title": "When the character has evaded 3 or more attacks"
+                    }
+                }
+            },
+            "CausalityLogic": "{\"source\": \"(933&3785)|(3590&2403)|791|1676\", \"compiled\": [\"|\", [\"&\", 933, 3785], [\"&\", 3590, 2403], 791, 1676]}",
+            "Type": "Single activator",
+            "Brief effect description": "ATK and DEF 5%{passiveImg:up_g} after being hit for all allies whose name includes Cooler",
+            "Line description": "{passiveImg:forever}ATK and DEF 5%{passiveImg:up_g} after being hit for all allies whose name includes Cooler 378 or after recieving 2 attacks or after recieving 3 attacks or the character has evaded 3 or more attacks ",
+            "Paragraph Title": "When after recieving an attack or the character has evaded 1 or more attacks"
+        },
+        "36004966": {
+            "ID": 36004966,
+            "Timing": "Right after being hit",
+            "ATK": 5,
+            "DEF": 5,
+            "Target": {
+                "Target": "allies",
+                "Name": {
+                    "Included": [
+                        "Cooler"
+                    ],
+                    "Excluded": []
+                }
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": 99,
+            "Condition": {
+                "Logic": "( ( 933 && 1676 ) || ( 2403 && 3785 ) || ( 791 && 3590 ) || 746 || 959 )",
+                "Causalities": {
+                    "933": {
+                        "Button": {
+                            "Name": "Has this character recieved their 1st attack in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character recieved?",
+                            "Logic": ">=1",
+                            "Min": 0,
+                            "Max": 1
+                        },
+                        "Paragraph Title": "After recieving an attack"
+                    },
+                    "1676": {
+                        "Button": {
+                            "Name": "Has this character evaded 3rd times in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks have been evaded?",
+                            "Logic": ">=3",
+                            "Min": 0,
+                            "Max": 3
+                        },
+                        "Paragraph Title": "When the character has evaded 3 or more attacks"
+                    },
+                    "2403": {
+                        "Button": {
+                            "Name": "Has this character recieved their 2nd attack in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character recieved?",
+                            "Logic": ">=2",
+                            "Min": 0,
+                            "Max": 2
+                        },
+                        "Paragraph Title": "After recieving 2 attacks"
+                    },
+                    "3785": {
+                        "Button": {
+                            "Name": "Has this character evaded 2nd times in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks have been evaded?",
+                            "Logic": ">=2",
+                            "Min": 0,
+                            "Max": 2
+                        },
+                        "Paragraph Title": "When the character has evaded 2 or more attacks"
+                    },
+                    "791": {
+                        "Button": {
+                            "Name": "Has this character recieved their 3rd attack in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character recieved?",
+                            "Logic": ">=3",
+                            "Min": 0,
+                            "Max": 3
+                        },
+                        "Paragraph Title": "After recieving 3 attacks"
+                    },
+                    "3590": {
+                        "Button": {
+                            "Name": "Has this character evaded 1st times in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks have been evaded?",
+                            "Logic": ">=1",
+                            "Min": 0,
+                            "Max": 1
+                        },
+                        "Paragraph Title": "When the character has evaded 1 or more attacks"
+                    },
+                    "746": {
+                        "Button": {
+                            "Name": "Has this character recieved their 4th attack in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character recieved?",
+                            "Logic": ">=4",
+                            "Min": 0,
+                            "Max": 4
+                        },
+                        "Paragraph Title": "After recieving 4 attacks"
+                    },
+                    "959": {
+                        "Button": {
+                            "Name": "Has this character evaded 4th times in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks have been evaded?",
+                            "Logic": ">=4",
+                            "Min": 0,
+                            "Max": 4
+                        },
+                        "Paragraph Title": "When the character has evaded 4 or more attacks"
+                    }
+                }
+            },
+            "CausalityLogic": "{\"source\": \"(933&1676)|(2403&3785)|(791&3590)|746|959\", \"compiled\": [\"|\", [\"&\", 933, 1676], [\"&\", 2403, 3785], [\"&\", 791, 3590], 746, 959]}",
+            "Type": "Single activator",
+            "Brief effect description": "ATK and DEF 5%{passiveImg:up_g} after being hit for all allies whose name includes Cooler",
+            "Line description": "{passiveImg:forever}ATK and DEF 5%{passiveImg:up_g} after being hit for all allies whose name includes Cooler when the character has evaded 3 or more attacks or after recieving 2 attacks and 378 or after recieving 3 attacks or after recieving 4 attacks or 99 ",
+            "Paragraph Title": "When after recieving an attack or the character has evaded 1 or more attacks"
         },
         "37004966": {
             "ID": 37004966,
@@ -1666,6 +1894,666 @@
             "Brief effect description": "Performs an additional attack with a 70% chance of becoming a super attack after this unit collects ki spheres",
             "Line description": "Performs an additional attack with a 70% chance of becoming a super attack after this unit collects ki spheres",
             "Paragraph Title": "When with 1 or more TEQ Ki Spheres obtained"
+        },
+        "41004966": {
+            "ID": 41004966,
+            "Timing": "Right after being hit",
+            "ATK": 5,
+            "DEF": 5,
+            "Target": {
+                "Target": "allies",
+                "Name": {
+                    "Included": [
+                        "Cooler"
+                    ],
+                    "Excluded": []
+                }
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": 99,
+            "Condition": {
+                "Logic": "( ( 933 && 959 ) || ( 2403 && 1676 ) || ( 791 && 3785 ) || ( 746 && 3590 ) || 681 || 3066 )",
+                "Causalities": {
+                    "933": {
+                        "Button": {
+                            "Name": "Has this character recieved their 1st attack in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character recieved?",
+                            "Logic": ">=1",
+                            "Min": 0,
+                            "Max": 1
+                        },
+                        "Paragraph Title": "After recieving an attack"
+                    },
+                    "959": {
+                        "Button": {
+                            "Name": "Has this character evaded 4th times in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks have been evaded?",
+                            "Logic": ">=4",
+                            "Min": 0,
+                            "Max": 4
+                        },
+                        "Paragraph Title": "When the character has evaded 4 or more attacks"
+                    },
+                    "2403": {
+                        "Button": {
+                            "Name": "Has this character recieved their 2nd attack in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character recieved?",
+                            "Logic": ">=2",
+                            "Min": 0,
+                            "Max": 2
+                        },
+                        "Paragraph Title": "After recieving 2 attacks"
+                    },
+                    "1676": {
+                        "Button": {
+                            "Name": "Has this character evaded 3rd times in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks have been evaded?",
+                            "Logic": ">=3",
+                            "Min": 0,
+                            "Max": 3
+                        },
+                        "Paragraph Title": "When the character has evaded 3 or more attacks"
+                    },
+                    "791": {
+                        "Button": {
+                            "Name": "Has this character recieved their 3rd attack in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character recieved?",
+                            "Logic": ">=3",
+                            "Min": 0,
+                            "Max": 3
+                        },
+                        "Paragraph Title": "After recieving 3 attacks"
+                    },
+                    "3785": {
+                        "Button": {
+                            "Name": "Has this character evaded 2nd times in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks have been evaded?",
+                            "Logic": ">=2",
+                            "Min": 0,
+                            "Max": 2
+                        },
+                        "Paragraph Title": "When the character has evaded 2 or more attacks"
+                    },
+                    "746": {
+                        "Button": {
+                            "Name": "Has this character recieved their 4th attack in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character recieved?",
+                            "Logic": ">=4",
+                            "Min": 0,
+                            "Max": 4
+                        },
+                        "Paragraph Title": "After recieving 4 attacks"
+                    },
+                    "3590": {
+                        "Button": {
+                            "Name": "Has this character evaded 1st times in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks have been evaded?",
+                            "Logic": ">=1",
+                            "Min": 0,
+                            "Max": 1
+                        },
+                        "Paragraph Title": "When the character has evaded 1 or more attacks"
+                    },
+                    "681": {
+                        "Button": {
+                            "Name": "Has this character recieved their 5th attack in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character recieved?",
+                            "Logic": ">=5",
+                            "Min": 0,
+                            "Max": 5
+                        },
+                        "Paragraph Title": "After recieving 5 attacks"
+                    },
+                    "3066": {
+                        "Button": {
+                            "Name": "Has this character evaded 5th times in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks have been evaded?",
+                            "Logic": ">=5",
+                            "Min": 0,
+                            "Max": 5
+                        },
+                        "Paragraph Title": "When the character has evaded 5 or more attacks"
+                    }
+                }
+            },
+            "CausalityLogic": "{\"source\": \"(933&959)|(2403&1676)|(791&3785)|(746&3590)|681|3066\", \"compiled\": [\"|\", [\"&\", 933, 959], [\"&\", 2403, 1676], [\"&\", 791, 3785], [\"&\", 746, 3590], 681, 3066]}",
+            "Type": "Single activator",
+            "Brief effect description": "ATK and DEF 5%{passiveImg:up_g} after being hit for all allies whose name includes Cooler",
+            "Line description": "{passiveImg:forever}ATK and DEF 5%{passiveImg:up_g} after being hit for all allies whose name includes Cooler 99 or after recieving 2 attacks and the character has evaded 3 or more attacks or after recieving 3 attacks and 378 or after recieving 4 attacks or after recieving 5 attacks or the character has evaded 5 or more attacks ",
+            "Paragraph Title": "When after recieving an attack or the character has evaded 1 or more attacks"
+        },
+        "42004966": {
+            "ID": 42004966,
+            "Timing": "Right after being hit",
+            "ATK": 5,
+            "DEF": 5,
+            "Target": {
+                "Target": "allies",
+                "Name": {
+                    "Included": [
+                        "Metal Cooler"
+                    ],
+                    "Excluded": []
+                }
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": 99,
+            "Condition": {
+                "Logic": "( 933 || 3590 )",
+                "Causalities": {
+                    "933": {
+                        "Button": {
+                            "Name": "Has this character recieved their 1st attack in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character recieved?",
+                            "Logic": ">=1",
+                            "Min": 0,
+                            "Max": 1
+                        },
+                        "Paragraph Title": "After recieving an attack"
+                    },
+                    "3590": {
+                        "Button": {
+                            "Name": "Has this character evaded 1st times in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks have been evaded?",
+                            "Logic": ">=1",
+                            "Min": 0,
+                            "Max": 1
+                        },
+                        "Paragraph Title": "When the character has evaded 1 or more attacks"
+                    }
+                }
+            },
+            "CausalityLogic": "{\"source\": \"933|3590\", \"compiled\": [\"|\", 933, 3590]}",
+            "Type": "Single activator",
+            "Brief effect description": "ATK and DEF 5%{passiveImg:up_g} after being hit for all allies whose name includes Metal Cooler",
+            "Line description": "{passiveImg:forever}ATK and DEF 5%{passiveImg:up_g} after being hit for all allies whose name includes Metal Cooler",
+            "Paragraph Title": "When after recieving an attack or the character has evaded 1 or more attacks"
+        },
+        "43004966": {
+            "ID": 43004966,
+            "Timing": "Right after being hit",
+            "ATK": 5,
+            "DEF": 5,
+            "Target": {
+                "Target": "allies",
+                "Name": {
+                    "Included": [
+                        "Metal Cooler"
+                    ],
+                    "Excluded": []
+                }
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": 99,
+            "Condition": {
+                "Logic": "( ( 933 && 3590 ) || 2403 || 3785 )",
+                "Causalities": {
+                    "933": {
+                        "Button": {
+                            "Name": "Has this character recieved their 1st attack in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character recieved?",
+                            "Logic": ">=1",
+                            "Min": 0,
+                            "Max": 1
+                        },
+                        "Paragraph Title": "After recieving an attack"
+                    },
+                    "3590": {
+                        "Button": {
+                            "Name": "Has this character evaded 1st times in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks have been evaded?",
+                            "Logic": ">=1",
+                            "Min": 0,
+                            "Max": 1
+                        },
+                        "Paragraph Title": "When the character has evaded 1 or more attacks"
+                    },
+                    "2403": {
+                        "Button": {
+                            "Name": "Has this character recieved their 2nd attack in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character recieved?",
+                            "Logic": ">=2",
+                            "Min": 0,
+                            "Max": 2
+                        },
+                        "Paragraph Title": "After recieving 2 attacks"
+                    },
+                    "3785": {
+                        "Button": {
+                            "Name": "Has this character evaded 2nd times in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks have been evaded?",
+                            "Logic": ">=2",
+                            "Min": 0,
+                            "Max": 2
+                        },
+                        "Paragraph Title": "When the character has evaded 2 or more attacks"
+                    }
+                }
+            },
+            "CausalityLogic": "{\"source\": \"(933&3590)|2403|3785\", \"compiled\": [\"|\", [\"&\", 933, 3590], 2403, 3785]}",
+            "Type": "Single activator",
+            "Brief effect description": "ATK and DEF 5%{passiveImg:up_g} after being hit for all allies whose name includes Metal Cooler",
+            "Line description": "{passiveImg:forever}ATK and DEF 5%{passiveImg:up_g} after being hit for all allies whose name includes Metal Cooler or after recieving 2 attacks or 378 ",
+            "Paragraph Title": "When after recieving an attack or the character has evaded 1 or more attacks"
+        },
+        "44004966": {
+            "ID": 44004966,
+            "Timing": "Right after being hit",
+            "ATK": 5,
+            "DEF": 5,
+            "Target": {
+                "Target": "allies",
+                "Name": {
+                    "Included": [
+                        "Metal Cooler"
+                    ],
+                    "Excluded": []
+                }
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": 99,
+            "Condition": {
+                "Logic": "( ( 933 && 3785 ) || ( 3590 && 2403 ) || 791 || 1676 )",
+                "Causalities": {
+                    "933": {
+                        "Button": {
+                            "Name": "Has this character recieved their 1st attack in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character recieved?",
+                            "Logic": ">=1",
+                            "Min": 0,
+                            "Max": 1
+                        },
+                        "Paragraph Title": "After recieving an attack"
+                    },
+                    "3785": {
+                        "Button": {
+                            "Name": "Has this character evaded 2nd times in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks have been evaded?",
+                            "Logic": ">=2",
+                            "Min": 0,
+                            "Max": 2
+                        },
+                        "Paragraph Title": "When the character has evaded 2 or more attacks"
+                    },
+                    "3590": {
+                        "Button": {
+                            "Name": "Has this character evaded 1st times in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks have been evaded?",
+                            "Logic": ">=1",
+                            "Min": 0,
+                            "Max": 1
+                        },
+                        "Paragraph Title": "When the character has evaded 1 or more attacks"
+                    },
+                    "2403": {
+                        "Button": {
+                            "Name": "Has this character recieved their 2nd attack in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character recieved?",
+                            "Logic": ">=2",
+                            "Min": 0,
+                            "Max": 2
+                        },
+                        "Paragraph Title": "After recieving 2 attacks"
+                    },
+                    "791": {
+                        "Button": {
+                            "Name": "Has this character recieved their 3rd attack in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character recieved?",
+                            "Logic": ">=3",
+                            "Min": 0,
+                            "Max": 3
+                        },
+                        "Paragraph Title": "After recieving 3 attacks"
+                    },
+                    "1676": {
+                        "Button": {
+                            "Name": "Has this character evaded 3rd times in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks have been evaded?",
+                            "Logic": ">=3",
+                            "Min": 0,
+                            "Max": 3
+                        },
+                        "Paragraph Title": "When the character has evaded 3 or more attacks"
+                    }
+                }
+            },
+            "CausalityLogic": "{\"source\": \"(933&3785)|(3590&2403)|791|1676\", \"compiled\": [\"|\", [\"&\", 933, 3785], [\"&\", 3590, 2403], 791, 1676]}",
+            "Type": "Single activator",
+            "Brief effect description": "ATK and DEF 5%{passiveImg:up_g} after being hit for all allies whose name includes Metal Cooler",
+            "Line description": "{passiveImg:forever}ATK and DEF 5%{passiveImg:up_g} after being hit for all allies whose name includes Metal Cooler 378 or after recieving 2 attacks or after recieving 3 attacks or the character has evaded 3 or more attacks ",
+            "Paragraph Title": "When after recieving an attack or the character has evaded 1 or more attacks"
+        },
+        "45004966": {
+            "ID": 45004966,
+            "Timing": "Right after being hit",
+            "ATK": 5,
+            "DEF": 5,
+            "Target": {
+                "Target": "allies",
+                "Name": {
+                    "Included": [
+                        "Metal Cooler"
+                    ],
+                    "Excluded": []
+                }
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": 99,
+            "Condition": {
+                "Logic": "( ( 933 && 1676 ) || ( 2403 && 3785 ) || ( 791 && 3590 ) || 746 || 959 )",
+                "Causalities": {
+                    "933": {
+                        "Button": {
+                            "Name": "Has this character recieved their 1st attack in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character recieved?",
+                            "Logic": ">=1",
+                            "Min": 0,
+                            "Max": 1
+                        },
+                        "Paragraph Title": "After recieving an attack"
+                    },
+                    "1676": {
+                        "Button": {
+                            "Name": "Has this character evaded 3rd times in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks have been evaded?",
+                            "Logic": ">=3",
+                            "Min": 0,
+                            "Max": 3
+                        },
+                        "Paragraph Title": "When the character has evaded 3 or more attacks"
+                    },
+                    "2403": {
+                        "Button": {
+                            "Name": "Has this character recieved their 2nd attack in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character recieved?",
+                            "Logic": ">=2",
+                            "Min": 0,
+                            "Max": 2
+                        },
+                        "Paragraph Title": "After recieving 2 attacks"
+                    },
+                    "3785": {
+                        "Button": {
+                            "Name": "Has this character evaded 2nd times in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks have been evaded?",
+                            "Logic": ">=2",
+                            "Min": 0,
+                            "Max": 2
+                        },
+                        "Paragraph Title": "When the character has evaded 2 or more attacks"
+                    },
+                    "791": {
+                        "Button": {
+                            "Name": "Has this character recieved their 3rd attack in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character recieved?",
+                            "Logic": ">=3",
+                            "Min": 0,
+                            "Max": 3
+                        },
+                        "Paragraph Title": "After recieving 3 attacks"
+                    },
+                    "3590": {
+                        "Button": {
+                            "Name": "Has this character evaded 1st times in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks have been evaded?",
+                            "Logic": ">=1",
+                            "Min": 0,
+                            "Max": 1
+                        },
+                        "Paragraph Title": "When the character has evaded 1 or more attacks"
+                    },
+                    "746": {
+                        "Button": {
+                            "Name": "Has this character recieved their 4th attack in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character recieved?",
+                            "Logic": ">=4",
+                            "Min": 0,
+                            "Max": 4
+                        },
+                        "Paragraph Title": "After recieving 4 attacks"
+                    },
+                    "959": {
+                        "Button": {
+                            "Name": "Has this character evaded 4th times in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks have been evaded?",
+                            "Logic": ">=4",
+                            "Min": 0,
+                            "Max": 4
+                        },
+                        "Paragraph Title": "When the character has evaded 4 or more attacks"
+                    }
+                }
+            },
+            "CausalityLogic": "{\"source\": \"(933&1676)|(2403&3785)|(791&3590)|746|959\", \"compiled\": [\"|\", [\"&\", 933, 1676], [\"&\", 2403, 3785], [\"&\", 791, 3590], 746, 959]}",
+            "Type": "Single activator",
+            "Brief effect description": "ATK and DEF 5%{passiveImg:up_g} after being hit for all allies whose name includes Metal Cooler",
+            "Line description": "{passiveImg:forever}ATK and DEF 5%{passiveImg:up_g} after being hit for all allies whose name includes Metal Cooler when the character has evaded 3 or more attacks or after recieving 2 attacks and 378 or after recieving 3 attacks or after recieving 4 attacks or 99 ",
+            "Paragraph Title": "When after recieving an attack or the character has evaded 1 or more attacks"
+        },
+        "46004966": {
+            "ID": 46004966,
+            "Timing": "Right after being hit",
+            "ATK": 5,
+            "DEF": 5,
+            "Target": {
+                "Target": "allies",
+                "Name": {
+                    "Included": [
+                        "Metal Cooler"
+                    ],
+                    "Excluded": []
+                }
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": 99,
+            "Condition": {
+                "Logic": "( ( 933 && 959 ) || ( 2403 && 1676 ) || ( 791 && 3785 ) || ( 746 && 3590 ) || 681 || 3066 )",
+                "Causalities": {
+                    "933": {
+                        "Button": {
+                            "Name": "Has this character recieved their 1st attack in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character recieved?",
+                            "Logic": ">=1",
+                            "Min": 0,
+                            "Max": 1
+                        },
+                        "Paragraph Title": "After recieving an attack"
+                    },
+                    "959": {
+                        "Button": {
+                            "Name": "Has this character evaded 4th times in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks have been evaded?",
+                            "Logic": ">=4",
+                            "Min": 0,
+                            "Max": 4
+                        },
+                        "Paragraph Title": "When the character has evaded 4 or more attacks"
+                    },
+                    "2403": {
+                        "Button": {
+                            "Name": "Has this character recieved their 2nd attack in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character recieved?",
+                            "Logic": ">=2",
+                            "Min": 0,
+                            "Max": 2
+                        },
+                        "Paragraph Title": "After recieving 2 attacks"
+                    },
+                    "1676": {
+                        "Button": {
+                            "Name": "Has this character evaded 3rd times in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks have been evaded?",
+                            "Logic": ">=3",
+                            "Min": 0,
+                            "Max": 3
+                        },
+                        "Paragraph Title": "When the character has evaded 3 or more attacks"
+                    },
+                    "791": {
+                        "Button": {
+                            "Name": "Has this character recieved their 3rd attack in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character recieved?",
+                            "Logic": ">=3",
+                            "Min": 0,
+                            "Max": 3
+                        },
+                        "Paragraph Title": "After recieving 3 attacks"
+                    },
+                    "3785": {
+                        "Button": {
+                            "Name": "Has this character evaded 2nd times in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks have been evaded?",
+                            "Logic": ">=2",
+                            "Min": 0,
+                            "Max": 2
+                        },
+                        "Paragraph Title": "When the character has evaded 2 or more attacks"
+                    },
+                    "746": {
+                        "Button": {
+                            "Name": "Has this character recieved their 4th attack in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character recieved?",
+                            "Logic": ">=4",
+                            "Min": 0,
+                            "Max": 4
+                        },
+                        "Paragraph Title": "After recieving 4 attacks"
+                    },
+                    "3590": {
+                        "Button": {
+                            "Name": "Has this character evaded 1st times in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks have been evaded?",
+                            "Logic": ">=1",
+                            "Min": 0,
+                            "Max": 1
+                        },
+                        "Paragraph Title": "When the character has evaded 1 or more attacks"
+                    },
+                    "681": {
+                        "Button": {
+                            "Name": "Has this character recieved their 5th attack in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks has this character recieved?",
+                            "Logic": ">=5",
+                            "Min": 0,
+                            "Max": 5
+                        },
+                        "Paragraph Title": "After recieving 5 attacks"
+                    },
+                    "3066": {
+                        "Button": {
+                            "Name": "Has this character evaded 5th times in battle?"
+                        },
+                        "Slider": {
+                            "Name": "How many attacks have been evaded?",
+                            "Logic": ">=5",
+                            "Min": 0,
+                            "Max": 5
+                        },
+                        "Paragraph Title": "When the character has evaded 5 or more attacks"
+                    }
+                }
+            },
+            "CausalityLogic": "{\"source\": \"(933&959)|(2403&1676)|(791&3785)|(746&3590)|681|3066\", \"compiled\": [\"|\", [\"&\", 933, 959], [\"&\", 2403, 1676], [\"&\", 791, 3785], [\"&\", 746, 3590], 681, 3066]}",
+            "Type": "Single activator",
+            "Brief effect description": "ATK and DEF 5%{passiveImg:up_g} after being hit for all allies whose name includes Metal Cooler",
+            "Line description": "{passiveImg:forever}ATK and DEF 5%{passiveImg:up_g} after being hit for all allies whose name includes Metal Cooler 99 or after recieving 2 attacks and the character has evaded 3 or more attacks or after recieving 3 attacks and 378 or after recieving 4 attacks or after recieving 5 attacks or the character has evaded 5 or more attacks ",
+            "Paragraph Title": "When after recieving an attack or the character has evaded 1 or more attacks"
         }
     },
     "Itemized Passive Description": "*Activates the Entrance Animation when 3 or more \"Movie Bosses\"\nor \"Wicked Bloodline\" Category allies are on the team upon the\ncharacter's entry*\n- {passiveImg:once}{passiveImg:forever}Launches 2 additional attacks, each of which\nhas a high chance of becoming a Super Attack\n- {passiveImg:once}{passiveImg:forever}Ki +1 and damage reduction rate 20%{passiveImg:up_g}\n- {passiveImg:once}Damage reduction rate 20%{passiveImg:up_g} for 1 turn\n*Per \"Movie Bosses\" or \"Wicked Bloodline\" Category ally on the team\n(depending on which Category has more members)*\n- ATK & DEF 100%{passiveImg:up_g} (up to 500%)\n- Chance of performing a critical hit, chance of evading enemy's\nattack & damage reduction rate 10%{passiveImg:up_g} (up to 50%)\n*1 or more AGL Ki Spheres obtained*\n- Chance of evading enemy's attack 25%{passiveImg:up_g}\n*1 or more TEQ Ki Spheres obtained*\n- Launches an additional attack that has a great chance of becoming\na Super Attack\n- Attacked enemy's ATK & DEF 25%{passiveImg:down_y} for 2 turns and\nseals the attacked enemy's Super Attack for 2 turns\n*1 or more INT Ki Spheres obtained*\n- Survives K.O. attacks (up to once within a turn)\n- Recovers 10% HP at the end of turn\n*1 or more STR Ki Spheres obtained*\n- Extreme Class allies' ATK & DEF 50%{passiveImg:up_g}\n*1 or more PHY Ki Spheres obtained*\n- Recovers 5% of damage dealt as HP\n*The more HP remaining*\n- ATK & DEF{passiveImg:up_g} (up to 200%)\n*For every attack received or evaded*\n- {passiveImg:forever}ATK & DEF 30%{passiveImg:up_g} (up to 150%)\n- {passiveImg:forever}ATK & DEF 5%{passiveImg:up_g} (up to 25%) for allies whose\nnames include \"Cooler\" (Cooler's Armored Squad excluded),\nplus an additional ATK & DEF 5%{passiveImg:up_g} (up to 25%) if their\nnames also include \"Metal Cooler\"\n*Starting from the 4th turn from the start of battle*\n- Launches an additional Super Attack\n*When the character is the 1st attacker at the start of turn\nstarting from the 4th turn from the start of battle,\nor starting from the 6th turn from the start of battle*\n- {passiveImg:once}Calls in reinforcements",
