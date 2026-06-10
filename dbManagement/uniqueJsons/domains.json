@@ -1110,5 +1110,164 @@
             }
         },
         "Resource ID": "3010"
+    },
+    "12": {
+        "ID": "12",
+        "Name": "Tree of Might",
+        "Description": "\"Space-Traveling Warriors\" or \n\"Terrifying Conquerors\" Category enemies' and allies' \nATK & DEF +15%, plus an additional \nATK & DEF +10% for characters who also \nbelong to the \"Planetary Destruction\" Category; \nincreases damage received by Super Class \nenemies and allies by 10%",
+        "efficacies": {
+            "12": {
+                "ID": "12",
+                "Timing": "On domain Being out",
+                "Target": "All allies",
+                "Effect": {
+                    "Type": "Closes domain"
+                },
+                "Turn activation": "3"
+            },
+            "1000012": {
+                "ID": "1000012",
+                "Timing": "On domain Being out",
+                "Target": "All allies",
+                "Effect": {
+                    "Type": "ATK & DEF",
+                    "ATK": 15,
+                    "DEF": 15
+                },
+                "Turn activation": "1",
+                "superCondition": {
+                    "Logic": "( 3715 || 3716 )",
+                    "Causalities": {
+                        "3715": {
+                            "Class": "any",
+                            "Category": "Space-Traveling Warriors"
+                        },
+                        "3716": {
+                            "Class": "any",
+                            "Category": "Terrifying Conquerors"
+                        }
+                    }
+                }
+            },
+            "2000012": {
+                "ID": "2000012",
+                "Timing": "At the start of turn",
+                "Target": "All enemies",
+                "Effect": {
+                    "Type": "ATK & DEF",
+                    "ATK": 15,
+                    "DEF": 15
+                },
+                "Turn activation": "1",
+                "superCondition": {
+                    "Logic": "( 3715 || 3716 )",
+                    "Causalities": {
+                        "3715": {
+                            "Class": "any",
+                            "Category": "Space-Traveling Warriors"
+                        },
+                        "3716": {
+                            "Class": "any",
+                            "Category": "Terrifying Conquerors"
+                        }
+                    }
+                }
+            },
+            "3000012": {
+                "ID": "3000012",
+                "Timing": "On domain Being out",
+                "Target": "All allies",
+                "Effect": {
+                    "Type": "ATK & DEF",
+                    "ATK": 10,
+                    "DEF": 10
+                },
+                "Turn activation": "1",
+                "superCondition": {
+                    "Logic": "( ( 3715 || 3716 ) && 3717 )",
+                    "Causalities": {
+                        "3715": {
+                            "Class": "any",
+                            "Category": "Space-Traveling Warriors"
+                        },
+                        "3716": {
+                            "Class": "any",
+                            "Category": "Terrifying Conquerors"
+                        },
+                        "3717": {
+                            "Class": "any",
+                            "Category": "Planetary Destruction"
+                        }
+                    }
+                }
+            },
+            "4000012": {
+                "ID": "4000012",
+                "Timing": "At the start of turn",
+                "Target": "All enemies",
+                "Effect": {
+                    "Type": "ATK & DEF",
+                    "ATK": 10,
+                    "DEF": 10
+                },
+                "Turn activation": "1",
+                "superCondition": {
+                    "Logic": "( ( 3715 || 3716 ) && 3717 )",
+                    "Causalities": {
+                        "3715": {
+                            "Class": "any",
+                            "Category": "Space-Traveling Warriors"
+                        },
+                        "3716": {
+                            "Class": "any",
+                            "Category": "Terrifying Conquerors"
+                        },
+                        "3717": {
+                            "Class": "any",
+                            "Category": "Planetary Destruction"
+                        }
+                    }
+                }
+            },
+            "5000012": {
+                "ID": "5000012",
+                "Timing": "On domain Being out",
+                "Target": "All allies",
+                "Effect": {
+                    "Type": "Increases damage recieved",
+                    "Increases damage recieved": 10
+                },
+                "Turn activation": "1",
+                "superCondition": {
+                    "Logic": "( 2563 )",
+                    "Causalities": {
+                        "2563": {
+                            "Class": "super",
+                            "Category": "any"
+                        }
+                    }
+                }
+            },
+            "6000012": {
+                "ID": "6000012",
+                "Timing": "At the start of turn",
+                "Target": "All enemies",
+                "Effect": {
+                    "Type": "Increases damage recieved",
+                    "Increases damage recieved": 10
+                },
+                "Turn activation": "1",
+                "superCondition": {
+                    "Logic": "( 2563 )",
+                    "Causalities": {
+                        "2563": {
+                            "Class": "super",
+                            "Category": "any"
+                        }
+                    }
+                }
+            }
+        },
+        "Resource ID": "3011"
     }
 }
