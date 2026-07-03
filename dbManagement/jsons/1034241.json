@@ -671,9 +671,9 @@
             },
             "Length": 1,
             "Condition": {
-                "Logic": "( 2204 )",
+                "Logic": "( 2055 )",
                 "Causalities": {
-                    "2204": {
+                    "2055": {
                         "Button": {
                             "Name": "Is it within the first 4 turn(s) from the character's entry turn?"
                         },
@@ -687,7 +687,7 @@
                     }
                 }
             },
-            "CausalityLogic": "{\"source\": \"2204\", \"compiled\": 2204}",
+            "CausalityLogic": "{\"source\": \"2055\", \"compiled\": 2055}",
             "Type": "Single activator",
             "Brief effect description": "Survive K.O attacks ",
             "Line description": "Survive K.O attacks ",
@@ -706,26 +706,27 @@
             },
             "Length": 1,
             "Condition": {
-                "Logic": "( 2529 )",
+                "Logic": "( 2648 )",
                 "Causalities": {
-                    "2529": {
+                    "2648": {
                         "Button": {
-                            "Name": "Is the turn count 5 or more on this turn?"
+                            "Name": "Is it on or after the first 5 turns from this characters entry turn on this turn?"
                         },
                         "Slider": {
-                            "Name": "What turn is it on this turn?",
+                            "Name": "How many turns is it since entry turn on this turn?",
                             "Logic": ">=5",
-                            "Min": 1
+                            "Min": 0,
+                            "Max": 5
                         },
-                        "Paragraph Title": "Starting from the 5th turn from the start of battle"
+                        "Paragraph Title": "Starting from the 5 turn from the character's entry turn"
                     }
                 }
             },
-            "CausalityLogic": "{\"source\": \"2529\", \"compiled\": 2529}",
+            "CausalityLogic": "{\"source\": \"2648\", \"compiled\": 2648}",
             "Type": "Single activator",
             "Brief effect description": "ATK 250%{passiveImg:up_g} ",
             "Line description": "ATK 250%{passiveImg:up_g} ",
-            "Paragraph Title": "When starting from the 5th turn from the start of battle"
+            "Paragraph Title": "When starting from the 5 turn from the character's entry turn"
         },
         "13004985": {
             "ID": 13004985,
@@ -740,26 +741,27 @@
             },
             "Length": 1,
             "Condition": {
-                "Logic": "( 2529 )",
+                "Logic": "( 2648 )",
                 "Causalities": {
-                    "2529": {
+                    "2648": {
                         "Button": {
-                            "Name": "Is the turn count 5 or more on this turn?"
+                            "Name": "Is it on or after the first 5 turns from this characters entry turn on this turn?"
                         },
                         "Slider": {
-                            "Name": "What turn is it on this turn?",
+                            "Name": "How many turns is it since entry turn on this turn?",
                             "Logic": ">=5",
-                            "Min": 1
+                            "Min": 0,
+                            "Max": 5
                         },
-                        "Paragraph Title": "Starting from the 5th turn from the start of battle"
+                        "Paragraph Title": "Starting from the 5 turn from the character's entry turn"
                     }
                 }
             },
-            "CausalityLogic": "{\"source\": \"2529\", \"compiled\": 2529}",
+            "CausalityLogic": "{\"source\": \"2648\", \"compiled\": 2648}",
             "Type": "Single activator",
             "Brief effect description": "Forsee enemy super attack ",
             "Line description": "Forsee enemy super attack ",
-            "Paragraph Title": "When starting from the 5th turn from the start of battle"
+            "Paragraph Title": "When starting from the 5 turn from the character's entry turn"
         },
         "14004985": {
             "ID": 14004985,
@@ -774,26 +776,27 @@
             },
             "Length": 1,
             "Condition": {
-                "Logic": "( 2529 )",
+                "Logic": "( 2648 )",
                 "Causalities": {
-                    "2529": {
+                    "2648": {
                         "Button": {
-                            "Name": "Is the turn count 5 or more on this turn?"
+                            "Name": "Is it on or after the first 5 turns from this characters entry turn on this turn?"
                         },
                         "Slider": {
-                            "Name": "What turn is it on this turn?",
+                            "Name": "How many turns is it since entry turn on this turn?",
                             "Logic": ">=5",
-                            "Min": 1
+                            "Min": 0,
+                            "Max": 5
                         },
-                        "Paragraph Title": "Starting from the 5th turn from the start of battle"
+                        "Paragraph Title": "Starting from the 5 turn from the character's entry turn"
                     }
                 }
             },
-            "CausalityLogic": "{\"source\": \"2529\", \"compiled\": 2529}",
+            "CausalityLogic": "{\"source\": \"2648\", \"compiled\": 2648}",
             "Type": "Single activator",
             "Brief effect description": "Heals +20% at the end of turn",
             "Line description": "Heals +20% at the end of turn",
-            "Paragraph Title": "When starting from the 5th turn from the start of battle"
+            "Paragraph Title": "When starting from the 5 turn from the character's entry turn"
         },
         "15004985": {
             "ID": 15004985,
@@ -833,8 +836,8 @@
             "CausalityLogic": "{\"source\": \"2648&2324\", \"compiled\": [\"&\", 2648, 2324]}",
             "Type": "Single activator",
             "Brief effect description": "Damage Reduction Rate 60%{passiveImg:up_g} right before being hit",
-            "Line description": "Damage Reduction Rate 60%{passiveImg:up_g} while being hit",
-            "Paragraph Title": "When ( starting from the 5 turn from the character's entry turn and this character has been hit by a normal attack )"
+            "Line description": "Damage Reduction Rate 60%{passiveImg:up_g} right before being hit when this character has been hit by a normal attack until after being hit",
+            "Paragraph Title": "When starting from the 5 turn from the character's entry turn"
         },
         "16004985": {
             "ID": 16004985,
@@ -980,28 +983,21 @@
             },
             "Length": 1,
             "Condition": {
-                "Logic": "( 2742 )",
+                "Logic": " 274200000 ",
                 "Causalities": {
-                    "2742": {
+                    "274200000": {
                         "Button": {
-                            "Name": "Is this the 2nd attacker in the turn on this turn?"
+                            "Name": "Is this the 2nd attacker in a turn"
                         },
-                        "Slider": {
-                            "Name": "What position is this character attacking in on this turn?",
-                            "Logic": "==2",
-                            "Min": 1,
-                            "Max": 3
-                        },
-                        "Paragraph Title": "As the 2nd attacker in the turn"
+                        "Paragraph Title": "As the 2nd attacker in a turn"
                     }
                 }
             },
-            "CausalityLogic": "{\"source\": \"2742\", \"compiled\": 2742}",
-            "Once Only": true,
+            "CausalityLogic": "{\"source\": \"274200000\", \"compiled\": 274200000}",
             "Type": "Single activator",
             "Brief effect description": "Chance of evading enemy attacks +90% after all ki collected",
-            "Line description": " {passiveImg:once}Chance of evading enemy attacks +90% after all ki collected for 1 turn ",
-            "Paragraph Title": "When as the 2nd attacker in the turn"
+            "Line description": "Chance of evading enemy attacks +90% after all ki collected",
+            "Paragraph Title": "When as the 2nd attacker in a turn"
         },
         "21004985": {
             "ID": 21004985,
