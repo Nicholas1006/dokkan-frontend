@@ -1269,5 +1269,62 @@
             }
         },
         "Resource ID": "3011"
+    },
+    "13": {
+        "ID": "13",
+        "Name": "New Red Ribbon Army's Base (Ruined)",
+        "Description": "\"Movie Bosses\" Category enemies' and allies' ATK +60%",
+        "efficacies": {
+            "13": {
+                "ID": "13",
+                "Timing": "On domain Being out",
+                "Target": "All allies",
+                "Effect": {
+                    "Type": "Closes domain"
+                },
+                "Turn activation": "2"
+            },
+            "1000013": {
+                "ID": "1000013",
+                "Timing": "On domain Being out",
+                "Target": "All allies",
+                "Effect": {
+                    "Type": "ATK & DEF",
+                    "ATK": 60,
+                    "DEF": 0
+                },
+                "Turn activation": "1",
+                "superCondition": {
+                    "Logic": "( 3732 )",
+                    "Causalities": {
+                        "3732": {
+                            "Class": "any",
+                            "Category": "Movie Bosses"
+                        }
+                    }
+                }
+            },
+            "2000013": {
+                "ID": "2000013",
+                "Timing": "At the start of turn",
+                "Target": "All enemies",
+                "Effect": {
+                    "Type": "ATK & DEF",
+                    "ATK": 60,
+                    "DEF": 0
+                },
+                "Turn activation": "1",
+                "superCondition": {
+                    "Logic": "( 3732 )",
+                    "Causalities": {
+                        "3732": {
+                            "Class": "any",
+                            "Category": "Movie Bosses"
+                        }
+                    }
+                }
+            }
+        },
+        "Resource ID": "3012"
     }
 }
