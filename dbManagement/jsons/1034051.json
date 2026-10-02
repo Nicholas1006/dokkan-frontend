@@ -1,0 +1,837 @@
+{
+    "ID": "1034051",
+    "Type": "STR",
+    "Class": "Super",
+    "Name": "Super Saiyan Gohan (Youth)",
+    "Rarity": "ur",
+    "Min Level": 80,
+    "Max Level": 100,
+    "Categories": [
+        "Kamehameha",
+        "Golden Fighters",
+        "Androids/Cell Saga",
+        "Tournament Participants",
+        "Mastered Evolution",
+        "Entrusted Will",
+        "Hybrid Saiyans",
+        "Goku's Family",
+        "Youth",
+        "Super Saiyans",
+        "Bond of Master and Disciple",
+        "Rapid Growth",
+        "Heavenly Events",
+        "Bond of Parent and Child",
+        "Earth-Bred Fighters",
+        "Demonic Power"
+    ],
+    "Can EZA": false,
+    "Can SEZA": false,
+    "Eza Level": "none",
+    "Links": [
+        "Golden Warrior",
+        "All in the Family",
+        "Super Saiyan",
+        "Prepared for Battle",
+        "Shocking Speed"
+    ],
+    "Resource ID": 1034050,
+    "Passive": {
+        "5037": {
+            "ID": 5037,
+            "Timing": "Start of turn",
+            "Ki": 3,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": 1,
+            "CausalityLogic": null,
+            "Type": "Single activator",
+            "Brief effect description": "Ki +3 ",
+            "Line description": "Ki +3 ",
+            "Paragraph Title": "Basic effect(s)"
+        },
+        "1005037": {
+            "ID": 1005037,
+            "Timing": "Start of turn",
+            "ATK": 150,
+            "DEF": 150,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": 1,
+            "CausalityLogic": null,
+            "Type": "Single activator",
+            "Brief effect description": "ATK and DEF 150%{passiveImg:up_g} ",
+            "Line description": "ATK and DEF 150%{passiveImg:up_g} ",
+            "Paragraph Title": "Basic effect(s)"
+        },
+        "2005037": {
+            "ID": 2005037,
+            "Timing": "Start of turn",
+            "Building Stat": {
+                "Min": 0,
+                "Max": 23,
+                "Stat Per Proc": 1,
+                "Cause": {
+                    "Cause": "Ki sphere obtained",
+                    "Type": [
+                        "Rainbow",
+                        "PHY",
+                        "STR",
+                        "INT",
+                        "TEQ",
+                        "AGL"
+                    ]
+                },
+                "Slider": "How many Rainbow or PHY or STR or INT or TEQ or AGL Ki Spheres have been obtained?"
+            },
+            "Ki": 1,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": 1,
+            "CausalityLogic": null,
+            "Type": "Building Stat",
+            "Brief effect description": "Ki +1 per Ki Sphere obtained{currentValue} / 23 ",
+            "Line description": "Ki +1 per Ki Sphere obtained{currentValue} / 23 ",
+            "Paragraph Title": "Basic effect(s)"
+        },
+        "3005037": {
+            "ID": 3005037,
+            "Timing": "Right before being hit",
+            "DEF": 150,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": 1,
+            "CausalityLogic": null,
+            "Type": "Single activator",
+            "Brief effect description": "DEF 150%{passiveImg:up_g} right before being hit",
+            "Line description": "DEF 150%{passiveImg:up_g} right before being hit",
+            "Paragraph Title": "Basic effect(s)"
+        },
+        "4005037": {
+            "ID": 4005037,
+            "Timing": "Start of turn",
+            "DR": 10,
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Length": 1,
+            "Condition": {
+                "Logic": "( 3794 )",
+                "Causalities": {
+                    "3794": {
+                        "Button": {
+                            "Name": "Are there 3 or more Androids/Cell Saga category allies attacking on this turn?"
+                        },
+                        "Slider": {
+                            "Name": "How many Androids/Cell Saga category allies attacking on this turn",
+                            "Logic": ">=3",
+                            "Max": 3,
+                            "Min": 0
+                        },
+                        "Paragraph Title": "When there are 3 or more Androids/Cell Saga Category allies attacking on this turn"
+                    }
+                }
+            },
+            "CausalityLogic": "{\"source\": \"3794\", \"compiled\": 3794}",
+            "Type": "Single activator",
+            "Brief effect description": "Damage Reduction Rate 10%{passiveImg:up_g} ",
+            "Line description": "Damage Reduction Rate 10%{passiveImg:up_g} until when attacking",
+            "Paragraph Title": "When there are 3 or more Androids/Cell Saga Category allies attacking on this turn"
+        },
+        "5005037": {
+            "ID": 5005037,
+            "Disable Other Line": {
+                "Activated": true,
+                "Line": 4005037
+            },
+            "Timing": "Right before attack(MOT stat)",
+            "Target": {
+                "Target": "Self"
+            },
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Length": 1,
+            "CausalityLogic": null,
+            "Type": "Disable Other Line",
+            "Brief effect description": "Disables a different passive line:4005037 when attacking",
+            "Line description": "Disables a different passive line:4005037 when attacking",
+            "Paragraph Title": "Basic effect(s)"
+        }
+    },
+    "Itemized Passive Description": "*Basic effect(s)*\n- Ki +3 and ATK & DEF 150%{passiveImg:up_g}\n- Receives an additional Ki +1 per Ki Sphere obtained\n*When there are 3 \"Androids/Cell Saga\" Category allies\nattacking in the same turn*\n- Damage reduction rate 10%{passiveImg:up_g} before attacking\n*When receiving an attack*\n- DEF 150%{passiveImg:up_g}",
+    "Max Attacks": 2,
+    "Max Super Attacks": 2,
+    "Stats at levels": {
+        "80": {
+            "HP": 9048,
+            "ATK": 7984,
+            "DEF": 4432
+        },
+        "81": {
+            "HP": 9062,
+            "ATK": 7997,
+            "DEF": 4438
+        },
+        "82": {
+            "HP": 9077,
+            "ATK": 8010,
+            "DEF": 4445
+        },
+        "83": {
+            "HP": 9091,
+            "ATK": 8023,
+            "DEF": 4452
+        },
+        "84": {
+            "HP": 9106,
+            "ATK": 8037,
+            "DEF": 4458
+        },
+        "85": {
+            "HP": 9121,
+            "ATK": 8050,
+            "DEF": 4465
+        },
+        "86": {
+            "HP": 9136,
+            "ATK": 8063,
+            "DEF": 4472
+        },
+        "87": {
+            "HP": 9151,
+            "ATK": 8076,
+            "DEF": 4479
+        },
+        "88": {
+            "HP": 9165,
+            "ATK": 8090,
+            "DEF": 4486
+        },
+        "89": {
+            "HP": 9180,
+            "ATK": 8103,
+            "DEF": 4492
+        },
+        "90": {
+            "HP": 9195,
+            "ATK": 8116,
+            "DEF": 4499
+        },
+        "91": {
+            "HP": 9209,
+            "ATK": 8129,
+            "DEF": 4506
+        },
+        "92": {
+            "HP": 9224,
+            "ATK": 8142,
+            "DEF": 4512
+        },
+        "93": {
+            "HP": 9238,
+            "ATK": 8155,
+            "DEF": 4519
+        },
+        "94": {
+            "HP": 9253,
+            "ATK": 8168,
+            "DEF": 4526
+        },
+        "95": {
+            "HP": 9268,
+            "ATK": 8181,
+            "DEF": 4533
+        },
+        "96": {
+            "HP": 9283,
+            "ATK": 8195,
+            "DEF": 4540
+        },
+        "97": {
+            "HP": 9298,
+            "ATK": 8208,
+            "DEF": 4546
+        },
+        "98": {
+            "HP": 9312,
+            "ATK": 8221,
+            "DEF": 4553
+        },
+        "99": {
+            "HP": 9327,
+            "ATK": 8234,
+            "DEF": 4560
+        },
+        "100": {
+            "HP": 9342,
+            "ATK": 8248,
+            "DEF": 4567
+        }
+    },
+    "Leader Skill": {
+        "Name": "Talent Beyond His Father's",
+        "10340500": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Kamehameha"
+                ],
+                "Excluded Category": [],
+                "Name": [],
+                "Excluded Name": [],
+                "Class": [],
+                "Type": [],
+                "allies or enemies": "allies"
+            },
+            "ATK": 130,
+            "DEF": 130,
+            "HP": 150,
+            "Ki": 0
+        },
+        "10340501": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Kamehameha"
+                ],
+                "Excluded Category": [],
+                "Name": [],
+                "Excluded Name": [],
+                "Class": [],
+                "Type": [],
+                "allies or enemies": "allies"
+            },
+            "ATK": 0,
+            "DEF": 0,
+            "HP": 0,
+            "Ki": 2
+        },
+        "10340502": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Golden Fighters"
+                ],
+                "Excluded Category": [
+                    "Kamehameha"
+                ],
+                "Name": [],
+                "Excluded Name": [],
+                "Class": [],
+                "Type": [],
+                "allies or enemies": "allies"
+            },
+            "ATK": 130,
+            "DEF": 130,
+            "HP": 150,
+            "Ki": 0
+        },
+        "10340503": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Golden Fighters"
+                ],
+                "Excluded Category": [
+                    "Kamehameha"
+                ],
+                "Name": [],
+                "Excluded Name": [],
+                "Class": [],
+                "Type": [],
+                "allies or enemies": "allies"
+            },
+            "ATK": 0,
+            "DEF": 0,
+            "HP": 0,
+            "Ki": 2
+        },
+        "10340504": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Androids/Cell Saga"
+                ],
+                "Excluded Category": [
+                    "Kamehameha",
+                    "Golden Fighters"
+                ],
+                "Name": [],
+                "Excluded Name": [],
+                "Class": [],
+                "Type": [],
+                "allies or enemies": "allies"
+            },
+            "ATK": 130,
+            "DEF": 130,
+            "HP": 150,
+            "Ki": 0
+        },
+        "10340505": {
+            "Buff": {
+                "Type": "Raw stats",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Androids/Cell Saga"
+                ],
+                "Excluded Category": [
+                    "Kamehameha",
+                    "Golden Fighters"
+                ],
+                "Name": [],
+                "Excluded Name": [],
+                "Class": [],
+                "Type": [],
+                "allies or enemies": "allies"
+            },
+            "ATK": 0,
+            "DEF": 0,
+            "HP": 0,
+            "Ki": 2
+        },
+        "10340506": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Kamehameha",
+                    "Tournament Participants"
+                ],
+                "Excluded Category": [],
+                "Name": [],
+                "Excluded Name": [],
+                "Class": [],
+                "Type": [],
+                "allies or enemies": "allies"
+            },
+            "ATK": 20,
+            "DEF": 20,
+            "HP": 20,
+            "Ki": 0
+        },
+        "10340507": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Kamehameha",
+                    "Mastered Evolution"
+                ],
+                "Excluded Category": [
+                    "Tournament Participants"
+                ],
+                "Name": [],
+                "Excluded Name": [],
+                "Class": [],
+                "Type": [],
+                "allies or enemies": "allies"
+            },
+            "ATK": 20,
+            "DEF": 20,
+            "HP": 20,
+            "Ki": 0
+        },
+        "10340508": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Kamehameha",
+                    "Entrusted Will"
+                ],
+                "Excluded Category": [
+                    "Tournament Participants",
+                    "Mastered Evolution"
+                ],
+                "Name": [],
+                "Excluded Name": [],
+                "Class": [],
+                "Type": [],
+                "allies or enemies": "allies"
+            },
+            "ATK": 20,
+            "DEF": 20,
+            "HP": 20,
+            "Ki": 0
+        },
+        "10340509": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Golden Fighters",
+                    "Tournament Participants"
+                ],
+                "Excluded Category": [
+                    "Kamehameha"
+                ],
+                "Name": [],
+                "Excluded Name": [],
+                "Class": [],
+                "Type": [],
+                "allies or enemies": "allies"
+            },
+            "ATK": 20,
+            "DEF": 20,
+            "HP": 20,
+            "Ki": 0
+        },
+        "10340510": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Golden Fighters",
+                    "Mastered Evolution"
+                ],
+                "Excluded Category": [
+                    "Kamehameha",
+                    "Tournament Participants"
+                ],
+                "Name": [],
+                "Excluded Name": [],
+                "Class": [],
+                "Type": [],
+                "allies or enemies": "allies"
+            },
+            "ATK": 20,
+            "DEF": 20,
+            "HP": 20,
+            "Ki": 0
+        },
+        "10340511": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Golden Fighters",
+                    "Entrusted Will"
+                ],
+                "Excluded Category": [
+                    "Kamehameha",
+                    "Tournament Participants",
+                    "Mastered Evolution"
+                ],
+                "Name": [],
+                "Excluded Name": [],
+                "Class": [],
+                "Type": [],
+                "allies or enemies": "allies"
+            },
+            "ATK": 20,
+            "DEF": 20,
+            "HP": 20,
+            "Ki": 0
+        },
+        "10340512": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Androids/Cell Saga",
+                    "Tournament Participants"
+                ],
+                "Excluded Category": [
+                    "Kamehameha",
+                    "Golden Fighters"
+                ],
+                "Name": [],
+                "Excluded Name": [],
+                "Class": [],
+                "Type": [],
+                "allies or enemies": "allies"
+            },
+            "ATK": 20,
+            "DEF": 20,
+            "HP": 20,
+            "Ki": 0
+        },
+        "10340513": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Androids/Cell Saga",
+                    "Mastered Evolution"
+                ],
+                "Excluded Category": [
+                    "Kamehameha",
+                    "Golden Fighters",
+                    "Tournament Participants"
+                ],
+                "Name": [],
+                "Excluded Name": [],
+                "Class": [],
+                "Type": [],
+                "allies or enemies": "allies"
+            },
+            "ATK": 20,
+            "DEF": 20,
+            "HP": 20,
+            "Ki": 0
+        },
+        "10340514": {
+            "Buff": {
+                "Type": "Percentage",
+                "+ or -": "+"
+            },
+            "Target": {
+                "Category": [
+                    "Androids/Cell Saga",
+                    "Entrusted Will"
+                ],
+                "Excluded Category": [
+                    "Kamehameha",
+                    "Golden Fighters",
+                    "Tournament Participants",
+                    "Mastered Evolution"
+                ],
+                "Name": [],
+                "Excluded Name": [],
+                "Class": [],
+                "Type": [],
+                "allies or enemies": "allies"
+            },
+            "ATK": 20,
+            "DEF": 20,
+            "HP": 20,
+            "Ki": 0
+        }
+    },
+    "Hidden Potential": {
+        "0": {
+            "HP": 2000,
+            "ATK": 2000,
+            "DEF": 2000,
+            "Additional": 0,
+            "Crit": 5,
+            "Evasion": 0,
+            "Type ATK": 6,
+            "Type DEF": 5,
+            "Super Attack boost": 6,
+            "Recovery boost": 6
+        },
+        "1": {
+            "HP": 300,
+            "ATK": 300,
+            "DEF": 300,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 1,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "2": {
+            "HP": 310,
+            "ATK": 700,
+            "DEF": 310,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 2,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "3": {
+            "HP": 690,
+            "ATK": 300,
+            "DEF": 690,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 0,
+            "Type DEF": 2,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        },
+        "4": {
+            "HP": 1700,
+            "ATK": 2100,
+            "DEF": 1300,
+            "Additional": 0,
+            "Crit": 0,
+            "Evasion": 0,
+            "Type ATK": 1,
+            "Type DEF": 1,
+            "Super Attack boost": 1,
+            "Recovery boost": 1
+        }
+    },
+    "Super Attack": {
+        "9150": {
+            "superID": "9150",
+            "Type": "Unarmed",
+            "special_name_no": "0",
+            "superName": "Soaring Dragon Havoc",
+            "superDescription": "Raises DEF, raises ATK for 1 turn and \ncauses supreme damage to enemy",
+            "superMinKi": "12",
+            "superPriority": "0.0",
+            "superStyle": "Normal",
+            "superMinLVL": "0",
+            "superCausality": "",
+            "superAimTarget": "0",
+            "superBuffs": {
+                "9150": {
+                    "Type": "NormalEfficacySpecial",
+                    "Chance": "100",
+                    "Duration": "99",
+                    "Buff": {
+                        "Type": "Percentage",
+                        "+ or -": "+"
+                    },
+                    "Target": "Self",
+                    "DEF": "30"
+                },
+                "1009150": {
+                    "Type": "NormalEfficacySpecial",
+                    "Chance": "100",
+                    "Duration": "1",
+                    "Buff": {
+                        "Type": "Percentage",
+                        "+ or -": "+"
+                    },
+                    "Target": "Self",
+                    "ATK": "30"
+                }
+            },
+            "superIsInactive": "0",
+            "SpecialBonus": {
+                "ID": "0"
+            },
+            "Multiplier": 430,
+            "relevantLua": [
+                "sp3040"
+            ]
+        }
+    },
+    "Active Skill": null,
+    "Standby Skill": null,
+    "Finish Skill": null,
+    "Transforms from": [],
+    "Transformations": [],
+    "Max Appearances In Form": 50,
+    "Dokkan awakenings": [
+        "1034061"
+    ],
+    "Dokkan Reverse awakenings": [],
+    "Orbs": {
+        "gold": {
+            "HP": 900,
+            "ATK": 1200,
+            "DEF": 1200
+        },
+        "silver": {
+            "HP": 200,
+            "ATK": 1400,
+            "DEF": 1400
+        },
+        "bronze": {
+            "HP": 700,
+            "ATK": 1100,
+            "DEF": 1100
+        },
+        "overall": {
+            "HP": 1800,
+            "ATK": 3700,
+            "DEF": 3700
+        }
+    },
+    "Ki Multiplier": {
+        "0": 70.0,
+        "1": 75.83333333333333,
+        "2": 81.66666666666667,
+        "3": 87.5,
+        "4": 93.33333333333333,
+        "5": 99.16666666666667,
+        "6": 105.0,
+        "7": 110.83333333333334,
+        "8": 116.66666666666666,
+        "9": 122.5,
+        "10": 128.33333333333334,
+        "11": 134.16666666666666,
+        "12": 140.0
+    },
+    "Ki Circle Segments": {
+        "1": "weaker",
+        "2": "weaker",
+        "3": "weaker",
+        "4": "weaker",
+        "5": "weaker",
+        "6": "equal",
+        "7": "equal",
+        "8": "equal",
+        "9": "equal",
+        "10": "equal",
+        "11": "equal",
+        "12": "super"
+    },
+    "SuperMinKi": 12,
+    "AdditionalSuperID": "9150",
+    "Max Leader Skill": {
+        "HP": 401,
+        "ATK": 318,
+        "DEF": 318,
+        "Ki": 4
+    }
+}
