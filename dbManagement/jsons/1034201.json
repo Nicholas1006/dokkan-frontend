@@ -1730,7 +1730,7 @@
         "Effect Description": "Causes ultimate damage to enemy and, \nwithin the turn activated, \nall attacks become critical hits; \nraises all allies' DEF by 39%, \nchanges PHY Ki Spheres to Rainbow Ki Spheres \nand foresees enemy's Super Attack for 1 turn",
         "Condition Description": "Can be activated after the character \nevades 3 or more enemy attacks \n(including Super Attacks) in battle, \nafter the character performs \n9 or more attacks in battle, \nor starting from the 5th turn from \nthe character's entry turn (once only)",
         "Condition": {
-            "Logic": "( 1599 || 3843 || 2529 )",
+            "Logic": "( 1599 || 3843 || 2557 )",
             "Causalities": {
                 "1599": {
                     "Button": {
@@ -1753,16 +1753,17 @@
                     },
                     "Paragraph Title": "When the character has performed 9 or more attacks"
                 },
-                "2529": {
+                "2557": {
                     "Button": {
-                        "Name": "Is the turn count 5 or more?"
+                        "Name": "Is it on or after the first 5 turns from this characters entry turn?"
                     },
                     "Slider": {
-                        "Name": "What turn is it?",
+                        "Name": "How many turns is it since entry turn?",
                         "Logic": ">=5",
-                        "Min": 1
+                        "Min": 0,
+                        "Max": 5
                     },
-                    "Paragraph Title": "Starting from the 5th turn from the start of battle"
+                    "Paragraph Title": "Starting from the 5 turn from the character's entry turn"
                 }
             }
         },
