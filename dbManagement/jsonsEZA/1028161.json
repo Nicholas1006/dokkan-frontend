@@ -289,16 +289,16 @@
                 "Type": "Raw stats",
                 "+ or -": "+"
             },
-            "Length": 99,
+            "Length": 999,
             "Condition": {
                 "Logic": "( 24 || 365 )",
                 "Causalities": {
                     "24": {
                         "Button": {
-                            "Name": "Has this character been hit?"
+                            "Name": "Has this character been hit within the last 999 turns?"
                         },
                         "Slider": {
-                            "Name": "How many times has this character been hit?",
+                            "Name": "How many times has this character been hit within the last 999 turns?",
                             "Logic": ">=1",
                             "Min": 0,
                             "Max": 1
@@ -307,7 +307,7 @@
                     },
                     "365": {
                         "Button": {
-                            "Name": "Has this unit evaded an attack?"
+                            "Name": "Has this unit evaded an attack within the last 999 turns?"
                         },
                         "Paragraph Title": "After evading an attack"
                     }
@@ -316,7 +316,7 @@
             "CausalityLogic": "{\"source\":\"24|365\",\"compiled\":[\"|\",24,365]}",
             "Type": "Single activator",
             "Brief effect description": "Performs an additional super attack after being hit",
-            "Line description": "{passiveImg:forever}Performs an additional super attack after being hit",
+            "Line description": "Performs an additional super attack after being hit",
             "Paragraph Title": "When ( after recieving an attack or after evading an attack )"
         },
         "9004997": {
@@ -339,11 +339,11 @@
                 "Type": "Percentage",
                 "+ or -": "+"
             },
-            "Length": 99,
+            "Length": 999,
             "CausalityLogic": "{\"source\":\"365\",\"compiled\":365}",
             "Type": "Building Stat",
             "Brief effect description": "DEF 50%{passiveImg:up_g} ({currentValue} / 150%) based on 'How many attacks have been evaded' after being hit",
-            "Line description": "{passiveImg:forever}DEF 50%{passiveImg:up_g} ({currentValue} / 150%) based on 'How many attacks have been evaded' after being hit",
+            "Line description": "DEF 50%{passiveImg:up_g} ({currentValue} / 150%) based on 'How many attacks have been evaded' after being hit for 999 turns",
             "Paragraph Title": "Basic effect(s)"
         }
     },
@@ -817,7 +817,7 @@
                 "9014": {
                     "Type": "NormalEfficacySpecial",
                     "Chance": "100",
-                    "Duration": "99",
+                    "Duration": "999",
                     "Buff": {
                         "Type": "Percentage",
                         "+ or -": "+"
